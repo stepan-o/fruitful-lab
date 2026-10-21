@@ -1,0 +1,14 @@
+{
+  "id": "opening-morning-v3",
+  "status": "direction corrected; editorial review candidate",
+  "source": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-63e31dfb-047b-42a7-a6bd-32291cff84c2.png",
+  "workspaceSource": "output/opening-storyboard/01-morning-v3.png",
+  "sha256": "25d8ea8bf78bb84982c449f3c5f59b8b42f6ba70e4fd9612103ff742d0a32406",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. Edit the supplied Loopforge morning comic panel. Correct ONLY the orientation of the robots' heads and visible chest details: ALL TEN robots are walking AWAY from the camera INTO the factory entrance, and ALL TEN heads must be facing the factory in the same direction as their bodies. The camera/viewer follows behind the group. Show the BACKS of the heads, shoulders, torsos, hands, and heels. In particular, bob, the small robot in the center with two huge blue circular fly eyes, must have his head turned 180 degrees away: show two rounded blue metal rear eye housings and rear head mechanisms, NOT luminous eye lenses or a face. jo in the cap at far left must show the back of their cap and rear head, not their eyes. The long-necked robot, round heavy robot, small barrel robot, and all others likewise face the entrance, with no face looking toward the viewer. No owl-like reversed necks. The readers identify them by their differing rear silhouettes, not by frontal faces.\nKeep exactly the same ten characters, their proportions, positions, walking poses, gestures, painted blue family, factory entrance, early golden morning, framing and wide composition, and comic style. Keep the three speech bubbles and their tails and EXACT existing words: \"Have they changed that roller?\" / \"We'll have a look when we get in.\" / \"You said that yesterday.\" They can talk while looking forward. Do not add new text, new characters, supervisors or front-facing poses.",
+  "staging": "Camera follows all ten workers, seeing their backs as they walk into the factory. No worker looks toward the camera.",
+  "supersedes": [
+    "morning-v1 front-facing group",
+    "morning-v2 reversed heads"
+  ]
+}

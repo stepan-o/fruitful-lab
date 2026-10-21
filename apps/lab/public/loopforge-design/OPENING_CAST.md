@@ -1,86 +1,73 @@
-# bob and the people he works with
+# The cast
 
-Cast revision 3 · 20 October 2026 · bob’s paragraph is approved verbatim. The other nine portraits are drafts for creative review.
+Cast revision 5 · 21 October 2026. All ten worker concepts and both ensemble illustrations are approved. bob’s portrait remains approved verbatim; the other prose portraits below are revised drafts.
 
-[Dramaturgy primer](CHARACTER_DRAMATURGY.md) · [Writing Loopforge](EDITORIAL_VOICE.md) · [Reference studies](NARRATIVE_STUDIES.md) · [Earlier episode draft](OPENING_EPISODE.md)
+Ten workers arrive for the same shift. bob is the person we follow; the others have their own company to seek, work to enjoy and reasons to dislike being kept at the door. The supervisors are harder to avoid.
 
-bob is the protagonist of an ordinary factory life. The player operates the factory around him. Nine colleagues bring their own dispositions into its shared rooms. These brief portraits introduce the people before we decide their plots.
-
-Workers have short, single-syllable lowercase names; supervisors retain capitals. W01–W10 are production identifiers. Age, origin, detailed history and future outcomes remain open. The earlier usefulness-based explanation of bob and its attached arc proposals are retired. Only the paragraph below is his approved character brief.
-
-## bob — W01 · Approved
+## bob
 
 bob was a small worker with hands a size too large for him and a face that always seemed to have just heard something. His head turned before the rest of him, pulling his narrow shoulders after it; even in a queue he gave the impression of being on his way somewhere. He liked new machinery, especially before anyone quite knew how to use it. He had a warm, slightly cracked voice and a habit of addressing a whole group while looking at whichever face seemed kindest.
 
-## sam — W02 · Draft
+## sam
 
-sam had a broad, low head and square wrists worn pale at the edges. They listened with their whole body turned towards the speaker, often reaching for the troublesome object before the explanation was finished. Their voice was low and reassuring, though there was seldom much doubt about what they expected you to do. They liked a crowded workbench and kept moving things to make room for one more person. Their own place gradually spread across everybody else’s.
+sam’s shoulders rose in a great rounded hump, leaving the head to peer out from underneath. They came close to hear you, and before you had finished explaining, one thick hand was usually under whatever had gone wrong. Their low, reassuring voice could be heard from the far end of the workbench. sam liked company while they worked. Tools, elbows and advice spread freely across the bench, and a newcomer generally found a place had already been made for them.
 
-## ed — W03 · Draft
+## ed
 
-ed kept the dark blue plates of his narrow body so clean that the old scratches showed clearly. He stood straight even when there was nothing to stand straight for. His careful voice gave equal weight to every word, and he disliked being interrupted halfway through an explanation. He liked knowing what came next. When a supervisor spoke, his head inclined a little; when he passed the instruction on, he raised it again.
+ed’s head swept back above a long, toothed jaw, giving him a severe look even before he raised a finger. He often raised one. His dark plates were carefully wiped, the old scratches clean to the bottom, and he stood straight while others settled their weight. He spoke distinctly and liked an instruction to reach its proper end. Listening to a supervisor, he lowered his chin; passing the instruction on, he lifted it again.
 
-## jo — W04 · Draft
+## jo
 
-jo had wide-set eyes in a low, horizontal head. They watched a conversation without moving much, turning only when a different person began to speak. Their voice was dry and unhurried; an answer often came after somebody else had decided there would not be one. They disliked being drawn into agreements made on their behalf. With familiar company they could be unexpectedly talkative about some small thing they had noticed, and quite indifferent to whether anyone considered it important.
+jo wore their cap low, its broad metal brim shading two small lights in a flat face. Their jacket had gone soft around the elbows; they wore it as comfortably as they occupied a break. jo answered in a dry voice, sometimes after the conversation had moved on. With familiar company they could talk at length about a small thing nobody else had noticed, taking no trouble to make it sound important.
 
-## gus — W05 · Draft
+## gus
 
-gus took up a good deal of room and disliked having to apologize for it. His small head sat deep between broad shoulders; when he turned to listen, his whole chest came round. He spoke slowly, in a low voice that carried further than he intended. He enjoyed a long break and a story told properly, with no one rushing to the end. People often mistook his willingness to wait for agreement. If pressed for an answer, he gave it plainly.
+gus was broad enough to make a doorway look narrow. His little head sat deep in a square yoke of armour, so that turning to hear someone brought the whole chest round. He spoke slowly and rather loudly, without seeming to notice either habit. A story pleased him best when its teller took their time. He would wait through the digressions, remember a detail the others had missed, and ask about it just as everyone was getting up.
 
-## max — W06 · Draft
+## max
 
-max usually stood at an angle, one shoulder lower than the other, with their oversized ear housing tilted towards the conversation. They spoke quickly and could catch another worker’s voice after hearing only a few words. A willing listener made them extravagant. They liked retelling an ordinary nuisance until everyone involved sounded ridiculous, themselves included. When the person being imitated appeared, max became industriously absorbed in whatever lay nearest, although their shoulders sometimes continued to shake.
+max had a long, narrow face and a straight pale ridge down its middle which lent them an air of solemn attention. This was useful when listening to somebody they intended to imitate. A few words were enough: the voice came first, then the tilt of the head, then the unfortunate person’s way of standing. max liked a willing audience and included themselves readily in the joke. They were less comfortable when somebody else supplied their part.
 
-## mae — W07 · Draft
+## mae
 
-mae moved neatly, keeping her elbows close even in an empty room. Her long head and tapering shoulders gave her a composed appearance which dirt did little to soften. She chose her tools carefully and disliked other people arranging them. Her voice was clear, with an abruptness that made praise sound almost like a correction. She enjoyed beautiful work and sometimes stood looking at it after its maker had gone. A rough solution could annoy her even when it worked.
+mae’s broad, blunt head sat close above her shoulders. She looked levelly up at taller people, her small hands still until there was something worth doing with them. She kept her elbows close and her tools where she had put them. Her clear voice could make praise sound like a correction. Beautiful work held her attention long after the conversation around it had ended; she would lean nearer, turn it a little, and ask who had made the difficult part.
 
-## kit — W08 · Draft
+## kit
 
-kit’s broad feet made a firm little platform beneath a compact body and a head almost too large for it. They held themselves very upright when someone explained a task, nodding sooner than they should. Their voice was brisk and grew sharper when anyone slowed an explanation down for them. They watched skilled hands closely. Afterwards, away from the group, they repeated the movement until they could do it without looking, then found some ordinary reason to do it where it would be seen.
+kit had a narrow waist, a heavy jaw and forearms too large to put casually anywhere. A short pipe stuck out from the corner of his mouth. He shifted it aside when he had something to say, though it seldom improved the patience of his voice. He watched skilled hands closely and disliked an explanation being slowed down for him. Later he would try the movement himself, his great forearms held very still while the smaller fingers found their way.
 
-## lou — W09 · Draft
+## lou
 
-lou’s head sat high on a long neck between two broad receiver housings. They walked beside people at exactly their pace, bending close enough to make even a question about the shift feel confidential. Their voice softened whenever another listener approached. They remembered names, small preferences and quarrels that the participants hoped had been forgotten. A conversation rarely ended where lou found it; there was usually someone else who ought to hear a part of it, and lou liked to deliver it personally.
+lou’s long neck brought their face into conversations before the rest of them arrived. They could walk beside a worker at exactly the worker’s pace, bending close enough to make a question about the shift sound confidential. Their voice softened when another listener approached. Names, preferences and old quarrels stayed with lou. A conversation rarely ended where they found it; there was usually somebody else who ought to hear a part of it, and lou liked to deliver it personally.
 
-## ben — W10 · Draft
+## ben
 
-ben was short, with a low oval head and a broad, flat back. They liked to stand at the edge of a group, where nobody could come up on both sides. Their hands rested loosely near their belt. They answered in a quiet, level voice and were willing to let an unwelcome question remain unanswered. With someone they liked, they could spend a whole break side by side, scarcely speaking. They were particular about who borrowed their things and remembered where everything belonged.
+ben’s low hood and round body made a compact shape at the edge of a group. Their arms hung loosely until somebody came too close; then one elbow quietly claimed the space beside them. They answered in a level voice and could leave a question unanswered without looking troubled by it. With someone they liked, ben would spend a whole break scarcely speaking. They knew where their belongings were, including the ones other people had forgotten to return.
 
-## What bob’s approval lets us develop next
+## LIMEN
 
-These are production interpretations for review. They add no personality claims to the approved paragraph.
+LIMEN’s pale armour filled the doorway before he spoke. The face above it wore a metal grin; a narrow teal light moved from one worker to the next. He held a form as though its condition might tell him something about its owner. Even his smallest correction carried across the room. LIMEN took comfort in a completed check and could spend a long time making it complete. The workers waiting to be checked had time to study the cyan blade along his arm.
 
-For his concept sheet, preserve a small body, narrow shoulders and visibly large hands within the blue worker family. Show the forward interest through his head and shoulders. The existing Worker 01 model remains a stand-in; exact dimensions and rig changes need a separate fitting pass.
+## STILETTO
 
-For performance, try the head beginning a turn before the shoulders, a held glance towards unfamiliar machinery and speech directed to the kindest-looking listener in the group. A warm, slightly cracked delivery can guide future voice work. These cues are contextual actions, not perpetual fidgeting or a new default animation applied everywhere. Test them from the factory camera as well as in close-up.
+STILETTO walked as though the passage had already been cleared. Red shoulders caught the light above a narrow black body; the two blades continued the lines of her forearms, leaving no idle hands to soften a gesture. She liked a working line, a rising count and an answer given while the work continued. Her red visor would turn towards a stoppage before she changed direction. When she spoke of the workers, she knew exactly how many the Conveyor was missing.
 
-For the opening, give bob something to attend to before LIMEN arrests the group’s movement. The contrast can be staged without explaining his whole nature in dialogue. The earlier first-guide promise, concealed-pain motive and help-refusal arc are not established by the portrait. Review those choices when rewriting the episode; the current rehearsal has not been changed.
+## CATHEXIS
 
-## Differences to explore in shared scenes
+CATHEXIS brought a little ceremony to the act of entering a room. Her crown rose above pale hanging cables, and the cracked porcelain face held its composure while the rest of her arranged itself to be seen. She liked an attentive audience and could make a worker feel, for a moment, that they were the audience. Fine work pleased her. Grime caught in the folds of her dress received a long, offended inspection; the hand holding it out remained there until somebody noticed.
 
-The following are possible sources of friction and companionship, not scheduled quarrels or settled relationship histories.
+## When they meet
 
-| People | What brings their differences into contact |
-| --- | --- |
-| bob and ed | Unfamiliar machinery attracts bob; ed likes knowing the procedure. Together they could investigate carefully or disagree over when it is permissible to begin. |
-| bob and sam | sam readily demonstrates and intervenes. That can welcome bob into a task or leave him too little room to explore it himself. |
-| bob and kit | Both attend closely to machinery. bob is drawn to what is unfamiliar; kit wants a movement to look practiced. They may enjoy learning together and differ about showing uncertainty. |
-| sam and mae | sam makes space by rearranging things; mae chooses and places her tools deliberately. The same workbench can make helpfulness intrusive. |
-| ed and max | ed gives instructions their full weight; max makes a performance out of familiar voices. Recognition can be pleasurable or humiliating depending on who is listening. |
-| jo and lou | lou carries conversations between people; jo resists being included in an agreement they have not made. Information can be welcome even when its circulation is not. |
-| gus and kit | gus is willing to take his time; kit is eager to demonstrate competence. Working together can steady kit or make both feel obstructed. |
-| ben and sam | ben keeps track of possessions and prefers room around them; sam’s sociability fills shared space. They may need a way of offering help that leaves a choice. |
+sam makes room by moving things; mae likes to find her tools where she left them. ed lends an instruction his whole bearing, while max listens for the part that can be imitated. lou carries a conversation to someone new; jo would prefer to know which part of it has been attributed to them. These differences give people something to do together before a crisis asks anything larger of them.
 
-An encounter should reveal more than the difference used to begin it. A colleague can be enjoyable company and difficult to work beside. Pressure from supervisors, the operator’s choices and accumulated experience can change the balance. No worker exists only to support bob, and no draft here establishes a betrayal, punishment or redemption.
+At Security, ed and gus volunteer when LIMEN calls, “WHO REALLY CARES ABOUT THIS FACTORY?!” Their two checks come first. They take the register and card station; sam stays beside bob. When STILETTO comes through, she sees the staff missing from her line. The workers see LIMEN move out of her way. Each carries something different from the same encounter.
 
-## Appearance and production review
+## From the portrait to the performance
 
-All ten belong to the approved industrial worker family: blue enamel in several shades, dark exposed mechanisms, readable hands and optical elements. Keep the dark smoky background of the accepted concept art. Their large shapes and paint blocks must distinguish them from front, side and rear at factory camera distance; a scratch, serial number or handheld object cannot be the sole identifier. bob stays an ordinary worker in scale and finish.
+The approved “badass” group shot is the lead visual reference for model generation. Individual concepts retain useful construction detail. Prepare one clean body input per worker from the group, preserving the distinguishing head, shoulders, proportions and paint. A group poster must never be sent to Meshy as one character. Its theatrical staging is not a new gait or an instruction to exaggerate every scene.
 
-The older exact height ratios, voice lines and body specifications were proposals, not approved requirements for these portraits. Develop the new lineup after creative approval. Use compatible body families, rigid head and panel variations, shared textures and the accepted motion bank where they fit. Ten personalities do not require ten expensive bespoke rigs. Test each character’s characteristic actions as well as their silhouette.
+bob’s flat head and enormous fly eyes carry his recognition at small camera sizes. His approved prose stays unchanged. Blue enamel unites the workers; their large shapes tell them apart. LIMEN keeps pale steel and deep teal, STILETTO black chrome and red, CATHEXIS ivory and gold. Supervisor scale and identifying equipment must survive a full-room view without a label.
 
-Keep LIMEN’s accepted Security Chief identity: pale steel, substantial armor, skull-grin face and cyan forearm blade. His procedure enforces his authority and can harm those required to comply. STILETTO seeks production, quota and leadership’s approval; releasing workers from Security does not make their wellbeing her motive. Those existing supervisor priorities remain the conditions in which the workers will act.
+Let a gesture begin, find its listener or object, and finish. A glance, a quiet wait or a change of footing often gives another person room to act. Familiar gestures can acquire a different meaning after an encounter; they should not cycle merely to prove that a character is alive. Record the motion’s intended use separately from its source name and inspect it on the body that will perform it.
 
-The next review concerns these nine portraits. Relationships, the revised opening script, concept sheets, Meshy assets and BDI behavior follow their own approvals. Existing models and the deployed rehearsal are unchanged.
+[Opening episode](OPENING_EPISODE.md) · [Editorial voice](EDITORIAL_VOICE.md) · [Character dramaturgy](CHARACTER_DRAMATURGY.md) · [Model and animation briefs](/stepanoskin/loopforge/design#model-briefs)

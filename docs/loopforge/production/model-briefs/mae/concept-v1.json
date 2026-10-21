@@ -1,0 +1,15 @@
+{
+  "id": "mae",
+  "refs": [
+    "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/rooms/05_loopforge_rooms_weaving_room_3.png"
+  ],
+  "prompt": "Use case: stylized-concept. Loopforge factory worker mae, one isolated full-body character concept. Use the LEFT FOREGROUND WEAVING WORKER in the reference as the principal design source: long close-fitting hard mechanical hood over a slender face, tapering shoulders and precise articulated hands. Develop this into a distinct slender upright craftsperson, with a very long narrow face enclosed in an elongated blue bell-shaped metal hood; the dark face opening has two small pale cyan eye slits high inside and a slim vertical mouth grille. The hard hood is integrated casing, not cloth or a religious costume. Narrow sloping shoulders, compact chest, long neat forearms with small fine five-finger mechanical hands. Medium-length neck, not a giraffe neck. The body has an understated workshop-apron-like front made from three overlapping rigid blue panels ending above knees; legs remain clearly separate and fully visible. Flat practical shoes. Refined economical mechanics, no curving breasts or sexualized shape. Broad faded blue enamel panels, dark greasy articulated joints, modest brass bearings, slate-blue hood with pale-blue edging, wear concentrated at edges. No coat tails, cables dragging, cape, glowing core, crown or weapon. She is a worker, not RIVET WITCH or CATHEXIS. Full body front three-quarter relaxed A-pose, hands empty and clear of torso, both feet visible. Dark smoky background and the original game's worn industrial painterly concept style. Make the long hood, taper and careful hands visible even as a small silhouette. No text or extra figures. Preserve the reference's old machine craftsmanship rather than sleek science fiction.",
+  "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-736262dd-3ff0-4627-92ba-463fa25387e2.png",
+  "status": "owner-rejected",
+  "version": 1,
+  "reason": "Dress silhouette too similar to RIVET WITCH.",
+  "workspace_image": "output/opening-cast/mae/mae-concept-v1.png",
+  "sha256": "d7937034d6e6b9f0ec1b835cc49307e4061eb46985ad4fdac92b944430c1adea",
+  "date": "2026-10-21",
+  "tool": "image_gen"
+}

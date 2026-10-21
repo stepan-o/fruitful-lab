@@ -1,0 +1,15 @@
+{
+  "id": "lou",
+  "revision": 1,
+  "tool": "built-in image_gen",
+  "status": "production input derived from owner-approved ensemble; visually inspected",
+  "source": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-c1ec9170-11cd-45a9-89df-118f4ef55290.png",
+  "workspaceSource": "output/opening-cast/lou/lou-ensemble-apose-v1.png",
+  "sha256": "c92229a882e49c30da9ec0b6b31cb1284016764f92129fb91e935f22465edaca",
+  "prompt": "Use case: identity-preserve. Asset: single character A-pose reference for Meshy 3D generation. Image 1 is the APPROVED Loopforge ensemble and is the PRIMARY visual authority. Image 2 is the same named character's supporting individual concept for mechanical detail. Extract ONLY lou, matching their actual appearance in image 1. Identity: Exceptionally long curved neck and forward beaky skull with twin receiver housings; narrow exposed rib torso, very long thin arms and legs. Maintain a coherent biped and expressive neck without collapsing this into standard worker proportions. Isolate that character as one full-body adult mechanical factory worker. Remove scene lighting, other characters, poster perspective and environmental props. Neutral symmetrical open A-pose, hands empty, five mechanical digits each including correctly oriented thumbs, arms about 35 degrees out, palms facing slightly forward/inward naturally, feet parallel with thigh and elbow clearance. Full body in frame with margin. Preserve distinctive proportions and paint from image 1; don't normalize to generic humanoid, don't change character. Plain neutral medium grey background, even studio light, straight-on camera at mid-body height, no dramatic perspective. Beautiful coherent real-time model reference, worn blue enamel with dark steel joints and restrained brass, visible material detail. No text, labels, shadow that hides anatomy or new accessory. kit alone keeps his fixed short pipe; jo keeps his cap and blue jacket/trousers. bob keeps the two huge fly-eye lenses over tiny flat head and moderately enlarged hands. Single character only.",
+  "references": [
+    "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/opening-cast/ensemble/badass-v1.png",
+    "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/public/media/loopforge-cast/lou-1280.0d77f26b20c9667e.webp"
+  ],
+  "visualCheck": "Full body and feet, separated limbs, identity and proportions match approved group; fingers and joints must be checked on delivered mesh."
+}

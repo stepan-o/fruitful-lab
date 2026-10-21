@@ -1,0 +1,18 @@
+{
+  "id": "opening-storyboard-v1",
+  "status": "review candidate",
+  "tool": "built-in image_gen",
+  "workspaceSource": "output/opening-storyboard/episode-storyboard-v1.png",
+  "prompt": "Use case: compositing. Assemble these FOUR PROVIDED COMPLETE COMIC PANELS into ONE storyboard graphic. Strict page assembly, not a reinterpretation. Arrange in a 2 by 2 grid with narrow dark charcoal gutters and a thin dark outer border. Reading order: image1 top-left (walking to factory), image2 top-right (LIMEN greeting), image3 bottom-left (low-angle strike), image4 bottom-right (STILETTO walks past). Each source has landscape16:9 aspect ratio: preserve the complete original image uncropped inside its panel. Overall graphic should also be landscape16:9. Preserve every character's pose, identity, direction, limb, the right-arm cyan blades, and the exact existing lettering. Do not redraw events, add characters, add speech bubbles, headings, panel numbers, captions, title or decorations. The resulting page should contain exactly the four supplied panels, each exactly once, all existing dialogue kept legible. Especially preserve the DRAMATIC LOW ANGLE of bottom-left and bob still on floor bottom-right. Use the highest practical resolution so the lettering survives.",
+  "panels": [
+    "01-morning-v3.png",
+    "02-greeting-v3.png",
+    "03-strike-v3.png",
+    "04-stiletto-v2.png"
+  ],
+  "notes": [
+    "Read left to right, then down.",
+    "bob stays on the floor through the first two checks and STILETTO's entrance.",
+    "Panel 3 replaces the rejected standing-group composition with a floor-level strike view."
+  ]
+}

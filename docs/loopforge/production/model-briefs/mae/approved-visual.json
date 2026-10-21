@@ -1,0 +1,11 @@
+{
+  "id": "mae",
+  "version": 3,
+  "status": "owner-approved-concept",
+  "approval": "mae is approved",
+  "workspace_image": "output/opening-cast/mae/mae-concept-v3.png",
+  "sha256": "2d5ccb1b30e76ffeccbce7e7f32d5fc44517eafe6c8f65c981aa399b090a00c3",
+  "date": "2026-10-21",
+  "tool": "image_gen",
+  "direction": "Compact square craftswoman; no dress, hood or childlike proportions."
+}

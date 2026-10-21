@@ -1,0 +1,13 @@
+{
+  "id": "ed",
+  "body": {
+    "source": "output/opening-cast/ed/ed-body-v1.glb",
+    "sha256": "70e3e33a8c9b3f245bbb5e80037d0f388cf59cb156b4b9d6e8ef8e1bb1b296c8",
+    "bytes": 15407584,
+    "triangles": 24740,
+    "skins": 0,
+    "animations": 0
+  },
+  "status": "downloaded unrigged body; visual review pending",
+  "approvedReference": "ensemble-badass"
+}

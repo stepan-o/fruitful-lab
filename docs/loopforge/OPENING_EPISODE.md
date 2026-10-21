@@ -1,227 +1,191 @@
 # Episode 1 — Before the shift
 
-**Revision notice · 20 October 2026:** this script predates bob’s approved [character brief](OPENING_CAST.md). Its first-guide promise, usefulness motive and proposed help-refusal development are unapproved staging ideas. Retain it as an earlier episode draft for revision after the cast review; it must not be used to extend the approved portrait. The deployed rehearsal is unchanged.
+Production script revision 5 · 21 October 2026 · Ten workers, LIMEN and STILETTO.
 
-Script proposal 2 · 20 October 2026 · Ten workers and LIMEN · Awaiting creative approval before visual production.
+[The cast](OPENING_CAST.md) · [Writing Loopforge](EDITORIAL_VOICE.md) · [Animation and staging brief](/stepanoskin/loopforge/design?model=bob#model-briefs)
 
-[Meet the cast](OPENING_CAST.md) · [Dramaturgy primer](CHARACTER_DRAMATURGY.md) · [Reference studies](NARRATIVE_STUDIES.md)
+The four storyboard panels establish the sequence for opening scene v1. The dialogue below supplies the moments between them. This is the production target; the published rehearsal still uses an earlier cast and script. CATHEXIS arrives later in the story.
 
-## The morning bob expects
+## 1. The morning walk
 
-bob wants to get to the Conveyor and set its first guide. sam has left the task for him. At Security, LIMEN needs the arriving crew to stop behaving as people on their way to work and begin behaving as people awaiting clearance. bob moves too soon. The punishment changes the meaning of being ready.
+The factory door is open. Warm light reaches across the wet paving; inside, an empty belt runs over a bright new roller. The workers approach in pairs and loose company, their feet finding the drier patches without much success. We follow them towards the entrance, seeing their backs. Nobody walks towards the camera.
 
-The episode ends when bob is admitted. He has not lost his ordinary ambition, but he now needs more time and may need somebody beside him. ed has acquired a useful position at LIMEN's desk. The queue has learned a procedure. These changes will arrive at the Conveyor before the full crew does.
+bob cranes past sam’s shoulder. His arm is already pointing by the time he speaks.
 
-This is a representative day-one run with LIMEN assigned to Security. It revises the proposed episode, not the deployed scene. A different assignment makes this particular encounter ineligible. The eventual agents must be able to produce a different outcome; the script is not an instruction to force an injury regardless of conduct.
+**bob:** Have they changed that roller?
 
-## Performance and attention
+**sam:** We'll have a look when we get in.
 
-Begin with timid workers, not people confidently challenging a guard. Let the familiar conversation between bob and sam establish a little ease before the room interrupts it. The audience needs to meet bob while something is still going right.
+**jo:** You said that yesterday.
 
-Use three held compositions. The approach includes the Lobby, threshold and waiting space. A closer view carries bob's step, LIMEN's strike and the whole recovery. The final composition includes the queue and clerk's desk. Cut when the arrangement changes; never because a new speech bubble appears. Keep the strike and recipient visible together.
+sam turns enough to see who said it. jo walks on, hands in their pockets. lou bends towards max to finish something they started further down the lane. ben lets them go ahead. kit takes his pipe out of his mouth as they reach the door.
 
-LIMEN faces the incoming workers. Security keeps the accepted floor color #A7B2D3; the quieter Lobby remains #666860. Leave a real path for the injured return. The workers settle into varied idle poses instead of synchronized loops. Peripheral actions should reward a second look without competing with the foreground.
+## 2. LIMEN’s greeting
 
-Target roughly three minutes for the first read-through, with time for the approach, contact, recovery and reading. This is an estimate to test, not a reason to hurry a fall or shorten a necessary pause. There is no STILETTO line or CATHEXIS cameo.
+Inside the Lobby the group bunches where the passage narrows. ed leaves himself a view of the inspection desk. mae draws her elbow out from under sam’s hand, which has been making room for them both. Through Security, bob can still see the roller.
 
-## 1. Something to look forward to
+LIMEN fills the doorway, facing the arriving workers. His free hand comes up.
 
-**Approach shot.** Mechanical footfalls in the Lobby. bob and sam are near the front. bob already has his ID out. Behind them, kit watches how he holds it. gus and ben arrive together; the others follow in uneven pairs.
+**LIMEN:** STOP AND WAIT HERE!!
 
-**bob · quietly:** You left the guide for me?
+The nearest workers stop first. Those behind take another step, find a shoulder or a heel in the way, and shuffle back. lou straightens their long neck. bob loses sight of the belt.
 
-**sam:** Just the first one.
+**LIMEN:** Behind the line. The doorway stays clear.
 
-**bob:** That's the one I wanted.
+ed checks his feet. kit checks ed’s.
 
-bob checks the card and puts it back in the same hand. sam notices, amused, but says nothing. max looks past them at the waiting space.
+**LIMEN:** I check your ID. I check your assignment. Then you go in.
 
-**max · to mae:** Excellent. We're early for standing still.
+**gus:** All ten of us?
 
-mae takes the clean place beside the wall. A small glance is enough of an answer. Do not wait for every worker to complete an introduction.
+**LIMEN:** Is there someone here I shouldn't check?
 
-LIMEN steps into the approach.
+gus settles his weight on both feet. max’s head dips towards jo.
 
-**LIMEN · abrupt command:** STOP AND WAIT HERE!!
+**max, low:** Could have said yes.
 
-The front stops. The rear closes a little before finding room. ben shifts beside gus rather than pushing forward. kit lowers the hand holding their card.
+LIMEN looks over the group, letting the silence last.
 
-Hold the composition through the change. The conversation has ended before anyone says that it has.
+**LIMEN:** WHO REALLY CARES ABOUT THIS FACTORY?!
 
-## 2. Ready is not cleared
+ed’s finger rises at once.
 
-LIMEN indicates the floor line, then the inspection desk.
+**ed:** Me, sir.
 
-**LIMEN · controlled:** Behind the line. All of you.
+A broad hand goes up beside him.
 
-ed checks his feet and moves back a little.
+**gus:** I can help.
 
-**LIMEN:** Ten workers. Ten IDs. I clear you before you enter.
+**LIMEN:** Good. I need two at Security. We'll start with you.
 
-**ed:** One at a time, sir?
+He indicates the desk. ed makes sure he has been pointed at. bob, nearer the threshold, has his card ready and has heard enough to think the waiting is over.
 
-**LIMEN:** When I say.
+## 3. bob takes a step
 
-LIMEN looks down the group. bob straightens. sam sees it.
+**bob:** Here, sir.
 
-**sam · low:** We've got time.
+He steps into the opening. LIMEN’s cyan blade sweeps across his approach.
 
-**bob:** I know.
+**LIMEN:** HEY YOU I SAID STOP!!!!
 
-LIMEN moves slightly aside to indicate the inspection position.
+One electrical contact takes bob’s legs from under him. His card skids across the Lobby floor. sam reaches too late. ed catches sam’s sleeve, then lets go when sam turns towards him.
 
-**LIMEN:** Who's first?
+**bob:** You said first—
 
-**bob · immediate:** I am.
+**LIMEN:** I wasn't speaking to you.
 
-He raises the ID and takes a step toward the place LIMEN indicated. The card leads the movement. He is trying to cooperate; he has mistaken a question for permission.
+sam crouches beside bob, outside the doorway. bob gets a hand under himself. The bad leg folds when he tries to put weight on it.
 
-## 3. The example
+**sam:** Stay there. Let me see.
 
-**Move to the closer shot as bob begins the step.** Keep the boundary, blade and card in view. kit begins to follow and stops at sam's raised hand.
+mae moves her foot away from the fallen card. jo picks it up. ben gives sam room without being asked. kit watches LIMEN’s blade. max has stopped looking for jo’s attention.
 
-**LIMEN · explosive; emphasize STOP:** HEY YOU I SAID STOP!!!!
+**LIMEN:** EVERYONE PREPARE YOUR IDs.
 
-LIMEN swings his **cyan forearm blade** into bob's approach. One disabling electrical contact triggers the fall. The ID lands on the waiting side of the line. No baton, gun, repeated strike or dismemberment. The contact must read as shocking/disabling if the next action is a recoverable injury.
+Cards emerge around the room. bob is still on the floor. Hold the view long enough to see what the others do with this instruction.
 
-Stay with the fall. A card hits the floor; a mechanism attempts to restart. max's unfinished gesture drops. ed looks at the foot that crossed the line, then at bob.
+## The first two checks
 
-sam takes one step toward him.
+LIMEN points directly at ed.
 
-**ed · frightened warning:** sam. The line.
+**LIMEN:** You. Come to the desk.
 
-sam stops at the safe edge. LIMEN keeps his attention on bob.
+ed waits for the hand to finish moving before crossing.
 
-**LIMEN · measured again:** I asked who was first.
+**LIMEN:** Name.
 
-**bob · from the floor:** Me.
+**ed:** ed.
 
-A pause. bob understands that this was not the answer required.
+**LIMEN:** Assigned station.
 
-**LIMEN:** You wait until I tell you to move.
+**ed:** Conveyor.
 
-Let the difference between their understandings remain visible. No narrator labels bob disobedient or explains LIMEN's lesson.
+LIMEN compares the card with a form, turns the form over, then checks the card again. ed stands still throughout.
 
-## 4. A way back
+**LIMEN:** Security today. Name, number, time admitted. Leave room for remarks.
 
-sam offers an arm from the waiting side, with enough space for bob to accept or refuse.
+ed takes the register station. He straightens the book and looks up for the next name.
 
-**sam:** Here.
+LIMEN calls gus. His card has disappeared inside his large hand; he opens it, turns the card the right way round and holds it out. LIMEN completes the check before admitting him.
 
-**bob:** I can get up.
+**LIMEN:** Cards in this tray. Cleared cards in that one.
 
-sam lowers the hand. gus moves behind the line to open a return lane. ben holds the place bob left instead of allowing the queue to close it.
+**gus:** This one, then that one.
 
-**LIMEN:** Back behind the line.
+**LIMEN:** When I clear them.
 
-bob begins the recovery. The damaged leg fails its first weight test.
+gus places both trays square to the desk. Two workers are now cleared and working at Security. sam remains beside bob.
 
-**LIMEN · patient:** Take your time.
+## 4. STILETTO comes through
 
-bob gets upright and limps toward the waiting area. Keep the limp distinct from the walk with which he arrived. jo retrieves the card from the safe side. lou can see the return, but gus has obscured their view of the original contact.
+The main door opens behind the waiting workers. STILETTO is already walking when it reaches its stop.
 
-mae looks at bob's leg, then gives up the roomier place by the wall. ben notices and redirects him.
+lou notices first and draws out of the passage. ben turns sideways against the wall. max steps around jo, who has stopped to give them room. kit backs towards mae; she puts a hand on his upper arm and moves them both clear. Their retreat leaves an uneven passage, opening from one person to the next.
 
-**ben · to bob:** Here.
+sam sees the red shoulders approaching. They crouch closer to bob and draw his outstretched foot out of the route. bob stays on the floor, braced on one hand. Both are clear before STILETTO reaches them.
 
-bob takes the place. jo returns his ID.
+**STILETTO:** The line is empty, LIMEN.
+
+**LIMEN:** I haven't cleared—
+
+She reaches the threshold. LIMEN jumps back out of her path. His blade comes up, then drops as she passes. STILETTO does not slow down.
+
+**STILETTO:** Then hurry up.
+
+**sam, to bob:** Stay down a moment.
+
+STILETTO passes the two occupied Security stations on her way to Conveyor. ed follows her with his head, then returns to the register. gus keeps a hand on each tray. Neither knows whether to look at LIMEN.
+
+The room is quiet for a moment. The workers look from the doorway to the place LIMEN has vacated. He returns to it.
+
+## Getting up
+
+sam offers a forearm. This time bob takes it. He brings his sound leg under him and rises, testing the other foot before trusting it. sam waits.
+
+jo hands back the card.
 
 **bob:** Thanks.
 
-He checks the card before putting weight on the leg again. sam stays close without reaching.
+bob looks towards the door STILETTO used, then up at sam.
 
-**sam · only to bob:** I'll walk on this side.
+**bob:** She didn't show him anything.
 
-bob looks at the space beside him. He does not refuse it.
+**sam:** Easy. Try that foot again.
 
-Hold long enough for the group to settle. A cleared route and an offered place have made the recovery possible; nobody has delivered a speech about solidarity.
+bob puts it down. It holds. They take a short, uneven step back into the waiting group.
 
-## 5. The work of waiting
+## bob’s turn
 
-**Final held composition.** The queue and empty clerk's desk share the frame. bob keeps the ID close. ed is rigidly attentive. max is still. kit looks toward ed before moving.
+LIMEN points at bob.
 
-**LIMEN · public instruction:** EVERYONE PREPARE YOUR IDs
+**LIMEN:** You. Bring your card.
 
-The cards come out at different speeds. gus's looks small in his hand. ben's was already ready. These are quiet variations, not a comic montage.
-
-LIMEN points to ed and then explicitly opens the way to the clerk's side.
-
-**LIMEN:** You. Come here.
-
-ed checks the gesture before crossing.
-
-**LIMEN:** Keep the count. Next card ready when I finish.
-
-**ed:** Yes, sir.
-
-sam follows ed with their eyes. A worker who could have joined the Conveyor has become part of its delay. ed has also been given a chance to make the waiting orderly.
-
-**kit · softly, before ed turns away:** If he says my number, do I go?
-
-ed pauses.
-
-**ed:** Wait for him to say you can.
-
-lou repeats the practical instruction down the line. No claim about the strike is added.
-
-## 6. The same job, further away
-
-LIMEN deliberately beckons bob with the safe arm.
-
-**LIMEN:** First worker. Come forward.
-
-bob looks at the line.
+bob raises it without moving.
 
 **bob:** Now?
 
 **LIMEN:** Now.
 
-bob limps to the desk. LIMEN takes the ID and checks it. ed prepares the next entry. The inspection is competent and unhurried; competence does not undo the preceding harm.
+He limps to the desk. LIMEN checks the card. ed writes down his name, carefully leaving room for remarks. gus puts the cleared card in its tray.
 
-**LIMEN:** Cleared. Through the door.
+**LIMEN:** Conveyor. Go through.
 
-bob takes his card. Before crossing, he turns enough to find sam.
+bob takes the card and looks back. sam lifts a hand, still holding their own.
 
-**bob · low:** Leave the guide.
+**bob:** I'll wait by the belt.
 
-**sam:** It's still yours.
+**sam:** Go on. I'll find you.
 
-bob crosses. He stops just beyond the cleared path, allowing room for the next worker. This time he looks back.
+bob turns towards the inner doorway. The roller catches his eye again; then his foot catches on the threshold, and he gives the leg his attention. Remain with the working checkpoint as he leaves. Seven cards are still waiting.
 
-**bob:** Wait for me?
+## Direction for the rehearsal
 
-sam nods from the queue.
+The storyboard fixes the order of events and the relationships between the people. The animation must preserve them: workers approach the factory; ed and gus volunteer; bob is struck; ed and gus complete their checks; STILETTO passes while bob is still down; bob recovers and is admitted. Do not move the recovery ahead of her entrance to simplify the timeline.
 
-LIMEN signals for the next card. ed begins. End with the procedure continuing and bob waiting on the other side, rather than an explanatory report. He still has a job to do. Getting to it has become a shared undertaking.
+Use four distinct compositions: the exterior approach from behind; the greeting across the threshold; a low view beside bob for the strike and fall; and a wider passage view with both Security stations, STILETTO’s approach and bob on the floor. Cut to the low view as bob steps forward. His falling body crosses the foreground while sam reaches in from the side and the other witnesses recoil at different depths. Do not repeat the greeting’s standing group arrangement for the impact. A purposeful cut can follow a change of place or attention. Speech bubbles do not trigger cuts. Keep the strike, fall and witnesses in the same view; keep STILETTO’s approach and passage continuous. The camera must establish the distance she closes before LIMEN yields.
 
-## What has changed
+The workers gather in small, uneven groups. Give them room to find a place, turn towards a neighbour and make space for someone else. Remove the fenced waiting pen and regularly spaced ranks. Quiet waiting is part of the scene. A scratch has an entry, contact and release; chatter has a nearby listener. Most reactions need no speech bubble.
 
-The main turn belongs to bob: readiness no longer leads smoothly to action. He has also accepted company, without yet accepting that he needs help. The next scene can test both changes in a task the audience already knows he wanted.
+STILETTO’s uninterrupted Quick Walk and the staggered withdrawal are one coordinated event. Her body and both blades need real clearance. LIMEN’s fitted Step Back must finish before she reaches his former position. sam and the grounded bob stay outside her swept path. Nobody slides sideways, walks through another body or snaps into a lane. Review the whole passage in motion from the held room camera.
 
-sam has respected one refusal but now risks delaying a promise to gus. ed has gained access to authority by being useful to its procedure. kit has learned a distinction from a frightening example. jo has evidence; lou has a gap in theirs. mae and ben have made choices bob may not fully recognize. max must decide when humor is welcome again.
-
-These are author interpretations to test against performance. They are not guaranteed private thoughts. The eventual agent model must distinguish what each worker perceived from what the audience saw, and allow different interpretations when the conditions differ.
-
-## The first five days as a continuation
-
-On day one, bob attempts the guide-setting task he was anticipating. Under the native assignment, STILETTO wants the delayed line moving. She may welcome his eagerness because it yields work, not because she has become concerned with his recovery. The promise to sam, pain in the leg and pressure to begin now belong to the same task.
-
-On the following days, repeat useful circumstances with changed participants or conditions: another request for permission, another offer of help, another chance to take credit. Let bob demonstrate competence and enjoy a small success. Then a later refusal or absence has something to interrupt.
-
-The supervisor conflict should grow from actual delay, pace and consequences. Day three is a target for a dramatic confrontation in the representative run, not a rule requiring the engine to fabricate a crisis. By day five, a player should recognize a changed working relationship and have a reason to wonder how the next phase will affect it.
-
-The Theatre and CATHEXIS can arrive in the proposed day-five-to-nine window as progression permits. Their arrival expands the opportunities available to existing people. It should not discard this opening cast or reset the effects of the first week. The two-week playtest remains the longer milestone; this draft establishes its beginning.
-
-## Variations the engine must support
-
-If bob waits for explicit permission, the game cannot give him an injury anyway. If LIMEN permits sam's approach, the offered support can actually occur. If another worker takes the desk, that person loses the production time and gains the relationship. If the operator has chosen another supervisor for Security, this encounter must be replaced by a credible encounter under that supervisor's priorities.
-
-A later missed encounter must leave only the consequences it actually produced. If bob changes stations, his absence, the transferred task and somebody's attributed account may let the player discover it. They need not receive a complete replay or an explanation of every private motive.
-
-## Production needs after creative approval
-
-Reuse the accepted worker walk, idle, listening, electrical fall and injured walk, along with LIMEN's command, explanation, pointing and candidate strike clips. The recovery and blade contact still require a coordinated performance check. Use the existing models as stand-ins for the cast.
-
-ID presentation, pickup and return; offering and withdrawing support; inspection; clerk work; and precise queue repositioning need fitted actions or new motions. A static pose can establish composition but cannot prove contact or prop handling. Keep the few missing actions visible in the production plan rather than concealing them in camera cuts.
-
-Read the scene aloud, block it with stand-ins, then review the full performance before generating ten character models. Once the visual target is approved, build or extend the engine's perception, action, contact, memory and presentation connections so that the encounter can proceed, vary or be interrupted for real.
+The engine must own the two completed checks, the injury and the room assignments. Presentation cannot invent them at a timestamp. ed and gus’s new duties remove two workers from Conveyor. sam remains a Conveyor worker. The same movement, contact, hearing and consequence contracts will later support choices made by agents; this script supplies the representative encounter for rehearsal.

@@ -1,0 +1,13 @@
+{
+  "id": "max",
+  "body": {
+    "source": "output/opening-cast/max/max-body-v1.glb",
+    "sha256": "778014cc4596ae59ec2d839b22463e87f7015e2aafc7f7b2462843bb764406bc",
+    "bytes": 15267244,
+    "triangles": 24687,
+    "skins": 0,
+    "animations": 0
+  },
+  "status": "downloaded unrigged body; visual review pending",
+  "approvedReference": "ensemble-badass"
+}

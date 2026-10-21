@@ -1,5 +1,11 @@
 # LIMEN — model rebuild kit
 
+## Character portrait · 21 October 2026
+
+LIMEN’s pale armour filled the doorway before he spoke. The face above it wore a metal grin; a narrow teal light moved from one worker to the next. He held a form as though its condition might tell him something about its owner. Even his smallest correction carried across the room. LIMEN took comfort in a completed check and could spend a long time making it complete. The workers waiting to be checked had time to study the cyan blade along his arm.
+
+Revised prose draft. The approved ensemble is the current cast illustration; preserve the accepted supervisor body, palette, equipment and existing motion work. Individual model inputs below remain the geometry authority for rebuilding a supervisor.
+
 A-pose input update · 19 October 2026 · body v2 / emitter v1 retained
 
 Prototype available. Heavy armour, cyan optics and energy flowing from one forearm. Rebuild the accepted body and rigid housing separately; the living blade and maintenance idle are authored in our pipeline.

@@ -1,0 +1,11 @@
+Rig the SAME textured sam delivery body as a biped. Preserve its proportions, materials and neutral pose; no mesh regeneration during motion work. Record the actual joint hierarchy, bind transforms, finger support and axis conventions. Export a neutral rigged GLB and FBX plus the included walk/run as separate sources.
+
+Acting direction: Turn the whole body to listen; reach towards a troublesome object before the explanation finishes. Offer bob an arm and give it time to be accepted.
+
+First retarget the approved Worker 01 motion library locally, adapting contacts to sam's proportions. Reuse a motion only after checking its hand, foot and elbow behavior on THIS body. New catalog animations require a verified catalog ID and an entry in the credit ledger; archive each action independently even if a bundle is also produced. Never assume All Animations includes later jobs.
+
+Read 03-opening-performance.txt for choreography, transitions, retreat and contacts. Keep source and corrected files distinct. Animation names must preserve their catalog identity, with scene meaning recorded separately. Record file hashes, mesh/skin/texture presence, clip names/durations and root translation/yaw in export-audit.json. Record local fitting, motion retiming, constraints and visual checks in motion-cleanup.json. A still pose does not certify its entry, exit or blend.
+
+APPROVED PROPORTIONS — REVISION 2
+Great rounded humped shoulders with head carried low and forward, vertical mouth grille, squat sturdy legs, thick working arms. Blue worn enamel and dull brass. Preserve the industrial porter silhouette; do not straighten the hump into a generic humanoid.
+Fit joint/contact targets to this body, especially head reach, wrist orientation and leg clearance. The ensemble portrait is identity reference, not a clip. Preserve natural quiet posture and transitions; do not turn its poster pose into the default idle.

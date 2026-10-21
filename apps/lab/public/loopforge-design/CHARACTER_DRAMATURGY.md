@@ -8,7 +8,7 @@ bob was a small worker with hands a size too large for him and a face that alway
 
 Loopforge's story follows bob through an ordinary factory life. The player occupies a different position: they operate the factory and influence its conditions. bob is the protagonist, not a controllable avatar or a disposable example of a system. His life gives the growing world continuity. The design succeeds when an event is understood as “STILETTO hit bob”—and when the player also remembers what bob was trying to do before she arrived.
 
-This chapter introduces the dramatic craft we will use. The [reference studies](NARRATIVE_STUDIES.md) examine how *Back to the Dawn*, *Attack on Titan* and Dostoevsky use it in different ways, then connect it to the original Producer and Puppeteer notes. The [cast](OPENING_CAST.md) records bob’s approved portrait and nine worker drafts. The [opening script](OPENING_EPISODE.md) predates this approval and awaits revision. Approval of the portrait does not approve those drafts, a plot or an implementation.
+This chapter introduces the dramatic craft we will use. The [reference studies](NARRATIVE_STUDIES.md) examine how *Back to the Dawn*, *Attack on Titan* and Dostoevsky use it in different ways, then connect it to the original Producer and Puppeteer notes. The [cast](OPENING_CAST.md) brings together the approved cast art, bob’s unchanged portrait and revised supporting portraits. The [opening script](OPENING_EPISODE.md) stages their first checkpoint encounter. Concept approval and a written scene remain separate from a tested performance.
 
 ## Dramaturgy begins with an action
 

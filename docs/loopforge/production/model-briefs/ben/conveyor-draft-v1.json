@@ -1,0 +1,14 @@
+{
+  "id": "ben",
+  "ref": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/rooms/04_loopforge_rooms_neural_lattice_a_intake_2.png",
+  "prompt": "Use case: stylized-concept. Create a faithful isolated full-body character concept for ben, based specifically on the SHORT STOOPED ROBOT ON THE RIGHT POURING A FLASK in this original Loopforge brain washing room art. Preserve the small low oval hood/head with its downward sloping brow and narrow rectangular eyes, tiny horizontal mouth grille, broad rounded back, large circular shoulder bearings, thin long mechanical forearms, compact barrel torso and withdrawn head-forward posture. This worker is squat and round-backed rather than a large armored goon; elbows and narrow arms protrude from the sides of the broad carapace, recognizable like an old maintenance technician. Two short biped legs with wide flat service boots; keep normal five-finger mechanical hands, useful for manipulating glassware. No permanent tools or flask. His smooth rounded back and low domed hood are the main silhouette identifiers. Washed-out powder-blue / slate-blue enamel over dark greasy machinery, blue paint broad and readable, dull brass joints, pale cuff bands, streaks of mineral deposits and water around wrist housings. Weathered but not an unrecognizable rusty brown mass. Small subdued cyan eye slits, no large goggles. Full body front three-quarter view, relaxed open A-pose with hands empty and separated, slight stoop retained, feet entirely visible. Dark smoky charcoal background in the same rich painterly industrial concept-art style as the supplied reference. Only one character, no scene, text, equipment, pedestal, weapons or toy styling. Match the RIGHT reference robot closely; don't copy the tall thin left worker.",
+  "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-c48502b5-bab0-44e3-8035-f65576e8794f.png",
+  "status": "owner-approved-concept",
+  "version": 1,
+  "workspace_image": "output/opening-cast/ben/ben-conveyor-v1.png",
+  "sha256": "b955eea239994b71ced41349ce65142b33369b379bb23ff8ec2a0eef817be44b",
+  "reference_role": "Original Conveyor room artwork; character silhouette and materials",
+  "date": "2026-10-21",
+  "tool": "image_gen",
+  "approval": "sam, ben and lou are approved."
+}

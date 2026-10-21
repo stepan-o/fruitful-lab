@@ -1,0 +1,15 @@
+{
+  "id": "kit",
+  "refs": [
+    "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/rooms/06_loopforge_rooms_cognition_brewery_3_rivet_witch.png"
+  ],
+  "prompt": "Use case: stylized-concept. Redesign kit, an adult robot factory worker in Loopforge, based on the BREWERY ASSISTANT at CENTER RIGHT reading cards beside the vat. Do not copy the woman RIVET WITCH. Previous design was rejected because an enormous spherical head and tiny body made it look like a baby. This version must look convincingly like a worn adult industrial worker: head about ONE SEVENTH of full body height, a substantial long ribbed torso and normal adult-length legs, lean straight arms with ordinary five-finger hands. Retain a distinct enclosed helmet but make it elongated and ANGULAR with a chamfered rectangular crown, sloped brow and protruding wedge-like twin-cartridge respirator jaw; no round baby dome, no large eyes. The helmet is a fairly narrow welding/diving apparatus with a heavy projecting squared brow, two small deep-set rectangular pale cyan inspection windows, and small round side bearings. The face should resemble seasoned industrial protective hardware rather than a cute toy. Slight forward neck and eager forward stance, practical shoulders and wide flat boots; compact overall worker build, but full adult anatomical proportions. Worn deep cobalt-blue helmet casing and chest plates with one pale-blue stripe crossing crown, dark oily mechanisms, dull brass joint rings. Broad simple paint blocks that stay readable. Full-body front three-quarter relaxed open A-pose, all limbs and feet visible, both hands empty and clear of body, legs separated. Dark smoky charcoal background, original reference's richly textured industrial painterly rendering. No baby proportions, infant expression, cute round eye sockets, enormous forehead, bodybuilder armor, dress, weapon, props or text.",
+  "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-15db228e-fd3e-4d1f-a5c3-4717b7ad250a.png",
+  "status": "owner-rejected",
+  "version": 2,
+  "reason": "Too generic worker; needs a different body silhouette, not just helmet.",
+  "workspace_image": "output/opening-cast/kit/kit-concept-v2.png",
+  "sha256": "ddd5462ed6db9a357f2a6e0eb2aa7f4ce8e69bd4604810eb89c028e2edbb0200",
+  "date": "2026-10-21",
+  "tool": "image_gen"
+}

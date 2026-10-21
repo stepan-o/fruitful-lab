@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-19-limen-apose",
-  "date": "2026-10-19",
+  "revision": "model-briefs-2026-10-21-opening-cast",
+  "date": "2026-10-21",
   "models": [
     {
       "id": "limen",
@@ -13,7 +13,7 @@
       "provenance": "The three A-pose body inputs are matching orthographic renders of the accepted v2 model, using the same approved pale-steel treatment as the animation viewer. They are reconstructed references, not recovered historical upload images. The Set 1 concept sheet and separate horizontal clipboard remain unchanged; the clipboard has no 3D model yet.",
       "viewer": "/stepanoskin/loopforge/play/agent-test/limen",
       "viewerLabel": "Inspect body, emitter and energy",
-      "record": "/loopforge-design/production/LIMEN_MESHY_REVIEW.md",
+      "record": "/loopforge-design/narrative-cast.html#limen",
       "parts": [
         "Body v2: 42,354 triangles / 23-joint source rig",
         "Separate emitter: 4,994-triangle runtime housing",
@@ -183,6 +183,10 @@
         {
           "title": "Rig and delivery",
           "file": "limen/03-rig-and-delivery.txt"
+        },
+        {
+          "title": "Stage 6 · Doorway step back",
+          "file": "limen/06-doorway-step-back.txt"
         }
       ]
     },
@@ -196,7 +200,7 @@
       "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker",
       "viewerLabel": "Compare corrected and original motions",
-      "record": "/loopforge-design/production/WORKER_MOTION_REVIEW.md",
+      "record": "/loopforge-design/narrative-cast.html#worker",
       "parts": [
         "25,893-triangle accepted body",
         "24-joint source / 34-joint corrected skin",
@@ -479,7 +483,7 @@
       "provenance": "Original body, blade, welder and motion briefs recovered. Rebuild notes preserve the later acting meanings and offline corrections; a fresh Meshy export does not include those corrections.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/stiletto",
       "viewerLabel": "Inspect blades, welders and visor",
-      "record": "/loopforge-design/production/STILETTO_MOTION_REVIEW.md",
+      "record": "/loopforge-design/narrative-cast.html#stiletto",
       "parts": [
         "41,124-triangle body / 24 skin joints",
         "Blade module: 4,117 triangles, reused on both arms",
@@ -813,7 +817,7 @@
       "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",
       "viewerLabel": "Compare Hot Walk, sway and mask fitting",
       "referenceViewer": "/stepanoskin/loopforge/play/asset-review/worker",
-      "record": "/loopforge-design/production/CATHEXIS_MOTION_REVIEW.md",
+      "record": "/loopforge-design/narrative-cast.html#cathexis",
       "parts": [
         "51,034-triangle accepted v2 body; original mechanical face retained",
         "51,031-triangle rigged delivery; Hot Walk / Happy Sway source and corrected candidates",
@@ -1353,6 +1357,726 @@
         {
           "title": "Completed skirt repair · reference only",
           "file": "cathexis/08-rear-panel-repair.txt"
+        }
+      ]
+    },
+    {
+      "id": "bob",
+      "name": "bob",
+      "subtitle": "Fly eyes · flat head",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Concept approved · body candidate",
+      "summary": "Small narrow blue frame; flat small head beneath two oversized convex cyan fly-eye lenses, above and wider than the head; moderately large articulated hands, cream chest stripe. Do not return to a round ordinary head or huge mitten hands.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": null,
+      "viewerLabel": "Individual viewer in production",
+      "record": "/loopforge-design/narrative-cast.html#bob",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Model and rig inspection",
+        "All-motion viewer and contact fitting",
+        "Room-scale recognition and performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "bob · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 135152,
+            "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/bob-320.6bdd4f321ab8e4f4.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 15200,
+              "sha256": "6bdd4f321ab8e4f4f56d030afafa2644fcc23e2b2e321400746492a93b154087"
+            },
+            {
+              "src": "/media/loopforge-cast/bob-640.014388511ec92ad6.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 45148,
+              "sha256": "014388511ec92ad64ba3f8a9f0ec9cc5dcbd1b49014b6fb06b196553f61aea28"
+            },
+            {
+              "src": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 135152,
+              "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "bob/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "bob/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "bob/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "sam",
+      "name": "sam",
+      "subtitle": "Rounded shoulders · low head",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Concept approved · model pending",
+      "summary": "Great rounded humped shoulders with head carried low and forward, vertical mouth grille, squat sturdy legs, thick working arms. Blue worn enamel and dull brass. Preserve the industrial porter silhouette; do not straighten the hump into a generic humanoid.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": null,
+      "viewerLabel": "Individual viewer in production",
+      "record": "/loopforge-design/narrative-cast.html#sam",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Model and rig inspection",
+        "All-motion viewer and contact fitting",
+        "Room-scale recognition and performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "sam · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/sam-1280.d7a6b3f29ae9aef1.webp",
+            "width": 1280,
+            "height": 853,
+            "bytes": 166702,
+            "sha256": "d7a6b3f29ae9aef11a132b9acdf61a1d985954b3ab3ff365028eda7257068d39"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/sam-320.6b3ff7fed23e6169.webp",
+              "width": 320,
+              "height": 213,
+              "bytes": 8208,
+              "sha256": "6b3ff7fed23e61691eff0d76e5e055f9175e33ee56231e437276e5265f7763ad"
+            },
+            {
+              "src": "/media/loopforge-cast/sam-640.f9732fc0fc445895.webp",
+              "width": 640,
+              "height": 427,
+              "bytes": 28164,
+              "sha256": "f9732fc0fc445895575a91f95ac2c50eb72d1cadb9211d224491add1bb7dad36"
+            },
+            {
+              "src": "/media/loopforge-cast/sam-1280.d7a6b3f29ae9aef1.webp",
+              "width": 1280,
+              "height": 853,
+              "bytes": 166702,
+              "sha256": "d7a6b3f29ae9aef11a132b9acdf61a1d985954b3ab3ff365028eda7257068d39"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "sam/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "sam/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "sam/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "ed",
+      "name": "ed",
+      "subtitle": "Swept skull · pointing finger",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Concept approved · body candidate",
+      "summary": "Tall angular dark-blue goon, swept-back skull, narrow eyes, open toothed jaw, pointed chin, large round ear receiver and layered shoulder plates. Long expressive pointing index. The original LIMEN Security far-right assistant remains the source; not a generic smiling worker.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": null,
+      "viewerLabel": "Individual viewer in production",
+      "record": "/loopforge-design/narrative-cast.html#ed",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Model and rig inspection",
+        "All-motion viewer and contact fitting",
+        "Room-scale recognition and performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "ed · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/ed-1280.51ea5ec63125128f.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 242328,
+            "sha256": "51ea5ec63125128fec1973b1429d32fe43f80fcd3904b998fff0dea39fd603cd"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/ed-320.2200cd9ab6cbb9af.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 15620,
+              "sha256": "2200cd9ab6cbb9afd0cc0c67c7a8de882eda5466b4c8e3f3e1ebb6b3d1495aa6"
+            },
+            {
+              "src": "/media/loopforge-cast/ed-640.3390b192e4b787d9.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 59706,
+              "sha256": "3390b192e4b787d9be008ee3f612592c7a67acbea04eaddb3037deb8159df26a"
+            },
+            {
+              "src": "/media/loopforge-cast/ed-1280.51ea5ec63125128f.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 242328,
+              "sha256": "51ea5ec63125128fec1973b1429d32fe43f80fcd3904b998fff0dea39fd603cd"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "ed/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "ed/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "ed/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "jo",
+      "name": "jo",
+      "subtitle": "Work cap · blue jacket",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Concept approved · model pending",
+      "summary": "Low wide flat head with a projecting metal work cap, two small horizontal cyan eyes, worn blue work jacket and trousers, exposed mechanical knees and cuffs. Adult average factory hand; retain the cap and clothing silhouette.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": null,
+      "viewerLabel": "Individual viewer in production",
+      "record": "/loopforge-design/narrative-cast.html#jo",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Model and rig inspection",
+        "All-motion viewer and contact fitting",
+        "Room-scale recognition and performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "jo · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/jo-1280.d522f249ba45622a.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 231512,
+            "sha256": "d522f249ba45622a919ea46eaf8aff9f19bf57f353c05daa419eb90e19f2b707"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/jo-320.e3e53f270c44e067.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 16324,
+              "sha256": "e3e53f270c44e0674febea224b2bdb820915b135bcb9c43476dea046fcc712f1"
+            },
+            {
+              "src": "/media/loopforge-cast/jo-640.fce2202b3af940c7.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 56776,
+              "sha256": "fce2202b3af940c7be1865d8ba322c209c5e573fe23e5028655fb7a4e5dfb046"
+            },
+            {
+              "src": "/media/loopforge-cast/jo-1280.d522f249ba45622a.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 231512,
+              "sha256": "d522f249ba45622a919ea46eaf8aff9f19bf57f353c05daa419eb90e19f2b707"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "jo/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "jo/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "jo/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "gus",
+      "name": "gus",
+      "subtitle": "Square shoulders · recessed head",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Concept approved · body candidate",
+      "summary": "Massive square navy shoulders with pale yoke, small recessed skull, broad rectangular chest and heavy boots. Distinguish his squared upright mass from sam’s rounded hunched mass. Worker-scale security helper, never supervisor-scale.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": null,
+      "viewerLabel": "Individual viewer in production",
+      "record": "/loopforge-design/narrative-cast.html#gus",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Model and rig inspection",
+        "All-motion viewer and contact fitting",
+        "Room-scale recognition and performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "gus · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 240258,
+            "sha256": "30fc58bf00daccd537ce6bee2cd89c8f57b6ade9178170e8a835ada435acd3fb"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/gus-320.a2a4498a01697f42.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 19152,
+              "sha256": "a2a4498a01697f42fd9cf842e853a6df2bd60ba5737438125efcef2a4b6cda08"
+            },
+            {
+              "src": "/media/loopforge-cast/gus-640.7315a5db20327d7f.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 67686,
+              "sha256": "7315a5db20327d7f7adf5a88a702da1da554870c6a6cdd0c8fc4f6c695b34574"
+            },
+            {
+              "src": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 240258,
+              "sha256": "30fc58bf00daccd537ce6bee2cd89c8f57b6ade9178170e8a835ada435acd3fb"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "gus/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "gus/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "gus/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "max",
+      "name": "max",
+      "subtitle": "Long face · narrow frame",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Concept approved · model pending",
+      "summary": "Tall slender upright blue body, long narrow masklike exposed face with straight pale central nose ridge, small horizontal cyan optics, narrow shoulders, ordinary hands. Use the approved long-faced character reassigned from the mae proposal; discard the previous oversized unilateral ear design.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": null,
+      "viewerLabel": "Individual viewer in production",
+      "record": "/loopforge-design/narrative-cast.html#max",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Model and rig inspection",
+        "All-motion viewer and contact fitting",
+        "Room-scale recognition and performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "max · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/max-1280.670fd60bac802ebf.webp",
+            "width": 1280,
+            "height": 853,
+            "bytes": 95922,
+            "sha256": "670fd60bac802ebf050c7488649a02a17a21bac767a91238fe5d5d574741f1a1"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/max-320.2b5a2619e08595eb.webp",
+              "width": 320,
+              "height": 213,
+              "bytes": 4524,
+              "sha256": "2b5a2619e08595eb891402388c8ef803409cebdebf8d26ddeb00c9ace58cce62"
+            },
+            {
+              "src": "/media/loopforge-cast/max-640.42bf446ed80f3e0e.webp",
+              "width": 640,
+              "height": 427,
+              "bytes": 16088,
+              "sha256": "42bf446ed80f3e0e4182461a6f4bc0898cb4617c76b41d8478cecebc6db53146"
+            },
+            {
+              "src": "/media/loopforge-cast/max-1280.670fd60bac802ebf.webp",
+              "width": 1280,
+              "height": 853,
+              "bytes": 95922,
+              "sha256": "670fd60bac802ebf050c7488649a02a17a21bac767a91238fe5d5d574741f1a1"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "max/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "max/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "max/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "mae",
+      "name": "mae",
+      "subtitle": "Blunt head · compact frame",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Concept approved · model pending",
+      "summary": "Short compact square blue craftswoman, broad blunt bob-shaped angular head casing, narrow rectangular cyan eyes in dark slot, short neck, small precise hands and exposed separated legs. No hood, skirt or dress. No baby proportions. Different from RIVET WITCH.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": null,
+      "viewerLabel": "Individual viewer in production",
+      "record": "/loopforge-design/narrative-cast.html#mae",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Model and rig inspection",
+        "All-motion viewer and contact fitting",
+        "Room-scale recognition and performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "mae · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/mae-1280.e5a67ebc7fb7f9c5.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 286126,
+            "sha256": "e5a67ebc7fb7f9c594a6e913f7f30c8192b99194fe73aae4e3629990a197cb5b"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/mae-320.7ff3071a9347923a.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 20864,
+              "sha256": "7ff3071a9347923a3b7ec5adcf91e71869a6793e52107f80e550411c6586a086"
+            },
+            {
+              "src": "/media/loopforge-cast/mae-640.729ddb380ada3ac3.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 79022,
+              "sha256": "729ddb380ada3ac391623cc01fb47242bf15dece65dfe502d9f86ea07d6011cd"
+            },
+            {
+              "src": "/media/loopforge-cast/mae-1280.e5a67ebc7fb7f9c5.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 286126,
+              "sha256": "e5a67ebc7fb7f9c594a6e913f7f30c8192b99194fe73aae4e3629990a197cb5b"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "mae/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "mae/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "mae/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "kit",
+      "name": "kit",
+      "subtitle": "Piston forearms · pipe",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Concept approved · model pending",
+      "summary": "Adult wiry Popeye-like robot: tiny squinting skull with heavy jaw, short brass/steel pipe at mouth corner, lean ribbed torso, thin upper arms and enormous blue piston forearms tapering to ordinary hands. Pale forearm stripe, sturdy boots. Preserve pipe and forearm silhouette, not oversized hands or baby head.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": null,
+      "viewerLabel": "Individual viewer in production",
+      "record": "/loopforge-design/narrative-cast.html#kit",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Model and rig inspection",
+        "All-motion viewer and contact fitting",
+        "Room-scale recognition and performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "kit · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/kit-1280.455885256f5671bc.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 292732,
+            "sha256": "455885256f5671bca16db92898da10b42a8951fa12212547ca460cb4f0713451"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/kit-320.8c1f5da4e3bdf503.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 23548,
+              "sha256": "8c1f5da4e3bdf503e3e62dea3e7cd93fd39a09456013be24fee48d30baf9a470"
+            },
+            {
+              "src": "/media/loopforge-cast/kit-640.9a7164a20a78c7ed.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 82386,
+              "sha256": "9a7164a20a78c7ed2743d2ff0a44b9f5145e1345209a63052de9c57da5d43ab2"
+            },
+            {
+              "src": "/media/loopforge-cast/kit-1280.455885256f5671bc.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 292732,
+              "sha256": "455885256f5671bca16db92898da10b42a8951fa12212547ca460cb4f0713451"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "kit/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "kit/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "kit/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "lou",
+      "name": "lou",
+      "subtitle": "Long neck · spare frame",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Concept approved · model pending",
+      "summary": "Exceptionally long curved neck and forward beaky skull with twin receiver housings; narrow exposed rib torso, very long thin arms and legs. Maintain a coherent biped and expressive neck without collapsing this into standard worker proportions.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": null,
+      "viewerLabel": "Individual viewer in production",
+      "record": "/loopforge-design/narrative-cast.html#lou",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Model and rig inspection",
+        "All-motion viewer and contact fitting",
+        "Room-scale recognition and performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "lou · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/lou-1280.0d77f26b20c9667e.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 207796,
+            "sha256": "0d77f26b20c9667eccc53437fd0131e7b4c1026c0b0a7c5e592020b26998ce30"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/lou-320.2500d298fcfcc187.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 13296,
+              "sha256": "2500d298fcfcc1870dfc6916a449722ff50b969c2e626f7abeb37ae317baeac4"
+            },
+            {
+              "src": "/media/loopforge-cast/lou-640.5537c37433c287e6.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 47782,
+              "sha256": "5537c37433c287e6b076bd66a21591e1bec05091e6de576ad398528e4f575bd8"
+            },
+            {
+              "src": "/media/loopforge-cast/lou-1280.0d77f26b20c9667e.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 207796,
+              "sha256": "0d77f26b20c9667eccc53437fd0131e7b4c1026c0b0a7c5e592020b26998ce30"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "lou/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "lou/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "lou/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "ben",
+      "name": "ben",
+      "subtitle": "Oval hood · barrel body",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Concept approved · model pending",
+      "summary": "Short squat rounded barrel body and back, low broad oval hood, tiny square cyan eyes, circular shoulder joints, long thin forearms and short legs. Keep ben low and round; unlike gus’s square mass or sam’s raised hump.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": null,
+      "viewerLabel": "Individual viewer in production",
+      "record": "/loopforge-design/narrative-cast.html#ben",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Model and rig inspection",
+        "All-motion viewer and contact fitting",
+        "Room-scale recognition and performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "ben · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/ben-1280.fedd3740d78d1cfc.webp",
+            "width": 1280,
+            "height": 1170,
+            "bytes": 231342,
+            "sha256": "fedd3740d78d1cfc25700af965e4f404344058b37f56dd30d6fb72c0495fc1a7"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/ben-320.c5fc8e7521cf6b9b.webp",
+              "width": 320,
+              "height": 292,
+              "bytes": 11768,
+              "sha256": "c5fc8e7521cf6b9bea04f5d3c47aac58381521306d2770aefc4f7fb8c4654da8"
+            },
+            {
+              "src": "/media/loopforge-cast/ben-640.c59ba9c9b041f5ad.webp",
+              "width": 640,
+              "height": 585,
+              "bytes": 41944,
+              "sha256": "c59ba9c9b041f5adeac29dc379793868e4e337fa2b0db31e7b539889687b6bbd"
+            },
+            {
+              "src": "/media/loopforge-cast/ben-1280.fedd3740d78d1cfc.webp",
+              "width": 1280,
+              "height": 1170,
+              "bytes": 231342,
+              "sha256": "fedd3740d78d1cfc25700af965e4f404344058b37f56dd30d6fb72c0495fc1a7"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "ben/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "ben/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "ben/03-opening-performance.txt"
         }
       ]
     }

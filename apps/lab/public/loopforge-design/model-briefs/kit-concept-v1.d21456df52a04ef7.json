@@ -1,0 +1,15 @@
+{
+  "id": "kit",
+  "refs": [
+    "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/rooms/06_loopforge_rooms_cognition_brewery_3_rivet_witch.png"
+  ],
+  "prompt": "Use case: stylized-concept. Create one isolated full-body concept of Loopforge worker kit, deriving the compact round-helmeted BREWERY ASSISTANT at CENTER RIGHT reading two cards in the supplied original art. Do not use RIVET WITCH on the far right. Preserve the assistant's large enclosed round head with its pale segmented dome, two optical windows contained INSIDE the helmet outline and little projecting respirator/filter mouth. Make the helmet disproportionately large above a compact short torso, very short visible neck, modest square shoulders, short sturdy arms and slightly oversized wide flat service boots: an eager upright apprentice-like adult worker, never a baby or toy. Two small cyan square eye windows in a broad black recessed faceplate; eyes never protrude above or outside the head. Smooth rounded cobalt-blue helmet dome with a single wide pale blue stripe over its center, clean bold shapes. Small barrel chest with a simple broad blue breastplate, dark exposed elbows and hips, practical symmetrical five-finger hands. Blue enamel on thighs and shins, restrained brass bearings and dark oily mechanics, modest dents and edges rather than dense tiny ornament. Neutral symmetrical open A-pose with legs apart, hands empty and clear, full body including both wide boots. No cards, props, hoses to room, giant goggles, skull teeth, weapons, glowing core or text. Charcoal smoky concept-art background and detailed old industrial painting texture matching the reference. This should read as the compact round-helmet member of the crew, clearly different from a long-neck worker, hunchback, soldier or bob's giant fly-eye face.",
+  "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-ae441dae-ff52-4c19-b2b8-0ce8bc9e63d2.png",
+  "status": "owner-rejected",
+  "version": 1,
+  "reason": "Too baby looking.",
+  "workspace_image": "output/opening-cast/kit/kit-concept-v1.png",
+  "sha256": "a7de3baf3e3be99eb54918817b37c4a0139fce41dfdf2673f1ff461cac57fc95",
+  "date": "2026-10-21",
+  "tool": "image_gen"
+}

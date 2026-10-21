@@ -5335,7 +5335,7 @@ bob was a small worker with hands a size too large for him and a face that alway
 
 Loopforge's story follows bob through an ordinary factory life. The player occupies a different position: they operate the factory and influence its conditions. bob is the protagonist, not a controllable avatar or a disposable example of a system. His life gives the growing world continuity. The design succeeds when an event is understood as “STILETTO hit bob”—and when the player also remembers what bob was trying to do before she arrived.
 
-This chapter introduces the dramatic craft we will use. The [reference studies](NARRATIVE_STUDIES.md) examine how *Back to the Dawn*, *Attack on Titan* and Dostoevsky use it in different ways, then connect it to the original Producer and Puppeteer notes. The [cast](OPENING_CAST.md) records bob’s approved portrait and nine worker drafts. The [opening script](OPENING_EPISODE.md) predates this approval and awaits revision. Approval of the portrait does not approve those drafts, a plot or an implementation.
+This chapter introduces the dramatic craft we will use. The [reference studies](NARRATIVE_STUDIES.md) examine how *Back to the Dawn*, *Attack on Titan* and Dostoevsky use it in different ways, then connect it to the original Producer and Puppeteer notes. The [cast](OPENING_CAST.md) brings together the approved cast art, bob’s unchanged portrait and revised supporting portraits. The [opening script](OPENING_EPISODE.md) stages their first checkpoint encounter. Concept approval and a written scene remain separate from a tested performance.
 
 ## Dramaturgy begins with an action
 
@@ -5536,7 +5536,7 @@ That order improves both our documentation and our scenes. Let the reader meet b
 
 These references solve different problems. A clear practical goal helps us enter an unfamiliar society. Recurring personal commitments give its events a direction. Contradiction prevents the people from becoming illustrations of the design. Their combination makes an ordinary protagonist capable of carrying a large story.
 
-The opening should therefore introduce bob doing something he wants to do, with somebody who knows him. LIMEN interrupts that life. The other workers respond according to interests already in motion. The final beat should change bob's next action, leaving a reason to return to him. The [cast](OPENING_CAST.md) now separates bob’s approved portrait from nine new worker drafts. The earlier [episode](OPENING_EPISODE.md) awaits revision against that cast.
+The opening should therefore introduce bob doing something he wants to do, with somebody who knows him. LIMEN interrupts that life. The other workers respond according to interests already in motion. The final beat should change bob's next action, leaving a reason to return to him. The [cast](OPENING_CAST.md) pairs the approved visual ensemble with bob’s unchanged portrait and revised supporting portraits. The [episode](OPENING_EPISODE.md) stages the gathering, ed and gus volunteering, and STILETTO’s passage after their two checks.
 
 Across the first five days, the same people meet altered conditions. bob can become useful to one supervisor by doing something that damages a colleague's trust. ed can discover that access to authority is not the same as influence over it. sam can find that help offered insistently becomes another demand. These are directions to test, not five scheduled personality conversions.
 

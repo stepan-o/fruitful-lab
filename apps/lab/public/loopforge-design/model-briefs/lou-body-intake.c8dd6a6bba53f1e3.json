@@ -1,0 +1,13 @@
+{
+  "id": "lou",
+  "body": {
+    "source": "output/opening-cast/lou/lou-body-v1.glb",
+    "sha256": "e551de6ab8b3e02a2b8ddbe84abbcadc62e4765b8f84893b3d200256cead4592",
+    "bytes": 15160836,
+    "triangles": 24689,
+    "skins": 0,
+    "animations": 0
+  },
+  "status": "downloaded unrigged body; visual review pending",
+  "approvedReference": "ensemble-badass"
+}

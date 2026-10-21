@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "status": "review candidate",
+  "images": [
+    {
+      "id": "overview",
+      "title": "Before the shift — four storyboard panels",
+      "alt": "Workers approach the factory; LIMEN stops them; bob falls under his cyan blade; STILETTO walks through while sam stays beside bob.",
+      "source": "output/opening-storyboard/episode-storyboard-v1.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-opening-storyboard/overview-480.7774a1e3ea237117.webp",
+          "width": 480,
+          "height": 270,
+          "bytes": 62512
+        },
+        {
+          "src": "/media/loopforge-opening-storyboard/overview-960.ac30ef2feb69187d.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 221266
+        },
+        {
+          "src": "/media/loopforge-opening-storyboard/overview-1672.29fd429894d3e60f.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 526050
+        }
+      ]
+    },
+    {
+      "id": "morning",
+      "title": "1. The morning walk",
+      "alt": "Seen from behind, ten workers walk towards the lit factory entrance.",
+      "source": "output/opening-storyboard/01-morning-v3.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-opening-storyboard/morning-480.de1ed6104516489d.webp",
+          "width": 480,
+          "height": 270,
+          "bytes": 60218
+        },
+        {
+          "src": "/media/loopforge-opening-storyboard/morning-960.e06dc2708221dab5.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 211568
+        },
+        {
+          "src": "/media/loopforge-opening-storyboard/morning-1672.3cd92c950e1fadcc.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 463416
+        }
+      ]
+    },
+    {
+      "id": "greeting",
+      "title": "2. LIMEN’s greeting",
+      "alt": "LIMEN blocks the doorway. ed and gus volunteer for Security while the others wait.",
+      "source": "output/opening-storyboard/02-greeting-v3.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-opening-storyboard/greeting-480.5bb59486a42e0182.webp",
+          "width": 480,
+          "height": 270,
+          "bytes": 53652
+        },
+        {
+          "src": "/media/loopforge-opening-storyboard/greeting-960.a345364efa887868.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 176922
+        },
+        {
+          "src": "/media/loopforge-opening-storyboard/greeting-1672.ebd0149956f9524d.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 382820
+        }
+      ]
+    },
+    {
+      "id": "strike",
+      "title": "3. bob takes a step",
+      "alt": "From floor level, bob falls across the foreground and sam reaches for him. LIMEN stands above them after the strike.",
+      "source": "output/opening-storyboard/03-strike-v3.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-opening-storyboard/strike-480.ee256db2983d184e.webp",
+          "width": 480,
+          "height": 270,
+          "bytes": 50284
+        },
+        {
+          "src": "/media/loopforge-opening-storyboard/strike-960.9aa9e14a072e54c2.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 162588
+        },
+        {
+          "src": "/media/loopforge-opening-storyboard/strike-1672.5ea3578f0728df71.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 359900
+        }
+      ]
+    },
+    {
+      "id": "passage",
+      "title": "4. STILETTO comes through",
+      "alt": "STILETTO strides towards Conveyor. LIMEN recoils and the workers draw back; sam stays beside the fallen bob.",
+      "source": "output/opening-storyboard/04-stiletto-v2.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-opening-storyboard/passage-480.7597b3d3ece86a84.webp",
+          "width": 480,
+          "height": 270,
+          "bytes": 54600
+        },
+        {
+          "src": "/media/loopforge-opening-storyboard/passage-960.b04c5eec9729575b.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 188152
+        },
+        {
+          "src": "/media/loopforge-opening-storyboard/passage-1672.ce3da9f8972ae0c6.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 420662
+        }
+      ]
+    }
+  ]
+}

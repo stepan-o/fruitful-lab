@@ -1,8 +1,14 @@
 # STILETTO — model rebuild kit
 
+## Character portrait · 21 October 2026
+
+STILETTO walked as though the passage had already been cleared. Red shoulders caught the light above a narrow black body; the two blades continued the lines of her forearms, leaving no idle hands to soften a gesture. She liked a working line, a rising count and an answer given while the work continued. Her red visor would turn towards a stoppage before she changed direction. When she spoke of the workers, she knew exactly how many the Conveyor was missing.
+
+Revised prose draft. The approved ensemble is the current cast illustration; preserve the accepted supervisor body, palette, equipment and existing motion work. Individual model inputs below remain the geometry authority for rebuilding a supervisor.
+
 Rebuild brief v2 · corrected arm derivatives v4 · 14 October 2026
 
-Prototype acting accepted. Handless black chrome body with two rigid forearm blades. Both blades are tested in the viewer; the welder is a generated prop awaiting its mounted review.
+Prototype acting accepted. Handless black chrome body with two rigid forearm blades. Both blades are tested in the viewer; the viewer also mounts welders or mixed tools, with flame controls and the eye-level red T visor.
 
 Original body, blade, welder and motion briefs recovered. Rebuild notes preserve the later acting meanings and offline corrections; a fresh Meshy export does not include those corrections.
 
@@ -14,8 +20,8 @@ Current viewer: https://www.fruitfulab.net/stepanoskin/loopforge/play/asset-revi
 
 ## Open work
 
-- Welder fit, tool exchange and actual welding contact
-- Visor emission and rigid armour weights
-- Body gait contacts, blends and paired acting
+- Actual welding contact and tool-exchange choreography
+- Rigid armour weighting where close inspection reveals deformation
+- Body gait contacts, blends and paired acting in the opening scene
 
 Regeneration does not reproduce exact topology, rig transforms, sockets, exported hashes or offline fixes. Preserve source and derivative revisions; validate every new export in the production player before replacement.

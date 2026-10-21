@@ -6,6 +6,8 @@ comparison tables used here. Raw HTML and scripts in source text stay escaped.
 import html
 import json
 import re
+from cast_page import render_cast, STYLE as CAST_STYLE
+from episode_page import render_episode, STYLE as EPISODE_STYLE
 
 PAGES = [
     ('CHARACTER_DRAMATURGY.md', 'narrative.html', 'Characters and story'),
@@ -110,7 +112,11 @@ def build_narrative(docs, out):
         text = (docs/source).read_text()
         (out/source).write_text(text)
         title, body, headings = render(text, media)
+        is_cast = source == 'OPENING_CAST.md'
+        is_episode = source == 'OPENING_EPISODE.md'
+        if is_cast: body = render_cast(docs, inline)
+        if is_episode: body = render_episode(docs, body)
         nav = ''.join(f'<a href="{file}"'+(' aria-current="page"' if file == target else '')+f'>{E(name)}</a>' for _, file, name in PAGES)
         toc = ''.join(f'<a href="#{ident}">{E(name)}</a>' for ident, name in headings)
-        document = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)} — Loopforge design</title><meta name="description" content="Loopforge dramaturgy and character creation: bob, pressure, reference studies, feature assessment, the cast and the opening episode."><style>{STYLE}</style></head><body><a class="skip" href="#content">Skip to content</a><header><a href="/stepanoskin/loopforge/design#dramaturgy">← Game design · Character dramaturgy</a><p class="eyebrow">Loopforge / Character dramaturgy and narrative design</p><nav aria-label="Narrative review">{nav}</nav></header><main><aside><details><summary>On this page</summary>{toc}</details></aside><article id="content"><h1>{E(title)}</h1>{body}</article></main><footer><a href="{source}" download>Download this document</a><a href="/stepanoskin/loopforge/design#dramaturgy">Back to game design</a><p>Editorial brief: revision 5. bob’s portrait is approved; the other workers are drafts. The earlier script awaits revision.</p></footer></body></html>'''
+        document = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)} — Loopforge design</title><meta name="description" content="Loopforge dramaturgy and character creation: bob, pressure, reference studies, feature assessment, the cast and the opening episode."><style>{STYLE}{CAST_STYLE if is_cast else EPISODE_STYLE if is_episode else ""}</style></head><body class="{'cast-page' if is_cast else 'episode-page' if is_episode else ''}"><a class="skip" href="#content">Skip to content</a><header><a href="/stepanoskin/loopforge/design#dramaturgy">← Game design · Character dramaturgy</a><p class="eyebrow">Loopforge / Character dramaturgy and narrative design</p><nav aria-label="Narrative review">{nav}</nav></header><main>{'' if (is_cast or is_episode) else '<aside><details><summary>On this page</summary>'+toc+'</details></aside>'}<article id="content"><h1>{E(title)}</h1>{body}</article></main><footer><a href="{source}" download>Download this document</a><a href="/stepanoskin/loopforge/design#dramaturgy">Back to game design</a><p>Editorial brief: revision 6. The cast art and bob’s portrait are approved. Opening scene v1 remains in production; reference art is not a completed animation test.</p></footer></body></html>'''
         (out/target).write_text(document)

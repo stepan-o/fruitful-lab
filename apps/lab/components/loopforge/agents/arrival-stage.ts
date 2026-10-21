@@ -118,8 +118,16 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
  return {
   benchmark(enabled){benchmarking=enabled;settings();if(enabled)camera.detachControl();},
   sceneShot(shot){
-   const setups={approach:[124,125.5,1.2,16,-Math.PI/2,1.2],assembly:[124,114.6,1.1,12,-2.0,1.16],impact:[123.9,111.8,1.05,5.8,-1.55,1.12],passage:[124.8,112.8,1.15,13.8,-2.1,1.18]} as const;
-   cutaway.forEach(m=>m.setEnabled(shot==='approach'));
+   const setups={
+    approach:[124,124.5,1.15,12,-Math.PI/2,1.34],
+    assembly:[124,112.2,1.5,6.8,-1.68,1.46],
+    impact:[123.85,111.8,.95,4.8,-2.15,1.12],
+    card:[124.2,112.2,.8,4.1,-2.5,.98],
+    passage:[125.1,116.0,1.3,7.9,1.79,1.36],
+    threshold:[124.9,110.9,1.05,7.1,-2.3,1.25],
+    aftermath:[124.6,111.3,1.45,4.8,-1.45,1.35],
+   } as const;
+   cutaway.forEach(m=>m.setEnabled(shot==='approach'||shot==='passage'));
    const s=setups[shot==='wide'?'assembly':shot==='interaction'?'impact':shot];orbit.framing(s[3],3.5);orbit.orientation(s[4],s[5]);orbit.attach(new Vector3(...worldPoint(s[0],s[1])).add(new Vector3(0,s[2],0)));if(benchmarking)camera.detachControl();
   },
   characterStage(){return {scene,shadow,gate(){},refresh:invalidate};},

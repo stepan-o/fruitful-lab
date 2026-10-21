@@ -40,6 +40,8 @@ The [dialogue study](TARANTINO_CASE_STUDY.md) develops the craft of an encounter
 
 Draft the conversation before dividing it into bubbles. Read it aloud through every part, including the listener who is working, waiting or trying to leave. Revise once from the position of the person with least power to end it. Then fit words, gestures, pauses and object handling together. A line may change a belief, but that consequence belongs to whoever heard and understood it; the scene must not distribute knowledge or reconciliation to everyone because a sentence was spoken.
 
+For a short staged introduction, keep the exchange that changes the room and cut the explanation around it. Routine checks can happen under an order or a reply. Do not use long pauses to lend weight to every sentence. Save time for a revealing action, a reversal, or an answer the speaker finds difficult. Test the performed cut at normal playback speed: good prose on a page can still be dead time on screen.
+
 Prose can take us inside an experience. In the game, we have to find its visible and audible life: a hand offered and left waiting, a worker testing the floor before committing weight, a conversation that stops when a supervisor approaches. Leave room to notice these things. Speech bubbles should let people speak to one another; they should not tell the audience what to feel.
 
 The design essays owe the reader the same care. Explain the situation, follow the difficulty and arrive at a decision. Use ordinary language where it is exact. Cut repeated principles and phrases that promise an experience the passage has not supplied. [Sanctuary’s opening chapters](/stepanoskin/game-monetization?chapter=insert-coin) remain our reference for developing an argument without losing the reader.

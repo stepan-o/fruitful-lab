@@ -1,5 +1,5 @@
 OPENING WORKERS — PERFORMANCE AND CONTACT BRIEF
-Revision 3 · 21 October 2026
+Revision 4 · 21 October 2026
 
 Follow the current OPENING_EPISODE.md. Ten people arrive through the Lobby and gather unevenly around Security. Workers remain smaller blue-family figures; LIMEN and STILETTO keep their accepted identities.
 
@@ -7,7 +7,7 @@ APPROACH AND WAITING
 Begin outside: the camera follows the workers from behind as they walk TOWARDS the open factory entrance. Heads, bodies, feet and path travel agree; no frontal group portrait or backward walking. Walk in staggered pairs and singles. Stop through a planted foot and settle into a comfortable stance. Stand at conversational angles and unequal distances, looking towards a colleague, the desk or the machinery as the situation warrants. Avoid a gridded queue or fenced waiting pen. Some people briefly scratch their heads, listen or make a small conversational gesture; most simply wait. Never loop a scratch, clap, shrug or startled reaction. Carry quiet idle time continuously across dialogue beats rather than restarting it for every line.
 
 BOB
-Head leads shoulders when noticing the new roller. He speaks to the small group while looking towards sam. He takes a single mistaken step, receives one cyan-blade electrical contact, falls and remains on the floor through the first two ID checks and STILETTO’s passage. Only after she passes does he recover with sam close enough to help and limp back. Large hands must touch the floor and supporting arm credibly. The floor hold preserves the injured leg, subtle weight shifts and attention; it must not loop the impact. Subsequent recovery, waiting and locomotion preserve that injury. The personality is the approved portrait; do not add a usefulness wound or a predestined refusal of help.
+Head leads shoulders when noticing the new roller. He speaks to the small group while looking towards sam. He takes a single mistaken step, receives one cyan-blade electrical contact, falls and remains on the floor through the first two ID checks and STILETTO’s passage. Only after she passes does he recover with sam close enough to help and limp towards his own check. Large hands must touch the floor and supporting arm credibly. The floor hold preserves the injured leg, subtle weight shifts and attention; it must not loop the impact. Subsequent recovery, waiting and locomotion preserve that injury. The personality is the approved portrait; do not add a usefulness wound or a predestined refusal of help.
 
 SECURITY VOLUNTEERS
 LIMEN calls “WHO REALLY CARES ABOUT THIS FACTORY?!” ed and gus volunteer, each with a visible response. Check their IDs first and physically admit them to the register and card stations. sam remains with bob. These are the two cleared-worker facts that permit STILETTO’s entrance.
@@ -22,8 +22,8 @@ SPECIFIC CONTACTS TO AUTHOR OR FIT LOCALLY
 - bob: hand/head glance, card hold, strike/fall, floor support, assisted recovery, injured retreat.
 - sam: offered forearm, support beside bob, own card hold.
 - gus: volunteering, card handover and card-tray handling at Security.
-- ed: brief sleeve contact, card handover, seated register work.
-- jo: retrieve and return the card.
+- ed: sleeve contact, his own card presentation and register work.
+- ed: retrieve and keep bob’s card; bob must not witness or learn the custody change.
 - mae/kit: a short guiding hand at shoulder/upper arm while separating.
 - everyone: locomotion stops, turns, retreat, stationary settling and gaze.
 
@@ -35,3 +35,6 @@ Keep the neutral rig and each source clip. Name exports with worker, source acti
 
 ENGINE
 Use the same motion intent, transition, path reservation, contact and speech-hearing contracts in scripted scenes and future agent-selected actions. Await physical arrival before committing a check or admission. No crowd lane is opened by moving an actor through someone else. Staggered withdrawal must finish before the blade reaches its occupied space. Preserve two real cleared-worker facts before STILETTO enters. Preserve authored consequences separately from presentation cues.
+
+PACE AND CAMERA — REHEARSAL 11
+The opening is a 108-second cut with thirty lines. Speech gestures run at 1.0–1.2× source rate; routine card handling at 1.5–1.6×. Contact times and engine custody commit together. Walk rate and path speed change together. Keep bob’s strike/fall at source speed, recovery at 1.2×. No global fast-forward. Seven camera setups cut on the blow, pickup, STILETTO’s approach/threshold and the factory-good exchange, never automatically on a new speaker. End after bob crosses into Security and LIMEN calls NEXT; do not pad the scene with the complete walk to Conveyor.

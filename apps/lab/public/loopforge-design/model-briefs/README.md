@@ -76,7 +76,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [bob · approved concept](/media/loopforge-cast/bob-1280.482a9955d4416c22.webp) — Supporting individual identity reference; isolate the approved ensemble character for final model input.
 - [Stage 1 · Body](/loopforge-design/model-briefs/bob-01-body.4180a423afb11002.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/bob-02-rig-and-motion.7e3d6734f7816a70.txt)
-- [Stage 3 · Opening performance](/loopforge-design/model-briefs/bob-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 3 · Opening performance](/loopforge-design/model-briefs/bob-03-opening-performance.02a2e05d2c883a3c.txt)
 - [Stage 4 · Native Idle comparison](/loopforge-design/model-briefs/bob-04-native-idle-control.aadcbe7c9f425246.txt)
 ## sam
 
@@ -85,7 +85,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [sam · approved concept](/media/loopforge-cast/sam-1280.d7a6b3f29ae9aef1.webp) — Supporting individual identity reference; isolate the approved ensemble character for final model input.
 - [Stage 1 · Body](/loopforge-design/model-briefs/sam-01-body.cd1136a2d3a4df7f.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/sam-02-rig-and-motion.2a644305e429f71d.txt)
-- [Stage 3 · Opening performance](/loopforge-design/model-briefs/sam-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 3 · Opening performance](/loopforge-design/model-briefs/sam-03-opening-performance.02a2e05d2c883a3c.txt)
 - [Stage 4 · Help bob](/loopforge-design/model-briefs/sam-04-help-bob.082e7be259310f68.txt)
 ## ed
 
@@ -94,7 +94,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [ed · approved concept](/media/loopforge-cast/ed-1280.51ea5ec63125128f.webp) — Supporting individual identity reference; isolate the approved ensemble character for final model input.
 - [Stage 1 · Body](/loopforge-design/model-briefs/ed-01-body.62bd45b9717f2ee9.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/ed-02-rig-and-motion.dee141631764876f.txt)
-- [Stage 3 · Opening performance](/loopforge-design/model-briefs/ed-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 3 · Opening performance](/loopforge-design/model-briefs/ed-03-opening-performance.02a2e05d2c883a3c.txt)
 - [Stage 4 · Pick up and keep bob’s card](/loopforge-design/model-briefs/ed-04-card-pickup.b34d45558ef8f10c.txt)
 ## jo
 
@@ -103,7 +103,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [jo · approved concept](/media/loopforge-cast/jo-1280.d522f249ba45622a.webp) — Supporting individual identity reference; isolate the approved ensemble character for final model input.
 - [Stage 1 · Body](/loopforge-design/model-briefs/jo-01-body.dbcf95fb5b0f536a.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/jo-02-rig-and-motion.e6fa4ad8283ea80b.txt)
-- [Stage 3 · Opening performance](/loopforge-design/model-briefs/jo-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 3 · Opening performance](/loopforge-design/model-briefs/jo-03-opening-performance.02a2e05d2c883a3c.txt)
 - [Stage 4 · Pickup source trial (superseded)](/loopforge-design/model-briefs/jo-04-card-pickup.89931880535496be.txt)
 ## gus
 
@@ -112,7 +112,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [gus · approved concept](/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp) — Supporting individual identity reference; isolate the approved ensemble character for final model input.
 - [Stage 1 · Body](/loopforge-design/model-briefs/gus-01-body.efdde838ebcf06fe.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/gus-02-rig-and-motion.26fae2b3125411b0.txt)
-- [Stage 3 · Opening performance](/loopforge-design/model-briefs/gus-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 3 · Opening performance](/loopforge-design/model-briefs/gus-03-opening-performance.02a2e05d2c883a3c.txt)
 ## max
 
 Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.
@@ -120,7 +120,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [max · approved concept](/media/loopforge-cast/max-1280.670fd60bac802ebf.webp) — Supporting individual identity reference; isolate the approved ensemble character for final model input.
 - [Stage 1 · Body](/loopforge-design/model-briefs/max-01-body.73628c430e9bac56.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/max-02-rig-and-motion.57c092c2f0e8d33a.txt)
-- [Stage 3 · Opening performance](/loopforge-design/model-briefs/max-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 3 · Opening performance](/loopforge-design/model-briefs/max-03-opening-performance.02a2e05d2c883a3c.txt)
 ## mae
 
 Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.
@@ -128,7 +128,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [mae · approved concept](/media/loopforge-cast/mae-1280.e5a67ebc7fb7f9c5.webp) — Supporting individual identity reference; isolate the approved ensemble character for final model input.
 - [Stage 1 · Body](/loopforge-design/model-briefs/mae-01-body.0ccdc1f412d56c27.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/mae-02-rig-and-motion.e22d008853405d33.txt)
-- [Stage 3 · Opening performance](/loopforge-design/model-briefs/mae-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 3 · Opening performance](/loopforge-design/model-briefs/mae-03-opening-performance.02a2e05d2c883a3c.txt)
 ## kit
 
 Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.
@@ -136,7 +136,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [kit · approved concept](/media/loopforge-cast/kit-1280.455885256f5671bc.webp) — Supporting individual identity reference; isolate the approved ensemble character for final model input.
 - [Stage 1 · Body](/loopforge-design/model-briefs/kit-01-body.43e95897d8546deb.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/kit-02-rig-and-motion.ad460de6a0948089.txt)
-- [Stage 3 · Opening performance](/loopforge-design/model-briefs/kit-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 3 · Opening performance](/loopforge-design/model-briefs/kit-03-opening-performance.02a2e05d2c883a3c.txt)
 ## lou
 
 Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.
@@ -144,7 +144,7 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [lou · approved concept](/media/loopforge-cast/lou-1280.0d77f26b20c9667e.webp) — Supporting individual identity reference; isolate the approved ensemble character for final model input.
 - [Stage 1 · Body](/loopforge-design/model-briefs/lou-01-body.22809a2d739711e1.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/lou-02-rig-and-motion.db2d92bf84cde5c7.txt)
-- [Stage 3 · Opening performance](/loopforge-design/model-briefs/lou-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 3 · Opening performance](/loopforge-design/model-briefs/lou-03-opening-performance.02a2e05d2c883a3c.txt)
 ## ben
 
 Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.
@@ -152,4 +152,4 @@ Owner-approved worker design and ensemble reference. The badass group portrait l
 - [ben · approved concept](/media/loopforge-cast/ben-1280.fedd3740d78d1cfc.webp) — Supporting individual identity reference; isolate the approved ensemble character for final model input.
 - [Stage 1 · Body](/loopforge-design/model-briefs/ben-01-body.52681e4bae3f96cd.txt)
 - [Stage 2 · Rig and motions](/loopforge-design/model-briefs/ben-02-rig-and-motion.b1b4ca5f97a7a7ee.txt)
-- [Stage 3 · Opening performance](/loopforge-design/model-briefs/ben-03-opening-performance.1e3d0eb40e14cc25.txt)
+- [Stage 3 · Opening performance](/loopforge-design/model-briefs/ben-03-opening-performance.02a2e05d2c883a3c.txt)

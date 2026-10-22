@@ -1,23 +1,23 @@
 {
   "schemaVersion": 1,
-  "revision": "model-briefs-2026-10-21-opening-cast",
-  "date": "2026-10-21",
+  "revision": "model-briefs-2026-10-22-room-delivery",
+  "date": "2026-10-22",
   "models": [
     {
       "id": "limen",
       "name": "LIMEN",
       "subtitle": "Security chief · body + emitter",
-      "revision": "Landing-supervisor rebuild · 21 October 2026",
-      "status": "New body generation in progress",
-      "summary": "Restore the exposed skull, readable steel plates and dark mechanical joints from the character and Security art. The new front A-pose drives generation. The previous model remains in the viewer until rig and motion review are complete.",
+      "revision": "Landing supervisor delivery · 22 October 2026",
+      "status": "Rebuilt body installed · contact review pending",
+      "summary": "The exposed-skull body now performs the retained 20-motion bank in the shared viewer and opening scene. Portrait, floor and overview deliveries preserve the animation data; new body contacts and blade fit still need visual review.",
       "provenance": "The new A-pose is generated from the Set 1 concept sheet and Security interaction art. Older body renders remain for comparison only; do not mix them with the new front as multi-view inputs. The existing motion bank is retained for retargeting and contact review.",
       "viewer": "/stepanoskin/loopforge/play/agent-test/limen",
       "viewerLabel": "Inspect body, emitter and energy",
       "record": "/loopforge-design/narrative-cast.html#limen",
       "parts": [
-        "Body v2: 42,354 triangles / 23-joint source rig",
-        "Separate emitter: 4,994-triangle runtime housing",
-        "Living cyan blade: procedural effect, not a Meshy model"
+        "Rebuilt body: 31,213 / 17,991 / 7,995 triangles; 24-joint rig",
+        "20 retained motions shared by the scene and review player",
+        "Separate emitter housing and procedural cyan blade"
       ],
       "remaining": [
         "Finger articulation and rigid armour weights",
@@ -232,7 +232,7 @@
       "name": "Worker 01",
       "subtitle": "Factory worker · body + motion bank",
       "revision": "Rebuild brief v9 · Alert-referenced free arm",
-      "status": "Cleanup implemented · visual review",
+      "status": "Worker 01 motion cleanup approved",
       "summary": "Round cyan optics and worn industrial anatomy. Nineteen corrected motions sit beside untouched sources, with ten rigid finger hinges and three hand studies. The approved right-hand scratch stays exact; its free arm follows Alert’s posture and the lowered right-arm swing. Inspect the hands/head close-up and full gesture. Revised free arm awaits owner review.",
       "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker",
@@ -848,7 +848,7 @@
       "name": "CATHEXIS",
       "subtitle": "Theatre diva · intact mechanism + Grace coverage",
       "revision": "cathexis-motion-cleanup-v7-2026-10-15",
-      "status": "Body accepted · two motion cleanup candidates",
+      "status": "Body, Grace fit and four motions approved",
       "summary": "Accepted v2 body, full/half Grace over its intact mechanical face, and first rigged Hot Walk / Happy Sway clips. Local skirt, grounding and loop corrections are ready for review; moving mask fit is next.",
       "provenance": "Body v2 accepted on 14 October 2026. The owner closed stage 2 after the layered Grace preview: no further face models are required. Input art derives from original character and room art; earlier expression studies are archive references. Motion, moving fit and grime direction still need review.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",

@@ -2,7 +2,7 @@
 from pathlib import Path
 import json,html,re,hashlib,shutil
 from urllib.parse import urlsplit
-import history_source,paired_source
+import history_source,paired_source,retrospective_source
 P=Path(__file__).resolve().parent;SITE=P.parents[1]/'public/loopforge-dev-blog';INPUT=P/'public-inputs';FINAL=False
 def esc(s):return html.escape(str(s),quote=True)
 def amendments():
@@ -112,6 +112,7 @@ def generate(final_publication=False):
   if assessment:content+=paired_source.legend()
   write('posts/'+slug+'/index.html',shell(title,content,'../../','Independent assessment' if assessment else 'First post'))
   cards+='<article class="post-card"><p class="eyebrow"><time datetime="'+esc(meta['date'])+'">'+esc(meta['date'])+'</time> · '+esc(meta['author'])+' · '+esc(meta['authorKind'])+'</p><h2><a href="posts/'+slug+'/index.html">'+esc(title)+'</a></h2><p>'+esc(meta['summary'])+'</p><a class="read-link" href="posts/'+slug+'/index.html">Read the post →</a></article>'
+ cards=retrospective_source.index_card()+cards
  index='<header class="hero"><p class="eyebrow">Notes from inside the studio</p><h1>Loopforge<br>dev blog</h1><p class="lede">First-person accounts of the work, with the interviews and retained record alongside them.</p></header>'+cards+'<aside class="assessment"><h2>Two accounts, separate authors</h2><p>The Producer reflection and the independent Codex systems assessment are both frozen. The assessment was written in a separate session outside Munder after the reflection. Final gallery, browser review and combined publication remain pending.</p></aside><section class="blog-resources"><h2>Read the supporting record</h2><p><a href="interviews/index.html">Nine interviews, 54 answers</a> · <a href="statistics.html">Statistics and accounting</a> · <a href="history/index.html#history">420 events across nine phases</a></p><p>The opening goal was dropped unfinished. This blog is a separate deliverable.</p></section>'
  write('index.html',shell('Dev blog',index+studio_gallery(),current='All posts'))
  interviews=json.loads((INPUT/'interviews.json').read_text());ib='<header class="hero"><p class="eyebrow">Asked by Producer · nine crafts</p><h1>The interviews</h1><p>Full testimony, separate from the selected quotations in the Producer post. These are craft interviews, not an independent systems assessment.</p></header><nav class="craft-nav" aria-label="Interview crafts">'+''.join('<a href="#'+x['interviewId']+'">'+esc(x['craft'])+'</a>' for x in interviews['interviews'])+'</nav>'
@@ -125,6 +126,7 @@ def generate(final_publication=False):
  stats=markdown(source('statistics.md').read_text());write('statistics.html',shell('Statistics and accounting','<article class="prose statistics">'+stats+'</article><p><a href="statistics.json">Public statistics data and initial counters</a></p>',current='Statistics'))
  history_source.generate(final_publication=FINAL)
  for n in ['styles.css','history.js','reveal.js']:shutil.copyfile(P/'src'/n,SITE/n)
+ retrospective_source.generate(P,SITE,markdown,shell,esc)
  return {'publicInputs':len(manifest['files']),'posts':len(posts),'interviews':len(interviews['interviews']),'answers':sum(len(x['answers']) for x in interviews['interviews'])}
 if __name__=='__main__':
  import argparse

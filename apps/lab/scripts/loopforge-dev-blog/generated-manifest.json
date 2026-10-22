@@ -82,8 +82,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 4548,
-      "sha256": "1c51ef0e06f281782bf5e898d781f8ccd1eef371d4ee90d032313c94757f1f63"
+      "bytes": 5079,
+      "sha256": "f89b2299b76dcdfec21fb45225e95e08ce0824aa2f1c951145ab51f0679b71a6"
     },
     {
       "path": "interviews/index.html",
@@ -124,6 +124,86 @@
       "path": "posts/2026-10-22-what-i-mistook-for-progress/index.html",
       "bytes": 17225,
       "sha256": "85c2bcc3bdd6d4d090e1c68d952853d6dd933f3acd03bba85f3b27b0005c6e7e"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/contributions/3d-artist.md",
+      "bytes": 3521,
+      "sha256": "291c20c8102ac5a24b64cf305ecf0822cb7023290adfad9b2a2979ee3ada0631"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/contributions/animator.md",
+      "bytes": 3454,
+      "sha256": "aa970aa2efafb48ed56686eefa99af3aa467ec128e2483106f364ce3db63674d"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/contributions/critic.md",
+      "bytes": 3397,
+      "sha256": "a17480d0adecfb22eb31600db9bf74e4b55f4b412dc196038835b7cd21133561"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/contributions/director.md",
+      "bytes": 3353,
+      "sha256": "aed9874bce768616d945755ed420e82625d1960faab46a58e6f93a4405e5b88e"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/contributions/engine.md",
+      "bytes": 3671,
+      "sha256": "dce9e8ee983395c2dea5e63191cffd565166d61e2244fabe101fc4726ac0e9f0"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/contributions/level.md",
+      "bytes": 3382,
+      "sha256": "201f075c2bc1ca07dc8f34a9eeef1237c6c0312fe76669192facec7ed369ce21"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/contributions/systems.md",
+      "bytes": 3459,
+      "sha256": "c68deaf25320640d5185c727bf2c3f888501054795412d6c82b52b1b6af84142"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/contributions/visual.md",
+      "bytes": 3451,
+      "sha256": "a4f768af13c624b04c11471b3ff1e29475581b2e0f00158745b003728ee67f0b"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/contributions/writer.md",
+      "bytes": 3383,
+      "sha256": "04c9f64de64dddbb0f3add9b895297dd5ae7b6c1123a01bfb15e22eb37ab96bf"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/contributions.json",
+      "bytes": 53237,
+      "sha256": "5acb066b5aa50e083708f8776dc9b80e64257fcb111fedc2af19a1ddee44e89a"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/milestone-facts.json",
+      "bytes": 822,
+      "sha256": "8fe60794b67d2a91b49e19b013c4af34578f01baccea55c1c2f106b9bdee022b"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/participation.json",
+      "bytes": 4096,
+      "sha256": "d543b377982c27f1349a1fec733f9924f8831315d868bf3533745cdafdcf32e2"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/producer-contribution.md",
+      "bytes": 2961,
+      "sha256": "16a61bc96bae523916d7ff50c0cf6dae81448f359ee5369c68f03dc56ccfbf7f"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/data/retrospective.md",
+      "bytes": 13957,
+      "sha256": "220dc653c3decaf17c5ffe6e1be3dd42ed2714b91625371dda8c3095105e6e16"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/index.html",
+      "bytes": 78854,
+      "sha256": "e802efd808182c5b2c80754e7fbad378a21e13df42dafd19e125801b7c160c07"
+    },
+    {
+      "path": "retrospectives/2026-10-22-first-retrospective/retrospective.css",
+      "bytes": 1332,
+      "sha256": "5394bd22b21121d9ee0574381a659dbbd168f3d6a35a7ce1e3662fa4773cc55f"
     },
     {
       "path": "reveal.js",

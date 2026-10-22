@@ -18,7 +18,7 @@ The approved cast can perform together under a headless action engine. An author
 
 Four fixtures are available:
 
-- **The first morning count:** ten timid workers arrive through the Lobby. The approved cast performs the current opening script: ed and gus volunteer, bob mishears an invitation and is struck, the two helpers are checked, then STILETTO passes without clearance while bob remains on the floor. Recovery follows her departure. [Full original script, acting plan and remaining gates](DAY_ONE_ARRIVAL.md).
+- **The first morning count:** ten timid workers arrive through the Lobby. The approved cast performs the current opening script: bob mishears the welcome and is struck; sam helps while ed takes the card. bob rises as STILETTO passes. His Protocol exchange gets him admitted without a card check. LIMEN recruits ed and gus, and the scene follows bob through four Conveyor stations before returning to the third ID. [Full original script, acting plan and remaining gates](DAY_ONE_ARRIVAL.md).
 
 - **Your workers are still here:** day-one STILETTO sees empty workstations, walks to the actual Security–Conveyor portal, calls for her workers and hears LIMEN defend clerical staffing. Each reply requires the preceding attributed report. The producer’s backing changes remembered treatment. STILETTO returns to her still-empty line; this scene does not invent an admission or completed robot.
 - **The name on the list:** a worker reports a clearance mismatch. Verified release and an exception produce different interpretations and trust changes.
@@ -117,3 +117,13 @@ Verification of this addendum: the production build and scoped lint pass; 17 tar
 ## Opening acceptance workload
 
 Use “Test opening · 10 minutes” on the first scene tab in a production build. The test fixes the canvas at 1280 × 720 and uses reference graphics, warms up for 30 seconds, then repeats the actual opening with speech and all four compositions for ten minutes. Use Check response at least once. Keep the scene visible; backgrounding, scrolling it away, changing graphics or a lost WebGL context invalidates the run. Save the result JSON. The shared frame-time thresholds and resource-growth checks apply; a fast average cannot hide a slow impact or passage shot. This is an old-machine rendering gate, not approval of choreography, cold network loading, general BDI planning or other devices.
+
+## Click-through opening and Conveyor · 21 October
+
+Every utterance now holds for a click. Reading freezes the authoritative clock, action effects, navigation, custody and station progress while restrained pose motion continues. Station actions require their own button; Intake → Wash → Belt → Forge commits one ordered output. Workers use a quieter checkpoint wait. The unattended stress test bypasses reading stops and covers all twelve camera compositions.
+
+The room pass adds a single UV-scrolled belt, shared static fittings, independent carrier and platen, twelve bounded rinse streaks, warm practical surfaces, service-wall dressing and candidate wash/brain assets. Effects can be switched off without changing the process. [Conveyor build plan](CONVEYOR_ASSET_BUILD_PLAN.md) · [Lobby and Security plan](SECURITY_LOBBY_ASSET_BUILD_PLAN.md) · [Room rebuild briefs](model-briefs/room-kit/README.md). Precise machine acting and final room art remain open.
+
+## Current opening candidate · 22 October 2026
+
+Revision /15 includes the generated room kit and rebuilt LIMEN with three delivery levels. The architecture is visual: reserved footprints, operator presence, brain processing and custody remain in the shared engine. Workers pass through the measured clear main entrance before spreading around Security. Dialogue replaces a speaker’s previous visible line without deleting the heard event. Full visual and performance acceptance remain pending; the earlier room-pilot failure has not been cleared.

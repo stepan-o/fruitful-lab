@@ -7,10 +7,10 @@
       "id": "limen",
       "name": "LIMEN",
       "subtitle": "Security chief · body + emitter",
-      "revision": "A-pose reference kit · 19 October 2026 / accepted body v2",
-      "status": "Prototype available",
-      "summary": "Rebuild inputs are ready: front, rear and side A-pose renders of the accepted body with pale-steel armour and deep teal-cyan optics. The approved Set 1 concept sheet and separate protocol clipboard are included for identity and equipment review.",
-      "provenance": "The three A-pose body inputs are matching orthographic renders of the accepted v2 model, using the same approved pale-steel treatment as the animation viewer. They are reconstructed references, not recovered historical upload images. The Set 1 concept sheet and separate horizontal clipboard remain unchanged; the clipboard has no 3D model yet.",
+      "revision": "Landing-supervisor rebuild · 21 October 2026",
+      "status": "New body generation in progress",
+      "summary": "Restore the exposed skull, readable steel plates and dark mechanical joints from the character and Security art. The new front A-pose drives generation. The previous model remains in the viewer until rig and motion review are complete.",
+      "provenance": "The new A-pose is generated from the Set 1 concept sheet and Security interaction art. Older body renders remain for comparison only; do not mix them with the new front as multi-view inputs. The existing motion bank is retained for retargeting and contact review.",
       "viewer": "/stepanoskin/loopforge/play/agent-test/limen",
       "viewerLabel": "Inspect body, emitter and energy",
       "record": "/loopforge-design/narrative-cast.html#limen",
@@ -26,8 +26,37 @@
       ],
       "images": [
         {
+          "label": "LIMEN v3 · exposed-skull A-pose",
+          "role": "Current body generation input. Skull, steel plate masses and charcoal joints; emitter generated separately.",
+          "sourceName": "limen-skull-front-v3.png",
+          "sourceSha256": "1348dfb6f4d3dcd0bba17f2857c90ac6b5dbfae077d7266c3e83a55c134f677a",
+          "input": {
+            "src": "/media/loopforge-model-briefs/limen-skull-front-v3-1024.d32451c22a231705.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 260970,
+            "sha256": "d32451c22a23170529a587d71b091eb4d0c0e4138944f3edde2604b9b64a0478"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/limen-skull-front-v3-360.3c28f1f83c449cf7.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 25892,
+              "sha256": "3c28f1f83c449cf7b528f5ea2af10a5fd589a20e779ba09c4b63ca3b00498ccf"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/limen-skull-front-v3-720.30f38baf80be5de6.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 104090,
+              "sha256": "30f38baf80be5de63cd5d50c5e3c65d5692c95185ec6b43fb0ee20048e1c5071"
+            }
+          ]
+        },
+        {
           "label": "Front · neutral A-pose",
-          "role": "Body input — primary view; same accepted v2 body, Rest pose and approved palette. No equipment attached.",
+          "role": "Earlier v2 body reference — comparison only. Do not combine with the v3 generation input.",
           "sourceName": "limen-apose-front.png",
           "sourceSha256": "bacacee78badb7acb7746e84affa3584c16d0425b77b9649755c93d256488480",
           "input": {
@@ -56,7 +85,7 @@
         },
         {
           "label": "Back · neutral A-pose",
-          "role": "Body input — supporting view; same accepted v2 body, Rest pose and approved palette. No equipment attached.",
+          "role": "Earlier v2 body reference — comparison only. Do not combine with the v3 generation input.",
           "sourceName": "limen-apose-back.png",
           "sourceSha256": "b9e314dd1ddbf440b6cdf99b9f36343b384cf73f2e77207b404d4abc20a80326",
           "input": {
@@ -85,7 +114,7 @@
         },
         {
           "label": "Side · neutral A-pose",
-          "role": "Body input — supporting view; same accepted v2 body, Rest pose and approved palette. No equipment attached.",
+          "role": "Earlier v2 body reference — comparison only. Do not combine with the v3 generation input.",
           "sourceName": "limen-apose-side.png",
           "sourceSha256": "707c899a1dc1606f9259587d66fabc98f99c43390f45b0cf055f8ddc57164a24",
           "input": {
@@ -191,6 +220,10 @@
         {
           "title": "Stage 7 · Checkpoint cyan strike",
           "file": "limen/07-checkpoint-strike.txt"
+        },
+        {
+          "title": "08 · Landing supervisor rebuild",
+          "file": "limen/08-landing-supervisor-rebuild.txt"
         }
       ]
     },

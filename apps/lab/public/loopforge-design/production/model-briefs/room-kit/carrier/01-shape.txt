@@ -1,0 +1,7 @@
+LOOPFORGE · BRAIN CARRIER / SHAPE · v1
+
+Reference: 04_loopforge_rooms_neural_lattice_converyor_1.png. A squat, worn cast-iron cradle with dull brass edges, carrying a whole brain along a heavy industrial belt. It belongs to the same machine family as Brain Wash, not a surgical hospital tray. The recognisable form is the low cupped support and two opposed clamp seats. Preserve a clear silhouette at room-camera distance; surface wear is secondary.
+
+Generate the rigid cradle shell only. Exclude brain, movable clamp jaws, belt, hands, cables, smoke, effects, labels and floor. Keep the bottom flat, the central well open, and the two clamp seats symmetrical. No tall sidewalls that hide the brain. No needle-like spikes or thin filigree. The engine supplies two separate jaws with simple stable pivots; do not fuse closed jaws into the asset.
+
+Delivery envelope: 1.6 m long along belt travel, 1.4 m across, no more than 0.25 m tall before the jaws. Textured target 1–2k triangles, 512px shared-style maps. Retain source master separately. Candidate must be fitted to the current 1.05 m raw brain and the much smaller processed output before acceptance.

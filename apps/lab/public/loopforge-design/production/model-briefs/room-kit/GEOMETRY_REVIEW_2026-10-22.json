@@ -1,0 +1,441 @@
+{
+  "status": "measured source apertures; rendered contact review pending",
+  "method": "Projected triangle/plane intersections across the whole depth; empty central X intervals at listed source heights. Dimensions are source units, not runtime metres.",
+  "assets": [
+    {
+      "name": "entrance",
+      "triangles": 10128,
+      "min": [
+        -0.9520589113235474,
+        -0.6418279409408569,
+        -0.22223594784736633
+      ],
+      "max": [
+        0.949940025806427,
+        0.6406829357147217,
+        0.2212500274181366
+      ],
+      "extent": [
+        1.9019989371299744,
+        1.2825108766555786,
+        0.44348597526550293
+      ],
+      "sections": [
+        {
+          "heightFraction": 0.05,
+          "gapEnds": [
+            -0.4524034245218752,
+            0.4523734354015688
+          ],
+          "gap": 0.904776859923444,
+          "gapFraction": 0.47569787882674064
+        },
+        {
+          "heightFraction": 0.2,
+          "gapEnds": [
+            -0.47857571300593327,
+            0.4780663583450902
+          ],
+          "gap": 0.9566420713510235,
+          "gapFraction": 0.5029666697892854
+        },
+        {
+          "heightFraction": 0.4,
+          "gapEnds": [
+            -0.4799260568752137,
+            0.4794684577977133
+          ],
+          "gap": 0.959394514672927,
+          "gapFraction": 0.5044138016820385
+        },
+        {
+          "heightFraction": 0.6,
+          "gapEnds": [
+            -0.465876239486188,
+            0.46566652536793
+          ],
+          "gap": 0.931542764854118,
+          "gapFraction": 0.48977039191187544
+        },
+        {
+          "heightFraction": 0.7,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.75,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.8,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        }
+      ]
+    },
+    {
+      "name": "portal",
+      "triangles": 9694,
+      "min": [
+        -0.9511610269546509,
+        -0.5859699845314026,
+        -0.28717997670173645
+      ],
+      "max": [
+        0.9494289755821228,
+        0.5840020179748535,
+        0.28565603494644165
+      ],
+      "extent": [
+        1.9005900025367737,
+        1.169972002506256,
+        0.5728360116481781
+      ],
+      "sections": [
+        {
+          "heightFraction": 0.05,
+          "gapEnds": [
+            -0.5229290089432458,
+            0.40110990228451154
+          ],
+          "gap": 0.9240389112277574,
+          "gapFraction": 0.48618529508963815
+        },
+        {
+          "heightFraction": 0.2,
+          "gapEnds": [
+            -0.5317658768950204,
+            0.40610568816815124
+          ],
+          "gap": 0.9378715650631717,
+          "gapFraction": 0.4934633791671885
+        },
+        {
+          "heightFraction": 0.4,
+          "gapEnds": [
+            -0.530756192405802,
+            0.4058974228817836
+          ],
+          "gap": 0.9366536152875855,
+          "gapFraction": 0.4928225519640776
+        },
+        {
+          "heightFraction": 0.6,
+          "gapEnds": [
+            -0.5308419401197866,
+            0.4056201941690696
+          ],
+          "gap": 0.9364621342888562,
+          "gapFraction": 0.49272180377616026
+        },
+        {
+          "heightFraction": 0.7,
+          "gapEnds": [
+            -0.530755341477648,
+            0.4061343007270712
+          ],
+          "gap": 0.9368896422047193,
+          "gapFraction": 0.49294673809407863
+        },
+        {
+          "heightFraction": 0.75,
+          "gapEnds": [
+            -0.5316354890744216,
+            0.4071022239607538
+          ],
+          "gap": 0.9387377130351754,
+          "gapFraction": 0.49391910500540065
+        },
+        {
+          "heightFraction": 0.8,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        }
+      ]
+    },
+    {
+      "name": "intake",
+      "triangles": 12041,
+      "min": [
+        -0.9525780081748962,
+        -0.2768910229206085,
+        -0.4819429814815521
+      ],
+      "max": [
+        0.9511340856552124,
+        0.276854008436203,
+        0.4956130385398865
+      ],
+      "extent": [
+        1.9037120938301086,
+        0.5537450313568115,
+        0.9775560200214386
+      ],
+      "sections": [
+        {
+          "heightFraction": 0.05,
+          "gapEnds": [
+            -0.5702250136842433,
+            0.3900792144739263
+          ],
+          "gap": 0.9603042281581695,
+          "gapFraction": 0.5044377410168773
+        },
+        {
+          "heightFraction": 0.2,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.4,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.6,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.7,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.75,
+          "gapEnds": [
+            -0.06917955764828632,
+            0.0861145101223866
+          ],
+          "gap": 0.15529406777067292,
+          "gapFraction": 0.08157434534033679
+        },
+        {
+          "heightFraction": 0.8,
+          "gapEnds": [
+            -0.552755889041334,
+            0.4302880964376474
+          ],
+          "gap": 0.9830439854789814,
+          "gapFraction": 0.5163826970816683
+        }
+      ]
+    },
+    {
+      "name": "desk",
+      "triangles": 7485,
+      "min": [
+        -0.9516869783401489,
+        -0.4928860068321228,
+        -0.5193889141082764
+      ],
+      "max": [
+        0.9496549367904663,
+        0.49082091450691223,
+        0.5132910013198853
+      ],
+      "extent": [
+        1.9013419151306152,
+        0.983706921339035,
+        1.0326799154281616
+      ],
+      "sections": [
+        {
+          "heightFraction": 0.05,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.2,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.4,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.6,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.7,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.75,
+          "gapEnds": [
+            -0.602364746266104,
+            0.48329267068651227
+          ],
+          "gap": 1.0856574169526163,
+          "gapFraction": 0.5709953629660742
+        },
+        {
+          "heightFraction": 0.8,
+          "gapEnds": [
+            -0.9516869783401489,
+            0.49806510869834597
+          ],
+          "gap": 1.4497520870384948,
+          "gapFraction": 0.7624888903471642
+        }
+      ]
+    },
+    {
+      "name": "crate",
+      "triangles": 1979,
+      "min": [
+        -0.4787600040435791,
+        -0.10180699825286865,
+        -0.2517090141773224
+      ],
+      "max": [
+        0.4787600040435791,
+        0.09887699782848358,
+        0.2517090141773224
+      ],
+      "extent": [
+        0.9575200080871582,
+        0.20068399608135223,
+        0.5034180283546448
+      ],
+      "sections": [
+        {
+          "heightFraction": 0.05,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.2,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.4,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.6,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.7,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.75,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.8,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        }
+      ]
+    },
+    {
+      "name": "lattice-forge",
+      "triangles": 16092,
+      "min": [
+        -0.9507799744606018,
+        -0.7842879295349121,
+        -0.45065394043922424
+      ],
+      "max": [
+        0.9497499465942383,
+        0.7837259769439697,
+        0.4517250657081604
+      ],
+      "extent": [
+        1.90052992105484,
+        1.5680139064788818,
+        0.9023790061473846
+      ],
+      "sections": [
+        {
+          "heightFraction": 0.05,
+          "gapEnds": [
+            -0.4031297145602757,
+            0.39787589064886764
+          ],
+          "gap": 0.8010056052091433,
+          "gapFraction": 0.42146434861944493
+        },
+        {
+          "heightFraction": 0.2,
+          "gapEnds": [
+            -0.40924361087959576,
+            0.4090346055066593
+          ],
+          "gap": 0.8182782163862551,
+          "gapFraction": 0.4305526618239669
+        },
+        {
+          "heightFraction": 0.4,
+          "gapEnds": [
+            -0.4240737554632909,
+            0.41968583036090135
+          ],
+          "gap": 0.8437595858241922,
+          "gapFraction": 0.443960169464675
+        },
+        {
+          "heightFraction": 0.6,
+          "gapEnds": [
+            -0.4161261082058037,
+            0.41398948620328213
+          ],
+          "gap": 0.8301155944090859,
+          "gapFraction": 0.4367811236291148
+        },
+        {
+          "heightFraction": 0.7,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.75,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        },
+        {
+          "heightFraction": 0.8,
+          "gapEnds": null,
+          "gap": 0,
+          "gapFraction": 0
+        }
+      ]
+    }
+  ]
+}

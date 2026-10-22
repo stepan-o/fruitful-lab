@@ -19,8 +19,9 @@ export type PropLocation={kind:'stowed';agent:string}|{kind:'hand';agent:string;
 export type SceneProp={id:string;kind:'credential';owner:string;location:PropLocation;previous?:{location:PropLocation;tick:number}};
 export type PropTransfer={prop:string;from:PropLocation;to:PropLocation;observedBy?:string[]};
 export type Performance={agent:string;motion:Motion;to?:Point;yaw?:number;cue?:MotionCue};
-export type SceneFraming='wide'|'interaction'|'approach'|'assembly'|'impact'|'passage'|'card'|'threshold'|'aftermath';
-export type Phase={framing?:SceneFraming;id:string;ticks:number;perform:Performance[];say?:Speech[];effects?:Effect[];transfers?:PropTransfer[]};
+export type SceneFraming='wide'|'interaction'|'approach'|'assembly'|'impact'|'passage'|'card'|'threshold'|'aftermath'|'conveyor-wide'|'intake'|'wash'|'belt'|'forge';
+export type ProcessCue={station:'intake'|'wash'|'belt'|'forge';from:number;to:number;operator:{agent:string;position:Point;within:number}};
+export type Phase={process?:ProcessCue;attention?:'flow'|'hold';inputLabel?:string;framing?:SceneFraming;id:string;ticks:number;perform:Performance[];say?:Speech[];effects?:Effect[];transfers?:PropTransfer[]};
 export type Action={id:string;room:ZoneId;adjacentRoom?:ZoneId;additionalRooms?:ZoneId[];participants:string[];resources:string[];requires:Condition[];reason:string;phases:Phase[]};
 export type Intent={id:string;action:string;initiator:string};
 export type Active={intent:Intent;phase:number;start:number;origins:Record<string,Point>};
@@ -33,4 +34,4 @@ export interface SpatialServices { roomAt?(point:Point):ZoneId|undefined; connec
 export type Registry=Record<string,Action>;
 export type ActorView={id:string;name:string;character:Character;position:Point;yaw:number;motion:Motion;seconds:number;action:string;cue?:MotionCue;previous?:{cue:MotionCue;seconds:number;yaw?:number};blend?:number};
 export type Bubble=Pick<Speech,'speaker'|'to'|'text'|'act'|'delivery'>&{id:string;age:number};
-export type View={framing?:SceneFraming;tick:number;actors:ActorView[];props?:SceneProp[];bubbles:Bubble[];gateOpen:boolean;drive:Value;phase:string;finished:boolean};
+export type View={process?:{stage:number;output:number;active?:ProcessCue;progress:number};framing?:SceneFraming;tick:number;actors:ActorView[];props?:SceneProp[];bubbles:Bubble[];gateOpen:boolean;drive:Value;phase:string;finished:boolean};

@@ -1,0 +1,33 @@
+{
+  "revision": "limen-landing-body/3",
+  "sourceSha256": "5db2609332dc0a84f59722b9ca5dffb969d1e36c7d1875ab34681041755de3c5",
+  "joints": 24,
+  "clips": 20,
+  "status": "structurally verified; renderer and contact review pending",
+  "levels": [
+    {
+      "level": "portrait",
+      "file": "limen-portrait-candidate-v1.glb",
+      "bytes": 4841672,
+      "sha256": "b1be786dc8b30ed72cfb6c3af301b5be4595273b7b3e2d79b7a5814237f490c3",
+      "triangles": 31213,
+      "textureTarget": 1024
+    },
+    {
+      "level": "floor",
+      "file": "limen-floor-candidate-v1.glb",
+      "bytes": 2923380,
+      "sha256": "42c9787741e7e2d90151512c0a884d6e26a34dbdd8809544b61f252beb96cda6",
+      "triangles": 17991,
+      "textureTarget": 512
+    },
+    {
+      "level": "overview",
+      "file": "limen-overview-candidate-v1.glb",
+      "bytes": 1671704,
+      "sha256": "c5e90cc94a0f33f68123cf469585e66aba6dbe891a01a4cfc60906794ca97da8",
+      "triangles": 7995,
+      "textureTarget": 256
+    }
+  ]
+}

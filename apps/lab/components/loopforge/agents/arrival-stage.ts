@@ -15,7 +15,10 @@ import {DirectionalLight} from '@babylonjs/core/Lights/directionalLight';
 import {ShadowGenerator} from '@babylonjs/core/Lights/Shadows/shadowGenerator';
 import '@babylonjs/core/Lights/Shadows/shadowGeneratorSceneComponent';
 import {DefaultRenderingPipeline} from '@babylonjs/core/PostProcesses/RenderPipeline/Pipelines/defaultRenderingPipeline';
-import type {SceneFraming} from '@/lib/loopforge/encounters/contract';
+import type {StationLighting} from './station-light';
+import {createConveyorLine} from './conveyor-line';
+import {loadOpeningArchitecture} from './load-room-kit';
+import type {View,SceneFraming} from '@/lib/loopforge/encounters/contract';
 import {ARRIVAL_LAYOUT,ARRIVAL_EQUIPMENT} from '@/lib/loopforge/encounters/arrival-layout';
 import {worldPoint} from '@/lib/loopforge/spatial/floor';
 import {ROOM_FLOORS} from '@/lib/loopforge/rooms/appearance';
@@ -26,8 +29,8 @@ import {buildEquipment} from '../factory-study/equipment-scene';
 import {workshopPrimitives} from '../factory-study/workshop-primitives';
 import {createReviewOrbit} from '../factory-study/review-orbit';
 import type {FactoryScene,SceneReport} from '../factory-study/scene';
-export type RehearsalStage=Pick<FactoryScene,'characterStage'|'motion'|'active'|'reviewCamera'|'dispose'>&{sceneShot?:(shot:SceneFraming)=>void;benchmark?:(enabled:boolean)=>void};
-/** Reusable two-room scene shell. Bounds and doorway come from the same layout as admission.
+export type RehearsalStage=Pick<FactoryScene,'characterStage'|'motion'|'active'|'reviewCamera'|'dispose'>&{sceneShot?:(shot:SceneFraming)=>void;benchmark?:(enabled:boolean)=>void;ready?:Promise<void>;presentProcess?:(process:View['process'])=>void;machineEffects?:(enabled:boolean)=>void;stationLighting?:(mode:StationLighting)=>void;stationLightSnapshot?:()=>unknown};
+/** Reusable three-room scene shell. Bounds and doorway come from the same layout as admission.
  * Equipment uses the shared factory vocabulary and the engine’s physical footprints. */
 export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneReport)=>void):RehearsalStage{
  const engine=new Engine(canvas,false,{stencil:false,preserveDrawingBuffer:false,powerPreference:'high-performance'});
@@ -49,12 +52,11 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
  function box(name:string,size:[number,number,number],x:number,y:number,height:number,m:PBRMaterial){const mesh=MeshBuilder.CreateBox(name,{width:size[0],height:size[1],depth:size[2]},scene);mesh.position.set(...worldPoint(x,y));mesh.position.y=height;mesh.material=m;mesh.receiveShadows=true;mesh.isPickable=false;return mesh;}
  for(const room of ARRIVAL_LAYOUT.rooms){
   const {x,y,w,h}=room.rect,m=material(`${room.id} floor`,ROOM_FLOORS[room.id],.08);
-  const tex=new DynamicTexture(`${room.id} worn panels`,512,scene,true),ctx=tex.getContext();ctx.fillStyle='#ffffff';ctx.fillRect(0,0,512,512);ctx.strokeStyle='#b9bbbd';ctx.lineWidth=2;ctx.strokeRect(2,2,508,508);
+  const tex=new DynamicTexture(`${room.id} worn panels`,512,scene,true),ctx=tex.getContext();ctx.fillStyle='#ffffff';ctx.fillRect(0,0,512,512);ctx.strokeStyle='#e1e2e1';ctx.lineWidth=1;ctx.strokeRect(2,2,508,508);
   for(let i=0;i<130;i++){ctx.fillStyle=i%3?'#00000007':'#00000016';ctx.fillRect(i*197%512,i*71%512,3+i%20,1);}
-  tex.update();tex.uScale=w/2;tex.vScale=h/2;m.albedoTexture=tex;
+  tex.update();tex.wrapU=Constants.TEXTURE_WRAP_ADDRESSMODE;tex.wrapV=Constants.TEXTURE_WRAP_ADDRESSMODE;tex.uScale=w/2;tex.vScale=h/2;m.albedoTexture=tex;
   box(`${room.id} floor`,[w,.2,h],x+w/2,y+h/2,-.11,m);
-  for(let xx=x+2;xx<x+w;xx+=2)box('Floor seam',[.015,.006,h],xx,y+h/2,.005,dark);
-  for(let yy=y+2;yy<y+h;yy+=2)box('Floor seam',[w,.006,.015],x+w/2,yy,.005,dark);
+  // Panel seams live in one low-contrast floor texture, below the cast. No extra meshes.
   if(room.id==='security'){box('East wall beside Conveyor south',[.25,3,5],132,108.5,1.5,wall);box('East wall beside Conveyor north',[.25,3,3],132,100.5,1.5,wall);box('Conveyor doorway lintel',[.4,.4,4],132,104,3.2,iron);}else box(`${room.id} east wall`,[.25,3,h],x+w,y+h/2,1.5,wall);
   for(let yy=y+1;yy<y+h;yy+=3){if(room.id==='security'&&yy>=102&&yy<=106)continue;box('Ribbed pilaster',[.35,3.5,.35],x+w-.15,yy,1.75,iron);box('Brass footing',[.5,.15,.6],x+w-.15,yy,.08,brass);}
  }
@@ -64,10 +66,11 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
  for(const x of [door.min,door.max]){box('Checkpoint pillar',[.4,3.8,.5],x,door.axis,1.9,iron);box('Checkpoint brass band',[.48,.13,.55],x,door.axis,2.65,brass);}
  box('Checkpoint lintel',[4.5,.45,.6],124,door.axis,3.65,iron);
  box('WAIT HERE line',[4,.025,.18],124,112.6,.015,brass);
+ const checkpointProxy=scene.meshes.filter(m=>/^Checkpoint /.test(m.name));
  // The workers choose their own places around the doorway. No queue pens.
  const outside=material('Morning approach concrete','#626c72',.04);
  box('Factory approach',[16,.015,13],124,128.5,.006,outside);
- for(const x of [117.5,130.5])box('Factory facade',[3,5,.45],x,122,2.5,wall);
+ for(const x of [117.5,130.5])box('Factory facade',[3,6.4,.45],x,122,3.2,wall);
  for(const x of [119,129])box('Factory main door frame',[.45,5.3,.65],x,122,2.65,iron);
  box('Factory main door lintel',[10.4,.55,.75],124,122,5.15,iron);
  // Rolled-up door leaves the same open corridor used by the navigation layout.
@@ -78,7 +81,9 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
  const amber=new StandardMaterial('Warm instrument glass',scene);amber.diffuseColor=Color3.FromHexString('#b99a55');amber.emissiveColor=new Color3(.35,.22,.07);
  const cyan=new StandardMaterial('Security strip glass',scene);cyan.diffuseColor=Color3.FromHexString('#76a5aa');cyan.emissiveColor=new Color3(.18,.35,.38);
  const tools=workshopPrimitives(scene,{iron,dark,brass,copper,green,floorMat:outside,amber,quiet,cyan,ridge:quiet});
+ const beforeEquipment=new Set(scene.meshes);
  buildEquipment(scene,tools,['security'],{placements:ARRIVAL_EQUIPMENT,markings:false});
+ const deskProxy=scene.meshes.filter(m=>!beforeEquipment.has(m)&&/instrument console|sloped control deck|dial bezel|pressure dial|dial needle|selector switch|console vent|panel rivet/.test(m.name));
  for(let x=117;x<=131;x+=2){
   box('Security wall inset',[1.65,2.9,.08],x,99.19,1.85,green);
   box('Inset lower rail',[1.75,.08,.13],x,99.27,.42,brass);
@@ -94,14 +99,40 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
   tools.box('Inspection light housing',[2,.17,.2],[wx,3.35,wz],dark);
   tools.box('Inspection light diffuser',[1.7,.06,.22],[wx,3.29,wz-.04],cyan);
  }
+ // Rear service wall gives the line depth without cluttering the operator floor.
+ box('Conveyor service wall',[24,4.8,.25],144,98,2.4,wall);
+ for(let x=134;x<155;x+=3){
+  box('Conveyor rear rib',[.22,4.9,.32],x,98.2,2.45,iron);
+  box('Conveyor service panel',[2.5,2.5,.12],x+1.45,98.2,1.6,green);
+  box('Service panel inset',[1.7,1.3,.1],x+1.45,98.31,1.65,dark);
+  for(let j=0;j<4;j++)box('Service louvre',[1.55,.07,.1],x+1.45,98.39,1.25+j*.24,iron);
+ }
+ for(const h of [3.45,3.8]){
+  const [x,,z]=worldPoint(133,98.6),[end]=worldPoint(155,98.6);
+  tools.pipe('Conveyor overhead service',[[x,h,z],[end,h,z]],.08,copper);
+ }
+ for(const x of [136.5,140.5,144.5,148.5]){
+  const [wx,,wz]=worldPoint(x,99.1);
+  tools.pipe('Station service drop',[[wx,3.8,wz],[wx,2.9,wz],[wx+.4,2.6,wz],[wx+.4,.2,wz]],.06,copper);
+  tools.box('Station light housing',[2.1,.18,.45],[wx,3.75,wz-.3],dark);
+  tools.box('Warm station light',[1.8,.06,.32],[wx,3.64,wz-.3],amber);
+  box('Operator apron',[2.8,.025,1.6],x,105.4,.018,dark);
+  for(const dx of [-1.3,1.3])box('Apron boundary',[.06,.03,1.5],x+dx,105.4,.021,brass);
+ }
  function sign(text:string,x:number,y:number,h:number,w:number){const texture=new DynamicTexture(text,{width:1024,height:128},scene,true);const c=texture.getContext() as CanvasRenderingContext2D;c.fillStyle='#172226';c.fillRect(0,0,1024,128);c.fillStyle='#d1c7a5';c.font='bold 70px Georgia';c.textAlign='center';c.fillText(text,512,90);texture.update();const m=new StandardMaterial(text,scene);m.diffuseTexture=texture;m.emissiveColor=new Color3(.4,.4,.4);const plane=MeshBuilder.CreatePlane(text,{width:w,height:.48,sideOrientation:Mesh.DOUBLESIDE},scene);plane.position.set(...worldPoint(x,y));plane.position.y=h;plane.material=m;}
- sign('LOOPFORGE / STAFF ENTRANCE',124,122.43,5.15,8);sign('SECURITY / ADMISSION',124,111.34,3.7,4.2);sign('IDENTIFICATION',124,99.22,2.8,4);
- const cutaway=scene.meshes.filter(m=>/Factory facade|Factory main door|Rolled shutter|LOOPFORGE \/ STAFF ENTRANCE/.test(m.name));
+ sign('LOOPFORGE',124,122.49,5.45,5.8);sign('SECURITY / ADMISSION',124,111.49,4.32,4.2);sign('IDENTIFICATION',124,99.22,2.8,4);
+ for(const [label,x] of [['01 / INTAKE',136.5],['02 / BRAIN WASH',140.5],['03 / MAIN BELT',144.5],['04 / LATTICE FORGE',148.5]] as const)sign(label,x,98.5,3,3.3);
+ const cutaway=scene.meshes.filter(m=>/Factory facade|Factory main door|Rolled shutter|LOOPFORGE/.test(m.name));
+ const entranceProxy=cutaway.filter(m=>/Factory main door|Rolled shutter/.test(m.name));
+ const replacementProxies=[...checkpointProxy,...deskProxy,...entranceProxy];
+ const architectureAbort=new AbortController();let architecture:Awaited<ReturnType<typeof loadOpeningArchitecture>>|undefined,currentShot:SceneFraming='approach';
+ const architectureReady=loadOpeningArchitecture(scene,architectureAbort.signal).then(model=>{architecture=model;replacementProxies.forEach(m=>m.setEnabled(false));model.entrance.setEnabled(currentShot==='approach'||currentShot==='passage');invalidate();});
  // Batch static fittings once; each character keeps its independent body and rig.
- for(const m of [...materials,amber,cyan]){const meshes=scene.meshes.filter(mesh=>mesh.material===m&&!cutaway.includes(mesh)) as Mesh[];if(meshes.length>1)Mesh.MergeMeshes(meshes,true,true);}
+ for(const m of [...materials,amber,cyan]){const meshes=scene.meshes.filter(mesh=>mesh.material===m&&!cutaway.includes(mesh)&&!replacementProxies.includes(mesh)) as Mesh[];if(meshes.length>1)Mesh.MergeMeshes(meshes,true,true);}
+ const conveyor=createConveyorLine(scene,invalidate);conveyor.present(undefined);
  let benchmarking=false;let preferences=graphicsSnapshot(),effective=resolveGraphics(preferences,'room');
  function size(){if(benchmarking){engine.setHardwareScalingLevel(1);engine.setSize(1280,720);invalidate();return;}engine.setHardwareScalingLevel(1/(Math.min(window.devicePixelRatio||1,1.5)*effective.scale));engine.resize();orbit.snapshot();orbit.attach(camera.target);invalidate();}
- function settings(){preferences=graphicsSnapshot();effective=resolveGraphics(benchmarking?REFERENCE_GRAPHICS:preferences,'room');scene.shadowsEnabled=effective.shadows!=='off';pipeline.fxaaEnabled=effective.antialias;pipeline.bloomEnabled=effective.bloom;shadow.getShadowMap()?.resize(effective.shadows==='full'?1024:512);size();}
+ function settings(){preferences=graphicsSnapshot();effective=resolveGraphics(benchmarking?REFERENCE_GRAPHICS:preferences,'room');scene.shadowsEnabled=effective.shadows!=='off';conveyor.stationLight.shadowsAllowed(effective.shadows!=='off');pipeline.fxaaEnabled=effective.antialias;pipeline.bloomEnabled=effective.bloom;shadow.getShadowMap()?.resize(effective.shadows==='full'?1024:512);size();}
  const unsubscribe=subscribeGraphics(settings);settings();
  const resize=new ResizeObserver(size);resize.observe(canvas);
  const timings=createFrameWindow();let previousCamera='';
@@ -112,10 +143,12 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
   const now=performance.now(),cameraState=[camera.alpha,camera.beta,camera.radius,camera.inertialAlphaOffset,camera.inertialBetaOffset,camera.inertialRadiusOffset].join('/');
   if(previousCamera!==cameraState){dirty=true;previousCamera=cameraState;}
   if((!benchmarking&&now-lastDraw<1000/effective.targetFps-1)||(!playing&&!dirty&&scene.isReady()))return;
+  const dt=lastDraw?Math.min(.1,(now-lastDraw)/1000):0;if(playing)conveyor.animate(dt);
   lastDraw=now;dirty=false;const before=performance.now(),drawStart=engine._drawCalls.current;scene.render();timings.frame(now,scene.isReady()?(playing?'active':'idle'):'loading');
   if(now-lastReport>1000){lastReport=now;report({...timings.snapshot(),meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:10,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(performance.now()-before),updateMs:0,drawCalls:engine._drawCalls.current-drawStart,triangles:Math.round(scene.getActiveIndices()/3)});}
  });
  return {
+  ready:Promise.all([conveyor.ready,architectureReady]).then(()=>undefined),presentProcess:conveyor.present,machineEffects:conveyor.effects,stationLighting:conveyor.stationLight.set,stationLightSnapshot:conveyor.stationLight.snapshot,
   benchmark(enabled){benchmarking=enabled;settings();if(enabled)camera.detachControl();},
   sceneShot(shot){
    const setups={
@@ -126,12 +159,18 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
     passage:[125.1,116.0,1.3,7.9,1.79,1.36],
     threshold:[124.9,110.9,1.05,7.1,-1.5,1.25],
     aftermath:[124.6,111.3,1.45,4.8,-1.45,1.35],
+    'conveyor-wide':[142.5,103.1,1.0,18,-1.85,1.05],
+    intake:[136.1,104.6,1.0,9,-2.05,1.12],
+    wash:[139.4,104.5,1.1,10,-1.95,1.1],
+    belt:[144.3,104.2,1,12,-1.8,1.02],
+    forge:[147.8,104.6,1.5,10,-1.95,1.12],
    } as const;
-   cutaway.forEach(m=>m.setEnabled(shot==='approach'||shot==='passage'));
+   currentShot=shot;const showEntrance=shot==='approach'||shot==='passage';
+   cutaway.forEach(m=>m.setEnabled(showEntrance&&!(architecture&&entranceProxy.includes(m))));architecture?.entrance.setEnabled(showEntrance);
    const s=setups[shot==='wide'?'assembly':shot==='interaction'?'impact':shot];orbit.framing(s[3],3.5);orbit.orientation(s[4],s[5]);orbit.attach(new Vector3(...worldPoint(s[0],s[1])).add(new Vector3(0,s[2],0)));if(benchmarking)camera.detachControl();
   },
   characterStage(){return {scene,shadow,gate(){},refresh:invalidate};},
-  motion(value){playing=value;timings.reset();invalidate();},active(value){visible=value;timings.reset();invalidate();},reviewCamera(action){if(action)orbit.action(action);return orbit.snapshot();},
-  dispose(){if(disposed)return;disposed=true;unsubscribe();resize.disconnect();canvas.removeEventListener('pointermove',pointer);canvas.removeEventListener('wheel',pointer);canvas.removeEventListener('keydown',pointer);orbit.suspend();scene.dispose();engine.dispose();}
+  motion(value){if(playing===value)return;playing=value;timings.reset();invalidate();},active(value){visible=value;timings.reset();invalidate();},reviewCamera(action){if(action)orbit.action(action);return orbit.snapshot();},
+  dispose(){if(disposed)return;disposed=true;unsubscribe();resize.disconnect();canvas.removeEventListener('pointermove',pointer);canvas.removeEventListener('wheel',pointer);canvas.removeEventListener('keydown',pointer);orbit.suspend();architectureAbort.abort();architecture?.dispose();conveyor.dispose();scene.dispose();engine.dispose();}
  };
 }

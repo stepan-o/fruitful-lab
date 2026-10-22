@@ -5,15 +5,21 @@ import {contains} from '../spatial/floor';
 /** Compact first-day rehearsal layout. This does not silently relocate the full-floor Dispatch.
  * Both navigation and construction consume these bounds; production can select this layout. */
 export const ARRIVAL_LAYOUT = {
- id:'day-one-lobby-security/2',
- rooms:[{id:'lobby',rect:{x:116,y:111,w:16,h:33}},{id:'security',rect:{x:116,y:99,w:16,h:12}},{id:'conveyor',rect:{x:132,y:101,w:6,h:6}}] as const,
+ id:'day-one-lobby-security/3',
+ rooms:[{id:'lobby',rect:{x:116,y:111,w:16,h:33}},{id:'security',rect:{x:116,y:99,w:16,h:12}},{id:'conveyor',rect:{x:132,y:98,w:24,h:14}}] as const,
  portal:{id:'lobby-security',a:'lobby',b:'security',axis:111,min:122,max:126},
  anchor:[124,113.8] as const,
+ mainEntry:{axis:122,min:120.5,max:127.5},
 } as const;
+export const CONVEYOR_STATIONS=[{id:'intake',name:'INTAKE',x:136.5},{id:'wash',name:'WASH',x:140.5},{id:'belt',name:'MAIN BELT',x:144.5},{id:'forge',name:'LATTICE FORGE',x:148.5}] as const;
+export type ConveyorStation=typeof CONVEYOR_STATIONS[number]['id'];
+export function conveyorControl(id:ConveyorStation):Point{const s=CONVEYOR_STATIONS.find(s=>s.id===id)!;return [s.x*1000,105800];}
+export function conveyorDirector(id:ConveyorStation):Point{const s=CONVEYOR_STATIONS.find(s=>s.id===id)!;return [(s.x-1.5)*1000,108400];}
 /** These fixture bounds belong to the world, so navigation and scenery agree. */
 export const ARRIVAL_EQUIPMENT:readonly EquipmentPlacement[]=[
  {id:'security-register',room:'security',kind:'records-bank',name:'Admission register',footprint:{x:117.5,y:100,w:3,h:3.5},height:2.8,operator:{x:119.2,y:105.5}},
  {id:'security-trays',room:'security',kind:'records-bank',name:'ID sorting desk',footprint:{x:127.5,y:100,w:3,h:3.5},height:2.8,operator:{x:129,y:105.5}},
+ ...CONVEYOR_STATIONS.map(s=>({id:s.id,room:'conveyor' as const,kind:'control' as const,name:s.name,footprint:{x:s.x-1.6,y:100.8,w:3.2,h:4.6},height:2.8,operator:{x:conveyorControl(s.id)[0]/1000,y:conveyorControl(s.id)[1]/1000}})),
 ];
 export function arrivalRoom(point:Point):ZoneId|undefined{return ARRIVAL_LAYOUT.rooms.find(r=>contains(r.rect as Rect,{x:point[0]/1000,y:point[1]/1000}))?.id;}
 export function crossesArrivalDoor(from:Point,to:Point){

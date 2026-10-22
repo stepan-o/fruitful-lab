@@ -1,0 +1,7 @@
+LOOPFORGE · BRAIN CARRIER / CONTACTS AND DELIVERY · v1
+
+Origin: centre of the lower support plane. Travel axis +X. Brain seat is independent, at +0.10 m above the tray origin. Left and right clamp jaws are separate moving parts. Author their inner contact faces and opening distance from the brain envelope, with no crushing or floating contact. Check the entire wash-to-press path, both ends of Brain Wash and the platen footprint.
+
+Reuse the same cradle mesh/material for repeated carriers. Do not add a skeleton, per-carrier texture or shadow-casting lamp. Crate loading, clamp closure, release and a future jam are distinct engine states; the render never commits inventory or output. Keep the brief, source task ID, optimized hash, bounds, triangle count and exact compression settings together.
+
+Acceptance: raw and processed brains remain legible; the platen can reach the workpiece without striking tall cradle edges; passage through Brain Wash is genuinely open, including from side/rear inspection. Validate on the existing cast scene with effects off as well as on.

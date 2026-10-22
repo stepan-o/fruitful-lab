@@ -4,11 +4,12 @@ Download numbered stages and reference inputs below. For the visual library open
 
 ## LIMEN
 
-The three A-pose body inputs are matching orthographic renders of the accepted v2 model, using the same approved pale-steel treatment as the animation viewer. They are reconstructed references, not recovered historical upload images. The Set 1 concept sheet and separate horizontal clipboard remain unchanged; the clipboard has no 3D model yet.
+The new A-pose is generated from the Set 1 concept sheet and Security interaction art. Older body renders remain for comparison only; do not mix them with the new front as multi-view inputs. The existing motion bank is retained for retargeting and contact review.
 
-- [Front · neutral A-pose](/media/loopforge-model-briefs/limen-apose-front.4fc2463b7a7d9fd9.jpg) — Body input — primary view; same accepted v2 body, Rest pose and approved palette. No equipment attached.
-- [Back · neutral A-pose](/media/loopforge-model-briefs/limen-apose-back.bb4a9c92de353af3.jpg) — Body input — supporting view; same accepted v2 body, Rest pose and approved palette. No equipment attached.
-- [Side · neutral A-pose](/media/loopforge-model-briefs/limen-apose-side.6a1c0f61c950cbfa.jpg) — Body input — supporting view; same accepted v2 body, Rest pose and approved palette. No equipment attached.
+- [LIMEN v3 · exposed-skull A-pose](/media/loopforge-model-briefs/limen-skull-front-v3-1024.d32451c22a231705.webp) — Current body generation input. Skull, steel plate masses and charcoal joints; emitter generated separately.
+- [Front · neutral A-pose](/media/loopforge-model-briefs/limen-apose-front.4fc2463b7a7d9fd9.jpg) — Earlier v2 body reference — comparison only. Do not combine with the v3 generation input.
+- [Back · neutral A-pose](/media/loopforge-model-briefs/limen-apose-back.bb4a9c92de353af3.jpg) — Earlier v2 body reference — comparison only. Do not combine with the v3 generation input.
+- [Side · neutral A-pose](/media/loopforge-model-briefs/limen-apose-side.6a1c0f61c950cbfa.jpg) — Earlier v2 body reference — comparison only. Do not combine with the v3 generation input.
 - [LIMEN · pale steel / Set 1 revision](/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg) — Reference only — approved Set 1 identity and palette, with one protocol clipboard. Use the three isolated A-pose body images for generation.
 - [Protocol clipboard · horizontal overlay](/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp) — Equipment concept — weathered steel clipboard and paper protocols, seen at a low oblique angle. Transparent cutout; no 3D model yet.
 - [Body rebuild](/loopforge-design/model-briefs/limen-01-body-rebuild.5e99585e0f3bb562.txt)
@@ -16,6 +17,7 @@ The three A-pose body inputs are matching orthographic renders of the accepted v
 - [Rig and delivery](/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt)
 - [Stage 6 · Doorway step back](/loopforge-design/model-briefs/limen-06-doorway-step-back.d8f5cef3a55a255e.txt)
 - [Stage 7 · Checkpoint cyan strike](/loopforge-design/model-briefs/limen-07-checkpoint-strike.10a3766937d5aa7f.txt)
+- [08 · Landing supervisor rebuild](/loopforge-design/model-briefs/limen-08-landing-supervisor-rebuild.61716d8e9c4b085a.txt)
 ## Worker 01
 
 Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.

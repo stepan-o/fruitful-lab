@@ -1,6 +1,5 @@
 import {LoadAssetContainerAsync} from '@babylonjs/core/Loading/sceneLoader';
-import '@babylonjs/loaders/glTF/2.0/glTFLoader';
-import '@babylonjs/loaders/glTF/glTFFileLoader';
+import './gltf-delivery';
 import {TransformNode} from '@babylonjs/core/Meshes/transformNode';
 import {PBRMaterial} from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import {Vector3,Quaternion} from '@babylonjs/core/Maths/math.vector';
@@ -11,8 +10,7 @@ import {worldPoint} from '@/lib/loopforge/spatial/floor';
 import manifest from '@/lib/assets/generated/loopforge-limen-motions.json';
 import bodyManifest from '@/lib/assets/generated/loopforge-limen.json';
 import {limenMotion,limenMotions,type LimenMotionId} from '@/lib/loopforge/agents/limen-motions';
-import {LIMEN_PALETTE,type LimenPalette} from '@/lib/loopforge/agents/limen-palette';
-import {ReadabilityMaterial} from './readability-material';
+import {type LimenPalette} from '@/lib/loopforge/agents/limen-palette';
 import {createLimenBlade} from './limen-blade';
 import {createPerformanceSampler} from './performance-sampler';
 import type {ActorView} from '@/lib/loopforge/encounters/contract';
@@ -20,7 +18,8 @@ import type {LimenSurface} from './limen-model';
 
 export const limenMotionFile=manifest.assets.motions.variants[0];
 /** Shared source performer for inspection and the scripted checkpoint. Approved legacy clips remain separate. */
-export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,onFrame:(phase:number)=>void,onEnd:()=>void){
+export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,onFrame:(phase:number)=>void,onEnd:()=>void,detail:'portrait'|'floor'|'overview'='portrait'){
+ const file=detail==='portrait'?limenMotionFile:manifest.assets[detail==='floor'?'motions-floor':'motions-overview'].variants[0];
  const {scene,shadow}=stage;
  async function download(file:typeof limenMotionFile){
   const integrity='sha256-'+btoa(String.fromCharCode(...file.sha256.match(/../g)!.map(x=>parseInt(x,16))));
@@ -28,8 +27,8 @@ export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,o
   if(!r.ok)throw Error('LIMEN’s motion bank could not be downloaded. Please retry.');
   const bytes=new Uint8Array(await r.arrayBuffer());signal.throwIfAborted();return bytes;
  }
- const [bytes,bladeBytes]=await Promise.all([download(limenMotionFile),download(bodyManifest.assets['blade-housing'].variants[0])]);
- const body=await LoadAssetContainerAsync(bytes,scene,{pluginExtension:'.glb',name:'limen-motions-2026-10-19.glb'});
+ const [bytes,bladeBytes]=await Promise.all([download(file),download(bodyManifest.assets['blade-housing'].variants[0])]);
+ const body=await LoadAssetContainerAsync(bytes,scene,{pluginExtension:'.glb',name:'limen-landing-2026-10-22.glb'});
  let housing:Awaited<ReturnType<typeof LoadAssetContainerAsync>>|undefined,energy:ReturnType<typeof createLimenBlade>|undefined,fill:DirectionalLight|undefined;
  const root=new TransformNode('LIMEN source motion review',scene),reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
  let observer:ReturnType<typeof scene.onBeforeRenderObservable.add>|undefined,disposed=false;
@@ -37,14 +36,13 @@ export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,o
  function dispose(){if(disposed)return;disposed=true;if(observer)scene.onBeforeRenderObservable.remove(observer);meshes.forEach(m=>shadow.removeShadowCaster(m));fill?.dispose();energy?.dispose();housing?.dispose();body.dispose();root.dispose();}
  try{
   signal.throwIfAborted();
-  if(body.skeletons[0]?.bones.length!==80||!limenMotions.every(m=>body.animationGroups.some(a=>a.name===m.id)))throw Error('The LIMEN source motion bank is incomplete.');
+  if(body.skeletons[0]?.bones.length!==24||!limenMotions.every(m=>body.animationGroups.some(a=>a.name===m.id)))throw Error('The LIMEN source motion bank is incomplete.');
   body.addAllToScene();body.rootNodes.forEach(n=>{n.parent=root;});body.animationGroups.forEach(a=>a.stop());
-  const forearm=body.transformNodes.find(n=>n.name==='mixamorig:RightForeArm');
+  const forearm=body.transformNodes.find(n=>n.name==='RightForeArm');
   if(!forearm)throw Error('The right forearm attachment is missing.');
   const socket=new TransformNode('LIMEN candidate forearm emitter',scene);socket.parent=forearm;
-  // This FBX rig uses metre-sized local limbs (the accepted rig uses centimetres).
-  // Preserve the physical 8 cm lateral / 4 cm rearward emitter offset for review.
-  socket.position.set(.08,0,-.04);
+  // The rebuilt Meshy rig uses centimetres; equipment geometry uses metres.
+  socket.scaling.setAll(100);socket.position.set(8,0,-4);
   housing=await LoadAssetContainerAsync(bladeBytes,scene,{pluginExtension:'.glb',name:'limen-emitter.glb'});signal.throwIfAborted();housing.addAllToScene();
   for(const n of housing.rootNodes){n.parent=socket;if(n instanceof TransformNode){n.scaling.setAll(1);n.rotationQuaternion=Quaternion.Identity();}}
   energy=createLimenBlade(scene,socket);
@@ -53,9 +51,10 @@ export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,o
   fill=new DirectionalLight('LIMEN motion inspection lamp',new Vector3(.25,-.5,1),scene);fill.diffuse=new Color3(.82,.9,1);fill.intensity=2.5;fill.includedOnlyMeshes=meshes;fill.renderPriority=5;
   const materials=[...body.materials,...housing.materials].filter((m):m is PBRMaterial=>m instanceof PBRMaterial);materials.forEach(m=>{m.maxSimultaneousLights=6;});
   const appearance=materials.map(m=>({m,texture:m.albedoTexture,color:m.albedoColor.clone(),metallic:m.metallic,roughness:m.roughness}));
-  const paints=body.materials.filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{const p=new ReadabilityMaterial(m);p.kind=1;return p;});
-  let palette:LimenPalette='approved',surface:LimenSurface='textured',clip:LimenMotionId='Shouting_Angrily',phase=0,playing=false,loop=false,speed=1,last=performance.now(),notifyAt=0,reduced=false,effectTime=0,pulseAt=-100;
-  function appearanceUpdate(){paints.forEach(p=>p.set(LIMEN_PALETTE.steel,palette==='approved'&&surface!=='clay'?100:0));energy?.palette(palette==='approved');stage.refresh();}
+  // Keep the rebuilt skull, dark joints and armour material separation.
+  // Pale-steel paint remains a reference option on the legacy body only.
+  let palette:LimenPalette='approved',clip:LimenMotionId='Shouting_Angrily',phase=0,playing=false,loop=false,speed=1,last=performance.now(),notifyAt=0,reduced=false,effectTime=0,pulseAt=-100;
+  function appearanceUpdate(){energy?.palette(palette==='approved');stage.refresh();}
   function duration(){const a=body.animationGroups.find(a=>a.name===clip)!;return (a.to-a.from)/a.targetedAnimations[0].animation.framePerSecond;}
   function sample(){
    const a=body.animationGroups.find(a=>a.name===clip)!;
@@ -69,7 +68,7 @@ export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,o
   });
   function room(value:'security'|'conveyor'){const p=value==='security'?[131,122]:[120.8,149.6];root.position.set(...worldPoint(p[0],p[1]));root.position.y=.015;root.rotation.y=Math.PI;stage.gate(true);stage.refresh();}
   room('security');appearanceUpdate();sample();
-  const performanceSampler=createPerformanceSampler(body.animationGroups);
+  const performanceSampler=createPerformanceSampler(body.animationGroups,'','y-up');
   return {
    presentation:{root,bodyMeshes:body.meshes.filter(m=>m.getTotalVertices()>0)},
    perform(actor:ActorView){if(!actor.cue)return;playing=false;performanceSampler.sample(actor.cue,actor.seconds,actor.previous,actor.blend);const p=worldPoint(actor.position[0]/1000,actor.position[1]/1000);root.position.set(p[0],.015,p[2]);// Imported glTF faces -Z; encounter yaw zero faces the queue along +Z.
@@ -81,7 +80,7 @@ export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,o
    reduced(value:boolean){reduced=value;sample();},blade(value:boolean){socket.setEnabled(value);stage.refresh();},pulse(){pulseAt=effectTime;stage.refresh();},
    turn(value:number){root.rotation.y=Math.PI+value*Math.PI/180;stage.refresh();},room,light(value:boolean){fill?.setEnabled(value);stage.refresh();},
    palette(value:LimenPalette){palette=value;appearanceUpdate();},
-   surface(value:LimenSurface){surface=value;for(const {m,texture,color,metallic,roughness} of appearance){m.albedoTexture=value==='clay'?null:texture;m.albedoColor=value==='clay'?new Color3(.4,.43,.42):color;m.metallic=value==='clay'?0:metallic;m.roughness=value==='clay'?.85:roughness;m.wireframe=value==='wireframe';}appearanceUpdate();},
+   surface(value:LimenSurface){for(const {m,texture,color,metallic,roughness} of appearance){m.albedoTexture=value==='clay'?null:texture;m.albedoColor=value==='clay'?new Color3(.4,.43,.42):color;m.metallic=value==='clay'?0:metallic;m.roughness=value==='clay'?.85:roughness;m.wireframe=value==='wireframe';}appearanceUpdate();},
    dispose,
   };
  }catch(e){dispose();throw e;}

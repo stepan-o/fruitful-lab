@@ -595,8 +595,17 @@ for contract_name in ["FIRST_TURN_BUILD_PLAN.md", "FIRST_TURN_ENGINE.md", "AGENT
 (OUT/"production/CATHEXIS_INTAKE_REVIEW.md").write_text((ROOT.parent/"production/CATHEXIS_INTAKE_REVIEW.md").read_text())
 
 # Current show-production records.
-for name in ['FIRST_FIVE_DAYS_SHOW_PROPOSAL.md','production/SCENE_REHEARSALS.md','production/ROOM_ASSET_BRIEFS.md','production/DAY_ONE_ARRIVAL.md']:
+for name in ['FIRST_FIVE_DAYS_SHOW_PROPOSAL.md','production/SCENE_REHEARSALS.md','production/ROOM_ASSET_BRIEFS.md','production/DAY_ONE_ARRIVAL.md','production/CONVEYOR_ASSET_BUILD_PLAN.md','production/SECURITY_LOBBY_ASSET_BUILD_PLAN.md']:
     (OUT/name).write_text((ROOT.parent/name).read_text())
+
+# Publish the room kit's numbered briefs and measured delivery records, never raw
+# service replies or signed source-download URLs. Reference images stay in source.
+room_briefs = ROOT.parent/'production/model-briefs/room-kit'
+for source in room_briefs.rglob('*'):
+    if source.is_file() and source.suffix in {'.md', '.txt', '.json'}:
+        destination = OUT/'production/model-briefs/room-kit'/source.relative_to(room_briefs)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(source.read_text())
 
 # Cast recognition is a design requirement, not a claim that the runtime passes.
 readability_record = (ROOT.parent/'production/CAST_READABILITY_STANDARD.md').read_text()

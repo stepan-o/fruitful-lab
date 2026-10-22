@@ -1,10 +1,5 @@
 import {LoadAssetContainerAsync} from '@babylonjs/core/Loading/sceneLoader';
-import '@babylonjs/loaders/glTF/2.0/glTFLoader';
-import '@babylonjs/loaders/glTF/glTFFileLoader';
-import '@babylonjs/loaders/glTF/2.0/Extensions/EXT_meshopt_compression';
-import '@babylonjs/loaders/glTF/2.0/Extensions/EXT_texture_webp';
-import '@babylonjs/loaders/glTF/2.0/Extensions/KHR_mesh_quantization';
-import {MeshoptCompression} from '@babylonjs/core/Meshes/Compression/meshoptCompression';
+import './gltf-delivery';
 import {MeshBuilder} from '@babylonjs/core/Meshes/meshBuilder';
 import {TransformNode} from '@babylonjs/core/Meshes/transformNode';
 import {PBRMaterial} from '@babylonjs/core/Materials/PBR/pbrMaterial';
@@ -21,7 +16,6 @@ import delivery from '@/lib/loopforge/agents/opening-worker-delivery.json';
 import {createPerformanceSampler} from './performance-sampler';
 import {createCredentialProps,createCredentialSleeve} from './credential-props';
 import {OpeningWorkerFinish} from './opening-worker-finish';
-MeshoptCompression.Configuration.decoder.url=delivery.decoder.src;
 /** One rig and bank per worker. Portraits and encounters sample the same baked tracks. */
 export async function loadOpeningWorker(stage:CharacterStage,worker:OpeningWorkerId,detail:WorkerDetail,signal:AbortSignal,onFrame:(phase:number,ended:boolean)=>void=()=>{},previewProps=false){
  const {scene,shadow}=stage,file=openingWorkerAsset(worker,detail);
@@ -53,7 +47,7 @@ export async function loadOpeningWorker(stage:CharacterStage,worker:OpeningWorke
   normals(normalDetail);
   function finish(value:boolean){factoryFinish=value;for(const {m,metallic,roughness,paint}of materials){paint.enabled=value?1:0;m.metallic=value?Math.min(metallic??1,.35):metallic;m.roughness=value?Math.max(roughness??1,.65):roughness;}stage.refresh();}
   finish(factoryFinish);
-  const groups=new Map(container.animationGroups.map(g=>[g.name,g]));
+  const groups=new Map(container.animationGroups.map(g=>[g.name,g]));groups.set('Quiet_Wait',groups.get('idle')!);
   let id='idle',phase=0,playing=false,speed=1,loop=true,centred=false,last=performance.now(),notifyAt=0,disposed=false;
   const anchor=new Vector3(),origin=new Vector3(),offset=new Vector3();
   const lines:Vector3[][]=[];for(let i=-10;i<=10;i++){lines.push([new Vector3(i*.1,.002,-1),new Vector3(i*.1,.002,1)],[new Vector3(-1,.002,i*.1),new Vector3(1,.002,i*.1)]);}
@@ -91,7 +85,7 @@ export async function loadOpeningWorker(stage:CharacterStage,worker:OpeningWorke
   root.rotation.y=Math.PI;room('security');clip(id);
   return {
    presentation:{root,bodyMeshes:meshes,standingHeight,hand:(side:'left'|'right')=>container.transformNodes.find(n=>n.name===(side==='left'?'LeftHand':'RightHand'))!},
-   file,clips:file.clips,duration,clip,room,finish,normals,
+   file,clips:[...file.clips,'Quiet_Wait'],duration,clip,room,finish,normals,
    play(value:boolean){if(value&&phase===1)phase=0;playing=value;last=performance.now();stage.refresh();},
    seek(value:number){phase=Math.max(0,Math.min(1,value));sample();},speed(value:number){speed=value;},loop(value:boolean){loop=value;},
    centre(value:boolean){centred=value;sample();},turn(value:number){root.rotation.y=Math.PI+value*Math.PI/180;sample();},

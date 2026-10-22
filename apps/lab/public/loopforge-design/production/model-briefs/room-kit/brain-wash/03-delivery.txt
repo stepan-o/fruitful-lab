@@ -1,0 +1,5 @@
+LOOPFORGE · BRAIN WASH / DELIVERY · v1
+
+Candidate: 10,997 triangles, one PBR primitive, 1024px WebP maps and meshopt geometry. 1,163,828 bytes delivered. Raw source: 13,119,124 bytes. Preserve broad cast forms and large surface wear; no decorative live particles, text or extra shadow lights in the model. See delivery-v1.json for immutable hashes. The shared local decoder must load before either room or character assets.
+
+Acceptance requires visible fit, clear carrier passage, nozzles aligned with bounded spray, reachable controls and sustained occupied-room performance. These are still review gates, not implied by export success.

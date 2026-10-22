@@ -1,0 +1,9 @@
+LIMEN — landing supervisor body revision, 21 October 2026
+
+Reason: the opening scene uses a lower-detail animation-delivery body that loses the exposed skull, strong plate shapes and forearm energy silhouette. The owner authorized regeneration; previous model and palette approval do not constrain this revision. Pale steel serves shot contrast, not an all-over white finish.
+
+Input: limen-skull-front-v3.png. Generated from the approved Set 1 pale-steel concept sheet and the original LIMEN Security interaction art. Single body, symmetric A-pose, both hands, no attached prop. Identity: exposed mechanical skull and teeth, heavy brow, bright cyan eye sockets, cable neck, broad shoulders, large chest/name plate, substantial boots. The right forearm has a compact mount only. No weapon geometry fused into the body.
+
+Generate a textured 30k-triangle candidate, preserve the higher-resolution source, export GLB with 2K PBR. Keep broad pale/mid-steel plate faces separated by deep charcoal joints. Avoid camouflage and dense mottling that collapse at room scale. Inspect front, rear and profile before rigging. Reuse and retarget the existing motion library after validating bind pose and bone mapping; do not assume prior fixes survive a new mesh.
+
+Keep the cyan blade separate. Fit its mount to the forearm and preserve a broad, flowing, unmistakable blade silhouette in the greeting and strike shots. Inspect eyes, skull and energy shape at room and console scale. Compare with actual Lobby/Security floors and illumination. This is a candidate until those views, animation contacts and performance are checked.

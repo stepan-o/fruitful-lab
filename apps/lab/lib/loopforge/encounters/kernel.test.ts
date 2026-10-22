@@ -98,3 +98,17 @@ it('advancing and cancelling cannot mutate any prior snapshot or shared speech',
  expect(JSON.stringify(state)).toBe(saved);
  expect(next.events.filter(e=>e.kind==='speech'&&e.action===state.active[0].intent.id).every(e=>e.until===state.tick)).toBe(true);
 });
+
+
+it('replaces visible speech without erasing what was said or heard',()=>{
+ const t=rehearsal('arrival','care');let s=t.world;
+ for(let tick=0;tick<t.total;tick++){
+  s=advance(s,t.registry,t.space,t.planner);
+  const bubbles=project(s,t.registry).bubbles;
+  expect(new Set(bubbles.map(b=>b.speaker)).size).toBe(bubbles.length);
+ }
+ const lines=s.events.filter(e=>e.kind==='speech'&&e.agent==='limen');
+ expect(lines.some(e=>e.detail.includes('Welcome to Loopforge'))).toBe(true);
+ expect(lines.length).toBeGreaterThan(2);
+ expect(s.events.some(e=>e.kind==='heard')).toBe(true);
+});

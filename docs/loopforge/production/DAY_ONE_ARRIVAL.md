@@ -1,112 +1,113 @@
 # Day one: the first morning count
 
-20 October 2026 · `morning-count/3` · fixed opening rehearsal, awaiting performance approval.
+22 October 2026 · before-the-shift/15 · opening and Conveyor rehearsal, still under visual and performance review.
 
-[Play the opening](/stepanoskin/loopforge/play/scene-studies). [Inspect LIMEN’s source motions](/stepanoskin/loopforge/play/agent-test/limen). [Shared encounter architecture](SCENE_REHEARSALS.md).
+[Play the opening](/stepanoskin/loopforge/play/scene-studies). [Shared engine boundary](SCENE_REHEARSALS.md). [Room kit and rebuild briefs](model-briefs/room-kit/README.md).
 
-## Direction
+Ten workers arrive. bob hears a welcome and takes it literally. LIMEN strikes him; sam goes to him, while ed takes the dropped card. The camera makes that small theft visible. bob gets up as STILETTO cuts through the crowd and Security without stopping. LIMEN yields. bob notices the exception, catches himself, flatters the Protocol and gets sent to Conveyor without an ID check.
 
-Ten nervous workers enter the Lobby. LIMEN occupies the Security doorway. Nobody arrives spoiling for a fight: they want to be useful, get the instructions right and avoid attracting attention. Worker 01 is literal and anxious about being late; Worker 02 quietly helps; Worker 03 is afraid of doing even compliance incorrectly. The remaining seven make a listening crowd, with staggered idle phases and three blue paint shades.
+LIMEN recruits ed and gus. STILETTO has one worker and a silent line. She sends bob through Intake, Brain Wash, Main Belt and Lattice Forge. One brain comes out. During that work sam is the only additional worker admitted. Return to Security for jo, the third check. ed still has bob’s card; bob does not yet know.
 
-LIMEN moves between public command, procedural explanation, dry reassurance and sudden anger. He believes he protects the factory. The cruelty comes from applying that conviction to a tiny misunderstanding, then treating the injured worker’s return as routine administration. This establishes the cost of his order before STILETTO argues about delayed production.
+## Time and attention
 
-The staging reference is **Back to the Dawn’s morning count**: a visible boundary, an authority addressing a group, and individual reactions that reveal personality inside an institutional ritual. We inspected the [roll-call image in Raider King’s review](https://raiderking.com/back-to-the-dawn-review-a-zootopian-prison-break/) and the [official game listing](https://store.steampowered.com/app/1735700/Back_to_the_Dawn/). That first pass used a still, not a full camera study. The follow-up inspected [Keith Ballard’s opening playthrough](https://www.youtube.com/watch?v=SW3Qpd8F7v4&t=2197s), sampling the morning headcount at 36:37–37:42 and Sam’s cellmate conversation at 28:28–28:48. Observed: the assembly stays in one composition while Billy counts and Bruce addresses it; dark panels have compact coloured speaker tabs; Bruce’s warning highlights a key phrase in red; Sam’s exchange uses short conversational turns and a separate emotion icon. These observations support steady staging, selective emphasis and visible reactions. Our cream industrial balloons, delivery animation and timid worker exchanges are original Loopforge choices, not a reproduction of that UI or dialogue.
+The authored action track takes 132.45 seconds, plus the player’s reading time. Every spoken turn holds for a click; machine instructions offer an explicit action button. Reading holds factory time, routes, paper custody and process progress. Restrained character motion continues. A low-effects choice cannot change output or what anyone heard. Autoplay and time scrubbing are author controls; the player path is the main Continue/action button.
 
-## Fixed intro dialogue
+Crowd baseline is Quiet Wait, a restrained derivative of the existing idle. The head retains a small movement; hips and feet stay planted. Larger reactions belong to the strike, the card, STILETTO’s passage and the volunteer call. Camera cuts follow those actions, with dedicated Conveyor compositions. There is no automatic cut per speech bubble.
 
-The workers walk into a compact group outside the blocked entrance. Worker 02 speaks to Worker 01 while they approach.
+## Current dialogue
 
-**Worker 02:** Keep your number ready. And wait for him to call it.
+This transcript is extracted from the runtime fixture. Times are action time, excluding reading. Worker names remain lower case; supervisor names remain upper case.
 
-**LIMEN — command:** STOP AND WAIT HERE!!
+**bob · 0.05s:** New roller?
 
-**LIMEN — precise explanation:** Ten units. Ten sets of papers. We begin when all ten can follow one instruction.
+**sam · 2.25s:** Same roller. Fresh paint.
 
-**Worker 03 — eager compliance:** I'm standing still, sir.
+**jo · 5.35s:** Give it a shift.
 
-**LIMEN — small approval:** Excellent. Keep doing that.
+**LIMEN · 7.55s:** STOP. WAIT HERE!!
 
-**LIMEN — his worldview:** The line produces. Security makes sure there's still a factory tomorrow.
+**LIMEN · 8.75s:** Welcome to Loopforge. You move when I say.
 
-**Worker 01 — anxious:** Sir… my shift has already started.
+**lou · 9.95s:** Warm welcome.
 
-**LIMEN — dry reassurance:** Then let us avoid starting it twice. Once here. Once in an incident report.
+**kit · 10.75s:** Keep your bolts on.
 
-**LIMEN — a stamped rule:** Numbers when called. No shortcuts. No exceptions.
+**LIMEN · 11.55s:** IDs ready. First shift?
 
-**Worker 02 — quietly:** Just wait for your number.
+**bob · 12.55s:** Yes, sir. Here—
 
-**LIMEN:** One…
+**LIMEN · 14.05s:** I SAID STOP!!!!
 
-Worker 01 hears his number and steps out, preparing to present himself.
+**sam · 17.45s:** Easy, bob. I’ve got you.
 
-**Worker 01:** I've got it, sir.
+**STILETTO · 28.70s:** Get the slag out of my way!
 
-**LIMEN — sudden anger:** HEY YOU I SAID STOP!!!!
+**bob · 44.40s:** You didn’t check her ID…
 
-LIMEN swings his cyan forearm blade. Worker 01 falls; the others freeze in the queue.
+**LIMEN · 45.40s:** WHAT DID YOU SAY?!
 
-**Worker 03 — to Worker 02:** Don't move. He said don't move.
+**bob · 46.20s:** I said it’s great to see someone care so much about the Protocol, sir!
 
-**LIMEN — restoring the distinction:** That was a number. Not permission.
+**LIMEN · 47.50s:** Finally you’re starting to get it. ASSIGNMENT?!
 
-Worker 01 gets up.
+**bob · 48.80s:** Conveyor, sir.
 
-**Worker 01:** Understood. Sorry, sir.
+**LIMEN · 49.60s:** Go. Before I change my mind.
 
-**LIMEN — administrative calm:** Back behind the line. Take your time.
+**LIMEN · 62.00s:** Slag. This’ll take all shift to do right.
 
-Worker 01 limps back. Worker 02 makes the welcome explicit without leaving his own place.
+**LIMEN · 63.00s:** WHO HERE REALLY CARES ABOUT THE FACTORY?!
 
-**Worker 02:** Here. There's room here.
+**ed · 64.30s:** I do, sir.
 
-**LIMEN:** Good. Ten accounted for.
+**gus · 65.20s:** Me too.
 
-Only after all ten have settled:
+**LIMEN · 66.10s:** You two. Help me set up this checkpoint.
 
-**LIMEN — public instruction:** EVERYONE PREPARE YOUR IDs
+**LIMEN · 78.10s:** IDs AND PAPERS READY!!!
 
-**LIMEN — conditional promise:** One at a time. We all get through if we do this properly.
+**ed · 79.20s:** IDs AND PAPERS!
 
-Hold on the queue. Paper inspection and release belong to the next encounter.
+**gus · 80.00s:** NEXT!!!
 
-## Acting and shot plan
+**LIMEN · 80.80s:** NAME AND ASSIGNMENT?!
 
-Eight LIMEN source clips supply the performance: `Shouting_Angrily` for public commands; `Stand_and_Chat` for explanation and counting; `Idle_02` and `Idle_11` for dry pauses and apparent reassurance; `Shrug` for the incident-report answer; `Angry_Ground_Stomp` for the rule; `Alert` for listening; and `Axe_Spin_Attack` for the cyan strike. The catalog’s axe is not attached: the existing cyan forearm emitter performs the sweep. Each cue records a source offset, rate, loop/hold choice and transition duration. The attack remains a source candidate requiring owner review in the paired scene.
+**sam · 83.20s:** sam. Conveyor.
 
-The worker uses accepted walking, listening, idle, `Electrocuted_Fall` and injured walking. `Checkpoint_Get_Up` is a new 4.8-second derivative: LIMEN’s `Arise` retargeted in bind space to Worker 01, with fall/idle transitions and floor normalization against the skinned mesh. It is a provisional recovery, not a new approved Meshy worker take. Its small track file shares the existing worker body and textures. Source banks remain unchanged.
+**STILETTO · 84.20s:** One worker. He sends me ONE.
 
-Three held compositions replace the earlier line-by-line alternation: the wide assembly holds through the explanation and counting; a doorway cut begins only when Worker 01 steps forward, stays through the strike, fall and recovery; the wide shot returns when he limps back and holds through the ID instruction. There are two cuts during playback. The imported LIMEN motion rig faces -Z; its presentation applies a half-turn so encounter yaw zero faces the queue. Source articulation, viewers and stored world orientation remain unchanged. **Follow scene cameras** is switchable; choosing a manual Lobby/Doorway view disables automatic cuts until re-enabled. Mouse orbit, Lobby/Doorway presets, time scrubbing, nine beat markers and a clickable full script support review. The player starts paused. PNG export prepares a downloadable frame with dialogue; evidence JSON records the exact tick, camera and consequences. This rehearsal has speech bubbles, not recorded voice audio.
+**bob · 85.40s:** Where do I start?
 
+**STILETTO · 86.30s:** Intake. Seat the brain in the cradle.
 
-## Speech as performance
+**STILETTO · 90.90s:** Wash it. We sell thoughts, not yesterday’s grease.
 
-The public utterance carries optional delivery cues: plain, command, outburst, aside, hesitant, dry or warm; selected emphasis phrases; and an optional anger, nerves, doubt, relief or care symbol. This describes the audible/visible performance, not the speaker’s private mind. The kernel still hears and records the canonical unformatted text. No effects or beliefs are awarded by typography or emojis.
+**STILETTO · 97.90s:** Main belt. Clamp it down. Start the drive.
 
-Speech has an anchored tail and integrated speaker tab. Commands are firm and angular; the strike warning has a brief scale/tilt impulse; asides are quieter dashed panels; hesitant replies are rounded; dry remarks remain still after entry. Only selected words receive weight and colour. Emotion badges supply a quick readable cue without placing an emoji after every sentence. Words reveal within 0.32–1.3 seconds using the encounter clock, with punctuation pauses; layout space is reserved so the bubble does not resize as it speaks. Pause and seek show the complete sentence. Reduced motion disables movement and reveal. An **Expressive speech** checkbox provides a plain comparison. PNG export retains the selected treatment, word emphasis and emotion symbols. There is no new font, image, animation library, model, sound asset or render pass.
+**STILETTO · 106.10s:** Lattice Forge. Close the press. Head-sized.
 
-LIMEN alternates orders, procedural certainty and cold reassurance. Workers answer in short, personal turns: eagerness to comply, anxiety about lateness, a whispered warning, then a small kindness. Those contrasting voices carry the scene while the camera holds. Later BDI-produced utterances can use the same delivery contract; the fixed intro remains authored.
+**bob · 113.10s:** I’m all four stations?
 
-## Approved appearance and layout
+**STILETTO · 114.10s:** Until the rest of my shift gets past that tin god.
 
-Security floor is `#A7B2D3`; Lobby retains `#666860`. LIMEN uses pale steel, deep cyan and the shared emitter, at 1.3 times worker height. Workers use blue `#3081c0`, `#3d7297` and `#235d86`. CATHEXIS is absent; her accepted treatment remains unchanged.
+**LIMEN · 129.40s:** NAME AND ASSIGNMENT?!
 
-The compact Lobby–Security layout comes from `arrival-layout.ts`, shared by construction, movement and hearing. A closed admission gate can still carry speech through the open doorway. The cohort occupies three columns with reserved slots; Worker 01 steps out of the front centre and returns along the clear lane. This is authored staging, not general crowd avoidance. Full-floor Dispatch is unchanged.
+**jo · 130.40s:** jo. Conveyor. Same as the last two.
 
-## Engine boundary
+**LIMEN · 131.40s:** I asked for YOUR assignment. Papers.
 
-The headless encounter kernel owns fixed 50 ms ticks, admission, actor/station reservations, movement, addressed speech, hearing, cancellation and effects. Injury, stress, trust and remembered treatment commit once at the contact phase. The ID instruction requires every queue-settled fact. Worker 01 remembers the misunderstanding; witnesses remember that a called number is not permission. These are local rehearsal consequences, ready for later authoritative day integration; they do not yet change a saved shift or factory output.
+## Authority and validation
 
-Presentation samples named cues deterministically. Horizontal root travel belongs to the encounter; animation retains pelvis height and articulation. Bounded blends join unrelated poses; contiguous excerpts of one attack continue without restarting the wind-up. Camera cuts cannot change outcomes. Old temporary baton geometry and its arm adapter are removed.
+The shared kernel owns action admission, reservations, navigation, effects and hearing. Each station requires the previous stage and commits once. Actor appearance comes from the shared ten-worker banks and approved supervisors. The current compact Lobby–Security–Conveyor layout is a rehearsal; it has not replaced the full-floor map or saved-day authority.
 
-Only the active cast loads. Ten independent worker rigs share geometry and textures, with three shared colour materials. Recovery tracks load only when requested. Hidden/offscreen playback pauses, reduced energy preferences are respected, and the paused stage renders on demand. No device-performance acceptance is claimed.
+The first 50 focused checks passed, with an additional complete-cycle platen-contact test now added. The production asset checks and build pass for the first room integration; the final adjusted build and sustained occupied-scene run are recorded separately. A passing headless contact envelope does not certify visible fingers, footfalls or cloth.
 
-## Validation and remaining gates
+Remaining: final room housing fit and travel openings, paired paper/machine contacts, full sequence visual approval, physical-device performance, and saved-day/BDI integration. The rooms use authored mechanisms plus the first optimized Meshy candidates; the complete room kit is not finished. See the current performance report before claiming a frame-rate pass.
 
-The encounter suite covers deterministic replay, the complete dialogue order, close doorway hearing, blocked admission, injury exactly once, cancellation before contact, all ten settled before IDs, retained event history, source cue selection and projection privacy. The encounter and speech tests cover held shot boundaries, deterministic delivery age, canonical transcript preservation, literal emphasis matching, and complete paused/accessible text. The prior encounter coverage includes no competing speech bubbles and completion with distinct intent/action IDs. The shared sampler regression checks reset of omitted parent channels, seek equivalence, crossfading, hold and loop. Recovery validation checks all 145 exported poses against the skinned worker mesh: minimum floor clearance is 0.001999 m. The production build runs existing immutable source-bank and character checks. The current focused run passes 26 tests across four suites, plus scoped lint and the production build. Desktop inspection covers command/emphasis treatment, nervous and angry badges, paused text, steady scene composition, the corrected facing and playback through the settled ending. Storyboard export offers an explicit Download PNG link. Phone layout and this cast’s device-performance acceptance have not been measured.
+### Physical station work
 
-Before main-play integration: approve the paired blade sweep, fall/get-up transition and travel/footfall match; supply general queue navigation and interruptions; connect consequences to saved-day authority; and run the occupied-scene performance protocol. The source spin attack and adapted recovery remain candidate animation choices. A camera shot is not a collision certification.
+bob walks to each control socket before operating it; STILETTO walks alongside the line and turns to watch him. Navigation, equipment and the action use the same station coordinates. A cycle is interrupted if bob leaves its control radius; it cannot award progress or output remotely. Exact palm-to-control animation contact is still under review.
 
-## Next asset requests
+## Room delivery status · 22 October
 
-No new body is needed to review this take. If the candidate strike or recovery is rejected, request a short right-forearm warning sweep on LIMEN and a deliberate worker get-up from the floor. Export the same rigs, identify actual catalog names and root motion, and retain source motions. Later paper handling needs an ID prop, LIMEN’s protocol clipboard, worker present-ID and supervisor inspect/return-ID contacts. Fit those against the actual station and partner rather than accepting isolated gestures as finished interactions.
+The opening now loads the rebuilt LIMEN and generated entrance, Security portal/desks, intake/crate, wash and Forge housings around the engine-owned mechanisms. Character motion and review loaders share the same delivery assets. Numeric doorway and route checks passed; actual camera framing, tool contacts, mechanism clearance and sustained performance remain acceptance gates. See the [room kit](model-briefs/room-kit/README.md) and [LIMEN delivery record](model-briefs/limen/LANDING_DELIVERY_2026-10-22.json).

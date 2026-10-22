@@ -1,0 +1,26 @@
+{
+  "tool": "meshy_image_to_3d",
+  "task_id": "01a161bd-b891-73d6-ad83-1994e9037feb",
+  "credits": 30,
+  "state": "SUCCEEDED",
+  "arguments": {
+    "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/docs/loopforge/production/model-briefs/room-kit/lattice-forge/reference-v1.png",
+    "ai_model": "meshy-7.1",
+    "model_type": "standard",
+    "geometry_resolution": "standard",
+    "should_remesh": true,
+    "target_polycount": 16000,
+    "topology": "triangle",
+    "should_texture": true,
+    "enable_pbr": true,
+    "texture_resolution": "2k",
+    "image_enhancement": false,
+    "target_formats": [
+      "glb"
+    ],
+    "multi_view_thumbnails": true,
+    "response_format": "json",
+    "texture_prompt": "Worn dark cast iron, restrained aged brass fittings and broad ribbed panels. Preserve dark iron fields and brass edges; no orange illumination, no glowing material, no writing. Open space between the two columns must remain open."
+  },
+  "input_sha256": "20c51bc2b0d5c1a37b7fe8b1c7795013f01a02a2c9f8a6fed33cf28ef05e8ec2"
+}

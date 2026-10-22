@@ -23,5 +23,5 @@ export const limenMotions = [
 ] as const;
 export type LimenMotionId=typeof limenMotions[number]['id'];
 export type LimenReviewBank='approved'|'motions';
-export const LIMEN_MOTION_REVISION='meshy-limen-motions-2026-10-19';
+export const LIMEN_MOTION_REVISION='limen-landing-body-2026-10-22';
 export const limenMotion=(id:string)=>limenMotions.find(m=>m.id===id);

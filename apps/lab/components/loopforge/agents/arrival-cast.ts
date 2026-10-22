@@ -16,7 +16,7 @@ export async function loadArrivalCast(floor:RehearsalStage,signal:AbortSignal){
  try{
   // Bound decode/upload work on older hardware; do not create ten WebGL upload bursts.
   for(const worker of openingWorkers){signal.throwIfAborted();const model=await loadOpeningWorker(stage,worker.id,'floor',signal);workers.set(worker.id,model);model.light(false);model.ground(false);model.normals(false);}
-  limen=await loadLimenMotions(stage,signal,()=>{},()=>{});limen.play(false);limen.light(false);limen.clip('Alert');limen.seek(0);
+  limen=await loadLimenMotions(stage,signal,()=>{},()=>{},'floor');limen.play(false);limen.light(false);limen.clip('Alert');limen.seek(0);
   stiletto=await loadStiletto(stage,signal,()=>{});stiletto.play(false);stiletto.light(false);stiletto.flame(false);stiletto.visor(true);
   const median=[...workers.values()].map(w=>w.presentation.standingHeight).sort((a,b)=>a-b)[5],supervisorHeight=median*1.5;
   for(const model of [limen,stiletto]){const body=model.presentation.bodyMeshes.reduce((a,b)=>a.getTotalVertices()>b.getTotalVertices()?a:b);body.computeWorldMatrix(true);const b=body.getBoundingInfo().boundingBox;model.presentation.root.scaling.setAll(supervisorHeight/(b.maximumWorld.y-b.minimumWorld.y));}

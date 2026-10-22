@@ -34,7 +34,7 @@ async def run(a):
             if any(j['state']=='unknown' for j in ledger['jobs']): raise ValueError('Resolve unknown paid submission before another job')
             if any(j['label']==a.label for j in ledger['jobs']): raise ValueError('Label already submitted; inspect existing job')
             used=sum(j.get('actual',j['reserved']) for j in ledger['jobs'])
-            if used+a.cost>ledger['cap']:raise ValueError('500-credit total cap would be exceeded')
+            if used+a.cost>ledger['cap']:raise ValueError(f"{ledger['cap']}-credit total cap would be exceeded")
             job={'label':a.label,'tool':a.tool,'reserved':a.cost,'state':'unknown','created_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'arguments':args,'arguments_sha256':hashlib.sha256(json.dumps(args,sort_keys=True).encode()).hexdigest()}
             ledger['jobs'].append(job);save(LEDGER,ledger)
         p=await asyncio.create_subprocess_exec(str(LAUNCHER),stdin=asyncio.subprocess.PIPE,stdout=asyncio.subprocess.PIPE,stderr=asyncio.subprocess.PIPE,start_new_session=True,limit=8*1024*1024,cwd=str(ROOT))

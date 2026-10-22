@@ -38,3 +38,15 @@ console.log('STILETTO corrected motion selection is independent of asset group o
  sampler.sample({clip:'move',rootMotion:'preserve'},.5);assert.deepEqual(hips.position.asArray(),[2,12,3]);
 }
 console.log('Paired balance shifts survive seeking and blend into encounter-owned travel.');
+
+// Quiet_Wait must preserve its planted contact pose under seeks and blended entry.
+// Cache the fixed pose, but keep the original restrained upper-body expression.
+{
+ const leg={uniqueId:101,name:'LeftUpLeg',position:Vector3.Zero(),rotationQuaternion:Quaternion.Identity()},head={uniqueId:102,name:'Head',position:Vector3.Zero(),rotationQuaternion:Quaternion.Identity()};let legSamples=0;
+ const turn=frame=>Quaternion.FromEulerAngles(frame*.01,frame*.002,0);
+ const tracks=[{target:leg,animation:{framePerSecond:30,targetProperty:'rotationQuaternion',evaluate:frame=>{legSamples++;return turn(frame);}}},{target:head,animation:{framePerSecond:30,targetProperty:'rotationQuaternion',evaluate:turn}}];
+ const sampler=createPerformanceSampler([{name:'idle',from:0,to:30,targetedAnimations:tracks}]);
+ for(const seconds of [.1,.9,.4,1.4,.1]){sampler.sample({clip:'Quiet_Wait',loop:true},seconds);assert(leg.rotationQuaternion.equalsWithEpsilon(turn(6)));assert(head.rotationQuaternion.equalsWithEpsilon(Quaternion.Slerp(turn(6),turn(seconds%1*30),.18)));}
+ assert.equal(legSamples,1,'the fixed leg curve is sampled once, not every frame');
+}
+console.log('Quiet crowd pose remains seekable, planted and expressive with cached contact curves.');

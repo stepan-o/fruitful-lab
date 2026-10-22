@@ -1,0 +1,3 @@
+Empty open brain-storage crate — contact design targets, NOT measured or accepted
+
+Floor origin centered under the crate; +Y up, +Z front. Proposed external size 1.1 by 0.45 by 0.7 m (X,Y,Z), internal empty volume at least 0.9 by 0.3 by 0.5 m. Left and right handles near [-0.55,0.32,0] and [0.55,0.32,0], with 0.09 m grip clearance target. Support plane Y=0. State empty/carried/stacked/overturned uses this same shell; brains remain individual engine objects, never baked into geometry or materials. Collision can be a coarse carried box but empty-state placement and interior content fit need integration review.

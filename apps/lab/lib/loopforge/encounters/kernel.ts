@@ -1,6 +1,6 @@
 import {reserve} from './reservations';
 import {applyPropTransfers,propDefinitionError,propResources,propCustodian,custodyBelief} from './props';
-import {TICK_MS,type World,type Registry,type Intent,type Action,type Active,type SpatialServices,type Event,type Planner,type View,type Point,type Condition} from './contract';
+import {TICK_MS,type World,type Registry,type Intent,type Action,type Active,type SpatialServices,type Event,type Planner,type View,type Point,type Condition,type ProcessCue} from './contract';
 /** Copy mutable containers, share immutable evidence and coordinates. Historical
  * speech does not need serializing on every 20 Hz tick. Cancellation replaces
  * an event before changing its expiry; observations and poses stay immutable. */
@@ -19,6 +19,8 @@ function startPhase(s:World,a:Active,d:Action,space:SpatialServices){
  for(const p of phase.perform){a.origins[p.agent]=s.agents[p.agent].position;if(p.yaw!==undefined)s.agents[p.agent].yaw=p.yaw;}
  for(const speech of phase.say??[]){
   const speaker=s.agents[speech.speaker];
+  // Replace this actor's visible line, retaining the event and listeners' memories.
+  s.events=s.events.map(e=>e.kind==='speech'&&e.agent===speaker.id&&(e.until??0)>s.tick?{...e,until:s.tick}:e);
   emit(s,{kind:'speech',action:a.intent.id,agent:speaker.id,detail:speech.text,speech,until:s.tick+Math.ceil(speech.seconds*1000/TICK_MS)});
   // An utterance is evidence of what a speaker says, not automatic world truth.
   for(const id of speech.to){const listener=s.agents[id];if(!listener||!space.canHear(speaker,listener,s,speech.channel))continue;
@@ -40,6 +42,12 @@ function conditionHolds(s:World,c:Condition):boolean {
  if('near'in c){const a=s.agents[c.agent],b=s.agents[c.near];return !!a&&!!b&&Number.isFinite(c.within)&&c.within>=0&&Math.hypot(a.position[0]-b.position[0],a.position[1]-b.position[1])<=c.within;}
  return 'fact'in c?s.facts[c.fact]===c.equals:'belief'in c?s.agents[c.agent]?.beliefs[c.belief]?.value===c.equals:(s.agents[c.agent]?.[c.feeling]??-1)>=c.atLeast;
 }
+/** A machine can run only while its reserved operator occupies the control socket.
+ * This belongs to world authority; animation playback cannot manufacture output. */
+function processReady(s:World,p:ProcessCue|undefined){
+ if(!p)return true;
+ const a=s.agents[p.operator.agent];return !!a&&Math.hypot(a.position[0]-p.operator.position[0],a.position[1]-p.operator.position[1])<=p.operator.within;
+}
 function rejection(s:World,i:Intent,d:Action|undefined,space:SpatialServices):string|null {
  if(!d)return 'Unknown action.';
  if(!roomsConnected(d,s,space))return 'Rooms are not connected.';
@@ -48,11 +56,13 @@ function rejection(s:World,i:Intent,d:Action|undefined,space:SpatialServices):st
  if(d.resources.some(id=>!s.resources.includes(id)))return 'Station or prop is unavailable.';
  if(d.requires.some(c=>!conditionHolds(s,c)))return 'Preconditions changed.';
  if(d.phases.some(p=>p.effects?.some(e=>'fact'in e?e.observedBy?.some(id=>!d.participants.includes(id)):!d.participants.includes(e.agent))))return 'Invalid effect observer.';
+ if(d.phases.some(p=>p.process&&(!d.participants.includes(p.process.operator.agent)||!Number.isFinite(p.process.operator.within)||p.process.operator.within<0||!p.process.operator.position.every(Number.isFinite))))return 'Invalid machine operator.';
  if(!d.phases.length||d.phases.some(p=>!Number.isInteger(p.ticks)||p.ticks<1||p.perform.some(v=>!d.participants.includes(v.agent))||(p.say??[]).some(v=>!d.participants.includes(v.speaker))))return 'Invalid action definition.';
  // Admission validates the first phase. Later paths are checked as they execute,
  // against clearance and positions established by earlier phases. Predicting
  // every future route from the initial world wrongly rejects earned admission.
  const propError=propDefinitionError(s,d);if(propError)return propError;
+ if(!processReady(s,d.phases[0].process))return 'Machine operator is away from the controls.';
  const moves=d.phases[0].perform.flatMap(v=>v.to?[{agent:v.agent,to:v.to}]:[]);
  if(!routesClear(s,moves,space))return 'Reserved route is not traversable.';
  return null;
@@ -78,10 +88,12 @@ export function advance(world:World,registry:Registry,space:SpatialServices,plan
   const a=s.active.find(a=>a.intent.id===id);if(!a)continue;
   const d=registry[a.intent.action],p=d.phases[a.phase];
   if(!roomsConnected(d,s,space)||d.participants.some(id=>!actionRooms(d).includes(s.agents[id]?.room))){s=cancel(s,a.intent.id);continue;}
+  if(!processReady(s,p.process)){s=cancel(s,a.intent.id);continue;}
   const t=Math.min(1,(s.tick-a.start)/p.ticks);
   const moves=p.perform.flatMap(v=>{if(!v.to)return [];const from=a.origins[v.agent],to:Point=[Math.round(from[0]+(v.to[0]-from[0])*t),Math.round(from[1]+(v.to[1]-from[1])*t)];return [{agent:v.agent,to}];});
   if(!routesClear(s,moves,space)){s=cancel(s,a.intent.id);continue;}
   for(const move of moves){s.agents[move.agent].position=move.to;const room=space.roomAt?.(move.to);if(room)s.agents[move.agent].room=room;}
+  if(!processReady(s,p.process)){s=cancel(s,a.intent.id);continue;}
   if(t<1)continue;
   if(d.requires.some(c=>('prop'in c||'near'in c)&&!conditionHolds(s,c))){s=cancel(s,a.intent.id);continue;}
   const transfers=applyPropTransfers(s,p.transfers??[]);
@@ -106,7 +118,8 @@ export function advance(world:World,registry:Registry,space:SpatialServices,plan
 export function project(s:World,registry:Registry,finished=false):View {
  const completedByActor=new Map<string,Event>();
  for(let i=s.events.length-1;i>=0;i--){const e=s.events[i];if(e.kind==='completed')for(const id of registry[e.detail]?.participants??[])if(!completedByActor.has(id))completedByActor.set(id,e);}
- return {framing:s.active[0]?registry[s.active[0].intent.action].phases[s.active[0].phase].framing:undefined,tick:s.tick,actors:Object.values(s.agents).map(agent=>{
+ const machine=s.active.map(a=>({a,p:registry[a.intent.action].phases[a.phase]})).find(v=>v.p.process&&processReady(s,v.p.process));
+ return {process:typeof s.facts['line.stage']==='number'?{stage:s.facts['line.stage'],output:Number(s.facts['line.output']??0),active:machine?.p.process,progress:machine?Math.min(1,(s.tick-machine.a.start)/machine.p.ticks):0}:undefined,framing:s.active[0]?registry[s.active[0].intent.action].phases[s.active[0].phase].framing:undefined,tick:s.tick,actors:Object.values(s.agents).map(agent=>{
   const a=s.active.find(v=>registry[v.intent.action].participants.includes(agent.id));
   const completed=completedByActor.get(agent.id);
   const settled=completed?registry[completed.detail].phases.at(-1):undefined;

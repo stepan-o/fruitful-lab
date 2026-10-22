@@ -1,0 +1,59 @@
+{
+  "status": "proposed; unmeasured; scene fit unreviewed",
+  "units": "meters",
+  "axes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "origin": "floor center",
+  "outer_size_xyz": [
+    2.6,
+    1.5,
+    2.4
+  ],
+  "clear_opening_width_height": null,
+  "anchors": {
+    "crate_seat": [
+      0,
+      0.95,
+      0
+    ],
+    "hand_left": [
+      -0.45,
+      0.98,
+      0.65
+    ],
+    "hand_right": [
+      0.45,
+      0.98,
+      0.65
+    ],
+    "operator": [
+      0,
+      0,
+      1.9
+    ],
+    "input": [
+      -1.3,
+      0.95,
+      0
+    ],
+    "output": [
+      1.3,
+      0.95,
+      0
+    ],
+    "reject": [
+      0,
+      0.95,
+      -1.2
+    ],
+    "repair": [
+      0,
+      0,
+      -1.9
+    ]
+  },
+  "measured_source_bounds": null,
+  "measured_delivery_bounds": null
+}

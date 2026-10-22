@@ -4,7 +4,7 @@
 
 LIMEN’s pale armour filled the doorway before he spoke. The face above it wore a metal grin; a narrow teal light moved from one worker to the next. He held a form as though its condition might tell him something about its owner. Even his smallest correction carried across the room. LIMEN took comfort in a completed check and could spend a long time making it complete. The workers waiting to be checked had time to study the cyan blade along his arm.
 
-Revised prose draft. The approved ensemble is the current cast illustration; preserve the accepted supervisor body, palette, equipment and existing motion work. Individual model inputs below remain the geometry authority for rebuilding a supervisor.
+The approved ensemble remains the identity reference. On 21 October the owner authorized rebuilding LIMEN to recover that identity in the opening: the previous body and palette are no longer constraints. Keep source revisions and motion work for comparison and transfer.
 
 A-pose input update · 19 October 2026 · body v2 / emitter v1 retained
 
@@ -12,7 +12,13 @@ Prototype available. Heavy armour, cyan optics and energy flowing from one forea
 
 Reconstructed rebuild brief from the accepted v2 source, owner instructions and import records. The original Meshy chat prompt and historical upload images were not recovered; this is not a verbatim historical export. The kit now supplies reconstructed front, rear and side A-pose inputs rendered from the accepted body itself.
 
-## Body images to upload
+## Landing-supervisor revision · 21 October 2026
+
+Use `08-landing-supervisor-rebuild.txt` for the landing body. The rebuilt skull, broad steel plates, dark joints and compact forearm mount are now delivered with all 20 motion tracks on a 24-joint rig. The opening uses the 17,991-triangle floor model; the animation viewer uses the 31,213-triangle portrait model. A 7,995-triangle overview delivery is also available. The full head geometry is retained at every level. Files are 2.92 MB, 4.84 MB and 1.67 MB respectively, with 512px, 1K and 256px maps.
+
+[Delivery measurements](LANDING_DELIVERY_2026-10-22.json) record the hashes and structural checks. Every animation value and 2,877 sampled poses match the retained source after optimization. `apps/lab/scripts/characters/build-limen-delivery.mjs` reproduces the levels. The original key-limit rejection incurred no charge; the successful body and rig cost 35 credits. Renderer, blade contact, silhouette and sustained scene-performance acceptance remain open.
+
+## Earlier body images (retained for comparison)
 
 Use the three separate images whose filenames start `limen-apose-front`, `limen-apose-back` and `limen-apose-side`. Front is the primary input; rear and profile are supporting views of the same character. They share one orthographic framing, the accepted v2 Rest pose and the approved pale-steel/deep-teal palette used in the animation viewer. The body has no attached emitter, blade or clipboard. Do not combine props with these body inputs.
 

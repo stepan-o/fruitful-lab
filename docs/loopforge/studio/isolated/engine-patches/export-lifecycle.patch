@@ -1,0 +1,103 @@
+--- a/apps/lab/components/loopforge/agents/SceneStudies.tsx
++++ b/apps/lab/components/loopforge/agents/SceneStudies.tsx
+@@ -13,6 +13,7 @@
+ import SpeechBubble from './SpeechBubble';
+ import styles from './scene-studies.module.css';
+ import {storyboard} from './storyboard';
++import {createCaptureResults,type CaptureFile} from './capture-results';
+ import {isStrikeSpeech,strikeSpeechLane,placeStrikeSpeech} from './strike-speech-placement';
+ import type {RehearsalStage} from './arrival-stage';
+ import {compareStationLights,type LightComparison} from './station-light-comparison';
+@@ -40,8 +41,10 @@
+  const [performanceFile,setPerformanceFile]=useState<{url:string;name:string}|null>(null);
+  useEffect(()=>()=>{if(performanceFile)URL.revokeObjectURL(performanceFile.url);},[performanceFile]);
+  const [reading,setReading]=useState<AttentionStep|null>(null);
+- const [captureFile,setCaptureFile]=useState<{url:string;name:string}|null>(null);
+- useEffect(()=>()=>{if(captureFile)URL.revokeObjectURL(captureFile.url);},[captureFile]);
++ const [captureFile,setCaptureFile]=useState<CaptureFile|null>(null);
++ const [captureResults]=useState(()=>createCaptureResults(blob=>URL.createObjectURL(blob),url=>URL.revokeObjectURL(url)));
++ const captureCancellation=useRef<(()=>void)|null>(null);
++ useEffect(()=>()=>{captureResults.dispose();captureCancellation.current?.();},[captureResults]);
+  const take=useMemo(()=>rehearsal(study,choice),[study,choice]),info=studies.find(s=>s.id===study)!;
+  function frameShot(r:Runtime,v:View){if(v.tick===0&&r.take.study==='arrival')v={...v,framing:'approach'};if(followCamera.current&&v.framing&&lastShot.current!==v.framing){r.floor.sceneShot?.(v.framing);lastShot.current=v.framing;}if(followCamera.current&&v.framing==='approach')r.floor.trackApproach?.(v);}
+  function sync(r:Runtime){const base=rehearsalView(r.take,r.world),v=r.reading?readingView(base,r.reading,r.readSeconds):base;r.view=v;r.cast.update(v);r.floor.presentProcess?.(v.process);frameShot(r,v);setView(v);setTick(v.tick);setWorld(r.world);}
+@@ -121,21 +124,44 @@
+  function room(s:Study){if(s===study||testing)return;setPerformanceRun(null);setReading(null);setMachineEffects(true);setStationLighting('glow');setLightRun(null);setReady(false);setRunning(false);setView(null);setError('');setTick(0);setReport(null);setWorld(null);lastShot.current='';setChoice('care');setStudy(s);}
+  function evidence(){const r=runtime.current;if(!r)return;download(new Blob([JSON.stringify({kind:'isolated engine rehearsal',version:r.world.version,study,choice,tick:r.world.tick,camera:r.floor.reviewCamera(),stationLight:r.floor.stationLightSnapshot?.(),projection:rehearsalView(r.take,r.world),authorState:r.world,performance:report},null,2)],{type:'application/json'}),`loopforge-${study}-${choice}-${tick}.json`);}
+  async function capture(){
+-  const r=runtime.current,c=canvas.current;if(!r||!c||saving)return;
+-  seek(r.world.tick);setSaving(true);setSaveStatus('');
+-  const scene=r.floor.characterStage().scene;
+-  try{await new Promise<void>((resolve,reject)=>{
+-   const timeout=setTimeout(()=>{scene.onAfterRenderObservable.remove(observer);reject(new Error('Keep the scene visible and try saving again.'));},5000);
+-   const observer=scene.onAfterRenderObservable.addOnce(()=>{
+-    clearTimeout(timeout);if(runtime.current!==r){resolve();return;}
+-    try{storyboard(c,rehearsalView(r.take,r.world),r.cast.anchors(),expressive).toBlob(blob=>{
+-     if(!blob){reject(new Error('The image could not be saved. Please try again.'));return;}
+-     setCaptureFile({url:URL.createObjectURL(blob),name:`loopforge-${study}-${choice}-${r.world.tick}.png`});resolve();
+-    });}catch(e){reject(e);}
+-   });r.floor.characterStage().refresh();
+-  });if(runtime.current===r)setSaveStatus('Storyboard ready.');}
+-  catch(e){if(runtime.current===r)setSaveStatus(e instanceof Error?e.message:'Could not save this frame.');}
+-  finally{setSaving(false);}
++  const r=runtime.current,c=canvas.current;if(!r||!c)return;
++  const request=captureResults.begin();setCaptureFile(null);
++  captureCancellation.current?.();setSaving(true);setSaveStatus('');
++  try{
++   seek(r.world.tick);
++   const scene=r.floor.characterStage().scene;
++   await new Promise<void>((resolve,reject)=>{
++    let settled=false,observer:ReturnType<typeof scene.onAfterRenderObservable.addOnce>|null=null;
++    let timeout:ReturnType<typeof setTimeout>|undefined;
++    const finish=(error?:unknown)=>{
++     if(settled)return;settled=true;
++     if(timeout!==undefined)clearTimeout(timeout);
++     if(observer)scene.onAfterRenderObservable.remove(observer);
++     if(captureCancellation.current===cancel)captureCancellation.current=null;
++     if(error!==undefined)reject(error);else resolve();
++    };
++    const cancel=()=>finish(new Error('Image request cancelled.'));
++    captureCancellation.current=cancel;
++    timeout=setTimeout(()=>finish(new Error('Keep the scene visible and try saving again.')),5000);
++    observer=scene.onAfterRenderObservable.addOnce(()=>{
++     if(!captureResults.isPending(request)||runtime.current!==r){finish(new Error('The scene changed. Please save again.'));return;}
++     try{
++      const frame=rehearsalView(r.take,r.world),name=`loopforge-${study}-${choice}-${frame.tick}.png`;
++      storyboard(c,frame,r.cast.anchors(),expressive).toBlob(blob=>{
++       if(settled)return;
++       if(!captureResults.isPending(request)||runtime.current!==r){finish(new Error('The scene changed. Please save again.'));return;}
++       if(!blob){finish(new Error('The image could not be saved. Please try again.'));return;}
++       try{const file=captureResults.complete(request,blob,name);if(file)setCaptureFile(file);finish();}
++       catch(error){finish(error);}
++      });
++     }catch(error){finish(error);}
++    });
++    try{r.floor.characterStage().refresh();}catch(error){finish(error);}
++   });
++   if(captureResults.isCurrent(request)&&runtime.current===r)setSaveStatus('Storyboard ready.');
++  }catch(error){
++   if(captureResults.fail(request)){setCaptureFile(null);if(runtime.current===r)setSaveStatus(error instanceof Error?error.message:'Could not save this frame.');}
++  }finally{if(captureResults.isCurrent(request))setSaving(false);}
+  }
+ 
+  const activeSpeech=view?.bubbles??[];
+--- /dev/null
++++ b/apps/lab/components/loopforge/agents/capture-results.ts
+@@ -0,0 +1,17 @@
++export type CaptureFile={url:string;name:string};
++/** One owned download and one current request. Late callbacks never create URLs. */
++export function createCaptureResults(createURL:(blob:Blob)=>string,revokeURL:(url:string)=>void){
++ let request=0,pending=false,file:CaptureFile|null=null;
++ function release(){if(file){revokeURL(file.url);file=null;}}
++ return {
++  begin(){request++;pending=true;release();return request;},
++  isCurrent(id:number){return id===request;},
++  isPending(id:number){return id===request&&pending;},
++  complete(id:number,blob:Blob,name:string){
++   if(id!==request||!pending)return null;
++   const next={url:createURL(blob),name};file=next;pending=false;return next;
++  },
++  fail(id:number){if(id!==request)return false;pending=false;release();return true;},
++  dispose(){request++;pending=false;release();}
++ };
++}

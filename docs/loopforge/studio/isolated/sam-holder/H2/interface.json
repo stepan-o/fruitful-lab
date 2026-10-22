@@ -1,0 +1,238 @@
+{
+  "version": "sam-holder/H2-proposal-1",
+  "status": "PROPOSAL_ONLY_NOT_FITTED",
+  "units": "metres",
+  "attachmentBone": "Hips",
+  "holderToHipsMatrix": null,
+  "SamRightHandGripMatrix": null,
+  "owners": {
+    "holder": "3d-artist-mvjmeezw",
+    "bodyAnchorAndGrip": "Animator",
+    "integration": "Engine after Producer acceptance"
+  },
+  "frame": {
+    "localOrigin": "mouth centre",
+    "X": "waist tangent, not anatomical right",
+    "Y": "torso up; extraction +Y",
+    "Z": "outward; mounting face is -Z",
+    "basis": "Use calibrated Animator right-handed holder frame and full actual-loader metre conversion; preserve reflection handling. No world-X anatomical assumption.",
+    "referenceFramePath": "${STUDIO_ROOT}/evidence/LST-3/sam-credential-holder/endpoint-fit/execution-shell-R1/bridge/actual-output/frame.json",
+    "referenceFrameSHA256": "5ecdd23dd686439be50cf571d0e614165d8d47cfa65bb022ee197e55f72cc8e8",
+    "referenceStatus": "rig-derived with mesh support, anatomical image sign still unconfirmed; not a fitted H2 transform"
+  },
+  "sockets": {
+    "mouth": {
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "quaternionXYZW": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "storedCard": {
+      "translation": [
+        0,
+        -0.075,
+        0
+      ],
+      "quaternionXYZW": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "withdrawnCard": {
+      "translation": [
+        0,
+        0.075,
+        0
+      ],
+      "quaternionXYZW": [
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  },
+  "opening": {
+    "upperHandWell": {
+      "x": [
+        -0.095,
+        0.095
+      ],
+      "y": [
+        -0.05,
+        0
+      ],
+      "z": [
+        -0.025,
+        0.035
+      ]
+    },
+    "lowerCardGuide": {
+      "x": [
+        -0.095,
+        0.095
+      ],
+      "y": [
+        -0.14,
+        -0.05
+      ],
+      "z": [
+        -0.0065,
+        0.0065
+      ]
+    },
+    "transition": "Shoulder ledges span y=-0.055..-0.050; no lid or top crossbar. Narrow lower rails retain card alignment; upper front/back lips move away from observed knuckles.",
+    "cardDimensions": [
+      0.18,
+      0.13,
+      0.003
+    ],
+    "cardTopRecess": 0.01,
+    "extractionDirection": [
+      0,
+      1,
+      0
+    ],
+    "insertionDirection": [
+      0,
+      -1,
+      0
+    ],
+    "straightTravel": 0.15,
+    "turnOnlyAfter": "Card bottom is >=0.010m above mouth and complete hand/forearm cleared shell/body."
+  },
+  "edgeGripProposal": {
+    "worker": "sam",
+    "status": "Animator to measure; not a delivered runtime socket",
+    "reason": "H1 full-right-chain/shell103\u2013105 cases; H2 clears72 saved mouth vertices but14 vertices from the broader saved right-chain sample still intersect in old poses. A new pose/grip is necessary; no old-pose pass.",
+    "candidateContact": "Opposed contacts on the upper card faces near tangent X=-0.045m, card top edge Y=-0.010m; contact patch suggested X=-0.065..-0.025,Y=-0.018..-0.010,Z=+/-0.0015. These are card-local-in-holder design coordinates, NOT measured fingertip contacts.",
+    "distalAccessEnvelope": {
+      "min": [
+        -0.075,
+        -0.04,
+        -0.015
+      ],
+      "max": [
+        -0.015,
+        0.01,
+        0.025
+      ],
+      "status": "Design corridor for distal pinch only. Not whole hand bounds and not a fitted grip.",
+      "source": "Observed H1 mouth/intersection triangle region with10mm normal margin in the upper well."
+    },
+    "palmForearmRule": "Keep the complete palm and forearm exterior to actual shell/armour; prefer palm above mouth during insertion. Fit named fingers/contact geometry, not a wrist target or this corridor alone. The saved right-chain sample extends to Z0.1984 and Y-0.1831m; it does not fit in the well.",
+    "unmodifiedOthers": true,
+    "actualSocketPosition": null,
+    "actualSocketQuaternion": null,
+    "gripApproval": "proposed only; Producer/Animator/Engine must pin any Sam-only change"
+  },
+  "mount": {
+    "interface": "external bridge plus two rear pads; shell no longer pretends its whole backing is supported",
+    "contactPlaneLocalZ": -0.045,
+    "pads": [
+      {
+        "name": "mount_pad_left",
+        "centre": [
+          -0.065,
+          -0.1,
+          -0.045
+        ],
+        "rectangleMetres": [
+          0.028,
+          0.039999999999999994
+        ],
+        "faceNormal": [
+          0,
+          0,
+          -1
+        ]
+      },
+      {
+        "name": "mount_pad_right",
+        "centre": [
+          0.065,
+          -0.1,
+          -0.045
+        ],
+        "rectangleMetres": [
+          0.028,
+          0.039999999999999994
+        ],
+        "faceNormal": [
+          0,
+          0,
+          -1
+        ]
+      }
+    ],
+    "standoffToLowerBackOuter": 0.0335,
+    "standoffToUpperBackOuter": 0.015,
+    "nominalPlanesOnly": true,
+    "bodyContactAllowed": "Only rear -Z faces of mount_pad_left and mount_pad_right, each on independently measured waist armour support. Do not whitelist all backing/bridge/shell triangles.",
+    "supportGate": "At each pad retain at least3 actual torso samples within2mm and >=1cm2 projected area as a conservative screen; then inspect actual surface fit. Do not waive zero support or mixed-boundary contacts.",
+    "fitRule": "Re-solve holder pose from actual external support/whole body envelope; never add a canned offset to the rejected H1 anchor. All bridge, lip, guide and non-pad surfaces must clear body; 10mm design margin is separate from unchanged zero-crossing gate.",
+    "contactTriangleIds": {
+      "leftRearFace": [
+        178,
+        179
+      ],
+      "rightRearFace": [
+        190,
+        191
+      ]
+    },
+    "measuredSupport": null
+  },
+  "tolerances": {
+    "shellSurface": 1e-06,
+    "strictShellVolumeInset": 1e-07,
+    "source": "unchanged H1 corrected-shell precondition and fit.mjs; no runtime contact thresholds changed"
+  },
+  "material": {
+    "name": "proposed-dark-aged-metal",
+    "srgb": "#454746",
+    "metallic": 0.65,
+    "roughness": 0.75
+  },
+  "sharedDetails": [
+    "portrait",
+    "floor",
+    "console"
+  ],
+  "timingAndCustody": {
+    "oneCard": true,
+    "drawTransferSeconds": 2.0,
+    "stowTransferSeconds": 1.6,
+    "clipDurationSeconds": 3.6,
+    "preserveHelpRecoveryAndUnrelatedClips": 27,
+    "noLiveChanges": true,
+    "concealment": "Opaque stepped front/back maintain frontal concealment intent and10mm top recess. Wider top opening may expose card in oblique/top shots; no early hide/open-air reveal permitted."
+  },
+  "acceptance": {
+    "tinyHolderOnly": "see tiny-checks.json",
+    "savedSubset": "evidence only, inherited endpoint remains failed",
+    "bodyFit": "NOT RUN",
+    "newGripFit": "NOT RUN",
+    "custodyOcclusion": "NOT RUN",
+    "taste": "NOT APPROVED",
+    "runtimePerformance": "NOT RUN"
+  },
+  "intendedCardContact": {
+    "surface": "bottom_stop upper +Y face",
+    "planeY": -0.14,
+    "triangleIds": [
+      4,
+      5
+    ],
+    "allowance": "card bottom edge only; no whole-shell or hand/body contact exclusion"
+  }
+}

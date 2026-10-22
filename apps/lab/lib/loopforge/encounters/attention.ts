@@ -24,7 +24,8 @@ export function factoryClock(tick:number){const seconds=8*3600+Math.floor(tick*T
 export function readingView(view:View,step:AttentionStep,elapsed:number):View{
  return {...view,actors:view.actors.map(a=>{
   if(!a.cue)return a;
-  if(['walk','limp'].includes(a.motion))return {...a,motion:'idle',seconds:elapsed,cue:{clip:a.character==='worker'?'Quiet_Wait':a.character==='stiletto'?'Alert':'Idle_11',loop:true,rate:1},previous:{cue:a.cue,seconds:a.seconds,yaw:a.yaw},blend:Math.min(1,elapsed/.3)};
+  const holdsID=view.props?.some(p=>p.kind==='credential'&&p.location.kind==='hand'&&p.location.agent===a.id);
+  if(['walk','limp'].includes(a.motion))return {...a,motion:'idle',seconds:elapsed,cue:{clip:a.character==='worker'?(holdsID?'ID_Ready':'Quiet_Wait'):a.character==='stiletto'?'Alert':'Idle_11',loop:true,rate:1},previous:{cue:a.cue,seconds:a.seconds,yaw:a.yaw},blend:Math.min(1,elapsed/.3)};
   // A physical fall/recovery/strike stays at the reached contact pose. The other
   // actors continue to breathe and look around; the clock remains exactly held.
   if(['strike','fall','recover','recoil'].includes(a.motion)||a.cue.rate===0)return a;

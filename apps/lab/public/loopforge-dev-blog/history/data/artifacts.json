@@ -1,0 +1,4111 @@
+{
+  "cutoff": "2026-10-22T21:20:13.180385+00:00",
+  "capturedAt": "2026-10-22T21:30:02.675124+00:00",
+  "artifacts": [
+    {
+      "id": "A0001",
+      "label": "AGENTS.md",
+      "kind": "report-or-data",
+      "sha256": "39dbdfd0e08bffa32fa2f63ffa2469e93c8f36da7cbef21272231fa7c8c0b6cb",
+      "bytes": 6309,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0002",
+      "label": "START_HERE.md",
+      "kind": "report-or-data",
+      "sha256": "50c48285fb5c62e76d29b6bc36c55ea852dc01e22a4c38774dbc37fc5b156138",
+      "bytes": 8454,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0003",
+      "label": "animator.md",
+      "kind": "report-or-data",
+      "sha256": "44d62e9afe7a03b55ca3790db81bd929c9bfb2db765473e7c250380dd2678c55",
+      "bytes": 5030,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0004",
+      "label": "critic.md",
+      "kind": "report-or-data",
+      "sha256": "744c68affd98c25c6f9916f838a9ccdbb86b8391cf53cdfb68249b0c9ce568a1",
+      "bytes": 5222,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0005",
+      "label": "writer.md",
+      "kind": "report-or-data",
+      "sha256": "b3eb4c21b1028de2afcb9781ce140f41ff63a89aaa4fc64f8c1b3dc6e3859c1a",
+      "bytes": 5340,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0006",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "f05caf8e21f72900e725e1e700e51e4d4873a592fcb36c52d3c51689e5d380b6",
+      "bytes": 3776,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0007",
+      "label": "ACTIVATION.json",
+      "kind": "report-or-data",
+      "sha256": "3aa0b192f65c27f3f65eaff9d7dd40ce7b4cebd3b34e0490796bcecab954dc02",
+      "bytes": 3549,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0008",
+      "label": "ANIMATOR-CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "e83978909dd1300361ef06147438259d0395f05da83ccd685d36c517568a42d4",
+      "bytes": 2886,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0009",
+      "label": "PRODUCER-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "7c9a9deb18e415336aa0c2d0b856799810687a7e72d2f0badbaae157f860fd55",
+      "bytes": 2103,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0010",
+      "label": "quiet-window.json",
+      "kind": "report-or-data",
+      "sha256": "f275140578674dd3330e64d9ac08f9bd1b28fc0c37a83d365a77aa827c233316",
+      "bytes": 869,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0011",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "4d72bb5d256fe71f758de71fa4b351849961d878dc04c3a06db1e8eb322f964b",
+      "bytes": 3512,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0012",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "97221e9ffb081f71d032ddd35769b997012ad8753c2dd4f598a9e6c52e96291c",
+      "bytes": 2778,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0013",
+      "label": "results.json",
+      "kind": "report-or-data",
+      "sha256": "9974fde1595d9a494b2acfb362054b9398109c117ce984d89b096176a2667f1b",
+      "bytes": 101772,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0014",
+      "label": "BRIDGE-REQUEST.json",
+      "kind": "report-or-data",
+      "sha256": "343e83ec8bf1c7a35ff75bd1d3710748d45449903aad391ff0d72e2431a72ae7",
+      "bytes": 3157,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0015",
+      "label": "BRIDGE-RESULT.json",
+      "kind": "report-or-data",
+      "sha256": "d083db53f30c489bb471c140ec07f7b10af44b5ed108f59fd94a149f9224be5c",
+      "bytes": 950,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0016",
+      "label": "MEASURED-SUMMARY.md",
+      "kind": "report-or-data",
+      "sha256": "c0fe9d656ce3f3343a27d97e717e0645b8ce2ead001ba82199098d096c5f6e28",
+      "bytes": 1665,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0017",
+      "label": "PRODUCER-RESULT-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "3b31dc9852dbe58ed07b64b68819e7d0f69ba79190c7ff32294df58525bf8b76",
+      "bytes": 1166,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0018",
+      "label": "input-manifest.json",
+      "kind": "report-or-data",
+      "sha256": "0a1dc42e18fe219b1003334da9708ae0f46814991a028dfe1adbec1c2eaf1076",
+      "bytes": 9845,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0019",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "c2c66d8e92fe535aec3ae6ddf4b8c854b22cdded4b93c4aa3c40273fd215d7c8",
+      "bytes": 5986,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0020",
+      "label": "EXECUTION-CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "829e5785afcb75df8529d6f7f653eddc86ad721bf1818bf085a4f918edec4c8e",
+      "bytes": 2934,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0021",
+      "label": "RUNNABLE-COMMAND.md",
+      "kind": "report-or-data",
+      "sha256": "9d992811fd1ca83631c523313e559f8f424d981c63561e2b951821ea92f3d37b",
+      "bytes": 780,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0022",
+      "label": "contract.md",
+      "kind": "report-or-data",
+      "sha256": "f10606e035a8970acfeb850bbe51f7db52307bf304d8d6d289a631d0474d60e4",
+      "bytes": 2953,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0023",
+      "label": "scheduling-amendment.md",
+      "kind": "report-or-data",
+      "sha256": "f0e6f7cbbf8e1f5177c2b0b5433237f2ea93a698daee6d7f79383a82ba145c97",
+      "bytes": 1092,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0024",
+      "label": "review-2026-10-22.md",
+      "kind": "report-or-data",
+      "sha256": "1f7dd2b1252e74fcf9115ad74d8679a2faf761f936eb598eee58d5e338cabced",
+      "bytes": 10060,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0025",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "051e2e2f44929b685a86972fcdde1b0e6cb381d4d2dcc45987a99a28cfc50504",
+      "bytes": 4932,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0026",
+      "label": "AUTHORIZATION.json",
+      "kind": "report-or-data",
+      "sha256": "16934fc130ca8fb42b357845060133c763e4d58751bbe5463bab6a23fc03dc2b",
+      "bytes": 862,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0027",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "7dc924dd9009d5f7297fa0d2e682f759afe47f3540930abaf25624b3f6a2a70d",
+      "bytes": 4423,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0028",
+      "label": "3D-CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "7c8a564eedd017608348c4348cd1d1ad6123d768041c4e7c4770a7d2a8a069e4",
+      "bytes": 3423,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0029",
+      "label": "ANIMATOR-CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "ee6520d7b712005d743e1f0562b35dd36eac2ddd60fa582de33c7799637d8ff6",
+      "bytes": 3645,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0030",
+      "label": "H2-DELIVERY-ADDENDUM.json",
+      "kind": "report-or-data",
+      "sha256": "82aa95cf0e4c35b8bfe82e50c11811be9ff3ed633e01b2c6772e25b434083d4c",
+      "bytes": 2374,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0031",
+      "label": "INPUTS.json",
+      "kind": "report-or-data",
+      "sha256": "4bb1b485d2bfbdcdd695b698119535c172dea8153df36d6020746e45ae3735dd",
+      "bytes": 6146,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0032",
+      "label": "SLOT-RELEASE.json",
+      "kind": "report-or-data",
+      "sha256": "b8211c8f1badc28e573ea872cadb5d0008dedaf07d4650c2edc85130821fb339",
+      "bytes": 774,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0033",
+      "label": "PRODUCER-H1-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "cec2781291fca86d192fc805e61b6a0fa80fdd7b91fe5f5dafcabcfd66dbdaf9",
+      "bytes": 1700,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0034",
+      "label": "PRODUCER-H2-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "8436a128ae648b2f5499425105fa132cce05b97e6bf1657511c8f1af17fdedef",
+      "bytes": 2200,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0035",
+      "label": "authorization.json",
+      "kind": "report-or-data",
+      "sha256": "655bf199a44d9962dbeda3b434d7a2a3fd12e7ac1853b5022348279518fd0aa4",
+      "bytes": 692,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0036",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "548edeff041f1720ca695a84dacf64bec42ebbd3331df6fbda53950d5fdae803",
+      "bytes": 4465,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0037",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "c9caf207101ed9355d253a08fa8e2162b17f6cc3118e8061c5ccfc6148499ae4",
+      "bytes": 4235,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0038",
+      "label": "INPUTS.json",
+      "kind": "report-or-data",
+      "sha256": "4d831d7cc24bd144dda68f118f72f481e4afdbf206e1ab93e7c09ea6080a1b70",
+      "bytes": 7778,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0039",
+      "label": "NEXT-EXECUTION.md",
+      "kind": "report-or-data",
+      "sha256": "4cbd751889b9a4919a829babe2f5c80a86b6fad481d785f817d38b4c9386d582",
+      "bytes": 1352,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0040",
+      "label": "PRODUCER-H2-BINDING-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "18e7cc19811d4ed455b5ee89fc54cd85412974ff0d53ee7bc85cda9242a19d81",
+      "bytes": 2210,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0041",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "a87e15ea7028ac4307b02e0fff7186aa0dda0b6b0dd66c60068f1c3223c297b5",
+      "bytes": 3412,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0042",
+      "label": "H2-BINDING.json",
+      "kind": "report-or-data",
+      "sha256": "9057347714788119ae95f8e51fd2755af57e783619f614aae1c992101c56d7c9",
+      "bytes": 10477,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0043",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "f9765319f6067a51adb823c916b9a9de30203274f8e839432811e0ba87825739",
+      "bytes": 2229,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0044",
+      "label": "PRODUCER-RESULT-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "ea8c34d535d54b051e7315025c26f8968b4144ba3a41cd9ab81af839ce738335",
+      "bytes": 2530,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0045",
+      "label": "result.json",
+      "kind": "report-or-data",
+      "sha256": "58157bf1c9872d75e0db435b928abeb701e6f8d2f39efe99f3fa8259f4807daf",
+      "bytes": 2032,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0046",
+      "label": "result.json",
+      "kind": "report-or-data",
+      "sha256": "cd3c0c6bed86a543b97ff5c4af6a8bfb716545090a6a401e869990e58d64398f",
+      "bytes": 2269,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0047",
+      "label": "BRIDGE-REQUEST.json",
+      "kind": "report-or-data",
+      "sha256": "865978a4c39820228497045aa18eca7bda50b5e2c5d2ceb9b7d7ea07d64bd6f3",
+      "bytes": 4275,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0048",
+      "label": "RESERVATION.json",
+      "kind": "report-or-data",
+      "sha256": "3d7a82840f06a9bc84f7aab8dcba4195179cae1d0585eec54f2d39464702bdb3",
+      "bytes": 1485,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0049",
+      "label": "SUSPENSION.json",
+      "kind": "report-or-data",
+      "sha256": "c1db3cf1265375f981ec8aa4591781c8831cc7810f9c4ea0f8163d9362c47b02",
+      "bytes": 552,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0050",
+      "label": "result.json",
+      "kind": "report-or-data",
+      "sha256": "ddd799c400ad72148645228eec4d11288c9648515e0589e0975e3b029626c4e5",
+      "bytes": 4167,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0051",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "1eefbae814aae0eaabbb1129c35bc8c2a3d60a4a5e360c1044790f93a35d464c",
+      "bytes": 2765,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0052",
+      "label": "input-references.json",
+      "kind": "report-or-data",
+      "sha256": "f801b812a371d4aeae657e40e0402c5e76a2a664cf5756475f7176548031b20a",
+      "bytes": 4233,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0053",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "99c0f868dc3a9cbb7e5357f637603c09b7883058b6aeec5a3f60b73bde43341b",
+      "bytes": 3226,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0054",
+      "label": "PRODUCER-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "fa804d851abbcc6d35a3c072779c566231cc8cf2c621cc5ee644e7bbf7322c18",
+      "bytes": 1237,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0055",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "9657d97fe98a6b8eb93670fe60474ea288a3c5861c1f404aa8f30f4f8ddcf7c4",
+      "bytes": 3652,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0056",
+      "label": "WAIST-STORAGE-DECISION.json",
+      "kind": "report-or-data",
+      "sha256": "f4c7ef7c3c7bf34b9138289935f306512367a7fa441bb33fbffdba45c7b960b3",
+      "bytes": 3562,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0057",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "d46f6216fb8f2fa8163be80a8d60689ed4987a23731474bad4f8cc9f233b4b4f",
+      "bytes": 3660,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0058",
+      "label": "OWNER-STORAGE-ADDENDUM.md",
+      "kind": "report-or-data",
+      "sha256": "ddbff5bf5310ae17b6ee02846a7e4b503326043c839fae05be8dfd03dc46d21b",
+      "bytes": 1731,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0059",
+      "label": "R1-RESULT-FOLLOWUP.md",
+      "kind": "report-or-data",
+      "sha256": "8ec47f3d6e2a3bb252e5ec897b7bf2d6e6c6a8329f1218caa697800d71162ca8",
+      "bytes": 2911,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0060",
+      "label": "TRANSFER-POSE-ADDENDUM.md",
+      "kind": "report-or-data",
+      "sha256": "62b2a324c6a62ce1f8c8ad528144cc83b4754bb774bc40bc12b7aec3c558dba4",
+      "bytes": 1729,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0061",
+      "label": "BRIDGE-REQUEST.json",
+      "kind": "report-or-data",
+      "sha256": "8c7e6e951d594b7537f36b8c258b65b0b86b84d660467c9aff58793b131a40a7",
+      "bytes": 4338,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0062",
+      "label": "BRIDGE-RESULT.json",
+      "kind": "report-or-data",
+      "sha256": "296336d6544d43af1b186bdf4d0a43b8e1a44824b21c734f0d86c5668a7fa876",
+      "bytes": 2943,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0063",
+      "label": "CONTACT-SUMMARY.md",
+      "kind": "report-or-data",
+      "sha256": "04f93a4209858ce6158cc13b70e12c8456c6a1ba9916ab873b8a911031219839",
+      "bytes": 1357,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0064",
+      "label": "PRODUCER-RESULT-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "7d11b40a0329379c6c2b644e43ee037bb0482a8ad17e07a0d475d361114a9f15",
+      "bytes": 5939,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0065",
+      "label": "TRANSFER-POSE-EVIDENCE.json",
+      "kind": "report-or-data",
+      "sha256": "306a3f58b263bd431f5df1b1e0639c7afeded21d03fdbc02c55c47a97f406e26",
+      "bytes": 22577,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0066",
+      "label": "TRANSFER-POSE-PRODUCER-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "8833a80f4ef029336ac4058acfb2e5798861365b9cc0f07e2294f06140fa1a2e",
+      "bytes": 2418,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0067",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "5119ccec60188b731685acca100541faad8497231522ff5ee6c53205a92c2ba0",
+      "bytes": 3087,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0068",
+      "label": "trajectory-fit.json",
+      "kind": "report-or-data",
+      "sha256": "e1a8bcca5b9739794600421d93bf6c3ff0eb094c1b35577f7ac87d064eda50e7",
+      "bytes": 1175,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0069",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "f2937b8795cea095d8d9da4e7c2f4b6705f5e248808ebc22c7f42a90e2b6efc3",
+      "bytes": 3108,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0070",
+      "label": "RESERVATION.json",
+      "kind": "report-or-data",
+      "sha256": "6914c74eb686597eb73b5747e3db837a8d23cdb3ccea6648d4cd753af6741e6d",
+      "bytes": 2637,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0071",
+      "label": "TERMINAL-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "fbd69fced3ac6b26bbb9573f17694ae35cb07e14641741049f6bbfe6af8ced1d",
+      "bytes": 1858,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0072",
+      "label": "input-manifest-I2.json",
+      "kind": "report-or-data",
+      "sha256": "709683b3e27ab450a787e999689630dac9211d32fad24449989c41768f221f5f",
+      "bytes": 10592,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0073",
+      "label": "EXECUTE.md",
+      "kind": "report-or-data",
+      "sha256": "49e14cd7dcc052aa8794acb37465c35bf7d1db149c0c0e9747c110c7dbb3d376",
+      "bytes": 1202,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0074",
+      "label": "INPUTS.json",
+      "kind": "report-or-data",
+      "sha256": "9b05882e324fd9c331a5b0190c08a5533f079de556eb4ca3281990fdb34e0d5c",
+      "bytes": 20298,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0075",
+      "label": "MISSING-CAPTURE-QUEUE.json",
+      "kind": "report-or-data",
+      "sha256": "4908199e1b8812cfda2429c08d5073b4562bab3c2ae2c36029cdad5518ff3599",
+      "bytes": 1617,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0076",
+      "label": "PRODUCER-CAPTURE-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "10e5b9991e7033050989e2a7d363c03f4c681749949fd7c5030ea39c8ddaabc5",
+      "bytes": 1054,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0077",
+      "label": "PRODUCER-DIRECTOR-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "f4500e74d94b8917df464561a245e9032b6a548380dc27050d20a99603f27c5d",
+      "bytes": 1484,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0078",
+      "label": "REVIEW.md",
+      "kind": "report-or-data",
+      "sha256": "52060bc0e4d3dce8174973f5c529f5bc09e7171d4e5f713ab6d37fc09527f318",
+      "bytes": 1930,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0079",
+      "label": "coverage.json",
+      "kind": "report-or-data",
+      "sha256": "6c3a4774b235a4605b2393bbf3810c838f0b066845c5672ee3e556e036cd8c7d",
+      "bytes": 10330,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0080",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "339c8f8a50106458b8edb3e9bb79433adf2ec40bf8b43a2957bc3e322100eecd",
+      "bytes": 2004,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0081",
+      "label": "AUTHORIZATION.json",
+      "kind": "report-or-data",
+      "sha256": "115d3002ba2f152454c7e7ce65694b0ae48ec4b3024c4173bc84beb20318f15d",
+      "bytes": 560,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0082",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "8fce7076c661552a2485033ee0e97f80b3333b06b392f95bf1786a346c4bbfaf",
+      "bytes": 2907,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0083",
+      "label": "INPUTS.json",
+      "kind": "report-or-data",
+      "sha256": "52af91a38e05992fd32eebe480d778ea844e5e5c8ed20f66e9ed6f16af20f862",
+      "bytes": 19016,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0084",
+      "label": "next-cut-speech-acceptance.json",
+      "kind": "report-or-data",
+      "sha256": "94e97ae13aaec7d16ec0104e564802084c59aa4cbc22d272916230b395ab389b",
+      "bytes": 1251,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0085",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "2eaa8ad44bf025d26ec0f5c3907681404f4576f97c11b3204f56f4b50c6088f0",
+      "bytes": 2463,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0086",
+      "label": "contract.md",
+      "kind": "report-or-data",
+      "sha256": "23cb1acf1e4f075a8ad9edafdd10cd3b54e2fd40507483b5bf94a1653c50fd25",
+      "bytes": 2554,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0087",
+      "label": "job-template.md",
+      "kind": "report-or-data",
+      "sha256": "1e9c088c808b32030c4ba9c55a0dd83ee4411362a2d1db1a2d4b0919a942cea3",
+      "bytes": 5104,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0088",
+      "label": "permanent-import-verification.json",
+      "kind": "report-or-data",
+      "sha256": "cae70d2de262db493f7fc5470886f23ae7d4d5e675b226f8522760ca34a3c9b4",
+      "bytes": 942,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0089",
+      "label": "contract.md",
+      "kind": "report-or-data",
+      "sha256": "8f9c21c5baa30e0b8a3dcd94ad2b485237b765f12b26698bad3793c2962048ce",
+      "bytes": 3226,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0090",
+      "label": "contract.md",
+      "kind": "report-or-data",
+      "sha256": "99175856b40891112d4df57d892926d5c63d7e39bfb9333ccdda9e97f7ffe1f5",
+      "bytes": 1684,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0091",
+      "label": "OWNER-DIALOGUE-GUIDANCE.md",
+      "kind": "report-or-data",
+      "sha256": "f2ec90e63da4599b431c7a28bd245ef67a2e565857cd320b0e06d8e153b54673",
+      "bytes": 3712,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0092",
+      "label": "SYSTEMS-S0-COMPLETION.md",
+      "kind": "report-or-data",
+      "sha256": "65946675db16e5e43eb8013f62bd8dc0c2cf871dc9ac32db9ec30dd1f1238d4c",
+      "bytes": 2796,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0093",
+      "label": "WRITER-CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "d98c950dbdca01fc6c56eef96722f4e7402413ac8773f3454a71e2cd003b0110",
+      "bytes": 5585,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0094",
+      "label": "budget-checkpoint-request.json",
+      "kind": "report-or-data",
+      "sha256": "e05f42258697b64cc0ebf082c1353313ee663845ec9f9dea694298d50463fae7",
+      "bytes": 602,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0095",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "359299f3d947a8a0e28a17540751e1a4f749a179e1ca3567a73c41c92332b102",
+      "bytes": 4096,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0096",
+      "label": "CLOSEOUT-AMENDMENT.json",
+      "kind": "report-or-data",
+      "sha256": "2533660e1101bf9646ffda5795d52a8bf1eb9f84008cc1f09ac48ab22df5a297",
+      "bytes": 832,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0097",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "7ddf605a6186beeaa378b525809269e915ce7073ce303c56a03ed77a130971b9",
+      "bytes": 5584,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0098",
+      "label": "PRODUCER-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "cdf8252dcd71137f0e9e0b5d0967d38a7171f05804e92db1c754dd82f38b31bb",
+      "bytes": 1180,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0099",
+      "label": "PRODUCER-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "652d2a3da1cd212538a6201ba7a776ec41fe20bd778180404494be3d1b2dc5da",
+      "bytes": 1176,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0100",
+      "label": "PRODUCER-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "02eaf81b37a34f0d74faf162747cba8da7005179cf811f636f909533fd42ccdb",
+      "bytes": 2162,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0101",
+      "label": "PRODUCER-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "9026be62558183d140aa095565e7e74ffbe75a330b5fd406fd1e335965771790",
+      "bytes": 1113,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0102",
+      "label": "owner-request.json",
+      "kind": "report-or-data",
+      "sha256": "27f9c585b9fc10344f894f62963f24a6c406b645958eeae3cb4b6ba46585b609",
+      "bytes": 8025,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0103",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "07bbd96c11bcdf2b0f7f3c370773e47b8291e043686922d7cd7143d14e6b048d",
+      "bytes": 5647,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0104",
+      "label": "README.md",
+      "kind": "report-or-data",
+      "sha256": "f575a7a5ab5ff2609bbe92474079773a85138f0ace766e60f48d8d2504c24aca",
+      "bytes": 2324,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0105",
+      "label": "verified-status.json",
+      "kind": "report-or-data",
+      "sha256": "5dd5ce397e76ca26e0a740414a7de2e0886e7d723deed5323e19f4e8fe1bc1a9",
+      "bytes": 1513,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0106",
+      "label": "B2-CAPTURE-REQUEST.json",
+      "kind": "report-or-data",
+      "sha256": "c51ecd0f84c051f9feaf474d806de493e9ff1c81381c9a0bf4aefc3a587d11f1",
+      "bytes": 3366,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0107",
+      "label": "NEXT-CUT-CAPTURE-REQUEST.json",
+      "kind": "report-or-data",
+      "sha256": "ac63449a425e9db72445e75a915174d56c485d8a82c2b7b9ad8d9d5ac94ee33c",
+      "bytes": 8510,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0108",
+      "label": "PARTIAL-B2-CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "1f8ef8c1891d3dc8cb709a5266a2ac39cfb537965a1faab29f86b21f5bd95c17",
+      "bytes": 3872,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0109",
+      "label": "STATE43-PRODUCER-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "02a3b3bcfe76434ebcf379e739d342d6360f575daec06495420f1d9e5bc26936",
+      "bytes": 1552,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0110",
+      "label": "capture-C1-partial-02-state-observation.json",
+      "kind": "report-or-data",
+      "sha256": "ee24fb7c0aed4d2b7a4306733be9106b3589be3cbcb05bbbdfd90d8132032f07",
+      "bytes": 2228,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0111",
+      "label": "REPORT.md",
+      "kind": "report-or-data",
+      "sha256": "cad607c007ffb4f2374cf7d07cf12f2a82a6c5a9fdaf442881e71bb28e420c02",
+      "bytes": 2629,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0112",
+      "label": "contract.md",
+      "kind": "report-or-data",
+      "sha256": "9a97dfda420effe12ac6cbc159ff1d32ec3ef05b34aeba9b8843d0e34d49ce2e",
+      "bytes": 4430,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0113",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "39166f66dcd7c1ce105519a5c5b2aea738cdd0b08f8fb82c9df205e027d76cc4",
+      "bytes": 3537,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0114",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "5f760394f33ca80bd74f9529b3592690d4fd7164cb4bbcd381a0b5fdd59250d5",
+      "bytes": 3098,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0115",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "c96f722ca83362c483c213a46986c8fd1f80451fe166bdc65ccbad4ef5548051",
+      "bytes": 4137,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0116",
+      "label": "DIRECTOR-RECHECK.md",
+      "kind": "report-or-data",
+      "sha256": "9c49148d51ca7499ad694c7a04fae522534de770c70daec106c71200bcde7490",
+      "bytes": 888,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0117",
+      "label": "INTEGRATION-ORDER.json",
+      "kind": "report-or-data",
+      "sha256": "393909a1c1025987e6ab28ddffc98a216c02e0f6fdfb23f71b3114067bca6fb4",
+      "bytes": 3188,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0118",
+      "label": "CAPTURE-REQUEST.md",
+      "kind": "report-or-data",
+      "sha256": "a62a75f3a25965402e884ed2ed1504ba787228215dad7f48acc7da3c40ab6778",
+      "bytes": 2108,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0119",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "b2a0acacc69b85f513eb5e0435fb1a1b9a15af85acbc00c16393144c292e9744",
+      "bytes": 2489,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0120",
+      "label": "input-manifest.json",
+      "kind": "report-or-data",
+      "sha256": "dfd96496dd9a4aaa149a654d16c27848cbc2cceeb8bdfeedf1d4a630163c69f9",
+      "bytes": 8957,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0121",
+      "label": "AFTER-SUCCESS-CAPTURE.json",
+      "kind": "report-or-data",
+      "sha256": "f9fe105ea4b9d57a488ff40393131a415b4fc3ff1aa93170c75f5562ac864730",
+      "bytes": 2202,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0122",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "f0a9b1b92e756a43bbd6a0030fcfc05b3035859e96912c66eeead6dacf79532a",
+      "bytes": 4746,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0123",
+      "label": "HOST-PREFLIGHT-BLOCKED-MEMORY.json",
+      "kind": "report-or-data",
+      "sha256": "f23e348637152ae5970d323fe7e6fecefdb22d5ea5b24dfacc88f65de37eacef",
+      "bytes": 1409,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0124",
+      "label": "authorization.json",
+      "kind": "report-or-data",
+      "sha256": "886a3afd85e8175fbfe5c7427d2b545b03bb87a977fda7a54dc6b93ed3d8a775",
+      "bytes": 735,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0125",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "b09f3100536df7c0458f3a26483fc8cc239a62793c8ffd3f3d499ade8882a004",
+      "bytes": 3189,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0126",
+      "label": "input-references.json",
+      "kind": "report-or-data",
+      "sha256": "3cbde6b2d8e934e1ae4dde3caeb75dcf64353f00f0577e4278ba282191e282a6",
+      "bytes": 3981,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0127",
+      "label": "BRIDGE-REQUEST.json",
+      "kind": "report-or-data",
+      "sha256": "db48f2dbed8c282e9b6b687b90e0ca2dcd1d9aceb578ad34dfb21e9ccc5e050c",
+      "bytes": 3560,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0128",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "3744d31943853d89fc5446fd647b5c45df7410b3d2bd29e3ed9f50fdff93d9d1",
+      "bytes": 4135,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0129",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "066ae175c0b9f428b72bd781348287c902f4558afccb4d91a1b26bb3cc767aeb",
+      "bytes": 3889,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0130",
+      "label": "PRODUCER-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "7537bce60b2ee05b18ea3c121ea898261a3357ffd1b6461d4aeacd7d36616d74",
+      "bytes": 701,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0131",
+      "label": "BRIDGE-READY.md",
+      "kind": "report-or-data",
+      "sha256": "e5c3cf21b6099f45a8b0e4547d3ae0bc1565faae24eaf9b05056bca3d399391c",
+      "bytes": 4212,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0132",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "8cc54a4714b1ad8cef9e35761a991934a5436e45b85b96c8d49ec5c21e31c103",
+      "bytes": 3919,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0133",
+      "label": "PRODUCER-BUILD-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "b3a39ae33b2ff57c50e7e539f5ad9fc673c628c11ab9ac79820f5c0163c49dda",
+      "bytes": 1280,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0134",
+      "label": "completion.json",
+      "kind": "report-or-data",
+      "sha256": "9885fb0b8a1c3f2dfcf42eba11687e70dae8b3e990759c2ffb84ae28eec08927",
+      "bytes": 11049,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0135",
+      "label": "recovery.json",
+      "kind": "report-or-data",
+      "sha256": "b08437a17fff5e6bf1d09853c7da4ee23cdb577dd2a93d7f16a8e1e57d3f5095",
+      "bytes": 1617,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0136",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "c076649331776edcede13492c9f25c9db916e8911c2321186bfda1282bc772da",
+      "bytes": 3313,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0137",
+      "label": "INPUTS.json",
+      "kind": "report-or-data",
+      "sha256": "16d85aa08168214fef0de00fac96b73c8cf0ad44780c3065ac2c0116020825e6",
+      "bytes": 4238,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0138",
+      "label": "BRIDGE-REQUEST.json",
+      "kind": "report-or-data",
+      "sha256": "46a218ee1cf25f25e77ed33b8d302e9761f6aeba23c9cc0d93daa2cdd68cddb9",
+      "bytes": 5137,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0139",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "01949674da395f7be57bdb87fac933c339335ab4fb9dbf0b43f43f7747bccdd8",
+      "bytes": 3293,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0140",
+      "label": "PRODUCER-BRIDGE-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "f5038dfd13922fa2abe0f7a144e392973e38aff7b43d0e24bcc5f93d47173b07",
+      "bytes": 1887,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0141",
+      "label": "PRODUCER-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "a2c29ff8b40c52e40dc9d5d95b08c8adae58c2bd2ec47742f1ec7b03f9d889b2",
+      "bytes": 2460,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0142",
+      "label": "PRODUCTION-ROUTE.md",
+      "kind": "report-or-data",
+      "sha256": "4b5afdb538f9ddde85502d1823ae6c261be864bc03c89f125dc18a57ea242ac6",
+      "bytes": 1973,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0143",
+      "label": "receipt.json",
+      "kind": "report-or-data",
+      "sha256": "f6be946ab6c2eb3f87fb118fe7c712624ba804be90240e3dcafbc68dd402dcd1",
+      "bytes": 1304,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0144",
+      "label": "receipt.json",
+      "kind": "report-or-data",
+      "sha256": "f44a75331b88ccb460ce647481bf390e0c2c501a5879f9171837f06dbd588ace",
+      "bytes": 3720,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0145",
+      "label": "receipt.json",
+      "kind": "report-or-data",
+      "sha256": "7c53fa09de252c7f2dfb40b63d2e364e80239017b5aff02a5cb451a3d74e5863",
+      "bytes": 3131,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0146",
+      "label": "source-verification.json",
+      "kind": "report-or-data",
+      "sha256": "cba6dd37b978d3d74686d0785f8616d0bf5608721996b03d300dfb6223e47fa2",
+      "bytes": 985,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0147",
+      "label": "DOMAIN-STATUS-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "9fe33d394da464f55ea293144a3a4d5f9eb2ab57133de47870e8a80e0ac25603",
+      "bytes": 1921,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0148",
+      "label": "DIRECTOR-CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "1c68eef2031361e8a92b67391db36be0005cdff5636eda95029dffffc8d3a5d2",
+      "bytes": 2103,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0149",
+      "label": "BRIDGE-B2-PPID-PREFLIGHT.json",
+      "kind": "report-or-data",
+      "sha256": "1b8e1e4c1280883e83ded24ae1bbcbffe1a099a53e57864cd95e9d2591431f7b",
+      "bytes": 1221,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0150",
+      "label": "CONTINUATION-R1.json",
+      "kind": "report-or-data",
+      "sha256": "bc3c712915ae47767adf7934324ab2ce8dd7a2069c3cf40927792001e5dc724c",
+      "bytes": 2930,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0151",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "a3c07bec13abef1bb1bd0e3de622bc4c917ae209b313b95662dfff408f3f5b74",
+      "bytes": 2482,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0152",
+      "label": "HOST-CLI-VERSIONS.json",
+      "kind": "report-or-data",
+      "sha256": "5c3c23e5fb3989fe3d3e82ca14edf67e2823b955c1ea2c36e4c246cac164afa4",
+      "bytes": 1284,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0153",
+      "label": "HOST-MEMORY-ATTRIBUTION.json",
+      "kind": "report-or-data",
+      "sha256": "4b6fce670209f64bbeaf456a5f8dd8d5bae4bc1f92e71ebd3643669b9717d3f0",
+      "bytes": 11093,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0154",
+      "label": "HOST-RESOURCE-OBSERVATION.json",
+      "kind": "report-or-data",
+      "sha256": "fa6b0bd37745b5dd7eafe0cb7a73b46f23e591de55d9f085be447de5fd718b76",
+      "bytes": 12237,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0155",
+      "label": "LIFECYCLE-BRIDGE-REQUEST.json",
+      "kind": "report-or-data",
+      "sha256": "96b6c4977246a36067934607cf5d9a23b4d1bc67e8b433160343b3abde7987ee",
+      "bytes": 2478,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0156",
+      "label": "LIFECYCLE-RESULT.json",
+      "kind": "report-or-data",
+      "sha256": "cca9bc1a36e27f0321ac9388e69e5f846bdbc91e7f3dcb1c6d0bcd06bfd468b1",
+      "bytes": 798,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0157",
+      "label": "LOW-MEMORY-ADDENDUM.json",
+      "kind": "report-or-data",
+      "sha256": "a5034792e01e9edf63a07c31c7123daa3e930b5798810070b4ff593e2edc9403",
+      "bytes": 1877,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0158",
+      "label": "PRODUCER-M2-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "db0c810d360641ab94ae14d01bb7d97b88c15cfbc1ce0580467ed10c955d544c",
+      "bytes": 884,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0159",
+      "label": "PRODUCER-MECHANISM-RESULT.json",
+      "kind": "report-or-data",
+      "sha256": "863fcdbe9b47f81f8d3ef3ce392eceadc671b2c6b3a8c454b26c3c52d0fe3fdf",
+      "bytes": 1188,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0160",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "d8a6e6efe7e684f2f0ac903d78790ec79e062387bd1fa789939c3aca518cfcee",
+      "bytes": 3906,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0161",
+      "label": "PPID-CORRECTION.json",
+      "kind": "report-or-data",
+      "sha256": "02ab1d5413475a73d86ab1f502f021496ecd85525f16355b8d5699a60ca06a44",
+      "bytes": 2521,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0162",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "f996d0570296d07bb677a992c07fe9244ee65fdefcb8e34f6020790363e71b05",
+      "bytes": 4444,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0163",
+      "label": "BRIDGE-REQUEST.json",
+      "kind": "report-or-data",
+      "sha256": "dec93f76fcc39799c3d5bdabd0b80d002c392d8a6726e3a76f8b21bfd5ce176b",
+      "bytes": 4713,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0164",
+      "label": "BRIDGE-RESULT.json",
+      "kind": "report-or-data",
+      "sha256": "c8205a68cbaaf2e103bab54a4dce3073ec9ab8fe9b0a0c57ea5bfa3fc81de18a",
+      "bytes": 2042,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0165",
+      "label": "launch.json",
+      "kind": "report-or-data",
+      "sha256": "ae432c6837d4958205075e081d370cc488f52b7bfe587905a3193c14d53a8826",
+      "bytes": 782,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0166",
+      "label": "BRIDGE-LAUNCH.json",
+      "kind": "report-or-data",
+      "sha256": "6272765e4ffe442579122e8d7f5bd73ac5ea5e01567cb67e40460f26f419dfeb",
+      "bytes": 542,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0167",
+      "label": "BRIDGE-RESULT.json",
+      "kind": "report-or-data",
+      "sha256": "0c8b16a515f17829adf375f34599360d807df1bd97c063a274c4e8f9d4eecdfa",
+      "bytes": 2076,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0168",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "a84a41dbb67c702d612ac850f1583daa9a11fc2d6095a9ba8694dc67d710a66c",
+      "bytes": 3297,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0169",
+      "label": "PREDECESSOR-CLEARED.json",
+      "kind": "report-or-data",
+      "sha256": "00504d57c23b5378a02acf64a3cd9ab8f99b66c29a79e40e905f866564c13f99",
+      "bytes": 870,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0170",
+      "label": "PRODUCER-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "5a0790f5f18c271e0511baae1c5a322106fb25ae1618afce82d13aa539b9bef9",
+      "bytes": 2370,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0171",
+      "label": "PRODUCER-TERMINAL-RECEIPT.json",
+      "kind": "report-or-data",
+      "sha256": "1dc2186e696cb0ddb1753465ec3e556678bcc6e205ea1d8d0f63f4e35add92a7",
+      "bytes": 1641,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0172",
+      "label": "CLI-VERSION-APPROVAL.json",
+      "kind": "report-or-data",
+      "sha256": "1609be136335ddef493ea777c0f5fc1f2ea9e26842dc476fc86f671b5c11bde1",
+      "bytes": 961,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0173",
+      "label": "EXECUTE.md",
+      "kind": "report-or-data",
+      "sha256": "621db17f6432a4cc160cb8d393076caa32ec2f349ab219395d239f586bc6ba87",
+      "bytes": 1865,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0174",
+      "label": "result.json",
+      "kind": "report-or-data",
+      "sha256": "3a9ff209fbd563473247181f12dd188bc39ce1fb9251e65013a773672fbacdc0",
+      "bytes": 2477,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0175",
+      "label": "AUTHORIZATION.json",
+      "kind": "report-or-data",
+      "sha256": "83bca6c2b245f6be67dfb77c83fd459d5e21c423620b59ed4730bcb1ee259887",
+      "bytes": 648,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0176",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "64f3029df65761363ed3ff9a0172feb47d8d27c6d21ea70e536cb079bf0694b2",
+      "bytes": 4791,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0177",
+      "label": "INPUTS.json",
+      "kind": "report-or-data",
+      "sha256": "4dc132d1fe6060ca6520c5e8cc43cb94ee91a53744e83f436e4c12e04af0a229",
+      "bytes": 5960,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0178",
+      "label": "HOST-SETUP.md",
+      "kind": "report-or-data",
+      "sha256": "f975c3fb9e07dcde0fdc4df1a222b4068d300dc9815254b1823becdf7183e29a",
+      "bytes": 8850,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0179",
+      "label": "host-install-result.json",
+      "kind": "report-or-data",
+      "sha256": "2f56f933fd8397317de1b13209aa0428894253a4a121ed31ffe9364f0a92d647",
+      "bytes": 5850,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0180",
+      "label": "MEMORY-CORRECTIONS.md",
+      "kind": "report-or-data",
+      "sha256": "5e12b3a061c321f6465d3d5bd832ec03c5a4b869798182d729c7be6e93217020",
+      "bytes": 1249,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0181",
+      "label": "CONTRACT.md",
+      "kind": "report-or-data",
+      "sha256": "676088b28900d5cd9fcc9242e521966901579387b3e3ddfb5b48d6e3eb6a1104",
+      "bytes": 3406,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0182",
+      "label": "host-process-clearance-2026-10-22T1528.json",
+      "kind": "report-or-data",
+      "sha256": "6e308d8bad350176317cc28644cec373fb37a934977fcfce4271e62db065074b",
+      "bytes": 833,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0183",
+      "label": "ACTIVE-TASK.md",
+      "kind": "report-or-data",
+      "sha256": "d49c3af4f5178c3486ea77ea1b7c1d84e901f0d349174cbf991b8c90a375d816",
+      "bytes": 2947,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0184",
+      "label": "PRIVATE-CANDIDATE-AMENDMENT.md",
+      "kind": "report-or-data",
+      "sha256": "b239659dde9b1d1b9a6367db9f60fe2df2f1d42a686e4f45313e173249cceec8",
+      "bytes": 3346,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0185",
+      "label": "RECOVERY-R1.md",
+      "kind": "report-or-data",
+      "sha256": "57f24a307f0a8f720510c840d9e1404e579f98dc4295ec7fcc5e583cb8bdac73",
+      "bytes": 4260,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0186",
+      "label": "contract.md",
+      "kind": "report-or-data",
+      "sha256": "ddc9fe5b306321c2d9b6f7884694862a1b47374d2c9e6b2055356d97b3959e0d",
+      "bytes": 4010,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0187",
+      "label": "studio-production-ownership-handoff.json",
+      "kind": "report-or-data",
+      "sha256": "a1ec59d7cf1a727d60e2024649fb59e0798fdf7b2d8af492f9f630737d503830",
+      "bytes": 1167,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0188",
+      "label": "writer-critic-import-verification.json",
+      "kind": "report-or-data",
+      "sha256": "afa55bf0ba32d70deef02662b8101edbde34e7bbc903675d40777d38ab475762",
+      "bytes": 914,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0189",
+      "label": "contract.md",
+      "kind": "report-or-data",
+      "sha256": "d0efd1fc1686ad419680fca31cf43472c9dc24b498c8aa978cea0a36c0ef4975",
+      "bytes": 4676,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0190",
+      "label": "task.json",
+      "kind": "report-or-data",
+      "sha256": "9f92b3741b1ac6479eeddddd6fea989cb91636030aae43b6af0f2a112d16bbf9",
+      "bytes": 3457,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0191",
+      "label": "receipt.json",
+      "kind": "report-or-data",
+      "sha256": "f44a75331b88ccb460ce647481bf390e0c2c501a5879f9171837f06dbd588ace",
+      "bytes": 3720,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0192",
+      "label": "LST-14-CLOSURE.md",
+      "kind": "report-or-data",
+      "sha256": "8e030f005e165e02556a9a7d11f5549f5f6b411ffeaf5cf59be198360da9d89a",
+      "bytes": 1504,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0193",
+      "label": "memory.md",
+      "kind": "report-or-data",
+      "sha256": "a6a6604a9041a1261ae972364402bd34a87aa9ef1cae5b5ecd34128c90f63bdb",
+      "bytes": 5887,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0194",
+      "label": "DECISION.md",
+      "kind": "report-or-data",
+      "sha256": "b64897e847c8fbf816fe428aa7ba6609a3012812daded548eadb95fe9876241d",
+      "bytes": 3697,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0195",
+      "label": "DECISION.md",
+      "kind": "report-or-data",
+      "sha256": "495e323066999309c61474af20007c625506f7effc4b05c7790980d4ed335259",
+      "bytes": 3858,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0196",
+      "label": "DECISION.md",
+      "kind": "report-or-data",
+      "sha256": "1b03cd64c6df2c6f7ebb6e8fabe6153b40cf84fbcddaa955f974d06c30009ddf",
+      "bytes": 4800,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0197",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "5f760394f33ca80bd74f9529b3592690d4fd7164cb4bbcd381a0b5fdd59250d5",
+      "bytes": 3098,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0198",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "b2a0acacc69b85f513eb5e0435fb1a1b9a15af85acbc00c16393144c292e9744",
+      "bytes": 2489,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0199",
+      "label": "DECISION.md",
+      "kind": "report-or-data",
+      "sha256": "eb2b44abc2957fc8020530c68bad5b5c7b771e55293bb8b60217ae65b3e80667",
+      "bytes": 4890,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0200",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "b09f3100536df7c0458f3a26483fc8cc239a62793c8ffd3f3d499ade8882a004",
+      "bytes": 3189,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0201",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "475c4b7bdd1cb81fd037ecf31ec05acae8d8c2a13bdd4b6ab8e24e4d63efb0c3",
+      "bytes": 3461,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0202",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "53a393a689941d244a9b89c7de513b3afa7d6334c73c81b54bffa06ae6b1aa3a",
+      "bytes": 6608,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0203",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "228dbbfbb1941a4551f60dc2a363cd07883bd9e6d5d0f30f70df206987415fd2",
+      "bytes": 5556,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0204",
+      "label": "PARTIAL-HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "2f4f212f8c8d5e9c81b74e7dc7896fe49d99362f391ea25fd9caccf4dbb3e88e",
+      "bytes": 1482,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0205",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "689a04f2fb2eda79688000e986a271ff01464bfc93bbfa3b36aac941d2e8cf67",
+      "bytes": 997,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0206",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "148b20cfbc02470bb627e7b237499443f66db01cc67f07dc256ff8333493c34a",
+      "bytes": 2292,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0207",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "9ec8ee45386e12de4be72cf6a60cfe2cf53900f4de54fb03886c4ca9947a9f03",
+      "bytes": 2910,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0208",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "c2c3f74c5849f697fcc4de7d00329c9b75c1b1bd1a9c356dcbae9adfa0380383",
+      "bytes": 3047,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0209",
+      "label": "PROGRESS.md",
+      "kind": "report-or-data",
+      "sha256": "18c48e5224fb3daa8e28b07b232a42b7caa14a912635626afe7cb8a4994642ae",
+      "bytes": 1162,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0210",
+      "label": "memory.md",
+      "kind": "report-or-data",
+      "sha256": "ca69df35378e628dc1f91f571d30ab8234356c9eb85c0c3ddec98ab66222f4c4",
+      "bytes": 4053,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0211",
+      "label": "SKILL.md",
+      "kind": "report-or-data",
+      "sha256": "3a5e16e470d22340a0f96f9e3f084b63bd24d5dc965f05056953a7782746e7f5",
+      "bytes": 8161,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0212",
+      "label": "memory-index.md",
+      "kind": "report-or-data",
+      "sha256": "e17c86179f4309a14a714b08cb6bc7c20876839a097d63812b3e61c5f60fdedb",
+      "bytes": 1183,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0213",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "658ecf5dd48410a352702401e0e55af686a5a8517e7d5d75d636d967575fdfaa",
+      "bytes": 3834,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0214",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "548edeff041f1720ca695a84dacf64bec42ebbd3331df6fbda53950d5fdae803",
+      "bytes": 4465,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0215",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "b469cd6cf9c0eab92eeb2deb075ffa492e46e94f2255b0f271a8ab11903f2cc6",
+      "bytes": 2375,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0216",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "48108d3e9b2ec80f4f33e1b3e2012506500ddd266af3053d8dfa90d7a1e61dd2",
+      "bytes": 4439,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0217",
+      "label": "EXECUTION-HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "2a489ef999fcb80438d772ab88fdfed7e09bf74b3bfe674782063c4fe45a2f2f",
+      "bytes": 1836,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0218",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "aec6d923aeacccf25f0ce7a5ef5b98b07a41aa48c3c1d7721606b0b33e63c846",
+      "bytes": 4157,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0219",
+      "label": "execution-status.json",
+      "kind": "report-or-data",
+      "sha256": "abb2914f849558700014d455a6b2f3cbd12a7b923fea6b2d2dc5e878a71b57e8",
+      "bytes": 519499,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0220",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "635592e6cc716e064378fdba848aae40983d084be78fcfca4b5284e276c0a753",
+      "bytes": 2738,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0221",
+      "label": "output-manifest.json",
+      "kind": "report-or-data",
+      "sha256": "ab00c2cdff828f0c9cb68280ab6546ea552b3c12e232eab85a4d5fbcb0a122f3",
+      "bytes": 1538,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0222",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "f9765319f6067a51adb823c916b9a9de30203274f8e839432811e0ba87825739",
+      "bytes": 2229,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0223",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "5119ccec60188b731685acca100541faad8497231522ff5ee6c53205a92c2ba0",
+      "bytes": 3087,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0224",
+      "label": "DECISION.md",
+      "kind": "report-or-data",
+      "sha256": "7e03c079e9b81e29b9229602200ecaaa6b54383ddbd7b588498dc84271bc97e4",
+      "bytes": 11897,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0225",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "f2937b8795cea095d8d9da4e7c2f4b6705f5e248808ebc22c7f42a90e2b6efc3",
+      "bytes": 3108,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0226",
+      "label": "EXECUTION-HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "b21ad383b8d66814db5e3ed329ce38a2dbd68c4ef77f47ac04d0ef1d17c9530c",
+      "bytes": 1599,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0227",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "cea56891826891588098f7ab6d4d0e46402265a1ced2e316152719f07b7a81dd",
+      "bytes": 4735,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0228",
+      "label": "execution-receipt.json",
+      "kind": "report-or-data",
+      "sha256": "f0b3b532da63d783ffb6951d888040735ae43fec23512253fa8eed6fe9e63d3a",
+      "bytes": 10467,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0229",
+      "label": "execution.json",
+      "kind": "report-or-data",
+      "sha256": "e6772dc454450d3ead55506341ca7d57647983b756a576c8f2053a2f79411641",
+      "bytes": 1300,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0230",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "39116c4fbb682dce995381e782a7f5aa24054918cd71bbb56a1c8850b31df5bc",
+      "bytes": 4976,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0231",
+      "label": "findings.json",
+      "kind": "report-or-data",
+      "sha256": "78016b79e76ff07006b5ce5127cc89ddd218f0642644612ec092ae0e3ff5cf39",
+      "bytes": 19688,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0232",
+      "label": "output-manifest.json",
+      "kind": "report-or-data",
+      "sha256": "4a1d9aa732c33d2d3d6edc9064ebfb1727e90cfe6840e882bab76f58f1316b8f",
+      "bytes": 3797,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0233",
+      "label": "review.md",
+      "kind": "report-or-data",
+      "sha256": "0e8f656ef3d16ae120c90550d8fc738930a545d0bd0303c98a656bd0f2245ec9",
+      "bytes": 10993,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0234",
+      "label": "review.md",
+      "kind": "report-or-data",
+      "sha256": "b4af28a4afaae11ebc0a4a30fc844448e7dd9e6476ed4e3257008c2cd6ba49a5",
+      "bytes": 1580,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0235",
+      "label": "first-pass.md",
+      "kind": "report-or-data",
+      "sha256": "cca095e08dd3b8c997db598a92017c0e381a3afefc558ad05bea5826eaefd175",
+      "bytes": 3791,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0236",
+      "label": "review.md",
+      "kind": "report-or-data",
+      "sha256": "b2845e98b1a3b11e79e0925ae359fe43e1acc411b797f2088c33a7b69a7a0bbf",
+      "bytes": 6303,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0237",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "9549b6da135db0b585853bcc24702249cf103f9c51ddd2f54924fc7dd1da4267",
+      "bytes": 2244,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0238",
+      "label": "HANDOFF.md",
+      "kind": "report-or-data",
+      "sha256": "339c8f8a50106458b8edb3e9bb79433adf2ec40bf8b43a2957bc3e322100eecd",
+      "bytes": 2004,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0239",
+      "label": "README.md",
+      "kind": "report-or-data",
+      "sha256": "77e04bbf5268b26419555c23467fd4afda3f042f86f3d9075ee76890769d4256",
+      "bytes": 3222,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0240",
+      "label": "README.md",
+      "kind": "report-or-data",
+      "sha256": "60273ee828c3df3c371a27fc5a92643d6913b392362a3c0522fb694dbdfbb7ea",
+      "bytes": 820,
+      "availability": "Curated source card only. Raw internal file is not published.",
+      "qualification": "File exists and bytes were hashed at extraction; linked report governs result and limits."
+    },
+    {
+      "id": "A0241",
+      "label": "manifest.json",
+      "kind": "selected-evidence",
+      "sha256": "55d001fa9efc04046bef7be391e49ffedc9544702a8301668cc84446d2d2cc7c",
+      "bytes": 29821,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0242",
+      "label": "final-verification.json",
+      "kind": "selected-evidence",
+      "sha256": "2de58da7887042500454c16b2eafd46ce183768df976f173c833f3c83e251e75",
+      "bytes": 778,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0243",
+      "label": "HANDOFF.md",
+      "kind": "selected-evidence",
+      "sha256": "6dc007a02db2bd019e172274c0059ef94f1b69122a759bdad617138761e13c22",
+      "bytes": 5703,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0244",
+      "label": "provenance.json",
+      "kind": "selected-evidence",
+      "sha256": "539a617e1d709a3a7bd969e385a7db29b6828670046570981d409c3f91db5d1c",
+      "bytes": 6914,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0245",
+      "label": "HANDOFF.md",
+      "kind": "selected-evidence",
+      "sha256": "53a393a689941d244a9b89c7de513b3afa7d6334c73c81b54bffa06ae6b1aa3a",
+      "bytes": 6608,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0246",
+      "label": "completion.json",
+      "kind": "selected-evidence",
+      "sha256": "1d1f622b45437131939e6b15d6f30f181d287c419e737ce0e2ee10ca5b94713e",
+      "bytes": 1857,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0247",
+      "label": "build-manifest.json",
+      "kind": "selected-evidence",
+      "sha256": "a9a6cffbad29a57e7c14dbc3ba5885f30291af4debf765477c47ea1734675830",
+      "bytes": 431501,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0248",
+      "label": "review.md",
+      "kind": "selected-evidence",
+      "sha256": "0e8f656ef3d16ae120c90550d8fc738930a545d0bd0303c98a656bd0f2245ec9",
+      "bytes": 10993,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0249",
+      "label": "performed-exchanges.md",
+      "kind": "selected-evidence",
+      "sha256": "afbe61268e57809c37741549c4cd1973bf2e101b6fff668cdcb34e930ea818f8",
+      "bytes": 14573,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0250",
+      "label": "beat-shot-review.md",
+      "kind": "selected-evidence",
+      "sha256": "0d729d745e02afacf9660bf022fb74800b9d6c2d6446edf301acc0026f70ed00",
+      "bytes": 5027,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0251",
+      "label": "current-map.json",
+      "kind": "selected-evidence",
+      "sha256": "fa2cddc37f2077b7275763cccbeb6c3d5b63fe8c5a67d159b669f44e61d5065f",
+      "bytes": 1540906,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0252",
+      "label": "FINDINGS.md",
+      "kind": "selected-evidence",
+      "sha256": "6301b041079236af9e5329179aef1cab89d2f23f1f05b5d26d6fd678e67b0126",
+      "bytes": 5825,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0253",
+      "label": "CONTACT-SUMMARY.json",
+      "kind": "selected-evidence",
+      "sha256": "317ebb8611f0ee99d3d3aaada2246d421797310b7af9fe6717fc988a8fd9ad11",
+      "bytes": 64907,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0254",
+      "label": "REPORT.md",
+      "kind": "selected-evidence",
+      "sha256": "6ac1867fb323a4946ddefb6725b5d72233dcc9ea0389a232578af5243b029590",
+      "bytes": 3045,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0255",
+      "label": "DECISION.md",
+      "kind": "selected-evidence",
+      "sha256": "eb2b44abc2957fc8020530c68bad5b5c7b771e55293bb8b60217ae65b3e80667",
+      "bytes": 4890,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0256",
+      "label": "APPROACH-REASSESSMENT.md",
+      "kind": "selected-evidence",
+      "sha256": "d3f2db91d97d51288c95cd593d90a87b1ca6ef8a2400b0ecbec4a1473840c146",
+      "bytes": 4380,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0257",
+      "label": "COST-AND-STOP-RECEIPT.json",
+      "kind": "selected-evidence",
+      "sha256": "cad8417b26bdabb9ace688c925115f6dd675a94990b5d7e9386503f1f4c3f152",
+      "bytes": 977,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    },
+    {
+      "id": "A0258",
+      "label": "review.md",
+      "kind": "selected-evidence",
+      "sha256": "a7ee10360e78179fe9f334876a79a2f86b56e8001ff35cb782e922ba5a8e705f",
+      "bytes": 10765,
+      "availability": "Curated source card; raw internal file is not published.",
+      "qualification": "Hash verified. Claim and limits are separately stated."
+    }
+  ],
+  "relations": [
+    {
+      "artifact": "A0001",
+      "event": "E0023",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0002",
+      "event": "E0043",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0003",
+      "event": "E0039",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0003",
+      "event": "E0043",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0003",
+      "event": "E0054",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0004",
+      "event": "E0081",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0005",
+      "event": "E0076",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0006",
+      "event": "E0024",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0007",
+      "task": "LST-35",
+      "basis": "activation",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0008",
+      "event": "E0210",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0008",
+      "task": "LST-35",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0009",
+      "task": "LST-35",
+      "basis": "evidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0010",
+      "event": "E0063",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0010",
+      "event": "E0071",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0011",
+      "event": "E0256",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0011",
+      "task": "LST-40",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0012",
+      "task": "LST-40",
+      "basis": "delivery",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0013",
+      "event": "E0264",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0014",
+      "task": "LST-40",
+      "basis": "executionRequest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0015",
+      "event": "E0264",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0016",
+      "event": "E0264",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0017",
+      "task": "LST-40",
+      "basis": "executionResult",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0018",
+      "task": "LST-40",
+      "basis": "inputManifest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0019",
+      "event": "E0054",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0019",
+      "event": "E0055",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0020",
+      "event": "E0112",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0021",
+      "event": "E0095",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0022",
+      "event": "E0087",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0023",
+      "event": "E0090",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0024",
+      "event": "E0029",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0024",
+      "event": "E0031",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0025",
+      "event": "E0285",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0025",
+      "task": "LST-43",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0026",
+      "task": "LST-47",
+      "basis": "authorization",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0027",
+      "event": "E0361",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0027",
+      "task": "LST-47",
+      "basis": "continuationContract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0028",
+      "event": "E0336",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0028",
+      "task": "LST-49",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0029",
+      "event": "E0335",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0030",
+      "event": "E0344",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0030",
+      "task": "LST-47",
+      "basis": "hardwareInput",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0031",
+      "task": "LST-49",
+      "basis": "inputManifest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0032",
+      "task": "LST-49",
+      "basis": "slotReleaseReceipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0033",
+      "task": "LST-43",
+      "basis": "receipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0034",
+      "task": "LST-49",
+      "basis": "producerReceipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0035",
+      "task": "LST-43",
+      "basis": "authorization",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0036",
+      "task": "LST-49",
+      "basis": "delivery",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0037",
+      "event": "E0314",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0037",
+      "task": "LST-47",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0038",
+      "task": "LST-47",
+      "basis": "inputManifest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0039",
+      "task": "LST-38",
+      "basis": "nextArtifact",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0040",
+      "task": "LST-47",
+      "basis": "producerReceipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0041",
+      "task": "LST-47",
+      "basis": "delivery",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0042",
+      "task": "LST-47",
+      "basis": "hardwareSupplement",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0043",
+      "task": "LST-47",
+      "basis": "shellDelivery",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0044",
+      "task": "LST-47",
+      "basis": "executionResult",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0045",
+      "event": "E0357",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0046",
+      "event": "E0325",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0047",
+      "task": "LST-47",
+      "basis": "executionRequest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0048",
+      "task": "LST-47",
+      "basis": "reservation",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0049",
+      "event": "E0366",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0049",
+      "event": "E0367",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0049",
+      "task": "LST-47",
+      "basis": "executionSuspension",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0050",
+      "event": "E0329",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0051",
+      "task": "LST-47",
+      "basis": "shellCorrection",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0052",
+      "task": "LST-43",
+      "basis": "inputReferences",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0053",
+      "event": "E0218",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0053",
+      "task": "LST-37",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0054",
+      "task": "LST-37",
+      "basis": "evidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0055",
+      "event": "E0233",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0055",
+      "task": "LST-38",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0056",
+      "event": "E0239",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0056",
+      "task": "LST-38",
+      "basis": "storageDecision",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0057",
+      "event": "E0255",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0057",
+      "task": "LST-38",
+      "basis": "continuation",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0058",
+      "event": "E0275",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0059",
+      "event": "E0272",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0059",
+      "task": "LST-38",
+      "basis": "r1Followup",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0060",
+      "event": "E0279",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0061",
+      "task": "LST-38",
+      "basis": "nextExecution",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0062",
+      "event": "E0269",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0063",
+      "event": "E0269",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0064",
+      "task": "LST-38",
+      "basis": "r1Result",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0065",
+      "event": "E0277",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0066",
+      "task": "LST-38",
+      "basis": "transferPoseEvidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0067",
+      "task": "LST-38",
+      "basis": "preparedPacket",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0068",
+      "event": "E0268",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0069",
+      "task": "LST-38",
+      "basis": "followupDelivery",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0070",
+      "event": "E0243",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0070",
+      "task": "LST-38",
+      "basis": "executionReservation",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0071",
+      "task": "LST-38",
+      "basis": "executionReceipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0072",
+      "event": "E0234",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0073",
+      "task": "LST-50",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0074",
+      "task": "LST-50",
+      "basis": "inputManifest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0075",
+      "task": "LST-51",
+      "basis": "nextEvidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0076",
+      "task": "LST-50",
+      "basis": "producerReceipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0077",
+      "task": "LST-51",
+      "basis": "producerReceipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0078",
+      "event": "E0347",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0079",
+      "task": "LST-50",
+      "basis": "releaseEvidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0080",
+      "task": "LST-51",
+      "basis": "delivery",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0081",
+      "task": "LST-51",
+      "basis": "authorization",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0082",
+      "event": "E0354",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0082",
+      "task": "LST-51",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0083",
+      "task": "LST-51",
+      "basis": "inputManifest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0084",
+      "task": "LST-7",
+      "basis": "nextAcceptance",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0085",
+      "event": "E0047",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0085",
+      "event": "E0054",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0086",
+      "event": "E0043",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0087",
+      "event": "E0056",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0088",
+      "event": "E0056",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0089",
+      "event": "E0088",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0090",
+      "event": "E0150",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0091",
+      "task": "LST-25",
+      "basis": "ownerDialogueGuidance",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0091",
+      "task": "LST-26",
+      "basis": "ownerDialogueGuidance",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0091",
+      "task": "LST-29",
+      "basis": "ownerDialogueGuidance",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0092",
+      "event": "E0176",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0092",
+      "task": "LST-25",
+      "basis": "continuation",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0093",
+      "event": "E0179",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0093",
+      "task": "LST-26",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0094",
+      "event": "E0168",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0095",
+      "event": "E0215",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0095",
+      "task": "LST-28",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0096",
+      "event": "E0230",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0096",
+      "task": "LST-29",
+      "basis": "closeoutAmendment",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0097",
+      "event": "E0221",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0097",
+      "task": "LST-29",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0098",
+      "task": "LST-28",
+      "basis": "evidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0099",
+      "task": "LST-25",
+      "basis": "evidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0100",
+      "task": "LST-27",
+      "basis": "evidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0101",
+      "task": "LST-26",
+      "basis": "evidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0102",
+      "event": "E0165",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0103",
+      "event": "E0196",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0103",
+      "task": "LST-27",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0104",
+      "event": "E0194",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0105",
+      "event": "E0028",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0106",
+      "task": "LST-20",
+      "basis": "captureRequest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0107",
+      "task": "LST-36",
+      "basis": "captureRequest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0108",
+      "event": "E0182",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0108",
+      "task": "LST-20",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0109",
+      "task": "LST-36",
+      "basis": "stateEvidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0110",
+      "event": "E0246",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0111",
+      "event": "E0242",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0111",
+      "event": "E0244",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0112",
+      "event": "E0122",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0113",
+      "event": "E0238",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0113",
+      "task": "LST-39",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0114",
+      "task": "LST-39",
+      "basis": "delivery",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0115",
+      "task": "LST-41",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0116",
+      "task": "LST-36",
+      "basis": "heldSpeechReview",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0117",
+      "task": "LST-41",
+      "basis": "integrationOrder",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0118",
+      "task": "LST-36",
+      "basis": "heldSpeechCandidate",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0119",
+      "task": "LST-41",
+      "basis": "delivery",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0120",
+      "task": "LST-41",
+      "basis": "inputManifest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0121",
+      "task": "LST-42",
+      "basis": "captureAuthorization",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0122",
+      "event": "E0276",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0122",
+      "task": "LST-42",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0123",
+      "event": "E0288",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0123",
+      "task": "LST-42",
+      "basis": "blockerEvidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0124",
+      "task": "LST-42",
+      "basis": "authorization",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0125",
+      "task": "LST-42",
+      "basis": "delivery",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0126",
+      "task": "LST-42",
+      "basis": "inputReferences",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0127",
+      "task": "LST-39",
+      "basis": "nextTrace",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0128",
+      "event": "E0228",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0128",
+      "task": "LST-36",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0129",
+      "event": "E0192",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0129",
+      "task": "LST-31",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0130",
+      "task": "LST-31",
+      "basis": "evidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0131",
+      "task": "LST-33",
+      "basis": "evidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0132",
+      "event": "E0201",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0132",
+      "task": "LST-33",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0133",
+      "task": "LST-33",
+      "basis": "buildReceipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0134",
+      "event": "E0211",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0135",
+      "event": "E0023",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0136",
+      "task": "LST-48",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0137",
+      "task": "LST-48",
+      "basis": "inputManifest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0138",
+      "task": "LST-44",
+      "basis": "bridgeRequest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0138",
+      "task": "LST-45",
+      "basis": "bridgeRequest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0139",
+      "event": "E0292",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0139",
+      "event": "E0293",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0139",
+      "task": "LST-44",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0139",
+      "task": "LST-45",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0140",
+      "event": "E0307",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0140",
+      "event": "E0308",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0141",
+      "task": "LST-44",
+      "basis": "producerReceipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0141",
+      "task": "LST-45",
+      "basis": "producerReceipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0142",
+      "task": "LST-44",
+      "basis": "supportedRoute",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0142",
+      "task": "LST-45",
+      "basis": "supportedRoute",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0143",
+      "event": "E0297",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0144",
+      "task": "LST-44",
+      "basis": "receipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0145",
+      "task": "LST-45",
+      "basis": "receipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0146",
+      "task": "LST-44",
+      "basis": "sourceVerification",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0146",
+      "task": "LST-45",
+      "basis": "sourceVerification",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0147",
+      "task": "LST-32",
+      "basis": "evidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0148",
+      "task": "LST-34",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0149",
+      "event": "E0349",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0150",
+      "task": "LST-46",
+      "basis": "continuation",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0151",
+      "event": "E0301",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0151",
+      "task": "LST-46",
+      "basis": "contract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0152",
+      "event": "E0319",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0153",
+      "event": "E0306",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0154",
+      "event": "E0310",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0155",
+      "task": "LST-46",
+      "basis": "nativeLifecycle",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0156",
+      "event": "E0302",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0157",
+      "event": "E0305",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0158",
+      "task": "LST-46",
+      "basis": "m2Receipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0159",
+      "task": "LST-46",
+      "basis": "mechanismResult",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0160",
+      "event": "E0345",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0161",
+      "event": "E0351",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0162",
+      "task": "LST-46",
+      "basis": "containedBuildContract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0163",
+      "task": "LST-42",
+      "basis": "bridgeRequest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0164",
+      "event": "E0331",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0165",
+      "event": "E0330",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0166",
+      "event": "E0358",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0167",
+      "event": "E0360",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0168",
+      "task": "LST-46",
+      "basis": "delivery",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0169",
+      "task": "LST-46",
+      "basis": "predecessorCleared",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0170",
+      "task": "LST-46",
+      "basis": "producerReceipt",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0171",
+      "task": "LST-46",
+      "basis": "actualResult",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0172",
+      "task": "LST-46",
+      "basis": "cliVersionApproval",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0173",
+      "event": "E0320",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0174",
+      "event": "E0322",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0175",
+      "task": "LST-46",
+      "basis": "authorization",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0176",
+      "event": "E0362",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0176",
+      "task": "LST-46",
+      "basis": "continuationContract",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0177",
+      "task": "LST-46",
+      "basis": "inputManifest",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0178",
+      "task": "LST-30",
+      "basis": "evidence",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0179",
+      "event": "E0183",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0180",
+      "event": "E0140",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0180",
+      "event": "E0141",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0181",
+      "task": "LST-22",
+      "basis": "executionPacket",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0182",
+      "event": "E0170",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0183",
+      "event": "E0113",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0184",
+      "event": "E0126",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0185",
+      "event": "E0155",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0186",
+      "event": "E0146",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0187",
+      "event": "E0091",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0188",
+      "event": "E0075",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0189",
+      "event": "E0076",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0190",
+      "event": "E0081",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0191",
+      "event": "E0294",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0192",
+      "event": "E0099",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0193",
+      "event": "E0143",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0194",
+      "event": "E0304",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0195",
+      "event": "E0309",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0196",
+      "event": "E0316",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0197",
+      "event": "E0249",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0198",
+      "event": "E0267",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0199",
+      "event": "E0271",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0200",
+      "event": "E0282",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0201",
+      "event": "E0117",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0202",
+      "event": "E0136",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0203",
+      "event": "E0152",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0204",
+      "event": "E0166",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0205",
+      "event": "E0153",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0206",
+      "event": "E0220",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0207",
+      "event": "E0206",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0208",
+      "event": "E0195",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0209",
+      "event": "E0070",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0210",
+      "event": "E0193",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0211",
+      "event": "E0043",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0212",
+      "event": "E0043",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0213",
+      "event": "E0295",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0214",
+      "event": "E0342",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0214",
+      "event": "E0343",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0215",
+      "event": "E0214",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0216",
+      "event": "E0077",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0216",
+      "event": "E0080",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0217",
+      "event": "E0134",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0218",
+      "event": "E0093",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0218",
+      "event": "E0098",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0219",
+      "event": "E0120",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0220",
+      "event": "E0321",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0221",
+      "event": "E0323",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0222",
+      "event": "E0327",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0223",
+      "event": "E0262",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0224",
+      "event": "E0280",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0224",
+      "event": "E0281",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0225",
+      "event": "E0278",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0226",
+      "event": "E0250",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0227",
+      "event": "E0241",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0227",
+      "event": "E0245",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0228",
+      "event": "E0250",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0229",
+      "task": "LST-38",
+      "basis": "actualExecution",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0230",
+      "event": "E0231",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0230",
+      "event": "E0232",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0231",
+      "event": "E0231",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0232",
+      "event": "E0232",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0233",
+      "event": "E0231",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0233",
+      "event": "E0232",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0234",
+      "event": "E0154",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0235",
+      "event": "E0097",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0236",
+      "event": "E0099",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0237",
+      "event": "E0236",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0238",
+      "event": "E0359",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0239",
+      "event": "E0219",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    },
+    {
+      "artifact": "A0240",
+      "event": "E0169",
+      "basis": "explicit artifact path in exchange",
+      "causality": "explicit reference; not proof that referenced artifact was accepted"
+    }
+  ],
+  "limitations": [
+    "Raw reports are not public files; Engine renders sanitized source cards only.",
+    "Artifact references establish a documented connection, not causal order or acceptance.",
+    "Mutable sources were hashed at extraction; narrative cutoff is established by dated events/reports."
+  ]
+}

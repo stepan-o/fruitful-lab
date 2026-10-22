@@ -1,10 +1,10 @@
 # Cast and opening storyboard review
 
-21 October 2026 · Review preview checkpoint. The animated opening remains in production.
+22 October 2026 · Art and reader review; the live opening uses the current revision-16 script.
 
-The cast reader opens with the approved graduation and ensemble images, then bob, the nine other workers and the three supervisors. The episode reader opens with the four-panel storyboard. Its third panel now uses a low view beside bob, with sam reaching in from the left and witnesses at different depths; it no longer repeats the greeting composition. The morning panel follows the workers towards the factory. LIMEN’s cyan blade remains on his right arm. STILETTO passes while bob is down, after ed and gus’s completed checks.
+The cast reader opens with the approved graduation and ensemble images, then bob, the nine other workers and the three supervisors. The episode reader opens with the four-panel storyboard. Its third panel now uses a low view beside bob, with sam reaching in from the left and witnesses at different depths; it no longer repeats the greeting composition. The morning panel follows the workers towards the factory. LIMEN’s cyan blade remains on his right arm. The illustrations preserve the approved compositions. The later owner-directed script brings STILETTO through while bob recovers, with ed and gus volunteering afterward; [Opening episode](../OPENING_EPISODE.md) is authoritative for the performed order.
 
-## Validation
+## Reader validation · 21 October
 
 - Production build passed, including TypeScript and route generation.
 - Repository CI passed 106 suites and 566 tests; one unrelated Sanctuary navigation test exceeded its existing five-second limit. An isolated diagnostic run with a 20-second limit passed all 14 tests in that suite. The default CI run is therefore not reported as wholly passing. No test threshold was changed.
@@ -13,4 +13,4 @@ The cast reader opens with the approved graduation and ensemble images, then bob
 - Cast artwork stacks on narrow phones and presents the two ensemble images side by side at tablet and desktop widths. Portraits below use lazy loading.
 - Original generation prompts and source records remain in the numbered model-brief convention. Responsive WebP derivatives are linked by the cast and episode media manifests.
 
-These checks establish reader layout and delivery, not animation fidelity, recognition in a moving crowd or game frame-rate acceptance. The existing rehearsal still uses the earlier cast and script.
+These checks establish reader layout and delivery, not animation fidelity, recognition in a moving crowd or game frame-rate acceptance. The current rehearsal now uses the ten individual workers and the revised script. Its own contact and performance evidence is maintained separately.

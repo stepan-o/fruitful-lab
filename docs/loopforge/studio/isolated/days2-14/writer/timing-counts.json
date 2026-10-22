@@ -1,0 +1,80 @@
+{
+  "wordRule": "Unicode word runs; apostrophes/hyphens internal; speech only. Action, labels and player options excluded.",
+  "routes": {
+    "E01.return": {
+      "spokenWords": 82,
+      "spokenTurns": 22,
+      "estimatedSecondsAt150Wpm": 32.8,
+      "estimatedSecondsAt180Wpm": 27.3
+    },
+    "E01.hold": {
+      "spokenWords": 87,
+      "spokenTurns": 21,
+      "estimatedSecondsAt150Wpm": 34.8,
+      "estimatedSecondsAt180Wpm": 29.0
+    },
+    "E01.temporary": {
+      "spokenWords": 89,
+      "spokenTurns": 22,
+      "estimatedSecondsAt150Wpm": 35.6,
+      "estimatedSecondsAt180Wpm": 29.7
+    },
+    "E01.recovered-earlier": {
+      "spokenWords": 2,
+      "spokenTurns": 2,
+      "estimatedSecondsAt150Wpm": 0.8,
+      "estimatedSecondsAt180Wpm": 0.7
+    },
+    "E02.clear": {
+      "spokenWords": 38,
+      "spokenTurns": 9,
+      "estimatedSecondsAt150Wpm": 15.2,
+      "estimatedSecondsAt180Wpm": 12.7
+    },
+    "E02.compressed": {
+      "spokenWords": 36,
+      "spokenTurns": 9,
+      "estimatedSecondsAt150Wpm": 14.4,
+      "estimatedSecondsAt180Wpm": 12.0
+    },
+    "E03.no-new-harm": {
+      "spokenWords": 78,
+      "spokenTurns": 16,
+      "estimatedSecondsAt150Wpm": 31.2,
+      "estimatedSecondsAt180Wpm": 26.0
+    },
+    "E03.warning": {
+      "spokenWords": 80,
+      "spokenTurns": 16,
+      "estimatedSecondsAt150Wpm": 32.0,
+      "estimatedSecondsAt180Wpm": 26.7
+    },
+    "E04.bounded": {
+      "spokenWords": 74,
+      "spokenTurns": 18,
+      "estimatedSecondsAt150Wpm": 29.6,
+      "estimatedSecondsAt180Wpm": 24.7
+    },
+    "E04.promise-breach": {
+      "spokenWords": 83,
+      "spokenTurns": 19,
+      "estimatedSecondsAt150Wpm": 33.2,
+      "estimatedSecondsAt180Wpm": 27.7
+    },
+    "E04.defer": {
+      "spokenWords": 14,
+      "spokenTurns": 3,
+      "estimatedSecondsAt150Wpm": 5.6,
+      "estimatedSecondsAt180Wpm": 4.7
+    },
+    "E04.real-work-callback": {
+      "spokenWords": 4,
+      "spokenTurns": 3,
+      "estimatedSecondsAt150Wpm": 1.6,
+      "estimatedSecondsAt180Wpm": 1.3
+    }
+  },
+  "uniqueSpokenWords": 407,
+  "actualReadAloud": false,
+  "actionOrDayDurationMeasured": false
+}

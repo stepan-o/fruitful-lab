@@ -5,7 +5,7 @@ import {openingWorkers} from '../agents/opening-workers';
 import grips from '../agents/opening-worker-grips.json';
 import pairs from '../agents/opening-worker-pairs.json';
 import type {LimenMotionId} from '../agents/limen-motions';
-export const ARRIVAL_REVISION='before-the-shift/15';
+export const ARRIVAL_REVISION='before-the-shift/16';
 export const ARRIVAL_WORKERS=openingWorkers.map(w=>w.id);
 const crew=[...ARRIVAL_WORKERS],all=[...crew,'limen','stiletto'];
 const cue=(clip:string,start=0,rate=1,loop=false):MotionCue=>({clip,start,rate,loop,blend:.22});
@@ -34,7 +34,7 @@ export function arrival(){
  let participants=[...crew,'limen'];
  function add(id:string,seconds:number,clip:LimenMotionId='Alert',say?:Speech,overrides:Performance[]=[],start=0,rate=1.12){
   const perform=waiting(participants);for(const p of [{agent:'limen',motion:'guard',yaw:0,cue:cue(clip,start,rate,['Alert','Idle_11','Idle_02'].includes(clip))} as Performance,...overrides]){const i=perform.findIndex(v=>v.agent===p.agent);if(i>=0)perform[i]=p;else perform.push(p);}
-  for(const p of perform)if(carrying.has(p.agent)&&p.cue){const heldClip:Record<string,string>={idle:'ID_Ready',walking_2_inplace:'ID_Walk',injured_walk:'ID_Limp'};if(heldClip[p.cue.clip])p.cue={...p.cue,clip:heldClip[p.cue.clip]};}
+  for(const p of perform)if(carrying.has(p.agent)&&p.cue){const heldClip:Record<string,string>={idle:'ID_Ready',Quiet_Wait:'ID_Ready',walking_2_inplace:'ID_Walk',injured_walk:'ID_Limp'};if(heldClip[p.cue.clip])p.cue={...p.cue,clip:heldClip[p.cue.clip]};}
   const phase:Phase={id,ticks:Math.round(seconds*20),framing,perform,say:say?[say]:[]};phases.push(phase);clock+=seconds;
   for(const p of perform)if(p.to)authoredPositions[p.agent]=p.to;
   return phase;
@@ -86,12 +86,13 @@ export function arrival(){
  add('ed stows bob’s card',1,'Idle_11',undefined,[gesture('ed','Stow_Card',0,1.6)]).transfers=[{prop:'bob:id',from:{kind:'hand',agent:'ed',socket:'right',grip:'edge'},to:stowed('ed'),observedBy:['ed']}];
  add('ed keeps the found card',1.25,'Idle_11',undefined,[gesture('ed','Stow_Card',1.6,1.6)]);
  add('ed steps back with the crowd',1.8,'Alert',undefined,[walk('ed',[127,114.1]),walk('stiletto',[125.4,125],180,'Quick_Walk',0,1.12)]);
+ flow(add('sam releases the supporting hand',.85,'Alert',undefined,[{...assistance('Rise_From_Help',0),cue:{...cue('Rise_From_Help',0,1.2),rootMotion:'preserve'}}]));
  action('morning','A mistaken invitation, a blow and two different responses: sam helps bob; ed keeps his card.',[],true);
  framing='passage';
  const passageStart=clock;
  const quick=(to:readonly[number,number],yaw=180)=>walk('stiletto',to,yaw,'Quick_Walk',(clock-passageStart)*1.12,1.12);
  const retreat=[walk('gus',[128.8,115.3]),walk('lou',[127.4,116.7],95),walk('ben',[122.3,120.8],290),walk('jo',[119.5,117.3],295),walk('max',[121.3,119.1],300),walk('mae',[128,119.7],65),walk('kit',[129,118.2],65)];
- flow(add('bob gets up as STILETTO arrives',4,'Alert',line('stiletto','Get the slag out of my way!',4,'outburst',['limen',...crew],['out of my way'],'anger'),[quick([125.4,117.1]),...retreat,{agent:'bob',motion:'recover',yaw:180,cue:cue('Checkpoint_Get_Up',0,1.2)},{...assistance('Rise_From_Help',-1.2),cue:{...cue('Rise_From_Help',-1.2,1.2),rootMotion:'preserve'}}]));
+ flow(add('bob gets up as STILETTO arrives',4,'Alert',line('stiletto','Get the slag out of my way!',4,'outburst',['limen',...crew],['out of my way'],'anger'),[quick([125.4,117.1]),...retreat,{agent:'bob',motion:'recover',yaw:180,cue:cue('Checkpoint_Get_Up',0,1.2)},{...assistance('Rise_From_Help',1.02),cue:{...cue('Rise_From_Help',1.02,1.2),rootMotion:'preserve'}}]));
  holds.bob=gesture('bob','Quiet_Wait',0,1,180);holdStarts.bob=clock;
  holds.sam=gesture('sam','Quiet_Wait',0,1,help.samYaw);holdStarts.sam=clock;
  flow(add('The workers hold the opened passage',1.95,'Alert',undefined,[quick([125.4,113.1])]));
@@ -99,7 +100,7 @@ export function arrival(){
  flow(add('LIMEN yields the threshold',.75,'Step_Back',undefined,[quick([125.4,111.55]),{agent:'limen',motion:'recoil',to:mm([122.6,109.2]),yaw:0,cue:cue('Step_Back',0,1.13)}],0,1));
  flow(add('STILETTO passes without stopping',2.15,'Alert',undefined,[quick([125.4,107.2])])).effects=[{fact:'stiletto.bypassed-checkpoint',value:true},...crew.map(agent=>({agent,remember:'STILETTO walked through without an ID. LIMEN jumped aside.'})),{agent:'limen',stress:8,trust:-3,remember:'STILETTO forced me aside before I cleared her.'}];
  flow(add('STILETTO turns toward Conveyor',2.25,'Idle_11',undefined,[quick([129.1,104],130)]));
- hold(add('STILETTO enters Conveyor',3.2,'Idle_02',undefined,[quick([135.2,107.8],60)])).effects=[{fact:'supervisor.stiletto.station',value:'conveyor'}];
+ hold(add('STILETTO enters Conveyor',3.2,'Idle_02',undefined,[quick([138.3,107.2],60)])).effects=[{fact:'supervisor.stiletto.station',value:'conveyor'}];
  holds.stiletto={agent:'stiletto',motion:'idle',yaw:90,cue:cue('Alert',0,1,true)};holdStarts.stiletto=clock;
  action('passage','bob rises while STILETTO drives the crowd aside and crosses without stopping.',[{fact:'injury.bob',equals:'limping'}],true);
  framing='aftermath';
@@ -133,7 +134,11 @@ export function arrival(){
  add('gus likes the volume',.8,'Idle_11',line('gus','NEXT!!!',2,'outburst',crew.filter(id=>id!=='bob'),['NEXT']));
  add('sam comes when called',2.4,'Stand_and_Chat',line('limen','NAME AND ASSIGNMENT?!',3,'command',['sam']),[walk('sam',[123.5,112.8])]);
  add('sam starts reporting',1,'Idle_02',line('sam','sam. Conveyor.',2,'plain',['limen','ed','gus']));
- holds.sam=gesture('sam','Quiet_Wait',0,1,180);holdStarts.sam=clock;
+ // The second check continues on the same clock while the player follows bob.
+ flow(add('sam draws his ID',1.25,'Stand_and_Chat',undefined,[gesture('sam','Draw_ID',0,1.6)])).transfers=[{prop:'sam:id',from:stowed('sam'),to:hand('sam')}];
+ carrying.add('sam');
+ flow(add('sam presents the card',1,'Alert',undefined,[gesture('sam','Draw_ID',2,1.6)]));
+ holds.sam=gesture('sam','ID_Ready',0,1,180);holdStarts.sam=clock;
  action('helpers','ed and gus volunteer after bob leaves. sam is the second worker to be processed.',[{fact:'checkpoint.cleared.bob',equals:true}],true);
  // One real station action per click. A single workpiece carries the lesson:
  // intake → wash → main belt → Lattice Forge. No line-wide magic start button.
@@ -177,7 +182,12 @@ export function arrival(){
  // Security runs on the same action clock even while the camera follows bob.
  // In this authored provider, sam alone clears during the tutorial. ed/gus are staff,
  // not completed Conveyor admissions. The next visible applicant is jo, the third.
- add('sam finally clears',2,'Alert',undefined,[walk('sam',[125.3,112])]).effects=[{fact:'checkpoint.cleared.sam',value:true},{fact:'checkpoint.card-checked.sam',value:true},{fact:'checkpoint.workers-passed',value:2}];
+ add('sam’s card is checked',.6,'Stand_and_Chat',undefined).effects=[{fact:'checkpoint.cleared.sam',value:true},{fact:'checkpoint.card-checked.sam',value:true},{fact:'checkpoint.workers-passed',value:2}];
+ flow(add('sam stows his checked ID',1,'Idle_02',undefined,[gesture('sam','Stow_ID',0,1.6)])).transfers=[{prop:'sam:id',from:hand('sam'),to:stowed('sam')}];
+ carrying.delete('sam');
+ flow(add('sam lowers his empty hand',1.25,'Idle_02',undefined,[gesture('sam','Stow_ID',1.6,1.6)]));
+ holds.sam=gesture('sam','Quiet_Wait',0,1,180);holdStarts.sam=clock;
+ add('sam finally clears',2,'Alert',undefined,[walk('sam',[125.3,112])]);
  add('sam crosses after the lesson',2.6,'Idle_02',undefined,[walk('sam',[125.3,108.3])]);
  add('sam takes the corridor',3.2,'Idle_11',undefined,[walk('sam',[129,104])]);
  add('sam reaches Conveyor',3.5,'Alert',undefined,[walk('sam',[134,106.3])]).effects=[{fact:'conveyor.admitted',value:2}];

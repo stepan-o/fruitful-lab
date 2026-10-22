@@ -13,6 +13,7 @@ import {limenMotion,limenMotions,type LimenMotionId} from '@/lib/loopforge/agent
 import {type LimenPalette} from '@/lib/loopforge/agents/limen-palette';
 import {createLimenBlade} from './limen-blade';
 import {createPerformanceSampler} from './performance-sampler';
+import {createLimenContactPose} from './limen-contact-pose';
 import type {ActorView} from '@/lib/loopforge/encounters/contract';
 import type {LimenSurface} from './limen-model';
 
@@ -38,6 +39,7 @@ export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,o
   signal.throwIfAborted();
   if(body.skeletons[0]?.bones.length!==24||!limenMotions.every(m=>body.animationGroups.some(a=>a.name===m.id)))throw Error('The LIMEN source motion bank is incomplete.');
   body.addAllToScene();body.rootNodes.forEach(n=>{n.parent=root;});body.animationGroups.forEach(a=>a.stop());
+  const contactPose=createLimenContactPose(body.animationGroups,body.transformNodes);
   const forearm=body.transformNodes.find(n=>n.name==='RightForeArm');
   if(!forearm)throw Error('The right forearm attachment is missing.');
   const socket=new TransformNode('LIMEN candidate forearm emitter',scene);socket.parent=forearm;
@@ -45,11 +47,14 @@ export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,o
   socket.scaling.setAll(100);socket.position.set(8,0,-4);
   housing=await LoadAssetContainerAsync(bladeBytes,scene,{pluginExtension:'.glb',name:'limen-emitter.glb'});signal.throwIfAborted();housing.addAllToScene();
   for(const n of housing.rootNodes){n.parent=socket;if(n instanceof TransformNode){n.scaling.setAll(1);n.rotationQuaternion=Quaternion.Identity();}}
-  energy=createLimenBlade(scene,socket);
+  // This body's longer forearm needs the energy to begin at the wrist.
+  const energyMount=new TransformNode('LIMEN visible wrist current',scene);energyMount.parent=socket;
+  energyMount.scaling.set(1.8,1.45,1.8);energyMount.position.y=.39-.27*1.45;
+  energy=createLimenBlade(scene,energyMount);
   meshes.push(...[...body.meshes,...housing.meshes].filter(m=>m.getTotalVertices()>0));
   meshes.forEach(m=>{m.isPickable=false;m.receiveShadows=true;m.alwaysSelectAsActiveMesh=true;shadow.addShadowCaster(m);});
   fill=new DirectionalLight('LIMEN motion inspection lamp',new Vector3(.25,-.5,1),scene);fill.diffuse=new Color3(.82,.9,1);fill.intensity=2.5;fill.includedOnlyMeshes=meshes;fill.renderPriority=5;
-  const materials=[...body.materials,...housing.materials].filter((m):m is PBRMaterial=>m instanceof PBRMaterial);materials.forEach(m=>{m.maxSimultaneousLights=6;});
+  const materials=[...body.materials,...housing.materials].filter((m):m is PBRMaterial=>m instanceof PBRMaterial);materials.forEach(m=>{m.maxSimultaneousLights=6;m.metallic=Math.min(m.metallic??1,.65);m.roughness=Math.max(m.roughness??1,.55);});
   const appearance=materials.map(m=>({m,texture:m.albedoTexture,color:m.albedoColor.clone(),metallic:m.metallic,roughness:m.roughness}));
   // Keep the rebuilt skull, dark joints and armour material separation.
   // Pale-steel paint remains a reference option on the legacy body only.
@@ -59,6 +64,7 @@ export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,o
   function sample(){
    const a=body.animationGroups.find(a=>a.name===clip)!;
    for(const {animation,target}of a.targetedAnimations){const v=animation.evaluate(a.from+(a.to-a.from)*phase);if(animation.targetProperty==='rotationQuaternion')target.rotationQuaternion=(v as Quaternion).clone();else if(animation.targetProperty==='position')target.position.copyFrom(v as Vector3);else if(animation.targetProperty==='scaling')target.scaling.copyFrom(v as Vector3);}
+   contactPose.sample({clip},phase*duration());
    root.computeWorldMatrix(true);const quiet=reduced||reducedMotion.matches;energy?.sample(quiet?0:effectTime,quiet?0:Math.max(0,1-Math.abs(effectTime-pulseAt-.25)/.25),1,0);stage.refresh();
   }
   observer=scene.onBeforeRenderObservable.add(()=>{
@@ -71,7 +77,7 @@ export async function loadLimenMotions(stage:CharacterStage,signal:AbortSignal,o
   const performanceSampler=createPerformanceSampler(body.animationGroups,'','y-up');
   return {
    presentation:{root,bodyMeshes:body.meshes.filter(m=>m.getTotalVertices()>0)},
-   perform(actor:ActorView){if(!actor.cue)return;playing=false;performanceSampler.sample(actor.cue,actor.seconds,actor.previous,actor.blend);const p=worldPoint(actor.position[0]/1000,actor.position[1]/1000);root.position.set(p[0],.015,p[2]);// Imported glTF faces -Z; encounter yaw zero faces the queue along +Z.
+   perform(actor:ActorView){if(!actor.cue)return;playing=false;performanceSampler.sample(actor.cue,actor.seconds,actor.previous,actor.blend);contactPose.sample(actor.cue,actor.seconds,actor.previous,actor.blend);const p=worldPoint(actor.position[0]/1000,actor.position[1]/1000);root.position.set(p[0],.015,p[2]);// Imported glTF faces -Z; encounter yaw zero faces the queue along +Z.
     root.rotation.y=Math.PI+actor.yaw*Math.PI/180;root.computeWorldMatrix(true);energy?.sample(reducedMotion.matches?0:actor.seconds,actor.motion==='strike'?.8:0,1,0);stage.refresh();},
    duration,clip(value:string){if(!limenMotion(value))throw Error('Unknown LIMEN motion');clip=value as LimenMotionId;phase=0;effectTime=0;pulseAt=-100;sample();onFrame(0);},
    play(value:boolean){if(value&&phase>=1)phase=0;playing=value;last=performance.now();sample();},

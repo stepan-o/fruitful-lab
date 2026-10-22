@@ -1,0 +1,12 @@
+{
+  "version": "LOOPFORGE-DEV-BLOG-PAIRED-2",
+  "posts": [
+    {
+      "metadata": "post.json"
+    },
+    {
+      "metadata": "assessment.json"
+    }
+  ],
+  "publication": "one combined PR; final image/browser/owner approval pending"
+}

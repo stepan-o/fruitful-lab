@@ -1,0 +1,67 @@
+{
+  "state": "finished",
+  "label": "Glow repeat",
+  "seconds": 40.07889999997616,
+  "rows": [
+    {
+      "label": "Glow only",
+      "mode": "glow",
+      "frames": 1756,
+      "fps": 43.89528125725176,
+      "p95Ms": 35.900000005960464,
+      "p99Ms": 47.80000001192093,
+      "stalls": 2,
+      "renderMeanMs": 6.240603644460236,
+      "drawsMean": 60465.658314350796
+    },
+    {
+      "label": "Light spill",
+      "mode": "light",
+      "frames": 1798,
+      "fps": 44.92910796480306,
+      "p95Ms": 33.80000001192093,
+      "p99Ms": 43.5,
+      "stalls": 2,
+      "renderMeanMs": 6.014071189869895,
+      "drawsMean": 163993.19521690768
+    },
+    {
+      "label": "Light + shadows",
+      "mode": "shadows",
+      "frames": 1737,
+      "fps": 43.402972991194034,
+      "p95Ms": 33.599999994039536,
+      "p99Ms": 47,
+      "stalls": 0,
+      "renderMeanMs": 7.064709268411687,
+      "drawsMean": 267974.8284398388
+    },
+    {
+      "label": "Glow repeat",
+      "mode": "glow",
+      "frames": 1688,
+      "fps": 42.17100743239023,
+      "p95Ms": 38.89999997615814,
+      "p99Ms": 75,
+      "stalls": 5,
+      "renderMeanMs": 6.45402843609311,
+      "drawsMean": 373607.83886255923
+    }
+  ],
+  "environment": {
+    "renderer": "ANGLE (Intel, Mesa Intel(R) HD Graphics 620 (KBL GT2), OpenGL 4.6)",
+    "canvas": [
+      728,
+      409
+    ],
+    "createdAt": "2026-10-22T01:11:34.239Z",
+    "warmupSeconds": 5,
+    "measureSeconds": 40,
+    "sequenceSeconds": [
+      93,
+      113
+    ],
+    "graphics": "fixed reference",
+    "limitations": "Short diagnostic with repeated baseline; not sustained opening acceptance. CPU render submission is not GPU elapsed time."
+  }
+}

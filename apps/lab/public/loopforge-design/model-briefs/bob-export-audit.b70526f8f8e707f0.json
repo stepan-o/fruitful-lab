@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "character": "bob",
+  "status": "body-generated-rig-pending",
+  "sourceTaskId": "01a15cb2-3293-7339-81fb-22f573c0afcc",
+  "assets": [
+    {
+      "role": "unrigged source body",
+      "filename": "bob-body-source.glb",
+      "sha256": "0f9a06998e965f449a9e4cfd42520deacc0f1daf5d8063e833159a77a44fdf01",
+      "bytes": 14971264,
+      "inspection": "pending"
+    }
+  ]
+}

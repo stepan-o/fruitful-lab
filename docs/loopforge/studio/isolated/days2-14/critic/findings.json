@@ -1,0 +1,355 @@
+{
+  "version": "DAYS2-14-CRITIC-C1",
+  "task": "LST-29",
+  "candidate": "DAYS2-14-C1-1",
+  "verdict": "REVISE",
+  "namedGate": "Combined proposal/illustrated narrative-board review; text passes remain scoped",
+  "ownerTasteApproval": false,
+  "inputManifestSha256": "f13ee48ac7bfb77773203248bb6d6840dd1b4e1507745179c4ed68498192ee24",
+  "findings": [
+    {
+      "id": "C1-01",
+      "gate": "Narrative board",
+      "severity": "blocker",
+      "title": "E01 offered card and ambiguous alternatives",
+      "artifacts": [
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E01/E01-proposal.png",
+          "sha256": "ae81feda7489de7a067940039ced3ceaad67b4f69c111e526cd166fa46f754ae",
+          "location": "Upper-right: ed still holds card; lower-right: bob faces camera while sam walks to doorway"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-W1/performed-exchanges.md",
+          "sha256": "afbe61268e57809c37741549c4cd1973bf2e101b6fff668cdcb34e930ea818f8",
+          "location": "E01.A05\u2013A06, return; E01 deferred/temporary routes"
+        }
+      ],
+      "effect": "Passing the desk may be mistaken for recovered custody; adjacent exclusive outcomes appear sequential.",
+      "smallestCorrection": "Show completed receipt versus visible empty holder, align departure, label the two alternatives.",
+      "responsibleRole": "Visual Artist with Scene Director, only on Producer assignment",
+      "recheckEvidence": "New hashed full board and supplied small view: recipient holds card in return branch; temporary-admission branch retains absence and visibly separate chronology.",
+      "origin": "Independent first pass",
+      "status": "open"
+    },
+    {
+      "id": "C1-02",
+      "gate": "Narrative board / action",
+      "severity": "blocker",
+      "title": "E02 clear hand is not established",
+      "artifacts": [
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E02/E02-proposal.png",
+          "sha256": "ebce549caa8037f7c4a91ade952b9ebfad783c4564089fa1e4dfee1b6d18d83c",
+          "location": "Large-left carrier/clamp and sam hand; upper-right departure"
+        }
+      ],
+      "effect": "The shared cue cannot be read as an actionable condition; viewers cannot distinguish a controlled start from premature operation.",
+      "smallestCorrection": "Choose an explicit clear-hand-before-start state or short sequence; preserve wash destination and company cost.",
+      "responsibleRole": "Visual Artist / Scene Director",
+      "recheckEvidence": "New board shows hand outside carrier/clamp area before control operation; eventual motion/contact gate remains separate.",
+      "origin": "Independent first pass",
+      "status": "open"
+    },
+    {
+      "id": "C1-03",
+      "gate": "Agency consequences / narrative board",
+      "severity": "blocker",
+      "title": "E03 swapped outcome still shows paperwork",
+      "artifacts": [
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E03/E03-proposal.png",
+          "sha256": "515bdabd7d4252cc8b1ae07097f8b0e379fb1846e3a140d8b09c57911bfd811e",
+          "location": "Lower-right: STILETTO foreground paperwork, LIMEN paperwork inside"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-C1/proposal-C1.md",
+          "sha256": "64aa01ecd055041833f6df78a0c1df0e2dad1a1dc2b7d7a6f7223810149f5861",
+          "location": "lines 56\u201360"
+        }
+      ],
+      "effect": "Swapping supervisors reads as relocation, not easier admission meeting limited receiving space.",
+      "smallestCorrection": "Show actual passage past STILETTO and an occupied receiving area/held next carrier under LIMEN; label native versus swapped futures.",
+      "responsibleRole": "Visual Artist / Scene Director with Systems conditions",
+      "recheckEvidence": "New hashed board makes passage and the new downstream constraint visible without explanatory author rationale; no claimed throughput numbers.",
+      "origin": "Independent first pass",
+      "status": "open"
+    },
+    {
+      "id": "C1-04",
+      "gate": "Narrative board / continuity",
+      "severity": "blocker",
+      "title": "E04 changes control geography and misses release",
+      "artifacts": [
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E04/E04-proposal.png",
+          "sha256": "fd00247c34922e67815401ac0bb9dcc52dcff46709838f84663ab8bccf560ba1",
+          "location": "Large-left bob control at right; upper-right sam control at left; lower-right kit hand over carrier"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-W1/performed-exchanges.md",
+          "sha256": "afbe61268e57809c37741549c4cd1973bf2e101b6fff668cdcb34e930ea818f8",
+          "location": "E04.C/B; E04.K02\u2013K03 and A14\u2013A15, lines 343\u2013349"
+        }
+      ],
+      "effect": "The reciprocal turn looks like a different workstation; the later callback does not show the condition the words require.",
+      "smallestCorrection": "Keep one identifiable control and axis, show actual hand withdrawal before start, distinguish unpowered rehearsal from powered work.",
+      "responsibleRole": "Visual Artist / Scene Director",
+      "recheckEvidence": "New hashed panels preserve prop identity, specify each moment and show release/start order; later performance inspection still required.",
+      "origin": "Independent first pass",
+      "status": "open"
+    },
+    {
+      "id": "C1-05",
+      "gate": "Approved identity",
+      "severity": "blocker",
+      "title": "Specific identity drift across boards",
+      "artifacts": [
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E02/E02-proposal.png",
+          "sha256": "ebce549caa8037f7c4a91ade952b9ebfad783c4564089fa1e4dfee1b6d18d83c",
+          "location": "Upper-right STILETTO ordinary pointing hand"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E03/E03-proposal.png",
+          "sha256": "515bdabd7d4252cc8b1ae07097f8b0e379fb1846e3a140d8b09c57911bfd811e",
+          "location": "Large-left bob eye emphasis; lower-right STILETTO silhouette"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E04/E04-proposal.png",
+          "sha256": "fd00247c34922e67815401ac0bb9dcc52dcff46709838f84663ab8bccf560ba1",
+          "location": "Large-left ed tall/angular crest"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/visual/references/stiletto-1280.189604eaf0fbc0f9.webp",
+          "sha256": "189604eaf0fbc0f9211662a176503b85f33b651818adddf37ebfb063dc2684de",
+          "location": "Approved blade silhouette"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/visual/references/bob-1280.482a9955d4416c22.webp",
+          "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e",
+          "location": "Approved oversized eye/head proportions"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/visual/references/ed-1280.51ea5ec63125128f.webp",
+          "sha256": "51ea5ec63125128fec1973b1429d32fe43f80fcd3904b998fff0dea39fd603cd",
+          "location": "Projecting toothed jaw and swept head"
+        }
+      ],
+      "effect": "Recognizing a known person across scenes becomes less reliable; STILETTO loses a defining equipment cue.",
+      "smallestCorrection": "Restore the cited head/equipment cues in the same causal-board revision. No new identity or generic palette change.",
+      "responsibleRole": "Visual Artist",
+      "recheckEvidence": "Compare new full and small panels with cited approved references. Perspective alone does not establish scale failure.",
+      "origin": "STILETTO and ed in first pass; bob eye concern sharpened by later author notes and compared with already viewed image/reference.",
+      "status": "open"
+    },
+    {
+      "id": "C1-06",
+      "gate": "Small-scale legibility",
+      "severity": "blocker",
+      "title": "Fine actions and branch distinctions disappear at 320\u00d7180",
+      "artifacts": [
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E01/E01-320x180.png",
+          "sha256": "e648e9e41aa16abc85fc77427bbbafd9221257d28065ada25992e922d0783b0d",
+          "location": "Full supplied preview; card/hand/branch detail"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E02/E02-320x180.png",
+          "sha256": "0fe07912364758620d651c1b1b3df3612154b0ba5302b9d54ea0b4273453e3a1",
+          "location": "Full supplied preview; card/hand/branch detail"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E03/E03-320x180.png",
+          "sha256": "a7a1dd95f06c3d91b9be99f41a6b59f3823be6980cdb35f40b7919e48ca7c3f2",
+          "location": "Full supplied preview; card/hand/branch detail"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E04/E04-320x180.png",
+          "sha256": "53b1555e95017f71d7dd9d7a6a02f61257ae3d263698bf000b5ebb9ce651b7fb",
+          "location": "Full supplied preview; card/hand/branch detail"
+        }
+      ],
+      "effect": "Preview silhouettes cannot establish custody, safe hand clearance or mutually exclusive futures.",
+      "smallestCorrection": "Supply legible adjacent branch captions and full-view access or focused causal crops; reduce only local clutter where it hides the action.",
+      "responsibleRole": "Visual Artist / Scene Director; Engine later delivery integration",
+      "recheckEvidence": "Inspect the actual next delivered previews with their captions and full-view context; do not equate static legibility with motion acceptance.",
+      "origin": "Independent first pass",
+      "status": "open"
+    },
+    {
+      "id": "C1-07",
+      "gate": "Agency specification",
+      "severity": "unverified",
+      "title": "E01 authority selection needs an explicit decision table",
+      "artifacts": [
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-C1/proposal-C1.md",
+          "sha256": "64aa01ecd055041833f6df78a0c1df0e2dad1a1dc2b7d7a6f7223810149f5861",
+          "location": "lines 42\u201348"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-C1/convergence-map.json",
+          "sha256": "54178ac473e64ddaa203b91b21ad509aa832951fcf3cd7ad5bcda59bb22ec097",
+          "location": "E01 playerOptions, authority/return/defer/automatic/exception route conditions"
+        }
+      ],
+      "effect": "The reviewed brief does not yet let a reviewer determine every available action or why a button is absent. This is not a demonstrated runtime bug.",
+      "smallestCorrection": "Add only a condition/actor/action/visible-reason table; retain custody versus admission separation and automatic adviser decisions.",
+      "responsibleRole": "Systems designer through Producer; Engine later verifies implementation",
+      "recheckEvidence": "Concrete table reconciles return, hold, authorized temporary passage, no authority and earlier recovery; later matched runtime traces required.",
+      "origin": "Independent first pass",
+      "status": "open"
+    },
+    {
+      "id": "C1-08",
+      "gate": "Writing rhythm",
+      "severity": "polish",
+      "title": "E03 closes by repeating the dependency",
+      "artifacts": [
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-W1/performed-exchanges.md",
+          "sha256": "afbe61268e57809c37741549c4cd1973bf2e101b6fff668cdcb34e930ea818f8",
+          "location": "E03.C09\u2013C14, lines 215\u2013225; redundancy in C13\u2013C14"
+        }
+      ],
+      "effect": "The practical gus question and supervisor answer have landed before the final paraphrase; the ending loses momentum.",
+      "smallestCorrection": "First test ending at C12. If retaining the proposed alternative C13, establish a genuinely new demand and response. Do not rewrite the whole argument.",
+      "responsibleRole": "Writer on Producer assignment",
+      "recheckEvidence": "New exact speech IDs/text plus later normal-speed read or staging. Preserve gus question and native motives; author alternative is not accepted here.",
+      "origin": "Independent first pass",
+      "status": "open"
+    },
+    {
+      "id": "C1-09",
+      "gate": "Scope / experience",
+      "severity": "preference",
+      "title": "Defer broader Theatre programme in first proof",
+      "artifacts": [
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-C1/proposal-C1.md",
+          "sha256": "64aa01ecd055041833f6df78a0c1df0e2dad1a1dc2b7d7a6f7223810149f5861",
+          "location": "lines 68\u201376"
+        },
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-C1/convergence-map.json",
+          "sha256": "54178ac473e64ddaa203b91b21ad509aa832951fcf3cd7ad5bcda59bb22ec097",
+          "location": "E04 playerOptions/programme scope"
+        }
+      ],
+      "effect": "Additional sessions have stated cost but no equally concrete distinct witnessed benefit yet; they enlarge the first proof without improving its clear kit payoff.",
+      "smallestCorrection": "Prototype bounded reciprocal demonstration and eligible kit callback first; retain broader scope as an owner decision.",
+      "responsibleRole": "Producer / owner with Systems",
+      "recheckEvidence": "Owner scope decision; if broader option is retained, demonstrate its distinct observed benefit, time cost and authorized attendance.",
+      "origin": "Independent first pass",
+      "status": "open"
+    },
+    {
+      "id": "C1-10",
+      "gate": "Runtime agency / pacing",
+      "severity": "unverified",
+      "title": "Proposed contracts have no play evidence",
+      "artifacts": [
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-C1/proposal-C1.md",
+          "sha256": "64aa01ecd055041833f6df78a0c1df0e2dad1a1dc2b7d7a6f7223810149f5861",
+          "location": "lines 21\u201327, 42\u201348, 64\u201378"
+        }
+      ],
+      "effect": "Text cannot prove actual hearing, reading holds, custody, invitation availability, capacity, saves or two-week tempo.",
+      "smallestCorrection": "Keep these gates explicitly open; later use matched conditional examples including earlier recovery, all-dispatch, absent listener and offscreen transfer.",
+      "responsibleRole": "Engine Master / Systems / Scene Director under Producer",
+      "recheckEvidence": "Runtime evidence for exact conditions; completed-day timing and comprehension. No performance acceptance from this review.",
+      "origin": "Independent first pass",
+      "status": "open"
+    },
+    {
+      "id": "C1-11",
+      "gate": "Voice range / performance",
+      "severity": "unverified",
+      "title": "Gus and kit samples are too short for broad voice acceptance",
+      "artifacts": [
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-W1/performed-exchanges.md",
+          "sha256": "afbe61268e57809c37741549c4cd1973bf2e101b6fff668cdcb34e930ea818f8",
+          "location": "E03.C09 line 215; E04.K02\u2013K03 lines 343\u2013347"
+        }
+      ],
+      "effect": "Useful plain lines establish local action, not full distinct voice range or delivery quality.",
+      "smallestCorrection": "Preserve the functional lines; judge fuller warranted samples when available, without adding decorative dialogue.",
+      "responsibleRole": "Writer / Scene Director",
+      "recheckEvidence": "Actual additional justified exchange and performed evidence; no invented blind-test or audio pass.",
+      "origin": "Independent first pass",
+      "status": "open"
+    },
+    {
+      "id": "C1-12",
+      "gate": "Editorial integration",
+      "severity": "unverified",
+      "title": "Narrow promotion patch is suitable text, not integrated evidence",
+      "artifacts": [
+        {
+          "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-W1/editorial-promotion.patch",
+          "sha256": "f6cd6150e61144279954fedf39810fb0c3b66ebe6a9914a1abf2678a220ea544",
+          "location": "Two-document changes to EDITORIAL_VOICE and TARANTINO_CASE_STUDY"
+        }
+      ],
+      "effect": "Owner guidance and current chronology are accurately carried by the proposed edits, but reading a patch does not prove integration or exact reconstruction.",
+      "smallestCorrection": "Carry the narrow patch to assigned Engine integration checks; keep old staging historical and canon unchanged until authorized.",
+      "responsibleRole": "Engine Master / Producer",
+      "recheckEvidence": "Exact resulting document hashes and patch applicability/reconstruction evidence on the assigned source; no blanket dialogue rewrite.",
+      "origin": "After-first-pass supplementary patch read",
+      "status": "open"
+    }
+  ],
+  "justifiedPasses": [
+    {
+      "id": "P01",
+      "gate": "text craft",
+      "artifact": {
+        "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-W1/performed-exchanges.md",
+        "sha256": "afbe61268e57809c37741549c4cd1973bf2e101b6fff668cdcb34e930ea818f8",
+        "location": "E01.C04\u2013C07 19\u201325; C10\u2013C13 33\u201339; R03\u2013R05 59\u201365"
+      },
+      "reason": "Limited help, specific petty authority/humour, card return without automatic forgiveness."
+    },
+    {
+      "id": "P02",
+      "gate": "text craft",
+      "artifact": {
+        "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-W1/performed-exchanges.md",
+        "sha256": "afbe61268e57809c37741549c4cd1973bf2e101b6fff668cdcb34e930ea818f8",
+        "location": "E02.A05\u2013A09 141\u2013149; B03\u2013B06 163\u2013169"
+      },
+      "reason": "Specific material curiosity becomes reciprocal attention; staffing costs company without manufactured harm."
+    },
+    {
+      "id": "P03",
+      "gate": "text craft / conditional payoff",
+      "artifact": {
+        "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-W1/performed-exchanges.md",
+        "sha256": "afbe61268e57809c37741549c4cd1973bf2e101b6fff668cdcb34e930ea818f8",
+        "location": "E04.C03\u2013C06 241\u2013249; B04\u2013B05 281\u2013283; conditional P/C/X; K02\u2013K03 343\u2013347"
+      },
+      "reason": "CATHEXIS makes a useful concession; promise breach is conditional; kit actual hand condition changes the start."
+    },
+    {
+      "id": "P04",
+      "gate": "proposal coherence",
+      "artifact": {
+        "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-C1/proposal-C1.md",
+        "sha256": "64aa01ecd055041833f6df78a0c1df0e2dad1a1dc2b7d7a6f7223810149f5861",
+        "location": "lines 29\u201378"
+      },
+      "reason": "Distinct costs, next actual LIMEN check, variable readiness and actual attendance protect causal continuity and allow relief."
+    }
+  ],
+  "notAccepted": [
+    "New owner design/taste",
+    "Full actor-knowledge implementation",
+    "Actual scene/performance",
+    "Full fourteen-day gameplay",
+    "Release/integration/publication"
+  ],
+  "firstPass": "first-pass.md",
+  "detail": "review.md"
+}

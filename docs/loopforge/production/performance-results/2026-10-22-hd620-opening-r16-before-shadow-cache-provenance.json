@@ -1,0 +1,9 @@
+{
+  "sourceBase": "2efa925211bbb6d3a6b215f81f26b80fbcb8b911",
+  "workingRevision": "before-the-shift/16",
+  "resultSha256": "19efcc7d46664fcfccdddfce6a83a4c37a76536d2b0d34d239331e1beede4bcf",
+  "build": "production; Next.js 16.2.3; apps/lab; local 127.0.0.1:3220",
+  "scope": "Ten workers, LIMEN, STILETTO, integrated Lobby/Security/Conveyor kit, 12 shots, four completed episodes. Before pose-invalidated directional shadows.",
+  "status": "FAIL; retained baseline, not an accepted result",
+  "checks": "1280x720 reference graphics; 30-second warmup and600-second measure; no quality thresholds changed"
+}

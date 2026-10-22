@@ -31,7 +31,7 @@ def image(ref, hero=False, wide=False):
 def render_episode(docs, prose):
     data = json.loads((docs/'game-design/episode-art.json').read_text())
     overview, *panels = data['images']
-    hero = '<figure class="episode-storyboard">' + image(overview, True) + '<figcaption>The first morning, in four frames. Read across, then down. ed and gus complete their checks between the strike and STILETTO’s arrival; bob is still on the floor when she passes.</figcaption></figure>'
+    hero = '<figure class="episode-storyboard">' + image(overview, True) + '<figcaption>The first morning, in four frames. Read across, then down. The current performed cut has bob rise as STILETTO arrives; ed and gus volunteer afterward. The script below records the revised order.</figcaption></figure>'
     hero += f'<div class="episode-tools"><a href="{E(overview["variants"][-1]["src"])}" download>Download storyboard</a><a href="#episode-script">Read the scene ↓</a></div>'
     hero += '<details class="episode-panels"><summary>Inspect the four panels separately</summary><div class="episode-panel-grid">'
     for ref in panels:

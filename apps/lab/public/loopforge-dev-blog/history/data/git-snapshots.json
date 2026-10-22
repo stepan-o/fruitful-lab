@@ -1,0 +1,1171 @@
+{
+  "cutoff": "2026-10-22T21:20:13.180385+00:00",
+  "commits": [
+    {
+      "id": "G001",
+      "commit": "b48df9124ed3",
+      "at": "2026-10-21T23:20:54-04:00",
+      "categories": {
+        "other-coordination": 8,
+        "board": 1,
+        "registry": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 11
+    },
+    {
+      "id": "G002",
+      "commit": "9421c67d4bf0",
+      "at": "2026-10-21T23:25:54-04:00",
+      "categories": {
+        "other-coordination": 68,
+        "board": 1,
+        "role-memory-or-handoff": 1,
+        "registry": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 72
+    },
+    {
+      "id": "G003",
+      "commit": "197f7eb0d395",
+      "at": "2026-10-21T23:30:54-04:00",
+      "categories": {
+        "registry": 1
+      },
+      "filesChanged": 1
+    },
+    {
+      "id": "G004",
+      "commit": "433fa1092388",
+      "at": "2026-10-21T23:36:04-04:00",
+      "categories": {
+        "board": 1,
+        "registry": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 3
+    },
+    {
+      "id": "G005",
+      "commit": "80e8a7583d66",
+      "at": "2026-10-21T23:41:04-04:00",
+      "categories": {
+        "board": 1
+      },
+      "filesChanged": 1
+    },
+    {
+      "id": "G006",
+      "commit": "637bc2fb8fbe",
+      "at": "2026-10-21T23:50:35-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G007",
+      "commit": "90bf7b5184b4",
+      "at": "2026-10-22T00:09:03-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G008",
+      "commit": "9bd1839a27a8",
+      "at": "2026-10-22T00:29:34-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G009",
+      "commit": "19ee6acce9c9",
+      "at": "2026-10-22T00:55:16-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G010",
+      "commit": "54a14cbfd36c",
+      "at": "2026-10-22T01:05:43-04:00",
+      "categories": {
+        "board": 1
+      },
+      "filesChanged": 1
+    },
+    {
+      "id": "G011",
+      "commit": "a6229f0fd95a",
+      "at": "2026-10-22T07:40:28-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G012",
+      "commit": "0f92cccec34b",
+      "at": "2026-10-22T08:00:12-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G013",
+      "commit": "a9d314251297",
+      "at": "2026-10-22T08:05:22-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G014",
+      "commit": "c4ab0e6fd7e8",
+      "at": "2026-10-22T08:10:22-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G015",
+      "commit": "151815d080f9",
+      "at": "2026-10-22T08:17:03-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G016",
+      "commit": "0f97ddf081b6",
+      "at": "2026-10-22T08:22:03-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G017",
+      "commit": "8838388f99ed",
+      "at": "2026-10-22T08:34:26-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G018",
+      "commit": "82153b7a0420",
+      "at": "2026-10-22T08:59:06-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G019",
+      "commit": "3ef15097c627",
+      "at": "2026-10-22T09:04:06-04:00",
+      "categories": {
+        "other-coordination": 23,
+        "role-memory-or-handoff": 1,
+        "registry": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 26
+    },
+    {
+      "id": "G020",
+      "commit": "e9fcb4e99888",
+      "at": "2026-10-22T09:09:06-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G021",
+      "commit": "bdddffdddb1d",
+      "at": "2026-10-22T09:14:06-04:00",
+      "categories": {
+        "other-coordination": 21,
+        "board": 1,
+        "registry": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 24
+    },
+    {
+      "id": "G022",
+      "commit": "d3f29b45a126",
+      "at": "2026-10-22T09:19:06-04:00",
+      "categories": {
+        "board": 1,
+        "other-coordination": 7,
+        "task-ledger": 1
+      },
+      "filesChanged": 9
+    },
+    {
+      "id": "G023",
+      "commit": "fe8cd76a7b14",
+      "at": "2026-10-22T09:24:06-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G024",
+      "commit": "2f826789c024",
+      "at": "2026-10-22T09:29:06-04:00",
+      "categories": {
+        "other-coordination": 21,
+        "board": 1,
+        "registry": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 24
+    },
+    {
+      "id": "G025",
+      "commit": "6d846e2b6293",
+      "at": "2026-10-22T09:34:06-04:00",
+      "categories": {
+        "other-coordination": 45,
+        "registry": 1
+      },
+      "filesChanged": 46
+    },
+    {
+      "id": "G026",
+      "commit": "2dabc6ba0d4a",
+      "at": "2026-10-22T09:39:06-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G027",
+      "commit": "a634ca6a5ea6",
+      "at": "2026-10-22T09:44:06-04:00",
+      "categories": {
+        "other-coordination": 1,
+        "board": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G028",
+      "commit": "9a7da59e9ab5",
+      "at": "2026-10-22T10:00:24-04:00",
+      "categories": {
+        "task-ledger": 1
+      },
+      "filesChanged": 1
+    },
+    {
+      "id": "G029",
+      "commit": "6e171ad01155",
+      "at": "2026-10-22T10:05:24-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G030",
+      "commit": "b218c0814b86",
+      "at": "2026-10-22T10:10:24-04:00",
+      "categories": {
+        "other-coordination": 33,
+        "registry": 1
+      },
+      "filesChanged": 34
+    },
+    {
+      "id": "G031",
+      "commit": "41b4b165dad7",
+      "at": "2026-10-22T10:15:24-04:00",
+      "categories": {
+        "other-coordination": 44,
+        "board": 1,
+        "registry": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 47
+    },
+    {
+      "id": "G032",
+      "commit": "ec6816cc83f5",
+      "at": "2026-10-22T10:20:24-04:00",
+      "categories": {
+        "other-coordination": 25,
+        "board": 1,
+        "registry": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 28
+    },
+    {
+      "id": "G033",
+      "commit": "c40ba43a87a5",
+      "at": "2026-10-22T10:25:24-04:00",
+      "categories": {
+        "other-coordination": 25,
+        "role-memory-or-handoff": 1,
+        "board": 1,
+        "registry": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 29
+    },
+    {
+      "id": "G034",
+      "commit": "3c539d2fe138",
+      "at": "2026-10-22T10:30:30-04:00",
+      "categories": {
+        "other-coordination": 308,
+        "board": 1,
+        "registry": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 311
+    },
+    {
+      "id": "G035",
+      "commit": "ce73f3256ab5",
+      "at": "2026-10-22T10:35:24-04:00",
+      "categories": {
+        "other-coordination": 11
+      },
+      "filesChanged": 11
+    },
+    {
+      "id": "G036",
+      "commit": "bdea6701f0f0",
+      "at": "2026-10-22T10:40:24-04:00",
+      "categories": {
+        "other-coordination": 5,
+        "role-memory-or-handoff": 1,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 8
+    },
+    {
+      "id": "G037",
+      "commit": "3c3e1ef5641c",
+      "at": "2026-10-22T10:45:24-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G038",
+      "commit": "4e6c9494d39c",
+      "at": "2026-10-22T10:50:24-04:00",
+      "categories": {
+        "task-ledger": 1
+      },
+      "filesChanged": 1
+    },
+    {
+      "id": "G039",
+      "commit": "b5e205ad519e",
+      "at": "2026-10-22T10:55:26-04:00",
+      "categories": {
+        "role-memory-or-handoff": 1,
+        "other-coordination": 2579,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2582
+    },
+    {
+      "id": "G040",
+      "commit": "2c51509aa48f",
+      "at": "2026-10-22T11:00:24-04:00",
+      "categories": {
+        "other-coordination": 105,
+        "role-memory-or-handoff": 1,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 108
+    },
+    {
+      "id": "G041",
+      "commit": "f18394d5aa53",
+      "at": "2026-10-22T11:05:24-04:00",
+      "categories": {
+        "other-coordination": 3,
+        "role-memory-or-handoff": 1,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 6
+    },
+    {
+      "id": "G042",
+      "commit": "6d31953d55c1",
+      "at": "2026-10-22T11:10:25-04:00",
+      "categories": {
+        "role-memory-or-handoff": 1,
+        "other-coordination": 106,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 109
+    },
+    {
+      "id": "G043",
+      "commit": "eda10ed7675c",
+      "at": "2026-10-22T11:15:36-04:00",
+      "categories": {
+        "task-ledger": 1
+      },
+      "filesChanged": 1
+    },
+    {
+      "id": "G044",
+      "commit": "663b3dd82959",
+      "at": "2026-10-22T11:20:36-04:00",
+      "categories": {
+        "other-coordination": 4,
+        "role-memory-or-handoff": 1,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 7
+    },
+    {
+      "id": "G045",
+      "commit": "f7f3cbf41351",
+      "at": "2026-10-22T11:25:36-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G046",
+      "commit": "fd25ed4558f2",
+      "at": "2026-10-22T11:40:44-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G047",
+      "commit": "6394c4447fcd",
+      "at": "2026-10-22T11:45:44-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G048",
+      "commit": "3371e6a0bdc9",
+      "at": "2026-10-22T11:50:44-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G049",
+      "commit": "7bbf8fce4f3b",
+      "at": "2026-10-22T11:55:44-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G050",
+      "commit": "7b712ae61ad1",
+      "at": "2026-10-22T12:00:44-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G051",
+      "commit": "230102df6101",
+      "at": "2026-10-22T12:05:44-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G052",
+      "commit": "49a073bcd6cf",
+      "at": "2026-10-22T12:10:44-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G053",
+      "commit": "f6324f31712e",
+      "at": "2026-10-22T12:15:44-04:00",
+      "categories": {
+        "role-memory-or-handoff": 1,
+        "other-coordination": 27,
+        "task-ledger": 1
+      },
+      "filesChanged": 29
+    },
+    {
+      "id": "G054",
+      "commit": "789a4af3258a",
+      "at": "2026-10-22T12:20:44-04:00",
+      "categories": {
+        "other-coordination": 9
+      },
+      "filesChanged": 9
+    },
+    {
+      "id": "G055",
+      "commit": "dc15f5154e63",
+      "at": "2026-10-22T12:25:44-04:00",
+      "categories": {
+        "role-memory-or-handoff": 1,
+        "other-coordination": 6,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 9
+    },
+    {
+      "id": "G056",
+      "commit": "eb77b0055081",
+      "at": "2026-10-22T12:30:44-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G057",
+      "commit": "f6dbc9fe81a7",
+      "at": "2026-10-22T12:35:44-04:00",
+      "categories": {
+        "role-memory-or-handoff": 1,
+        "other-coordination": 4,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 7
+    },
+    {
+      "id": "G058",
+      "commit": "ee7101989ebf",
+      "at": "2026-10-22T12:40:44-04:00",
+      "categories": {
+        "other-coordination": 10,
+        "role-memory-or-handoff": 1,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 13
+    },
+    {
+      "id": "G059",
+      "commit": "11210fef783e",
+      "at": "2026-10-22T12:47:09-04:00",
+      "categories": {
+        "task-ledger": 1
+      },
+      "filesChanged": 1
+    },
+    {
+      "id": "G060",
+      "commit": "2e83c9dc5606",
+      "at": "2026-10-22T12:52:10-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G061",
+      "commit": "bcff09733f4f",
+      "at": "2026-10-22T12:57:09-04:00",
+      "categories": {
+        "other-coordination": 1,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 3
+    },
+    {
+      "id": "G062",
+      "commit": "f5101f89a527",
+      "at": "2026-10-22T13:02:09-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G063",
+      "commit": "60ecffb33e0a",
+      "at": "2026-10-22T13:07:10-04:00",
+      "categories": {
+        "role-memory-or-handoff": 1,
+        "other-coordination": 22,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 25
+    },
+    {
+      "id": "G064",
+      "commit": "bb4611112468",
+      "at": "2026-10-22T13:12:09-04:00",
+      "categories": {
+        "other-coordination": 7,
+        "role-memory-or-handoff": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 9
+    },
+    {
+      "id": "G065",
+      "commit": "bb3a6967381d",
+      "at": "2026-10-22T13:17:09-04:00",
+      "categories": {
+        "board": 1
+      },
+      "filesChanged": 1
+    },
+    {
+      "id": "G066",
+      "commit": "8d8af961aaa0",
+      "at": "2026-10-22T13:22:10-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G067",
+      "commit": "91312f9d30ae",
+      "at": "2026-10-22T13:32:09-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G068",
+      "commit": "322af4330062",
+      "at": "2026-10-22T13:37:10-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G069",
+      "commit": "a7b21f436bea",
+      "at": "2026-10-22T13:42:09-04:00",
+      "categories": {
+        "role-memory-or-handoff": 1,
+        "other-coordination": 16,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 19
+    },
+    {
+      "id": "G070",
+      "commit": "2af00696d942",
+      "at": "2026-10-22T13:47:10-04:00",
+      "categories": {
+        "other-coordination": 12
+      },
+      "filesChanged": 12
+    },
+    {
+      "id": "G071",
+      "commit": "703429fa1b62",
+      "at": "2026-10-22T13:52:09-04:00",
+      "categories": {
+        "other-coordination": 5,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 7
+    },
+    {
+      "id": "G072",
+      "commit": "dd25911ade9c",
+      "at": "2026-10-22T13:57:10-04:00",
+      "categories": {
+        "other-coordination": 9,
+        "role-memory-or-handoff": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 11
+    },
+    {
+      "id": "G073",
+      "commit": "7f1018ab5458",
+      "at": "2026-10-22T14:07:10-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G074",
+      "commit": "e173131e5cab",
+      "at": "2026-10-22T14:12:10-04:00",
+      "categories": {
+        "other-coordination": 46,
+        "role-memory-or-handoff": 1,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 49
+    },
+    {
+      "id": "G075",
+      "commit": "5cfcfea34212",
+      "at": "2026-10-22T14:17:09-04:00",
+      "categories": {
+        "other-coordination": 7,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 9
+    },
+    {
+      "id": "G076",
+      "commit": "7e2101867a7e",
+      "at": "2026-10-22T14:22:09-04:00",
+      "categories": {
+        "other-coordination": 11,
+        "role-memory-or-handoff": 1
+      },
+      "filesChanged": 12
+    },
+    {
+      "id": "G077",
+      "commit": "7aa8cc9e60f8",
+      "at": "2026-10-22T14:27:10-04:00",
+      "categories": {
+        "other-coordination": 65,
+        "role-memory-or-handoff": 1,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 68
+    },
+    {
+      "id": "G078",
+      "commit": "607468ad9885",
+      "at": "2026-10-22T14:32:09-04:00",
+      "categories": {
+        "other-coordination": 30,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 32
+    },
+    {
+      "id": "G079",
+      "commit": "495ccf6073a1",
+      "at": "2026-10-22T14:37:09-04:00",
+      "categories": {
+        "other-coordination": 74,
+        "role-memory-or-handoff": 1
+      },
+      "filesChanged": 75
+    },
+    {
+      "id": "G080",
+      "commit": "77dcb67f8479",
+      "at": "2026-10-22T14:42:40-04:00",
+      "categories": {
+        "other-coordination": 21,
+        "role-memory-or-handoff": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 23
+    },
+    {
+      "id": "G081",
+      "commit": "2fe1c0fae9d3",
+      "at": "2026-10-22T14:47:40-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G082",
+      "commit": "dc48caf5dbd3",
+      "at": "2026-10-22T14:52:40-04:00",
+      "categories": {
+        "other-coordination": 71,
+        "role-memory-or-handoff": 1,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 74
+    },
+    {
+      "id": "G083",
+      "commit": "1f0698b307eb",
+      "at": "2026-10-22T14:57:40-04:00",
+      "categories": {
+        "role-memory-or-handoff": 2,
+        "other-coordination": 8,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 12
+    },
+    {
+      "id": "G084",
+      "commit": "708c5391bedb",
+      "at": "2026-10-22T15:02:40-04:00",
+      "categories": {
+        "role-memory-or-handoff": 1,
+        "other-coordination": 7,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 10
+    },
+    {
+      "id": "G085",
+      "commit": "c120e46c0f94",
+      "at": "2026-10-22T15:07:40-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G086",
+      "commit": "fc08d2b22335",
+      "at": "2026-10-22T15:12:40-04:00",
+      "categories": {
+        "role-memory-or-handoff": 1,
+        "other-coordination": 3,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 6
+    },
+    {
+      "id": "G087",
+      "commit": "77b11b3584cc",
+      "at": "2026-10-22T15:17:40-04:00",
+      "categories": {
+        "role-memory-or-handoff": 1,
+        "other-coordination": 5,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 8
+    },
+    {
+      "id": "G088",
+      "commit": "64eeab3d6ff9",
+      "at": "2026-10-22T15:22:40-04:00",
+      "categories": {
+        "role-memory-or-handoff": 13,
+        "task-ledger": 1
+      },
+      "filesChanged": 14
+    },
+    {
+      "id": "G089",
+      "commit": "92332dcca63d",
+      "at": "2026-10-22T15:27:40-04:00",
+      "categories": {
+        "role-memory-or-handoff": 17,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 19
+    },
+    {
+      "id": "G090",
+      "commit": "09137324881b",
+      "at": "2026-10-22T15:32:40-04:00",
+      "categories": {
+        "role-memory-or-handoff": 7,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 9
+    },
+    {
+      "id": "G091",
+      "commit": "8080075e4592",
+      "at": "2026-10-22T15:37:40-04:00",
+      "categories": {
+        "role-memory-or-handoff": 13,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 15
+    },
+    {
+      "id": "G092",
+      "commit": "fd995032c2d3",
+      "at": "2026-10-22T15:42:40-04:00",
+      "categories": {
+        "role-memory-or-handoff": 10,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 12
+    },
+    {
+      "id": "G093",
+      "commit": "2cc752469456",
+      "at": "2026-10-22T15:47:40-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G094",
+      "commit": "839fba873c9c",
+      "at": "2026-10-22T15:52:40-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G095",
+      "commit": "d2a01e66f542",
+      "at": "2026-10-22T15:57:40-04:00",
+      "categories": {
+        "role-memory-or-handoff": 106,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 108
+    },
+    {
+      "id": "G096",
+      "commit": "55deb57ed132",
+      "at": "2026-10-22T16:02:40-04:00",
+      "categories": {
+        "role-memory-or-handoff": 1,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 3
+    },
+    {
+      "id": "G097",
+      "commit": "8a95cf5b38e1",
+      "at": "2026-10-22T16:07:41-04:00",
+      "categories": {
+        "role-memory-or-handoff": 5
+      },
+      "filesChanged": 5
+    },
+    {
+      "id": "G098",
+      "commit": "689f5aed6f8b",
+      "at": "2026-10-22T16:12:41-04:00",
+      "categories": {
+        "role-memory-or-handoff": 13,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 15
+    },
+    {
+      "id": "G099",
+      "commit": "cf0ed2f9db1f",
+      "at": "2026-10-22T16:18:10-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G100",
+      "commit": "61de6daa5894",
+      "at": "2026-10-22T16:26:15-04:00",
+      "categories": {
+        "task-ledger": 1
+      },
+      "filesChanged": 1
+    },
+    {
+      "id": "G101",
+      "commit": "c749df8c7848",
+      "at": "2026-10-22T16:31:15-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G102",
+      "commit": "e815d376b800",
+      "at": "2026-10-22T16:36:15-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G103",
+      "commit": "3337a7652e7a",
+      "at": "2026-10-22T16:41:16-04:00",
+      "categories": {
+        "role-memory-or-handoff": 135,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 137
+    },
+    {
+      "id": "G104",
+      "commit": "db2781d0f8bb",
+      "at": "2026-10-22T16:46:16-04:00",
+      "categories": {
+        "role-memory-or-handoff": 32,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 34
+    },
+    {
+      "id": "G105",
+      "commit": "989a3ec4da24",
+      "at": "2026-10-22T16:51:15-04:00",
+      "categories": {
+        "role-memory-or-handoff": 40,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 42
+    },
+    {
+      "id": "G106",
+      "commit": "1ef8c4373687",
+      "at": "2026-10-22T16:56:16-04:00",
+      "categories": {
+        "role-memory-or-handoff": 265,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 267
+    },
+    {
+      "id": "G107",
+      "commit": "525cd778a018",
+      "at": "2026-10-22T17:01:15-04:00",
+      "categories": {
+        "role-memory-or-handoff": 7,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 9
+    },
+    {
+      "id": "G108",
+      "commit": "1cbca19f3028",
+      "at": "2026-10-22T17:06:16-04:00",
+      "categories": {
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 2
+    },
+    {
+      "id": "G109",
+      "commit": "faf23afc0206",
+      "at": "2026-10-22T17:11:16-04:00",
+      "categories": {
+        "task-ledger": 1
+      },
+      "filesChanged": 1
+    },
+    {
+      "id": "G110",
+      "commit": "0204d9700f95",
+      "at": "2026-10-22T17:16:16-04:00",
+      "categories": {
+        "role-memory-or-handoff": 209,
+        "board": 1,
+        "task-ledger": 1
+      },
+      "filesChanged": 211
+    }
+  ],
+  "meaning": "Tracked hive snapshot changes only. Commit time is not an event start or evidence of a successful production result. Filenames/diff bodies are private."
+}

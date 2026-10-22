@@ -1,3 +1,5 @@
+Loopforge dev blog (22 October 2026): `/stepanoskin/loopforge/dev-blog` is the top-level Loopforge entry and redirects to `/loopforge-dev-blog/index.html`. Static public pages live in `apps/lab/public/loopforge-dev-blog/`; portable generation and future-post instructions are in `docs/loopforge/dev-blog/README.md` and `apps/lab/scripts/loopforge-dev-blog/`. Keep generator inputs public-only, preserve the frozen Producer reflection and independent systems assessment as separate authored articles, and retain the interview/history/statistics provenance and exact screenshot credits. The opening/game goal was dropped unfinished; preserved game work is inactive and this publication does not accept or resume it.
+
 ## Loopforge opening room kit and studio — 22 October 2026
 
 The isolated opening rehearsal is now before-the-shift/15. The rebuilt skull-faced LIMEN is installed in the shared scene and review loader: 24 joints, 20 retained motions, and 31,213 / 17,991 / 7,995-triangle portrait/floor/overview deliveries. Source animation arrays and sampled poses are preserved exactly; blade placement, new body proportions and paired contacts still need visual review.

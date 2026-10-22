@@ -37,3 +37,13 @@ it('waits for input before each station operation and completes exactly one work
  const complete=replay(take,take.total);
  expect(complete.facts['line.output']).toBe(1);expect(complete.facts['checkpoint.workers-passed']).toBe(2);
 });
+
+
+it('settles a walking card holder into the fitted ID pose during reading',()=>{
+ const take=rehearsal('arrival','care'),step=attentionSteps(take.registry)[0];
+ const base=rehearsalView(take,replay(take,step.tick));
+ expect(base.actors.find(a=>a.id==='bob')?.cue?.clip).toBe('ID_Walk');
+ const held=readingView(base,step,120);
+ expect(held.actors.find(a=>a.id==='bob')?.cue?.clip).toBe('ID_Ready');
+ expect(held.props).toEqual(base.props);
+});

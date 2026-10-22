@@ -1,0 +1,989 @@
+{
+  "cap": 1000,
+  "currency": "Meshy credits",
+  "jobs": [
+    {
+      "label": "bob-body-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T04:22:21.699374+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/opening-cast/bob/bob-front-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 24000,
+        "topology": "triangle",
+        "pose_mode": "a-pose",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ],
+        "multi_view_thumbnails": true,
+        "save_pre_remeshed_model": true,
+        "texture_prompt": "Worn cobalt blue industrial enamel on helmet, chest, forearms and shins. Broad intact blue areas with restrained edge wear. Cream helmet rim and left upper arm stripe. Black oily mechanical joints, dull brass bearings. Round cyan glass eye lenses. No written text. Preserve reference colours and mechanical factory-worker character.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "7c121d9bc785f70e29225544b65205786de8c45df391709498d422468d39a346",
+      "task_id": "01a15cb2-3293-7339-81fb-22f573c0afcc",
+      "actual": 30
+    },
+    {
+      "label": "bob-rig-v1",
+      "tool": "meshy_rig",
+      "reserved": 5,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T04:39:51.982936+00:00",
+      "arguments": {
+        "input_task_id": "01a15cb2-3293-7339-81fb-22f573c0afcc",
+        "height_meters": 1.6,
+        "response_format": "json"
+      },
+      "arguments_sha256": "d8a4f4f3c3e98d7cc4495a94a710c4280a2afb196973254732a977b49e1c8acf",
+      "task_id": "01a15cc2-3f79-73a3-af86-37d282a83310",
+      "actual": 5
+    },
+    {
+      "label": "bob-body-v2",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T05:00:39.236689+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/opening-cast/bob/bob-front-v2.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 24000,
+        "topology": "triangle",
+        "pose_mode": "a-pose",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ],
+        "multi_view_thumbnails": true,
+        "save_pre_remeshed_model": true,
+        "texture_prompt": "Preserve the approved image exactly: small narrow adult industrial cobalt-blue worker with two massively oversized convex cyan glass optical lenses rising above and wider than the little FLAT rectangular head. Keep blue head casing and pale cream horizontal rim below the huge lenses. Large but proportionate mechanical hands oriented palms inward, thumbs forward. No shrinking lenses, no helmet dome, no human face, no antenna or props. Worn cobalt blue broad enamel panels, cream forearm stripe, oily black joints, dull brass bearings, restrained edge wear. Dark rims separate cyan lenses from skull. Lenses must be opaque cyan glass-look PBR surfaces, not transparent holes. No written text.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "e741fafcfb12f7e497d9886d0b9d78d8e3fb21a9b2c31205e819603e5099989b",
+      "task_id": "01a15cd5-4280-7294-a940-3b7d65b3143e",
+      "actual": 30
+    },
+    {
+      "label": "gus-body-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T05:10:34.935927+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/opening-cast/gus/gus-front-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 24000,
+        "topology": "triangle",
+        "pose_mode": "a-pose",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ],
+        "multi_view_thumbnails": true,
+        "save_pre_remeshed_model": true,
+        "texture_prompt": "Preserve this broad heavy industrial worker: small recessed skull head, narrow cyan eyes, squared mechanical grille jaw, deep blue shoulder and chest armor, pale-blue shoulder yoke, black oily mechanisms, restrained brass bearings. Large coherent blue painted panels with restrained aged edge wear. Smaller than LIMEN, no weapons, no chest glow or text. Preserve the thick body proportions, normal hands and compact heavy work boots.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "50e079ca9397b15e5df1a008e0ad8bd8263e115dbe0a982d0b711a13098f1daa",
+      "task_id": "01a15cde-59ef-7589-9bdd-4d0b0226ded4",
+      "actual": 30
+    },
+    {
+      "label": "ed-body-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T05:24:02.385950+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/opening-cast/ed/ed-apose-v3.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 24000,
+        "topology": "triangle",
+        "pose_mode": "a-pose",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ],
+        "multi_view_thumbnails": true,
+        "save_pre_remeshed_model": true,
+        "texture_prompt": "Faithfully preserve the approved pointing security helper ed in neutral A-pose: long swept-back skull with sloped brow, narrow cyan eyes, toothed mechanical jaw and long projecting pointed chin, large round side receivers, hunched forward neck, layered shoulder plates, square blank chest plaque, narrow waist and long shins. Worn dark navy blue painted steel, brass mechanical bearings, dark recessed mechanisms. Same character proportions. Two normal five-finger hands. No weapons, no helmet redesign, no text, no extra accessories. Keep head aligned forward in neutral pose.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "86dd460d75e28ebcf7810af4cccf26aaea18d741198cbc4582065239a895dd88",
+      "task_id": "01a15cea-aac9-74d0-bd6a-34daa9b7b5e1",
+      "actual": 30
+    },
+    {
+      "label": "sam-body-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T06:47:01.188131+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/opening-cast/sam/sam-ensemble-apose-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 24000,
+        "topology": "triangle",
+        "pose_mode": "a-pose",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ],
+        "multi_view_thumbnails": true,
+        "save_pre_remeshed_model": true,
+        "texture_prompt": "Preserve this approved Loopforge adult worker exactly. Great round shoulder hump, low recessed grille face, broad low chest and powerful short body. Worn coherent cobalt-blue enamel, dark oily recessed mechanical joints and dull brass bearings; restrained edge wear. Preserve proportions and silhouette. Neutral clear A-pose, palms inward thumbs forward, two five-finger hands. No human flesh, no additional props, no written text, no weapons.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "90724e21925635f28ffb8be014be9c9d58fc3ccbdf92577f405060b0b9a9a6ad",
+      "task_id": "01a15d36-aebd-7722-80ab-f63c156f04bf",
+      "actual": 30
+    },
+    {
+      "label": "jo-body-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T06:47:12.824851+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/opening-cast/jo/jo-ensemble-apose-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 24000,
+        "topology": "triangle",
+        "pose_mode": "a-pose",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ],
+        "multi_view_thumbnails": true,
+        "save_pre_remeshed_model": true,
+        "texture_prompt": "Preserve this approved Loopforge adult worker exactly. Broad metal cap, flat rectangular face and soft blue work jacket and trousers, visible mechanical wrists and knees. Worn coherent cobalt-blue enamel, dark oily recessed mechanical joints and dull brass bearings; restrained edge wear. Preserve proportions and silhouette. Neutral clear A-pose, palms inward thumbs forward, two five-finger hands. No human flesh, no additional props, no written text, no weapons.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "147e9fcaffdd54dd968405657a30ef4b39d016491c7bbe45c6c067ad674f29cb",
+      "task_id": "01a15d36-d693-77bc-a905-afe99cca0b84",
+      "actual": 30
+    },
+    {
+      "label": "max-body-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T06:47:20.782136+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/opening-cast/max/max-ensemble-apose-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 24000,
+        "topology": "triangle",
+        "pose_mode": "a-pose",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ],
+        "multi_view_thumbnails": true,
+        "save_pre_remeshed_model": true,
+        "texture_prompt": "Preserve this approved Loopforge adult worker exactly. Tall extremely narrow adult frame, long solemn mask face with pale vertical nose ridge, long legs and normal small hands. Worn coherent cobalt-blue enamel, dark oily recessed mechanical joints and dull brass bearings; restrained edge wear. Preserve proportions and silhouette. Neutral clear A-pose, palms inward thumbs forward, two five-finger hands. No human flesh, no additional props, no written text, no weapons.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "e49106dd316c92c51ef4c783bcd4eafe95d7eb2f62d2ca7824fa5d34b41571e3",
+      "task_id": "01a15d36-f3ff-72d7-868e-cca5fe041523",
+      "actual": 30
+    },
+    {
+      "label": "mae-body-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T06:47:28.435077+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/opening-cast/mae/mae-ensemble-apose-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 24000,
+        "topology": "triangle",
+        "pose_mode": "a-pose",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ],
+        "multi_view_thumbnails": true,
+        "save_pre_remeshed_model": true,
+        "texture_prompt": "Preserve this approved Loopforge adult worker exactly. Compact adult robot, broad rectangular blunt head, small hands, blue fitted work panels, no dress. Worn coherent cobalt-blue enamel, dark oily recessed mechanical joints and dull brass bearings; restrained edge wear. Preserve proportions and silhouette. Neutral clear A-pose, palms inward thumbs forward, two five-finger hands. No human flesh, no additional props, no written text, no weapons.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "5be822bb17c332b02e3f86b2278a69298cd85169826ff333214f53e2ba715fd1",
+      "task_id": "01a15d37-1476-75f5-80e4-32db005880c6",
+      "actual": 30
+    },
+    {
+      "label": "kit-body-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T06:47:36.818877+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/opening-cast/kit/kit-ensemble-apose-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 24000,
+        "topology": "triangle",
+        "pose_mode": "a-pose",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ],
+        "multi_view_thumbnails": true,
+        "save_pre_remeshed_model": true,
+        "texture_prompt": "Preserve this approved Loopforge adult worker exactly. Small heavy jaw head and short metal pipe, huge barrel forearms, narrow waist, normal small hands. Keep the pipe. Worn coherent cobalt-blue enamel, dark oily recessed mechanical joints and dull brass bearings; restrained edge wear. Preserve proportions and silhouette. Neutral clear A-pose, palms inward thumbs forward, two five-finger hands. No human flesh, no additional props, no written text, no weapons.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "5796e3ef0a0e3969d3d2bab4cd63607d57cc8babb0c3b1c81856039f3f8dd133",
+      "task_id": "01a15d37-34d8-77f3-8e3a-52bb56e78283",
+      "actual": 30
+    },
+    {
+      "label": "lou-body-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T06:47:47.636916+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/opening-cast/lou/lou-ensemble-apose-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 24000,
+        "topology": "triangle",
+        "pose_mode": "a-pose",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ],
+        "multi_view_thumbnails": true,
+        "save_pre_remeshed_model": true,
+        "texture_prompt": "Preserve this approved Loopforge adult worker exactly. Very long thin exposed mechanical neck, beaked narrow face, wiry ribbed torso, long limbs and slim hands. Worn coherent cobalt-blue enamel, dark oily recessed mechanical joints and dull brass bearings; restrained edge wear. Preserve proportions and silhouette. Neutral clear A-pose, palms inward thumbs forward, two five-finger hands. No human flesh, no additional props, no written text, no weapons.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "4ac37fe03fa9fc07ea63db8bb1358fc94bfe84b7ec6281c9e9cb7f404426bc72",
+      "task_id": "01a15d37-5cc8-707a-a4d6-f5467b337d29",
+      "actual": 30
+    },
+    {
+      "label": "ben-body-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T06:47:55.537794+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/opening-cast/ben/ben-ensemble-apose-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 24000,
+        "topology": "triangle",
+        "pose_mode": "a-pose",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ],
+        "multi_view_thumbnails": true,
+        "save_pre_remeshed_model": true,
+        "texture_prompt": "Preserve this approved Loopforge adult worker exactly. Short barrel oval body, low integral hood, narrow forearms, short legs and ordinary hands. Worn coherent cobalt-blue enamel, dark oily recessed mechanical joints and dull brass bearings; restrained edge wear. Preserve proportions and silhouette. Neutral clear A-pose, palms inward thumbs forward, two five-finger hands. No human flesh, no additional props, no written text, no weapons.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "d7d6854ecb65bace0a3b6a954b0ad9a8fcd5ae6f8117c9ef8849d067c12ea680",
+      "task_id": "01a15d37-7c95-72f5-9e23-7dc1e90aeae9",
+      "actual": 30
+    },
+    {
+      "label": "bob-rig-current-v1",
+      "tool": "meshy_rig",
+      "reserved": 5,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T07:38:21.656552+00:00",
+      "arguments": {
+        "input_task_id": "01a15cd5-4280-7294-a940-3b7d65b3143e",
+        "height_meters": 1.6,
+        "response_format": "json"
+      },
+      "arguments_sha256": "b4d9438eb704e3e21626a863c31f4d17825b0bb0e1e2c2c919fadb3a56ba5af7",
+      "task_id": "01a15d65-b91e-7262-8e9d-15d3f7c902d6",
+      "actual": 5
+    },
+    {
+      "label": "sam-rig-current-v1",
+      "tool": "meshy_rig",
+      "reserved": 5,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T07:38:33.626736+00:00",
+      "arguments": {
+        "input_task_id": "01a15d36-aebd-7722-80ab-f63c156f04bf",
+        "height_meters": 1.6,
+        "response_format": "json"
+      },
+      "arguments_sha256": "4142d1ee79a0ad014929d6892bf14552e1bd0d09c4ff7e3ffe36cd96fa2c7f11",
+      "task_id": "01a15d65-e092-711f-9cba-93f872e5cba0",
+      "actual": 5
+    },
+    {
+      "label": "ed-rig-current-v1",
+      "tool": "meshy_rig",
+      "reserved": 5,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T07:38:43.743050+00:00",
+      "arguments": {
+        "input_task_id": "01a15cea-aac9-74d0-bd6a-34daa9b7b5e1",
+        "height_meters": 1.6,
+        "response_format": "json"
+      },
+      "arguments_sha256": "a50304a77e1c8a6e2f38bcf2f1353852169f402bf044e2af683874f7cc06580a",
+      "task_id": "01a15d66-06cc-7726-af36-ac9e6545f183",
+      "actual": 5
+    },
+    {
+      "label": "jo-rig-current-v1",
+      "tool": "meshy_rig",
+      "reserved": 5,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T07:38:53.345776+00:00",
+      "arguments": {
+        "input_task_id": "01a15d36-d693-77bc-a905-afe99cca0b84",
+        "height_meters": 1.6,
+        "response_format": "json"
+      },
+      "arguments_sha256": "167e00892ab6f6276d03a2f1b06b405cbd03fb839ddac2bd8cdcaee3fd5eee97",
+      "task_id": "01a15d66-2e4f-727f-97d4-306077826139",
+      "actual": 5
+    },
+    {
+      "label": "gus-rig-current-v1",
+      "tool": "meshy_rig",
+      "reserved": 5,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T07:39:03.403230+00:00",
+      "arguments": {
+        "input_task_id": "01a15cde-59ef-7589-9bdd-4d0b0226ded4",
+        "height_meters": 1.6,
+        "response_format": "json"
+      },
+      "arguments_sha256": "4916d041fa72a2f73860fa7779613ee7a88407e244366699406a620166f825a3",
+      "task_id": "01a15d66-5437-7514-a7f2-36b2f16c08a8",
+      "actual": 5
+    },
+    {
+      "label": "max-rig-current-v1",
+      "tool": "meshy_rig",
+      "reserved": 5,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T07:39:13.242875+00:00",
+      "arguments": {
+        "input_task_id": "01a15d36-f3ff-72d7-868e-cca5fe041523",
+        "height_meters": 1.6,
+        "response_format": "json"
+      },
+      "arguments_sha256": "be5139d47b1d8cb1f5e351d3ffc26a1eaced1cd6d44c9a93ba08419d405f7e8e",
+      "task_id": "01a15d66-7a1f-7267-878b-88b830f4900d",
+      "actual": 5
+    },
+    {
+      "label": "mae-rig-current-v1",
+      "tool": "meshy_rig",
+      "reserved": 5,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T07:39:22.862404+00:00",
+      "arguments": {
+        "input_task_id": "01a15d37-1476-75f5-80e4-32db005880c6",
+        "height_meters": 1.6,
+        "response_format": "json"
+      },
+      "arguments_sha256": "36cdf9d780266e3779311a7ed163a920b5ead7b4aaa8fd5c51cd4254311cffaa",
+      "task_id": "01a15d66-a025-70c5-bead-b292d0efa092",
+      "actual": 5
+    },
+    {
+      "label": "kit-rig-current-v1",
+      "tool": "meshy_rig",
+      "reserved": 5,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T07:39:32.792336+00:00",
+      "arguments": {
+        "input_task_id": "01a15d37-34d8-77f3-8e3a-52bb56e78283",
+        "height_meters": 1.6,
+        "response_format": "json"
+      },
+      "arguments_sha256": "6afb5889a9497c1419229eec0ab4e42b1210f9be9bc0c28586e3a64b0c345ea8",
+      "task_id": "01a15d66-c7f3-73c6-8e13-d329af05dd1e",
+      "actual": 5
+    },
+    {
+      "label": "lou-rig-current-v1",
+      "tool": "meshy_rig",
+      "reserved": 5,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T07:39:43.918445+00:00",
+      "arguments": {
+        "input_task_id": "01a15d37-5cc8-707a-a4d6-f5467b337d29",
+        "height_meters": 1.6,
+        "response_format": "json"
+      },
+      "arguments_sha256": "ae8d0e70c1392f0a1f0bde05f1ebc584159410c5b9fcb0edfc74a69c6db65f95",
+      "task_id": "01a15d66-f2af-7767-bf80-7433950808c4",
+      "actual": 5
+    },
+    {
+      "label": "ben-rig-current-v1",
+      "tool": "meshy_rig",
+      "reserved": 5,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T07:39:53.900240+00:00",
+      "arguments": {
+        "input_task_id": "01a15d37-7c95-72f5-9e23-7dc1e90aeae9",
+        "height_meters": 1.6,
+        "response_format": "json"
+      },
+      "arguments_sha256": "b0ba96f7b87d7dc7a3bb6152ab76e73891285ec1212ee78068868bcc87f33dd7",
+      "task_id": "01a15d67-1b69-74f8-943c-77934586212f",
+      "actual": 5
+    },
+    {
+      "label": "limen-checkpoint-slash-source-v1",
+      "tool": "meshy_animate",
+      "reserved": 3,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T14:34:16.742630+00:00",
+      "arguments": {
+        "rig_task_id": "01a15d65-b91e-7262-8e9d-15d3f7c902d6",
+        "action_id": 219,
+        "response_format": "json"
+      },
+      "arguments_sha256": "4294190a8ff7f341fff538243fc69f3476b6bde69fb5f072273b52f054badb1a",
+      "task_id": "01a15ee2-7090-7621-9825-4f5a7a21be37",
+      "actual": 3
+    },
+    {
+      "label": "bob-native-idle-comparison-v1",
+      "tool": "meshy_animate",
+      "reserved": 3,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T15:31:07.538352+00:00",
+      "arguments": {
+        "rig_task_id": "01a15d65-b91e-7262-8e9d-15d3f7c902d6",
+        "action_id": 0,
+        "response_format": "json"
+      },
+      "arguments_sha256": "cf2c6938f49c32857d97b04c593287a731fc804a49053840857236bdd74a22fa",
+      "task_id": "01a15f16-8225-736a-ab22-58d0e49a59ab",
+      "actual": 3
+    },
+    {
+      "label": "jo-card-pickup-v1",
+      "tool": "meshy_animate",
+      "reserved": 3,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T18:44:30.413377+00:00",
+      "arguments": {
+        "rig_task_id": "01a15d66-2e4f-727f-97d4-306077826139",
+        "action_id": 276,
+        "response_format": "json"
+      },
+      "arguments_sha256": "244f23acb5701b29237112c02749aaa7b0498eba20b0f3dd37f7b3d4229fffad",
+      "task_id": "01a15fc7-8380-70c7-af64-c965ed8f7b7d",
+      "actual": 3
+    },
+    {
+      "label": "ed-card-pickup-v1",
+      "tool": "meshy_animate",
+      "reserved": 3,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T19:19:23.952486+00:00",
+      "arguments": {
+        "rig_task_id": "01a15d66-06cc-7726-af36-ac9e6545f183",
+        "action_id": 276,
+        "response_format": "json"
+      },
+      "arguments_sha256": "9226cad27835bb220cd01eff4ff8ced4729c02271ea5dff274680e353f228cf8",
+      "task_id": "01a15fe7-755e-71e3-b184-a689b7bab3c2",
+      "actual": 3
+    },
+    {
+      "label": "sam-kneel-v1",
+      "tool": "meshy_animate",
+      "reserved": 3,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T20:28:50.699046+00:00",
+      "arguments": {
+        "rig_task_id": "01a15d65-e092-711f-9cba-93f872e5cba0",
+        "action_id": 365,
+        "response_format": "json"
+      },
+      "arguments_sha256": "e5cac4ae4d804535631c58bd4df177384072a18fa7b8a2a21eaab9895c234baf",
+      "task_id": "01a16027-0b35-751f-bf47-fa5951663447",
+      "actual": 3
+    },
+    {
+      "label": "room-kit-brain-wash-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T23:32:05.337027+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/docs/loopforge/production/model-briefs/room-kit/brain-wash/reference-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 12000,
+        "topology": "triangle",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb"
+        ],
+        "multi_view_thumbnails": true,
+        "response_format": "json",
+        "texture_prompt": "Worn dark cast iron, aged dull brass edging, desaturated enamel, oxidised copper pipes. Rough working industrial surfaces with broad readable material regions. No baked lights, water, steam, brains, people or writing."
+      },
+      "arguments_sha256": "6b27b37f7f250bcca5c8234bcc5a941d8831c692b7e4c72972a83f6c79dcf3de",
+      "task_id": "01a160ce-cf31-76a6-a6f8-bacb511e4da2",
+      "actual": 30
+    },
+    {
+      "label": "room-kit-brain-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T23:44:30.193906+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/docs/loopforge/production/model-briefs/room-kit/brain/washed-reference-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 4000,
+        "topology": "triangle",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb"
+        ],
+        "multi_view_thumbnails": true,
+        "response_format": "json",
+        "texture_prompt": "Washed intact brain. Pale cool grey-ivory broad tissue folds and dark grey recesses. Fine smooth clean membrane with slight damp sheen, no blood, vessels, meat marbling, pink or red, no cooked brown flesh. No baked highlights or shadows. Non-metallic material."
+      },
+      "arguments_sha256": "2a131c0388f8c1975e3acbda5ffecaa14e21f02d7637ff543f479097ab6f75f9",
+      "task_id": "01a160da-373a-76f1-bf61-1d023c746536",
+      "actual": 30
+    },
+    {
+      "label": "room-kit-brain-dirty-v1",
+      "tool": "meshy_retexture",
+      "reserved": 10,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T23:53:22.071894+00:00",
+      "arguments": {
+        "input_task_id": "01a160da-373a-76f1-bf61-1d023c746536",
+        "text_style_prompt": "Loopforge factory intake brain, same intact two-lobed organic brain silhouette. Surface is dark grey-olive with caked industrial dust, dirty grey clay, black grease lodged deep in the folds, dry chalky ridges and uneven residual grime. Large calm material regions readable at room distance. Preserve the deep continuous folds and central cleft. No blood, red flesh, raw mince, granules, metal, wires, symbols or lettering. Stylized hand-painted industrial game asset with grounded PBR wear. It must look like a dirty whole brain awaiting a physical wash, not cooked or minced meat.",
+        "ai_model": "meshy-7",
+        "enable_original_uv": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "target_formats": [
+          "glb"
+        ],
+        "response_format": "json"
+      },
+      "arguments_sha256": "34aee57b1259eea2f5a9595c07cbf16183f0d1c84aab671fc51443b2fd5f4775",
+      "task_id": "01a160e2-4a82-71e1-a80b-feedf19ec59a",
+      "actual": 10
+    },
+    {
+      "label": "room-kit-brain-pressed-v1",
+      "tool": "meshy_retexture",
+      "reserved": 10,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-21T23:54:16.018831+00:00",
+      "arguments": {
+        "input_task_id": "01a160da-373a-76f1-bf61-1d023c746536",
+        "text_style_prompt": "Loopforge finished Lattice Forge brain: intact compact lobes and deep continuous brain folds, grey-ochre and muted warm ivory material, matte slightly heat-set outer surface with subtle darkened crevices. Processed and compact, not red, raw or wet. Preserve the existing topology and UVs. No blood, minced meat, grill marks, flames, ash chunks, metal, wires, writing or luminous effects. Stylized hand-painted industrial game asset. This material will be used on a reduced compact shape after a mechanical compression press.",
+        "ai_model": "meshy-7",
+        "enable_original_uv": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "target_formats": [
+          "glb"
+        ],
+        "response_format": "json"
+      },
+      "arguments_sha256": "7f7cd4417be2c8a4ed741d0d25e9045899c2acdc0b48ad718fbafb006f35494f",
+      "task_id": "01a160e3-1d72-7758-961f-8d0031b23b2e",
+      "actual": 10
+    },
+    {
+      "label": "limen-landing-body-v3",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "REJECTED",
+      "created_at": "2026-10-22T01:16:32.590276+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/limen-rebuild-2026-10-21/limen-skull-front-v3.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "pose_mode": "a-pose",
+        "enable_pbr": true,
+        "topology": "triangle",
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "should_texture": true,
+        "texture_resolution": "2k",
+        "image_enhancement": false,
+        "save_pre_remeshed_model": true,
+        "target_formats": [
+          "glb"
+        ],
+        "multi_view_thumbnails": true,
+        "texture_prompt": "Loopforge security chief LIMEN. Exposed mechanical skull, heavy brow, cyan eye sockets, teeth and cable neck. Pale weathered steel outer armor; broad coherent steel plate faces and very dark charcoal mechanical gaps. Strong plate-versus-joint contrast, restrained fine scratches. No camouflage, no white wash, no gun, no blade. Chest nameplate LIMEN. Keep the reference silhouette and large skull. Materials should read clearly across a factory room. No glowing armor outlines. Compact flush rail on the right forearm; energy blade will be attached separately.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "de9445039218ff5bd919ecd4bdf8cba0fe738f0cd854d7201e26819c62136879",
+      "actual": 0,
+      "error": "HTTP 402: API key credit limit reached; no task id returned",
+      "evidence": "output/limen-rebuild-2026-10-21/body-job.json"
+    },
+    {
+      "label": "limen-landing-body-v3-retry",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-22T01:37:18.778229+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/output/limen-rebuild-2026-10-21/limen-skull-front-v3.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "pose_mode": "a-pose",
+        "enable_pbr": true,
+        "topology": "triangle",
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "should_texture": true,
+        "texture_resolution": "2k",
+        "image_enhancement": false,
+        "save_pre_remeshed_model": true,
+        "target_formats": [
+          "glb"
+        ],
+        "multi_view_thumbnails": true,
+        "texture_prompt": "Loopforge security chief LIMEN. Exposed mechanical skull, heavy brow, cyan eye sockets, teeth and cable neck. Pale weathered steel outer armor; broad coherent steel plate faces and very dark charcoal mechanical gaps. Strong plate-versus-joint contrast, restrained fine scratches. No camouflage, no white wash, no gun, no blade. Chest nameplate LIMEN. Keep the reference silhouette and large skull. Materials should read clearly across a factory room. No glowing armor outlines. Compact flush rail on the right forearm; energy blade will be attached separately.",
+        "response_format": "json"
+      },
+      "arguments_sha256": "de9445039218ff5bd919ecd4bdf8cba0fe738f0cd854d7201e26819c62136879",
+      "task_id": "01a16141-7fd9-7099-8b4d-b06219ed949c",
+      "actual": 30
+    },
+    {
+      "label": "limen-landing-v3-rig",
+      "tool": "meshy_rig",
+      "reserved": 5,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-22T01:45:45.535640+00:00",
+      "arguments": {
+        "input_task_id": "01a16141-7fd9-7099-8b4d-b06219ed949c",
+        "height_meters": 2.55,
+        "response_format": "json"
+      },
+      "arguments_sha256": "67f88891d61794d6f367139ab2b0e9ebe51cf81593370cba947f1e323a3307a0",
+      "task_id": "01a16149-315c-76f3-ae2c-91979bfe4989",
+      "actual": 5
+    },
+    {
+      "label": "room-lattice-forge-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-22T03:53:02.877635+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/docs/loopforge/production/model-briefs/room-kit/lattice-forge/reference-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 16000,
+        "topology": "triangle",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb"
+        ],
+        "multi_view_thumbnails": true,
+        "response_format": "json",
+        "texture_prompt": "Worn dark cast iron, restrained aged brass fittings and broad ribbed panels. Preserve dark iron fields and brass edges; no orange illumination, no glowing material, no writing. Open space between the two columns must remain open."
+      },
+      "arguments_sha256": "b84b1f40c9de90ce7aaef3a92147d87cd119e5b496ff7a733d371fe0b04bee02",
+      "task_id": "01a161bd-b891-73d6-ad83-1994e9037feb",
+      "actual": 30
+    },
+    {
+      "label": "room-carrier-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-22T03:54:25.279817+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/docs/loopforge/production/model-briefs/room-kit/carrier/reference-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "target_polycount": 2000,
+        "topology": "triangle",
+        "should_texture": true,
+        "enable_pbr": true,
+        "texture_resolution": "2k",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb"
+        ],
+        "multi_view_thumbnails": true,
+        "response_format": "json",
+        "texture_prompt": "Rough worn cast iron cradle shell, shallow empty well, dull brass edges and two opposed mounting seats. No brain, labels or moving clamp jaws. Broad readable materials, texture wear rather than geometric ornament."
+      },
+      "arguments_sha256": "acd6964dd84970043b3545b227547f49d5e8ad4cd3ceaac3edec3bec86deaec2",
+      "task_id": "01a161be-fb4b-762a-914e-9ea4fe3a53d8",
+      "actual": 30
+    },
+    {
+      "label": "room-entrance-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-22T04:18:25.491606+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/docs/loopforge/production/model-briefs/room-kit/entrance/reference-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "enable_pbr": true,
+        "topology": "triangle",
+        "target_polycount": 10000,
+        "should_texture": true,
+        "texture_resolution": "2k",
+        "texture_prompt": "Soot-dark aged cast iron with muted worn brass trim. Matte calm surfaces, wear concentrated at real contact edges. No labels, letters, glyphs, emissive surfaces, baked colored lighting, dirt clouds or objects painted onto the texture. Preserve functional empty apertures and the exact isolated prop design.",
+        "target_formats": [
+          "glb"
+        ],
+        "multi_view_thumbnails": true,
+        "response_format": "json",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "save_pre_remeshed_model": true,
+        "image_enhancement": false
+      },
+      "arguments_sha256": "45dde334c0a6c4a14de34ce8958910ca0eddb9c2038211e0111ab43379200d16",
+      "task_id": "01a161d4-f07c-73a0-9374-13ebdfbd8c53",
+      "actual": 30
+    },
+    {
+      "label": "room-desk-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-22T04:19:47.198786+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/docs/loopforge/production/model-briefs/room-kit/desk/reference-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "enable_pbr": true,
+        "topology": "triangle",
+        "target_polycount": 8000,
+        "should_texture": true,
+        "texture_resolution": "2k",
+        "texture_prompt": "Soot-dark aged cast iron with muted worn brass trim. Matte calm surfaces, wear concentrated at real contact edges. No labels, letters, glyphs, emissive surfaces, baked colored lighting, dirt clouds or objects painted onto the texture. Preserve functional empty apertures and the exact isolated prop design.",
+        "target_formats": [
+          "glb"
+        ],
+        "multi_view_thumbnails": true,
+        "response_format": "json",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "save_pre_remeshed_model": true,
+        "image_enhancement": false
+      },
+      "arguments_sha256": "bda20f9a5e3a7efffa46ed8caa4664212ee6e65ed5504c24949b87ac1b04381c",
+      "task_id": "01a161d6-2f45-76b8-882e-05c3bafe1ccb",
+      "actual": 30
+    },
+    {
+      "label": "room-portal-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-22T04:21:23.778625+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/docs/loopforge/production/model-briefs/room-kit/portal/reference-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "enable_pbr": true,
+        "topology": "triangle",
+        "target_polycount": 10000,
+        "should_texture": true,
+        "texture_resolution": "2k",
+        "texture_prompt": "Soot-dark aged cast iron with muted worn brass trim. Matte calm surfaces, wear concentrated at real contact edges. No labels, letters, glyphs, emissive surfaces, baked colored lighting, dirt clouds or objects painted onto the texture. Preserve functional empty apertures and the exact isolated prop design.",
+        "target_formats": [
+          "glb"
+        ],
+        "multi_view_thumbnails": true,
+        "response_format": "json",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "save_pre_remeshed_model": true,
+        "image_enhancement": false
+      },
+      "arguments_sha256": "76a13b7b12a7edd98194fb1d8d7f14a56d4f3adb0dce8408dcacfa01beb0048c",
+      "task_id": "01a161d7-a8cb-7514-8a3c-fd7642bcb604",
+      "actual": 30
+    },
+    {
+      "label": "room-intake-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 30,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-22T04:22:50.304511+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/docs/loopforge/production/model-briefs/room-kit/intake/reference-v1.png",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "enable_pbr": true,
+        "topology": "triangle",
+        "target_polycount": 12000,
+        "should_texture": true,
+        "texture_resolution": "2k",
+        "texture_prompt": "Soot-dark aged cast iron with muted worn brass trim. Matte calm surfaces, wear concentrated at real contact edges. No labels, letters, glyphs, emissive surfaces, baked colored lighting, dirt clouds or objects painted onto the texture. Preserve functional empty apertures and the exact isolated prop design.",
+        "target_formats": [
+          "glb"
+        ],
+        "multi_view_thumbnails": true,
+        "response_format": "json",
+        "geometry_resolution": "standard",
+        "should_remesh": true,
+        "save_pre_remeshed_model": true,
+        "image_enhancement": false
+      },
+      "arguments_sha256": "5f9c21224a50eed70277ff5e537ef364ea287310da2674e042b2fcf1178a530e",
+      "task_id": "01a161d8-fa7b-76ec-b160-4c86f71c218e",
+      "actual": 30
+    },
+    {
+      "label": "room-crate-v1",
+      "tool": "meshy_image_to_3d",
+      "reserved": 15,
+      "state": "SUCCEEDED",
+      "created_at": "2026-10-22T04:24:14.992776+00:00",
+      "arguments": {
+        "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/docs/loopforge/production/model-briefs/room-kit/crate/reference-v1.png",
+        "ai_model": "meshy-t2.5",
+        "model_type": "smart-topology",
+        "enable_pbr": true,
+        "topology": "triangle",
+        "target_polycount": 2000,
+        "should_texture": true,
+        "texture_resolution": "2k",
+        "texture_prompt": "Soot-dark aged cast iron with muted worn brass trim. Matte calm surfaces, wear concentrated at real contact edges. No labels, letters, glyphs, emissive surfaces, baked colored lighting, dirt clouds or objects painted onto the texture. Preserve functional empty apertures and the exact isolated prop design.",
+        "target_formats": [
+          "glb"
+        ],
+        "multi_view_thumbnails": true,
+        "response_format": "json"
+      },
+      "arguments_sha256": "e5486a4ebe608ec58f7210745f0c7178fe95a79429bb2965940e8c37c0db9d86",
+      "task_id": "01a161da-4558-7627-b25b-cf3344e4ae60",
+      "actual": 15
+    }
+  ],
+  "authorizations": [
+    {
+      "date": "2026-10-21",
+      "change": "+500 credits",
+      "cumulative_cap": 1000,
+      "scope": "Opening scene and approved room kit; begin with 150-credit pilot",
+      "approval": "Approve kit and +500 credits (1,000 total cap)"
+    }
+  ]
+}

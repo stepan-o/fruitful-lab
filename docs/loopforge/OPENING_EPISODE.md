@@ -1,12 +1,12 @@
 # Episode 1 — Before the shift
 
-Script revision 8 · 21 October 2026 · Rehearsal revision 11. A 108-second cut. Ten workers, LIMEN and STILETTO. The cast art is approved; the performance remains in review.
+Script revision 9 · 22 October 2026 · Rehearsal revision 16. Ten workers, LIMEN and STILETTO. About 2 minutes 18 seconds of action, plus the player’s reading time. The cast art is approved; final contact and performance review remains open.
 
 [bob’s missing card](BOB_CARD_ARC.md) · [The cast](OPENING_CAST.md) · [Writing Loopforge](EDITORIAL_VOICE.md) · [Play the rehearsal](/stepanoskin/loopforge/play/scene-studies)
 
-## 1. The morning walk
+## The morning walk
 
-We follow the workers into the factory. bob cranes past sam towards the belt.
+We follow the workers towards the open factory entrance. bob turns towards the belt without breaking stride.
 
 **bob:** New roller?
 
@@ -14,118 +14,140 @@ We follow the workers into the factory. bob cranes past sam towards the belt.
 
 **jo:** Give it a shift.
 
-They are still walking when LIMEN fills the doorway.
+## Welcome to Loopforge
 
-## 2. The greeting
+LIMEN fills the Security doorway. The front of the group stops; those behind find somewhere to put their feet.
 
 **LIMEN:** STOP. WAIT HERE!!
 
-The front of the group stops. Those behind find somewhere to put their feet.
+**LIMEN:** Welcome to Loopforge. You move when I say.
 
-**LIMEN:** WHO REALLY CARES ABOUT THIS FACTORY?!
+**lou:** Warm welcome.
 
-**ed:** Me, sir.
+**kit:** Keep your bolts on.
 
-**gus:** I can help.
+**LIMEN:** IDs ready. First shift?
 
-**LIMEN:** You two. Security.
+bob already has his card out.
 
-He points. bob is nearer the door, with his card already out.
+**bob:** Yes, sir. Here—
 
-## 3. The mistake
-
-**bob:** Here, sir.
-
-One step. The cyan blade comes across him.
+He steps forward. LIMEN swings the cyan blade.
 
 **LIMEN:** I SAID STOP!!!!
 
-bob falls. His card skips away. sam gets round his feet and kneels.
+bob falls. His card skips away. sam runs round his feet and kneels beside him.
 
-**bob:** I had it ready—
+**sam:** Easy, bob. I’ve got you.
 
-**LIMEN:** Not you.
+The camera finds ed. He bends for the card, looks at it and puts it away. Hold long enough to see what his hand has done. bob is looking at sam.
 
-**sam:** Easy, bob.
+## The exception
 
-**LIMEN:** IDs. NOW.
+sam releases his supporting hand. As bob finds his feet, STILETTO comes through the main entrance. The crowd makes room.
 
-Hands go to holders. ed puts his own card away, bends for bob’s and slips it into his pouch. He takes his own out again. bob is looking at sam; he sees none of this. The player gets a closer view of the hand, the card and the pouch.
+**STILETTO:** Get the slag out of my way!
 
-## Two checks
+LIMEN jumps aside. She keeps her pace through Security and turns straight towards Conveyor. He returns to the doorway.
 
-**LIMEN:** ed. Register.
+**bob:** You didn’t check her ID…
 
-The card is inspected. ed waits.
+**LIMEN:** WHAT DID YOU SAY?!
 
-**LIMEN:** Names. Numbers. Remarks.
+**bob:** I said it’s great to see someone care so much about the Protocol, sir!
 
-**ed:** Remarks?
+**LIMEN:** Finally you’re starting to get it. ASSIGNMENT?!
 
-**LIMEN:** Leave plenty.
+**bob:** Conveyor, sir.
 
-ed puts his card away and crosses to the register. bob’s stays with it.
+**LIMEN:** Go. Before I change my mind.
 
-**LIMEN:** gus. Trays.
+bob limps through. LIMEN has not checked his card.
 
-gus presents his card.
+## Two volunteers
 
-**LIMEN:** Wait for my word.
+**LIMEN:** Slag. This’ll take all shift to do right.
 
-**gus:** Yes, sir.
+He looks over the workers still waiting.
 
-He takes his place by the trays. Both helpers have been checked before STILETTO enters.
+**LIMEN:** WHO HERE REALLY CARES ABOUT THE FACTORY?!
 
-## 4. The exception
+**ed:** I do, sir.
 
-From behind LIMEN’s shoulder, we see STILETTO approaching through the main entrance. lou moves first. The others make a gap. She keeps walking.
+**gus:** Me too.
 
-**STILETTO:** My line is EMPTY.
+**LIMEN:** You two. Help me set up this checkpoint.
 
-**LIMEN:** I haven't cleared—
+ed takes the register; gus takes the trays. Their appointment admits them as staff. It does not count as two completed Conveyor checks.
 
-A side view catches his hop out of her path, her blades passing the threshold, and bob still down beside sam.
+**LIMEN:** IDs AND PAPERS READY!!!
 
-**STILETTO:** Then MOVE.
+**ed:** IDs AND PAPERS!
 
-She goes straight to Conveyor. LIMEN returns to the place she pushed him out of.
+**gus:** NEXT!!!
 
-## After the blow
+**LIMEN:** NAME AND ASSIGNMENT?!
 
-sam rises with bob as he finds his feet.
+**sam:** sam. Conveyor.
 
-**bob:** Didn't ask for hers.
+sam takes out his card. We leave him holding it while the camera follows bob.
 
-**LIMEN:** bob. Here.
+## One worker for a whole line
 
-bob limps over. The view closes in on the unequal pair.
+STILETTO has the machinery and none of the crew.
 
-**LIMEN:** You know I hit you for the good of the factory.
+**STILETTO:** One worker. He sends me ONE.
 
-**bob:** yeah, i know…
+**bob:** Where do I start?
 
-**LIMEN:** Good. Through.
+**STILETTO:** Intake. Seat the brain in the cradle.
 
-bob crosses into Security. LIMEN has forgotten the card. sam is still outside, with the others.
+The player clicks **Seat the brain**. bob reaches the Intake control and runs the loading mechanism. The dirty brain settles into its carrier.
 
-**LIMEN:** NEXT!
+**STILETTO:** Wash it. We sell thoughts, not yesterday’s grease.
 
-End here. Walking the rest of bob’s route to Conveyor adds no further turn to this encounter. He has been admitted and remains assigned there; the rehearsal ends just inside Security, without teleporting him to the belt.
+She walks to Brain Wash; bob follows. **Run the wash** starts the cycle from its control. The same brain emerges clean.
 
-## Direction
+**STILETTO:** Main belt. Clamp it down. Start the drive.
 
-The cut lasts about 1:48, down from 4:31. Thirty short lines replace fifty. Routine movement happens under orders where possible; the edit preserves the time needed to see the strike, understand the card pickup and hear the factory-good exchange.
+They move to the next station. **Start the main belt** sends the clamped brain along the line.
 
-Seven compositions, eight cuts: follow the approach from behind; meet LIMEN at worker eye level; move beside bob for the blow; inspect ed’s pickup; return to the doorway for the two checks; face the approaching STILETTO over LIMEN’s shoulder; cut sideways as she reaches him; close in for the justification; finish on the threshold. A new bubble does not call for a new shot.
+**STILETTO:** Lattice Forge. Close the press. Head-sized.
 
-The energy comes from changed relationships within the frame. LIMEN stops the group; bob closes the gap and is struck; ed acquires something while everyone looks elsewhere; STILETTO takes the space LIMEN controlled. Her entrance grows towards the lens. The final quiet exchange should feel uncomfortable after her speed, without turning into another long wait.
+At the Forge control, **Compress the brain** lowers the platen and produces one smaller cortex. Keep the press opening and bob’s operation visible together.
 
-Speech gestures play at natural speed or slightly above it, generally 1.0–1.2× source rate. Routine card handling uses 1.5–1.6×, with custody events retimed to the actual contact frames. Worker stride rate rises with travel speed. The strike and fall retain their physical timing; recovery uses 1.2×. There is no global fast-forward and no new Meshy spend for this edit.
+**bob:** I’m all four stations?
 
-The shared engine still owns clearance, injury, custody, hearing and assignments. The audience seeing ed’s hand does not give bob that knowledge. His reply to LIMEN ends the exchange; it does not award trust or forgiveness. The performance is authored; general BDI selection and the later-day intervention remain separate work.
+**STILETTO:** Until the rest of my shift gets past that tin god.
+
+During the lesson, sam’s card has remained at Security for inspection. LIMEN clears him; sam puts it away and walks to Conveyor. He is the second worker released to the line, after bob.
+
+## Back at Security
+
+jo comes forward. The rest are still waiting.
+
+**LIMEN:** NAME AND ASSIGNMENT?!
+
+**jo:** jo. Conveyor. Same as the last two.
+
+**LIMEN:** I asked for YOUR assignment. Papers.
+
+End on the third check.
+
+## Direction and authority
+
+Each spoken step waits for a click. Reading holds the factory clock, routes, custody and machinery; restrained animation continues. A hand carrying a card keeps its fitted pose. Strong reactions belong to the blow and STILETTO’s passage. The waiting crowd should leave space for both.
+
+Cuts follow changes in the action: the greeting, blow, card pickup, approaching STILETTO, her crossing, bob’s reply, the volunteers and the four stations. Keep the camera through an exchange rather than cutting for every bubble. The first shot follows the workers from behind. A closer view must make ed’s pickup unmistakable without giving bob knowledge he does not have.
+
+Speech generally uses 1.0–1.2× source speed; routine card handling uses 1.5–1.6×. Transfers happen at the fitted contact times. The strike and fall keep their physical timing. sam releases before bob rises, instead of holding a fixed point as bob’s shoulder moves.
+
+The engine owns clearance, injury, custody, hearing, assignments and station progress. bob must reach each control before work starts and remain there until it finishes. The current intention sequence and dialogue are authored fixtures. General BDI selection, later-day intervention and the full economy remain separate systems work.
+
+This sequence supersedes the earlier cut in which ed and gus were checked before STILETTO arrived and bob remained down until she passed. Preserve the approved storyboard’s relationships and visual direction; use this script for the current order and timing.
 
 ## The missing card
 
-Later, bob discovers the loss and tries to learn who has his card. In this seed, ed keeps it at Security. The next time LIMEN runs the checkpoint, a still-missing card triggers his questioning and the player intervention. A recovered card changes that encounter. This follows LIMEN’s assignment, not a fixed day-two trigger.
+ed keeps bob’s card at Security in the first seed. bob later discovers the loss and tries to learn who has it. The next time LIMEN runs the checkpoint, a still-missing card triggers questioning and player intervention; recovery changes that encounter. This follows LIMEN’s assignment, not a fixed day-two trigger.
 
-STILETTO sends workers through to Conveyor. Her indifference leaves bob’s search unresolved. Holder, custody and who knows what remain distinct throughout the arc.
+STILETTO sends workers straight through to Conveyor. Her indifference leaves bob’s search unresolved. Holder, custody and who knows what stay distinct.

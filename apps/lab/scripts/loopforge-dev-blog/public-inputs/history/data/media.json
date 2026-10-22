@@ -1,0 +1,55 @@
+{
+  "media": [
+    {
+      "id": "M01",
+      "src": "media/strike-before.png",
+      "sha256": "ff95dac0d24a347382fe7bf8c2d39e937247799c88e56919debfc094489e1a7f",
+      "bytes": 292184,
+      "caption": "Before: the speech bubble covers LIMEN’s head at14.65s.",
+      "credit": "Existing browser export; pre-correction defect",
+      "fact": "F15",
+      "inspectedByProducer": true,
+      "privacy": "Actual pixels inspected; no credentials, private paths, session IDs or native setup UI visible.",
+      "delivery": "lazy loading; explicit dimensions; full-size view optional"
+    },
+    {
+      "id": "M02",
+      "src": "media/strike-after.png",
+      "sha256": "394913832a5c7ca17c1a907aa531f88b3030c766ccf37f1cc3c5c6e7a5f16529",
+      "bytes": 298008,
+      "caption": "After: the bubble moves right and clears the head. Grounding/contact remain separate open questions.",
+      "credit": "Existing corrected C1 browser export; scoped overlay evidence",
+      "fact": "F15",
+      "inspectedByProducer": true,
+      "privacy": "Actual pixels inspected; no credentials, private paths, session IDs or native setup UI visible.",
+      "delivery": "lazy loading; explicit dimensions; full-size view optional"
+    },
+    {
+      "id": "M03",
+      "src": "media/max-preview.jpg",
+      "sha256": "460ae6a21dc59ec6d69cf430db290438e9339a74e0958aa48ed37d8ef2bf67a3",
+      "bytes": 75556,
+      "caption": "max’s default idle at2.95s: arms held out. Director rejected this as a representative relaxed default.",
+      "credit": "Existing worker preview; not a whole-animation pass",
+      "fact": "F24",
+      "inspectedByProducer": true,
+      "privacy": "Actual pixels inspected; no credentials, private paths, session IDs or native setup UI visible.",
+      "delivery": "lazy loading; explicit dimensions; full-size view optional"
+    },
+    {
+      "id": "M04",
+      "src": "media/day-two-proposal.png",
+      "sha256": "ae81feda7489de7a067940039ced3ceaad67b4f69c111e526cd166fa46f754ae",
+      "bytes": 2824187,
+      "caption": "Day-two card exchange proposal. The review required clearer transfer/direction and branch separation.",
+      "credit": "Studio Visual Artist proposal; REVISE, not approved game art",
+      "fact": "F13",
+      "inspectedByProducer": true,
+      "privacy": "Actual pixels inspected; no credentials, private paths, session IDs or native setup UI visible.",
+      "delivery": "lazy loading; explicit dimensions; full-size view optional",
+      "thumbnail": "media/day-two-proposal-small.png",
+      "thumbnailSha256": "e648e9e41aa16abc85fc77427bbbafd9221257d28065ada25992e922d0783b0d",
+      "thumbnailSource": "Existing Visual V1 preview; same proposal, not newly generated"
+    }
+  ]
+}

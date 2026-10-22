@@ -77,11 +77,18 @@ desired_card=np.array([-.17,.003,.51])
 card_rotation=R.from_euler('xy',[-90,25],degrees=True).as_matrix()
 edge=(np.linalg.inv(world[contact_index,h])@np.r_[desired_card,1.])
 edge_rotation=rotation(world[contact_index,h]).T@card_rotation
+# Mesh-fitted ed fingertip correction (LST-3, 2026-10-22): close the
+# 2.76–3.83 mm runtime gap across portrait/floor/console, retaining the grip
+# orientation. 0.365 joint units = 3.65 mm at source scale; at ed's runtime
+# height the fingertip sits 0.10–1.16 mm inside the 3 mm card thickness.
+# The fixed floor target remains unchanged; custody's existing lift blend
+# absorbs this ~4 mm hand attachment shift. Refit if the body mesh changes.
+if args.worker=='ed':edge[:3]+=edge_rotation[:,2]*.365
 grip_path=root/'apps/lab/lib/loopforge/agents/opening-worker-grips.json'
 grips=json.loads(grip_path.read_text()) if grip_path.exists() else {}
 grips[args.worker]={'edge':{'position':edge[:3].tolist(),'quaternion':R.from_matrix(edge_rotation).as_quat().tolist()},'pickup':{'contactSeconds':1.5,'position':desired_card.tolist(),'yaw':25,'sourceHeight':float(np.ptp(b.skin(b.bind)[:,1])),'rootMotionRemovedPosition':[float(desired_card[0]-world[contact_index,hip,0,3]),float(desired_card[1]),float(desired_card[2]-world[contact_index,hip,2,3])]},'stow':{'contactSeconds':1.6,'duration':3.6}}
 
-pickup_error=0.
+pickup_error=float(np.linalg.norm((world[contact_index,h]@edge)[:3]-desired_card))
 write_world(writer,b,'Pickup_Card',ts,world,{'origin':'Meshy Action 276','sourceSha256':digest,'status':'contact candidate','contactSeconds':1.5})
 clips={c['name']:c for c in b.g['animations']}
 _,_,ready=b.sample(clips['ID_Ready'],30);_,_,idle=b.sample(clips['idle'],30)

@@ -1,40 +1,33 @@
 OPENING WORKERS — PERFORMANCE AND CONTACT BRIEF
-Revision 4 · 21 October 2026
+Revision 5 · 22 October 2026 · Before the shift / 16
 
-Follow the current OPENING_EPISODE.md. Ten people arrive through the Lobby and gather unevenly around Security. Workers remain smaller blue-family figures; LIMEN and STILETTO keep their accepted identities.
+Follow OPENING_EPISODE.md revision 9 and the current engine sequence. Ten distinct blue-family workers, LIMEN and STILETTO. Supervisors remain larger. Preserve each approved worker’s silhouette and the approved bob portrait. The first episode is about 138 seconds of action plus reading, with four physical Conveyor station operations.
 
 APPROACH AND WAITING
-Begin outside: the camera follows the workers from behind as they walk TOWARDS the open factory entrance. Heads, bodies, feet and path travel agree; no frontal group portrait or backward walking. Walk in staggered pairs and singles. Stop through a planted foot and settle into a comfortable stance. Stand at conversational angles and unequal distances, looking towards a colleague, the desk or the machinery as the situation warrants. Avoid a gridded queue or fenced waiting pen. Some people briefly scratch their heads, listen or make a small conversational gesture; most simply wait. Never loop a scratch, clap, shrug or startled reaction. Carry quiet idle time continuously across dialogue beats rather than restarting it for every line.
+The camera follows the workers from behind as they walk TOWARDS the open factory entrance. Bodies, feet and path agree. Stagger pairs and singles; gather unevenly around Security without queue pens. Most wait in Quiet_Wait: planted feet, small head and torso movement. Use strong gestures once when an event warrants them. A worker holding an ID uses the fitted ID_Ready pose, including reading stops after ID_Walk. Do not replace it with a general idle.
 
-BOB
-Head leads shoulders when noticing the new roller. He speaks to the small group while looking towards sam. He takes a single mistaken step, receives one cyan-blade electrical contact, falls and remains on the floor through the first two ID checks and STILETTO’s passage. Only after she passes does he recover with sam close enough to help and limp towards his own check. Large hands must touch the floor and supporting arm credibly. The floor hold preserves the injured leg, subtle weight shifts and attention; it must not loop the impact. Subsequent recovery, waiting and locomotion preserve that injury. The personality is the approved portrait; do not add a usefulness wound or a predestined refusal of help.
+BOB AND SAM
+bob misunderstands LIMEN’s greeting, steps forward with his card and receives one cyan-blade strike. He drops the card and falls. sam runs round his feet, kneels and supports him. Keep the held floor pose alive without replaying the impact. sam releases the supporting hand BEFORE bob rises. bob gets up as STILETTO approaches, then keeps his limp through the checkpoint and Conveyor tutorial. Match palms, elbows, wrists, supporting surfaces and planted feet on the actual two bodies. No actor translation may counterfeit a hand contact.
 
-SECURITY VOLUNTEERS
-LIMEN calls “WHO REALLY CARES ABOUT THIS FACTORY?!” ed and gus volunteer, each with a visible response. Check their IDs first and physically admit them to the register and card stations. sam remains with bob. These are the two cleared-worker facts that permit STILETTO’s entrance.
+ED AND THE CARD
+The camera must show ed collecting bob’s card while bob looks towards sam. Pickup and stow transfers commit at the authored contact frames; the card remains owned by bob but held, then stowed, by ed. Fit the card edge to ed’s actual skinned fingers at portrait, floor and overview detail. No floating card or jump from the floor. Do not grant bob knowledge of the transfer.
 
-STILETTO'S PASSAGE
-Only after ed and gus have completed their ID checks, STILETTO enters from the main door and marches to Conveyor at a continuous Quick Walk pace. Workers notice the approaching body in sequence and withdraw far enough to clear BOTH blade envelopes. Turn, step back or aside, transfer weight, plant, then watch her pass. They must not slide or teleport into two perfect ranks. bob remains grounded; sam crouches beside him and draws his extended foot clear before STILETTO arrives. kit and mae negotiate the same patch of floor; max steps around jo. ed and gus are already at their Security desks. Keep timing and destinations deterministic for review; reactions are driven by approach/perception, not a repeating crowd wave.
+STILETTO’S PASSAGE
+STILETTO enters while bob recovers, before the volunteers are appointed. Quick Walk continues through Security to Conveyor. Workers turn and step aside organically, leaving both blades clear; they do not teleport into ranks. LIMEN uses the fitted Step_Back and returns to his threshold. She never stops for an ID. This replaces the old two-checks-before-entrance order.
 
-LIMEN
-Use his existing expressive bank to articulate the instructions. Strike with the cyan forearm blade, preserving body/blade contact timing. Fit the downloaded Step_Back (0.833 s source) to the actual STILETTO clearance; inspect whether the source reads as a sufficient hop. Do not stretch the leg or translate a planted foot to force clearance. Keep his torso oriented towards her approach; he returns to the threshold after she passes.
+THE REPRIMAND AND VOLUNTEERS
+bob notices the exception, retreats into flattery and is admitted to Conveyor without a card check. Only then does LIMEN call for helpers. ed and gus volunteer and physically reach the register and trays. Their staff appointment is not a completed Conveyor-worker check. sam is next: draw his own ID, present it through the off-camera inspection, receive clearance, stow it, then walk to Conveyor. jo is the third applicant when the camera returns.
 
-SPECIFIC CONTACTS TO AUTHOR OR FIT LOCALLY
-- bob: hand/head glance, card hold, strike/fall, floor support, assisted recovery, injured retreat.
-- sam: offered forearm, support beside bob, own card hold.
-- gus: volunteering, card handover and card-tray handling at Security.
-- ed: sleeve contact, his own card presentation and register work.
-- ed: retrieve and keep bob’s card; bob must not witness or learn the custody change.
-- mae/kit: a short guiding hand at shoulder/upper arm while separating.
-- everyone: locomotion stops, turns, retreat, stationary settling and gaze.
+CONVEYOR
+bob and STILETTO walk station to station: Intake, Brain Wash, Main Belt, Lattice Forge. bob must reach the control before each cycle can start and remain there through completion. Fit his hand operation to the panel and keep STILETTO beside him, clear of the camera and machinery. One workpiece changes from dirty to washed, travels in a carrier and is compressed to supervisor-head scale. The Forge opening, platen and output must remain visible.
 
-SOURCE POLICY
-Reuse the accepted Worker 01 bank by bind-pose-aware retargeting where suitable. Catalog source IDs already recorded in worker/02-rig-and-motion.txt include 0 Idle, 2 Alert, 36 Confused_Scratch, 37 Discuss_While_Moving, 47 Listening_Gesture, 172 Electrocution_Reaction, 181 Electrocuted_Fall, 576/586 turns, 637 Injured_Walk_inplace and 692 walking_2_inplace. Inspect root travel and actual action before use. Query the live catalog for retreat, card, seated desk or recovery candidates; record the returned ID and name before any purchase. Do not invent a preset ID or label a reversed walk a reviewed retreat.
+READING AND TRANSITIONS
+Every spoken step waits for the player. The factory clock, travel, custody and process state stay fixed while subtle animation continues. Contact poses cannot drift during a long reading hold. Blend source poses into stops, turns and quiet waits; inspect knees, soles and wrists through entry and exit. Speech generally uses 1.0–1.2× source rate; card handling 1.5–1.6× with matching transfer times. No global fast-forward.
 
-DELIVERY AND REVIEW
-Keep the neutral rig and each source clip. Name exports with worker, source action ID/name and revision. Maintain export-audit.json for hashes, task IDs, triangles, textures, joints, clips, seconds and root travel. Maintain motion-cleanup.json for source/derivative mapping, contact targets, blend windows, foot planting and review results. Preview every delivered clip and its entry/exit on its own character. Inspect front, side, three-quarter and the room camera. Test body/body and body/blade clearance, palms, wrists, elbows, knees, soles and floor. Review mixed-height contacts; numeric clearance alone cannot approve believable posture.
+SOURCE AND DELIVERY
+Reuse the accepted motion bank with bind-pose-aware retargeting where it fits. Keep neutral rigs and source clips. Record catalog ID/name before purchases; do not invent an action ID. Use the canonical budget-controlled Meshy launcher. Name exports with worker, action and revision. Maintain export-audit.json and motion-cleanup.json with source/delivery hashes, exact clip times, contact targets, corrections and evidence.
 
-ENGINE
-Use the same motion intent, transition, path reservation, contact and speech-hearing contracts in scripted scenes and future agent-selected actions. Await physical arrival before committing a check or admission. No crowd lane is opened by moving an actor through someone else. Staggered withdrawal must finish before the blade reaches its occupied space. Preserve two real cleared-worker facts before STILETTO enters. Preserve authored consequences separately from presentation cues.
+Preview every delivered clip on its own body, with worker navigation first before supervisors. Distinguish a review candidate from a motion accepted for the opening. Inspect front, side, three-quarter, room and small-console views; body/body, blade/body, palm/prop, floor and transition checks are separate from file validity. Numeric clearance alone does not establish believable acting. Record unresolved contacts honestly.
 
-PACE AND CAMERA — REHEARSAL 11
-The opening is a 108-second cut with thirty lines. Speech gestures run at 1.0–1.2× source rate; routine card handling at 1.5–1.6×. Contact times and engine custody commit together. Walk rate and path speed change together. Keep bob’s strike/fall at source speed, recovery at 1.2×. No global fast-forward. Seven camera setups cut on the blow, pickup, STILETTO’s approach/threshold and the factory-good exchange, never automatically on a new speaker. End after bob crosses into Security and LIMEN calls NEXT; do not pad the scene with the complete walk to Conveyor.
+ENGINE AND ACCEPTANCE
+Use shared motion, path, reservation, speech/hearing and prop-custody contracts. The authored scene supplies intentions; the engine admits actions and commits consequences. Preserve bob’s unchecked first admission and sam’s performed second check. Test the complete production build on the older HD620 machine for ten minutes, without competing builds or renders. A frame-rate pass does not approve art, and a good still does not approve motion.

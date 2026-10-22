@@ -1,0 +1,35 @@
+{
+  "observedAt": "2026-10-22T22:02:39.792479+00:00",
+  "scope": "All 15 retained native studio sessions, including archived sessions; current staff is a separate count.",
+  "runtime": {
+    "modelIdentifier": "gpt-6-astra",
+    "identifierType": "alias; exact backend snapshot not exposed",
+    "provider": "openai",
+    "runner": "Codex CLI",
+    "cliVersion": "0.163.0-alpha.10.2",
+    "reasoningEffort": "xhigh",
+    "contextWindowReportedTokens": 258400,
+    "sessionsWithSameSettings": 15
+  },
+  "publishedApiSpecification": {
+    "model": "gpt-6-astra",
+    "source": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+    "checkedDate": "2026-10-22",
+    "contextWindowTokens": 1050000,
+    "maximumOutputTokens": 128000,
+    "supportedReasoningEfforts": [
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+    ],
+    "note": "Published API limits, not the effective context allocation observed in these Codex sessions. No parameter count or exact backend snapshot is exposed."
+  },
+  "billing": {
+    "actualDollarCost": null,
+    "explanation": "Neither native token counters nor zero-valued ledger dollar fields establish the bill. Do not multiply by public API list prices and call the result actual cost."
+  },
+  "coverageCaveat": "Read at22:02:39; requested22:03 upper filter is not a complete22:03 freeze. Settings provenance only; publication statistics use their own fixed cutoff.",
+  "sourceSha256": "552ee0299b3e19401d217f1db0c9eb448e4a69b22a4663d48e82734e228137b5"
+}

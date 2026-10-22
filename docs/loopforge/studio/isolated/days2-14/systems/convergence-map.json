@@ -1,0 +1,3237 @@
+{
+  "version": "DAYS2-14-C1-1",
+  "inputVersion": "DAYS2-14-CONVERGENCE-I1",
+  "inputManifestSha256": "92e1f43120c31d152e39eeac68a66a4e616b13bf36f740f1480b96b5a628667f",
+  "speechPolicy": "All97 Writer speech IDs/text are preserved exactly. No replacement line selected. Action IDs and speech IDs must retain their type; E02 uses A-prefixed speech IDs.",
+  "worldTiming": "Reading holds factory progression, transfers, hearing, routes and deadlines. Restrained animation continues; contacts remain fitted. Only accepted in-world actions consume factory time.",
+  "authority": "Adviser acts automatically in their assigned room. A consequential incident elsewhere may require the player. No retroactive veto or player control of bob dialogue.",
+  "scenes": [
+    {
+      "id": "E01",
+      "title": "The card is at work before bob is",
+      "status": "conditional proposal; not executable or approved",
+      "inputs": {
+        "systems": "DAYS2-14-S0-R1-1",
+        "writer": "DAYS2-14-W1",
+        "visual": "DAYS2-14-VISUAL-V1"
+      },
+      "selection": {
+        "firstPrototype": "E01.return if identity/validity/return authority are satisfied; compare E01.temporary only where exception authority exists.",
+        "routes": [
+          "E01.return",
+          "E01.temporary",
+          "E01.hold",
+          "E01.recovered-earlier"
+        ],
+        "gates": [
+          "Next LIMEN-run Security check after E1, while valid card absent, not day number.",
+          "Earlier recovery selects K and bypasses missing-card inquiry.",
+          "STILETTO throughput admission is a different policy; it does not select this LIMEN scene."
+        ],
+        "knowledgeChanges": [
+          {
+            "event": "E01.C16",
+            "world": "ed still holds bob:id",
+            "agent": "bob/sam/LIMEN can now hold an attributed report from ed; no visible transfer yet",
+            "audience": "Already saw E1 pickup; now sees disclosure"
+          },
+          {
+            "event": "E01.A04",
+            "world": "Card displayed, matched; still ed custody",
+            "agent": "Actual witnesses see holder/identity",
+            "audience": "Can compare object with E1; board offer alone cannot prove full match"
+          },
+          {
+            "event": "E01.A05",
+            "world": "Actual ed→bob transfer",
+            "agent": "Only actual witnesses learn returned custody",
+            "audience": "Must see completed contact or a later credible trace"
+          },
+          {
+            "event": "E01.A09",
+            "world": "Temporary passage; card remains ed custody",
+            "agent": "Scoped admission known by actual recipients; search active",
+            "audience": "No inference that passage means recovery"
+          }
+        ],
+        "smallestProof": "One card transfer versus one passage without transfer; repeat actual valid-card or exception state tomorrow."
+      },
+      "routeBlocks": {
+        "E01.return": [
+          "E01.C",
+          "E01.R"
+        ],
+        "E01.temporary": [
+          "E01.C",
+          "E01.U",
+          "E01.T"
+        ],
+        "E01.hold": [
+          "E01.C",
+          "E01.U",
+          "E01.H"
+        ],
+        "E01.recovered-earlier": [
+          "E01.K"
+        ]
+      },
+      "worldTruth": [
+        "ed retains bob:id until a real transfer occurs. Day-one admission was unchecked.",
+        "A temporary pass changes admission only. Missing card, invalid card and missing knowledge are separate conditions."
+      ],
+      "initialActorKnowledge": {
+        "bob": "Knows absence only after his own check or LIMEN request. Does not know ed holds it until a witnessed return or attributed report supplies evidence.",
+        "ed": "Observed pickup/stow; knows custody and his keep-at-security intention.",
+        "sam": "Knows helping bob; did not witness ed custody in the selected pickup. Can accompany an inquiry without naming the holder.",
+        "LIMEN": "Can observe failure to present a card; does not thereby know ed has it.",
+        "gus": "Can repeat only an instruction or identity exchange actually heard.",
+        "audience": "Saw ed take/stow the card in E1. If a later return is missed, the actual card at the next check and a sourced account can establish recovery."
+      },
+      "knowledgeAuthority": "Apply knowledgeChanges only to actual heard/seen recipients. Initial ed knowledge does not persist as a claim that bob remains ignorant after C16/A04.",
+      "perceptions": [
+        "bob finds an empty holder.",
+        "LIMEN sees no card produced.",
+        "A request about found credentials reaches ed only if delivered within hearing.",
+        "Return becomes observable at the actual hand-to-hand transfer."
+      ],
+      "beliefDesireIntentionProposals": {
+        "bob": {
+          "belief": "I lack the card; the holder is unknown.",
+          "desire": "Get to work and recover his card.",
+          "intention": "Check belongings, ask sam, then inquire at Security.",
+          "basis": "Own search and remembered morning; not audience camera."
+        },
+        "ed": {
+          "belief": "Found credentials belong at Security.",
+          "desire": "Complete a proper checkpoint act and have it recognized.",
+          "intention": "Verify identity and return the card, or defer if return authority is absent.",
+          "basis": "E1 keep-at-security seed; return conditions are proposed, not canon."
+        },
+        "LIMEN": {
+          "belief": "Admission needs a valid credential or authorized exception.",
+          "desire": "Procedural and intact operation.",
+          "intention": "Hold pending check unless a valid scoped exception applies.",
+          "basis": "Present checkpoint observation."
+        },
+        "sam": {
+          "belief": "bob needs help with a question I cannot answer fully.",
+          "desire": "Help while keeping their own work commitment.",
+          "intention": "Accompany or report only what they know.",
+          "basis": "Helping history; actual request."
+        }
+      },
+      "playerOptions": [
+        {
+          "encounter": "E01",
+          "label": "Wait for the card decision",
+          "detail": "bob remains held. ed keeps the card until an actual authorized return. The count ending permits review, not automatic recovery.",
+          "gate": "Valid decision-maker retains hold; adviser-owned action may already be automatic.",
+          "doesNotControl": "bob’s inquiry, complaint or forgiveness"
+        },
+        {
+          "encounter": "E01",
+          "label": "Admit bob for this shift — card stays at Security",
+          "detail": "bob can work now; ed keeps the card, and bob’s search stays active. No card check or transfer is implied.",
+          "gate": "Only where the player/decision-maker has scoped exception authority.",
+          "doesNotControl": "bob’s next line or eventual card return"
+        }
+      ],
+      "costsAndActions": [
+        {
+          "actor": "bob",
+          "action": "Ask about found credentials",
+          "cost": "His work opportunity and any companion time while physically away.",
+          "feedback": "An actual response, refusal or unanswered inquiry; never reveal custody by menu."
+        },
+        {
+          "actor": "ed",
+          "action": "Verify and return",
+          "cost": "Time and exposure of his custody to those present.",
+          "feedback": "The same card crosses to bob; ed can seek acknowledgment without automatic forgiveness."
+        },
+        {
+          "actor": "authorized decision-maker",
+          "action": "Hold for credential resolution",
+          "cost": "bob remains unavailable to Conveyor; a visible queue/empty work position.",
+          "feedback": "State who imposed the hold and the condition for release."
+        },
+        {
+          "actor": "player where permitted",
+          "action": "Authorize temporary admission",
+          "cost": "An explicit limited exception and later clarification; no guaranteed accident.",
+          "feedback": "bob crosses while his card search remains active."
+        }
+      ],
+      "proposedRelationshipMemory": [
+        "bob remembers who answered or refused, separately from who authorized passage.",
+        "ed remembers whether his return was treated as legitimate custody or challenged.",
+        "sam remembers the actual help requested and given; no universal reconciliation."
+      ],
+      "visibleConsequences": [
+        "Immediate: bob works or remains visibly held.",
+        "Later: bob presents the recovered card or seeks clarification of the exception; a private return does not become universal knowledge."
+      ],
+      "attention": {
+        "direct": "Hold or temporary admission only when the authority path permits.",
+        "indirect": "Morning room assignment determines whether a missing-card check occurs.",
+        "witnessOnly": "bob inquiry and ed response are character acts.",
+        "missedOrLater": "Offstage return leaves card custody and a sourced account, not an omniscient recap."
+      },
+      "writerSpeechExact": [
+        {
+          "type": "speech",
+          "id": "E01.C01",
+          "speaker": "LIMEN",
+          "listeners": [
+            "bob"
+          ],
+          "text": "Card.",
+          "practicalAction": "Require presentation.",
+          "requiredSources": [
+            "E01.missing"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C02",
+          "speaker": "bob",
+          "listeners": [
+            "LIMEN",
+            "sam"
+          ],
+          "text": "It was here.",
+          "practicalAction": "Account for the empty holder.",
+          "requiredSources": [
+            "E01.missing"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C03",
+          "speaker": "LIMEN",
+          "listeners": [
+            "bob"
+          ],
+          "text": "Look again.",
+          "practicalAction": "Keep bob at the check.",
+          "requiredSources": [
+            "E01.missing"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C04",
+          "speaker": "bob",
+          "listeners": [
+            "sam"
+          ],
+          "text": "When I fell. Did you see where it went?",
+          "practicalAction": "Ask a witness without naming a holder.",
+          "requiredSources": [
+            "E01.help",
+            "E01.missing"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C05",
+          "speaker": "sam",
+          "listeners": [
+            "bob"
+          ],
+          "text": "I was looking at you.",
+          "practicalAction": "Answer within what sam actually attended to.",
+          "requiredSources": [
+            "E01.help"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C06",
+          "speaker": "bob",
+          "listeners": [
+            "sam"
+          ],
+          "text": "Will you come and ask?",
+          "practicalAction": "Request company, not an answer sam lacks.",
+          "requiredSources": [],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C07",
+          "speaker": "sam",
+          "listeners": [
+            "bob"
+          ],
+          "text": "To the desk. Then I’ve got to go.",
+          "practicalAction": "Limit the help to a task sam can finish.",
+          "requiredSources": [
+            "E01.sam-duty"
+          ],
+          "changedCommitment": "Accompany bob to the desk, then return to own duty.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C08",
+          "speaker": "LIMEN",
+          "listeners": [
+            "bob",
+            "sam"
+          ],
+          "text": "Stay this side.",
+          "practicalAction": "Permit an inquiry without admitting bob.",
+          "requiredSources": [],
+          "changedCommitment": "bob remains on the arrival side while asking at the desk.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C09",
+          "speaker": "bob",
+          "listeners": [
+            "ed",
+            "sam"
+          ],
+          "text": "Do found cards come here?",
+          "practicalAction": "Ask about a service; do not accuse ed.",
+          "requiredSources": [
+            "E01.missing"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C10",
+          "speaker": "ed",
+          "listeners": [
+            "bob",
+            "sam"
+          ],
+          "text": "Name?",
+          "practicalAction": "Open an entry on his terms.",
+          "requiredSources": [
+            "E01.register"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C11",
+          "speaker": "bob",
+          "listeners": [
+            "ed",
+            "sam"
+          ],
+          "text": "bob.",
+          "practicalAction": "Identify himself.",
+          "requiredSources": [],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C12",
+          "speaker": "ed",
+          "listeners": [
+            "bob",
+            "sam"
+          ],
+          "text": "Wait till I finish this.",
+          "practicalAction": "Protect his unfinished row.",
+          "requiredSources": [
+            "E01.register"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C13",
+          "speaker": "bob",
+          "listeners": [
+            "ed",
+            "sam"
+          ],
+          "text": "You asked.",
+          "practicalAction": "Object to being stopped after answering.",
+          "requiredSources": [],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C14",
+          "speaker": "ed",
+          "listeners": [
+            "bob",
+            "sam"
+          ],
+          "text": "bob. Conveyor?",
+          "practicalAction": "Check the assignment with its owner; the question is not prior knowledge of today’s assignment.",
+          "requiredSources": [],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C15",
+          "speaker": "bob",
+          "listeners": [
+            "ed",
+            "sam"
+          ],
+          "text": "Conveyor.",
+          "practicalAction": "Supply his actual current assignment.",
+          "requiredSources": [
+            "E01.assignment"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.C16",
+          "speaker": "ed",
+          "listeners": [
+            "LIMEN",
+            "bob",
+            "sam"
+          ],
+          "text": "I have his card. May I return it?",
+          "practicalAction": "Disclose custody while asking for delegated authority.",
+          "requiredSources": [
+            "E01.ed-custody"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "bob/sam/LIMEN learn ed reports holding bob’s card. They have not witnessed its production or transfer.",
+          "block": "E01.C",
+          "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.R01",
+          "speaker": "LIMEN",
+          "listeners": [
+            "ed",
+            "bob",
+            "sam"
+          ],
+          "text": "Match it. Then give it to him.",
+          "practicalAction": "Delegate a specific return.",
+          "requiredSources": [],
+          "changedCommitment": "Return allowed after the actual identity/validity match.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.R",
+          "variantGate": "LIMEN can authorize a verified return; identity/card validity can be checked."
+        },
+        {
+          "type": "speech",
+          "id": "E01.R02",
+          "speaker": "ed",
+          "listeners": [
+            "bob",
+            "sam"
+          ],
+          "text": "Found at Security. First morning.",
+          "practicalAction": "Record the recovery while avoiding an explanation for keeping it.",
+          "requiredSources": [
+            "E01.ed-custody"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.R",
+          "variantGate": "LIMEN can authorize a verified return; identity/card validity can be checked."
+        },
+        {
+          "type": "speech",
+          "id": "E01.R03",
+          "speaker": "bob",
+          "listeners": [
+            "ed",
+            "sam"
+          ],
+          "text": "You could have told me.",
+          "practicalAction": "Challenge the silence, not the already-observed pickup he never saw.",
+          "requiredSources": [
+            "E01.A04",
+            "E01.R02"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.R",
+          "variantGate": "LIMEN can authorize a verified return; identity/card validity can be checked."
+        },
+        {
+          "type": "speech",
+          "id": "E01.R04",
+          "speaker": "ed",
+          "listeners": [
+            "bob",
+            "sam"
+          ],
+          "text": "Received?",
+          "practicalAction": "Ask for acknowledgment of the return.",
+          "requiredSources": [
+            "E01.A05"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.R",
+          "variantGate": "LIMEN can authorize a verified return; identity/card validity can be checked."
+        },
+        {
+          "type": "speech",
+          "id": "E01.R05",
+          "speaker": "bob",
+          "listeners": [
+            "ed",
+            "sam"
+          ],
+          "text": "Yes.",
+          "practicalAction": "Acknowledge possession only.",
+          "requiredSources": [
+            "E01.A05"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Receipt acknowledged; no forgiveness or trust restoration implied.",
+          "block": "E01.R",
+          "variantGate": "LIMEN can authorize a verified return; identity/card validity can be checked."
+        },
+        {
+          "type": "speech",
+          "id": "E01.R06",
+          "speaker": "sam",
+          "listeners": [
+            "bob"
+          ],
+          "text": "Come on.",
+          "practicalAction": "Resume the work route together.",
+          "requiredSources": [
+            "E01.A06"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.R",
+          "variantGate": "LIMEN can authorize a verified return; identity/card validity can be checked."
+        },
+        {
+          "type": "speech",
+          "id": "E01.U01",
+          "speaker": "LIMEN",
+          "listeners": [
+            "ed",
+            "bob",
+            "sam"
+          ],
+          "text": "After the count. Keep it there.",
+          "practicalAction": "Defer the return decision until his current count is finished.",
+          "requiredSources": [],
+          "changedCommitment": "Review return after the count; this is not a promise of automatic recovery.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.U",
+          "variantGate": "Return authority is not granted now; no transfer occurs."
+        },
+        {
+          "type": "speech",
+          "id": "E01.U02",
+          "speaker": "bob",
+          "listeners": [
+            "LIMEN",
+            "ed",
+            "sam"
+          ],
+          "text": "I need it to come through.",
+          "practicalAction": "Point to the immediate consequence of the hold.",
+          "requiredSources": [
+            "E01.missing",
+            "E01.U01"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.U",
+          "variantGate": "Return authority is not granted now; no transfer occurs."
+        },
+        {
+          "type": "speech",
+          "id": "E01.U03",
+          "speaker": "LIMEN",
+          "listeners": [
+            "bob",
+            "ed",
+            "sam"
+          ],
+          "text": "Stay here, then.",
+          "practicalAction": "Maintain the hold until an authorized decision.",
+          "requiredSources": [],
+          "changedCommitment": "Hold remains active unless a permitted exception changes admission.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.U",
+          "variantGate": "Return authority is not granted now; no transfer occurs."
+        },
+        {
+          "type": "speech",
+          "id": "E01.H01",
+          "speaker": "sam",
+          "listeners": [
+            "bob"
+          ],
+          "text": "I have to go.",
+          "practicalAction": "Honor the work commitment.",
+          "requiredSources": [
+            "E01.sam-duty",
+            "E01.C07"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.H",
+          "variantGate": "The competent authority retains the hold. If the adviser acts here, show that result; do not offer a retroactive player veto."
+        },
+        {
+          "type": "speech",
+          "id": "E01.H02",
+          "speaker": "bob",
+          "listeners": [
+            "sam"
+          ],
+          "text": "Go. I know where to ask now.",
+          "practicalAction": "Release sam from the offered help.",
+          "requiredSources": [
+            "E01.C16"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "bob can return to the named desk; ed’s custody remains an attributed report until seen.",
+          "block": "E01.H",
+          "variantGate": "The competent authority retains the hold. If the adviser acts here, show that result; do not offer a retroactive player veto."
+        },
+        {
+          "type": "speech",
+          "id": "E01.T01",
+          "speaker": "LIMEN",
+          "listeners": [
+            "bob",
+            "ed",
+            "sam"
+          ],
+          "text": "Conveyor. This shift only.",
+          "practicalAction": "Enact the delivered exception.",
+          "requiredSources": [
+            "E01.exception"
+          ],
+          "changedCommitment": "Admit bob for this shift without returning or checking a card.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.T",
+          "variantGate": "An authorized player/decision-maker grants admission for this shift only. Offer only on a valid authority path."
+        },
+        {
+          "type": "speech",
+          "id": "E01.T02",
+          "speaker": "bob",
+          "listeners": [
+            "ed"
+          ],
+          "text": "I’ll come back for it.",
+          "practicalAction": "Keep his own search active.",
+          "requiredSources": [
+            "E01.C16"
+          ],
+          "changedCommitment": "bob intends another inquiry; no forced future action or recovered flag.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.T",
+          "variantGate": "An authorized player/decision-maker grants admission for this shift only. Offer only on a valid authority path."
+        },
+        {
+          "type": "speech",
+          "id": "E01.T03",
+          "speaker": "ed",
+          "listeners": [
+            "bob"
+          ],
+          "text": "Ask at the desk.",
+          "practicalAction": "Insist on the return channel.",
+          "requiredSources": [
+            "E01.ed-custody"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.T",
+          "variantGate": "An authorized player/decision-maker grants admission for this shift only. Offer only on a valid authority path."
+        },
+        {
+          "type": "speech",
+          "id": "E01.K01",
+          "speaker": "LIMEN",
+          "listeners": [
+            "bob"
+          ],
+          "text": "Card.",
+          "practicalAction": "Request a valid presentation.",
+          "requiredSources": [],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.K",
+          "variantGate": "Skip the entire missing-card scene when bob already holds his valid card."
+        },
+        {
+          "type": "speech",
+          "id": "E01.K02",
+          "speaker": "bob",
+          "listeners": [
+            "LIMEN"
+          ],
+          "text": "Here.",
+          "practicalAction": "Complete the presentation.",
+          "requiredSources": [
+            "E01.recovered"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E01.K",
+          "variantGate": "Skip the entire missing-card scene when bob already holds his valid card."
+        }
+      ],
+      "writerActionRecordsExact": [
+        {
+          "type": "action",
+          "id": "E01.A01",
+          "text": "LIMEN waits at the threshold. bob puts a hand into his empty holder, takes it out, and checks once more. sam is near enough to hear. ed is finishing a row in the register.",
+          "actualWitnesses": [
+            "bob",
+            "LIMEN",
+            "sam"
+          ],
+          "stateChanges": [
+            "bob knows absence; holder still unknown to bob."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E01.C",
+          "encounter": "E01"
+        },
+        {
+          "type": "action",
+          "id": "E01.A02",
+          "text": "They reach the accessible edge of ed’s desk without crossing the admission line. ed keeps his place in the register.",
+          "actualWitnesses": [
+            "bob",
+            "sam",
+            "ed",
+            "LIMEN"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E01.C",
+          "encounter": "E01"
+        },
+        {
+          "type": "action",
+          "id": "E01.A03",
+          "text": "ed finishes the row. Only then does he look up. bob keeps his hand on the empty holder.",
+          "actualWitnesses": [
+            "bob",
+            "sam",
+            "ed"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E01.C",
+          "encounter": "E01"
+        },
+        {
+          "type": "action",
+          "id": "E01.A04",
+          "text": "ed takes out the same card, checks its identity against bob and the entry, and turns it far enough for bob to recognize it. The match must succeed for this branch.",
+          "actualWitnesses": [
+            "ed",
+            "bob",
+            "sam",
+            "LIMEN"
+          ],
+          "stateChanges": [
+            "bob/sam/LIMEN now see ed holding bob:id. No transfer yet."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E01.R",
+          "encounter": "E01"
+        },
+        {
+          "type": "action",
+          "id": "E01.A05",
+          "text": "ed runs a finger down the completed entry. He offers the card. bob takes it. ed has not answered the complaint.",
+          "actualWitnesses": [
+            "ed",
+            "bob",
+            "sam",
+            "LIMEN"
+          ],
+          "stateChanges": [
+            "Actual ed→bob transfer; search recovered; actual witnesses learn returned custody."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E01.R",
+          "encounter": "E01"
+        },
+        {
+          "type": "action",
+          "id": "E01.A06",
+          "text": "bob stows his card. LIMEN completes the valid check and clears him. sam turns towards their work route.",
+          "actualWitnesses": [
+            "bob",
+            "sam",
+            "ed",
+            "LIMEN"
+          ],
+          "stateChanges": [
+            "Valid credential admission after actual return/check."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E01.R",
+          "encounter": "E01"
+        },
+        {
+          "type": "action",
+          "id": "E01.A07",
+          "text": "ed’s hand returns to the register. The card stays stowed with him. bob remains at the edge of the route.",
+          "actualWitnesses": [
+            "ed",
+            "bob",
+            "sam",
+            "LIMEN"
+          ],
+          "stateChanges": [
+            "Custody unchanged. bob knows ed’s claim from C16; no return has been seen."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E01.U",
+          "encounter": "E01"
+        },
+        {
+          "type": "action",
+          "id": "E01.A08",
+          "text": "sam uses their own valid admission and goes to work. bob stays. The unoccupied Conveyor position belongs to this hold, not to an invented injury.",
+          "actualWitnesses": [
+            "bob",
+            "sam",
+            "LIMEN"
+          ],
+          "stateChanges": [
+            "bob unavailable to Conveyor; later return review remains pending."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E01.H",
+          "encounter": "E01"
+        },
+        {
+          "type": "action",
+          "id": "E01.A09",
+          "text": "bob crosses with an empty holder. ed’s stowed card has not moved. sam follows their work route.",
+          "actualWitnesses": [
+            "bob",
+            "ed",
+            "sam",
+            "LIMEN"
+          ],
+          "stateChanges": [
+            "Admission by exception only; missing card/search remain unresolved."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E01.T",
+          "encounter": "E01"
+        },
+        {
+          "type": "action",
+          "id": "E01.A10",
+          "text": "bob produces his card and keeps hold of its edge while showing it to LIMEN.",
+          "actualWitnesses": [
+            "bob",
+            "LIMEN"
+          ],
+          "stateChanges": [
+            "Actual presentation; no custody transfer."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E01.K",
+          "encounter": "E01"
+        },
+        {
+          "type": "action",
+          "id": "E01.A11",
+          "text": "LIMEN reads and validates the card, then signals bob through. bob stows it.",
+          "actualWitnesses": [
+            "bob",
+            "LIMEN"
+          ],
+          "stateChanges": [
+            "Normal credential admission; no repeated missing-card crisis."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E01.K",
+          "encounter": "E01"
+        }
+      ],
+      "board": {
+        "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E01/E01-proposal.png",
+        "sha256": "ae81feda7489de7a067940039ced3ceaad67b4f69c111e526cd166fa46f754ae",
+        "previewPath": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E01/E01-320x180.png",
+        "previewSha256": "e648e9e41aa16abc85fc77427bbbafd9221257d28065ada25992e922d0783b0d",
+        "panels": {
+          "main": {
+            "region": "large left panel",
+            "intendedWriterIds": [
+              "E01.A02",
+              "E01.A03",
+              "E01.C09",
+              "E01.C12",
+              "E01.C16"
+            ],
+            "status": "needs-revision; intended mapping is not proof of pictured action"
+          },
+          "upperRight": {
+            "region": "upper-right inset",
+            "intendedWriterIds": [
+              "E01.A04",
+              "E01.A05",
+              "E01.A06"
+            ],
+            "status": "needs-revision; intended mapping is not proof of pictured action"
+          },
+          "lowerRight": {
+            "region": "lower-right inset",
+            "intendedWriterIds": [
+              "E01.T01",
+              "E01.A09"
+            ],
+            "status": "needs-revision; intended mapping is not proof of pictured action"
+          }
+        },
+        "branchPolicy": "Two mutually exclusive outcome insets: return versus temporary admission; never concatenate.",
+        "authorPixelVerdictExact": {
+          "status": "needs-revision",
+          "observed": [
+            "Distinct bob/sam/ed/LIMEN identities",
+            "One offered card in return inset",
+            "Empty bob holder in temporary inset"
+          ],
+          "defects": [
+            {
+              "id": "V1-E01-01",
+              "region": "lower-right inset; bob at approx0.85x,0.80y",
+              "issue": "bob faces viewer while sam heads through destination doorway; passage direction is inconsistent",
+              "fix": "Turn bob head/body and travel towards doorway, preserving empty holder visibility with a lateral camera."
+            },
+            {
+              "id": "V1-E01-02",
+              "region": "upper-right inset and main desk",
+              "issue": "Offer only; completed hand contact, match, stow and admission are not shown. Main hand is on desk, not holder.",
+              "fix": "Pin exact A05 transfer contact and preserve A04/A06 in separate timed evidence; move main hand to holder."
+            }
+          ],
+          "unproven": [
+            "Hidden card still with ed",
+            "Completed card transfer",
+            "Scale-level custody comprehension"
+          ]
+        },
+        "systemsVerdict": "REVISE; no board promoted to canon"
+      },
+      "remainingProof": "One card transfer versus one passage without transfer; repeat actual valid-card or exception state tomorrow."
+    },
+    {
+      "id": "E02",
+      "title": "Leave the control to bob",
+      "status": "conditional proposal; not executable or approved",
+      "inputs": {
+        "systems": "DAYS2-14-S0-R1-1",
+        "writer": "DAYS2-14-W1",
+        "visual": "DAYS2-14-VISUAL-V1"
+      },
+      "selection": {
+        "firstPrototype": "E02.clear where sam can stay; E02.compressed only with actual assigned vacant wash.",
+        "routes": [
+          "E02.clear",
+          "E02.compressed"
+        ],
+        "gates": [
+          "Actual work permission, previous process stage and presence at same Main Belt control.",
+          "Clear branch and compressed branch are mutually exclusive, not sequential deterioration."
+        ],
+        "knowledgeChanges": [
+          {
+            "event": "E02.C02 + E02.A02/A04",
+            "world": "Hand removed before permitted start",
+            "agent": "bob receives permission and sees physical clearance; words alone are insufficient",
+            "audience": "Should read the gap, control and partner together"
+          },
+          {
+            "event": "E02.A11/B02/A12/A13",
+            "world": "sam clears hand, bob starts, sam covers actual wash duty",
+            "agent": "bob knows why company is unavailable; no automatic resentment",
+            "audience": "Departure has an observable task cause"
+          },
+          {
+            "event": "E02.A07–A09",
+            "world": "No machine state change by conversation alone",
+            "agent": "bob/sam have a reciprocal next-turn commitment if heard",
+            "audience": "Company and curiosity establish what a later callback can mean"
+          }
+        ],
+        "smallestProof": "Same control, same pair, two staffing treatments; visible different conduct without an invented injury."
+      },
+      "routeBlocks": {
+        "E02.clear": [
+          "E02.C",
+          "E02.A"
+        ],
+        "E02.compressed": [
+          "E02.C",
+          "E02.B"
+        ]
+      },
+      "worldTruth": [
+        "Current admission, permission and available workers determine who can be at the controls.",
+        "Equipment wear persists; charging is not repair.",
+        "The E1 four-station sequence is an authored rehearsal, not proof of this recurring work loop."
+      ],
+      "initialActorKnowledge": {
+        "bob": "Remembers his own treatment and the instruction he actually received. An unclear permission may cause a question, not magical knowledge of quota.",
+        "sam": "Knows the immediate work request and their own competing station duty.",
+        "STILETTO": "Can see an idle station and the staff available; her interpretation of hesitation may be wrong.",
+        "localWitness": "Can copy a shared start only after seeing it or being taught.",
+        "audience": "Can compare bob at the same control with the earlier scene; an empty place alone proves absence, not injury."
+      },
+      "knowledgeAuthority": "Apply knowledgeChanges only to actual heard/seen recipients. Initial ed knowledge does not persist as a claim that bob remains ignorant after C16/A04.",
+      "perceptions": [
+        "A control is available or occupied.",
+        "sam visibly leaves room for bob or moves to cover another station.",
+        "An explicit local instruction is heard; machine progress follows operator presence."
+      ],
+      "beliefDesireIntentionProposals": {
+        "bob": {
+          "belief": "I heard this permission, or I still need to clarify it.",
+          "desire": "See the machinery work and pursue the immediate task.",
+          "intention": "Start, ask, wait, or resume according to the valid situation.",
+          "basis": "Own experience and local instruction; no fixed fear/usefulness diagnosis."
+        },
+        "sam": {
+          "belief": "bob can take this control; another station may also need me.",
+          "desire": "Enjoy shared work and meet their own commitment.",
+          "intention": "Let bob operate and watch, or explain before covering the other position.",
+          "basis": "Visible staffing and actual request."
+        },
+        "STILETTO": {
+          "belief": "The staffed line has a remaining output opportunity.",
+          "desire": "Quota and leadership approval.",
+          "intention": "Demand pace when opportunity is being lost.",
+          "basis": "Observed flow and received operating facts."
+        }
+      },
+      "playerOptions": [],
+      "costsAndActions": [
+        {
+          "actor": "player",
+          "action": "Set a workable steady/metered operation using existing controls",
+          "cost": "Less immediate output opportunity than an effective push; exact amounts unmeasured.",
+          "feedback": "A readable cycle with room for bob and sam to share attention."
+        },
+        {
+          "actor": "player or operating authority",
+          "action": "Continue compressed/pushed operation",
+          "cost": "Strain/wear exposure and reduced time together; not compulsory damage.",
+          "feedback": "sam covers another station; bob receives, questions or acts on the actual instruction."
+        },
+        {
+          "actor": "bob",
+          "action": "Ask for clarification or take a clearly available control",
+          "cost": "A real pause when enacted; reading itself costs nothing.",
+          "feedback": "The addressed person answers, leaves space or remains unavailable."
+        }
+      ],
+      "proposedRelationshipMemory": [
+        "bob records whether sam made space, helped as requested, or took over.",
+        "sam records the shared success and the separate job they left or completed.",
+        "A witness remembers the demonstrated permission with its source and context."
+      ],
+      "visibleConsequences": [
+        "A successful ordinary shift is a payoff in its own right.",
+        "The same routine becomes the concrete material CATHEXIS can later see and teach."
+      ],
+      "attention": {
+        "direct": "Operating controls and eligible incident response.",
+        "indirect": "Prior authority and admission affect available time together.",
+        "witnessOnly": "Who offers help and who wants their own turn.",
+        "missedOrLater": "Changed operator/pairing and an attributable account support discovery; no automatic injury inference."
+      },
+      "writerSpeechExact": [
+        {
+          "type": "speech",
+          "id": "E02.C01",
+          "speaker": "bob",
+          "listeners": [
+            "sam"
+          ],
+          "text": "Am I starting it?",
+          "practicalAction": "Clarify the turn before acting.",
+          "requiredSources": [
+            "E02.control"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.C",
+          "variantGate": "Same established Main Belt cycle in both variants. This is a later work scene, not a rewrite of E1."
+        },
+        {
+          "type": "speech",
+          "id": "E02.C02",
+          "speaker": "sam",
+          "listeners": [
+            "bob"
+          ],
+          "text": "Yes. Wait till I’m clear.",
+          "practicalAction": "Convey permission with the physical release condition.",
+          "requiredSources": [
+            "E02.permission"
+          ],
+          "changedCommitment": "bob operates only after sam’s hand is out and the clear cue is received.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.C",
+          "variantGate": "Same established Main Belt cycle in both variants. This is a later work scene, not a rewrite of E1."
+        },
+        {
+          "type": "speech",
+          "id": "E02.C03",
+          "speaker": "bob",
+          "listeners": [
+            "sam"
+          ],
+          "text": "I am waiting.",
+          "practicalAction": "Ask sam to notice the restraint already being exercised.",
+          "requiredSources": [
+            "E02.A01"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.C",
+          "variantGate": "Same established Main Belt cycle in both variants. This is a later work scene, not a rewrite of E1."
+        },
+        {
+          "type": "speech",
+          "id": "E02.A04",
+          "speaker": "sam",
+          "listeners": [
+            "bob"
+          ],
+          "text": "Clear.",
+          "practicalAction": "Give the agreed cue.",
+          "requiredSources": [
+            "E02.A02",
+            "E02.C02"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.A",
+          "variantGate": "sam is free to remain beside this operation; no competing unattended duty calls them away."
+        },
+        {
+          "type": "speech",
+          "id": "E02.A05",
+          "speaker": "bob",
+          "listeners": [
+            "sam"
+          ],
+          "text": "There. It sits down before it goes.",
+          "practicalAction": "Share the particular movement he was waiting to see.",
+          "requiredSources": [
+            "E02.A03"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.A",
+          "variantGate": "sam is free to remain beside this operation; no competing unattended duty calls them away."
+        },
+        {
+          "type": "speech",
+          "id": "E02.A06",
+          "speaker": "sam",
+          "listeners": [
+            "bob"
+          ],
+          "text": "I was watching your hand.",
+          "practicalAction": "Admit their attention was on the learner.",
+          "requiredSources": [
+            "E02.A03"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.A",
+          "variantGate": "sam is free to remain beside this operation; no competing unattended duty calls them away."
+        },
+        {
+          "type": "speech",
+          "id": "E02.A07",
+          "speaker": "bob",
+          "listeners": [
+            "sam"
+          ],
+          "text": "Watch this bit next time.",
+          "practicalAction": "Invite sam to enjoy the mechanism.",
+          "requiredSources": [
+            "E02.A03"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.A",
+          "variantGate": "sam is free to remain beside this operation; no competing unattended duty calls them away."
+        },
+        {
+          "type": "speech",
+          "id": "E02.A08",
+          "speaker": "sam",
+          "listeners": [
+            "bob"
+          ],
+          "text": "My turn next time.",
+          "practicalAction": "Keep an interest of their own.",
+          "requiredSources": [],
+          "changedCommitment": "sam asks for the next eligible turn; this does not reassign the station automatically.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.A",
+          "variantGate": "sam is free to remain beside this operation; no competing unattended duty calls them away."
+        },
+        {
+          "type": "speech",
+          "id": "E02.A09",
+          "speaker": "bob",
+          "listeners": [
+            "sam"
+          ],
+          "text": "All right. I’ll watch.",
+          "practicalAction": "Agree to exchange roles when a next turn is permitted.",
+          "requiredSources": [],
+          "changedCommitment": "bob will leave the next permitted turn to sam; no unrelated authority promise.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.A",
+          "variantGate": "sam is free to remain beside this operation; no competing unattended duty calls them away."
+        },
+        {
+          "type": "speech",
+          "id": "E02.B01",
+          "speaker": "STILETTO",
+          "listeners": [
+            "sam",
+            "bob"
+          ],
+          "text": "sam. Wash is waiting.",
+          "practicalAction": "Call the assigned worker to an idle operation.",
+          "requiredSources": [
+            "E02.wash-vacant"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.B",
+          "variantGate": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair."
+        },
+        {
+          "type": "speech",
+          "id": "E02.B02",
+          "speaker": "sam",
+          "listeners": [
+            "bob"
+          ],
+          "text": "Clear. Start it.",
+          "practicalAction": "Finish helping before leaving.",
+          "requiredSources": [
+            "E02.A11",
+            "E02.C02"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.B",
+          "variantGate": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair."
+        },
+        {
+          "type": "speech",
+          "id": "E02.B03",
+          "speaker": "bob",
+          "listeners": [
+            "sam"
+          ],
+          "text": "Stay for this bit.",
+          "practicalAction": "Ask for company while the movement is still visible.",
+          "requiredSources": [
+            "E02.A12"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.B",
+          "variantGate": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair."
+        },
+        {
+          "type": "speech",
+          "id": "E02.B04",
+          "speaker": "sam",
+          "listeners": [
+            "bob"
+          ],
+          "text": "I can’t. The wash is mine.",
+          "practicalAction": "Name the work that prevents staying.",
+          "requiredSources": [
+            "E02.wash-duty"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.B",
+          "variantGate": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair."
+        },
+        {
+          "type": "speech",
+          "id": "E02.B05",
+          "speaker": "bob",
+          "listeners": [
+            "sam"
+          ],
+          "text": "After this one?",
+          "practicalAction": "Ask for a later opportunity, not diagnose rejection.",
+          "requiredSources": [],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.B",
+          "variantGate": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair."
+        },
+        {
+          "type": "speech",
+          "id": "E02.B06",
+          "speaker": "sam",
+          "listeners": [
+            "bob"
+          ],
+          "text": "When the tray’s empty.",
+          "practicalAction": "Offer a conditional return.",
+          "requiredSources": [
+            "E02.wash-duty"
+          ],
+          "changedCommitment": "Return only when the actual wash task clears; this condition is not a timer or a guaranteed next scene.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E02.B",
+          "variantGate": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair."
+        }
+      ],
+      "writerActionRecordsExact": [
+        {
+          "type": "action",
+          "id": "E02.A01",
+          "text": "bob waits at the control. sam settles the carrier under the clamp. Their large hand occupies the gap bob is watching; the drive remains stopped.",
+          "actualWitnesses": [
+            "bob",
+            "sam"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E02.C",
+          "encounter": "E02"
+        },
+        {
+          "type": "action",
+          "id": "E02.A02",
+          "text": "sam takes their hand out and leaves bob the control. Both can see the carrier.",
+          "actualWitnesses": [
+            "bob",
+            "sam"
+          ],
+          "stateChanges": [
+            "Hands clear; bob has an observable start condition."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E02.A",
+          "encounter": "E02"
+        },
+        {
+          "type": "action",
+          "id": "E02.A03",
+          "text": "bob starts the valid cycle. The carrier settles under the clamp before the belt carries it away. Both follow that small movement.",
+          "actualWitnesses": [
+            "bob",
+            "sam"
+          ],
+          "stateChanges": [
+            "Actual cycle progresses with bob in place; no reward before completion."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E02.A",
+          "encounter": "E02"
+        },
+        {
+          "type": "action",
+          "id": "E02.A11",
+          "text": "sam takes their hand completely out. They face the wash while leaving bob at the control.",
+          "actualWitnesses": [
+            "bob",
+            "sam",
+            "STILETTO"
+          ],
+          "stateChanges": [
+            "Clear condition met; sam has not taken over bob’s turn."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E02.B",
+          "encounter": "E02"
+        },
+        {
+          "type": "action",
+          "id": "E02.A12",
+          "text": "bob starts the same valid cycle. sam begins moving towards the actual unattended wash.",
+          "actualWitnesses": [
+            "bob",
+            "sam",
+            "STILETTO"
+          ],
+          "stateChanges": [
+            "bob operates; sam moves to their other duty."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E02.B",
+          "encounter": "E02"
+        },
+        {
+          "type": "action",
+          "id": "E02.A13",
+          "text": "sam reaches the wash. bob stays with his cycle. He can see the carrier move, but sam is no longer beside him to see it with him.",
+          "actualWitnesses": [
+            "bob",
+            "sam",
+            "STILETTO"
+          ],
+          "stateChanges": [
+            "The separation has a staffing cause; no compulsory injury or resentment."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E02.B",
+          "encounter": "E02"
+        }
+      ],
+      "board": {
+        "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E02/E02-proposal.png",
+        "sha256": "ebce549caa8037f7c4a91ade952b9ebfad783c4564089fa1e4dfee1b6d18d83c",
+        "previewPath": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E02/E02-320x180.png",
+        "previewSha256": "0fe07912364758620d651c1b1b3df3612154b0ba5302b9d54ea0b4273453e3a1",
+        "panels": {
+          "main": {
+            "region": "large left panel",
+            "intendedWriterIds": [
+              "E02.A02",
+              "E02.A04",
+              "E02.A03",
+              "E02.A05",
+              "E02.A06"
+            ],
+            "status": "needs-revision; intended mapping is not proof of pictured action"
+          },
+          "upperRight": {
+            "region": "upper-right inset",
+            "intendedWriterIds": [
+              "E02.B01",
+              "E02.A11",
+              "E02.B02",
+              "E02.A12"
+            ],
+            "status": "needs-revision; intended mapping is not proof of pictured action"
+          },
+          "lowerRight": {
+            "region": "lower-right inset",
+            "intendedWriterIds": [
+              "E02.B04",
+              "E02.A13"
+            ],
+            "status": "needs-revision; intended mapping is not proof of pictured action"
+          }
+        },
+        "branchPolicy": "Main clear branch; two consecutive moments within alternative compressed branch.",
+        "authorPixelVerdictExact": {
+          "status": "needs-revision",
+          "observed": [
+            "Stable control/carrier relationship across panels",
+            "Actual hose/basin vacancy becomes sam’s wash duty",
+            "bob remains at control alone"
+          ],
+          "defects": [
+            {
+              "id": "V1-E02-01",
+              "region": "main; sam far hand above nearest carrier,approx0.36x,0.56y",
+              "issue": "Far hand hidden close to carrier; complete withdrawal before start not established",
+              "fix": "Show both hands fully outside clamp silhouette with empty air before bob actuates control."
+            },
+            {
+              "id": "V1-E02-02",
+              "region": "upper-right inset; STILETTO",
+              "issue": "Pointing hand replaces required rigid blade forearm silhouette",
+              "fix": "Restore reference forearm blades and use body orientation to indicate wash."
+            },
+            {
+              "id": "V1-E02-03",
+              "region": "both right insets at320x180",
+              "issue": "Dense warm machine detail dominates small actors and hand cue",
+              "fix": "Quiet background values and enlarge active pair/station crop."
+            }
+          ],
+          "unproven": [
+            "Safe start sequence",
+            "Two-cue STILETTO recognition at320x180"
+          ]
+        },
+        "systemsVerdict": "REVISE; no board promoted to canon"
+      },
+      "remainingProof": "Same control, same pair, two staffing treatments; visible different conduct without an invented injury."
+    },
+    {
+      "id": "E03",
+      "title": "Both want the same swap",
+      "status": "conditional proposal; not executable or approved",
+      "inputs": {
+        "systems": "DAYS2-14-S0-R1-1",
+        "writer": "DAYS2-14-W1",
+        "visual": "DAYS2-14-VISUAL-V1"
+      },
+      "selection": {
+        "firstPrototype": "E03.no-new-harm with a real queue and empty wash; warning inlet only after sam actual report.",
+        "routes": [
+          "E03.no-new-harm",
+          "E03.warning"
+        ],
+        "gates": [
+          "Shared-threshold meeting is physically possible without abandoning active operation.",
+          "Dialogue agreement is a proposal for tomorrow; actual assignment requires planning authorization.",
+          "Day-three escalation is intent, never fabricated incident evidence."
+        ],
+        "knowledgeChanges": [
+          {
+            "event": "E03.N01/N02",
+            "world": "Real queue and idle wash",
+            "agent": "Each supervisor reports their observed constraint; gus hears this exchange",
+            "audience": "Can compare them without a new accident"
+          },
+          {
+            "event": "E03.W01",
+            "world": "Warning is a prior report, not a new injury",
+            "agent": "LIMEN cites sam only if report delivered; gus did not witness the earlier event by hearing its summary",
+            "audience": "Must retain source distinction"
+          },
+          {
+            "event": "E03.C09–C14 + planning",
+            "world": "No room reassignment during speech",
+            "agent": "gus knows who claims to supply receiving-space signal; no operational success yet",
+            "audience": "Understand why agreement retains a dependency"
+          }
+        ],
+        "smallestProof": "Future native outcome preserves queue; future swap shows STILETTO admitting workers and LIMEN waiting for real receiving space."
+      },
+      "routeBlocks": {
+        "E03.no-new-harm": [
+          "E03.N",
+          "E03.C"
+        ],
+        "E03.warning": [
+          "E03.W",
+          "E03.C"
+        ]
+      },
+      "worldTruth": [
+        "Only two operating rooms and two supervisors initially.",
+        "Clerical diversion and delayed admission remove effective Conveyor work time.",
+        "STILETTO faster admission and LIMEN capped processing move the bottleneck; extra bodies alone cannot increase completed output."
+      ],
+      "initialActorKnowledge": {
+        "LIMEN": "Knows checks he ran and any tempo warning he witnessed or received with a source.",
+        "STILETTO": "Knows missing labour/output in her operation; cannot read a private card conversation.",
+        "gus": "May repeat the exact condition he heard; no general knowledge of both supervisors plans.",
+        "bob": "Knows the instructions and delays that reached him.",
+        "audience": "Sees evidence of the bottleneck and contrasting bids. Their reasons are attributed claims, not an authoritative diagnosis."
+      },
+      "knowledgeAuthority": "Apply knowledgeChanges only to actual heard/seen recipients. Initial ed knowledge does not persist as a claim that bob remains ignorant after C16/A04.",
+      "perceptions": [
+        "Visible queue, empty position or buffer; known result from yesterday.",
+        "A warning has an actual sender/listener.",
+        "Each supervisor receives the other proposal at the shared threshold or briefing."
+      ],
+      "beliefDesireIntentionProposals": {
+        "LIMEN": {
+          "belief": "Uncontrolled tempo threatens intact operation, or a coming batch needs a clear limit.",
+          "desire": "Procedural control and intact plant.",
+          "intention": "Seek Conveyor authority to cap pace; alternatively defend native checks.",
+          "basis": "Actual observation/report; no invented injury."
+        },
+        "STILETTO": {
+          "belief": "Admission friction is wasting the time needed for quota.",
+          "desire": "Delivered output and leadership approval.",
+          "intention": "Seek Security authority to clear workers; defend useful pace.",
+          "basis": "Her missing crew and output evidence."
+        },
+        "gus": {
+          "belief": "A named condition was stated.",
+          "desire": "Follow the instruction to its end.",
+          "intention": "Repeat or ask about that condition if present.",
+          "basis": "Actual hearing only."
+        }
+      },
+      "playerOptions": [
+        {
+          "encounter": "E03",
+          "label": "Keep native rooms and the stated operating limit",
+          "detail": "Security checks and clerical diversion remain; lower pace may reduce added strain. No repair or guaranteed safety.",
+          "gate": "Authorized planning commitment."
+        },
+        {
+          "encounter": "E03",
+          "label": "Swap: STILETTO to Security, LIMEN to Conveyor",
+          "detail": "Faster admission; space/processing can still hold the line. Show STILETTO clearing workers and LIMEN waiting for receiving space.",
+          "gate": "Authorized planning commitment; no instant mid-shift swap."
+        }
+      ],
+      "costsAndActions": [
+        {
+          "actor": "player at planning",
+          "action": "Keep native rooms and the named operating limit",
+          "cost": "Admission friction and clerical diversion remain; lower added strain can be a real benefit.",
+          "feedback": "Supervisors return to their existing stations; the stated limit has a visible result."
+        },
+        {
+          "actor": "player at planning",
+          "action": "Approve the proposed swap",
+          "cost": "Processing/buffer capacity can replace admission as the constraint.",
+          "feedback": "STILETTO waves workers through while LIMEN meters Conveyor."
+        },
+        {
+          "actor": "player in operation",
+          "action": "Use existing feed/drive controls or permitted incident response",
+          "cost": "Actual lost or gained work opportunity; no free reset of wear.",
+          "feedback": "Flow changes now; room reassignment waits for an authorized planning opportunity."
+        }
+      ],
+      "proposedRelationshipMemory": [
+        "Remember which proposal was accepted, what cost was acknowledged and which limit was actually kept.",
+        "No free-floating resentment or automatic alternating-route bonus.",
+        "Workers remember only the rule/exception they received and its outcome."
+      ],
+      "visibleConsequences": [
+        "Immediate: queue or buffer moves visibly.",
+        "Later: next morning references the actual decision; CATHEXIS may inherit coherent routine or conflicting local instructions."
+      ],
+      "attention": {
+        "direct": "Adviser/assignment commitment and allowed operating response.",
+        "indirect": "Yesterday staffing and pace create the dispute.",
+        "witnessOnly": "Supervisors argue; the player cannot undo an already completed automatic act.",
+        "missedOrLater": "The next morning attributed account must distinguish observation from received report."
+      },
+      "writerSpeechExact": [
+        {
+          "type": "speech",
+          "id": "E03.N01",
+          "speaker": "LIMEN",
+          "listeners": [
+            "STILETTO",
+            "gus"
+          ],
+          "text": "I’m still checking this one.",
+          "practicalAction": "Defend the current hold.",
+          "requiredSources": [
+            "E03.queue"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.N",
+          "variantGate": "Use a real queue plus an idle wash; no new Conveyor accident or injury is needed. This does not erase E1’s blow."
+        },
+        {
+          "type": "speech",
+          "id": "E03.N02",
+          "speaker": "STILETTO",
+          "listeners": [
+            "LIMEN",
+            "gus"
+          ],
+          "text": "And my wash is still empty.",
+          "practicalAction": "Name the cost she is carrying.",
+          "requiredSources": [
+            "E03.empty-wash"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.N",
+          "variantGate": "Use a real queue plus an idle wash; no new Conveyor accident or injury is needed. This does not erase E1’s blow."
+        },
+        {
+          "type": "speech",
+          "id": "E03.W01",
+          "speaker": "LIMEN",
+          "listeners": [
+            "STILETTO",
+            "gus"
+          ],
+          "text": "sam says the drive needs slowing.",
+          "practicalAction": "Attribute his evidence to its actual source.",
+          "requiredSources": [
+            "E03.warning-report"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.W",
+          "variantGate": "Replace the no-warning inlet only when sam actually supplied the warning report. Same meeting/visible queue; no invented accident."
+        },
+        {
+          "type": "speech",
+          "id": "E03.W02",
+          "speaker": "STILETTO",
+          "listeners": [
+            "LIMEN",
+            "gus"
+          ],
+          "text": "The wash is empty. I need workers.",
+          "practicalAction": "Seek staffing rather than concede a welfare motive.",
+          "requiredSources": [
+            "E03.empty-wash"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.W",
+          "variantGate": "Replace the no-warning inlet only when sam actually supplied the warning report. Same meeting/visible queue; no invented accident."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C01",
+          "speaker": "STILETTO",
+          "listeners": [
+            "LIMEN",
+            "gus"
+          ],
+          "text": "Put me here tomorrow.",
+          "practicalAction": "Bid for Security authority; tomorrow means the next authorized morning.",
+          "requiredSources": [],
+          "changedCommitment": "Proposal: STILETTO to Security at planning.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C02",
+          "speaker": "LIMEN",
+          "listeners": [
+            "STILETTO",
+            "gus"
+          ],
+          "text": "Then I take Conveyor.",
+          "practicalAction": "Bid for control of the line.",
+          "requiredSources": [],
+          "changedCommitment": "Proposal: LIMEN to Conveyor; no assignment yet.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C03",
+          "speaker": "STILETTO",
+          "listeners": [
+            "LIMEN",
+            "gus"
+          ],
+          "text": "Yes.",
+          "practicalAction": "Accept the diagram, before hearing his operating condition.",
+          "requiredSources": [],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C04",
+          "speaker": "LIMEN",
+          "listeners": [
+            "STILETTO",
+            "gus"
+          ],
+          "text": "One carrier at a time.",
+          "practicalAction": "Attach a pace condition to his bid.",
+          "requiredSources": [],
+          "changedCommitment": "Proposed scoped Conveyor limit; binding only if accepted through operating authority.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C05",
+          "speaker": "STILETTO",
+          "listeners": [
+            "LIMEN",
+            "gus"
+          ],
+          "text": "You’ll have all your workers.",
+          "practicalAction": "Sell the benefit of quicker admission.",
+          "requiredSources": [
+            "E03.queue"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C06",
+          "speaker": "LIMEN",
+          "listeners": [
+            "STILETTO",
+            "gus"
+          ],
+          "text": "And they’ll start when there’s room.",
+          "practicalAction": "Refuse to equate extra workers with permission to feed.",
+          "requiredSources": [],
+          "changedCommitment": "His bid requires available receiving space before another start.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C07",
+          "speaker": "STILETTO",
+          "listeners": [
+            "LIMEN",
+            "gus"
+          ],
+          "text": "I’m clearing this queue so they can work.",
+          "practicalAction": "Insist on the purpose she expects the swap to serve.",
+          "requiredSources": [
+            "E03.queue"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C08",
+          "speaker": "LIMEN",
+          "listeners": [
+            "STILETTO",
+            "gus"
+          ],
+          "text": "I won’t send the next carrier into a full space.",
+          "practicalAction": "Name the constraint she is minimizing.",
+          "requiredSources": [],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C09",
+          "speaker": "gus",
+          "listeners": [
+            "LIMEN",
+            "STILETTO"
+          ],
+          "text": "Who tells me there’s room?",
+          "practicalAction": "Ask about the condition he just heard.",
+          "requiredSources": [
+            "E03.C06",
+            "E03.C08"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C10",
+          "speaker": "LIMEN",
+          "listeners": [
+            "gus",
+            "STILETTO"
+          ],
+          "text": "I do.",
+          "practicalAction": "Claim the proposed release decision.",
+          "requiredSources": [],
+          "changedCommitment": "LIMEN claims release signaling if his proposed Conveyor authority is accepted.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C11",
+          "speaker": "STILETTO",
+          "listeners": [
+            "LIMEN",
+            "gus"
+          ],
+          "text": "You’ll be on the line.",
+          "practicalAction": "Place him physically at the other end of the dependency.",
+          "requiredSources": [
+            "E03.C02"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C12",
+          "speaker": "LIMEN",
+          "listeners": [
+            "STILETTO",
+            "gus"
+          ],
+          "text": "Exactly.",
+          "practicalAction": "Confirm that the dependency is intentional.",
+          "requiredSources": [],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C13",
+          "speaker": "STILETTO",
+          "listeners": [
+            "LIMEN",
+            "gus"
+          ],
+          "text": "So I’ll be waiting for you from the other end.",
+          "practicalAction": "Identify the remaining cost of the arrangement.",
+          "requiredSources": [
+            "E03.C06",
+            "E03.C10"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        },
+        {
+          "type": "speech",
+          "id": "E03.C14",
+          "speaker": "LIMEN",
+          "listeners": [
+            "STILETTO",
+            "gus"
+          ],
+          "text": "Yes.",
+          "practicalAction": "Accept the cost she hoped to remove.",
+          "requiredSources": [],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E03.C",
+          "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment."
+        }
+      ],
+      "writerActionRecordsExact": [
+        {
+          "type": "action",
+          "id": "E03.A01",
+          "text": "The supervisors meet at the shared threshold at an allowed opportunity. gus is close enough to hear. A worker still waits at the check; the wash beyond is empty. Nobody has teleported away from an active operation.",
+          "actualWitnesses": [
+            "LIMEN",
+            "STILETTO",
+            "gus"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E03.N",
+          "encounter": "E03"
+        },
+        {
+          "type": "action",
+          "id": "E03.A02",
+          "text": "At the same shared threshold, LIMEN has received sam’s actual report. gus is present for this exchange, not for an unseen earlier incident.",
+          "actualWitnesses": [
+            "LIMEN",
+            "STILETTO",
+            "gus"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E03.W",
+          "encounter": "E03"
+        },
+        {
+          "type": "action",
+          "id": "E03.A03",
+          "text": "For a moment neither adds anything. STILETTO looks through the doorway towards the wash. LIMEN keeps facing her.",
+          "actualWitnesses": [
+            "LIMEN",
+            "STILETTO",
+            "gus"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E03.C",
+          "encounter": "E03"
+        },
+        {
+          "type": "action",
+          "id": "E03.A04",
+          "text": "gus looks from the queue to the place LIMEN means to occupy. The next assignment is still for the authorized decision-maker; neither supervisor has moved into a new job.",
+          "actualWitnesses": [
+            "LIMEN",
+            "STILETTO",
+            "gus"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E03.C",
+          "encounter": "E03"
+        }
+      ],
+      "board": {
+        "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E03/E03-proposal.png",
+        "sha256": "515bdabd7d4252cc8b1ae07097f8b0e379fb1846e3a140d8b09c57911bfd811e",
+        "previewPath": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E03/E03-320x180.png",
+        "previewSha256": "a7a1dd95f06c3d91b9be99f41a6b59f3823be6980cdb35f40b7919e48ca7c3f2",
+        "panels": {
+          "main": {
+            "region": "large left panel",
+            "intendedWriterIds": [
+              "E03.A01",
+              "E03.N01",
+              "E03.N02",
+              "E03.C01",
+              "E03.C02",
+              "E03.A03",
+              "E03.C09",
+              "E03.A04"
+            ],
+            "status": "needs-revision; intended mapping is not proof of pictured action"
+          },
+          "upperRight": {
+            "region": "upper-right inset",
+            "intendedWriterIds": [
+              "E03.C04",
+              "E03.C07",
+              "E03.A04"
+            ],
+            "status": "needs-revision; intended mapping is not proof of pictured action"
+          },
+          "lowerRight": {
+            "region": "lower-right inset",
+            "intendedWriterIds": [
+              "E03.C06",
+              "E03.C08",
+              "E03.C10",
+              "E03.C13",
+              "E03.A04"
+            ],
+            "status": "needs-revision; intended mapping is not proof of pictured action"
+          }
+        },
+        "branchPolicy": "Main no-new-harm encounter; two future alternative authorized planning outcomes.",
+        "authorPixelVerdictExact": {
+          "status": "needs-revision",
+          "observed": [
+            "Shared queue/threshold/wash in one space",
+            "gus is present for current exchange",
+            "Different supervisor positions in planning insets"
+          ],
+          "defects": [
+            {
+              "id": "V1-E03-01",
+              "region": "main foreground bob",
+              "issue": "Generic smaller-eye head and invented document drift from pinned bob identity",
+              "fix": "Include bob portrait in a revised five-reference selection and remove invented document."
+            },
+            {
+              "id": "V1-E03-02",
+              "region": "lower-right planning inset",
+              "issue": "No visible release of workers or receiving-space/carrier bottleneck; positions change but consequence does not",
+              "fix": "Show workers passing STILETTO and a waiting next carrier behind occupied receiving space under LIMEN."
+            },
+            {
+              "id": "V1-E03-03",
+              "region": "STILETTO main/right insets",
+              "issue": "Broad red signature is weak; lower inset adds hand-like fingers",
+              "fix": "Preserve approved red shoulders and rigid blade geometry."
+            }
+          ],
+          "unproven": [
+            "Receiving-space causal contrast",
+            "Future commitment comprehension without captions"
+          ]
+        },
+        "systemsVerdict": "REVISE; no board promoted to canon"
+      },
+      "remainingProof": "Future native outcome preserves queue; future swap shows STILETTO admitting workers and LIMEN waiting for real receiving space."
+    },
+    {
+      "id": "E04",
+      "title": "Face the machine, or face the room",
+      "status": "conditional proposal; not executable or approved",
+      "inputs": {
+        "systems": "DAYS2-14-S0-R1-1",
+        "writer": "DAYS2-14-W1",
+        "visual": "DAYS2-14-VISUAL-V1"
+      },
+      "selection": {
+        "firstPrototype": "E04.bounded with a reciprocal turn, followed by E04.real-work-callback only for attending kit.",
+        "routes": [
+          "E04.bounded",
+          "E04.real-work-callback",
+          "E04.promise-breach",
+          "E04.defer"
+        ],
+        "gates": [
+          "Readiness after five completed two-room shifts and real spare capacity; exact five-to-nine-day timing remains proposed.",
+          "CATHEXIS actually observed routine; attendees genuinely leave covered or idle duties.",
+          "P/C/X requires explicit P01, completed first demo, then A09 blocked departure. Never append X to ordinary C/B.",
+          "Broader programme authorizes later real sessions, not an unseen loyalty montage."
+        ],
+        "knowledgeChanges": [
+          {
+            "event": "E04.C01–C11/A01–A05",
+            "world": "Unpowered surrogate, no production output",
+            "agent": "Actual audience sees hand condition; CATHEXIS adjusts audience position",
+            "audience": "Can see accommodation and authority without invented allegiance"
+          },
+          {
+            "event": "E04.B01–B07/A06–A08",
+            "world": "Same control; participants exchange roles then return to work",
+            "agent": "ed/kit heard scope and hand condition; outsiders unchanged",
+            "audience": "Recognize sam getting the turn established in E02"
+          },
+          {
+            "event": "E04.P01 + A04 + A09 + X",
+            "world": "Promise made, demo done, departure blocked, repeat withheld, release granted",
+            "agent": "Only witnesses acquire breach history; release does not erase it",
+            "audience": "Alternative currently has no V1 board evidence"
+          },
+          {
+            "event": "E04.K02/A14/K03/A15",
+            "world": "kit hand withdraws before bob starts real permitted process",
+            "agent": "kit acts on attended cue; no absent-worker learning",
+            "audience": "Recognize callback; raised finger alone does not prove start"
+          }
+        ],
+        "smallestProof": "One bounded demo and one attendee callback; explicit unpowered and hand-clear states. Theatre geometry and mechanism remain proposals."
+      },
+      "routeBlocks": {
+        "E04.bounded": [
+          "E04.C",
+          "E04.B"
+        ],
+        "E04.real-work-callback": [
+          "E04.K"
+        ],
+        "E04.promise-breach": [
+          "E04.P",
+          "E04.C",
+          "E04.X"
+        ],
+        "E04.defer": [
+          "E04.D"
+        ]
+      },
+      "worldTruth": [
+        "CATHEXIS has watched the routine or received a specific account before using it.",
+        "A programme period removes real participants from production; capacity must permit it.",
+        "No Theatre attendance erases prior injury, custody, wear or relationship history."
+      ],
+      "initialActorKnowledge": {
+        "CATHEXIS": "Knows what she watched and what was told to her; not ed private motive or bob inner state.",
+        "bob": "Knows the working movement and his own prior treatment. His willingness is not guaranteed by protagonist status.",
+        "sam": "Knows the practical reason for the shared cue if they took part.",
+        "ed": "Can state a permission condition only if he knows it; he does not own every routine.",
+        "audience": "Can recognize the earlier working scene being reframed. Local attendees learn the programme; absent workers need a later teaching exchange."
+      },
+      "knowledgeAuthority": "Apply knowledgeChanges only to actual heard/seen recipients. Initial ed knowledge does not persist as a claim that bob remains ignorant after C16/A04.",
+      "perceptions": [
+        "CATHEXIS sees a working start cue.",
+        "bob faces the mechanism; her gesture asks him to face the group.",
+        "Attendance and later worker performance make the cost and possible benefit observable."
+      ],
+      "beliefDesireIntentionProposals": {
+        "CATHEXIS": {
+          "belief": "This routine can hold attention and organize work.",
+          "desire": "An attentive audience, valued work and authority over the programme.",
+          "intention": "Have bob demonstrate a shared practice, then establish its public form.",
+          "basis": "Observed routine; exact persuasive dialogue remains Writer work."
+        },
+        "bob": {
+          "belief": "I know this movement; these people have answered or disappointed me before.",
+          "desire": "Show the mechanism or complete the task he cares about.",
+          "intention": "Demonstrate, ask a clear question, or withhold after an actual broken promise.",
+          "basis": "Prior experienced events, not a mandatory personality conversion."
+        },
+        "sam": {
+          "belief": "The cue has a practical reason.",
+          "desire": "Share useful work and retain a turn of their own.",
+          "intention": "Support or qualify the demonstration from experience.",
+          "basis": "Earlier shared cycle."
+        },
+        "ed": {
+          "belief": "The instruction has conditions that should be completed.",
+          "desire": "A properly stated rule and recognition of his part.",
+          "intention": "State the known condition without inventing authority.",
+          "basis": "Actual participation/report."
+        }
+      },
+      "playerOptions": [
+        {
+          "encounter": "E04",
+          "label": "Authorize the bounded working routine",
+          "detail": "One actual programme period takes the named attendees off the line. Only they learn the demonstrated cue. The one-demonstration promise variant has its own narrower scope.",
+          "gate": "Readiness and real spare coverage; next authorized programme cycle."
+        },
+        {
+          "encounter": "E04",
+          "label": "Back a broader programme",
+          "detail": "Authorize additional actual sessions/participants, with added lost work time and CATHEXIS authority expectations. No unseen session or allegiance change is awarded by the choice alone.",
+          "gate": "Separate proposed programme commitment; retain the bounded scene and schedule later sessions, not an automatic montage."
+        },
+        {
+          "encounter": "E04",
+          "label": "Defer; keep the crew on the line",
+          "detail": "No Theatre attendance or new cue knowledge. Existing local practice continues; no hidden rebellion or punishment.",
+          "gate": "Valid programme decision before attendance."
+        }
+      ],
+      "costsAndActions": [
+        {
+          "actor": "player in proposed Theatre commitment",
+          "action": "Authorize a bounded working routine",
+          "cost": "One real programme period; competing local habits remain.",
+          "feedback": "Attendees use the cue later, with a visible limit on scope."
+        },
+        {
+          "actor": "player in proposed Theatre commitment",
+          "action": "Back her broader programme",
+          "cost": "More worker time and expectations of CATHEXIS authority; allegiance change is possible, not guaranteed.",
+          "feedback": "Broader coordinated conduct and reactions attributable to actual participation."
+        },
+        {
+          "actor": "player in proposed Theatre commitment",
+          "action": "Defer and keep local practice",
+          "cost": "Established coordination trouble, if present, remains with existing supervisors.",
+          "feedback": "Workers stay on-line; no invented rebellion or hidden punishment for refusal."
+        }
+      ],
+      "proposedRelationshipMemory": [
+        "bob remembers whether his work and limits were acknowledged, not a generic confidence award.",
+        "CATHEXIS accumulates specific authority expectations through programme commitments.",
+        "sam/ed retain their earlier relationship with bob even if the performance succeeds."
+      ],
+      "visibleConsequences": [
+        "Immediate: useful coordination competes with worker time and authorship of the routine.",
+        "Week two: return to the same Conveyor cycle; show who starts, asks or waits. Resolve the working relationship question while leaving who speaks for the crew open."
+      ],
+      "attention": {
+        "direct": "Scope of proposed programme authority. These are not current runtime buttons.",
+        "indirect": "Earlier allocation, treatment and routines determine the audience and demonstration.",
+        "witnessOnly": "bob response and CATHEXIS handling of it.",
+        "missedOrLater": "An absent worker learns only through a later witnessed teaching exchange; leadership receives bounded output facts."
+      },
+      "writerSpeechExact": [
+        {
+          "type": "speech",
+          "id": "E04.C01",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "No power. Just the movement.",
+          "practicalAction": "Define the safe demonstration for everyone present.",
+          "requiredSources": [
+            "E04.safe-demo"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.C",
+          "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period."
+        },
+        {
+          "type": "speech",
+          "id": "E04.C02",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "Start facing them.",
+          "practicalAction": "Arrange bob for the audience she wants.",
+          "requiredSources": [
+            "E04.observation"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.C",
+          "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period."
+        },
+        {
+          "type": "speech",
+          "id": "E04.C03",
+          "speaker": "bob",
+          "listeners": [
+            "CATHEXIS",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "I need to see sam’s hand.",
+          "practicalAction": "Keep his attention on the physical start condition.",
+          "requiredSources": [
+            "E04.routine"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.C",
+          "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period."
+        },
+        {
+          "type": "speech",
+          "id": "E04.C04",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "You know where it is.",
+          "practicalAction": "Ask familiarity to substitute for watching.",
+          "requiredSources": [
+            "E04.observation"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.C",
+          "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period."
+        },
+        {
+          "type": "speech",
+          "id": "E04.C05",
+          "speaker": "sam",
+          "listeners": [
+            "CATHEXIS",
+            "bob",
+            "ed",
+            "kit"
+          ],
+          "text": "It moves.",
+          "practicalAction": "Correct her from the hand’s actual owner.",
+          "requiredSources": [
+            "E04.A01"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.C",
+          "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period."
+        },
+        {
+          "type": "speech",
+          "id": "E04.C06",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "ed",
+            "kit",
+            "bob",
+            "sam"
+          ],
+          "text": "Here, then. You can see both.",
+          "practicalAction": "Solve her composition problem without abandoning the audience.",
+          "requiredSources": [
+            "E04.A02"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.C",
+          "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period."
+        },
+        {
+          "type": "speech",
+          "id": "E04.C07",
+          "speaker": "bob",
+          "listeners": [
+            "kit",
+            "CATHEXIS",
+            "sam",
+            "ed"
+          ],
+          "text": "Can you see the gap?",
+          "practicalAction": "Find a particular listener for the mechanism.",
+          "requiredSources": [
+            "E04.A02"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.C",
+          "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period."
+        },
+        {
+          "type": "speech",
+          "id": "E04.C08",
+          "speaker": "kit",
+          "listeners": [
+            "bob",
+            "CATHEXIS",
+            "sam",
+            "ed"
+          ],
+          "text": "Yes.",
+          "practicalAction": "Answer without asking for a slower explanation.",
+          "requiredSources": [
+            "E04.A02"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.C",
+          "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period."
+        },
+        {
+          "type": "speech",
+          "id": "E04.C09",
+          "speaker": "bob",
+          "listeners": [
+            "kit",
+            "CATHEXIS",
+            "sam",
+            "ed"
+          ],
+          "text": "That’s what I’m waiting for.",
+          "practicalAction": "Show the part of the action that matters.",
+          "requiredSources": [
+            "E04.routine",
+            "E04.A02"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.C",
+          "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period."
+        },
+        {
+          "type": "speech",
+          "id": "E04.C10",
+          "speaker": "sam",
+          "listeners": [
+            "bob",
+            "CATHEXIS",
+            "ed",
+            "kit"
+          ],
+          "text": "Clear.",
+          "practicalAction": "Give the witnessed cue.",
+          "requiredSources": [
+            "E04.A03",
+            "E04.routine"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.C",
+          "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period."
+        },
+        {
+          "type": "speech",
+          "id": "E04.C11",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "Let them see you’ve finished.",
+          "practicalAction": "Ask for an ending the audience can receive.",
+          "requiredSources": [
+            "E04.A04"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.C",
+          "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period."
+        },
+        {
+          "type": "speech",
+          "id": "E04.B01",
+          "speaker": "sam",
+          "listeners": [
+            "bob",
+            "CATHEXIS",
+            "ed",
+            "kit"
+          ],
+          "text": "My turn.",
+          "practicalAction": "Claim a turn in the work they share.",
+          "requiredSources": [
+            "E04.routine"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.B",
+          "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn."
+        },
+        {
+          "type": "speech",
+          "id": "E04.B02",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "bob, you give the signal.",
+          "practicalAction": "Turn their exchange into a repeatable public form.",
+          "requiredSources": [],
+          "changedCommitment": "Exchange demonstration roles within this authorized paired routine.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.B",
+          "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn."
+        },
+        {
+          "type": "speech",
+          "id": "E04.B03",
+          "speaker": "bob",
+          "listeners": [
+            "sam",
+            "CATHEXIS",
+            "ed",
+            "kit"
+          ],
+          "text": "Clear.",
+          "practicalAction": "Give the same scoped cue from the other position.",
+          "requiredSources": [
+            "E04.A06",
+            "E04.routine"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.B",
+          "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn."
+        },
+        {
+          "type": "speech",
+          "id": "E04.B04",
+          "speaker": "ed",
+          "listeners": [
+            "sam",
+            "bob",
+            "CATHEXIS",
+            "kit"
+          ],
+          "text": "That word starts it?",
+          "practicalAction": "Check the instruction’s precise condition.",
+          "requiredSources": [
+            "E04.C10",
+            "E04.A04",
+            "E04.B03",
+            "E04.A07"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.B",
+          "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn."
+        },
+        {
+          "type": "speech",
+          "id": "E04.B05",
+          "speaker": "sam",
+          "listeners": [
+            "ed",
+            "bob",
+            "CATHEXIS",
+            "kit"
+          ],
+          "text": "Only if the hand’s out.",
+          "practicalAction": "Reject a verbal cue detached from the actual condition.",
+          "requiredSources": [
+            "E04.routine"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.B",
+          "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn."
+        },
+        {
+          "type": "speech",
+          "id": "E04.B06",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "Keep that. The word and the hand.",
+          "practicalAction": "Adopt the bounded routine as programme material.",
+          "requiredSources": [
+            "E04.B05"
+          ],
+          "changedCommitment": "Attendees receive this routine; no authority over absent workers is conferred.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.B",
+          "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn."
+        },
+        {
+          "type": "speech",
+          "id": "E04.B07",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "That’s enough. Back to your stations.",
+          "practicalAction": "End the authorized period.",
+          "requiredSources": [],
+          "changedCommitment": "Release these attendees to their actual work assignments.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.B",
+          "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn."
+        },
+        {
+          "type": "speech",
+          "id": "E04.P01",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "One demonstration. Then you and sam go back.",
+          "practicalAction": "Obtain participation with a specific release promise.",
+          "requiredSources": [
+            "E04.single-scope"
+          ],
+          "changedCommitment": "Release bob and sam after one completed demonstration; both actually hear it.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.P",
+          "variantGate": "Insert this before E04.C only for the single-demonstration commitment route; do not play E04.B in that route."
+        },
+        {
+          "type": "speech",
+          "id": "E04.X01",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "Once more. Keep looking at them this time.",
+          "practicalAction": "Seek the ending she wanted despite her promised limit.",
+          "requiredSources": [
+            "E04.A04",
+            "E04.A09"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.X",
+          "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust."
+        },
+        {
+          "type": "speech",
+          "id": "E04.X02",
+          "speaker": "bob",
+          "listeners": [
+            "CATHEXIS",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "You said one.",
+          "practicalAction": "Invoke the actual heard promise.",
+          "requiredSources": [
+            "E04.P01",
+            "E04.A04",
+            "E04.A09"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.X",
+          "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust."
+        },
+        {
+          "type": "speech",
+          "id": "E04.X03",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "I still need the ending.",
+          "practicalAction": "Keep asking for the public shape she considers incomplete.",
+          "requiredSources": [
+            "E04.A04"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.X",
+          "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust."
+        },
+        {
+          "type": "speech",
+          "id": "E04.X04",
+          "speaker": "bob",
+          "listeners": [
+            "CATHEXIS",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "sam’s due at the wash.",
+          "practicalAction": "Name the immediate competing duty.",
+          "requiredSources": [
+            "E04.sam-due"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.X",
+          "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust."
+        },
+        {
+          "type": "speech",
+          "id": "E04.X05",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "sam",
+            "bob",
+            "ed",
+            "kit"
+          ],
+          "text": "sam can go.",
+          "practicalAction": "Offer partial release while retaining bob.",
+          "requiredSources": [],
+          "changedCommitment": "Release sam alone; this does not fulfill the promise to release both.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.X",
+          "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust."
+        },
+        {
+          "type": "speech",
+          "id": "E04.X06",
+          "speaker": "bob",
+          "listeners": [
+            "CATHEXIS",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "We were going together.",
+          "practicalAction": "Hold to the specific paired release.",
+          "requiredSources": [
+            "E04.P01"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.X",
+          "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust."
+        },
+        {
+          "type": "speech",
+          "id": "E04.X07",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "text": "All right. Go.",
+          "practicalAction": "End the failed request.",
+          "requiredSources": [],
+          "changedCommitment": "Release both now; the earlier breach remains in the witnesses’ history.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.X",
+          "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust."
+        },
+        {
+          "type": "speech",
+          "id": "E04.D01",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob"
+          ],
+          "text": "I’d like you to show them that.",
+          "practicalAction": "Offer a programme rather than presume one.",
+          "requiredSources": [
+            "E04.observation"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.D",
+          "variantGate": "Play instead of the Theatre session when the authorized choice is defer. CATHEXIS has observed the routine, but no audience leaves work."
+        },
+        {
+          "type": "speech",
+          "id": "E04.D02",
+          "speaker": "bob",
+          "listeners": [
+            "CATHEXIS"
+          ],
+          "text": "When?",
+          "practicalAction": "Ask for a concrete place in his working time.",
+          "requiredSources": [],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.D",
+          "variantGate": "Play instead of the Theatre session when the authorized choice is defer. CATHEXIS has observed the routine, but no audience leaves work."
+        },
+        {
+          "type": "speech",
+          "id": "E04.D03",
+          "speaker": "CATHEXIS",
+          "listeners": [
+            "bob"
+          ],
+          "text": "When they can leave the line.",
+          "practicalAction": "Leave the invitation conditional.",
+          "requiredSources": [],
+          "changedCommitment": "No programme date, attendance or authority until an eligible commitment.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.D",
+          "variantGate": "Play instead of the Theatre session when the authorized choice is defer. CATHEXIS has observed the routine, but no audience leaves work."
+        },
+        {
+          "type": "speech",
+          "id": "E04.K01",
+          "speaker": "bob",
+          "listeners": [
+            "kit"
+          ],
+          "text": "Ready?",
+          "practicalAction": "Ask the person at the mechanism.",
+          "requiredSources": [],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.K",
+          "variantGate": "Only after kit actually attended the demonstrated cue, has a comparable permitted task, and works beside bob. Skip after deferral or absence."
+        },
+        {
+          "type": "speech",
+          "id": "E04.K02",
+          "speaker": "kit",
+          "listeners": [
+            "bob"
+          ],
+          "text": "Not yet.",
+          "practicalAction": "Keep the start under the actual hand condition.",
+          "requiredSources": [
+            "E04.A13"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.K",
+          "variantGate": "Only after kit actually attended the demonstrated cue, has a comparable permitted task, and works beside bob. Skip after deferral or absence."
+        },
+        {
+          "type": "speech",
+          "id": "E04.K03",
+          "speaker": "kit",
+          "listeners": [
+            "bob"
+          ],
+          "text": "Clear.",
+          "practicalAction": "Use the cue he actually learned.",
+          "requiredSources": [
+            "E04.attended",
+            "E04.A14"
+          ],
+          "changedCommitment": "None asserted by this line.",
+          "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+          "block": "E04.K",
+          "variantGate": "Only after kit actually attended the demonstrated cue, has a comparable permitted task, and works beside bob. Skip after deferral or absence."
+        }
+      ],
+      "writerActionRecordsExact": [
+        {
+          "type": "action",
+          "id": "E04.A01",
+          "text": "At the unpowered demonstration control, bob faces the carrier. sam settles it. ed and kit stand where CATHEXIS has put them. Their places on the working line are actually covered or idle for this period.",
+          "actualWitnesses": [
+            "CATHEXIS",
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "stateChanges": [
+            "Attendance costs real worker time; no quota or duration is fabricated."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.C",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A02",
+          "text": "CATHEXIS shifts ed and kit to the side of the control. bob can now see sam and the audience without turning away from the gap.",
+          "actualWitnesses": [
+            "CATHEXIS",
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.C",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A03",
+          "text": "sam lifts their hand completely clear.",
+          "actualWitnesses": [
+            "CATHEXIS",
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "stateChanges": [
+            "Audience sees the cue’s physical condition."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.C",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A04",
+          "text": "bob demonstrates the start movement on the unpowered control. No brain is produced. He follows the carrier, still facing the work.",
+          "actualWitnesses": [
+            "CATHEXIS",
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "stateChanges": [
+            "One demonstration completed; attendees alone have witnessed it."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.C",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A05",
+          "text": "bob looks up towards kit and ed. sam keeps the place beside him.",
+          "actualWitnesses": [
+            "CATHEXIS",
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.C",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A06",
+          "text": "They change places. bob settles the carrier, then takes his hand out. sam waits at the unpowered control.",
+          "actualWitnesses": [
+            "CATHEXIS",
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.B",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A07",
+          "text": "sam performs the start movement. ed has watched both turns.",
+          "actualWitnesses": [
+            "CATHEXIS",
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "stateChanges": [
+            "Second demonstration turn completed without operating production equipment."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.B",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A08",
+          "text": "The four workers leave for their assigned work. CATHEXIS watches the arrangement of people break up before turning back to the control.",
+          "actualWitnesses": [
+            "CATHEXIS",
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "stateChanges": [
+            "Programme period ends; earlier custody, injuries, wear and relationships persist."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.B",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A09",
+          "text": "bob and sam turn to leave after the completed demonstration. CATHEXIS steps across their route and points bob back to the control. The promised departure is blocked now.",
+          "actualWitnesses": [
+            "CATHEXIS",
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "stateChanges": [
+            "Actual breach of the witnessed P01 release promise; no retroactive invented history."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.X",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A10",
+          "text": "bob leaves his hand off the control. sam waits at the edge of the route. No second demonstration begins. The others have seen a refused repeat, not a worker movement or a loyalty conversion.",
+          "actualWitnesses": [
+            "CATHEXIS",
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "stateChanges": [
+            "bob withholds the repeat after actual breach."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.X",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A11",
+          "text": "CATHEXIS moves out of the route. bob and sam leave together. ed and kit have seen the first routine and the broken limit; they have not been ordered to take sides.",
+          "actualWitnesses": [
+            "CATHEXIS",
+            "bob",
+            "sam",
+            "ed",
+            "kit"
+          ],
+          "stateChanges": [
+            "Departure occurs; no automatic forgiveness, punishment or factory-wide belief."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.X",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A12",
+          "text": "At the end of the observed work cycle, CATHEXIS addresses bob beside the actual Conveyor. The rest of the crew stay at work.",
+          "actualWitnesses": [
+            "CATHEXIS",
+            "bob"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.D",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A13",
+          "text": "kit settles the carrier; bob waits at the real control. Their actual current work permission remains necessary. sam is at their own task.",
+          "actualWitnesses": [
+            "bob",
+            "kit"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.K",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A14",
+          "text": "kit finishes seating the carrier and withdraws his hand.",
+          "actualWitnesses": [
+            "bob",
+            "kit"
+          ],
+          "stateChanges": [],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.K",
+          "encounter": "E04"
+        },
+        {
+          "type": "action",
+          "id": "E04.A15",
+          "text": "bob starts the permitted real cycle. kit stays to watch the carrier move. No absent worker has learned anything from this exchange.",
+          "actualWitnesses": [
+            "bob",
+            "kit"
+          ],
+          "stateChanges": [
+            "Visible local callback; no automatic success or output without real process completion."
+          ],
+          "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+          "block": "E04.K",
+          "encounter": "E04"
+        }
+      ],
+      "board": {
+        "path": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E04/E04-proposal.png",
+        "sha256": "fd00247c34922e67815401ac0bb9dcc52dcff46709838f84663ab8bccf560ba1",
+        "previewPath": "${STUDIO_ROOT}/evidence/days2-14-proposal/delivery-VISUAL-V1/E04/E04-320x180.png",
+        "previewSha256": "53b1555e95017f71d7dd9d7a6a02f61257ae3d263698bf000b5ebb9ce651b7fb",
+        "panels": {
+          "main": {
+            "region": "large left panel",
+            "intendedWriterIds": [
+              "E04.A01",
+              "E04.A02",
+              "E04.C06",
+              "E04.C07",
+              "E04.C08",
+              "E04.A03",
+              "E04.C10",
+              "E04.A04"
+            ],
+            "status": "needs-revision; intended mapping is not proof of pictured action"
+          },
+          "upperRight": {
+            "region": "upper-right inset",
+            "intendedWriterIds": [
+              "E04.B01",
+              "E04.A06",
+              "E04.B03",
+              "E04.A07",
+              "E04.B05",
+              "E04.B07"
+            ],
+            "status": "needs-revision; intended mapping is not proof of pictured action"
+          },
+          "lowerRight": {
+            "region": "lower-right inset",
+            "intendedWriterIds": [
+              "E04.A13",
+              "E04.K02",
+              "E04.A14",
+              "E04.K03",
+              "E04.A15"
+            ],
+            "status": "needs-revision; intended mapping is not proof of pictured action"
+          }
+        },
+        "branchPolicy": "Bounded two-turn routine and eligible later callback only; omit P/X refusal and deferred routes.",
+        "authorPixelVerdictExact": {
+          "status": "needs-revision",
+          "observed": [
+            "Five intended actors and actual ed/kit audience",
+            "Disconnected demonstration cable and empty carrier",
+            "Later kit/bob real Conveyor callback with workpiece"
+          ],
+          "defects": [
+            {
+              "id": "V1-E04-01",
+              "region": "main clamp; sam hands",
+              "issue": "One hand overlaps or rests on clamp rim; complete withdrawal not established",
+              "fix": "Place both hands fully clear with distinct air gaps and align bob gaze to the gap."
+            },
+            {
+              "id": "V1-E04-02",
+              "region": "upper-right exchanged turn",
+              "issue": "sam is at clamp-side box, not clearly original bob control",
+              "fix": "Maintain the exact control position and show actors exchanged around it."
+            },
+            {
+              "id": "V1-E04-03",
+              "region": "lower-right callback; kit hand",
+              "issue": "Hand remains over carrier at claimed start moment",
+              "fix": "Separate withdrawal keyframe from start; only start with fingers clear."
+            },
+            {
+              "id": "V1-E04-04",
+              "region": "main button/ed/CATHEXIS",
+              "issue": "Button looks lit despite unpowered state; ed crest drifts; approved relative CATHEXIS body scale unverified",
+              "fix": "Use unlit control, match ed head silhouette and compare body heights on a common plane."
+            }
+          ],
+          "unproven": [
+            "Unpowered state beyond cable cue",
+            "Same-control exchanged turn",
+            "Safe cue transfer",
+            "Theatre reference fidelity/geometry approval"
+          ]
+        },
+        "systemsVerdict": "REVISE; no board promoted to canon"
+      },
+      "remainingProof": "One bounded demo and one attendee callback; explicit unpowered and hand-clear states. Theatre geometry and mechanism remain proposals."
+    }
+  ]
+}

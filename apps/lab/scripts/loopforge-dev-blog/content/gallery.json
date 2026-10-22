@@ -1,0 +1,36 @@
+{
+  "version": "OWNER-STUDIO-GALLERY-1",
+  "images": [
+    {
+      "view": "Pro",
+      "sha256": "3ef3a5f1faa14e18282a7541e77fe94747b0565b3b32d30a6ce5789aa977cfc3",
+      "bytes": 231326,
+      "width": 1920,
+      "height": 1080,
+      "targetFilename": "studio-pro.png",
+      "caption": "LoopforgeStudio in Munder\u2019s Pro view: the craft roster and Producer terminal after the reflection was frozen.",
+      "alt": "Munder Pro interface with a left craft roster and the Producer terminal.",
+      "source": "Owner supplied exact documentary screenshot"
+    },
+    {
+      "view": "Classic",
+      "sha256": "a88d12e11e8ce4e83a2e196459c76c7e69052b4fcfa1a2856945fafd9703bdac",
+      "bytes": 223214,
+      "width": 1920,
+      "height": 1080,
+      "targetFilename": "studio-classic.png",
+      "caption": "The same studio in Munder\u2019s Classic office view. Speech bubbles are interface decoration, not interview testimony.",
+      "alt": "Munder Classic pixel-art office with named studio roles and a command-centre sidebar.",
+      "source": "Owner supplied exact documentary screenshot"
+    }
+  ],
+  "credit": "Munder Difflin by Chaitanya Giri. Classic office tilesets: Modern Interiors by LimeZu. Screenshots supplied by Stepan Oskin, 22 October 2026.",
+  "status": "Exact credit received; owner originals await final assembly",
+  "publication": "One combined PR with both reports and complete supporting package; publication held.",
+  "links": {
+    "Munder Difflin": "https://munderdiffl.in/",
+    "Munder source license": "https://github.com/HarnessMD/munder-difflin/blob/main/LICENSE",
+    "Munder terms": "https://munderdiffl.in/terms.html",
+    "Modern Interiors by LimeZu": "https://limezu.itch.io/moderninteriors"
+  }
+}

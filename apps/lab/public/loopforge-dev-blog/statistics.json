@@ -1,0 +1,562 @@
+{
+  "version": "producer-statistics-v1-A1",
+  "cutoff": "2026-10-22T22:09:57.919591+00:00",
+  "capturedAt": "2026-10-22T22:09:58.617941+00:00",
+  "coverage": {
+    "cutoff": "2026-10-22T22:09:57.919591+00:00",
+    "capturedAt": "2026-10-22T22:09:58.617941+00:00",
+    "earliestTask": "2026-10-22T02:21:38.275746+00:00",
+    "earliestRetainedLog": "2026-10-22T03:20:54.074000+00:00",
+    "logRowsThroughCutoff": 875,
+    "substantiveTimelineEvents": 420,
+    "telemetryRowsCollapsed": 613,
+    "telemetryKinds": {
+      "cap-catalog": 2,
+      "cap-catalog-update": 20,
+      "hooks": 1,
+      "pty-submit": 223,
+      "session": 15,
+      "hook-frame-rejected": 82,
+      "dictation-take": 30,
+      "inbox-settled": 206,
+      "handoff-trim": 34
+    },
+    "retainedMessageCopies": 486,
+    "uniqueRetainedMessages": 294,
+    "logRoutesWithRetainedBody": 201,
+    "closedMailStores": [
+      "active agents inbox/.done and outbox/.sent",
+      "archived agents retained inbox/.done and outbox/.sent"
+    ],
+    "agentRegistryRows": 15,
+    "taskRows": 65,
+    "costSnapshots": 1236,
+    "costSessionGroups": 14,
+    "costCounterDiscontinuities": 0,
+    "gitCommitsThroughCutoff": 118,
+    "redactionsByPattern": {
+      "private path": 251,
+      "email": 0,
+      "credential-like text": 0,
+      "access token": 0
+    },
+    "excludedMailFiles": 4,
+    "unparseableMailFiles": 0,
+    "gaps": [
+      "Tasks predate retained event log; no invented intervening conversation.",
+      "Only retained closed mail is read. Live inboxes excluded except the explicitly provided owner request; later filing may expose more historical bodies.",
+      "External bridge work is represented by reports/artifacts, not its full native transcript or tokens.",
+      "Task status snapshots were extracted after cutoff; dated source claims take precedence.",
+      "Agent session counters cannot be precisely allocated to tasks; initial snapshots and resets leave gaps.",
+      "Sources establish reports and artifacts, not unseen visual acceptance.",
+      "Pre-studio approved art, models and canonical work must be credited as inherited.",
+      "Public source catalog deliberately omits original paths, session IDs, message bodies, terminal dumps and sensitive setup screenshots."
+    ]
+  },
+  "nativeUsage": {
+    "method": "Adjacent non-negative differences within reported agent/session; do not sum cumulative rows. Resets reported, initial counters separate.",
+    "fieldDefinitionEvidence": "I1 1105-row native reconciliation establishes ledger input as non-cached input and cache_read as cached input. Same ledger columns are retained for this extension; new rows have not been independently native-rematched. Native input includes cache; output includes reasoning output. No invoice-equivalent cost is established.",
+    "totals": {
+      "nonCachedInput": 7652149,
+      "cachedInput": 211313024,
+      "output": 1936751,
+      "cacheCreation": 0
+    },
+    "combinedObservedTokens": 220901924,
+    "sessions": [
+      {
+        "session": "S01",
+        "craft": "3D Artist",
+        "archived": false,
+        "snapshots": 37,
+        "firstObservedAt": "2026-10-22T14:12:59.077000+00:00",
+        "lastObservedAt": "2026-10-22T21:59:28.928000+00:00",
+        "nonCachedInput": 109181,
+        "cachedInput": 6281984,
+        "output": 52245,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 15263,
+          "output": 637,
+          "cache_read": 29568,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S02",
+        "craft": "Producer",
+        "archived": false,
+        "snapshots": 616,
+        "firstObservedAt": "2026-10-22T03:21:14.726000+00:00",
+        "lastObservedAt": "2026-10-22T22:09:26.703000+00:00",
+        "nonCachedInput": 4097150,
+        "cachedInput": 120392192,
+        "output": 935324,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 5857,
+          "output": 141,
+          "cache_read": 12032,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S03",
+        "craft": "Kelly",
+        "archived": true,
+        "snapshots": 4,
+        "firstObservedAt": "2026-10-22T14:15:38.893000+00:00",
+        "lastObservedAt": "2026-10-22T14:17:02.206000+00:00",
+        "nonCachedInput": 33640,
+        "cachedInput": 161280,
+        "output": 2101,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 5293,
+          "output": 319,
+          "cache_read": 12032,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S04",
+        "craft": "Level Designer",
+        "archived": false,
+        "snapshots": 8,
+        "firstObservedAt": "2026-10-22T14:24:38.327000+00:00",
+        "lastObservedAt": "2026-10-22T22:08:14.597000+00:00",
+        "nonCachedInput": 70427,
+        "cachedInput": 455936,
+        "output": 7581,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 12813,
+          "output": 609,
+          "cache_read": 29184,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S05",
+        "craft": "Loopforge Animator",
+        "archived": false,
+        "snapshots": 143,
+        "firstObservedAt": "2026-10-22T13:10:24.789000+00:00",
+        "lastObservedAt": "2026-10-22T21:56:09.417000+00:00",
+        "nonCachedInput": 891627,
+        "cachedInput": 21389056,
+        "output": 244320,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 5367,
+          "output": 300,
+          "cache_read": 12032,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S06",
+        "craft": "Loopforge Critic",
+        "archived": false,
+        "snapshots": 55,
+        "firstObservedAt": "2026-10-22T13:32:05.362000+00:00",
+        "lastObservedAt": "2026-10-22T21:52:45.494000+00:00",
+        "nonCachedInput": 388669,
+        "cachedInput": 8476928,
+        "output": 69288,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 5353,
+          "output": 290,
+          "cache_read": 12032,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S07",
+        "craft": "Loopforge Engine Master",
+        "archived": false,
+        "snapshots": 201,
+        "firstObservedAt": "2026-10-22T14:08:29.192000+00:00",
+        "lastObservedAt": "2026-10-22T21:57:16.139000+00:00",
+        "nonCachedInput": 984646,
+        "cachedInput": 30352128,
+        "output": 362414,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 5379,
+          "output": 463,
+          "cache_read": 12032,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S08",
+        "craft": "Loopforge Writer",
+        "archived": true,
+        "snapshots": 2,
+        "firstObservedAt": "2026-10-22T13:28:36.548000+00:00",
+        "lastObservedAt": "2026-10-22T13:29:03.811000+00:00",
+        "nonCachedInput": 10604,
+        "cachedInput": 54400,
+        "output": 537,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 12585,
+          "output": 554,
+          "cache_read": 29184,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S09",
+        "craft": "Loopforge Writer",
+        "archived": false,
+        "snapshots": 50,
+        "firstObservedAt": "2026-10-22T13:31:07.067000+00:00",
+        "lastObservedAt": "2026-10-22T22:01:01.028000+00:00",
+        "nonCachedInput": 306180,
+        "cachedInput": 6391424,
+        "output": 103393,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 12658,
+          "output": 623,
+          "cache_read": 29312,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S10",
+        "craft": "Scene Director",
+        "archived": false,
+        "snapshots": 46,
+        "firstObservedAt": "2026-10-22T14:20:09.103000+00:00",
+        "lastObservedAt": "2026-10-22T22:04:54.528000+00:00",
+        "nonCachedInput": 281519,
+        "cachedInput": 7159424,
+        "output": 58623,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 24114,
+          "output": 1042,
+          "cache_read": 53760,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S11",
+        "craft": "Systems Designer",
+        "archived": false,
+        "snapshots": 32,
+        "firstObservedAt": "2026-10-22T14:27:34.153000+00:00",
+        "lastObservedAt": "2026-10-22T22:08:14.264000+00:00",
+        "nonCachedInput": 217564,
+        "cachedInput": 5234688,
+        "output": 52724,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 12856,
+          "output": 726,
+          "cache_read": 29184,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S12",
+        "craft": "Visual Artist",
+        "archived": false,
+        "snapshots": 26,
+        "firstObservedAt": "2026-10-22T14:26:07.979000+00:00",
+        "lastObservedAt": "2026-10-22T22:05:45.176000+00:00",
+        "nonCachedInput": 134765,
+        "cachedInput": 4176768,
+        "output": 31285,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 14788,
+          "output": 655,
+          "cache_read": 29184,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S13",
+        "craft": "Loopforge Character Artist (temp)",
+        "archived": true,
+        "snapshots": 10,
+        "firstObservedAt": "2026-10-22T13:01:00.340000+00:00",
+        "lastObservedAt": "2026-10-22T13:08:12.747000+00:00",
+        "nonCachedInput": 65676,
+        "cachedInput": 532736,
+        "output": 10136,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 12893,
+          "output": 359,
+          "cache_read": 40704,
+          "cache_creation": 0
+        }
+      },
+      {
+        "session": "S14",
+        "craft": "Loopforge Reviewer (temp)",
+        "archived": true,
+        "snapshots": 6,
+        "firstObservedAt": "2026-10-22T03:25:18.653000+00:00",
+        "lastObservedAt": "2026-10-22T03:28:35.095000+00:00",
+        "nonCachedInput": 60501,
+        "cachedInput": 254080,
+        "output": 6780,
+        "cacheCreation": 0,
+        "initialCounterExcluded": {
+          "input": 5385,
+          "output": 223,
+          "cache_read": 28288,
+          "cache_creation": 0
+        }
+      }
+    ],
+    "sessionCount": 14,
+    "snapshotCount": 1236,
+    "negativeDifferences": 0,
+    "billingDollars": null,
+    "exclusions": [
+      "Initial observed counters in each session",
+      "External bridge and external reviewer usage",
+      "Work after cutoff, including drafting this reflection",
+      "Usage absent from retained ledger"
+    ],
+    "taskAttribution": "Session totals span many tasks. No precise full task split is available. Selected reported windows below are not additive.",
+    "reasoningOutput": "Already contained within output in reconciled native counters; no separate ledger breakdown available.",
+    "missingLedgerSession": {
+      "publicRole": "First temporary intake reviewer",
+      "reportedNativeTotal": 33944,
+      "nativeInputIncludingCache": 33627,
+      "cachedSubsetOfInput": 28288,
+      "output": 317,
+      "includedInAdjacentDeltaSeries": false,
+      "basis": "Root retained-session coverage clarification; separate native total, not additive ledger delta."
+    }
+  },
+  "modelFacts": {
+    "version": "model-accounting-supplement-v1",
+    "capturedAt": "2026-10-22T22:02:39.792479+00:00",
+    "requestedCutoff": "2026-10-22T22:03:00.000Z",
+    "scope": "15 retained native studio sessions, including archived; not a current headcount or full billing record",
+    "runtime": {
+      "modelIdentifier": "gpt-6-astra",
+      "identifierType": "alias; exact backend snapshot not exposed",
+      "provider": "openai",
+      "runner": "Codex CLI",
+      "cliVersion": "0.163.0-alpha.10.2",
+      "reasoningEffort": "xhigh",
+      "contextWindowReportedTokens": 258400,
+      "sessionsWithSameSettings": 15
+    },
+    "documentedApiCapacity": {
+      "model": "gpt-6-astra",
+      "source": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "checkedDate": "2026-10-22",
+      "contextWindowTokens": 1050000,
+      "maximumOutputTokens": 128000,
+      "supportedReasoningEfforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "note": "Published API limits, not the effective context allocation observed in these Codex sessions. No parameter count or exact backend snapshot is exposed."
+    },
+    "accounting": {
+      "I1Cutoff": "2026-10-22T21:20:13.180385+00:00",
+      "ledgerSnapshotsMatched": 1105,
+      "ledgerNonCachedInput": "native input_tokens minus cached_input_tokens",
+      "ledgerCachedInput": "native cached_input_tokens",
+      "ledgerOutput": "native output_tokens",
+      "nativeTotal": "input_tokens plus output_tokens; cached input is already included in native input",
+      "reasoningOutput": "subset of output, not an additional total",
+      "method": "Adjacent cumulative differences per session; exclude first observed baseline as in I1. Never sum cumulative rows.",
+      "endpointSnapshot": "Separate provenance at requested 22:03 cutoff includes first-observed usage; do not combine with I1 deltas.",
+      "billedDollars": null,
+      "taskAttribution": "Only where exact observed task boundaries support it; otherwise unknown."
+    },
+    "verification": "Root numeric/source packet, hash-verified and summary identities checked by Producer. Not the independent systems assessment.",
+    "captureCompleteness": "Actually read at22:02:39UTC with requested22:03upper filter; not a complete22:03usage freeze. Model-setting observations/provenance only."
+  },
+  "budgetExamples": [
+    {
+      "work": "First temporary intake reviewer",
+      "allowance": 18000,
+      "reportedUsage": 33944,
+      "basis": "Termination report; cached-inclusive counter, not billing",
+      "eventRef": "E0016"
+    },
+    {
+      "work": "Second temporary intake reviewer",
+      "allowance": 400000,
+      "reportedUsage": 438749,
+      "basis": "Termination report; cached-inclusive counter, not billing",
+      "eventRef": "E0021"
+    },
+    {
+      "work": "Critic opening review",
+      "allowance": 1000000,
+      "reportedUsage": 1111112,
+      "basis": "Administrative closure reported usage, not a reconstructed final task invoice",
+      "eventRef": "E0099"
+    },
+    {
+      "work": "Systems first proposal slice",
+      "allowance": 1000000,
+      "reportedUsage": 1014591,
+      "basis": "First live checkpoint already exceeded allowance; excludes later administration",
+      "eventRef": "E0169"
+    },
+    {
+      "work": "Writer history with corrections",
+      "allowance": 3000000,
+      "reportedUsage": 2546925,
+      "basis": "Last observed task delta, not final administration-inclusive usage",
+      "eventRef": "E0385"
+    }
+  ],
+  "interviewCoverage": {
+    "required": 9,
+    "answered": 9,
+    "questionsAnswered": 54,
+    "citedSourceEntries": 26,
+    "allReadByProducer": true,
+    "timings": [
+      {
+        "craft": "Engine Master",
+        "start": "2026-10-22T21:55:32.770416+00:00",
+        "end": "2026-10-22T21:56:56.577685+00:00",
+        "reportedIntervalSeconds": 83.807,
+        "basis": "Interview receipt; start definitions vary and later delivery administration may be excluded. Not exact model activation or an independently measured active-time total.",
+        "taskAllowanceCachedInclusive": 1500000,
+        "checkpointCachedInclusive": 1050000,
+        "activeMinuteLimit": 7,
+        "exactFinalTaskTokens": null
+      },
+      {
+        "craft": "Critic",
+        "start": "2026-10-22T21:50:57.722781+00:00",
+        "end": "2026-10-22T21:52:35.372126+00:00",
+        "reportedIntervalSeconds": 97.649,
+        "basis": "Interview receipt; start definitions vary and later delivery administration may be excluded. Not exact model activation or an independently measured active-time total.",
+        "taskAllowanceCachedInclusive": 1500000,
+        "checkpointCachedInclusive": 1050000,
+        "activeMinuteLimit": 7,
+        "exactFinalTaskTokens": null
+      },
+      {
+        "craft": "Animator",
+        "start": "2026-10-22T21:53:58.280437+00:00",
+        "end": "2026-10-22T21:55:24.613453+00:00",
+        "reportedIntervalSeconds": 86.333,
+        "basis": "Interview receipt; start definitions vary and later delivery administration may be excluded. Not exact model activation or an independently measured active-time total.",
+        "taskAllowanceCachedInclusive": 1500000,
+        "checkpointCachedInclusive": 1050000,
+        "activeMinuteLimit": 7,
+        "exactFinalTaskTokens": null
+      },
+      {
+        "craft": "3D Artist",
+        "start": "2026-10-22T21:57:28.332919+00:00",
+        "end": "2026-10-22T21:59:23.607142+00:00",
+        "reportedIntervalSeconds": 115.274,
+        "basis": "Interview receipt; start definitions vary and later delivery administration may be excluded. Not exact model activation or an independently measured active-time total.",
+        "taskAllowanceCachedInclusive": 1500000,
+        "checkpointCachedInclusive": 1050000,
+        "activeMinuteLimit": 7,
+        "exactFinalTaskTokens": null
+      },
+      {
+        "craft": "Writer",
+        "start": "2026-10-22T21:58:54.756130+00:00",
+        "end": "2026-10-22T22:00:20.973985+00:00",
+        "reportedIntervalSeconds": 86.218,
+        "basis": "Interview receipt; start definitions vary and later delivery administration may be excluded. Not exact model activation or an independently measured active-time total.",
+        "taskAllowanceCachedInclusive": 1500000,
+        "checkpointCachedInclusive": 1050000,
+        "activeMinuteLimit": 7,
+        "exactFinalTaskTokens": null
+      },
+      {
+        "craft": "Scene Director",
+        "start": "2026-10-22T22:02:36.403819911Z",
+        "end": "2026-10-22T22:04:50.220803+00:00",
+        "reportedIntervalSeconds": 133.817,
+        "basis": "Interview receipt; start definitions vary and later delivery administration may be excluded. Not exact model activation or an independently measured active-time total.",
+        "taskAllowanceCachedInclusive": 1500000,
+        "checkpointCachedInclusive": 1050000,
+        "activeMinuteLimit": 7,
+        "exactFinalTaskTokens": null
+      },
+      {
+        "craft": "Visual Artist",
+        "start": "2026-10-22T22:03:38.154281+00:00",
+        "end": "2026-10-22T22:05:27.031615+00:00",
+        "reportedIntervalSeconds": 108.877,
+        "basis": "Interview receipt; start definitions vary and later delivery administration may be excluded. Not exact model activation or an independently measured active-time total.",
+        "taskAllowanceCachedInclusive": 1500000,
+        "checkpointCachedInclusive": 1050000,
+        "activeMinuteLimit": 7,
+        "exactFinalTaskTokens": null
+      },
+      {
+        "craft": "Systems Designer",
+        "start": "2026-10-22T22:06:18.362038+00:00",
+        "end": "2026-10-22T22:07:56.365339+00:00",
+        "reportedIntervalSeconds": 98.003,
+        "basis": "Interview receipt; start definitions vary and later delivery administration may be excluded. Not exact model activation or an independently measured active-time total.",
+        "taskAllowanceCachedInclusive": 1500000,
+        "checkpointCachedInclusive": 1050000,
+        "activeMinuteLimit": 7,
+        "exactFinalTaskTokens": null
+      },
+      {
+        "craft": "Level Designer",
+        "start": "2026-10-22T22:06:17.973063+00:00",
+        "end": "2026-10-22T22:08:07.896478+00:00",
+        "reportedIntervalSeconds": 109.923,
+        "basis": "Interview receipt; start definitions vary and later delivery administration may be excluded. Not exact model activation or an independently measured active-time total.",
+        "taskAllowanceCachedInclusive": 1500000,
+        "checkpointCachedInclusive": 1050000,
+        "activeMinuteLimit": 7,
+        "exactFinalTaskTokens": null
+      }
+    ]
+  },
+  "holderWindow": {
+    "tokens": 9618332,
+    "source": "owner counter-delta receipt at21:16:53UTC",
+    "includesCachedInput": true,
+    "excludes": [
+      "initial H1",
+      "earlier ID repair",
+      "Producer and bridge coordination"
+    ],
+    "broaderMixedWindow": 18106021,
+    "broaderNotExactTaskCost": true,
+    "holderElapsedSeconds": 8208,
+    "missingCueElapsedSeconds": 15273,
+    "timeBasis": "Overlapping wall windows at owner intervention; not additive active work"
+  },
+  "outcomeCounts": {
+    "currentCrafts": 9,
+    "craftsWithProductionOrReviewArtifacts": 8,
+    "craftsWithNoProductionAssignment": 1,
+    "laterDayBoardsDelivered": 4,
+    "laterDayBoardsRequiringRevision": 4,
+    "defaultWorkerPreviewsCaptured": 10,
+    "offeredAnimationClips": 253,
+    "deliveryDetailRows": 759,
+    "sceneUsedBankEntries": 37,
+    "offeredSceneUnusedEntriesRetained": 216,
+    "openingObjective": "dropped unfinished",
+    "fullOpeningAcceptance": false
+  }
+}

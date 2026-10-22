@@ -303,10 +303,10 @@
       "kind": "model",
       "variants": [
         {
-          "src": "/media/files/cedc3d56cd4da167bc5465236dad5750abf15766f35f6352102a0fb12e79a6d5.glb",
+          "src": "/media/files/bc3137e50bbbc9765c5d32488e0e21a2a762181098c2d6215666678b37f453b3.glb",
           "mime": "model/gltf-binary",
-          "bytes": 951612,
-          "sha256": "cedc3d56cd4da167bc5465236dad5750abf15766f35f6352102a0fb12e79a6d5"
+          "bytes": 951240,
+          "sha256": "bc3137e50bbbc9765c5d32488e0e21a2a762181098c2d6215666678b37f453b3"
         }
       ]
     },
@@ -314,10 +314,10 @@
       "kind": "model",
       "variants": [
         {
-          "src": "/media/files/75fba5c62b48cd4bc02fd7c1d5969998459114606ca893c77695eca16ed11eb7.glb",
+          "src": "/media/files/5cf13602799d03ec5174195746753976509baa4212b9e370defdfca414f11bca.glb",
           "mime": "model/gltf-binary",
-          "bytes": 1475480,
-          "sha256": "75fba5c62b48cd4bc02fd7c1d5969998459114606ca893c77695eca16ed11eb7"
+          "bytes": 1475108,
+          "sha256": "5cf13602799d03ec5174195746753976509baa4212b9e370defdfca414f11bca"
         }
       ]
     },
@@ -325,10 +325,10 @@
       "kind": "model",
       "variants": [
         {
-          "src": "/media/files/180880e920984fdb0c747af8764675cb5d5b767c8eaea7e205a80db0dde7c432.glb",
+          "src": "/media/files/62e46d493b7bee6e573fd45d9c9528c2bc1d9d78bcce94571d5ff2f5f48d151b.glb",
           "mime": "model/gltf-binary",
-          "bytes": 2896112,
-          "sha256": "180880e920984fdb0c747af8764675cb5d5b767c8eaea7e205a80db0dde7c432"
+          "bytes": 2895740,
+          "sha256": "62e46d493b7bee6e573fd45d9c9528c2bc1d9d78bcce94571d5ff2f5f48d151b"
         }
       ]
     }

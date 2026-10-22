@@ -1,0 +1,20 @@
+{
+  "version": "0.5.7",
+  "source": "https://app.harnessmd.com/releases/Munder-Difflin-0.5.7-linux-x86_64.AppImage",
+  "sha256": "6255a8fd0c9b7ba2682bdcf3af8ffbd7ec1d20e0babe6654dbeed0a53bdb4d12",
+  "installedAt": "2026-10-22T02:21:38.275746+00:00",
+  "appPath": "${USER_HOME}/.local/opt/munder-difflin/0.5.7/squashfs-root/munder-difflin",
+  "launcher": "${USER_HOME}/.local/bin/munder-difflin",
+  "verification": "Official SHA256 and SHA512 matched; native process started with renderer sandbox enabled. No native UI automation available in the current chat.",
+  "setupStatus": "Workspace connected. Producer completed the read-only intake. Budget recovery was applied and acknowledged; browser playback, authenticated Meshy and publishing still require their own verification.",
+  "appConfigApplied": true,
+  "credentialsCopied": false,
+  "appliedSettings": [
+    "defaultCommand",
+    "defaultModel",
+    "maxConcurrentWorkers",
+    "maxTempsPerAgent",
+    "defaultWorkerTokenCap"
+  ],
+  "budgetRecoveryEvidence": "${STUDIO_ROOT}/evidence/studio-budget-recovery/recovery.json"
+}

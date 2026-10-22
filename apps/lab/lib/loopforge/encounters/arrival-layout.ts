@@ -14,7 +14,7 @@ export const ARRIVAL_LAYOUT = {
 export const CONVEYOR_STATIONS=[{id:'intake',name:'INTAKE',x:136.5},{id:'wash',name:'WASH',x:140.5},{id:'belt',name:'MAIN BELT',x:144.5},{id:'forge',name:'LATTICE FORGE',x:148.5}] as const;
 export type ConveyorStation=typeof CONVEYOR_STATIONS[number]['id'];
 export function conveyorControl(id:ConveyorStation):Point{const s=CONVEYOR_STATIONS.find(s=>s.id===id)!;return [s.x*1000,105800];}
-export function conveyorDirector(id:ConveyorStation):Point{const s=CONVEYOR_STATIONS.find(s=>s.id===id)!;return [(s.x-1.5)*1000,108400];}
+export function conveyorDirector(id:ConveyorStation):Point{const s=CONVEYOR_STATIONS.find(s=>s.id===id)!;return [(s.x+1.8)*1000,107200];}
 /** These fixture bounds belong to the world, so navigation and scenery agree. */
 export const ARRIVAL_EQUIPMENT:readonly EquipmentPlacement[]=[
  {id:'security-register',room:'security',kind:'records-bank',name:'Admission register',footprint:{x:117.5,y:100,w:3,h:3.5},height:2.8,operator:{x:119.2,y:105.5}},

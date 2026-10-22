@@ -46,6 +46,8 @@ yaw=np.arctan2(-delta[0],delta[1]);horizontal=R.from_euler('z',-yaw).apply(np.r_
 target=np.array([horizontal[0],contact[2]/scale,horizontal[1]])
 # Flat palm on the shoulder: fingers forward, palm surface down.
 palm=np.array([[-1.,0,0],[0,0,1],[0,1,0]])
+# Turn only the supporting palm clear of bob's head; keep its shoulder contact.
+support_palm=R.from_euler('y',60,degrees=True).as_matrix()@palm
 sockets=json.loads((root/'apps/lab/lib/loopforge/agents/opening-worker-sockets.json').read_text())['sam'];moving=[]
 def visit(j):
  moving.append(j)
@@ -73,16 +75,21 @@ def fitted(w,weight,seconds=0):
  skin=b.skin(w);knee=w[b.names['LeftLeg'],:3,3];leg=skin[b.region_ids['legL']];near=leg[np.linalg.norm(leg[:,[0,2]]-knee[[0,2]],axis=1)<.11]
  brace=knee.copy();brace[1]=near[:,1].max()+.012;brace[2]-=.03
  for side,goal,pole in [('Right',target,[-1,-.2,-.1]),('Left',brace,[1,-.5,-.2])]:
-  hand=b.names[side+'Hand'];offset=np.array(sockets[side.lower()])*.01;start=w[hand].copy();desired=goal-palm@offset
+  hand=b.names[side+'Hand'];offset=np.array(sockets[side.lower()])*.01;start=w[hand].copy();orientation=support_palm if side=='Right' else palm;desired=goal-orientation@offset
   desired=start[:3,3]*(1-weight)+desired*weight
+  if side=='Right':
+   # Approach the shoulder from above, clearing bob's upper arm.
+   # Recovery reverses this path before bob starts his own get-up motion.
+   desired[1]+=.22*np.sin(np.pi*weight)
   if side=='Left':
    desired[1]+=.18*np.sin(np.pi*weight)
    desired[0]+=.22*np.sin(np.pi*weight)
   errors.append(reach(b,w,side,desired,np.array(pole)))
-  handrot=Slerp([0,1],R.from_matrix([rotation(start),palm]))([weight]).as_matrix()[0];b.rotate_chain(w,hand,handrot@rotation(w[hand]).T)
+  handrot=Slerp([0,1],R.from_matrix([rotation(start),orientation]))([weight]).as_matrix()[0];b.rotate_chain(w,hand,handrot@rotation(w[hand]).T)
  return w
 lower_t=np.linspace(0,2.4,73);lower=np.array([fitted(source_at(2.2-2*smooth(t/2.4)),smooth((t-.25)/2.15))for t in lower_t])
-hold_t=np.linspace(0,6,181);hold=np.array([fitted(source_at(.2),1,float(t))for t in hold_t]);rise=lower[::-1].copy()
+hold_t=np.linspace(0,6,181);hold=np.array([fitted(source_at(.2),1,float(t))for t in hold_t])
+rise=lower[::-1].copy()
 metadata={'origin':'fitted Meshy Action 365','sourceSha256':digest,'rootMotion':'preserve','status':'contact candidate'}
 for name,times,world in [('Kneel_To_Help',lower_t,lower),('Attend_Bob',hold_t,hold),('Rise_From_Help',lower_t,rise)]:write_world(writer,b,name,times,world,metadata)
 writer.save(bank)

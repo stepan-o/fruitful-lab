@@ -120,3 +120,23 @@ it('routes every arrival through the clear main entrance before they spread arou
   positions[p.agent]=to;
  }
 });
+
+
+it('performs sam’s card inspection before awarding clearance, then stows the checked card',()=>{
+ const t=take();
+ const ready=project(replay(t,startOf(t,'sam presents the card')+19),t.registry);
+ expect(ready.props?.find(p=>p.id==='sam:id')?.location).toMatchObject({kind:'hand',agent:'sam'});
+ expect(ready.actors.find(a=>a.id==='sam')?.cue?.clip).toBe('Draw_ID');
+ const before=replay(t,startOf(t,'sam’s card is checked'));
+ expect(before.facts['checkpoint.card-checked.sam']).toBeUndefined();
+ expect(before.props?.['sam:id'].location).toMatchObject({kind:'hand',agent:'sam'});
+ const after=replay(t,startOf(t,'sam stows his checked ID'));
+ expect(after.facts['checkpoint.card-checked.sam']).toBe(true);
+ const leaves=replay(t,startOf(t,'sam finally clears'));
+ expect(leaves.props?.['sam:id'].location).toMatchObject({kind:'stowed',agent:'sam'});
+ expect(leaves.props?.['bob:id'].location).toMatchObject({kind:'stowed',agent:'ed'});
+});
+it('keeps bob’s presented card in its fitted pose during the greeting',()=>{
+ const t=take(),v=project(replay(t,startOf(t,'A card held ready')+10),t.registry);
+ expect(v.actors.find(a=>a.id==='bob')?.cue?.clip).toBe('ID_Ready');
+});

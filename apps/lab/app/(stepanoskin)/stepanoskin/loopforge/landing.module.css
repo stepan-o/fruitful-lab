@@ -273,3 +273,50 @@
  .itemIndex { font-size:9px; }
  .eyebrow { font-size:9px; }
 }
+
+/* Four choices share one wide-screen row. Reserve the foreground independently
+   of menu height: short windows may scroll instead of clipping text or controls.
+   420px covers the belt/specimen rise including the renderer’s 1.2 portrait scale;
+   20vw grows that reservation with the renderer's width / 1800 scaling. */
+.page { height:auto; min-height:max(540px,100svh); }
+.stage { flex:1 0 auto; padding-bottom:max(420px,20vw); }
+.menuShell { min-width:0; }
+.menuRow { gap:clamp(24px,2.5vw,40px); }
+.menuList { grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(16px,1.6vw,28px); }
+.menuItem { min-width:0; min-height:100px; padding-right:16px; }
+.itemCopy strong { font-size:clamp(18px,1.55vw,24px); white-space:normal; overflow-wrap:break-word; }
+.itemCopy small { display:block; font-size:12px; color:#b5b6a1; }
+.resetDock { min-width:0; align-self:center; }
+
+@media(max-width:1100px) {
+ .menuList { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px 24px; }
+}
+@media(max-width:640px) {
+ .page { min-height:max(520px,100svh); }
+ .stage { padding-bottom:340px; }
+ .menuRow { grid-template-columns:minmax(0,1fr); gap:16px; }
+ .menuList { gap:12px 18px; }
+ .menuItem { min-height:100px; padding:8px 0 12px; }
+ .itemCopy strong { font-size:18px; }
+ .resetDock { min-height:82px; width:min(100%,300px); }
+}
+@media(max-width:360px) {
+ .menuList { gap:12px; }
+ .itemCopy strong { font-size:17px; letter-spacing:.04em; }
+}
+@media(max-height:480px) and (min-width:641px) {
+ .stage { gap:20px; }
+ .menuRow { grid-template-columns:minmax(0,1fr); gap:16px; }
+ .menuList { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .resetDock { width:220px; max-width:100%; min-height:92px; }
+}
+@media(max-width:640px) and (max-height:480px) and (orientation:landscape) {
+ .logoWrap { position:relative; top:auto; left:auto; margin:0 auto 10px; transform:none; }
+ .menuRow { grid-template-columns:minmax(0,1fr) 154px; gap:18px; }
+ .resetDock { width:154px; min-height:92px; }
+ .itemCopy strong { font-size:17px; }
+}
+@media(min-width:1600px) and (min-height:900px) {
+ .stage { padding-bottom:max(420px,20vw); }
+ .itemCopy strong { font-size:clamp(24px,1.25vw,34px); }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "sam",
+  "body": {
+    "source": "output/opening-cast/sam/sam-body-v1.glb",
+    "sha256": "f0c7031430575c369b8e3d7b618a324a6ffc45823f5726ce5b385b5e7773608a",
+    "bytes": 17028980,
+    "triangles": 24864,
+    "skins": 0,
+    "animations": 0
+  },
+  "status": "downloaded unrigged body; visual review pending",
+  "approvedReference": "ensemble-badass"
+}

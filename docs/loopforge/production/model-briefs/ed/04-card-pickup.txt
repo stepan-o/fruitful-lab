@@ -1,0 +1,18 @@
+ed — retain bob’s admission card
+21 October 2026 · approved opening seed: ed / keeping it at Security
+
+Use the existing approved ed rig, 01a15d66-06cc-7726-af36-ac9e6545f183. Preserve body, swept skull, jaw, blue paint, proportions, materials and skeleton. Apply catalog Action 276, Male Bend Over Pick Up. Export the textured GLB with source motion intact. Reserve 3 credits within the cumulative 500-credit project cap.
+
+Before his own clearance, ed picks up the card LIMEN knocked out of bob’s hand. He stows it and keeps it when assigned the register. bob does not notice. No return or handover occurs in the opening. The card is bob’s property, now in ed’s custody; ed regards it as a Security matter.
+
+Fit the contact to the floor card, plant the feet, keep the swept skull and shoulders clear of knees, and review the rise into a restrained stowing movement. The card follows the hand only when the engine commits contact. Preserve the native source alongside the fitted Pickup_Card and Stow_Card derivatives; record provenance, timing, clearance measures and visual evidence. Include the motions in ed’s shared animation preview. Source completion is not visual acceptance.
+
+Local delivery candidate — 21 October 2026
+
+Meshy task: 01a15fe7-755e-71e3-b184-a689b7bab3c2. Completed for 3 credits; cumulative project spend is 397/500. Source SHA-256: 66c46ca1804dda07dfb213f8d7ea99f615ed8c97c3aecdff266b52c1a5a9b1a3.
+
+The untouched Male_Bend_Over_Pick_Up remains in the bank. Pickup_Card lasts 7.2 seconds, with contact at 1.5. Stow_Card and Stow_ID last 3.6 seconds, with insertion at 1.6. Draw_ID reverses the own-card movement, exposing it at 2.0 seconds. The hand curves are baked offline; the renderer has no contact solver. A shallow open-top belt sleeve makes the stow visible before the engine changes custody.
+
+The fit preserves the native pickup arm and lowers the finger contact toward the paper. The whole skinned body stays at least 2 mm above the source floor at sampled frames. Both stowing derivatives have zero sampled right-arm/body intersections at 30 Hz; these are sampled checks, not blanket animation acceptance. The scene approach uses the contact point after removal of source horizontal pelvis travel and the runtime model orientation. The card lies to bob’s right, leaving sam room beside him.
+
+Packed at portrait / floor / console detail: 24,740 / 10,001 / 4,866 triangles; 2,709,736 / 1,400,504 / 958,008 bytes; 29 clips at each level. All three versions pass channel, skin and timing validation. Local browser inspection covers the individual pickup/stow and the actual scene contact at 80.65 seconds. The scene’s physical-custody and private-knowledge tests pass. Full paired acting and the revised scene’s sustained performance run remain open. This candidate has not received owner acceptance or been published.

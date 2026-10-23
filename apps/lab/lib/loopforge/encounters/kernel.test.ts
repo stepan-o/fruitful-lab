@@ -73,3 +73,42 @@ it('day-one disagreement records both motives and producer backing without creat
  expect(s.facts['conveyor.crew']).toBe(0);expect(s.facts.output).toBeUndefined();
  expect(s).toEqual(replay(t,t.total));
 });
+
+it('moves a group atomically against proposed occupancy, regardless of performer order',()=>{
+ const run=(reverse:boolean,blocked=false)=>{
+  const t=rehearsal('security','care'),ids=Object.keys(t.world.agents).slice(0,2),[a,b]=ids;
+  t.world.agents[a].position=[0,0];t.world.agents[b].position=[1000,0];
+  const perform=ids.map((agent,i)=>({agent,motion:'walk' as const,to:[(i+1)*1000,0] as const}));
+  t.registry.move={id:'move',room:t.world.agents[a].room,participants:ids,resources:[],requires:[],reason:'Move together',phases:[{id:'step',ticks:1,perform:reverse?perform.reverse():perform}]};
+  const space={...t.space,canTraverse:(agent:typeof t.world.agents[string],to:readonly[number,number],world:typeof t.world)=>!Object.values(world.agents).some(other=>other.id!==agent.id&&Math.hypot(other.position[0]-to[0],other.position[1]-to[1])<850)};
+  const admitted=admit(t.world,{id:'move',action:'move',initiator:a},t.registry,space);expect(admitted.active).toHaveLength(1);
+  const next=advance(admitted,t.registry,blocked?{...space,canTraverse:agent=>agent.id!==b}:space);
+  return {positions:ids.map(id=>next.agents[id].position),last:next.events.at(-1)?.kind};
+ };
+ expect(run(false)).toEqual({positions:[[1000,0],[2000,0]],last:'completed'});expect(run(true)).toEqual(run(false));
+ expect(run(false,true)).toEqual({positions:[[0,0],[1000,0]],last:'cancelled'});
+});
+
+it('advancing and cancelling cannot mutate any prior snapshot or shared speech',()=>{
+ const t=rehearsal('security','care'),state=replay(t,300),saved=JSON.stringify(state);
+ const freeze=(value:unknown)=>{if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.freeze(value);Object.values(value).forEach(freeze);}};
+ freeze(state);
+ expect(()=>advance(state,t.registry,t.space,t.planner)).not.toThrow();
+ const next=cancel(state,state.active[0].intent.id);
+ expect(JSON.stringify(state)).toBe(saved);
+ expect(next.events.filter(e=>e.kind==='speech'&&e.action===state.active[0].intent.id).every(e=>e.until===state.tick)).toBe(true);
+});
+
+
+it('replaces visible speech without erasing what was said or heard',()=>{
+ const t=rehearsal('arrival','care');let s=t.world;
+ for(let tick=0;tick<t.total;tick++){
+  s=advance(s,t.registry,t.space,t.planner);
+  const bubbles=project(s,t.registry).bubbles;
+  expect(new Set(bubbles.map(b=>b.speaker)).size).toBe(bubbles.length);
+ }
+ const lines=s.events.filter(e=>e.kind==='speech'&&e.agent==='limen');
+ expect(lines.some(e=>e.detail.includes('Welcome to Loopforge'))).toBe(true);
+ expect(lines.length).toBeGreaterThan(2);
+ expect(s.events.some(e=>e.kind==='heard')).toBe(true);
+});

@@ -1,0 +1,23 @@
+{
+  "version": "sam-holder/H2-proposal-1",
+  "units": "metres",
+  "halfWidth": 0.095,
+  "cardSlotHalfGap": 0.0065,
+  "wall": 0.005,
+  "bottom": -0.140,
+  "wellBottom": -0.050,
+  "wellBack": -0.025,
+  "wellFront": 0.035,
+  "mountPlane": -0.045,
+  "mountPadCentreX": 0.065,
+  "mountPadHalfWidth": 0.014,
+  "mountPadY": [-0.120, -0.080],
+  "mountBridgeY": [-0.115, -0.085],
+  "cardDimensions": [0.180, 0.130, 0.003],
+  "storedCard": [0, -0.075, 0],
+  "withdrawnCard": [0, 0.075, 0],
+  "shellSurfaceTolerance": 0.000001,
+  "strictVolumeInset": 0.0000001,
+  "material": {"name":"proposed-dark-aged-metal","srgb":"#454746","metallic":0.65,"roughness":0.75},
+  "status": "unfitted holder only; H1 poses are still rejected; edge grip and anchor owned by Animator"
+}

@@ -6,10 +6,32 @@
       "kind": "model",
       "variants": [
         {
-          "src": "/media/files/730fcb9d3bbce10e59ed343d2de4dd34a49e7a1d112d82a078152d74dcd2d2cd.glb",
+          "src": "/media/files/b1be786dc8b30ed72cfb6c3af301b5be4595273b7b3e2d79b7a5814237f490c3.glb",
           "mime": "model/gltf-binary",
-          "bytes": 10391048,
-          "sha256": "730fcb9d3bbce10e59ed343d2de4dd34a49e7a1d112d82a078152d74dcd2d2cd"
+          "bytes": 4841672,
+          "sha256": "b1be786dc8b30ed72cfb6c3af301b5be4595273b7b3e2d79b7a5814237f490c3"
+        }
+      ]
+    },
+    "motions-floor": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/42c9787741e7e2d90151512c0a884d6e26a34dbdd8809544b61f252beb96cda6.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 2923380,
+          "sha256": "42c9787741e7e2d90151512c0a884d6e26a34dbdd8809544b61f252beb96cda6"
+        }
+      ]
+    },
+    "motions-overview": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/c5e90cc94a0f33f68123cf469585e66aba6dbe891a01a4cfc60906794ca97da8.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 1671704,
+          "sha256": "c5e90cc94a0f33f68123cf469585e66aba6dbe891a01a4cfc60906794ca97da8"
         }
       ]
     }

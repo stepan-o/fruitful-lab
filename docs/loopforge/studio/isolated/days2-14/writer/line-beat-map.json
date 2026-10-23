@@ -1,0 +1,5334 @@
+{
+  "version": "DAYS2-14-W1",
+  "status": "proposal only; no new canon or executable runtime",
+  "inputVersion": "DAYS2-14-WRITER-I1",
+  "inputManifestSha256": "a671e0fb636db52acd56d57bae517cda2c353dc19f7aa0bf6f52d3fffe4ab62e",
+  "sharedAttentionRule": "Reading holds factory progression, transfers, hearing, routes and deadlines. Restrained animation continues with fitted held contacts. Only enacted world actions consume factory time.",
+  "knowledgeRule": "Entry facts are gated run prerequisites, not invented history; attributed speech stays a report; actual witnesses only. Audience knowledge is never assigned to bob.",
+  "facts": {
+    "E01.missing": {
+      "knownBy": [
+        "bob",
+        "LIMEN"
+      ],
+      "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E01.ed-custody": {
+      "knownBy": [
+        "ed"
+      ],
+      "basis": "E1 selected ed-procedure pickup and stow. Audience saw it; bob and sam did not.",
+      "status": "selected opening truth; persistent state required"
+    },
+    "E01.help": {
+      "knownBy": [
+        "bob",
+        "sam"
+      ],
+      "basis": "They experienced the first-morning fall/help; sam did not see the pickup.",
+      "status": "selected opening truth"
+    },
+    "E01.register": {
+      "knownBy": [
+        "ed"
+      ],
+      "basis": "ed is completing a real assigned register entry; the final row is still unfinished.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E01.sam-duty": {
+      "knownBy": [
+        "sam"
+      ],
+      "basis": "sam has a valid assignment and their own upcoming work; accompanying bob to the desk does not erase it.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E01.assignment": {
+      "knownBy": [
+        "bob"
+      ],
+      "basis": "Select this authored exchange only when bob’s current assignment is Conveyor.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E01.exception": {
+      "knownBy": [
+        "LIMEN"
+      ],
+      "basis": "A valid exception decision has been delivered to LIMEN; scope is this shift, no credential transfer.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E01.recovered": {
+      "knownBy": [
+        "bob"
+      ],
+      "basis": "An actual prior recovery event put bob:id in bob’s possession. Source/witness record retained.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E01.presentation": {
+      "knownBy": [
+        "LIMEN"
+      ],
+      "basis": "LIMEN sees bob present his actual card now; this does not reveal its earlier holder.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E02.control": {
+      "knownBy": [
+        "bob",
+        "sam"
+      ],
+      "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E02.permission": {
+      "knownBy": [
+        "sam"
+      ],
+      "basis": "The actual operating authority has permitted bob this cycle; sam is conveying that instruction, not inventing authority.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E02.wash-duty": {
+      "knownBy": [
+        "sam"
+      ],
+      "basis": "sam’s actual wash assignment competes with remaining beside bob.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E02.wash-vacant": {
+      "knownBy": [
+        "STILETTO"
+      ],
+      "basis": "STILETTO can see the unattended wash and has the authority to call its assigned worker.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E03.queue": {
+      "knownBy": [
+        "LIMEN",
+        "STILETTO",
+        "gus"
+      ],
+      "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E03.empty-wash": {
+      "knownBy": [
+        "STILETTO",
+        "LIMEN"
+      ],
+      "basis": "The visible wash is unstaffed in this run; both can see the destination from this staged threshold.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E03.warning-report": {
+      "knownBy": [
+        "LIMEN"
+      ],
+      "basis": "A named earlier event has sam report a real tempo warning to LIMEN. Require the report and warning record; do not manufacture them for this branch.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E04.observation": {
+      "knownBy": [
+        "CATHEXIS"
+      ],
+      "basis": "CATHEXIS actually saw a prior E02 clear-cue cycle or an equivalent attributed demonstration. This showing uses the witnessed route; absent observation makes it ineligible.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E04.routine": {
+      "knownBy": [
+        "bob",
+        "sam"
+      ],
+      "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E04.scope": {
+      "knownBy": [
+        "CATHEXIS",
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E04.safe-demo": {
+      "knownBy": [
+        "CATHEXIS",
+        "bob",
+        "sam"
+      ],
+      "basis": "The proposed Theatre demonstration is unpowered; a control/carrier surrogate and safe staging still require art/engine approval.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E04.single-scope": {
+      "knownBy": [
+        "CATHEXIS"
+      ],
+      "basis": "Actual authorized scope is one demonstration followed by bob and sam returning together; no broadened attendance/second turn has been approved.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E04.sam-due": {
+      "knownBy": [
+        "bob",
+        "sam",
+        "CATHEXIS"
+      ],
+      "basis": "sam’s actual next duty is the wash; all three received that schedule before this one-demonstration session.",
+      "status": "required proposed-run event; not verified runtime history"
+    },
+    "E04.attended": {
+      "knownBy": [
+        "kit"
+      ],
+      "basis": "kit actually witnessed E04.C10/A04 and received the hand-clear condition. Absent workers do not acquire it.",
+      "status": "required proposed-run event; not verified runtime history"
+    }
+  },
+  "blocks": [
+    {
+      "id": "E01.C",
+      "title": "E01 · At the edge of the desk",
+      "condition": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": {
+        "bob": [
+          "E01.missing",
+          "E01.help"
+        ],
+        "LIMEN": [
+          "E01.missing"
+        ],
+        "ed": [
+          "E01.ed-custody",
+          "E01.register"
+        ],
+        "sam": [
+          "E01.help",
+          "E01.sam-duty"
+        ]
+      },
+      "inheritsBlocks": [],
+      "itemIds": [
+        "E01.A01",
+        "E01.C01",
+        "E01.C02",
+        "E01.C03",
+        "E01.C04",
+        "E01.C05",
+        "E01.C06",
+        "E01.C07",
+        "E01.C08",
+        "E01.A02",
+        "E01.C09",
+        "E01.C10",
+        "E01.C11",
+        "E01.C12",
+        "E01.C13",
+        "E01.A03",
+        "E01.C14",
+        "E01.C15",
+        "E01.C16"
+      ]
+    },
+    {
+      "id": "E01.R",
+      "title": "Return",
+      "condition": "LIMEN can authorize a verified return; identity/card validity can be checked.",
+      "entryKnowledge": {
+        "LIMEN": [
+          "E01.missing"
+        ],
+        "ed": [
+          "E01.ed-custody"
+        ],
+        "bob": [
+          "E01.missing"
+        ],
+        "sam": [
+          "E01.sam-duty"
+        ]
+      },
+      "inheritsBlocks": [
+        "E01.C"
+      ],
+      "itemIds": [
+        "E01.R01",
+        "E01.A04",
+        "E01.R02",
+        "E01.R03",
+        "E01.A05",
+        "E01.R04",
+        "E01.R05",
+        "E01.A06",
+        "E01.R06"
+      ]
+    },
+    {
+      "id": "E01.U",
+      "title": "Return deferred",
+      "condition": "Return authority is not granted now; no transfer occurs.",
+      "entryKnowledge": {
+        "LIMEN": [
+          "E01.missing"
+        ],
+        "ed": [
+          "E01.ed-custody"
+        ],
+        "bob": [
+          "E01.missing"
+        ],
+        "sam": [
+          "E01.sam-duty"
+        ]
+      },
+      "inheritsBlocks": [
+        "E01.C"
+      ],
+      "itemIds": [
+        "E01.U01",
+        "E01.U02",
+        "E01.U03",
+        "E01.A07"
+      ]
+    },
+    {
+      "id": "E01.H",
+      "title": "Hold continues",
+      "condition": "The competent authority retains the hold. If the adviser acts here, show that result; do not offer a retroactive player veto.",
+      "entryKnowledge": {
+        "bob": [
+          "E01.missing"
+        ],
+        "sam": [
+          "E01.sam-duty"
+        ]
+      },
+      "inheritsBlocks": [
+        "E01.C",
+        "E01.U"
+      ],
+      "itemIds": [
+        "E01.H01",
+        "E01.H02",
+        "E01.A08"
+      ]
+    },
+    {
+      "id": "E01.T",
+      "title": "Temporary admission",
+      "condition": "An authorized player/decision-maker grants admission for this shift only. Offer only on a valid authority path.",
+      "entryKnowledge": {
+        "LIMEN": [
+          "E01.exception"
+        ],
+        "bob": [
+          "E01.missing"
+        ],
+        "ed": [
+          "E01.ed-custody"
+        ]
+      },
+      "inheritsBlocks": [
+        "E01.C",
+        "E01.U"
+      ],
+      "itemIds": [
+        "E01.T01",
+        "E01.T02",
+        "E01.T03",
+        "E01.A09"
+      ]
+    },
+    {
+      "id": "E01.K",
+      "title": "If the card came back earlier",
+      "condition": "Skip the entire missing-card scene when bob already holds his valid card.",
+      "entryKnowledge": {
+        "bob": [
+          "E01.recovered"
+        ],
+        "LIMEN": [
+          "E01.presentation"
+        ]
+      },
+      "inheritsBlocks": [],
+      "itemIds": [
+        "E01.K01",
+        "E01.A10",
+        "E01.K02",
+        "E01.A11"
+      ]
+    },
+    {
+      "id": "E02.C",
+      "title": "E02 · Leave the control",
+      "condition": "Same established Main Belt cycle in both variants. This is a later work scene, not a rewrite of E1.",
+      "entryKnowledge": {
+        "bob": [
+          "E02.control"
+        ],
+        "sam": [
+          "E02.control",
+          "E02.permission"
+        ]
+      },
+      "inheritsBlocks": [],
+      "itemIds": [
+        "E02.A01",
+        "E02.C01",
+        "E02.C02",
+        "E02.C03"
+      ]
+    },
+    {
+      "id": "E02.A",
+      "title": "Clear permission, enough staff",
+      "condition": "sam is free to remain beside this operation; no competing unattended duty calls them away.",
+      "entryKnowledge": {
+        "bob": [
+          "E02.control"
+        ],
+        "sam": [
+          "E02.control",
+          "E02.permission"
+        ]
+      },
+      "inheritsBlocks": [
+        "E02.C"
+      ],
+      "itemIds": [
+        "E02.A02",
+        "E02.A04",
+        "E02.A03",
+        "E02.A05",
+        "E02.A06",
+        "E02.A07",
+        "E02.A08",
+        "E02.A09"
+      ]
+    },
+    {
+      "id": "E02.B",
+      "title": "Compressed staffing",
+      "condition": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair.",
+      "entryKnowledge": {
+        "bob": [
+          "E02.control"
+        ],
+        "sam": [
+          "E02.control",
+          "E02.permission",
+          "E02.wash-duty"
+        ],
+        "STILETTO": [
+          "E02.wash-vacant"
+        ]
+      },
+      "inheritsBlocks": [
+        "E02.C"
+      ],
+      "itemIds": [
+        "E02.B01",
+        "E02.A11",
+        "E02.B02",
+        "E02.A12",
+        "E02.B03",
+        "E02.B04",
+        "E02.B05",
+        "E02.B06",
+        "E02.A13"
+      ]
+    },
+    {
+      "id": "E03.N",
+      "title": "E03 · No new injury or warning required",
+      "condition": "Use a real queue plus an idle wash; no new Conveyor accident or injury is needed. This does not erase E1’s blow.",
+      "entryKnowledge": {
+        "LIMEN": [
+          "E03.queue"
+        ],
+        "STILETTO": [
+          "E03.empty-wash"
+        ],
+        "gus": [
+          "E03.queue"
+        ]
+      },
+      "inheritsBlocks": [],
+      "itemIds": [
+        "E03.A01",
+        "E03.N01",
+        "E03.N02"
+      ]
+    },
+    {
+      "id": "E03.W",
+      "title": "Alternative inlet: an actual warning was reported",
+      "condition": "Replace the no-warning inlet only when sam actually supplied the warning report. Same meeting/visible queue; no invented accident.",
+      "entryKnowledge": {
+        "LIMEN": [
+          "E03.queue",
+          "E03.warning-report"
+        ],
+        "STILETTO": [
+          "E03.empty-wash"
+        ],
+        "gus": [
+          "E03.queue"
+        ]
+      },
+      "inheritsBlocks": [],
+      "itemIds": [
+        "E03.A02",
+        "E03.W01",
+        "E03.W02"
+      ]
+    },
+    {
+      "id": "E03.C",
+      "title": "The same swap",
+      "condition": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": {
+        "LIMEN": [
+          "E03.queue"
+        ],
+        "STILETTO": [
+          "E03.empty-wash"
+        ],
+        "gus": [
+          "E03.queue"
+        ]
+      },
+      "inheritsBlocks": [],
+      "itemIds": [
+        "E03.C01",
+        "E03.C02",
+        "E03.C03",
+        "E03.A03",
+        "E03.C04",
+        "E03.C05",
+        "E03.C06",
+        "E03.C07",
+        "E03.C08",
+        "E03.C09",
+        "E03.C10",
+        "E03.C11",
+        "E03.C12",
+        "E03.C13",
+        "E03.C14",
+        "E03.A04"
+      ]
+    },
+    {
+      "id": "E04.C",
+      "title": "E04 · Face the room",
+      "condition": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period.",
+      "entryKnowledge": {
+        "CATHEXIS": [
+          "E04.observation",
+          "E04.scope",
+          "E04.safe-demo"
+        ],
+        "bob": [
+          "E04.routine",
+          "E04.scope",
+          "E04.safe-demo"
+        ],
+        "sam": [
+          "E04.routine",
+          "E04.scope",
+          "E04.safe-demo"
+        ],
+        "ed": [
+          "E04.scope"
+        ],
+        "kit": [
+          "E04.scope"
+        ]
+      },
+      "inheritsBlocks": [],
+      "itemIds": [
+        "E04.A01",
+        "E04.C01",
+        "E04.C02",
+        "E04.C03",
+        "E04.C04",
+        "E04.C05",
+        "E04.A02",
+        "E04.C06",
+        "E04.C07",
+        "E04.C08",
+        "E04.C09",
+        "E04.A03",
+        "E04.C10",
+        "E04.A04",
+        "E04.C11",
+        "E04.A05"
+      ]
+    },
+    {
+      "id": "E04.B",
+      "title": "Bounded routine: exchange places, then return",
+      "condition": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn.",
+      "entryKnowledge": {
+        "CATHEXIS": [
+          "E04.scope"
+        ],
+        "bob": [
+          "E04.routine"
+        ],
+        "sam": [
+          "E04.routine"
+        ],
+        "ed": [
+          "E04.scope"
+        ],
+        "kit": [
+          "E04.scope"
+        ]
+      },
+      "inheritsBlocks": [
+        "E04.C"
+      ],
+      "itemIds": [
+        "E04.B01",
+        "E04.B02",
+        "E04.A06",
+        "E04.B03",
+        "E04.A07",
+        "E04.B04",
+        "E04.B05",
+        "E04.B06",
+        "E04.B07",
+        "E04.A08"
+      ]
+    },
+    {
+      "id": "E04.P",
+      "title": "Alternative: the promise must actually be made",
+      "condition": "Insert this before E04.C only for the single-demonstration commitment route; do not play E04.B in that route.",
+      "entryKnowledge": {
+        "CATHEXIS": [
+          "E04.single-scope"
+        ],
+        "bob": [
+          "E04.routine"
+        ],
+        "sam": [
+          "E04.routine"
+        ]
+      },
+      "inheritsBlocks": [],
+      "itemIds": [
+        "E04.P01"
+      ]
+    },
+    {
+      "id": "E04.X",
+      "title": "Withheld second demonstration",
+      "condition": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust.",
+      "entryKnowledge": {
+        "CATHEXIS": [
+          "E04.single-scope"
+        ],
+        "bob": [
+          "E04.routine"
+        ],
+        "sam": [
+          "E04.routine"
+        ]
+      },
+      "inheritsBlocks": [
+        "E04.P",
+        "E04.C"
+      ],
+      "itemIds": [
+        "E04.A09",
+        "E04.X01",
+        "E04.X02",
+        "E04.X03",
+        "E04.X04",
+        "E04.X05",
+        "E04.X06",
+        "E04.A10",
+        "E04.X07",
+        "E04.A11"
+      ]
+    },
+    {
+      "id": "E04.D",
+      "title": "If the programme is deferred",
+      "condition": "Play instead of the Theatre session when the authorized choice is defer. CATHEXIS has observed the routine, but no audience leaves work.",
+      "entryKnowledge": {
+        "CATHEXIS": [
+          "E04.observation"
+        ],
+        "bob": [
+          "E04.routine"
+        ]
+      },
+      "inheritsBlocks": [],
+      "itemIds": [
+        "E04.A12",
+        "E04.D01",
+        "E04.D02",
+        "E04.D03"
+      ]
+    },
+    {
+      "id": "E04.K",
+      "title": "Later, at the real Conveyor",
+      "condition": "Only after kit actually attended the demonstrated cue, has a comparable permitted task, and works beside bob. Skip after deferral or absence.",
+      "entryKnowledge": {
+        "bob": [
+          "E04.routine"
+        ],
+        "kit": [
+          "E04.attended"
+        ],
+        "CATHEXIS": []
+      },
+      "inheritsBlocks": [],
+      "itemIds": [
+        "E04.A13",
+        "E04.K01",
+        "E04.K02",
+        "E04.A14",
+        "E04.K03",
+        "E04.A15"
+      ]
+    }
+  ],
+  "routes": {
+    "E01.return": [
+      "E01.C",
+      "E01.R"
+    ],
+    "E01.hold": [
+      "E01.C",
+      "E01.U",
+      "E01.H"
+    ],
+    "E01.temporary": [
+      "E01.C",
+      "E01.U",
+      "E01.T"
+    ],
+    "E01.recovered-earlier": [
+      "E01.K"
+    ],
+    "E02.clear": [
+      "E02.C",
+      "E02.A"
+    ],
+    "E02.compressed": [
+      "E02.C",
+      "E02.B"
+    ],
+    "E03.no-new-harm": [
+      "E03.N",
+      "E03.C"
+    ],
+    "E03.warning": [
+      "E03.W",
+      "E03.C"
+    ],
+    "E04.bounded": [
+      "E04.C",
+      "E04.B"
+    ],
+    "E04.promise-breach": [
+      "E04.P",
+      "E04.C",
+      "E04.X"
+    ],
+    "E04.defer": [
+      "E04.D"
+    ],
+    "E04.real-work-callback": [
+      "E04.K"
+    ]
+  },
+  "lines": [
+    {
+      "type": "speech",
+      "id": "E01.C01",
+      "speaker": "LIMEN",
+      "listeners": [
+        "bob"
+      ],
+      "text": "Card.",
+      "practicalAction": "Require presentation.",
+      "requiredSources": [
+        "E01.missing"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.missing"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C02",
+      "speaker": "bob",
+      "listeners": [
+        "LIMEN",
+        "sam"
+      ],
+      "text": "It was here.",
+      "practicalAction": "Account for the empty holder.",
+      "requiredSources": [
+        "E01.missing"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.missing",
+        "E01.help"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.help",
+          "kind": "entry fact",
+          "basis": "They experienced the first-morning fall/help; sam did not see the pickup."
+        },
+        {
+          "id": "E01.C01",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C03",
+      "speaker": "LIMEN",
+      "listeners": [
+        "bob"
+      ],
+      "text": "Look again.",
+      "practicalAction": "Keep bob at the check.",
+      "requiredSources": [
+        "E01.missing"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.missing"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.C02",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C04",
+      "speaker": "bob",
+      "listeners": [
+        "sam"
+      ],
+      "text": "When I fell. Did you see where it went?",
+      "practicalAction": "Ask a witness without naming a holder.",
+      "requiredSources": [
+        "E01.help",
+        "E01.missing"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.missing",
+        "E01.help"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.help",
+          "kind": "entry fact",
+          "basis": "They experienced the first-morning fall/help; sam did not see the pickup."
+        },
+        {
+          "id": "E01.C03",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C05",
+      "speaker": "sam",
+      "listeners": [
+        "bob"
+      ],
+      "text": "I was looking at you.",
+      "practicalAction": "Answer within what sam actually attended to.",
+      "requiredSources": [
+        "E01.help"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.help",
+        "E01.sam-duty"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.help",
+          "kind": "entry fact",
+          "basis": "They experienced the first-morning fall/help; sam did not see the pickup."
+        },
+        {
+          "id": "E01.sam-duty",
+          "kind": "entry fact",
+          "basis": "sam has a valid assignment and their own upcoming work; accompanying bob to the desk does not erase it."
+        },
+        {
+          "id": "E01.C04",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C06",
+      "speaker": "bob",
+      "listeners": [
+        "sam"
+      ],
+      "text": "Will you come and ask?",
+      "practicalAction": "Request company, not an answer sam lacks.",
+      "requiredSources": [],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.missing",
+        "E01.help"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.help",
+          "kind": "entry fact",
+          "basis": "They experienced the first-morning fall/help; sam did not see the pickup."
+        },
+        {
+          "id": "E01.C05",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C07",
+      "speaker": "sam",
+      "listeners": [
+        "bob"
+      ],
+      "text": "To the desk. Then I’ve got to go.",
+      "practicalAction": "Limit the help to a task sam can finish.",
+      "requiredSources": [
+        "E01.sam-duty"
+      ],
+      "changedCommitment": "Accompany bob to the desk, then return to own duty.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.help",
+        "E01.sam-duty"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.help",
+          "kind": "entry fact",
+          "basis": "They experienced the first-morning fall/help; sam did not see the pickup."
+        },
+        {
+          "id": "E01.sam-duty",
+          "kind": "entry fact",
+          "basis": "sam has a valid assignment and their own upcoming work; accompanying bob to the desk does not erase it."
+        },
+        {
+          "id": "E01.C06",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C08",
+      "speaker": "LIMEN",
+      "listeners": [
+        "bob",
+        "sam"
+      ],
+      "text": "Stay this side.",
+      "practicalAction": "Permit an inquiry without admitting bob.",
+      "requiredSources": [],
+      "changedCommitment": "bob remains on the arrival side while asking at the desk.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.missing"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.C02",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C09",
+      "speaker": "bob",
+      "listeners": [
+        "ed",
+        "sam"
+      ],
+      "text": "Do found cards come here?",
+      "practicalAction": "Ask about a service; do not accuse ed.",
+      "requiredSources": [
+        "E01.missing"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.missing",
+        "E01.help"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.help",
+          "kind": "entry fact",
+          "basis": "They experienced the first-morning fall/help; sam did not see the pickup."
+        },
+        {
+          "id": "E01.C08",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C10",
+      "speaker": "ed",
+      "listeners": [
+        "bob",
+        "sam"
+      ],
+      "text": "Name?",
+      "practicalAction": "Open an entry on his terms.",
+      "requiredSources": [
+        "E01.register"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.ed-custody",
+        "E01.register"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.ed-custody",
+          "kind": "entry fact",
+          "basis": "E1 selected ed-procedure pickup and stow. Audience saw it; bob and sam did not."
+        },
+        {
+          "id": "E01.register",
+          "kind": "entry fact",
+          "basis": "ed is completing a real assigned register entry; the final row is still unfinished."
+        },
+        {
+          "id": "E01.C09",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C11",
+      "speaker": "bob",
+      "listeners": [
+        "ed",
+        "sam"
+      ],
+      "text": "bob.",
+      "practicalAction": "Identify himself.",
+      "requiredSources": [],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.missing",
+        "E01.help"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.help",
+          "kind": "entry fact",
+          "basis": "They experienced the first-morning fall/help; sam did not see the pickup."
+        },
+        {
+          "id": "E01.C10",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C12",
+      "speaker": "ed",
+      "listeners": [
+        "bob",
+        "sam"
+      ],
+      "text": "Wait till I finish this.",
+      "practicalAction": "Protect his unfinished row.",
+      "requiredSources": [
+        "E01.register"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.ed-custody",
+        "E01.register"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.ed-custody",
+          "kind": "entry fact",
+          "basis": "E1 selected ed-procedure pickup and stow. Audience saw it; bob and sam did not."
+        },
+        {
+          "id": "E01.register",
+          "kind": "entry fact",
+          "basis": "ed is completing a real assigned register entry; the final row is still unfinished."
+        },
+        {
+          "id": "E01.C11",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C13",
+      "speaker": "bob",
+      "listeners": [
+        "ed",
+        "sam"
+      ],
+      "text": "You asked.",
+      "practicalAction": "Object to being stopped after answering.",
+      "requiredSources": [],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.missing",
+        "E01.help"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.help",
+          "kind": "entry fact",
+          "basis": "They experienced the first-morning fall/help; sam did not see the pickup."
+        },
+        {
+          "id": "E01.C12",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C14",
+      "speaker": "ed",
+      "listeners": [
+        "bob",
+        "sam"
+      ],
+      "text": "bob. Conveyor?",
+      "practicalAction": "Check the assignment with its owner; the question is not prior knowledge of today’s assignment.",
+      "requiredSources": [],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.ed-custody",
+        "E01.register"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.ed-custody",
+          "kind": "entry fact",
+          "basis": "E1 selected ed-procedure pickup and stow. Audience saw it; bob and sam did not."
+        },
+        {
+          "id": "E01.register",
+          "kind": "entry fact",
+          "basis": "ed is completing a real assigned register entry; the final row is still unfinished."
+        },
+        {
+          "id": "E01.C13",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C15",
+      "speaker": "bob",
+      "listeners": [
+        "ed",
+        "sam"
+      ],
+      "text": "Conveyor.",
+      "practicalAction": "Supply his actual current assignment.",
+      "requiredSources": [
+        "E01.assignment"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.missing",
+        "E01.help"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.help",
+          "kind": "entry fact",
+          "basis": "They experienced the first-morning fall/help; sam did not see the pickup."
+        },
+        {
+          "id": "E01.C14",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A03",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E01.assignment",
+          "kind": "explicit prerequisite",
+          "basis": "Select this authored exchange only when bob’s current assignment is Conveyor."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.C16",
+      "speaker": "ed",
+      "listeners": [
+        "LIMEN",
+        "bob",
+        "sam"
+      ],
+      "text": "I have his card. May I return it?",
+      "practicalAction": "Disclose custody while asking for delegated authority.",
+      "requiredSources": [
+        "E01.ed-custody"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "bob/sam/LIMEN learn ed reports holding bob’s card. They have not witnessed its production or transfer.",
+      "encounter": "E01",
+      "block": "E01.C",
+      "variantGate": "Next LIMEN-run Security check, any eligible later day; bob still lacks his valid card.",
+      "entryKnowledge": [
+        "E01.ed-custody",
+        "E01.register"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.ed-custody",
+          "kind": "entry fact",
+          "basis": "E1 selected ed-procedure pickup and stow. Audience saw it; bob and sam did not."
+        },
+        {
+          "id": "E01.register",
+          "kind": "entry fact",
+          "basis": "ed is completing a real assigned register entry; the final row is still unfinished."
+        },
+        {
+          "id": "E01.C15",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.R01",
+      "speaker": "LIMEN",
+      "listeners": [
+        "ed",
+        "bob",
+        "sam"
+      ],
+      "text": "Match it. Then give it to him.",
+      "practicalAction": "Delegate a specific return.",
+      "requiredSources": [],
+      "changedCommitment": "Return allowed after the actual identity/validity match.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.R",
+      "variantGate": "LIMEN can authorize a verified return; identity/card validity can be checked.",
+      "entryKnowledge": [
+        "E01.missing"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.C16",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.R02",
+      "speaker": "ed",
+      "listeners": [
+        "bob",
+        "sam"
+      ],
+      "text": "Found at Security. First morning.",
+      "practicalAction": "Record the recovery while avoiding an explanation for keeping it.",
+      "requiredSources": [
+        "E01.ed-custody"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.R",
+      "variantGate": "LIMEN can authorize a verified return; identity/card validity can be checked.",
+      "entryKnowledge": [
+        "E01.ed-custody"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.ed-custody",
+          "kind": "entry fact",
+          "basis": "E1 selected ed-procedure pickup and stow. Audience saw it; bob and sam did not."
+        },
+        {
+          "id": "E01.R01",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A04",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.R03",
+      "speaker": "bob",
+      "listeners": [
+        "ed",
+        "sam"
+      ],
+      "text": "You could have told me.",
+      "practicalAction": "Challenge the silence, not the already-observed pickup he never saw.",
+      "requiredSources": [
+        "E01.A04",
+        "E01.R02"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.R",
+      "variantGate": "LIMEN can authorize a verified return; identity/card validity can be checked.",
+      "entryKnowledge": [
+        "E01.missing"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.R02",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A04",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.R04",
+      "speaker": "ed",
+      "listeners": [
+        "bob",
+        "sam"
+      ],
+      "text": "Received?",
+      "practicalAction": "Ask for acknowledgment of the return.",
+      "requiredSources": [
+        "E01.A05"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.R",
+      "variantGate": "LIMEN can authorize a verified return; identity/card validity can be checked.",
+      "entryKnowledge": [
+        "E01.ed-custody"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.ed-custody",
+          "kind": "entry fact",
+          "basis": "E1 selected ed-procedure pickup and stow. Audience saw it; bob and sam did not."
+        },
+        {
+          "id": "E01.R03",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A05",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.R05",
+      "speaker": "bob",
+      "listeners": [
+        "ed",
+        "sam"
+      ],
+      "text": "Yes.",
+      "practicalAction": "Acknowledge possession only.",
+      "requiredSources": [
+        "E01.A05"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Receipt acknowledged; no forgiveness or trust restoration implied.",
+      "encounter": "E01",
+      "block": "E01.R",
+      "variantGate": "LIMEN can authorize a verified return; identity/card validity can be checked.",
+      "entryKnowledge": [
+        "E01.missing"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.R04",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A05",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.R06",
+      "speaker": "sam",
+      "listeners": [
+        "bob"
+      ],
+      "text": "Come on.",
+      "practicalAction": "Resume the work route together.",
+      "requiredSources": [
+        "E01.A06"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.R",
+      "variantGate": "LIMEN can authorize a verified return; identity/card validity can be checked.",
+      "entryKnowledge": [
+        "E01.sam-duty"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.sam-duty",
+          "kind": "entry fact",
+          "basis": "sam has a valid assignment and their own upcoming work; accompanying bob to the desk does not erase it."
+        },
+        {
+          "id": "E01.R05",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A06",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.U01",
+      "speaker": "LIMEN",
+      "listeners": [
+        "ed",
+        "bob",
+        "sam"
+      ],
+      "text": "After the count. Keep it there.",
+      "practicalAction": "Defer the return decision until his current count is finished.",
+      "requiredSources": [],
+      "changedCommitment": "Review return after the count; this is not a promise of automatic recovery.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.U",
+      "variantGate": "Return authority is not granted now; no transfer occurs.",
+      "entryKnowledge": [
+        "E01.missing"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.C16",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.U02",
+      "speaker": "bob",
+      "listeners": [
+        "LIMEN",
+        "ed",
+        "sam"
+      ],
+      "text": "I need it to come through.",
+      "practicalAction": "Point to the immediate consequence of the hold.",
+      "requiredSources": [
+        "E01.missing",
+        "E01.U01"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.U",
+      "variantGate": "Return authority is not granted now; no transfer occurs.",
+      "entryKnowledge": [
+        "E01.missing"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.U01",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.U03",
+      "speaker": "LIMEN",
+      "listeners": [
+        "bob",
+        "ed",
+        "sam"
+      ],
+      "text": "Stay here, then.",
+      "practicalAction": "Maintain the hold until an authorized decision.",
+      "requiredSources": [],
+      "changedCommitment": "Hold remains active unless a permitted exception changes admission.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.U",
+      "variantGate": "Return authority is not granted now; no transfer occurs.",
+      "entryKnowledge": [
+        "E01.missing"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.U02",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.H01",
+      "speaker": "sam",
+      "listeners": [
+        "bob"
+      ],
+      "text": "I have to go.",
+      "practicalAction": "Honor the work commitment.",
+      "requiredSources": [
+        "E01.sam-duty",
+        "E01.C07"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.H",
+      "variantGate": "The competent authority retains the hold. If the adviser acts here, show that result; do not offer a retroactive player veto.",
+      "entryKnowledge": [
+        "E01.sam-duty"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.sam-duty",
+          "kind": "entry fact",
+          "basis": "sam has a valid assignment and their own upcoming work; accompanying bob to the desk does not erase it."
+        },
+        {
+          "id": "E01.U03",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A07",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E01.C07",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.H02",
+      "speaker": "bob",
+      "listeners": [
+        "sam"
+      ],
+      "text": "Go. I know where to ask now.",
+      "practicalAction": "Release sam from the offered help.",
+      "requiredSources": [
+        "E01.C16"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "bob can return to the named desk; ed’s custody remains an attributed report until seen.",
+      "encounter": "E01",
+      "block": "E01.H",
+      "variantGate": "The competent authority retains the hold. If the adviser acts here, show that result; do not offer a retroactive player veto.",
+      "entryKnowledge": [
+        "E01.missing"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.H01",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A07",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E01.C16",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.T01",
+      "speaker": "LIMEN",
+      "listeners": [
+        "bob",
+        "ed",
+        "sam"
+      ],
+      "text": "Conveyor. This shift only.",
+      "practicalAction": "Enact the delivered exception.",
+      "requiredSources": [
+        "E01.exception"
+      ],
+      "changedCommitment": "Admit bob for this shift without returning or checking a card.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.T",
+      "variantGate": "An authorized player/decision-maker grants admission for this shift only. Offer only on a valid authority path.",
+      "entryKnowledge": [
+        "E01.exception"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.exception",
+          "kind": "entry fact",
+          "basis": "A valid exception decision has been delivered to LIMEN; scope is this shift, no credential transfer."
+        },
+        {
+          "id": "E01.U02",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A07",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.T02",
+      "speaker": "bob",
+      "listeners": [
+        "ed"
+      ],
+      "text": "I’ll come back for it.",
+      "practicalAction": "Keep his own search active.",
+      "requiredSources": [
+        "E01.C16"
+      ],
+      "changedCommitment": "bob intends another inquiry; no forced future action or recovered flag.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.T",
+      "variantGate": "An authorized player/decision-maker grants admission for this shift only. Offer only on a valid authority path.",
+      "entryKnowledge": [
+        "E01.missing"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.missing",
+          "kind": "entry fact",
+          "basis": "Own inspection establishes absence to bob; LIMEN sees no valid card produced at this next check, not hidden custody. Select only while bob:id is absent."
+        },
+        {
+          "id": "E01.T01",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A07",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E01.C16",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.T03",
+      "speaker": "ed",
+      "listeners": [
+        "bob"
+      ],
+      "text": "Ask at the desk.",
+      "practicalAction": "Insist on the return channel.",
+      "requiredSources": [
+        "E01.ed-custody"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.T",
+      "variantGate": "An authorized player/decision-maker grants admission for this shift only. Offer only on a valid authority path.",
+      "entryKnowledge": [
+        "E01.ed-custody"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.ed-custody",
+          "kind": "entry fact",
+          "basis": "E1 selected ed-procedure pickup and stow. Audience saw it; bob and sam did not."
+        },
+        {
+          "id": "E01.T02",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A07",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.K01",
+      "speaker": "LIMEN",
+      "listeners": [
+        "bob"
+      ],
+      "text": "Card.",
+      "practicalAction": "Request a valid presentation.",
+      "requiredSources": [],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.K",
+      "variantGate": "Skip the entire missing-card scene when bob already holds his valid card.",
+      "entryKnowledge": [
+        "E01.presentation"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.presentation",
+          "kind": "entry fact",
+          "basis": "LIMEN sees bob present his actual card now; this does not reveal its earlier holder."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E01.K02",
+      "speaker": "bob",
+      "listeners": [
+        "LIMEN"
+      ],
+      "text": "Here.",
+      "practicalAction": "Complete the presentation.",
+      "requiredSources": [
+        "E01.recovered"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E01",
+      "block": "E01.K",
+      "variantGate": "Skip the entire missing-card scene when bob already holds his valid card.",
+      "entryKnowledge": [
+        "E01.recovered"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E01.recovered",
+          "kind": "entry fact",
+          "basis": "An actual prior recovery event put bob:id in bob’s possession. Source/witness record retained."
+        },
+        {
+          "id": "E01.K01",
+          "kind": "heard"
+        },
+        {
+          "id": "E01.A10",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.C01",
+      "speaker": "bob",
+      "listeners": [
+        "sam"
+      ],
+      "text": "Am I starting it?",
+      "practicalAction": "Clarify the turn before acting.",
+      "requiredSources": [
+        "E02.control"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.C",
+      "variantGate": "Same established Main Belt cycle in both variants. This is a later work scene, not a rewrite of E1.",
+      "entryKnowledge": [
+        "E02.control"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.C02",
+      "speaker": "sam",
+      "listeners": [
+        "bob"
+      ],
+      "text": "Yes. Wait till I’m clear.",
+      "practicalAction": "Convey permission with the physical release condition.",
+      "requiredSources": [
+        "E02.permission"
+      ],
+      "changedCommitment": "bob operates only after sam’s hand is out and the clear cue is received.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.C",
+      "variantGate": "Same established Main Belt cycle in both variants. This is a later work scene, not a rewrite of E1.",
+      "entryKnowledge": [
+        "E02.control",
+        "E02.permission"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.permission",
+          "kind": "entry fact",
+          "basis": "The actual operating authority has permitted bob this cycle; sam is conveying that instruction, not inventing authority."
+        },
+        {
+          "id": "E02.C01",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.C03",
+      "speaker": "bob",
+      "listeners": [
+        "sam"
+      ],
+      "text": "I am waiting.",
+      "practicalAction": "Ask sam to notice the restraint already being exercised.",
+      "requiredSources": [
+        "E02.A01"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.C",
+      "variantGate": "Same established Main Belt cycle in both variants. This is a later work scene, not a rewrite of E1.",
+      "entryKnowledge": [
+        "E02.control"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.C02",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.A04",
+      "speaker": "sam",
+      "listeners": [
+        "bob"
+      ],
+      "text": "Clear.",
+      "practicalAction": "Give the agreed cue.",
+      "requiredSources": [
+        "E02.A02",
+        "E02.C02"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.A",
+      "variantGate": "sam is free to remain beside this operation; no competing unattended duty calls them away.",
+      "entryKnowledge": [
+        "E02.control",
+        "E02.permission"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.permission",
+          "kind": "entry fact",
+          "basis": "The actual operating authority has permitted bob this cycle; sam is conveying that instruction, not inventing authority."
+        },
+        {
+          "id": "E02.C03",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A02",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E02.C02",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.A05",
+      "speaker": "bob",
+      "listeners": [
+        "sam"
+      ],
+      "text": "There. It sits down before it goes.",
+      "practicalAction": "Share the particular movement he was waiting to see.",
+      "requiredSources": [
+        "E02.A03"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.A",
+      "variantGate": "sam is free to remain beside this operation; no competing unattended duty calls them away.",
+      "entryKnowledge": [
+        "E02.control"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.A04",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.A06",
+      "speaker": "sam",
+      "listeners": [
+        "bob"
+      ],
+      "text": "I was watching your hand.",
+      "practicalAction": "Admit their attention was on the learner.",
+      "requiredSources": [
+        "E02.A03"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.A",
+      "variantGate": "sam is free to remain beside this operation; no competing unattended duty calls them away.",
+      "entryKnowledge": [
+        "E02.control",
+        "E02.permission"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.permission",
+          "kind": "entry fact",
+          "basis": "The actual operating authority has permitted bob this cycle; sam is conveying that instruction, not inventing authority."
+        },
+        {
+          "id": "E02.A05",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.A07",
+      "speaker": "bob",
+      "listeners": [
+        "sam"
+      ],
+      "text": "Watch this bit next time.",
+      "practicalAction": "Invite sam to enjoy the mechanism.",
+      "requiredSources": [
+        "E02.A03"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.A",
+      "variantGate": "sam is free to remain beside this operation; no competing unattended duty calls them away.",
+      "entryKnowledge": [
+        "E02.control"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.A06",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.A08",
+      "speaker": "sam",
+      "listeners": [
+        "bob"
+      ],
+      "text": "My turn next time.",
+      "practicalAction": "Keep an interest of their own.",
+      "requiredSources": [],
+      "changedCommitment": "sam asks for the next eligible turn; this does not reassign the station automatically.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.A",
+      "variantGate": "sam is free to remain beside this operation; no competing unattended duty calls them away.",
+      "entryKnowledge": [
+        "E02.control",
+        "E02.permission"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.permission",
+          "kind": "entry fact",
+          "basis": "The actual operating authority has permitted bob this cycle; sam is conveying that instruction, not inventing authority."
+        },
+        {
+          "id": "E02.A07",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.A09",
+      "speaker": "bob",
+      "listeners": [
+        "sam"
+      ],
+      "text": "All right. I’ll watch.",
+      "practicalAction": "Agree to exchange roles when a next turn is permitted.",
+      "requiredSources": [],
+      "changedCommitment": "bob will leave the next permitted turn to sam; no unrelated authority promise.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.A",
+      "variantGate": "sam is free to remain beside this operation; no competing unattended duty calls them away.",
+      "entryKnowledge": [
+        "E02.control"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.A08",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.B01",
+      "speaker": "STILETTO",
+      "listeners": [
+        "sam",
+        "bob"
+      ],
+      "text": "sam. Wash is waiting.",
+      "practicalAction": "Call the assigned worker to an idle operation.",
+      "requiredSources": [
+        "E02.wash-vacant"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.B",
+      "variantGate": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair.",
+      "entryKnowledge": [
+        "E02.wash-vacant"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.wash-vacant",
+          "kind": "entry fact",
+          "basis": "STILETTO can see the unattended wash and has the authority to call its assigned worker."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.B02",
+      "speaker": "sam",
+      "listeners": [
+        "bob"
+      ],
+      "text": "Clear. Start it.",
+      "practicalAction": "Finish helping before leaving.",
+      "requiredSources": [
+        "E02.A11",
+        "E02.C02"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.B",
+      "variantGate": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair.",
+      "entryKnowledge": [
+        "E02.control",
+        "E02.permission",
+        "E02.wash-duty"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.permission",
+          "kind": "entry fact",
+          "basis": "The actual operating authority has permitted bob this cycle; sam is conveying that instruction, not inventing authority."
+        },
+        {
+          "id": "E02.wash-duty",
+          "kind": "entry fact",
+          "basis": "sam’s actual wash assignment competes with remaining beside bob."
+        },
+        {
+          "id": "E02.B01",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A11",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E02.C02",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.B03",
+      "speaker": "bob",
+      "listeners": [
+        "sam"
+      ],
+      "text": "Stay for this bit.",
+      "practicalAction": "Ask for company while the movement is still visible.",
+      "requiredSources": [
+        "E02.A12"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.B",
+      "variantGate": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair.",
+      "entryKnowledge": [
+        "E02.control"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.B02",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A12",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.B04",
+      "speaker": "sam",
+      "listeners": [
+        "bob"
+      ],
+      "text": "I can’t. The wash is mine.",
+      "practicalAction": "Name the work that prevents staying.",
+      "requiredSources": [
+        "E02.wash-duty"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.B",
+      "variantGate": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair.",
+      "entryKnowledge": [
+        "E02.control",
+        "E02.permission",
+        "E02.wash-duty"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.permission",
+          "kind": "entry fact",
+          "basis": "The actual operating authority has permitted bob this cycle; sam is conveying that instruction, not inventing authority."
+        },
+        {
+          "id": "E02.wash-duty",
+          "kind": "entry fact",
+          "basis": "sam’s actual wash assignment competes with remaining beside bob."
+        },
+        {
+          "id": "E02.B03",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A12",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.B05",
+      "speaker": "bob",
+      "listeners": [
+        "sam"
+      ],
+      "text": "After this one?",
+      "practicalAction": "Ask for a later opportunity, not diagnose rejection.",
+      "requiredSources": [],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.B",
+      "variantGate": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair.",
+      "entryKnowledge": [
+        "E02.control"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.B04",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A12",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E02.B06",
+      "speaker": "sam",
+      "listeners": [
+        "bob"
+      ],
+      "text": "When the tray’s empty.",
+      "practicalAction": "Offer a conditional return.",
+      "requiredSources": [
+        "E02.wash-duty"
+      ],
+      "changedCommitment": "Return only when the actual wash task clears; this condition is not a timer or a guaranteed next scene.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E02",
+      "block": "E02.B",
+      "variantGate": "The real wash position is unattended, sam is assigned to cover it, and STILETTO observes both the vacancy and this pair.",
+      "entryKnowledge": [
+        "E02.control",
+        "E02.permission",
+        "E02.wash-duty"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E02.control",
+          "kind": "entry fact",
+          "basis": "Both admitted and able to work; prior stage complete, bob physically at the Main Belt control, sam settling the carrier/clamp by hand while drive is stopped."
+        },
+        {
+          "id": "E02.permission",
+          "kind": "entry fact",
+          "basis": "The actual operating authority has permitted bob this cycle; sam is conveying that instruction, not inventing authority."
+        },
+        {
+          "id": "E02.wash-duty",
+          "kind": "entry fact",
+          "basis": "sam’s actual wash assignment competes with remaining beside bob."
+        },
+        {
+          "id": "E02.B05",
+          "kind": "heard"
+        },
+        {
+          "id": "E02.A12",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.N01",
+      "speaker": "LIMEN",
+      "listeners": [
+        "STILETTO",
+        "gus"
+      ],
+      "text": "I’m still checking this one.",
+      "practicalAction": "Defend the current hold.",
+      "requiredSources": [
+        "E03.queue"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.N",
+      "variantGate": "Use a real queue plus an idle wash; no new Conveyor accident or injury is needed. This does not erase E1’s blow.",
+      "entryKnowledge": [
+        "E03.queue"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.queue",
+          "kind": "entry fact",
+          "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check."
+        },
+        {
+          "id": "E03.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.N02",
+      "speaker": "STILETTO",
+      "listeners": [
+        "LIMEN",
+        "gus"
+      ],
+      "text": "And my wash is still empty.",
+      "practicalAction": "Name the cost she is carrying.",
+      "requiredSources": [
+        "E03.empty-wash"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.N",
+      "variantGate": "Use a real queue plus an idle wash; no new Conveyor accident or injury is needed. This does not erase E1’s blow.",
+      "entryKnowledge": [
+        "E03.empty-wash"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.empty-wash",
+          "kind": "entry fact",
+          "basis": "The visible wash is unstaffed in this run; both can see the destination from this staged threshold."
+        },
+        {
+          "id": "E03.N01",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.W01",
+      "speaker": "LIMEN",
+      "listeners": [
+        "STILETTO",
+        "gus"
+      ],
+      "text": "sam says the drive needs slowing.",
+      "practicalAction": "Attribute his evidence to its actual source.",
+      "requiredSources": [
+        "E03.warning-report"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.W",
+      "variantGate": "Replace the no-warning inlet only when sam actually supplied the warning report. Same meeting/visible queue; no invented accident.",
+      "entryKnowledge": [
+        "E03.queue",
+        "E03.warning-report"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.queue",
+          "kind": "entry fact",
+          "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check."
+        },
+        {
+          "id": "E03.warning-report",
+          "kind": "entry fact",
+          "basis": "A named earlier event has sam report a real tempo warning to LIMEN. Require the report and warning record; do not manufacture them for this branch."
+        },
+        {
+          "id": "E03.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.W02",
+      "speaker": "STILETTO",
+      "listeners": [
+        "LIMEN",
+        "gus"
+      ],
+      "text": "The wash is empty. I need workers.",
+      "practicalAction": "Seek staffing rather than concede a welfare motive.",
+      "requiredSources": [
+        "E03.empty-wash"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.W",
+      "variantGate": "Replace the no-warning inlet only when sam actually supplied the warning report. Same meeting/visible queue; no invented accident.",
+      "entryKnowledge": [
+        "E03.empty-wash"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.empty-wash",
+          "kind": "entry fact",
+          "basis": "The visible wash is unstaffed in this run; both can see the destination from this staged threshold."
+        },
+        {
+          "id": "E03.W01",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C01",
+      "speaker": "STILETTO",
+      "listeners": [
+        "LIMEN",
+        "gus"
+      ],
+      "text": "Put me here tomorrow.",
+      "practicalAction": "Bid for Security authority; tomorrow means the next authorized morning.",
+      "requiredSources": [],
+      "changedCommitment": "Proposal: STILETTO to Security at planning.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.empty-wash"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.empty-wash",
+          "kind": "entry fact",
+          "basis": "The visible wash is unstaffed in this run; both can see the destination from this staged threshold."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C02",
+      "speaker": "LIMEN",
+      "listeners": [
+        "STILETTO",
+        "gus"
+      ],
+      "text": "Then I take Conveyor.",
+      "practicalAction": "Bid for control of the line.",
+      "requiredSources": [],
+      "changedCommitment": "Proposal: LIMEN to Conveyor; no assignment yet.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.queue"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.queue",
+          "kind": "entry fact",
+          "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check."
+        },
+        {
+          "id": "E03.C01",
+          "kind": "heard"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C03",
+      "speaker": "STILETTO",
+      "listeners": [
+        "LIMEN",
+        "gus"
+      ],
+      "text": "Yes.",
+      "practicalAction": "Accept the diagram, before hearing his operating condition.",
+      "requiredSources": [],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.empty-wash"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.empty-wash",
+          "kind": "entry fact",
+          "basis": "The visible wash is unstaffed in this run; both can see the destination from this staged threshold."
+        },
+        {
+          "id": "E03.C02",
+          "kind": "heard"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C04",
+      "speaker": "LIMEN",
+      "listeners": [
+        "STILETTO",
+        "gus"
+      ],
+      "text": "One carrier at a time.",
+      "practicalAction": "Attach a pace condition to his bid.",
+      "requiredSources": [],
+      "changedCommitment": "Proposed scoped Conveyor limit; binding only if accepted through operating authority.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.queue"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.queue",
+          "kind": "entry fact",
+          "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check."
+        },
+        {
+          "id": "E03.C03",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C05",
+      "speaker": "STILETTO",
+      "listeners": [
+        "LIMEN",
+        "gus"
+      ],
+      "text": "You’ll have all your workers.",
+      "practicalAction": "Sell the benefit of quicker admission.",
+      "requiredSources": [
+        "E03.queue"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.empty-wash"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.empty-wash",
+          "kind": "entry fact",
+          "basis": "The visible wash is unstaffed in this run; both can see the destination from this staged threshold."
+        },
+        {
+          "id": "E03.C04",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A03",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E03.queue",
+          "kind": "explicit prerequisite",
+          "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C06",
+      "speaker": "LIMEN",
+      "listeners": [
+        "STILETTO",
+        "gus"
+      ],
+      "text": "And they’ll start when there’s room.",
+      "practicalAction": "Refuse to equate extra workers with permission to feed.",
+      "requiredSources": [],
+      "changedCommitment": "His bid requires available receiving space before another start.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.queue"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.queue",
+          "kind": "entry fact",
+          "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check."
+        },
+        {
+          "id": "E03.C05",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C07",
+      "speaker": "STILETTO",
+      "listeners": [
+        "LIMEN",
+        "gus"
+      ],
+      "text": "I’m clearing this queue so they can work.",
+      "practicalAction": "Insist on the purpose she expects the swap to serve.",
+      "requiredSources": [
+        "E03.queue"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.empty-wash"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.empty-wash",
+          "kind": "entry fact",
+          "basis": "The visible wash is unstaffed in this run; both can see the destination from this staged threshold."
+        },
+        {
+          "id": "E03.C06",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A03",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E03.queue",
+          "kind": "explicit prerequisite",
+          "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C08",
+      "speaker": "LIMEN",
+      "listeners": [
+        "STILETTO",
+        "gus"
+      ],
+      "text": "I won’t send the next carrier into a full space.",
+      "practicalAction": "Name the constraint she is minimizing.",
+      "requiredSources": [],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.queue"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.queue",
+          "kind": "entry fact",
+          "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check."
+        },
+        {
+          "id": "E03.C07",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C09",
+      "speaker": "gus",
+      "listeners": [
+        "LIMEN",
+        "STILETTO"
+      ],
+      "text": "Who tells me there’s room?",
+      "practicalAction": "Ask about the condition he just heard.",
+      "requiredSources": [
+        "E03.C06",
+        "E03.C08"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.queue"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.queue",
+          "kind": "entry fact",
+          "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check."
+        },
+        {
+          "id": "E03.C08",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A03",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E03.C06",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C10",
+      "speaker": "LIMEN",
+      "listeners": [
+        "gus",
+        "STILETTO"
+      ],
+      "text": "I do.",
+      "practicalAction": "Claim the proposed release decision.",
+      "requiredSources": [],
+      "changedCommitment": "LIMEN claims release signaling if his proposed Conveyor authority is accepted.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.queue"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.queue",
+          "kind": "entry fact",
+          "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check."
+        },
+        {
+          "id": "E03.C09",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C11",
+      "speaker": "STILETTO",
+      "listeners": [
+        "LIMEN",
+        "gus"
+      ],
+      "text": "You’ll be on the line.",
+      "practicalAction": "Place him physically at the other end of the dependency.",
+      "requiredSources": [
+        "E03.C02"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.empty-wash"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.empty-wash",
+          "kind": "entry fact",
+          "basis": "The visible wash is unstaffed in this run; both can see the destination from this staged threshold."
+        },
+        {
+          "id": "E03.C10",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A03",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E03.C02",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C12",
+      "speaker": "LIMEN",
+      "listeners": [
+        "STILETTO",
+        "gus"
+      ],
+      "text": "Exactly.",
+      "practicalAction": "Confirm that the dependency is intentional.",
+      "requiredSources": [],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.queue"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.queue",
+          "kind": "entry fact",
+          "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check."
+        },
+        {
+          "id": "E03.C11",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C13",
+      "speaker": "STILETTO",
+      "listeners": [
+        "LIMEN",
+        "gus"
+      ],
+      "text": "So I’ll be waiting for you from the other end.",
+      "practicalAction": "Identify the remaining cost of the arrangement.",
+      "requiredSources": [
+        "E03.C06",
+        "E03.C10"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.empty-wash"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.empty-wash",
+          "kind": "entry fact",
+          "basis": "The visible wash is unstaffed in this run; both can see the destination from this staged threshold."
+        },
+        {
+          "id": "E03.C12",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A03",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E03.C06",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        },
+        {
+          "id": "E03.C10",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E03.C14",
+      "speaker": "LIMEN",
+      "listeners": [
+        "STILETTO",
+        "gus"
+      ],
+      "text": "Yes.",
+      "practicalAction": "Accept the cost she hoped to remove.",
+      "requiredSources": [],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E03",
+      "block": "E03.C",
+      "variantGate": "Continue either inlet at the next authorized planning opportunity; their agreement is a proposal, not a mid-shift reassignment.",
+      "entryKnowledge": [
+        "E03.queue"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E03.queue",
+          "kind": "entry fact",
+          "basis": "At a valid shared-threshold meeting, the real queue is visible; LIMEN has a current incomplete check."
+        },
+        {
+          "id": "E03.C13",
+          "kind": "heard"
+        },
+        {
+          "id": "E03.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.C01",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "No power. Just the movement.",
+      "practicalAction": "Define the safe demonstration for everyone present.",
+      "requiredSources": [
+        "E04.safe-demo"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.C",
+      "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period.",
+      "entryKnowledge": [
+        "E04.observation",
+        "E04.scope",
+        "E04.safe-demo"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.observation",
+          "kind": "entry fact",
+          "basis": "CATHEXIS actually saw a prior E02 clear-cue cycle or an equivalent attributed demonstration. This showing uses the witnessed route; absent observation makes it ineligible."
+        },
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.safe-demo",
+          "kind": "entry fact",
+          "basis": "The proposed Theatre demonstration is unpowered; a control/carrier surrogate and safe staging still require art/engine approval."
+        },
+        {
+          "id": "E04.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.C02",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "Start facing them.",
+      "practicalAction": "Arrange bob for the audience she wants.",
+      "requiredSources": [
+        "E04.observation"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.C",
+      "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period.",
+      "entryKnowledge": [
+        "E04.observation",
+        "E04.scope",
+        "E04.safe-demo"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.observation",
+          "kind": "entry fact",
+          "basis": "CATHEXIS actually saw a prior E02 clear-cue cycle or an equivalent attributed demonstration. This showing uses the witnessed route; absent observation makes it ineligible."
+        },
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.safe-demo",
+          "kind": "entry fact",
+          "basis": "The proposed Theatre demonstration is unpowered; a control/carrier surrogate and safe staging still require art/engine approval."
+        },
+        {
+          "id": "E04.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.C03",
+      "speaker": "bob",
+      "listeners": [
+        "CATHEXIS",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "I need to see sam’s hand.",
+      "practicalAction": "Keep his attention on the physical start condition.",
+      "requiredSources": [
+        "E04.routine"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.C",
+      "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period.",
+      "entryKnowledge": [
+        "E04.routine",
+        "E04.scope",
+        "E04.safe-demo"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.safe-demo",
+          "kind": "entry fact",
+          "basis": "The proposed Theatre demonstration is unpowered; a control/carrier surrogate and safe staging still require art/engine approval."
+        },
+        {
+          "id": "E04.C02",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.C04",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "You know where it is.",
+      "practicalAction": "Ask familiarity to substitute for watching.",
+      "requiredSources": [
+        "E04.observation"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.C",
+      "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period.",
+      "entryKnowledge": [
+        "E04.observation",
+        "E04.scope",
+        "E04.safe-demo"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.observation",
+          "kind": "entry fact",
+          "basis": "CATHEXIS actually saw a prior E02 clear-cue cycle or an equivalent attributed demonstration. This showing uses the witnessed route; absent observation makes it ineligible."
+        },
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.safe-demo",
+          "kind": "entry fact",
+          "basis": "The proposed Theatre demonstration is unpowered; a control/carrier surrogate and safe staging still require art/engine approval."
+        },
+        {
+          "id": "E04.C03",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.C05",
+      "speaker": "sam",
+      "listeners": [
+        "CATHEXIS",
+        "bob",
+        "ed",
+        "kit"
+      ],
+      "text": "It moves.",
+      "practicalAction": "Correct her from the hand’s actual owner.",
+      "requiredSources": [
+        "E04.A01"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.C",
+      "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period.",
+      "entryKnowledge": [
+        "E04.routine",
+        "E04.scope",
+        "E04.safe-demo"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.safe-demo",
+          "kind": "entry fact",
+          "basis": "The proposed Theatre demonstration is unpowered; a control/carrier surrogate and safe staging still require art/engine approval."
+        },
+        {
+          "id": "E04.C04",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A01",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.C06",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "ed",
+        "kit",
+        "bob",
+        "sam"
+      ],
+      "text": "Here, then. You can see both.",
+      "practicalAction": "Solve her composition problem without abandoning the audience.",
+      "requiredSources": [
+        "E04.A02"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.C",
+      "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period.",
+      "entryKnowledge": [
+        "E04.observation",
+        "E04.scope",
+        "E04.safe-demo"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.observation",
+          "kind": "entry fact",
+          "basis": "CATHEXIS actually saw a prior E02 clear-cue cycle or an equivalent attributed demonstration. This showing uses the witnessed route; absent observation makes it ineligible."
+        },
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.safe-demo",
+          "kind": "entry fact",
+          "basis": "The proposed Theatre demonstration is unpowered; a control/carrier surrogate and safe staging still require art/engine approval."
+        },
+        {
+          "id": "E04.C05",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.C07",
+      "speaker": "bob",
+      "listeners": [
+        "kit",
+        "CATHEXIS",
+        "sam",
+        "ed"
+      ],
+      "text": "Can you see the gap?",
+      "practicalAction": "Find a particular listener for the mechanism.",
+      "requiredSources": [
+        "E04.A02"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.C",
+      "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period.",
+      "entryKnowledge": [
+        "E04.routine",
+        "E04.scope",
+        "E04.safe-demo"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.safe-demo",
+          "kind": "entry fact",
+          "basis": "The proposed Theatre demonstration is unpowered; a control/carrier surrogate and safe staging still require art/engine approval."
+        },
+        {
+          "id": "E04.C06",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.C08",
+      "speaker": "kit",
+      "listeners": [
+        "bob",
+        "CATHEXIS",
+        "sam",
+        "ed"
+      ],
+      "text": "Yes.",
+      "practicalAction": "Answer without asking for a slower explanation.",
+      "requiredSources": [
+        "E04.A02"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.C",
+      "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period.",
+      "entryKnowledge": [
+        "E04.scope"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.C07",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.C09",
+      "speaker": "bob",
+      "listeners": [
+        "kit",
+        "CATHEXIS",
+        "sam",
+        "ed"
+      ],
+      "text": "That’s what I’m waiting for.",
+      "practicalAction": "Show the part of the action that matters.",
+      "requiredSources": [
+        "E04.routine",
+        "E04.A02"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.C",
+      "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period.",
+      "entryKnowledge": [
+        "E04.routine",
+        "E04.scope",
+        "E04.safe-demo"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.safe-demo",
+          "kind": "entry fact",
+          "basis": "The proposed Theatre demonstration is unpowered; a control/carrier surrogate and safe staging still require art/engine approval."
+        },
+        {
+          "id": "E04.C08",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A02",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.C10",
+      "speaker": "sam",
+      "listeners": [
+        "bob",
+        "CATHEXIS",
+        "ed",
+        "kit"
+      ],
+      "text": "Clear.",
+      "practicalAction": "Give the witnessed cue.",
+      "requiredSources": [
+        "E04.A03",
+        "E04.routine"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.C",
+      "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period.",
+      "entryKnowledge": [
+        "E04.routine",
+        "E04.scope",
+        "E04.safe-demo"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.safe-demo",
+          "kind": "entry fact",
+          "basis": "The proposed Theatre demonstration is unpowered; a control/carrier surrogate and safe staging still require art/engine approval."
+        },
+        {
+          "id": "E04.C09",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A03",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.C11",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "Let them see you’ve finished.",
+      "practicalAction": "Ask for an ending the audience can receive.",
+      "requiredSources": [
+        "E04.A04"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.C",
+      "variantGate": "CATHEXIS has actually observed the cue. After a valid Theatre invitation/readiness, bob and sam demonstrate to ed and kit, taken off their real duties for this authorized period.",
+      "entryKnowledge": [
+        "E04.observation",
+        "E04.scope",
+        "E04.safe-demo"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.observation",
+          "kind": "entry fact",
+          "basis": "CATHEXIS actually saw a prior E02 clear-cue cycle or an equivalent attributed demonstration. This showing uses the witnessed route; absent observation makes it ineligible."
+        },
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.safe-demo",
+          "kind": "entry fact",
+          "basis": "The proposed Theatre demonstration is unpowered; a control/carrier surrogate and safe staging still require art/engine approval."
+        },
+        {
+          "id": "E04.C10",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A04",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.B01",
+      "speaker": "sam",
+      "listeners": [
+        "bob",
+        "CATHEXIS",
+        "ed",
+        "kit"
+      ],
+      "text": "My turn.",
+      "practicalAction": "Claim a turn in the work they share.",
+      "requiredSources": [
+        "E04.routine"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.B",
+      "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn.",
+      "entryKnowledge": [
+        "E04.routine"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.C11",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A05",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.B02",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "bob, you give the signal.",
+      "practicalAction": "Turn their exchange into a repeatable public form.",
+      "requiredSources": [],
+      "changedCommitment": "Exchange demonstration roles within this authorized paired routine.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.B",
+      "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn.",
+      "entryKnowledge": [
+        "E04.scope"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.B01",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A05",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.B03",
+      "speaker": "bob",
+      "listeners": [
+        "sam",
+        "CATHEXIS",
+        "ed",
+        "kit"
+      ],
+      "text": "Clear.",
+      "practicalAction": "Give the same scoped cue from the other position.",
+      "requiredSources": [
+        "E04.A06",
+        "E04.routine"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.B",
+      "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn.",
+      "entryKnowledge": [
+        "E04.routine"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.B02",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A06",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.B04",
+      "speaker": "ed",
+      "listeners": [
+        "sam",
+        "bob",
+        "CATHEXIS",
+        "kit"
+      ],
+      "text": "That word starts it?",
+      "practicalAction": "Check the instruction’s precise condition.",
+      "requiredSources": [
+        "E04.C10",
+        "E04.A04",
+        "E04.B03",
+        "E04.A07"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.B",
+      "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn.",
+      "entryKnowledge": [
+        "E04.scope"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.B03",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A07",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E04.C10",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        },
+        {
+          "id": "E04.A04",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.B05",
+      "speaker": "sam",
+      "listeners": [
+        "ed",
+        "bob",
+        "CATHEXIS",
+        "kit"
+      ],
+      "text": "Only if the hand’s out.",
+      "practicalAction": "Reject a verbal cue detached from the actual condition.",
+      "requiredSources": [
+        "E04.routine"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.B",
+      "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn.",
+      "entryKnowledge": [
+        "E04.routine"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.B04",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A07",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.B06",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "Keep that. The word and the hand.",
+      "practicalAction": "Adopt the bounded routine as programme material.",
+      "requiredSources": [
+        "E04.B05"
+      ],
+      "changedCommitment": "Attendees receive this routine; no authority over absent workers is conferred.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.B",
+      "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn.",
+      "entryKnowledge": [
+        "E04.scope"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.B05",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A07",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.B07",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "That’s enough. Back to your stations.",
+      "practicalAction": "End the authorized period.",
+      "requiredSources": [],
+      "changedCommitment": "Release these attendees to their actual work assignments.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.B",
+      "variantGate": "No one-demonstration release promise was made; the authorized bounded paired routine includes the exchanged turn.",
+      "entryKnowledge": [
+        "E04.scope"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.scope",
+          "kind": "entry fact",
+          "basis": "A bounded working-routine session is authorized after readiness; attendees know its actual scope. No Theatre entrance on a fixed calendar day."
+        },
+        {
+          "id": "E04.B05",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A07",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.P01",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "One demonstration. Then you and sam go back.",
+      "practicalAction": "Obtain participation with a specific release promise.",
+      "requiredSources": [
+        "E04.single-scope"
+      ],
+      "changedCommitment": "Release bob and sam after one completed demonstration; both actually hear it.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.P",
+      "variantGate": "Insert this before E04.C only for the single-demonstration commitment route; do not play E04.B in that route.",
+      "entryKnowledge": [
+        "E04.single-scope"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.single-scope",
+          "kind": "entry fact",
+          "basis": "Actual authorized scope is one demonstration followed by bob and sam returning together; no broadened attendance/second turn has been approved."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.X01",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "Once more. Keep looking at them this time.",
+      "practicalAction": "Seek the ending she wanted despite her promised limit.",
+      "requiredSources": [
+        "E04.A04",
+        "E04.A09"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.X",
+      "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust.",
+      "entryKnowledge": [
+        "E04.single-scope"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.single-scope",
+          "kind": "entry fact",
+          "basis": "Actual authorized scope is one demonstration followed by bob and sam returning together; no broadened attendance/second turn has been approved."
+        },
+        {
+          "id": "E04.C10",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A09",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E04.A04",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.X02",
+      "speaker": "bob",
+      "listeners": [
+        "CATHEXIS",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "You said one.",
+      "practicalAction": "Invoke the actual heard promise.",
+      "requiredSources": [
+        "E04.P01",
+        "E04.A04",
+        "E04.A09"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.X",
+      "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust.",
+      "entryKnowledge": [
+        "E04.routine"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.X01",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A09",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E04.P01",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        },
+        {
+          "id": "E04.A04",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.X03",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "I still need the ending.",
+      "practicalAction": "Keep asking for the public shape she considers incomplete.",
+      "requiredSources": [
+        "E04.A04"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.X",
+      "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust.",
+      "entryKnowledge": [
+        "E04.single-scope"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.single-scope",
+          "kind": "entry fact",
+          "basis": "Actual authorized scope is one demonstration followed by bob and sam returning together; no broadened attendance/second turn has been approved."
+        },
+        {
+          "id": "E04.X02",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A09",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E04.A04",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.X04",
+      "speaker": "bob",
+      "listeners": [
+        "CATHEXIS",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "sam’s due at the wash.",
+      "practicalAction": "Name the immediate competing duty.",
+      "requiredSources": [
+        "E04.sam-due"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.X",
+      "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust.",
+      "entryKnowledge": [
+        "E04.routine"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.X03",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A09",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E04.sam-due",
+          "kind": "explicit prerequisite",
+          "basis": "sam’s actual next duty is the wash; all three received that schedule before this one-demonstration session."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.X05",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "sam",
+        "bob",
+        "ed",
+        "kit"
+      ],
+      "text": "sam can go.",
+      "practicalAction": "Offer partial release while retaining bob.",
+      "requiredSources": [],
+      "changedCommitment": "Release sam alone; this does not fulfill the promise to release both.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.X",
+      "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust.",
+      "entryKnowledge": [
+        "E04.single-scope"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.single-scope",
+          "kind": "entry fact",
+          "basis": "Actual authorized scope is one demonstration followed by bob and sam returning together; no broadened attendance/second turn has been approved."
+        },
+        {
+          "id": "E04.X04",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A09",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.X06",
+      "speaker": "bob",
+      "listeners": [
+        "CATHEXIS",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "We were going together.",
+      "practicalAction": "Hold to the specific paired release.",
+      "requiredSources": [
+        "E04.P01"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.X",
+      "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust.",
+      "entryKnowledge": [
+        "E04.routine"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.X05",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A09",
+          "kind": "seen/experienced"
+        },
+        {
+          "id": "E04.P01",
+          "kind": "explicit prerequisite",
+          "basis": "Named earlier line/action must occur on this route before this line."
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.X07",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "text": "All right. Go.",
+      "practicalAction": "End the failed request.",
+      "requiredSources": [],
+      "changedCommitment": "Release both now; the earlier breach remains in the witnesses’ history.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.X",
+      "variantGate": "Only after P01 was heard, C/A04 actually completed the one demonstration, and the blocking action below occurs. No refusal branch from generic distrust.",
+      "entryKnowledge": [
+        "E04.single-scope"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.single-scope",
+          "kind": "entry fact",
+          "basis": "Actual authorized scope is one demonstration followed by bob and sam returning together; no broadened attendance/second turn has been approved."
+        },
+        {
+          "id": "E04.X06",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A10",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.D01",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob"
+      ],
+      "text": "I’d like you to show them that.",
+      "practicalAction": "Offer a programme rather than presume one.",
+      "requiredSources": [
+        "E04.observation"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.D",
+      "variantGate": "Play instead of the Theatre session when the authorized choice is defer. CATHEXIS has observed the routine, but no audience leaves work.",
+      "entryKnowledge": [
+        "E04.observation"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.observation",
+          "kind": "entry fact",
+          "basis": "CATHEXIS actually saw a prior E02 clear-cue cycle or an equivalent attributed demonstration. This showing uses the witnessed route; absent observation makes it ineligible."
+        },
+        {
+          "id": "E04.A12",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.D02",
+      "speaker": "bob",
+      "listeners": [
+        "CATHEXIS"
+      ],
+      "text": "When?",
+      "practicalAction": "Ask for a concrete place in his working time.",
+      "requiredSources": [],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.D",
+      "variantGate": "Play instead of the Theatre session when the authorized choice is defer. CATHEXIS has observed the routine, but no audience leaves work.",
+      "entryKnowledge": [
+        "E04.routine"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.D01",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A12",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.D03",
+      "speaker": "CATHEXIS",
+      "listeners": [
+        "bob"
+      ],
+      "text": "When they can leave the line.",
+      "practicalAction": "Leave the invitation conditional.",
+      "requiredSources": [],
+      "changedCommitment": "No programme date, attendance or authority until an eligible commitment.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.D",
+      "variantGate": "Play instead of the Theatre session when the authorized choice is defer. CATHEXIS has observed the routine, but no audience leaves work.",
+      "entryKnowledge": [
+        "E04.observation"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.observation",
+          "kind": "entry fact",
+          "basis": "CATHEXIS actually saw a prior E02 clear-cue cycle or an equivalent attributed demonstration. This showing uses the witnessed route; absent observation makes it ineligible."
+        },
+        {
+          "id": "E04.D02",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A12",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.K01",
+      "speaker": "bob",
+      "listeners": [
+        "kit"
+      ],
+      "text": "Ready?",
+      "practicalAction": "Ask the person at the mechanism.",
+      "requiredSources": [],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.K",
+      "variantGate": "Only after kit actually attended the demonstrated cue, has a comparable permitted task, and works beside bob. Skip after deferral or absence.",
+      "entryKnowledge": [
+        "E04.routine"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.routine",
+          "kind": "entry fact",
+          "basis": "Both performed the clear-hand/cue routine at the real Conveyor; preserve their actual E02 outcome, not an invented perfect prior shift."
+        },
+        {
+          "id": "E04.A13",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.K02",
+      "speaker": "kit",
+      "listeners": [
+        "bob"
+      ],
+      "text": "Not yet.",
+      "practicalAction": "Keep the start under the actual hand condition.",
+      "requiredSources": [
+        "E04.A13"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.K",
+      "variantGate": "Only after kit actually attended the demonstrated cue, has a comparable permitted task, and works beside bob. Skip after deferral or absence.",
+      "entryKnowledge": [
+        "E04.attended"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.attended",
+          "kind": "entry fact",
+          "basis": "kit actually witnessed E04.C10/A04 and received the hand-clear condition. Absent workers do not acquire it."
+        },
+        {
+          "id": "E04.K01",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A13",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    },
+    {
+      "type": "speech",
+      "id": "E04.K03",
+      "speaker": "kit",
+      "listeners": [
+        "bob"
+      ],
+      "text": "Clear.",
+      "practicalAction": "Use the cue he actually learned.",
+      "requiredSources": [
+        "E04.attended",
+        "E04.A14"
+      ],
+      "changedCommitment": "None asserted by this line.",
+      "consequence": "Only actual listed listeners in hearing range receive this attributed utterance; no automatic world-truth or relationship update.",
+      "encounter": "E04",
+      "block": "E04.K",
+      "variantGate": "Only after kit actually attended the demonstrated cue, has a comparable permitted task, and works beside bob. Skip after deferral or absence.",
+      "entryKnowledge": [
+        "E04.attended"
+      ],
+      "heardSeenSources": [
+        {
+          "id": "E04.attended",
+          "kind": "entry fact",
+          "basis": "kit actually witnessed E04.C10/A04 and received the hand-clear condition. Absent workers do not acquire it."
+        },
+        {
+          "id": "E04.K01",
+          "kind": "heard"
+        },
+        {
+          "id": "E04.A14",
+          "kind": "seen/experienced"
+        }
+      ],
+      "playerControl": "No player dialogue selection; character-authored attempt under the gated situation."
+    }
+  ],
+  "events": [
+    {
+      "type": "action",
+      "id": "E01.A01",
+      "text": "LIMEN waits at the threshold. bob puts a hand into his empty holder, takes it out, and checks once more. sam is near enough to hear. ed is finishing a row in the register.",
+      "actualWitnesses": [
+        "bob",
+        "LIMEN",
+        "sam"
+      ],
+      "stateChanges": [
+        "bob knows absence; holder still unknown to bob."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E01.C",
+      "encounter": "E01"
+    },
+    {
+      "type": "action",
+      "id": "E01.A02",
+      "text": "They reach the accessible edge of ed’s desk without crossing the admission line. ed keeps his place in the register.",
+      "actualWitnesses": [
+        "bob",
+        "sam",
+        "ed",
+        "LIMEN"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E01.C",
+      "encounter": "E01"
+    },
+    {
+      "type": "action",
+      "id": "E01.A03",
+      "text": "ed finishes the row. Only then does he look up. bob keeps his hand on the empty holder.",
+      "actualWitnesses": [
+        "bob",
+        "sam",
+        "ed"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E01.C",
+      "encounter": "E01"
+    },
+    {
+      "type": "action",
+      "id": "E01.A04",
+      "text": "ed takes out the same card, checks its identity against bob and the entry, and turns it far enough for bob to recognize it. The match must succeed for this branch.",
+      "actualWitnesses": [
+        "ed",
+        "bob",
+        "sam",
+        "LIMEN"
+      ],
+      "stateChanges": [
+        "bob/sam/LIMEN now see ed holding bob:id. No transfer yet."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E01.R",
+      "encounter": "E01"
+    },
+    {
+      "type": "action",
+      "id": "E01.A05",
+      "text": "ed runs a finger down the completed entry. He offers the card. bob takes it. ed has not answered the complaint.",
+      "actualWitnesses": [
+        "ed",
+        "bob",
+        "sam",
+        "LIMEN"
+      ],
+      "stateChanges": [
+        "Actual ed→bob transfer; search recovered; actual witnesses learn returned custody."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E01.R",
+      "encounter": "E01"
+    },
+    {
+      "type": "action",
+      "id": "E01.A06",
+      "text": "bob stows his card. LIMEN completes the valid check and clears him. sam turns towards their work route.",
+      "actualWitnesses": [
+        "bob",
+        "sam",
+        "ed",
+        "LIMEN"
+      ],
+      "stateChanges": [
+        "Valid credential admission after actual return/check."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E01.R",
+      "encounter": "E01"
+    },
+    {
+      "type": "action",
+      "id": "E01.A07",
+      "text": "ed’s hand returns to the register. The card stays stowed with him. bob remains at the edge of the route.",
+      "actualWitnesses": [
+        "ed",
+        "bob",
+        "sam",
+        "LIMEN"
+      ],
+      "stateChanges": [
+        "Custody unchanged. bob knows ed’s claim from C16; no return has been seen."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E01.U",
+      "encounter": "E01"
+    },
+    {
+      "type": "action",
+      "id": "E01.A08",
+      "text": "sam uses their own valid admission and goes to work. bob stays. The unoccupied Conveyor position belongs to this hold, not to an invented injury.",
+      "actualWitnesses": [
+        "bob",
+        "sam",
+        "LIMEN"
+      ],
+      "stateChanges": [
+        "bob unavailable to Conveyor; later return review remains pending."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E01.H",
+      "encounter": "E01"
+    },
+    {
+      "type": "action",
+      "id": "E01.A09",
+      "text": "bob crosses with an empty holder. ed’s stowed card has not moved. sam follows their work route.",
+      "actualWitnesses": [
+        "bob",
+        "ed",
+        "sam",
+        "LIMEN"
+      ],
+      "stateChanges": [
+        "Admission by exception only; missing card/search remain unresolved."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E01.T",
+      "encounter": "E01"
+    },
+    {
+      "type": "action",
+      "id": "E01.A10",
+      "text": "bob produces his card and keeps hold of its edge while showing it to LIMEN.",
+      "actualWitnesses": [
+        "bob",
+        "LIMEN"
+      ],
+      "stateChanges": [
+        "Actual presentation; no custody transfer."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E01.K",
+      "encounter": "E01"
+    },
+    {
+      "type": "action",
+      "id": "E01.A11",
+      "text": "LIMEN reads and validates the card, then signals bob through. bob stows it.",
+      "actualWitnesses": [
+        "bob",
+        "LIMEN"
+      ],
+      "stateChanges": [
+        "Normal credential admission; no repeated missing-card crisis."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E01.K",
+      "encounter": "E01"
+    },
+    {
+      "type": "action",
+      "id": "E02.A01",
+      "text": "bob waits at the control. sam settles the carrier under the clamp. Their large hand occupies the gap bob is watching; the drive remains stopped.",
+      "actualWitnesses": [
+        "bob",
+        "sam"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E02.C",
+      "encounter": "E02"
+    },
+    {
+      "type": "action",
+      "id": "E02.A02",
+      "text": "sam takes their hand out and leaves bob the control. Both can see the carrier.",
+      "actualWitnesses": [
+        "bob",
+        "sam"
+      ],
+      "stateChanges": [
+        "Hands clear; bob has an observable start condition."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E02.A",
+      "encounter": "E02"
+    },
+    {
+      "type": "action",
+      "id": "E02.A03",
+      "text": "bob starts the valid cycle. The carrier settles under the clamp before the belt carries it away. Both follow that small movement.",
+      "actualWitnesses": [
+        "bob",
+        "sam"
+      ],
+      "stateChanges": [
+        "Actual cycle progresses with bob in place; no reward before completion."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E02.A",
+      "encounter": "E02"
+    },
+    {
+      "type": "action",
+      "id": "E02.A11",
+      "text": "sam takes their hand completely out. They face the wash while leaving bob at the control.",
+      "actualWitnesses": [
+        "bob",
+        "sam",
+        "STILETTO"
+      ],
+      "stateChanges": [
+        "Clear condition met; sam has not taken over bob’s turn."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E02.B",
+      "encounter": "E02"
+    },
+    {
+      "type": "action",
+      "id": "E02.A12",
+      "text": "bob starts the same valid cycle. sam begins moving towards the actual unattended wash.",
+      "actualWitnesses": [
+        "bob",
+        "sam",
+        "STILETTO"
+      ],
+      "stateChanges": [
+        "bob operates; sam moves to their other duty."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E02.B",
+      "encounter": "E02"
+    },
+    {
+      "type": "action",
+      "id": "E02.A13",
+      "text": "sam reaches the wash. bob stays with his cycle. He can see the carrier move, but sam is no longer beside him to see it with him.",
+      "actualWitnesses": [
+        "bob",
+        "sam",
+        "STILETTO"
+      ],
+      "stateChanges": [
+        "The separation has a staffing cause; no compulsory injury or resentment."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E02.B",
+      "encounter": "E02"
+    },
+    {
+      "type": "action",
+      "id": "E03.A01",
+      "text": "The supervisors meet at the shared threshold at an allowed opportunity. gus is close enough to hear. A worker still waits at the check; the wash beyond is empty. Nobody has teleported away from an active operation.",
+      "actualWitnesses": [
+        "LIMEN",
+        "STILETTO",
+        "gus"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E03.N",
+      "encounter": "E03"
+    },
+    {
+      "type": "action",
+      "id": "E03.A02",
+      "text": "At the same shared threshold, LIMEN has received sam’s actual report. gus is present for this exchange, not for an unseen earlier incident.",
+      "actualWitnesses": [
+        "LIMEN",
+        "STILETTO",
+        "gus"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E03.W",
+      "encounter": "E03"
+    },
+    {
+      "type": "action",
+      "id": "E03.A03",
+      "text": "For a moment neither adds anything. STILETTO looks through the doorway towards the wash. LIMEN keeps facing her.",
+      "actualWitnesses": [
+        "LIMEN",
+        "STILETTO",
+        "gus"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E03.C",
+      "encounter": "E03"
+    },
+    {
+      "type": "action",
+      "id": "E03.A04",
+      "text": "gus looks from the queue to the place LIMEN means to occupy. The next assignment is still for the authorized decision-maker; neither supervisor has moved into a new job.",
+      "actualWitnesses": [
+        "LIMEN",
+        "STILETTO",
+        "gus"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E03.C",
+      "encounter": "E03"
+    },
+    {
+      "type": "action",
+      "id": "E04.A01",
+      "text": "At the unpowered demonstration control, bob faces the carrier. sam settles it. ed and kit stand where CATHEXIS has put them. Their places on the working line are actually covered or idle for this period.",
+      "actualWitnesses": [
+        "CATHEXIS",
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "stateChanges": [
+        "Attendance costs real worker time; no quota or duration is fabricated."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.C",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A02",
+      "text": "CATHEXIS shifts ed and kit to the side of the control. bob can now see sam and the audience without turning away from the gap.",
+      "actualWitnesses": [
+        "CATHEXIS",
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.C",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A03",
+      "text": "sam lifts their hand completely clear.",
+      "actualWitnesses": [
+        "CATHEXIS",
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "stateChanges": [
+        "Audience sees the cue’s physical condition."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.C",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A04",
+      "text": "bob demonstrates the start movement on the unpowered control. No brain is produced. He follows the carrier, still facing the work.",
+      "actualWitnesses": [
+        "CATHEXIS",
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "stateChanges": [
+        "One demonstration completed; attendees alone have witnessed it."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.C",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A05",
+      "text": "bob looks up towards kit and ed. sam keeps the place beside him.",
+      "actualWitnesses": [
+        "CATHEXIS",
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.C",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A06",
+      "text": "They change places. bob settles the carrier, then takes his hand out. sam waits at the unpowered control.",
+      "actualWitnesses": [
+        "CATHEXIS",
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.B",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A07",
+      "text": "sam performs the start movement. ed has watched both turns.",
+      "actualWitnesses": [
+        "CATHEXIS",
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "stateChanges": [
+        "Second demonstration turn completed without operating production equipment."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.B",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A08",
+      "text": "The four workers leave for their assigned work. CATHEXIS watches the arrangement of people break up before turning back to the control.",
+      "actualWitnesses": [
+        "CATHEXIS",
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "stateChanges": [
+        "Programme period ends; earlier custody, injuries, wear and relationships persist."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.B",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A09",
+      "text": "bob and sam turn to leave after the completed demonstration. CATHEXIS steps across their route and points bob back to the control. The promised departure is blocked now.",
+      "actualWitnesses": [
+        "CATHEXIS",
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "stateChanges": [
+        "Actual breach of the witnessed P01 release promise; no retroactive invented history."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.X",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A10",
+      "text": "bob leaves his hand off the control. sam waits at the edge of the route. No second demonstration begins. The others have seen a refused repeat, not a worker movement or a loyalty conversion.",
+      "actualWitnesses": [
+        "CATHEXIS",
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "stateChanges": [
+        "bob withholds the repeat after actual breach."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.X",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A11",
+      "text": "CATHEXIS moves out of the route. bob and sam leave together. ed and kit have seen the first routine and the broken limit; they have not been ordered to take sides.",
+      "actualWitnesses": [
+        "CATHEXIS",
+        "bob",
+        "sam",
+        "ed",
+        "kit"
+      ],
+      "stateChanges": [
+        "Departure occurs; no automatic forgiveness, punishment or factory-wide belief."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.X",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A12",
+      "text": "At the end of the observed work cycle, CATHEXIS addresses bob beside the actual Conveyor. The rest of the crew stay at work.",
+      "actualWitnesses": [
+        "CATHEXIS",
+        "bob"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.D",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A13",
+      "text": "kit settles the carrier; bob waits at the real control. Their actual current work permission remains necessary. sam is at their own task.",
+      "actualWitnesses": [
+        "bob",
+        "kit"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.K",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A14",
+      "text": "kit finishes seating the carrier and withdraws his hand.",
+      "actualWitnesses": [
+        "bob",
+        "kit"
+      ],
+      "stateChanges": [],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.K",
+      "encounter": "E04"
+    },
+    {
+      "type": "action",
+      "id": "E04.A15",
+      "text": "bob starts the permitted real cycle. kit stays to watch the carrier move. No absent worker has learned anything from this exchange.",
+      "actualWitnesses": [
+        "bob",
+        "kit"
+      ],
+      "stateChanges": [
+        "Visible local callback; no automatic success or output without real process completion."
+      ],
+      "attention": "Only the enacted beat advances factory state; reading this direction does not.",
+      "block": "E04.K",
+      "encounter": "E04"
+    }
+  ],
+  "playerOptions": [
+    {
+      "encounter": "E01",
+      "label": "Wait for the card decision",
+      "detail": "bob remains held. ed keeps the card until an actual authorized return. The count ending permits review, not automatic recovery.",
+      "gate": "Valid decision-maker retains hold; adviser-owned action may already be automatic.",
+      "doesNotControl": "bob’s inquiry, complaint or forgiveness"
+    },
+    {
+      "encounter": "E01",
+      "label": "Admit bob for this shift — card stays at Security",
+      "detail": "bob can work now; ed keeps the card, and bob’s search stays active. No card check or transfer is implied.",
+      "gate": "Only where the player/decision-maker has scoped exception authority.",
+      "doesNotControl": "bob’s next line or eventual card return"
+    },
+    {
+      "encounter": "E03",
+      "label": "Keep native rooms and the stated operating limit",
+      "detail": "Security checks and clerical diversion remain; lower pace may reduce added strain. No repair or guaranteed safety.",
+      "gate": "Authorized planning commitment."
+    },
+    {
+      "encounter": "E03",
+      "label": "Swap: STILETTO to Security, LIMEN to Conveyor",
+      "detail": "Faster admission; space/processing can still hold the line. Show STILETTO clearing workers and LIMEN waiting for receiving space.",
+      "gate": "Authorized planning commitment; no instant mid-shift swap."
+    },
+    {
+      "encounter": "E04",
+      "label": "Authorize the bounded working routine",
+      "detail": "One actual programme period takes the named attendees off the line. Only they learn the demonstrated cue. The one-demonstration promise variant has its own narrower scope.",
+      "gate": "Readiness and real spare coverage; next authorized programme cycle."
+    },
+    {
+      "encounter": "E04",
+      "label": "Back a broader programme",
+      "detail": "Authorize additional actual sessions/participants, with added lost work time and CATHEXIS authority expectations. No unseen session or allegiance change is awarded by the choice alone.",
+      "gate": "Separate proposed programme commitment; retain the bounded scene and schedule later sessions, not an automatic montage."
+    },
+    {
+      "encounter": "E04",
+      "label": "Defer; keep the crew on the line",
+      "detail": "No Theatre attendance or new cue knowledge. Existing local practice continues; no hidden rebellion or punishment.",
+      "gate": "Valid programme decision before attendance."
+    }
+  ]
+}

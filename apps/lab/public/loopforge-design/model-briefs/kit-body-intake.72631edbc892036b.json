@@ -1,0 +1,13 @@
+{
+  "id": "kit",
+  "body": {
+    "source": "output/opening-cast/kit/kit-body-v1.glb",
+    "sha256": "a94a8277d163341736b7875bb20cdb89e1d95ff95541ccb5ae61093bd882dd69",
+    "bytes": 15237248,
+    "triangles": 24970,
+    "skins": 0,
+    "animations": 0
+  },
+  "status": "downloaded unrigged body; visual review pending",
+  "approvedReference": "ensemble-badass"
+}

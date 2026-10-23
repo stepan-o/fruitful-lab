@@ -1,0 +1,2024 @@
+{
+  "at": "2026-10-22T23:20:07.678076+00:00",
+  "sourceCommitForOriginalDoctrines": "3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9",
+  "files": [
+    {
+      "path": "roles/producer.agent.json",
+      "category": "authored-role-template",
+      "status": "Current saved template; seeded Rules are not a full native memory dump.",
+      "sourceLocator": "agents/producer.agent.json",
+      "sourceSha256": "eaf7fc9fa1fe6a3e606c6383b44b5840cf818cc0bd7e12004bb385e4f09c23f4",
+      "publicSha256": "f8b1699d244f525cd6fac7b0a32256f16cd9a53055cc8e236ebb0aba68d0cdd6",
+      "bytes": 1577,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 2
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "briefs/producer.md",
+      "category": "authored-role-brief",
+      "status": "Current saved brief; opening instructions are historical after goal replacement.",
+      "sourceLocator": "briefs/producer.md",
+      "sourceSha256": "53ccc096e70ac4e92e0005969feaeb71dc12feceecd3b2e87817da58ee9814f5",
+      "publicSha256": "7dd6ff9ea3204c9b9d9c6f581c1b0d0c5b16ffd44947cbd3a773603f8d254df3",
+      "bytes": 7144,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${ENGINE_WORKTREE}",
+          "count": 5
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/role-maps/producer.md",
+      "category": "curated-foundation-map",
+      "status": "Dated source map, not proof every role read every source.",
+      "sourceLocator": "evidence/studio-foundations/roles/producer.md",
+      "sourceSha256": "c2f5b0be0cb86260a2c0e05bfa65e6d1568757c7a0eecd1400185f473a8cd30f",
+      "publicSha256": "87be237ddbe05465d70fcb70793cda7f29b30c7764821a1d05f45ec0bd50fd01",
+      "bytes": 4260,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 2
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "roles/writer.agent.json",
+      "category": "authored-role-template",
+      "status": "Current saved template; seeded Rules are not a full native memory dump.",
+      "sourceLocator": "agents/writer.agent.json",
+      "sourceSha256": "2bf09b2bf56805002137cc0ff9260252b8f7b622cd062b2290c52b7994bee6df",
+      "publicSha256": "4d9a7dd4ced834c4f152a8d9a8e85469bd7c2e99b696161c39e88ee6530a0b68",
+      "bytes": 4778,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 2
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "briefs/writer.md",
+      "category": "authored-role-brief",
+      "status": "Current saved brief; opening instructions are historical after goal replacement.",
+      "sourceLocator": "briefs/writer.md",
+      "sourceSha256": "b3eb4c21b1028de2afcb9781ce140f41ff63a89aaa4fc64f8c1b3dc6e3859c1a",
+      "publicSha256": "0a101a9ed88011becf0825b49e8218c201c76a3fb7ab55aff9b9a969690ece47",
+      "bytes": 5292,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/role-maps/writer.md",
+      "category": "curated-foundation-map",
+      "status": "Dated source map, not proof every role read every source.",
+      "sourceLocator": "evidence/studio-foundations/roles/writer.md",
+      "sourceSha256": "b3a1a768e87aac3ea82f08408babfa993f40badeef8e334f6dc78556feac8e8d",
+      "publicSha256": "52ecdbe5bff2f5884c1da0ef51aac007424ee1d2efe049f411510478184d4938",
+      "bytes": 4800,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "roles/critic.agent.json",
+      "category": "authored-role-template",
+      "status": "Current saved template; seeded Rules are not a full native memory dump.",
+      "sourceLocator": "agents/critic.agent.json",
+      "sourceSha256": "9252c3bcf6dac48473b4e04544dbdd61d686eb860b95cae276244dcf8a141a3c",
+      "publicSha256": "bc220735d70a842fe36b28412c75269218632b4b02a3fb4c2b56eb900ca49f38",
+      "bytes": 4623,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 2
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "briefs/critic.md",
+      "category": "authored-role-brief",
+      "status": "Current saved brief; opening instructions are historical after goal replacement.",
+      "sourceLocator": "briefs/critic.md",
+      "sourceSha256": "744c68affd98c25c6f9916f838a9ccdbb86b8391cf53cdfb68249b0c9ce568a1",
+      "publicSha256": "42c147aa7fb52f3197fa562eaca04a874b1c7c305309bf453aa77be513cf36fe",
+      "bytes": 5174,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/role-maps/critic.md",
+      "category": "curated-foundation-map",
+      "status": "Dated source map, not proof every role read every source.",
+      "sourceLocator": "evidence/studio-foundations/roles/critic.md",
+      "sourceSha256": "ff6cabc5582949722a7c11c9e4246f512469597587cf674249c20eef0d60b02b",
+      "publicSha256": "b037cc66c90c559f47bf43b88442bc8c208a6adc2db6838768f1a3c28e04cbf7",
+      "bytes": 4584,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "roles/animator.agent.json",
+      "category": "authored-role-template",
+      "status": "Current saved template; seeded Rules are not a full native memory dump.",
+      "sourceLocator": "agents/animator.agent.json",
+      "sourceSha256": "f6b0fd81facd968be803407a6cff8b1591e90bfb38035efa757fea6d3ace6831",
+      "publicSha256": "9b8f72d571c2960457f0f04d7229a57cb4a0f5ffde84ab6edfcafc9dbb81c057",
+      "bytes": 4967,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "briefs/animator.md",
+      "category": "authored-role-brief",
+      "status": "Current saved brief; opening instructions are historical after goal replacement.",
+      "sourceLocator": "briefs/animator.md",
+      "sourceSha256": "44d62e9afe7a03b55ca3790db81bd929c9bfb2db765473e7c250380dd2678c55",
+      "publicSha256": "833cf11b8d6027dd8df7d937f23d87b783027a2bbc088d5524b2364cade2605c",
+      "bytes": 4994,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/role-maps/animator.md",
+      "category": "curated-foundation-map",
+      "status": "Dated source map, not proof every role read every source.",
+      "sourceLocator": "evidence/studio-foundations/roles/animator.md",
+      "sourceSha256": "93ac288541c3b4034881bc9afe6d6d4a30b42001bc0b203f9f23df78f1c745cd",
+      "publicSha256": "d054e7d520e670cd192e4004bbf3f630280a76828ec52f482c534b922761f729",
+      "bytes": 4859,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "roles/engine-master.agent.json",
+      "category": "authored-role-template",
+      "status": "Current saved template; seeded Rules are not a full native memory dump.",
+      "sourceLocator": "agents/engine-master.agent.json",
+      "sourceSha256": "bdb919fe292fded5702a905fa656666a7a0d0b86dcd2852b7a8fbb81a91989c7",
+      "publicSha256": "a86afe32b9f915f4d81c0ea2e51908be683fcdbd76c826099799099ba42a7e66",
+      "bytes": 5359,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 2
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "briefs/engine-master.md",
+      "category": "authored-role-brief",
+      "status": "Current saved brief; opening instructions are historical after goal replacement.",
+      "sourceLocator": "briefs/engine-master.md",
+      "sourceSha256": "2d2b2bd92d0eeb9d3942d83e09f97e36dc6f1faf34d4ba09f9d55aa3a901d675",
+      "publicSha256": "1fddf5ab3232c5cda7261a6bcdb97631d298492400698be50d55f8b2d10dd9d5",
+      "bytes": 5068,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/role-maps/engine-master.md",
+      "category": "curated-foundation-map",
+      "status": "Dated source map, not proof every role read every source.",
+      "sourceLocator": "evidence/studio-foundations/roles/engine-master.md",
+      "sourceSha256": "4817ba2c937acf864a8608f0865f1035ca66f93ced53ff905bb9ff0f20820c4d",
+      "publicSha256": "ba4fa8f30ba4e0be34d3ee71b4b8ef79d8ab9bdb588c4f7c3b9c2130c63099e8",
+      "bytes": 5985,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "roles/game-systems.agent.json",
+      "category": "authored-role-template",
+      "status": "Current saved template; seeded Rules are not a full native memory dump.",
+      "sourceLocator": "agents/game-systems.agent.json",
+      "sourceSha256": "18b9c64ae604b752ed3cf886ad80788bdcfdb697e7390dbc4ff9dba7dba01559",
+      "publicSha256": "85f3ebcaaf185e555859df2b992ba259b1cd73046235fecf5f400f530b465f84",
+      "bytes": 4829,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 2
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "briefs/game-systems.md",
+      "category": "authored-role-brief",
+      "status": "Current saved brief; opening instructions are historical after goal replacement.",
+      "sourceLocator": "briefs/game-systems.md",
+      "sourceSha256": "ec42930fbfffd38a75d08114805a1e3c49cc68b51de6b56ff309990cdcc14468",
+      "publicSha256": "4e472a577896575ed31eff54b078236f6a70a5a1c13a4c0c2e67ddd22cabdf1b",
+      "bytes": 4547,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/role-maps/game-systems.md",
+      "category": "curated-foundation-map",
+      "status": "Dated source map, not proof every role read every source.",
+      "sourceLocator": "evidence/studio-foundations/roles/game-systems.md",
+      "sourceSha256": "47ce487caa391ac684fb60db2115064443da45b31dfa23b1fb970e701efb91b9",
+      "publicSha256": "961f33762ca62bd86d14582f5fe8e862ea6bdc526c1d7d2fe9a9def9b4ee36c1",
+      "bytes": 5850,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "roles/visual-artist.agent.json",
+      "category": "authored-role-template",
+      "status": "Current saved template; seeded Rules are not a full native memory dump.",
+      "sourceLocator": "agents/visual-artist.agent.json",
+      "sourceSha256": "8352e41aa1655591e54fe6c69f01de2a5d829d84a07e87574401bbdda61ff22d",
+      "publicSha256": "11cd7362197b6cca164276e852d66a1b08537f08b24ae096fae48ba09650390a",
+      "bytes": 4622,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 2
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "briefs/visual-artist.md",
+      "category": "authored-role-brief",
+      "status": "Current saved brief; opening instructions are historical after goal replacement.",
+      "sourceLocator": "briefs/visual-artist.md",
+      "sourceSha256": "fd219ac6b2957c5cfe8b1d0794ce08a1599b368496a3aa5a9cbc7a4d9698764b",
+      "publicSha256": "09799a41b554147742ff56eb995f73a9e5960cf15f22befbec38f81edac44885",
+      "bytes": 4341,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/role-maps/visual-artist.md",
+      "category": "curated-foundation-map",
+      "status": "Dated source map, not proof every role read every source.",
+      "sourceLocator": "evidence/studio-foundations/roles/visual-artist.md",
+      "sourceSha256": "51e34b1aec6d8a06de8e47c2db85f3bea9d53985396eeba6304d0e3b75ad5ac4",
+      "publicSha256": "1804344b195e23b26611087165bee0858db84297d7909b0d55494a755a6ad3f1",
+      "bytes": 5521,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "roles/3d-artist.agent.json",
+      "category": "authored-role-template",
+      "status": "Current saved template; seeded Rules are not a full native memory dump.",
+      "sourceLocator": "agents/3d-artist.agent.json",
+      "sourceSha256": "a11a6a95e180ed08a29655ca2ac95e1ca96869e3f6b967013bd223ea6614a1bc",
+      "publicSha256": "e71cc2cadf1bc411c3e04f2196f96c9a8b28379fd3089c38945a0f3311e500a3",
+      "bytes": 4626,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 2
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "briefs/3d-artist.md",
+      "category": "authored-role-brief",
+      "status": "Current saved brief; opening instructions are historical after goal replacement.",
+      "sourceLocator": "briefs/3d-artist.md",
+      "sourceSha256": "105d9a4b6995d1451b16f59e846e3a41422b3382c689d216845be5d570c10f4f",
+      "publicSha256": "bf45d9efbcd1a359e06b0eb208b08617dcb021b83259296ac5a5dbe5e52eac9a",
+      "bytes": 4341,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/role-maps/3d-artist.md",
+      "category": "curated-foundation-map",
+      "status": "Dated source map, not proof every role read every source.",
+      "sourceLocator": "evidence/studio-foundations/roles/3d-artist.md",
+      "sourceSha256": "ba4c43ab92b2d0b8baed8ff5e1c18f9e3111db0f3a4785fc8fee88a25bb3b9db",
+      "publicSha256": "fa22920e0436d79765d6a614d407bdee6036eaa2d6710985e52905ab347d621b",
+      "bytes": 5832,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "roles/level-designer.agent.json",
+      "category": "authored-role-template",
+      "status": "Current saved template; seeded Rules are not a full native memory dump.",
+      "sourceLocator": "agents/level-designer.agent.json",
+      "sourceSha256": "23347a31491ff627cb02be026101fb246f5b8b07c2cc571a832e1cea0a2b7107",
+      "publicSha256": "eb8aa196658b96c8462cab90f192739ede966ede47d75cf3bd0a09698a375f8c",
+      "bytes": 5155,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "briefs/level-designer.md",
+      "category": "authored-role-brief",
+      "status": "Current saved brief; opening instructions are historical after goal replacement.",
+      "sourceLocator": "briefs/level-designer.md",
+      "sourceSha256": "70ae5a8f77673c64e4ae464f075ba407b83d6762983be5ef172f5289174b5a5b",
+      "publicSha256": "d5e4929fa8f2b6218afed58301130677f8fa96a97e24237ea01045f64e663a60",
+      "bytes": 4869,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/role-maps/level-designer.md",
+      "category": "curated-foundation-map",
+      "status": "Dated source map, not proof every role read every source.",
+      "sourceLocator": "evidence/studio-foundations/roles/level-designer.md",
+      "sourceSha256": "a2e05224ce7cfd59fe8a7a4da16da633186aa4f8c4e147bff7b0752fe4f167c6",
+      "publicSha256": "5d65416371d3457fad560641a15feca9d56d42e184cb7159a979c60e132b9c0b",
+      "bytes": 5531,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "roles/scene-director.agent.json",
+      "category": "authored-role-template",
+      "status": "Current saved template; seeded Rules are not a full native memory dump.",
+      "sourceLocator": "agents/scene-director.agent.json",
+      "sourceSha256": "5d261bedb0b6925fac4d7359bb24b3963992cd8bdd1d7509f3651f4d6f9af47b",
+      "publicSha256": "65bcbcc628be19aac6ac6410dbb40b9aaccaead1d6e79986ad461e59b98aed7f",
+      "bytes": 5867,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "briefs/scene-director.md",
+      "category": "authored-role-brief",
+      "status": "Current saved brief; opening instructions are historical after goal replacement.",
+      "sourceLocator": "briefs/scene-director.md",
+      "sourceSha256": "8dc54e0c0fcd59c9e3f37b0f13f6872fb5d3cc06d9566d221d75fabad2eee168",
+      "publicSha256": "f475deca07fdadbb0bda20cc2b7a614320b775b6c9fa1c9dc20bf506a7916094",
+      "bytes": 9252,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${ENGINE_WORKTREE}",
+          "count": 4
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/role-maps/scene-director.md",
+      "category": "curated-foundation-map",
+      "status": "Dated source map, not proof every role read every source.",
+      "sourceLocator": "evidence/studio-foundations/roles/scene-director.md",
+      "sourceSha256": "8fbade3393a0d6c93ff3451bf6fcb077682002ad4bb9979740f9157d7f0cefc3",
+      "publicSha256": "5dec1e446ec09d0a44245048f706f996812944534b5b02bb1c8f3a03fce3b5d3",
+      "bytes": 5925,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 2
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "operating/AGENTS.snapshot.md",
+      "category": "operating-snapshot",
+      "status": "Historical operating instructions and setup facts; milestone README controls archive interpretation.",
+      "sourceLocator": "AGENTS.md",
+      "sourceSha256": "39dbdfd0e08bffa32fa2f63ffa2469e93c8f36da7cbef21272231fa7c8c0b6cb",
+      "publicSha256": "b502a857baa6d5aaa5f248da5890ff5ff825cc60471acca4c816b644e0848810",
+      "bytes": 6260,
+      "changes": [
+        {
+          "kind": "${PROJECT_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "operating/START_HERE.snapshot.md",
+      "category": "operating-snapshot",
+      "status": "Historical operating instructions and setup facts; milestone README controls archive interpretation.",
+      "sourceLocator": "START_HERE.md",
+      "sourceSha256": "8f5e526aa5521e1adaaae0674c36006f8546c64eb990f5fa4ffe2e0fa9fff0a9",
+      "publicSha256": "8f5e526aa5521e1adaaae0674c36006f8546c64eb990f5fa4ffe2e0fa9fff0a9",
+      "bytes": 2681,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "operating/STUDIO_MAP.snapshot.md",
+      "category": "operating-snapshot",
+      "status": "Historical operating instructions and setup facts; milestone README controls archive interpretation.",
+      "sourceLocator": "STUDIO_MAP.md",
+      "sourceSha256": "87cdf3bc268646d0b66324b1372ac68b6d03abae0318bfe6f8e92057da40226a",
+      "publicSha256": "3a42e4525377262662ed35e2d17dec425e888f86c33e3df8eabddb6ff3b4353a",
+      "bytes": 9500,
+      "changes": [
+        {
+          "kind": "${PROJECT_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "operating/MUNDER_PROTOCOL.snapshot.md",
+      "category": "operating-snapshot",
+      "status": "Historical operating instructions and setup facts; milestone README controls archive interpretation.",
+      "sourceLocator": "hive/PROTOCOL.md",
+      "sourceSha256": "700e2e56e7eaf59cae749881729cb851e69375e0383233c3d638589487fac2b8",
+      "publicSha256": "700e2e56e7eaf59cae749881729cb851e69375e0383233c3d638589487fac2b8",
+      "bytes": 13824,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "operating/task-template.json",
+      "category": "operating-snapshot",
+      "status": "Historical operating instructions and setup facts; milestone README controls archive interpretation.",
+      "sourceLocator": "contracts/task-template.json",
+      "sourceSha256": "e41904ea26c64d6260955c4cc794427a4fb183880b45bcb70e76dd0e7a736f49",
+      "publicSha256": "e41904ea26c64d6260955c4cc794427a4fb183880b45bcb70e76dd0e7a736f49",
+      "bytes": 1546,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "configuration/recommended-settings.snapshot.json",
+      "category": "operating-snapshot",
+      "status": "Historical operating instructions and setup facts; milestone README controls archive interpretation.",
+      "sourceLocator": "recommended-settings.json",
+      "sourceSha256": "09976c6617dbc2a174e0b63ef8ebf042149ac5920e20de377a5f66301f1913b3",
+      "publicSha256": "09976c6617dbc2a174e0b63ef8ebf042149ac5920e20de377a5f66301f1913b3",
+      "bytes": 340,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "configuration/installation.snapshot.json",
+      "category": "operating-snapshot",
+      "status": "Historical operating instructions and setup facts; milestone README controls archive interpretation.",
+      "sourceLocator": "INSTALLATION.json",
+      "sourceSha256": "f175a21adcf1fb96b62b039ce1450364deb309271edb20471b3e9434efd660e2",
+      "publicSha256": "ec75b8a62d5fcd1d0daa961df741b955a4a921c2dc86c692808290061baa7c08",
+      "bytes": 1082,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        },
+        {
+          "kind": "${USER_HOME}",
+          "count": 2
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/original-loopforge/docs/legacy/sim2/narrative/PRODUCER_VISION.md",
+      "category": "original-doctrine",
+      "status": "Exact legacy commit 3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9; not current runtime approval.",
+      "sourceLocator": "evidence/foundations/2026-10-22-owner-redraft-v1/archive/docs/legacy/sim2/narrative/PRODUCER_VISION.md",
+      "sourceSha256": "9ee27b24f06403be41fd162005ae26dfa53a9c93a48b51777207f0d76f243276",
+      "publicSha256": "9ee27b24f06403be41fd162005ae26dfa53a9c93a48b51777207f0d76f243276",
+      "bytes": 4724,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/original-loopforge/docs/legacy/sim2/psych/THE_PUPPETTEER_README.md",
+      "category": "original-doctrine",
+      "status": "Exact legacy commit 3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9; not current runtime approval.",
+      "sourceLocator": "evidence/foundations/2026-10-22-owner-redraft-v1/archive/docs/legacy/sim2/psych/THE_PUPPETTEER_README.md",
+      "sourceSha256": "924fd0f3a499c392bf94409c5f170701d000d10d6c1e342094e0ac2e906daf88",
+      "publicSha256": "924fd0f3a499c392bf94409c5f170701d000d10d6c1e342094e0ac2e906daf88",
+      "bytes": 5470,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/original-loopforge/docs/legacy/sim2/psych/THE_PUPPETTEER_DOCTRINE.md",
+      "category": "original-doctrine",
+      "status": "Exact legacy commit 3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9; not current runtime approval.",
+      "sourceLocator": "evidence/foundations/2026-10-22-owner-redraft-v1/archive/docs/legacy/sim2/psych/THE_PUPPETTEER_DOCTRINE.md",
+      "sourceSha256": "56e084c22a5389c485f6c696b6f4b5bd22c92f654dc1b5624a737fee6442857d",
+      "publicSha256": "56e084c22a5389c485f6c696b6f4b5bd22c92f654dc1b5624a737fee6442857d",
+      "bytes": 6526,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/original-loopforge/docs/sim5/SOPs/KVP-0001.md",
+      "category": "original-doctrine",
+      "status": "Exact legacy commit 3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9; not current runtime approval.",
+      "sourceLocator": "evidence/foundations/2026-10-22-owner-redraft-v1/archive/docs/sim5/SOPs/KVP-0001.md",
+      "sourceSha256": "019919a2b734b6d67c5e765f46292f998126cee460600ea24bc2f019b93b313a",
+      "publicSha256": "019919a2b734b6d67c5e765f46292f998126cee460600ea24bc2f019b93b313a",
+      "bytes": 72692,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/original-loopforge/docs/sim5/SOPs/KVP-0001 — Semantics v0.1.md",
+      "category": "original-doctrine",
+      "status": "Exact legacy commit 3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9; not current runtime approval.",
+      "sourceLocator": "evidence/foundations/2026-10-22-owner-redraft-v1/archive/docs/sim5/SOPs/KVP-0001 — Semantics v0.1.md",
+      "sourceSha256": "19f33b532e00e458ce00c05062874be0005e52344d675b2fba5adfbcc2be8e2b",
+      "publicSha256": "19f33b532e00e458ce00c05062874be0005e52344d675b2fba5adfbcc2be8e2b",
+      "bytes": 9644,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/original-loopforge/docs/sim5/SOPs/KVP-0001 — Canonicalization & Hashing.md",
+      "category": "original-doctrine",
+      "status": "Exact legacy commit 3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9; not current runtime approval.",
+      "sourceLocator": "evidence/foundations/2026-10-22-owner-redraft-v1/archive/docs/sim5/SOPs/KVP-0001 — Canonicalization & Hashing.md",
+      "sourceSha256": "fbb4d03221084d4f8a30fe435d4845209d6c8406573e67ebfa39b1a964e547d8",
+      "publicSha256": "fbb4d03221084d4f8a30fe435d4845209d6c8406573e67ebfa39b1a964e547d8",
+      "bytes": 7860,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/original-loopforge/docs/sim5/SOPs/KVP-0001 v0.1 Compliance Checklist.md",
+      "category": "original-doctrine",
+      "status": "Exact legacy commit 3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9; not current runtime approval.",
+      "sourceLocator": "evidence/foundations/2026-10-22-owner-redraft-v1/archive/docs/sim5/SOPs/KVP-0001 v0.1 Compliance Checklist.md",
+      "sourceSha256": "766b77613a8c5757fd5fdddee9eb62d3b046a4ac0c8a0b139b2fa8646c7786a0",
+      "publicSha256": "766b77613a8c5757fd5fdddee9eb62d3b046a4ac0c8a0b139b2fa8646c7786a0",
+      "bytes": 4975,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/original-loopforge/docs/sim5/SOPs/KVP-0001 — Million-dollar plan v1.0.md",
+      "category": "original-doctrine",
+      "status": "Exact legacy commit 3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9; not current runtime approval.",
+      "sourceLocator": "evidence/foundations/2026-10-22-owner-redraft-v1/archive/docs/sim5/SOPs/KVP-0001 — Million-dollar plan v1.0.md",
+      "sourceSha256": "88dcd1796fd1b1c89833cec742a2149871496c0258c79861503a0e48b25d4803",
+      "publicSha256": "88dcd1796fd1b1c89833cec742a2149871496c0258c79861503a0e48b25d4803",
+      "bytes": 5520,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/FOUNDATIONS.md",
+      "category": "foundation-interpretation",
+      "status": "Owner-requested source interpretation; original archive authority remains separate.",
+      "sourceLocator": "evidence/foundations/2026-10-22-owner-redraft-v1/FOUNDATIONS.md",
+      "sourceSha256": "c59440e4021de7cd728bd3488f97691ebf854a22d65af6e9d746e820b20d7fe1",
+      "publicSha256": "35b6d2a448cf43a2b7f8468de88d35139e0daa82e7bd3d0b667336f4fbda83e2",
+      "bytes": 6396,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${ENGINE_WORKTREE}",
+          "count": 5
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/CRAFT_REFERENCE_MAP.md",
+      "category": "foundation-interpretation",
+      "status": "Owner-requested source interpretation; original archive authority remains separate.",
+      "sourceLocator": "evidence/foundations/2026-10-22-owner-redraft-v1/CRAFT_REFERENCE_MAP.md",
+      "sourceSha256": "e572f463723b05f71dec17744b62765862ec2759c4d0a71b9739f3415c72d3cb",
+      "publicSha256": "bd11d7e24a3cffd52486245b2a3006737812a30327a1db15c8b7373fb3a16c48",
+      "bytes": 6896,
+      "changes": [
+        {
+          "kind": "archived-source-relative-link",
+          "count": 1
+        },
+        {
+          "kind": "${ENGINE_WORKTREE}",
+          "count": 28
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 4
+        },
+        {
+          "kind": "${LEGACY_REPO}",
+          "count": 4
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "foundations/current-snapshots/EDITORIAL_VOICE.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/EDITORIAL_VOICE.md",
+      "sourceSha256": "cb5eaea8a52becc056e31219a1464994f3c3d658bac92c3c0a8bb1cb208ecac1",
+      "publicSha256": "cb5eaea8a52becc056e31219a1464994f3c3d658bac92c3c0a8bb1cb208ecac1",
+      "bytes": 8222,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/TARANTINO_CASE_STUDY.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/TARANTINO_CASE_STUDY.md",
+      "sourceSha256": "d0175caeea5402e31bc1e7af7e9480d4bc64510cc24187fe1598e475ee9842aa",
+      "publicSha256": "d0175caeea5402e31bc1e7af7e9480d4bc64510cc24187fe1598e475ee9842aa",
+      "bytes": 5670,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/ASTAFIEV_CASE_STUDY.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/ASTAFIEV_CASE_STUDY.md",
+      "sourceSha256": "9cc20b7326cf71d0aa72fbe72d72cf6d1373d7a6987fe008dd13bd1b6e35f406",
+      "publicSha256": "9cc20b7326cf71d0aa72fbe72d72cf6d1373d7a6987fe008dd13bd1b6e35f406",
+      "bytes": 3518,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/BACK_TO_THE_DAWN_CASE_STUDY.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/BACK_TO_THE_DAWN_CASE_STUDY.md",
+      "sourceSha256": "f18c8c0d8aef0e03466d93feeca26fb3c088670ab0de7cba178178cddf7e3122",
+      "publicSha256": "f18c8c0d8aef0e03466d93feeca26fb3c088670ab0de7cba178178cddf7e3122",
+      "bytes": 10581,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/CHARACTER_DRAMATURGY.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/CHARACTER_DRAMATURGY.md",
+      "sourceSha256": "c6d0b2dd3b7b5a57bfba243b5f901a5964484251127a269f8f4ea0a995a86304",
+      "publicSha256": "c6d0b2dd3b7b5a57bfba243b5f901a5964484251127a269f8f4ea0a995a86304",
+      "bytes": 16622,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/OPENING_CAST.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/OPENING_CAST.md",
+      "sourceSha256": "ac69a4fda2a1f382b26f8a3f2647acfaf22cb988d7df44ff91c109b81cd489ae",
+      "publicSha256": "ac69a4fda2a1f382b26f8a3f2647acfaf22cb988d7df44ff91c109b81cd489ae",
+      "bytes": 8696,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/OPENING_EPISODE.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/OPENING_EPISODE.md",
+      "sourceSha256": "1e90eeef6dab0c93f9cb991da8f98c22821c5c33e07b4324bffbf64edaca1b65",
+      "publicSha256": "1e90eeef6dab0c93f9cb991da8f98c22821c5c33e07b4324bffbf64edaca1b65",
+      "bytes": 6136,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/DAY_ONE_ARRIVAL.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/DAY_ONE_ARRIVAL.md",
+      "sourceSha256": "c84d9cd095ecea19d88e966ab4f4c86344bfe27195bf26bd50c806edf9f06cf7",
+      "publicSha256": "c84d9cd095ecea19d88e966ab4f4c86344bfe27195bf26bd50c806edf9f06cf7",
+      "bytes": 6138,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/CORE_LOOP_STUDY.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/CORE_LOOP_STUDY.md",
+      "sourceSha256": "c0d8872bd1145936b74d4cff9f2be3143dfd18a44d67a973005f9e712b6630e4",
+      "publicSha256": "c0d8872bd1145936b74d4cff9f2be3143dfd18a44d67a973005f9e712b6630e4",
+      "bytes": 31512,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/INTERFACE_JOB_STUDY.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/INTERFACE_JOB_STUDY.md",
+      "sourceSha256": "e37b42d86f6775c21ddf780bbad5ffc2a191b08eadcc82ca8edab626fa3f8ed4",
+      "publicSha256": "e37b42d86f6775c21ddf780bbad5ffc2a191b08eadcc82ca8edab626fa3f8ed4",
+      "bytes": 20215,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/AGENT_CHARACTER_AND_ANIMATION_DIRECTION.md",
+      "sourceSha256": "4f9e0e23c15a71c5926e0f8ea110ab1f296ecea8fbff0c9e6c646491ad31f596",
+      "publicSha256": "4f9e0e23c15a71c5926e0f8ea110ab1f296ecea8fbff0c9e6c646491ad31f596",
+      "bytes": 35331,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/ASSET_PREFAB_PIPELINE.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/ASSET_PREFAB_PIPELINE.md",
+      "sourceSha256": "d16b4058307e3f02bee82aa784688b3b3c5dbf9175a29ce16206f2a7c2db6a5b",
+      "publicSha256": "d16b4058307e3f02bee82aa784688b3b3c5dbf9175a29ce16206f2a7c2db6a5b",
+      "bytes": 11676,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/WEBVIEW_RENDERING_AND_ASSETS.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/WEBVIEW_RENDERING_AND_ASSETS.md",
+      "sourceSha256": "6865f191a884057e87bdd73efb65e96a573512b7523987e63b06e3cdfc97ecff",
+      "publicSha256": "6865f191a884057e87bdd73efb65e96a573512b7523987e63b06e3cdfc97ecff",
+      "bytes": 22335,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/FACTORY_FLOOR_VISUAL_SCALE_PLAN.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/FACTORY_FLOOR_VISUAL_SCALE_PLAN.md",
+      "sourceSha256": "f55cef578f7e11a71ba9a5df765fd2651a774b4eca041d2805c528710c17d183",
+      "publicSha256": "f55cef578f7e11a71ba9a5df765fd2651a774b4eca041d2805c528710c17d183",
+      "bytes": 33408,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/CAST_READABILITY_STANDARD.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/CAST_READABILITY_STANDARD.md",
+      "sourceSha256": "c6e28bc5ba31923911ee647aaa6ff7243e839e97d647c5a95b136267d8225dfc",
+      "publicSha256": "c6e28bc5ba31923911ee647aaa6ff7243e839e97d647c5a95b136267d8225dfc",
+      "bytes": 27890,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/GRAPHICS_AND_PERFORMANCE.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/GRAPHICS_AND_PERFORMANCE.md",
+      "sourceSha256": "29e91a85a676603ead625bc8d17d9271d40be8c0dcaf7b30344099ec7d8c9808",
+      "publicSha256": "29e91a85a676603ead625bc8d17d9271d40be8c0dcaf7b30344099ec7d8c9808",
+      "bytes": 12372,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/FRONTEND_PERFORMANCE_ACCEPTANCE.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/FRONTEND_PERFORMANCE_ACCEPTANCE.md",
+      "sourceSha256": "651dfde13541033f3a7ff30d6ff8391f124c84aeac303efe9cf6b0c291533f82",
+      "publicSha256": "651dfde13541033f3a7ff30d6ff8391f124c84aeac303efe9cf6b0c291533f82",
+      "bytes": 8266,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/SECURITY_LOBBY_ASSET_BUILD_PLAN.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/SECURITY_LOBBY_ASSET_BUILD_PLAN.md",
+      "sourceSha256": "c9106b624dbb54fe41cfafb84f0e58149bdb5292141750d70df1a1ec87f248d7",
+      "publicSha256": "c9106b624dbb54fe41cfafb84f0e58149bdb5292141750d70df1a1ec87f248d7",
+      "bytes": 12827,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/CONVEYOR_ASSET_BUILD_PLAN.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/CONVEYOR_ASSET_BUILD_PLAN.md",
+      "sourceSha256": "d005a9c165538344f22e3499ddc339d5dcd31576650ef7cdfb8218e4469a0867",
+      "publicSha256": "d005a9c165538344f22e3499ddc339d5dcd31576650ef7cdfb8218e4469a0867",
+      "bytes": 10019,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/current-snapshots/DESIGN_AND_PERFORMANCE_STANDARDS.md",
+      "category": "current-reference-snapshot",
+      "status": "Snapshot used in studio onboarding; may predate later owner chronology or corrections.",
+      "sourceLocator": "evidence/studio-foundations/sources/current/DESIGN_AND_PERFORMANCE_STANDARDS.md",
+      "sourceSha256": "b8fc62bd64358c97d390281118905d0fc519b991890200dc1208f5f02c4b1c30",
+      "publicSha256": "b8fc62bd64358c97d390281118905d0fc519b991890200dc1208f5f02c4b1c30",
+      "bytes": 5390,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/reference-art/loopforge_factory_entrance_2.png",
+      "category": "reference-art-snapshot",
+      "status": "Existing room/factory visual foundation, not a new studio-generated asset or accepted rendered scene.",
+      "sourceLocator": "evidence/studio-foundations/sources/art/loopforge_factory_entrance_2.png",
+      "sourceSha256": "ed7a54bf599c165d1a7f91cf9fd9a47706d059f66915a911105baf59f016c79d",
+      "publicSha256": "ed7a54bf599c165d1a7f91cf9fd9a47706d059f66915a911105baf59f016c79d",
+      "bytes": 3063105,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/reference-art/01_loopforge_factory_rooms_lobby.png",
+      "category": "reference-art-snapshot",
+      "status": "Existing room/factory visual foundation, not a new studio-generated asset or accepted rendered scene.",
+      "sourceLocator": "evidence/studio-foundations/sources/art/01_loopforge_factory_rooms_lobby.png",
+      "sourceSha256": "fd4e41ba31dee5fe0d9ab89f6f8ef3ca509e2a8bd21eee305c36341fd98744eb",
+      "publicSha256": "fd4e41ba31dee5fe0d9ab89f6f8ef3ca509e2a8bd21eee305c36341fd98744eb",
+      "bytes": 3471462,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/reference-art/03_loopforge_rooms_access_control_1.png",
+      "category": "reference-art-snapshot",
+      "status": "Existing room/factory visual foundation, not a new studio-generated asset or accepted rendered scene.",
+      "sourceLocator": "evidence/studio-foundations/sources/art/03_loopforge_rooms_access_control_1.png",
+      "sourceSha256": "ae3c8b3ea589c53840ddb5ac923551730f0c3ade8b3bbc630dc2affb07be2c28",
+      "publicSha256": "ae3c8b3ea589c53840ddb5ac923551730f0c3ade8b3bbc630dc2affb07be2c28",
+      "bytes": 2808695,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "foundations/reference-art/04_loopforge_rooms_neural_lattice_a_intake_1.png",
+      "category": "reference-art-snapshot",
+      "status": "Existing room/factory visual foundation, not a new studio-generated asset or accepted rendered scene.",
+      "sourceLocator": "evidence/studio-foundations/sources/art/04_loopforge_rooms_neural_lattice_a_intake_1.png",
+      "sourceSha256": "7e25a1d585c4a08a4ccdb9cfcf3e01282f80b2c26b7f9aef9ebc56bfc05ddc87",
+      "publicSha256": "7e25a1d585c4a08a4ccdb9cfcf3e01282f80b2c26b7f9aef9ebc56bfc05ddc87",
+      "bytes": 3006818,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/opening-writing/performed-dialogue.md",
+      "category": "delivered-writing",
+      "status": "Text craft reviewed; E1 used scoped integration. Actual hearing/acting/full-scene gates remained open.",
+      "sourceLocator": "evidence/writer-opening-r16/delivery-W1/performed-dialogue.md",
+      "sourceSha256": "7f19ab900d2bdabe72e60f47ecec9c6e49b3c114a6b8d4e602b77743587831f7",
+      "publicSha256": "7f19ab900d2bdabe72e60f47ecec9c6e49b3c114a6b8d4e602b77743587831f7",
+      "bytes": 7585,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/opening-writing/dialogue-edits.json",
+      "category": "delivered-writing",
+      "status": "Text craft reviewed; E1 used scoped integration. Actual hearing/acting/full-scene gates remained open.",
+      "sourceLocator": "evidence/writer-opening-r16/delivery-W1/dialogue-edits.json",
+      "sourceSha256": "f3d22c21008f2b01318356011726941c429085d4522ac3d8eb4cda47a9f2b200",
+      "publicSha256": "f3d22c21008f2b01318356011726941c429085d4522ac3d8eb4cda47a9f2b200",
+      "bytes": 25819,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/opening-writing/candidate.patch",
+      "category": "delivered-writing",
+      "status": "Text craft reviewed; E1 used scoped integration. Actual hearing/acting/full-scene gates remained open.",
+      "sourceLocator": "evidence/writer-opening-r16/delivery-W1/candidate.patch",
+      "sourceSha256": "a5f84f01d9bf74d388c330bc4c602386dabfa378c798892d4f7e99e26b2d4d6f",
+      "publicSha256": "a5f84f01d9bf74d388c330bc4c602386dabfa378c798892d4f7e99e26b2d4d6f",
+      "bytes": 6770,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/opening-writing/voice-review.md",
+      "category": "delivered-writing",
+      "status": "Text craft reviewed; E1 used scoped integration. Actual hearing/acting/full-scene gates remained open.",
+      "sourceLocator": "evidence/writer-opening-r16/delivery-W1/voice-review.md",
+      "sourceSha256": "5d47d0a7de68ac0adb03173c7e2b1465911da1e84cc65deddd0f466aaec04b12",
+      "publicSha256": "5d47d0a7de68ac0adb03173c7e2b1465911da1e84cc65deddd0f466aaec04b12",
+      "bytes": 3000,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/limen-contact/candidate.patch",
+      "category": "partial-motion-correction",
+      "status": "Partial hand/blade candidate; five saved floor probes and preserved bob contact are not a full dense or visual pass.",
+      "sourceLocator": "evidence/LST-3/limen-correction/candidate.patch",
+      "sourceSha256": "3a3ec0c6b12a349e5edaf3dab0b080f89df5104a200af2a750cebbde8735d1ba",
+      "publicSha256": "3a3ec0c6b12a349e5edaf3dab0b080f89df5104a200af2a750cebbde8735d1ba",
+      "bytes": 6130,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/systems/proposal-C1.md",
+      "category": "isolated-proposal",
+      "status": "Unimplemented owner-review proposal; four illustrated boards remain REVISE.",
+      "sourceLocator": "worktrees/systems-designer-mvjmwrzj/systems-jobs/days2-14/C1/proposal-C1.md",
+      "sourceSha256": "64aa01ecd055041833f6df78a0c1df0e2dad1a1dc2b7d7a6f7223810149f5861",
+      "publicSha256": "64aa01ecd055041833f6df78a0c1df0e2dad1a1dc2b7d7a6f7223810149f5861",
+      "bytes": 14138,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/systems/convergence-map.json",
+      "category": "isolated-proposal",
+      "status": "Unimplemented owner-review proposal; four illustrated boards remain REVISE.",
+      "sourceLocator": "worktrees/systems-designer-mvjmwrzj/systems-jobs/days2-14/C1/convergence-map.json",
+      "sourceSha256": "54178ac473e64ddaa203b91b21ad509aa832951fcf3cd7ad5bcda59bb22ec097",
+      "publicSha256": "5d2dda68649da4578401b7c91eba05add2f1d390f24ffc67a95185eddea98eea",
+      "bytes": 140343,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 8
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "isolated/days2-14/systems/revision-and-prototype-plan.md",
+      "category": "isolated-proposal",
+      "status": "Unimplemented owner-review proposal; four illustrated boards remain REVISE.",
+      "sourceLocator": "worktrees/systems-designer-mvjmwrzj/systems-jobs/days2-14/C1/revision-and-prototype-plan.md",
+      "sourceSha256": "8410bc045d5a4ce61a77783d38c2380a668a168a674781d4dd710b5a8912bf3b",
+      "publicSha256": "8410bc045d5a4ce61a77783d38c2380a668a168a674781d4dd710b5a8912bf3b",
+      "bytes": 15921,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/writer/performed-exchanges.md",
+      "category": "isolated-writing",
+      "status": "Four proposed exchanges/97 speech records; no runtime/acting acceptance. Editorial patch not automatically applied.",
+      "sourceLocator": "worktrees/loopforge-writer-mvjkwi5a/writer-jobs/days2-14/W1/performed-exchanges.md",
+      "sourceSha256": "afbe61268e57809c37741549c4cd1973bf2e101b6fff668cdcb34e930ea818f8",
+      "publicSha256": "afbe61268e57809c37741549c4cd1973bf2e101b6fff668cdcb34e930ea818f8",
+      "bytes": 14573,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/writer/line-beat-map.json",
+      "category": "isolated-writing",
+      "status": "Four proposed exchanges/97 speech records; no runtime/acting acceptance. Editorial patch not automatically applied.",
+      "sourceLocator": "worktrees/loopforge-writer-mvjkwi5a/writer-jobs/days2-14/W1/line-beat-map.json",
+      "sourceSha256": "d848726b7fc9fca0a12ed6a3cc980dd0f269e84df44e06da2aa7a95f143b6a7e",
+      "publicSha256": "d848726b7fc9fca0a12ed6a3cc980dd0f269e84df44e06da2aa7a95f143b6a7e",
+      "bytes": 182023,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/writer/voice-review.md",
+      "category": "isolated-writing",
+      "status": "Four proposed exchanges/97 speech records; no runtime/acting acceptance. Editorial patch not automatically applied.",
+      "sourceLocator": "worktrees/loopforge-writer-mvjkwi5a/writer-jobs/days2-14/W1/voice-review.md",
+      "sourceSha256": "f8509dbd47dd87e8097e3a769c974658970100bcc6eeb404b48aaebc74532e69",
+      "publicSha256": "f8509dbd47dd87e8097e3a769c974658970100bcc6eeb404b48aaebc74532e69",
+      "bytes": 7693,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/writer/rationale.md",
+      "category": "isolated-writing",
+      "status": "Four proposed exchanges/97 speech records; no runtime/acting acceptance. Editorial patch not automatically applied.",
+      "sourceLocator": "worktrees/loopforge-writer-mvjkwi5a/writer-jobs/days2-14/W1/rationale.md",
+      "sourceSha256": "01574af1f0367e511e0f3f0b1b2355cf0e6ad2567749da6bdfa41b01160edfdd",
+      "publicSha256": "01574af1f0367e511e0f3f0b1b2355cf0e6ad2567749da6bdfa41b01160edfdd",
+      "bytes": 2227,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/writer/timing-counts.json",
+      "category": "isolated-writing",
+      "status": "Four proposed exchanges/97 speech records; no runtime/acting acceptance. Editorial patch not automatically applied.",
+      "sourceLocator": "worktrees/loopforge-writer-mvjkwi5a/writer-jobs/days2-14/W1/timing-counts.json",
+      "sourceSha256": "cacf1ab0cff34fc0c91be65e98d2d639cc3aaeb99ddf48c69b9f3b7872a8415d",
+      "publicSha256": "cacf1ab0cff34fc0c91be65e98d2d639cc3aaeb99ddf48c69b9f3b7872a8415d",
+      "bytes": 2140,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/writer/editorial-promotion.patch",
+      "category": "isolated-writing",
+      "status": "Four proposed exchanges/97 speech records; no runtime/acting acceptance. Editorial patch not automatically applied.",
+      "sourceLocator": "worktrees/loopforge-writer-mvjkwi5a/writer-jobs/days2-14/W1/editorial-promotion.patch",
+      "sourceSha256": "f6cd6150e61144279954fedf39810fb0c3b66ebe6a9914a1abf2678a220ea544",
+      "publicSha256": "f6cd6150e61144279954fedf39810fb0c3b66ebe6a9914a1abf2678a220ea544",
+      "bytes": 7918,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/visual/REVIEW.md",
+      "category": "isolated-visual-proposal",
+      "status": "All four boards require revision; not approved game art.",
+      "sourceLocator": "worktrees/visual-artist-mvjmv82b/visual-jobs/days2-14/V1/REVIEW.md",
+      "sourceSha256": "c488af3401ef4c3bcdb85495c8e8093d6eefc34c8129814dd2aa29792b449cb3",
+      "publicSha256": "c488af3401ef4c3bcdb85495c8e8093d6eefc34c8129814dd2aa29792b449cb3",
+      "bytes": 2368,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/visual/visual-notes.md",
+      "category": "isolated-visual-proposal",
+      "status": "All four boards require revision; not approved game art.",
+      "sourceLocator": "worktrees/visual-artist-mvjmv82b/visual-jobs/days2-14/V1/visual-notes.md",
+      "sourceSha256": "1e8bbf1c3a6bd37c3dab3e89c9744ecb2499e47a7afe7516c4ac1be0df844750",
+      "publicSha256": "1e8bbf1c3a6bd37c3dab3e89c9744ecb2499e47a7afe7516c4ac1be0df844750",
+      "bytes": 4414,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/visual/board-line-knowledge-map.json",
+      "category": "isolated-visual-proposal",
+      "status": "All four boards require revision; not approved game art.",
+      "sourceLocator": "worktrees/visual-artist-mvjmv82b/visual-jobs/days2-14/V1/board-line-knowledge-map.json",
+      "sourceSha256": "8c8427b207862c4c6951f8c13fce1d769b22b3b05b37d51813207d005df74e00",
+      "publicSha256": "8c8427b207862c4c6951f8c13fce1d769b22b3b05b37d51813207d005df74e00",
+      "bytes": 82349,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/visual/E01-proposal.png",
+      "category": "isolated-visual-proposal",
+      "status": "Distinct master proposal, REVISE; previews/duplicate renders excluded.",
+      "sourceLocator": "worktrees/visual-artist-mvjmv82b/visual-jobs/days2-14/V1/E01/E01-proposal.png",
+      "sourceSha256": "ae81feda7489de7a067940039ced3ceaad67b4f69c111e526cd166fa46f754ae",
+      "publicSha256": "ae81feda7489de7a067940039ced3ceaad67b4f69c111e526cd166fa46f754ae",
+      "bytes": 2824187,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/visual/E02-proposal.png",
+      "category": "isolated-visual-proposal",
+      "status": "Distinct master proposal, REVISE; previews/duplicate renders excluded.",
+      "sourceLocator": "worktrees/visual-artist-mvjmv82b/visual-jobs/days2-14/V1/E02/E02-proposal.png",
+      "sourceSha256": "ebce549caa8037f7c4a91ade952b9ebfad783c4564089fa1e4dfee1b6d18d83c",
+      "publicSha256": "ebce549caa8037f7c4a91ade952b9ebfad783c4564089fa1e4dfee1b6d18d83c",
+      "bytes": 3178854,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/visual/E03-proposal.png",
+      "category": "isolated-visual-proposal",
+      "status": "Distinct master proposal, REVISE; previews/duplicate renders excluded.",
+      "sourceLocator": "worktrees/visual-artist-mvjmv82b/visual-jobs/days2-14/V1/E03/E03-proposal.png",
+      "sourceSha256": "515bdabd7d4252cc8b1ae07097f8b0e379fb1846e3a140d8b09c57911bfd811e",
+      "publicSha256": "515bdabd7d4252cc8b1ae07097f8b0e379fb1846e3a140d8b09c57911bfd811e",
+      "bytes": 3377849,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/visual/E04-proposal.png",
+      "category": "isolated-visual-proposal",
+      "status": "Distinct master proposal, REVISE; previews/duplicate renders excluded.",
+      "sourceLocator": "worktrees/visual-artist-mvjmv82b/visual-jobs/days2-14/V1/E04/E04-proposal.png",
+      "sourceSha256": "fd00247c34922e67815401ac0bb9dcc52dcff46709838f84663ab8bccf560ba1",
+      "publicSha256": "fd00247c34922e67815401ac0bb9dcc52dcff46709838f84663ab8bccf560ba1",
+      "bytes": 3000417,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/critic/review.md",
+      "category": "delivered-review",
+      "status": "Independent proposal review: REVISE, not owner acceptance.",
+      "sourceLocator": "worktrees/loopforge-critic-mvjky3yz/critic-jobs/days2-14-C1/review.md",
+      "sourceSha256": "0e8f656ef3d16ae120c90550d8fc738930a545d0bd0303c98a656bd0f2245ec9",
+      "publicSha256": "0e8f656ef3d16ae120c90550d8fc738930a545d0bd0303c98a656bd0f2245ec9",
+      "bytes": 10993,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/days2-14/critic/findings.json",
+      "category": "delivered-review",
+      "status": "Independent proposal review: REVISE, not owner acceptance.",
+      "sourceLocator": "worktrees/loopforge-critic-mvjky3yz/critic-jobs/days2-14-C1/findings.json",
+      "sourceSha256": "78016b79e76ff07006b5ce5127cc89ddd218f0642644612ec092ae0e3ff5cf39",
+      "publicSha256": "9ef2d0cc7858685b407ef0a911d7e91f2e41d35a3ab4389979f7532a1534bd9b",
+      "bytes": 19340,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 29
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "isolated/sam-holder/H1/sam-holder-H1.glb",
+      "category": "isolated-hardware-proposal",
+      "status": "Unplaced 60-triangle holder; no accepted fit/performance; game work stopped.",
+      "sourceLocator": "worktrees/3d-artist-mvjmeezw/3d-jobs/sam-credential-holder/sam-holder-H1.glb",
+      "sourceSha256": "7ff21228998345cd4b3857ac962a5555ed032427c9a24092be0a1af921de9402",
+      "publicSha256": "7ff21228998345cd4b3857ac962a5555ed032427c9a24092be0a1af921de9402",
+      "bytes": 5420,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/sam-holder/H1/build_holder.py",
+      "category": "isolated-hardware-proposal",
+      "status": "Unplaced 60-triangle holder; no accepted fit/performance; game work stopped.",
+      "sourceLocator": "worktrees/3d-artist-mvjmeezw/3d-jobs/sam-credential-holder/build_holder.py",
+      "sourceSha256": "53ff930def93c2e1f76d62545c2f4c7c09f66351a27870cd22217f474767d080",
+      "publicSha256": "53ff930def93c2e1f76d62545c2f4c7c09f66351a27870cd22217f474767d080",
+      "bytes": 5584,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/sam-holder/H1/holder-parameters.json",
+      "category": "isolated-hardware-proposal",
+      "status": "Unplaced 60-triangle holder; no accepted fit/performance; game work stopped.",
+      "sourceLocator": "worktrees/3d-artist-mvjmeezw/3d-jobs/sam-credential-holder/holder-parameters.json",
+      "sourceSha256": "df2777bbe33d01d41c3f69e427771a58a243f37a94ea8bbcaf5d51f9c0cd534a",
+      "publicSha256": "df2777bbe33d01d41c3f69e427771a58a243f37a94ea8bbcaf5d51f9c0cd534a",
+      "bytes": 500,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/sam-holder/H1/socket-proposal.json",
+      "category": "isolated-hardware-proposal",
+      "status": "Unplaced 60-triangle holder; no accepted fit/performance; game work stopped.",
+      "sourceLocator": "worktrees/3d-artist-mvjmeezw/3d-jobs/sam-credential-holder/socket-proposal.json",
+      "sourceSha256": "bd7be567ecabb67ec5f3c277fe64109a559229889e5e94acba16937826a2f488",
+      "publicSha256": "bd7be567ecabb67ec5f3c277fe64109a559229889e5e94acba16937826a2f488",
+      "bytes": 5762,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/sam-holder/H1/FIT-CHECK.md",
+      "category": "isolated-hardware-proposal",
+      "status": "Unplaced 60-triangle holder; no accepted fit/performance; game work stopped.",
+      "sourceLocator": "worktrees/3d-artist-mvjmeezw/3d-jobs/sam-credential-holder/FIT-CHECK.md",
+      "sourceSha256": "91a45bbe145dbf7db3a6e902f4a40210ce13302118095981d9c2b751051046db",
+      "publicSha256": "644cf6eb691f9904dd22bd0b222e567e57d35b032c39b1c2ec1cf72016089f0f",
+      "bytes": 3985,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "isolated/sam-holder/H2/sam-holder-H2.glb",
+      "category": "isolated-hardware-proposal",
+      "status": "Unfitted 192-triangle holder; revised H2 diagnostic revoked before execution.",
+      "sourceLocator": "worktrees/3d-artist-mvjmeezw/3d-jobs/sam-holder-H2/sam-holder-H2.glb",
+      "sourceSha256": "f222d19f48253a698f71bbe149fc15d757082673eb11507df00b8e7bc8cf777c",
+      "publicSha256": "f222d19f48253a698f71bbe149fc15d757082673eb11507df00b8e7bc8cf777c",
+      "bytes": 14388,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/sam-holder/H2/build_h2.py",
+      "category": "isolated-hardware-proposal",
+      "status": "Unfitted 192-triangle holder; revised H2 diagnostic revoked before execution.",
+      "sourceLocator": "worktrees/3d-artist-mvjmeezw/3d-jobs/sam-holder-H2/build_h2.py",
+      "sourceSha256": "098b417cc531b940058ab24bb59ddf969ddc137983d96df48c2e900d6694fecb",
+      "publicSha256": "098b417cc531b940058ab24bb59ddf969ddc137983d96df48c2e900d6694fecb",
+      "bytes": 5977,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/sam-holder/H2/parameters.json",
+      "category": "isolated-hardware-proposal",
+      "status": "Unfitted 192-triangle holder; revised H2 diagnostic revoked before execution.",
+      "sourceLocator": "worktrees/3d-artist-mvjmeezw/3d-jobs/sam-holder-H2/parameters.json",
+      "sourceSha256": "53b22d0d31a2da1567e8e76aa4e43c6439d423cfc309032bd0a6289876598eb0",
+      "publicSha256": "53b22d0d31a2da1567e8e76aa4e43c6439d423cfc309032bd0a6289876598eb0",
+      "bytes": 758,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/sam-holder/H2/shell-boxes.json",
+      "category": "isolated-hardware-proposal",
+      "status": "Unfitted 192-triangle holder; revised H2 diagnostic revoked before execution.",
+      "sourceLocator": "worktrees/3d-artist-mvjmeezw/3d-jobs/sam-holder-H2/shell-boxes.json",
+      "sourceSha256": "e3e8355630f2bf172e835e7d03f88db72ca9bcb87d289d1cf1b1d815d62ae8f3",
+      "publicSha256": "e3e8355630f2bf172e835e7d03f88db72ca9bcb87d289d1cf1b1d815d62ae8f3",
+      "bytes": 4575,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/sam-holder/H2/interface.json",
+      "category": "isolated-hardware-proposal",
+      "status": "Unfitted 192-triangle holder; revised H2 diagnostic revoked before execution.",
+      "sourceLocator": "worktrees/3d-artist-mvjmeezw/3d-jobs/sam-holder-H2/interface.json",
+      "sourceSha256": "4b5b1ae0555dcade7b5d97d9b5b8679ab8c56ffb528f672a3e9809034e525a05",
+      "publicSha256": "9172fd5058f3037123820452f0abf0277de983d9d9e1f2837c1b35ca1001d7c0",
+      "bytes": 7094,
+      "changes": [
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 1
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "isolated/sam-holder/H2/CLEARANCE-REASONS.md",
+      "category": "isolated-hardware-proposal",
+      "status": "Unfitted 192-triangle holder; revised H2 diagnostic revoked before execution.",
+      "sourceLocator": "worktrees/3d-artist-mvjmeezw/3d-jobs/sam-holder-H2/CLEARANCE-REASONS.md",
+      "sourceSha256": "de54ff99358e443c92db3a02dd65908c3599460a6f994e902925be72a089a31b",
+      "publicSha256": "de54ff99358e443c92db3a02dd65908c3599460a6f994e902925be72a089a31b",
+      "bytes": 5771,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/sam-holder/last-source-proposal/source.patch",
+      "category": "unexecuted-source-proposal",
+      "status": "Source-only diagnostic preparation. Execution grant revoked; do not apply or run automatically.",
+      "sourceLocator": "worktrees/loopforge-animator-mvjk6658/animator-jobs/sam-h2-binding-R1/source.patch",
+      "sourceSha256": "92d12788b22a90924ade37b895b68f7a51b921d2dfbd9ac1aa7246192f4a468d",
+      "publicSha256": "92d12788b22a90924ade37b895b68f7a51b921d2dfbd9ac1aa7246192f4a468d",
+      "bytes": 40220,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/sam-holder/last-source-proposal/DIAGNOSIS.md",
+      "category": "unexecuted-source-proposal",
+      "status": "Source-only diagnostic preparation. Execution grant revoked; do not apply or run automatically.",
+      "sourceLocator": "worktrees/loopforge-animator-mvjk6658/animator-jobs/sam-h2-binding-R1/DIAGNOSIS.md",
+      "sourceSha256": "3e84ea82c78805693c4a6291170a5bc6b8c8c9d3c913ccce9b0f2a7028b78526",
+      "publicSha256": "3e84ea82c78805693c4a6291170a5bc6b8c8c9d3c913ccce9b0f2a7028b78526",
+      "bytes": 3217,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/animation-coverage/current-map.json",
+      "category": "delivered-inventory",
+      "status": "253 offered clips/759 detail rows:37 scene-used,216 retained scene-unused; coverage is not acceptance.",
+      "sourceLocator": "worktrees/loopforge-animator-mvjk6658/animator-jobs/clip-coverage/current-map.json",
+      "sourceSha256": "fa2cddc37f2077b7275763cccbeb6c3d5b63fe8c5a67d159b669f44e61d5065f",
+      "publicSha256": "b913903dd6bd2ff16a4acd7189844aa7017df628f71a3ce2930e601c37de2f99",
+      "bytes": 1536931,
+      "changes": [
+        {
+          "kind": "${ENGINE_WORKTREE}",
+          "count": 9
+        },
+        {
+          "kind": "${STUDIO_ROOT}",
+          "count": 293
+        }
+      ],
+      "exactSourceBytes": false
+    },
+    {
+      "path": "isolated/animation-coverage/coverage-plan.md",
+      "category": "delivered-inventory",
+      "status": "253 offered clips/759 detail rows:37 scene-used,216 retained scene-unused; coverage is not acceptance.",
+      "sourceLocator": "worktrees/loopforge-animator-mvjk6658/animator-jobs/clip-coverage/coverage-plan.md",
+      "sourceSha256": "9facbc581bd0c85289c99ed7e9e3f3c6fdeb920e8031014283e842df3535bd4c",
+      "publicSha256": "9facbc581bd0c85289c99ed7e9e3f3c6fdeb920e8031014283e842df3535bd4c",
+      "bytes": 22752,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/engine-patches/E1-integration.patch",
+      "category": "private-engine-source",
+      "status": "Integrated only into private E1; build success not complete scene acceptance.",
+      "sourceLocator": "evidence/studio-specialists/engine-integration/delivery-E1/integration-only.patch",
+      "sourceSha256": "4add4af1819f871f350eef3b3dcb5861545d8124533d9f56e64a78539d544dd5",
+      "publicSha256": "4add4af1819f871f350eef3b3dcb5861545d8124533d9f56e64a78539d544dd5",
+      "bytes": 8460,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/engine-patches/C1-strike-overlay.patch",
+      "category": "private-engine-source",
+      "status": "Private C1 built; viewed strike variants clear head. Other scene/contact gates remain open.",
+      "sourceLocator": "hive/agents/loopforge-engine-master-mvjm8tzo/engine-jobs/strike-overlay/candidate.patch",
+      "sourceSha256": "ff385e5ae91b97c70395ea63da86fc1807a2907746be5fab5acc575236fcd1e5",
+      "publicSha256": "ff385e5ae91b97c70395ea63da86fc1807a2907746be5fab5acc575236fcd1e5",
+      "bytes": 14247,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/engine-patches/export-lifecycle.patch",
+      "category": "private-engine-source",
+      "status": "Applied privately with speech layer; no successful combined presentation build/browser acceptance before goal dropped.",
+      "sourceLocator": "hive/agents/loopforge-engine-master-mvjm8tzo/engine-jobs/export-hold-correction/candidate.patch",
+      "sourceSha256": "1622071241724f99bf792db548e04dddda3784df8495fa0ebc55116a9326e737",
+      "publicSha256": "1622071241724f99bf792db548e04dddda3784df8495fa0ebc55116a9326e737",
+      "bytes": 7232,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/engine-patches/held-speech-after-export.patch",
+      "category": "private-engine-source",
+      "status": "Apply-after-export historical layer; private post-patch state, not final visual acceptance.",
+      "sourceLocator": "hive/agents/loopforge-engine-master-mvjm8tzo/engine-jobs/held-speech-correction/after-export.patch",
+      "sourceSha256": "d9c9c17871373904537f77fb717f87d1674be3a3446b70bbaadbf06e4b9396be",
+      "publicSha256": "d9c9c17871373904537f77fb717f87d1674be3a3446b70bbaadbf06e4b9396be",
+      "bytes": 17789,
+      "changes": [],
+      "exactSourceBytes": true
+    },
+    {
+      "path": "isolated/engine-patches/unexecuted-lint-correction.patch",
+      "category": "private-engine-source",
+      "status": "Prepared callback-safe lint correction; execution revoked unstarted.",
+      "sourceLocator": "hive/agents/loopforge-engine-master-mvjm8tzo/engine-jobs/build-memory-recovery/post-integration-resume-R1/lint-correction.patch",
+      "sourceSha256": "c0da48095a8f6fa20d5a9624a8cf9ab8d0607b773c3741569b97cf3cd9de17d7",
+      "publicSha256": "c0da48095a8f6fa20d5a9624a8cf9ab8d0607b773c3741569b97cf3cd9de17d7",
+      "bytes": 1128,
+      "changes": [],
+      "exactSourceBytes": true
+    }
+  ]
+}

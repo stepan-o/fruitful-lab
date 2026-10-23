@@ -1,0 +1,228 @@
+{
+  "id": "gus",
+  "name": "gus",
+  "subtitle": "Square shoulders · recessed head",
+  "revision": "Approved cast art · 21 October 2026",
+  "status": "Concept approved · body candidate",
+  "summary": "Massive square navy shoulders with pale yoke, small recessed skull, broad rectangular chest and heavy boots. Distinguish his squared upright mass from sam’s rounded hunched mass. Worker-scale security helper, never supervisor-scale.",
+  "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+  "viewer": null,
+  "viewerLabel": "Individual viewer in production",
+  "record": "/loopforge-design/narrative-cast.html#gus",
+  "parts": [
+    "Individual blue-family body",
+    "Neutral rig and source motion bank",
+    "Locally fitted contacts, transitions and scene performance"
+  ],
+  "remaining": [
+    "Model and rig inspection",
+    "All-motion viewer and contact fitting",
+    "Room-scale recognition and performance acceptance"
+  ],
+  "images": [
+    {
+      "label": "gus · approved concept",
+      "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+      "input": {
+        "src": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 240258,
+        "sha256": "30fc58bf00daccd537ce6bee2cd89c8f57b6ade9178170e8a835ada435acd3fb"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/gus-320.a2a4498a01697f42.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 19152,
+          "sha256": "a2a4498a01697f42fd9cf842e853a6df2bd60ba5737438125efcef2a4b6cda08"
+        },
+        {
+          "src": "/media/loopforge-cast/gus-640.7315a5db20327d7f.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 67686,
+          "sha256": "7315a5db20327d7f7adf5a88a702da1da554870c6a6cdd0c8fc4f6c695b34574"
+        },
+        {
+          "src": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 240258,
+          "sha256": "30fc58bf00daccd537ce6bee2cd89c8f57b6ade9178170e8a835ada435acd3fb"
+        }
+      ],
+      "archivePath": "images/gus-1280.30fc58bf00daccd5.webp"
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Stage 1 · Body",
+      "file": "gus/01-body.txt",
+      "text": "Build gus, an individual factory worker for Loopforge.\n\nPRIMARY VISUAL AUTHORITY\nUse the approved badass ensemble, isolated to gus, as the lead reference. Supporting individual concept: The cast, #gus. Produce one body from one isolated A-pose input, never the group as one asset. Preserve the character rather than borrowing another worker’s proportions. Ensemble poses and foreshortening must be neutralized, not baked into anatomy.\n\nIDENTITY\nMassive square navy shoulders with pale yoke, small recessed skull, broad rectangular chest and heavy boots. Distinguish his squared upright mass from sam’s rounded hunched mass. Worker-scale security helper, never supervisor-scale.\n\nFAMILY AND SCALE\nAdult mechanical factory worker. Worn blue enamel in broad readable areas, exposed dark steel mechanisms and restrained brass. Smaller and less ornate than supervisors. Head, torso and limb silhouette must remain individually legible from a full room; bob must also survive the small CCTV view. Do not add weapons, crowns, bright chest cores, text or generic uniform armour that erases identity.\n\nDELIVERY\nNeutral symmetric A-pose, empty separated hands, correct thumb orientation, clear elbows/armpits/thighs, parallel planted feet. Preserve coherent mechanical joints. Keep kit’s pipe fixed to the head when present. One textured biped, target 24,000 triangles for the close-up source, 2K base/normal/metallic/roughness maps, GLB plus FBX. Keep the pre-remesh source. Derive lower-detail room models locally and inspect their silhouettes; a smaller triangle count is not a performance pass. Never regenerate an accepted body just to acquire a motion. Check existing tasks and the cumulative 500-credit ledger before any Meshy charge.\n",
+      "url": "/loopforge-design/model-briefs/gus-01-body.efdde838ebcf06fe.txt"
+    },
+    {
+      "title": "Stage 2 · Rig and motions",
+      "file": "gus/02-rig-and-motion.txt",
+      "text": "Rig the SAME textured gus delivery body as a biped. Preserve its proportions, materials and neutral pose; no mesh regeneration during motion work. Record the actual joint hierarchy, bind transforms, finger support and axis conventions. Export a neutral rigged GLB and FBX plus the included walk/run as separate sources.\n\nActing direction: Turn chest and head together. Slow weight transfer. His retreat must account for his larger footprint and nearby max.\n\nFirst retarget the approved Worker 01 motion library locally, adapting contacts to gus's proportions. Reuse a motion only after checking its hand, foot and elbow behavior on THIS body. New catalog animations require a verified catalog ID and an entry in the credit ledger; archive each action independently even if a bundle is also produced. Never assume All Animations includes later jobs.\n\nRead 03-opening-performance.txt for choreography, transitions, retreat and contacts. Keep source and corrected files distinct. Animation names must preserve their catalog identity, with scene meaning recorded separately. Record file hashes, mesh/skin/texture presence, clip names/durations and root translation/yaw in export-audit.json. Record local fitting, motion retiming, constraints and visual checks in motion-cleanup.json. A still pose does not certify its entry, exit or blend.\n\nAPPROVED PROPORTIONS — REVISION 2\nMassive square navy shoulders with pale yoke, small recessed skull, broad rectangular chest and heavy boots. Distinguish his squared upright mass from sam’s rounded hunched mass. Worker-scale security helper, never supervisor-scale.\nFit joint/contact targets to this body, especially head reach, wrist orientation and leg clearance. The ensemble portrait is identity reference, not a clip. Preserve natural quiet posture and transitions; do not turn its poster pose into the default idle.\n",
+      "url": "/loopforge-design/model-briefs/gus-02-rig-and-motion.26fae2b3125411b0.txt"
+    },
+    {
+      "title": "Stage 3 · Opening performance",
+      "file": "gus/03-opening-performance.txt",
+      "text": "OPENING WORKERS — PERFORMANCE AND CONTACT BRIEF\nRevision 2 · 21 October 2026\n\nFollow the current OPENING_EPISODE.md. Ten people arrive through the Lobby and gather unevenly around Security. Workers remain smaller blue-family figures; LIMEN and STILETTO keep their accepted identities.\n\nAPPROACH AND WAITING\nWalk in staggered pairs and singles. Stop through a planted foot and settle into a comfortable stance. Stand at conversational angles and unequal distances, looking towards a colleague, the desk or the machinery as the situation warrants. Avoid a gridded queue or fenced waiting pen. Some people briefly scratch their heads, listen or make a small conversational gesture; most simply wait. Never loop a scratch, clap, shrug or startled reaction. Carry quiet idle time continuously across dialogue beats rather than restarting it for every line.\n\nBOB\nHead leads shoulders when noticing the new roller. He speaks to the small group while looking towards sam. He takes a single mistaken step, receives one cyan-blade electrical contact, falls, recovers with sam close enough to help, and limps back. Large hands must touch the floor and supporting arm credibly. Subsequent waiting and retreat preserve the injured leg. The personality is the approved portrait; do not add a usefulness wound or a predestined refusal of help.\n\nSECURITY VOLUNTEERS\nLIMEN calls “WHO REALLY CARES ABOUT THIS FACTORY?!” ed and gus volunteer, each with a visible response. Check their IDs first and physically admit them to the register and card stations. sam remains with bob. These are the two cleared-worker facts that permit STILETTO’s entrance.\n\nSTILETTO'S PASSAGE\nOnly after ed and gus have completed their ID checks, STILETTO enters from the main door and marches to Conveyor at a continuous Quick Walk pace. Workers notice the approaching body in sequence and withdraw far enough to clear BOTH blade envelopes. Turn, step back or aside, transfer weight, plant, then watch her pass. They must not slide or teleport into two perfect ranks. bob yields on his sound leg. kit and mae negotiate the same patch of floor; sam’s broad retreat sends max around their shoulder. Keep timing and destinations deterministic for review; reactions are driven by approach/perception, not a repeating crowd wave.\n\nLIMEN\nUse his existing expressive bank to articulate the instructions. Strike with the cyan forearm blade, preserving body/blade contact timing. Fit the downloaded Step_Back (0.833 s source) to the actual STILETTO clearance; inspect whether the source reads as a sufficient hop. Do not stretch the leg or translate a planted foot to force clearance. Keep his torso oriented towards her approach; he returns to the threshold after she passes.\n\nSPECIFIC CONTACTS TO AUTHOR OR FIT LOCALLY\n- bob: hand/head glance, card hold, strike/fall, floor support, assisted recovery, injured retreat.\n- sam: offered forearm, support beside bob, own card hold.\n- gus: volunteering, card handover and card-tray handling at Security.\n- ed: brief sleeve contact, card handover, seated register work.\n- jo: retrieve and return the card.\n- mae/kit: a short guiding hand at shoulder/upper arm while separating.\n- everyone: locomotion stops, turns, retreat, stationary settling and gaze.\n\nSOURCE POLICY\nReuse the accepted Worker 01 bank by bind-pose-aware retargeting where suitable. Catalog source IDs already recorded in worker/02-rig-and-motion.txt include 0 Idle, 2 Alert, 36 Confused_Scratch, 37 Discuss_While_Moving, 47 Listening_Gesture, 172 Electrocution_Reaction, 181 Electrocuted_Fall, 576/586 turns, 637 Injured_Walk_inplace and 692 walking_2_inplace. Inspect root travel and actual action before use. Query the live catalog for retreat, card, seated desk or recovery candidates; record the returned ID and name before any purchase. Do not invent a preset ID or label a reversed walk a reviewed retreat.\n\nDELIVERY AND REVIEW\nKeep the neutral rig and each source clip. Name exports with worker, source action ID/name and revision. Maintain export-audit.json for hashes, task IDs, triangles, textures, joints, clips, seconds and root travel. Maintain motion-cleanup.json for source/derivative mapping, contact targets, blend windows, foot planting and review results. Preview every delivered clip and its entry/exit on its own character. Inspect front, side, three-quarter and the room camera. Test body/body and body/blade clearance, palms, wrists, elbows, knees, soles and floor. Review mixed-height contacts; numeric clearance alone cannot approve believable posture.\n\nENGINE\nUse the same motion intent, transition, path reservation, contact and speech-hearing contracts in scripted scenes and future agent-selected actions. Await physical arrival before committing a check or admission. No crowd lane is opened by moving an actor through someone else. Staggered withdrawal must finish before the blade reaches its occupied space. Preserve two real cleared-worker facts before STILETTO enters. Preserve authored consequences separately from presentation cues.\n",
+      "url": "/loopforge-design/model-briefs/gus-03-opening-performance.53d8e1d6868d1f73.txt"
+    }
+  ],
+  "files": [
+    {
+      "name": "images/gus-1280.30fc58bf00daccd5.webp",
+      "src": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 240258,
+      "sha256": "30fc58bf00daccd537ce6bee2cd89c8f57b6ade9178170e8a835ada435acd3fb"
+    },
+    {
+      "name": "prompts/01-body.txt",
+      "src": "/loopforge-design/model-briefs/gus-01-body.efdde838ebcf06fe.txt",
+      "bytes": 1738,
+      "sha256": "efdde838ebcf06fecef30ff2f27a3f58df29b316342074de5db09a177c1d55b1"
+    },
+    {
+      "name": "prompts/02-rig-and-motion.txt",
+      "src": "/loopforge-design/model-briefs/gus-02-rig-and-motion.26fae2b3125411b0.txt",
+      "bytes": 1864,
+      "sha256": "26fae2b3125411b083de88b04726a3d21e7dfb6a0699c10dabc1194a5d7e1834"
+    },
+    {
+      "name": "prompts/03-opening-performance.txt",
+      "src": "/loopforge-design/model-briefs/gus-03-opening-performance.53d8e1d6868d1f73.txt",
+      "bytes": 5045,
+      "sha256": "53d8e1d6868d1f73882c3c3765548c1fc805682b53639a46c38967e4329f6206"
+    },
+    {
+      "name": "README.md",
+      "src": "/loopforge-design/model-briefs/gus-README.8420c08f1448ef94.md",
+      "bytes": 1810,
+      "sha256": "8420c08f1448ef948588538c66cec9f317d2abaf3fe1195e29e7d77349908c32"
+    },
+    {
+      "name": "export-audit.json",
+      "src": "/loopforge-design/model-briefs/gus-export-audit.6067060f48e81e5b.json",
+      "bytes": 116,
+      "sha256": "6067060f48e81e5bc7bc808c5d5ee35df4cc19f3645e276d0f012bf22e18750e"
+    },
+    {
+      "name": "image-generation.json",
+      "src": "/loopforge-design/model-briefs/gus-image-generation.1bb58d032d3462c2.json",
+      "bytes": 2810,
+      "sha256": "1bb58d032d3462c2fbb38a98fdc5b50864dd63196cf920ca6c37bddacb273e5b"
+    },
+    {
+      "name": "motion-cleanup.json",
+      "src": "/loopforge-design/model-briefs/gus-motion-cleanup.42f73b1734d55b4c.json",
+      "bytes": 124,
+      "sha256": "42f73b1734d55b4c772669e066aefeea90eeb75a91a69e40398ec58eaba70379"
+    }
+  ],
+  "downloadBytes": 253765,
+  "packageManifest": {
+    "schemaVersion": 1,
+    "id": "gus",
+    "revision": "Approved cast art · 21 October 2026",
+    "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+    "viewer": null,
+    "images": [
+      {
+        "label": "gus · approved concept",
+        "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+        "input": {
+          "src": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 240258,
+          "sha256": "30fc58bf00daccd537ce6bee2cd89c8f57b6ade9178170e8a835ada435acd3fb"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-cast/gus-320.a2a4498a01697f42.webp",
+            "width": 320,
+            "height": 480,
+            "bytes": 19152,
+            "sha256": "a2a4498a01697f42fd9cf842e853a6df2bd60ba5737438125efcef2a4b6cda08"
+          },
+          {
+            "src": "/media/loopforge-cast/gus-640.7315a5db20327d7f.webp",
+            "width": 640,
+            "height": 960,
+            "bytes": 67686,
+            "sha256": "7315a5db20327d7f7adf5a88a702da1da554870c6a6cdd0c8fc4f6c695b34574"
+          },
+          {
+            "src": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 240258,
+            "sha256": "30fc58bf00daccd537ce6bee2cd89c8f57b6ade9178170e8a835ada435acd3fb"
+          }
+        ],
+        "archivePath": "images/gus-1280.30fc58bf00daccd5.webp"
+      }
+    ],
+    "files": [
+      {
+        "name": "images/gus-1280.30fc58bf00daccd5.webp",
+        "src": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 240258,
+        "sha256": "30fc58bf00daccd537ce6bee2cd89c8f57b6ade9178170e8a835ada435acd3fb"
+      },
+      {
+        "name": "prompts/01-body.txt",
+        "src": "/loopforge-design/model-briefs/gus-01-body.efdde838ebcf06fe.txt",
+        "bytes": 1738,
+        "sha256": "efdde838ebcf06fecef30ff2f27a3f58df29b316342074de5db09a177c1d55b1"
+      },
+      {
+        "name": "prompts/02-rig-and-motion.txt",
+        "src": "/loopforge-design/model-briefs/gus-02-rig-and-motion.26fae2b3125411b0.txt",
+        "bytes": 1864,
+        "sha256": "26fae2b3125411b083de88b04726a3d21e7dfb6a0699c10dabc1194a5d7e1834"
+      },
+      {
+        "name": "prompts/03-opening-performance.txt",
+        "src": "/loopforge-design/model-briefs/gus-03-opening-performance.53d8e1d6868d1f73.txt",
+        "bytes": 5045,
+        "sha256": "53d8e1d6868d1f73882c3c3765548c1fc805682b53639a46c38967e4329f6206"
+      },
+      {
+        "name": "README.md",
+        "src": "/loopforge-design/model-briefs/gus-README.8420c08f1448ef94.md",
+        "bytes": 1810,
+        "sha256": "8420c08f1448ef948588538c66cec9f317d2abaf3fe1195e29e7d77349908c32"
+      },
+      {
+        "name": "export-audit.json",
+        "src": "/loopforge-design/model-briefs/gus-export-audit.6067060f48e81e5b.json",
+        "bytes": 116,
+        "sha256": "6067060f48e81e5bc7bc808c5d5ee35df4cc19f3645e276d0f012bf22e18750e"
+      },
+      {
+        "name": "image-generation.json",
+        "src": "/loopforge-design/model-briefs/gus-image-generation.1bb58d032d3462c2.json",
+        "bytes": 2810,
+        "sha256": "1bb58d032d3462c2fbb38a98fdc5b50864dd63196cf920ca6c37bddacb273e5b"
+      },
+      {
+        "name": "motion-cleanup.json",
+        "src": "/loopforge-design/model-briefs/gus-motion-cleanup.42f73b1734d55b4c.json",
+        "bytes": 124,
+        "sha256": "42f73b1734d55b4c772669e066aefeea90eeb75a91a69e40398ec58eaba70379"
+      }
+    ]
+  }
+}

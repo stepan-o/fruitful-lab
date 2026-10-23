@@ -1,0 +1,136 @@
+{
+  "files": {
+    "history/data/artifacts.json": {
+      "sha256": "b824cdf29acf51591de1ca73b33706e675e596dfc562f2f03c8594cd9ce93e08",
+      "bytes": 163426
+    },
+    "history/data/facts.json": {
+      "sha256": "4bc9b390ca1064ce1399adaabf04c9169ce39f73b96d8a6ca9dec46b4f89bb55",
+      "bytes": 21258
+    },
+    "history/data/git-snapshots.json": {
+      "sha256": "ceb31d0ace0e9b5946ec32d1a5898f65fe71b97630f0dd3170bb6c235563f5db",
+      "bytes": 25541
+    },
+    "history/data/media.json": {
+      "sha256": "ed4bc6306a1ea1c2f8960f9bc6c6eef765f8b7ffdeb0af60cd7783d7c655f8c9",
+      "bytes": 2723
+    },
+    "history/manuscript.md": {
+      "sha256": "7d7c942c861f54977196fa2d32f3c0dcd53a08456144d96b2502d7e4e2203186",
+      "bytes": 22987
+    },
+    "history/media/day-two-proposal-small.png": {
+      "sha256": "e648e9e41aa16abc85fc77427bbbafd9221257d28065ada25992e922d0783b0d",
+      "bytes": 124888
+    },
+    "history/media/day-two-proposal.png": {
+      "sha256": "ae81feda7489de7a067940039ced3ceaad67b4f69c111e526cd166fa46f754ae",
+      "bytes": 2824187
+    },
+    "history/media/max-preview.jpg": {
+      "sha256": "460ae6a21dc59ec6d69cf430db290438e9339a74e0958aa48ed37d8ef2bf67a3",
+      "bytes": 75556
+    },
+    "history/media/strike-after.png": {
+      "sha256": "394913832a5c7ca17c1a907aa531f88b3030c766ccf37f1cc3c5c6e7a5f16529",
+      "bytes": 298008
+    },
+    "history/media/strike-before.png": {
+      "sha256": "ff95dac0d24a347382fe7bf8c2d39e937247799c88e56919debfc094489e1a7f",
+      "bytes": 292184
+    },
+    "history/page-content.json": {
+      "sha256": "2f70b3e514dae2e5d8b9b38263ef020c18a6c050213ddcb3c2d395bae3e9fe2f",
+      "bytes": 555323
+    },
+    "interviews.json": {
+      "sha256": "d90677f56f584d8dea084daed6d8011760ec1e55391043d7abb5a3fd2b598510",
+      "bytes": 62951
+    },
+    "post.json": {
+      "sha256": "f9ba8cd9a0f399cb3088ecb70e078b857ca6ffb037fd1ac01ae9c645d96ab2b4",
+      "bytes": 757
+    },
+    "post.md": {
+      "sha256": "6f260330c6327bd837a8f73f83f8793406ecccd2ac534dfa043cd7e6d11c52b8",
+      "bytes": 14045
+    },
+    "statistics.json": {
+      "sha256": "8bda5c920213eaae2cfd274d1b9e89e42ad9950a53ece535a8dfab0e1e075327",
+      "bytes": 21140
+    },
+    "statistics.md": {
+      "sha256": "adc63e4f00095107f17bf6c7d105d603cadb677c47c4a3441443a403d72d574b",
+      "bytes": 7294
+    },
+    "assessment.md": {
+      "sha256": "99ff99c3cbf6b8e0172711777c71d3eaa1c19fe4a570523b69b9930a094e6606",
+      "bytes": 12414
+    },
+    "assessment.json": {
+      "sha256": "eb39c927cecc9999ba64fcd4191a4fa02c5a851db662deb8a69b49e4be12c724",
+      "bytes": 538
+    },
+    "assessment-source-map.json": {
+      "sha256": "399e2b31885c3b8a131f3552d490b128488b65b8c006d54c4568238f842e26ab",
+      "bytes": 2868
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/contributions/3d-artist.md": {
+      "bytes": 3521,
+      "sha256": "291c20c8102ac5a24b64cf305ecf0822cb7023290adfad9b2a2979ee3ada0631"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/contributions/animator.md": {
+      "bytes": 3454,
+      "sha256": "aa970aa2efafb48ed56686eefa99af3aa467ec128e2483106f364ce3db63674d"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/contributions/critic.md": {
+      "bytes": 3397,
+      "sha256": "a17480d0adecfb22eb31600db9bf74e4b55f4b412dc196038835b7cd21133561"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/contributions/director.md": {
+      "bytes": 3353,
+      "sha256": "aed9874bce768616d945755ed420e82625d1960faab46a58e6f93a4405e5b88e"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/contributions/engine.md": {
+      "bytes": 3671,
+      "sha256": "dce9e8ee983395c2dea5e63191cffd565166d61e2244fabe101fc4726ac0e9f0"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/contributions/level.md": {
+      "bytes": 3382,
+      "sha256": "201f075c2bc1ca07dc8f34a9eeef1237c6c0312fe76669192facec7ed369ce21"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/contributions/systems.md": {
+      "bytes": 3459,
+      "sha256": "c68deaf25320640d5185c727bf2c3f888501054795412d6c82b52b1b6af84142"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/contributions/visual.md": {
+      "bytes": 3451,
+      "sha256": "a4f768af13c624b04c11471b3ff1e29475581b2e0f00158745b003728ee67f0b"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/contributions/writer.md": {
+      "bytes": 3383,
+      "sha256": "04c9f64de64dddbb0f3add9b895297dd5ae7b6c1123a01bfb15e22eb37ab96bf"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/contributions.json": {
+      "bytes": 53237,
+      "sha256": "5acb066b5aa50e083708f8776dc9b80e64257fcb111fedc2af19a1ddee44e89a"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/milestone-facts.json": {
+      "bytes": 822,
+      "sha256": "8fe60794b67d2a91b49e19b013c4af34578f01baccea55c1c2f106b9bdee022b"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/participation.json": {
+      "bytes": 4096,
+      "sha256": "d543b377982c27f1349a1fec733f9924f8831315d868bf3533745cdafdcf32e2"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/producer-contribution.md": {
+      "bytes": 2961,
+      "sha256": "16a61bc96bae523916d7ff50c0cf6dae81448f359ee5369c68f03dc56ccfbf7f"
+    },
+    "retrospectives/2026-10-22-first-retrospective/data/retrospective.md": {
+      "bytes": 13957,
+      "sha256": "220dc653c3decaf17c5ffe6e1be3dd42ed2714b91625371dda8c3095105e6e16"
+    }
+  }
+}

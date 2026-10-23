@@ -35,6 +35,12 @@ Owner direction, 17 October 2026: the next development priority is a factory who
 
 **Let relationships appear in performance.** The original Puppeteer describes a supervisor as the room's weather. Apply that through what other agents do when the supervisor arrives, speaks, threatens, helps or leaves. Stable worker identities and memory should produce recognizable changes in later encounters. Readable behavior can hint at a problem before its eventual consequences; it need not reveal a hidden motive or future outcome.
 
+### Worker characters and relationship arcs
+
+20 October owner direction: workers must be recognizable through appearance, movement, speech, relationships, choices, **actions and reactions**. Their BDI motives should drive factory conduct, with robot mechanisms carrying recognizable human meanings. Story discovery happens in short, situated exchanges tied to player problems and later consequences. Day one's pressure from LIMEN starts individual worker–LIMEN arcs and worker–worker relationships; a common stress increase does not establish those identities.
+
+The [character dramaturgy essay](CHARACTER_DRAMATURGY.md) follows the workers from the Security queue to the choices they make later on shift. [Writing Loopforge](EDITORIAL_VOICE.md) sets the candidate editorial and dialogue direction, with concrete examples and distinct supervisor voices. It extends the Puppeteer/Producer direction. The [ten-worker cast](OPENING_CAST.md) contains bob’s approved short portrait and nine new drafts. It also records proposed art, voice and performance implications. The earlier [opening episode](OPENING_EPISODE.md) awaits revision against the cast; its usefulness-based explanation of bob is retired. New portraits, scenes and assets need their own creative review before production. The [illustrated Back to the Dawn study](BACK_TO_THE_DAWN_CASE_STUDY.md) records the reference. Full worker BDI and persistent relationship arcs remain implementation work.
+
 ### Opening two-week arc
 
 The [first five days proposal](FIRST_FIVE_DAYS_SHOW_PROPOSAL.md) details the two-room sub-arc, show ingredients, conditional scenes, asset/system gaps and staged-scene-first build order.

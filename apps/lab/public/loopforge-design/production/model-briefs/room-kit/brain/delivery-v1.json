@@ -1,0 +1,11 @@
+{
+  "revision": "room-kit/1",
+  "asset": "brain",
+  "src": "/media/files/8a34c53956db2b7e81d1145815e6ba5d1c9c7b9882b4383d12f959299f38b412.glb",
+  "sha256": "8a34c53956db2b7e81d1145815e6ba5d1c9c7b9882b4383d12f959299f38b412",
+  "bytes": 252892,
+  "sourceSha256": "1feb7f83e5aacf9d7094a3b6213ec2e2414febbc32377d2b2e21ba1977708d0d",
+  "triangles": 4185,
+  "textureSize": 512,
+  "status": "candidate; fit and visual review pending"
+}

@@ -11,6 +11,14 @@ export type ReviewSection = typeof reviewSections[number]['id'];
 export type ReviewGate = {status:'Accepted slice'|'Candidate'|'Needs work'|'Not measured'; detail:string};
 export type ReviewReadiness = Record<ReviewSection, ReviewGate>;
 export const reviewReadiness: Record<string, ReviewReadiness> = {
+ 'opening-workers': {
+  body:{status:'Candidate',detail:'Ten individually generated bodies follow the approved cast art. Inspect each silhouette and the three simplified detail levels before accepting the exported geometry.'},
+  equipment:{status:'Candidate',detail:'Characteristic clothing and kit’s pipe are part of the source body. Held IDs and paired prop contacts remain to be fitted.'},
+  motion:{status:'Candidate',detail:'Each bank has nineteen transferred Worker 01 motions, a neutral rig and two companion Meshy clips. Source finger tracks do not transfer to these 24-joint rigs.'},
+  contact:{status:'Needs work',detail:'New proportions need individual fitting. The first bob scan finds hand/head, hand/leg and fall/floor contacts. Worker 01’s earlier cleanup does not certify these bodies.'},
+  readability:{status:'Candidate',detail:'Inspect the new cast under the same factory lighting and CCTV cameras. Full-cast and names-hidden recognition remain separate checks.'},
+  performance:{status:'Not measured',detail:'Ten floor bodies total 92,385 triangles and 12.75 MB including motion banks. The smaller set preserves head features and totals 45,542 triangles. These are delivery measurements; the actual opening-scene device test is still pending.'}
+ },
  'cathexis-intake': {
   body:{status:'Accepted slice',detail:'Accepted v2 silhouette and rear skirt; rigged export has 51,031 triangles. Matching delivery normal map remains missing.'},
   equipment:{status:'Accepted slice',detail:'Owner approves full/split Grace fit on the intact animated head. Recessed eyes and static/moving fitting share one adapter. Physical mask removal and facial articulation remain outside this slice.'},
@@ -22,7 +30,7 @@ export const reviewReadiness: Record<string, ReviewReadiness> = {
  'limen-assembly': {
   body:{status:'Accepted slice',detail:'Owner approved the 42k body. The separate 9,752-triangle / 80-joint source candidate is available for review; it does not replace that game performer.'},
   equipment:{status:'Accepted slice',detail:'Body/blade fit and arm-flowing energy accepted. Contact sparks and game cues remain open.'},
-  motion:{status:'Candidate',detail:'17 new source motions with finger animation, plus the accepted maintenance idle, walk and run. Shout and attack candidates require scene-specific staging; Arise has a below-floor source trajectory.'},
+  motion:{status:'Candidate',detail:'20 source and transferred motions with finger animation, plus the accepted maintenance idle, walk and run. Shout and attack candidates require scene-specific staging; Arise has a below-floor source trajectory.'},
   contact:{status:'Needs work',detail:'Accepted assembly clearance remains approved. New source motions use a candidate forearm emitter fit; self-contact, swept blade paths and paired worker contacts need review.'},
   readability:{status:'Candidate',detail:'Three CCTV presets available; full room-action recognition still needs review.'},
   performance:{status:'Not measured',detail:'New bank: 9.91 MiB, one body, 17 clips and embedded PBR maps; housing adds 1.12 MiB. Only the selected bank loads. Crowd and physical-device budgets are not certified.'}

@@ -1,0 +1,14 @@
+{
+  "id": "lou",
+  "ref": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/rooms/04_loopforge_rooms_neural_lattice_a_intake_2.png",
+  "prompt": "Use case: stylized-concept. Create a faithful isolated full-body concept for lou, based specifically on the TALL VERY THIN ROBOT AT THE LEFT of this original Loopforge brain washing room artwork. Extract his distinctive design rather than inventing a generic humanoid. Keep the long forward-curving mechanical neck, small elongated angular head with a projecting hooked beak/chin, small deeply seated pale cyan eyes under a heavy brow, large round side receivers, narrow exposed rib-like torso, very narrow waist, long thin segmented arms with large visible circular elbow bearings. A distinctive inquisitive head carried well ahead of his shoulders. Long spindly biped legs with small practical flat work boots, not talons. Real usable five-finger articulated mechanical hands with long fingers; tongs are a separate tool so omit tools. He should look like a peculiar old precision wash-station worker with patient, inquisitive attention, not a combat droid or a bird creature. Preserve original dark oily mechanical construction and muted brass bearing rims; add coherent faded denim/cobalt blue enamel plates to head casing, narrow breastplate, forearms and shins, enough blue to identify worker family at small scale, with modest pale blue accents and restrained edge wear. Anatomical asymmetry from stance only, stable two arms and two legs. Full-body front three-quarter view in relaxed open A-pose, empty hands clear of body, all feet visible. Dark smoky charcoal background, detailed painterly industrial game concept art matching the reference. One character only, no machinery, no brain or container, no lettering. Preserve the actual reference worker's strange thin long-neck silhouette.",
+  "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-87981670-c4ed-4697-a0b5-31f426d738f7.png",
+  "status": "owner-approved-concept",
+  "version": 1,
+  "workspace_image": "output/opening-cast/lou/lou-conveyor-v1.png",
+  "sha256": "283e753aa2afeae236393a89f11a860351f1e9e885264d10f4e7447c95536fb4",
+  "reference_role": "Original Conveyor room artwork; character silhouette and materials",
+  "date": "2026-10-21",
+  "tool": "image_gen",
+  "approval": "sam, ben and lou are approved."
+}

@@ -1,0 +1,11 @@
+{
+  "revision": "room-kit/1",
+  "asset": "brain-wash",
+  "src": "/media/files/8bed06015ef4a09622c19d6f121f42c82630a24c9059dda4f096313cc145e07d.glb",
+  "sha256": "8bed06015ef4a09622c19d6f121f42c82630a24c9059dda4f096313cc145e07d",
+  "bytes": 1163828,
+  "sourceSha256": "c8508b346d8a856ebd6cb9d3d1ef0f2d1cb99f5aa6bf33a457c5c67c6a127bd3",
+  "triangles": 10997,
+  "textureSize": 1024,
+  "status": "candidate; fit and visual review pending"
+}

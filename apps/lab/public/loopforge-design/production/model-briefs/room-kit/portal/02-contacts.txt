@@ -1,0 +1,3 @@
+Security checkpoint portal and reader housing — contact design targets, NOT measured or accepted
+
+Floor origin centered on passage; +Z faces incoming worker, travel along Z. Clear passage target 4.0 m wide by 3.6 m high; all reader geometry stays beyond X=2.0 m. Reader housing target center [2.4,0.65,0], touch recess [2.4,1.1,0.35], standing spot [2.4,0,1.1]. Jamb/lintel collision only plus a separate pedestal envelope. Gate pivots stay on inner jambs for engine-owned moving leaves. Keep falling-worker space, card pickup area and LIMEN retreat pocket outside the assembly: confirm placement with existing scene owner; do not declare fit from this draft.

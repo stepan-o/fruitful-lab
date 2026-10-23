@@ -1,0 +1,27 @@
+{
+  "tool": "meshy_image_to_3d",
+  "task_id": "01a161d7-a8cb-7514-8a3c-fd7642bcb604",
+  "credits": 30,
+  "state": "SUCCEEDED",
+  "arguments": {
+    "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/docs/loopforge/production/model-briefs/room-kit/portal/reference-v1.png",
+    "ai_model": "meshy-7.1",
+    "model_type": "standard",
+    "enable_pbr": true,
+    "topology": "triangle",
+    "target_polycount": 10000,
+    "should_texture": true,
+    "texture_resolution": "2k",
+    "texture_prompt": "Soot-dark aged cast iron with muted worn brass trim. Matte calm surfaces, wear concentrated at real contact edges. No labels, letters, glyphs, emissive surfaces, baked colored lighting, dirt clouds or objects painted onto the texture. Preserve functional empty apertures and the exact isolated prop design.",
+    "target_formats": [
+      "glb"
+    ],
+    "multi_view_thumbnails": true,
+    "response_format": "json",
+    "geometry_resolution": "standard",
+    "should_remesh": true,
+    "save_pre_remeshed_model": true,
+    "image_enhancement": false
+  },
+  "input_sha256": "26f1d678f28b2b0fb4e8978a989560306d71aeb7c80a0e62bace761d97c49b05"
+}

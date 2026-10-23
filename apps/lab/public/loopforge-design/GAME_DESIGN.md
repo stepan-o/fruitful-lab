@@ -1,6 +1,6 @@
 # Loopforge game design
 
-18 October 2026 · cast scale, colour and room readability
+20 October 2026 · bob, character dramaturgy and narrative design
 
 Trace the factory the player runs, the authority they establish and the society they inherit. This author reference connects the long arcs to player experience and the engine boundary, before balance and implementation.
 
@@ -5148,6 +5148,12 @@ Owner direction, 17 October 2026: the next development priority is a factory who
 
 **Let relationships appear in performance.** The original Puppeteer describes a supervisor as the room's weather. Apply that through what other agents do when the supervisor arrives, speaks, threatens, helps or leaves. Stable worker identities and memory should produce recognizable changes in later encounters. Readable behavior can hint at a problem before its eventual consequences; it need not reveal a hidden motive or future outcome.
 
+### Worker characters and relationship arcs
+
+20 October owner direction: workers must be recognizable through appearance, movement, speech, relationships, choices, **actions and reactions**. Their BDI motives should drive factory conduct, with robot mechanisms carrying recognizable human meanings. Story discovery happens in short, situated exchanges tied to player problems and later consequences. Day one's pressure from LIMEN starts individual worker–LIMEN arcs and worker–worker relationships; a common stress increase does not establish those identities.
+
+The [character dramaturgy essay](CHARACTER_DRAMATURGY.md) follows the workers from the Security queue to the choices they make later on shift. [Writing Loopforge](EDITORIAL_VOICE.md) sets the candidate editorial and dialogue direction, with concrete examples and distinct supervisor voices. It extends the Puppeteer/Producer direction. The [ten-worker cast](OPENING_CAST.md) contains bob’s approved short portrait and nine new drafts. It also records proposed art, voice and performance implications. The earlier [opening episode](OPENING_EPISODE.md) awaits revision against the cast; its usefulness-based explanation of bob is retired. New portraits, scenes and assets need their own creative review before production. The [illustrated Back to the Dawn study](BACK_TO_THE_DAWN_CASE_STUDY.md) records the reference. Full worker BDI and persistent relationship arcs remain implementation work.
+
 ### Opening two-week arc
 
 The [first five days proposal](FIRST_FIVE_DAYS_SHOW_PROPOSAL.md) details the two-room sub-arc, show ingredients, conditional scenes, asset/system gaps and staged-scene-first build order.
@@ -5319,6 +5325,346 @@ Worker 01’s 19 exported motions are available in the [production review player
 The owner selects **Hot Walk as Cathexis’s default walk**. Keep that public name even though the source FBX says `Confident_Walk`. Preserve the expressive gait; fix mesh intersections without erasing its character. Worker 01 is a temporary motion stand-in until Cathexis’s own mesh/rig can be reviewed. Style approval does not certify retargeting or factory contact. `afraid_recoil` and `work_cradle` remain missing custom motions.
 
 
+# This is bob
+
+Character dramaturgy and narrative design · Foundation and working primer · 20 October 2026
+
+**Approved character brief · 20 October 2026**
+
+bob was a small worker with hands a size too large for him and a face that always seemed to have just heard something. His head turned before the rest of him, pulling his narrow shoulders after it; even in a queue he gave the impression of being on his way somewhere. He liked new machinery, especially before anyone quite knew how to use it. He had a warm, slightly cracked voice and a habit of addressing a whole group while looking at whichever face seemed kindest.
+
+Loopforge's story follows bob through an ordinary factory life. The player occupies a different position: they operate the factory and influence its conditions. bob is the protagonist, not a controllable avatar or a disposable example of a system. His life gives the growing world continuity. The design succeeds when an event is understood as “STILETTO hit bob”—and when the player also remembers what bob was trying to do before she arrived.
+
+This chapter introduces the dramatic craft we will use. The [reference studies](NARRATIVE_STUDIES.md) examine how *Back to the Dawn*, *Attack on Titan* and Dostoevsky use it in different ways, then connect it to the original Producer and Puppeteer notes. The [cast](OPENING_CAST.md) brings together the approved cast art, bob’s unchanged portrait and revised supporting portraits. The [opening script](OPENING_EPISODE.md) stages their first checkpoint encounter. Concept approval and a written scene remain separate from a tested performance.
+
+## Dramaturgy begins with an action
+
+Dramaturgy concerns how actions are arranged, performed and understood: where attention goes, what an audience expects, what changes, and why the change matters. A robot walking across a room is movement. bob leaving a safe place to return a tool after being told not to move is an action with a purpose, an obstacle and a possible cost.
+
+A scene gives that action a particular situation. Someone wants something now. Another person, a rule or a material difficulty stands in the way. The person tries an approach; the world answers. By the end, some condition is different. They may have gained permission, lost face, learned a fact or incurred an obligation. A scene can be quiet and still accomplish all of this.
+
+An episode connects several such changes into a small complete movement. At Security, the crew arrives intending to begin work. LIMEN imposes his admission procedure. The crew eventually gets a way through, but bob is hurt and ed has become part of the procedure. Admission resolves the immediate question. The consequences give the next episode its material.
+
+An arc is the longer pattern formed by those consequences. Repeating the same punishment is escalation in quantity. Returning bob to a similar choice after he has learned to fear initiative tests a change in the person. That second encounter can develop the story even if nobody raises their voice.
+
+## A protagonist gives the audience someone to keep following
+
+A protagonist supplies continuity of concern. The audience learns what that person wants, watches them act and carries questions about them into the next scene. They need not be the most powerful person, the best person or the cause of every event. Their importance comes from the life we are invited to follow.
+
+bob's ordinary status is useful. Leadership's target, a supervisor's grievance and a staffing decision can all reach him as changes to a working day. He makes choices within that day: whether to admit a fault, ask for help, take credit, share a task or leave somebody waiting. His actions affect other people, who answer from lives of their own.
+
+The operator and bob can therefore have different desires without either becoming a mistake in the design. The operator may see an available worker; bob may see a promise he cannot keep if reassigned. A production success can disappoint him. A kindness to him can burden sam. We want the player to notice those tensions, not receive a definitive moral score.
+
+Keeping bob central does not require permanent camera coverage. Establish recurring places, habits, partners and unfinished concerns, then return to them often enough that a change is recognizable. An empty place becomes a question because we expected him there. No special power, concealed royal origin or inevitable martyrdom is needed to justify that attention.
+
+## Character creation starts with a life, not a list of traits
+
+Begin by imagining a day the person would consider good. What work can they do well? Whose company do they seek? What do they enjoy when no reward is available? What small inconvenience do they tolerate, and which one produces a surprising reaction? These details create something pressure can disturb.
+
+The approved portrait gives us bob’s physical presence, curiosity and manner of addressing others. It leaves his explanations of himself open. His interest in unfamiliar machinery is enough to begin staging an act of attention; it does not establish a need to prove his usefulness, a fear of dependence or a future rebellion. Situations and relationships will give him particular desires. Their importance can change as he gains experience.
+
+An archetype provides a recognizable human pattern: the helper, the ambitious subordinate, the proud craftsperson. It becomes a stereotype when the pattern explains everything. A specific person needs a competence, a contradiction and relationships in which the same habit has different effects. sam's attentiveness may reassure kit and irritate bob. Neither response proves that sam has ceased to care.
+
+Backstory is useful when it explains a present investment. It need not arrive as a confession. The way gus makes room for ben can establish that they have worked together before. A later disagreement can complicate that history. Avoid treating every person as a sealed mystery whose only reward is a biography.
+
+The same principle applies to visual design. A silhouette helps the audience find somebody; habitual movement helps them recognize what that person is doing. Speech and conduct must then justify the recognition. A head shape cannot make a timid worker timid in every circumstance.
+
+## Pressure turns a conviction into a choice
+
+Pressure is one of Loopforge's central themes. It comes from deadlines, bodies, hierarchy and relationships. It also comes from inside a person: the promise they made, the image they want to preserve, the favor they cannot bear to owe. These pressures matter when they make two valued things difficult to keep together.
+
+STILETTO wants output and leadership's approval. A delayed crew threatens both. She demands speed from the workers who finally arrive. The time bob might have spent examining a new machine now has to serve a deadline. Whether he hurries, asks a question, follows somebody else or objects belongs to the encounter we still have to write. His portrait gives that encounter a person; it does not supply a compulsory response.
+
+LIMEN applies another pressure. Procedure gives him an account of order and a basis for authority. He may recognize real hazards while harming the people whose compliance he demands. STILETTO's objection is that his checks withhold labor she needs; worker welfare is not her motive. Their conflict can be understandable without making either supervisor benevolent.
+
+Pressure need not always produce damage. Clear permission can relieve hesitation. A colleague can make help bearable. Praise can create confidence, obligation or rivalry depending on its recipient and context. Relief matters because it shows that the world can answer an action with something other than deterioration.
+
+## Contradiction gives a person somewhere to go
+
+Character development is not a compulsory journey toward virtue. A person may become more generous, more guarded, more skilled at rationalizing harm or simply more aware of a difficulty they cannot resolve. The important connection is between experience, interpretation and later conduct.
+
+Dostoevsky is useful here because his characters' explanations do not settle them. An argument about duty or freedom can also be an attempt to avoid shame, obtain recognition or control the listener. Another person can expose the gap by answering unexpectedly. Our [selected passage studies](NARRATIVE_STUDIES.md) consider this in *Crime and Punishment*, *The Brothers Karamazov* and *Notes from the Underground*.
+
+bob’s interest in what nobody yet knows how to use can meet ed’s preference for an established instruction or sam’s readiness to demonstrate the solution. His habit of looking towards a kind face can affect whom he addresses in the same room. These are possible points of contact. We still have to discover what each person wants in the encounter, what they misunderstand and what they choose. A portrait should leave enough room for that work.
+
+The rest of the ensemble must have equivalent freedom. ed may become LIMEN's assistant and later correct him. jo can keep a faithful record yet choose the moment to reveal it. A person with a recognizable pattern is still capable of surprising us; the surprise should make sense once we see what mattered to them.
+
+## Dialogue is part of the action
+
+A line does something to a listener: asks, reassures, tests, conceals, threatens, includes or refuses. The visible situation supplies the rest. When sam says, “I'll walk on this side,” after bob declines an arm, the line offers company while allowing him to preserve the refusal. A speech about dignity would do less.
+
+Subtext is the difference between the literal words and the work they perform in that situation. It should be inferable, not an excuse for everyone to speak in riddles. LIMEN's “Take your time” can sound considerate while he is enforcing a painful retreat. A clear control label should never share that ambiguity; players need to understand the choices the interface offers.
+
+Short bubbles help conversation inhabit the world. Pacing, emphasis and occasional emotion marks can color a line, but should not make every speaker equally loud. A silent reaction may carry the turn. Hold the camera long enough for the player to see who listens and who changes their behavior.
+
+Workers' short names remain lowercase, including at sentence starts and on speaker labels. Supervisors retain capitals. This makes hierarchy present in the language while repeated encounters give each name a personal history. A number on LIMEN's form need not become the name by which the audience knows bob.
+
+## A large cast needs unequal attention
+
+Ten people can be present without ten simultaneous stories demanding comprehension. The opening follows bob, gives sam an immediate relationship with him and lets ed acquire a role that will complicate both their lives. The others become available through concrete acts: somebody preserves a place, somebody returns an ID, somebody decides not to make a joke.
+
+The first viewing should establish a few relationships well. Later encounters can bring a previously peripheral worker forward. *Back to the Dawn* is especially useful for this movement between a recognizable crowd and a short personal exchange. Its clear escape goal gives encounters direction; Loopforge's factory goals and bob's ongoing concerns must perform that organizing work in our game.
+
+*Attack on Titan* offers another lesson: a change in perspective can alter our understanding of someone we already know. To use that lesson, a scene with ed away from LIMEN should reveal something ed actually does, not supply a narrator's correction that he is “really good.” The player can revise a judgment while the harm remains part of the history.
+
+## Collisions need a history and a shared constraint
+
+Two people disagreeing is not yet a long plot. Give them incompatible commitments, a reason they cannot avoid one another and consequences that return. LIMEN's checks delay STILETTO's crew. STILETTO raises the pace to recover output. The resulting wear gives LIMEN grounds for further interference. Each response changes the situation the other will face.
+
+This produces a credible course toward confrontation without requiring one immutable outcome. An assignment change, a credible concession or better information can redirect the course. If the player commits to one supervisor, the world should carry that preference into advantages and costs that belong to that approach.
+
+The same structure works among workers. sam promises to help two people. ed must choose whether to preserve an accurate count or an approving relationship. bob accepts an opportunity that kit expected. These smaller collisions keep the factory from becoming a stage used only by supervisors.
+
+## Some of the story happens elsewhere
+
+The world must continue when the camera leaves. At six rooms, the player cannot witness every encounter, and the design should not pretend otherwise. We need continuity of causes and selective presentation of consequences.
+
+Some scenes offer a direct decision. Others reflect an earlier assignment. Some can only be witnessed; some will be discovered later; some remain private. We should identify which kind we are writing rather than add an artificial intervention button to every exchange. The player is responsible for their actual decisions, not for failing to exercise a power we never gave them.
+
+“What happened to bob?” becomes meaningful through established expectations. His station is empty. sam is doing a task normally shared with him. A familiar tool has moved to Security. Each trace has an ordinary cause and a limited meaning. Following them may reveal a new duty, an avoidance, a friendship or an injury. Absence is not automatically a catastrophe.
+
+The player needs enough recurring evidence to follow the long arc and enough context to make the next consequential decision. They do not need every secret. Witness accounts should retain their source and uncertainty; a rumor must not silently become the world's truth. A camera can suggest something worth watching without cutting away from the player's attention on every bubble.
+
+## From an authored episode to agents who can live it
+
+BDI gives us a useful distinction between what a person believes, what they want and what they have committed to doing. It does not itself make a person interesting. The authored episode tests whether those commitments can produce a performance worth watching. The engine then needs to support the causes, alternatives and interruptions that the performance implies.
+
+Write the chain explicitly: what actually happened; what this person could perceive; what they inferred; which desire became urgent; what they attempted; and what the world returned. Retain the difference between a sincere mistake and an invented excuse. A speech bubble should express or perform something within that chain, not retroactively invent its cause.
+
+The opening script is one representative run with LIMEN at Security. It is not permission to manufacture bob's injury when he waits, or force LIMEN back into the room after the player assigns STILETTO there. Nor does bob's protagonist status decide his eventual fate. Those are separate design choices requiring their own evidence and review.
+
+Our first proof should connect three moments: the checkpoint, a later task affected by it, and an encounter missed live but discoverable through its aftermath. The question is whether a viewer recognizes bob and wants to follow him, understands some of the changing relationships and can distinguish what they know from what they suspect.
+
+## What every feature owes this story
+
+The [feature assessment](FEATURE_ASSESSMENT.md) applies this foundation to mechanics, presentation and technology. Ask which encounter improves, who becomes more particular, what can be understood now or later, how the player is involved and what continues. Compare that contribution with a simpler approach and with leaving the feature out.
+
+The original [Producer](sources/producer.md) asks for episodes worth watching. The [Puppeteer](sources/puppetteer.md) supplies continuity and pressure through the conditions of the world. Their report-oriented beginnings remain useful to authors; the player's story must now live in the factory.
+
+A clearer silhouette, a believable handoff, a held camera or a persistent memory can all serve that purpose. Their value is established by what they let us notice and care about. The factory should become more interesting as we know its people better.
+
+
+# The people become the story
+
+Reference studies and design conclusions · 20 October 2026 · Contains plot spoilers for the works discussed.
+
+The factory can generate an unlimited supply of incidents. A line stops, a supervisor intervenes, somebody is blamed, production resumes. None of this guarantees a story. A story begins to accumulate when the next interruption finds a person changed by the last one. A worker who once interrupted a demonstration may now wait for permission to approach it. The repaired machine alone would not tell that history. This is a possible scene contrast, not an approved history for bob.
+
+This is the problem our references help us solve. *Back to the Dawn* gives an unfamiliar institution a clear purpose and a population worth discovering. *Attack on Titan* makes changing personal commitments carry an expanding conflict. Dostoevsky follows people into the gap between what they claim to believe and what they can bear to do. Astafiev supplies a further editorial reference, examined in the [opening case study](ASTAFIEV_CASE_STUDY.md). These influences meet at the scale of working lives; the [official style guide](EDITORIAL_VOICE.md) sets the requirements for writing those lives.
+
+bob is the protagonist. The operator's decisions shape the factory, while bob's ordinary life gives us a continuing human concern within it. The other workers have purposes of their own. They become more than supporting parts when those purposes interfere with his, or continue somewhere he is not present.
+
+The studies below draw on selected primary passages, creator interviews, official descriptions and the attributed gameplay frames in the separate illustrated study. They are our analysis of those materials, not a claim to have conducted an exhaustive rereading or a new viewing of every episode.
+
+The [dialogue case study](TARANTINO_CASE_STUDY.md) adds Tarantino’s accounts of improvising through his characters, revising from another participant’s perspective and making a film people revisit for its company. It carries those methods into the morning walk, the Security checks and LIMEN’s private explanation to bob. The factory needs conversations worth listening to before it needs more dialogue.
+
+## Back to the Dawn — a clear purpose opens a complicated world
+
+Escape is a useful organizing desire. The player can enter a prison full of strangers without first understanding its entire society: getting out gives them a reason to learn whom to approach, what somebody knows and what help might cost. The official description connects 47 inmates, their stories and the player's escape prospects. That relationship between a clear goal and a crowded social world matters more to Loopforge than the size of the cast. [Official game description](https://store.steampowered.com/app/1735700/Back_to_the_Dawn/) · [Publisher overview](https://clearrivergames.com/games/back-to-the-dawn/)
+
+The [illustrated case study](BACK_TO_THE_DAWN_CASE_STUDY.md) examines two small units of that introduction: Bruce addressing the inmates at morning count, and Sam speaking with Thomas in their cell. The first makes a hierarchy visible in one composition. The second gives the crowd a particular face. Movement between those scales allows recognition to precede explanation. We can remember somebody before we know their history.
+
+The design implication is not that every worker should dispense a quest. The practical goal provides occasions for contact; the encounter must supply a person. A colleague can be useful and irritating, generous and unreliable, or simply good company. If every conversation delivers exactly the resource needed to advance, discovery becomes a procurement task.
+
+Loopforge has two organizing desires to keep distinct. The operator wants the factory to succeed under leadership's demands. bob wants a place among the people who work there. A staffing decision can advance the first while damaging the second. That difference gives a conversation practical weight without reducing its participants to services.
+
+The animal theme also has structural value. Bodily differences remain legible inside shared uniforms, and animal associations make social expectations available before dialogue complicates them. Our equivalent is the working body: built strength, replaceable parts, a fine finish, a joint that needs attention. gus's lifting frame gives colleagues a reason to ask for help. His refusal then means something. The metaphor has become an encounter.
+
+We should preserve the reference's economy of introduction while changing its causal foundation. Our workers will act from their own beliefs and commitments between conversations. A useful person may refuse, misunderstand or already be occupied. This is a requirement for Loopforge's intended agents, not a claim about the reference game's internal AI.
+
+## Attack on Titan — the conflict changes because the people change
+
+In a 2017 interview, Hajime Isayama describes a shift from his original fascination with Titans toward Eren, Mikasa and Armin. He also recalls revising the conclusion of volume 22 because Eren's motivation had become insufficiently clear. These are useful admissions: an elaborate world does not relieve an author of the obligation to make a person understandable inside it. [Isayama and editor Shintarō Kawakubo, Febri](https://febri.jp/topics/attack-on-titan/)
+
+The question for a long story is therefore more demanding than “What happens next?” It is also “What will this person now do about it?” The audience carries an understanding of someone forward, tests it against a new action and revises it. Plot and character development become the same work when the revision changes what can happen between people.
+
+The change of perspective toward Marley is a particularly clear example. Isayama explains that he wanted the audience to become familiar with the people initially understood as enemies before encountering the established protagonists from that side. Familiarity is allowed to disturb allegiance. The story does not merely add information about an enemy; it changes the position from which we judge familiar actions. [Isayama interview, Crunchyroll](https://www.crunchyroll.com/news/interviews/2023/1/13/interview-attack-on-titan-creator-hajime-isayama-reflects-on-the-series-ending-game-of-thrones-and-more)
+
+Reiner's return home in volume 24 brings a past role into a life that cannot simply discard it. In “Declaration of War,” the official episode account places Eren and Reiner's meeting alongside Willy Tybur's public speech. A large political conflict has a private encounter inside it. The personal history is part of what makes the larger event consequential. [Volume 24](https://kodansha.us/series/attack-on-titan/volume-24/) · [Episode 64](https://www.crunchyroll.com/watch/GK9U3ZX21/declaration-of-war)
+
+For Loopforge, the useful transfer is a collision with a history. STILETTO needs workers immediately because output is her route to leadership's approval. LIMEN considers permission and procedure his responsibility, and interference a challenge to his authority. Their first dispute concerns a queue. Later, the same dispute can contain an injured worker, a lost hour, an accusation and a promise made to the operator. The subject has remained recognizable while the relationship has changed.
+
+Neither supervisor needs to become secretly humane to make this conflict interesting. STILETTO wants LIMEN to release productive labor. She can be correct about his delay and still drive those workers too hard. LIMEN can identify a real hazard while using safety to justify coercion. The worker caught between them experiences two different demands, not two competing styles of care.
+
+Volume 21's official synopsis also centers a terrible choice on the approach to a long-sought discovery. The broader lesson is that scarcity can make accumulated commitments incompatible at a particular moment. [Volume 21](https://kodansha.us/series/attack-on-titan/volume-21/)
+
+Our corresponding scarcity is smaller and repeatable: time, repair capacity, trustworthy information, available workers, permission to stop. A difficult decision does not need an apocalypse. sam cannot stay beside bob and complete the task already promised to gus. ed cannot quietly correct a record and receive public credit for the correction. These conflicts can become serious because the player has lived with the people who must resolve them.
+
+There is an important limit to the analogy. A published narrative can commit its cast to a fixed chain of events. Loopforge gives a player power over conditions and asks agents to respond. We should author strong pressures, credible turning points and several possible consequences. We should not secretly override a successful intervention to recover a planned confrontation. A collision avoided through costly compromise is an outcome worth showing.
+
+## Dostoevsky — the person cannot be settled by a label
+
+Calling a character an archetype is useful only if we then find the person who makes the pattern difficult. The proud intellectual, the officious subordinate or the indispensable helper gives us an initial expectation. A character becomes interesting when the expectation encounters an act it cannot fully explain.
+
+Before following a long arc, study an introduction. Marmeladov’s appearance in Part I, Chapter II brings worn clothing, a damaged body, an eager wish to converse and surviving official manners into one portrait. His remaining coat button carries a concern for respectability. The reader can form an impression before knowing the full history, and the details resist settling into one simple judgment. For our worker briefs, this suggests choosing a few observations that belong to a particular person, then stopping before explaining away their ambiguity. [Crime and Punishment, Part I, Chapter II](https://www.gutenberg.org/files/2554/2554-h/2554-h.htm)
+
+In *Crime and Punishment*, Raskolnikov's account of exceptional people becomes material for Porfiry's questioning in Part III, Chapter V. The conversation is intellectual, but it is also an encounter between a suspect and somebody testing him. Later, in his confession to Sonia, explanations involving money and benevolence give way to his need to discover what kind of person he is entitled to be. The argument has become inseparable from pride, dependence and the listener before him. [Part III, Chapter V; Part V, Chapter IV, Constance Garnett translation](https://www.gutenberg.org/files/2554/2554-h/2554-h.htm)
+
+This suggests a way to write ed. “Rules protect everyone” is an intelligible conviction. It becomes dramatic when an exact record would protect bob but embarrass LIMEN, whose approval has just given ed a place at the desk. ed's next action can expose an unresolved question: does he want the rule to be fair, or does he need to be recognized as the person who knows it? Both desires may be sincere. A personality label cannot choose for him.
+
+In *The Brothers Karamazov*, Ivan's Grand Inquisitor offers an account of control as relief from the burden of freedom. The argument is embedded in Ivan's conversation with Alyosha, rather than supplied as an uncontested judgment. Later, Smerdyakov's account of the murder confronts Ivan with the relation between words, wishes, departure and action. The accusation is itself part of a struggle between speakers. The novel makes responsibility harder to settle than identifying whose hands performed the deed. [Book V, Chapter V; Book XI, Chapter VIII, Garnett translation](https://www.gutenberg.org/files/28054/28054-h/28054-h.htm)
+
+That distinction is essential for an operator game. Choosing a demanding target, appointing a supervisor and explicitly ordering harm are different actions. Workers may blame the operator for all three; the world must still retain the difference. Dramatic ambiguity belongs in the characters' judgments. The underlying account of events needs to remain sound. Otherwise the game accuses the player on evidence it has invented.
+
+In *Notes from the Underground*, the narrator's encounter with Liza exposes how readily a wish for recognition can become a wish for power over someone who offers it. After his attempt to humiliate her, the banknote she leaves behind gives him something his account cannot comfortably absorb. Her refusal remains present after she has gone. [Part II, Chapters IX–X, Garnett translation](https://www.gutenberg.org/files/600/600-h/600-h.htm)
+
+For Loopforge, this is a particularly useful study of a trace. An object can be evidence of another person's choice, not just a collectible clue. If bob returns a tool he normally keeps ready for sam, that action may mean something has changed. It earns that meaning through their earlier routine. The player must have a way to investigate without being handed an authoritative diagnosis of the relationship.
+
+Reaching for a character's “soul” means staying with what their convenient explanation leaves out: shame, affection, vanity, mercy, a pleasure they cannot defend, a kindness they regret receiving. It does not mean giving every worker a devastating secret or making everyone eloquent about suffering. A person can be exposed by a very small choice. That possibility does not justify assigning bob an unapproved jealousy or need for recognition. His approved portrait leaves those questions open.
+
+Nor should suffering become a machine that automatically produces depth. Pressure reveals some things and conceals others. People learn, harden, recover, misread and sometimes behave well without any dramatic reward. Our scenes need enough ordinary life for those differences to register.
+
+## Producer and Puppeteer — conditions, continuity and a show
+
+The original [Producer notes](sources/producer.md) ask for interesting episodes whose causes can be understood. The [Puppeteer document](sources/puppetteer.md) locates the cause in conditions: pressure changes what agents believe, whom they blame and how they act. Its histories and directed relationships supply continuity that a succession of isolated skits would lack.
+
+The current game direction changes where that understanding reaches the audience. Reports and diagnostic traces remain useful to authors. The player should encounter a hesitant handoff, a missing colleague, an accusation overheard at a door or a supervisor's selective account of yesterday. The world must do the dramatic work that the earlier vision often assigned to a report.
+
+Pressure is one of Loopforge's central themes. It passes through people and changes form. A weekly target becomes STILETTO's demand for speed. Workers have less time to examine a problem or attend to one another. The results can give LIMEN further grounds for intervention. Each worker’s interpretation and response still need to be written from the person and situation; bob’s approved curiosity does not predetermine compliance, concealment or resistance.
+
+This is a candidate chain, not a mandatory failure loop. A credible intervention can interrupt it. Praise, friendship, envy and gratitude can also create pressure; rest and successful cooperation can relieve it. If every action produces deterioration, the player soon learns that choices do not matter and affection becomes merely preparation for punishment.
+
+## Astafiev and the editorial standard
+
+Read the [Astafiev case study](ASTAFIEV_CASE_STUDY.md) alongside the Sanctuary study below. They establish the editorial requirements in [Writing Loopforge](EDITORIAL_VOICE.md). Those requirements apply to these essays as well as to the cast and episode drafts. An intelligible plot outline remains a draft until its people and circumstances become particular enough to sustain a scene.
+
+## Sanctuary Economics — how the explanation earns its next sentence
+
+The opening chapters of Sanctuary Economics explain large arrangements through people doing particular things. Al Alcorn's encounter with a cabinet and its coins gives an economic relationship a physical beginning. The move from a machine to a platform then changes what it means to make and sell a game. The reader acquires the conceptual vocabulary after meeting the problem it describes. [Insert coin. Join in.](/stepanoskin/game-monetization?chapter=insert-coin) · [Different roads to the same market](/stepanoskin/game-monetization?chapter=studio-to-screen)
+
+That order improves both our documentation and our scenes. Let the reader meet bob through the particulars of the approved portrait before discussing what a scene might demand of him. Let a changed gesture become visible before interpreting it. Then ask what the player has grounds to understand. The sentences should carry an argument; the actions should carry a life. The [revised editorial guide](EDITORIAL_VOICE.md) applies this approach without borrowing Sanctuary's wording or turning factory dialogue into an essay.
+
+## Bringing the methods together
+
+These references solve different problems. A clear practical goal helps us enter an unfamiliar society. Recurring personal commitments give its events a direction. Contradiction prevents the people from becoming illustrations of the design. Their combination makes an ordinary protagonist capable of carrying a large story.
+
+The opening should therefore introduce bob doing something he wants to do, with somebody who knows him. LIMEN interrupts that life. The other workers respond according to interests already in motion. The final beat should change bob's next action, leaving a reason to return to him. The [cast](OPENING_CAST.md) pairs the approved visual ensemble with bob’s unchanged portrait and revised supporting portraits. The [episode](OPENING_EPISODE.md) stages the gathering, ed and gus volunteering, and STILETTO’s passage after their two checks.
+
+Across the first five days, the same people meet altered conditions. bob can become useful to one supervisor by doing something that damages a colleague's trust. ed can discover that access to authority is not the same as influence over it. sam can find that help offered insistently becomes another demand. These are directions to test, not five scheduled personality conversions.
+
+As the factory expands, bob remains the continuing protagonist without occupying every scene. Other people's encounters can change his opportunities before he knows about them. The player may first see an empty place, then find sam doing two tasks, then meet bob elsewhere and discover that the earlier inference was incomplete. The question “what happened to bob?” can lead to a reassignment, a new friendship, an avoidance or an injury. It should not always announce catastrophe.
+
+## What the systems must eventually preserve
+
+The script establishes a performance target. The eventual engine must preserve the causes that make different performances possible. Each consequential action needs an actor, an intention, an opportunity, an actual result and a record of who could perceive it. Beliefs and accounts can diverge from the result. A scheduler or camera must not rewrite that result to produce a better scene.
+
+An arc needs recurring circumstances and accumulated changes, rather than a required list of dramatic events. Give bob an opportunity to volunteer again after the checkpoint. Which memory matters, what he now wants and who is present should affect his response. Use authored dialogue and compatible performances to make the selected action readable. Do not ask a free-running text generator to invent the injury, witness or reconciliation that makes a line convenient.
+
+Offstage encounters use the same world rules. Their later traces should arise from actual actions: a tool moved by a person, an unfinished job, an altered partnership, a witnessed remark. A physical trace establishes only what it can establish; a witness account remains attributed. Some events may leave no discoverable trace. The player can follow a long arc without knowing every private conversation.
+
+Presentation should help attention, not take possession of it. Offer a chance to look toward a developing encounter, hold a useful composition when followed, and let a missed encounter leave its ordinary aftermath. Information necessary for the next consequential player decision needs a reachable route back into view. That is a fairness requirement, not a promise of omniscience.
+
+Our next proof is modest: show a viewer the opening, then a later handoff and one missed encounter discovered through its consequences. Ask who bob is, what changed for him, what remains uncertain and what they want to see next. A good answer need not agree with LIMEN, STILETTO or the author. It should be about people whose actions the viewer can follow.
+
+[Dramaturgy and character creation 101](CHARACTER_DRAMATURGY.md) · [Feature assessment](FEATURE_ASSESSMENT.md) · [Opening cast](OPENING_CAST.md) · [Opening episode](OPENING_EPISODE.md)
+
+
+# Does this belong in Loopforge?
+
+Feature assessment · Proposed review method · 20 October 2026
+
+A feature earns its place by improving the experience of running this particular factory and getting to know its people. The ambition is a world the player wants to watch and remembers through the people who live there. bob provides a continuing protagonist within it; the operator has limited influence and incomplete knowledge. “STILETTO hit bob” is one expression of that ambition. So are “bob finally asked sam for help” and “mae stayed to see whether anyone noticed her work.”
+
+This assessment applies to mechanics, characters, dialogue, rooms, presentation and underlying technology. It follows the [character dramaturgy foundation](CHARACTER_DRAMATURGY.md), the [Producer vision](sources/producer.md) and the [Puppeteer doctrine](sources/puppetteer.md). The owner has established the direction; the review method below is a proposal for putting it into practice. Its purpose is to make design decisions better, not to produce an impressive score for every idea.
+
+## Begin with the encounter
+
+Before specifying the mechanism, describe one encounter the feature would improve. Name the people, what they want and what makes the situation difficult. State what the player should feel, notice or become curious about. Then follow the encounter far enough to show why it matters tomorrow.
+
+For example: bob reaches a handoff and waits. After the morning at Security, moving without permission no longer feels safe. STILETTO sees an idle station and presses him to hurry. sam tries to make the instruction clear. The player recognizes the hesitation, understands some of its cause and has a reason to reconsider the next assignment. This encounter gives memory, dialogue, animation, pacing and player controls a common job.
+
+A feature may serve only one part of that encounter. A quieter floor texture makes bob's hesitation visible; it need not invent another relationship. A memory system supplies continuity; it does not earn credit merely by storing more facts. Assess each contribution against the scene it enables and the existing features it depends on.
+
+## Six questions for the review
+
+For each question, record **strong**, **adequate**, **weak**, **unknown** or **not applicable**, followed by one sentence of evidence. Strong means a clear improvement over the current version; adequate means the feature serves its purpose without a material loss elsewhere. Weak means the intended effect is absent or undermined. Unknown means it has not been demonstrated. Use not applicable only with a reason. Do not add these judgments into a total: beautiful staging cannot compensate for a false choice.
+
+| Question | What earns its place | What weakens the proposal |
+| --- | --- | --- |
+| **What becomes worth watching?** | A particular tension, pleasure, surprise, achievement or moment of care that the player can anticipate or remember | Activity, spectacle or conflict with no reason to care who is involved |
+| **Who becomes more particular?** | Conduct, speech and appearance reinforce a known person; an event changes what that person attempts or whom they trust | Interchangeable workers, personality labels, exposition that never affects action |
+| **Can the player follow the relevant change?** | An event is legible live or through credible later traces; the long arc remains understandable while private details can remain unknown | Required context is unavailable; every event demands a camera cut; characters know things they never learned |
+| **What is the player’s relationship to it?** | Direct choice, earlier indirect influence, observation, later discovery or a deliberately private encounter is identified; available powers and limits are honest | A cosmetic choice, compulsory intervention everywhere, or blame for a power the player never had |
+| **What continues beyond this moment?** | A changed routine, relationship, resource or expectation creates a later problem or possibility | A disposable incident that resets; more content without a new connection to the existing plot |
+| **What does the experience have to carry?** | The benefit justifies screen time, reading, decisions, visual noise, production effort and runtime cost | Another meter, interruption, asset or subsystem doing a job an existing element could do better |
+
+The intended emotional range includes amusement, affection, frustration, pride, dread and relief. A proposal does not score better by making every scene harsher. Quiet work and successful cooperation give later disruption something to disturb.
+
+## Conditions a strong feature cannot excuse
+
+**The world must keep its account straight.** Actions need participants, means and an opportunity. Consequences must follow what actually occurred. An agent's belief may be wrong; the game must preserve how that belief was acquired. A beautifully performed scene fails if bob is injured in a version where nobody struck him.
+
+**The player must be able to learn the limits of their power.** Restricted agency is part of Loopforge. The opening can offer only a few assignments, and a supervisor can resist an instruction. The player still needs evidence of what they chose, how it was received and what might be done next. Different choices may converge, but that convergence needs a cause. A conversation can be meaningful without changing the assignment if it changes a commitment, relationship or information available later; the game must show that difference.
+
+**The presentation must survive its intended conditions.** A cue needed on the factory floor must work at that scale and within the target device's performance budget. Essential meaning cannot depend only on a tiny detail, sound, color or optional glow. Use the existing graphics and accessibility acceptance checks. Do not invent a passing performance claim from a design document.
+
+A failed condition means rework before shipping. An unknown condition means a bounded prototype, with the missing evidence named. Technical safeguards can be necessary even when players never notice them; identify the failure they prevent and the experience that failure would damage.
+
+## Review attention and agency separately
+
+An encounter can be valuable without offering an intervention. State whether the player chooses within it, influenced its conditions earlier, can only witness it, may discover it later or is not meant to know it. Then assess whether that relationship is clear and fair. Do not mark an autonomous encounter weak merely because it contains no button.
+
+Also state its place in the longer story. Does it establish bob’s routine, change a relationship, bring another worker forward, deepen a conflict or provide needed relief? A peripheral encounter need not mention bob, but the whole sequence must preserve a protagonist and a manageable foreground of concerns. More activity can make the story harder to follow.
+
+For offstage events, distinguish world fact, witness knowledge and what the player can discover. An empty station is evidence of absence, not proof of injury. A remark from lou needs a source. Essential context for the next consequential decision needs an available route back into view; other details can remain private. Assess the six-room attention problem without demanding six simultaneous detailed renders or compulsory replay of every missed scene.
+
+For pressure-driven features, trace whose demand becomes whose difficulty. Include a credible way to relieve or redirect the pressure. If every player treatment leads to the same deterioration, investigate whether the design is manufacturing an outcome.
+
+## Compare ways to get the effect
+
+Review at least three versions: the proposal, a simpler use of existing elements, and leaving the feature out. Include the strongest competing approach when it changes the experience materially. Keep the desired encounter and camera conditions comparable. Compare the benefit of the next increment, not the total appeal of the game with and without all of its foundations.
+
+A supervisor reaction could be shown with a new anger meter, a change in posture, a pointed line to a colleague, or a later refusal. These are not interchangeable decorations. A meter offers precision; posture gives immediate evidence; dialogue identifies a belief; a refusal turns that belief into a problem the player must address. Choose the combination that serves the encounter. Sometimes one clear refusal will do more than four simultaneous signals.
+
+There are several recurring ways to strengthen a weak proposal: make the participants more particular; give an action a later consequence; make a consequence easier to see; or give the player a difficult but understandable way to respond. Try those changes before adding another system. “More dramatic” is not a sufficient direction for a revision—say which relationship, expectation or decision will become stronger.
+
+## Examples using the current factory
+
+These are assessments of design proposals, not playtest results.
+
+| Proposal | Simpler or stronger alternative | Provisional decision and proof needed |
+| --- | --- | --- |
+| Put a name over each of ten identical workers | Keep names, but distinguish a few through repeated conduct, silhouette and who reacts to them | **Rework.** Names are useful; establish bob, sam and ed through the opening and a later handoff. Ask whether a viewer recognizes them and expects different reactions. |
+| Show a constantly updating stress number above every worker | Show bob waiting, sam checking on him and STILETTO reacting to the delay; keep diagnostic values in author tools | **Prototype the world feedback first.** Check whether players can explain the delay and choose a response. Add a player-facing value only if it solves a remaining information need. |
+| Add a memory that the Security treatment affects bob at Conveyor | Reuse the existing wait, injured walk and dialogue cues for one later encounter before building a large memory catalogue | **Prototype.** Run two treatments and compare bob's later conduct. No injury or witness knowledge may appear without its cause. |
+| Add a marker whenever bob leaves a room | Let established routines, a changed task and an attributed account support discovery; offer navigation when the player wants it | **Prototype.** Ask whether players notice his absence and can investigate without interpreting every absence as danger. No invented traces or mandatory interruption. |
+| Give the player another button that produces the same assignment | Let the conversation establish a promise or disagreement that is remembered, or remove the redundant button | **Rework.** Show a real distinction the player can discover. Do not advertise a branch that the world ignores. |
+| Increase every robot's mesh detail | First compare silhouette, paint, scale, lighting and camera distance using the existing models | **Defer the blanket upgrade.** Test identity without labels at the intended room and console sizes, then measure runtime cost. Close-up improvement alone does not justify a crowd-wide cost. |
+| Optimize the crowd's animation update cost | First preserve the poses and timing that distinguish workers and carry the interaction; reduce work where it is not perceptible | **Build a measured improvement if profiling supports it.** Compare the same encounter for readability and sustained performance on the target machine. |
+
+## The smallest proof that can change the decision
+
+Begin with a script or storyboard when the uncertainty is about the encounter. Use the existing models for a staged sample when the uncertainty is gesture, composition or timing. Use a playable slice when the claim concerns a player's decision or an agent's response. An authored scene proves a performance is possible; it does not prove autonomous behavior or player agency.
+
+Before the test, write down the observation that would count against the proposal. For the bob handoff, it might be that viewers notice a delay but cannot connect it to the morning, or that changing the player's treatment makes no visible difference. For a new visual cue, it might be that recognition improves only in a close-up. This keeps the review from accepting any result as confirmation.
+
+Let someone encounter the sample without explaining the intended interpretation first. Ask who mattered, what each person was trying to do, what changed, what they think their choice affected and what they want to see next. A different emotional response can still be a success. Confusion about the action, lack of interest and disagreement with a supervisor are different findings and should be recorded separately.
+
+Record the build, scene, setting, device and number of viewers. A creator's inspection is useful evidence of a visible defect; it is not a player comprehension study. Small qualitative reviews guide the next iteration without certifying the whole game. Recheck the feature alongside its neighbors: several individually useful speech bubbles can become a room nobody can follow.
+
+## Make a decision, with a reason
+
+Use **build** when the benefit is supported, the conditions pass and the cost fits the current milestone. Use **prototype** when the promise is strong but one important claim remains unknown; specify the smallest test and stop point. Use **rework** when the need is real but this approach is weak. Use **defer** when the benefit depends on a later arc or would displace a more important piece. Use **cut** when an existing element or a simpler alternative serves the same experience better.
+
+Among eligible proposals, first address failures that prevent the current episode from being understood or enjoyed. Then choose the change most likely to strengthen the next playable arc or resolve its largest uncertainty. Reuse across later Act 1 encounters is a benefit, but an imagined future cannot justify an unbounded system now. Assess a required cluster together when its parts have no sensible value in isolation, and still deliver it through a small end-to-end proof.
+
+Record the decision where the feature is proposed and link it from its implementation work. Reopen it when new evidence changes the judgment. Existing features receive the same review; effort already spent does not establish their value. The questions below are a working record for designers and builders, not a new screen for the player.
+
+## Copyable feature review
+
+1. **Proposal and milestone:** What are we considering, and why does this arc need it now?
+2. **Encounter:** Who wants what, what happens, and what should the player feel or become curious about?
+3. **Continuity:** What does the player already know about these people, and what changes in a later encounter?
+4. **Attention and agency:** Is this chosen, indirectly influenced, witnessed, discovered later or private? What can the player do, what can they know, and what uncertainty is intentional?
+5. **Alternatives:** Proposed version, simpler version, no addition, and any stronger competing approach.
+6. **Assessment:** A judgment and evidence for each of the six questions. Separate observed effects from expectations.
+7. **Conditions and cost:** Causal integrity, fair limits, presentation/accessibility, attention, authoring and maintenance, dependencies and measured runtime where relevant.
+8. **Smallest proof:** The scene or slice to test, who will review it, and what finding would make us change course.
+9. **Decision:** Build, prototype, rework, defer or cut; reason, owner, next step and the evidence that would reopen it.
+
+[Character foundation](CHARACTER_DRAMATURGY.md) · [Writing Loopforge](EDITORIAL_VOICE.md) · [Reference studies](NARRATIVE_STUDIES.md) · [Back to the Dawn case study](BACK_TO_THE_DAWN_CASE_STUDY.md) · [Opening cast](OPENING_CAST.md) · [Opening episode](OPENING_EPISODE.md)
+
+
 # LIMEN blade — identity through CCTV
 
 Decision: 12 October 2026. First assembly implemented; action integration and full visual/performance acceptance remain open.
@@ -5427,18 +5773,23 @@ The 11-second, nine-track pose clip is baked offline against the existing rig. N
 
 
 # Cast readability and visual hierarchy
+## Owner decisions — 19 October 2026
 
-## Static comparison studio — 2026-10-18
+CATHEXIS is accepted at 100% ivory paint strength and 1.3× worker neutral-body height. No further model or palette redesign is requested. Security floor is `#A7B2D3`; Lobby/Conveyor retain `#666860`. Per-room floor choices are independent in the comparison studio. This supersedes earlier candidate language below for CATHEXIS. The [Day-one arrival rehearsal](DAY_ONE_ARRIVAL.md) applies the room palette and approved worker/LIMEN colours; it does not introduce CATHEXIS before her story arrival.
 
-Open [Cast readability](/stepanoskin/loopforge/play/readability) from the second design chapter, the model-review navigation or the performance lab. This is the first implementation slice, using 24 approved workers plus LIMEN and STILETTO in fixed poses. CATHEXIS is outside this initial two-room comparison.
+
+## Static comparison studio — updated 2026-10-19
+
+Open [Cast readability](/stepanoskin/loopforge/play/readability) from the second design chapter, the model-review navigation or the performance lab. The shot contains 24 approved workers plus LIMEN, STILETTO and CATHEXIS in fixed poses. CATHEXIS can be hidden to restore the two-supervisor composition. The owner approved LIMEN’s steel/cyan and STILETTO’s black/red colours on 19 October; CATHEXIS’s ivory remains a candidate.
 
 - Original / Your treatment switches reversibly without changing the shot or asset files.
 - Existing, neutral diagnostic and quieter-room presets; floor/wall colour pickers and texture-contrast slider. Lighting neutralisation is a separate slider, initially zero.
-- Worker blue-family, LIMEN steel and STILETTO shoulder-band colour/strength controls. Three stable worker shades share textures and geometry.
-- Supervisor height sliders normalize neutral foot-to-skull bounds against worker height. Original restores delivered sizes; proposed defaults remain LIMEN 1.25× and STILETTO 1.20×.
-- Front/side/rear cameras, fixed camera-distance slider, security/conveyor rooms, names-and-bubbles toggle, emitter/visor, glow and shadow checks.
+- Worker blue-family, LIMEN steel, STILETTO shoulder-band and CATHEXIS ivory colour/strength controls. Three stable worker shades share textures and geometry.
+- Supervisor height sliders normalize neutral foot-to-skull bounds against worker height. Original restores delivered sizes; proposed defaults are LIMEN 1.25×, STILETTO 1.20× and CATHEXIS 1.22×. CATHEXIS uses an approximate scalp landmark at 1.82 m in the 1.90 m accepted fitting space, excluding her crown. These are scale proposals, separate from colour approval.
+- CATHEXIS uses the accepted corrected Happy Sway held at phase zero, with full Grace, either half Grace or the exposed underlying mechanical face. The ivory slider targets bright, low-chroma costume surfaces; gold, dark mechanisms and the fitted Grace finish retain their source appearance. No new geometry, maps or animation edits. Mask loading must finish before PNG capture.
+- Front/side/rear cameras, fixed camera-distance slider, security/conveyor rooms, names-and-bubbles toggle, emitter/visor/warm-eye, glow and shadow checks.
 - Room output is 1280×720; console output is genuinely rendered at 320×180. Poses, blade energy and machinery are held. One WebGL scene renders on demand and sleeps when hidden/offscreen.
-- Pin a clean PNG as a fixed reference, save PNGs and export settings with asset hashes, fixed pose samples and neutral heights. Versioned local settings are separate from gameplay graphics preferences.
+- Pin a clean PNG as a fixed reference, save PNGs and export settings with asset hashes, fixed pose samples and neutral heights. Versioned local settings are separate from gameplay graphics preferences. Existing v1 saves retain every previous choice and gain CATHEXIS defaults; reset uses approved LIMEN/STILETTO paint strengths of 100%/91%.
 
 The shader treatment retains source textures/normal maps but approximates plate masks from texture brightness and bind-space height. It is an art-direction audition, not finished painted armour. STILETTO's shoulder band needs authored masks if selected. The original performance benchmark is unchanged. A still does not certify motion performance or the three-second recognition target; those remain separate reviews after the visual treatment is selected.
 
@@ -5682,7 +6033,7 @@ study. Its three-second prompt is a working target to refine during playtests.
 
 1. Give the reviewer a brief introduction to the cast. Freeze a candidate build,
    asset hashes, motion versions and scene state. Include both supervisors among
-   the full intended worker population; add CATHEXIS when her scene exists.
+   the full intended worker population; include CATHEXIS for the three-supervisor colour study; hide her for the opening two-room cast.
 2. Hide names, speech, selection rings and debug highlights. Randomize presentation
    order so recognition cannot depend on knowing which actor always stands left.
    For each usable room camera, show a paused frame and ask the reviewer to point
@@ -5729,8 +6080,9 @@ states are still pending. The performance lab retains its separate timing protoc
    backgrounds with camera, cast and lighting fixed; test lighting separately.
 2. Audition relative scale and broad body colours on existing models in that
    same scene. Compare one variable at a time before combining the treatment.
-   Keep worker blues, light-steel LIMEN, black/red STILETTO and ivory CATHEXIS
-   as proposals until the occupied room and console-size comparisons succeed.
+   LIMEN’s light steel/deep cyan and STILETTO’s black/red are owner-approved.
+   CATHEXIS’s ivory and cast scale still need comparison; measured recognition
+   and performance remain separate gates for the entire cast.
 3. Produce revised common-scale character sheets only after that comparison.
    Preserve approved identities and motions; regenerate only the model parts
    whose silhouette or material regions cannot deliver the selected treatment.
@@ -5739,7 +6091,7 @@ states are still pending. The performance lab retains its separate timing protoc
    LIMEN's checkpoint stance, the waiting worker and the released/held queue.
    The same action data must serve scripted rehearsals and later BDI execution.
 5. Promote only treatments that pass the visual gate and the target device's
-   performance gate. Add CATHEXIS, alternate equipment and future supervisors
+   performance gate. Add alternate equipment and future supervisors
    through the same record; no new isolated presentation implementation per actor.
 
 Related records: [character review gates](CHARACTER_REVIEW_STRUCTURE.md),

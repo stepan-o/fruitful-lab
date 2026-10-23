@@ -1,0 +1,9 @@
+LIMEN — checkpoint strike, motion audition
+
+Use the existing accepted LIMEN body, pale steel finish and RIGHT forearm cyan blade. Do not regenerate the body or change the rig.
+
+The beat: bob takes one step through the checkpoint without permission. LIMEN makes one sharp, deliberate right-arm slash, catches bob across the upper body, then resumes control of the doorway. This is a punishment, not a prolonged combat routine. Left hand stays clear of the blade. No two-handed axe grip, full-body spin or repeated combo.
+
+Catalog candidate: Action 219, Right_Hand_Sword_Slash. Audition the motion on an existing API rig, transfer its body-space joint rotations onto the accepted LIMEN rig, then adjust stance, blade contact and exit pose against bob. Keep the source take and the fitted performance separately reviewable. One source animation request: 3 Meshy credits within the existing 500-credit opening budget.
+
+Acceptance: visible anticipation, one readable contact, bob reacts at that contact, blade clears LIMEN and witnesses, feet remain planted except the intended step. Review from the beside-bob shot and the room camera. Preserve uninterrupted STILETTO passage later in the scene.

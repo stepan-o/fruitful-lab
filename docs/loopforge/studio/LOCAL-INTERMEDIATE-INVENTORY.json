@@ -1,0 +1,61 @@
+{
+  "scope": "Known isolated Sam rejected bank exports only. Canonical output/ (~2.1GB) inventory is owned separately by publication bridge; no false claim this list covers it.",
+  "files": [
+    {
+      "localPathPlaceholder": "${STUDIO_ROOT}/worktrees/loopforge-animator-mvjk6658/animator-jobs/sam-id-repair/run-1/sam-console-id-candidate.glb",
+      "bytes": 1137084,
+      "sha256": "b97b01795f3a7204e902c1a6825622ff461848feb95b4f77748055e10c1ae871",
+      "status": "Rejected contact candidate;1428 samples,434 self-crossing samples,335 card/body-crossing samples.",
+      "disposition": "Retained locally, not copied into repository or runtime."
+    },
+    {
+      "localPathPlaceholder": "${STUDIO_ROOT}/worktrees/loopforge-animator-mvjk6658/animator-jobs/sam-id-repair/run-1/sam-floor-id-candidate.glb",
+      "bytes": 1661004,
+      "sha256": "4bd909b6e2481ce5a7384f4e1f131289d743a694a5463b31fd41fe0e8d09fde8",
+      "status": "Rejected contact candidate;1428 samples,434 self-crossing samples,335 card/body-crossing samples.",
+      "disposition": "Retained locally, not copied into repository or runtime."
+    },
+    {
+      "localPathPlaceholder": "${STUDIO_ROOT}/worktrees/loopforge-animator-mvjk6658/animator-jobs/sam-id-repair/run-1/sam-portrait-id-candidate.glb",
+      "bytes": 3081636,
+      "sha256": "a2063875b050763c45f813df9841e94a647401cc33b8af2edd4d213010db3fdf",
+      "status": "Rejected contact candidate;1428 samples,434 self-crossing samples,335 card/body-crossing samples.",
+      "disposition": "Retained locally, not copied into repository or runtime."
+    },
+    {
+      "localPathPlaceholder": "${STUDIO_ROOT}/worktrees/loopforge-animator-mvjk6658/animator-jobs/sam-id-repair/run-1/sam-source-id-candidate.glb",
+      "bytes": 23555508,
+      "sha256": "4cab011020bd4af58cb87115827e57a247414578b01bcd738e1fac603f97c7c8",
+      "status": "Rejected contact candidate;1428 samples,434 self-crossing samples,335 card/body-crossing samples.",
+      "disposition": "Retained locally, not copied into repository or runtime."
+    },
+    {
+      "localPathPlaceholder": "${STUDIO_ROOT}/evidence/LST-3/sam-id-repair/contact-repair-R1/prepared-packet/run-R1/sam-console-id-candidate.glb",
+      "bytes": 1143800,
+      "sha256": "3d63565207ab41f956c61371b2f0ea6eeb60da4aa01342cedaf8d4fde0f1f715",
+      "status": "Rejected R1;2241 rows,810 self-crossing,121 card/body,0 unchanged ID_Walk/Quiet_Wait regressions.",
+      "disposition": "Retained locally, not copied into repository or runtime."
+    },
+    {
+      "localPathPlaceholder": "${STUDIO_ROOT}/evidence/LST-3/sam-id-repair/contact-repair-R1/prepared-packet/run-R1/sam-floor-id-candidate.glb",
+      "bytes": 1667724,
+      "sha256": "dc20789d65f30ce682a8f3d1540fdd64878b1704d2ab751416fe1729855784c0",
+      "status": "Rejected R1;2241 rows,810 self-crossing,121 card/body,0 unchanged ID_Walk/Quiet_Wait regressions.",
+      "disposition": "Retained locally, not copied into repository or runtime."
+    },
+    {
+      "localPathPlaceholder": "${STUDIO_ROOT}/evidence/LST-3/sam-id-repair/contact-repair-R1/prepared-packet/run-R1/sam-portrait-id-candidate.glb",
+      "bytes": 3088356,
+      "sha256": "9102d2b022f99c10fdace4c198b2a4994612309af021e711d945a701191814ff",
+      "status": "Rejected R1;2241 rows,810 self-crossing,121 card/body,0 unchanged ID_Walk/Quiet_Wait regressions.",
+      "disposition": "Retained locally, not copied into repository or runtime."
+    },
+    {
+      "localPathPlaceholder": "${STUDIO_ROOT}/evidence/LST-3/sam-id-repair/contact-repair-R1/prepared-packet/run-R1/sam-source-id-candidate.glb",
+      "bytes": 23562248,
+      "sha256": "db045a4cc5c22ffaa4f7897c2479148da8794166d889710cf702f0da0c959d94",
+      "status": "Rejected R1;2241 rows,810 self-crossing,121 card/body,0 unchanged ID_Walk/Quiet_Wait regressions.",
+      "disposition": "Retained locally, not copied into repository or runtime."
+    }
+  ]
+}

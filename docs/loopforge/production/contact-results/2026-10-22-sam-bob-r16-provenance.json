@@ -1,0 +1,8 @@
+{
+  "sceneRevision": "before-the-shift/16",
+  "releaseLeadSeconds": 0.85,
+  "riseContinuationSeconds": 1.02,
+  "sceneSourceSha256": "93d39a43b46ecb7830b165638aac1d1cc2ad7515d3c06c5ef9a40767eb4b659b",
+  "authoringScriptSha256": "c8bf2cb0041c9dae244a02b384d5af14eb977d6a2f7245a3c6f519eeb67215d6",
+  "scope": "351 poses: every 20Hz transition frame plus selected held-contact frames, 117 per detail level. Actual runtime sampler/cross-fades/handedness. Supporting right arm, forearm and hand versus bob whole mesh. Does not certify continuous time between frames or unrelated animations."
+}

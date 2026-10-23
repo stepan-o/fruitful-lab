@@ -1,0 +1,674 @@
+{
+  "id": "stiletto",
+  "name": "STILETTO",
+  "subtitle": "Twin blades · interchangeable forearm modules",
+  "revision": "Rebuild brief v2 · corrected arm derivatives v4",
+  "status": "Prototype acting accepted",
+  "summary": "Handless black chrome body with two rigid forearm blades. Both blades are tested in the viewer; the player also fits twin or mixed welders with flame flow and the reference-shaped red visor, including its descending centre seam.",
+  "provenance": "Original body, blade, welder and motion briefs recovered. Rebuild notes preserve the later acting meanings and offline corrections; a fresh Meshy export does not include those corrections.",
+  "viewer": "/stepanoskin/loopforge/play/asset-review/stiletto",
+  "viewerLabel": "Inspect blades, welders and visor",
+  "record": "/loopforge-design/narrative-cast.html#stiletto",
+  "parts": [
+    "41,124-triangle body / 24 skin joints",
+    "Blade module: 4,117 triangles, reused on both arms",
+    "Welder module: 4,116 triangles, mounting not reviewed"
+  ],
+  "remaining": [
+    "Welder fit, tool exchange and actual welding contact",
+    "Visor emission and rigid armour weights",
+    "Body gait contacts, blends and paired acting"
+  ],
+  "images": [
+    {
+      "label": "Body · front",
+      "role": "Body input",
+      "sourceName": "01-stiletto-body-front.png",
+      "sourceSha256": "45b6f020dde327639818b5111a5ee159dfd9a34822e1a88f4aa599099efab8cc",
+      "input": {
+        "src": "/media/loopforge-model-briefs/01-stiletto-body-front.3f982df15976bae9.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 286477,
+        "sha256": "3f982df15976bae9c0404039a21a73f7502d32cbf51956d42a815bb64604c204"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/01-stiletto-body-front-360.bba37cc981560cb0.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 16206,
+          "sha256": "bba37cc981560cb0886743ceacb060d1b589bd6e3086442eb22cdf382592020d"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/01-stiletto-body-front-720.2982f54341ae31b1.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 52612,
+          "sha256": "2982f54341ae31b1d52947c8be7a6b3b4e01d99c806cad3681b79223ad86b923"
+        }
+      ],
+      "archivePath": "images/01-stiletto-body-front.3f982df15976bae9.jpg"
+    },
+    {
+      "label": "Body · side",
+      "role": "Body input",
+      "sourceName": "05-stiletto-body-side.png",
+      "sourceSha256": "4c364928052df01cef5a13ed885fb6ce3d291c50a694f03f85bec404aa7e5eb4",
+      "input": {
+        "src": "/media/loopforge-model-briefs/05-stiletto-body-side.575c8327ab7f5716.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 201047,
+        "sha256": "575c8327ab7f5716c132cf58b184570e7085a371789f449e317ac711e3037fde"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/05-stiletto-body-side-360.832488d5c0a45c22.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 9662,
+          "sha256": "832488d5c0a45c22e89a3c4e8e10923ec057172a199ec6e3b31803fdeec0b8ee"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/05-stiletto-body-side-720.a21831fcbf587939.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 31782,
+          "sha256": "a21831fcbf58793954e9cfb0a8591307e8806e7ffe26dde78c8d1c637e259f19"
+        }
+      ],
+      "archivePath": "images/05-stiletto-body-side.575c8327ab7f5716.jpg"
+    },
+    {
+      "label": "Body · back",
+      "role": "Body input",
+      "sourceName": "02-stiletto-body-back.png",
+      "sourceSha256": "d1e95118e6a9a5a1eae5dddf4c37c57c0973af20a15e1eb68713d0306c3ebb3c",
+      "input": {
+        "src": "/media/loopforge-model-briefs/02-stiletto-body-back.957e15069ec82a53.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 282315,
+        "sha256": "957e15069ec82a5386d259091ae081c1083ee15257690b99973f5eac61f4a771"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/02-stiletto-body-back-360.d9f2a11b31d0d9e5.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 15672,
+          "sha256": "d9f2a11b31d0d9e570a6be74a4baba1e673372bc07a951b3cf0db6b4cf5d1a6e"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/02-stiletto-body-back-720.91077efe4d9dd74b.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 51146,
+          "sha256": "91077efe4d9dd74b9ad90a595b161167ac05be41fe3a8f5dcae445bcfa9bce1d"
+        }
+      ],
+      "archivePath": "images/02-stiletto-body-back.957e15069ec82a53.jpg"
+    },
+    {
+      "label": "Blade module",
+      "role": "Separate rigid object — upload alone",
+      "sourceName": "03-stiletto-blade-module.png",
+      "sourceSha256": "cd07f0af819c40d7113268a2dc784d60ad7e69f5412fbc08dc5eac0a3de7efaf",
+      "input": {
+        "src": "/media/loopforge-model-briefs/03-stiletto-blade-module.77b6eafca7b2fd3d.jpg",
+        "width": 1774,
+        "height": 887,
+        "bytes": 158346,
+        "sha256": "77b6eafca7b2fd3da7d7ae6770dcd12bce5cf5b39be67747eee530a1b76ca29c"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/03-stiletto-blade-module-360.d557026b58df992a.webp",
+          "width": 360,
+          "height": 180,
+          "bytes": 2698,
+          "sha256": "d557026b58df992aae24012d96cdc6e33a777cde1a8788e6d3e681df581e7bff"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/03-stiletto-blade-module-720.68db98516d0cdad1.webp",
+          "width": 720,
+          "height": 360,
+          "bytes": 8346,
+          "sha256": "68db98516d0cdad1f612d5255e040f0a8eb862000f8d43cceaaf63d1444a9ca8"
+        }
+      ],
+      "archivePath": "images/03-stiletto-blade-module.77b6eafca7b2fd3d.jpg"
+    },
+    {
+      "label": "Welder module",
+      "role": "Separate rigid object — upload alone",
+      "sourceName": "04-stiletto-welder-module.png",
+      "sourceSha256": "d0f6be5eeacae41dd10aaf34f718afc6520bc717405de350a1d3a82ab47db414",
+      "input": {
+        "src": "/media/loopforge-model-briefs/04-stiletto-welder-module.6fb60b79c099fbca.jpg",
+        "width": 1774,
+        "height": 887,
+        "bytes": 245699,
+        "sha256": "6fb60b79c099fbcac03b8ffd677635cf330444908050cda0f1f6489d9d614407"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/04-stiletto-welder-module-360.866776ca9efaa2f8.webp",
+          "width": 360,
+          "height": 180,
+          "bytes": 5676,
+          "sha256": "866776ca9efaa2f8c448500b3cbef7b974b7ceebc4c4e427f4dde758f98a3e27"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/04-stiletto-welder-module-720.874bd99032e3aec3.webp",
+          "width": 720,
+          "height": 360,
+          "bytes": 17166,
+          "sha256": "874bd99032e3aec3c2da86955150b28b0a397fdf251f9b0b0bd69e71374ef049"
+        }
+      ],
+      "archivePath": "images/04-stiletto-welder-module.6fb60b79c099fbca.jpg"
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Body",
+      "file": "stiletto/01-body.txt",
+      "text": "Create STILETTO, a Loopforge factory supervisor, from the attached FRONT, SIDE and BACK modeling references. These are three views of ONE character, not three model variants. The front is the primary silhouette reference; use side and back to resolve depth and hidden surfaces.\n\nCreate the BODY ONLY, in the same neutral symmetric A-pose. She has NO HANDS, NO PALMS and NO FINGERS. Both forearms terminate in small keyed cylindrical tool-coupling sockets at the wrist position. Keep full forearms and visible elbow joints. Do not attach blades or welding tools to this body mesh: those are separate rigid assets.\n\nPreserve the slender black-chrome mechanical silhouette, long tapered limbs, fitted segmented torso and pelvis, narrow helmet, crimson-orange slit visor with its thin central vertical cut descending toward the chin, recessed bearings, restrained brass connections, and purposeful gaps between moving plates. This must resemble the references, not a generic robot or rounded cartoon. No hair, cloth, floating cables or ornamental spikes. Preserve her mechanical heel and planted sole; do not make the foot balance on a needle.\n\nThe visor is one connected identity mark: swept horizontal eye slit plus a narrow descending centre seam, tapering toward the chin. Preserve the recessed surface and UV region for both branches, as visible in the front reference. Runtime glow will be added in the app.\n\nGenerate a detailed master, then preserve it and make a separate delivery candidate at approximately 40,000 triangles. This is a starting budget, not permission to destroy the visor, joints or silhouette. Use coherent UVs and PBR base colour, roughness, metallic and normal textures, preferably one shared 2K body material set. Keep dramatic illumination out of base colour; do not bake the background, floor, cast shadows, bloom or sparks into the mesh or textures.\n\nKeep arms and legs separated in the A-pose. Avoid fused armpits, thighs, elbow gaps and ankle joints. Preserve a plausible range of shoulder and hip motion. Do not thicken the body or add visible hands to make rigging easier.\n\nFirst show the textured model from front, side, rear and three-quarter views, with triangle count. Save it as Stiletto_Body_v1. Preserve the unrigged A-pose master. Do not generate the entire motion bank yet; the next step is a small humanoid-rig test on this exact body.\n",
+      "url": "/loopforge-design/model-briefs/stiletto-01-body.4fc7446cfc329907.txt"
+    },
+    {
+      "title": "Blade and welder",
+      "file": "stiletto/02-blade-and-welder.txt",
+      "text": "RUN EACH OF THE FOLLOWING AS A SEPARATE PROP TASK, WITH ITS MATCHING IMAGE.\n\nTASK A — STILETTO BLADE MODULE\n\nCreate one rigid STILETTO forearm blade module from 03-stiletto-blade-module.77b6eafca7b2fd3d.jpg. This is a mechanical prosthetic mounted to an arm socket, not a hand-held sword. Preserve the black-chrome keyed cylindrical mounting sleeve, narrow mechanical root, restrained brass bearings and one long tapered steel cutting blade. No hand, grip, trigger, character or full forearm. Keep the blade thin with a real solid edge. No smoke, sparks, energy ribbons, light beams, floor or background geometry.\n\nMake a detailed master and a separate low-poly delivery candidate starting around 3,000-5,000 triangles with PBR textures. Preserve the blade silhouette. No character rig or skeletal deformation is required. Export GLB and an editable source format if available, named Stiletto_Blade_Module_v1. Generate ONE canonical module; we will fit and derive the left/right pair offline from the same source to preserve consistency.\n\nThe intended assembled scale is a sleeve about 7 cm in diameter and total module length around 55 cm, relative to a roughly 1.8 m robot. These are starting fitting dimensions, not a fixed design if clearance requires revision. Do not pretend the illustrated coupler guarantees an exact mechanical fit to the independently generated body.\n\nTASK B — STILETTO LASER / WELDER MODULE\n\nCreate one rigid interchangeable forearm laser/welder module from 04-stiletto-welder-module.6fb60b79c099fbca.jpg. Preserve its compatible keyed coupling sleeve, tapered black-chrome protective housing, recessed brass cooling hardware, compact heat sinks and small copper/ceramic focusing nozzle. No hand, grip, trigger, stock, character or full forearm. Beam OFF; no solid cone, lightning, particles, smoke or glowing volume as geometry.\n\nMake a detailed master and a separate low-poly delivery candidate starting around 3,000-5,000 triangles. Use PBR surface textures, preserving the dark aperture and readable silhouette. Export GLB and an editable source format if available, named Stiletto_Welder_Module_v1. No humanoid rig required. Intended initial scale: same approximately 7 cm sleeve diameter, roughly 25 cm total length. Final socket fit and scale will be established offline against the body.\n\nBoth tools share one coupling standard and material family. Their meshes remain independent of the body. We will attach them rigidly to each forearm, establish the mounting origin/forward axis, and add runtime glow and contact sparks ourselves. Never reskin them as flexible fingers or merge them into the body.\n",
+      "url": "/loopforge-design/model-briefs/stiletto-02-blade-and-welder.a3ac7787af4839d2.txt"
+    },
+    {
+      "title": "Rig and motion",
+      "file": "stiletto/03-rig-and-motion.txt",
+      "text": "STAGE 1 — RIG VALIDATION, BEFORE THE LARGE BANK\n\nUse the approved Stiletto_Body_v1 delivery mesh without regenerating its geometry, materials or proportions. It is a humanoid body with NO visible hands: forearms end in tool sockets. Try standard humanoid/biped auto-rigging with a Mixamo-compatible export skeleton. Terminal hand bones are acceptable if required by the template; no visible palms or fingers should be added. The tools will be attached rigidly to forearm sockets offline, not deformed by hand or finger animation.\n\nIf the handless body cannot be rigged reliably, explain the actual failure and preserve the neutral model. Do not silently replace it with a handed robot. We can finish or transfer the rig offline.\n\nPreserve an unanimated neutral rigged A-pose. Apply this small test set to the SAME rig:\n- Action 0 — Idle — export alias stiletto_idle_source.\n- Action 115 — Quick_Walk — export alias stiletto_quick_walk_source. Preserve any original root motion and report it; do not claim it is in-place without checking.\n- Action 576 — Idle_Turn_Left — export alias stiletto_turn_left_source.\n\nExport the rigged character ON, with textures, as GLB; also export FBX for offline animation/skin cleanup where available. Keep action IDs in filenames. Export neutral rig separately. If a combined GLB is available, also provide a list of the actual embedded clip names and durations. Do not treat a visible animation in the web viewer as proof it exists in the downloaded file.\n\nDo not claim two-blade clearance: no blades are attached in this rigging test. We will test the assembled character and all transitions in our viewer.\n\nSTAGE 2 — CANDIDATE BANK AFTER THE RIG TEST PASSES\n\nApply these to the SAME approved rig. They are motion sources for review and cleanup, not approval to use them unmodified in gameplay:\n- Action 2 — Alert — stiletto_alert_source.\n- Action 692 — walking_2_inplace — stiletto_grounded_walk_source (alternative to Quick_Walk).\n- Action 644 — Lean_Forward_Sprint_inplace — stiletto_sprint_source.\n- Action 586 — Idle_Turn_Right — stiletto_turn_right_source.\n- Action 47 — Listening_Gesture — stiletto_listening_source.\n- Action 51 — Shouting_Angrily — stiletto_reprimand_source.\n- Action 311 — Stand_Talking_Angry — stiletto_argument_source.\n- Action 317 — Shrug — stiletto_dismissive_source.\n- Action 404 — Crouch_and_Step_Back — stiletto_recoil_source.\n- Action 637 — Injured_Walk_inplace — stiletto_injured_walk_source.\n- Action 172 — Electrocution_Reaction — stiletto_electrical_hit_source.\n- Action 181 — Electrocuted_Fall — stiletto_electrical_collapse_source.\n- Action 365 — Kneel_on_One_Knee_and_Stand — stiletto_kneel_source (legs/torso reference; hands on thigh need blade-aware correction).\n\nDo not substitute or silently rename:\n- Confident_Strut_inplace (621) sweeps an arm across the chest in the official preview. Optional style study only.\n- Angry_Stomp (26) folds the arms. Optional lower-body source, not a ready blade-arm emote.\n- Left_Slash (97) is a sword-and-shield stance in the preview; it does not represent a forearm tool cutting a conveyor obstruction.\n- Double_Blade_Spin (91) previews a held double-ended weapon. It is NOT a pair of integrated forearm blades.\n- Confused_Scratch (36), hand rubbing (318), hand-on-hip, neck/face touching, clapping and chest pounding are unsuitable stock motions for blade-equipped STILETTO.\n- Hot Walk remains Cathexis's intended default gait; do not transfer that naming/character choice to STILETTO.\n\nREPORT\n\nFor each exported file provide action ID, original catalog name, filename, embedded animation names/durations, skeleton template, whether the character mesh and skin are included, root translation/rotation, and any known issues. Preserve original exports; do not claim rigid armour weights or collision cleanup unless actually performed.\n\nCUSTOM MOTIONS\n\nWe need tool-dock exchange, forearm-tool cutting, short seam welding, impatient outward directives, blade-aware idle and a paired worker recoil. These are NOT satisfied by random combat or hand-grip presets. If your Agent workflow exposes actual Text-to-Motion, identify that capability and its output before proceeding. Meshy's current public API documents Text-to-Motion separately; its availability through this Agent workflow is not assumed. Exact prop contacts and blade clearance will still be finished offline.\n",
+      "url": "/loopforge-design/model-briefs/stiletto-03-rig-and-motion.ea95dedca4238e16.txt"
+    },
+    {
+      "title": "Runtime meaning and cleanup",
+      "file": "stiletto/04-runtime-meaning-and-cleanup.txt",
+      "text": "Current rebuild constraints — 15 October 2026\nThe original motion bank remains source material. In the assembled twin-blade player, source Idle reads as Alert, source Alert as Idle, source Shouting_Angrily (Reprimand) reads as Attack, and source Stand_Talking_Angry (Argument) reads as Threaten. Preserve source names/IDs and record gameplay aliases separately.\n\nFive offline arm corrections exist: Running, Crouch_and_Step_Back, Shouting_Angrily, Kneel_on_One_Knee_and_Stand, Electrocuted_Fall. They are NOT returned by Meshy merely by re-requesting the source clips. Reapply or refit the correction recipes to a new rig and resample the actual exported model. 2,335 poses at 120 Hz passed blade/body/blade/floor checks on the current published derivative, not every possible regenerated model or blend. Existing body gait contacts remain open.\n\nThe rigid 55 cm blades attach to each forearm with opposite roll, without mirroring geometry. Socket scale/orientation are calibrated offline. Keep palms and fingers absent; don't solve mounting by adding hands. Welder mounting is pending, not implied by the blade review. A tool module does not grant new repair capability in the simulation.\n\nThe red visor's glow is an application material/emission treatment. Match the original sheet and approved front reference: the horizontal slit connects to a thin vertical centre seam tapering down toward the chin. Both follow the head as a single switchable emission overlay. Preserve a clean surface/UV region for the full shape; no baked red halo or light-volume geometry. Threat and attack require actual agent targets, contact timing and recipient reactions before gameplay use.\n",
+      "url": "/loopforge-design/model-briefs/stiletto-04-runtime-meaning-and-cleanup.50ca8e41815edce4.txt"
+    }
+  ],
+  "motionInventory": [
+    {
+      "label": "Idle (source: Alert)",
+      "sourceClip": "Armature|Armature|Alert|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Alert_withSkin.fbx",
+      "sourceSha256": "b82b6df30c13b11a37bb1eb9d99cc3a90f6ccdc38fbc572ed2148b2a0a583b35",
+      "duration": 4,
+      "note": "Attentive, wide stance. No intersections detected at the three tested poses."
+    },
+    {
+      "label": "Recoil",
+      "sourceClip": "Armature|Armature|Crouch_and_Step_Back|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Crouch_and_Step_Back_withSkin.fbx",
+      "sourceSha256": "9df1cde4aa91ff372d5c4bcbef4cc06844744aa0506b992f7210db0d036edac9",
+      "duration": 2.7,
+      "note": "Has 2.83 m backward travel in source units; requires movement/space reservation. No intersections at tested poses."
+    },
+    {
+      "label": "Electrical collapse",
+      "sourceClip": "Armature|Armature|Electrocuted_Fall|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Electrocuted_Fall_withSkin.fbx",
+      "sourceSha256": "c84c5eebd79d9ab3cc4a3fde85381540253fd5cb2d94898938b8d6e6532c896a",
+      "duration": 6.33333333,
+      "note": "Leg intersection at 4.33 s. Fall ends lower and displaced; needs ground/contact cleanup and one-shot playback."
+    },
+    {
+      "label": "Electrical hit",
+      "sourceClip": "Armature|Armature|Electrocution_Reaction|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Electrocution_Reaction_withSkin.fbx",
+      "sourceSha256": "8ca299187c89e33ce3a39799a8147aabfe22159d07bfce8e7a917560a2136c04",
+      "duration": 4.66666667,
+      "note": "Readable malfunction candidate. No intersections at tested poses; preserve source timing when binding to an incident."
+    },
+    {
+      "label": "Idle Turn Left",
+      "sourceClip": "Armature|Armature|Idle_Turn_Left|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Idle_Turn_Left_withSkin.fbx",
+      "sourceSha256": "4da6ad0c83a94b2552a2df41fa88c7fbeb57d051638ed7a47c80e2ff38a6fc9d",
+      "duration": 0.933333333,
+      "note": "Pivot candidate. No intersections at tested poses. Reconcile facing and small pelvis offset with navigation."
+    },
+    {
+      "label": "Idle Turn Right",
+      "sourceClip": "Armature|Armature|Idle_Turn_Right|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Idle_Turn_Right_withSkin.fbx",
+      "sourceSha256": "f64a56eac6199bff2fd323fa15dafd7c57fe548d61bd23fad26d44e9c5fbda58",
+      "duration": 1.1,
+      "note": "Leg/foot intersection at 0.63 s. Requires foot clearance correction."
+    },
+    {
+      "label": "Rise from kneeling",
+      "sourceClip": "Armature|Armature|Kneel_on_One_Knee_and_Stand|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Kneel_on_One_Knee_and_Stand_withSkin.fbx",
+      "sourceSha256": "87eb6395b94e91b6577f3dcb52242b9e5f79d546d6c4c41155cb58dabc32dab1",
+      "duration": 2.56666667,
+      "note": "Starts kneeling and rises. Socket is close to thigh in first pose. Needs blade-aware arm correction before tools are mounted; not a complete standing-to-kneel-to-stand cycle."
+    },
+    {
+      "label": "Forward sprint",
+      "sourceClip": "Armature|Armature|Lean_Forward_Sprint_inplace|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Lean_Forward_Sprint_inplace_withSkin.fbx",
+      "sourceSha256": "cd1af8d37a49d686d2fcd88b181acf52e7838018702654b30a1aea75a0fe3a68",
+      "duration": 0.6,
+      "note": "Leg intersection at 0.32 s. In-place motion; adjust gait clearance."
+    },
+    {
+      "label": "Listening Gesture",
+      "sourceClip": "Armature|Armature|Listening_Gesture|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Listening_Gesture_withSkin.fbx",
+      "sourceSha256": "a498bd01e107bb85c98f258f2f5565447e35d04fa3385c7fa6ade6b53a32f548",
+      "duration": 9.33333333,
+      "note": "Leg/foot intersection near 8.77 s. Fix feet or choose a trimmed range that passes another check."
+    },
+    {
+      "label": "Quick Walk",
+      "sourceClip": "Armature|Armature|Quick_Walk|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Quick_Walk_withSkin.fbx",
+      "sourceSha256": "558eb34605e0c89733259877783c3f8dfdafd1b534ac5e2e9ba6ecc120579820",
+      "duration": 3,
+      "note": "Leg intersection at 1.68 s. Contrary to report, exported pelvis returns to its start and has only 0.017 m fore/aft range: already in place."
+    },
+    {
+      "label": "Running",
+      "sourceClip": "Armature|Armature|running|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Running_withSkin.fbx",
+      "sourceSha256": "b5d251a66b46e993ea3dbb8b8acac559ac7fa6f719afb7a4b5f7cc1288012b76",
+      "duration": 0.633333333,
+      "note": "In-place baseline run. No intersections at the targeted poses; promising starting candidate."
+    },
+    {
+      "label": "Attack (source: Reprimand)",
+      "sourceClip": "Armature|Armature|Shouting_Angrily|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Shouting_Angrily_withSkin.fbx",
+      "sourceSha256": "58bca9b5c942f9c85ab345149b10dc97fb9f6bf2943ae944bd283af58f53f7d0",
+      "duration": 7.16666667,
+      "note": "Broad overhead and forward arm gestures. No body intersections at targeted poses; full blade sweep must be reviewed with actual attachments."
+    },
+    {
+      "label": "Shrug",
+      "sourceClip": "Armature|Armature|Shrug|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Shrug_withSkin.fbx",
+      "sourceSha256": "96b9a6eb7deb5e39532df2d683cc2b454b46cc51ee8f5080702996b46fac8cd0",
+      "duration": 2,
+      "note": "Readable dismissive gesture. No intersections at targeted poses; check both tools when fitting."
+    },
+    {
+      "label": "Threaten (source: Argument)",
+      "sourceClip": "Armature|Armature|Stand_Talking_Angry|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Stand_Talking_Angry_withSkin.fbx",
+      "sourceSha256": "73efe812e6f5dc3bbd7686b370882379521dee652c6a93db1d40b4b40dfbe147",
+      "duration": 20.8,
+      "note": "20.80-second long argument take. No intersections at targeted poses. Needs selection/trim and blade-aware gesture review."
+    },
+    {
+      "label": "Walking",
+      "sourceClip": "Armature|Armature|walking_man|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Walking_withSkin.fbx",
+      "sourceSha256": "779c27a6a779cc3105160459227d547f426ebe3b6c4d61a93b017aab0c5b377a",
+      "duration": 1.03333333,
+      "note": "In-place baseline walk. No intersections at the targeted poses; promising starting candidate."
+    },
+    {
+      "label": "Grounded walk",
+      "sourceClip": "Armature|Armature|walking_2_inplace|baselayer",
+      "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_walking_2_inplace_withSkin.fbx",
+      "sourceSha256": "984ba8593e1cabc6adf26ecb64aa3b068e429f3228b68d6211a2723f5714b653",
+      "duration": 1.2,
+      "note": "Pronounced leg/foot intersection at 0.97 s. Does not meet Meshy report claim of clean separation."
+    },
+    {
+      "label": "Alert (source: Idle)",
+      "sourceClip": "Armature|Armature|Idle|baselayer",
+      "sourceFile": "stiletto_idle_source.fbx",
+      "sourceSha256": "3e7d0aec0b2113019e21f1c8eb0537fc466109b98144ec956f00e24eb2a5c577",
+      "duration": 4,
+      "note": "Stationary 4-second idle. No surface intersections detected at the three targeted closest poses; full-cycle and mounted-tool review still required."
+    },
+    {
+      "label": "Injured walk",
+      "sourceClip": "Armature|Armature|Injured_Walk_inplace|baselayer",
+      "sourceFile": "stiletto_injured_walk_source.fbx",
+      "sourceSha256": "b15e7a9f8798e10d9ea811c680594e34e76a505bda53a7b607bd59d49d78160f",
+      "duration": 8.66666667,
+      "note": "In-place limping motion. Positive leg/foot intersections at 6.83 s; clearance correction required."
+    }
+  ],
+  "files": [
+    {
+      "name": "images/01-stiletto-body-front.3f982df15976bae9.jpg",
+      "src": "/media/loopforge-model-briefs/01-stiletto-body-front.3f982df15976bae9.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 286477,
+      "sha256": "3f982df15976bae9c0404039a21a73f7502d32cbf51956d42a815bb64604c204"
+    },
+    {
+      "name": "images/05-stiletto-body-side.575c8327ab7f5716.jpg",
+      "src": "/media/loopforge-model-briefs/05-stiletto-body-side.575c8327ab7f5716.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 201047,
+      "sha256": "575c8327ab7f5716c132cf58b184570e7085a371789f449e317ac711e3037fde"
+    },
+    {
+      "name": "images/02-stiletto-body-back.957e15069ec82a53.jpg",
+      "src": "/media/loopforge-model-briefs/02-stiletto-body-back.957e15069ec82a53.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 282315,
+      "sha256": "957e15069ec82a5386d259091ae081c1083ee15257690b99973f5eac61f4a771"
+    },
+    {
+      "name": "images/03-stiletto-blade-module.77b6eafca7b2fd3d.jpg",
+      "src": "/media/loopforge-model-briefs/03-stiletto-blade-module.77b6eafca7b2fd3d.jpg",
+      "width": 1774,
+      "height": 887,
+      "bytes": 158346,
+      "sha256": "77b6eafca7b2fd3da7d7ae6770dcd12bce5cf5b39be67747eee530a1b76ca29c"
+    },
+    {
+      "name": "images/04-stiletto-welder-module.6fb60b79c099fbca.jpg",
+      "src": "/media/loopforge-model-briefs/04-stiletto-welder-module.6fb60b79c099fbca.jpg",
+      "width": 1774,
+      "height": 887,
+      "bytes": 245699,
+      "sha256": "6fb60b79c099fbcac03b8ffd677635cf330444908050cda0f1f6489d9d614407"
+    },
+    {
+      "name": "prompts/01-body.txt",
+      "src": "/loopforge-design/model-briefs/stiletto-01-body.4fc7446cfc329907.txt",
+      "bytes": 2378,
+      "sha256": "4fc7446cfc32990760f1ac9c221a8be6027f84e47c76b90eae6b8d70782bd645"
+    },
+    {
+      "name": "prompts/02-blade-and-welder.txt",
+      "src": "/loopforge-design/model-briefs/stiletto-02-blade-and-welder.a3ac7787af4839d2.txt",
+      "bytes": 2640,
+      "sha256": "a3ac7787af4839d29987d2c055866d7df5a99c549ee0413c51e4314014491b37"
+    },
+    {
+      "name": "prompts/03-rig-and-motion.txt",
+      "src": "/loopforge-design/model-briefs/stiletto-03-rig-and-motion.ea95dedca4238e16.txt",
+      "bytes": 4454,
+      "sha256": "ea95dedca4238e16eb0b91e6effa81d14d454decb2057d74e22afab81a0ae1ba"
+    },
+    {
+      "name": "prompts/04-runtime-meaning-and-cleanup.txt",
+      "src": "/loopforge-design/model-briefs/stiletto-04-runtime-meaning-and-cleanup.50ca8e41815edce4.txt",
+      "bytes": 1676,
+      "sha256": "50ca8e41815edce463c5798bf0048380e23740c15ffc3e30483e897bb056018e"
+    },
+    {
+      "name": "README.md",
+      "src": "/loopforge-design/model-briefs/stiletto-README.f126b19cde26a084.md",
+      "bytes": 2245,
+      "sha256": "f126b19cde26a08456825ce8494d946977c8bc2feee83f9feefaee4bf9088a4b"
+    },
+    {
+      "name": "export-audit.json",
+      "src": "/loopforge-design/model-briefs/stiletto-export-audit.2ec09da989edfca0.json",
+      "bytes": 25441,
+      "sha256": "2ec09da989edfca0e6f60632b10528d5e86601c699fa46e4adb967a98484f38b"
+    },
+    {
+      "name": "image-generation-prompts.json",
+      "src": "/loopforge-design/model-briefs/stiletto-image-generation-prompts.87cd0beb867dfd9c.json",
+      "bytes": 6752,
+      "sha256": "87cd0beb867dfd9cebead91226e7a5f0571d8ad0ad475c29cb0b36699847ca97"
+    }
+  ],
+  "downloadBytes": 1219470,
+  "packageManifest": {
+    "schemaVersion": 1,
+    "id": "stiletto",
+    "revision": "Rebuild brief v2 · corrected arm derivatives v4",
+    "provenance": "Original body, blade, welder and motion briefs recovered. Rebuild notes preserve the later acting meanings and offline corrections; a fresh Meshy export does not include those corrections.",
+    "viewer": "https://www.fruitfulab.net/stepanoskin/loopforge/play/asset-review/stiletto",
+    "images": [
+      {
+        "label": "Body · front",
+        "role": "Body input",
+        "sourceName": "01-stiletto-body-front.png",
+        "sourceSha256": "45b6f020dde327639818b5111a5ee159dfd9a34822e1a88f4aa599099efab8cc",
+        "input": {
+          "src": "/media/loopforge-model-briefs/01-stiletto-body-front.3f982df15976bae9.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 286477,
+          "sha256": "3f982df15976bae9c0404039a21a73f7502d32cbf51956d42a815bb64604c204"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/01-stiletto-body-front-360.bba37cc981560cb0.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 16206,
+            "sha256": "bba37cc981560cb0886743ceacb060d1b589bd6e3086442eb22cdf382592020d"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/01-stiletto-body-front-720.2982f54341ae31b1.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 52612,
+            "sha256": "2982f54341ae31b1d52947c8be7a6b3b4e01d99c806cad3681b79223ad86b923"
+          }
+        ],
+        "archivePath": "images/01-stiletto-body-front.3f982df15976bae9.jpg"
+      },
+      {
+        "label": "Body · side",
+        "role": "Body input",
+        "sourceName": "05-stiletto-body-side.png",
+        "sourceSha256": "4c364928052df01cef5a13ed885fb6ce3d291c50a694f03f85bec404aa7e5eb4",
+        "input": {
+          "src": "/media/loopforge-model-briefs/05-stiletto-body-side.575c8327ab7f5716.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 201047,
+          "sha256": "575c8327ab7f5716c132cf58b184570e7085a371789f449e317ac711e3037fde"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/05-stiletto-body-side-360.832488d5c0a45c22.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 9662,
+            "sha256": "832488d5c0a45c22e89a3c4e8e10923ec057172a199ec6e3b31803fdeec0b8ee"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/05-stiletto-body-side-720.a21831fcbf587939.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 31782,
+            "sha256": "a21831fcbf58793954e9cfb0a8591307e8806e7ffe26dde78c8d1c637e259f19"
+          }
+        ],
+        "archivePath": "images/05-stiletto-body-side.575c8327ab7f5716.jpg"
+      },
+      {
+        "label": "Body · back",
+        "role": "Body input",
+        "sourceName": "02-stiletto-body-back.png",
+        "sourceSha256": "d1e95118e6a9a5a1eae5dddf4c37c57c0973af20a15e1eb68713d0306c3ebb3c",
+        "input": {
+          "src": "/media/loopforge-model-briefs/02-stiletto-body-back.957e15069ec82a53.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 282315,
+          "sha256": "957e15069ec82a5386d259091ae081c1083ee15257690b99973f5eac61f4a771"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/02-stiletto-body-back-360.d9f2a11b31d0d9e5.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 15672,
+            "sha256": "d9f2a11b31d0d9e570a6be74a4baba1e673372bc07a951b3cf0db6b4cf5d1a6e"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/02-stiletto-body-back-720.91077efe4d9dd74b.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 51146,
+            "sha256": "91077efe4d9dd74b9ad90a595b161167ac05be41fe3a8f5dcae445bcfa9bce1d"
+          }
+        ],
+        "archivePath": "images/02-stiletto-body-back.957e15069ec82a53.jpg"
+      },
+      {
+        "label": "Blade module",
+        "role": "Separate rigid object — upload alone",
+        "sourceName": "03-stiletto-blade-module.png",
+        "sourceSha256": "cd07f0af819c40d7113268a2dc784d60ad7e69f5412fbc08dc5eac0a3de7efaf",
+        "input": {
+          "src": "/media/loopforge-model-briefs/03-stiletto-blade-module.77b6eafca7b2fd3d.jpg",
+          "width": 1774,
+          "height": 887,
+          "bytes": 158346,
+          "sha256": "77b6eafca7b2fd3da7d7ae6770dcd12bce5cf5b39be67747eee530a1b76ca29c"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/03-stiletto-blade-module-360.d557026b58df992a.webp",
+            "width": 360,
+            "height": 180,
+            "bytes": 2698,
+            "sha256": "d557026b58df992aae24012d96cdc6e33a777cde1a8788e6d3e681df581e7bff"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/03-stiletto-blade-module-720.68db98516d0cdad1.webp",
+            "width": 720,
+            "height": 360,
+            "bytes": 8346,
+            "sha256": "68db98516d0cdad1f612d5255e040f0a8eb862000f8d43cceaaf63d1444a9ca8"
+          }
+        ],
+        "archivePath": "images/03-stiletto-blade-module.77b6eafca7b2fd3d.jpg"
+      },
+      {
+        "label": "Welder module",
+        "role": "Separate rigid object — upload alone",
+        "sourceName": "04-stiletto-welder-module.png",
+        "sourceSha256": "d0f6be5eeacae41dd10aaf34f718afc6520bc717405de350a1d3a82ab47db414",
+        "input": {
+          "src": "/media/loopforge-model-briefs/04-stiletto-welder-module.6fb60b79c099fbca.jpg",
+          "width": 1774,
+          "height": 887,
+          "bytes": 245699,
+          "sha256": "6fb60b79c099fbcac03b8ffd677635cf330444908050cda0f1f6489d9d614407"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/04-stiletto-welder-module-360.866776ca9efaa2f8.webp",
+            "width": 360,
+            "height": 180,
+            "bytes": 5676,
+            "sha256": "866776ca9efaa2f8c448500b3cbef7b974b7ceebc4c4e427f4dde758f98a3e27"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/04-stiletto-welder-module-720.874bd99032e3aec3.webp",
+            "width": 720,
+            "height": 360,
+            "bytes": 17166,
+            "sha256": "874bd99032e3aec3c2da86955150b28b0a397fdf251f9b0b0bd69e71374ef049"
+          }
+        ],
+        "archivePath": "images/04-stiletto-welder-module.6fb60b79c099fbca.jpg"
+      }
+    ],
+    "files": [
+      {
+        "name": "images/01-stiletto-body-front.3f982df15976bae9.jpg",
+        "src": "/media/loopforge-model-briefs/01-stiletto-body-front.3f982df15976bae9.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 286477,
+        "sha256": "3f982df15976bae9c0404039a21a73f7502d32cbf51956d42a815bb64604c204"
+      },
+      {
+        "name": "images/05-stiletto-body-side.575c8327ab7f5716.jpg",
+        "src": "/media/loopforge-model-briefs/05-stiletto-body-side.575c8327ab7f5716.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 201047,
+        "sha256": "575c8327ab7f5716c132cf58b184570e7085a371789f449e317ac711e3037fde"
+      },
+      {
+        "name": "images/02-stiletto-body-back.957e15069ec82a53.jpg",
+        "src": "/media/loopforge-model-briefs/02-stiletto-body-back.957e15069ec82a53.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 282315,
+        "sha256": "957e15069ec82a5386d259091ae081c1083ee15257690b99973f5eac61f4a771"
+      },
+      {
+        "name": "images/03-stiletto-blade-module.77b6eafca7b2fd3d.jpg",
+        "src": "/media/loopforge-model-briefs/03-stiletto-blade-module.77b6eafca7b2fd3d.jpg",
+        "width": 1774,
+        "height": 887,
+        "bytes": 158346,
+        "sha256": "77b6eafca7b2fd3da7d7ae6770dcd12bce5cf5b39be67747eee530a1b76ca29c"
+      },
+      {
+        "name": "images/04-stiletto-welder-module.6fb60b79c099fbca.jpg",
+        "src": "/media/loopforge-model-briefs/04-stiletto-welder-module.6fb60b79c099fbca.jpg",
+        "width": 1774,
+        "height": 887,
+        "bytes": 245699,
+        "sha256": "6fb60b79c099fbcac03b8ffd677635cf330444908050cda0f1f6489d9d614407"
+      },
+      {
+        "name": "prompts/01-body.txt",
+        "src": "/loopforge-design/model-briefs/stiletto-01-body.4fc7446cfc329907.txt",
+        "bytes": 2378,
+        "sha256": "4fc7446cfc32990760f1ac9c221a8be6027f84e47c76b90eae6b8d70782bd645"
+      },
+      {
+        "name": "prompts/02-blade-and-welder.txt",
+        "src": "/loopforge-design/model-briefs/stiletto-02-blade-and-welder.a3ac7787af4839d2.txt",
+        "bytes": 2640,
+        "sha256": "a3ac7787af4839d29987d2c055866d7df5a99c549ee0413c51e4314014491b37"
+      },
+      {
+        "name": "prompts/03-rig-and-motion.txt",
+        "src": "/loopforge-design/model-briefs/stiletto-03-rig-and-motion.ea95dedca4238e16.txt",
+        "bytes": 4454,
+        "sha256": "ea95dedca4238e16eb0b91e6effa81d14d454decb2057d74e22afab81a0ae1ba"
+      },
+      {
+        "name": "prompts/04-runtime-meaning-and-cleanup.txt",
+        "src": "/loopforge-design/model-briefs/stiletto-04-runtime-meaning-and-cleanup.50ca8e41815edce4.txt",
+        "bytes": 1676,
+        "sha256": "50ca8e41815edce463c5798bf0048380e23740c15ffc3e30483e897bb056018e"
+      },
+      {
+        "name": "README.md",
+        "src": "/loopforge-design/model-briefs/stiletto-README.f126b19cde26a084.md",
+        "bytes": 2245,
+        "sha256": "f126b19cde26a08456825ce8494d946977c8bc2feee83f9feefaee4bf9088a4b"
+      },
+      {
+        "name": "export-audit.json",
+        "src": "/loopforge-design/model-briefs/stiletto-export-audit.2ec09da989edfca0.json",
+        "bytes": 25441,
+        "sha256": "2ec09da989edfca0e6f60632b10528d5e86601c699fa46e4adb967a98484f38b"
+      },
+      {
+        "name": "image-generation-prompts.json",
+        "src": "/loopforge-design/model-briefs/stiletto-image-generation-prompts.87cd0beb867dfd9c.json",
+        "bytes": 6752,
+        "sha256": "87cd0beb867dfd9cebead91226e7a5f0571d8ad0ad475c29cb0b36699847ca97"
+      }
+    ]
+  }
+}

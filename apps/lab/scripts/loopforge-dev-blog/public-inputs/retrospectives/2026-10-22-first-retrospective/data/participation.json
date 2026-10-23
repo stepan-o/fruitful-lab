@@ -1,0 +1,98 @@
+{
+  "cutoff": "2026-10-22T23:45:25.166141+00:00",
+  "contributions": 9,
+  "answers": 36,
+  "peerResponses": 7,
+  "maxConcurrentCraftAssignments": 2,
+  "perContributionLimit": {
+    "activeMinutes": 6,
+    "additionalCachedInclusiveTokens": 1200000,
+    "checkpointAdditionalTokens": 840000
+  },
+  "rows": [
+    {
+      "role": "Engine Master",
+      "startUtc": "2026-10-22T23:29:21.129742+00:00",
+      "answerFinalizedUtc": "2026-10-22T23:32:36.708528+00:00",
+      "wallIntervalSeconds": 195.579,
+      "observedAdditionalCachedInclusiveTokensBeforeCloseout": null,
+      "exactFinalTaskTokens": null,
+      "tokenNote": "No complete attributable counter pair supplied; unknown, not zero"
+    },
+    {
+      "role": "Animator",
+      "startUtc": "2026-10-22T23:28:59.607961+00:00",
+      "answerFinalizedUtc": "2026-10-22T23:31:58.521065+00:00",
+      "wallIntervalSeconds": 178.913,
+      "observedAdditionalCachedInclusiveTokensBeforeCloseout": null,
+      "exactFinalTaskTokens": null,
+      "tokenNote": "No complete attributable counter pair supplied; unknown, not zero"
+    },
+    {
+      "role": "3D Artist",
+      "startUtc": "2026-10-22T23:33:14.550329+00:00",
+      "answerFinalizedUtc": "2026-10-22T23:35:14.869974+00:00",
+      "wallIntervalSeconds": 120.32,
+      "observedAdditionalCachedInclusiveTokensBeforeCloseout": null,
+      "exactFinalTaskTokens": null,
+      "tokenNote": "No complete attributable counter pair supplied; unknown, not zero"
+    },
+    {
+      "role": "Scene Director",
+      "startUtc": "2026-10-22T23:33:38.572148456Z",
+      "answerFinalizedUtc": "2026-10-22T23:35:48.005844+00:00",
+      "wallIntervalSeconds": 129.434,
+      "observedAdditionalCachedInclusiveTokensBeforeCloseout": null,
+      "exactFinalTaskTokens": null,
+      "tokenNote": "No complete attributable counter pair supplied; unknown, not zero"
+    },
+    {
+      "role": "Writer",
+      "startUtc": "2026-10-22T23:36:25.124068+00:00",
+      "answerFinalizedUtc": "2026-10-22T23:37:51.740783+00:00",
+      "wallIntervalSeconds": 86.617,
+      "observedAdditionalCachedInclusiveTokensBeforeCloseout": 296622,
+      "exactFinalTaskTokens": null,
+      "tokenNote": "Observed difference excludes later closeout"
+    },
+    {
+      "role": "Critic",
+      "startUtc": "2026-10-22T23:36:04.921421+00:00",
+      "answerFinalizedUtc": "2026-10-22T23:38:19.079031+00:00",
+      "wallIntervalSeconds": 134.158,
+      "observedAdditionalCachedInclusiveTokensBeforeCloseout": 395074,
+      "exactFinalTaskTokens": null,
+      "tokenNote": "Observed difference excludes later closeout"
+    },
+    {
+      "role": "Visual Artist",
+      "startUtc": "2026-10-22T23:39:22.341474+00:00",
+      "answerFinalizedUtc": "2026-10-22T23:41:18.898529+00:00",
+      "wallIntervalSeconds": 116.557,
+      "observedAdditionalCachedInclusiveTokensBeforeCloseout": null,
+      "exactFinalTaskTokens": null,
+      "tokenNote": "No complete attributable counter pair supplied; unknown, not zero"
+    },
+    {
+      "role": "Systems Designer",
+      "startUtc": "2026-10-22T23:38:28.699853+00:00",
+      "answerFinalizedUtc": "2026-10-22T23:41:19.365784+00:00",
+      "wallIntervalSeconds": 170.666,
+      "observedAdditionalCachedInclusiveTokensBeforeCloseout": null,
+      "exactFinalTaskTokens": null,
+      "tokenNote": "No complete attributable counter pair supplied; unknown, not zero"
+    },
+    {
+      "role": "Level Designer",
+      "startUtc": "2026-10-22T23:41:45.639291+00:00",
+      "answerFinalizedUtc": "2026-10-22T23:43:23.550518+00:00",
+      "wallIntervalSeconds": 97.911,
+      "observedAdditionalCachedInclusiveTokensBeforeCloseout": null,
+      "exactFinalTaskTokens": null,
+      "tokenNote": "No complete attributable counter pair supplied; unknown, not zero"
+    }
+  ],
+  "exactTotalRetrospectiveTokens": null,
+  "billedCost": null,
+  "limits": "Intervals overlap and measure contribution wall time, not additive labour. End counters/closeout and Producer coordination are incomplete. These are distinct from frozen history/statistics totals. Missing observations are unknown, not zero."
+}

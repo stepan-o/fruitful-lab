@@ -1,0 +1,7 @@
+LOOPFORGE · LATTICE FORGE / FRAME · v1
+
+Primary reference: 04_loopforge_rooms_neural_lattice_out_1.png, with the heavy chain-and-carrier language of 04_loopforge_rooms_neural_lattice_converyor_1.png. This is the initial Conveyor compression press, not the later Brain Forge/Cortex room. It must be the room's strongest machine silhouette: a massive iron portal, deep cast side columns, a heavy crown beam, aged brass pressure fittings and ribbed housings. The player watches a whole brain enter and a supervisor-head-sized brain leave.
+
+Generate only the rigid outer frame and fixed pressure housing. Leave a clean, unobstructed central opening. Exclude platen, exposed moving ram, brain, carrier, belt, operator controls, characters, writing, fire, steam and floor. No filled slab or decorative crossbar across the workpiece route. Wear and bolts belong in the texture; no dense ornamental filigree.
+
+Fit the delivery to a 3.5 m long × 2.8 m deep × 4.1 m high envelope, centered on the existing Forge station. Minimum working opening: 2.1 m along the belt, 2.0 m across. Moving parts are authored separately and must reach the current carrier seat. Target 12–18k triangles, one 1K material family; higher source detail is retained offline. Keep a readable front and rear so a later camera can inspect the machine from either side.

@@ -5,6 +5,14 @@ The [static cast-readability studio](/stepanoskin/loopforge/play/readability) au
 18 October 2026. Scope: Fruitful Lab / Loopforge presentation. Gameplay, BDI,
 identity, assignments and action timelines are independent of graphics quality.
 
+## Opening room pilot and lighting experiment — 21 October 2026
+
+The 12-character opening with the delivered wash housing, changing brain materials and moving belt **failed** the ten-minute HD620 reference test: 46.3 FPS, 33.9 ms p95, 46.1 ms p99, 28 pauses over 100 ms (limit six). Input response was 78.4 ms and resource counts stayed fixed through four complete episodes. All twelve shots were sampled. Twenty-six pauses occurred in Security shots; this is location evidence, not proof of their cause. The first STILETTO passage and later helper positioning need profiling. [Raw result](performance-results/2026-10-21-hd620-opening-r12.json). This run preceded the optional station-light code and used glow-only effects. Do not present its average FPS as a pass.
+
+Scene studies now offers Glow only, Light spill and Light + shadows. One active-station spotlight serves washing or pressing, with a bounded range and one 512px shadow map. Opaque nearby solids cast; spray streaks do not. Global Shadows off suppresses the map while retaining spill. Glow is the default; additional light is an experiment pending evidence. Shadows must be visible and useful before their cost is accepted.
+
+The three-minute comparison repeats the same 93–113-second wash/press sequence twice per configuration at fixed 1280×720 reference graphics, after five seconds of warm-up. It measures frame cadence, CPU render submission, draw counts and long pauses for glow, spill, shadows and a repeated glow baseline. No GPU timer is claimed. Hidden/scrolled-away/context-loss/settings changes invalidate the diagnostic. It does not replace the sustained opening acceptance test.
+
 ## Implemented
 
 The shared preferences are versioned and browser-local. Automatic, Performance,
@@ -160,3 +168,5 @@ performance certification is implied.
 
 Evidence: [raw comparison JSON](performance-results/2026-10-18-hd620-graphics-comparison-1.json),
 [build provenance](performance-results/2026-10-18-hd620-graphics-comparison-1-provenance.json).
+
+The first short lighting diagnostic measured 43.9 FPS with glow, 44.9 with spill, 43.4 with shadows and 42.2 on the repeated baseline. This variation does not establish a meaningful mode cost. See [raw evidence and instrumentation caveats](performance-results/2026-10-21-hd620-station-light-diagnostic-1.md). The sustained opening test still fails; this comparison does not supersede it.

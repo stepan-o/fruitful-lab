@@ -1,0 +1,13 @@
+{
+  "id": "jo",
+  "body": {
+    "source": "output/opening-cast/jo/jo-body-v1.glb",
+    "sha256": "706e842674835ca33f8959968b860b26a7b1296f7469c36f4209c2a50f2c27cf",
+    "bytes": 14876724,
+    "triangles": 24920,
+    "skins": 0,
+    "animations": 0
+  },
+  "status": "downloaded unrigged body; visual review pending",
+  "approvedReference": "ensemble-badass"
+}

@@ -1,47 +1,113 @@
-# Day one: stop and wait here
+# Day one: the first morning count
 
-19 October 2026 · opening rehearsal; final contact animations pending.
+22 October 2026 · before-the-shift/15 · opening and Conveyor rehearsal, still under visual and performance review.
 
-[Play the scene](/stepanoskin/loopforge/play/scene-studies). [Shared encounter architecture](SCENE_REHEARSALS.md). [Room art brief](ROOM_ASSET_BRIEFS.md).
+[Play the opening](/stepanoskin/loopforge/play/scene-studies). [Shared engine boundary](SCENE_REHEARSALS.md). [Room kit and rebuild briefs](model-briefs/room-kit/README.md).
 
-## The scene
+Ten workers arrive. bob hears a welcome and takes it literally. LIMEN strikes him; sam goes to him, while ed takes the dropped card. The camera makes that small theft visible. bob gets up as STILETTO cuts through the crowd and Security without stopping. LIMEN yields. bob notices the exception, catches himself, flatters the Protocol and gets sent to Conveyor without an ID check.
 
-Ten workers enter through the Lobby and gather outside Security. LIMEN holds the entrance. His first order is “STOP AND WAIT HERE!!”. One worker approaches the doorway anyway. LIMEN swings his baton: “HEY YOU I SAID STOP!!!!”. The struck worker recoils, limps back, and joins the waiting group. Once everyone has settled, LIMEN orders “EVERYONE PREPARE YOUR IDs”. The scene stops before paper inspection.
+LIMEN recruits ed and gus. STILETTO has one worker and a silent line. She sends bob through Intake, Brain Wash, Main Belt and Lattice Forge. One brain comes out. During that work sam is the only additional worker admitted. Return to Security for jo, the third check. ed still has bob’s card; bob does not yet know.
 
-The point is visible authority and its cost: a closed checkpoint, a queue of idle labour, an injured worker, and instructions heard by everyone. The next scene can carry that delay, injury and remembered treatment into the conveyor conflict. This rehearsal does not yet advance the saved shift or produce output.
+## Time and attention
 
-The player has Play/Pause, Restart, a timeline, named beat markers, Lobby/Doorway camera presets, mouse orbit, storyboard PNG and evidence JSON. Dialogue appears above the speaker. Private stress/trust/belief records remain in the author disclosure only.
+The authored action track takes 132.45 seconds, plus the player’s reading time. Every spoken turn holds for a click; machine instructions offer an explicit action button. Reading holds factory time, routes, paper custody and process progress. Restrained character motion continues. A low-effects choice cannot change output or what anyone heard. Autoplay and time scrubbing are author controls; the player path is the main Continue/action button.
 
-## Approved appearance
+Crowd baseline is Quiet Wait, a restrained derivative of the existing idle. The head retains a small movement; hips and feet stay planted. Larger reactions belong to the strike, the card, STILETTO’s passage and the volunteer call. Camera cuts follow those actions, with dedicated Conveyor compositions. There is no automatic cut per speech bubble.
 
-CATHEXIS needs no further visual redesign: existing ivory treatment at 100% paint, neutral body height 1.3 times the worker. Gold/mechanisms and approved Grace remain intact. She is not present in this day-one scene. Security uses floor colour `#A7B2D3`; Lobby and Conveyor retain `#666860`. The static comparison studio now remembers a separate floor colour per room, including when loading an older one-room save. The source comparison and frozen performance/comparison fixtures still show the original floor; their source palette allocates no extra room material or texture.
+## Current dialogue
 
-## Engine and presentation boundary
+This transcript is extracted from the runtime fixture. Times are action time, excluding reading. Worker names remain lower case; supervisor names remain upper case.
 
-The headless encounter kernel owns admission, actor/resource reservations, fixed 50 ms world ticks, movement, speech/hearing, cancellation and effects. Authored intentions supply the scenario. The final instruction requires all ten queue-settled facts. The strike commits injury, stress and remembered treatment once at the end of its action phase; replaying a camera frame does not add another injury. Future BDI intentions can use the same boundary.
+**bob · 0.05s:** New roller?
 
-`arrival-layout.ts` defines the compact Lobby–Security rooms and the doorway once for movement, hearing and construction. An admission-blocked doorway still carries a shout; an acoustically closed one does not. Actors remain in their actual room, and a crossing updates room identity through the spatial adapter. This scenario selects a compact layout; it does not silently move Dispatch in the existing full-floor plan.
+**sam · 2.25s:** Same roller. Fresh paint.
 
-The cohort follows authored clear lanes with 0.85 m centre separation and reserved queue slots. This is not general crowd navigation. Ten independently posed workers share geometry, materials and textures. Only the active cast loads; the other three rehearsals retain their existing two-character casts. World actions do not depend on rendering speed. A shared graphics menu controls resolution, target cadence, shadows, bloom and antialiasing. The new shell renders on demand when paused; its automatic preset currently uses the initial room resolution budget rather than feedback-driven resolution adjustment. No device-performance acceptance is implied.
+**jo · 5.35s:** Give it a shift.
 
-Approved worker clips supply walking, idle and injured walking. LIMEN’s baton and arm direction, plus the worker’s short recoil, are explicitly temporary presentation adapters. They do not establish paired contact, grip, transitions or final performance quality. Room fittings are cheap native proxies at reusable anchors, awaiting the room asset brief.
+**LIMEN · 7.55s:** STOP. WAIT HERE!!
 
-## Meshy request — copyable text
+**LIMEN · 8.75s:** Welcome to Loopforge. You move when I say.
 
-Use the existing approved rigged LIMEN and Worker 01 bodies. Do not regenerate meshes, textures, skeletons or proportions. Supply each motion as its own rigged GLB with the character and textures included. FBX is useful if further offline contact editing is needed. Preserve the neutral rig and existing approved motions.
+**lou · 9.95s:** Warm welcome.
 
-1. LIMEN — authoritative halt / stop-and-wait gesture. Stationary feet, broad readable command aimed at a group ahead. Free left arm commands; right forearm retains the cyan emitter. Prefer a single deliberate gesture with a clear held pose, not a wave or greeting.
+**kit · 10.75s:** Keep your bolts on.
 
-2. LIMEN — one-handed baton warning strike. Baton is held in the left hand; keep the right cyan emitter clear of the torso and the other arm. One readable wind-up, controlled forward/downward swing, follow-through and return to guard. Stationary or minimal root travel. No spinning, sword flourish, gun gesture or repeated combat combo. Export the body motion; the baton remains a separate attachment. If only a right-handed catalog candidate exists, identify it explicitly so we can mirror and fit it offline. Do not claim exact left-hand contact without checking it.
+**LIMEN · 11.55s:** IDs ready. First shift?
 
-3. Worker 01 — short hit reaction / stagger. A standing worker is struck from the front, recoils or takes one recovery step, remains upright, then can enter the existing injured-walk clip and return to idle. No death, collapse or electrocution substitute. Keep the limbs clear and identify any root displacement.
+**bob · 12.55s:** Yes, sir. Here—
 
-For each request, show the actual catalog name and action ID, duration, in-place/root-travel status and export status. Offer the closest few readable candidates if the exact motion is unavailable. Do not label an unrelated gesture as a match. We will fit partner distance, baton contact, timing and transitions locally against the doorway scene. Existing walk, idle and limp do not need regenerating.
+**LIMEN · 14.05s:** I SAID STOP!!!!
 
-Optional next batch, after this opening is accepted: preparing/showing an ID, checking papers on a clipboard, handing back an ID and pointing a worker toward a staffed security station. Those contacts require actual props and should be tested in pairs.
+**sam · 17.45s:** Easy, bob. I’ve got you.
 
-## Validation and remaining gates
+**STILETTO · 28.70s:** Get the slag out of my way!
 
-Engine tests cover deterministic completion, all ten workers staying outside Security, actor spacing, the three exact lines, final-instruction hearing, injury once, cancellation before contact, resource release, blocked admission versus open acoustics, and exclusion of private values from the player projection. Asset validation checks the three real corrected clips, ten separate skeletons sharing one geometry, finite temporary poses and disposal.
+**bob · 44.40s:** You didn’t check her ID…
 
-Before main-play integration: replace and review temporary acting, match travel speed to footfalls, blend actions, validate baton/body contacts from several angles, provide pathfinding and queue interruption, connect effects to saved day authority, and run the occupied-scene performance protocol. This is a playable storyboard with real local consequences, not a complete first day.
+**LIMEN · 45.40s:** WHAT DID YOU SAY?!
+
+**bob · 46.20s:** I said it’s great to see someone care so much about the Protocol, sir!
+
+**LIMEN · 47.50s:** Finally you’re starting to get it. ASSIGNMENT?!
+
+**bob · 48.80s:** Conveyor, sir.
+
+**LIMEN · 49.60s:** Go. Before I change my mind.
+
+**LIMEN · 62.00s:** Slag. This’ll take all shift to do right.
+
+**LIMEN · 63.00s:** WHO HERE REALLY CARES ABOUT THE FACTORY?!
+
+**ed · 64.30s:** I do, sir.
+
+**gus · 65.20s:** Me too.
+
+**LIMEN · 66.10s:** You two. Help me set up this checkpoint.
+
+**LIMEN · 78.10s:** IDs AND PAPERS READY!!!
+
+**ed · 79.20s:** IDs AND PAPERS!
+
+**gus · 80.00s:** NEXT!!!
+
+**LIMEN · 80.80s:** NAME AND ASSIGNMENT?!
+
+**sam · 83.20s:** sam. Conveyor.
+
+**STILETTO · 84.20s:** One worker. He sends me ONE.
+
+**bob · 85.40s:** Where do I start?
+
+**STILETTO · 86.30s:** Intake. Seat the brain in the cradle.
+
+**STILETTO · 90.90s:** Wash it. We sell thoughts, not yesterday’s grease.
+
+**STILETTO · 97.90s:** Main belt. Clamp it down. Start the drive.
+
+**STILETTO · 106.10s:** Lattice Forge. Close the press. Head-sized.
+
+**bob · 113.10s:** I’m all four stations?
+
+**STILETTO · 114.10s:** Until the rest of my shift gets past that tin god.
+
+**LIMEN · 129.40s:** NAME AND ASSIGNMENT?!
+
+**jo · 130.40s:** jo. Conveyor. Same as the last two.
+
+**LIMEN · 131.40s:** I asked for YOUR assignment. Papers.
+
+## Authority and validation
+
+The shared kernel owns action admission, reservations, navigation, effects and hearing. Each station requires the previous stage and commits once. Actor appearance comes from the shared ten-worker banks and approved supervisors. The current compact Lobby–Security–Conveyor layout is a rehearsal; it has not replaced the full-floor map or saved-day authority.
+
+The first 50 focused checks passed, with an additional complete-cycle platen-contact test now added. The production asset checks and build pass for the first room integration; the final adjusted build and sustained occupied-scene run are recorded separately. A passing headless contact envelope does not certify visible fingers, footfalls or cloth.
+
+Remaining: final room housing fit and travel openings, paired paper/machine contacts, full sequence visual approval, physical-device performance, and saved-day/BDI integration. The rooms use authored mechanisms plus the first optimized Meshy candidates; the complete room kit is not finished. See the current performance report before claiming a frame-rate pass.
+
+### Physical station work
+
+bob walks to each control socket before operating it; STILETTO walks alongside the line and turns to watch him. Navigation, equipment and the action use the same station coordinates. A cycle is interrupted if bob leaves its control radius; it cannot award progress or output remotely. Exact palm-to-control animation contact is still under review.
+
+## Room delivery status · 22 October
+
+The opening now loads the rebuilt LIMEN and generated entrance, Security portal/desks, intake/crate, wash and Forge housings around the engine-owned mechanisms. Character motion and review loaders share the same delivery assets. Numeric doorway and route checks passed; actual camera framing, tool contacts, mechanism clearance and sustained performance remain acceptance gates. See the [room kit](model-briefs/room-kit/README.md) and [LIMEN delivery record](model-briefs/limen/LANDING_DELIVERY_2026-10-22.json).

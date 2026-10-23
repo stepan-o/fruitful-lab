@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-limen-motions",
+  "assets": {
+    "motions": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/85b161240b010896a56f8a4a76c3d77a6bd8c10f1c4688d656d282b08f0fae93.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 10527364,
+          "sha256": "85b161240b010896a56f8a4a76c3d77a6bd8c10f1c4688d656d282b08f0fae93"
+        }
+      ]
+    }
+  }
+}

@@ -6,7 +6,7 @@ import {advance,project} from './kernel';
 export type Study='security'|'conveyor'|'threshold'|'arrival';
 export type RoomStudy='security'|'conveyor';
 export type Choice='care'|'pressure';
-export const studies=[{id:'arrival' as const,title:'Stop and wait here',subtitle:'DAY ONE · Lobby → Security',choices:[]},{id:'threshold' as const,title:'Your workers are still here',subtitle:'DAY ONE · the shared doorway',choices:['Back LIMEN’s procedure','Back STILETTO’s urgency']},{id:'security' as const,title:'The name on the list',subtitle:'LIMEN · clearance and confidence',choices:['Verify the record','Allow this exception']},{id:'conveyor' as const,title:'The line can wait',subtitle:'STILETTO · pressure and willingness to speak',choices:['Ease the drive','Keep pushing']}];
+export const studies=[{id:'arrival' as const,title:'The first morning count',subtitle:'DAY ONE · Lobby → Security → Conveyor',choices:[]},{id:'threshold' as const,title:'Your workers are still here',subtitle:'DAY ONE · the shared doorway',choices:['Back LIMEN’s procedure','Back STILETTO’s urgency']},{id:'security' as const,title:'The name on the list',subtitle:'LIMEN · clearance and confidence',choices:['Verify the record','Allow this exception']},{id:'conveyor' as const,title:'The line can wait',subtitle:'STILETTO · pressure and willingness to speak',choices:['Ease the drive','Keep pushing']}];
 const W='worker-07';
 function actor(id:string,name:string,character:Agent['character'],room:RoomStudy,x:number,z:number,yaw:number):Agent{return {id,name,character,room,position:[x,z],yaw,beliefs:{},stress:28,trust:50,memory:[]};}
 /** Deliberately limited authored-lane service. Full obstacle/portal navigation remains a port to implement. */

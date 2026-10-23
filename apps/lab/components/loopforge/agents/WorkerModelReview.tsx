@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import ReviewNavigation from './ReviewNavigation';
+import WorkerNavigation from './WorkerNavigation';
 import ReviewChecklist from './ReviewChecklist';
 import ReviewCameraControls from './ReviewCameraControls';
 import {useEffect,useRef,useState} from 'react';
@@ -50,7 +51,7 @@ export default function WorkerModelReview(){
  function reset(){setReady(false);setError('');setRunning(false);setId('idle');setPhase(0);setSpeed(1);setLoop(true);setCentred(false);setVersion('Corrected');setGround(true);setTurn(0);setCamera('model');setCloseup(false);setAngle(0);setRoom('security');setSurface('textured');setLamp(true);setRetry(n=>n+1);}
  return <main className={styles.page}>
   <header className={styles.header}><div><Link href='/stepanoskin/loopforge/play/asset-review'>← Asset review library</Link><h1>Worker 01<span>19 corrected motions / articulated hands</span></h1></div><Link href='/stepanoskin/loopforge/design#agents'>Game design · Agents ↗</Link></header>
-  <ReviewNavigation current='worker-01-motions'/><ReviewChecklist subject='worker-01-motions'/>
+  <ReviewNavigation current='worker-01-motions'/><WorkerNavigation current='reference'/><ReviewChecklist subject='worker-01-motions'/>
   <div className={styles.workspace}>
    <section className={`${styles.stage} ${styles.modelStage}`} aria-label='Worker motion review'>
     <ReviewCameraControls ready={ready} fixed={camera==='cctv'} onAction={a=>runtime.current?.floor.reviewCamera(a)}/>

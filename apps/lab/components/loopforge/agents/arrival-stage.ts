@@ -165,6 +165,8 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
     card:[124.2,112.2,.8,4.1,-2.5,.98],
     passage:[125.1,116.0,1.3,7.9,1.79,1.36],
     threshold:[124.9,110.9,1.05,7.1,-1.5,1.25],
+    // Keep the applicant, LIMEN and both rear desks in one working composition.
+    checkpoint:[124.1,108.7,1.45,10.2,-1.66,1.3],
     aftermath:[124.6,111.3,1.45,4.8,-1.45,1.35],
     'conveyor-wide':[141.5,103.7,1.25,15,-1.9,1.18],
     intake:[136.6,104.5,1.25,6.8,-2.1,1.28],

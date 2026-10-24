@@ -41,7 +41,7 @@ it('interrupting the swing cannot award injury or advance to the checks',()=>{
 });
 it('cuts at dramatic turns and keeps deterministic public performance',()=>{
  const t=take(),shots:string[]=[];for(const a of Object.values(t.registry))for(const p of a.phases)if(p.framing!==shots.at(-1))shots.push(p.framing!);
- expect(shots).toEqual(['approach','assembly','impact','card','passage','threshold','aftermath','threshold','assembly','conveyor-wide','intake','wash','belt','forge','conveyor-wide','threshold']);const at=startOf(t,'LIMEN yields the threshold')+8,a=project(replay(t,at),t.registry);expect(a).toEqual(project(replay(t,at),t.registry));
+ expect(shots).toEqual(['approach','assembly','impact','card','passage','threshold','aftermath','threshold','assembly','checkpoint','conveyor-wide','intake','wash','belt','forge','conveyor-wide','checkpoint','conveyor-wide','threshold']);const at=startOf(t,'LIMEN yields the threshold')+8,a=project(replay(t,at),t.registry);expect(a).toEqual(project(replay(t,at),t.registry));
  expect(a.actors.find(v=>v.id==='limen')?.cue?.clip).toBe('Step_Back');expect(JSON.stringify(a)).not.toMatch(/beliefs|stress|trust|memory/);expect(JSON.stringify(t.registry)).not.toMatch(/baton|All_Night_Dance|Boxing_Warmup/);
  const bob=t.world.agents.bob,to=t.registry.morning.phases[0].perform.find(p=>p.agent==='bob')!.to!;expect(to[1]).toBeLessThan(bob.position[1]);expect(bob.yaw).toBe(180);
 });

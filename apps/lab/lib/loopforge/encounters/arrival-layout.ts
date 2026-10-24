@@ -5,7 +5,7 @@ import {contains} from '../spatial/floor';
 /** Compact first-day rehearsal layout. This does not silently relocate the full-floor Dispatch.
  * Both navigation and construction consume these bounds; production can select this layout. */
 export const ARRIVAL_LAYOUT = {
- id:'day-one-lobby-security/3',
+ id:'day-one-lobby-security/4',
  rooms:[{id:'lobby',rect:{x:116,y:111,w:16,h:33}},{id:'security',rect:{x:116,y:99,w:16,h:12}},{id:'conveyor',rect:{x:132,y:98,w:24,h:14}}] as const,
  portal:{id:'lobby-security',a:'lobby',b:'security',axis:111,min:122,max:126},
  anchor:[124,113.8] as const,
@@ -17,9 +17,9 @@ export function conveyorControl(id:ConveyorStation):Point{const s=CONVEYOR_STATI
 export function conveyorDirector(id:ConveyorStation):Point{const s=CONVEYOR_STATIONS.find(s=>s.id===id)!;return [(s.x+1.8)*1000,107200];}
 /** These fixture bounds belong to the world, so navigation and scenery agree. */
 export const ARRIVAL_EQUIPMENT:readonly EquipmentPlacement[]=[
- {id:'security-register',room:'security',kind:'records-bank',name:'Admission register',footprint:{x:117.5,y:100,w:3,h:3.5},height:2.8,operator:{x:119.2,y:105.5}},
- {id:'security-trays',room:'security',kind:'records-bank',name:'ID sorting desk',footprint:{x:127.5,y:100,w:3,h:3.5},height:2.8,operator:{x:129,y:105.5}},
- ...CONVEYOR_STATIONS.map(s=>({id:s.id,room:'conveyor' as const,kind:'control' as const,name:s.name,footprint:{x:s.x-1.6,y:100.8,w:3.2,h:4.6},height:2.8,operator:{x:conveyorControl(s.id)[0]/1000,y:conveyorControl(s.id)[1]/1000}})),
+ {id:'security-register',room:'security',kind:'records-bank',name:'Admission register',footprint:{x:117.5,y:100,w:3.1,h:3.8},height:2.8,operator:{x:119.2,y:105.5}},
+ {id:'security-trays',room:'security',kind:'records-bank',name:'ID sorting desk',footprint:{x:127.5,y:100,w:3,h:3.8},height:2.8,operator:{x:129,y:105.5}},
+ ...CONVEYOR_STATIONS.map(s=>({id:s.id,room:'conveyor' as const,kind:'control' as const,name:s.name,footprint:{x:s.x-1.6,y:s.id==='forge'?99.8:100.8,w:3.2,h:s.id==='forge'?5.6:4.6},height:2.8,operator:{x:conveyorControl(s.id)[0]/1000,y:conveyorControl(s.id)[1]/1000}})),
 ];
 export function arrivalRoom(point:Point):ZoneId|undefined{return ARRIVAL_LAYOUT.rooms.find(r=>contains(r.rect as Rect,{x:point[0]/1000,y:point[1]/1000}))?.id;}
 export function crossesArrivalDoor(from:Point,to:Point){

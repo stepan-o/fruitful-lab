@@ -17,3 +17,8 @@
 .focusBar{display:flex;gap:16px;align-items:center;padding:8px 12px;border-bottom:1px solid #43564e}.focusBar span{font-size:12px;color:#a8b7a5}.focused{padding:0 12px}.focused>.header,.focused>nav,.focused .aside{display:none}.focused .layout{display:block}.focused .stage{max-width:1440px;margin:auto}.focused .stage>div:not(.viewport):not(.attentionBar):not(.focusBar),.focused .rehearsalTools{display:none}.focused .viewport{height:calc(100dvh - 145px);min-height:280px}.focused .attentionBar{min-height:78px;box-sizing:border-box}.focused .testing>.performanceBar{display:flex!important}.focused .testing .viewport{height:auto;width:min(100%,calc((100dvh - 260px)*16/9));min-height:0;margin-inline:auto;aspect-ratio:16/9}.focused .focusBar{min-height:62px;box-sizing:border-box}@media(max-width:480px){.focused .viewport{height:calc(100dvh - 190px)}.focusBar span{display:none}}
 
 .focused .stage>details:not(.rehearsalTools){display:none}
+
+.anchor[data-strike-speech='true']{transform:none}
+
+/* Selected offscreen reading shares the existing Continue row, outside the shot. */
+.offscreenReading{flex:1;min-width:0;pointer-events:none}

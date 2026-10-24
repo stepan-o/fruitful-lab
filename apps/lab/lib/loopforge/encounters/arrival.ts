@@ -5,7 +5,7 @@ import {openingWorkers} from '../agents/opening-workers';
 import grips from '../agents/opening-worker-grips.json';
 import pairs from '../agents/opening-worker-pairs.json';
 import type {LimenMotionId} from '../agents/limen-motions';
-export const ARRIVAL_REVISION='before-the-shift/16';
+export const ARRIVAL_REVISION='before-the-shift/17';
 export const ARRIVAL_WORKERS=openingWorkers.map(w=>w.id);
 const crew=[...ARRIVAL_WORKERS],all=[...crew,'limen','stiletto'];
 const cue=(clip:string,start=0,rate=1,loop=false):MotionCue=>({clip,start,rate,loop,blend:.22});
@@ -86,13 +86,15 @@ export function arrival(){
  add('ed stows bob’s card',1,'Idle_11',undefined,[gesture('ed','Stow_Card',0,1.6)]).transfers=[{prop:'bob:id',from:{kind:'hand',agent:'ed',socket:'right',grip:'edge'},to:stowed('ed'),observedBy:['ed']}];
  add('ed keeps the found card',1.25,'Idle_11',undefined,[gesture('ed','Stow_Card',1.6,1.6)]);
  add('ed steps back with the crowd',1.8,'Alert',undefined,[walk('ed',[127,114.1]),walk('stiletto',[125.4,125],180,'Quick_Walk',0,1.12)]);
- flow(add('sam releases the supporting hand',.85,'Alert',undefined,[{...assistance('Rise_From_Help',0),cue:{...cue('Rise_From_Help',0,1.2),rootMotion:'preserve'}}]));
+ // Finish the authored release before bob starts recovering; preserve the paired root.
+ flow(add('sam releases the supporting hand',help.riseDuration/1.2,'Alert',undefined,[{...assistance('Rise_From_Help',0),cue:{...cue('Rise_From_Help',0,1.2),rootMotion:'preserve'}}]));
+ holds.sam=gesture('sam','Quiet_Wait',0,1,help.samYaw);holdStarts.sam=clock;
  action('morning','A mistaken invitation, a blow and two different responses: sam helps bob; ed keeps his card.',[],true);
  framing='passage';
  const passageStart=clock;
  const quick=(to:readonly[number,number],yaw=180)=>walk('stiletto',to,yaw,'Quick_Walk',(clock-passageStart)*1.12,1.12);
  const retreat=[walk('gus',[128.8,115.3]),walk('lou',[127.4,116.7],95),walk('ben',[122.3,120.8],290),walk('jo',[119.5,117.3],295),walk('max',[121.3,119.1],300),walk('mae',[128,119.7],65),walk('kit',[129,118.2],65)];
- flow(add('bob gets up as STILETTO arrives',4,'Alert',line('stiletto','Get the slag out of my way!',4,'outburst',['limen',...crew],['out of my way'],'anger'),[quick([125.4,117.1]),...retreat,{agent:'bob',motion:'recover',yaw:180,cue:cue('Checkpoint_Get_Up',0,1.2)},{...assistance('Rise_From_Help',1.02),cue:{...cue('Rise_From_Help',1.02,1.2),rootMotion:'preserve'}}]));
+ flow(add('bob gets up as STILETTO arrives',4,'Alert',line('stiletto','Get the slag out of my way!',4,'outburst',['limen',...crew],['out of my way'],'anger'),[quick([125.4,117.1]),...retreat,{agent:'bob',motion:'recover',yaw:180,cue:cue('Checkpoint_Get_Up',0,1.2)}]));
  holds.bob=gesture('bob','Quiet_Wait',0,1,180);holdStarts.bob=clock;
  holds.sam=gesture('sam','Quiet_Wait',0,1,help.samYaw);holdStarts.sam=clock;
  flow(add('The workers hold the opened passage',1.95,'Alert',undefined,[quick([125.4,113.1])]));
@@ -124,6 +126,8 @@ export function arrival(){
  add('ed volunteers',.9,'Idle_02',line('ed','I do, sir.',2,'plain',['limen']),[gesture('ed','Discuss_While_Moving',1,1)]);
  add('gus volunteers',.9,'Idle_11',line('gus','Me too.',2,'plain',['limen']),[gesture('gus','Listening_Gesture',.8,1)]);
  add('Two places at Security',1,'Stand_and_Chat',line('limen','You two. Help me set up this checkpoint.',3,'command',['ed','gus'])).effects=[{fact:'checkpoint.cleared.ed',value:true},{fact:'checkpoint.cleared.gus',value:true},{fact:'assignment.ed',value:'security'},{fact:'assignment.gus',value:'security'},{fact:'security.clerks',value:2},{agent:'ed',trust:5,remember:'LIMEN made me responsible for the register. I am keeping bob’s card here.'},{agent:'gus',trust:4,remember:'LIMEN needs me at Security.'}];
+ // Their new posts must be visible while the workers take them.
+ framing='checkpoint';
  add('ed heads to the doorway',2,'Alert',undefined,[walk('ed',[125.3,111.9])]);
  add('ed crosses after clearance',2.4,'Alert',undefined,[walk('ed',[125.3,108.3]),walk('gus',[125.3,112.9])]);
  add('ed takes the register station',3.8,'Idle_11',undefined,[walk('ed',[119.2,105.5]),walk('gus',[125.3,108.3])]);
@@ -182,6 +186,8 @@ export function arrival(){
  // Security runs on the same action clock even while the camera follows bob.
  // In this authored provider, sam alone clears during the tutorial. ed/gus are staff,
  // not completed Conveyor admissions. The next visible applicant is jo, the third.
+ // Make the one delayed admission visible after the first line output.
+ framing='checkpoint';
  add('sam’s card is checked',.6,'Stand_and_Chat',undefined).effects=[{fact:'checkpoint.cleared.sam',value:true},{fact:'checkpoint.card-checked.sam',value:true},{fact:'checkpoint.workers-passed',value:2}];
  flow(add('sam stows his checked ID',1,'Idle_02',undefined,[gesture('sam','Stow_ID',0,1.6)])).transfers=[{prop:'sam:id',from:hand('sam'),to:stowed('sam')}];
  carrying.delete('sam');
@@ -190,6 +196,7 @@ export function arrival(){
  add('sam finally clears',2,'Alert',undefined,[walk('sam',[125.3,112])]);
  add('sam crosses after the lesson',2.6,'Idle_02',undefined,[walk('sam',[125.3,108.3])]);
  add('sam takes the corridor',3.2,'Idle_11',undefined,[walk('sam',[129,104])]);
+ framing='conveyor-wide';
  add('sam reaches Conveyor',3.5,'Alert',undefined,[walk('sam',[134,106.3])]).effects=[{fact:'conveyor.admitted',value:2}];
  holds.sam=gesture('sam','Quiet_Wait',0,1,90);holdStarts.sam=clock;
  action('first-output','The line produces one cortex. In all that time, Security releases only sam.',[{fact:'line.output',equals:1}],true);

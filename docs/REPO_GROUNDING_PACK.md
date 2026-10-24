@@ -793,3 +793,8 @@ Runtime matches validated R7 with138/108.5 shutdown listening mark; exact author
 
 ### R8 final phase interface — 2026-10-24
 Common process admission now validates the single-workpiece transition and reserves it across setup/execution; changed stage cancels before result. Public stationOccupancy distinguishes physical presence from assignment/authority. Local snapshot schema /3 carries this field and rejects /2. Night requires all actual shutdown predicates and12departures; unsupported future action kinds fail explicitly. Day1 counts/words/timing/routes remain; S3's eight-post/authority/capacity/handover/economy/Theatre are explicit future seams, not implemented mechanics. See docs/loopforge/DAY_ONE_RUNTIME.md and DAY_TWO_BOUNDARY.md. No scene/browser/performance acceptance follows from these source checks.
+
+
+### Loopforge R9 CI correction (2026-10-24)
+
+The app Jest environment remains jsdom and now exposes Node's native structuredClone to that test realm; snapshot production code and schema are unchanged. A viewer-mutation regression verifies nested positions and credential custody cannot modify the world. SpeechBubble exposes the authored speaker/emotion as an accessible group name, while keeping the complete sentence available during visual reveal, pause and reduced-expression presentation. Emoji-image expectations no longer describe this authored-art renderer. Full app Jest coverage is required: pure Node source checks alone do not cover browser-test globals or component accessibility. Actual browser/screen-reader behavior still requires ordinary review.

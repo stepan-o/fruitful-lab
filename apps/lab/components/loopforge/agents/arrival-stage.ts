@@ -29,7 +29,7 @@ import {buildEquipment} from '../factory-study/equipment-scene';
 import {workshopPrimitives} from '../factory-study/workshop-primitives';
 import {createReviewOrbit} from '../factory-study/review-orbit';
 import type {FactoryScene,SceneReport} from '../factory-study/scene';
-export type RehearsalStage=Pick<FactoryScene,'characterStage'|'motion'|'active'|'reviewCamera'|'dispose'>&{sceneShot?:(shot:SceneFraming)=>void;trackApproach?:(view:View)=>void;benchmark?:(enabled:boolean)=>void;ready?:Promise<void>;presentProcess?:(process:View['process'])=>void;machineEffects?:(enabled:boolean)=>void;stationLighting?:(mode:StationLighting)=>void;stationLightSnapshot?:()=>unknown};
+export type RehearsalStage=Pick<FactoryScene,'characterStage'|'motion'|'active'|'reviewCamera'|'dispose'>&{sceneShot?:(shot:SceneFraming)=>void;trackApproach?:(view:View)=>void;benchmark?:(enabled:boolean)=>void;ready?:Promise<void>;presentProcess?:(process:View['process'])=>void;machineEffects?:(enabled:boolean)=>void;stationLighting?:(mode:StationLighting)=>void;stationLightSnapshot?:()=>unknown;renderSnapshot?:()=>unknown};
 /** Reusable three-room scene shell. Bounds and doorway come from the same layout as admission.
  * Equipment uses the shared factory vocabulary and the engine’s physical footprints. */
 export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneReport)=>void):RehearsalStage{
@@ -157,6 +157,7 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
  return {
   ready:Promise.all([conveyor.ready,architectureReady]).then(()=>undefined),presentProcess:conveyor.present,machineEffects:conveyor.effects,stationLighting:conveyor.stationLight.set,stationLightSnapshot:conveyor.stationLight.snapshot,
   benchmark(enabled){benchmarking=enabled;settings();if(enabled)camera.detachControl();},
+  renderSnapshot(){return {referenceRendering:benchmarking,graphics:benchmarking?REFERENCE_GRAPHICS:preferences,effective,uncapped:benchmarking,canvas:[engine.getRenderWidth(),engine.getRenderHeight()],hardwareScaling:engine.getHardwareScalingLevel(),renderer:engine.getGlInfo().renderer,fov:camera.fov,resources:{meshes:scene.meshes.length,activeMeshes:scene.getActiveMeshes().length,activeTriangles:Math.round(scene.getActiveIndices()/3),materials:scene.materials.length,textures:engine.getLoadedTexturesCache().length,skeletons:scene.skeletons.length,geometries:scene.getGeometries().length,animationGroups:scene.animationGroups.length}};},
   sceneShot(shot){
    const setups={
     approach:[124,124.5,1.55,11,-Math.PI/2,1.32],
@@ -170,6 +171,8 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
     'sam-inspection':[123.7,111.5,1.25,5.4,.25,1.3],
     aftermath:[124.6,111.3,1.45,4.8,-1.45,1.35],
     'conveyor-wide':[141.5,103.7,1.25,15,-1.9,1.18],
+    // Manual review only; no encounter beat selects this camera.
+    'conveyor-entrance':[142,103.7,1.4,9.8,-2.91,1.48],
     intake:[136.6,104.5,1.25,6.8,-2.1,1.28],
     wash:[140.5,104.4,1.35,7.4,-2.1,1.25],
     belt:[144.6,104.3,1.3,8.5,-2.1,1.24],

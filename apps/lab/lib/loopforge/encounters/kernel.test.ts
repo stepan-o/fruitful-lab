@@ -110,5 +110,42 @@ it('replaces visible speech without erasing what was said or heard',()=>{
  const lines=s.events.filter(e=>e.kind==='speech'&&e.agent==='limen');
  expect(lines.some(e=>e.detail.includes('Welcome to Loopforge'))).toBe(true);
  expect(lines.length).toBeGreaterThan(2);
+ expect(s.sequence).toBeGreaterThan(512);
+ expect(s.events).toHaveLength(s.sequence);
+ expect(s.events.some(e=>e.kind==='heard'&&e.detail.includes('Welcome to Loopforge'))).toBe(true);
  expect(s.events.some(e=>e.kind==='heard')).toBe(true);
+});
+
+// Current Conveyor has one workpiece in flight. Selection must not bypass the
+// same transition and reservation rules used by the authored episode.
+function processFixture(){
+ const t=rehearsal('conveyor','care'),actor='worker-07',other='stiletto';
+ t.world.facts['line.stage']=0;t.world.facts['line.output']=0;
+ const make=(id:string,agent:string,from:number,setup=false):import('./contract').Action=>({id,room:'conveyor',participants:[agent],resources:[],requires:[],reason:'Current single-workpiece operation',phases:[...(setup?[{id:id+'/setup',ticks:2,perform:[{agent,motion:'idle' as const}]}]:[]),{id:id+'/process',ticks:3,perform:[{agent,motion:'idle'}],process:{station:from===0?'intake':'wash',from,to:from+1,operator:{agent,position:t.world.agents[agent].position,within:180}},effects:[{fact:'line.stage',value:from+1}]}]});
+ t.registry.first=make('first',actor,0);t.registry.second=make('second',other,1,true);
+ return {...t,actor,other,make};
+}
+it('rejects a stale process stage without reserving or manufacturing a result',()=>{
+ const t=processFixture();t.world.facts['line.stage']=2;
+ const s=admit(t.world,{id:'first',action:'first',initiator:t.actor},t.registry,t.space);
+ expect(s.active).toEqual([]);expect(s.held).toEqual({});expect(s.facts['line.stage']).toBe(2);expect(s.events.at(-1)?.kind).toBe('rejected');
+});
+it('cancels if the actual workpiece stage changes before the process finishes',()=>{
+ const t=processFixture(),s=admit(t.world,{id:'first',action:'first',initiator:t.actor},t.registry,t.space);
+ expect(s.active).toHaveLength(1);const changed={...s,facts:{...s.facts,'line.stage':2}};
+ const next=advance(changed,t.registry,t.space);expect(next.active).toEqual([]);expect(next.held).toEqual({});expect(next.facts['line.stage']).toBe(2);expect(next.facts['line.output']).toBe(0);expect(next.events.at(-1)?.kind).toBe('cancelled');expect(s.facts['line.stage']).toBe(0);
+});
+it('reserves the current single workpiece across setup and frees it after completion',()=>{
+ const t=processFixture();let s=admit(t.world,{id:'first',action:'first',initiator:t.actor},t.registry,t.space);
+ const conflict=admit(s,{id:'second',action:'second',initiator:t.other},t.registry,t.space);
+ expect(conflict.active).toHaveLength(1);expect(conflict.events.at(-1)?.kind).toBe('rejected');
+ for(let i=0;i<3;i++)s=advance(s,t.registry,t.space);
+ expect(s.facts['line.stage']).toBe(1);expect(s.held).toEqual({});
+ s=admit(s,{id:'second',action:'second',initiator:t.other},t.registry,t.space);expect(s.active).toHaveLength(1);
+ for(let i=0;i<5;i++)s=advance(s,t.registry,t.space);
+ expect(s.facts['line.stage']).toBe(2);expect(s.held).toEqual({});expect(s.completed).toEqual(['first','second']);
+});
+it('rejects a non-adjacent machine transition rather than accepting arbitrary process metadata',()=>{
+ const t=processFixture();t.registry.first.phases[0].process!.to=3;
+ const s=admit(t.world,{id:'first',action:'first',initiator:t.actor},t.registry,t.space);expect(s.active).toEqual([]);expect(s.held).toEqual({});expect(s.facts['line.stage']).toBe(0);
 });

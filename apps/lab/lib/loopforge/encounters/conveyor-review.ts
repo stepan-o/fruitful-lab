@@ -11,3 +11,10 @@ export function conveyorReviewRange(registry:Registry){
  if(startTick===undefined||endTick===undefined||endTick<=startTick)throw new Error('Conveyor review boundaries do not match this episode.');
  return {startTick,endTick};
 }
+
+export function staffedReviewRange(registry:Registry){
+ let tick=1,startTick:number|undefined,endTick:number|undefined;
+ for(const action of Object.values(registry)){if(action.id==='staffed-production')startTick=tick;for(const phase of action.phases)tick+=phase.ticks;if(action.id==='staffed-production')endTick=tick-1;}
+ if(startTick===undefined||endTick===undefined)throw Error('Staffed production range missing');
+ return {startTick,endTick};
+}

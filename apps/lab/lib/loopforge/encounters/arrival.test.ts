@@ -3,6 +3,8 @@ import {rehearsal,replay} from './rehearsals';
 import {advance,admit,cancel,project} from './kernel';
 import {ARRIVAL_WORKERS} from './arrival';
 import {arrivalSpace} from './arrival-layout';
+import {phaseSpeech} from './shared-actions';
+import {entryPlayback} from './entry-playback';
 const take=()=>rehearsal('arrival','care');
 function startOf(t:ReturnType<typeof take>,name:string){let n=1;for(const a of Object.values(t.registry))for(const p of a.phases){if(p.id===name)return n;n+=p.ticks;}throw Error(name);}
 it('performs the cast script without route cancellation and retains injury, checks and assignments',()=>{
@@ -13,15 +15,15 @@ it('performs the cast script without route cancellation and retains injury, chec
    if(['cancelled','rejected'].includes(e.kind))throw Error(`${e.kind} at ${s.tick}: ${e.action} / ${e.detail} / ${JSON.stringify(project(s,t.registry).actors.map(a=>({id:a.id,pos:a.position,action:a.action})))}`);
    if(e.kind==='speech')spoken.push(e.detail);if(e.kind==='effect')effects.push(e.detail);
   }lastSequence=s.sequence;
-  const agents=Object.values(s.agents);for(let a=0;a<agents.length;a++)for(let b=a+1;b<agents.length;b++)minimum=Math.min(minimum,Math.hypot(agents[a].position[0]-agents[b].position[0],agents[a].position[1]-agents[b].position[1]));
+  const agents=Object.values(s.agents).filter(a=>s.facts[`day.departed.${a.id}`]!==true);for(let a=0;a<agents.length;a++)for(let b=a+1;b<agents.length;b++)minimum=Math.min(minimum,Math.hypot(agents[a].position[0]-agents[b].position[0],agents[a].position[1]-agents[b].position[1]));
  }
- expect(s.done).toEqual(['morning','passage','bobs-turn','helpers','intake','wash','belt','forge','first-output','third-check']);expect(s.active).toEqual([]);expect(s.held).toEqual({});expect(minimum).toBeGreaterThanOrEqual(850);
+ expect(s.done).toEqual(Object.keys(t.registry));expect(s.done.slice(0,10)).toEqual(['morning','passage','bobs-turn','intake','wash','belt','forge','sam-second','helpers','first-output']);expect(s.active).toEqual([]);expect(s.held).toEqual({});expect(minimum).toBeGreaterThanOrEqual(850);
  expect(Object.keys(s.agents)).toHaveLength(12);for(const id of ARRIVAL_WORKERS)expect(s.agents[id].name).toBe(id);
- expect(spoken).toEqual(Object.values(t.registry).flatMap(a=>a.phases.flatMap(p=>(p.say??[]).map(v=>v.text))));
+ expect(spoken).toEqual(Object.values(t.registry).flatMap(a=>a.phases.flatMap(p=>phaseSpeech(p).map(v=>v.text))));
  expect(effects.filter(v=>v.includes('"fact":"injury.bob"'))).toHaveLength(1);
- expect(s.facts).toMatchObject({'injury.bob':'limping','security.clerks':2,'checkpoint.cleared.ed':true,'checkpoint.cleared.gus':true,'checkpoint.cleared.bob':true,'assignment.ed':'security','assignment.gus':'security','assignment.sam':'conveyor','conveyor.admitted':2,'checkpoint.workers-passed':2,'checkpoint.check-number':3,'checkpoint.current-applicant':'jo','line.stage':4,'line.output':1});
- expect(s.agents.ed.room).toBe('security');expect(s.agents.gus.room).toBe('security');expect(s.agents.stiletto.room).toBe('conveyor');expect(s.agents.bob.room).toBe('conveyor');expect(s.agents.sam.room).toBe('conveyor');
- expect(ARRIVAL_WORKERS.filter(id=>s.agents[id].room==='lobby')).toHaveLength(6);expect(advance(s,t.registry,t.space,t.planner).agents).toEqual(s.agents);
+ expect(s.facts).toMatchObject({'injury.bob':'limping','security.clerks':2,'checkpoint.cleared.ed':true,'checkpoint.cleared.gus':true,'checkpoint.cleared.bob':true,'assignment.ed':'security','assignment.gus':'security','assignment.sam':'conveyor','conveyor.admitted':8,'checkpoint.workers-passed':8,'checkpoint.check-number':3,'checkpoint.current-applicant':'jo','line.stage':4,'line.output':3});
+ expect(s.facts['day.stage']).toBe('night');expect(s.facts['line.tutorial-output']).toBe(1);expect(Object.values(s.agents).every(a=>s.facts[`day.departed.${a.id}`]===true)).toBe(true);expect(project(s,t.registry).actors.every(a=>a.visible===false)).toBe(true);
+ expect(ARRIVAL_WORKERS.filter(id=>s.agents[id].room==='outside')).toHaveLength(10);expect(advance(s,t.registry,t.space,t.planner).agents).toEqual(s.agents);
 });
 it('STILETTO passes during bob’s recovery, before LIMEN recruits the helpers',()=>{
  const t=take(),s=replay(t,startOf(t,'bob gets up as STILETTO arrives')),v=project(s,t.registry);
@@ -40,8 +42,8 @@ it('interrupting the swing cannot award injury or advance to the checks',()=>{
  expect(admit(s,{id:'helpers',action:'helpers',initiator:'limen'},t.registry,t.space).events.at(-1)?.kind).toBe('rejected');
 });
 it('cuts at dramatic turns and keeps deterministic public performance',()=>{
- const t=take(),shots:string[]=[];for(const a of Object.values(t.registry))for(const p of a.phases)if(p.framing!==shots.at(-1))shots.push(p.framing!);
- expect(shots).toEqual(['approach','assembly','impact','card','passage','threshold','aftermath','threshold','assembly','checkpoint','sam-inspection','conveyor-wide','intake','wash','belt','forge','conveyor-wide','sam-inspection','checkpoint','conveyor-wide','threshold']);const at=startOf(t,'LIMEN yields the threshold')+8,a=project(replay(t,at),t.registry);expect(a).toEqual(project(replay(t,at),t.registry));
+ const t=take(),shots:string[]=[];for(const a of Object.values(t.registry).slice(0,10))for(const p of a.phases)if(p.framing!==shots.at(-1))shots.push(p.framing!);
+ expect(shots.slice(0,8)).toEqual(['approach','limen-emphasis','workers-reverse','limen-emphasis','impact','card','passage','threshold']);expect(shots).toEqual(expect.arrayContaining(['sam-inspection','checkpoint','intake','wash','belt','forge']));expect(t.registry['doorway-threat'].phases.find(p=>p.id==='STILETTO demands the rest of the shift')?.framing).toBe('doorway-pressure');const at=startOf(t,'LIMEN yields the threshold')+8,a=project(replay(t,at),t.registry);expect(a).toEqual(project(replay(t,at),t.registry));
  expect(a.actors.find(v=>v.id==='limen')?.cue?.clip).toBe('Step_Back');expect(JSON.stringify(a)).not.toMatch(/beliefs|stress|trust|memory/);expect(JSON.stringify(t.registry)).not.toMatch(/baton|All_Night_Dance|Boxing_Warmup/);
  const bob=t.world.agents.bob,to=t.registry.morning.phases[0].perform.find(p=>p.agent==='bob')!.to!;expect(to[1]).toBeLessThan(bob.position[1]);expect(bob.yaw).toBe(180);
 });
@@ -52,10 +54,10 @@ it('revoking an earned clearance interrupts the crossing before the doorway',()=
 });
 it('keeps sam attending bob while ed picks up and stows the card',()=>{
  const t=take();
- for(const name of ['ed collects bob’s card','ed lifts the card','ed keeps the found card']){
+ for(const name of ['ed collects bob’s card while Sam kneels','ed lifts as Sam finishes kneeling','ed lifts the card','ed keeps the found card']){
   const v=project(replay(t,startOf(t,name)+20),t.registry);
   expect(v.actors.find(a=>a.id==='bob')?.cue).toMatchObject({clip:'Electrocuted_Fall',start:6.333,rate:0});
-  expect(v.actors.find(a=>a.id==='sam')?.cue).toMatchObject({clip:'Attend_Bob',loop:true,rootMotion:'preserve'});
+  expect(v.actors.find(a=>a.id==='sam')?.cue).toMatchObject({clip:name.includes('kneel')?'Kneel_To_Help':'Attend_Bob',rootMotion:'preserve'});
   expect(v.props?.find(p=>p.id==='sam:id')).toBeUndefined();
  }
 });
@@ -72,10 +74,10 @@ it('faces worker locomotion along its route before settling into the next pose',
 });
 
 it('keeps the opening concise without speeding up contact time independently of custody',()=>{
- const t=take();expect(t.total/20).toBeLessThanOrEqual(140);
+ const t=take();expect(entryPlayback(t.registry).endTick/20).toBeLessThanOrEqual(140);expect(t.total/20).toBeLessThanOrEqual(1200);
  const phases=Object.values(t.registry).flatMap(a=>a.phases);
- expect(phases.flatMap(p=>p.say??[]).length).toBeLessThanOrEqual(42);
- for(const [name,seconds] of [['ed collects bob’s card',1.5],['ed stows bob’s card',1.6]] as const){
+ expect(phases.filter(p=>p.turn)).toHaveLength(108);expect(phases.filter(p=>p.turn?.kind==='reaction-only')).toHaveLength(13);
+ for(const [name,seconds] of [['ed collects bob’s card while Sam kneels',1.5],['ed stows bob’s card',1.6]] as const){
   const p=phases.find(p=>p.id===name)!,c=p.perform.find(p=>p.agent==='ed')!.cue!;
   expect((c.start??0)+p.ticks/20*(c.rate??1)).toBeCloseTo(seconds,5);
   expect(p.transfers).toHaveLength(1);
@@ -86,7 +88,7 @@ it('keeps the opening concise without speeding up contact time independently of 
 it('operates each machine only from its physical control socket, with STILETTO nearby',()=>{
  const t=take();let s=t.world;const visited=new Set<string>();
  for(let i=0;i<t.total;i++){
-  s=advance(s,t.registry,t.space,t.planner);const v=project(s,t.registry),p=v.process?.active;if(!p)continue;
+  s=advance(s,t.registry,t.space,t.planner);const v=project(s,t.registry),p=v.process?.active;if(!p||p.staffing||s.facts['line.tutorial-output']===1)continue;
   visited.add(p.station);const bob=s.agents[p.operator.agent],stiletto=s.agents.stiletto;
   expect(bob.room).toBe('conveyor');expect(stiletto.room).toBe('conveyor');
   expect(Math.hypot(bob.position[0]-p.operator.position[0],bob.position[1]-p.operator.position[1])).toBeLessThanOrEqual(p.operator.within);
@@ -122,20 +124,16 @@ it('routes every arrival through the clear main entrance before they spread arou
 });
 
 
-it('performs sam’s card inspection before awarding clearance, then stows the checked card',()=>{
- const t=take();
- const ready=project(replay(t,startOf(t,'sam presents the card')+19),t.registry);
- expect(ready.props?.find(p=>p.id==='sam:id')?.location).toMatchObject({kind:'hand',agent:'sam'});
- expect(ready.actors.find(a=>a.id==='sam')?.cue?.clip).toBe('Draw_ID');
- const before=replay(t,startOf(t,'sam’s card is checked'));
- expect(before.facts['checkpoint.card-checked.sam']).toBeUndefined();
- expect(before.props?.['sam:id'].location).toMatchObject({kind:'hand',agent:'sam'});
- const after=replay(t,startOf(t,'sam stows his checked ID'));
- expect(after.facts['checkpoint.card-checked.sam']).toBe(true);
- const leaves=replay(t,startOf(t,'sam finally clears'));
- expect(leaves.props?.['sam:id'].location).toMatchObject({kind:'stowed',agent:'sam'});
- expect(leaves.props?.['bob:id'].location).toMatchObject({kind:'stowed',agent:'ed'});
+it('performs the temporary Sam check before clearance without inventing physical card transfer',()=>{
+ const t=take(),start=startOf(t,'sam’s credential record is checked'),before=replay(t,start);
+ expect(before.facts['line.output']).toBe(1);expect(before.facts['checkpoint.card-checked.sam']).toBeUndefined();expect(before.facts['checkpoint.cleared.sam']).toBeUndefined();
+ expect(before.props?.['sam:id'].location).toMatchObject({kind:'stowed',agent:'sam'});
+ const after=replay(t,start+12);expect(after.facts['checkpoint.card-checked.sam']).toBe(true);expect(after.facts['checkpoint.cleared.sam']).toBe(true);expect(after.facts['checkpoint.workers-passed']).toBe(2);
+ const phases=t.registry['sam-second'].phases;expect(phases.flatMap(p=>p.transfers??[]).filter(p=>p.prop==='sam:id')).toEqual([]);
+ expect(phases.flatMap(p=>p.perform.filter(v=>v.agent==='sam'&&['Draw_ID','Stow_ID'].includes(v.cue?.clip??'')))).toEqual([]);
+ expect(after.props?.['bob:id'].location).toMatchObject({kind:'stowed',agent:'ed'});expect(project(before,t.registry).credentialStatus?.actorId).toBe('sam');
 });
+
 it('keeps bob’s presented card in its fitted pose during the greeting',()=>{
  const t=take(),v=project(replay(t,startOf(t,'A card held ready')+10),t.registry);
  expect(v.actors.find(a=>a.id==='bob')?.cue?.clip).toBe('ID_Ready');

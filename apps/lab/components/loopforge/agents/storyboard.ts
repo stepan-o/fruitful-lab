@@ -1,5 +1,9 @@
-import {EMOTIONS,SPEECH_INK,speechAccent,speechWords} from '@/lib/loopforge/encounters/speech-delivery';
-import {offscreenHeldSpeech} from './held-speech';
+import {containRect} from '@/lib/loopforge/encounters/presentation-layout';
+import {DAY_ONE_NIGHT_ART} from '@/lib/loopforge/encounters/day-one-night';
+import {presentedSpeech,presentationName,paintTurnFrame,turnArt} from './turn-presentation';
+import {REACTION_ART,reactionOpacity} from '@/lib/loopforge/encounters/dialogue-turn';
+import {SPEECH_INK,speechAccent,speechWords} from '@/lib/loopforge/encounters/speech-delivery';
+import {offscreenHeldSpeech,offscreenPublicSpeech} from './held-speech';
 import type {AttentionStep} from '@/lib/loopforge/encounters/attention';
 import type { View } from '@/lib/loopforge/encounters/contract';
 import {isStrikeSpeech,strikeSpeechOrder,strikeSpeechLane,placeStrikeSpeech,type SpeechRect} from './strike-speech-placement';
@@ -12,18 +16,19 @@ export function storyboard(source: HTMLCanvasElement, view: View, anchors: Ancho
   const ctx = image.getContext('2d');
   if (!ctx) throw Error('Image export is unavailable in this browser.');
   const scale = Math.max(.8, image.width / Math.max(1, source.clientWidth));
-  const padding=14*scale,offscreen=offscreenHeldSpeech(view,reading,anchors);
-  const plans=[],strikeBounds:SpeechRect[]=[];let offscreenHeight=0;
-  for(const speech of [...view.bubbles].sort((a,b)=>strikeSpeechOrder(view.framing,a.speaker)-strikeSpeechOrder(view.framing,b.speaker))){
-    const anchor=anchors.find(a=>a.id===speech.speaker),detached=offscreen?.id===speech.id;
+  const padding=24*scale,offscreen=offscreenHeldSpeech(view,reading,anchors)??offscreenPublicSpeech(view,anchors);
+  const night=view.dayOne?.stage==='night';
+  const plans=[],strikeBounds:SpeechRect[]=[];let offscreenHeight=0;const reaction=!night&&view.turn?.turn.kind==='reaction-only'?view.turn:undefined,reactionHeight=reaction?193*scale:0;
+  for(const speech of (night?[]:presentedSpeech(view)).sort((a,b)=>strikeSpeechOrder(view.framing,a.speaker)-strikeSpeechOrder(view.framing,b.speaker))){
+    const anchor=anchors.find(a=>a.id===speech.speaker),detached=source.clientWidth<=480||offscreen?.id===speech.id;
     if(!anchor||(!anchor.visible&&!detached))continue;
     const tone=expressive?speech.delivery?.tone??'plain':'plain',accent=speechAccent(tone);
-    const font=(tone==='outburst'?20:tone==='command'?18:16)*scale,line=font*1.4;
+    const font=18*scale,line=25*scale;
     const strike=!detached&&isStrikeSpeech(view.framing,speech.speaker);
     const viewport={width:source.width/scale,height:source.height/scale};
     const point={x:anchor.x*viewport.width/100,y:anchor.y*viewport.height/100};
-    const preferredWidth=viewport.width<=480?204:248;
-    const width=detached?image.width-20*scale:strike?strikeSpeechLane(viewport.width,point.x,preferredWidth).width*scale:Math.min(248*scale,image.width-20*scale),textWidth=width-2*padding;
+    const preferredWidth=viewport.width<=480?296:296;
+    const width=detached?image.width-20*scale:strike?strikeSpeechLane(viewport.width,point.x,preferredWidth).width*scale:Math.min(296*scale,image.width-20*scale),textWidth=width-2*padding;
     const tokens=speechWords(speech.text,expressive?speech.delivery:undefined);
     const lines:{text:string;stress:boolean;width:number}[][]=[[]];let used=0;
     function face(stress:boolean){return `${tone==='aside'?'italic ':''}${stress||tone==='command'||tone==='outburst'?'bold ':''}${font}px sans-serif`;}
@@ -36,29 +41,26 @@ export function storyboard(source: HTMLCanvasElement, view: View, anchors: Ancho
     const placement=strike?placeStrikeSpeech({viewport,anchor:point,preferredWidth,bodyHeight:height/scale,clock,occupied:strikeBounds}):undefined;
     if(placement)strikeBounds.push(placement.bounds);
     const x=detached?10*scale:placement?placement.x*scale:Math.max(10*scale,Math.min(image.width-width-10*scale,anchor.x*source.width/100-width/2));
-    const y=detached?source.height+32*scale:placement?placement.y*scale:Math.max(40*scale,Math.min(source.height-height-15*scale,anchor.y*source.height/100-height-20*scale));
-    if(detached)offscreenHeight=height+48*scale;
+    const y=detached?source.height+offscreenHeight+32*scale:placement?placement.y*scale:Math.max(40*scale,Math.min(source.height-height-15*scale,anchor.y*source.height/100-height-20*scale));
+    if(detached)offscreenHeight+=height+48*scale;
     plans.push({speech,detached,tone,accent,font,line,width,lines,height,placement,x,y,face});
   }
-  image.height=source.height+offscreenHeight+64;
-  ctx.drawImage(source,0,0);
+  const nightHeight=night?120*scale:0;
+  image.height=source.height+offscreenHeight+reactionHeight+nightHeight+64;
+  if(night){const art=turnArt(DAY_ONE_NIGHT_ART.src),box=containRect(source.width,source.height,art.naturalWidth,art.naturalHeight);ctx.fillStyle='#080f16';ctx.fillRect(0,0,source.width,source.height);ctx.drawImage(art,box.x,box.y,box.width,box.height);}else ctx.drawImage(source,0,0);
   ctx.fillStyle='#091210';ctx.fillRect(0,source.height,image.width,image.height-source.height);
-  for(const {speech,detached,tone,accent,line,width,lines,height,placement,x,y,face} of plans){
-    ctx.lineWidth=2*scale;ctx.strokeStyle='#26383a';ctx.fillStyle=SPEECH_INK.paper;
-    ctx.beginPath();ctx.roundRect(x,y,width,height,tone==='outburst'?3*scale:10*scale);ctx.fill();ctx.stroke();
-    if(!detached){ctx.beginPath();
-    if(placement){const tailY=y+placement.tailY*scale;ctx.moveTo(x+1,tailY-8*scale);ctx.lineTo(x-10*scale,tailY);ctx.lineTo(x+1,tailY+8*scale);}
-    else{ctx.moveTo(x+width/2-8*scale,y+height-1);ctx.lineTo(x+width/2,y+height+10*scale);ctx.lineTo(x+width/2+8*scale,y+height-1);}
-    ctx.fill();ctx.stroke();}
-    const name=(view.actors.find(a=>a.id===speech.speaker)?.name??speech.speaker)+(detached?' · offscreen':'');
-    ctx.font=`bold ${10*scale}px sans-serif`;const tabWidth=ctx.measureText(name).width+26*scale;
+  for(const {speech,detached,accent,line,width,lines,height,placement,x,y,face} of plans){
+    const actor=view.actors.find(a=>a.id===speech.speaker);paintTurnFrame(ctx,actor?.character??'worker',x,y,width,height,scale);
+    if(!detached){const tail=turnArt('/loopforge/turn-art/'+(placement?'tail-side.svg':'tail-down.svg'));ctx.drawImage(tail,placement?x-20*scale:x+width/2-14*scale,placement?y+placement.tailY*scale-14*scale:y+height-1,28*scale,18*scale);}
+    const name=presentationName(speech,actor?.name??speech.speaker)+(detached&&!anchors.find(a=>a.id===speech.speaker)?.visible?' · offscreen':'');
+    ctx.font=`bold ${13*scale}px sans-serif`;const tabWidth=ctx.measureText(name).width+26*scale;
     ctx.fillStyle=accent;ctx.fillRect(x+12*scale,y-21*scale,tabWidth,23*scale);
     ctx.textBaseline='top';ctx.fillStyle='#fff6df';ctx.fillText(name,x+25*scale,y-15*scale);
-    const emotion=expressive&&speech.delivery?.emotion?EMOTIONS[speech.delivery.emotion]:undefined;
-    if(emotion){ctx.font=`${23*scale}px sans-serif`;ctx.fillText(emotion.glyph,x+tabWidth+14*scale,y-31*scale);}
     lines.forEach((words,i)=>{let left=x+padding;for(const word of words){ctx.font=face(word.stress);ctx.fillStyle=word.stress?accent:SPEECH_INK.text;ctx.fillText(word.text,left,y+padding+i*line);left+=word.width;}});
   }
-  const footerY=source.height+offscreenHeight;
+  if(reaction&&reaction.turn.kind==='reaction-only'){const art=REACTION_ART[reaction.turn.reaction.visualId];if(art){const actor=view.actors.find(a=>a.id===reaction.turn.actorId),x=(image.width-184*scale)/2,y=source.height+offscreenHeight+12*scale;ctx.save();ctx.globalAlpha=reactionOpacity(reaction,false,window.matchMedia('(prefers-reduced-motion: reduce)').matches);paintTurnFrame(ctx,actor?.character??'worker',x,y,184*scale,169*scale,scale);ctx.fillStyle='#17252a';ctx.font=`bold ${13*scale}px sans-serif`;ctx.fillText(actor?.name??reaction.turn.actorId,x+24*scale,y+24*scale);ctx.drawImage(turnArt(art.src),x+32*scale,y+49*scale,120*scale,96*scale);ctx.restore();}}
+  if(night&&view.dayOne){ctx.fillStyle='#fff6df';ctx.font=`bold ${22*scale}px sans-serif`;ctx.fillText('Day 1 complete',24*scale,source.height+20*scale);ctx.font=`${16*scale}px sans-serif`;ctx.fillText('The shift has left. Production output: '+view.dayOne.productionOutputs,24*scale,source.height+58*scale);}
+  const footerY=source.height+offscreenHeight+reactionHeight+nightHeight;
   ctx.fillStyle = '#091210'; ctx.fillRect(0, footerY, image.width, 64);
   ctx.fillStyle = '#e2e1ca'; ctx.font = '14px sans-serif'; ctx.textBaseline = 'top';
   ctx.fillText(view.phase, 16, footerY + 12, image.width - 32);

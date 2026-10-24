@@ -2,13 +2,11 @@ import {attentionSteps,nextAttention,readingView,factoryClock} from './attention
 import {rehearsal,replay,rehearsalView} from './rehearsals';
 import {conveyorFrame} from '../rooms/conveyor-presentation';
 
-it('gives every spoken line one reading stop, with an explicit silent stop on the card',()=>{
+it('runs dialogue automatically and stops at all six player-owned controls',()=>{
  const take=rehearsal('arrival','care'),steps=attentionSteps(take.registry);
- expect(steps.flatMap(s=>s.speech?[s.speech.text]:[])).toEqual(Object.values(take.registry).flatMap(a=>a.phases.flatMap(p=>(p.say??[]).map(s=>s.text))));
- expect(steps.find(s=>s.id==='ed lifts the card')).toMatchObject({speech:undefined});
- let tick=0;const visited:number[]=[];
- for(let step=nextAttention(steps,tick);step;step=nextAttention(steps,tick)){expect(step.tick).toBeGreaterThan(tick);tick=step.tick;visited.push(tick);}
- expect(visited).toEqual(steps.map(s=>s.tick));
+ expect(steps.map(s=>s.label)).toEqual(['Seat the brain','Run the wash','Start the main belt','Compress the brain','Start the staffed line','End the shift']);
+ expect(steps.every(s=>s.speech)).toBe(true);expect(steps.some(s=>s.id==='ed lifts the card')).toBe(false);
+ let tick=0;const visited:number[]=[];for(let step=nextAttention(steps,tick);step;step=nextAttention(steps,tick)){expect(step.tick).toBeGreaterThan(tick);tick=step.tick;visited.push(tick);}expect(visited).toEqual(steps.map(s=>s.tick));
 });
 
 it('keeps authority, clock, custody, positions and machine progress unchanged during long reading',()=>{
@@ -26,7 +24,7 @@ it('keeps authority, clock, custody, positions and machine progress unchanged du
  expect(factoryClock(0)).toBe('08:00:00');expect(factoryClock(1200)).toBe('08:01:00');
 });
 
-it('waits for input before each station operation and completes exactly one workpiece',()=>{
+it('retains four tutorial input gates and counts tutorial, paired and staffed outputs',()=>{
  const take=rehearsal('arrival','care'),steps=attentionSteps(take.registry);
  const labels=['Seat the brain','Run the wash','Start the main belt','Compress the brain'];
  for(let stage=0;stage<4;stage++){
@@ -35,12 +33,12 @@ it('waits for input before each station operation and completes exactly one work
   expect(readingView(rehearsalView(take,world),step,600).process?.active).toBeUndefined();
  }
  const complete=replay(take,take.total);
- expect(complete.facts['line.output']).toBe(1);expect(complete.facts['checkpoint.workers-passed']).toBe(2);
+ expect(complete.facts['line.output']).toBe(3);expect(complete.facts['line.paired-output']).toBe(1);expect(complete.facts['line.staffed-output']).toBe(1);expect(complete.facts['checkpoint.workers-passed']).toBe(8);expect(complete.facts['line.tutorial-output']).toBe(1);
 });
 
 
 it('settles a walking card holder into the fitted ID pose during reading',()=>{
- const take=rehearsal('arrival','care'),step=attentionSteps(take.registry)[0];
+ const take=rehearsal('arrival','care'),step={id:'explicit-review-pause',tick:10,label:'Review pause'};
  const base=rehearsalView(take,replay(take,step.tick));
  expect(base.actors.find(a=>a.id==='bob')?.cue?.clip).toBe('ID_Walk');
  const held=readingView(base,step,120);

@@ -2,7 +2,8 @@
 import {contains,zone,PORTALS} from '../spatial/floor';
 import {ENCOUNTER_VERSION,type Agent,type Action,type World,type Registry,type Planner,type SpatialServices,type Motion,type Phase,type Speech} from './contract';
 import {arrival} from './arrival';
-import {advance,project} from './kernel';
+import {advance} from './kernel';
+import {encounterSnapshot,viewFromSnapshot} from './encounter-boundary';
 export type Study='security'|'conveyor'|'threshold'|'arrival';
 export type RoomStudy='security'|'conveyor';
 export type Choice='care'|'pressure';
@@ -12,12 +13,13 @@ function actor(id:string,name:string,character:Agent['character'],room:RoomStudy
 /** Deliberately limited authored-lane service. Full obstacle/portal navigation remains a port to implement. */
 export const rehearsalSpace:SpatialServices={
  connected(a,b){return PORTALS.some(p=>(p.a===a&&p.b===b)||(p.a===b&&p.b===a));},
- canTraverse(agent,to,world){return to.every(Number.isFinite)&&contains(zone(agent.room).rect,{x:to[0]/1000,y:to[1]/1000})&&Object.values(world.agents).every(other=>other.id===agent.id||other.room!==agent.room||Math.hypot(other.position[0]-to[0],other.position[1]-to[1])>=800);},
+ canTraverse(agent,to,world){return agent.room!=='outside'&&to.every(Number.isFinite)&&contains(zone(agent.room).rect,{x:to[0]/1000,y:to[1]/1000})&&Object.values(world.agents).every(other=>other.id===agent.id||other.room!==agent.room||Math.hypot(other.position[0]-to[0],other.position[1]-to[1])>=800);},
  canHear(speaker,listener,world,channel='local'){
+  const speakerRoom=speaker.room,listenerRoom=listener.room;if(speakerRoom==='outside'||listenerRoom==='outside')return false;
   const distance=Math.hypot(speaker.position[0]-listener.position[0],speaker.position[1]-listener.position[1]);
   if(speaker.room===listener.room)return distance<=(channel==='shout'?12000:6000);
   if(channel!=='shout'||world.facts['portal.security-conveyor.open']!==true||distance>12000)return false;
-  return PORTALS.some(p=>p.id==='security-conveyor'&&[p.a,p.b].includes(speaker.room)&&[p.a,p.b].includes(listener.room)&&[speaker,listener].every(a=>Math.min(Math.hypot(a.position[0]-p.start.x*1000,a.position[1]-p.start.y*1000),Math.hypot(a.position[0]-p.end.x*1000,a.position[1]-p.end.y*1000))<=6000));
+  return PORTALS.some(p=>p.id==='security-conveyor'&&[p.a,p.b].includes(speakerRoom)&&[p.a,p.b].includes(listenerRoom)&&[speaker,listener].every(a=>Math.min(Math.hypot(a.position[0]-p.start.x*1000,a.position[1]-p.start.y*1000),Math.hypot(a.position[0]-p.end.x*1000,a.position[1]-p.end.y*1000))<=6000));
  }
 };
 export function rehearsal(study:Study,choice:Choice){
@@ -61,7 +63,7 @@ export function replay(take:ReturnType<typeof rehearsal>,tick:number){
  let s=take.world;for(let i=0;i<tick;i++)s=advance(s,take.registry,take.space,take.planner);
  return s;
 }
-export function rehearsalView(take:ReturnType<typeof rehearsal>,world:World){return project(world,take.registry,world.tick>=take.total);}
+export function rehearsalView(take:ReturnType<typeof rehearsal>,world:World){return viewFromSnapshot(encounterSnapshot(world,take.registry,{worldId:'loopforge-day-one',runId:'local-rehearsal',seed:0},world.tick>=take.total));}
 
 /** Day-one precursor: an actual missing crew motivates a walk to the shared portal. */
 function doorway(choice:Choice){

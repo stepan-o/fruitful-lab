@@ -7,6 +7,7 @@ import {PBRMaterial} from '@babylonjs/core/Materials/PBR/pbrMaterial';
 import type {Scene} from '@babylonjs/core/scene';
 import {worldPoint} from '@/lib/loopforge/spatial/floor';
 import kit from '@/lib/loopforge/rooms/room-kit.json';
+import {SECURITY_DESKS} from '@/lib/loopforge/rooms/arrival-room-layout';
 
 async function load(scene:Scene,signal:AbortSignal,key:keyof typeof kit.assets){
  const file=kit.assets[key],integrity='sha256-'+btoa(String.fromCharCode(...file.sha256.match(/../g)!.map(x=>parseInt(x,16))));
@@ -75,10 +76,11 @@ export async function loadOpeningArchitecture(scene:Scene,signal:AbortSignal){
   const portal=await load(scene,signal,'portal');models.push(portal);
   // Reader housing makes the source asymmetrical. Centre the OPENING, not its bounding box.
   place(portal,[8.6,4.8,.85],124,111,0,.272);
-  const desk=await load(scene,signal,'desk');models.push(desk);place(desk,[2.7,1.45,1.55],119.2,103);
+  const [ed,gus]=SECURITY_DESKS;
+  const desk=await load(scene,signal,'desk');models.push(desk);place(desk,[...ed.size],ed.center[0],ed.center[1]);
   secondDesk=desk.root.clone('Security trays desk',null,false)??undefined;
   if(!secondDesk)throw Error('The second Security desk could not be created.');
-  secondDesk.position.x+=9.8;
+  secondDesk.position.x+=gus.center[0]-ed.center[0];secondDesk.position.z-=gus.center[1]-ed.center[1];
   return {entrance:entrance.root,dispose(){secondDesk?.dispose();models.forEach(m=>m.dispose());}};
  }catch(error){secondDesk?.dispose();models.forEach(m=>m.dispose());throw error;}
 }

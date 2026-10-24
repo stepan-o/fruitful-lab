@@ -17,7 +17,7 @@ export default memo(function SpeechBubble({speech,name,character,playing,express
  const style={'--voice-accent':speechAccent(tone),transform:`rotate(${tilt}deg) scale(${scale})`} as CSSProperties;
  return <div className={styles.voice} data-tone={tone} data-character={character} data-expressive={expressive} style={style}>
   <div className={styles.speaker}>{name}{expressive&&emotion&&<span className={styles.emotion} role='img' aria-label={emotion.label}>{emotion.glyph}</span>}</div>
-  <div className={styles.balloon}>
+  <div className={styles.balloon} data-speech-body>
    <span className={styles.accessible}>{text}</span>
    <span aria-hidden='true' className={styles.sentence}>{words.map((word,i)=><span key={i} className={word.stress&&expressive?styles.stress:styles.word} style={{opacity:animate&&age<word.at?0:1}}>{word.text}</span>)}</span>
   </div>

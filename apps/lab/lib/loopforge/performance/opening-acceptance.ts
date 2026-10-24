@@ -1,6 +1,6 @@
 import {ACCEPTANCE,frameStats,type Resources} from './acceptance';
-export const OPENING_ACCEPTANCE={version:'opening-scene-3',warmupMs:30000,durationMs:600000,width:1280,height:720,workers:10,supervisors:2} as const;
-export const OPENING_SHOTS=['approach','assembly','impact','card','passage','threshold','aftermath','conveyor-wide','intake','wash','belt','forge'] as const;
+export const OPENING_ACCEPTANCE={version:'opening-scene-5',warmupMs:30000,durationMs:600000,width:1280,height:720,workers:10,supervisors:2} as const;
+export const OPENING_SHOTS=['approach','assembly','impact','card','passage','threshold','checkpoint','sam-inspection','aftermath','conveyor-wide','intake','wash','belt','forge'] as const;
 /** The real opening repeats with its own camera cuts, navigation and speech. */
 export function createOpeningRecorder(){
  const stalls:{atMs:number;durationMs:number;shot:string;phase:string}[]=[],frames:number[]=[],shots=new Map<string,number[]>(),inputs:number[]=[];let previous:number|null=null,elapsed=0;

@@ -50,9 +50,11 @@ export function createCredentialProps(scene:Scene,owners:readonly string[],hand:
    for(const prop of props){
     const card=cards.get(prop.id);if(!card||!place(card,prop.location))continue;
     const age=prop.previous?(tick-prop.previous.tick)*.05:1;
-    // A brief deterministic lift/turn joins the fixed floor pose to the moving
-    // hand. Seeking reconstructs it from custody history, not a cached frame.
-    if(prop.previous&&age<.3&&prop.previous.location.kind!=='stowed'){
+    // A fitted pickup stays attached from the custody tick. Interpolating from
+    // the floor after contact would let the lifting hand leave the card behind.
+    // Preserve the existing drop/other transfer interpolation.
+    const fittedPickup=prop.previous?.location.kind==='floor'&&prop.location.kind==='hand';
+    if(prop.previous&&age<.3&&prop.previous.location.kind!=='stowed'&&!fittedPickup){
      card.getWorldMatrix().decompose(toScale,toRotation,toPosition);
      if(place(card,prop.previous.location)){
       card.getWorldMatrix().decompose(fromScale,fromRotation,fromPosition);

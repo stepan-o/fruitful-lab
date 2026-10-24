@@ -1,5 +1,6 @@
 import {createOpeningRecorder,OPENING_ACCEPTANCE,OPENING_SHOTS,DAY_ONE_ACCEPTANCE,dayOneWorkload} from './opening-acceptance';
 import type {Resources} from './acceptance';
+import type {DayOneState} from '../encounters/day-one-state';
 const resources:Resources={meshes:12,materials:16,textures:40,skeletons:12,geometries:12,animationGroups:0};
 function run(step:number){const recorder=createOpeningRecorder(),shots=OPENING_SHOTS;for(let t=0;t<=OPENING_ACCEPTANCE.durationMs;t+=step)recorder.frame(t,shots[Math.floor(t/20000)%shots.length]);return recorder;}
 test('passes only a complete run with all compositions, input and repeated episodes',()=>{const recorder=run(20);recorder.probe(40);expect(recorder.result(resources,resources,2,null).status).toBe('PASS');});
@@ -13,7 +14,7 @@ test('the extended edit requires its card, threshold and aftermath shots',()=>{c
 it('requires every Day 1 stage and a fully staffed line without relaxing cadence limits',()=>{
  const stages=['entry','tutorial','staffing','production','output','departure','night'] as const;
  const counts={meshes:12,materials:12,textures:12,skeletons:12,geometries:12,animationGroups:12};
- const day={stage:'production' as const,crew:8,stationOperators:{intake:'bob',wash:'sam',belt:'jo',forge:'max'},tutorialOutputs:1,productionOutputs:0,departed:0,totalCast:12};
+ const day:DayOneState={stage:'production' as const,crew:8,stationOperators:{intake:'bob',wash:'sam',belt:'jo',forge:'max'},stationOccupancy:{intake:'bob',wash:'sam',belt:'jo',forge:'max'},tutorialOutputs:1,pairedOutputs:0,staffedOutputs:0,productionOutputs:0,departed:0,totalCast:12};
  const full=createOpeningRecorder('day-one');for(let t=0;t<=DAY_ONE_ACCEPTANCE.durationMs;t+=20)full.frame(t,OPENING_SHOTS[Math.floor(t/20000)%OPENING_SHOTS.length],'fixture',{...day,stage:stages[Math.floor(t/20000)%stages.length]});full.probe(20);expect(full.result(counts,counts,2,null).status).toBe('PASS');
  const missing=createOpeningRecorder('day-one');for(let t=0;t<=DAY_ONE_ACCEPTANCE.durationMs;t+=20)missing.frame(t,OPENING_SHOTS[Math.floor(t/20000)%OPENING_SHOTS.length],'fixture',day);missing.probe(20);expect(missing.result(counts,counts,2,null).checks.fullDayStages).toBe(false);
  const under=createOpeningRecorder('staffed');for(let t=0;t<=600000;t+=20)under.frame(t,['conveyor-wide','intake','wash','belt','forge'][Math.floor(t/20000)%5],'fixture',{...day,crew:7});under.probe(20);expect(under.result(counts,counts,2,null).checks.staffed).toBe(false);

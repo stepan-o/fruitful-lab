@@ -18,7 +18,7 @@ describe('automatic first entry',()=>{
  it('adds finite reading time without changing registry durations, custody or movement',()=>{
   expect(JSON.stringify(take.registry)).toBe(JSON.stringify(arrival().registry));
   const first=Object.values(take.registry)[0];
-  const fixture:Registry={instruction:{...first,phases:[{id:'instruction',ticks:20,perform:[],say:[{speaker:'limen',to:['bob'],text:'Read this instruction.',seconds:5}]},{id:'input',ticks:1,perform:[],inputLabel:'Seat the brain'}]}};
+  const fixture:Registry={instruction:{...first,phases:[{id:'instruction',ticks:20,perform:[],say:[{speaker:'limen',to:['bob'],text:'Read this instruction.',act:'instruction',cause:'reading-fixture',seconds:5}]},{id:'input',ticks:1,perform:[],inputLabel:'Seat the brain'}]}};
   const before=JSON.stringify(fixture),reading=entryPlayback(fixture);
   expect(entryReadSeconds(reading,reading.steps[0])).toBeCloseTo(4.3);
   expect(JSON.stringify(fixture)).toBe(before);

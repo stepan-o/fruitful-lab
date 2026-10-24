@@ -24,13 +24,13 @@ it("lets readers select historical milestones and follow their evidence", () => 
 it("keeps mobile lane selection and the detail panel in sync", () => {
   render(<BusinessHistory sources={sources}/>);
   const choices = screen.getByRole("group", { name: "Choose a history lane" });
-  fireEvent.click(within(choices).getByRole("button", { name: "PC", exact: true }));
-  const pc = screen.getByRole("region", { name: "PC", exact: true });
+  fireEvent.click(within(choices).getByRole("button", { name: "PC" }));
+  const pc = screen.getByRole("region", { name: "PC" });
   expect(pc).toHaveAttribute("data-active", "true");
   expect(within(pc).getByRole("button", { name: /Boxed PC games/ })).toHaveAttribute("aria-pressed", "true");
-  fireEvent.click(within(choices).getByRole("button", { name: "Consoles", exact: true }));
+  fireEvent.click(within(choices).getByRole("button", { name: "Consoles" }));
   expect(pc).toHaveAttribute("data-active", "false");
-  const consoles = screen.getByRole("region", { name: "Consoles", exact: true });
+  const consoles = screen.getByRole("region", { name: "Consoles" });
   fireEvent.click(within(consoles).getByRole("button", { name: /Console cloud play/ }));
   expect(screen.getByRole("link", { name: /Windows app launch/ })).toHaveAttribute("href", "https://blog.playstation.com/2016/08/30/playstation-now-september-update-pc-streaming-6-greatest-hits/");
   expect(screen.getByText(/without owning a PlayStation/)).toBeVisible();

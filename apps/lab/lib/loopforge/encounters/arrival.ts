@@ -5,7 +5,7 @@ import {openingWorkers} from '../agents/opening-workers';
 import grips from '../agents/opening-worker-grips.json';
 import pairs from '../agents/opening-worker-pairs.json';
 import type {LimenMotionId} from '../agents/limen-motions';
-export const ARRIVAL_REVISION='before-the-shift/17';
+export const ARRIVAL_REVISION='before-the-shift/18';
 export const ARRIVAL_WORKERS=openingWorkers.map(w=>w.id);
 const crew=[...ARRIVAL_WORKERS],all=[...crew,'limen','stiletto'];
 const cue=(clip:string,start=0,rate=1,loop=false):MotionCue=>({clip,start,rate,loop,blend:.22});
@@ -137,6 +137,7 @@ export function arrival(){
  add('ed repeats the order',.8,'Idle_02',line('ed','IDs AND PAPERS!',2,'command',crew.filter(id=>id!=='bob')),[gesture('ed','Discuss_While_Moving',1,1,0)]);
  add('gus likes the volume',.8,'Idle_11',line('gus','NEXT!!!',2,'outburst',crew.filter(id=>id!=='bob'),['NEXT']));
  add('sam comes when called',2.4,'Stand_and_Chat',line('limen','NAME AND ASSIGNMENT?!',3,'command',['sam']),[walk('sam',[123.5,112.8])]);
+ framing='sam-inspection';
  add('sam starts reporting',1,'Idle_02',line('sam','sam. Conveyor.',2,'plain',['limen','ed','gus']));
  // The second check continues on the same clock while the player follows bob.
  flow(add('sam draws his ID',1.25,'Stand_and_Chat',undefined,[gesture('sam','Draw_ID',0,1.6)])).transfers=[{prop:'sam:id',from:stowed('sam'),to:hand('sam')}];
@@ -187,12 +188,13 @@ export function arrival(){
  // In this authored provider, sam alone clears during the tutorial. ed/gus are staff,
  // not completed Conveyor admissions. The next visible applicant is jo, the third.
  // Make the one delayed admission visible after the first line output.
- framing='checkpoint';
+ framing='sam-inspection';
  add('sam’s card is checked',.6,'Stand_and_Chat',undefined).effects=[{fact:'checkpoint.cleared.sam',value:true},{fact:'checkpoint.card-checked.sam',value:true},{fact:'checkpoint.workers-passed',value:2}];
  flow(add('sam stows his checked ID',1,'Idle_02',undefined,[gesture('sam','Stow_ID',0,1.6)])).transfers=[{prop:'sam:id',from:hand('sam'),to:stowed('sam')}];
  carrying.delete('sam');
  flow(add('sam lowers his empty hand',1.25,'Idle_02',undefined,[gesture('sam','Stow_ID',1.6,1.6)]));
  holds.sam=gesture('sam','Quiet_Wait',0,1,180);holdStarts.sam=clock;
+ framing='checkpoint';
  add('sam finally clears',2,'Alert',undefined,[walk('sam',[125.3,112])]);
  add('sam crosses after the lesson',2.6,'Idle_02',undefined,[walk('sam',[125.3,108.3])]);
  add('sam takes the corridor',3.2,'Idle_11',undefined,[walk('sam',[129,104])]);

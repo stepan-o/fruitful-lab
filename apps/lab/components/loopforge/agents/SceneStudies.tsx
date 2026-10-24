@@ -15,7 +15,7 @@ import {createCaptureResults,type CaptureFile} from './capture-results';
 import {selectedHeldSpeech,offscreenHeldSpeech} from './held-speech';
 import styles from './scene-studies.module.css';
 import {storyboard} from './storyboard';
-import {isStrikeSpeech,strikeSpeechLane,placeStrikeSpeech} from './strike-speech-placement';
+import {isStrikeSpeech,strikeSpeechOrder,strikeSpeechLane,placeStrikeSpeech,type SpeechRect} from './strike-speech-placement';
 import type {RehearsalStage} from './arrival-stage';
 import {compareStationLights,type LightComparison} from './station-light-comparison';
 import type {StationLighting} from './station-light';
@@ -81,7 +81,8 @@ export default function SceneStudies({player=false}:{player?:boolean}){
     if(r.reading&&!r.playing){r.readSeconds+=dt/1000;if(now-lastPublish>33){const nowView=readingView(r.readingBase??rehearsalView(r.take,r.world),r.reading,r.readSeconds);r.view=nowView;r.cast.update(nowView);lastPublish=now;}r.floor.motion(true);}
     const anchors=r.cast.anchors(),offscreenId=offscreenHeldSpeech(r.view,r.reading,anchors)?.id??null;
     if(lastOffscreenSpeechId.current!==offscreenId){lastOffscreenSpeechId.current=offscreenId;setOffscreenSpeechId(offscreenId);}
-    for(const a of anchors){
+    const strikeBounds:SpeechRect[]=[];
+    for(const a of [...anchors].sort((a,b)=>strikeSpeechOrder(r.view?.framing,a.id)-strikeSpeechOrder(r.view?.framing,b.id))){
      const el=bubbles.current.get(a.id),c=canvas.current;if(!el||!c)continue;
      const body=el.querySelector<HTMLElement>('[data-speech-body]');
      if(study==='arrival'&&isStrikeSpeech(r.view?.framing,a.id)&&body){
@@ -89,9 +90,10 @@ export default function SceneStudies({player=false}:{player?:boolean}){
       const lane=strikeSpeechLane(viewport.width,anchor.x,viewport.width<=480?204:248);
       el.dataset.strikeSpeech='true';el.style.width=`${lane.width}px`;
       const clock=clockElement.current;
-      const placement=placeStrikeSpeech({viewport,anchor,preferredWidth:lane.width,bodyHeight:body.offsetHeight,clock:clock?{x:clock.offsetLeft,y:clock.offsetTop,width:clock.offsetWidth,height:clock.offsetHeight}:undefined});
+      const placement=placeStrikeSpeech({viewport,anchor,preferredWidth:lane.width,bodyHeight:body.offsetHeight,headerHeight:el.offsetHeight-body.offsetHeight+28,occupied:strikeBounds,clock:clock?{x:clock.offsetLeft,y:clock.offsetTop,width:clock.offsetWidth,height:clock.offsetHeight}:undefined});
       el.style.left=`${placement.x}px`;el.style.top=`${placement.y-(el.offsetHeight-body.offsetHeight)}px`;
       el.style.setProperty('--strike-tail-y',`${placement.tailY}px`);
+      if(a.visible)strikeBounds.push(placement.bounds);
      }else{
       delete el.dataset.strikeSpeech;el.style.removeProperty('width');el.style.removeProperty('--strike-tail-y');
       el.style.left=`clamp(var(--bubble-margin), ${a.x}%, calc(100% - var(--bubble-margin)))`;
@@ -150,7 +152,8 @@ export default function SceneStudies({player=false}:{player?:boolean}){
      if(!captureResults.isPending(request)||runtime.current!==r){finish(new Error('The scene changed. Please save again.'));return;}
      try{
       const frame=r.reading&&r.view?r.view:rehearsalView(r.take,r.world),name=`loopforge-${study}-${choice}-${frame.tick}.png`;
-      storyboard(c,frame,r.cast.anchors(),expressive,r.reading).toBlob(blob=>{
+      const clock=clockElement.current,clockRect=clock?{x:clock.offsetLeft,y:clock.offsetTop,width:clock.offsetWidth,height:clock.offsetHeight}:undefined;
+      storyboard(c,frame,r.cast.anchors(),expressive,r.reading,clockRect).toBlob(blob=>{
        if(settled)return;
        if(!captureResults.isPending(request)||runtime.current!==r){finish(new Error('The scene changed. Please save again.'));return;}
        if(!blob){finish(new Error('The image could not be saved. Please try again.'));return;}
@@ -191,7 +194,7 @@ export default function SceneStudies({player=false}:{player?:boolean}){
     {study==='arrival'&&<div className={styles.attentionBar}><button className={styles.continueButton} disabled={!ready||running||testing} onClick={continueDialogue}>{running?'…':attentionLabel} <span aria-hidden='true'>→</span></button>{offscreenSpeech&&offscreenActor?<div className={styles.offscreenReading} data-offscreen-speech aria-live='polite'><SpeechBubble speech={offscreenSpeech} name={`${offscreenActor.name} · offscreen`} character={offscreenActor.character} playing={false} expressive={expressive}/></div>:<p>{running?'Watch the action.':reading?'Take your time. The cast stays alive; the factory clock waits.':'A few minutes, at your reading pace. Each click moves the factory forward.'}</p>}</div>}
     {!player&&<details className={styles.rehearsalTools}><summary>Rehearsal controls · scrub / autoplay / camera</summary>
     <div className={styles.transport}><button disabled={!ready||testing} onClick={play}>{running?'Pause':'Play scene'}</button><button disabled={!ready||testing} onClick={()=>seek(0)}>Restart</button><label>Scene time<input aria-label='Scene time' type='range' min='0' max={take.total} value={tick} disabled={!ready||testing} onChange={e=>seek(Number(e.target.value))}/></label><label>Seconds<input aria-label='Jump to seconds' type='number' min='0' max={take.total/20} step='.05' value={tick/20} disabled={!ready||testing} onChange={e=>seek(Number(e.target.value)*20)}/></label></div>
-    {study==='arrival'&&<div className={styles.beats}><label className={styles.cameraFollow}><input type='checkbox' checked={following} disabled={testing} onChange={e=>{followCamera.current=e.target.checked;setFollowing(e.target.checked);lastShot.current='';const r=runtime.current;if(r)sync(r);}}/>Follow scene cameras</label>{([['approach','Morning approach'],['assembly','The gathering'],['impact','Beside bob'],['card','The card'],['passage','STILETTO’s entrance'],['threshold','The threshold'],['checkpoint','The working checkpoint'],['aftermath','After the blow'],['conveyor-wide','The line'],['intake','Intake'],['wash','Brain Wash'],['belt','Main belt'],['forge','Lattice Forge']] as const).map(([shot,label])=><button key={shot} disabled={!ready||testing} onClick={()=>manualShot(shot)}>{label}</button>)}</div>}
+    {study==='arrival'&&<div className={styles.beats}><label className={styles.cameraFollow}><input type='checkbox' checked={following} disabled={testing} onChange={e=>{followCamera.current=e.target.checked;setFollowing(e.target.checked);lastShot.current='';const r=runtime.current;if(r)sync(r);}}/>Follow scene cameras</label>{([['approach','Morning approach'],['assembly','The gathering'],['impact','Beside bob'],['card','The card'],['passage','STILETTO’s entrance'],['threshold','The threshold'],['checkpoint','The working checkpoint'],['sam-inspection','Sam’s credential'],['aftermath','After the blow'],['conveyor-wide','The line'],['intake','Intake'],['wash','Brain Wash'],['belt','Main belt'],['forge','Lattice Forge']] as const).map(([shot,label])=><button key={shot} disabled={!ready||testing} onClick={()=>manualShot(shot)}>{label}</button>)}</div>}
     {study==='arrival'&&<label className={styles.cameraFollow}><input type='checkbox' checked={machineEffects} disabled={testing} onChange={e=>{setMachineEffects(e.target.checked);runtime.current?.floor.machineEffects?.(e.target.checked);}}/>Machine spray and heat accents</label>}
     <div className={styles.beats}><label className={styles.cameraFollow}><input type='checkbox' checked={expressive} disabled={testing} onChange={e=>setExpressive(e.target.checked)}/>Expressive speech</label><span className={styles.fine}>{study==='arrival'?'Dialogue waits for a click · cuts follow actions':'Pause to read'}</span></div>
     <div className={styles.beats}>{take.beats.map(b=><button disabled={!ready||testing} key={b.label} onClick={()=>beat(b.tick)}>{b.label}</button>)}</div>

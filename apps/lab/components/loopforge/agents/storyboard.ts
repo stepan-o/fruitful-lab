@@ -2,19 +2,19 @@ import {EMOTIONS,SPEECH_INK,speechAccent,speechWords} from '@/lib/loopforge/enco
 import {offscreenHeldSpeech} from './held-speech';
 import type {AttentionStep} from '@/lib/loopforge/encounters/attention';
 import type { View } from '@/lib/loopforge/encounters/contract';
-import {isStrikeSpeech,strikeSpeechLane,placeStrikeSpeech} from './strike-speech-placement';
+import {isStrikeSpeech,strikeSpeechOrder,strikeSpeechLane,placeStrikeSpeech,type SpeechRect} from './strike-speech-placement';
 type Anchor = { id: string; x: number; y: number; visible: boolean };
 
 /** Composite the exact rendered frame and its public dialogue; no private evidence enters the PNG. */
-export function storyboard(source: HTMLCanvasElement, view: View, anchors: Anchor[], expressive=true, reading?:AttentionStep) {
+export function storyboard(source: HTMLCanvasElement, view: View, anchors: Anchor[], expressive=true, reading?:AttentionStep,clock?:SpeechRect) {
   const image = document.createElement('canvas');
   image.width = source.width; image.height = source.height + 64;
   const ctx = image.getContext('2d');
   if (!ctx) throw Error('Image export is unavailable in this browser.');
   const scale = Math.max(.8, image.width / Math.max(1, source.clientWidth));
   const padding=14*scale,offscreen=offscreenHeldSpeech(view,reading,anchors);
-  const plans=[];let offscreenHeight=0;
-  for(const speech of view.bubbles){
+  const plans=[],strikeBounds:SpeechRect[]=[];let offscreenHeight=0;
+  for(const speech of [...view.bubbles].sort((a,b)=>strikeSpeechOrder(view.framing,a.speaker)-strikeSpeechOrder(view.framing,b.speaker))){
     const anchor=anchors.find(a=>a.id===speech.speaker),detached=offscreen?.id===speech.id;
     if(!anchor||(!anchor.visible&&!detached))continue;
     const tone=expressive?speech.delivery?.tone??'plain':'plain',accent=speechAccent(tone);
@@ -33,7 +33,8 @@ export function storyboard(source: HTMLCanvasElement, view: View, anchors: Ancho
       lines.at(-1)!.push({...token,width:w});used+=w;
     }
     const height=lines.length*line+2*padding;
-    const placement=strike?placeStrikeSpeech({viewport,anchor:point,preferredWidth,bodyHeight:height/scale}):undefined;
+    const placement=strike?placeStrikeSpeech({viewport,anchor:point,preferredWidth,bodyHeight:height/scale,clock,occupied:strikeBounds}):undefined;
+    if(placement)strikeBounds.push(placement.bounds);
     const x=detached?10*scale:placement?placement.x*scale:Math.max(10*scale,Math.min(image.width-width-10*scale,anchor.x*source.width/100-width/2));
     const y=detached?source.height+32*scale:placement?placement.y*scale:Math.max(40*scale,Math.min(source.height-height-15*scale,anchor.y*source.height/100-height-20*scale));
     if(detached)offscreenHeight=height+48*scale;

@@ -2,9 +2,9 @@
   "title": "Operate the line. Read its people.",
   "date": "12 October 2026",
   "summary": "A prebuilt conveyor is a physical operating puzzle: regulate flow, choose whose judgment shapes the room, and see individual agents turn those decisions into work and consequences.",
-  "status": "Prebuilt first-turn line implemented. BDI agents, polished character acting, shared policies and later-room progression remain proposed.",
+  "status": "Owner-approved demonstrated Day1: three workpieces and twelve departures. Broader operating, policy and economy studies below remain proposals.",
   "direction": "Owner direction: remove all player building. Keep the room topology and cinematic factory. Workers and supervisors are BDI agents; LLM use is optional. Supervisors influence capability, interpretation, decisions and other agents.",
-  "recommendation": "Start at the console, receive the mandate and choose an adviser. Compare the same inherited line under LIMEN and STILETTO. Prove a readable gate inspection, a physical cradle transfer and an actual worker response before expanding the factory repertoire.",
+  "recommendation": "Keep the compact Day1 rooms and real four control positions. Correct the stable reading area and local work views before extending operating scenarios.",
   "fun": [
     [
       "I made this work",
@@ -86,20 +86,20 @@
   ],
   "sections": [
     {
-      "title": "Prebuilt spatial authority",
-      "intro": "Approved room proportions and connections stay. Security and the Lattice Forge are open first; later rooms remain locked. Empty layout plots are author composition/traffic space, not a player placement interface.",
+      "title": "Compact Day1 and the broader floor study",
+      "intro": "The demonstrated scene connects Lobby, compact Security and Conveyor. The nine-zone map is a separate larger factory study; it does not describe this slice’s room dimensions, unlocked rooms or routes.",
       "rows": [
         [
-          "World",
-          "Nine zones fill a continuous building at a common 15 m hall height. Keep the direct Security–Theatre connection and process pipe walls."
+          "Current Day1",
+          "Lobby16×11m; Security8×7.5m plus4×2.5m connector; Conveyor24×14m; four control pads and existing circulation."
         ],
         [
-          "Scale",
-          "Maintain room scale while framing one work area clearly. Workers must read as bodies operating real machinery, not dots in an empty hall."
+          "Broader proposal",
+          "The retained nine-zone/15m-hall map describes later factory planning, including Theatre and Logistics; those routes and unlocks are not demonstrated here."
         ],
         [
           "Author tooling",
-          "The separate factory-floor route can inspect equipment and floor plans. Author calibration is not a gameplay purchase or unlock."
+          "The separate factory-floor route inspects its own broader source layout. It is not a Day1 gameplay purchase or unlock."
         ]
       ]
     },
@@ -331,5 +331,6 @@
       "src": "/media/files/4068638340c5b00d8d3cfe1d40853b66290e6b02394516b0c96b33b994d63ce4.webp",
       "caption": "Eighteen hours on the line. A close, crowded Lattice Forge bay."
     }
-  ]
+  ],
+  "currentDayOne": "### What is playable now\n\nThe approved Day 1 scene demonstrates an ordered line: Intake → Wash → Main Belt → Forge. Ordinary controls advance the tutorial; later paired and staffed sequences use the same four physical control positions. Eight assigned crew do not imply eight machine controls. The display distinguishes assigned workers from actual occupied controls.\n\nThe recorded day completes one tutorial output, one paired output and one staffed output, for a total of three. These are completed process outputs. They are not evidence of dispatch, retained new workers, earnings or an implemented production economy.\n\nThe current geometry stays. Keep the working aisle and real approaches to the four pedestals. Use a local Forge/output view and explicit support-post names when the master is too small to explain that work. No new stations, invisible routes or worker relocation are needed to improve the picture.\n\n### Later scenarios must fit this room\n\nThe Systems–Level scenario reconciliation keeps current four-control behavior separate from future eight required duties, receiving readiness, qualifications, safe handover, room-lead authority and scheduling. A standing assignment is not a blanket authorization whitelist: the paired sequence legitimately uses different controls. Future policy must preserve those declared cases or replace them explicitly.\n\nA later local briefing must bring its intended listeners within real hearing range. Reports need an actual approach, an addressed recipient and time to return. An observer must clear the Wash control before a learner approaches, and the line must be safely released and restaffed under explicit rules. These are selected scenario requirements, not implemented later-day mechanics.\n\nThe current Wash source supports a pedestal forward-push-and-stop action. The later teaching score was revised to a forward stroke, held stop and withdrawal/reset; an unsupported lift-and-turn was removed. Exact hand contact, reach, timing and practice capacity still require scene work. The Theatre's onward route and later scheduling remain deferred; no extra room is implied by the storyboard.\n\n**Proposed next operating loop.** The existing feed/pace, adviser, consequence and progression studies describe the intended broader game. They are retained as proposals. The Day 1 demonstration and its approved presentation do not establish general safe-handover, receiver-capacity, economy or later-room play."
 }

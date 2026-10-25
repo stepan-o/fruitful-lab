@@ -89,6 +89,71 @@ Among eligible proposals, first address failures that prevent the current episod
 
 Record the decision where the feature is proposed and link it from its implementation work. Reopen it when new evidence changes the judgment. Existing features receive the same review; effort already spent does not establish their value. The questions below are a working record for designers and builders, not a new screen for the player.
 
+## Actual Day 1 evidence and review
+
+24 October 2026 milestone · Demonstrated R10 slice approved by the owner; later integrated corrections await review.
+
+The current [Day 1 scene](/stepanoskin/loopforge/play/scene-studies) carries a connected encounter through admission, Conveyor learning, a growing shift, production, departure and night. This is implemented scene behavior in the demonstrated slice. It does not establish the broader game's later-day economy, autonomous planning, alternative histories or long-term character consequences. Those remain separate design and implementation claims.
+
+The independent review used actual captured screens and sampled frames from published tree `ec757b5e723c9213e66a45fe3fa9d777e6e1a448`. Two videos supplied the frame samples, with a declared diagnostic interruption between recordings. The critic did not watch continuous playback or hear sound. The owner approved the demonstrated slice; the technical findings below preserve that approval rather than asking for a new taste decision.
+
+### What the encounter earns
+
+The opening gives three recognizable kinds of attention to bob. LIMEN enforces his stop, sam attends to the person who has been hurt, and ed takes up the card. STILETTO's demand for an empty line to be filled leads into work. These actions give the factory an immediate social structure. The present opening has LIMEN strike bob; earlier hypothetical examples elsewhere in the design record do not change that chronology.
+
+bob's small frame and paired eyes remain useful anchors among the workers. sam's broader body, LIMEN's mass and STILETTO's long black/red silhouette help identify different roles. Their value depends on the actual view: a readable name cannot compensate for covering the performer with a speech panel. The approved identity stays; the presentation needs to let it work.
+
+The four tutorial controls name concrete operations: Seat the brain, Run the wash, Start the main belt and Compress the brain. Reading holds allow the player to inspect the instruction before committing the next step. Later controls start staffed work and end the shift. These are observed participation points in a guided scene. The other characters' conduct is witnessed; it should not acquire artificial buttons merely to resemble a branching choice.
+
+The terminal evidence records three outputs: one tutorial, one paired and one staffed. All twelve cast members have departed at night. The ending presents completion, the output count and Restart, including in the captured 320-pixel ending view. This demonstrates closure for the scene. It does not prove full mobile gameplay or that an unfamiliar player understands every relationship.
+
+### Apply the six assessment questions to this slice
+
+| Question | Current evidence and limit |
+| --- | --- |
+| What becomes worth watching? | Coercion, care and procedural attention affect the same person, then lead into work. Sampled images establish the sequence; its emotional timing still needs moving review. |
+| Who becomes more particular? | bob, sam, ed, LIMEN and STILETTO have distinguishable conduct and several readable silhouettes. Face-covering panels weaken that distinction in the actual view. Recognition by unfamiliar players has not been tested. |
+| Can the player follow the change? | Named station controls, changing crew occupancy, output and night give the day a visible structure. Misleading clock text, cropped action and an obstructed departure are required corrections. |
+| What is the player's relationship to it? | The player advances six named work/closure steps and witnesses the intervening conduct. This run does not demonstrate strategic alternatives or a choice changing a later relationship. |
+| What continues beyond this moment? | The same people recur during work and departure, and the result carries a count. Persistent consequences in subsequent days remain unproven by this capture. |
+| What must the experience carry? | Reading, dialogue, camera changes and automatic work all consume attention. A slow staffed interval and interrupted diagnostics prevent a controlled pacing or performance conclusion. |
+
+These are separate judgments. A complete ending does not cancel a false clock, and an appealing cast does not establish a meaningful branch. Conversely, an autonomous encounter does not fail merely because the player cannot intervene in it.
+
+### Required corrections and preserved decisions
+
+Five observed presentation defects need correction: speech and credential panels covering faces; End of shift appearing before work has finished; bob's body being cropped at tutorial gates; an arms-out travel pose persisting across departure positions; and foreground facade geometry hiding the exit shot. Each has an exact captured view or sampled interval in the independent review. Source causes are not established by the pictures alone.
+
+Keep the approved cast and room direction, the reading holds, the four explicit tutorial verbs, the progression from solo to paired to staffed work, and the distinct night result. A small optional wording improvement can distinguish the first staffed output from the cumulative total. It must preserve the three output categories rather than altering mechanics to fit a label.
+
+The automatic staffed-work slowdown remains a required investigation. Its capture is not a controlled comparison: focus, recording and diagnostic conditions changed. Logical ticks, rendered frames and wall time must be reported separately. Sam's precision polish remains deferred; these findings do not authorize a blanket animation or asset replacement.
+
+### The next proof
+
+Review the corrected integrated build through the ordinary controls to night, with exact build identity, viewport and declared capture conditions. Include the speech-to-action transitions, the worker's move from inspection into travel, and the facade passage. A fixed still can close a static overlap; it cannot close locomotion, weight, grip, continuity or pacing. Continuous playback and sound remain separate evidence needs.
+
+After the presentation corrections, propose one unfamiliar-viewer encounter without an explanation of the intended interpretation. Ask who acted on bob, how sam and ed responded, what the player changed, why the total is three, and what the viewer wants to know next. Record confusion, disagreement with a supervisor and indifference separately. This is a proposed comprehension check, not an additional owner approval ceremony.
+
+A bounded KEEP states what passed, in which version, and what remains unknown. The earlier S4 storyboard findings remain useful design evidence, but they cannot supply a pass for the actual Day 1 game. Engine owns integration, Producer owns reconciliation, and the corrected replay must establish what changed for the person playing.
+
+### Captured evidence
+
+![LIMEN's speech panel hides his face in the captured opening.](/loopforge-dev-blog/media/2026-10-25-day-one/r10-opening-dialogue.png)
+
+Figure 1. Actual R10 capture, factory 08:00:11. The naming and dialogue are readable, but the body delivering them is hidden. This is a composition defect, not a request to redesign LIMEN. Capture: Producer-operated studio browser.
+
+![A departing blue worker holds both arms sideways while crossing the foreground.](/loopforge-dev-blog/media/2026-10-25-day-one/r10-departure-arms-117s.png)
+
+Figure 2. Actual decoded continuation frame at PTS 117. The preceding sampled positions establish persistence; this single image does not prove locomotion timing or diagnose the rig. Capture: Producer-operated studio browser; frame extracted by Animator.
+
+![Facade geometry blocks almost the entire departure view.](/loopforge-dev-blog/media/2026-10-25-day-one/r10-departure-obstruction.png)
+
+Figure 3. Actual decoded continuation frame at PTS 118. The corrected replay must show the exit action rather than the inside of foreground dressing. Capture: Producer-operated studio browser; frame extracted by Animator.
+
+![The night image and completed-shift controls at320pixels wide.](/loopforge-dev-blog/media/2026-10-25-day-one/r10-night-320.png)
+
+Figure 4. Actual approved R10 ending at 320 pixels wide. The image, completion message, three outputs and Restart are visible. This does not establish full mobile gameplay. Capture: Producer-operated studio browser.
+
 ## Copyable feature review
 
 1. **Proposal and milestone:** What are we considering, and why does this arc need it now?

@@ -1,5 +1,6 @@
+import type {MotionSource} from './motion-snapshot';
 import {Vector3,Matrix} from '@babylonjs/core/Maths/math.vector';
-import type {View} from '@/lib/loopforge/encounters/contract';
+import type {ActorView,View} from '@/lib/loopforge/encounters/contract';
 import {openingWorkers,type OpeningWorkerId} from '@/lib/loopforge/agents/opening-workers';
 import {worldPoint} from '@/lib/loopforge/spatial/floor';
 import {loadOpeningWorker} from './opening-worker-model';
@@ -23,6 +24,8 @@ export async function loadArrivalCast(floor:RehearsalStage,signal:AbortSignal){
   props=createCredentialProps(stage.scene,openingWorkers.map(w=>w.id),(id,side)=>workers.get(id as OpeningWorkerId)?.presentation.hand(side));
   let view:View|null=null;const position=Vector3.Zero();
   return {
+   renderedView(){return view;},
+   motionSnapshot(id:string,actor:ActorView,source:MotionSource){const model=workers.get(id as OpeningWorkerId);if(!view||!model)throw Error('A3 missing loaded arrival worker '+id);return model.motionSnapshot(actor,source);},
    update(next:View){view=next;for(const a of next.actors){const visible=a.visible!==false;const model=a.character==='worker'?workers.get(a.id as OpeningWorkerId):a.character==='limen'?limen:stiletto;model?.presentation.root.setEnabled(visible);if(!visible)continue;if(a.character==='worker'){const p=worldPoint(a.position[0]/1000,a.position[1]/1000);position.set(p[0],.015,p[2]);workers.get(a.id as OpeningWorkerId)?.perform(a,position);}else if(a.character==='limen')limen!.perform(a);else if(a.character==='stiletto'){stiletto!.presentation.root.setEnabled(!!a.cue);stiletto!.perform(a);}}props!.update(next.props??[],next.tick);stage.refresh();},
    anchors(){if(!view||!stage.scene.activeCamera)return [];const scene=stage.scene,engine=scene.getEngine(),camera=scene.activeCamera!,viewport=camera.viewport.toGlobal(engine.getRenderWidth(),engine.getRenderHeight());return view.actors.filter(a=>a.visible!==false).map(a=>{const p=worldPoint(a.position[0]/1000,a.position[1]/1000),height=a.motion==='fall'?.65:a.character==='worker'?(workers.get(a.id as OpeningWorkerId)?.presentation.standingHeight??median)+.2:supervisorHeight+.25,v=Vector3.Project(new Vector3(p[0],height,p[2]),Matrix.IdentityReadOnly,scene.getTransformMatrix(),viewport);return {id:a.id,x:100*v.x/engine.getRenderWidth(),y:100*v.y/engine.getRenderHeight(),visible:v.z>0&&v.z<1&&v.x>=0&&v.x<=engine.getRenderWidth()&&v.y>=0&&v.y<=engine.getRenderHeight()};});},
    dispose

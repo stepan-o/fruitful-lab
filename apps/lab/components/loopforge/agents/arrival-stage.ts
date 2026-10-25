@@ -1,3 +1,4 @@
+import {authoredSetup,departureCamera,exteriorEntranceVisible,selectedAuthoredSetup} from '@/lib/loopforge/encounters/day-one-camera';
 import {operationalPose,type OperationalCamera} from '@/lib/loopforge/encounters/operational-camera';
 import {clearCameraInput} from '@/lib/loopforge/encounters/camera-policy';
 import {Engine} from '@babylonjs/core/Engines/engine';
@@ -115,7 +116,7 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
   if(now-lastReadinessCheck>1000){readyForMotion=scene.isReady();lastReadinessCheck=now;}
   if((!benchmarking&&now-lastDraw<1000/effective.targetFps-1)||(!playing&&!dirty&&readyForMotion))return;
   const dt=lastDraw?Math.min(.1,(now-lastDraw)/1000):0;if(playing)conveyor.animate(dt);
-  lastDraw=now;dirty=false;camera.getViewMatrix();if(!minimalDressing){conveyorEnvironment.updateCamera(camera.position);lobbyEnvironment.updateCamera(camera.position,!!fixedView||currentShot==='approach'||currentShot==='passage');securityEnvironment.updateCamera(camera.position);}const before=performance.now(),drawStart=engine._drawCalls.current;scene.render();timings.frame(now,readyForMotion?(playing?'active':'idle'):'loading');
+  lastDraw=now;dirty=false;camera.getViewMatrix();if(!minimalDressing){conveyorEnvironment.updateCamera(camera.position);lobbyEnvironment.updateCamera(camera.position,!!fixedView||exteriorEntranceVisible(currentShot));securityEnvironment.updateCamera(camera.position);}const before=performance.now(),drawStart=engine._drawCalls.current;scene.render();timings.frame(now,readyForMotion?(playing?'active':'idle'):'loading');
   if(now-lastReport>1000){lastReport=now;report({...timings.snapshot(),meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:10,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(performance.now()-before),updateMs:0,drawCalls:engine._drawCalls.current-drawStart,triangles:Math.round(scene.getActiveIndices()/3)});}
  });
  return {
@@ -149,12 +150,18 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
     belt:[144.6,104.3,1.3,8.5,-2.1,1.24],
     forge:[148.5,103.8,1.65,8.5,-2.8,1.24],
    } as const;
-   currentShot=shot;refreshPose();const showEntrance=shot==='approach'||shot==='passage';
+   currentShot=shot;refreshPose();const showEntrance=exteriorEntranceVisible(shot);
    cutaway.forEach(m=>m.setEnabled(showEntrance&&!(architecture&&entranceProxy.includes(m))));architecture?.entrance.setEnabled(showEntrance);
-   const s=setups[shot==='wide'?'assembly':shot==='interaction'?'impact':shot];orbit.framing(s[3],3.5);orbit.orientation(s[4],s[5]);attachAuthored(new Vector3(...worldPoint(s[0],s[1])).add(new Vector3(0,s[2],0)));if(benchmarking)camera.detachControl();
+   const key=shot==='wide'?'assembly':shot==='interaction'?'impact':shot;const s=selectedAuthoredSetup(shot)??setups[key as keyof typeof setups];if(!s)throw Error('Missing authored view '+shot);orbit.framing(s[3],3.5);orbit.orientation(s[4],s[5]);attachAuthored(new Vector3(...worldPoint(s[0],s[1])).add(new Vector3(0,s[2],0)));if(benchmarking)camera.detachControl();
   },
   trackApproach(view){
-   if(fixedView||currentShot!=='approach')return;
+   if(fixedView)return;
+   if(currentShot==='exit-flow'){
+    const viewCamera=departureCamera(view);if(!viewCamera)return;
+    const s=authoredSetup(viewCamera);camera.fov=viewCamera.verticalFov;orbit.framing(s[3],3.5);orbit.orientation(s[4],s[5]);
+    camera.target.set(...worldPoint(s[0],s[1]));camera.target.y=s[2];invalidate();return;
+   }
+   if(currentShot!=='approach'||view.dayOne?.stage==='departure'||view.dayOne?.stage==='night')return;
    const workers=view.actors.filter(a=>a.character==='worker');if(!workers.length)return;
    const y=workers.reduce((sum,a)=>sum+a.position[1]/1000,0)/workers.length-2.8;
    const [x,,z]=worldPoint(124,y);camera.target.set(x,1.55,z);invalidate();

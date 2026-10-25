@@ -61,12 +61,13 @@ def render(source, media):
         if not line:
             i += 1
             continue
-        if line.startswith('## '):
-            label = line[3:]; ident = slug(label)
+        if re.match(r'^#{2,3} ', line):
+            level = len(line.split(' ', 1)[0])
+            label = line[level+1:]; ident = slug(label)
             if ident in ids:
                 raise ValueError(f'Duplicate heading: {label}')
             ids.add(ident); headings.append((ident, label))
-            parts.append(f'<h2 id="{ident}">{inline(label)}</h2>')
+            parts.append(f'<h{level} id="{ident}">{inline(label)}</h{level}>')
             i += 1
         elif line.startswith('!['):
             match = re.fullmatch(r'!\[([^\]]+)\]\(([^)]+)\)', line)
@@ -108,9 +109,14 @@ STYLE = '''
 '''
 
 
-def build_narrative(docs, out):
+def build_narrative(docs, out, *, only=None):
     media = {x['src']: x for x in json.loads((out/'reference/back-to-the-dawn-media.json').read_text())['images']}
+    assessment_media = out/'reference/day1-assessment-media.json'
+    if assessment_media.is_file():
+        media.update({x['src']: x for x in json.loads(assessment_media.read_text())['images']})
     for source, target, label in PAGES:
+        if only is not None and source not in only:
+            continue
         text = (docs/source).read_text()
         (out/source).write_text(text)
         title, body, headings = render(text, media)
@@ -120,5 +126,5 @@ def build_narrative(docs, out):
         if is_episode: body = render_episode(docs, body)
         nav = ''.join(f'<a href="{file}"'+(' aria-current="page"' if file == target else '')+f'>{E(name)}</a>' for _, file, name in PAGES)
         toc = ''.join(f'<a href="#{ident}">{E(name)}</a>' for ident, name in headings)
-        document = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)} — Loopforge design</title><meta name="description" content="Loopforge dramaturgy and character creation: bob, pressure, reference studies, feature assessment, the cast and the opening episode."><style>{STYLE}{CAST_STYLE if is_cast else EPISODE_STYLE if is_episode else ""}</style></head><body class="{'cast-page' if is_cast else 'episode-page' if is_episode else ''}"><a class="skip" href="#content">Skip to content</a><header><a href="/stepanoskin/loopforge/design#dramaturgy">← Game design · Character dramaturgy</a><p class="eyebrow">Loopforge / Character dramaturgy and narrative design</p><nav aria-label="Narrative review">{nav}</nav></header><main>{'' if (is_cast or is_episode) else '<aside><details><summary>On this page</summary>'+toc+'</details></aside>'}<article id="content"><h1>{E(title)}</h1>{body}</article></main><footer><a href="{source}" download>Download this document</a><a href="/stepanoskin/loopforge/design#dramaturgy">Back to game design</a><p>Editorial brief: revision 7. The cast art and bob’s portrait are approved. Opening scene v1 remains in production; reference art is not a completed animation test.</p></footer></body></html>'''
+        document = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)} — Loopforge design</title><meta name="description" content="Loopforge dramaturgy and character creation: bob, pressure, reference studies, feature assessment, the cast and the opening episode."><style>{STYLE}{CAST_STYLE if is_cast else EPISODE_STYLE if is_episode else ""}</style></head><body class="{'cast-page' if is_cast else 'episode-page' if is_episode else ''}"><a class="skip" href="#content">Skip to content</a><header><a href="/stepanoskin/loopforge/design#dramaturgy">← Game design · Character dramaturgy</a><p class="eyebrow">Loopforge / Character dramaturgy and narrative design</p><nav aria-label="Narrative review">{nav}</nav></header><main>{'' if (is_cast or is_episode) else '<aside><details><summary>On this page</summary>'+toc+'</details></aside>'}<article id="content"><h1>{E(title)}</h1>{body}</article></main><footer><a href="{source}" download>Download this document</a><a href="/stepanoskin/loopforge/design#dramaturgy">Back to game design</a><p>Editorial brief: revision 7. The cast art and bob’s portrait are approved. The owner also approved the demonstrated Day1 slice through night. Historical drafts and later-day proposals are labelled separately; new corrections and unfinished performance details retain their own review requirements.</p></footer></body></html>'''
         (out/target).write_text(document)

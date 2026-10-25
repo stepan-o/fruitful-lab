@@ -1,0 +1,58 @@
+# Visual Artist — second studio interview
+
+## Q1
+
+What is the most useful result you personally contributed this cycle? Describe the player/team outcome, what you actually inspected, and the evidence that could contradict your assessment.
+
+The most useful finished contribution was making the night ending feel like the same factory after everyone has left. I compared the original entrance with the first night image, rejected lost continuity, then checked the revised image with its restored slogan and right-hand barrel. I specified that the full image should fit, with completion text and controls outside it.
+
+I have now seen that arrangement in the actual Day 1 ending, including the 320-pixel capture. The entrance remains recognizable and the completion message and restart control can be read. That is stronger evidence than my original image-only approval. A capture that crops the entrance, hides the result, or shows night before the last departure would contradict the outcome. I did not generate the revised image or implement the ending; my contribution was the continuity decision and display handoff.
+
+## Q2
+
+Which decision of your own worked poorly? Give one concrete instance, its consequence, what you knew then, and what you would change. Separate your responsibility from dependencies outside your control.
+
+My first response to the live dialogue problem kept anchored balloons as the preferred layout and treated the separate rail as a fallback. I had seen a few actual frames: a balloon over LIMEN’s head and an incorrect offscreen card. That was enough to diagnose obstruction, but not enough to make a moving placement system the preferred fix.
+
+The full-day samples show a wider problem: dialogue, credential status and reactions change the picture’s available height. My rule would still have required more collision and transition handling. I am replacing that preference with the selected stable 16:9 picture and a separate reading rail. I own the overly narrow recommendation. Engine owns implementation; I cannot say my earlier handoff caused any particular delay or runtime failure.
+
+## Q3
+
+Describe one cross-role exchange that improved the game and one that created avoidable delay or rework. What made the difference? Name the work and evidence, not just the participants.
+
+The night continuity exchange worked well: the first image lost specific entrance details, the next version restored them, and Engine received a concrete full-image containment rule. The current ending captures show the result in the game. Each handoff had something visible to accept or reject.
+
+The later cohort storyboard exchange created avoidable rework. My second art version still left the Theatre attendance condition implicit in early panels and displayed one production branch prefix across records with different exact prefixes. Producer caught them before rendering and I made an additive repair. I should have checked every displayed branch label against its own source record before handing the set back. Exact records helped; assuming a shared heading covered every cell did not.
+
+## Q4
+
+What did actual integrated footage or play reveal that source checks or isolated craft work did not? If you have not inspected moving evidence, say so and distinguish still-frame judgment from motion judgment.
+
+I inspected actual screenshots and existing labelled frame sequences extracted from the recorded run. I did not play through the recording continuously. That lets me judge sampled poses, framing and changes between samples; it does not let me certify smooth motion, contact timing or performance.
+
+The integrated evidence showed speech and credential cards covering heads, the picture changing height when reading material appeared, and the departure camera passing through the entrance ornament until it concealed the cast. Several travel samples show arms held out. None of those problems is settled by a valid asset file or a readable isolated storyboard. The night ending is the positive counterpart: the actual narrow capture demonstrates that the artwork and live result text can coexist without covering each other.
+
+## Q5
+
+The first retrospective called for one owned outcome, decisive evidence and a change-of-approach decision after a failed assumption. What concrete behavior in this cycle followed or missed that lesson? What should good work in your domain mean now?
+
+The final two-panel storyboard correction followed that lesson. We had a plate covering Lou’s head and practice observers incorrectly left in an ordinary-production inset. I changed those regions, inspected the two returned images, recorded the remaining limits, and stopped. The result was small enough to judge directly.
+
+I missed the lesson when I let repeated static checks stand in for early scrutiny of the running layout. Those checks did improve the boards, but they did not establish that a moving speaker, a reply and the interface could share the screen. Good work in my domain now means that the player can recognize the person, see the action and read its meaning in the actual selected view. A source seal supports that result; it is not the result.
+
+## Q6
+
+Choose one improvement you would keep for the next cycle. Who owns it, when should it happen, and what observable result would show it helped? Include any tradeoff or disagreement with the current production approach.
+
+I would keep an early integrated composition gate, owned by Engine with Visual and Director reviewing the same capture. Run it as soon as one complete exchange and one work action exist, before expanding the script or polishing more boards. Check the same shot with and without speech, with a reaction and with credential status, on desktop and at 320, 390 and 768 pixels.
+
+The visible test is simple: the picture does not resize when words appear; the actor and relevant control remain visible; every current turn has one readable presentation; the next control remains usable. The separate rail sacrifices some of the immediate spatial connection of a balloon tail. I accept that tradeoff here because the acting needs stable space. Further anchored placement should earn its way back through evidence, not become another default polishing task.
+
+## Q7
+
+What did repeated real-pixel reviews improve, and where did static approval fail to cover actual moving layout? Which visual decision should be preserved rather than polished indefinitely?
+
+Repeated pixel reviews caught things source checks missed: ambiguous record identity, a plate covering Lou’s head, and the wrong observers carried into an ordinary-production inset. Seeing the rendered result made those repairs precise. It also taught me to keep an approval attached to its actual image and scale.
+
+Static approval did not cover the live picture changing height, a speaker moving beneath a card, or a camera crossing the facade. The owner-approved cast and industrial visual identity should be preserved, along with the complete night entrance and separate result panel. The next work is to keep those decisions legible during play. It should not reopen their taste approval or turn into another round of static-board polish.
+

@@ -3,32 +3,30 @@ import {DAY_ONE_NIGHT_ART} from '@/lib/loopforge/encounters/day-one-night';
 import {presentedSpeech,presentationName,paintTurnFrame,turnArt} from './turn-presentation';
 import {REACTION_ART,reactionOpacity} from '@/lib/loopforge/encounters/dialogue-turn';
 import {SPEECH_INK,speechAccent,speechWords} from '@/lib/loopforge/encounters/speech-delivery';
-import {offscreenHeldSpeech,offscreenPublicSpeech} from './held-speech';
-import type {AttentionStep} from '@/lib/loopforge/encounters/attention';
+import {dialoguePlacement} from './dialogue-placement';
 import type { View } from '@/lib/loopforge/encounters/contract';
 import {isStrikeSpeech,strikeSpeechOrder,strikeSpeechLane,placeStrikeSpeech,type SpeechRect} from './strike-speech-placement';
 type Anchor = { id: string; x: number; y: number; visible: boolean };
 
 /** Composite the exact rendered frame and its public dialogue; no private evidence enters the PNG. */
-export function storyboard(source: HTMLCanvasElement, view: View, anchors: Anchor[], expressive=true, reading?:AttentionStep,clock?:SpeechRect) {
+export function storyboard(source: HTMLCanvasElement, view: View, anchors: Anchor[], expressive=true,clock?:SpeechRect) {
   const image = document.createElement('canvas');
   image.width = source.width; image.height = source.height + 64;
   const ctx = image.getContext('2d');
   if (!ctx) throw Error('Image export is unavailable in this browser.');
   const scale = Math.max(.8, image.width / Math.max(1, source.clientWidth));
-  const padding=24*scale,offscreen=offscreenHeldSpeech(view,reading,anchors)??offscreenPublicSpeech(view,anchors);
+  const padding=24*scale;
   const night=view.dayOne?.stage==='night';
   const plans=[],strikeBounds:SpeechRect[]=[];let offscreenHeight=0;const reaction=!night&&view.turn?.turn.kind==='reaction-only'?view.turn:undefined,reactionHeight=reaction?193*scale:0;
   for(const speech of (night?[]:presentedSpeech(view)).sort((a,b)=>strikeSpeechOrder(view.framing,a.speaker)-strikeSpeechOrder(view.framing,b.speaker))){
-    const anchor=anchors.find(a=>a.id===speech.speaker),detached=source.clientWidth<=480||offscreen?.id===speech.id;
-    if(!anchor||(!anchor.visible&&!detached))continue;
+    const anchor=anchors.find(a=>a.id===speech.speaker),detached=dialoguePlacement(view.framing,source.clientWidth,anchor,{pageWidth:window.innerWidth,canvasHeight:source.clientHeight,actorState:'unknown'})==='rail';
     const tone=expressive?speech.delivery?.tone??'plain':'plain',accent=speechAccent(tone);
     const font=18*scale,line=25*scale;
     const strike=!detached&&isStrikeSpeech(view.framing,speech.speaker);
     const viewport={width:source.width/scale,height:source.height/scale};
-    const point={x:anchor.x*viewport.width/100,y:anchor.y*viewport.height/100};
-    const preferredWidth=viewport.width<=480?296:296;
-    const width=detached?image.width-20*scale:strike?strikeSpeechLane(viewport.width,point.x,preferredWidth).width*scale:Math.min(296*scale,image.width-20*scale),textWidth=width-2*padding;
+    const point={x:(anchor?.x??50)*viewport.width/100,y:(anchor?.y??50)*viewport.height/100};
+    const preferredWidth=296;
+    const width=detached?Math.min(296*scale,image.width-24*scale):strike?strikeSpeechLane(viewport.width,point.x,preferredWidth).width*scale:Math.min(296*scale,image.width-20*scale),textWidth=width-2*padding;
     const tokens=speechWords(speech.text,expressive?speech.delivery:undefined);
     const lines:{text:string;stress:boolean;width:number}[][]=[[]];let used=0;
     function face(stress:boolean){return `${tone==='aside'?'italic ':''}${stress||tone==='command'||tone==='outburst'?'bold ':''}${font}px sans-serif`;}
@@ -40,8 +38,8 @@ export function storyboard(source: HTMLCanvasElement, view: View, anchors: Ancho
     const height=lines.length*line+2*padding;
     const placement=strike?placeStrikeSpeech({viewport,anchor:point,preferredWidth,bodyHeight:height/scale,clock,occupied:strikeBounds}):undefined;
     if(placement)strikeBounds.push(placement.bounds);
-    const x=detached?10*scale:placement?placement.x*scale:Math.max(10*scale,Math.min(image.width-width-10*scale,anchor.x*source.width/100-width/2));
-    const y=detached?source.height+offscreenHeight+32*scale:placement?placement.y*scale:Math.max(40*scale,Math.min(source.height-height-15*scale,anchor.y*source.height/100-height-20*scale));
+    const x=detached?(image.width-width)/2:placement?placement.x*scale:Math.max(10*scale,Math.min(image.width-width-10*scale,(anchor?.x??50)*source.width/100-width/2));
+    const y=detached?source.height+offscreenHeight+32*scale:placement?placement.y*scale:Math.max(40*scale,Math.min(source.height-height-15*scale,(anchor?.y??50)*source.height/100-height-20*scale));
     if(detached)offscreenHeight+=height+48*scale;
     plans.push({speech,detached,tone,accent,font,line,width,lines,height,placement,x,y,face});
   }
@@ -52,7 +50,7 @@ export function storyboard(source: HTMLCanvasElement, view: View, anchors: Ancho
   for(const {speech,detached,accent,line,width,lines,height,placement,x,y,face} of plans){
     const actor=view.actors.find(a=>a.id===speech.speaker);paintTurnFrame(ctx,actor?.character??'worker',x,y,width,height,scale);
     if(!detached){const tail=turnArt('/loopforge/turn-art/'+(placement?'tail-side.svg':'tail-down.svg'));ctx.drawImage(tail,placement?x-20*scale:x+width/2-14*scale,placement?y+placement.tailY*scale-14*scale:y+height-1,28*scale,18*scale);}
-    const name=presentationName(speech,actor?.name??speech.speaker)+(detached&&!anchors.find(a=>a.id===speech.speaker)?.visible?' · offscreen':'');
+    const name=presentationName(speech,actor?.name??speech.speaker);
     ctx.font=`bold ${13*scale}px sans-serif`;const tabWidth=ctx.measureText(name).width+26*scale;
     ctx.fillStyle=accent;ctx.fillRect(x+12*scale,y-21*scale,tabWidth,23*scale);
     ctx.textBaseline='top';ctx.fillStyle='#fff6df';ctx.fillText(name,x+25*scale,y-15*scale);

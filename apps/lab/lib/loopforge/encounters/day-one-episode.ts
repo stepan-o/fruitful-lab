@@ -46,8 +46,12 @@ export function appendDayOne(world:World,registry:Registry,sequence:string[],aut
   const stow=cardPhase(agent,'Stow_ID',0,20);stow.transfers=[{prop:agent+':id',from:hand,to:stored}];
   return [draw,cardPhase(agent,'Draw_ID',2,20),ready,stow,cardPhase(agent,'Stow_ID',1.6,25)];
  }
- pair.push(...inspect('jo',3),...travel('jo',[[125300,112000],[124500,108300],[124500,104500],[129000,104500],[133200,104400],[133300,108500],[144500,108500],conveyorControl('belt')],'jo joins during the paired cycle','conveyor-wide'));
- pair.push({id:'jo joins bob and sam during cycle two',ticks:20,framing:'conveyor-wide',perform:poses(),effects:[{fact:'line.crew.jo',value:true},{fact:'line.operator.belt',value:'jo'},{fact:'conveyor.admitted',value:3}]});
+ pair.push(...inspect('jo',3),...travel('jo',[[125300,112000],[124500,108300],[124500,104500],[129000,104500],[133200,104400],[133300,108500],[141000,108500]],'jo joins during the paired cycle','conveyor-wide'));
+ // Writer's four local turns bind after this actual aisle arrival. Staffing only
+ // commits after the remaining Belt approach, never early to justify dialogue.
+ pair.push({id:'jo joins bob and sam during cycle two',ticks:20,framing:'jo-work-reply',perform:poses()});
+ pair.push(...travel('jo',[[144500,108500],conveyorControl('belt')],'jo completes the Belt approach','belt'));
+ pair.push({id:'jo reaches the paired Belt control',ticks:20,framing:'belt',perform:poses(),effects:[{fact:'line.crew.jo',value:true},{fact:'line.operator.belt',value:'jo'},{fact:'conveyor.admitted',value:3}]});
  // jo steps to a waiting position while bob completes this cycle at Belt.
  pair.push(...travel('jo',[[145800,109600]],'jo waits for the staffed handover','belt'),...toControl('bob','belt'),work('belt','bob',2),...toControl('sam','forge'),work('forge','sam',3));
  add('paired-production',pair,[{fact:'line.tutorial-output',equals:1},{fact:'checkpoint.cleared.sam',equals:true},{fact:'security.clerks',equals:2}]);

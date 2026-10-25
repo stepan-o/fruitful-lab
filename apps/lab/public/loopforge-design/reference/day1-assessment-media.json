@@ -1,0 +1,45 @@
+{
+  "sourceBuild": "ec757b5e723c9213e66a45fe3fa9d777e6e1a448",
+  "images": [
+    {
+      "id": "opening-overlay",
+      "src": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-opening-dialogue.png",
+      "sha256": "abb11c8152f547f4a85ba32d2123eff2a59c2a99811ca4cb531527395e612212",
+      "width": 1280,
+      "height": 720,
+      "alt": "LIMEN's speech panel hides his face in the captured opening.",
+      "caption": "Figure 1. Actual R10 capture, factory 08:00:11. The naming and dialogue are readable, but the body delivering them is hidden. This is a composition defect, not a request to redesign LIMEN. Capture: Producer-operated studio browser.",
+      "reusedExactAsset": true
+    },
+    {
+      "id": "departure-arms",
+      "src": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-departure-arms-117s.png",
+      "sha256": "6f8898d9ddd4b2a0c7bc346edfc21e631bb90cfebed6378306fa9dfb21eaee2f",
+      "width": 1280,
+      "height": 720,
+      "alt": "A departing blue worker holds both arms sideways while crossing the foreground.",
+      "caption": "Figure 2. Actual decoded continuation frame at PTS 117. The preceding sampled positions establish persistence; this single image does not prove locomotion timing or diagnose the rig. Capture: Producer-operated studio browser; frame extracted by Animator.",
+      "reusedExactAsset": false
+    },
+    {
+      "id": "departure-obstruction",
+      "src": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-departure-obstruction.png",
+      "sha256": "a5f09e13877ae4e63c01c11b115c0b93036e89c4aa89e39d2a993d1e82811f1e",
+      "width": 1280,
+      "height": 720,
+      "alt": "Facade geometry blocks almost the entire departure view.",
+      "caption": "Figure 3. Actual decoded continuation frame at PTS 118. The corrected replay must show the exit action rather than the inside of foreground dressing. Capture: Producer-operated studio browser; frame extracted by Animator.",
+      "reusedExactAsset": true
+    },
+    {
+      "id": "night-320",
+      "src": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-night-320.png",
+      "sha256": "dd8cfec37beef4ca58ec4cbd6a420b2fb7f14799416b617fa452093fd3eefdd5",
+      "width": 320,
+      "height": 720,
+      "alt": "The night image and completed-shift controls at320pixels wide.",
+      "caption": "Figure 4. Actual approved R10 ending at 320 pixels wide. The image, completion message, three outputs and Restart are visible. This does not establish full mobile gameplay. Capture: Producer-operated studio browser.",
+      "reusedExactAsset": true
+    }
+  ]
+}

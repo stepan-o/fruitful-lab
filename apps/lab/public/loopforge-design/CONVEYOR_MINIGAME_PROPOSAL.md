@@ -4,7 +4,25 @@
 
 *Generated from game-design/conveyor-proposal.json.*
 
-Prebuilt first-turn line implemented. BDI agents, polished character acting, shared policies and later-room progression remain proposed.
+Owner-approved demonstrated Day1: three workpieces and twelve departures. Broader operating, policy and economy studies below remain proposals.
+
+### What is playable now
+
+The approved Day 1 scene demonstrates an ordered line: Intake → Wash → Main Belt → Forge. Ordinary controls advance the tutorial; later paired and staffed sequences use the same four physical control positions. Eight assigned crew do not imply eight machine controls. The display distinguishes assigned workers from actual occupied controls.
+
+The recorded day completes one tutorial output, one paired output and one staffed output, for a total of three. These are completed process outputs. They are not evidence of dispatch, retained new workers, earnings or an implemented production economy.
+
+The current geometry stays. Keep the working aisle and real approaches to the four pedestals. Use a local Forge/output view and explicit support-post names when the master is too small to explain that work. No new stations, invisible routes or worker relocation are needed to improve the picture.
+
+### Later scenarios must fit this room
+
+The Systems–Level scenario reconciliation keeps current four-control behavior separate from future eight required duties, receiving readiness, qualifications, safe handover, room-lead authority and scheduling. A standing assignment is not a blanket authorization whitelist: the paired sequence legitimately uses different controls. Future policy must preserve those declared cases or replace them explicitly.
+
+A later local briefing must bring its intended listeners within real hearing range. Reports need an actual approach, an addressed recipient and time to return. An observer must clear the Wash control before a learner approaches, and the line must be safely released and restaffed under explicit rules. These are selected scenario requirements, not implemented later-day mechanics.
+
+The current Wash source supports a pedestal forward-push-and-stop action. The later teaching score was revised to a forward stroke, held stop and withdrawal/reset; an unsupported lift-and-turn was removed. Exact hand contact, reach, timing and practice capacity still require scene work. The Theatre's onward route and later scheduling remain deferred; no extra room is implied by the storyboard.
+
+**Proposed next operating loop.** The existing feed/pace, adviser, consequence and progression studies describe the intended broader game. They are retained as proposals. The Day 1 demonstration and its approved presentation do not establish general safe-handover, receiver-capacity, economy or later-room play.
 
 ## Operate the line. Read its people.
 
@@ -12,7 +30,7 @@ A prebuilt conveyor is a physical operating puzzle: regulate flow, choose whose 
 
 Owner direction: remove all player building. Keep the room topology and cinematic factory. Workers and supervisors are BDI agents; LLM use is optional. Supervisors influence capability, interpretation, decisions and other agents.
 
-**Recommendation.** Start at the console, receive the mandate and choose an adviser. Compare the same inherited line under LIMEN and STILETTO. Prove a readable gate inspection, a physical cradle transfer and an actual worker response before expanding the factory repertoire.
+**Recommendation.** Keep the compact Day1 rooms and real four control positions. Correct the stable reading area and local work views before extending operating scenarios.
 
 ## Where the fun comes from
 
@@ -20,7 +38,7 @@ Owner direction: remove all player building. Keep the room topology and cinemati
 
 ![Top-down factory plan](/loopforge-design/factory-floor-plan.193f23a74311.svg)
 
-Nine repacked zones, fourteen connections and a common 15 m hall height. Theatre and Logistics fill the eastern rectangles; Security has a direct Theatre corridor. Hatching marks pipe walls. Generated from the runtime spatial authority.
+Nine repacked zones, fourteen connections and a common 15 m hall height. Theatre and Logistics fill the eastern rectangles; Security has a direct Theatre corridor. Hatching marks pipe walls. This separate factory-floor authoring study is not the compact Day1 runtime.
 
 **I made this work.** A queue shrinks because of a change I made. The limiting step moves somewhere else, giving me a new problem I can actually see.
 
@@ -94,15 +112,15 @@ Author layout reference · More capacity. More coordination.
 
 **What carries forward.** These are authored scenario comparisons, not player construction options. Physical routes shape exposure and later social consequences.
 
-## Prebuilt spatial authority
+## Compact Day1 and the broader floor study
 
-Approved room proportions and connections stay. Security and the Lattice Forge are open first; later rooms remain locked. Empty layout plots are author composition/traffic space, not a player placement interface.
+The demonstrated scene connects Lobby, compact Security and Conveyor. The nine-zone map is a separate larger factory study; it does not describe this slice’s room dimensions, unlocked rooms or routes.
 
-**World.** Nine zones fill a continuous building at a common 15 m hall height. Keep the direct Security–Theatre connection and process pipe walls.
+**Current Day1.** Lobby16×11m; Security8×7.5m plus4×2.5m connector; Conveyor24×14m; four control pads and existing circulation.
 
-**Scale.** Maintain room scale while framing one work area clearly. Workers must read as bodies operating real machinery, not dots in an empty hall.
+**Broader proposal.** The retained nine-zone/15m-hall map describes later factory planning, including Theatre and Logistics; those routes and unlocks are not demonstrated here.
 
-**Author tooling.** The separate factory-floor route can inspect equipment and floor plans. Author calibration is not a gameplay purchase or unlock.
+**Author tooling.** The separate factory-floor route inspects its own broader source layout. It is not a Day1 gameplay purchase or unlock.
 
 ## The operating loop
 

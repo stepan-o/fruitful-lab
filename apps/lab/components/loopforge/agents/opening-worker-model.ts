@@ -37,7 +37,7 @@ export async function loadOpeningWorker(stage:CharacterStage,worker:OpeningWorke
   const sourceHeight=Math.max(...meshes.map(m=>{m.computeWorldMatrix(true);return m.getBoundingInfo().boundingBox.maximumWorld.y;}))-Math.min(...meshes.map(m=>m.getBoundingInfo().boundingBox.minimumWorld.y));
   const standingHeight=openingWorkers.find(w=>w.id===worker)!.height;root.scaling.setAll(standingHeight/sourceHeight);root.computeWorldMatrix(true);
   sleeve=createCredentialSleeve(scene,worker,hips);if(sleeve)shadow.addShadowCaster(sleeve.mesh);
-  const reviewSampler=createPerformanceSampler(container.animationGroups,'','source'),performer=createPerformanceSampler(container.animationGroups,'','y-up');
+  const reviewSampler=createPerformanceSampler(container.animationGroups,'','source'),performer=createPerformanceSampler(container.animationGroups,'','y-up',worker==='max'?root:undefined);
   lamp=new DirectionalLight(`${worker} inspection lamp`,new Vector3(.25,-.5,1),scene);lamp.diffuse=new Color3(.82,.9,1);lamp.intensity=2.5;lamp.includedOnlyMeshes=meshes;lamp.renderPriority=5;
   const materials=container.materials.filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{m.maxSimultaneousLights=6;return {m,texture:m.albedoTexture,mr:m.metallicTexture,normal:m.bumpTexture,color:m.albedoColor.clone(),metallic:m.metallic,roughness:m.roughness,paint:new OpeningWorkerFinish(m,worker)};});
   // The source exports treat painted panels as near-perfect metal. Retain maps,

@@ -1,9 +1,10 @@
+import {createMaxLegTransition} from './max-leg-transition.mjs';
 import {Quaternion,Vector3} from '@babylonjs/core/Maths/math.vector';
 import type {AnimationGroup} from '@babylonjs/core/Animations/animationGroup';
 import type {TransformNode} from '@babylonjs/core/Meshes/transformNode';
 import type {MotionCue,ActorView} from '@/lib/loopforge/encounters/contract';
 /** Stateless pose results, reusable work buffers. Seeking never depends on the preceding sample. */
-export function createPerformanceSampler(groups:AnimationGroup[],prefix='',rootMotion:'z-up'|'y-up'|'source'='z-up'){
+export function createPerformanceSampler(groups:AnimationGroup[],prefix='',rootMotion:'z-up'|'y-up'|'source'='z-up',maxLegRoot?:TransformNode){
  const indices=new Map<string,number>(),channels:{target:TransformNode;path:string;rest:Quaternion|Vector3}[]=[];
  for(const group of groups)for(const {animation,target}of group.targetedAnimations){const path=animation.targetProperty,key=`${target.uniqueId}/${path}`;if(!indices.has(key)){indices.set(key,channels.length);channels.push({target,path,rest:target[path].clone()});}}
  const prepared=new Map(groups.map(group=>[group,{group,tracks:group.targetedAnimations.map(({animation,target})=>({animation,index:indices.get(`${target.uniqueId}/${animation.targetProperty}`)!,hips:rootMotion!=='source'&&animation.targetProperty==='position'&&/(?:^|:)Hips$/.test(target.name)}))}]));
@@ -18,6 +19,7 @@ export function createPerformanceSampler(groups:AnimationGroup[],prefix='',rootM
   for(const {animation,index}of quiet.tracks){const {target,path}=channels[index];let paths=quietBase.get(target);if(!paths){paths=new Map();quietBase.set(target,paths);}paths.set(path,(animation.evaluate(frame)as Quaternion|Vector3).clone());}
  }
  const next=channels.map(t=>t.rest.clone()),old=channels.map(t=>t.rest.clone());
+ const maxLegBlend=maxLegRoot?createMaxLegTransition(channels,maxLegRoot):undefined;
  function evaluate(cue:MotionCue,seconds:number,result:(Quaternion|Vector3)[]){
   const entry=bank.get(cue.clip);if(!entry)throw Error(`Missing performance: ${cue.clip}`);
   const {group,tracks}=entry,fps=tracks[0].animation.framePerSecond,duration=(group.to-group.from)/fps;
@@ -48,5 +50,6 @@ export function createPerformanceSampler(groups:AnimationGroup[],prefix='',rootM
    if(path==='rotationQuaternion'){if(mix)Quaternion.SlerpToRef(old[i]as Quaternion,next[i]as Quaternion,weight,target.rotationQuaternion!);else target.rotationQuaternion!.copyFrom(next[i]as Quaternion);}
    else if(path==='position'||path==='scaling'){const out=path==='position'?target.position:target.scaling;if(mix)Vector3.LerpToRef(old[i]as Vector3,next[i]as Vector3,weight,out);else out.copyFrom(next[i]as Vector3);}
   }
+  if(mix)maxLegBlend?.apply(cue,previous!.cue,old,next,weight);
  }};
 }

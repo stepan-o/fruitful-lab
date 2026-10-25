@@ -1,6 +1,10 @@
 import {conveyorControl,CONVEYOR_STATIONS,type ConveyorStation} from './arrival-layout';
-import type {Action,Performance,Point,ProcessCue} from './contract';
+import type {Action,Performance,Point,ProcessCue,MotionCue} from './contract';
 export type DayOneOperators=Record<ConveyorStation,string>;
+// The Max source is a push-and-stop take, not a cyclic work loop. Play its
+// source .4..2.5999999046325684 exactly once over the existing six-second phase.
+// The endpoint is the stored float32 duration in all three Max delivery banks.
+const maxForgePush:MotionCue={clip:'Push_Forward_and_Stop',start:.4,rate:(2.5999999046325684-.4)/6,loop:false,blend:.2};
 /** The Director supplies assignments and chronology. This builds actual work,
  * not a visual output counter: every phase is guarded by all staffed controls. */
 export function staffedProduction(operators:DayOneOperators,participants:string[],resources:string[],rest:Performance[]):Action{
@@ -13,7 +17,7 @@ export function staffedProduction(operators:DayOneOperators,participants:string[
   reason:'A staffed crew moves its first operational workpiece through all four guarded stations.',
   phases:[
    {id:'The staffed line starts its first batch',ticks:60,framing:'conveyor-wide',perform:rest,effects:[{fact:'day.stage',value:'production'},{fact:'line.stage',value:0},{fact:'line.batch',value:3}]},
-   ...CONVEYOR_STATIONS.map((s,i)=>({id:`The staffed ${s.id} operates`,ticks:120,framing:s.id,perform:rest.map(p=>p.agent===operators[s.id]?{agent:p.agent,motion:'listen' as const,yaw:180,cue:{clip:'Push_Forward_and_Stop',start:.4,rate:1,loop:true,blend:.2}}:p),process:guard(s.id,i),effects:[{fact:'line.stage',value:i+1},{fact:`line.operational.${s.id}`,value:true},...(i===3?[{fact:'line.output',value:3},{fact:'line.staffed-output',value:1},{fact:'line.history.staffed-3',value:true},{fact:'day.stage',value:'output'}]:[])]})),
+   ...CONVEYOR_STATIONS.map((s,i)=>({id:`The staffed ${s.id} operates`,ticks:120,framing:s.id,perform:rest.map(p=>p.agent===operators[s.id]?{agent:p.agent,motion:'listen' as const,yaw:180,cue:p.agent==='max'&&s.id==='forge'?{...maxForgePush}:{clip:'Push_Forward_and_Stop',start:.4,rate:1,loop:true,blend:.2}}:p),process:guard(s.id,i),effects:[{fact:'line.stage',value:i+1},{fact:`line.operational.${s.id}`,value:true},...(i===3?[{fact:'line.output',value:3},{fact:'line.staffed-output',value:1},{fact:'line.history.staffed-3',value:true},{fact:'day.stage',value:'output'}]:[])]})),
    {id:'The first operational output is ready',ticks:100,framing:'forge',attention:'hold',inputLabel:'End the shift',perform:rest},
   ]};
 }

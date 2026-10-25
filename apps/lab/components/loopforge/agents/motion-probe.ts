@@ -51,7 +51,7 @@ export function createMotionProbe(maxWorkerCalls=32){
     if(caseId==='A3-06'){
      if(v.credentialStatus?.actorId!=='max'||!['Listening_Gesture','Quiet_Wait'].includes(actors[0].cue?.clip??''))throw Error('A3 expected actual temporary Max check');
     }else if(caseId==='A3-07'||caseId==='A3-08'){
-     if(v.dayOne?.stage!=='departure'||!actors.every(a=>a.action==='shift-departure'))throw Error('A3 expected actual departure');
+     if(v.dayOne?.stage!=='departure'||!actors.every(a=>/^shift-departure\/(?:0|[1-9]\d*)$/.test(a.action)))throw Error('A3 expected actual departure');
     }else if(!v.phase.includes(spec.phase))throw Error('A3 wrong live phase');
     if(['A3-01','A3-03','A3-05','A3-06'].includes(caseId)&&actors.some(a=>a.seconds<.35||!!a.previous&&(a.blend??1)<1))throw Error('A3 sample not yet unblended/settled');
     if((caseId==='A3-01'||caseId==='A3-02')&&actors.some(a=>a.motion!=='walk'))throw Error('A3 expected moving morning workers');

@@ -131,8 +131,9 @@ export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneRepor
     approach:[124,124.5,1.55,11,-Math.PI/2,1.32],
     assembly:[124,111.9,1.6,6.0,-1.78,1.4],
     impact:[123.85,111.8,.95,4.8,-2.15,1.12],
-    card:[124.2,112.2,.8,4.1,-2.5,.98],
-    passage:[125.1,116.0,1.3,7.9,1.79,1.36],
+    // D7 source selection: hold one low side view through acquisition, release and recovery.
+    card:[123.9,112.2,1.15,5.710516614107688,-0.17670885607003678,1.4831263117566529],
+    passage:[123.9,112.2,1.15,5.710516614107688,-0.17670885607003678,1.4831263117566529],
     threshold:[124.9,110.9,1.05,7.1,-1.5,1.25],
     // Keep the applicant, LIMEN and both rear desks in one working composition.
     checkpoint:[124.1,108.7,1.45,10.2,-1.66,1.3],

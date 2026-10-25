@@ -59,3 +59,13 @@
 
 /* Narrative foundation stays readable without adding another dense card grid. */
 .narrative-foundation{max-width:78ch}.narrative-foundation h3{margin-top:32px}.narrative-foundation>p{max-width:72ch}.narrative-reading-list{list-style:none;padding:0;margin:24px 0}.narrative-reading-list li{margin:0;padding:14px 0;border-top:1px solid var(--line)}.narrative-reading-list a{display:flex;align-items:center;min-height:44px}.narrative-reading-list span{display:block;font-size:14px;color:var(--muted)}
+
+/* Keep every mast link reachable and wide job tables local on narrow readers. */
+.masthead{flex-wrap:wrap}
+.mast-links{flex-wrap:wrap;min-width:0}
+.mast-links a{display:inline-flex;align-items:center;min-height:44px}
+.focused-job-table{max-width:100%;overflow-x:auto;margin:24px 0}
+.focused-job-table:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+.focused-job-table table{width:100%;min-width:40rem;border-collapse:collapse;font-size:14px}
+.focused-job-table th,.focused-job-table td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid var(--line);overflow-wrap:normal;word-break:normal}
+@media(max-width:600px){.masthead{align-items:flex-start}.mast-links{width:100%;gap:4px 16px}}

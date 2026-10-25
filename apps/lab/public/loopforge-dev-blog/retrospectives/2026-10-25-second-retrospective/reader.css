@@ -1,2 +1,14 @@
 
 .reader{max-width:76ch;margin:48px auto}.reader h1{font-size:clamp(36px,6vw,64px)}.reader h2{font-size:clamp(26px,3vw,36px);margin-top:2em}.reader p,.reader li{color:var(--muted)}.reader figure{margin:32px auto}.reader figcaption{color:var(--muted)}.reader img{object-fit:contain}.reader blockquote{margin:24px 0;padding-left:20px;border-left:2px solid var(--gold)}.reader-nav{display:flex;flex-wrap:wrap;gap:4px 20px;border-bottom:1px solid var(--line);padding:12px 0}.reader-nav a{display:flex;align-items:center;min-height:44px}.reader-nav a[aria-current]{font-weight:bold;color:var(--ink)}.contents{margin:24px 0;padding:18px;border:1px solid var(--line)}.contents ol{padding-left:24px}.contents a{display:inline-flex;align-items:center;min-height:44px}.table-scroll{max-width:100%;overflow-x:auto;margin:26px 0}.table-scroll table{border-collapse:collapse;min-width:100%;font-size:14px}.table-scroll th,.table-scroll td{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:10px 14px;min-width:6ch}.table-scroll td:first-child{min-width:12ch}.manuscript{margin-top:40px;border-top:1px solid var(--line);padding-top:20px}.interview-links{display:flex;flex-wrap:wrap;gap:4px 20px}.interview-links a{display:flex;align-items:center;min-height:44px} @media(max-width:600px){.reader{margin-top:28px}.table-scroll{font-size:13px}.reader-nav{gap:0 14px}.topbar{gap:12px}.reader h1{overflow-wrap:anywhere}} @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Keep the assessment's semantic tables readable inside their focusable scroll regions. */
+.reader.assessment .table-scroll table{min-width:40rem;table-layout:auto}
+.reader.assessment .table-scroll th,.reader.assessment .table-scroll td{overflow-wrap:normal;word-break:normal}
+.reader.assessment .table-scroll .table-values{min-width:28rem}
+.reader.assessment .table-values td:last-child{white-space:nowrap}
+
+/* Statistics retain complete numeric values in the same accessible local scroll. */
+.reader.statistics .table-scroll table{min-width:48rem;table-layout:auto}
+.reader.statistics .table-scroll th,.reader.statistics .table-scroll td{overflow-wrap:normal;word-break:normal}
+.reader.statistics .table-scroll td:nth-child(n+2){white-space:nowrap}
+.interview-links a[aria-current="page"]{font-weight:700;color:var(--ink);text-decoration-thickness:3px}

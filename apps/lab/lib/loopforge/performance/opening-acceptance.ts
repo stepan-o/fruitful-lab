@@ -1,7 +1,7 @@
 import type {DayOneState} from '../encounters/day-one-state';
 import {ACCEPTANCE,frameStats,type Resources} from './acceptance';
 export const OPENING_ACCEPTANCE={version:'opening-scene-6',warmupMs:30000,durationMs:600000,width:1280,height:720,workers:10,supervisors:2} as const;
-export const OPENING_SHOTS=['approach','limen-emphasis','workers-reverse','impact','card','passage','threshold','checkpoint','sam-inspection','aftermath','conveyor-entrance','conveyor-wide','intake','wash','belt','forge','doorway-pressure','security-check-reverse'] as const;
+export const OPENING_SHOTS=['approach','limen-emphasis','workers-reverse','impact','card','passage','threshold','checkpoint','sam-inspection','aftermath','conveyor-entrance','conveyor-wide','intake','wash','belt','forge','doorway-pressure','security-check-reverse','clerk-register','clerk-sorting','pair-work-reply','jo-work-reply','output-reply','exit-pair','exit-flow'] as const;
 export const CONVEYOR_ACCEPTANCE={...OPENING_ACCEPTANCE,version:'conveyor-room-1'} as const;
 export function dayOneWorkload(actionTicks:number,manualControls:number,requiredShots:readonly string[]){
  if(!Number.isSafeInteger(actionTicks)||actionTicks<=0||!Number.isSafeInteger(manualControls)||manualControls<1||!requiredShots.length)throw Error('Invalid Day 1 workload');

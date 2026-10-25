@@ -21,3 +21,22 @@ it('requires every Day 1 stage and a fully staffed line without relaxing cadence
 });
 
  test('two complete ordinary cycles include six control dwells and the night image',()=>{const w=dayOneWorkload(14680,6,OPENING_SHOTS);expect(w.durationMs).toBe(1502000);expect(w.maxActualStartMs).toBe(1652000);expect(w.warmupMs).toBe(30000);expect(()=>dayOneWorkload(0,6,OPENING_SHOTS)).toThrow();const recorder=createOpeningRecorder('day-one',w);recorder.frame(0,'approach');recorder.frame(1200000,'approach');expect(recorder.result(resources,resources,2,null).status).toBe('INVALID');});
+
+
+// Selected D6/Level compositions are an independent requirement, not inferred
+// from OPENING_SHOTS. Dropping one from the catalog must fail this assertion too.
+describe.each(['opening','day-one'] as const)('%s directed composition coverage',scope=>{
+ test.each(['clerk-register','clerk-sorting','pair-work-reply','jo-work-reply','output-reply','exit-pair','exit-flow'])('rejects a smooth complete run missing %s',omitted=>{
+  expect(OPENING_SHOTS).toContain(omitted);
+  const recorder=createOpeningRecorder(scope),shots=OPENING_SHOTS.filter(shot=>shot!==omitted);
+  const duration=scope==='day-one'?DAY_ONE_ACCEPTANCE.durationMs:OPENING_ACCEPTANCE.durationMs;
+  const stages=['entry','tutorial','staffing','production','output','departure','night'] as const;
+  const day:DayOneState={stage:'entry',crew:8,stationOperators:{intake:'bob',wash:'sam',belt:'jo',forge:'max'},stationOccupancy:{intake:'bob',wash:'sam',belt:'jo',forge:'max'},tutorialOutputs:1,pairedOutputs:1,staffedOutputs:1,productionOutputs:3,departed:12,totalCast:12};
+  for(let t=0;t<=duration;t+=20)recorder.frame(t,shots[Math.floor(t/20000)%shots.length],'composition omission fixture',{...day,stage:stages[Math.floor(t/20000)%stages.length]});
+  recorder.probe(40);
+  const result=recorder.result(resources,resources,2,null);
+  expect(result.shots[omitted]).toBeUndefined();
+  expect(Object.entries(result.checks).filter(([,passed])=>!passed).map(([name])=>name)).toEqual(['allShots']);
+  expect(result.status).toBe('FAIL');
+ });
+});

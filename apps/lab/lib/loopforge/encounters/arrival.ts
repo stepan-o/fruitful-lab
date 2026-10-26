@@ -1,3 +1,4 @@
+import {bindMaxForgeControlPress} from './max-forge-press-binding';
 import {stageDayOneHearing} from './day-one-hearing-staging';
 import {stageDayOneSupport} from './day-one-support';
 import {applyDayOneDirection} from './day-one-direction';
@@ -224,7 +225,7 @@ export function arrival(){
   if(phase.process)Object.assign(phase,operationPhase(phase,phase.process));
  }
 
- integrateWriter(registry,world);stageDayOneHearing(registry,world);applyDayOneDirection(registry);stageDayOneSupport(registry,world);
+ integrateWriter(registry,world);stageDayOneHearing(registry,world);applyDayOneDirection(registry);stageDayOneSupport(registry,world);bindMaxForgeControlPress(registry);
  const planner:Planner=scriptedSelector(sequence,'limen');
  const allPhases=sequence.flatMap(id=>registry[id].phases);let tick=1;const starts=new Map<string,number>();for(const p of allPhases){starts.set(p.id,tick);tick+=p.ticks;}
  const beats=[['The morning walk','The morning walk'],['Welcome to Loopforge','Welcome to Loopforge'],['Cyan strike','Blade contact'],['The found card','ed lifts the card'],['STILETTO arrives','bob gets up as STILETTO arrives'],['LIMEN gives way','LIMEN yields the threshold'],['The Protocol, sir','bob finds a safer sentence'],['The volunteers','Who cares about this factory?'],['The empty line','One worker for a whole line'],['Intake','The intake instruction'],['Wash','The wash instruction'],['Main Belt','The belt instruction'],['Lattice Forge','The Forge instruction'],['The third ID','Third check name and assignment']].map(([label,id])=>({label,tick:starts.get(id)!+Math.min(10,allPhases.find(p=>p.id===id)!.ticks-1)}));

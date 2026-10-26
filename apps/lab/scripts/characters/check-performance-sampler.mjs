@@ -8,7 +8,8 @@ const app=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 const source=await readFile(path.join(app,'components/loopforge/agents/performance-sampler.ts'),'utf8');
 const js=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText
   .replaceAll("'@babylonjs/core/Maths/math.vector'",JSON.stringify(pathToFileURL(path.join(app,'node_modules/@babylonjs/core/Maths/math.vector.js')).href))
-  .replaceAll("'./max-leg-transition.mjs'",JSON.stringify(pathToFileURL(path.join(app,'components/loopforge/agents/max-leg-transition.mjs')).href));
+  .replaceAll("'./max-leg-transition.mjs'",JSON.stringify(pathToFileURL(path.join(app,'components/loopforge/agents/max-leg-transition.mjs')).href))
+  .replaceAll("'./max-forge-press.mjs'",JSON.stringify(pathToFileURL(path.join(app,'components/loopforge/agents/max-forge-press.mjs')).href));
 const {createPerformanceSampler}=await import('data:text/javascript;base64,'+Buffer.from(js).toString('base64'));
 function fixture(mode){
  const hips={uniqueId:1,name:'Hips',position:new Vector3(0,10,0),rotationQuaternion:Quaternion.Identity()},hand={uniqueId:2,name:'RightHand',position:Vector3.Zero(),rotationQuaternion:Quaternion.Identity()};

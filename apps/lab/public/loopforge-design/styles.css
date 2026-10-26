@@ -69,3 +69,9 @@
 .focused-job-table table{width:100%;min-width:40rem;border-collapse:collapse;font-size:14px}
 .focused-job-table th,.focused-job-table td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid var(--line);overflow-wrap:normal;word-break:normal}
 @media(max-width:600px){.masthead{align-items:flex-start}.mast-links{width:100%;gap:4px 16px}}
+
+/* Comparison tables scroll inside the reader, including the 320px layout. */
+.table-scroll{width:100%;max-width:100%;min-width:0;overflow-x:auto;margin:24px 0}
+.table-scroll:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+.table-scroll table{width:100%;min-width:32rem;border-collapse:collapse}
+.table-scroll th,.table-scroll td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid var(--line)}

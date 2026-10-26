@@ -12,6 +12,9 @@ import type {ActorView} from '@/lib/loopforge/encounters/contract';
 import type {WorkerSurface} from './worker-model';
 import {worldPoint,FLOOR_SIZE} from '@/lib/loopforge/spatial/floor';
 import {openingWorkers,openingWorkerAsset,type OpeningWorkerId,type WorkerDetail} from '@/lib/loopforge/agents/opening-workers';
+import sockets from '@/lib/loopforge/agents/opening-worker-sockets.json';
+import {maxForgeControlTop} from '@/lib/loopforge/agents/max-forge-contact';
+import {measureLoadedMaxPalm} from './max-forge-palm';
 import grips from '@/lib/loopforge/agents/opening-worker-grips.json';
 import {createPerformanceSampler} from './performance-sampler';
 import {createCredentialProps,createCredentialSleeve} from './credential-props';
@@ -37,7 +40,17 @@ export async function loadOpeningWorker(stage:CharacterStage,worker:OpeningWorke
   const sourceHeight=Math.max(...meshes.map(m=>{m.computeWorldMatrix(true);return m.getBoundingInfo().boundingBox.maximumWorld.y;}))-Math.min(...meshes.map(m=>m.getBoundingInfo().boundingBox.minimumWorld.y));
   const standingHeight=openingWorkers.find(w=>w.id===worker)!.height;root.scaling.setAll(standingHeight/sourceHeight);root.computeWorldMatrix(true);
   sleeve=createCredentialSleeve(scene,worker,hips);if(sleeve)shadow.addShadowCaster(sleeve.mesh);
-  const reviewSampler=createPerformanceSampler(container.animationGroups,'','source'),performer=createPerformanceSampler(container.animationGroups,'','y-up',worker==='max'?root:undefined);
+  let forgePalm:ReturnType<typeof measureLoadedMaxPalm>|undefined;
+  const reviewSampler=createPerformanceSampler(container.animationGroups,'','source');
+  const performer=createPerformanceSampler(container.animationGroups,'','y-up',worker==='max'?root:undefined,worker==='max'?()=>{
+   if(!forgePalm)throw Error('Max Forge: actual palm measurement is missing');
+   return {point:maxForgeControlTop(),normal:[0,1,0],forward:[0,0,1],handContactLocal:forgePalm.point,handContactNormalLocal:forgePalm.handContactNormalLocal};
+  }:undefined);
+  if(worker==='max'){
+   const saved=container.transformNodes.map(node=>({node,p:node.position.clone(),q:node.rotationQuaternion?.clone(),s:node.scaling.clone()}));
+   try{performer.sample({clip:'Quiet_Wait',rate:1,loop:true},1.4);forgePalm=measureLoadedMaxPalm(root,meshes,sockets.max.right);}
+   finally{for(const {node,p,q,s}of saved){node.position.copyFrom(p);if(q)node.rotationQuaternion!.copyFrom(q);node.scaling.copyFrom(s);node.computeWorldMatrix(true);}}
+  }
   lamp=new DirectionalLight(`${worker} inspection lamp`,new Vector3(.25,-.5,1),scene);lamp.diffuse=new Color3(.82,.9,1);lamp.intensity=2.5;lamp.includedOnlyMeshes=meshes;lamp.renderPriority=5;
   const materials=container.materials.filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{m.maxSimultaneousLights=6;return {m,texture:m.albedoTexture,mr:m.metallicTexture,normal:m.bumpTexture,color:m.albedoColor.clone(),metallic:m.metallic,roughness:m.roughness,paint:new OpeningWorkerFinish(m,worker)};});
   // The source exports treat painted panels as near-perfect metal. Retain maps,
@@ -84,7 +97,7 @@ export async function loadOpeningWorker(stage:CharacterStage,worker:OpeningWorke
   });
   root.rotation.y=Math.PI;room('security');clip(id);
   return {
-   presentation:{root,bodyMeshes:meshes,standingHeight,hand:(side:'left'|'right')=>container.transformNodes.find(n=>n.name===(side==='left'?'LeftHand':'RightHand'))!},
+   presentation:{root,bodyMeshes:meshes,standingHeight,forgePalm,forgePressState:()=>performer.forgePressState,hand:(side:'left'|'right')=>container.transformNodes.find(n=>n.name===(side==='left'?'LeftHand':'RightHand'))!},
    motionSnapshot(view:ActorView,source:MotionSource){return snapshotMotion({worker,file,root,nodes:container.transformNodes,groups:container.animationGroups,scene,view,standingHeight,sourceHeight},source);},
    file,clips:[...file.clips,'Quiet_Wait'],duration,clip,room,finish,normals,
    play(value:boolean){if(value&&phase===1)phase=0;playing=value;last=performance.now();stage.refresh();},
@@ -92,7 +105,7 @@ export async function loadOpeningWorker(stage:CharacterStage,worker:OpeningWorke
    centre(value:boolean){centred=value;sample();},turn(value:number){root.rotation.y=Math.PI+value*Math.PI/180;sample();},
    light(value:boolean){lamp?.setEnabled(value);stage.refresh();},ground(value:boolean){guide?.setEnabled(value);stage.refresh();},
    surface(value:WorkerSurface){for(const {m,texture,mr,normal,color,metallic,roughness,paint}of materials){paint.enabled=value==='clay'||!factoryFinish?0:1;m.bumpTexture=value==='clay'||!normalDetail?null:normal;m.albedoTexture=value==='clay'?null:texture;m.metallicTexture=value==='clay'?null:mr;m.albedoColor=value==='clay'?new Color3(.4,.43,.42):color;m.metallic=value==='clay'?0:factoryFinish?Math.min(metallic??1,.35):metallic;m.roughness=value==='clay'?.85:factoryFinish?Math.max(roughness??1,.65):roughness;m.wireframe=value==='wireframe';}stage.refresh();},
-   perform(view:ActorView,position:Vector3){if(!view.cue)return;playing=false;lamp?.setEnabled(false);guide?.setEnabled(false);performer.sample(view.cue,view.seconds,view.previous,view.blend);const from=view.previous?.yaw??view.yaw,delta=((view.yaw-from+540)%360)-180,t=Math.min(1,view.seconds/.4);root.rotation.y=Math.PI+(from+delta*t*t*(3-2*t))*Math.PI/180;root.position.copyFrom(position);root.computeWorldMatrix(true);},
+   perform(view:ActorView,position:Vector3){if(!view.cue)return;playing=false;lamp?.setEnabled(false);guide?.setEnabled(false);if(worker!=='max')performer.sample(view.cue,view.seconds,view.previous,view.blend);const from=view.previous?.yaw??view.yaw,delta=((view.yaw-from+540)%360)-180,t=Math.min(1,view.seconds/.4);root.rotation.y=Math.PI+(from+delta*t*t*(3-2*t))*Math.PI/180;root.position.copyFrom(position);root.computeWorldMatrix(true);if(worker==='max')performer.sample(view.cue,view.seconds,view.previous,view.blend);},
    dispose(){if(disposed)return;disposed=true;scene.onBeforeRenderObservable.remove(observer);meshes.forEach(m=>shadow.removeShadowCaster(m));cardProps?.dispose();if(sleeve){shadow.removeShadowCaster(sleeve.mesh);sleeve.dispose();}lamp?.dispose();guide?.dispose();container.dispose();root.dispose();}
   };
  }catch(error){cardProps?.dispose();if(sleeve){shadow.removeShadowCaster(sleeve.mesh);sleeve.dispose();}lamp?.dispose();guide?.dispose();container.dispose();root.dispose();throw error;}

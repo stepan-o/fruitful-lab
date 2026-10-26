@@ -16,7 +16,7 @@ export type Effect={fact:string;value:Value;observedBy?:string[]}|{agent:string;
 export type Delivery={tone:'plain'|'command'|'outburst'|'aside'|'hesitant'|'dry'|'warm';emotion?:'anger'|'nerves'|'doubt'|'relief'|'care';emphasis?:string[]};
 export type Speech={delivery?:Delivery;channel?:'local'|'shout';speaker:string;to:string[];text:string;claim?:{fact:string;value:Value};act:'report'|'request'|'instruction'|'acknowledge'|'response';cause:string;seconds:number};
 /** Presentation instructions contain no authority to award effects. Times are source seconds. */
-export type MotionCue={clip:string;start?:number;rate?:number;loop?:boolean;blend?:number;rootMotion?:'preserve'};
+export type MotionCue={clip:string;start?:number;rate?:number;loop?:boolean;blend?:number;rootMotion?:'preserve';forgeQuiet?:{start:{cue:Omit<MotionCue,'forgeQuiet'>;seconds:number};end:{cue:Omit<MotionCue,'forgeQuiet'>;seconds:number}}};
 /** Custody is world state. A renderer may display a card, but cannot transfer it. */
 export type PropLocation={kind:'stowed';agent:string}|{kind:'hand';agent:string;socket:'left'|'right';grip?:'palm'|'edge'}|{kind:'floor';position:Point;yaw:number};
 export type SceneProp={id:string;kind:'credential';owner:string;location:PropLocation;previous?:{location:PropLocation;tick:number}};

@@ -14,8 +14,6 @@ import {conveyorReviewRange,staffedReviewRange} from '@/lib/loopforge/encounters
 import {dayOneReviewPoints} from '@/lib/loopforge/encounters/day-one-state';
 import {dayOneClock,dayOneProgress} from '@/lib/loopforge/encounters/day-one-presentation';
 import {useSceneFocus} from './use-scene-focus';
-import {MOTION_CASES,motionProbe,assertMotionPaused,type MotionCaseId,type RetainedMotionCast,type ProbeContext} from './motion-probe';
-import {motionSource} from './motion-source';
 import {entryPlayback,nextEntryStep,entryReadSeconds,type EntryPlayback} from '@/lib/loopforge/encounters/entry-playback';
 import {TICK_MS,type World,type View,type SceneFraming} from '@/lib/loopforge/encounters/contract';
 import {rehearsal,replay,rehearsalView,studies,type Study,type Choice} from '@/lib/loopforge/encounters/rehearsals';
@@ -38,7 +36,7 @@ import {phaseSpeech} from '@/lib/loopforge/encounters/shared-actions';
 import {dayOneWorkload} from '@/lib/loopforge/performance/opening-acceptance';
 import {startOpeningPerformance,type OpeningProgress} from './opening-performance';
 type Take=ReturnType<typeof rehearsal>;
-type Cast=Awaited<ReturnType<typeof loadRehearsalCast>>&Partial<RetainedMotionCast>;
+type Cast=Awaited<ReturnType<typeof loadRehearsalCast>>;
 type Runtime={floor:RehearsalStage;cast:Cast;take:Take;world:World;playing:boolean;measurementDwell?:number;userPaused?:boolean;autoEntry?:EntryPlayback;roomRange?:{startTick:number;endTick:number};view?:View;steps:AttentionStep[];limit?:AttentionStep;reading?:AttentionStep;readingBase?:View;readSeconds:number};
 function download(blob:Blob,name:string){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 export default function SceneStudies({player=false}:{player?:boolean}){
@@ -65,9 +63,6 @@ export default function SceneStudies({player=false}:{player?:boolean}){
  const [reading,setReading]=useState<AttentionStep|null>(null);
  const [anchoredSpeechIds,setAnchoredSpeechIds]=useState<readonly string[]>([]),lastAnchoredSpeechIds=useRef('');
  const [captureFile,setCaptureFile]=useState<CaptureFile|null>(null);
- const [motionFile,setMotionFile]=useState<CaptureFile|null>(null);
- const [motionStatus,setMotionStatus]=useState(()=>motionProbe.status());
- useEffect(()=>()=>{if(motionFile)URL.revokeObjectURL(motionFile.url);},[motionFile]);
  const [captureResults]=useState(()=>createCaptureResults(blob=>URL.createObjectURL(blob),url=>URL.revokeObjectURL(url)));
  const captureCancellation=useRef<(()=>void)|null>(null);
  useEffect(()=>()=>{captureResults.dispose();captureCancellation.current?.();},[captureResults]);
@@ -172,27 +167,13 @@ export default function SceneStudies({player=false}:{player?:boolean}){
  function choose(c:Choice){setChoice(c);const r=runtime.current;if(!r)return;r.take=rehearsal(study,c);seek(Math.min(r.world.tick,r.take.total));}
  function room(s:Study){if(s===study||testing)return;operationalId.current=null;setOperationalView(null);setMinimalDressing(false);setEntryAuto(false);setReferenceCapture(false);setConveyorOnly(false);setPerformanceRun(null);setReading(null);setMachineEffects(true);setStationLighting('glow');setLightRun(null);setReady(false);setRunning(false);setView(null);setError('');setTick(0);setReport(null);setWorld(null);lastShot.current='';setChoice('care');setStudy(s);}
  function evidence(){const r=runtime.current;if(!r)return;download(new Blob([JSON.stringify({kind:'isolated engine rehearsal',version:r.world.version,study,choice,tick:r.world.tick,camera:r.floor.reviewCamera(),stationLight:r.floor.stationLightSnapshot?.(),captureSettings:{referenceCapture,roomRange:r.roomRange??null,machineEffects,expressive,viewport:[innerWidth,innerHeight],devicePixelRatio,canvasCss:canvas.current?[canvas.current.clientWidth,canvas.current.clientHeight]:null,render:r.floor.renderSnapshot?.()},projection:rehearsalView(r.take,r.world),authorState:r.world,performance:report},null,2)],{type:'application/json'}),`loopforge-${study}-${choice}-${tick}.json`);}
- function motionContext(r:Runtime,c:HTMLCanvasElement):ProbeContext{
-  const rect=c.getBoundingClientRect();
-  return {source:motionSource,userPaused:!!r.userPaused,playing:r.playing,readingActive:!!r.reading,
-   readingPaused:!!r.userPaused&&!r.playing,readSeconds:r.readSeconds,readingStep:r.reading??null,
-   authoritativeProjection:rehearsalView(r.take,r.world),authorState:r.world,
-   activePhases:r.world.active.map(a=>{const p=r.take.registry[a.intent.action].phases[a.phase];return {action:a.intent.action,phase:p.id,remainingTicks:p.ticks-(r.world.tick-a.start)};}),
-   camera:r.floor.reviewCamera(),canvasRect:{x:rect.x,y:rect.y,width:rect.width,height:rect.height},
-   render:{settings:r.floor.renderSnapshot?.(),viewport:[innerWidth,innerHeight],devicePixelRatio,canvas:[c.width,c.height],capture:'Raw scene canvas; joint projections are in these render pixels. Page rail is outside this PNG.',performance:report}};
- }
- function saveMotionJSON(data:unknown,name:string){setMotionFile({url:URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),name});}
- async function capture(motionCase?:MotionCaseId){
+ async function capture(){
   const r=runtime.current,c=canvas.current;if(!r||!c)return;
   const request=captureResults.begin();setCaptureFile(null);
-  let motionResult:ReturnType<typeof motionProbe.snapshot>|null=null;
-  const initialTick=r.world.tick,initialReading=r.reading,initialReadSeconds=r.readSeconds;
-  if(motionCase)setMotionFile(null);
   captureCancellation.current?.();setSaving(true);setSaveStatus('');
   try{
-   if(motionCase){if(player||study!=='arrival'||testing)throw Error('A3 requires manual arrival review outside performance tests');assertMotionPaused(motionContext(r,c));}
-   else if(!r.reading)seek(r.world.tick);
-   if(!motionCase)await prepareTurnArt();
+   if(!r.reading)seek(r.world.tick);
+   await prepareTurnArt();
    if(!captureResults.isPending(request)||runtime.current!==r)throw Error('The scene changed. Please save again.');
    const scene=r.floor.characterStage().scene;
    await new Promise<void>((resolve,reject)=>{
@@ -210,32 +191,24 @@ export default function SceneStudies({player=false}:{player?:boolean}){
     observer=scene.onAfterRenderObservable.addOnce(()=>{
      if(!captureResults.isPending(request)||runtime.current!==r){finish(new Error('The scene changed. Please save again.'));return;}
      try{
-      if(motionCase){
-       if(r.world.tick!==initialTick||r.reading!==initialReading||r.readSeconds!==initialReadSeconds)throw Error('A3 world or reading changed during capture');
-       const {renderedView,motionSnapshot}=r.cast;
-       const cast=renderedView&&motionSnapshot?{renderedView:()=>renderedView(),motionSnapshot:(...args:Parameters<typeof motionSnapshot>)=>motionSnapshot(...args)}:null;
-       const spec=MOTION_CASES.find(row=>row.id===motionCase)!;
-       motionResult=motionProbe.snapshot(motionCase,spec.actors,cast,motionContext(r,c));
-      }
-      const frame=motionResult?.renderedView??(r.reading&&r.view?r.view:rehearsalView(r.take,r.world));
-      const name=motionCase?`loopforge-${motionCase}-${frame.tick}.png`:`loopforge-${study}-${choice}-${frame.tick}.png`;
-      const picture=motionCase?c:storyboard(c,frame,r.cast.anchors(),expressive);
+      const frame=r.reading&&r.view?r.view:rehearsalView(r.take,r.world);
+      const name=`loopforge-${study}-${choice}-${frame.tick}.png`;
+      const picture=storyboard(c,frame,r.cast.anchors(),expressive);
       picture.toBlob(blob=>{
        if(settled)return;
        if(!captureResults.isPending(request)||runtime.current!==r){finish(new Error('The scene changed. Please save again.'));return;}
        if(!blob){finish(new Error('The image could not be saved. Please try again.'));return;}
-       try{const file=captureResults.complete(request,blob,name);if(file)setCaptureFile(file);if(motionResult)saveMotionJSON({...motionResult,image:{name,width:c.width,height:c.height}},name.replace(/\.png$/,'.json'));finish();}
+       try{const file=captureResults.complete(request,blob,name);if(file)setCaptureFile(file);finish();}
        catch(error){finish(error);}
       });
      }catch(error){finish(error);}
     });
     try{r.floor.characterStage().refresh();}catch(error){finish(error);}
    });
-   if(captureResults.isCurrent(request)&&runtime.current===r)setSaveStatus(motionCase?'Motion frame and evidence ready. Save both files.':'Storyboard ready.');
+   if(captureResults.isCurrent(request)&&runtime.current===r)setSaveStatus('Storyboard ready.');
   }catch(error){
-   if(motionCase){const failure=motionProbe.stop(error);saveMotionJSON({...failure,caseId:motionCase,source:motionSource,tick:r.world.tick,readSeconds:r.readSeconds,userPaused:!!r.userPaused,playing:r.playing,completedSnapshot:motionResult},`loopforge-${motionCase}-FAILED.json`);}
    if(captureResults.fail(request)){setCaptureFile(null);if(runtime.current===r)setSaveStatus(error instanceof Error?error.message:'Could not save this frame.');}
-  }finally{if(motionCase)setMotionStatus(motionProbe.status());if(captureResults.isCurrent(request))setSaving(false);}
+  }finally{if(captureResults.isCurrent(request))setSaving(false);}
  }
 
  const night=view?.dayOne?.stage==='night';
@@ -307,13 +280,6 @@ export default function SceneStudies({player=false}:{player?:boolean}){
     <div className={styles.subtitle} aria-live={running?'off':'polite'}><small>CURRENT EXCHANGE</small>{activeSpeech.length?activeSpeech.map(b=><p key={b.id}><b>{view?.actors.find(a=>a.id===b.speaker)?.name}:</b> {b.text}</p>):<p>Let the posture speak.</p>}</div>
     <button disabled={!ready||saving||testing} onClick={()=>capture()}>{saving?'Saving…':'Save storyboard image'}</button><button disabled={!ready||testing} onClick={evidence}>Save scene evidence</button>
     {saveStatus&&<p role='status'>{saveStatus} {captureFile&&<a href={captureFile.url} download={captureFile.name}>Download PNG</a>}</p>}<p className={styles.fine}>PNG includes the rendered scene and its dialogue. The evidence file keeps state and camera for that exact frame.</p>
-    {study==='arrival'&&<details><summary>Temporary A3 motion evidence</summary>
-     <p>Manual diagnosis only. Pause world and reading, then use the existing jump controls to select the named phase. Keep the scene visible. Stop at the first failure or unavailable case; do not reload to retry.</p>
-     <p>Next: {MOTION_CASES[motionStatus.exports]?.id??'Complete'} · {MOTION_CASES[motionStatus.exports]?.phase??'Eight exports saved'}. {motionStatus.workerCalls}/32 worker calls. Current: {view?.phase} · tick {tick}.</p>
-     <button disabled={!ready||saving||testing||motionStatus.stopped||motionStatus.exports>=8} onClick={()=>{const next=MOTION_CASES[motionStatus.exports];if(next)void capture(next.id);}}>Save next A3 frame + evidence</button>
-     {motionStatus.stopped&&<p role='status'>Diagnostic stopped. Preserve the failure; no retry.</p>}
-     {motionFile&&<p><a href={motionFile.url} download={motionFile.name}>Download A3 JSON</a></p>}
-    </details>}
     {study==='arrival'&&<p className={styles.note}>The approved cast and storyboard, performed in the connected rooms. Motion transfers and contacts remain under review. <a href='/loopforge-design/narrative-episode.html'>Episode & storyboard ↗</a></p>}
     <details><summary>What is real, what is staged?</summary><p>Real: click-through attention checkpoints, a factory clock independent of reading time, ordered Conveyor station actions, fixed-tick action admission, actor/station reservations, interruption, effects, addressed speech, hearing and remembered provenance. The player view contains no private mind values.</p><p>Staged: intentions, dialogue and reserved routes. The opening uses a compact Lobby–Security–Conveyor layout shared by navigation and construction; the full-floor Dispatch layout is unchanged. Credential lookup is supplied fixture data. Full BDI planning, unrestricted crowd planning, precise machine contacts, six-room scheduling and later-day economy integration are still to build. No live game or save is changed.</p><p>The opening uses the expanded LIMEN motion bank with timed blends and a fitted cyan strike. Other studies retain the accepted emitter idle. Sam and later applicants use an explicit waiting/listening credential-status presentation; the credential decision still uses fixture data. Detailed card handling is deferred. The generated room kit is integrated with working station controls, brain stages and a moving press. Full BDI planning and subsequent days remain outside this opening rehearsal.</p></details>
     <details onToggle={e=>setAuthorOpen(e.currentTarget.open)}><summary>Author view · inner-world evidence</summary><p>This is author inspection. Players read the world and its speech, not these values.</p>{authorOpen&&world&&Object.values(world.agents).map(a=><div key={a.id}><h3>{a.name}</h3><p>Stress {a.stress} · trust {a.trust}</p><ul>{a.memory.map((m,i)=><li key={i}>{m}</li>)}</ul></div>)}<p>{Object.keys(world?.held??{}).length} resources currently reserved.</p></details>

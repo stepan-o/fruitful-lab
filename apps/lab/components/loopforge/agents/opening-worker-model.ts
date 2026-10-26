@@ -1,4 +1,3 @@
-import {snapshotMotion,type MotionSource} from './motion-snapshot';
 import {LoadAssetContainerAsync} from '@babylonjs/core/Loading/sceneLoader';
 import './gltf-delivery';
 import {MeshBuilder} from '@babylonjs/core/Meshes/meshBuilder';
@@ -98,7 +97,6 @@ export async function loadOpeningWorker(stage:CharacterStage,worker:OpeningWorke
   root.rotation.y=Math.PI;room('security');clip(id);
   return {
    presentation:{root,bodyMeshes:meshes,standingHeight,forgePalm,forgePressState:()=>performer.forgePressState,hand:(side:'left'|'right')=>container.transformNodes.find(n=>n.name===(side==='left'?'LeftHand':'RightHand'))!},
-   motionSnapshot(view:ActorView,source:MotionSource){return snapshotMotion({worker,file,root,nodes:container.transformNodes,groups:container.animationGroups,scene,view,standingHeight,sourceHeight},source);},
    file,clips:[...file.clips,'Quiet_Wait'],duration,clip,room,finish,normals,
    play(value:boolean){if(value&&phase===1)phase=0;playing=value;last=performance.now();stage.refresh();},
    seek(value:number){phase=Math.max(0,Math.min(1,value));sample();},speed(value:number){speed=value;},loop(value:boolean){loop=value;},

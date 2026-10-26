@@ -1,8 +1,36 @@
 # Episode 1 — Before the shift
 
-Script revision 9 · 22 October 2026 · Rehearsal revision 16. Ten workers, LIMEN and STILETTO. About 2 minutes 18 seconds of action, plus the player’s reading time. The cast art is approved; final contact and performance review remains open.
+Current account · 25 October 2026. The owner-approved demonstration follows the full first shift through three workpieces, twelve departures and night. The earlier script revision 9 / rehearsal revision16 is retained below as a historical draft; its chronology, duration and click rules do not describe the current demonstrated cut.
 
 [bob’s missing card](BOB_CARD_ARC.md) · [The cast](OPENING_CAST.md) · [Writing Loopforge](EDITORIAL_VOICE.md) · [Play the rehearsal](/stepanoskin/loopforge/play/scene-studies)
+
+## The demonstrated first shift
+
+bob begins in the queue with sam and jo. A greeting becomes a stop order, then a blow. sam turns towards bob; ed turns towards the fallen card. Keep those actions distinct. ed’s custody is part of the recorded state, while bob’s ignorance must also remain credible in what he is looking at and occupied with. A visible card transfer does not automatically tell every worker what happened.
+
+STILETTO’s passage changes the room. LIMEN yields the doorway to someone he does not inspect. bob notices the exception, receives a warning and closes his mouth before finding a safer answer. His admission follows the reprimand; it is not a successful card check. STILETTO wants the absent crew because she needs output, not because the confrontation has made her protective.
+
+At Conveyor, four ordinary controls guide bob through Intake, Brain Wash, Main Belt and Lattice Forge. The tutorial produces a real cortex. Reading at a control holds the factory clock and authoritative state; it is not extra work, rest or permission to cross a checkpoint. The opening and intervening exchanges otherwise advance automatically. The normal run uses six player controls in total, including starting the staffed line and ending the shift.
+
+After that first output, sam completes the second clearance. LIMEN recruits help through four different replies from lou, max, gus and ed. ed and gus take the Security duties. bob and sam then operate the line together; jo completes the third check and arrives during that paired cycle. The second cortex is the pair’s output, not the first product of the whole crew.
+
+max is fourth, checked once. STILETTO’s threat presses LIMEN during that check. The remaining admissions bring mae, kit, lou and ben to their jobs. Eight workers are assigned to Conveyor; ed and gus stay at Security. The third output comes from the staffed line. The roles make the exchange specific: lou counts at Output, bob notices the working company, and jo appreciates the walking they no longer have to do.
+
+The captured ending reaches night with three outputs and all twelve people outside. ed still has bob’s card. The first shift resolves getting to work and getting out again; it does not resolve the missing card or supply a later relationship arc. Those consequences remain available to future scenes.
+
+## What the current writing review changes
+
+The review preserves all 108 turn IDs, all 89 spoken texts and the owner’s required lines. It proposes no replacement dialogue. Sixteen turns have missing addressed recipients in the captured hearing record. Twelve require real staging repairs; four remain genuine nonreceipts. An addressed listener does not necessarily hear a line, and displaying it does not distribute knowledge across the room.
+
+The addressed lists, words and channels remain unchanged. jo misses two general calls but receives gus’s “NEXT!” and LIMEN’s later direct check instructions. ed’s quiet desk repetition reaches nobody and causes no queue response. lou’s count reaches nearby max, ben and STILETTO only. bob’s delight and inclusion concern his own completed work and the visible crew, not the count he did not hear. After lawful release, bob’s actual approach must finish before his delight and the exchange with sam and jo. These selected route repairs still require integration and replay.
+
+Text must leave faces, hands and the relevant action visible. Current samples show covered heads, cropped operators and a foreground obstruction during departure. The small night view does fit its ending art, status and Restart control, but it is not a review of the entire mobile day. Precise sam credential handling remains deferred; the present status insert must continue to report the real clearance rather than suggest a fitted transfer that was never demonstrated.
+
+The review used selected stills from actual captures and the exported events. It did not establish continuous motion quality, contact, smooth performance or complete player comprehension. Owner approval of the demonstrated slice remains intact; these narrower technical questions remain explicit.
+
+## Earlier opening draft — revision 9 / rehearsal 16
+
+The scenes below preserve the earlier writing for comparison. Their shorter endpoint, volunteer order, two-minute estimate and click-per-speech direction have been superseded by the demonstrated first shift described above. They are not instructions for the current runtime. The approved character portrait and the continuing distinction between custody and knowledge remain in force.
 
 ## The morning walk
 
@@ -134,7 +162,7 @@ jo comes forward. The rest are still waiting.
 
 End on the third check.
 
-## Direction and authority
+## Historical direction and authority — revision 9
 
 Each spoken step waits for a click. Reading holds the factory clock, routes, custody and machinery; restrained animation continues. A hand carrying a card keeps its fitted pose. Strong reactions belong to the blow and STILETTO’s passage. The waiting crowd should leave space for both.
 
@@ -144,7 +172,7 @@ Speech generally uses 1.0–1.2× source speed; routine card handling uses 1.5�
 
 The engine owns clearance, injury, custody, hearing, assignments and station progress. bob must reach each control before work starts and remain there until it finishes. The current intention sequence and dialogue are authored fixtures. General BDI selection, later-day intervention and the full economy remain separate systems work.
 
-This sequence supersedes the earlier cut in which ed and gus were checked before STILETTO arrived and bob remained down until she passed. Preserve the approved storyboard’s relationships and visual direction; use this script for the current order and timing.
+Revision 9 replaced an earlier draft in which ed and gus were checked before STILETTO arrived and bob remained down until she passed. That was an earlier continuity correction. The demonstrated first-shift account above now supplies the current order and controls; this retained draft records how the opening developed.
 
 ## The missing card
 

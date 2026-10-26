@@ -54,10 +54,10 @@ test("guided figure buttons change the explanation, while full text and its sour
     await screen.findByRole("group", { name: "Vistas del diagrama" })
   ).closest("figure")!;
   await user.click(
-    within(figure).getByRole("button", { name: "Canales", exact: true }),
+    within(figure).getByRole("button", { name: "Canales" }),
   );
   expect(
-    within(figure).getByRole("button", { name: "Canales", exact: true }),
+    within(figure).getByRole("button", { name: "Canales" }),
   ).toHaveAttribute("aria-pressed", "true");
   expect(within(figure).getByText(/aportan lodo para preparar/)).toBeVisible();
   expect(

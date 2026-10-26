@@ -1,5 +1,6 @@
 import "@testing-library/jest-dom";
 import type { NextRequest, NextResponse } from "next/server";
+import { GrowthBookClient } from "@growthbook/growthbook";
 
 jest.mock("@/lib/growthbook/edgeAdapter", () => ({
     growthbookAdapter: {
@@ -14,6 +15,19 @@ import { PINTEREST_POTENTIAL_VARIANT_COOKIE } from "@/lib/tools/pinterestPotenti
 
 const ANON_COOKIE = "fp_anon_id";
 const initialize = jest.mocked(growthbookAdapter.initialize);
+
+// A local payload exercises the SDK result contract without fetching or streaming.
+function featureClient(enabled: boolean) {
+    return new GrowthBookClient().initSync({
+        streaming: false,
+        payload: {
+            features: {
+                [`enable_${PINTEREST_POTENTIAL_EXPERIMENT.gbKey}`]: { defaultValue: enabled },
+                [PINTEREST_POTENTIAL_EXPERIMENT.gbKey]: { defaultValue: "no_welcome" },
+            },
+        },
+    });
+}
 
 type MinimalReq = {
     cookies: { get: (name: string) => { name: string; value: string } | undefined };
@@ -65,14 +79,7 @@ describe("applyExperimentCookies – GrowthBook evaluation", () => {
     });
 
     it("uses the GrowthBook-evaluated variant when the experiment is enabled", async () => {
-        initialize.mockResolvedValueOnce({
-            evalFeature: (key: string) => {
-                if (key === `enable_${PINTEREST_POTENTIAL_EXPERIMENT.gbKey}`) {
-                    return { on: true, value: true };
-                }
-                return { value: "no_welcome" };
-            },
-        });
+        initialize.mockResolvedValueOnce(featureClient(true));
 
         const req = makeReq({ [ANON_COOKIE]: "anon-123" });
         const res = makeRes();
@@ -89,14 +96,7 @@ describe("applyExperimentCookies – GrowthBook evaluation", () => {
     });
 
     it("uses the default variant when the GrowthBook enable flag is off", async () => {
-        initialize.mockResolvedValueOnce({
-            evalFeature: (key: string) => {
-                if (key === `enable_${PINTEREST_POTENTIAL_EXPERIMENT.gbKey}`) {
-                    return { on: false, value: false };
-                }
-                return { value: "no_welcome" };
-            },
-        });
+        initialize.mockResolvedValueOnce(featureClient(false));
 
         const req = makeReq({ [ANON_COOKIE]: "anon-123" });
         const res = makeRes();

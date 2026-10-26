@@ -48,4 +48,7 @@ The design essays owe the reader the same care. Explain the situation, follow th
 
 Keep bob at the center as the factory grows. Workers retain their lowercase names; supervisors retain their capitals. The writing has done its first job when “STILETTO hit bob” recalls someone the player knows.
 
+In the current Day1 review, jo’s “Less walking.” reaches the player as text while the event record shows bob did not hear it. That is a broken exchange even when the two lines read well together. Before handing off a scene, identify the essential listener, what they already know and the movement or wait that makes the words available to them. Then inspect the ordinary played result. Keep a brief local remark local; do not enlarge the whole room’s knowledge to protect a line on the page.
+
+
 [Character dramaturgy](CHARACTER_DRAMATURGY.md) · [Reference studies](NARRATIVE_STUDIES.md) · [Cast draft](OPENING_CAST.md) · [Episode draft](OPENING_EPISODE.md)

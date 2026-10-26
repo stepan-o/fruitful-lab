@@ -156,14 +156,14 @@
       "arrivals": "Cathexis",
       "art": "cathexis-theatre-success-1",
       "caption": "Cathexis can unite the workforce around the factory’s programme—or around herself.",
-      "visible": "Open the Burn-in Theatre and bring Cathexis into a factory already shaped by Limen, Stiletto and daily production allocations. Indoctrination introduces a new way to influence worker behaviour while the weekly quota continues.",
+      "visible": "Open the Burn-in Theatre in a factory already shaped by LIMEN, STILETTO and the workers’ ordinary lives. CATHEXIS’s programme can influence the existing workforce while production and the weekly obligation continue. LIMEN’s authorized routine and STILETTO’s concise practical lesson remain alternative Theatre approaches. These later days are proposed; no Theatre visit runs in the current Day1 scene.",
       "learn": "Better coordination can strengthen Cathexis’s influence over workers. Loyalty to you, confidence in herself and respect from her audience can move in different directions. Her programme interacts with the practices already established by Limen and Stiletto.",
-      "choice": "Decide how much authority to give Cathexis and what programme to support. Choosing her as adviser gives her priorities control of the day’s proposal. Combine her role with the operating approach established by Limen and Stiletto, then continue the irreversible daily allocation.",
-      "gate": "Candidate evidence: sustain the weekly obligation while managing the effect of the programme and the authority you have given Cathexis.",
+      "choice": "Choose the programme, the authority to grant and whether a particular cohort should attend now. Keep producing or arrange a useful activity directly when that is better. Earlier learning survives a postponed visit; attendance does not recharge jo or max. In the matched illustrative Day7 schedules, attendance yields A/C/D totals of 5/4/4 against 7/5/5 for postponement when the same old cue is actually usable. Without that cue, the postponement comparison is 6/5/5. These are source fixtures, not measured capacities or a universal efficiency bonus. The histories across A, C and D differ; only each attend/postpone pair shares the same prior state.",
+      "gate": "Require an actual useful response and the existing viable production, worker, funding and weekly-obligation conditions once implemented. Remove the proposed fixed two-session prerequisite for the Brewery: a repeated visit must earn its own value, not serve as an attendance fee. A failed confirmation remains unresolved until the person actually demonstrates it. The successful first-session alternatives and failed-confirmation recovery remain available.",
       "hidden": "Different production cohorts carry different conditioning and experience histories. Cathexis’s confidence, worker respect and loyalty can diverge. A supervisor may learn or infer which workers missed indoctrination and decide whether to mention it in a briefing. Equipment damage continues to accumulate.",
-      "carry": "Witch encounters both the physical damage from earlier operation and a social arrangement that may support or resist the downtime her work needs.",
+      "carry": "One proposed return makes the choice tangible. After kit and lou attend, lou asks kit whether he wants help requesting Wash practice, receives his consent and takes that limited request to the line lead. The player can back the requested practice or continue production. In the worked return, practice leaves four outputs; hearing and declining the request leaves six; a no-request continuation can make seven. Directly arranging the same practice without another Theatre session remains possible. No qualification, productivity bonus or restored loyalty is awarded. Stage safe release, local receipt, observer clearance and the actual forward stroke, held stop and withdrawal/reset before claiming the encounter works. If the initiative is not worth its cost to watch, omit the second visit. Later, Witch still inherits both physical wear and a social arrangement that may support or resist downtime.",
       "friction": "Her influence may sustain an output push or organize resistance to its costs. Restricting her can sacrifice cooperation; empowering her creates expectations and leverage. Forcing her onto the Conveyor can damage her standing with workers without restoring loyalty. Neither praise nor repeated reassignment resolves incompatible commitments.",
-      "status": "Agreed direction · proposed mastery gate"
+      "status": "Inherited conditioning and authority arc · optional cohort/return and mastery conditions proposed · no later-day implementation or performance claim"
     },
     {
       "id": "brewery",
@@ -556,7 +556,7 @@
         "Workers made before the Theatre opens lack indoctrination. An informed supervisor can discover or infer this and disclose, misinterpret or withhold it. The player receives an attributed account in Act 1; direct inspection is an Act 2 capability."
       ]
     ],
-    "consultation": "Read the compact factory facts. On the first morning, answer leadership and acknowledge the weekly quota, then choose LIMEN or STILETTO. Their proposal uses the inherited prebuilt floor. Later mornings use yesterday’s result. No assignments exist until orders are accepted. Their own room is delegated; placements and responses elsewhere can be overridden with remembered consequences.",
+    "consultation": "In the current scene, a speech panel is audience presentation; it is not proof that a worker heard an instruction. The R10 export contains addressed turns without matching listener receipts, including paired-duty instructions and the post-output bob/jo exchange. Required receipt must be staged through local hearing before dependent conduct. For the proposed daily consultation, distinguish a world event, a witness’s knowledge, a belief or inference, and the statement the adviser chooses to deliver. Keep the existing information layers and attributed-report examples below; do not give every worker the audience’s knowledge.",
     "proposal": "The player can question an explanation, reassure, blame, make a promise or override an action within the chosen adviser interaction. They cannot supply a different priority to that adviser. The adviser dislikes being overruled; every supervisor interprets relevant resolutions through their knowledge, relationships and history. Respect, loyalty and confidence change independently.",
     "example": {
       "record": "Part 03 or later: Witch stops the line for engineering work. Earlier operation had damaged it. The necessity and scope of her refit can still be disputed.",
@@ -664,7 +664,8 @@
       "Make safety, output and adaptive balance viable before engineering arrives. Early pressure reduction can prevent further damage; it does not restore existing condition. Severe damage can cause failure, but viable early paths must be able to reach Part 03.",
       "Repair requires an engineer. Limen, Stiletto and Cathexis lack that capability; smart-worker status alone does not grant it. New engineers would require a separately designed unlock.",
       "Parts 01–02 show current operating consequences without introducing a repair control, repair backlog dashboard or repair purchase. Witch’s arrival makes the previously accumulated damage actionable."
-    ]
+    ],
+    "currentEvidence": "### A count is not a new workforce\n\nThe approved Day 1 run records three completed outputs and twelve departing cast members. Its four control positions, eight assigned Conveyor workers and two Security clerks are concrete parts of this scene. Assignment, physical occupancy and the active process are different facts.\n\nFuture dispatch, retention, embodied new workers, payments and programme attendance need their own authoritative events and consequences. Do not infer them from the output counter or from a character's presence in a storyboard. The economy and population flows below remain the broader design; this milestone does not claim they are all implemented."
   },
   "recoveries": [
     {
@@ -842,7 +843,9 @@
     "Can we explain why an outcome happened without making every future outcome predictable?",
     "Can a rumour genuinely fail, and can Thrum genuinely help, without either outcome being overridden by a prewritten crisis?",
     "Does each proposed arc create a character collision whose competing commitments and causal history can be watched and inspected?",
-    "Can the shared cinematic factory and focused decision interfaces make spatial changes, supervisor authority and individual consequences both enjoyable and legible, while other rooms keep operating?"
+    "Can the shared cinematic factory and focused decision interfaces make spatial changes, supervisor authority and individual consequences both enjoyable and legible, while other rooms keep operating?",
+    "In the exact current build, can a viewer see who acts on whom while speech, status and controls are present, and can the next player action be understood without an author explanation?",
+    "Does the displayed phase, clock and output agree with the current encounter, and is each claimed pass separated into source, static image, continuous performance, player comprehension and owner decision?"
   ],
   "sources": [
     {
@@ -1166,8 +1169,8 @@
   },
   "bdi": {
     "title": "Beliefs, desires and intentions",
-    "intro": "Supervisors act on an incomplete interpretation of the factory, their colleagues and their boss. BDI connects that interpretation to a persistent course of action, then lets the result change what they believe next.",
-    "status": "Agreed foundation · proposed behavioural design",
+    "intro": "Beliefs, desires and intentions describe the proposed connection between incomplete knowledge, a worker’s concerns and a persistent course of action. The current authored opening provides concrete actions and some scoped knowledge, not a general decision-making agent. Later choices must use the same world execution and leave evidence of what each participant perceived, tried and learned. A convincing trace and a convincing performance are separate requirements.",
+    "status": "Inherited behavioural foundation · broader autonomous selection proposed · current action boundary described in Engine boundary",
     "triad": [
       [
         "Beliefs",
@@ -1566,7 +1569,7 @@
       ]
     ],
     "pauseBoundary": "Pause for a consequential choice outside delegated authority; automatic acts leave receipts without asking for confirmation. Group routine reports and preserve pending decisions during inspection. The current viewer runs only on the factory/room views; reading surfaces suspend advance requests. Such UI pauses do not consume production opportunity. Event granularity and future handover rules remain open.",
-    "mobile": "Keep the complete adviser → plan → incident → allocation loop usable on a phone through focused, asset-driven panels. Preserve the quota, current speaker, affected room and pause state; avoid shrinking a desktop console into unreadable controls. Artwork can crop or use dedicated variants while text and touch targets reflow. The future 3D view needs its own device budget and can be unavailable without blocking play.",
+    "mobile": "For the historical console and broader operating loop: Keep the complete adviser → plan → incident → allocation loop usable on a phone through focused, asset-driven panels. Preserve the quota, current speaker, affected room and pause state; avoid shrinking a desktop console into unreadable controls. Dedicated console artwork may use its scoped crops or variants while text and touch targets reflow. For the selected Day1 correction, keep the story picture at16:9 and contain the full night image; dialogue and controls reflow separately. Day1 already has a live spatial view. Its full narrow gameplay and performance still need device evidence; broader future views require their own budget.",
     "migration": [
       [
         "Sim-sim: reuse the interface direction",
@@ -1596,15 +1599,15 @@
       ],
       [
         "Procedure supports the artwork",
-        "Use code for layout, masking, transitions, restrained lighting, glass/noise, indicators and event feedback. These support authored surfaces. A future genuine live 3D scene may render geometry, materials and spatial light procedurally; that exception does not justify replacing the present interface art with generic CSS shapes."
+        "Use code for layout, masking, transitions, restrained lighting, glass/noise, indicators and event feedback. These support authored surfaces. The Day1 spatial scene already renders geometry, materials and spatial light procedurally. That does not justify replacing the existing interface art with generic CSS shapes; broader scene work remains separately scoped."
       ],
       [
         "Generate gaps against the loop",
         "Inventory missing assets by interface role and state. Reuse suitable art, then generate what adviser choice, briefings, incidents and allocation actually require. A clearly marked neutral placeholder with accurate event text is acceptable during development; unrelated art and polished-looking fake outcomes are not."
       ],
       [
-        "Future 3D: give light geometry",
-        "When building the live view, use real floors, walls, machines and occluders where spatial lighting needs them. Painted images cannot supply arbitrary camera angles or correct moving shadows by themselves. This is future scene work, not a prerequisite for the current playable interfaces."
+        "Broader 3D views: give light geometry",
+        "Day1 already uses real rooms, machines and occluders. Broader live views also need real geometry where spatial lighting depends on it; painted images cannot supply arbitrary camera angles or correct moving shadows. Later operating interfaces and device performance remain separate work."
       ]
     ],
     "renderer": {
@@ -1668,23 +1671,70 @@
     },
     "scope": [
       [
-        "Implemented baseline",
+        "Historical console baseline",
         "Asset-driven leadership, adviser, briefing, assignment, incident and allocation interfaces exist with illustrated rooms. Preserve their functional contracts without treating that baseline as the full spatial game."
       ],
       [
-        "Next prototype: one spatial room puzzle",
+        "Demonstrated Day1 spatial scene",
+        "The owner-approved R10 demonstration runs through Lobby, Security and Conveyor to three workpieces, twelve departures and night. Later integrated framing, hearing and motion corrections need their own review."
+      ],
+      [
+        "Broader operating-game proposal",
         "A prebuilt factory inhabited by individual workers and supervisors. Real task/contact animation, shared room policies and delegation make each room an operating puzzle. No placement tools or physical construction gameplay."
       ],
       [
         "Shared world, separate presentation",
         "Focused interfaces and spatial views consume the same knowledge-filtered events and submit validated commands. A headless kernel remains possible; no animation, sound or model response creates world facts. The rendered operating prototype must prove spatial feedback, not rely on an unrelated decorative scene."
       ]
+    ],
+    "currentDayOneVisual": "## Day 1 picture, reading and ending\n\n### Selected correction: one stable picture\n\nThe authored story picture uses a stable 16:9 rectangle at every viewport width. Dialogue, silence, reactions and credential status do not change its shape. Place reading and status material in a separate region beside the picture on wider screens and below it on narrow screens, using the existing frame art, speaker identity, typography and exact words. Reflow the text and allow the page to grow without shrinking the scene or type to force a fit. Keep the next authorized control reachable.\n\nEach current public turn has one foreground presentation. Choosing the reading rail does not make its speaker offscreen. Retain actual visibility, permitted knowledge and genuine nonreceipt; never create a response to words the character did not hear. Exports use the same selected presentation rather than restoring a second anchored version.\n\nThe selected local work views must retain the active body, relevant control or workpiece, and the instructor's head and upper body. The selected departure view stays outside the facade and follows the actual final exiting actor only during departure. These are chosen source corrections. They still require captured evidence from the corrected ordinary timeline at desktop and 320,390 and768 CSS pixels.\n\n### Implemented ending: the complete night entrance\n\nThe selected night image preserves the recognizable sign and doorway, the left slogan and the right barrel. Show the complete image with containment or letterboxing where needed. Put the live completion message, production result and Restart control outside the painting. The artwork carries atmosphere; required result text remains independently readable.\n\nThe actual R10 ending at 320×720 retains the whole picture and readable completion/restart controls. A full desktop capture also shows the image and result separately. This supports those ending layouts. It does not establish narrow gameplay, touch operation, loading speed, a continuous departure review or acceptance of a later candidate. Night must continue to depend on real completed departure and stopped production, not a camera or animation timer.\n\n### Required technical follow-through; optional refinement\n\nThe captured technical issues are changing picture height, cards over heads, facade obstruction, an arms-out travel pose and a premature end-of-shift label. Engine owns integration; Director and Level own the selected spatial and camera choices; Animator and Engine own pose diagnosis. Visual reviews the resulting composition. More detailed materials, a denser room or tighter conversational close-ups are optional after those defects are resolved. The approved visual language and complete night entrance should be preserved.",
+    "currentDayOneFigures": [
+      {
+        "id": "V6-FIG-01",
+        "url": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-opening-dialogue.png",
+        "sha256": "abb11c8152f547f4a85ba32d2123eff2a59c2a99811ca4cb531527395e612212",
+        "width": 1280,
+        "height": 720,
+        "alt": "LIMEN’s dialogue panel covers his head in the Lobby.",
+        "caption": "Published R10, 08:00:11. LIMEN’s dialogue card covers his head. This is an actual game capture; the selected rail correction has not been shown here. Actual running-game captures: Producer-operated studio browser; departure frame extracted from that recording by Animator. Existing project art credits remain.",
+        "reusedExactAsset": true
+      },
+      {
+        "id": "V6-FIG-03",
+        "url": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-forge-crop-2e3fa5238d95.png",
+        "sha256": "2e3fa5238d953508f7da7744a47da1d2cd6f15fb66b825f603733f90b64ed6b3",
+        "width": 1280,
+        "height": 720,
+        "alt": "Forge reading hold with bob cropped and STILETTO’s head behind dialogue.",
+        "caption": "Published R10, 08:01:53 reading hold. The shortened picture cuts off most of bob while the speech card covers STILETTO’s head. Actual running-game captures: Producer-operated studio browser; departure frame extracted from that recording by Animator. Existing project art credits remain.",
+        "reusedExactAsset": true
+      },
+      {
+        "id": "V6-FIG-04",
+        "url": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-departure-obstruction.png",
+        "sha256": "a5f09e13877ae4e63c01c11b115c0b93036e89c4aa89e39d2a993d1e82811f1e",
+        "width": 1280,
+        "height": 720,
+        "alt": "Entrance ornament obstructs the departing cast.",
+        "caption": "Published R10 continuation recording, presentation offset118s; clock End of shift. The entrance ornament conceals the departing cast. This sampled frame does not establish the duration of the obstruction. Actual running-game captures: Producer-operated studio browser; departure frame extracted from that recording by Animator. Existing project art credits remain.",
+        "reusedExactAsset": false
+      },
+      {
+        "id": "V6-FIG-05",
+        "url": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-night-320.png",
+        "sha256": "dd8cfec37beef4ca58ec4cbd6a420b2fb7f14799416b617fa452093fd3eefdd5",
+        "width": 320,
+        "height": 720,
+        "alt": "Whole night image, completed-shift result and Restart at 320 pixels wide.",
+        "caption": "Published R10 at320×720. The full night entrance image, completion text and restart control remain separate. This proves this ending layout only, not narrow gameplay or performance. Actual running-game captures: Producer-operated studio browser; departure frame extracted from that recording by Animator. Existing project art credits remain.",
+        "reusedExactAsset": true
+      }
     ]
   },
   "engineBoundary": {
     "title": "One simulation, replaceable viewers and models",
-    "intro": "The engine owns the factory. KVP exposes an explicit view of it. Model services interpret permitted context and offer bounded contributions. A concrete end-to-end prototype must prove these separations. The visual fixture has its own pure typed command/tick kernel and a replaceable local host; it is public test state, not the private first-shift run.",
-    "status": "Agreed direction · frontend independence and Rust-native logic",
+    "intro": "The owner-approved Day 1 now runs in a live Babylon scene over one typed TypeScript action engine. Scripted selection and bounded individual requests share admission, advancement and public projection. The actual browser export reached 22 completed actions, three workpiece outputs and twelve departures. The broader Kernel–Viewer Protocol and model architecture below remains a design boundary, not blanket implementation evidence.",
+    "status": "Implemented Day 1 · owner-approved R10 · later protocol/model work qualified below",
     "planes": [
       [
         "Simulation kernel",
@@ -1696,7 +1746,7 @@
       ],
       [
         "Presentation clients",
-        "Current asset-driven adviser, order, incident, allocation and record interfaces with illustrated rooms; later a live 3D factory and spatial replay. Every client reconstructs permitted state and submits commands through the same boundary."
+        "The implemented Babylon Day 1 scene, ordinary six-control flow and fixed operational feeds view the same local runtime. Historical console experiments remain separate. Future clients must reconstruct permitted state and submit commands through the same explicit boundary."
       ],
       [
         "Model boundary",
@@ -1778,16 +1828,16 @@
       ]
     ],
     "determinism": "A replay is defined by initial state, rules version, random seed and ordered accepted external inputs—including model contributions and admission/fallback decisions. Replaying those records is deterministic. Calling a live model again is not promised to reproduce them. A stricter seed-and-player-inputs-only mode must freeze or exclude outcome-affecting model contributions.",
-    "timing": "Late responses cannot alter committed history. Requests carry their context revision and admissible boundary; the host records acceptance, rejection or fallback. Slow verbal delivery can arrive later as presentation only when it cannot change the choice or its meaning. Player-facing cadence is a separate budget: the entire day targets about a minute, two to three for heavier days. Tick rate, simulation outcomes and model admission remain independent of that presentation target. UI reading pauses are not in-world lost production.",
-    "prototype": "The implemented first turn uses a pure TypeScript kernel, versioned HTTP snapshots/diffs, React interfaces and a lazy Babylon room viewer. Fixtures are prebuilt. The next agent slice adds deterministic BDI plans, reservations and public action timing; GLB rigs and animation remain a separate renderer responsibility. Models must earn their place over this baseline.",
+    "timing": "Authoritative Day 1 has 15,582 ticks at 20 ticks per second, or 779.1 seconds, before additional real reading time. Six player controls gate progression. Reading and Pause freeze authoritative time; cosmetic movement does not award effects. Earlier one-minute day estimates are future pacing proposals, not measured current duration. Slow callbacks currently preserve the existing clock clamp. The observed slow interval and confounded recovery establish no cause or quiet-performance pass.",
+    "prototype": "Current Day 1 has a pure TypeScript action kernel, copied local public snapshots (loopforge.encounter.local/3), React controls and a Babylon viewer. Bounded policy fixtures share scripted execution. This does not prove historical KVP wire compatibility, a general BDI planner, Rust parity or a live model pipeline. Shared resource, stage, hearing and custody guards are implemented; safe handover, room-lead authority and later-day economics remain deferred.",
     "proof": [
-      "Now: replay a fixture headlessly and through the illustrated decision interfaces; authoritative results match and the complete loop works without a graphics scene. Later: run the same fixture through the 3D view and compare the same event/command results.",
-      "Disable or delay the model service; the factory continues with recorded fallback behaviour.",
-      "Run without a graphics context; production, knowledge and supervisor actions still resolve.",
-      "Recover a viewer from a fresh snapshot and ordered diffs without changing the run.",
-      "Verify that an Act 1 client never receives hidden worker statistics or privileged causal traces.",
-      "Measure visual performance independently from simulation correctness and model quality.",
-      "Expression labels remain authoring/test coverage, not inferred player traits. A scenario’s physical outcome and received memories must produce its visible payoff; the UI or model cannot invent recognition to compensate for absent mechanics."
+      "Actual R10 browser export: 22 completed actions, three output events, twelve outside actors and 590 ordered events. Recording includes a diagnostic gap; this is not an uninterrupted motion/performance pass.",
+      "Actual custody preserves Ed holding Bob's card while Bob's belief remains different. Sixteen turns lack at least one addressed heard receipt; real staging corrections remain open.",
+      "Shared individual/scripted actions reject stale process stages and conflicting single-workpiece use. Root sweeps constrain routes; imported body/tool clearance still requires viewing.",
+      "Unpublished R12 passed full-app types, eight focused tests and lint. R13 clock/status/Focus changes require their own validation and actual replay.",
+      "Whole-app checking includes generated route validators and all configured roots; preserve per-command results and same-namespace cleanup.",
+      "Remaining: corrected desktop/mobile speech and stable scene area; intended hearing and departure poses; same-source export agreement; separately quiet target-device performance.",
+      "Future: actual KVP transport/reconnect and Rust parity, generic BDI/model admission, safe handover and room-lead authority. Do not label these complete from local snapshots or action fixtures."
     ],
     "sourceBoundary": "The old Sim4 specification already describes a Rust-aligned kernel, narrative sidecar and integration phase. Current code shows phased scheduling and command buffers, but some integration phases are described as stubs. Preserve the boundary doctrine; do not assume the complete new BDI or live-model pipeline already exists. The working old world viewer is Sim4/KVP feeding a Pixi isometric scene; Sim5’s Web/Godot/Unreal documents are strategy drafts. Preserve their replaceable-viewer doctrine without claiming a finished inherited 3D implementation."
   },
@@ -2874,28 +2924,28 @@
   },
   "advisedPlanning": {
     "title": "The daily adviser decision",
-    "intro": "Read the compact factory facts. On the first morning, answer leadership and acknowledge the weekly quota, then choose LIMEN or STILETTO. Their proposal uses the inherited prebuilt floor. Later mornings use yesterday’s result. No assignments exist until orders are accepted. Their own room is delegated; placements and responses elsewhere can be overridden with remembered consequences.",
-    "status": "Agreed core loop · proposed UI details and model budget",
+    "intro": "The proposed daily adviser decision begins from known factory facts and the last actual result. LIMEN prioritizes procedure and intact operation; STILETTO prioritizes quota and leadership approval. Choosing an adviser adopts a perspective, not omniscient knowledge. Their own assigned room is delegated; proposals elsewhere can be accepted or overridden with remembered consequences. The current R10 opening demonstrates their conduct but does not yet let the player choose an adviser, acknowledge a weekly quota or reassign rooms.",
+    "status": "Inherited daily-adviser direction · proposed decisions and interface · not playable in R10",
     "loop": [
       [
-        "Read the facts",
-        "Day one shows funds, worker count, known condition and the weekly quota, with every assignment empty. Later days show yesterday’s direct results, permanent allocations and remaining quota."
+        "Read the known facts",
+        "For a later playable planning day, show actual prior output, available people, known condition, existing commitments and the remaining obligation once those systems exist. Identify who reported each uncertain claim. Do not invent funds, retained workers or a quota from the current scene’s three workpieces."
       ],
       [
         "Choose the adviser",
-        "This is the primary daily choice. Compare known expertise, habitual concerns, recent observable conduct and prior advice. Choosing them for advice does not automatically move their room assignment."
+        "Compare known expertise, habitual concerns, recent observable conduct and prior advice. Choosing advice does not automatically move the supervisor’s room assignment. This is a proposed daily choice, not one of the six current manual gates."
       ],
       [
-        "Hear their assessment",
-        "The adviser assesses current conditions on day one or yesterday’s results thereafter, adds attributed context, chooses a priority and proposes placements or operating responses. The player cannot submit a priority."
+        "Hear an assessment",
+        "The adviser interprets available information, selects a priority and proposes placements or responses. The player does not directly choose the adviser’s private priorities. Missing or withheld information can shape the recommendation, but it must have a causal history."
       ],
       [
         "Accept or override",
-        "Authorize or override the proposed assignments. There is no roster to carry over on day one. Later, keeping a previous placement against the adviser’s recommendation is an override with remembered consequences."
+        "Authorize the proposed assignments or an allowed alternative. Keeping yesterday’s placement against a recommendation can be an override with remembered consequences. Define each room’s actual mandate before implementing this decision; a body occupying a control is not universal authority to operate it."
       ],
       [
-        "Run under their judgment",
-        "The adviser proposes responses throughout the day. Events in their assigned room resolve automatically under their judgment; response decisions elsewhere present their default for the player to accept or override. Results and relationship memories feed tomorrow’s report."
+        "Run and receive consequences",
+        "Events in the adviser’s delegated room follow their judgment; decisions elsewhere present their proposed response for acceptance or override. Actions still require actual movement, valid resources and received local speech. Preserve results and attributed memories for the next report. This full recurring loop is future work."
       ]
     ],
     "rules": [
@@ -3313,8 +3363,8 @@
     "title": "Opening rules and what unlocks later",
     "rules": [
       [
-        "Day one",
-        "First entry: Lobby → Security setup → Lattice Forge setup at night → morning leadership call → adviser selection → brief and assignments → operation. Security teaches placement with two fixed sockets. No supervisor has an assignment before morning orders are accepted. Building is the first interaction; adviser choice is the first leadership fork. Later days can retain the previous arrangement as a proposal baseline."
+        "Day one — current scene and later planning proposal",
+        "The approved opening uses the prebuilt Lobby, Security and Conveyor. Bob passes the checkpoint, learns the four operations under STILETTO, works with sam, joins the staffed line and leaves with the original cast before night. No building, morning quota acknowledgment, adviser choice or allocation decision is playable in this scene. The older night-setup/morning-planning sequence is a separate planning proposal, not a description of current Day1. Later days may present the previous arrangement as a proposal baseline."
       ],
       [
         "Daily commitment",
@@ -3358,9 +3408,9 @@
     "boundary": "These combinations are proposed trajectories, not guaranteed outcomes or a menu of classes. Daily advisers, actual room assignments, event responses, permanent allocations and remembered results determine which version develops. Balancing Limen and Stiletto is viable; it does not remove the separate need to commit on Cathexis."
   },
   "dailyLoop": {
-    "title": "One day is the minute loop",
-    "status": "Agreed cadence · proposed interface budget · runtime unchanged",
-    "cadence": "A whole game day targets about one minute; a heavier day takes two to three minutes at most. Count ordinary review, adviser choice, briefing, plan approval, production, decisions, allocation and transitions. Leadership calls and onboarding use the longer-day allowance. This is a normal-play target, not a forced-answer timer.",
+    "title": "The first shift, then repeated days",
+    "status": "Owner-approved R10 opening · repeated-day pacing and decisions remain proposed",
+    "cadence": "The demonstrated first shift is an authored introduction with six manual gates: seat the brain, run the wash, start the belt, compress the brain, start the staffed line, and end the shift. The saved run reaches night at 15,582 authoritative ticks at 20 ticks per second: 779.1 seconds of simulation, plus reading holds and any runtime slowdown. It is not a one-minute day. The proposed routine-day target remains about one minute, with heavier days taking two to three minutes, counting review, consultation, decisions and transitions. That target has not been demonstrated and is not a forced-answer timer.",
     "flow": [
       [
         "Build at night",
@@ -3438,28 +3488,28 @@
     ],
     "gaps": [
       [
-        "Current slice",
-        "One playable day, 48 fixed advances, two scheduled incidents and terminal dispatch/debrief. It proves the authority paths, not repeatable daily or weekly pacing."
+        "Current scene",
+        "R10 shows the opening, Security admission, four tutorial operations, paired production, a staffed cycle and departure into night. Its six manual gates pace an authored introduction; they do not yet offer adviser selection, alternative attendance or daily allocation. The terminal export records one tutorial, one paired and one staffed completion, with twelve original cast members outside."
       ],
       [
-        "Timing",
-        "At normal speed the 900ms advance delay alone totals about 43 seconds, before transport and player reading. The full-day target has not been measured or tuned."
+        "Historical console study",
+        "The earlier 48-advance console and its 900ms advance-delay calculation belong to a separate prototype. They are not the action count, timing or ending of the current scene. Keep the console available as a labelled study."
       ],
       [
-        "Immediate aftermath",
-        "Counts, notices, the latest room receipt and records exist. A stronger compact outcome beat is proposed so the player need not visit the log to understand the call."
+        "Player feedback",
+        "The approved R10 capture exposes clock and phase labels that contradict arrivals and production, cropped work views, and missing intended hearing receipts. Corrections require evidence from their own build. Owner approval of the demonstrated slice does not establish that unpublished fixes have been seen."
       ],
       [
         "Daily carry-forward",
-        "Next-day consultation, repeated quotas and weekly settlement are not playable yet. The worker and supervisor history foundation exists; a new daily/weekly contract will be needed."
+        "Repeated quotas, next-day consultation, weekly settlement and embodied production allocation remain proposed. Three completed workpieces do not establish dispatch, revenue, retained robots or additional staff."
       ],
       [
-        "Balanced dilemmas",
-        "The Conveyor fixture has visible production/wear/loss consequences. Security’s unresolved clearance exception lacks its larger downstream payoff in the slice."
+        "Meaningful alternatives",
+        "Before extending a day, compare the proposed activity with a feasible unchanged-state alternative. Old learning and unresolved commitments survive postponement. Count real release, travel, consultation and return time; a reading hold cannot pay those costs."
       ],
       [
         "Model contribution",
-        "Current policies and prose are authored. Any later model contribution must improve matched playtests, stay outside production ticks and preserve a complete fallback."
+        "The current day is authored. Later model-assisted interpretation must improve a performed comparison, obey the same world action rules and retain a complete authored fallback. No model is needed to explain the six current gates."
       ]
     ],
     "checks": [
@@ -3470,7 +3520,7 @@
       "Does the weekly delivery cycle become perceptible within a sitting while unlocks still depend on mastery?",
       "Do safe and aggressive approaches both create understandable progress and liabilities?"
     ],
-    "boundary": "The earlier three-shifts-per-thirty-minutes proposal is discarded. The roughly 10–20 minute full-floor unlock target remains mastery-based and needs a joint pacing test. Interface shortcuts and the illustrative seconds budget are proposals; this documentation update changes no runtime timer, engine command or balance value.",
+    "boundary": "Reading pause freezes authoritative time and state. Cosmetic life during the pause grants no production, movement, rest, healing, release or shutdown. Physical safe stopping is a separate world action, not a reading aid. The broader routine-day timing and roughly 10–20 minute full-floor unlock target remain unmeasured proposals; they do not authorize shortening the approved opening or changing its state progression. The earlier three-shifts-per-thirty-minutes proposal remains discarded.",
     "partOne": {
       "title": "How long does Part 01 sustain a way to play?",
       "status": "Agreed expression-first framing · proposed four-to-five-day test",

@@ -1,3 +1,4 @@
+import {MAX_FORGE_CYCLE_CONTROL,MAX_FORGE_FURNITURE} from '@/lib/loopforge/agents/max-forge-contact';
 import {createStationLight} from './station-light';
 import {loadWashHousing,loadBrain,loadForgeHousing,loadCarrier,loadIntakeHousing,loadIntakeCrate} from './load-room-kit';
 import {Scene} from '@babylonjs/core/scene';
@@ -65,12 +66,16 @@ export function createConveyorLine(scene:Scene,invalidate:()=>void){
  const heat=box('Compression seam',[1.8,.05,.07],148.5,103.37,1.02,hot,true);
  // Calm practical fixtures: luminous surfaces, no additional real-time light pass.
  for(const x of [136.5,140.5,144.5,148.5]){
-  box('Operator pedestal',[.45,.8,.5],x,105.05,.4,iron);
-  box('Control deck',[.72,.13,.65],x,105.05,.86,edge);
-  const lamp=box('Control ready lamp',[.16,.035,.12],x-.19,105.16,.94,glow);
-  lamp.receiveShadows=false;
-  box('Guarded stop button',[.13,.08,.13],x+.16,105.16,.95,black);
+  if(x===148.5){for(const f of MAX_FORGE_FURNITURE){const mesh=box(f.name,f.size,f.plan[0],f.plan[1],f.height,{iron,edge,glow,black}[f.material]);if(f.material==='glow')mesh.receiveShadows=false;}}
+  else{
+   box('Operator pedestal',[.45,.8,.5],x,105.05,.4,iron);box('Control deck',[.72,.13,.65],x,105.05,.86,edge);
+   const lamp=box('Control ready lamp',[.16,.035,.12],x-.19,105.16,.94,glow);lamp.receiveShadows=false;
+   box('Guarded stop button',[.13,.08,.13],x+.16,105.16,.95,black);
+  }
  }
+ // A cycle control is distinct from the adjacent guarded stop and ready lamp.
+ const cycle=MAX_FORGE_CYCLE_CONTROL;
+ box('Forge cycle control',[...cycle.size],cycle.plan[0],cycle.plan[1],cycle.centerHeight,enamel);
  // One shared carrier; the textured brain stays the same object through processing.
  const carrier=new TransformNode('Active brain carrier',scene),brain=new TransformNode('Workpiece',scene);
  const tray=box('Brain cradle',[1.6,.12,1.4],0,0,0,edge,true);tray.parent=carrier;tray.position.set(0,0,0);

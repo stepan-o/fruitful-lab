@@ -15,15 +15,15 @@ test("a wrong answer earns nothing, a correction shows one reward, and the next 
       <Quiz track="history" onExit={jest.fn()} />
     </LocaleProvider>,
   );
-  await user.click(screen.getByRole("button", { name: "AICM", exact: true }));
+  await user.click(screen.getByRole("button", { name: "AICM" }));
   expect(screen.getByRole("status")).toHaveTextContent("Aún no hay puntos");
   expect(screen.queryByText(/\+25/)).not.toBeInTheDocument();
   await user.click(
-    screen.getByRole("button", { name: "Cuicuilco", exact: true }),
+    screen.getByRole("button", { name: "Cuicuilco" }),
   );
   expect(screen.getByRole("status")).toHaveTextContent("+25 puntos");
   expect(
-    screen.getByRole("button", { name: "Cuicuilco", exact: true }),
+    screen.getByRole("button", { name: "Cuicuilco" }),
   ).toBeDisabled();
   await user.click(screen.getByRole("button", { name: "Siguiente" }));
   expect(screen.queryByRole("status")).not.toBeInTheDocument();
@@ -44,7 +44,6 @@ test("finishing a run shows a practice completion without an account points tota
     await user.click(
       screen.getByRole("button", {
         name: q.options.find((o) => o.id === q.correct)!.label.es,
-        exact: true,
       }),
     );
     await user.click(

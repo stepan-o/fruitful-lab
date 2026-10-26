@@ -14,7 +14,7 @@
 
 .aside table {width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:.82rem}.aside th,.aside td{padding:.55rem .35rem;text-align:right;border-bottom:1px solid #3e4941}.aside th:first-child,.aside td:first-child{text-align:left}.aside th{color:#c7be94;font-weight:500}
 
-.focusBar{display:flex;gap:16px;align-items:center;padding:8px 12px;border-bottom:1px solid #43564e}.focusBar span{font-size:12px;color:#a8b7a5}.focused{padding:0 12px}.focused>.header,.focused>nav,.focused .aside{display:none}.focused .layout{display:block}.focused .stage{max-width:1440px;margin:auto}.focused .stage>div:not(.viewport):not(.attentionBar):not(.focusBar),.focused .rehearsalTools{display:none}.focused .viewport{height:calc(100dvh - 145px);min-height:280px}.focused .attentionBar{min-height:78px;box-sizing:border-box}.focused .testing>.performanceBar{display:flex!important}.focused .testing .viewport{height:auto;width:min(100%,calc((100dvh - 260px)*16/9));min-height:0;margin-inline:auto;aspect-ratio:16/9}.focused .focusBar{min-height:62px;box-sizing:border-box}@media(max-width:480px){.focused .viewport{height:calc(100dvh - 190px)}.focusBar span{display:none}}
+.focusBar{display:flex;gap:16px;align-items:center;padding:8px 12px;border-bottom:1px solid #43564e}.focusBar span{font-size:12px;color:#a8b7a5}.focused{padding:0 12px}.focused>.header,.focused>nav,.focused .aside{display:none}.focused .layout{display:block}.focused .stage{max-width:1440px;margin:auto}.focused .stage>div:not(.viewport):not(.viewportWrap):not(.feedScroll):not(.attentionBar):not(.focusBar):not(.turnDock):not(.mobileDialogue):not(.dialogueRail):not(.sceneBody),.focused .rehearsalTools{display:none}.focused .viewport{height:clamp(240px,48dvh,620px);min-height:0}.focused .attentionBar{min-height:78px;box-sizing:border-box}.focused .testing>.performanceBar{display:flex!important}.focused .testing .viewport{height:auto;width:min(100%,calc((100dvh - 260px)*16/9));min-height:0;margin-inline:auto;aspect-ratio:16/9}.focused .focusBar{min-height:62px;box-sizing:border-box}@media(max-width:480px){.focused .viewport{height:clamp(200px,44dvh,420px)}.focusBar span{display:none}}
 
 .focused .stage>details:not(.rehearsalTools){display:none}
 
@@ -22,3 +22,78 @@
 
 /* Selected offscreen reading shares the existing Continue row, outside the shot. */
 .offscreenReading{flex:1;min-width:0;pointer-events:none}
+
+/* Below-canvas reading rail keeps narrow scenes unobstructed. */
+.mobileDialogue{display:none}.turnDock{display:flex;justify-content:center;padding:12px;background:#091210;min-height:185px}.offscreenReading{max-width:100%}
+@media(max-width:480px){.anchor{display:none}.mobileDialogue{display:flex;flex-direction:column;gap:12px;align-items:center;min-height:185px;padding:12px;background:#091210}.offscreenReading{display:none}}
+
+.mobileDialogue:empty{display:none}
+
+/* Narrative docks and result chrome stay visible in player/focus mode. */
+.focused .stage>.turnDock{display:flex}.focused .stage>.mobileDialogue:empty{display:none}
+.viewport.nightViewport,.focused .viewport.nightViewport{height:auto;min-height:0;aspect-ratio:1672/941;background:#080f16}
+.nightViewport canvas{position:absolute;inset:0}
+.page button,.page select,.page summary{min-height:44px}.page button{min-width:44px}
+@media(max-width:480px){.focused .stage>.mobileDialogue:not(:empty){display:flex}.focusBar{flex-wrap:wrap}.focusBar>a{min-height:44px;display:flex;align-items:center}.turnDock{min-height:0}.focused .viewport.nightViewport{height:auto}}
+
+/* Fixed security feeds preserve a 16:9 lens on narrow screens; no orbit scaling. */
+.operationalControls{display:flex;flex-wrap:wrap;gap:8px;padding:8px 12px;background:#111d19;border-bottom:1px solid #43564e}
+.viewport.operationalViewport,.focused .viewport.operationalViewport{width:min(100%,calc((100dvh - 240px)*16/9));height:auto;min-height:0;aspect-ratio:16/9;margin-inline:auto;background:#060b0d}
+.operationalViewport canvas{position:absolute;inset:0}
+
+/* Enlarge pixels within the same fixed lens; scrolling never moves the camera. */
+.viewportWrap{display:contents}.feedScroll{max-width:100%;overflow:auto;overscroll-behavior:contain}.focused .stage>.feedScroll{display:block}
+.operationalControls span{flex-basis:100%;font-size:12px;color:#b7c2b1}
+.feedScroll .viewport.largeFeed,.focused .feedScroll .viewport.largeFeed{width:max(100%,960px);max-width:none;margin:0;aspect-ratio:16/9;height:auto;min-height:0}
+.feedScroll:focus-visible{outline:2px solid #e8d995;outline-offset:-2px}
+
+/* A named fallback is outside the shot; an offscreen label point is not body evidence. */
+/* Reserve one reading area through speech, reaction and silence. Content scrolls;
+   the camera viewport never resizes because a line enters or leaves. */
+.dialogueRail{box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:16px;padding:16px 12px;background:#091210;min-width:0;height:clamp(210px,30dvh,280px);overflow-y:auto;overflow-wrap:anywhere;scrollbar-gutter:stable both-edges}
+.dialogueRail>*{flex-shrink:0;width:min(100%,296px);max-width:100%}
+.dialogueRail:focus-visible{outline:2px solid #e8d995;outline-offset:-2px}
+.reactionRail{display:flex;justify-content:center}
+@media(min-width:700px){.dialogueRail{flex-direction:row;flex-wrap:wrap;justify-content:center;align-content:flex-start;align-items:flex-start}}
+
+/* The picture is a fixed-ratio region. Dialogue, clock and status never cover it
+   or change its dimensions when the active turn changes. */
+.sceneBody,.picturePanel,.readingPanel{min-width:0;min-height:0}
+.sceneBody{display:flex;flex-direction:column}
+.picturePanel{background:#060b0d}
+.sceneHeader{box-sizing:border-box;height:84px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;border-bottom:1px solid #35463a;background:#101c18}
+.sceneHeader .sceneLabel{position:static;max-width:none;min-width:0;font-size:10px;line-height:1.5;overflow-wrap:anywhere}
+.sceneHeader .clock{position:static;flex:none;box-sizing:border-box;width:160px;max-width:60%;padding:6px 8px;border:0;background:transparent}
+.sceneHeader .clock time{font-size:20px;letter-spacing:.02em;white-space:nowrap}
+.sceneCanvasArea{min-width:0;min-height:0;background:#060b0d}
+.viewportWrap{display:block;width:100%;max-width:100%;margin-inline:auto}
+.viewport,.focused .viewport,.viewport.operationalViewport,.focused .viewport.operationalViewport,.viewport.nightViewport,.focused .viewport.nightViewport{width:100%;height:auto;min-height:0;aspect-ratio:16/9;margin:0}
+.viewport canvas{position:absolute;inset:0}
+.readingPanel{display:flex;flex-direction:column;background:#091210}
+.readingPanel>.caption{position:static;margin:0;padding:10px 12px;font-size:13px;background:#13231d;text-shadow:none;flex:none}
+.readingPanel>.caption small{margin-top:4px}
+.readingPanel>.attentionBar{flex:none;flex-direction:column;gap:8px;align-items:stretch;padding:12px}
+.readingPanel .continueButton{min-width:0;width:100%;font-size:16px}
+.readingPanel .dialogueRail{flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;align-items:center;align-content:normal}
+.feedScroll{overscroll-behavior:contain}
+.feedScroll .viewport.largeFeed,.focused .feedScroll .viewport.largeFeed{width:max(100%,960px);height:auto;min-height:0;aspect-ratio:16/9}
+/* Focus mode uses the available screen height. Container units fit the complete
+   16:9 picture to both dimensions without changing its lens or cropping it. */
+@media(min-width:1000px) and (min-height:600px){
+ .focused .stage{height:100dvh;box-sizing:border-box;display:flex;flex-direction:column}
+ .focused .focusBar,.focused .operationalControls{flex:none}
+ .focused .sceneBody{display:grid;grid-template-columns:minmax(0,1fr) 320px;flex:1;min-height:0}
+ .focused .picturePanel{display:grid;grid-template-rows:84px minmax(0,1fr)}
+ .focused .sceneCanvasArea{container-type:size;display:grid;place-items:center;overflow:hidden}
+ .focused .viewportWrap{width:min(100cqw,calc(100cqh * 16 / 9))}
+ .focused .feedScroll{max-height:100cqh}
+ .focused .feedScroll:has(.largeFeed){width:100cqw;height:100cqh}
+ .focused .readingPanel{border-left:1px solid #35463a;overflow-y:auto}
+ .focused .readingPanel>.dialogueRail{height:auto;min-height:120px;flex:1;overflow-y:auto}
+ .focused .readingPanel>.attentionBar{min-height:0}
+ .focused .readingPanel>section:not(.dialogueRail){flex:none}
+ .focused .testing .sceneBody{min-height:640px}
+}
+@media(max-width:480px){.sceneHeader{gap:8px;padding:6px 10px}.sceneHeader .clock{width:144px}.readingPanel>.dialogueRail{height:240px}.sceneHeader .sceneLabel{font-size:9px}}
+
+@media(max-width:480px){.sceneHeader .clock time{font-size:17px}}

@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-26",
+  "items": [
+    {
+      "file": "forge-before-081042-6f3041c92172.png",
+      "sha256": "6f3041c9217212993e5e2ccf15badfebdd21b5ae84c4fe919cb2aa81cf54b4bf",
+      "bytes": 410923,
+      "width": 1280,
+      "height": 900,
+      "caption": "25 October, commit43a70823, factory clock08:10:42. During the rejected press, max leans far forward with his feet trailing behind him. This frame came from diagnostic entry followed by playback, not a complete ordinary day.",
+      "edited": false,
+      "credit": "Actual Loopforge game capture by Producer; existing project artwork credits retained."
+    },
+    {
+      "file": "forge-current-081042-c7d21ca0b66b.png",
+      "sha256": "c7d21ca0b66bf5fa87faffbb69078c74d9e27dfe8f18a4d0deaca7932dd5293f",
+      "bytes": 405491,
+      "width": 1280,
+      "height": 720,
+      "caption": "26 October, commit72a55f7, factory clock08:10:42. In the complete ordinary-day recording, max stays upright beside the control while the press descends. This same-clock comparison is not pixel-matched: the original recordings used different viewport heights.",
+      "edited": false,
+      "credit": "Actual Loopforge game capture by Producer; existing project artwork credits retained."
+    },
+    {
+      "file": "day-one-complete-81718f31dad4.png",
+      "sha256": "81718f31dad4738eb30f62fb177d7d0b3a9b26dfa77915be845f5eae15600bf8",
+      "bytes": 948228,
+      "width": 1280,
+      "height": 720,
+      "caption": "26 October, commit72a55f7. The ordinary run reached the night screen after six player controls, three completed outputs and all twelve departures. The exported state retains bob\u2019s card with ed.",
+      "edited": false,
+      "credit": "Actual Loopforge game capture by Producer; existing project artwork credits retained."
+    }
+  ],
+  "videos": [
+    {
+      "file": "forge-before-rejected-02884bb0a33c.webm",
+      "sha256": "02884bb0a33c9220d8df090a8dce2779f036e6bd7e8e51b5b2bf6c0019566f4c",
+      "bytes": 3891770,
+      "caption": "25 October,43a70823. Rejected Forge press: diagnostic entry followed by original playback. Original full recording, unchanged.",
+      "deliveredBytesUnchanged": true,
+      "originalSpeed": true,
+      "reencoded": false,
+      "autoplay": false
+    },
+    {
+      "file": "forge-current-ordinary-177e94f764d4.webm",
+      "sha256": "177e94f764d41d1928c2beb6b1ea2d85af45d8a806debb427281ff24bccdc763",
+      "bytes": 6557262,
+      "caption": "26 October,72a55f7. Forge command, press and output from the complete ordinary Day1 recording. Excerpt791\u2013823seconds, original speed, no crop or overlay. Re-encoded VP8; full original retained.",
+      "deliveredBytesUnchanged": true,
+      "originalSpeed": true,
+      "reencoded": true,
+      "autoplay": false
+    }
+  ],
+  "basis": "Unchanged documentary captures selected by Producer; stills do not establish motion or physical-contact acceptance."
+}

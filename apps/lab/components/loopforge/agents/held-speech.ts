@@ -10,3 +10,6 @@ export function offscreenHeldSpeech(view:View|null|undefined,reading:AttentionSt
  const speech=selectedHeldSpeech(view,reading);
  return speech&&anchors.some(a=>a.id===speech.speaker&&!a.visible)?speech:undefined;
 }
+
+/** Active public turns also remain readable after an authored reverse shot. */
+export function offscreenPublicSpeech(view:View|null|undefined,anchors:readonly Anchor[]){return view?.bubbles.find(b=>anchors.some(a=>a.id===b.speaker&&!a.visible));}

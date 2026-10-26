@@ -60,7 +60,7 @@ CATHEXIS brought a little ceremony to the act of entering a room. Her crown rose
 
 sam makes room by moving things; mae likes to find her tools where she left them. ed lends an instruction his whole bearing, while max listens for the part that can be imitated. lou carries a conversation to someone new; jo would prefer to know which part of it has been attributed to them. These differences give people something to do together before a crisis asks anything larger of them.
 
-At Security, ed and gus volunteer when LIMEN calls, “WHO REALLY CARES ABOUT THIS FACTORY?!” Their two checks come first. They take the register and card station; sam stays beside bob. When STILETTO comes through, she sees the staff missing from her line. The workers see LIMEN move out of her way. Each carries something different from the same encounter.
+At Security, sam helps bob after LIMEN’s blow, while ed picks up and keeps bob’s card. STILETTO crosses without a check; bob notices the exception and is sent to Conveyor unchecked. After bob’s real tutorial output, sam completes the second clearance. lou, max, gus and ed answer LIMEN’s call for help in different ways; ed and gus take the Security duties. jo reaches Conveyor third during the paired cycle, and max is fourth. The workers do not all acquire the same knowledge from the encounter: custody, what someone sees and what they actually hear remain separate.
 
 ## From the portrait to the performance
 

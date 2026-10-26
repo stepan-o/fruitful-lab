@@ -34,14 +34,16 @@ describe("pinterest-potential page variant resolution", () => {
     });
 
     it("ignores variant query overrides in production", () => {
-        const originalNodeEnv = process.env.NODE_ENV;
-        process.env.NODE_ENV = "production";
+        const environment = jest.replaceProperty(process, "env", {
+            ...process.env,
+            NODE_ENV: "production",
+        });
 
         try {
             const v = resolvePinterestPotentialVariant("no_welcome", "welcome");
             expect(v).toBe("welcome");
         } finally {
-            process.env.NODE_ENV = originalNodeEnv;
+            environment.restore();
         }
     });
 

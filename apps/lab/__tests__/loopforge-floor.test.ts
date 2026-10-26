@@ -32,9 +32,13 @@ describe("calibrated factory floor", () => {
     expect(SERVICE_BLOCKS.every(r=>Math.min(r.w,r.h)<=4)).toBe(true);
     expect(area(ZONES.map(z=>z.rect))+area(SERVICE_INFILL)).toBe(BUILDING_AREA);
     const occupied = new Set<string>(); let overlap = false, extraAccess = false;
+    const unlocked = MANAGED_ROOMS.map(({ id }) => {
+      if (id === "lobby" || id === "dispatch" || id === "shipping") throw new Error(`Support zone in managed rooms: ${id}`);
+      return id;
+    });
     for(const r of [...ZONES.map(z=>z.rect),...SERVICE_INFILL])for(let y=r.y;y<r.y+r.h;y++)for(let x=r.x;x<r.x+r.w;x++){
       const key=`${x},${y}`; if(occupied.has(key))overlap=true;occupied.add(key);
-      if(!zoneAt({x,y})&&!portalAt({x,y})&&walkable({x,y},MANAGED_ROOMS.map(z=>z.id)))extraAccess=true;
+      if(!zoneAt({x,y})&&!portalAt({x,y})&&walkable({x,y},unlocked))extraAccess=true;
     }
     expect(overlap).toBe(false);expect(extraAccess).toBe(false);
     for(const r of BUILDING_BANDS)for(let y=r.y;y<r.y+r.h;y++)for(let x=r.x;x<r.x+r.w;x++)if(!occupied.has(`${x},${y}`))throw new Error(`Unfilled building tile ${x},${y}`);

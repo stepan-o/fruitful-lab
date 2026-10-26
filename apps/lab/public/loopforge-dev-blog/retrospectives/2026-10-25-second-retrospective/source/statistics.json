@@ -1,0 +1,229 @@
+{
+  "reportingInterval": {
+    "startExclusive": "2026-10-22T22:09:57.919591+00:00",
+    "endInclusive": "2026-10-25T02:15:41.335719+00:00"
+  },
+  "scope": "Native Producer and nine craft roles; excludes Root coordination. Work after cutoff and unsampled boundaries/tails are not included.",
+  "method": "For each native agent/session, use only snapshots inside the interval. Exclude its first in-window snapshot and sum nonnegative consecutive cumulative-counter deltas. Thus the first boundary interval, first report of new sessions, final unsampled tails and any reset interval are excluded. Do not add fleet cumulative values or Root counters.",
+  "observedTokenLowerBound": {
+    "uncachedInputReported": 19960418,
+    "cachedInputReadReported": 541225856,
+    "outputReported": 4494360,
+    "cacheCreationReported": 0,
+    "combined": 565680634
+  },
+  "roles": [
+    {
+      "role": "Producer",
+      "input": 6105334,
+      "cache_read": 192452864,
+      "output": 1413489,
+      "cache_creation": 0,
+      "combined": 199971687,
+      "sessions": 2
+    },
+    {
+      "role": "Engine Master",
+      "input": 4672830,
+      "cache_read": 154270464,
+      "output": 1036738,
+      "cache_creation": 0,
+      "combined": 159980032,
+      "sessions": 1
+    },
+    {
+      "role": "Animator",
+      "input": 1084584,
+      "cache_read": 28711552,
+      "output": 305435,
+      "cache_creation": 0,
+      "combined": 30101571,
+      "sessions": 1
+    },
+    {
+      "role": "Scene Director",
+      "input": 1700931,
+      "cache_read": 36346624,
+      "output": 340736,
+      "cache_creation": 0,
+      "combined": 38388291,
+      "sessions": 2
+    },
+    {
+      "role": "Level Designer",
+      "input": 1475936,
+      "cache_read": 34623744,
+      "output": 323294,
+      "cache_creation": 0,
+      "combined": 36422974,
+      "sessions": 2
+    },
+    {
+      "role": "Systems Designer",
+      "input": 819712,
+      "cache_read": 19417984,
+      "output": 276712,
+      "cache_creation": 0,
+      "combined": 20514408,
+      "sessions": 1
+    },
+    {
+      "role": "Writer",
+      "input": 718816,
+      "cache_read": 12953728,
+      "output": 192975,
+      "cache_creation": 0,
+      "combined": 13865519,
+      "sessions": 1
+    },
+    {
+      "role": "Visual Artist",
+      "input": 1394821,
+      "cache_read": 33410944,
+      "output": 347466,
+      "cache_creation": 0,
+      "combined": 35153231,
+      "sessions": 2
+    },
+    {
+      "role": "3D Artist",
+      "input": 466002,
+      "cache_read": 5049728,
+      "output": 39947,
+      "cache_creation": 0,
+      "combined": 5555677,
+      "sessions": 1
+    },
+    {
+      "role": "Critic",
+      "input": 1521452,
+      "cache_read": 23988224,
+      "output": 217568,
+      "cache_creation": 0,
+      "combined": 25727244,
+      "sessions": 2
+    }
+  ],
+  "configuration": [
+    {
+      "role": "Producer",
+      "runnerConfigured": "codex",
+      "requestedModel": "gpt-6-astra",
+      "requestedReasoningEffort": "xhigh",
+      "explicitModelProvider": null,
+      "backendPerCallVerified": false
+    },
+    {
+      "role": "Engine Master",
+      "runnerConfigured": "codex",
+      "requestedModel": "gpt-6-astra",
+      "requestedReasoningEffort": "xhigh",
+      "explicitModelProvider": null,
+      "backendPerCallVerified": false
+    },
+    {
+      "role": "Animator",
+      "runnerConfigured": "codex",
+      "requestedModel": "gpt-6-astra",
+      "requestedReasoningEffort": "xhigh",
+      "explicitModelProvider": null,
+      "backendPerCallVerified": false
+    },
+    {
+      "role": "Scene Director",
+      "runnerConfigured": "codex",
+      "requestedModel": "gpt-6-astra",
+      "requestedReasoningEffort": "xhigh",
+      "explicitModelProvider": null,
+      "backendPerCallVerified": false
+    },
+    {
+      "role": "Level Designer",
+      "runnerConfigured": "codex",
+      "requestedModel": "gpt-6-astra",
+      "requestedReasoningEffort": "xhigh",
+      "explicitModelProvider": null,
+      "backendPerCallVerified": false
+    },
+    {
+      "role": "Systems Designer",
+      "runnerConfigured": "codex",
+      "requestedModel": "gpt-6-astra",
+      "requestedReasoningEffort": "xhigh",
+      "explicitModelProvider": null,
+      "backendPerCallVerified": false
+    },
+    {
+      "role": "Writer",
+      "runnerConfigured": "codex",
+      "requestedModel": "gpt-6-astra",
+      "requestedReasoningEffort": "xhigh",
+      "explicitModelProvider": null,
+      "backendPerCallVerified": false
+    },
+    {
+      "role": "Visual Artist",
+      "runnerConfigured": "codex",
+      "requestedModel": "gpt-6-astra",
+      "requestedReasoningEffort": "xhigh",
+      "explicitModelProvider": null,
+      "backendPerCallVerified": false
+    },
+    {
+      "role": "3D Artist",
+      "runnerConfigured": "codex",
+      "requestedModel": "gpt-6-astra",
+      "requestedReasoningEffort": "xhigh",
+      "explicitModelProvider": null,
+      "backendPerCallVerified": false
+    },
+    {
+      "role": "Critic",
+      "runnerConfigured": "codex",
+      "requestedModel": "gpt-6-astra",
+      "requestedReasoningEffort": "xhigh",
+      "explicitModelProvider": null,
+      "backendPerCallVerified": false
+    }
+  ],
+  "reportedModelLabels": [
+    "gpt-6-astra"
+  ],
+  "interviews": {
+    "roles": 9,
+    "questionsEach": 7,
+    "answers": 63
+  },
+  "reviewCoverage": {
+    "actualCraftReviewContributions": 9,
+    "continuousPlaybackClaimsInInterviews": 0,
+    "sampledOrStillReviewDisclosures": 9
+  },
+  "counts": {
+    "nativeSessionsWithinWindow": 15,
+    "newNativeTaskCards": 49,
+    "newCardStatusAtCutoff": {
+      "done": 30,
+      "blocked": 7,
+      "doing": 11,
+      "review": 1
+    },
+    "selectedR8R9R10CloudAttempts": 3,
+    "selectedCloudReady": 1,
+    "R13NamedSourceCuts": 5,
+    "selectedR12R13NativeOperations": 4,
+    "cycleWideBuildTotal": null,
+    "cycleWideRevisionTotal": null
+  },
+  "moneyUSD": null,
+  "rootTokens": null,
+  "limits": [
+    "Observed native token lower bound for this fixed interval, not final sprint total; work continues after cutoff.",
+    "Input/cache labels are native ledger reports. Cache reads are counted processing, not newly authored output. Cache-creation zero is the reported value, not proof of provider billing behavior.",
+    "Actual backend provider/snapshot/reasoning history and costs unavailable; current config and model labels do not verify each serving call.",
+    "Task-card counts are administrative; source cuts and selected run counts carry explicit narrower scope. No exhaustive cycle-wide build/revision count inferred.",
+    "Historical closed tasks, original role baselines/overruns/unknown tails remain in original records. Session-based delta calculation handles rollovers without resetting history.",
+    "First-report opening boundary kept exactly; compared with preliminary checkpoint, this conservative method excludes the first in-window interval of existing sessions too. Do not compare raw totals without this method change."
+  ],
+  "fieldDefinitionEvidence": "Inherited first-report native reconciliation: ledger input = native input minus cached input; cache_read = cached input; output includes reported reasoning output. New rows have not been independently rematched to raw native/provider usage."
+}

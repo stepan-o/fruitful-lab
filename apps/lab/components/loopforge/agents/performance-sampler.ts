@@ -1,9 +1,11 @@
+import {createMaxForgePressAdapter,type ForgeControlFrame,type ForgePressResult} from './max-forge-press.mjs';
+import {createMaxLegTransition} from './max-leg-transition.mjs';
 import {Quaternion,Vector3} from '@babylonjs/core/Maths/math.vector';
 import type {AnimationGroup} from '@babylonjs/core/Animations/animationGroup';
 import type {TransformNode} from '@babylonjs/core/Meshes/transformNode';
 import type {MotionCue,ActorView} from '@/lib/loopforge/encounters/contract';
 /** Stateless pose results, reusable work buffers. Seeking never depends on the preceding sample. */
-export function createPerformanceSampler(groups:AnimationGroup[],prefix='',rootMotion:'z-up'|'y-up'|'source'='z-up'){
+export function createPerformanceSampler(groups:AnimationGroup[],prefix='',rootMotion:'z-up'|'y-up'|'source'='z-up',maxLegRoot?:TransformNode,maxForgeControl?:()=>ForgeControlFrame){
  const indices=new Map<string,number>(),channels:{target:TransformNode;path:string;rest:Quaternion|Vector3}[]=[];
  for(const group of groups)for(const {animation,target}of group.targetedAnimations){const path=animation.targetProperty,key=`${target.uniqueId}/${path}`;if(!indices.has(key)){indices.set(key,channels.length);channels.push({target,path,rest:target[path].clone()});}}
  const prepared=new Map(groups.map(group=>[group,{group,tracks:group.targetedAnimations.map(({animation,target})=>({animation,index:indices.get(`${target.uniqueId}/${animation.targetProperty}`)!,hips:rootMotion!=='source'&&animation.targetProperty==='position'&&/(?:^|:)Hips$/.test(target.name)}))}]));
@@ -18,7 +20,21 @@ export function createPerformanceSampler(groups:AnimationGroup[],prefix='',rootM
   for(const {animation,index}of quiet.tracks){const {target,path}=channels[index];let paths=quietBase.get(target);if(!paths){paths=new Map();quietBase.set(target,paths);}paths.set(path,(animation.evaluate(frame)as Quaternion|Vector3).clone());}
  }
  const next=channels.map(t=>t.rest.clone()),old=channels.map(t=>t.rest.clone());
+ const maxLegBlend=maxLegRoot?createMaxLegTransition(channels,maxLegRoot):undefined;
+ const forgePress=maxLegRoot&&maxForgeControl?createMaxForgePressAdapter(channels,maxLegRoot):undefined;
+ const quietStart=channels.map(c=>c.rest.clone()),quietEnd=channels.map(c=>c.rest.clone());
+ let forgeQuietKey='';
+ let forgeState:ForgePressResult|undefined;
  function evaluate(cue:MotionCue,seconds:number,result:(Quaternion|Vector3)[]){
+  if(cue.clip==='Max_Forge_Control_Press'){
+   if(!forgePress||!maxForgeControl)throw Error('Max Forge procedure requires the actual Max control/skin interface');
+   if(cue.loop||cue.rate!==1||![-2.7,-1.4,0].includes(cue.start??NaN))throw Error('Max Forge procedure requires its authored three-phase clock');
+   const quiet=cue.forgeQuiet;
+   if(!quiet||quiet.start.cue.clip!=='Quiet_Wait'||quiet.end.cue.clip!=='Quiet_Wait')throw Error('Max Forge procedure requires actual assembled quiet endpoints');
+   const key=JSON.stringify(quiet);
+   if(key!==forgeQuietKey){evaluate(quiet.start.cue,quiet.start.seconds,quietStart);evaluate(quiet.end.cue,quiet.end.seconds,quietEnd);forgeQuietKey=key;}
+   forgeState=forgePress.sample(quietStart,quietEnd,(cue.start??0)+seconds*(cue.rate??1),maxForgeControl(),result);return;
+  }
   const entry=bank.get(cue.clip);if(!entry)throw Error(`Missing performance: ${cue.clip}`);
   const {group,tracks}=entry,fps=tracks[0].animation.framePerSecond,duration=(group.to-group.from)/fps;
   const time=(cue.start??0)+seconds*(cue.rate??1),t=cue.loop&&duration>0?((time%duration)+duration)%duration:Math.max(0,Math.min(duration,time));
@@ -40,13 +56,22 @@ export function createPerformanceSampler(groups:AnimationGroup[],prefix='',rootM
    if(hips&&cue.rootMotion!=='preserve'){const p=result[index]as Vector3;p.x=0;if(rootMotion==='z-up')p.y=0;else p.z=0;}
   }
  }
- return {sample(cue:MotionCue,seconds:number,previous?:ActorView['previous'],blend=1){
+ return {get forgePressState(){return forgeState;},sample(cue:MotionCue,seconds:number,previous?:ActorView['previous'],blend=1){
   const weight=blend*blend*(3-2*blend),mix=!!previous&&weight<1;
+  const exactForgeBlend=!!forgePress&&(cue.clip==='Max_Forge_Control_Press'||previous?.cue.clip==='Max_Forge_Control_Press');
   evaluate(cue,seconds,next);if(mix)evaluate(previous!.cue,previous!.seconds,old);
   for(let i=0;i<channels.length;i++){
    const {target,path}=channels[i];
-   if(path==='rotationQuaternion'){if(mix)Quaternion.SlerpToRef(old[i]as Quaternion,next[i]as Quaternion,weight,target.rotationQuaternion!);else target.rotationQuaternion!.copyFrom(next[i]as Quaternion);}
+   if(path==='rotationQuaternion'){
+    const before=old[i]as Quaternion,after=next[i]as Quaternion;
+    // Preserve native non-unit encodings at this procedure's exact endpoint
+    // and unchanged support channels; spherical interpolation can scale them.
+    if(mix&&exactForgeBlend&&(weight===0||before.equals(after)))target.rotationQuaternion!.copyFrom(before);
+    else if(mix)Quaternion.SlerpToRef(before,after,weight,target.rotationQuaternion!);
+    else target.rotationQuaternion!.copyFrom(after);
+   }
    else if(path==='position'||path==='scaling'){const out=path==='position'?target.position:target.scaling;if(mix)Vector3.LerpToRef(old[i]as Vector3,next[i]as Vector3,weight,out);else out.copyFrom(next[i]as Vector3);}
   }
+  if(mix)maxLegBlend?.apply(cue,previous!.cue,old,next,weight);
  }};
 }

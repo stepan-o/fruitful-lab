@@ -5,15 +5,16 @@ export type AttentionStep={id:string;tick:number;label:string;speech?:Speech};
 export function attentionSteps(registry:Registry):AttentionStep[]{
  const result:AttentionStep[]=[];let tick=1,pending:Speech|undefined;
  for(const action of Object.values(registry))for(const phase of action.phases){
-  if((phase.say?.length??0)>1)throw Error('One utterance per attention step.');
-  if(phase.say?.length){if(pending)throw Error('Unread dialogue before '+phase.id);pending=phase.say[0];}
+  const speech=phase.turn?.kind==='speech'?[phase.turn.speech]:phase.say;
+  if((speech?.length??0)>1)throw Error('One utterance per attention step.');
+  if(speech?.length){pending=speech[0];}
   const end=tick+phase.ticks-1;
-  if(phase.attention==='hold'||phase.inputLabel||(pending&&phase.attention!=='flow')){
+  if(phase.attention==='hold'||phase.inputLabel){
    result.push({id:phase.id,tick:end,label:phase.inputLabel??'Continue',speech:pending});pending=undefined;
   }
   tick+=phase.ticks;
  }
- if(pending)throw Error('The final utterance has no reading checkpoint.');
+
  return result;
 }
 export function nextAttention(steps:AttentionStep[],tick:number){return steps.find(s=>s.tick>tick);}
@@ -22,6 +23,7 @@ export function factoryClock(tick:number){const seconds=8*3600+Math.floor(tick*T
  * settle at their landing; held props and partner contacts keep their authored pose.
  * No renderer or presentation timer can commit a transfer, admission or machine job. */
 export function readingView(view:View,step:AttentionStep,elapsed:number):View{
+ if(view.turn?.turn.kind==='reaction-only')return view;
  return {...view,actors:view.actors.map(a=>{
   if(!a.cue)return a;
   const holdsID=view.props?.some(p=>p.kind==='credential'&&p.location.kind==='hand'&&p.location.agent===a.id);

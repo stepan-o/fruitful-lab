@@ -1,0 +1,22 @@
+# Chapter 07 — independent staged-draft critique
+
+Reviewed `/tmp/agentic-foundations/revised/07.json` exactly as staged, SHA-256 `fa7b5c075519a9c727c4a0a2e508a833f8f3b148028ba969f56c0ace2d206512`.
+
+**Concrete blockers: none found.** This is a draft-content finding, not a live chapter approval. No manuscript, visual, or approval-state files were edited.
+
+The revised chapter has an identifiable foundations argument: evaluate the complete promised effect; derive checks from obligations; preserve consequential situations in coverage; calibrate a judge against both kinds of error; and distinguish success for an artificial tester from value for its recipient. Its sections are organized by those problems, rather than by Loopforge production chronology. The opening’s booking example and the Lucy/Rechat account establish the AI-system connection; the refund/timeout paragraph makes the state-coverage transfer explicit. The surviving Loopforge occupancy anecdote contributes a specific counterexample and avoids claiming incidence or causality it cannot establish.
+
+The stories supply reasons for the concepts. Dijkstra’s equality decision makes required properties tangible; Muratori’s neglected interior explains a sampling error; the EA helicopter incident makes environment fidelity a cost of faster sampling. Personal interpretation is attached to inspectable choices in the authored studies and to the limits of the book’s own review process. I found no unsupported personal discovery or fabricated production result.
+
+The four visuals have separate jobs, supported by their implementation and limitation text:
+
+- `inspection-bench` distinguishes a rule check from the input boundary the real action crosses. Both records start from zero; the broken-wire and duplicated-count results agree with the prose.
+- `coverage-floor` preserves an identical set of visited rooms while varying the order and reservation condition. Its interrupted route really leaves an active unowned job and refuses delivery under the broken rule. The prose labels this as an authored defect, not a recovered incident.
+- `judge-desk` makes rare-failure agreement and the two kinds of error independently visible. The 19/20 and 15/20 results are correct. Its explicit deterministic-rule limitation prevents the perfect crate counter from masquerading as measured LLM performance.
+- `flight-tunnel` varies the test population and operating condition. Both scripts fit the wide opening; neither represents human reaction or enjoyment. This adds population validity to the preceding chapter’s candidate-selection argument rather than merely repeating that a proxy can be incomplete.
+
+Neighbor comparison: chapter 06 explains how candidates are generated, selected, retained, and stopped; chapter 07 asks whether the evidence and judge justify a production claim; chapter 08 moves to the waits and resource behavior of the delivered system. References to evaluator validity and cost recur, but their decisions differ. Chapter 07’s review cost, needless rejection, missed failures, and next-hour choice connect evaluation effort to useful evidence rather than treating more checks as value by themselves.
+
+Primary-source checks support the material claims: [Anthropic’s transcript/outcome distinction and repeated trials](https://www.anthropic.com/research/demystifying-evals-for-ai-agents), [Dijkstra’s equality example](https://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD249/EWD249.html), [the QuickCheck publication abstract](https://research.chalmers.se/en/publication/237427), [Lucy/Rechat’s evaluation process](https://hamel.dev/blog/posts/evals/index.html), [Husain’s judge calibration guidance](https://hamel.dev/blog/posts/llm-judge/index.html), [Walk Monster](https://caseymuratori.com/blog_0005), [curiosity-driven coverage](https://arxiv.org/html/2103.13798v2), [the EA integration account](https://arxiv.org/html/2307.11105v1), [Fly, Fail, Fix](https://arxiv.org/html/2507.12666v1), and [Valve’s playtesting slides](https://cdn.akamai.steamstatic.com/apps/valve/2009/GDC2009_ValvesApproachToPlaytesting.pdf). The Engine occupancy account was checked against the retained local interview, Q3.
+
+Scope limit: visual purpose and prose/implementation agreement were inspected in source. This audit did not render the staged chapter or revalidate responsive layout, keyboard use, motion, or performance. It does not certify those properties or authorize publication.

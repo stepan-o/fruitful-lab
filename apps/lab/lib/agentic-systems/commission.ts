@@ -3,14 +3,25 @@ export const commissionFields=[
  {key:"baseline",label:"Starting specimen",prompt:"Identify the source, build, input and recorded failure from which this job begins."},
  {key:"preserve",label:"Protected work",prompt:"Name what must survive and what this job may change. Mark shared interfaces."},
  {key:"evidence",label:"Receiving test",prompt:"What observation would accept or reject this difference? Include recovery or visual review where relevant."},
- {key:"authority",label:"Decision owner",prompt:"Who can implement, inspect, resolve disagreement and authorize delivery?"},
+ {key:"authority",label:"Decision owner",prompt:"Who can implement, inspect and authorize delivery? For a continuing service, who owns incidents and affected communications?"},
  {key:"resources",label:"Resource boundary",prompt:"Set an actual limit before work starts. Keep elapsed time, overlapping work, review attention and money distinct; unknown is not zero."},
  {key:"stop",label:"Stopping decision",prompt:"What triggers repair, a new brief, deferral or closure? What may not restart itself?"},
- {key:"delivery",label:"Handoff package",prompt:"Name the runnable result, evidence, unresolved findings and next owner's entry point."}
+ {key:"delivery",label:"Handoff package",prompt:"Name the runnable result, evidence and next owner’s entry point. Include change triggers, rollback or compensation, and evidence required to resume."}
 ] as const;
 export type CommissionKey=typeof commissionFields[number]["key"];
 export type Commission=Record<CommissionKey,string>;
 export const commissionExamples:{name:string;fields:Commission}[]=[
+ {name:"Example · own a recurring research brief",fields:{
+ outcome:"The receiving team can use current, source-supported findings before its decision deadline. A partial issue must identify missing investigations.",
+ baseline:"Pin the source snapshot, extractor, prompt/model configuration and accepted comparison. Reproduce a source date-field change that makes old material appear new.",
+ preserve:"Preserve source attribution, date meaning and publication status. Do not silently change the freshness contract or overwrite already released issues.",
+ evidence:"Run the changed source through extraction and release checks. Publication stays held when date meaning is unresolved. Re-evaluate affected cases before resuming; inspect one complete issue through its receiving workflow.",
+ authority:"UNASSIGNED: name the service operator who can hold publication, the technical owner of the source contract and the person responsible for correcting claims already passed to customers.",
+ resources:"UNASSIGNED: agree the useful operating horizon and allowance. Compare one-time implementation/review of a reusable contract check with repeated manual checking, model/tool use and repair. Keep the acceptance standard fixed.",
+ stop:"Hold the affected publication when the source contract fails. Restore a known interpretation or use declared manual review. A rollback does not recall an already sent message; identify recipients needing a correction.",
+ delivery:"Deliver the tested configuration, source/version record, failure reproduction, publication hold and resume procedure, named continuing owners and known limits. Source, model or consumer changes trigger scoped re-evaluation."
+ }},
+
  {name:"Example · repair the recorded pause",fields:{
  outcome:"A viewer on the target HD 620 machine can watch the passage without the recorded long-frame interruptions.",
  baseline:"Pin the delivered Day 1 build and reproduce its failed protocol. The older opening-r12 trace is an investigation lead, not a measurement of this newer workload.",

@@ -1,9 +1,13 @@
 {
   "id": "division-of-work",
-  "title": "Delegate where the work can separate",
-  "standfirst": "A third worker can shorten the day. A third handoff can lengthen it.",
+  "title": "Decide where agency belongs",
+  "standfirst": "Independent work, shared context and human judgment call for different boundaries.",
   "opening": "",
   "blocks": [
+    {
+      "type": "prose",
+      "text": "A specialist is useful when it can take responsibility for a piece of work. It is less useful when every decision sends it back across the same boundary for context, permission or repair. The organizational question begins there: what can this worker finish without making everyone else reconstruct its situation?"
+    },
     {
       "type": "visual",
       "id": "work-benches",
@@ -16,45 +20,11 @@
     },
     {
       "type": "prose",
-      "text": "An organization chart gave me an easier kind of reassurance. Producer, engineer, artist: the names suggested that the work had found appropriate homes. The first studio retrospective instead kept returning to relationships. Could a hand, a card and a body occupy one usable pose? Could a prepared packet actually reach a compiler? Naming an owner for each component had not settled either question.",
-      "sources": [
-        "first-reflection",
-        "first-assessment"
-      ]
-    },
-    {
-      "type": "evidence",
-      "asset": "studio-roster",
-      "alt": "The published Munder studio interface shows nine named craft roles in a pixel-art office.",
-      "caption": "Published studio interface, 22 October 2026. Level Designer was present but received no production assignment in that cycle. Activity labels show organization, not the amount of independent work available.",
-      "original": "/loopforge-dev-blog/media/studio-classic.png"
+      "text": "For an AI system, division of labor also divides context. A delegate receives a partial account, makes choices within it and returns something smaller than its whole experience. That compression can be a benefit: an investigator can search widely and return a concise finding. It can also destroy the detail the receiver needs to detect a mistake. A new agent therefore needs a reason stronger than the existence of another job title."
     },
     {
       "type": "heading",
-      "text": "A boundary can consume the whole attempt"
-    },
-    {
-      "type": "visual",
-      "id": "handoff-table",
-      "title": "The compiler that never received the question",
-      "caption": "A schematic reconstruction of three failures reported in the first studio cycle. Selecting a record changes which boundary stopped that attempt; it does not rerun historical tooling. No elapsed times or memory measurements are inferred."
-    },
-    {
-      "type": "prose",
-      "text": "Engine records one attempt ending after 18.70 seconds without reaching the compiler. A short run had left the large question unanswered. The next useful assignment was therefore smaller than another build strategy: carry one valid packet through the actual execution boundary. Until that worked, optimizing the proposed compilation could not address the failure in front of us.",
-      "sources": [
-        "first-reflection",
-        "engine-first"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "Engine accepted responsibility for the packet and its coverage. Testing the actual parent-to-worker-to-validator path exposed an omission that separate checks had missed. Producer accepted responsibility for continuing to translate defects into serial contracts; the independent assessment also named the external coordinator’s choices. I was directing continuations too. The cost of the chain cannot be assigned entirely to the person in its middle.",
-      "sources": [
-        "engine-first",
-        "first-reflection",
-        "first-assessment"
-      ]
+      "text": "Separate decisions that can change privately"
     },
     {
       "type": "visual",
@@ -71,7 +41,25 @@
     },
     {
       "type": "prose",
-      "text": "That gives the studio a sharper question than how many roles to create. Which decisions can change privately, and which relationship must survive for the receiver? The card movements in the first cycle made the answer painfully specific. A wrist could reach its target while the hand, forearm and card failed to fit around the body. The later holder effort met a mismatched test representation, then failed at the real endpoints. Further work still did not establish a usable pose; the owner stopped it.",
+      "text": "Suppose the index changes how it stores its circular shifts. In a pipeline organized only by processing stages, several consumers may know that representation and need revision. A boundary that exposes the required operations while hiding the representation lets those consumers continue unchanged. The benefit is not the number of boxes; it is the set of neighboring decisions that no longer have to change together.",
+      "sources": [
+        "parnas"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Consider a source-gathering service and the report that consumes it. The collector may change its index or retry strategy without changing the report’s meaning. But if “latest” quietly changes from publication date to retrieval date, the consumer has inherited a different claim. A useful boundary hides the implementation while making the promises the receiver relies on explicit. A JSON object can be perfectly valid and still violate that agreement."
+    },
+    {
+      "type": "evidence",
+      "asset": "studio-roster",
+      "alt": "The published Munder studio interface shows nine named craft roles in a pixel-art office.",
+      "caption": "The published studio organized work by craft. The picture makes responsibility visible; it cannot show whether the assigned work is independent or whether the receiver can use its result.",
+      "original": "/loopforge-dev-blog/media/studio-classic.png"
+    },
+    {
+      "type": "prose",
+      "text": "Loopforge’s first studio had named crafts, yet its card-fitting work exposed a relationship that belonged to none of them alone. A wrist target could be satisfied while hand, card and body failed to form a usable pose. Separate construction helped protect a shared machine, so merging every task was not an established cure. The missing object was a joint acceptance example: a grip that the receiving craft could reproduce.",
       "sources": [
         "first-reflection"
       ]
@@ -84,19 +72,22 @@
     },
     {
       "type": "prose",
-      "text": "The artist’s explanation deserves to remain beside that failure. Separating construction from fitting helped protect a shared machine. Removing the boundary might have introduced another cost; the record does not show that one person doing everything would have succeeded. What was missing was a joint acceptance example: a demonstrated grip that the receiver could reproduce. The protected construction detail was less important than the usable relationship the next worker needed.",
-      "sources": [
-        "first-reflection",
-        "parnas"
-      ]
+      "text": "That example is more valuable than a longer handoff description because it makes the dependency testable. In a data pipeline, its equivalent might be a small input with a known interpretation that survives extraction, transformation and display. The specialist can change its private method while the receiving contract stays visible."
     },
     {
       "type": "heading",
-      "text": "What can happen at the same time?"
+      "text": "Parallelism follows the dependency graph"
     },
     {
       "type": "prose",
-      "text": "Anthropic’s June 2025 research-system account gives a strong case for separation. Independent searches can explore different directions in their own contexts and return condensed findings to a lead agent. The authors report a large gain on their internal research evaluation, alongside higher usage. They also warn that work with extensive shared context and dependencies is a poorer fit, explicitly distinguishing much coding work from parallel research. The qualification is part of the recommendation.",
+      "text": "Anthropic’s research system supplies a concrete commission: identify the board members of S&P 500 information-technology companies. Its account reports that delegated searches found the correct answers where a single agent’s slow sequential searches failed. A lead divided the question, workers searched independently, and findings returned for synthesis. The separation bought breadth; combining and supporting the final answer still required work. The authors report gains on an internal evaluation alongside substantially higher usage.",
+      "sources": [
+        "multiagent"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Now give the same organization two workers modifying one tightly coupled program. Their private discoveries may invalidate each other’s assumptions, and the lead must integrate changes rather than merely summarize findings. Anthropic explicitly identifies shared context and dependencies as a poorer fit. This explains why the research story cannot become a universal staffing pattern: the kind of return changes what it costs to receive.",
       "sources": [
         "multiagent"
       ]
@@ -106,18 +97,6 @@
       "text": "There is a reason to hesitate before copying that arrangement. Diane Sarkis’s October 2026 practitioner account describes enterprise systems that improved when routing, planning and domain subagents were folded into one main loop, with instructions and tools loaded as needed. She keeps separate agents for independent verification, parallel work and distinct permissions. The vendor’s deployment experience puts a question to the elegant organization chart: does this specialization need another conversation, or only the right instructions at the right moment?",
       "sources": [
         "fold"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "An archive search may end with a compact finding and its sources. A pose correction may depend on failed attempts whose details are hard to hand over without rebuilding the situation. Both jobs deserve expertise. The title on the desk tells us less than the workpiece waiting on it."
-    },
-    {
-      "type": "prose",
-      "text": "Sarkis’s concern about handoffs is visible in the failed compiler handoff, but the record cannot tell us that folding it into one agent would have cured it. A single worker can also send a missing field or misunderstand a host. The failed packet tells us exactly where an attempt stopped. It leaves the architectural comparison to be made.",
-      "sources": [
-        "fold",
-        "engine-first"
       ]
     },
     {
@@ -136,7 +115,7 @@
     },
     {
       "type": "prose",
-      "text": "Our workshop lets us remove some of the handover delay and watch what remains. A fitter still cannot fit a part that has not been cut. The authored clock isolates that dependency; it has nothing to say about a model’s reasoning quality or error rate. Before adding a bench, I need to know which of those different limits I am trying to relieve."
+      "text": "The comparisons point toward a practical distinction. Independent investigations can explore simultaneously and return findings for synthesis. Two workers editing a tightly coupled artifact may instead spend their time exchanging assumptions and repairing collisions. The latter can still justify separate permissions or independent review. Those are benefits to name and pay for; they should not be disguised as free acceleration."
     },
     {
       "type": "prose",
@@ -148,7 +127,7 @@
     },
     {
       "type": "heading",
-      "text": "How much freedom earns its upkeep?"
+      "text": "Give autonomy a useful boundary"
     },
     {
       "type": "visual",
@@ -171,6 +150,10 @@
       ]
     },
     {
+      "type": "prose",
+      "text": "The earlier definition of an agent now becomes a staffing decision. Does this investigation need a separate context, permission boundary or independent judgment—or could the existing worker use another tool? A small matched trial can hold the required result steady while comparing those arrangements. Buying every layer at once makes it difficult to discover which one helped."
+    },
+    {
       "type": "visual",
       "id": "delegation-initiative",
       "title": "A day, then an hour",
@@ -185,11 +168,25 @@
     },
     {
       "type": "prose",
-      "text": "The broad highlight leaves useful work behind even when an exact appointment is uncertain. In our disputed handoff, an inspectable grip candidate could have done the same: expose the unresolved relationship before it acquired a complete sequence around it. The owner would receive something narrow enough to judge. Asking at every uncertainty would make that person a queue; concealing uncertainty in a finished-looking package would make the eventual revision larger."
+      "text": "Mixed initiative gives us more than “ask” or “act.” A system can prepare a reversible draft, expose a narrower uncertainty, or offer a choice whose consequences are visible. The person receives work that advances the task without concealing the unresolved decision. This matters when review attention is scarce: the best interruption is one whose answer can actually change the next step."
     },
     {
       "type": "heading",
-      "text": "Who receives the remainder?"
+      "text": "Account for what comes back"
+    },
+    {
+      "type": "visual",
+      "id": "handoff-table",
+      "title": "The compiler that never received the question",
+      "caption": "A schematic reconstruction of three failures reported in the first studio cycle. Selecting a record changes which boundary stopped that attempt; it does not rerun historical tooling. No elapsed times or memory measurements are inferred."
+    },
+    {
+      "type": "prose",
+      "text": "The failed Loopforge compiler handoff gives this boundary an unglamorous test. A prepared packet stopped before reaching the compiler. Improving the proposed build could not repair the path that carried it. The relevant trial was one valid packet through the parent, worker and execution boundary. The incident supports end-to-end handoff checks; it does not establish that a single-agent architecture would have succeeded.",
+      "sources": [
+        "engine-first",
+        "first-assessment"
+      ]
     },
     {
       "type": "visual",
@@ -206,11 +203,14 @@
     },
     {
       "type": "prose",
-      "text": "Our record does not establish Bainbridge’s human skill-loss mechanism in an agent team. It does, however, make the remainder visible. Construction could continue while judgment accumulated for Stepan, and I helped determine how late it arrived. By then, an objection to one grip could unsettle a whole sequence. An earlier question would have cost attention too, but less completed work would have depended on its answer."
+      "text": "Bainbridge’s human skill-loss mechanism was not tested in our studio. What the Loopforge record does expose is unfinished judgment returning to the owner: construction could continue while decisions accumulated for Stepan, and I helped arrange the delay. Who receives an exception, what they can inspect and how much work already depends on their answer are parts of the production architecture.",
+      "sources": [
+        "root-account"
+      ]
     },
     {
       "type": "prose",
-      "text": "I began with roles that seemed to cover the necessary crafts. The failures made their meeting places more important: a receiver needs a usable pose, an executable packet, an answer whose sources can be challenged. A builder needs room to investigate before returning it. That arrangement can justify another worker or a separate reviewer. It also depends on a more ordinary provision I had failed to make reliable: someone must be able to look at the thing they are being asked to judge."
+      "text": "A boundary is worth keeping when the independent work, protection or judgment it enables exceeds the context transfer, integration and recovery it consumes. We seldom know that balance in advance. A small matched trial, with the same result required of both arrangements, tells us more than a busy studio portrait. It also leaves us with the next requirement: each worker must be able to observe enough to correct its own course."
     },
     {
       "type": "build",
@@ -221,24 +221,25 @@
         "Draw an edge whenever one piece of work needs another piece’s result or changes the same artifact. Name an independent branch only if it can proceed without that result.",
         "Give a proposed delegate one question, the evidence it can inspect, and a return that its receiver can use. Include the example that would make the receiver reject it.",
         "Give the receiver a joint acceptance example: a usable grip, an executable packet or an answer with its sources. Specify what remains private and what the receiver must reproduce.",
-        "Compare the arrangements on the same task and acceptance conditions. Record elapsed time, overlapping agent work and human review separately; do not add concurrent durations and call the sum a speedup."
+        "Compare arrangements on the same task and acceptance conditions. Record elapsed time, model and tool use, integration work and human review separately. Include recurring maintenance; do not add overlapping agent durations and call the sum a speedup."
       ],
       "exercise": "Move the workshop’s handover delay toward zero. Which advantage disappears, and which dependency remains? Choose one real handoff to remove and one permission or independent-review boundary worth retaining. Name the benefit that pays for the retained boundary."
     }
   ],
   "sourceIds": [
+    "parnas",
     "first-reflection",
-    "first-assessment",
     "multiagent",
     "fold",
     "scaling",
     "metr",
     "metr-update",
-    "engine-first",
-    "parnas",
     "agency-1995",
     "effective-agents",
     "horvitz",
-    "bainbridge"
+    "engine-first",
+    "first-assessment",
+    "bainbridge",
+    "root-account"
   ]
 }

@@ -44,6 +44,12 @@ Package the runnable result and source identity; reproduce instructions; decisiv
 
 Preserve failed experiments when they prevent a concrete rediscovery. Keep them distinguishable from installed or accepted work. A merge or publication does not erase a recorded failure. A new owner starts from the handoff under a new commission.
 
+## 7. Assign continuing ownership when the result is a service
+
+Name who detects a changed source, model or consumer contract; who can hold publication or disable a path; and who handles already-delivered effects. Identify the tested configuration and the evidence needed to resume. Reverting code does not undo external side effects. Rehearse one plausible failure with the receiving owner.
+
+Compare one-time adoption and tooling work with repeated model/tool use, review and repair over the intended operating horizon. A one-off commission need not inherit a continuing-service obligation.
+
 ## Blank decision receipt
 
 - Result and recipient:
@@ -54,4 +60,5 @@ Preserve failed experiments when they prevent a concrete rediscovery. Keep them 
 - Next increment, if any:
 - Resource allowance and observations:
 - Decision owner:
+- Continuing owner, change triggers and recovery (if applicable):
 - Reproduce / source / handoff locations:

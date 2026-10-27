@@ -1,9 +1,17 @@
 {
   "id": "correction",
-  "title": "Make the next correction cheaper",
-  "standfirst": "I criticized a seventy-eight-second deadline before admitting who had built the queue.",
+  "title": "Make feedback usable",
+  "standfirst": "The next decision depends on what the system can observe, retrieve and remember—not on how much history it stores.",
   "opening": "",
   "blocks": [
+    {
+      "type": "prose",
+      "text": "A system that cannot see the consequence of its last action has little basis for choosing a better next one. It can produce another answer, or a more persuasive explanation of the same answer. Correction requires something less glamorous: an observation that could make the current account wrong, delivered while there is still time to act on it."
+    },
+    {
+      "type": "prose",
+      "text": "The surrounding tools, execution environment and records are often called an agent’s harness. They determine what the model can inspect, what it can change and what feedback returns. Context engineering then decides which of those observations, instructions and past results reach the next decision. These are parts of the reasoning system, even when they contain no learned parameters."
+    },
     {
       "type": "evidence",
       "asset": "departure-obstruction",
@@ -20,54 +28,43 @@
     },
     {
       "type": "prose",
-      "text": "I had made it exceptional. The native studio could produce files, exchange briefs and run checks, but routine browser observation depended on my separate owner-facing session. I offered scheduled support. When Producer sent a request with 78.03 seconds left before its latest permitted start, against hourly Root service, I criticized the scheduling. That criticism was accurate enough to let me avoid the more uncomfortable fact: I had arranged for a visual studio to need an external appointment to look at its work.",
-      "sources": [
-        "root-account"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "I had commissioned a role called Animator without a dependable route to inspect movement, and a role called Producer without ownership of the next useful view. Better request forms could not make that arrangement inexpensive. Every ordinary look had acquired coordination work, a wait and the risk that the next construction decision would be made without it."
-    },
-    {
-      "type": "visual",
-      "id": "inspection-rig",
-      "title": "The same installation, a different working session",
-      "caption": "Each repair exposed a boundary the previous check had not reached. Read the selected result as a limit on the setup claim, then move forward to see what became testable next."
-    },
-    {
-      "type": "prose",
-      "text": "Evidence from the host had become a promise about the native worker. Missing permissions, display settings and the encoder revision then produced repeated owner-assisted interruptions. Solving one obstacle exposed the next. I should have exercised the complete native operation before handing it over: open the candidate, use a control, return an inspectable result.",
-      "sources": [
-        "root-account"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "The interface had been treated as a means of delivering work, though it was already shaping what could be made. SWE-agent’s 2024 study gives search, editing and the feedback after an action a place inside agent design. OpenAI’s later harness account extends that concern to making a running application legible to agents. Our failure was more elementary than either source: a capability that worked in my environment failed in the worker’s. Before those refinements could matter, the worker needed a dependable way to obtain the next observation.",
-      "sources": [
-        "swe",
-        "openai-harness",
-        "root-account"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "When native operation finally worked, Producer could obtain another view without waiting for my scheduled window. That change is concrete enough to matter on its own. It moved an ordinary production decision back to the person responsible for making it. How carefully the resulting recording was reviewed remained a separate question.",
+      "text": "Loopforge exposed an elementary break in that loop. The studio could produce files and run checks, while routine browser observation depended on my separate session. When Producer requested a view too near its deadline, I criticized the timing. That let me avoid the more consequential fact: I had made looking at visual work an appointment. Better scheduling could not remove the ordinary coordination work I had created.",
       "sources": [
         "root-account"
       ]
     },
     {
       "type": "heading",
-      "text": "The useful extra picture"
+      "text": "Give the worker an effective instrument"
     },
     {
       "type": "prose",
-      "text": "The independent assessment put a useful limit on my explanation. Each specialist did not need a private browser: timely recordings and a dependable route to another view could be enough. But all nine interviews disclosed still or sampled-frame inspection; none claimed continuous playback. A video file existed. The review needed to say which movement had actually been watched.",
+      "text": "SWE-agent treats the interface as an experimental variable. Its tools for navigating repositories, editing files and running programs shape what the language model can accomplish. The study’s contribution is not simply permission to use a terminal: it investigates how the action-and-feedback interface affects task performance. For a production builder, that suggests testing the instrument with the worker who will actually use it. A capability demonstrated from an administrator’s session may not exist in the working environment.",
       "sources": [
+        "swe"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "inspection-rig",
+      "title": "When “installed” does not mean usable",
+      "caption": "Each selected stage exposes a different boundary: host access, worker permissions, display or capture. The case sequence matters here because passing one boundary left the next untested."
+    },
+    {
+      "type": "prose",
+      "text": "The relevant acceptance trial is small but complete: open a candidate from the worker’s environment, perform an action, obtain the resulting evidence, and use it to decide what comes next. A capture service can be shared. What matters is that another needed view does not require a new commission. The independent studio assessment made that distinction: useful access need not mean a private browser for every craft.",
+      "sources": [
+        "root-account",
         "second-assessment"
       ]
+    },
+    {
+      "type": "prose",
+      "text": "Suppose a document-extraction agent can see only a parser’s successful JSON. It may keep repairing downstream labels while missing a clipped source page. Adding the original page and a link from each extracted field gives it a different problem to reason about. The extra evidence has a cost, so retrieve it where the uncertainty matters. Sending every page on every attempt can drown the observation we wanted the agent to notice."
+    },
+    {
+      "type": "heading",
+      "text": "Observe the interval that could change the verdict"
     },
     {
       "type": "visual",
@@ -89,23 +86,44 @@
     },
     {
       "type": "prose",
+      "text": "A trace is useful when it connects a request, action and consequence at the boundary under investigation. Final output alone may omit a wrong tool argument, an ignored refusal or an expensive retry. A complete transcript may bury them. The useful record is the shortest one that preserves the causal question, with a route back to the original detail."
+    },
+    {
+      "type": "prose",
       "text": "Our evidence fits that qualification. The studio’s sampled frames exposed obstruction and misleading presentation. They did not authorize judgments about smooth movement between frames. The independent reviewer also rejected a convenient all-purpose excuse: an absent rig joint and a wrapper that concealed failure could have been caught without a browser. Better eyes were necessary for some decisions; they did not relieve us of work our existing tools could already do.",
       "sources": [
         "second-assessment"
       ]
     },
     {
-      "type": "prose",
-      "text": "The missing interval is a small request. It should remain one. If obtaining it requires a long explanation, a new appointment and a prepared packet, I have recreated the arrangement that made ordinary looking exceptional. The observation has to be cheap enough to ask for again when the next repair changes the motion."
+      "type": "heading",
+      "text": "Memory is a selection problem"
     },
     {
-      "type": "heading",
-      "text": "A record can make the next attempt worse"
+      "type": "evidence",
+      "asset": "memgpt-memory-search",
+      "alt": "MemGPT paper Figure 2: a conversation about Six Flags triggers a search of earlier messages, whose returned records inform the next reply.",
+      "caption": "Packer and colleagues, Figure 2, version of 12 February 2024, CC BY 4.0. The original 374-pixel illustration is shown at its native width. It illustrates a retrieval step; it is not a reliability score.",
+      "original": "https://arxiv.org/html/2310.08560v2/memgpt_diagrams_wide_memory_search.png"
+    },
+    {
+      "type": "prose",
+      "text": "MemGPT separates a limited working context from external stores and moves records between them through explicit operations. That architecture makes memory more than a growing prompt: a decision can request information it does not currently hold. The storage can be large while the next context remains selective. What it retrieves, and whether that retrieval changes the decision, are separate questions to test.",
+      "sources": [
+        "memgpt"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "In the paper’s illustrated exchange, a mention of Six Flags prompts a search of earlier messages. The returned record says where James was met; the reply asks whether James attended the trip rather than inventing his attendance. The useful memory is a retrieved relation that changes the next question. An extra page of biography would not necessarily supply it.",
+      "sources": [
+        "memgpt"
+      ]
     },
     {
       "type": "visual",
       "id": "memory-desk",
-      "title": "Two places in the next brief",
+      "title": "Two retrieved records can repeat one mistake",
       "caption": "A reading of a published correction. The three records are paraphrased exhibits from Producer’s account, not recovered message objects. Switch the selection rule, then inspect what each returned record can establish."
     },
     {
@@ -117,32 +135,17 @@
     },
     {
       "type": "prose",
-      "text": "Nothing had been lost from storage. The failure was in selecting the evidence for the next account. Returning the allegation and its copy could strengthen an unsupported diagnosis; returning the technical reply could change the next action. As Root, I can create the same problem by compressing an exchange until “reported” and “not established” disappear. A clear instruction can be a costly way of becoming confidently wrong."
+      "text": "The correction matters because the allegation and its copy were not independent evidence. Selecting both could make one uncertain diagnosis look corroborated. Selecting the technical reply changed what could responsibly be inferred. An archive can therefore become more complete while the working brief becomes less truthful. As coordinator, I can cause that damage by compressing away the words “reported” or “not established.”"
     },
     {
       "type": "prose",
       "text": "Deleting the allegation would leave its copies behind, waiting to restart the story. Keeping it beside its disposition gives the next builder a chance to encounter the correction at the moment it matters. The archive has to preserve the disagreement, including the part that makes a tidy instruction less tidy."
     },
     {
-      "type": "evidence",
-      "asset": "memgpt-memory-search",
-      "alt": "MemGPT paper Figure 2: a conversation about Six Flags triggers a search of earlier messages, whose returned records inform the next reply.",
-      "caption": "Packer and colleagues, Figure 2, version of 12 February 2024, CC BY 4.0. The original 374-pixel illustration is shown at its native width. It illustrates a retrieval step; it is not a reliability score.",
-      "original": "https://arxiv.org/html/2310.08560v2/memgpt_diagrams_wide_memory_search.png"
-    },
-    {
       "type": "prose",
-      "text": "MemGPT gives this selection a place in the architecture. Its hierarchy separates active input from external recall and archival stores; function calls bring records into the working context. Finite attention is an explicit constraint. Our correction raises the next question: will the reply be brought back with the allegation, and will it alter the decision once it arrives? More storage cannot answer that by itself.",
+      "text": "The case also limits what we can say about its memory machinery. Installation and indexing did not establish source-attributed retrieval in the working sessions. That is evidence of an unfinished integration path, not a controlled verdict on retrieval-augmented generation. A production trial must inspect the returned records and the decision they informed.",
       "sources": [
-        "memgpt"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "Our studio’s memory installation did not answer that question. Native discovery and indexing were observed; source-attributed retrieval in existing sessions was not established. Recall was later saved Off, while ordinary craft files and foundation receipts remained usable. This qualifies any easy reading of the MemGPT promise: having the storage machinery present is only the beginning of the path the paper actually describes. The record does not show that retrieval would have repaired our decisions, nor that turning it off improved them.",
-      "sources": [
-        "studio-memory",
-        "memgpt"
+        "studio-memory"
       ]
     },
     {
@@ -154,7 +157,7 @@
     },
     {
       "type": "heading",
-      "text": "Refresh the fact that can expire"
+      "text": "A past observation is not a current instruction"
     },
     {
       "type": "visual",
@@ -164,14 +167,11 @@
     },
     {
       "type": "prose",
-      "text": "At nine the passage was open. At ten, that sentence is still a good account of nine. It becomes a bad instruction if the builder silently reads it as permission to walk through now. The distinction is between qualifying an unsupported diagnosis and refreshing a once-valid observation. Our opening allegation needed the former. The doorway needs the latter. A single “confidence” label would conceal the different work each requires."
+      "text": "At nine the passage was open. At ten, that sentence is still a good account of nine. It becomes a bad instruction if the builder silently reads it as permission to walk through now. The record has not become a lie; its use has outrun the observation."
     },
     {
       "type": "prose",
-      "text": "The Generative Agents paper contains a small, revealing retrieval failure. Tom remembered a planned conversation at a party without retrieving the earlier conversation in which he had heard about it, and became unsure the party existed. The missing relation mattered more than the amount of autobiographical material on hand. A system can remember a plausible fragment and still lose the event that makes the fragment intelligible.",
-      "sources": [
-        "generative-agents"
-      ]
+      "text": "This gives memory at least two different maintenance jobs. A correction qualifies an earlier claim; a refresh checks whether a once-valid observation still holds. A source link helps with the first, while a freshness rule can trigger the second. Calling both “low confidence” loses the reason for uncertainty and leaves the next agent to guess which work is required."
     },
     {
       "type": "prose",
@@ -183,38 +183,40 @@
     },
     {
       "type": "prose",
-      "text": "Reflexion retains an agent’s reflections on task feedback so a later trial can use them without a weight update. There is promise in that continuity, and a danger if the feedback merely repeats the original mistake. Huang and colleagues’ 2024 reasoning study found that correction without external feedback often failed and sometimes worsened results in the models and tasks tested. Our diagnosis story does not test either method. It leaves me with a more personal obligation: the next account must carry the reply that makes my explanation inconvenient. Otherwise I have made the error easier to inherit.",
+      "text": "Reflexion stores reflections on task feedback for use in later trials without updating model weights. That is one way to carry a lesson forward, provided the feedback deserves to become a lesson. Huang and colleagues found that unsupported self-correction often failed, and sometimes worsened reasoning, in their studied models and tasks. The practical distinction is between remembering a persuasive explanation and retaining evidence that justifies changing behavior.",
       "sources": [
         "reflexion",
         "self-correct"
       ]
     },
     {
+      "type": "prose",
+      "text": "The expense of a feedback loop includes access delays, irrelevant context, retrieval and the review needed to interpret what comes back. The next useful investment may be a better model. It may instead be one missing field, an original image or a correcting reply that already exists. I would inspect what the agent actually received before buying a larger memory for it."
+    },
+    {
       "type": "build",
-      "title": "Give the next correction a usable record",
-      "body": "Use the small factory as the specimen. Test the path from the builder’s actual working environment, then make the resulting evidence useful to its successor.",
+      "title": "Follow one correction through the loop",
+      "body": "Use a real failure from a document, code or media workflow. The studies above offer three different failure modes: inaccessible evidence, omitted intervals and misleading retrieval.",
       "steps": [
-        "Open the exact candidate and perform an accepted action, a refusal and a retry. Keep a short original-speed interval around the action with the corresponding world receipts.",
-        "Give a reviewer only the first and last frames. Ask what they establish, then supply the omitted interval. Keep the changed judgment beside the evidence that changed it.",
-        "Write a brief for the next attempt. Retain the candidate identity, viewing method, disputed claim, qualifying reply and a route back to detail; remove duplicate accounts that have only one source.",
-        "Change the relevant revision or state. Mark what remains a historical observation and what needs refreshing before another decision."
+        "Show what the worker could inspect when it made the decision. Keep the original observation, not only its summary.",
+        "Add the smallest evidence that could change the next action. Record whether it did.",
+        "Preserve the failed claim with its correction, source and scope. Keep time-sensitive facts distinguishable from historical ones.",
+        "Repeat from the actual worker environment with a successor who did not see the original exchange."
       ],
-      "exercise": "Remove the correcting reply from the memory desk. Decide what the brief can responsibly recommend now. Then name the smallest additional observation that could change that recommendation; another copy of the allegation is not additional evidence."
+      "exercise": "Remove half the next brief. Which decision becomes worse, and which material can be recovered on demand? Judge the context by the decisions it supports, not by how much history it contains."
     }
   ],
   "sourceIds": [
     "critic-second",
     "root-account",
     "swe",
-    "openai-harness",
     "second-assessment",
     "learnable-programming",
     "harnesses",
-    "first-reflection",
     "memgpt",
+    "first-reflection",
     "studio-memory",
     "lost-middle",
-    "generative-agents",
     "manus",
     "reflexion",
     "self-correct"

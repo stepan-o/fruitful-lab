@@ -20,7 +20,11 @@ Each chapter receives an independent fresh-context critic for the final version,
 
 ## Current final review
 
-The writing pass and whole-book information-layer audit pass. Final visual critics clear chapters 1–7. Chapters 8 and 9 have complete substantive reviews and narrow repairs in the fourth successful local build: an unfilled plot axis and removal of an overlapping compact cabinet heading. Their final rendered rechecks remain pending because the browser transport closed in both reviewers, the parent and a fresh independent session. The reports do not substitute source inspection for those checks. An additional independent critic rendered the actual SVG components in twenty states and cleared both defects at artwork level; `reviews/polish/final-graphic-recheck.md` preserves the method and its limitations. It does not replace the outstanding live-route checks.
+Both passes are independently cleared. The continuous literary review and whole-book information-layer audit pass. Fresh-context chapter critics clear all nine gates for every chapter: `reviews/polish/01-final.md` through `07-final.md`, followed by `08-final.md` plus `08-live-recheck.md`, and `09-final.md` plus `09-live-recheck.md`.
+
+Browser recovery allowed the final two critics to operate the actual book routes. Chapter 8 clears the unfilled plot axis and a further compact-label margin correction at 320/390 pixels, with wide framing, event selection and pause preserved. Chapter 9 clears all three cabinet selections at 320/390/768/1280 pixels, visible transition and complete paused states. Their reports distinguish direct observation from earlier evidence. The twenty-state SVG review remains corroboration, not a substitute for these live checks.
+
+`COMPLETION_AUDIT.md` maps the final nine-chapter scope and each acceptance criterion to its evidence. Production publication remains the owner's merge decision.
 
 ## Delivery after both passes
 

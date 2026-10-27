@@ -24,7 +24,7 @@ Term notes are available by pointer hover, keyboard focus and tap. Clicking pins
 
 ## Acceptance record
 
-Fresh chapter critics begin with source ideation, then examine the actual updated build against Sanctuary. Final decisions belong in `reviews/polish/01-final.md` through `09-final.md`; earlier reconstructed reviews are baselines. A source-only finding or a successful build cannot clear the rendered craft gate. Record any additional repairs here and in the individual reports before delivery.
+Fresh chapter critics begin with source ideation, then examine the actual updated build against Sanctuary. Final decisions are recorded in `reviews/polish/01-final.md` through `09-final.md`, with the concluding `08-live-recheck.md` and `09-live-recheck.md`; all nine chapters now clear. Earlier reconstructed reviews are baselines. A source-only finding or a successful build cannot clear the rendered craft gate. Record any additional repairs here and in the individual reports before delivery.
 
 ### Rendered opening repair
 
@@ -38,9 +38,9 @@ The Chapter 5 critic found that the site’s stable scrollbar gutters shifted fi
 
 ### Performance plot axis repair
 
-The final Chapter 8 critic found an opaque triangle obscuring the event plot. The open SVG axis path inherited the default fill; an explicit `fill="none"` removes the unintended area without altering marks or data. The independent twenty-state SVG artifact review clears the repaired plot in both authored layout modes, with all-event and enlarged Passage selections. The final live-route recheck at the reviewed widths still remains before Chapter 8 clearance; the artifact report does not infer browser layout or motion.
+The final Chapter 8 critic found an opaque triangle obscuring the event plot. The open SVG axis path inherited the default fill; an explicit `fill="none"` removes the unintended area without altering marks or data. The independent twenty-state SVG artifact review clears the repaired plot in both authored layout modes, with all-event and enlarged Passage selections. The recovered live review then cleared eight actual width/filter combinations and selected-event motion/pause. It also exposed a three-digit tick label extending off the beige paper on phones. Moving the compact plot origin from 80 to 104 SVG units keeps the complete label on the paper while preserving data and wide geometry. The independent critic rechecked both all-events and enlarged Passage views at 320/390 pixels in the fifth build, verified wide framing, and cleared Chapter 8. See `reviews/polish/08-live-recheck.md`.
 
 
 ### Compact release-cabinet repair
 
-The final Chapter 9 critic found the decorative “KEEP DISTINCT” heading overprinting the second compartment heading at 320 and 390 pixels. Compact mode now omits that heading and its short divider; the precise installed/preserved or record/withheld labels remain. Desktop keeps the separate decorative heading. The independent SVG artifact review clears Max, Sam and Device selections at four calculated artwork sizes; compact headings are separate and the wide heading remains intact. The final live-route recheck remains before Chapter 9 clearance. See `reviews/polish/final-graphic-recheck.md` for exact scope and font limitations.
+The final Chapter 9 critic found the decorative “KEEP DISTINCT” heading overprinting the second compartment heading at 320 and 390 pixels. Compact mode now omits that heading and its short divider; the precise installed/preserved or record/withheld labels remain. Desktop keeps the separate decorative heading. The independent SVG artifact review clears Max, Sam and Device selections at four calculated artwork sizes; compact headings are separate and the wide heading remains intact. The recovered independent live review then checked all twelve width/selection combinations, visible selection settling and all three complete paused compact states. Chapter 9 clears. See `reviews/polish/09-live-recheck.md`; the earlier artifact report preserves its narrower scope and font limitations.

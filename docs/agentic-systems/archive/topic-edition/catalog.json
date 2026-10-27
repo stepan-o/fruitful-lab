@@ -1,0 +1,142 @@
+[
+  {
+    "id": "what-shipped",
+    "title": "What actually shipped",
+    "concept": "A release has more than one verdict",
+    "number": 1,
+    "part": 1
+  },
+  {
+    "id": "what-makes-a-game",
+    "title": "What makes this a game",
+    "concept": "The player's next thought",
+    "number": 2,
+    "part": 1
+  },
+  {
+    "id": "delegated-work",
+    "title": "A short history of delegated work",
+    "concept": "The work left outside the machine",
+    "number": 3,
+    "part": 2
+  },
+  {
+    "id": "smallest-world",
+    "title": "Build the smallest playable world",
+    "concept": "A promise the world can keep",
+    "number": 4,
+    "part": 2
+  },
+  {
+    "id": "agent-or-workflow",
+    "title": "One agent, several agents, or a workflow",
+    "concept": "Where work can safely separate",
+    "number": 5,
+    "part": 3
+  },
+  {
+    "id": "readable-scene",
+    "title": "Stage a readable scene",
+    "concept": "Give the eye somewhere to go",
+    "number": 6,
+    "part": 3
+  },
+  {
+    "id": "memory",
+    "title": "Memory that changes decisions",
+    "concept": "What deserves to come back",
+    "number": 7,
+    "part": 4
+  },
+  {
+    "id": "different-knowledge",
+    "title": "Characters who know different things",
+    "concept": "A card in the wrong pocket",
+    "number": 8,
+    "part": 4
+  },
+  {
+    "id": "usable-eyes",
+    "title": "Give the builder usable eyes",
+    "concept": "The view from the actual workstation",
+    "number": 9,
+    "part": 5
+  },
+  {
+    "id": "movement",
+    "title": "Make movement communicate",
+    "concept": "The hand must arrive",
+    "number": 10,
+    "part": 5
+  },
+  {
+    "id": "generate-evaluate-select",
+    "title": "Generate, evaluate, select",
+    "concept": "A search worth paying for",
+    "number": 11,
+    "part": 6
+  },
+  {
+    "id": "authored-play",
+    "title": "Turn generated material into authored play",
+    "concept": "Consequences need an author",
+    "number": 12,
+    "part": 6
+  },
+  {
+    "id": "tests",
+    "title": "What each test can establish",
+    "concept": "The reach of an instrument",
+    "number": 13,
+    "part": 7
+  },
+  {
+    "id": "playtesting",
+    "title": "Playtesting beyond the happy path",
+    "concept": "The routes nobody rehearsed",
+    "number": 14,
+    "part": 7
+  },
+  {
+    "id": "cost",
+    "title": "What did useful progress cost",
+    "concept": "An honest account of the run",
+    "number": 15,
+    "part": 8
+  },
+  {
+    "id": "responsive",
+    "title": "Keep the game responsive",
+    "concept": "The long frame",
+    "number": 16,
+    "part": 8
+  },
+  {
+    "id": "review",
+    "title": "Review, disagreement, and intervention",
+    "concept": "Who can change the decision",
+    "number": 17,
+    "part": 9
+  },
+  {
+    "id": "complete-day",
+    "title": "Assemble a complete day",
+    "concept": "Everything meets at the doorway",
+    "number": 18,
+    "part": 9
+  },
+  {
+    "id": "finish",
+    "title": "Finish the cycle",
+    "concept": "The last useful act",
+    "number": 19,
+    "part": 10
+  },
+  {
+    "id": "operating-guide",
+    "title": "The next-cycle operating guide",
+    "concept": "Before the workshop opens",
+    "number": 20,
+    "part": 10
+  }
+]

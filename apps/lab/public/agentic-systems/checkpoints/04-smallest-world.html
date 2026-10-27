@@ -1,0 +1,111 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A shift for two — checkpoint 04</title><style>
+*{box-sizing:border-box}body{margin:0;background:#142e35;color:#e5ddc1;font:18px/1.6 Georgia,serif}main{max-width:800px;margin:auto;padding:24px 18px}h1{font-weight:400;font-size:42px;line-height:1.1}button{min-height:46px;padding:10px;border:1px solid #8caa94;background:#254b50;color:#eee4c7;font:14px Arial,sans-serif;cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #dfbd76;outline-offset:3px}button[aria-pressed=true]{background:#ccbb91;color:#19363d}.people,.moves,.actions{display:grid;gap:8px;margin:15px 0}.people{grid-template-columns:1fr 1fr}.moves{grid-template-columns:repeat(4,1fr)}.actions{grid-template-columns:repeat(3,1fr)}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;background:#0a222b;padding:8px;border:1px solid #6d927e}.cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;flex-direction:column;border:1px solid #618d7d;background:#3b685f;min-width:0;font:15px/1.3 Arial,sans-serif}.wall{background:repeating-linear-gradient(45deg,#183c43,#183c43 6px,#325350 6px,#325350 9px)}.control{background:#9c8b5f}.card{font-size:11px;color:#ffe2a0}.worker{display:block;border:2px solid #c1d8b6;padding:6px;border-radius:3px;background:#284f59}.selected{outline:2px solid #edc777;outline-offset:2px}.facts{font:14px/1.7 Arial,sans-serif;color:#bfd0b8}.receipt{min-height:80px}pre{font:12px/1.5 monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#0e252e;padding:16px}summary{cursor:pointer;min-height:48px;padding:12px 0}a{color:#e2d4a8}small{font:13px/1.7 Arial,sans-serif}li{margin:8px 0}@media(max-width:500px){h1{font-size:34px}.moves,.actions{grid-template-columns:1fr 1fr}.cell{font-size:12px}.worker{padding:3px}}
+</style><main><small>AGENTIC SYSTEMS · CHECKPOINT 04 · OFFLINE EDITION</small><h1>A shift for two</h1><p>Make one workpiece with Bob and one with Ed. One press, one access card, one reservation. This saved page needs no network or credentials.</p><div id="people" class="people"></div><div id="grid" class="grid" aria-label="Factory floor"></div><p class="facts" id="facts"></p><div class="moves"><button data-command="left">← Left</button><button data-command="up">↑ Up</button><button data-command="down">↓ Down</button><button data-command="right">→ Right</button></div><div class="actions"><button data-command="claim">Claim press</button><button data-command="start">Begin cycle</button><button data-command="tick">Advance beat</button><button data-command="give">Pass card</button><button data-command="release">Release press</button><button data-command="cancel">Cancel cycle</button></div><p class="receipt" id="receipt" aria-live="polite"></p><button id="reset">Reset</button> <button id="retry">Repeat request ID</button><details><summary>How to complete the handover</summary><ol><li>Bob: right three times, claim, begin, advance twice, up.</li><li>Ed: right, up, right, right.</li><li>Bob: pass card, release.</li><li>Ed: claim, begin, advance twice.</li></ol><p>Interrupt a cycle by leaving the control or passing the card before its second beat. The next beat refuses output.</p></details><details><summary>Inspect state and receipts</summary><pre id="state"></pre><ol id="history"></ol></details><p><small>A new teaching reconstruction of selected Loopforge contracts. One piece per worker and two beats per cycle are authored checkpoint rules. Source hash: 9290d2928e503bdaefd946313e6c2065f043332b33612fda69c7b1da2a7f34ab</small></p></main><script type="module">
+export const actors = ["bob", "ed"];
+export const control = [3, 1];
+export const walls = [[2, 0], [2, 2], [4, 1]];
+export const same = (a, b) => a[0] === b[0] && a[1] === b[1];
+export const adjacent = (a, b) => Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]) === 1;
+export function initialWorld() { return { positions: { bob: [0, 1], ed: [0, 2] }, card: "bob", reserved: null, active: null, made: { bob: 0, ed: 0 }, tick: 0, seen: [], receipts: [] }; }
+export function ready(s, actor) {
+    if (!same(s.positions[actor], control))
+        return "The operator must stand at the brass control tile.";
+    if (s.card !== actor)
+        return "The operator does not hold the access card.";
+    if (s.reserved !== actor)
+        return "The operator does not own the station reservation.";
+    if (s.made[actor])
+        return "This operator has already made their workpiece.";
+    return null;
+}
+/** Intent is a request. This transition owns occupancy, custody and output. */
+export function transition(world, intent) {
+    if (world.seen.includes(intent.id))
+        return world;
+    const s = { ...world, positions: { ...world.positions }, made: { ...world.made }, active: world.active ? { ...world.active } : null, seen: [...world.seen, intent.id], receipts: [...world.receipts] };
+    const { actor, command } = intent, other = actor === "bob" ? "ed" : "bob";
+    const finish = (accepted, text) => { s.receipts.push({ id: intent.id, accepted, text }); return s; };
+    const directions = { left: [-1, 0], right: [1, 0], up: [0, -1], down: [0, 1] };
+    const delta = directions[command];
+    if (delta) {
+        const pos = s.positions[actor], next = [pos[0] + delta[0], pos[1] + delta[1]];
+        if (next[0] < 0 || next[0] > 4 || next[1] < 0 || next[1] > 2 || walls.some(cell => same(cell, next)))
+            return finish(false, "A wall or machine blocks that step.");
+        if (same(s.positions[other], next))
+            return finish(false, "That tile is occupied. The other worker must move first.");
+        s.positions[actor] = next;
+        return finish(true, actor + " moved. Any reservation remains theirs until released.");
+    }
+    if (command === "give") {
+        if (s.card !== actor)
+            return finish(false, "Only the current holder can pass the card.");
+        if (!adjacent(s.positions[actor], s.positions[other]))
+            return finish(false, "The workers must be next to each other to pass the card.");
+        s.card = other;
+        return finish(true, actor + " passed the card to " + other + ".");
+    }
+    if (command === "claim") {
+        if (!same(s.positions[actor], control))
+            return finish(false, "Reach the brass control tile before claiming the press.");
+        if (s.card !== actor)
+            return finish(false, "The access card is required to claim the press.");
+        if (s.reserved && s.reserved !== actor)
+            return finish(false, "The other worker still owns the press reservation.");
+        s.reserved = actor;
+        return finish(true, actor + " reserved the press.");
+    }
+    if (command === "release") {
+        if (s.reserved !== actor)
+            return finish(false, "This worker has no reservation to release.");
+        if (s.active)
+            return finish(false, "Finish or cancel the active cycle before releasing the press.");
+        s.reserved = null;
+        return finish(true, actor + " released the press.");
+    }
+    if (command === "start") {
+        if (s.active)
+            return finish(false, "A cycle is already in progress.");
+        const reason = ready(s, actor);
+        if (reason)
+            return finish(false, reason);
+        s.active = { actor, remaining: 2 };
+        return finish(true, actor + " began a two-beat cycle. Nothing has been delivered yet.");
+    }
+    if (command === "cancel") {
+        if (!s.active || s.active.actor !== actor)
+            return finish(false, "Only the active operator can cancel their cycle.");
+        s.active = null;
+        return finish(true, "The cycle was cancelled. No output was awarded; the reservation remains.");
+    }
+    if (command === "tick") {
+        s.tick++;
+        if (!s.active)
+            return finish(true, "One simulation beat passed. The press is idle.");
+        const reason = ready(s, s.active.actor);
+        if (reason) {
+            s.active = null;
+            return finish(false, "Cycle interrupted: " + reason + " No output was awarded.");
+        }
+        s.active.remaining--;
+        if (s.active.remaining > 0)
+            return finish(true, "The press is halfway through its cycle.");
+        const operator = s.active.actor;
+        s.made[operator]++;
+        s.active = null;
+        return finish(true, operator + " completed a workpiece. Release the press to hand it over.");
+    }
+    return finish(false, "Unknown command.");
+}
+
+let world=initialWorld(),selected="bob",sequence=0,last=null;
+function draw(){
+ document.querySelector("#people").innerHTML=actors.map(a=>'<button data-actor="'+a+'" aria-pressed="'+(selected===a)+'">'+a+'</button>').join("");
+ let cells="";for(let y=0;y<3;y++)for(let x=0;x<5;x++){const p=[x,y],worker=actors.find(a=>same(world.positions[a],p)),blocked=walls.some(w=>same(w,p));cells+='<div class="cell '+(blocked?'wall ':'')+(same(p,control)?'control':'')+'">'+(worker?'<span class="worker '+(worker===selected?'selected':'')+'">'+worker+'</span>'+(world.card===worker?'<span class="card">ACCESS CARD</span>':''):same(p,control)?'CONTROL':x===4&&y===1?'PRESS':'')+'</div>';}document.querySelector("#grid").innerHTML=cells;
+ document.querySelector("#facts").textContent="Card: "+world.card+" · Reservation: "+(world.reserved??"free")+" · Press: "+(world.active?world.active.remaining+" beats left":"idle")+" · Made: Bob "+world.made.bob+", Ed "+world.made.ed;
+ document.querySelector("#receipt").textContent=(world.receipts.at(-1)?.accepted===false?"Refused. ":"")+(world.receipts.at(-1)?.text??"Bob holds the card. Reach the control tile before claiming the press.");
+ document.querySelector("#state").textContent=JSON.stringify({...world,receipts:undefined},null,2);
+ document.querySelector("#history").innerHTML=world.receipts.map(r=>"<li>"+r.id+" · "+r.text+"</li>").join("");
+ document.querySelector("#retry").disabled=!last;
+}
+document.addEventListener("click",event=>{const b=event.target.closest("button");if(!b)return;if(b.dataset.actor){selected=b.dataset.actor;}else if(b.dataset.command){last={id:"request-"+(++sequence),actor:selected,command:b.dataset.command};world=transition(world,last);}else if(b.id==="reset"){world=initialWorld();sequence=0;selected="bob";last=null;}else if(b.id==="retry"&&last){world=transition(world,last);}draw();});draw();
+</script></html>

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "worth-shipping",
+    "title": "What is worth shipping?",
+    "concept": "A useful next difference",
+    "number": 1,
+    "part": 1
+  },
+  {
+    "id": "small-world",
+    "title": "A world small enough to trust",
+    "concept": "Expressiveness against verification burden",
+    "number": 2,
+    "part": 2
+  },
+  {
+    "id": "division-of-work",
+    "title": "Delegate where the work can separate",
+    "concept": "Specialization has a handoff cost",
+    "number": 3,
+    "part": 3
+  },
+  {
+    "id": "correction",
+    "title": "Make the next correction cheaper",
+    "concept": "Evidence that changes the next action",
+    "number": 4,
+    "part": 4
+  },
+  {
+    "id": "readable-detail",
+    "title": "Spend detail where it can be read",
+    "concept": "Craft at the point of perception",
+    "number": 5,
+    "part": 5
+  },
+  {
+    "id": "generation",
+    "title": "Make generation earn another attempt",
+    "concept": "The value of the next candidate",
+    "number": 6,
+    "part": 6
+  },
+  {
+    "id": "confidence",
+    "title": "Buy confidence where failure matters",
+    "concept": "A test worth running",
+    "number": 7,
+    "part": 7
+  },
+  {
+    "id": "responsive",
+    "title": "Fit the experience to the machine",
+    "concept": "Richness within a frame budget",
+    "number": 8,
+    "part": 8
+  },
+  {
+    "id": "handoff",
+    "title": "Close the commission",
+    "concept": "A decision worth handing over",
+    "number": 9,
+    "part": 9
+  }
+]

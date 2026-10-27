@@ -1,0 +1,140 @@
+{
+  "id": "different-knowledge",
+  "title": "Characters who know different things",
+  "standfirst": "A missing message can be a defect—or the condition that makes the next scene work.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "evidence",
+      "asset": "help-and-card",
+      "alt": "Retained R10 factory frame at 08:00:26: Sam attends to Bob on the left, while Ed holds a small pale card on the right.",
+      "caption": "R10 browser capture retained with the 25 October 2026 materials, factory time 08:00:26. The complete source frame includes the review controls; the book resizes and re-encodes it without cropping.",
+      "original": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-help-and-card.png"
+    },
+    {
+      "type": "prose",
+      "text": "Sam is occupied with Bob. Ed has found another use for the moment. The pale card is a small detail in the picture, but a large difference in the state of the day. Engine’s account identifies the separation worth keeping: Ed’s possession survives the ending without silently becoming Bob’s knowledge. A player can witness the theft while the person being robbed continues under a different understanding of the room.",
+      "sources": [
+        "engine-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "That separation gives the scene something to spend later. If everyone immediately inherits the same fact, a missing card becomes an inventory update with witnesses everywhere. If Bob retains his earlier belief, an ordinary request for identification can acquire tension. The important implementation question comes before a clever line of dialogue: who was entitled to learn what happened?"
+    },
+    {
+      "type": "visual",
+      "id": "custody-room",
+      "title": "One card, three accounts",
+      "caption": "A record can agree with the world by accident. Compare its source and sequence marker as well as its current value: those fields tell us how the character arrived at this account."
+    },
+    {
+      "type": "prose",
+      "text": "The review cutaway gives us an advantage neither character automatically possesses. A later request for the card could therefore produce three accounts: the location in the world, the location Bob remembers, and the location Ed has just seen. Before generating any dialogue, we can inspect the reason behind each account."
+    },
+    {
+      "type": "heading",
+      "text": "Belief is information under constraints"
+    },
+    {
+      "type": "prose",
+      "text": "Anand Rao and Michael Georgeff’s 1995 BDI account distinguishes information about the environment, objectives and commitments to action. Their air-traffic example is useful precisely because sensing is local and the world can change while a system deliberates. A footnote makes the limit explicit: beliefs need not have the truth guarantee associated with knowledge. They represent the environment as the system has reason to take it to be, under assumptions that can fail.",
+      "sources": [
+        "bdi"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Loopforge implements a much smaller contract. A belief records a value, source, mode and tick. Hearing a claim writes a reported belief; an explicitly observed transfer can write an observed one. Physical custody lives elsewhere. These are useful distinctions even in a deterministic script. They do not make this runtime a general BDI planner, and Engine explicitly declined that description.",
+      "sources": [
+        "loopforge-knowledge",
+        "engine-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "For a future dialogue generator, I would keep this boundary in the input itself. Give the character its observations and attributed reports, plus the task it can legitimately pursue. Sending every actor the complete world record and asking each to pretend not to know parts of it makes ignorance depend on performance. The same separation belongs on the output side: a sentence about who holds the card must not move the card. The current typed runtime offers an inspectable place to enforce that distinction; it does not demonstrate a reliable language-model character.",
+      "sources": [
+        "loopforge-knowledge"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "An address is not a delivery"
+    },
+    {
+      "type": "prose",
+      "text": "Writer’s hearing review initially found sixteen turns missing an addressed listener and treated all sixteen as failures. That diagnosis would have produced unnecessary audience edits. On checking later actions, Writer withdrew it: Jo received Gus’s actual call, and Bob’s delight did not require Lou’s count. Four nonreceipts could remain. The other twelve needed the people to be staged where the exchange could actually reach them.",
+      "sources": [
+        "writer-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The shutdown reports show what a repair looked like. Mae and Kit could not reach STILETTO from their posts. Director asked for an approach to the listener rather than a larger hearing radius; the R10 export then recorded both reports arriving. The later pinned staging regression checks the twelve selected repairs after admitted travel and preserves the four intended nonreceipts. Its assertions also retain the successful closing exchange and Ed’s custody at night. This is a useful local contract, not proof that every performed conversation is emotionally convincing.",
+      "sources": [
+        "director-second",
+        "hearing-regression"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "hearing-room",
+      "title": "Bring the statement within reach",
+      "caption": "Begin across the doorway with a local voice. Try moving Bob closer before changing the voice. Then send the false floor claim: a successful receipt and a true statement are separate results."
+    },
+    {
+      "type": "prose",
+      "text": "Ed addresses Bob in every trial. Distance and the doorway determine whether the selected voice reaches him. Once it does, Bob can retain what Ed said—even when the card is visibly still with Ed in our review view. This example deliberately performs no credibility reasoning. Its “reported” label preserves the question for a system that might later compare testimony with observation."
+    },
+    {
+      "type": "heading",
+      "text": "Let the player understand the limit"
+    },
+    {
+      "type": "prose",
+      "text": "In a 2012 interview, Mark of the Ninja designer Nels Anderson describes making noise travel visible as a ring whose reach matters to guards. The design also exposes light, darkness and enemy awareness. His argument is that legible perception rules let players plan an encounter rather than discover the boundary only by blundering into it. This is a practitioner’s account of a particular stealth game, not a universal instruction to display every internal character state.",
+      "sources": [
+        "ninja-feedback"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our studio record supports the narrower demand for an intelligible route between a cue and a response. A script’s recipient annotation did not establish delivery; actual hearing receipts contradicted it. But the four retained nonreceipts also protect an important limit. Making the system understandable does not require making every character informed. We need to explain why someone fails to hear, then let the story live with the consequence.",
+      "sources": [
+        "writer-second",
+        "ninja-feedback"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "As Root, I would commission an exchange with a small dependency list: which later decisions require this line, who must receive it, and which silences are intentional. A request to eliminate every missed receipt would reward the wrong repair. So would enlarging the radius until a conversation worked from any convenient staging mark. The useful evidence is a particular message arriving through an allowed route, followed by a response that uses no more information than the receiver has."
+    },
+    {
+      "type": "build",
+      "title": "Give one worker an incomplete view",
+      "body": "Extend the chapter 4 world with per-worker records. Keep the existing custody field authoritative.",
+      "steps": [
+        "Attach a source, observation mode and sequence marker to each worker’s record of the card. Do not alias those records to the world object.",
+        "Commit a transfer for a selected set of observers. Verify that nonobservers retain their previous entries.",
+        "Add a report event with a reach check. Store the speaker’s claim separately from custody, including when the claim is false.",
+        "Write one later action that depends on the worker’s record. Keep a deliberate nonreceipt and show the resulting difference in behavior."
+      ],
+      "exercise": "Send “The card is on the floor” from within range. Inspect all three records. What would count as a later correction for Bob—and what extra reasoning would be needed before treating a repeated report as independent evidence?"
+    },
+    {
+      "type": "prose",
+      "text": "The characters now have bounded views of their world. The builders need a different kind of access: enough direct evidence to discover when the performed scene violates the intended exchange. The next chapter follows the practical work of giving that view to the people and agents making it."
+    }
+  ],
+  "sourceIds": [
+    "engine-second",
+    "bdi",
+    "loopforge-knowledge",
+    "writer-second",
+    "director-second",
+    "hearing-regression",
+    "loopforge-hearing",
+    "ninja-feedback"
+  ]
+}

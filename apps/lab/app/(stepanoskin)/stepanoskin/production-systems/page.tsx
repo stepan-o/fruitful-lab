@@ -84,6 +84,7 @@ export default function ProductionSystemsPage() {
                 <h3>Fruitful Lab</h3>
                 <p>A working full-stack sandbox: typed decision tools, event instrumentation, backend APIs, and versioned media delivery.</p>
                 <Link className={styles.textLink} href="/tools">Explore the tools <ArrowUpRight size={16} aria-hidden="true" /></Link>
+                <Link className={styles.textLink} href="/stepanoskin/agentic-systems">Agentic Systems · illustrated field book <ArrowUpRight size={16} aria-hidden="true" /></Link>
               </article>
               <article>
                 <p className={styles.smallLabel}>Published research · 2022</p>

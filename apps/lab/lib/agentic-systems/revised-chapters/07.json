@@ -1,9 +1,20 @@
 {
   "id": "confidence",
-  "title": "Buy confidence where failure matters",
-  "standfirst": "The green result had taken a shorter route than the player.",
+  "title": "Evaluate the system that will run",
+  "standfirst": "A reassuring answer, a valid action and a useful outcome require different evidence.",
   "opening": "",
   "blocks": [
+    {
+      "type": "prose",
+      "text": "A production evaluation asks whether the system can fulfill its promise under the conditions that matter. That is a larger question than whether the model gives a good answer. The model works through retrieval, tools, permissions and interfaces; a failure in any of them can leave the final sentence describing a result that never happened."
+    },
+    {
+      "type": "prose",
+      "text": "Anthropic’s account of agent evaluations draws a useful distinction between a transcript and the outcome in the environment. A booking assistant can say that a reservation exists while the database says otherwise. The grader needs the evidence appropriate to the claim. It also needs repeated trials where model behavior varies, rather than a single fortunate demonstration.",
+      "sources": [
+        "evals"
+      ]
+    },
     {
       "type": "visual",
       "id": "inspection-bench",
@@ -16,15 +27,11 @@
     },
     {
       "type": "prose",
-      "text": "While building the story workshop, I made a less photogenic version of that mistake. The rules expected an action identifier; the screen’s availability explanation passed the whole action object instead. The rule tests and click handler used the intended identifiers. In the preview, the explanation and the actual choices could disagree. I corrected the argument at that boundary, then checked the repaired interaction. Testable rules helped isolate the problem; they had not made the caller correct."
-    },
-    {
-      "type": "prose",
-      "text": "The next check could be small because the failure had become specific: compare the displayed condition with the result of activating it. That crossed the boundary I had broken. Rerunning everything already known about the story rules would have left the caller unexamined. The obligation worth keeping was their agreement, not the accidental layout in which I first noticed it."
+      "text": "The bench reduces that problem to a broken wire. Its direct rule check is accurate within its scope. It becomes misleading only when we treat that scope as the whole product. Our first task in evaluation is therefore to identify which boundary the check actually crosses and which promise remains outside it."
     },
     {
       "type": "heading",
-      "text": "Make the assumption visible enough to break"
+      "text": "Build checks around obligations"
     },
     {
       "type": "prose",
@@ -46,11 +53,18 @@
     },
     {
       "type": "prose",
-      "text": "The story workshop has few enough reachable histories to enumerate them. That is a stronger claim than a handful of familiar routes, and a smaller one than the word “exhaustive” can suggest. The set contains no browser widths and no player’s interpretation of Kit’s reply. Its smallness pays for a complete check of the branches; it does not lend that completeness to the surrounding experience."
+      "text": "Deterministic checks are cheap enough to protect stable obligations repeatedly. Model-assisted judgments can address qualities that are difficult to encode, but bring their own disagreement and calibration work. Human review can interpret purpose and consequence, at a cost that makes indiscriminate review impractical. These methods complement one another when each is assigned a question it can answer."
+    },
+    {
+      "type": "prose",
+      "text": "Hamel Husain’s account of Lucy, Rechat’s real-estate assistant, begins with progress slowing as prompts accumulated fixes and new failures appeared elsewhere. His response combined assertions, trace inspection, human or model evaluation and product experiments. The useful story is the change in working method: examples of actual failure became material for a repeatable improvement process, rather than another paragraph in an ever-growing prompt.",
+      "sources": [
+        "hamel-evals"
+      ]
     },
     {
       "type": "heading",
-      "text": "A return is not another arrival"
+      "text": "Coverage needs situations, not just destinations"
     },
     {
       "type": "visual",
@@ -82,6 +96,10 @@
     },
     {
       "type": "prose",
+      "text": "An AI service has the same problem in a different costume. “Answered a support request” covers little if the important distinction is an interrupted refund, a changed account state or a repeated request after timeout. Select cases by the obligations they challenge. A directory of touched tools or a long list of completed tasks can conceal the missing situation just as a map can conceal an unfinished job."
+    },
+    {
+      "type": "prose",
       "text": "The studio supplied a concrete counterexample. Engine reports that Bob stood at the Belt during paired work, while the display counted only its assigned worker, Jo. Level exposed the disagreement; the correction separated assignment from physical occupancy. “Visit the Belt” could miss it. “Another person is here while the assignment remains unchanged” names the condition worth buying a test for. The account records a correction, not how often players would encounter it.",
       "sources": [
         "engine-occupancy"
@@ -89,11 +107,11 @@
     },
     {
       "type": "prose",
-      "text": "The shortest valid history that reaches such a disagreement is worth keeping. A checkpoint can shorten the investigation, provided it represents a possible past. Our failed blank stays on the press: resetting the scene must not erase the very unfinished obligation that made the return important."
+      "text": "Recovery deserves a place in that history. Keeping ownership lets Kit resume; another design could require a handover or cancellation. A correct refusal can still leave a player helpless if the next legitimate action is invisible. The test is unfinished when it has established only that the command was rejected."
     },
     {
       "type": "prose",
-      "text": "Recovery deserves a place in that history. Keeping ownership lets Kit resume; another design could require a handover or cancellation. A correct refusal can still leave a player helpless if the next legitimate action is invisible. The test is unfinished when it has established only that the command was rejected."
+      "text": "The evidence should preserve the shortest valid path to the failure. A test fixture that invents an impossible starting state can send the team repairing behavior the product cannot reach. Conversely, resetting away an unfinished obligation can make a broken recovery look correct. Faster evaluation is useful only while it continues to ask the intended question."
     },
     {
       "type": "prose",
@@ -104,7 +122,7 @@
     },
     {
       "type": "heading",
-      "text": "An inexpensive verdict can be expensive to use"
+      "text": "Calibrate the judge before scaling its decisions"
     },
     {
       "type": "visual",
@@ -118,9 +136,8 @@
     },
     {
       "type": "prose",
-      "text": "Hamel Husain’s Lucy/Rechat account puts inexpensive assertions beside contextual human or model review and product experiments. His later judge guide addresses the trap in our nineteen agreements: rare labels need attention, and prompt examples, development cases and a final test set serve different jobs. The wrong argument in my story interface had required a trace—the displayed condition beside the click’s effect. A grade on the final response would have looked past the break.",
+      "text": "Husain’s judge guide gives this imbalance practical consequences: examine rare failures, distinguish missed defects from needless rejection, and separate the examples used to develop the judge from the cases used to assess it. A judge that agrees on ordinary work may still be useless at finding the failure that made us build it.",
       "sources": [
-        "hamel-evals",
         "hamel-judge"
       ]
     },
@@ -130,11 +147,15 @@
     },
     {
       "type": "prose",
-      "text": "The fresh-context critics used for this book have brought that problem close to home. They have found errors in prose and drawings, and their objections have led to visible repairs. Yet author and critic can share model habits. Approval can close a particular objection; it cannot tell me how an employer or an unfamiliar builder will experience the chapter. That question requires someone outside this agreement."
+      "text": "For a production decision, the sampling rule matters too. A deliberately difficult challenge set can reveal weaknesses without estimating how often users encounter them. A representative sample can estimate ordinary behavior while missing a rare expensive failure. Keep those purposes visible. Otherwise the improvement may belong to a changed mix of examples rather than to the system."
+    },
+    {
+      "type": "prose",
+      "text": "The independent critics used for this book have found useful errors. They have also shared assumptions with its author. The present reframing is a reminder: earlier approvals did not prevent the book from organizing itself around the wrong subject. Independent context reduces one source of agreement; it does not manufacture an independent reader. That limit belongs in our interpretation of the review, not in an excuse to abandon it."
     },
     {
       "type": "heading",
-      "text": "Whose passage are we improving?"
+      "text": "An improved proxy may leave the person behind"
     },
     {
       "type": "visual",
@@ -166,31 +187,31 @@
     },
     {
       "type": "prose",
-      "text": "As the author, I cannot unknow the solution. I can inspect state and vary a route, but the unfamiliar player arrives with purposes and misunderstandings absent from my itineraries. After targeted checks have protected the rules and recovery, that difference may be worth more than another thousand scripted completions. The session will also occur on a machine, at a particular cadence. A world whose obligations hold can still make its audience wait through every important movement."
+      "text": "The next hour of evaluation should be chosen for the decision it can change. A targeted regression can protect a discovered obligation; a different automated behavior can challenge an overfitted score; an unfamiliar person can expose an interpretation the author cannot simulate. More checks are justified when they buy evidence we do not already have. A reassuring repetition can consume the same budget without reducing the uncertainty that matters."
     },
     {
       "type": "build",
-      "title": "Keep the checks that could change your decision",
-      "body": "Take one factory obligation through a broken rule, a broken caller and an interrupted job. Give each trial a reason to exist.",
+      "title": "Choose the next check by its consequence",
+      "body": "Evaluate a complete AI-assisted task, including the tools and interface through which it reaches its recipient.",
       "steps": [
-        "State the required result before writing the check. Break the counting rule and then its input path; confirm that the direct probe and control trial distinguish them.",
-        "Keep normal completion and an interrupted route. Record room visits separately from conditions, and preserve the shortest valid history that reaches a failure.",
-        "Check the refusal and the next legitimate recovery. Retain the smallest regression case that protects the discovered obligation.",
-        "For a model judge, compare missed failures with rejected good work on examples untouched during revision. Decide which errors justify escalation to a person.",
-        "Try a second automated behavior before treating the first pilot’s improvement as a product improvement. Observe a person before teaching the solution."
+        "State the promised outcome and locate the evidence that can establish it. Separate the final response from the actual effect.",
+        "Keep a normal case, a meaningful failure and a recovery. Identify which boundaries each trial crosses.",
+        "Assign deterministic, model and human checks to different questions. Reserve examples not used to revise the system or its judge.",
+        "Compare missed failures, needless rejection, latency and review work. Keep challenge-set performance separate from an estimate of ordinary use."
       ],
-      "exercise": "Choose the next hour of verification. Name the release or repair decision it could change, the failure it could miss, and what you would stop checking to make room. A green result that bypasses a meaningful part of the experience may be accurate but insufficient."
+      "exercise": "Choose one green check to stop running and one missing check to add. Explain which release decision becomes better informed and what the exchange costs."
     }
   ],
   "sourceIds": [
+    "evals",
     "dijkstra-structure",
     "quickcheck",
     "hamel-evals",
-    "hamel-judge",
     "walk-monster",
     "curiosity-coverage",
     "engine-occupancy",
     "rl-production",
+    "hamel-judge",
     "fly-fail-fix",
     "valve-playtesting"
   ]

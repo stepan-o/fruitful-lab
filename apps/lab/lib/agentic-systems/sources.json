@@ -1138,5 +1138,29 @@
     "limit": "A design boundary does not establish an implemented second day or general planner.",
     "use": "Commission a small consequential experiment before a larger continuation.",
     "accessed": "2026-10-26"
+  },
+  {
+    "id": "stripe-idempotency",
+    "author": "Stripe",
+    "date": "Accessed 2026-10-27",
+    "title": "Idempotent requests — API v1 contract",
+    "url": "https://docs.stripe.com/api/idempotent_requests",
+    "kind": "Official API documentation",
+    "claim": "An operation key lets API v1 callers recover the saved response after execution begins. Validation, conflicts and key retention have explicit boundaries.",
+    "limit": "A specific API contract, not proof of global exactly-once execution. API v2 behavior differs; the chapter discusses v1.",
+    "use": "What must an agent know before retrying an uncertain side effect?",
+    "accessed": "2026-10-27"
+  },
+  {
+    "id": "tail-at-scale",
+    "author": "Jeffrey Dean and Luiz André Barroso",
+    "date": "2013",
+    "title": "The Tail at Scale",
+    "url": "https://research.google/pubs/the-tail-at-scale/",
+    "kind": "Foundational systems paper",
+    "claim": "Occasional slow components can dominate the response time of a large interactive service.",
+    "limit": "Large-service engineering evidence; the six-investigation timeline in this book is an authored illustration, not a measurement from the paper or of AI agents.",
+    "use": "Which required branch determines when the recipient can continue?",
+    "accessed": "2026-10-27"
   }
 ]

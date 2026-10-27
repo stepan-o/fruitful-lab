@@ -1,64 +1,64 @@
 [
   {
     "id": "worth-shipping",
-    "title": "What is worth shipping?",
-    "concept": "A useful next difference",
+    "title": "Define the useful result",
+    "concept": "An observable benefit for its recipient",
     "number": 1,
     "part": 1
   },
   {
     "id": "small-world",
-    "title": "A world small enough to trust",
-    "concept": "Expressiveness against verification burden",
+    "title": "Give actions a dependable world",
+    "concept": "Proposal, authority and incomplete knowledge",
     "number": 2,
     "part": 2
   },
   {
     "id": "division-of-work",
-    "title": "Delegate where the work can separate",
-    "concept": "Specialization has a handoff cost",
+    "title": "Decide where agency belongs",
+    "concept": "Independence against coordination and recovery",
     "number": 3,
     "part": 3
   },
   {
     "id": "correction",
-    "title": "Make the next correction cheaper",
-    "concept": "Evidence that changes the next action",
+    "title": "Make feedback usable",
+    "concept": "Evidence that can change the next decision",
     "number": 4,
     "part": 4
   },
   {
     "id": "readable-detail",
-    "title": "Spend detail where it can be read",
-    "concept": "Craft at the point of perception",
+    "title": "Make the result legible",
+    "concept": "Perceived meaning in the assembled result",
     "number": 5,
     "part": 5
   },
   {
     "id": "generation",
-    "title": "Make generation earn another attempt",
-    "concept": "The value of the next candidate",
+    "title": "Turn generation into search",
+    "concept": "Feasibility, preference and adaptive search",
     "number": 6,
     "part": 6
   },
   {
     "id": "confidence",
-    "title": "Buy confidence where failure matters",
-    "concept": "A test worth running",
+    "title": "Evaluate the system that will run",
+    "concept": "Evidence about the complete operating system",
     "number": 7,
     "part": 7
   },
   {
     "id": "responsive",
-    "title": "Fit the experience to the machine",
-    "concept": "Richness within a frame budget",
+    "title": "Keep the system responsive",
+    "concept": "End-to-end waits and bounded work",
     "number": 8,
     "part": 8
   },
   {
     "id": "handoff",
-    "title": "Close the commission",
-    "concept": "A decision worth handing over",
+    "title": "Leave a system someone can own",
+    "concept": "Change, recovery and continuing ownership",
     "number": 9,
     "part": 9
   }

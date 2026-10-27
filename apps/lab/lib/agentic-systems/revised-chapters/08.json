@@ -1,36 +1,62 @@
 {
   "id": "responsive",
-  "title": "Fit the experience to the machine",
-  "standfirst": "An earlier opening passed. The completed day still missed its limits.",
+  "title": "Keep the system responsive",
+  "standfirst": "The slowest required step can determine what the whole system feels like.",
   "opening": "",
   "blocks": [
     {
-      "type": "visual",
-      "id": "performance-comparison",
-      "title": "Two receipts from the same machine",
-      "caption": "The selector also opens an earlier matched experiment."
+      "type": "prose",
+      "text": "A person experiences the whole wait. They do not divide it into the model call, the tool queue, a retry, synthesis and the time their device needs to present the result. An AI production system can make each component look respectable while the completed interaction becomes slow enough to interrupt the work it was meant to help."
     },
     {
       "type": "prose",
-      "text": "Hide most of the dressing and the delivered day still misses its timing limits. The average rises from 33.170 to 36.686 frames per second, while the count of frames over 100 milliseconds rises from seventeen to twenty-five. Both averages clear the minimum. Neither run passes. These two warm observations offer a poor excuse to strip the room indiscriminately: they show a remaining problem without isolating its cause.",
-      "sources": [
-        "delivery"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "Removing scenery seems like a clean sacrifice: less beauty in exchange for a smoother day. These results make the exchange uncertain. We can give up the work already spent on the room and still leave the recurring expense that causes the pauses. The visible object is easy to remove; the costly operation may be elsewhere."
-    },
-    {
-      "type": "prose",
-      "text": "The minimal setting hid meshes already allocated in memory. It was a draw-cost comparison, not a loading or memory experiment. All six tracked resource counts remained unchanged. The full run’s 34-millisecond measured input response also answered a different question from its slow frame tail. A responsive button does not erase a stutter, and stable counts do not establish the absence of leaks.",
-      "sources": [
-        "delivery"
-      ]
+      "text": "There are different clocks to protect. Latency measures how long one result takes; throughput measures how many results can be completed over an interval. A batch process may accept a longer individual wait to do more work. An interactive product may need an early useful response. Neither requirement is captured by a model’s generation speed alone."
     },
     {
       "type": "heading",
-      "text": "The improvement that left the scene intact"
+      "text": "The average is not the experience"
+    },
+    {
+      "type": "prose",
+      "text": "Dean and Barroso’s The Tail at Scale describes how occasional slow components can dominate a large service. When a request waits for many pieces, it inherits their slowest required completion. Higher utilization also makes tail latency harder to control. The paper concerns large online services, not language-model agents, but its question transfers directly: what must finish before this person can continue?",
+      "sources": [
+        "tail-at-scale"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Consider an authored example: a brief sends six independent investigations and waits for all six before drafting. Parallelism can shorten ordinary completion, yet one stalled investigation can hold the entire result. The design might use a deadline, return a clearly incomplete draft, or continue the missing work in the background. Each choice changes the product promise. Calling the arrangement “parallel” does not settle that promise."
+    },
+    {
+      "type": "prose",
+      "text": "The investigations are independent, but synthesis depends on their results. Required serial waits add to the path; independent branches run together, and an all-results join waits for the slowest. In the study below, move the clock past the deadline before changing the release rule. The partial brief names the missing investigation rather than silently presenting five findings as the complete six."
+    },
+    {
+      "type": "visual",
+      "id": "parallel-wait",
+      "title": "Five findings are ready. The brief is still waiting.",
+      "caption": "An authored timing model: six read-only investigations, fixed durations and one second of synthesis. The clock illustrates a dependency, not measured model performance. Releasing a partial brief changes its promise; canceling work is a separate decision."
+    },
+    {
+      "type": "visual",
+      "id": "performance-comparison",
+      "title": "An average can pass while the experience fails",
+      "caption": "Choose the delivered-day record, then switch between average rate and long pauses. Full and minimal results are shown together. The earlier opening is a different workload; these frame measurements do not estimate model latency."
+    },
+    {
+      "type": "prose",
+      "text": "Loopforge’s completed-day run illustrates the distinction at the consuming end of the system. Both full and minimal views cleared the minimum average frame rate, yet both failed the wider timing protocol. Hiding much of the scenery did not establish a cause or produce an accepted result. A faster-looking average could not justify discarding the scene’s visual work.",
+      "sources": [
+        "delivery"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This is why resource measurements need names. The minimal view hid already allocated meshes; it did not measure a smaller download or a lower memory footprint. Input response, frame cadence and loading are different obligations. In an AI service, cached input, faster generation and fewer tool calls are likewise different changes. Measure the path the claimed benefit actually travels."
+    },
+    {
+      "type": "heading",
+      "text": "Remove repeated work before removing value"
     },
     {
       "type": "evidence",
@@ -48,7 +74,7 @@
     },
     {
       "type": "prose",
-      "text": "The repairs reused pose buffers, shared unchanged world structure, scanned events once per projection, reused that projection between simulation ticks, and deferred content behind the closed author panel. The characters could stay because some of the repeated work around them no longer had to happen. Several changes went into one matched before/after run, so the result belongs to that bundle on that machine. It cannot allocate the saving among the individual repairs.",
+      "text": "The successful opening repair reused pose buffers and unchanged world structure, reduced repeated event scanning, reused a projection between simulation ticks, and deferred a closed panel’s content. The same visible scene remained. Several changes were tested together, so the result belongs to that bundle; it does not tell us the saving from each technique. Its importance is that useful richness survived while unnecessary surrounding work was reduced.",
       "sources": [
         "opening-performance-record"
       ]
@@ -62,11 +88,11 @@
     },
     {
       "type": "prose",
-      "text": "Our renderer is different, but the buffer and projection repairs give that advice a local meaning. The useful brief can begin with a repeated operation that seems disproportionately expensive and require a rerun with the scene preserved. A new rendering architecture remains a possibility. It has to compete with the smaller correction, including the disruption each would leave behind."
+      "text": "Return to the six investigations. If each fetches the same source bundle, collect that common input once and let the workers search different questions within it. Reuse remains valid only while the source version and required freshness match. The optimization removes duplicated acquisition, not independent scrutiny. If a source changes during the run, the coordinator must decide whether the shared snapshot still answers the commission."
     },
     {
       "type": "heading",
-      "text": "Follow the pause to a place, then ask why"
+      "text": "Find a consequential slow interval"
     },
     {
       "type": "visual",
@@ -76,25 +102,21 @@
     },
     {
       "type": "prose",
-      "text": "On the later opening revision shown here, fifteen of the twenty-eight recorded long frames clustered in the passage shot. Enlarge the first minute and inspect their phase: Bob gets up as STILETTO arrives. Two more long frames occurred during washing; ten were in assembly and one at the threshold. The record has supplied a place to investigate. It has not identified whether animation, allocation, drawing or other work caused those delays.",
+      "text": "The stall map belongs to a separate, failed opening specimen, not the successful repair above. Fifteen of its twenty-eight long frames cluster in the passage. Enlarge the first minute: we have found a place to investigate, not a cause. For the research brief, the equivalent trace would identify which investigation waited and what it was waiting for, before we decide to replace its model.",
       "sources": [
         "opening-r12-record"
       ]
     },
     {
       "type": "prose",
-      "text": "This is where I would stop asking an agent to “optimize the game.” I would ask it to capture the work around that particular passage, propose one explanation, and change the smallest relevant operation. The comparison would keep the visible action and workload fixed. A lower pause count obtained by omitting the difficult moment would answer a cheaper question than the audience asked."
-    },
-    {
-      "type": "prose",
-      "text": "Even the rerun can mislead. In an earlier graphics suite, the repeated reference fell from 23.6 to 20.5 frames per second across the session. Lower resolution and disabled effects sometimes appeared slower amid that drift. The record refuses to blame the removed effects for the slowdown. Running an important comparison in reverse order spends another interval on the same question; here that repetition could spare a whole optimization task based on a misleading row.",
+      "text": "This is where I would stop asking an agent to “make it faster.” For the brief, ask whether the late investigation is repeating acquisition, waiting on a source or doing essential work. For the factory, capture the work around the passage before removing scenery. Keep the intended result fixed. Loopforge’s graphics reference slowed across one session, making some apparent differences unsafe to attribute to the settings; a repeated reference can be cheaper than commissioning the wrong repair.",
       "sources": [
         "graphics-comparison-record"
       ]
     },
     {
       "type": "heading",
-      "text": "Pay for the view only when it is needed"
+      "text": "Leave room for recovery"
     },
     {
       "type": "prose",
@@ -105,48 +127,44 @@
     },
     {
       "type": "prose",
-      "text": "Loopforge’s encounter kernel advances in fixed 50-millisecond steps. That does not require rebuilding every derived view on every displayed frame, and the earlier projection reuse exploits the distinction. Nor does hiding a room authorize us to stop its authoritative obligations: a reservation or delivery can still matter when the camera returns. The economical boundary depends on what may be reused, what may wait and what must continue to be true.",
-      "sources": [
-        "kernel",
-        "opening-performance-record"
-      ]
+      "text": "The deadline in our brief does not itself stop the sixth investigation. Leave cancellation off and its work continues after the partial result is released. Cancel it and we save that remaining effort, but lose the finding. Launching a duplicate attempt might reduce the wait while spending still more work. The right choice depends on whether a timely partial brief is useful and whether the missing question is permitted to remain open."
     },
     {
       "type": "prose",
-      "text": "The browser has its own divisions of work. Paul Lewis’s rendering guide follows changes through layout, paint and composition; some can reach the final stage without repeating the earlier ones. It also separates frame delivery from a discrete response to input. That account cannot diagnose our WebGL pause. It does make “animate this” an incomplete instruction: the cost depends on what the chosen change asks the browser to do again.",
+      "text": "These are read-only investigations, so canceling one leaves missing evidence rather than an unfinished external mutation. A state-changing task would need a separate recovery contract. Bounded concurrency also leaves room for retries and urgent work; unused capacity can be a deliberate expense that protects responsiveness. Filling every worker slot is not the same objective as meeting the recipient’s deadline."
+    },
+    {
+      "type": "prose",
+      "text": "At the consuming end, Paul Lewis’s rendering guide shows another opportunity to avoid repeated work: some visual changes can proceed through composition without repeating layout and paint. The principle is to change the work needed for an obligation while preserving the obligation itself. It does not diagnose the factory’s WebGL pauses.",
       "sources": [
         "lewis-rendering"
       ]
     },
     {
       "type": "prose",
-      "text": "This book inherits the obligation. An offscreen illustration need not keep moving, and a large inspection image can wait until someone asks to read it closely. A paused drawing must still make sense. These choices protect room for the informative parts of the presentation. Their success has to be measured on the finished route; describing an economical design is not the same as delivering one."
-    },
-    {
-      "type": "prose",
-      "text": "The successful opening remains in the record with the assets and workload it tested. It gives a later builder something to reproduce; it gives the completed day no exemption. That day still failed its device run. The release went forward with that result beside it."
+      "text": "A system earns its complexity when the intended user receives the extra value within an acceptable wait and resource budget. The performance work is part of delivery, not a cleanup after intelligence has done its job. The accepted configuration must travel with the result, because a new model, workload or device can change what the same design costs."
     },
     {
       "type": "build",
-      "title": "Keep the scene; change the work",
-      "body": "Use one visible action and a fixed target device to commission a bounded performance correction.",
+      "title": "Follow one result across every wait",
+      "body": "Choose an interactive AI task or a repeated generation batch. Keep its quality obligations fixed while investigating delay.",
       "steps": [
-        "Record the build, assets, device, viewport, warm-up and exact action. Keep input response, frame distribution, long pauses and loading as distinct observations.",
-        "Locate a consequential slow interval. Inspect its work before choosing an optimization; do not add overlapping CPU and GPU times as if they were serial.",
-        "Try a local reuse or deferral that preserves the visible action. Compare with the original under matched conditions, repeat when drift could reverse the conclusion, and inspect the result visually.",
-        "Keep the saved comparison and the remaining failures. Change the workload or scene and require a new acceptance run."
+        "Record the complete path: queue, model, tools, retries, review and presentation. Distinguish serial waits from overlapping work.",
+        "Measure a distribution and meaningful slow cases, not only an average. Record the workload and environment.",
+        "Try one reuse, deferral or concurrency change that preserves the required result. Compare against a repeated reference when drift is plausible.",
+        "Test timeout, cancellation and late completion. Record which obligations remain after the caller stops waiting."
       ],
-      "exercise": "Choose a detail you would protect even on a weaker machine. Name the work you would first attempt to remove around it, and the visual regression that would make the saving unacceptable."
+      "exercise": "Protect one expensive quality requirement. Name the repeated or unnecessary work you would remove first, and the evidence that would make you reject the apparent saving."
     }
   ],
   "sourceIds": [
+    "tail-at-scale",
     "delivery",
     "opening-performance-record",
     "giesen-performance",
     "opening-r12-record",
     "graphics-comparison-record",
     "timestep",
-    "kernel",
     "lewis-rendering"
   ]
 }

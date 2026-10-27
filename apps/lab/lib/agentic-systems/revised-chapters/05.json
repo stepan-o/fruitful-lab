@@ -1,9 +1,13 @@
 {
   "id": "readable-detail",
-  "title": "Spend detail where it can be read",
-  "standfirst": "The face was already expressive. We had put the words over it.",
+  "title": "Make the result legible",
+  "standfirst": "The last step in delivery happens in another person’s understanding.",
   "opening": "",
   "blocks": [
+    {
+      "type": "prose",
+      "text": "A technically correct result can still leave its recipient unable to act. The relevant comparison is hidden, the control offers no sign of what it does, or the explanation arrives after the moment when it would have helped. In generated products, these failures are easy to multiply: each component can look accomplished on its own while the assembled experience makes little sense."
+    },
     {
       "type": "evidence",
       "asset": "speech-before",
@@ -24,62 +28,23 @@
     },
     {
       "type": "prose",
-      "text": "Moving the balloon right exposed the head without replacing the character or rebuilding the room. That is an unusually direct return on a local correction. It did not settle the layout for every exchange. Visual later withdrew its preference for anchored balloons after wider samples showed dialogue, reactions and credential status changing the available picture height. The next repair concerned the allocation of space, not the quality of the hidden face.",
+      "text": "Loopforge’s speech balloon gives that principle a local test. Moving it exposed the face without replacing the character. The correction was small because the needed information already existed. Wider exchanges later challenged the balloon layout itself: words, reactions and status competed for the same space. The problem had become a relationship among components, and improving any one component alone could miss it.",
       "sources": [
         "speech-pair",
         "visual-second"
       ]
     },
     {
-      "type": "visual",
-      "id": "composition-stage",
-      "title": "A room, an exchange, a place for words",
-      "caption": "An authored staging study, not a Loopforge replay or a perception experiment. Framing, figure separation and text placement vary independently. Advance through instruction, reply and reaching the control; the bodies keep their positions while speaker and gesture change."
-    },
-    {
       "type": "prose",
-      "text": "The whole-room view gives us a doorway and rear machinery: enough geography to understand where the exchange belongs. Moving closer separates the bodies and loses some of that geography. When the words appear inside the picture, the closer camera enlarges the obstruction along with the speaker. More light cannot uncover a body beneath an opaque card. The rail gives the body back, but loses the balloon tail’s immediate attachment to the voice. Each view has surrendered something the other one kept."
-    },
-    {
-      "type": "prose",
-      "text": "Director’s geography shot survived too long into exchanges that needed a recognizable recipient. Level’s aligned Conveyor controls and continuous aisle were useful, yet the tutorial still cropped Bob at the Wash and Forge. A wall move could have damaged a functioning route to compensate for an interface problem. I should have commissioned one ordinary-size exchange containing the camera, bodies and actual words together.",
+      "text": "I should have commissioned one ordinary-size exchange containing the camera, bodies and actual words together. Approving the parts separately postponed a cheap objection until the composition had acquired dependencies. Moving the balloon recovered meaning that already existed. A missing gesture would have required a different purchase: new motion, fitting, layout and another review.",
       "sources": [
         "director-second",
-        "level-second"
-      ]
-    },
-    {
-      "type": "visual",
-      "id": "frame-allocation",
-      "title": "Where do the words get their space?",
-      "caption": "The same authored scene sits inside two layout rules. Toggle the instruction and compare what survives within each picture. No room geometry, actor position or camera choice changes between the examples."
-    },
-    {
-      "type": "prose",
-      "text": "The layouts spend the same area at different times. In the first, words claim their space when they arrive and the fixed-scale picture is cropped to what remains. In the second, the empty rail has been taking its share all along. This simple crop is an authored demonstration, not Loopforge’s camera implementation. It exposes the assumption in approving a silent shot: that speech will leave the camera the same picture area to work with.",
-      "sources": [
         "visual-second"
       ]
     },
     {
-      "type": "prose",
-      "text": "A reserved rail pays for stability before the first line. Anchored words preserve more of the silent view and keep a visible connection to the speaker, but their placement must survive the next body and status panel. The decision cannot be settled by looking only at the better-looking silent frame. It has to survive an exchange."
-    },
-    {
       "type": "heading",
-      "text": "Repair the relationship that failed"
-    },
-    {
-      "type": "prose",
-      "text": "An interaction can disappoint because the command has no consequence, the consequence is hidden, its cause is ambiguous, or the next action is simply dull. These are different commissions. Lighting cannot create a missing consequence; another resource meter cannot make a dominated choice interesting. Before adding detail, I want the failure identified closely enough that the proposed craft can actually change it."
-    },
-    {
-      "type": "prose",
-      "text": "Norman’s distinction between what an environment permits and the signifiers that make it understandable becomes tangible here. The control could accept the action while the presentation cropped the person performing it. The scene did not need another mechanism at that point. It needed the existing relationship to become available to the player’s eye.",
-      "sources": [
-        "norman-signifiers",
-        "level-second"
-      ]
+      "text": "Recognition is part of the function"
     },
     {
       "type": "prose",
@@ -90,15 +55,62 @@
     },
     {
       "type": "prose",
-      "text": "Remove the interior detail from a character and identity must survive in its outline. Our obstruction asks a different question of the surrounding composition: will that outline still be there to see? A carefully differentiated character can disappear under an ordinary interface element. Art direction has to reach all the way to the occupied frame.",
-      "sources": [
-        "tf2-rendering",
-        "speech-pair"
-      ]
+      "text": "Remove the interior detail and identity must survive in the outline. Our obstruction asks a different question: will that outline still be there to see? Art direction has to reach the occupied frame. The same principle applies when a generated chart enters a dashboard crowded by filters, explanations and status messages."
+    },
+    {
+      "type": "visual",
+      "id": "composition-stage",
+      "title": "What survives the assembled frame?",
+      "caption": "An authored staging study, not a Loopforge replay or a perception experiment. Framing, figure separation and text placement vary independently. Advance through instruction, reply and reaching the control; the bodies keep their positions while speaker and gesture change."
+    },
+    {
+      "type": "prose",
+      "text": "The whole-room view gives us a doorway and rear machinery: enough geography to understand where the exchange belongs. Moving closer separates the bodies and loses some of that geography. When the words appear inside the picture, the closer camera enlarges the obstruction along with the speaker. More light cannot uncover a body beneath an opaque card. The rail gives the body back, but loses the balloon tail’s immediate attachment to the voice. Each view has surrendered something the other one kept."
+    },
+    {
+      "type": "prose",
+      "text": "The production counterpart is a generated report viewed inside its real application. The chart, explanatory text, filters and error messages have to fit together at the intended size. Reviewing the chart in isolation can approve something the delivered interface immediately crops or obscures. A useful acceptance specimen includes the actual content and the states that compete with it."
+    },
+    {
+      "type": "visual",
+      "id": "frame-allocation",
+      "title": "Where do the words get their space?",
+      "caption": "The same authored scene sits inside two layout rules. Toggle the instruction and compare what survives within each picture. No room geometry, actor position or camera choice changes between the examples."
+    },
+    {
+      "type": "prose",
+      "text": "The layouts share a total frame but allocate it differently. In the reactive layout, speech claims half the frame when it arrives. The reserved layout always gives a quarter to words. The comparison changes both timing and size of the allocation; it does not isolate reservation as the cause of the more stable picture. What it exposes is the danger of accepting a silent view without its actual content."
+    },
+    {
+      "type": "prose",
+      "text": "A reserved rail pays for stability before the first line. Anchored words preserve more of the silent view and keep a visible connection to the speaker, but their placement must survive the next body and status panel. The decision cannot be settled by looking only at the better-looking silent frame. It has to survive an exchange."
     },
     {
       "type": "heading",
-      "text": "When the body asks for more work"
+      "text": "Diagnose before decorating"
+    },
+    {
+      "type": "prose",
+      "text": "An interaction can disappoint because the command has no consequence, the consequence is hidden, its cause is ambiguous, or the next action is simply dull. These are different commissions. Lighting cannot create a missing consequence; another resource meter cannot make a dominated choice interesting. Before adding detail, I want the failure identified closely enough that the proposed craft can actually change it."
+    },
+    {
+      "type": "prose",
+      "text": "Norman offers a quieter example: a bookmark in a physical book also reveals how much remains to read. The cue arrives almost accidentally from the medium. An electronic reader has to provide such information deliberately. His distinction between available actions and the signs that make them understandable helps explain what can disappear when a familiar task moves into an AI interface.",
+      "sources": [
+        "norman-signifiers"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "An assistant may replace a long form with a conversation while removing the form’s visible list of unfinished fields. The interaction feels simpler until the user cannot tell what remains. That is our application of Norman’s example, not a result he measured: generation may need to restore a useful cue the old medium supplied for free."
+    },
+    {
+      "type": "prose",
+      "text": "An evidence-rich answer has a related problem. A pile of citations can increase the cost of checking the claim if none is attached to the passage it supports. Showing the relevant excerpt beside a consequential recommendation may be worth more than adding another source. Design is doing part of the verification work by making the important relationship available to the eye."
+    },
+    {
+      "type": "heading",
+      "text": "Meaning lives between the endpoints"
     },
     {
       "type": "evidence",
@@ -113,24 +125,20 @@
     },
     {
       "type": "prose",
-      "text": "Animator found arm-rotation channels in the bank without declaring why the sampled departure looked this way. A channel establishes that a part can change. It does not establish what the resulting pose communicates. The same problem appeared in this book’s first card study: I animated a travelling marker while the workers barely changed. The critic withheld approval. Correct custody records had not made anyone convincingly take the card.",
+      "text": "The sampled departure exposes the limits of accepting an asset by its parts. A skeleton can contain the expected channels while the pose communicates the wrong action. We need to inspect the interval in which the intended meaning is formed. That is a craft question with a technical boundary: the motion must remain valid on the actual body, at the actual viewing scale.",
       "sources": [
         "animator-second"
       ]
     },
     {
-      "type": "prose",
-      "text": "I rebuilt that passage around Ed crouching and rising with the card at his hand. The change required a revised figure, a new prop destination and a phone composition after the model already worked. Here the useful correction did cost more than moving a label. The action was the missing information; a cheaper flourish around the travelling marker would have left it missing."
-    },
-    {
       "type": "visual",
       "id": "contact-stage",
       "title": "One hand path, two performances",
-      "caption": "Inspect the arrival and withdrawal as well as the press. The fixed endpoints make differences elsewhere in the figure easier to notice; they do not determine which performance suits a particular character."
+      "caption": "The hand follows the same path at the same times in both versions. Watch what the torso, spare arm and stance contribute around that controlled trajectory."
     },
     {
       "type": "prose",
-      "text": "At the contact beat, both versions can put a hand on the control. The surrounding body changes the reading. A small preparation draws attention toward the reach. A forward inclination connects the shoulder to the task. The return makes the press part of a continuous working posture. These are choices about emphasis. A hesitant novice and a practiced operator need not perform the same preparation, even when the machine requires the same input."
+      "text": "Both versions share the hand’s entire path and timing, including its preparation. What changes is the body’s participation: the torso, spare arm and stance make the same reach read differently. The hand target is satisfied in both. A hesitant novice and a practiced operator could still need different whole-body performances."
     },
     {
       "type": "prose",
@@ -141,22 +149,11 @@
     },
     {
       "type": "prose",
-      "text": "A brief that ends at “move the wrist to the switch” leaves most of that interval uncommissioned. The studio’s sampled views showed why it matters: Ed’s approach to the card and Sam’s approach to Bob read as intentions, while Bob’s held fall could resemble a bent standing figure. The poses could suggest an action before continuous grip or timing had been established. They gave us a place to look more closely, rather than a reason to accept the sequence unseen.",
-      "sources": [
-        "animator-second",
-        "animation-principles"
-      ]
+      "text": "“Put the hand here” omits how the body makes the reach intelligible. “Explain the result” can omit the reader’s uncertainty, the order of evidence and the decision that follows. A locally correct trajectory—or sentence—leaves the surrounding communication to be designed."
     },
     {
       "type": "heading",
-      "text": "The second body inherits the revision"
-    },
-    {
-      "type": "prose",
-      "text": "The most useful instruction in the opening rescue was only three words in the interview: release before rise. Director gave the sequence a dependency. Animator supplied Sam’s complete release, and Engine placed it ahead of Bob’s recovery while STILETTO arrived during that recovery. The order separated helping, letting go and getting up. It gave three crafts a relation they could preserve, instead of three independently plausible clips.",
-      "sources": [
-        "animator-second"
-      ]
+      "text": "One component can make work for another"
     },
     {
       "type": "visual",
@@ -170,7 +167,7 @@
     },
     {
       "type": "prose",
-      "text": "The new order was worth retaining even while contact remained unverified. It reduced one uncertainty without settling the rescue. Another fitting pass would therefore begin with a relation already chosen—release, then rise—and a narrower question about how the two bodies performed it. Treating every unfinished part as a reason to discard the whole sequence would make the next attempt pay for the same discovery again.",
+      "text": "The studio’s instruction to release before rising chose a relationship that the animator and engine could preserve together. It did not establish that the complete rescue looked convincing. The useful part of the case is the separation: agreeing on the dependency can narrow the next correction without pretending that the remaining craft is finished.",
       "sources": [
         "animator-second"
       ]
@@ -184,36 +181,34 @@
     },
     {
       "type": "prose",
-      "text": "Our record challenges an overconfident reading of that economy. The studio could prepare methods for fitting motion to a rig without delivering an accepted action. In the corrected Sam waist attempt, the hand crossed the upper leg at source time 1.2 seconds; no candidate bank was exported. The rejection was useful. It ruled out that tested path. It did not show that procedural assistance was futile, or that a different storage method would work.",
+      "text": "The Loopforge fitting attempts identify the acceptance boundary Rosen’s approach would still have to cross: a method and a valid export are not an accepted action. If satisfying the target twists the body into an unreadable pose, another solver pass must compete with changing the target or staging. Reusing a method is economical only while it preserves the performance we meant to keep.",
       "sources": [
-        "animator-second",
-        "rosen-animation"
+        "animator-second"
       ]
     },
     {
       "type": "prose",
-      "text": "A planted foot or a grip over a defined interval gives a solver recurring work it may repay. But if satisfying the hand target twists the torso into an unreadable pose, the target itself deserves reconsideration. Move the interaction, change the staging, or author another action: each is a candidate the current method can make easy to overlook. Before commissioning more attempts, we need a way to choose among those possibilities without rewarding the method for defending its own premise."
+      "text": "The return on detail is therefore conditional. Spend more where it changes recognition, trust or a useful choice. Remove detail that competes with those things; reuse work that can adapt without losing them. The next chapter takes up a harder version of that decision: how to let generation search many candidates without rewarding the wrong improvement."
     },
     {
       "type": "build",
-      "title": "Commission one readable action",
-      "body": "Keep the small factory’s state transition fixed. Spend the presentation budget on one action a reviewer can identify without its event label.",
+      "title": "Test the result where it will be used",
+      "body": "Choose a generated chart, interface, image or action. Keep its underlying facts fixed while testing whether the recipient can understand them.",
       "steps": [
-        "Name the intention, actor, relevant object and recipient. Choose what must remain visible and what may leave the frame.",
-        "Capture the actual words, reaction and status display at 320, 390 and 768 pixels. Compare a geography view with an action view before changing the room or model.",
-        "Mark preparation, contact, release and return. For paired action, state when each body is the other’s target. Bind the actual rig and check required joints before fitting a motion.",
-        "Review original-speed movement and the specific interval where the relationship can break. Make failed tooling report failure; do not substitute a successful export for a convincing performance."
+        "Name what the recipient should notice, infer and do. Identify which visible relationship carries each step.",
+        "Inspect the actual content inside the final layout, including narrow screens and competing status or error information.",
+        "Distinguish a missing function from a hidden consequence, ambiguous cause or unhelpful next action. Commission the correction that matches the failure.",
+        "Ask someone unfamiliar with the work to interpret it before explaining the intended answer. Retain the mismatch as evidence."
       ],
-      "exercise": "Keep the hand’s endpoint fixed and try routine, reluctant and urgent preparations. Then restore the dialogue overlay. Which expensive distinctions survive the actual frame? Keep what a reviewer can perceive and what serves the intended character; their interpretation is a finding to collect, not a score already measured."
+      "exercise": "Remove an expensive detail while protecting the intended meaning. Then identify one small detail whose removal makes the result harder to use. Compare the two before commissioning another generation pass."
     }
   ],
   "sourceIds": [
     "speech-pair",
     "visual-second",
     "director-second",
-    "level-second",
-    "norman-signifiers",
     "tf2-rendering",
+    "norman-signifiers",
     "animator-second",
     "animation-principles",
     "rosen-animation"

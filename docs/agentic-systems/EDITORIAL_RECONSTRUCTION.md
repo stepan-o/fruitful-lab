@@ -1,3 +1,5 @@
+> Historical edition record. The 27 October foundations revision supersedes the narrative map and acceptance scope below. See [FOUNDATIONS_REVISION.md](FOUNDATIONS_REVISION.md) for the current chapter argument and fresh reviews.
+
 # Editorial reconstruction — production value against cost
 
 Owner correction, 26 October 2026, supersedes the original twenty-topic chapter plan. The active delivery goal continues; its original tool description retains the obsolete count because that tool cannot edit an active objective. Completion means the revised book and all original substantive delivery/quality requirements, not twenty chapters.

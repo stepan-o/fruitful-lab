@@ -1,9 +1,28 @@
 {
   "id": "handoff",
-  "title": "Close the commission",
-  "standfirst": "Sam’s rescue stayed unfinished. The day still had to be handed over.",
+  "title": "Leave a system someone can own",
+  "standfirst": "Delivery includes the evidence, decisions and recovery paths that survive the original builder.",
   "opening": "",
   "blocks": [
+    {
+      "type": "prose",
+      "text": "A production system outlives the run that made it look successful. Sources change, models are replaced, users ask for adjacent things, and someone inherits an exception the original builder understood without writing down. The final architectural question is who can recognize that the system’s promise has changed—and what they are able to do about it."
+    },
+    {
+      "type": "prose",
+      "text": "Sculley and colleagues’ Hidden Technical Debt in Machine Learning Systems describes dependencies that escape the apparent model boundary: data changes, undeclared consumers and feedback loops can couple systems that look separate in code. An AI production pipeline inherits that problem whenever another process begins relying on its output. Shipping creates a relationship to maintain, even if the generating code remains untouched.",
+      "sources": [
+        "debt"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Return to our hypothetical weekly research brief after release. A sales team starts copying its “ready” findings into customer messages. Then a source changes its date field, and old material is presented as new. The brief still arrives on time. Its consumer has acquired a dependence the original evaluation did not cover. The problem now belongs to the production system, even if the model’s prose remains excellent."
+    },
+    {
+      "type": "heading",
+      "text": "Release a selection, not the newest directory"
+    },
     {
       "type": "visual",
       "id": "release-manifest",
@@ -12,9 +31,10 @@
     },
     {
       "type": "prose",
-      "text": "The later rescue solver was more recent than the animation bank that shipped. It was also unaccepted. The combined delivery excluded its fourteen modules, preserved the experimental source and retained Sam’s existing participation: he helped Bob, joined Conveyor and worked. Precision card fitting remained deferred. Max’s selected control correction stayed in. Closing the day required choosing among pieces of work, not taking the newest version of everything.",
+      "text": "Loopforge’s delivery is useful here as a selection problem. An accepted control correction shipped; a newer rescue solver did not. The experiment remained available to inspect, while the playable package retained its existing behavior. The failed device result remained a failure beside the release. These distinctions let a recipient know what was chosen, what was attempted and what had not been established.",
       "sources": [
-        "combined-selection"
+        "combined-selection",
+        "delivery"
       ]
     },
     {
@@ -23,39 +43,45 @@
     },
     {
       "type": "prose",
-      "text": "Receiving the slice did not turn its failed device result into a pass. That distinction is easy to keep in a table and harder to keep in a working studio. Every true criticism offers another reason to continue; the owner must decide which one deserves to delay the package. I had helped build a process good at finding and assigning more work. Closure required an authority that the list of defects could not supply.",
-      "sources": [
-        "delivery"
-      ]
-    },
-    {
-      "type": "heading",
-      "text": "Where could the next attempt change course?"
+      "text": "A production handoff needs the same distinctions for prompts, models, source data, tool contracts and evaluation rules. Identify the combination that was tested. Preserve a return path to a known usable version where one exists. If a later change improves one task but breaks another consumer, the operator needs more than the assurance that the latest candidate scored better."
     },
     {
       "type": "prose",
-      "text": "The rescue leaves several possible places for that authority to act. Before implementation, a plan could make the existing sequence and its protected obligations explicit. Boris Tane gives that stage unusual weight: written investigation, a separate plan, then repeated owner annotations before code begins. His notes carry constraints an agent might otherwise miss. For our case, that would help settle what the solver was permitted to disturb before anyone asked it to fit a hand.",
+      "text": "A rollback also has a boundary. Reverting a prompt does not undo an email already sent or a record already changed. The release plan must say which effects are reversible, which need compensation and who owns the unresolved result. This is where the execution contracts from the beginning of the book become obligations to another person."
+    },
+    {
+      "type": "prose",
+      "text": "In that example, the operator pauses publication, identifies the affected source snapshot and extractor configuration, and restores a known interpretation or holds the next issue for review. Already-sent claims still need correction. The handoff must therefore name both a technical owner and someone responsible for the receiving team. Reverting code alone cannot recall a customer message."
+    },
+    {
+      "type": "heading",
+      "text": "Choose the next intervention"
+    },
+    {
+      "type": "prose",
+      "text": "Boris Tane describes a revealing plan annotation: an existing queue consumer already owns retries, so the proposed change should not add another retry layer. The written plan gives the owner a place to inject knowledge the agent’s local solution omitted. Here, planning is valuable because it prevents duplicated responsibility before more code depends on it.",
       "sources": [
         "tane"
       ]
     },
     {
       "type": "prose",
-      "text": "But contact also has to be seen. A rough moving prototype could reveal a problem that a sound plan leaves abstract. Peter Steinberger’s account moves among conversation, code inspection and implementation, allowing the idea to change once a version can be felt. For the rescue, that suggests an early interval of shared movement rather than a complete bank waiting for a verdict. A database boundary may be cheaper to dispute on paper; the reach remains partly a question for the eye. These practitioners report experience, not a controlled comparison between their methods.",
+      "text": "A movement problem may require the opposite timing. Peter Steinberger’s account allows the idea to change after a working version can be inspected. Loopforge’s rescue needed a visible interval as well as protected state obligations. I had helped create a process that could always find and assign another defect. Closing the package forced a different judgment: a true criticism could justify a future commission without automatically delaying this one.",
       "sources": [
-        "steinberger"
+        "steinberger",
+        "delivery"
       ]
     },
     {
       "type": "prose",
-      "text": "A recurring failure offers a third intervention. Hashimoto describes first repeating his own work with an agent to learn where it failed, then using unattended work for research or a useful next-day starting point. Mistakes become reasons to improve the surrounding tools and instructions. The repetition costs extra work now in the hope of commissioning better later. In our case, a dependable way to inspect actual contact could outlast the rejected solver.",
+      "text": "Hashimoto’s adoption account offers a third use of effort: repeating work with an agent to discover where the surrounding tools and instructions fail, then choosing bounded unattended work that can leave a useful next-day starting point. The investment is in a better future process. Its output is not automatically a shipped result. That distinction keeps a successful experiment from becoming an unearned delivery claim.",
       "sources": [
         "hashimoto"
       ]
     },
     {
-      "type": "prose",
-      "text": "None of those interventions makes this candidate ready to install. They distinguish what a new attempt could buy: a protected plan, an early visible objection, or a better instrument for subsequent work. The successor should choose among those jobs before inheriting the whole unfinished rescue. Otherwise preservation has quietly become an order to continue."
+      "type": "heading",
+      "text": "Measure the work the recipient inherits"
     },
     {
       "type": "visual",
@@ -65,14 +91,10 @@
     },
     {
       "type": "prose",
-      "text": "The published interval contains 565,680,634 reported tokens across ten native roles and fifteen sessions. Most are cache reads. It is tempting to put that number beside the three outputs in the factory and call the ratio an indictment. Those outputs are events in the fiction. They are not units of software value, and the interval is not the full bill for making them.",
+      "text": "The studio’s resource ledger is striking and incomplete. Its reported interval contains extensive cached input alongside other model activity; it excludes parts of coordination and supplies no complete billed-dollar total. Dividing it by the game’s fictional output count would create a ratio without a useful unit. The ledger can describe observed use, but it cannot establish the economic value of the delivered software.",
       "sources": [
         "resource-record"
       ]
-    },
-    {
-      "type": "prose",
-      "text": "The useful accounting question is harder: what would the next correction consume, including the attention needed to judge it? This ledger excludes Root’s coordination, misses boundary intervals and unsampled tails, and has no billed-dollar total. Enlarging its headline cannot recover those missing parts. A record of the review and the decision it changed would add more to the next commission than another ratio made from the same incomplete quantities."
     },
     {
       "type": "prose",
@@ -83,24 +105,25 @@
     },
     {
       "type": "prose",
-      "text": "The numbers still deserve to travel with the work. Under an agreed limit, recorded use can help an owner decide whether to continue. A repeatedly read context bundle that never changes an action can be tried in a smaller form and compared. What the record cannot support is a judgment that every cached token was waste, or that the least expensive result would have fulfilled the commission."
+      "text": "For the brief’s date error, the immediate choice is to correct this issue by hand or build a source-contract check that can guard future issues. Keep the acceptance standard fixed. The reusable check needs implementation, review and maintenance; manual checking consumes attention every run. If the brief will serve many future issues with the same contract, that repeated saving may repay the setup. For a one-off report, or a source about to be replaced, the smaller manual repair may be the better purchase."
+    },
+    {
+      "type": "prose",
+      "text": "The comparison must also include what the check misses. A valid date field can still contain misleading material; keeping a human review at the consequential claim may remain worthwhile. Record one-time adoption separately from recurring model, tool, review and repair work over a useful horizon. The ledger cannot make that decision for us. It helps only after the result and the alternatives have been defined."
     },
     {
       "type": "heading",
-      "text": "Give the next owner a starting point"
+      "text": "Leave a decision the successor can make"
     },
     {
       "type": "visual",
       "id": "commission-desk",
       "title": "A brief that can come back with a decision",
-      "caption": "Load either example, replace the unresolved assignments and edit the eight sections. The exported sheet records the intended result and its stopping rule; filling it does not certify the plan or authorize work."
+      "caption": "Choose a bounded investigation or the continuing research-brief service. The eight editable sections include ownership, change triggers and recovery. A completed sheet is a proposed agreement, not permission to act."
     },
     {
       "type": "prose",
-      "text": "The two examples ask for different purchases. One seeks a correction to a recorded device failure. The other buys a small experiment about whether a second day would have a consequential choice. The latter must not arrive disguised as a promise to build the whole game. The preserved Day 2 boundary is a starting constraint, not an implemented future.",
-      "sources": [
-        "day-two-boundary"
-      ]
+      "text": "The editable sheet includes a continuing-service example for the research brief. It names the source contract, the publication hold, the owner of affected communications and the evidence needed to resume. The factory examples remain useful for bounded investigations. Their different scopes prevent a one-time repair from silently becoming an open-ended operating responsibility."
     },
     {
       "type": "prose",
@@ -109,6 +132,10 @@
     {
       "type": "prose",
       "text": "The stopping line is where the sheet becomes difficult. “Improve until good” lets every discovery enlarge the assignment. “Return one measured repair, or the evidence that the proposed cause was wrong” permits a failed repair to finish a useful piece of work. The owner receives a new fact instead of another obligation disguised as progress. That is a smaller promise, and one whose fulfillment can finally be recognized."
+    },
+    {
+      "type": "prose",
+      "text": "The handoff is tested when a successor can reproduce that failure and make the next decision without the original builder interpreting every record. One source change is enough to rehearse the path: notice the broken promise, stop the affected publication, identify what escaped and return with evidence for resuming. A long archive is useful behind that path; it should not be the path."
     },
     {
       "type": "build",
@@ -130,17 +157,17 @@
     },
     {
       "type": "prose",
-      "text": "At the end of the recorded day, Ed still has Bob’s card. That retained fact made a second encounter tempting before we had settled what the first day was worth. It can remain there now, in a world that opens and runs, with its unfinished work named beside it. The next owner may choose to make Bob ask for it. Nothing in the package should make that choice on their behalf."
+      "text": "The rescue experiment could remain available without remaining an instruction. That was the decision I had to learn to make: preserve the finding, select the usable work, and leave a successor the authority to choose a different next attempt. A production system deserves the same clarity after every release. Someone should be able to tell what it promises, what changed and where to intervene—without reconstructing the studio that built it."
     }
   ],
   "sourceIds": [
+    "debt",
     "combined-selection",
     "delivery",
     "tane",
     "steinberger",
     "hashimoto",
     "resource-record",
-    "space",
-    "day-two-boundary"
+    "space"
   ]
 }

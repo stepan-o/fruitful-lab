@@ -1,3 +1,5 @@
+> Historical edition record. The 27 October foundations revision supersedes the narrative map and acceptance scope below. See [FOUNDATIONS_REVISION.md](FOUNDATIONS_REVISION.md) for the current chapter argument and fresh reviews.
+
 # Verification record
 
 ## Current polished edition — 27 October 2026

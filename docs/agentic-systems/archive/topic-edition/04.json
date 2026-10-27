@@ -1,0 +1,109 @@
+{
+  "id": "smallest-world",
+  "title": "Build the smallest playable world",
+  "standfirst": "Two workers reach one machine. Before either becomes clever, the world needs a reliable answer to who may use it.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "visual",
+      "id": "small-world",
+      "title": "A shift for two",
+      "caption": "Checkpoint 04: a new, deliberately small reconstruction of selected Loopforge contracts. Each worker may make one piece. The card, single reservation and two-beat cycle are teaching rules; this is not a port of the full delivered encounter."
+    },
+    {
+      "type": "prose",
+      "text": "Bob can get to the press first. Ed can follow. The interesting moment comes when Bob steps away: the empty tile makes the machine look available, but the reservation still belongs to him. Ed can arrive with the card and still be refused. Nothing mysterious has happened. We have given the world two separate facts—where a person stands and what they hold—and now a third, the promise that a resource remains theirs until they release it."
+    },
+    {
+      "type": "prose",
+      "text": "I chose two workers because a single worker lets several bad assumptions hide. If there is only one possible operator, ownership can be silently inferred from presence. If there is only one object, transfer can look like a change in its drawing. Add a second worker and the questions become unavoidable. Who has the card now? Who can give it away? Does stepping aside release a claim, or merely make room? Those choices are already game design."
+    },
+    {
+      "type": "heading",
+      "text": "One place where the world changes"
+    },
+    {
+      "type": "prose",
+      "text": "The delivered Loopforge kernel separates a proposed action from the authority to admit and execute it. Its checks concern the current room, participants, resources, conditions and routes. A machine cycle also requires its operator at the control. The code reserves the conveyor workpiece across setup and execution. That detail matters: choosing different people does not make a shared workpiece into two independent resources.",
+      "sources": [
+        "kernel"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This supports a distinction Jeff Orkin made in his F.E.A.R. account. Planning can choose and sequence actions while a small execution interface performs them. Loopforge’s delivered slice does not implement F.E.A.R.’s planner, and our miniature has none at all. What the implementations share is a useful separation between choosing an action and carrying out its consequences. A new selector can be introduced without granting it permission to bypass the world’s rules.",
+      "sources": [
+        "fear",
+        "kernel"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Here every button produces an intent. One transition function receives that intent together with the current state and returns the next state plus a receipt. The scene draws the result. It cannot award a workpiece just because the press looks as though it has descended. That arrangement gives us a firm place to ask a difficult question: which facts must still be true when the action finally takes effect?"
+    },
+    {
+      "type": "visual",
+      "id": "commit-window",
+      "title": "Between a promise and its delivery",
+      "caption": "Three sequences run through the same transition function as the playable floor. The control station is shown close up. Advancing a sequence changes simulation state; animation only helps the eye follow it."
+    },
+    {
+      "type": "prose",
+      "text": "Try the middle sequence. Bob has the card and the reservation when the cycle begins. After its first beat, he leaves the control. At the next beat, the world finds him absent and discards the unfinished cycle. The earlier acceptance was correct, and so is the later refusal. A request can become invalid while it is being carried out. Checking once is not a promise that the future will cooperate."
+    },
+    {
+      "type": "prose",
+      "text": "Passing the card produces a different interruption with the same architectural lesson. Ed’s new possession does not silently transfer Bob’s reservation or turn Ed into the active operator. An actual handover needs a rule. In this checkpoint, it is deliberately explicit: finish or cancel the cycle, release the station, make room, pass the card, and let the next operator claim it. That may be more ceremony than a final game wants. Making it explicit lets us decide what a later shortcut should preserve."
+    },
+    {
+      "type": "heading",
+      "text": "The second click"
+    },
+    {
+      "type": "prose",
+      "text": "Open the inspector beneath the floor and repeat the last request ID. The world returns its existing result; it does not perform the action again. A fresh click on a movement control, by contrast, creates a fresh request and can take another step. These are different intentions even when their command text is identical. The distinction becomes important when a tool call is retried after an uncertain response: repeating a delivery request should not manufacture another delivery."
+    },
+    {
+      "type": "prose",
+      "text": "This is one of the places where a small teaching experiment can challenge our own easy account of agent work. During construction, my first test driver accidentally reused request IDs across separate action sequences. Five scenario checks failed because the world treated supposedly new actions as retries. The transition was doing the work I had asked it to do; the test harness was describing the wrong intentions. I corrected the driver and retained the dedicated retry test. A failing test is evidence to investigate, not a verdict about which layer is wrong."
+    },
+    {
+      "type": "prose",
+      "text": "The checks also exercise changes of custody during a cycle, conflicting occupancy, an explicit handover, and a long sequence of valid and invalid commands. They establish properties of this little state machine. They say nothing about whether its walk is graceful or whether players enjoy its puzzle. Those questions now have a stable object to inspect, which is why I want this boring center before a more ambitious mind."
+    },
+    {
+      "type": "build",
+      "title": "Keep a world you can take apart",
+      "body": "The checkpoint below runs offline as one saved HTML file. Its plain grid makes the same state transitions easy to inspect. The separate TypeScript source is the authority used by this chapter’s animated floor; the offline copy is generated from it.",
+      "links": [
+        {
+          "label": "Save the playable offline checkpoint",
+          "href": "/agentic-systems/checkpoints/04-smallest-world.html"
+        },
+        {
+          "label": "Read the complete transition source",
+          "href": "/agentic-systems/checkpoints/04-mini-world.ts"
+        },
+        {
+          "label": "Compare the delivered Loopforge kernel",
+          "href": "https://github.com/stepan-o/fruitful-lab/blob/35d114447749ed131c8016f8e0f9dff7d1c2e7d5/apps/lab/lib/loopforge/encounters/kernel.ts"
+        }
+      ],
+      "steps": [
+        "With Bob selected, move southeast three times. Claim the press, begin a cycle, and advance two beats.",
+        "Move Bob northeast to clear the control. With Ed selected, move southeast, northeast, southeast, southeast. Bob and Ed are now adjacent.",
+        "Select Bob, pass the card, then release the press. Select Ed, claim it, begin a cycle and advance two beats. Both workers should have a workpiece.",
+        "Reset and interrupt a cycle after its first beat. Keep the refused receipt beside the unchanged output count."
+      ],
+      "exercise": "Change the handover rule so leaving the control releases an idle reservation automatically. Decide what should happen during an active cycle. Write the changed examples before editing the transition; a convenience must not make unfinished work count as delivered."
+    },
+    {
+      "type": "prose",
+      "text": "We have postponed almost everything attractive about a world: conversation, motives, memory, atmosphere. We have kept enough for a request to meet resistance and for a consequence to remain true after the screen changes. The next decision is who should make those requests, and how many independent workers the task can actually support."
+    }
+  ],
+  "sourceIds": [
+    "kernel",
+    "fear"
+  ]
+}

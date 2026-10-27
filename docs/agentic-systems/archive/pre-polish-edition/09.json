@@ -1,0 +1,142 @@
+{
+  "id": "handoff",
+  "title": "Close the commission",
+  "standfirst": "Sam’s rescue stayed unfinished. The day still had to be handed over.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "visual",
+      "id": "release-manifest",
+      "title": "What went into the box",
+      "caption": "These are recorded selection boundaries, not three grades averaged into one. Keeping a failed result with the release lets the next owner choose a different commission without rewriting this one."
+    },
+    {
+      "type": "prose",
+      "text": "The later rescue solver was more recent than the animation bank that shipped. It was also unaccepted. The combined delivery excluded its fourteen modules, preserved the experimental source and retained Sam’s existing participation: he helped Bob, joined Conveyor and worked. Precision card fitting remained deferred. Max’s selected control correction stayed in. Closing the day required choosing among pieces of work, not taking the newest version of everything.",
+      "sources": [
+        "combined-selection"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "There is real loss in that decision. The effort spent on the solver cannot be recovered by installing it, and preserving it does not make its contact failures disappear. But deleting the experiment would throw away something different: the next animator’s chance to inspect why it failed. A handoff can protect both the playable result and the unsuccessful inquiry, provided their status is impossible to confuse."
+    },
+    {
+      "type": "prose",
+      "text": "The merge also did not convert the failed device result into a pass. The owner’s decision to receive this slice and the evidence about its remaining weaknesses answer different questions. A critic can identify a defect; the commission determines whether repairing it now is worth delaying the package. When I fail to keep those decisions separate, every true criticism becomes permission for another open-ended build.",
+      "sources": [
+        "delivery"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Three builders, three places to intervene"
+    },
+    {
+      "type": "prose",
+      "text": "Boris Tane puts the important disagreement before implementation. His account describes a written investigation, a separate plan and repeated owner annotations before code is allowed to start. The notes carry constraints the agent would otherwise miss. For a change that can quietly violate an existing system, that is a useful place to spend attention.",
+      "sources": [
+        "tane"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Peter Steinberger’s account is less attached to a planning ceremony. He moves between conversation, code inspection and implementation, sometimes changing the idea once a rough version can be felt. Those methods need not be rival doctrines. A database boundary may be cheap to dispute on paper; a hesitant hand reaching for a control may remain hard to judge until it moves. Neither author’s experience establishes a universal speed advantage.",
+      "sources": [
+        "steinberger"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Mitchell Hashimoto describes initially repeating his own work with an agent to learn where it failed. Later, he gives unattended work a concrete job—research or a useful starting point for the next day—and makes recurring mistakes into improvements to the surrounding tools and instructions. The early repetition costs extra effort. Its proposed return is better task selection, not a duty to delegate everything.",
+      "sources": [
+        "hashimoto"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our rescue case puts pressure on all three practices. A reviewed plan could protect the existing action sequence, and a short moving prototype could expose the contact problem. Neither makes the unfinished solver valuable enough to install. I would commission the evidence needed to decide its fate before authorizing another full integration. This is my reading of the case, not a measured comparison of those builders’ workflows."
+    },
+    {
+      "type": "visual",
+      "id": "resource-ledger",
+      "title": "The account with a missing edge",
+      "caption": "The largest field is cache reuse. Its size gives us a question about recurring context; it cannot tell us which repeated input was necessary, or what the finished day was worth."
+    },
+    {
+      "type": "prose",
+      "text": "The published interval contains 565,680,634 reported tokens across ten native roles and fifteen sessions. Most are cache reads. It is tempting to put that number beside the three outputs in the factory and call the ratio an indictment. Those outputs are events in the fiction. They are not units of software value, and the interval is not the full bill for making them.",
+      "sources": [
+        "resource-record"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The useful accounting question is narrower. Could an owner compare the marginal next correction with the remaining review allowance? This ledger cannot answer it: Root’s coordination is excluded, boundary intervals and unsampled tails are absent, and billed dollars are unavailable. A larger total would not fill those gaps. I would add a record of review attention and the decision it changed before adding another decorative productivity chart."
+    },
+    {
+      "type": "prose",
+      "text": "Nicole Forsgren recalls reports that counted executed tests and closed bugs while missing work that helped systems ship and stay online. Her explanation of SPACE asks for several dimensions of developer productivity rather than one activity count. Our ledger offers a concrete version of that mismatch. It can establish observed machine activity while leaving the value of the selected correction unresolved.",
+      "sources": [
+        "space"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "There is still a reason to preserve the numbers. If the next job has an agreed resource limit, its recorded use can inform a continuation decision. If a context bundle is repeatedly read but never changes an action, it becomes a candidate for a measured reduction. Neither inference requires pretending that every cached token was waste or that a low-token result is a good result."
+    },
+    {
+      "type": "heading",
+      "text": "Give the next owner a starting point"
+    },
+    {
+      "type": "visual",
+      "id": "commission-desk",
+      "title": "A brief that can come back with a decision",
+      "caption": "Load either example, replace the unresolved assignments and edit the eight sections. The exported sheet records the intended result and its stopping rule; filling it does not certify the plan or authorize work."
+    },
+    {
+      "type": "prose",
+      "text": "The two examples ask for different purchases. One seeks a correction to a recorded device failure. The other buys a small experiment about whether a second day would have a consequential choice. The latter must not arrive disguised as a promise to build the whole game. The preserved Day 2 boundary is a starting constraint, not an implemented future.",
+      "sources": [
+        "day-two-boundary"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "A usable package should make a successor’s first hour concrete: open this specimen, reproduce this observation, preserve these obligations, and bring this decision back. I would include a failed attempt when it changes that hour. I would leave a long transcript outside the main path when the exact source and a short account of the failure do the job. Documentation earns its space by preventing a specific rediscovery."
+    },
+    {
+      "type": "prose",
+      "text": "The hardest line in the sheet is the stopping decision. “Improve until good” leaves the agent to convert every discovery into more scope. “Return one measured repair, or the evidence that the proposed cause was wrong” can produce a valuable result even when the repair fails. The owner then has a new fact and an intact choice about further spending."
+    },
+    {
+      "type": "build",
+      "title": "Run one bounded commission",
+      "body": "Use the downloadable protocol with the editable sheet. It works for a generated asset, a data pipeline, a game action or a browser feature; the receiving evidence must change with the job.",
+      "links": [
+        {
+          "label": "Operating protocol · Markdown",
+          "href": "/agentic-systems/checkpoints/production-protocol.md"
+        }
+      ],
+      "steps": [
+        "Choose one recipient and one useful difference. Pin the starting result and the obligations that must survive.",
+        "Give the implementer a complete small slice and access to the observation that can reject it. Separate work only where the receiving boundary is explicit.",
+        "Inspect the exact returned specimen. Record repair, acceptance, deferral or stop together with the reason and remaining resource allowance.",
+        "Hand over the runnable result, evidence and unresolved findings. A successor gets a new commission; a failed check does not silently restart the old one."
+      ],
+      "exercise": "Take one unfinished item from your own work. Write the smallest investigation that could make you decide against continuing it. If no possible result would change your decision, reconsider what the investigation is for."
+    }
+  ],
+  "sourceIds": [
+    "combined-selection",
+    "delivery",
+    "tane",
+    "steinberger",
+    "hashimoto",
+    "resource-record",
+    "space",
+    "day-two-boundary"
+  ]
+}

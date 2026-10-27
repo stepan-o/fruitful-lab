@@ -1,0 +1,147 @@
+{
+  "id": "movement",
+  "title": "Make movement communicate",
+  "standfirst": "The factory recorded a departure. The worker’s shoulders told a stranger story.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "evidence",
+      "asset": "departure-arms",
+      "alt": "R10 end-of-shift capture. A blue worker in the foreground departs with both arms extended sideways; other workers remain around the security doorway.",
+      "caption": "Retained R10 frame at roughly 117 scene seconds. Animator tentatively identified the foreground worker as Max. The image supports a pose observation; it does not establish the animation bank’s cause or the movement between samples.",
+      "original": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-departure-arms-117s.png"
+    },
+    {
+      "type": "prose",
+      "text": "The worker has somewhere to go. His legs point down the room; his arms stretch across it. Behind him, the security doorway gives the departure a destination and a scale. The pose interrupts the ordinary meaning of leaving work. I can read the event label, but the body asks for a different interpretation."
+    },
+    {
+      "type": "prose",
+      "text": "Animator found the same lateral-arm problem in selected departure frames and narrowed the suspected actor without declaring the cause. The animation bank contained arm-rotation channels. That fact did not rescue the pose. A channel says that a part can change; a performance says what the change means to someone watching. This is where a production report can become beautifully precise about the wrong object.",
+      "sources": [
+        "animator-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "I made that mistake in this book. In the first version of chapter 8’s card scene, I gave the transfer a travelling marker and left the workers almost unchanged. The custody records were correct. The critic withheld visual approval: the card moved by itself while nobody convincingly took it. I had spent the animation on explaining my data model and expected the reader to supply the missing action."
+    },
+    {
+      "type": "prose",
+      "text": "I rebuilt the passage around Ed crouching beside the fallen card and rising with it at his hand. That meant revising the figure, the card’s destination and the phone composition after the state model already worked. The correction was small beside the studio’s rig work, but it exposed the same preference in my judgment: I had made the part I could specify precisely carry a claim it could not express. I now ask what the body must do before deciding how to decorate the state change."
+    },
+    {
+      "type": "visual",
+      "id": "contact-stage",
+      "title": "One hand path, two performances",
+      "caption": "Inspect the arrival and withdrawal as well as the press. The fixed endpoints make differences elsewhere in the figure easier to notice; they do not determine which performance suits a particular character."
+    },
+    {
+      "type": "heading",
+      "text": "Give an action somewhere to begin and end"
+    },
+    {
+      "type": "prose",
+      "text": "At the contact beat, both versions can put a hand on the control. The surrounding body changes the reading. A small preparation draws attention toward the reach. A forward inclination connects the shoulder to the task. The return makes the press part of a continuous working posture. These are choices about emphasis. A hesitant novice and a practiced operator need not perform the same preparation, even when the machine requires the same input."
+    },
+    {
+      "type": "prose",
+      "text": "John Lasseter’s 1987 account carries traditional animation principles into computer animation. Its useful argument here is that timing gives movement weight and intention, while anticipation prepares the audience to follow an action. Follow-through connects an action’s end to what comes next. The computer’s ability to interpolate poses does not settle those decisions. This is a craft argument illustrated through animation practice, not a measured recipe for our workers.",
+      "sources": [
+        "animation-principles"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "That distinction changes a brief. “Move the wrist to the switch” identifies an endpoint. It leaves the character’s attention, route, support and release largely unspecified. I would ask for the action in its intended view, beginning before the hand leaves rest and ending after it withdraws. The extra interval is not padding: it gives the animator room to show what the character is doing and lets the reviewer notice a transition that merely snaps back to a neutral pose."
+    },
+    {
+      "type": "prose",
+      "text": "The studio supplies a modest comparison with Lasseter’s argument. Animator judged Ed’s approach to the fallen card and Sam’s approach to Bob as two readable intentions in sampled views. The same account describes Bob’s held fall as resembling a bent standing figure. These observations support reviewing the body’s meaning rather than relying on a named state such as “fallen.” They cannot establish the exact timing, grip or continuity of either action.",
+      "sources": [
+        "animator-second",
+        "animation-principles"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "A contact belongs to two bodies"
+    },
+    {
+      "type": "prose",
+      "text": "The most useful instruction in the opening rescue was only three words in the interview: release before rise. Director gave the sequence a dependency. Animator supplied Sam’s complete release, and Engine placed it ahead of Bob’s recovery while STILETTO arrived during that recovery. The order separated helping, letting go and getting up. It gave three crafts a relation they could preserve, instead of three independently plausible clips.",
+      "sources": [
+        "animator-second"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "release-score",
+      "title": "Move the release across the recovery",
+      "caption": "The alternative order makes the supporting hand follow a rising partner. That coupling is the question to review. A choreography could deliberately keep it, but it would need an intended grip and a convincing shared performance."
+    },
+    {
+      "type": "prose",
+      "text": "Notice how a change to Bob can become work for Sam. While the support remains, Bob’s shoulder is also Sam’s target. Moving one actor changes the other actor’s reach. A team that assigns each body independently can produce two accepted poses and an impossible relationship between them. The same is true of a hand and a carried card: the prop’s ownership is a state rule, while its visible attachment is a spatial promise."
+    },
+    {
+      "type": "prose",
+      "text": "The handoff improved causal order; it did not settle every contact. Animator was explicit that continuous contact remained unverified. I want to retain both halves of that assessment. If I call the whole rescue solved, I erase the remaining craft question. If I call the handoff useless because precision is still missing, I erase a concrete improvement and make it harder to learn which instruction helped.",
+      "sources": [
+        "animator-second"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Procedural help still needs a performance"
+    },
+    {
+      "type": "prose",
+      "text": "David Rosen’s 2014 Overgrowth presentation offers a builder’s way through the apparent choice between authored motion and systems. His slides begin with responsive movement and consistent controls, then build through interpolation, springs, inverse kinematics and other refinements. The closing proposal joins simple interacting systems with keyframes that concentrate on performance. Read as a production method, it gives code the recurring adjustments while leaving the action’s character worth authoring.",
+      "sources": [
+        "rosen-animation"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our record challenges an overconfident reading of that economy. The studio could prepare methods for fitting motion to a rig without delivering an accepted action. In the corrected Sam waist attempt, the hand crossed the upper leg at source time 1.2 seconds; no candidate bank was exported. The rejection was useful. It ruled out that tested path. It did not show that procedural assistance was futile, or that a different storage method would work.",
+      "sources": [
+        "animator-second",
+        "rosen-animation"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The later forge revision offers a more constructive pairing. The published account separates geometric checks from viewing the running game. In the reviewed passage, the earlier large forward lunge was absent; the worker remained beside the console and withdrew before the crew responded. The opening chapter preserves those original-speed clips. Here the relevant design decision is that a contact target was allowed to shape the surrounding action, and the surrounding action still had to survive inspection.",
+      "sources": [
+        "motion-case"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "I would use a solver as an assistant with a narrow job: keep a planted foot at its support, keep a grip attached during an intended interval, or adapt a reach to a known surface. Its output must remain subordinate to the action. If satisfying a hand target twists the torso into something a viewer cannot read, the target, pose or scene may need to change. Refining the solver alone can become an expensive way to defend the wrong staging."
+    },
+    {
+      "type": "build",
+      "title": "Commission one complete press",
+      "body": "Use the small factory’s control as the task, and keep its state transition unchanged. Add a presentation layer whose action can be reviewed without reading the event log.",
+      "steps": [
+        "Write one sentence identifying the character’s intention. Mark preparation, first contact, release and return; choose the view before creating variants.",
+        "Bind the actual rig and check every required joint. Make a failed child process fail the wrapper too; the studio’s first Sam attempt did neither.",
+        "Preserve the support and contact assumptions for that same candidate. Inspect both the original-speed action and the particular interval where a relationship could break.",
+        "Ask a reviewer to describe the action without its label. If their reading differs from the intended action, revise the body, timing or staging before multiplying versions."
+      ],
+      "exercise": "Keep the hand’s contact point fixed and change only the preparation and withdrawal. Can you make the action read as routine, reluctant or urgent? Treat those readings as review questions, not scores you have already measured."
+    },
+    {
+      "type": "prose",
+      "text": "This is a small unit worth completing. One recognizable action gives subsequent generation something more demanding than a valid file to imitate. The next chapter takes up that selection problem: when we can produce many candidates, what makes the process capable of choosing a better one?"
+    }
+  ],
+  "sourceIds": [
+    "animator-second",
+    "animation-principles",
+    "rosen-animation",
+    "motion-case"
+  ]
+}

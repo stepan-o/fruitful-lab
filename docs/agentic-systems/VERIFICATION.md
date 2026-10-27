@@ -1,0 +1,78 @@
+# Verification record
+
+## Current polished edition — 27 October 2026
+
+The nine-chapter map in EDITORIAL_RECONSTRUCTION.md supersedes the historical topic edition. Both separate passes in POLISH_PASSES.md are cleared: the continuous literary revision in `reviews/polish/writing-arc-second-read.md`, then the visual and interaction pass in the nine final chapter reports and the final live addenda for Chapters 8–9. `COMPLETION_AUDIT.md` indexes the final decisions. Baseline reconstructed reports alone do not clear this polished edition.
+
+- Full baseline app suite: 136 suites, 716 tests, 1 snapshot PASS; asset tests PASS. CI stages were invoked serially to fit the development machine.
+- Baseline production build PASS. All five polished builds PASS: 99 retained asset releases checked, compilation, TypeScript and 86 generated pages. The second includes all chapter source-review repairs and the compact Workshop repair; the third adds the local tooltip gutter repair. The fourth corrects the event-plot axis fill and compact cabinet heading and removes one repeated caption sentence. The fifth includes the late citation formatter and moves the compact plot origin from 80 to 104 SVG units so three-digit tick labels remain on the beige paper. Existing middleware deprecation and absent optional GrowthBook key remain build warnings.
+- Final book/routes/profile-link/library/test/checkpoint-script ESLint PASS. Nine focused behavioral suites, 30 tests PASS. The browser rendered the revised literary text and the ThreeLoops exchange notes; click-open and Escape dismissal were directly verified before handing the browser to the chapter 1 critic.
+- Whole-book reconstruction audit retains nine chapters and all 35 interactive placements. Its recap cuts and bounded Reflexion/Huang comparison remain. The subsequent literary pass preserves every visual ID and chapter source-ID set.
+- Current media manifest: eac10c3d0c12b67131506f350498fd4f047508f80a97d5fdd3f59e45be0aa30f. Previously published assets remain; only unreferenced unpublished derivatives were removed.
+- Temporary `_book-review.html` was removed. Actual viewports are used for responsive review.
+- Standalone checkpoint source and HTTP operation were checked. Browser policy blocked file:// inspection, so true offline browser operation is not claimed. Production field Core Web Vitals remain unmeasured.
+- Local production preview is stable; earlier development-process exits had no established cause. Preview availability is not a chapter acceptance.
+
+- Final-build HTTP checks PASS for the cover, all nine chapters, reading room, portfolio entry, the legacy what-shipped alias, and unknown-chapter 404. Checkpoint HTML/source, protocol and both evidence/provenance JSON links return 200 with nonempty content.
+- Chapter 1 response references 17 JS/CSS files: 929,208 uncompressed bytes; 253,522 bytes in actual gzip-encoded HTTP response bodies from the local production server. The latter excludes HTML, headers and media. This is a scoped delivery measurement, not a field performance result.
+- Parent browser checked the cover, mobile contents, inline source disclosure, reading room and portfolio-to-book path. The cover has no raster image requests. At chapter 1 opening, the selected night image was 31,004 bytes (`aa36d252…webp`) at 390×844/DPR1 and 169,170 bytes (`23b30bc9…webp`) at 1280×720/DPR1, within 350 KB phone / 800 KB desktop budgets. Both later chapter images remained unloaded; the mounted video had preload=none and was paused. Inspection variants were not mounted at the opening.
+- Cover and phone contents were inspected at 320px; source records at 390px; portfolio link and return at 1280px. Initial post-build navigation and repeat visits completed with no captured console errors. These are local functional/loading observations, not measured cold-cache paint timings or production Core Web Vitals.
+- Fresh whole-book information-layer audit PASS after correcting the ContactStage description of shared hand preparation: `reviews/polish/layers-and-redundancy.md`.
+
+- The final server-only citation formatter displays a year only when the source date starts with a year; the sole living-guide entry retains its full date in the source record. The exact-source hosted build passed, and the parent then inspected the rendered Chapter 8 label “Paul Lewis.” The Chapter 8 critic independently verified it again in the fifth local build.
+- Browser transport recovery resolved the earlier live-review hold. `reviews/polish/08-live-recheck.md` clears the axis fill across eight live width/filter combinations and the compact tick labels after the fifth build. `reviews/polish/09-live-recheck.md` clears twelve live width/selection combinations, actual selection motion and three paused compact states. Both fresh reviewers restored motion and viewport defaults. The earlier twenty-state SVG report remains bounded corroboration.
+- Native commission save PASS on the hosted review deployment: the parent edited Useful difference, clicked the download, received `/home/stpn/Downloads/production-commission.md`, and read the 1,598 saved bytes. The edited text, all eight section headings and draft/non-authorization notice are present. This verifies that specific edited sheet; it is not a blanket claim about every browser or device. The browser download event tool returned slowly, but the saved file was successful.
+- Final fifth-build HTTP delivery recheck PASS: fourteen routes and five downloads; chapter 1 still references 17 JS/CSS files totaling 929,208 raw bytes and 253,522 actual gzip response-body bytes.
+
+## Hosted draft verification — 27 October 2026
+
+Draft [PR 131](https://github.com/stepan-o/fruitful-lab/pull/131) publishes source commit `1d9a02fe9b6709431984ee9360949c7c21aef3db`. Deployment `dpl_8NPD9ZT61rGryDso5Gu7TwKz2JbJ` is READY with the same Git SHA and a successful Vercel commit status. Its build command runs asset checks, the full app test suite and the production build in sequence. The application subtree is `2ef1cb504c1208e34a4c400e00922203ef021e73`; the subsequent review-record commit changes documentation only.
+
+[Protected preview](https://fruitful-3sx01e7qw-stepan-oskins-projects.vercel.app/stepanoskin/agentic-systems) requires the owner's Vercel access. No public share URL is part of delivery.
+
+Authenticated response checks passed for fourteen routes: cover, nine chapters, reading room, portfolio, legacy alias and unknown chapter (expected 404). All five linked checkpoint/protocol/evidence downloads return 200 with nonempty content. The portfolio contains its book entry, and the legacy alias resolves to the first chapter. Chapter 8 returns the shortened caption, an explicitly unfilled plot axis, and the corrected living-guide citation label. These checks establish deployed content and route behavior, not browser rendering or native save completion.
+
+The subsequent review deployment `dpl_GeU6pfmBNe7q5KpK3vbzwHoFE3ik` at commit `dcefbb8208b84805f73c99d22ee87f6b6b435e7b` also reached READY. The parent used its normal preview in the browser for Chapter 8/9 navigation, visible citation, cabinet selection and the successful native commission download. The independent live reports now close both chapter holds on the actual local book route, including the final compact-margin repair in build five.
+
+The final acceptance commit changes only that compact margin in application code and records these clearances. The PR description is the delivery record for its exact final SHA, READY deployment and final hosted visual check. The production site has not been merged or promoted.
+
+## Historical development record
+
+## 26 October 2026 — opening pair, development pass
+- Base and isolated branch: see BUILD_LEDGER.md.
+- Local preview: http://127.0.0.1:3194/stepanoskin/agentic-systems
+- Installed the app lockfile dependencies with npm ci. No dependency versions were changed.
+- An initial shared node_modules symlink was rejected by Turbopack; removed that task-created link and installed in this worktree.
+- Initial full type pass was invalidated by wrong temporary file placement and missing packages in the shared dependencies. Files were moved to intended paths; no nested duplicate remains.
+- The subsequent full type check was stopped to release memory during initial browser compilation. It is pending, not a pass.
+- Development reader returns 200. Chapter 1 observed in actual browser: composed hero, factory plate, source citation navigation. Clicking an inline citation opens its native source disclosure and reaches the correct record.
+- Factory motion and all controls still need substantive acceptance; browser availability is not artistic clearance.
+- Media pack: agentic-systems, initial revision 48e1d2800fae673b7536d74d3c9b9d2602a8d7621ed3af87df624c6fa20fe48d. The night screenshot is 31,004 bytes at 480px; 169,170 bytes at 1280px. Uncropped, resized/re-encoded derivatives; original remains linked.
+- Videos use preload none and native user-initiated controls.
+- React review skill applied: server-authored manuscript and source records, compact client interactions, conditional chapter graphic modules, persistent motion preference, visibility-gated CSS, no per-frame React updates. Rendered and accessibility review still pending.
+- Fresh-context critics dispatched separately for chapters 1 and 2. Neither has cleared a chapter yet.
+- No production build, full CI, phone verification, deploy or commit claimed.
+
+## Revised opening pair
+- Five focused causal tests pass: inspection/experiment trade, indistinguishable covered fault feedback, cost of blind servicing, distinct interventions/immutability, unaffordable actions and nonnegative remaining time.
+- Focused ESLint on chapter components, teaching logic and tests passes without output.
+- Actual desktop browser inspected: opening desk, changing cover and control arrangement; execution stage controls; separate body comparison; actual-value performance instrument.
+- First-pass independent verdicts are preserved in reviews/01-first-pass.md and reviews/02-first-pass.md. Both failed; neither is treated as clearance of revisions.
+- Dev preview restarted after prior session ended. One browser navigation timed out during resource pressure, then reached the requested page; no browser or test pass is inferred from the timeout.
+- Temporary public/_book-review.html exists only for local 320/390/768px iframe viewport review and must be removed before delivery.
+- Current media revision: 19193d3e819f7b3828b28a67dae758ce6ffc8524565b9e89942f0e5d48fbee2e. The added Figure 4 derivative preserves the complete image.
+
+
+## Checkpoint04
+
+Six meaningful transition tests PASS: presence/custody/reservation at completion, idempotent repeated intent, singular authorized custody, explicit handover reaching two outputs, custody invalidation during a cycle, and2000 adversarial commands preserving occupancy/walls/ownership/outputbounds. The first test driver reusedIDs between batches; corrected to allocate distinct IDs. This failure and correction are attributed in Chapter4.
+
+Offline HTML and source generated deterministically by scripts/build-agentic-checkpoints.mjs, canonical sourceSHA2569290d2928e503bdaefd946313e6c2065f043332b33612fda69c7b1da2a7f34ab. Actual offline browser verification remains pending. Focused lint found a render-time refread in the retrydisabledflag; replaced with receipt-state check, recheckpending. No fullCI/buildpass claimed.
+
+Chapter3 visual revision: source chronology, visual distribution and bounded specialistcomparison re-reviewedPASS; renderedrecheckincomplete duebrowserconnection. Finaldesktopandphonecapturesneeded.
+
+## Chapters 5–7 current checkpoint
+
+Independent chapter reviews 05,06,07 now clear all eight gates; each report records actual browser scope and limits. The small-source inspector now fits native width first and enlarges on request; larger evidence figures retain full-resolution panning. Component/library ESLint passed after chapter7 visual refinement (session27734). A bounded full type check was terminated with exit143, so it is not a pass. No new type error was reported before termination; that absence is not verification. Full app CI and production performance remain pending. Current media manifest:08438f0dc358dac77da861293a4d9ab5afc981df4dae95770146285189847c33.
+
+Chapter8: three focused belief/hearing tests and the sixteen existing Day1 hearing-staging tests pass. Focused component/library lint passes after pose revisions. Independent reviewer clears all eight gates; first-pass browser/reference/state review directly operated, revised visual assessment from parent actual CUA captures at desktop/320/390/768 and timed pickup frames. No full CI or field performance result. Chapter9 media manifest0633cd56f532a3f6b03b103c602cd0c1fa86304ef5742b370a057f9ee7d17772.

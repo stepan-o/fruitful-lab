@@ -1,0 +1,142 @@
+{
+  "id": "tests",
+  "title": "What each test can establish",
+  "standfirst": "The green result had taken a shorter route than the player.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "visual",
+      "id": "inspection-bench",
+      "title": "The machine that passes on the bench",
+      "caption": "Both records begin with an empty tray. Repeating the control trial does not accumulate stock; this keeps a second press from concealing what the first one failed to deliver."
+    },
+    {
+      "type": "prose",
+      "text": "The little rule probe is satisfied. Zero crates, one call, one crate returned. Then the worker presses the control and nothing arrives. There is no contradiction between the two records. The probe never used the severed wire. The mistake would be mine if I carried its verdict across the gap."
+    },
+    {
+      "type": "prose",
+      "text": "While building the previous chapter, I made a less photogenic version of that mistake. The story rules expected an action identifier; one part of the screen passed the whole action object instead. The rule tests exercised the intended identifiers. The click handler did too. But the screen’s explanation of which actions were available used the wrong call. In the preview, the displayed conditions and the actual choices could disagree. I corrected the argument at that boundary, then checked the repaired interaction. The fact that the rules were testable had helped isolate the problem; it had not made the caller correct."
+    },
+    {
+      "type": "prose",
+      "text": "That incident made me more precise about what I wanted from a green result. A check earns authority over the thing it observed, under the conditions it exercised. It does not earn authority over the next layer merely because that layer has a familiar name. A function call, a control press, a rendered response and a player’s interpretation are connected events. Their connection is work we have to establish."
+    },
+    {
+      "type": "heading",
+      "text": "Make the assumption visible enough to break"
+    },
+    {
+      "type": "prose",
+      "text": "Edsger Dijkstra includes an embarrassing implementation decision in Notes on Structured Programming. His team had made real-number equality tolerant of a difference in the last represented digit. That generosity broke transitivity: equality between the first pair and the second no longer licensed equality between the outer pair. They changed the decision. His accompanying argument asks programmers to state the properties their reasoning requires of its implementation. The story is more useful to me than treating formal reasoning as a certificate that floats above the machine. Even the meaning of “equal” had to survive contact with the tool.",
+      "sources": [
+        "dijkstra-structure"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our assembly makes one such property conspicuous: one accepted command adds exactly one crate. Select the duplicated count and the direct probe catches the violation. Select the severed wire and the property still holds whenever the rule is called. The missing property is now elsewhere: a control press must deliver the intended command. Repairing the first rule again would be busywork. The empty tray tells us to follow the path into it."
+    },
+    {
+      "type": "prose",
+      "text": "The expected result deserves scrutiny too. If I copy the implementation’s answer into the test, both can agree on the same mistake. “The crate count equals the number the function returned” may establish that a value travelled intact; it does not establish that the value should be one. For this specimen, the requirement comes from the commission printed beside the trial. In a real system, that commission may itself be disputed. Then the next task is to settle the requirement, not to persuade a test runner to bless it."
+    },
+    {
+      "type": "heading",
+      "text": "Many examples, one property"
+    },
+    {
+      "type": "prose",
+      "text": "QuickCheck, introduced by Koen Claessen and John Hughes in 2000, makes a productive exchange: the programmer supplies properties and input generators, and the tool tries random cases. Their paper’s abstract also calls attention to pitfalls. Randomness does not choose the property on our behalf. Nor does it make every input we care about equally likely.",
+      "sources": [
+        "quickcheck"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "For a production rule, I might test conservation across many generated sequences: stock cannot disappear, an unfinished action cannot commit, and a rejected command cannot quietly spend its resource. These are different promises from “this familiar sequence ends at four.” A generated counterexample can expose an assumption I forgot to write down. But a thousand cases drawn only from unobstructed starts cannot tell me what happens when a worker begins inside a blocked area. More attempts may deepen an existing blind spot."
+    },
+    {
+      "type": "prose",
+      "text": "The story workshop is small enough to enumerate its reachable histories. That is a stronger statement about its little transition model than sampling a handful of paths. It is still a statement about that model. It does not enumerate browser widths, screen-reader interpretations, interrupted downloads or the meanings a player gives Kit’s reply. I want the word “exhaustive” attached to a named finite set. Without the set, it becomes an invitation to stop thinking."
+    },
+    {
+      "type": "prose",
+      "text": "This is also why adding a regression check is an editorial decision. I would keep the smallest case that would have caught the wrong action argument, with the reason it matters: the visible availability message must agree with the decision made on activation. I would not preserve the entire accidental screen as a sacred image. The useful obligation should survive a new layout."
+    },
+    {
+      "type": "heading",
+      "text": "A judge needs an examination too"
+    },
+    {
+      "type": "prose",
+      "text": "Hamel Husain’s account of improving Rechat’s Lucy separates inexpensive assertions, human or model review, and product experiments. The concrete part I keep returning to is his insistence on looking at traces in a form that brings the relevant context together. A conversational assistant’s final sentence may conceal an error in the query, the returned record or the interpretation. The evaluation surface has to expose the task, not merely decorate the response with a grade.",
+      "sources": [
+        "hamel-evals"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "My wrong-argument incident supports that practical advice in a narrow way. Bringing the displayed condition and the effect of the click into the same inspection revealed a boundary the isolated rule checks did not exercise. It does not show that my review process improves AI products in general, or that a browser is the right instrument for every failure. It shows why the view used for evaluation has to contain the evidence needed for the particular judgment."
+    },
+    {
+      "type": "visual",
+      "id": "judge-desk",
+      "title": "Nineteen reassuring agreements",
+      "caption": "Record numbers matter when a team revises a label: the disputed example has to remain identifiable after the headline percentage changes."
+    },
+    {
+      "type": "prose",
+      "text": "Leave the judge set to accept every delivery. With one missing crate, it agrees with the authored labels on nineteen of twenty records. It has caught none of the failures. Increase the missing crates to five and agreement falls, although the judge has not changed its behavior at all. Now hold every delivery: the failures are all caught, but good work cannot get through. The two error counts describe consequences that the single percentage hid."
+    },
+    {
+      "type": "prose",
+      "text": "Husain’s guide to model judges makes the corresponding warning about rare failures. It also keeps examples used in the judge’s prompt apart from development cases and a final test set, and asks for performance on both labels. Those distinctions are easy to lose when an agent can revise a judge as readily as it revises the work. Once a supposedly unseen case has guided our revisions, it belongs to development history. Calling it a test case again does not restore its surprise.",
+      "sources": [
+        "hamel-judge"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The same caution applies to this book. Fresh-context critics have found concrete defects in chapters and drawings. That is useful evidence of corrections, not a calibrated estimate of how employers, fellow builders or players will judge the finished work. The critics can share model habits with the author. A new conversation does not turn agreement into independent ground truth. I can preserve their objections and show the changes; I cannot turn their approval into a reader study."
+    },
+    {
+      "type": "heading",
+      "text": "Leave room for “not observed”"
+    },
+    {
+      "type": "prose",
+      "text": "A test report often gets flattened into passed and failed. The more consequential distinction can be between failed and never examined. If the control trial has not run, its empty record should stay empty. Importing the direct probe’s green result would erase the very work still owed. If a check cannot start, its setup failure should be recorded separately from the specimen’s result. Otherwise the next reviewer may repair the game when the missing work was simply to run the check."
+    },
+    {
+      "type": "prose",
+      "text": "I would therefore keep each result with four small pieces of context: the claim, the specimen, the observation and the condition of acceptance. That gives a reviewer something to challenge. They can say the specimen is stale, the observation bypasses the failing path, or the acceptance condition is incomplete. A bare pass count offers no such opening. It is easy to display and difficult to learn from."
+    },
+    {
+      "type": "prose",
+      "text": "For a contractor working from source data to a consumer-facing system, this is a practical delivery habit. A client should be able to follow a requirement to the check that represents it, then see what remains outside that check. That may be a narrow screen, a changed source schema, an ambiguous user request or an untested operating condition. Naming the remainder is part of completing the work we actually agreed to do."
+    },
+    {
+      "type": "build",
+      "title": "Write the claim before choosing the check",
+      "body": "Take one behavior from the small factory and give it two deliberately different defects.",
+      "steps": [
+        "Break the rule itself, then break the path that calls the rule. Verify that a direct check and an interaction trial distinguish the cases.",
+        "State the required result without copying it from the implementation. Keep the input, observed output and current specimen together.",
+        "If a model grades a subjective result, compare its decisions with labeled examples it did not see during revision. Count missed failures and rejected good work separately.",
+        "Keep unobserved properties visibly unobserved. Add the smallest regression check that protects the obligation exposed by a real failure."
+      ],
+      "exercise": "Find a check that still passes after you disable a meaningful part of the experience. Decide whether the check is wrong, or whether its claim was simply larger than its reach."
+    },
+    {
+      "type": "prose",
+      "text": "The next chapter takes the instruments onto the floor. Once a check can see the relevant behavior, we still have to arrange situations that make the interesting behavior occur. A well-aimed instrument pointed only at the rehearsed path leaves a great deal of the day untouched."
+    }
+  ],
+  "sourceIds": [
+    "dijkstra-structure",
+    "quickcheck",
+    "hamel-evals",
+    "hamel-judge"
+  ]
+}

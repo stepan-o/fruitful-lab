@@ -1,0 +1,150 @@
+{
+  "id": "usable-eyes",
+  "title": "Give the builder usable eyes",
+  "standfirst": "I criticized a seventy-eight-second deadline before admitting who had built the queue.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "evidence",
+      "asset": "departure-obstruction",
+      "alt": "Retained R10 departure capture: large facade surfaces obscure almost the entire factory view while the controls and End of shift label remain visible.",
+      "caption": "Retained R10 departure view, published with the 25 October materials. This complete frame shows what the browser delivered at one instant; it cannot establish how long the obstruction lasted.",
+      "original": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-departure-obstruction.png"
+    },
+    {
+      "type": "prose",
+      "text": "There is a day’s work behind this wall. The action history can tell us who left the factory. The view gives us stone, a corner and controls. A team working from the history alone could continue improving the departure while missing the fact that its audience could barely see it. The studio’s Critic identified facade obstruction in the actual sampled views, along with several other presentation failures. It was the kind of observation the production arrangement needed to make ordinary.",
+      "sources": [
+        "critic-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "I had made it exceptional. The native studio could produce files, exchange briefs and run checks, but routine browser observation depended on my separate owner-facing session. I offered scheduled support. When Producer sent a request with 78.03 seconds left before its latest permitted start, against hourly Root service, I criticized the scheduling. That criticism was accurate enough to let me avoid the more uncomfortable fact: I had arranged for a visual studio to need an external appointment to look at its work.",
+      "sources": [
+        "root-account"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "My mistake was in the commission itself. A role called Animator could receive a motion brief without a dependable way to inspect moving evidence. A role called Producer could own delivery without owning the next useful view. The missing connection was part of the system I had asked them to operate, not an incidental inconvenience to be absorbed by a better request form."
+    },
+    {
+      "type": "visual",
+      "id": "inspection-rig",
+      "title": "The same installation, a different working session",
+      "caption": "Each repair exposed a boundary the previous check had not reached. Read the selected result as a limit on the setup claim, then move forward to see what became testable next."
+    },
+    {
+      "type": "heading",
+      "text": "Exercise the path the worker will use"
+    },
+    {
+      "type": "prose",
+      "text": "A setup claim travels farther than its author may intend. I had evidence from the host, then spoke as though it covered the native worker. The missing permission configuration, display settings and encoder revision became repeated owner-assisted interruptions. These were details I should have exercised before handing over the capability. The order of discovery matters: solving one obstacle made the next one observable.",
+      "sources": [
+        "root-account"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "John Yang, Carlos Jimenez and their SWE-agent collaborators treat this interface as part of agent design. Their 2024 study varies how a model searches, views and edits a repository, including the feedback returned after an action. The useful finding here is that commands and observations are design choices with consequences, even when the underlying model stays fixed. Its issue-resolution results do not measure visual judgment, and its model-era limitations should not be read as permanent limits on computer use.",
+      "sources": [
+        "swe"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The studio case supports the importance of that boundary, without reproducing the study. Our comparison was not between matched interfaces on the same benchmark. We had a more elementary defect: an action path checked in my environment did not work in the worker’s. A package name and a successful host check were poor substitutes for one native session opening the candidate, using a control and returning something the next reviewer could inspect.",
+      "sources": [
+        "root-account",
+        "swe"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The successful native operation changed who could obtain the next view. Producer no longer needed my scheduled window for routine playtesting. That is the useful part of the recovery receipt. Its captured duration and artifact count are traceable details, but neither is a measure of the quality of the review that followed. I still needed to find out whether the evidence reached the craft responsible for interpreting it.",
+      "sources": [
+        "root-account"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "A file is not yet an observation"
+    },
+    {
+      "type": "prose",
+      "text": "The independent assessment put a useful limit on my explanation. Each specialist did not need a private browser: timely recordings and a dependable route to another view could be enough. But all nine interviews disclosed still or sampled-frame inspection; none claimed continuous playback. A video file existed. The review needed to say which movement had actually been watched.",
+      "sources": [
+        "second-assessment"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "sampling-desk",
+      "title": "What happens between the photographs",
+      "caption": "Keep the initial and final states fixed while changing which instants enter the review. No model chooses these samples: both selections are explicit and inspectable."
+    },
+    {
+      "type": "prose",
+      "text": "The load appears in every frame of the first photo set. The second set begins with it concealed. Neither selection changes the crossing. An observation can be faithful to its instant and poorly suited to the reviewer’s question. The useful additional picture is the one inside the omitted interval; adding another view of the final position would leave that question unanswered."
+    },
+    {
+      "type": "prose",
+      "text": "Bret Victor’s 2012 Learnable Programming goes beyond asking for an instantly updated result. His examples let a reader move through execution and compare states across time. Seeing the final drawing is different from seeing how it was made. That distinction matters here because a still can be perfectly faithful and still omit the transition on which the craft judgment depends. Victor was designing for human understanding; I am borrowing the question, not claiming his essay validates an agent review method.",
+      "sources": [
+        "learnable-programming"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Justin Young’s long-running-agent account reports a related practical lesson: browser testing exposed web-app failures that code inspection and narrower checks missed. It also records a blind spot—native alert dialogs unavailable through the chosen automation interface. The recommendation contains its own qualification. Returning an observation does not make the returned view complete.",
+      "sources": [
+        "harnesses"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our evidence fits that qualification. The studio’s sampled frames exposed obstruction and misleading presentation. They did not authorize judgments about smooth movement between frames. The independent reviewer also rejected a convenient all-purpose excuse: an absent rig joint and a wrapper that concealed failure could have been caught without a browser. Better eyes were necessary for some decisions; they did not relieve us of work our existing tools could already do.",
+      "sources": [
+        "second-assessment"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Make another view cheap to request"
+    },
+    {
+      "type": "prose",
+      "text": "I would now commission the first integrated review as an operation, with a named observer and a particular question. Can the worker launch the same candidate, reproduce the action, keep the relevant interval at original speed, and send the result to the person making the judgment? If a screenshot reveals an unfamiliar pose, the next request should be a short surrounding segment, not a fresh essay about what the pose probably means."
+    },
+    {
+      "type": "prose",
+      "text": "This also changes what I accept as a useful handoff. The returned view needs the candidate identity, the action that produced it, the interval covered and the reviewer’s actual viewing method. Those few details help someone ask for the missing evidence. Their purpose is to make revision easier. When preparing them becomes more work than performing the observation, I have probably rebuilt the appointment desk that caused the problem."
+    },
+    {
+      "type": "build",
+      "title": "Give the small world a review path",
+      "body": "Use the chapter 4 checkpoint as the specimen. Test the path from the environment in which the builder actually works.",
+      "steps": [
+        "Open the exact candidate and perform one accepted action, one refusal and one retry. Retain their visible results with the world records.",
+        "Record a short moving interval that includes the action before, during and after completion. Keep its original playback speed available.",
+        "Have a reviewer identify one question the packet cannot answer, then obtain the additional view through the same working route.",
+        "Preserve the candidate identity and observation limits alongside the files. Treat successful operation and the subsequent craft verdict as separate outcomes."
+      ],
+      "exercise": "Give a reviewer only the first and last frames of a transition. Ask what they can establish, then reveal the intervening sequence. Which conclusion changes—and which earlier conclusion remains valid?"
+    },
+    {
+      "type": "prose",
+      "text": "Usable observation gives a motion judgment somewhere to stand. The next chapter takes that access into the action itself: how anticipation, contact and recovery make a worker’s movement readable, and why a plausible pose is only one part of that performance."
+    }
+  ],
+  "sourceIds": [
+    "root-account",
+    "critic-second",
+    "swe",
+    "second-assessment",
+    "learnable-programming",
+    "harnesses"
+  ]
+}

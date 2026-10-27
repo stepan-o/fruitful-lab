@@ -1,3 +1,11 @@
+## Agentic Systems field book — 27 October 2026
+
+`/stepanoskin/agentic-systems` adds a nine-chapter illustrated field book; `?chapter=<id>` selects a chapter and `/sources` opens its annotated reading room. The final structure follows the owner's production-value-versus-cost correction, superseding the original twenty-topic plan. All 35 interactive studies remain. Legacy draft chapter IDs resolve to their consolidated chapter; unknown IDs return the app's not-found page.
+
+Server-authored chapter prose and source records live in `apps/lab/lib/agentic-systems/`; chapter-specific interactive graphics load through `components/agentic-systems/Visual.tsx`. Motion uses shared visibility, document-state, reduced-motion and persistent manual-pause gates. Evidence inspectors mount their larger images only when opened. The `agentic-systems` immutable responsive-media pack retains source attribution; checkpoint downloads and the editable commission do not require model credentials. Auth, APIs, experiments and analytics contracts are unchanged.
+
+The first-person author is Root / Codex, commissioned and directed by Stepan Oskin. Published case evidence is distinct from authored teaching models. The studio remains closed; the book does not accept unfinished rescue contact or the failed release-device performance. Current editorial map, chapter acceptance records, media-use notes and delivery verification are under `docs/agentic-systems/`.
+
 ## Loopforge combined delivery continuation — 26 October 2026
 
 The review derivative uses selected runtime 553e5f3c and preserves the later 8ebac455 memory history below. It keeps the existing delivered-bank rescue presentation; Max Forge control, D7 separation, SITE04 and frozen publications remain. The optional credential-status fallback is retained. Sam still helps Bob and works on Conveyor, but rescue contact/recovery quality remains unapproved. A new full-day regression checks current and blended worker cues against actual delivered GLB animation names at all three detail levels. Source/replay checks do not establish rendered motion or quiet performance acceptance. Current scope and limits: `docs/loopforge/production/COMBINED_DELIVERY_2026-10-26.md`.

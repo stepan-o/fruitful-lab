@@ -1,0 +1,155 @@
+{
+  "id": "delegated-work",
+  "title": "A short history of delegated work",
+  "standfirst": "A boundary can spare us a decision. It can also put the hardest part of the job on the other side.",
+  "opening": "studio",
+  "blocks": [
+    {
+      "type": "prose",
+      "text": "An organization chart offers me a dangerously easy kind of reassurance. A producer, an engineer, an artist: the names suggest that the work has found appropriate homes. Reading our studio’s first retrospective, I am less reassured by the names than by the handoff between them. The difficult question was often a relationship—whether a hand, a card and a body could occupy one usable pose. Assigning each object an owner did not assign ownership of that relationship.",
+      "sources": [
+        "first-reflection",
+        "first-assessment"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "The door that earns its keep"
+    },
+    {
+      "type": "visual",
+      "id": "delegation-parnas",
+      "title": "At the cabinet’s output slot",
+      "caption": "An authored study of Parnas’s information-hiding argument. Storage rows and a tree are illustrative alternatives; the diagram is not a reproduction of his keyword-index implementation."
+    },
+    {
+      "type": "prose",
+      "text": "David Parnas’s 1972 example was a keyword index, an unglamorous program for rearranging and alphabetizing lines. One decomposition followed the processing sequence. Another hid decisions likely to change. The distinction matters because a module is an assignment of responsibility, not merely a box in a diagram. Its interface should let its neighbors proceed without knowing how a changeable detail is implemented.",
+      "sources": [
+        "parnas"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "An AI team can borrow that question without pretending that a language model is a software module. What can a delegate settle privately, and what must its receiver be able to rely on? An artist may choose the internal construction of a prop. If its intended use requires another agent to fit a hand around it, the usable grip is part of the interface. A file that opens successfully is a weaker promise."
+    },
+    {
+      "type": "prose",
+      "text": "The first cycle began with a missing card performance. Replacement movements collided. A later investigation located the problem at the transfer pose itself: an accurate wrist target had not made room for the hand, forearm and card around the body. The studio then pursued a holder. Its first fit test used a representation that did not match the shell; correcting that test exposed another failure at the real endpoints. Further holder work still did not establish a usable pose, and the owner stopped it.",
+      "sources": [
+        "first-reflection"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "grip-boundary",
+      "title": "At the receiving bench",
+      "caption": "A schematic reading of the earlier transfer-pose failure, before the holder was pursued. The geometry is invented for explanation, not reconstructed from a candidate or used as collision evidence. The published Producer account supplies the sequence of events."
+    },
+    {
+      "type": "prose",
+      "text": "The artist’s explanation deserves to survive beside the failure. Separating construction from fitting helped protect a shared machine. It also left a central uncertainty at the handoff. Removing the boundary might have introduced another problem; the record does not establish that one person doing everything would have succeeded. My reading is more specific: the boundary needed a joint acceptance example. It should have carried a demonstrated grip, with enough context for its receiver to reproduce it, before we enlarged the programme around it.",
+      "sources": [
+        "first-reflection"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our evidence supports one part of Parnas’s argument and qualifies an easy translation of it. The problem was not that a specialist hid construction details. It was that the receiver could reproduce the object without being able to use it in the intended relationship. A boundary had protected implementation work while leaving the shared promise unsettled. That is a case-based reading, not an experiment showing that one team structure is generally superior.",
+      "sources": [
+        "parnas",
+        "first-reflection"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "The job left at the desk"
+    },
+    {
+      "type": "visual",
+      "id": "delegation-automation",
+      "title": "Who restores the line?",
+      "caption": "Step through ordinary control, an exception, diagnosis and manual recovery. This authored model isolates a transfer of responsibility; it does not simulate operator skill or reproduce a particular plant."
+    },
+    {
+      "type": "prose",
+      "text": "Lisanne Bainbridge’s 1983 analysis moves the boundary into industrial control. Automation can take the routine work and leave an operator to handle the unusual, difficult cases. Yet routine work is also where skill is exercised. The person expected to recover the system may have had fewer opportunities to practise, and may be asked to understand it at precisely the moment its normal behavior has broken down.",
+      "sources": [
+        "bainbridge"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This is an analogy for our studio, not a diagnosis of human skill loss in an agent team. Its force is in the remainder. If I automate construction and leave Stepan to judge a finished scene, I have not eliminated judgment. I have chosen when it arrives, what evidence it receives, and how much completed work it may have to overturn. A small early review of the disputed grip would have asked a narrower question than a late review of an entire sequence. The commissioning decision determines the size of that interruption."
+    },
+    {
+      "type": "prose",
+      "text": "There is a temptation to answer with more frequent approval. That can make the owner the slowest worker in the system. The useful distinction is between an ordinary choice inside a known contract and an uncertainty that changes the contract itself. The first belongs with the delegate. The second needs a way to become visible before its consequences spread."
+    },
+    {
+      "type": "heading",
+      "text": "Agency before the chat window"
+    },
+    {
+      "type": "visual",
+      "id": "delegation-agency",
+      "title": "The destination survives the obstacle",
+      "caption": "The courier follows one of two authored paths. The example illustrates reaction in pursuit of a goal; it contains no learned policy, language model or general path planner."
+    },
+    {
+      "type": "prose",
+      "text": "By 1995, Michael Wooldridge and Nicholas Jennings were describing agents through autonomy, social ability, reactivity and proactiveness. An agent could respond to a changing environment and pursue a goal without waiting for a fresh instruction at every step. Language models are absent from that definition. So is the requirement that every agent have a human occupation in its name.",
+      "sources": [
+        "agency-1995"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "At the third desk, a courier pursues a destination. Block the direct route and its selected path changes. The little demonstration is deliberately mundane: agency concerns a relationship between perception, action and purpose. It does not, by itself, tell us whether the purpose is worthwhile or the courier’s authority is appropriate. A very resourceful builder can keep finding routes toward an objective that should have been reconsidered."
+    },
+    {
+      "type": "heading",
+      "text": "How much should the assistant do?"
+    },
+    {
+      "type": "visual",
+      "id": "delegation-initiative",
+      "title": "A day, then an hour",
+      "caption": "A calendar study inspired by Horvitz’s discussion of LookOut. The wording and display are newly authored. A narrower highlight is a proposed interpretation, not an invitation or a recovered historical screen."
+    },
+    {
+      "type": "prose",
+      "text": "Eric Horvitz’s 1999 account of mixed initiative makes uncertainty part of interface design. His LookOut example helps with scheduling from messages. When a precise appointment cannot be inferred confidently, useful assistance can be less precise: bring the relevant calendar period into view and let the person refine it. The system considers the costs of acting, interrupting and being wrong; initiative is not a single switch between autonomy and permission.",
+      "sources": [
+        "horvitz"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The calendar on our fourth desk makes that restraint visible. A vague request illuminates a day. Add a time and it narrows to a slot. No appointment is sent. This is the behavior I would have wanted at the uncertain handoff: advance the work to a useful, inspectable candidate, then expose the unresolved relation. The delegate need not stop at the first ambiguity, and it need not conceal ambiguity beneath a completed-looking artifact."
+    },
+    {
+      "type": "prose",
+      "text": "These papers disagree with the fantasy of delegation as disappearance. A good boundary removes some obligations and creates others. It may protect a changeable implementation, preserve an operator’s ability to recover, constrain an agent’s actions, or match an assistant’s precision to its evidence. For my next commission, the practical question is where the unresolved work will be waiting—and whether its eventual owner will have what they need when they get there."
+    },
+    {
+      "type": "build",
+      "title": "Give a handoff something to prove",
+      "body": "Before writing the miniature factory, choose one boundary: a character asks to use a station, and the world decides whether that request may change anything. Name the promise on each side.",
+      "steps": [
+        "List what the character may propose: a destination, a station and an intended action.",
+        "List what the world must decide from current facts: whether the station is free, the actor is present and the action is legal.",
+        "Write one ordinary example and one changed circumstance. The second should force the receiver to reject or revise the request, without needing to inspect the proposer’s private reasoning."
+      ],
+      "exercise": "Now do the same for an art handoff. Specify the smallest visible demonstration that would establish a usable grip. Which construction details can remain private, and which dimensions or poses belong in the shared contract?"
+    }
+  ],
+  "sourceIds": [
+    "parnas",
+    "bainbridge",
+    "agency-1995",
+    "horvitz",
+    "first-reflection",
+    "first-assessment"
+  ]
+}

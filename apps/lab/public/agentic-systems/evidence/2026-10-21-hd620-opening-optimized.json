@@ -1,0 +1,179 @@
+{
+  "version": "opening-scene-1",
+  "status": "PASS",
+  "reason": null,
+  "checks": {
+    "complete": true,
+    "episodes": true,
+    "allShots": true,
+    "frameRate": true,
+    "frameP95": true,
+    "frameP99": true,
+    "everyShot": true,
+    "stalls": true,
+    "input": true,
+    "resources": true
+  },
+  "stallEvents": [
+    {
+      "atMs": 19739.5,
+      "durationMs": 122.30000001192093,
+      "shot": "assembly",
+      "phase": "How admission works"
+    },
+    {
+      "atMs": 82936.39999997616,
+      "durationMs": 104.89999997615814,
+      "shot": "passage",
+      "phase": "Conveyor on the card"
+    },
+    {
+      "atMs": 132635.59999999404,
+      "durationMs": 118.2000000178814,
+      "shot": "passage",
+      "phase": "The main door opens behind them"
+    },
+    {
+      "atMs": 136752.79999998212,
+      "durationMs": 122.69999998807907,
+      "shot": "passage",
+      "phase": "The main door opens behind them"
+    }
+  ],
+  "frames": {
+    "samples": 33364,
+    "elapsedMs": 600026,
+    "fps": 55.60425714885688,
+    "p50Ms": 17,
+    "p95Ms": 28.899999976158142,
+    "p99Ms": 34.79999998211861,
+    "maxMs": 122.69999998807907,
+    "stallsOver100": 4
+  },
+  "shots": {
+    "approach": {
+      "samples": 1856,
+      "elapsedMs": 33220.70000001788,
+      "fps": 55.86878060965004,
+      "p50Ms": 16.900000005960464,
+      "p95Ms": 29.299999982118607,
+      "p99Ms": 37.60000002384186,
+      "maxMs": 57.69999998807907,
+      "stallsOver100": 0
+    },
+    "assembly": {
+      "samples": 14274,
+      "elapsedMs": 255974.5,
+      "fps": 55.76336705414016,
+      "p50Ms": 17,
+      "p95Ms": 28.69999998807907,
+      "p99Ms": 34.599999994039536,
+      "maxMs": 122.30000001192093,
+      "stallsOver100": 1
+    },
+    "impact": {
+      "samples": 3659,
+      "elapsedMs": 66179.70000001788,
+      "fps": 55.2888574592966,
+      "p50Ms": 17.19999998807907,
+      "p95Ms": 29,
+      "p99Ms": 34,
+      "maxMs": 81.80000001192093,
+      "stallsOver100": 0
+    },
+    "passage": {
+      "samples": 13575,
+      "elapsedMs": 244651.09999996424,
+      "fps": 55.48718154139501,
+      "p50Ms": 17,
+      "p95Ms": 29,
+      "p99Ms": 35.29999998211861,
+      "maxMs": 122.69999998807907,
+      "stallsOver100": 3
+    }
+  },
+  "inputResponseMs": [
+    10.400000005960464
+  ],
+  "completedEpisodes": 2,
+  "resources": {
+    "baseline": {
+      "meshes": 61,
+      "materials": 42,
+      "textures": 66,
+      "skeletons": 12,
+      "geometries": 47,
+      "animationGroups": 264
+    },
+    "end": {
+      "meshes": 61,
+      "materials": 42,
+      "textures": 66,
+      "skeletons": 12,
+      "geometries": 47,
+      "animationGroups": 264
+    },
+    "growth": {
+      "meshes": 0,
+      "materials": 0,
+      "textures": 0,
+      "skeletons": 0,
+      "geometries": 0,
+      "animationGroups": 0
+    }
+  },
+  "protocol": {
+    "version": "opening-scene-1",
+    "warmupMs": 30000,
+    "durationMs": 600000,
+    "width": 1280,
+    "height": 720,
+    "workers": 10,
+    "supervisors": 2
+  },
+  "scene": "before-the-shift/5",
+  "createdAt": "2026-10-21T17:55:08.503Z",
+  "graphics": {
+    "version": 1,
+    "preset": "high",
+    "targetFps": 60,
+    "resolution": 1,
+    "shadows": "full",
+    "bloom": true,
+    "antialias": true
+  },
+  "assets": {
+    "stiletto": "ad84c17431f6eea244b9a15f46296f0da63d7ae9726e2f7d2622f9d522b6f97b",
+    "workers": {
+      "ben-floor": "b1750af4bee5f585e196194eb9a45988c6bb9bc68087df9a6a928e4464637d88",
+      "bob-floor": "bd30ac087ead85dc62f2c44b0b60cef52866858f8b5decd1fdc7cb624d931dbd",
+      "ed-floor": "958aca6e8660d09128cd03d267792f4302c0dd2d80185971117b8b195e63f597",
+      "gus-floor": "13b2d6a207302566e312a95747622f562623b030acb71845c652e297a21b521b",
+      "jo-floor": "4f3c18257c01fc1785e4278291de656a0c9982c43702ff038fcf530eba150937",
+      "kit-floor": "7a7fefa779d0949813b00c405136e0a397e3376f985616fdd6500c91402f053f",
+      "lou-floor": "5c79e432577a67d4805cc1fe955b94eca6b6564585a47037dab3610700952048",
+      "mae-floor": "ba89b55ac16f557ca7d489310b12c57f5a5a99d8afee90593da5161b9e0da99c",
+      "max-floor": "253edd83025b249116ece1eb69d55b80a602c80b665d1ee44a925eaac6ef7199",
+      "sam-floor": "3e93dc0e8c3428060b0e8c7fa05742d62d1c3238aef9b8eef0357c1468905d9a"
+    },
+    "limen": "70878f2f4a5c234c12548503a1b816ce951288aae7e7d245731814dcade7fb0e"
+  },
+  "environment": {
+    "renderer": "ANGLE (Intel, Mesa Intel(R) HD Graphics 620 (KBL GT2), OpenGL 4.6)",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "cores": 4,
+    "viewport": [
+      1280,
+      720
+    ],
+    "canvas": [
+      1280,
+      720
+    ]
+  },
+  "limitations": [
+    "Draw completion cadence is not a GPU timestamp.",
+    "Warm repeated authored opening; general BDI planning and cold internet loading are separate gates.",
+    "Contacts and artistic quality require visual approval; a performance pass does not establish either."
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "id": "authored-play",
+  "title": "Turn generated material into authored play",
+  "standfirst": "A request should be able to inconvenience the story we wanted to tell.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "visual",
+      "id": "story-workshop",
+      "title": "An hour before the gate closes",
+      "caption": "The exit requires the period to be spent, not the characters to agree. An unanswered request and an honoured one can therefore close the same scene."
+    },
+    {
+      "type": "prose",
+      "text": "Kit wants a rehearsal. Lou can ask, make space for it, and leave with an invitation to try again tomorrow. Or Lou can spend the hour making another crate. The exit is the same door. The person walking through it has a different reason to speak."
+    },
+    {
+      "type": "prose",
+      "text": "I nearly gave this miniature a revealing omission. I had added “wants quiet” as a second intention, guarded the rehearsal against that request, and left production as the only way to finish the period. Kit could refuse the activity I preferred, but could not get the thing they had asked for. I caught the missing response while enumerating the scene’s branches and added a quiet beat. It was a writing error expressed as a perfectly serviceable set of controls."
+    },
+    {
+      "type": "prose",
+      "text": "The repaired scene does not assign a universal value to kindness, practice or another crate. It records a request, an activity and the expenditure of a single period. The closing line interprets those facts. After a rehearsal, try the three final lines: one asks about tomorrow, another keeps the chairs in place, a third notices where a chair belongs. None secretly awards a relationship point. These are three performances of one consequence, not three additional outcomes."
+    },
+    {
+      "type": "heading",
+      "text": "A piece of story needs a place to become true"
+    },
+    {
+      "type": "prose",
+      "text": "Emily Short’s definition of a storylet joins content to prerequisites and effects. The content may be dialogue, prose, animation or film; the definition leaves its size and selection method open. Her 2019 essay shows how this small structure can express several familiar narrative shapes. What I find useful here is the obligation hidden inside its apparent simplicity: specify when this passage belongs, and what is different after it.",
+      "sources": [
+        "storylets"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our rehearsal beat requires an unspent period and an expressed wish to practise. It changes the activity and spends that period. The exit beat can then refer to practice without inventing a past. Another writer could supply a sharper line for Kit, but would still have to respect those conditions. A model can propose the line too. Fluency gives it no authority to add a promise, restore the hour or claim that Kit enjoyed something the scene has not established."
+    },
+    {
+      "type": "prose",
+      "text": "This makes generation a more useful commission. Instead of “write a warm ending,” I can provide the facts the ending may assume, the emotional turn I want to explore, and the facts it must leave undecided. I can ask for alternatives that imply impatience, relief or an invitation without converting the implication into a stored fact. The distinction matters when the next scene reads the record. A question about tomorrow is not an appointment."
+    },
+    {
+      "type": "prose",
+      "text": "Failbetter’s 2012 StoryNexus diary explains why this arrangement helps a team add material: contributors agree on the state changes they may make. It also admits that the repeated setup–choice–result rhythm can make longer dramatic scenes awkward. Both observations matter. Small units offer useful boundaries, but a boundary that makes collaboration convenient can interrupt the experience it is supposed to carry.",
+      "sources": [
+        "storynexus-diary"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "The refusal that improved a proposal"
+    },
+    {
+      "type": "prose",
+      "text": "The studio writer describes a later cohort proposal becoming better when Theatre stopped conferring an automatic benefit. Lou would ask Kit what request to carry; Sam would have a say; practice would compete with further output. The writer explicitly calls this authored source, not a result demonstrated by the Day 1 build. I used that correction as the starting point for the miniature above. Its lines, rules and quiet branch are new teaching material.",
+      "sources": [
+        "writer-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This supports the practical force of Short’s prerequisites-and-effects model: a scene becomes more specific when an activity depends on somebody’s request and consumes an opportunity. It also puts a limit on the easy version of the argument. Writing those conditions improved the proposal; we have no player study showing that it improved the delivered game. The useful evidence is an identifiable design correction, not a retrospective vote for storylets.",
+      "sources": [
+        "writer-second",
+        "storylets"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The temptation to award an automatic benefit is particularly strong when generating content. An agent can produce a moving account of a rehearsal, then attach the mechanically convenient result: everyone feels better. The sentence sounds complete because it supplies its own applause. The harder commission asks whose situation changed, who might object, and which future scene can legitimately rely on that change. It may leave us with a less agreeable passage and a more inhabitable world."
+    },
+    {
+      "type": "heading",
+      "text": "The author also writes the interruptions"
+    },
+    {
+      "type": "prose",
+      "text": "Façade’s creators, Michael Mateas and Andrew Stern, describe authoring a dispute over drinks in layers. Beyond the lines, they specify interruption points, ways to re-establish a topic, responses to a request already made, and physical staging. Their own assessment is unusually useful: extensive local responsiveness came with less global agency than they hoped, while writing the joint dialogue behaviors remained costly. Their procedural architecture made the work possible without making it effortless.",
+      "sources": [
+        "facade-authoring"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "That account changes the unit of work I would give a generating agent. “Three witty lines about the machine” is easy to inspect in isolation. “An exchange that can resume after a worker leaves, without repeating the request or assuming it was answered” exposes the actual difficulty. The author must decide whether leaving means refusal, postponement or an interruption with no social meaning. The engine cannot recover that intention from the elegance of the sentence."
+    },
+    {
+      "type": "prose",
+      "text": "In this miniature I chose to end the author’s responsibility at the gate. Kit’s invitation may suggest another day, but no second day is implemented. I also made the final beat indivisible. Those are limits, not claims that interruptions are unimportant. Adding an interruptible rehearsal would require a new distinction between starting it and completing it, then a decision about which ending follows each. A larger pile of interchangeable lines would not supply that distinction."
+    },
+    {
+      "type": "prose",
+      "text": "Bruno Dias’s account of trying to generalize Voyageur’s narrative machinery provides a useful builder’s counterweight. He separates narrative selection, text generation and the interface, then describes how the small dynamic portion of otherwise static storylets carried much of their value. His general-purpose project stalled over scope and tooling compromises. This is not a warning against reusable tools. It is evidence that a format convenient for one game does not automatically become a good authoring system for many.",
+      "sources": [
+        "dias-qbn"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "sentence-bench",
+      "title": "What the last line smuggles in",
+      "caption": "If the booking is meant to be true, accepting that line creates work for a later scene: an appointment needs somewhere to happen, and some way to be missed."
+    },
+    {
+      "type": "heading",
+      "text": "Give a generated passage a contract"
+    },
+    {
+      "type": "prose",
+      "text": "The first object I would keep is a short scene record: what must already be true, whose decision is being solicited, what may happen, what commits, and what remains unknown. Then I would commission variations against that record. A line that cannot survive the record has revealed either a bad line or an incomplete design. That is a useful disagreement; silently changing both makes it disappear."
+    },
+    {
+      "type": "prose",
+      "text": "The implementation here is small enough to expose the distinction. The transition function decides whether the period can be spent. A separate function selects the line from the resulting history. The stage presents that result. Changing the last line cannot manufacture another crate. Changing the effect requires reviewing the histories that depend on it. For a contractor building from source material to a user-facing experience, this boundary is where editorial work becomes an engineering responsibility."
+    },
+    {
+      "type": "build",
+      "title": "Author one return to a shared place",
+      "body": "Give the small factory a scene that comes back to the same location after different earlier actions.",
+      "steps": [
+        "Write two histories that reach the same doorway. State exactly which earlier fact makes the ending differ.",
+        "Give every scene a prerequisite and an explicit effect. Include one refusal that the system can honour rather than merely display.",
+        "Separate alternate wording from alternate consequences. Inspect whether any line invents a commitment absent from the record.",
+        "Enumerate the reachable histories. Try each one through the actual presentation, including a request the preferred activity cannot satisfy."
+      ],
+      "exercise": "Ask a model for three variations of one eligible passage. Keep the conditions and effects fixed. Reject a beautiful line if its next scene would have to pretend something happened."
+    },
+    {
+      "type": "prose",
+      "text": "We have moved from choosing candidates to authoring the relationships between them. The next difficulty is deciding what our checks actually establish. An exhaustive list of reachable endings can find a missing response; it cannot tell us whether Kit’s last line lands."
+    }
+  ],
+  "sourceIds": [
+    "storylets",
+    "storynexus-diary",
+    "writer-second",
+    "facade-authoring",
+    "dias-qbn"
+  ]
+}

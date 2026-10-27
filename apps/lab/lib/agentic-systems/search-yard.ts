@@ -1,0 +1,11 @@
+export type YardPoint={x:number;y:number};
+export type RouteCandidate={id:string;row:number;points:YardPoint[]};
+export type YardRule="distance"|"open"|"robust";
+export const cargoRadius=.4;
+export const yardRacks=[{x:3,y:1},{x:3,y:3},{x:3,y:4},{x:3,y:5}];
+export const yardDoor={x:3,y:2};
+export const routeCandidates:RouteCandidate[]=[0,6,1,5,2,4,3].map((row,i)=>({id:String.fromCharCode(65+i),row,points:[{x:0,y:3},{x:1,y:3},{x:1,y:row},{x:5,y:row},{x:5,y:3},{x:6,y:3}].filter((p,i,a)=>i===0||p.x!==a[i-1].x||p.y!==a[i-1].y)}));
+export function routeLength(points:YardPoint[]){return points.slice(1).reduce((sum,p,i)=>sum+Math.hypot(p.x-points[i].x,p.y-points[i].y),0);}
+function entry(a:YardPoint,b:YardPoint,box:YardPoint){let lo=0,hi=1;for(const axis of ["x","y"] as const){const d=b[axis]-a[axis],min=box[axis]-.5-cargoRadius,max=box[axis]+.5+cargoRadius;if(Math.abs(d)<1e-9){if(a[axis]<min||a[axis]>max)return null;}else{let x=(min-a[axis])/d,y=(max-a[axis])/d;if(x>y)[x,y]=[y,x];lo=Math.max(lo,x);hi=Math.min(hi,y);if(lo>hi)return null;}}return lo;}
+export function inspectRoute(c:RouteCandidate,doorClosed:boolean){const obstacles=[...yardRacks.map(p=>({...p,name:"storage rack"})),...(doorClosed?[{...yardDoor,name:"closed door"}]:[])];const travelled:YardPoint[]=[c.points[0]];for(let i=1;i<c.points.length;i++){const a=c.points[i-1],b=c.points[i];let first:{t:number;name:string}|null=null;for(const obstacle of obstacles){const t=entry(a,b,obstacle);if(t!==null&&(!first||t<first.t))first={t,name:obstacle.name};}if(first){const point={x:a.x+(b.x-a.x)*first.t,y:a.y+(b.y-a.y)*first.t};travelled.push(point);return {clear:false,reason:`Cargo meets the ${first.name}.`,travelled};}travelled.push(b);}return {clear:true,reason:"Cargo reaches receiving with clearance.",travelled};}
+export function rankRoutes(count:number,rule:YardRule){return routeCandidates.slice(0,count).map(c=>({candidate:c,length:routeLength(c.points),open:inspectRoute(c,false),closed:inspectRoute(c,true)})).map(x=>({...x,eligible:rule==="distance"||x.open.clear&&(rule!=="robust"||x.closed.clear)})).sort((a,b)=>Number(b.eligible)-Number(a.eligible)||a.length-b.length||a.candidate.id.localeCompare(b.candidate.id));}

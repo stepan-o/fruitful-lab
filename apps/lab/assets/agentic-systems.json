@@ -1,0 +1,168 @@
+{
+  "pack": "agentic-systems",
+  "assets": {
+    "day-one-night": {
+      "kind": "image",
+      "source": "public/loopforge-dev-blog/media/2026-10-26-motion-in-the-running-game/day-one-complete-81718f31dad4.png",
+      "widths": [
+        480,
+        800,
+        1280
+      ],
+      "quality": 88,
+      "maxBytes": 300000
+    },
+    "opening-dialogue": {
+      "kind": "image",
+      "source": "public/loopforge-dev-blog/retrospectives/2026-10-25-second-retrospective/source/images/r10-opening-dialogue.png",
+      "widths": [
+        480,
+        800,
+        1280
+      ],
+      "quality": 88,
+      "maxBytes": 300000
+    },
+    "forge-before": {
+      "kind": "image",
+      "source": "public/loopforge-dev-blog/media/2026-10-26-motion-in-the-running-game/forge-before-081042-6f3041c92172.png",
+      "widths": [
+        480,
+        800,
+        1280
+      ],
+      "quality": 88,
+      "maxBytes": 300000
+    },
+    "forge-current": {
+      "kind": "image",
+      "source": "public/loopforge-dev-blog/media/2026-10-26-motion-in-the-running-game/forge-current-081042-c7d21ca0b66b.png",
+      "widths": [
+        480,
+        800,
+        1280
+      ],
+      "quality": 88,
+      "maxBytes": 300000
+    },
+    "generative-agents-party": {
+      "kind": "image",
+      "source": "assets/sources/agentic-systems/generative-agents-party.png",
+      "widths": [
+        480,
+        800,
+        1280,
+        1634
+      ],
+      "quality": 90,
+      "maxBytes": 350000
+    },
+    "studio-roster": {
+      "kind": "image",
+      "source": "public/loopforge-dev-blog/media/studio-classic.png",
+      "widths": [
+        480,
+        800,
+        1280,
+        1920
+      ],
+      "quality": 88,
+      "maxBytes": 350000
+    },
+    "scaling-task-comparison": {
+      "kind": "image",
+      "source": "assets/sources/agentic-systems/scaling-task-comparison.png",
+      "widths": [
+        480,
+        800,
+        1280,
+        1920
+      ],
+      "quality": 92,
+      "maxBytes": 350000
+    },
+    "speech-before": {
+      "kind": "image",
+      "source": "public/loopforge-dev-blog/history/media/strike-before.png",
+      "widths": [
+        480,
+        728
+      ],
+      "quality": 90,
+      "maxBytes": 300000
+    },
+    "speech-after": {
+      "kind": "image",
+      "source": "public/loopforge-dev-blog/history/media/strike-after.png",
+      "widths": [
+        480,
+        728
+      ],
+      "quality": 90,
+      "maxBytes": 300000
+    },
+    "memgpt-memory-search": {
+      "kind": "image",
+      "source": "assets/sources/agentic-systems/memgpt-memory-search.png",
+      "widths": [
+        374
+      ],
+      "quality": 95,
+      "maxBytes": 100000
+    },
+    "help-and-card": {
+      "kind": "image",
+      "source": "public/loopforge-dev-blog/media/2026-10-25-day-one/r10-help-and-card.png",
+      "widths": [
+        480,
+        800,
+        1280
+      ],
+      "quality": 90,
+      "maxBytes": 350000
+    },
+    "departure-obstruction": {
+      "kind": "image",
+      "source": "public/loopforge-dev-blog/media/2026-10-25-day-one/r10-departure-obstruction.png",
+      "widths": [
+        480,
+        800,
+        1280
+      ],
+      "quality": 90,
+      "maxBytes": 350000
+    },
+    "departure-arms": {
+      "kind": "image",
+      "source": "public/loopforge-dev-blog/media/2026-10-25-day-one/r10-departure-arms-117s.png",
+      "widths": [
+        480,
+        800,
+        1280
+      ],
+      "quality": 90,
+      "maxBytes": 350000
+    },
+    "funsearch-overview": {
+      "kind": "image",
+      "source": "assets/sources/agentic-systems/funsearch-overview.png",
+      "widths": [
+        480,
+        685
+      ],
+      "quality": 95,
+      "maxBytes": 200000
+    },
+    "opening-performance": {
+      "kind": "image",
+      "source": "assets/sources/agentic-systems/opening-performance.png",
+      "widths": [
+        480,
+        800,
+        1280
+      ],
+      "quality": 90,
+      "maxBytes": 350000
+    }
+  }
+}

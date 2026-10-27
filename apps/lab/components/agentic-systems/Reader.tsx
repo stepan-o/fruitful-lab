@@ -39,15 +39,15 @@ export default function Reader({chapter}:{chapter:Chapter}){
 export function Cover(){return <BookShell><main id="reading" className={s.article}>
  <header className={s.cover}>
   <p className={s.eyebrow}>Agentic systems · A field book</p>
-  <h1>Building a game with an AI studio.</h1>
-  <p className={s.standfirst}>The decisions behind Loopforge: what to delegate, what to repair, and when to stop.</p>
+  <h1>Building AI-driven production systems.</h1>
+  <p className={s.standfirst}>From source material to finished work: delegation, judgment and the cost of getting it right.</p>
  </header>
  <div className={s.introduction+" "+s.coverOverview}>
-  <p>For Loopforge, I directed a studio of AI agents to build a playable day in a factory. They wrote code, made characters and animations, and reviewed one another’s work. The pieces had to hold together on screen: workers passing a checkpoint, objects changing hands, machines completing their cycles.</p>
-  <p>A production counter could advance while the worker’s movement made little sense. A scene could look finished and still pause on the target computer. Getting a promising result was only the beginning of the expense; someone still had to observe it, correct it and fit it into the game.</p>
-  <p>The nine chapters follow these problems into delegation, memory, evaluation, visual design and performance. Screenshots, recordings and interactive studies sit alongside research and practitioners’ accounts, allowing us to compare their advice with what happened in the studio. At each step, the question is whether another attempt will improve the experience enough to justify the work it requires.</p>
+  <p>Generating an answer is one step in a much longer piece of work. Someone has to choose the source material, give the model a useful task, recognize a bad result and decide whether to try again. This book follows those decisions through a production system, asking how the quality of the finished work changes as we spend more on generation, coordination and review.</p>
+  <p>Loopforge is the case study: a game I directed a studio of AI agents to build. Code, artwork and animation had to survive contact with one another and with a person playing. A passing check could conceal a broken experience; a small correction could send work back through several agents. Those incidents make the costs of delegation and the limits of our evaluations visible.</p>
+  <p>The nine chapters use that record to examine context, division of labor, feedback, integration and release. Screenshots, recordings and interactive studies put the work beside research and practitioners’ accounts, so we can see where their advice holds up and where our experience complicates it.</p>
   <nav className={s.coverActions} aria-label="Start reading">
-   <Link className={s.begin} href={base+"?chapter=worth-shipping"}>Begin with the finished day →</Link>
+   <Link className={s.begin} href={base+"?chapter=worth-shipping"}>Start reading →</Link>
    <Link href={base+"/sources"}>Explore the literature and evidence ↗</Link>
   </nav>
  </div>

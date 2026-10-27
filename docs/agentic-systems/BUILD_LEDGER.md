@@ -16,7 +16,7 @@ Pass one has an independent end-to-end literary clearance. A separate informatio
 
 Full baseline app CI passed: 136 suites, 716 tests, one snapshot. Thirty focused behavior tests, scoped ESLint and four polished production builds also passed. The latest build produces 86 pages and verifies 99 retained asset releases. Local routes, aliases, downloads, source navigation and the portfolio entry were checked. The opening image transfers 31,004 bytes on the observed phone viewport and 169,170 bytes on desktop; later media remains deferred. Field Core Web Vitals are unmeasured. See `VERIFICATION.md` for exact scope and limits.
 
-A scoped draft commit and PR can preserve the reviewable work while browser inspection is restored. Final chapter clearance and exact-source deployment verification remain publication gates. Owner merges.
+The complete app/document tree was published on `codex/agentic-systems-book` as commit `1d9a02fe9b6709431984ee9360949c7c21aef3db`, and draft [PR 131](https://github.com/stepan-o/fruitful-lab/pull/131) is open. Its Git tree exactly matches the local draft tree `4ae7c9fd40104bcd7a7bcb363756ede0e8c6250b`. An independent twenty-state SVG render check clears the two repaired artwork defects but explicitly keeps the final live-route gate open. The exact-source Vercel preview is READY and its routes, downloads and late citation correction pass authenticated response checks. Final chapter live-route clearance remains the publication gate. Owner merges.
 
 ## Original scope (historical)
 

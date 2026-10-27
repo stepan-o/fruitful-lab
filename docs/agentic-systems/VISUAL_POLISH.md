@@ -38,9 +38,9 @@ The Chapter 5 critic found that the site’s stable scrollbar gutters shifted fi
 
 ### Performance plot axis repair
 
-The final Chapter 8 critic found an opaque triangle obscuring the event plot. The open SVG axis path inherited the default fill; an explicit `fill="none"` removes the unintended area without altering marks or data. The repaired plot requires a final rendered recheck at all reviewed widths before Chapter 8 clearance.
+The final Chapter 8 critic found an opaque triangle obscuring the event plot. The open SVG axis path inherited the default fill; an explicit `fill="none"` removes the unintended area without altering marks or data. The independent twenty-state SVG artifact review clears the repaired plot in both authored layout modes, with all-event and enlarged Passage selections. The final live-route recheck at the reviewed widths still remains before Chapter 8 clearance; the artifact report does not infer browser layout or motion.
 
 
 ### Compact release-cabinet repair
 
-The final Chapter 9 critic found the decorative “KEEP DISTINCT” heading overprinting the second compartment heading at 320 and 390 pixels. Compact mode now omits that heading and its short divider; the precise installed/preserved or record/withheld labels remain. Desktop keeps the separate decorative heading. The repaired compact selections require a rendered recheck before Chapter 9 clearance.
+The final Chapter 9 critic found the decorative “KEEP DISTINCT” heading overprinting the second compartment heading at 320 and 390 pixels. Compact mode now omits that heading and its short divider; the precise installed/preserved or record/withheld labels remain. Desktop keeps the separate decorative heading. The independent SVG artifact review clears Max, Sam and Device selections at four calculated artwork sizes; compact headings are separate and the wide heading remains intact. The final live-route recheck remains before Chapter 9 clearance. See `reviews/polish/final-graphic-recheck.md` for exact scope and font limitations.

@@ -19,8 +19,18 @@ The nine-chapter map in EDITORIAL_RECONSTRUCTION.md supersedes the historical to
 - Cover and phone contents were inspected at 320px; source records at 390px; portfolio link and return at 1280px. Initial post-build navigation and repeat visits completed with no captured console errors. These are local functional/loading observations, not measured cold-cache paint timings or production Core Web Vitals.
 - Fresh whole-book information-layer audit PASS after correcting the ContactStage description of shared hand preparation: `reviews/polish/layers-and-redundancy.md`.
 
-- The final server-only citation formatter was linted after the fourth local build. It displays a year only when the source date starts with a year; the sole living-guide entry retains its full date in the source record. Exact-source build and label verification belong to the deployment-preview gate.
-- Browser transport closed before chapters 8–9 could view the corrected build; fresh independent recovery also failed. Their reports retain pending rendered-craft verdicts. Neither these repairs nor the native saved commission file are claimed as visually/file-system verified.
+- The final server-only citation formatter was linted after the fourth local build. It displays a year only when the source date starts with a year; the sole living-guide entry retains its full date in the source record. The exact-source hosted build passed. Its Chapter 8 HTML contains the inline label “Paul Lewis” without the fabricated “Livi” suffix; this is response-content verification, not a fresh browser screenshot.
+- Browser transport closed before chapters 8–9 could view the corrected build; fresh independent recovery also failed. Their reports retain pending live-route verdicts. A separate fresh critic visually inspected twenty PNGs rasterized from the actual components across four calculated artwork sizes: two StallMap states and three ReleaseManifest selections. Both graphical defects pass that bounded artifact check; browser layout, hydration, motion and final route appearance remain outside its scope. See `reviews/polish/final-graphic-recheck.md`. Native commission save completion and saved bytes remain unobserved.
+
+## Hosted draft verification — 27 October 2026
+
+Draft [PR 131](https://github.com/stepan-o/fruitful-lab/pull/131) publishes source commit `1d9a02fe9b6709431984ee9360949c7c21aef3db`. Deployment `dpl_8NPD9ZT61rGryDso5Gu7TwKz2JbJ` is READY with the same Git SHA and a successful Vercel commit status. Its build command runs asset checks, the full app test suite and the production build in sequence. The application subtree is `2ef1cb504c1208e34a4c400e00922203ef021e73`; the subsequent review-record commit changes documentation only.
+
+[Protected preview](https://fruitful-3sx01e7qw-stepan-oskins-projects.vercel.app/stepanoskin/agentic-systems) requires the owner's Vercel access. No public share URL is part of delivery.
+
+Authenticated response checks passed for fourteen routes: cover, nine chapters, reading room, portfolio, legacy alias and unknown chapter (expected 404). All five linked checkpoint/protocol/evidence downloads return 200 with nonempty content. The portfolio contains its book entry, and the legacy alias resolves to the first chapter. Chapter 8 returns the shortened caption, an explicitly unfilled plot axis, and the corrected living-guide citation label. These checks establish deployed content and route behavior, not browser rendering or native save completion.
+
+The independent SVG artifact review clears the two illustration defects at artwork level. Chapters 8–9 retain their bounded live-route hold because browser transport is unavailable. The production site has not been merged or promoted.
 
 ## Historical development record
 

@@ -20,7 +20,7 @@ Each chapter receives an independent fresh-context critic for the final version,
 
 ## Current final review
 
-The writing pass and whole-book information-layer audit pass. Final visual critics clear chapters 1–7. Chapters 8 and 9 have complete substantive reviews and narrow repairs in the fourth successful local build: an unfilled plot axis and removal of an overlapping compact cabinet heading. Their final rendered rechecks remain pending because the browser transport closed in both reviewers, the parent and a fresh independent session. The reports do not substitute source inspection for those checks.
+The writing pass and whole-book information-layer audit pass. Final visual critics clear chapters 1–7. Chapters 8 and 9 have complete substantive reviews and narrow repairs in the fourth successful local build: an unfilled plot axis and removal of an overlapping compact cabinet heading. Their final rendered rechecks remain pending because the browser transport closed in both reviewers, the parent and a fresh independent session. The reports do not substitute source inspection for those checks. An additional independent critic rendered the actual SVG components in twenty states and cleared both defects at artwork level; `reviews/polish/final-graphic-recheck.md` preserves the method and its limitations. It does not replace the outstanding live-route checks.
 
 ## Delivery after both passes
 

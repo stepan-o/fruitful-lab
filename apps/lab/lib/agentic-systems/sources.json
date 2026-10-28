@@ -258,9 +258,9 @@
     "title": "Building a C compiler with a team of parallel Claudes",
     "url": "https://www.anthropic.com/research/building-c-compiler",
     "kind": "Engineering account",
-    "claim": "Parallel agents built a substantial compiler using strong executable checks and shared coordination.",
-    "limit": "The account retains important compatibility, code-quality and toolchain limitations; spending is specific to that experiment.",
-    "use": "Strong verifiers change the economics of sustained generation.",
+    "claim": "A compiler harness exposed independent bugs for parallel workers; executable checks sustained substantial generation.",
+    "limit": "Capability experiment with substantial cost and remaining compatibility limits; no matched single-agent economic comparison.",
+    "use": "A verifier can make coupled work separable without establishing equal-cost efficiency.",
     "accessed": "2026-10-26"
   },
   {
@@ -1161,6 +1161,90 @@
     "claim": "Occasional slow components can dominate the response time of a large interactive service.",
     "limit": "Large-service engineering evidence; the six-investigation timeline in this book is an authored illustration, not a measurement from the paper or of AI agents.",
     "use": "Which required branch determines when the recipient can continue?",
+    "accessed": "2026-10-27"
+  },
+  {
+    "id": "close-cycle-audit",
+    "author": "Root / Codex",
+    "date": "2026-10-25",
+    "title": "Close-cycle audit: repairs, feedback and scoped usage",
+    "url": "/agentic-systems/evidence/close-cycle-audit-2026-10-25.json",
+    "kind": "Frozen case audit",
+    "claim": "A later 7h50 correction window records repaired samples, validation work, delayed visual rejection and native-studio usage.",
+    "limit": "Frozen at 23:50 UTC; no matching corrected after-video then. Root, independent review, later tails and billed cost excluded.",
+    "use": "Distinguish useful repairs, reusable machinery and unfinished creative payoff.",
+    "accessed": "2026-10-27"
+  },
+  {
+    "id": "close-cycle-outcomes",
+    "author": "Loopforge studio; Root / Codex",
+    "date": "2026-10-26",
+    "title": "Additive outcome and closure record",
+    "url": "/agentic-systems/evidence/close-cycle-outcomes-2026-10-26.json",
+    "kind": "Verified case closeout",
+    "claim": "Later footage and reviewed selection were delivered; the owner stopped further corrections with performance failures retained.",
+    "limit": "Native closure preceded the owner’s 26 October 18:01 UTC merge. Sampled review is not full physical or performance acceptance.",
+    "use": "Keep the stopping decision and Root’s coordination errors inside the system boundary.",
+    "accessed": "2026-10-27"
+  },
+  {
+    "id": "agents-room",
+    "author": "Fantine Huot and colleagues",
+    "date": "2025",
+    "title": "Agents’ Room: Narrative Generation through Multi-step Collaboration",
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/file/0fbc8a83d93dd8021a4dd8d2d34138eb-Paper-Conference.pdf",
+    "kind": "Conference research",
+    "claim": "Specialized sequential planning and writing improved expert preference over evaluated story-generation baselines.",
+    "limit": "Same backbone does not establish equal total cost; output lengths differ. Not a parallel swarm-speed experiment.",
+    "use": "Can specialization improve judged story quality without shortening elapsed work?",
+    "accessed": "2026-10-27"
+  },
+  {
+    "id": "crafteam",
+    "author": "Hyunseung Lim and colleagues",
+    "date": "2026",
+    "title": "Understanding Human–Multi-Agent Team Formation for Creative Work",
+    "url": "https://arxiv.org/html/2601.13865v1",
+    "kind": "Exploratory study · CHI 2026",
+    "claim": "Twelve design practitioners revised AI-team arrangements toward direct human orchestration.",
+    "limit": "A technology-probe ideation study, not a causal production-efficiency estimate for every creative team.",
+    "use": "Where must a value judgment remain available to change the direction?",
+    "accessed": "2026-10-27"
+  },
+  {
+    "id": "creative-diversity",
+    "author": "Anil R. Doshi and Oliver P. Hauser",
+    "date": "2024",
+    "title": "Generative AI enhances individual creativity but reduces the collective diversity of novel content",
+    "url": "https://arxiv.org/pdf/2312.00506",
+    "kind": "Controlled research",
+    "claim": "Generated ideas improved evaluated short stories while their collective outputs became more similar.",
+    "limit": "Human writing with AI starting ideas, not an autonomous-team or game-production trial.",
+    "use": "Does a larger batch improve individual candidates while narrowing useful choice?",
+    "accessed": "2026-10-27"
+  },
+  {
+    "id": "persona-diversity",
+    "author": "Yun Wan and Yoram M. Kalman",
+    "date": "2025",
+    "title": "Using Generative AI Personas Increases Collective Diversity in Human Ideation",
+    "url": "https://arxiv.org/html/2504.13868v1",
+    "kind": "Research preprint",
+    "claim": "A modified story-writing study used deliberately different personas to generate more varied starting plots.",
+    "limit": "Persona-conditioned generation and human writing; no proof of independent agent reasoning or production speed.",
+    "use": "Test diversity in the retained outputs, not the number of named roles.",
+    "accessed": "2026-10-27"
+  },
+  {
+    "id": "cursor-scaling",
+    "author": "Wilson Lin",
+    "date": "2026-01-14",
+    "title": "Scaling long-running autonomous coding",
+    "url": "https://cursor.com/blog/scaling-agents",
+    "kind": "Builder account",
+    "claim": "Changing coordination and removing a bottlenecking integrator supported larger autonomous coding runs.",
+    "limit": "Vendor experiments with differing completion states; not controlled evidence of equal-budget creative efficiency.",
+    "use": "Does another coordination role shorten the path to accepted work?",
     "accessed": "2026-10-27"
   }
 ]

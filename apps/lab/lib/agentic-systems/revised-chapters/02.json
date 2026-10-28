@@ -1,16 +1,29 @@
 {
   "id": "small-world",
-  "title": "Give actions a dependable world",
-  "standfirst": "A model can propose the next move. State, permissions and recovery determine what that move is allowed to do.",
+  "title": "Share a dependable world",
+  "standfirst": "Separate contexts can collaborate only when their commitments refer to the same work.",
   "opening": "",
   "blocks": [
     {
       "type": "prose",
-      "text": "A tool call can fail in two very different ways. The action may never happen, or it may happen while its acknowledgment is lost. From the agent’s next prompt, those situations can look identical. A request to try again is easy to write. Making it safe requires the world outside the model to remember what it has already done."
+      "text": "A shared folder can conceal a divided world. Animator sees the source pose, Engine sees the loaded model, Producer sees a pass, and the reviewer sees a body leaning into the press. All four records may be accurate about different specimens. Before buying another specialist, the team needs a way to say which candidate exists, what was done to it and who may turn it into the next release.",
+      "sources": [
+        "close-cycle-audit"
+      ]
     },
     {
       "type": "prose",
-      "text": "This is the foundation of a dependable agentic system: separate a proposal from the authority to change state. A model may decide which action seems useful. The executor must determine whether that action is valid now, apply it within the permitted scope, and return a result that a retry can recognize. More capable reasoning does not make this boundary obsolete."
+      "text": "That common world includes task ownership, source versions, accepted interfaces and evidence tied to the build that produced it. Sharing the entire conversation is neither necessary nor sufficient. A collaborator needs the facts that constrain its action, a way to change them legitimately, and an acknowledgment another collaborator can rely on."
+    },
+    {
+      "type": "prose",
+      "text": "The game gives us a small, visible model of these distinctions. Its builder, runtime and player have different powers. In the studio, proposing a repair, integrating a candidate and accepting a release are likewise different actions. The analogy concerns authority; it does not claim that the studio used the game’s deterministic kernel."
+    },
+    {
+      "type": "visual",
+      "id": "three-loops",
+      "title": "Three places where a decision is made",
+      "caption": "The case separates the builder, the running product and the person using it. Select each station to inspect its evidence and authority. For another commission, identify the corresponding roles; a static report need not contain the factory’s stateful middle loop."
     },
     {
       "type": "visual",
@@ -24,7 +37,7 @@
     },
     {
       "type": "prose",
-      "text": "The floor is deliberately small enough to inspect. Position, custody and reservation are separate facts. A warehouse service has similar distinctions between where stock is, who has claimed it and whether dispatch has committed. The factory makes the disagreement visible without asking us to trust a model’s account of what occurred."
+      "text": "Position, custody and reservation are separate facts. A studio has corresponding distinctions between an artifact’s location, the person editing it and the version selected for delivery. The factory makes those differences visible; the production team must implement its own contracts around files, tasks and releases."
     },
     {
       "type": "heading",
@@ -40,7 +53,7 @@
     },
     {
       "type": "prose",
-      "text": "A tool interface should expose an intention at the right scale: reserve this resource, submit this candidate, publish this approved result. The caller needs enough information to recover from refusal. It should not have to reconstruct hidden business rules from a successful-looking sentence. Equally, the tool must not treat a model’s confident explanation as evidence that its preconditions hold."
+      "text": "Give tools meaningful operations: claim this task, submit this candidate, publish this approved version. A refusal should identify the broken precondition. “The animation is ready” is not a substitute for the version, compatible rig and accepted observation that the receiving builder needs."
     },
     {
       "type": "visual",
@@ -73,7 +86,7 @@
     },
     {
       "type": "prose",
-      "text": "The same idea belongs in generated workflows. Keep the operation identity through timeouts, record the durable result, and distinguish an unfinished attempt from a completed one whose reply was lost. If a process crosses several services, one local transaction will not make all their effects atomic. Recovery may require a later compensating action, and the user needs an honest account of what already happened."
+      "text": "A publication tool may commit the asset before its reply is lost. Retrying must preserve the operation identity so the studio can distinguish “not published” from “published, acknowledgment missing.” Across several services, a local transaction cannot make every effect atomic. Recovery may need a compensating action, and the next worker needs an honest account of what already escaped."
     },
     {
       "type": "heading",
@@ -116,11 +129,29 @@
     },
     {
       "type": "prose",
-      "text": "A retrieval system may return a supplier’s claim, a later correction and an order record. They are three pieces of evidence with different authority. Storing source, time and observation mode lets a later action use that distinction. Copying every statement into one undifferentiated “memory” makes agreement easier to manufacture and disagreement harder to investigate."
+      "text": "A production archive may contain an animator’s proposed fix, a numerical pass and a later visual rejection. Keeping source, time, specimen and observation mode lets the next agent use their different authority. Flattening them into one “memory” can turn a superseded proposal into the current instruction."
     },
     {
       "type": "prose",
-      "text": "There is a cost to every distinction we keep. A richer belief model creates more transitions, more tests and more stale state to reconcile. Keep a field because a later decision needs it. In the factory, separate knowledge can create an encounter; in a document workflow, source attribution can keep an unsupported claim out of a release. A biography or a provenance field that nobody ever consults cannot justify its upkeep merely by existing."
+      "text": "Every distinction creates maintenance. Keep a field because a receiving decision needs it. A build identifier can stop a review of the wrong candidate; a recorded acceptance can prevent a rejected experiment from silently reappearing. A larger archive earns nothing if the next worker still has to ask which version to use."
+    },
+    {
+      "type": "heading",
+      "text": "An intention still needs an action"
+    },
+    {
+      "type": "evidence",
+      "asset": "generative-agents-party",
+      "alt": "Figure 4 from Generative Agents: five characters gathered in a café, with emoji bubbles representing the Valentine’s party",
+      "caption": "Figure 4, Park and colleagues, 2023: a gathering at the café. The visible event is the outcome of memories, communication and planning examined in the paper. Original figure resized and re-encoded; see the source for the evaluation.",
+      "original": "https://arxiv.org/html/2304.03442v2/figures/figure_valentine3.png"
+    },
+    {
+      "type": "prose",
+      "text": "Park and colleagues’ Generative Agents use observations, retrieval, reflection and planning to support a simulated social world. Five of twelve invited agents attended the reported party; some had other commitments, while others expressed interest but failed to plan attendance. The distinction matters in a production team as well: a declared intention is not a completed commitment.",
+      "sources": [
+        "generative-agents"
+      ]
     },
     {
       "type": "heading",
@@ -138,10 +169,9 @@
     },
     {
       "type": "prose",
-      "text": "The studio’s hearing review is useful as a compact counterexample. Some missing receptions were defects because later actions depended on them; others were intentional ignorance. Making every character hear every line would have improved a superficial delivery count while damaging the design. The required recipients, rather than the maximum number of receipts, defined completion.",
+      "text": "Writer initially treated sixteen missed recipients as sixteen failures and proposed changing the addressed audience. Director and Level distinguished four legitimate nonreceipts: the later action did not require those characters to know the missing line. Writer withdrew the unnecessary edits and kept twelve exchanges that needed staging repairs. That collaboration protected intentional ignorance while preserving real obligations. A shared account had changed what the team thought it ought to fix.",
       "sources": [
-        "writer-second",
-        "hearing-regression"
+        "writer-second"
       ]
     },
     {
@@ -153,7 +183,7 @@
     },
     {
       "type": "prose",
-      "text": "The agent is now free to choose among legitimate actions without becoming the source of truth about their effects. That freedom is easier to expand when the surrounding world can explain a refusal, survive a retry and preserve a disputed fact. The next question is how much of the work should remain in one loop, and which parts can usefully be entrusted to others."
+      "text": "The team’s shared world should make an interrupted attempt recoverable and a disputed claim inspectable. That investment can save repeated orientation and repair. It does not yet tell us how many collaborators to hire. The next chapter asks which work can actually separate."
     },
     {
       "type": "build",
@@ -183,12 +213,14 @@
     }
   ],
   "sourceIds": [
+    "close-cycle-audit",
     "fear",
     "kernel",
     "stripe-idempotency",
     "engine-second",
     "bdi",
     "loopforge-knowledge",
+    "generative-agents",
     "writer-second",
     "hearing-regression",
     "ninja-feedback"

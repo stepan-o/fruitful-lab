@@ -29,9 +29,9 @@ export default function TimingInstrument(){
  <g style={{transform:`rotate(${needle}deg)`,transformOrigin:"500px 265px",transition:"transform .65s ease"}}><path d="M473 259L635 265L473 271Z" fill="#8e3f2e"/><path d="M500 263H631" stroke="#cc9a70"/></g><circle cx="500" cy="265" r="12" fill="#334e51" stroke="#d0bf8e" strokeWidth="3"/>
  <text x="500" y="339" textAnchor="middle" fill="#253e42" fontSize="28" fontFamily="Georgia">{m.value}</text><text x="500" y="362" textAnchor="middle" fill="#4e615b" fontSize="18" fontFamily="Arial">{m.unit}</text>
  <path d="M145 326H255M145 341H255M145 356H232" stroke="#4e6968" strokeWidth="3"/>
- <text x="500" y="478" textAnchor="middle" fill="#a7b5a5" fontSize="11" fontFamily="Arial" letterSpacing="2">FULL SCENE · TWO COMPLETE DAYS · 26 OCT 2026</text>
+ <text x="500" y="478" textAnchor="middle" fill="#a7b5a5" fontSize="11" fontFamily="Arial" letterSpacing="2">FULL SCENE · TWO DAY 1 RUNS · 26 OCT 2026</text>
  </svg>
- <p className={s.compactOnly+" "+s.plateQualifier}>Intel HD 620 · 1280 × 720 · full scene<br/>Two complete days · 26 Oct 2026<br/><strong>{m.pass?"PASS":"FAIL"}</strong></p>
+ <p className={s.compactOnly+" "+s.plateQualifier}>Intel HD 620 · 1280 × 720 · full scene<br/>Two complete Day 1 runs · 26 Oct 2026<br/><strong>{m.pass?"PASS":"FAIL"}</strong></p>
  <div className={s.tabs} role="group" aria-label="Choose a recorded performance measure">{measures.map((item,i)=><button key={item.id} type="button" aria-pressed={index===i} onClick={()=>setIndex(i)}>{item.name}</button>)}</div>
  <div className={s.measureReading}><TermNote term="Matched conditions">A timing limit belongs to the specified workload, device, resolution and run length. Changing those conditions creates a different comparison.</TermNote><div aria-live="polite"><h3>{m.mark}</h3><p><strong>{m.value} {m.unit}</strong> observed · {m.pass?"minimum":"maximum"} <strong>{m.limit} {m.unit}</strong></p><p>{m.explanation}</p><p className={s.measureKey}>Green arc: allowed range. Red rim mark: recorded acceptance limit. These are summary measurements, not a reconstructed frame trace.</p></div></div>
  </div>;

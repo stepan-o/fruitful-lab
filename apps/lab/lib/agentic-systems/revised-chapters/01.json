@@ -1,49 +1,65 @@
 {
   "id": "worth-shipping",
-  "title": "Define the useful result",
-  "standfirst": "Before choosing a model or a team, decide what should become possible for the person receiving the work.",
+  "title": "What does the team produce?",
+  "standfirst": "Creative quality, finished work and reusable capability are different returns on the same effort.",
   "opening": "",
   "blocks": [
     {
       "type": "prose",
-      "text": "A production system begins with somebody waiting for a result. A report must support a decision; a generated image must fit the place where it will appear; a proposed improvement must survive the conditions under which it will be used. The model sees a task. The recipient inherits everything that the task left out."
-    },
-    {
-      "type": "prose",
-      "text": "This book is about building the machinery between those two positions. An AI-driven production system takes source material and constraints, generates or selects actions, examines what happened, and carries accepted work to its consumer. It may use one model call or a team of agents. Its success belongs to the delivered result, including the work required to keep that result useful."
-    },
-    {
-      "type": "prose",
-      "text": "Loopforge gives us a case we can look inside: a small game made by a studio of AI agents under Stepan’s direction. I am Root / Codex, the coordinator whose account you are reading. The agents wrote and reviewed the game; the delivered game itself used authored, deterministic rules. Keeping those roles separate prevents an attractive mistake: crediting the product with the intelligence of the machinery that built it.",
+      "text": "At the press, Max leans forward as though the machine has pulled him off balance. The production counter advances. A check can certify the increment; a person watching the body has another verdict. By this point the studio has already repaired real defects. The uncomfortable question is what all that repair has bought the scene.",
       "sources": [
-        "kernel",
+        "motion-case",
+        "close-cycle-audit"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Loopforge is a game Stepan directed a team of AI agents to build. I am Root / Codex, the coordinator whose account you are reading. Our work crossed code, drawing, models, animation, staging and review. The following recordings show why a creative production system has to be judged at their meeting point. Watch Max reach, press and withdraw; the later clip changes how that action reads, while leaving its numerical output alone."
+    },
+    {
+      "type": "video",
+      "id": "forge-pair"
+    },
+    {
+      "type": "prose",
+      "text": "The correction did eventually reach the delivered game. That matters: the story cannot end with the earlier rejection merely because failure makes a sharper argument. It also cannot end with the clearer action. An experimental rescue correction was excluded, and the final device-performance test still failed. Finished work, better machinery for making it, and unresolved obligations had arrived together.",
+      "sources": [
+        "motion-case",
+        "combined-selection",
+        "delivery"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "A team is a production arrangement"
+    },
+    {
+      "type": "prose",
+      "text": "By an agent team I mean separate model-driven working contexts with assigned responsibilities, tools and ways to exchange results. “Swarm” and “hive” are useful names only after those arrangements are specified. Our studio had a Producer coordinating named crafts through tasks, messages, files and review records. The agents did not share one continuous mind; a file available to everyone was not necessarily present in anyone’s next decision.",
+      "sources": [
+        "first-reflection",
         "root-account"
       ]
     },
     {
-      "type": "visual",
-      "id": "three-loops",
-      "title": "Three places where a decision is made",
-      "caption": "The case separates the builder, the running product and the person using it. Select each station to inspect its evidence and authority. For another commission, identify the corresponding roles; a static report need not contain the factory’s stateful middle loop."
-    },
-    {
-      "type": "heading",
-      "text": "What makes the loop agentic?"
-    },
-    {
       "type": "prose",
-      "text": "An agent observes a situation, chooses an action toward a goal and receives evidence of what happened. Its next step can depend on that evidence. ReAct gives this alternation a concrete form: a model can search, encounter new information and change its next action. The surrounding system still has to provide useful observations, enforce the action boundary and decide what completion means.",
+      "text": "Stepan retained creative direction and the decision to accept delivery with omissions. Producer organized the native studio; Engine and the craft agents returned implementation and evidence; reviewers could reject work within their scope. I sat outside that native accounting boundary, arranging parts of the environment and conducting further review. My interventions belong in the explanation even where their resource use is absent from the ledger.",
       "sources": [
-        "react"
+        "root-account",
+        "close-cycle-audit",
+        "close-cycle-outcomes"
       ]
     },
     {
       "type": "prose",
-      "text": "Imagine commissioning a weekly research brief. The desired improvement is that an analyst finds a consequential contradiction earlier, with enough evidence to act on it. One AI-assisted version finds more discrepancies but leaves their sources scattered across a long transcript. Another finds fewer and returns the relevant passages with each claim. Before choosing between them, we need to watch the analyst finish the job."
+      "text": "The agents built and examined the game. Its delivered characters followed authored, deterministic rules. A rich scene is not evidence of a rich agent society inside it, just as a fluent report does not reveal how many researchers produced it. We will inspect the organization that made the artifact, and use the artifact to test its claims.",
+      "sources": [
+        "kernel"
+      ]
     },
     {
       "type": "heading",
-      "text": "A successful operation can deliver a poor result"
+      "text": "The result has more than one kind of value"
     },
     {
       "type": "visual",
@@ -53,137 +69,56 @@
     },
     {
       "type": "prose",
-      "text": "In Loopforge, a machine could complete its cycle while the worker operating it moved implausibly. The counter was right. The scene was wrong. This is why the case is useful beyond games: its consumer can see a contradiction that a narrow success condition accepts. The same gap appears when a report contains accurate figures but obscures their comparison, or a generated interface saves a value while leaving the user unsure whether it saved.",
-      "sources": [
-        "motion-case"
-      ]
-    },
-    {
-      "type": "video",
-      "id": "forge-pair"
+      "text": "Select the outcome, then the action, then the timing. The same delivered specimen answers three different questions. A useful production system must preserve that separation: an integrated feature can function, communicate poorly and arrive on a device that cannot sustain the intended experience. An average of those verdicts would conceal the obligation that prevents someone from using it."
     },
     {
       "type": "prose",
-      "text": "The two Forge recordings show one correction that reached the screen. A pitched-forward body becomes a worker standing beside the console, reaching for its control and withdrawing. The production total is unchanged. What improves is the account a viewer can form of who caused the event. That benefit has to compete with other possible work; after the action reads clearly, another refinement of the wrist may matter less than a pause that interrupts the entire scene.",
-      "sources": [
-        "motion-case"
-      ]
+      "text": "Efficiency begins with the required result and the alternatives available. We want creative quality and useful finished output, at an acceptable expense and time to delivery. We may also want reusable production capability: a validator, a renderer, an asset pipeline or a regression case that makes later work cheaper. Those returns deserve separate accounts. A tool that might help the next scene is an investment; it is not another completed scene."
     },
     {
       "type": "prose",
-      "text": "The delivered slice also failed its agreed device-performance limits. A visible improvement did not cancel that failure. Production value has several obligations, and some are gates: a useful answer may arrive too late; an elegant candidate may break an existing contract. Collapsing them into “quality” can hide the very reason a recipient cannot use the result.",
+      "text": "The 25 October audit, frozen before the corrected footage existed, found both sides. Sampled floor failures fell from 951 to zero across 17,616 corrected samples, and actual-model validation became more capable. Yet a numerical pass still preceded a rendered rejection. Neither fact cancels the other. The useful question is whether the team can convert its growing technical knowledge into the creative result soon enough, and whether the retained machinery will be used again.",
       "sources": [
-        "delivery"
+        "close-cycle-audit"
       ]
     },
     {
       "type": "heading",
-      "text": "Design backward from the experience"
+      "text": "What this case can tell us"
     },
     {
       "type": "prose",
-      "text": "Game design has a particularly clear account of this distance. Hunicke, LeBlanc and Zubek’s MDA framework separates mechanisms, the behavior those mechanisms produce in play, and the experience they support. The designer works outward from rules; the player encounters their consequences. For an AI production system, the analogous discipline is to follow an improvement all the way through to a person’s work. A better local score may disappear before it reaches them.",
-      "sources": [
-        "mda"
-      ]
-    },
-    {
-      "type": "visual",
-      "id": "player",
-      "title": "What does information let you do?",
-      "caption": "An authored counterexample with three hidden initial conditions. The time allowance and tray expose consequences; the covered mechanism withholds their cause. Its rules and balance are specific to this teaching scene."
+      "text": "We did not run the same commission with one agent at an equal budget. We cannot calculate a swarm speedup from this history, or assign every repeated token to waste. We can inspect narrower mechanisms: work that could proceed independently, a correction that crossed the same boundary repeatedly, an observation that arrived too late, a check that caught a real fault, and a stopping decision that finally selected a release."
     },
     {
       "type": "prose",
-      "text": "At the operator’s desk, inspection consumes part of the shift. It is worthwhile when the information changes a later choice enough to repay that time. A healthy line and a hidden fault make the same cautious action mean different things. This miniature makes a production decision tangible: paying for another review is useful when the review can change what we do, not simply because review sounds responsible."
+      "text": "Research and builders’ accounts give those mechanisms alternatives to argue with. Some specialized writing systems improve judged quality without running in parallel. Some coding teams make a shared project tractable by changing the test harness. Other builders remove agent layers when the cost of exchanging context overtakes their contribution. These are comparisons to examine, not votes for a universal organization chart."
     },
     {
       "type": "prose",
-      "text": "My first version undermined that decision. I charged for inspection, then let a failed production attempt reveal the same diagnosis. On a healthy line the attempt also earned output. A critic pointed out that the impatient policy could get everything the cautious one bought, sometimes with a bonus. The rule produced a dominant behavior; that behavior removed the uncertainty I wanted the player to weigh. The intended experience had no chance to emerge."
-    },
-    {
-      "type": "prose",
-      "text": "The repair made blind failure ambiguous and costly to restart. Now inspection can repay its time on a faulty line and waste it on a healthy one. This is MDA doing diagnostic work: change the mechanism that creates the behavior, then examine whether the desired experience becomes possible. More decoration around the old buttons would have preserved the wrong decision.",
-      "sources": [
-        "mda"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "Daniel Cook describes play as forming and revising a mental model through consequences. That gives the desk a better question than whether its buttons work: can someone learn when inspection is worth buying? The same question belongs in a decision-support product. An explanation that never changes a reasonable action may be beautifully written and still add little.",
-      "sources": [
-        "loops"
-      ]
-    },
-    {
-      "type": "heading",
-      "text": "A different purpose changes the verdict"
-    },
-    {
-      "type": "evidence",
-      "asset": "generative-agents-party",
-      "alt": "Figure 4 from Generative Agents: five characters gathered in a café, with emoji bubbles representing the Valentine’s party",
-      "caption": "Figure 4, Park and colleagues, 2023: a gathering at the café. The visible event is the outcome of memories, communication and planning examined in the paper. Original figure resized and re-encoded; see the source for the evaluation.",
-      "original": "https://arxiv.org/html/2304.03442v2/figures/figure_valentine3.png"
-    },
-    {
-      "type": "prose",
-      "text": "Park and colleagues’ Generative Agents retain observations, retrieve relevant memories, form reflections and use these to plan. An invitation can therefore travel through conversations and affect later action. Five of twelve invited agents attended the reported party. Some absentees had conflicting commitments; others expressed interest but failed to plan attendance. Those are different findings about the architecture.",
-      "sources": [
-        "generative-agents"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "A character honoring another commitment may be plausible behavior in a social simulation. Failing to enact an expressed intention remains a limitation; calling the result believable does not make every mistake intentional. For an event-organizing assistant, we would judge attendance against the actual agreement with its user. The purpose changes the verdict without changing the observed behavior."
-    },
-    {
-      "type": "prose",
-      "text": "The study also makes the operating burden visible: simulating twenty-five agents for two days took multiple days and thousands of dollars in token credits. Those are historical costs of that experiment, not current prices. They show why a compelling demonstration still leaves a production question about which continuing computation its intended experience can justify.",
-      "sources": [
-        "generative-agents"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "Loopforge asks a smaller version of the same question. A worker can hold another’s card without its owner knowing. That asymmetry could support a meaningful choice, but generated conversation would not supply the consequence automatically. The next chapter uses this modest fact to examine the state and authority a richer system would still need.",
-      "sources": [
-        "kernel"
-      ]
-    },
-    {
-      "type": "heading",
-      "text": "Choose a unit of progress"
-    },
-    {
-      "type": "prose",
-      "text": "Return to the research brief. Earlier discovery is valuable only while the decision remains open and the analyst can verify the contradiction. If the new process saves search but creates more checking and correction, its apparent gain may disappear. I would compare the completed decision, verification effort, delay and recurring operating work against the existing brief. No invented exchange rate between tokens and attention is needed to discover that we have merely moved the burden."
-    },
-    {
-      "type": "prose",
-      "text": "The first commission should therefore be narrow enough to fail instructively. Give one recipient a better result under a stated condition; keep a baseline; decide what observation would make the extra machinery unnecessary. Once that promise is clear, we can ask what an agent may change and what the surrounding system must refuse."
+      "text": "This book follows nine decisions, from the shared world in which work happens to the authority that can stop it. Production value and cost meet in each one. The studio’s long evening is evidence where it exposes a mechanism; it is not a sequence the reader needs to memorize."
     },
     {
       "type": "build",
-      "title": "Specify the useful difference",
-      "body": "Choose an AI-assisted process from your own work. Use the factory studies as examples of how a local success can diverge from the recipient’s result.",
+      "title": "Name what the team must earn",
+      "body": "Choose a creative commission small enough to inspect as a whole: a playable exchange, an illustrated explanation or a short film.",
       "steps": [
-        "Name the recipient and a decision or action the result should improve. Describe the current baseline.",
-        "Trace source material, generation, checks and delivery. Mark where useful information or meaning could be lost.",
-        "Distinguish a hard obligation from a preference that can be traded against latency, attention or expense.",
-        "Choose one small comparison that could show the additional automation is not worth maintaining."
+        "Describe what its audience should understand, feel or be able to do. Keep a usable starting specimen.",
+        "Separate the finished artifact from reusable capability you intend to build. Name who could use that capability next.",
+        "Record model and tool use, elapsed delivery time, review attention and integration work separately. Leave unknown costs unknown.",
+        "Name an alternative arrangement worth comparing: one builder, a fixed workflow or one bounded delegate. Use the same acceptance conditions."
       ],
-      "exercise": "Write two commissions for the same candidate: an exploratory prototype and a repeated production service. Which acceptance conditions change, and which additional costs appear?"
+      "exercise": "Which result would make you remove a role, and which would justify keeping it even if delivery took longer?"
     }
   ],
   "sourceIds": [
-    "kernel",
-    "root-account",
-    "react",
     "motion-case",
+    "close-cycle-audit",
+    "combined-selection",
     "delivery",
-    "mda",
-    "loops",
-    "generative-agents"
+    "first-reflection",
+    "root-account",
+    "close-cycle-outcomes",
+    "kernel"
   ]
 }

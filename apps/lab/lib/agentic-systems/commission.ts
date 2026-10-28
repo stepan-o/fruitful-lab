@@ -11,6 +11,16 @@ export const commissionFields=[
 export type CommissionKey=typeof commissionFields[number]["key"];
 export type Commission=Record<CommissionKey,string>;
 export const commissionExamples:{name:string;fields:Commission}[]=[
+ {name:"Example · make one action readable",fields:{
+ outcome:"The intended viewer can recognize who acts on what, and why the response follows, during one short passage at ordinary speed.",
+ baseline:"Pin the selected build, camera, input sequence and before-film. State the specific ambiguity; do not begin from an unversioned description of bad motion.",
+ preserve:"Preserve the intended action, game rules, other accepted performances and shared rig contract. Keep this correction distinct from a general animation-system rewrite.",
+ evidence:"Inspect the whole passage on the actual loaded model. Retain the useful numerical checks, then ask the receiving reviewer to judge the action at ordinary speed under the same viewing conditions. A contact tolerance cannot accept intention or weight.",
+ authority:"UNASSIGNED: name one implementation owner, the specialist needed at the receiving boundary, the creative reviewer and the owner authorized to accept or stop. This example does not reopen the closed studio.",
+ resources:"UNASSIGNED: agree a bounded implementation and review allowance before dispatch. Record model/tool use, elapsed time and reviewer attention separately. Give any reusable tool its own expected next use; money remains unknown without billing evidence.",
+ stop:"After the first integrated view, choose acceptance, one bounded repair, a changed brief or stop. A numerical pass does not bypass visual judgment. A new defect does not automatically authorize another cycle.",
+ delivery:"Return the exact candidate and ordinary-speed before/after films, matched viewing conditions, preserved checks, remaining objection and owner decision. Package reusable machinery with one passing and one failing example."
+ }},
  {name:"Example · own a recurring research brief",fields:{
  outcome:"The receiving team can use current, source-supported findings before its decision deadline. A partial issue must identify missing investigations.",
  baseline:"Pin the source snapshot, extractor, prompt/model configuration and accepted comparison. Reproduce a source date-field change that makes old material appear new.",

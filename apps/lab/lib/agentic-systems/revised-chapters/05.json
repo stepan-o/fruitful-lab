@@ -1,12 +1,12 @@
 {
   "id": "readable-detail",
-  "title": "Make the result legible",
-  "standfirst": "The last step in delivery happens in another person’s understanding.",
+  "title": "Protect the intended experience",
+  "standfirst": "A team needs a shared creative judgment wherever independently sensible choices meet.",
   "opening": "",
   "blocks": [
     {
       "type": "prose",
-      "text": "A technically correct result can still leave its recipient unable to act. The relevant comparison is hidden, the control offers no sign of what it does, or the explanation arrives after the moment when it would have helped. In generated products, these failures are easy to multiply: each component can look accomplished on its own while the assembled experience makes little sense."
+      "text": "Creative direction is not the sum of the specialists’ local goals. The writer needs the words heard, the animator needs the body seen, and the interface needs a readable control. If each succeeds on a separate bench, the finished frame can still make them obstruct one another. Someone has to keep the intended experience present where those decisions meet."
     },
     {
       "type": "evidence",
@@ -69,7 +69,7 @@
     },
     {
       "type": "prose",
-      "text": "The production counterpart is a generated report viewed inside its real application. The chart, explanatory text, filters and error messages have to fit together at the intended size. Reviewing the chart in isolation can approve something the delivered interface immediately crops or obscures. A useful acceptance specimen includes the actual content and the states that compete with it."
+      "text": "For a team, this changes the unit of acceptance. Review a short exchange with its actual words, bodies, camera and controls at the intended size. The specimen can be rough. Its value is that the receiving crafts can reject the relationship before each part becomes expensive to revise."
     },
     {
       "type": "visual",
@@ -95,18 +95,49 @@
     },
     {
       "type": "prose",
-      "text": "Norman offers a quieter example: a bookmark in a physical book also reveals how much remains to read. The cue arrives almost accidentally from the medium. An electronic reader has to provide such information deliberately. His distinction between available actions and the signs that make them understandable helps explain what can disappear when a familiar task moves into an AI interface.",
+      "text": "Hunicke, LeBlanc and Zubek’s MDA framework separates mechanisms, the behavior they produce in play and the experience they support. A team can divide implementation while keeping that chain whole. The designer begins with rules; the player receives consequences. The study below shows how I broke the connection in this book’s own teaching scene.",
       "sources": [
-        "norman-signifiers"
+        "mda"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "player",
+      "title": "What does information let you do?",
+      "caption": "An authored counterexample with three hidden initial conditions. The time allowance and tray expose consequences; the covered mechanism withholds their cause. Its rules and balance are specific to this teaching scene."
+    },
+    {
+      "type": "prose",
+      "text": "At the operator’s desk, inspection consumes part of the shift. It is worthwhile when the information changes a later choice enough to repay that time. A healthy line and a hidden fault make the same cautious action mean different things. This miniature makes a production decision tangible: paying for another review is useful when the review can change what we do, not simply because review sounds responsible."
+    },
+    {
+      "type": "prose",
+      "text": "My first version undermined that decision. I charged for inspection, then let a failed production attempt reveal the same diagnosis. On a healthy line the attempt also earned output. A critic pointed out that the impatient policy could get everything the cautious one bought, sometimes with a bonus. The rule produced a dominant behavior; that behavior removed the uncertainty I wanted the player to weigh. The intended experience had no chance to emerge."
+    },
+    {
+      "type": "prose",
+      "text": "The repair made blind failure ambiguous and costly to restart. Now inspection can repay its time on a faulty line and waste it on a healthy one. This is MDA doing diagnostic work: change the mechanism that creates the behavior, then examine whether the desired experience becomes possible. More decoration around the old buttons would have preserved the wrong decision.",
+      "sources": [
+        "mda"
       ]
     },
     {
       "type": "prose",
-      "text": "An assistant may replace a long form with a conversation while removing the form’s visible list of unfinished fields. The interaction feels simpler until the user cannot tell what remains. That is our application of Norman’s example, not a result he measured: generation may need to restore a useful cue the old medium supplied for free."
+      "text": "Daniel Cook describes play as forming and revising a mental model through consequences. That gives the desk a better question than whether its buttons work: can someone learn when inspection is worth buying? The same question belongs in a decision-support product. An explanation that never changes a reasonable action may be beautifully written and still add little.",
+      "sources": [
+        "loops"
+      ]
     },
     {
       "type": "prose",
-      "text": "An evidence-rich answer has a related problem. A pile of citations can increase the cost of checking the claim if none is attached to the passage it supports. Showing the relevant excerpt beside a consequential recommendation may be worth more than adding another source. Design is doing part of the verification work by making the important relationship available to the eye."
+      "text": "Lim and colleagues’ CrafTeam study gives creative direction a different test. Twelve design practitioners repeatedly formed and revised AI teams for ideation. Participants moved toward direct orchestration after agent-led exchanges failed to supply the direction and value judgments they needed. This exploratory study records their experience with a particular probe, not a general productivity estimate.",
+      "sources": [
+        "crafteam"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our missing face is a smaller instance of why the intended experience must be available to somebody who can change the arrangement. That person need not inspect every keyframe. They need an early assembled specimen and a decision that still has room to matter. Adding an AI director does not by itself establish either condition."
     },
     {
       "type": "heading",
@@ -138,7 +169,7 @@
     },
     {
       "type": "prose",
-      "text": "Both versions share the hand’s entire path and timing, including its preparation. What changes is the body’s participation: the torso, spare arm and stance make the same reach read differently. The hand target is satisfied in both. A hesitant novice and a practiced operator could still need different whole-body performances."
+      "text": "A hesitant novice and a practiced operator could satisfy the same hand target while needing different whole-body performances. The distinction belongs to the character and the action’s meaning; endpoint accuracy cannot choose it for us."
     },
     {
       "type": "prose",
@@ -208,7 +239,9 @@
     "visual-second",
     "director-second",
     "tf2-rendering",
-    "norman-signifiers",
+    "mda",
+    "loops",
+    "crafteam",
     "animator-second",
     "animation-principles",
     "rosen-animation"

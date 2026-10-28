@@ -1,3 +1,5 @@
+> Historical PR 132 revision. The subsequent [team-efficiency revision](TEAM_EFFICIENCY_REVISION.md) supplies the current chapter argument and independent writing/visual reviews.
+
 # Foundations revision — 27 October 2026
 
 The owner rejected a book organized around reconstructing the studio's production sequence. The subject is building AI-driven production systems; Loopforge is an inspectable, bounded case. A production event earns space only when its mechanism, consequence or failed judgment advances the chapter's argument. Chronology is not evidence of conceptual depth.

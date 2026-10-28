@@ -1,12 +1,22 @@
 {
   "id": "division-of-work",
-  "title": "Decide where agency belongs",
-  "standfirst": "Independent work, shared context and human judgment call for different boundaries.",
+  "title": "Earn the division of labor",
+  "standfirst": "Specialization can improve the work, parallelism can shorten it, and coordination can consume both gains.",
   "opening": "",
   "blocks": [
     {
       "type": "prose",
       "text": "A specialist is useful when it can take responsibility for a piece of work. It is less useful when every decision sends it back across the same boundary for context, permission or repair. The organizational question begins there: what can this worker finish without making everyone else reconstruct its situation?"
+    },
+    {
+      "type": "visual",
+      "id": "team-topology",
+      "title": "Who can change the next decision?",
+      "caption": "A map of responsibilities in the recorded studio, not a message-frequency graph. Select an interface to inspect what crosses it and which authority remains elsewhere."
+    },
+    {
+      "type": "prose",
+      "text": "The map names who can act. The workshop asks which of them can act at the same time."
     },
     {
       "type": "visual",
@@ -34,14 +44,7 @@
     },
     {
       "type": "prose",
-      "text": "Parnas approached this problem through a keyword index in 1972: a program for rearranging and alphabetizing lines. One division followed the processing sequence. Another hid decisions likely to change, so that neighboring modules could continue without learning the new implementation. The example is modest enough to expose the choice. A box in a diagram may name the next stage, or it may protect the rest of the program from a decision it should not have to know.",
-      "sources": [
-        "parnas"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "Suppose the index changes how it stores its circular shifts. In a pipeline organized only by processing stages, several consumers may know that representation and need revision. A boundary that exposes the required operations while hiding the representation lets those consumers continue unchanged. The benefit is not the number of boxes; it is the set of neighboring decisions that no longer have to change together.",
+      "text": "Parnas approached this problem through a keyword index in 1972: a program for rearranging and alphabetizing lines. One division followed the processing sequence. Another hid decisions likely to change, so that neighboring modules could continue without learning the new implementation. The example is modest enough to expose the choice. A box in a diagram may name the next stage, or it may protect the rest of the program from a decision it should not have to know. If the index changes its storage representation, consumers that know only the required operations can continue unchanged.",
       "sources": [
         "parnas"
       ]
@@ -72,7 +75,25 @@
     },
     {
       "type": "prose",
-      "text": "That example is more valuable than a longer handoff description because it makes the dependency testable. In a data pipeline, its equivalent might be a small input with a known interpretation that survives extraction, transformation and display. The specialist can change its private method while the receiving contract stays visible."
+      "text": "That example makes the dependency testable. The specialist can change its private method while the receiving contract stays visible."
+    },
+    {
+      "type": "heading",
+      "text": "Specialization can buy quality without buying speed"
+    },
+    {
+      "type": "prose",
+      "text": "Huot and colleagues’ Agents’ Room offers a direct creative comparison. Planning roles develop conflict, character, setting and plot; writing roles produce successive parts of a story, reading a shared, labeled scratchpad. A deterministic orchestrator calls them in sequence. Expert evaluators preferred variants with writing agents to the tested baselines, although human stories remained preferred overall. This is a quality result for specialized collaboration, not evidence of parallel acceleration.",
+      "sources": [
+        "agents-room"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The study uses the same model backbone for the compared systems, but the resulting stories differ substantially in length and the experiment does not establish equal-total-cost efficiency. Its useful challenge to our case is narrower: a good division can keep the right material in view during a creative decision. Loopforge would have to earn that benefit at the assembled scene, where a writer’s line and an animator’s action must remain compatible.",
+      "sources": [
+        "agents-room"
+      ]
     },
     {
       "type": "heading",
@@ -94,7 +115,21 @@
     },
     {
       "type": "prose",
-      "text": "There is a reason to hesitate before copying that arrangement. Diane Sarkis’s October 2026 practitioner account describes enterprise systems that improved when routing, planning and domain subagents were folded into one main loop, with instructions and tools loaded as needed. She keeps separate agents for independent verification, parallel work and distinct permissions. The vendor’s deployment experience puts a question to the elegant organization chart: does this specialization need another conversation, or only the right instructions at the right moment?",
+      "text": "Nicholas Carlini’s February 2026 compiler experiment shows how a builder can make shared work separable. Sixteen agents used separate working copies and task locks. They advanced on separate failures, then collided at the Linux build, repeatedly confronting the same obstacle. A harness that mixed the candidate compiler with GCC let them isolate different failing files; parallel work became possible again. The compiler could build Linux, but still needed GCC for its 16-bit x86 boot code.",
+      "sources": [
+        "compiler"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Carlini presents a capability experiment, reporting nearly two thousand sessions and roughly $20,000 of API use, not an equal-budget staffing trial. The transferable idea is to manufacture independently checkable work. In a creative scene, that may mean a reproducible grip or a short integrated exchange. A compiler oracle cannot tell us whether the performance feels convincing.",
+      "sources": [
+        "compiler"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Other builders have gained by removing those boundaries. Diane Sarkis’s October 2026 practitioner account describes enterprise systems that improved when routing, planning and domain subagents were folded into one main loop, with instructions and tools loaded as needed. She keeps separate agents for independent verification, parallel work and distinct permissions. The vendor’s deployment experience puts a question to the elegant organization chart: does this specialization need another conversation, or only the right instructions at the right moment?",
       "sources": [
         "fold"
       ]
@@ -108,18 +143,18 @@
     },
     {
       "type": "prose",
-      "text": "Kim and colleagues put this question into a controlled comparison: 180 configurations, four benchmarks, five architectures and three model families, with common tools, prompt structures and budgets. Multi-agent arrangements helped the financial-analysis tasks much more than the sequential crafting tasks; every tested multi-agent variant lost ground on PlanCraft. This is stronger comparative evidence than our retrospective. It still belongs to those tasks and implementations. I would use its result to design a comparison for my own workload, not import its fitted thresholds as operating rules.",
+      "text": "Kim and colleagues put this question into a controlled comparison: 180 configurations, four benchmarks, five architectures and three model families, with common tools and prompt structures, with matched reasoning-token budgets. Multi-agent arrangements helped the financial-analysis tasks much more than the sequential crafting tasks; every tested multi-agent variant lost ground on PlanCraft. This is stronger comparative evidence than our retrospective. It still belongs to those tasks and implementations. I would use its result to design a comparison for my own workload, not import its fitted thresholds as operating rules.",
       "sources": [
         "scaling"
       ]
     },
     {
       "type": "prose",
-      "text": "The comparisons point toward a practical distinction. Independent investigations can explore simultaneously and return findings for synthesis. Two workers editing a tightly coupled artifact may instead spend their time exchanging assumptions and repairing collisions. The latter can still justify separate permissions or independent review. Those are benefits to name and pay for; they should not be disguised as free acceleration."
+      "text": "The useful boundary can move as the project changes. Separate references or alternative treatments may be cheap to combine; after a treatment is chosen, a change to one body can alter another body’s contact, the camera and the timing. A fixed roster does not guarantee that yesterday’s independent assignments remain independent today."
     },
     {
       "type": "prose",
-      "text": "Even an apparently shorter day needs careful accounting. METR’s 2025 randomized study found sixteen experienced developers taking 19% longer across 246 tasks with the evaluated AI tools, despite expecting a speedup. Its February 2026 follow-up describes selection effects and concurrent-agent timing problems that prevent a clean updated estimate. The first result unsettles the builders’ intuition on that workload. The second leaves the later question open. Neither permits the comfortable shortcut of counting busy agents and calling the sum progress.",
+      "text": "An apparently shorter day still needs measurement. METR’s 2025 randomized study found sixteen experienced developers taking 19% longer across 246 tasks with the evaluated AI tools, despite expecting a speedup. Its February 2026 follow-up identifies selection effects and concurrent-agent timing problems that prevent a clean updated estimate. These are coding studies, not a verdict on creative teams. They warn against treating a builder’s impression of acceleration as the missing comparison.",
       "sources": [
         "metr",
         "metr-update"
@@ -151,7 +186,7 @@
     },
     {
       "type": "prose",
-      "text": "The earlier definition of an agent now becomes a staffing decision. Does this investigation need a separate context, permission boundary or independent judgment—or could the existing worker use another tool? A small matched trial can hold the required result steady while comparing those arrangements. Buying every layer at once makes it difficult to discover which one helped."
+      "text": "Does this investigation need a separate context, permission boundary or independent judgment—or could the existing worker use another tool?"
     },
     {
       "type": "visual",
@@ -182,7 +217,7 @@
     },
     {
       "type": "prose",
-      "text": "The failed Loopforge compiler handoff gives this boundary an unglamorous test. A prepared packet stopped before reaching the compiler. Improving the proposed build could not repair the path that carried it. The relevant trial was one valid packet through the parent, worker and execution boundary. The incident supports end-to-end handoff checks; it does not establish that a single-agent architecture would have succeeded.",
+      "text": "A prepared Loopforge packet stopped before reaching the compiler. Improving the proposed build could not repair the path that carried it. The incident makes coordination concrete: someone must test the return journey as well as write the assignment. It supports one complete parent–worker–execution trial, without proving that one agent would have succeeded.",
       "sources": [
         "engine-first",
         "first-assessment"
@@ -229,7 +264,9 @@
   "sourceIds": [
     "parnas",
     "first-reflection",
+    "agents-room",
     "multiagent",
+    "compiler",
     "fold",
     "scaling",
     "metr",

@@ -8,6 +8,8 @@ Use the reader’s editable commissioning sheet to name the actual job.
 
 Name the recipient, the useful difference and the present specimen. An output count is not a value measure unless it corresponds to the recipient’s use. Identify one visible action, business result or preserved obligation. Keep research questions separate from promises to implement a complete system.
 
+Separate the creative result from reusable production capacity. Name the next user and likely reuse of a new tool; its existence does not yet establish repayment.
+
 Record: source/build/input, starting failure or opportunity, intended difference, protected behavior.
 
 ## 2. Set the authority and resource boundary

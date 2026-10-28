@@ -1,12 +1,12 @@
 {
   "id": "generation",
-  "title": "Turn generation into search",
-  "standfirst": "An evaluator and a selection rule decide what more computation will buy.",
+  "title": "Search beyond the first idea",
+  "standfirst": "More proposals earn their cost when they create worthwhile alternatives and a usable way to choose.",
   "opening": "",
   "blocks": [
     {
       "type": "prose",
-      "text": "Generation becomes an optimization system when an attempt can change what happens next. A model proposes a candidate; an evaluator tests it; a selection rule decides what to retain; the retained material informs another proposal. The architecture can accumulate useful improvements. It can also become extraordinarily good at satisfying the part of the requirement we happened to measure."
+      "text": "A team can generate more candidates without giving its director more choice. Ten variations may preserve the same premise, the same missing consequence or the same awkward staging. A useful search changes what can be selected. Its architecture needs a generator, an evaluator, a selection rule and a way to retain consequential differences—not merely another worker to keep proposing."
     },
     {
       "type": "visual",
@@ -88,6 +88,28 @@
     },
     {
       "type": "heading",
+      "text": "Buy different possibilities"
+    },
+    {
+      "type": "prose",
+      "text": "Doshi and Hauser’s controlled short-story experiment found a useful tension: access to generated starting ideas improved judged creativity and enjoyment, especially for less creative writers, while the resulting stories became more similar to one another. This was human writing with AI ideas, not an autonomous team trial. It nevertheless separates two returns that a production dashboard can easily merge: a better individual candidate and a more varied field to choose from.",
+      "sources": [
+        "creative-diversity"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Wan and Kalman’s 2025 preprint tested a modified setup with plots generated through ten deliberately different personas. The authors report that the resulting human stories retained diversity comparable to the unaided condition. Persona-conditioned idea generation is not evidence of independent agent minds or a faster studio. It gives us a testable alternative to simply increasing the batch: vary the proposed treatment, then inspect whether the differences survive in the finished work.",
+      "sources": [
+        "persona-diversity"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "I would try three bounded commissions for a factory encounter: make authority legible through distance, through interrupted work, and through dialogue. Each contributor would receive the same cast, prior events, duration and audience question, then return one treatment with its new obligations marked. Separate workers could explore these directions at once. Whether that buys enough useful difference to repay three returns and a joint review is an experiment, not a result established by our studio. After selection, one owner would integrate the chosen treatment; continuing three parallel rewrites could undo the economy."
+    },
+    {
+      "type": "heading",
       "text": "Keep the experiment honest"
     },
     {
@@ -132,7 +154,7 @@
     },
     {
       "type": "prose",
-      "text": "Choosing an activity in the story workshop changes its history; changing the ending’s wording preserves the chosen history. A rehearsal, a quiet hour and another crate consume the period differently. This distinction matters in generated customer messages too: warmer phrasing must not quietly become a confirmed appointment or a promised refund."
+      "text": "Choosing an activity changes the history that later contributors inherit. Rewording its ending should preserve that choice: a prettier sentence cannot quietly spend the same hour twice."
     },
     {
       "type": "prose",
@@ -140,10 +162,6 @@
       "sources": [
         "storylets"
       ]
-    },
-    {
-      "type": "prose",
-      "text": "Our rehearsal requires an unspent period and an expressed wish to practise. Another writer or model can improve Kit’s line without gaining permission to restore the hour or invent a promise. A genuinely different consequence costs more: its prerequisites must be reachable, its effect must be stored, and later scenes must respect it. Fluency does not pay those obligations on our behalf."
     },
     {
       "type": "prose",
@@ -160,10 +178,6 @@
     },
     {
       "type": "prose",
-      "text": "The shortest cargo route failed because its evaluator omitted the rack. A warm ending can pass through an omission less easy to draw: tomorrow’s rehearsal may never have been booked, today’s enjoyment may never have been established, the promised resource may not exist. If the writer intends those claims, the design has work to do. If not, the sentence has enlarged the commission without asking. The scene record belongs beside the alternatives so that its beauty remains available for judgment without becoming authority over the world."
-    },
-    {
-      "type": "prose",
       "text": "At the sentence bench, I am tempted by the warm ending because it seems to complete the scene emotionally. Its booking is also unsupported. The first decision is to reject that commitment or commission the missing appointment. Only then can two feasible lines compete for tone. The most fluent candidate can make this order feel ungenerous, precisely when the system most needs it."
     },
     {
@@ -176,7 +190,7 @@
     },
     {
       "type": "prose",
-      "text": "That is the adoption cost of a richer candidate. Accepting its words can require interruption behavior, staging and later consequences. A smaller line may be the better production choice when it carries the intended feeling without opening obligations the rest of the system cannot fulfill."
+      "text": "A contribution therefore returns more than its best line. It returns the consequences another craft must implement. The receiving owner can accept that work, choose a smaller line that carries the feeling, or return the proposal. The generator cannot decide for everyone who inherits it."
     },
     {
       "type": "heading",
@@ -219,6 +233,8 @@
     "sutton",
     "funsearch",
     "alphaevolve",
+    "creative-diversity",
+    "persona-diversity",
     "autoresearch",
     "visual-second",
     "storylets",

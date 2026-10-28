@@ -1,7 +1,7 @@
 {
   "id": "confidence",
-  "title": "Evaluate the system that will run",
-  "standfirst": "A reassuring answer, a valid action and a useful outcome require different evidence.",
+  "title": "Test the work and the tests",
+  "standfirst": "Confidence must survive the assembled result, while the machinery that produces it must earn its own upkeep.",
   "opening": "",
   "blocks": [
     {
@@ -64,6 +64,28 @@
     },
     {
       "type": "heading",
+      "text": "The checks become part of the work"
+    },
+    {
+      "type": "prose",
+      "text": "The close-cycle audit inspected sixteen selected validation batches in the Max floor, Push and Forge correction families. Three ended in a scoped pass; thirteen ended failed or incomplete. Some deliberately measured a fault, and one did not launch its intended child operation. This is a trail of inquiry and repair, not a studio-wide failure rate.",
+      "sources": [
+        "close-cycle-audit"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The team developed checks against the actually loaded model, including source-to-world transforms and rig-specific contact. That gave a later contributor a way to inspect the body the scene would use, rather than trust a mathematical pose in isolation. Preserved regression evidence made the observation repeatable. The gain was real and bounded to particular rigs, clips and contracts; neither universal reuse nor time saved had been demonstrated.",
+      "sources": [
+        "close-cycle-audit"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "That capacity came with machinery to maintain and results to interpret. A successor needs stable inputs, a known failing case, a known accepted case and the claim each check can support. Counting every invocation as assurance would credit confidence the team was still trying to make possible. A test that only its author can explain can return its saved effort as another handoff."
+    },
+    {
+      "type": "heading",
       "text": "Coverage needs situations, not just destinations"
     },
     {
@@ -96,14 +118,11 @@
     },
     {
       "type": "prose",
-      "text": "An AI service has the same problem in a different costume. “Answered a support request” covers little if the important distinction is an interrupted refund, a changed account state or a repeated request after timeout. Select cases by the obligations they challenge. A directory of touched tools or a long list of completed tasks can conceal the missing situation just as a map can conceal an unfinished job."
+      "text": "Now consider a production team making a short film. This is a proposed test case, not a reconstructed studio incident. One agent renders the approved shot; another adjusts its camera after a title obscures the face. A reviewer’s earlier “pass” remains attached to the shot name. The packaging agent combines the new render with the old verdict, and every task card can say complete while the selected film has never been reviewed."
     },
     {
       "type": "prose",
-      "text": "The studio supplied a concrete counterexample. Engine reports that Bob stood at the Belt during paired work, while the display counted only its assigned worker, Jo. Level exposed the disagreement; the correction separated assignment from physical occupancy. “Visit the Belt” could miss it. “Another person is here while the assignment remains unchanged” names the condition worth buying a test for. The account records a correction, not how often players would encounter it.",
-      "sources": [
-        "engine-occupancy"
-      ]
+      "text": "Give that team a test in which the candidate changes after review. Bind the verdict to the render’s identity and viewing conditions, then require the receiver to reproduce them. The correct outcome is a held release and a new, scoped inspection—not a fresh approval of every unchanged asset. This tests the organization’s use of evidence as well as the film. It can justify automation that protects a reviewer’s attention without pretending to automate taste."
     },
     {
       "type": "prose",
@@ -180,10 +199,14 @@
     },
     {
       "type": "prose",
-      "text": "Mike Ambinder’s 2009 account of Valve’s playtesting begins with the intended experience. Observation needs a design question; think-aloud reports can explain behavior while also distracting the player; aggregates reveal patterns while losing context. For this factory, I would watch a new player attempt a delivery, especially after refusal, before explaining the reservation. Only afterward would I ask what they believed remained theirs. Teaching the answer first could buy a smoother session and conceal a weak design. No such player study has been conducted for this book.",
+      "text": "Mike Ambinder’s 2009 account of Valve’s playtesting begins with the intended experience. Observation needs a design question; think-aloud reports can explain behavior while also distracting the player; aggregates reveal patterns while losing context. For our proposed film, I would ask an unfamiliar viewer what caused the response before explaining the action. Then I would compare that reading with the agent judge’s reasons for approval. No such viewer study has been conducted here.",
       "sources": [
         "valve-playtesting"
       ]
+    },
+    {
+      "type": "prose",
+      "text": "That comparison separates two commissions. An identity check can establish which film was delivered. Calibrating a creative judge asks whether its preferences help produce the experience we intended. A reviewer that reliably reads a file name may still reward polished motion that tells the wrong story."
     },
     {
       "type": "prose",
@@ -207,9 +230,9 @@
     "dijkstra-structure",
     "quickcheck",
     "hamel-evals",
+    "close-cycle-audit",
     "walk-monster",
     "curiosity-coverage",
-    "engine-occupancy",
     "rl-production",
     "hamel-judge",
     "fly-fail-fix",

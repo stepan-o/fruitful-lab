@@ -1,64 +1,64 @@
 [
   {
     "id": "worth-shipping",
-    "title": "Define the useful result",
-    "concept": "An observable benefit for its recipient",
+    "title": "What does the team produce?",
+    "concept": "Finished creative work and reusable capacity",
     "number": 1,
     "part": 1
   },
   {
     "id": "small-world",
-    "title": "Give actions a dependable world",
-    "concept": "Proposal, authority and incomplete knowledge",
+    "title": "Share a dependable world",
+    "concept": "Shared commitments across separate contexts",
     "number": 2,
     "part": 2
   },
   {
     "id": "division-of-work",
-    "title": "Decide where agency belongs",
-    "concept": "Independence against coordination and recovery",
+    "title": "Earn the division of labor",
+    "concept": "Quality, independence and coordination overhead",
     "number": 3,
     "part": 3
   },
   {
     "id": "correction",
-    "title": "Make feedback usable",
-    "concept": "Evidence that can change the next decision",
+    "title": "Bring judgment closer",
+    "concept": "Latency of consequential feedback",
     "number": 4,
     "part": 4
   },
   {
     "id": "readable-detail",
-    "title": "Make the result legible",
-    "concept": "Perceived meaning in the assembled result",
+    "title": "Protect the intended experience",
+    "concept": "Joint creative judgment at integration",
     "number": 5,
     "part": 5
   },
   {
     "id": "generation",
-    "title": "Turn generation into search",
-    "concept": "Feasibility, preference and adaptive search",
+    "title": "Search beyond the first idea",
+    "concept": "Useful diversity and selective search",
     "number": 6,
     "part": 6
   },
   {
     "id": "confidence",
-    "title": "Evaluate the system that will run",
-    "concept": "Evidence about the complete operating system",
+    "title": "Test the work and the tests",
+    "concept": "Confidence and the cost of its machinery",
     "number": 7,
     "part": 7
   },
   {
     "id": "responsive",
-    "title": "Keep the system responsive",
-    "concept": "End-to-end waits and bounded work",
+    "title": "Shorten the consequential wait",
+    "concept": "Delivery lead time and runtime obligations",
     "number": 8,
     "part": 8
   },
   {
     "id": "handoff",
-    "title": "Leave a system someone can own",
-    "concept": "Change, recovery and continuing ownership",
+    "title": "Decide when to stop",
+    "concept": "Marginal value, stopping and ownership",
     "number": 9,
     "part": 9
   }

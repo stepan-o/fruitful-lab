@@ -11,7 +11,7 @@ export default function BodyStudy(){
  const compact=useCompactPlate();const [pose,setPose]=useState(0);const [index,setIndex]=useState(0);const p=points[index];
  return <div>
  <div className={s.compactOnly}><div className={s.poseTabs} role="group" aria-label="Choose a pose to examine"><button type="button" aria-pressed={pose===0} onClick={()=>setPose(0)}>Rejected lunge</button><button type="button" aria-pressed={pose===1} onClick={()=>setPose(1)}>Selected correction</button></div></div>
- <svg viewBox={compact?(pose===0?"0 80 500 300":"510 80 490 300"):"0 0 1000 440"} role="img" aria-label={"A schematic comparison of a forward lunge and a supported reach, emphasizing "+p.name.toLowerCase()}>
+ <svg viewBox={compact?(pose===0?"0 80 500 325":"510 80 490 325"):"0 0 1000 440"} role="img" aria-label={"A schematic comparison of a forward lunge and a supported reach, emphasizing "+p.name.toLowerCase()}>
  <rect width="1000" height="440" fill="#10232d"/>
  {[0,510].map((x,i)=><g key={x} transform={`translate(${x} 0)`}>
   <path d="M25 42H478V374H25Z" fill="#1b3540" stroke="#58776f"/><path d="M26 298H477V373H26Z" fill="#324b4c"/>{[77,157,237,317,397].map(xx=><path key={xx} d={`M${xx} 298l-36 75`} stroke="#59746a" opacity=".6"/>)}<path d="M26 330H477M26 355H477" stroke="#58776e" opacity=".4"/>

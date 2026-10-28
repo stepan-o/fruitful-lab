@@ -14,7 +14,7 @@ export default function WorldBoard({state,selected,close=false}:{state:MiniWorld
  <path d="M-17-58L-25-35M17-58l9 23" stroke={actor==="bob"?"#8dacb1":"#bca47d"} strokeWidth="7" strokeLinecap="round"/>
  {s1.card===actor&&<g><path d="M21-36l15-5 4 18-15 5Z" fill="#e8c47d" stroke="#f2dc9b"/><path d="M27-30l6-2" stroke="#8d8657" strokeWidth="2"/></g>}
  </g>;};
- return <svg viewBox={close?"258 102 255 230":"0 0 640 410"} role="img" aria-label={`Small factory. Card with ${s1.card}; press reserved by ${s1.reserved??"nobody"}. Bob has made ${s1.made.bob}, Ed ${s1.made.ed}. ${active?"Cycle in progress.":"Press idle."}`}>
+ return <svg viewBox={close?"258 102 305 230":"0 0 640 410"} role="img" aria-label={`Small factory. Card with ${s1.card}; press reserved by ${s1.reserved??"nobody"}. Bob has made ${s1.made.bob}, Ed ${s1.made.ed}. ${active?"Cycle in progress.":"Press idle."}`}>
  <defs><linearGradient id={close?"mini-floor-close":"mini-floor"} x2="0" y2="1"><stop stopColor="#74958a"/><stop offset="1" stopColor="#456f68"/></linearGradient></defs>
  <rect width="640" height="410" fill="#122b32"/><ellipse cx="310" cy="342" rx="276" ry="47" fill="#071e28" opacity=".75"/>
  <path d="M16 180L356 330L560 240V261L356 352L16 202Z" fill="#25474d" stroke="#79938a"/>

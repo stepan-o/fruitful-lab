@@ -1,12 +1,15 @@
 {
   "id": "correction",
-  "title": "Make feedback usable",
-  "standfirst": "The next decision depends on what the system can observe, retrieve and remember—not on how much history it stores.",
+  "title": "Bring judgment closer",
+  "standfirst": "The most expensive feedback can be the observation that arrives after other work has depended on its absence.",
   "opening": "",
   "blocks": [
     {
       "type": "prose",
-      "text": "A system that cannot see the consequence of its last action has little basis for choosing a better next one. It can produce another answer, or a more persuasive explanation of the same answer. Correction requires something less glamorous: an observation that could make the current account wrong, delivered while there is still time to act on it."
+      "text": "A team can be learning quickly about the wrong question. During the correction window, the studio improved floor clearance and repaired the loaded-model checks. Max still leaned into the press. The numerical result had become more trustworthy before the performance became acceptable. The missing feedback was not another description of the intended motion; it was the motion itself.",
+      "sources": [
+        "close-cycle-audit"
+      ]
     },
     {
       "type": "prose",
@@ -60,7 +63,36 @@
     },
     {
       "type": "prose",
-      "text": "Suppose a document-extraction agent can see only a parser’s successful JSON. It may keep repairing downstream labels while missing a clipped source page. Adding the original page and a link from each extracted field gives it a different problem to reason about. The extra evidence has a cost, so retrieve it where the uncertainty matters. Sending every page on every attempt can drown the observation we wanted the agent to notice."
+      "text": "For an animator, a successful export and a list of joint coordinates may be the equivalent of a parser’s valid JSON: necessary, yet unable to show the received experience. The small useful return is the exact candidate in its scene, with the command that reproduces it. Carry the detailed traces behind that return so a rejection can become a diagnosis instead of another descriptive handoff."
+    },
+    {
+      "type": "heading",
+      "text": "The delay before a useful objection"
+    },
+    {
+      "type": "prose",
+      "text": "Producer eventually operated and recorded the game from its own session. That repaired access before the later correction window; it did not establish that the right view would arrive early enough to redirect the work. The Push pass exposed that remaining gap.",
+      "sources": [
+        "root-account",
+        "second-assessment"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "feedback-delay",
+      "title": "Two verdicts, almost three hours apart",
+      "caption": "25 October 2026, recorded UTC times. The interval contains deployment, access waiting and other work; it is not a measurement of active waste. Later outcome evidence is dated separately."
+    },
+    {
+      "type": "prose",
+      "text": "During that interval the decisive creative question remained open. This does not make every intervening action useless. It means the team was spending effort without the observation most capable of redirecting the correction.",
+      "sources": [
+        "close-cycle-audit"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "A small ordinary-speed clip could have changed which problem we bought next: a timing discontinuity, a posture, a target, or the staging of the action. Numerical checks still belonged beside it. Their successful floor result was useful; it simply answered another question. Short feedback means bringing the right objection forward, not asking every reviewer to inspect everything more often."
     },
     {
       "type": "heading",
@@ -191,7 +223,10 @@
     },
     {
       "type": "prose",
-      "text": "The expense of a feedback loop includes access delays, irrelevant context, retrieval and the review needed to interpret what comes back. The next useful investment may be a better model. It may instead be one missing field, an original image or a correcting reply that already exists. I would inspect what the agent actually received before buying a larger memory for it."
+      "text": "Repeated calls in the later correction window carried substantial context: the three busiest roles each had median request inputs around 150,000–152,000 tokens. Most input was cached, and all three used Astra/xhigh in that interval. This describes exposure to recurring context, not its necessity or price. Before changing models, I would inspect the next brief: does it contain the current specimen and the objection that should change the decision?",
+      "sources": [
+        "close-cycle-audit"
+      ]
     },
     {
       "type": "build",
@@ -207,6 +242,7 @@
     }
   ],
   "sourceIds": [
+    "close-cycle-audit",
     "critic-second",
     "root-account",
     "swe",

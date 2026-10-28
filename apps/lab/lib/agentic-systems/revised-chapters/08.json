@@ -1,16 +1,16 @@
 {
   "id": "responsive",
-  "title": "Keep the system responsive",
-  "standfirst": "The slowest required step can determine what the whole system feels like.",
+  "title": "Shorten the consequential wait",
+  "standfirst": "Parallel effort, review delay and product responsiveness run on different clocks.",
   "opening": "",
   "blocks": [
     {
       "type": "prose",
-      "text": "A person experiences the whole wait. They do not divide it into the model call, the tool queue, a retry, synthesis and the time their device needs to present the result. An AI production system can make each component look respectable while the completed interaction becomes slow enough to interrupt the work it was meant to help."
+      "text": "A studio has two deadlines to meet. One belongs to the person waiting for the work; the other belongs to the person using it. Agents may finish a scene sooner and leave it slow to play. They may improve runtime performance while holding the release for another day. Efficient creative production has to name which wait it is reducing."
     },
     {
       "type": "prose",
-      "text": "There are different clocks to protect. Latency measures how long one result takes; throughput measures how many results can be completed over an interval. A batch process may accept a longer individual wait to do more work. An interactive product may need an early useful response. Neither requirement is captured by a model’s generation speed alone."
+      "text": "For the team, elapsed time to an accepted result differs from the sum of its workers’ effort. Independent branches can overlap; integration and judgment may remain serial. For the delivered product, latency and throughput describe another system. Keep those clocks separate so a better frame rate never becomes evidence that the studio worked faster."
     },
     {
       "type": "heading",
@@ -36,6 +36,21 @@
       "id": "parallel-wait",
       "title": "Five findings are ready. The brief is still waiting.",
       "caption": "An authored timing model: six read-only investigations, fixed durations and one second of synthesis. The clock illustrates a dependency, not measured model performance. Releasing a partial brief changes its promise; canceling work is a separate decision."
+    },
+    {
+      "type": "prose",
+      "text": "Wilson Lin’s January 2026 Cursor account describes a useful reversal. A shared locking scheme left many agents waiting; separate planning and worker roles enabled larger runs, while an added integrator role later became a bottleneck and was removed. The article reports substantial coding progress and an in-place migration still awaiting review. These are builder observations, not a controlled staffing experiment.",
+      "sources": [
+        "cursor-scaling"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The example challenges a convenient response to our own delays: appointing another coordinator. A new role earns its place if it removes a consequential wait or supplies judgment that was missing. Otherwise it can become another desk every correction must visit. The relevant trace follows one usable contribution through the team, including the time it waits to be received."
+    },
+    {
+      "type": "heading",
+      "text": "The delivered work has its own clock"
     },
     {
       "type": "visual",
@@ -67,7 +82,7 @@
     },
     {
       "type": "prose",
-      "text": "The earlier opening comparison gives us a more useful success. Its baseline already averaged 54.1 frames per second, but thirty-one long pauses failed the protocol. After a group of local repairs, the same scene and assets recorded four. The average moved only to 55.6. Looking solely at that average would make the work seem modest; it had changed the release verdict.",
+      "text": "The earlier opening comparison gives us a more useful success. Its baseline already averaged 54.1 frames per second, but thirty-one long pauses failed the protocol. After a group of local repairs, the same scene and assets recorded four. The average moved only to 55.6. Looking solely at that average would make the work seem modest; it had changed that opening test’s verdict.",
       "sources": [
         "opening-performance-record"
       ]
@@ -120,7 +135,7 @@
     },
     {
       "type": "prose",
-      "text": "There is a familiar way for one slow frame to create more work for the next. In Fix Your Timestep, Glenn Fiedler separates fixed simulation steps from rendering and lets the presentation interpolate between states. He also warns about the attempt to catch up: if simulating the missed time takes too long, the system falls farther behind. His numerical-simulation example gives headroom a purpose. It is part of keeping up, rather than unused capacity waiting to be spent.",
+      "text": "Fiedler’s Fix Your Timestep describes a runtime trap: a slow frame creates missed simulation work, and catching up can take so long that the system falls farther behind. Fixed steps, interpolation and headroom address that numerical problem. A studio’s review backlog has different mechanics, but deserves its own explicit capacity limit. The analogy is about protecting a queue; it does not make frame timings a measure of agent coordination.",
       "sources": [
         "timestep"
       ]
@@ -135,14 +150,7 @@
     },
     {
       "type": "prose",
-      "text": "At the consuming end, Paul Lewis’s rendering guide shows another opportunity to avoid repeated work: some visual changes can proceed through composition without repeating layout and paint. The principle is to change the work needed for an obligation while preserving the obligation itself. It does not diagnose the factory’s WebGL pauses.",
-      "sources": [
-        "lewis-rendering"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "A system earns its complexity when the intended user receives the extra value within an acceptable wait and resource budget. The performance work is part of delivery, not a cleanup after intelligence has done its job. The accepted configuration must travel with the result, because a new model, workload or device can change what the same design costs."
+      "text": "At release, both clocks remain visible. A team’s faster completion does not excuse a product that misses its performance obligation; a successful optimization does not explain every hour spent producing it. The chosen configuration and its failed limits must travel with the result, so the next owner knows which promise is still open."
     },
     {
       "type": "build",
@@ -159,12 +167,12 @@
   ],
   "sourceIds": [
     "tail-at-scale",
+    "cursor-scaling",
     "delivery",
     "opening-performance-record",
     "giesen-performance",
     "opening-r12-record",
     "graphics-comparison-record",
-    "timestep",
-    "lewis-rendering"
+    "timestep"
   ]
 }

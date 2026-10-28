@@ -1,173 +1,201 @@
 {
   "id": "handoff",
-  "title": "Leave a system someone can own",
-  "standfirst": "Delivery includes the evidence, decisions and recovery paths that survive the original builder.",
+  "title": "Decide when to stop",
+  "standfirst": "The team must be able to preserve useful work, name what remains missing and close the commission.",
   "opening": "",
   "blocks": [
     {
       "type": "prose",
-      "text": "A production system outlives the run that made it look successful. Sources change, models are replaced, users ask for adjacent things, and someone inherits an exception the original builder understood without writing down. The final architectural question is who can recognize that the system’s promise has changed—and what they are able to do about it."
-    },
-    {
-      "type": "prose",
-      "text": "Sculley and colleagues’ Hidden Technical Debt in Machine Learning Systems describes dependencies that escape the apparent model boundary: data changes, undeclared consumers and feedback loops can couple systems that look separate in code. An AI production pipeline inherits that problem whenever another process begins relying on its output. Shipping creates a relationship to maintain, even if the generating code remains untouched.",
+      "text": "By the close of the correction cycle, the studio could always name another true defect. That ability was useful until we treated it as authority to continue. Stepan’s instruction changed the task: “ship whatever they have and note whatever is missed.” The work now had to be selected, its limits made legible and its continuing activity brought to an end.",
       "sources": [
-        "debt"
+        "close-cycle-outcomes"
       ]
     },
     {
-      "type": "prose",
-      "text": "Return to our hypothetical weekly research brief after release. A sales team starts copying its “ready” findings into customer messages. Then a source changes its date field, and old material is presented as new. The brief still arrives on time. Its consumer has acquired a dependence the original evaluation did not cover. The problem now belongs to the production system, even if the model’s prose remains excellent."
-    },
-    {
       "type": "heading",
-      "text": "Release a selection, not the newest directory"
+      "text": "Separate the returns before counting the expense"
     },
     {
       "type": "visual",
       "id": "release-manifest",
       "title": "What went into the box",
-      "caption": "These are recorded selection boundaries, not three grades averaged into one. Keeping a failed result with the release lets the next owner choose a different commission without rewriting this one."
+      "caption": "Recorded selection boundaries. The accepted Forge correction, preserved rescue inquiry and failed performance result are not grades to average into one verdict."
     },
     {
       "type": "prose",
-      "text": "Loopforge’s delivery is useful here as a selection problem. An accepted control correction shipped; a newer rescue solver did not. The experiment remained available to inspect, while the playable package retained its existing behavior. The failed device result remained a failure beside the release. These distinctions let a recipient know what was chosen, what was attempted and what had not been established.",
+      "text": "An accepted Forge control correction reached the game. A newer rescue solver did not; the delivered package retained its existing motion. Corrected assets, actual-model validation and preserved failure cases also existed. Some of that machinery could help later work, but its demonstrated scope remained particular rigs, clips and contracts. General capability has to be earned by reuse, not inferred from the size of the folder.",
       "sources": [
         "combined-selection",
+        "close-cycle-audit",
         "delivery"
       ]
     },
     {
       "type": "prose",
-      "text": "There is real loss in that decision. The effort spent on the solver cannot be recovered by installing it, and preserving it does not make its contact failures disappear. But deleting the experiment would throw away something different: the next animator’s chance to inspect why it failed. A handoff can protect both the playable result and the unsuccessful inquiry, provided their status is impossible to confuse."
-    },
-    {
-      "type": "prose",
-      "text": "A production handoff needs the same distinctions for prompts, models, source data, tool contracts and evaluation rules. Identify the combination that was tested. Preserve a return path to a known usable version where one exists. If a later change improves one task but breaks another consumer, the operator needs more than the assurance that the latest candidate scored better."
-    },
-    {
-      "type": "prose",
-      "text": "A rollback also has a boundary. Reverting a prompt does not undo an email already sent or a record already changed. The release plan must say which effects are reversible, which need compensation and who owns the unresolved result. This is where the execution contracts from the beginning of the book become obligations to another person."
-    },
-    {
-      "type": "prose",
-      "text": "In that example, the operator pauses publication, identifies the affected source snapshot and extractor configuration, and restores a known interpretation or holds the next issue for review. Already-sent claims still need correction. The handoff must therefore name both a technical owner and someone responsible for the receiving team. Reverting code alone cannot recall a customer message."
-    },
-    {
-      "type": "heading",
-      "text": "Choose the next intervention"
-    },
-    {
-      "type": "prose",
-      "text": "Boris Tane describes a revealing plan annotation: an existing queue consumer already owns retries, so the proposed change should not add another retry layer. The written plan gives the owner a place to inject knowledge the agent’s local solution omitted. Here, planning is valuable because it prevents duplicated responsibility before more code depends on it.",
+      "text": "The frozen audit at 23:50 UTC on 25 October could not claim a matching corrected after-video. The next day supplied later Forge footage and sampled review. Both statements remain true at their dates. The same delivery also retained the failed device-performance result. Adding the later evidence repairs an incomplete account; it does not erase the earlier delay or turn the failed test green.",
       "sources": [
-        "tane"
-      ]
-    },
-    {
-      "type": "prose",
-      "text": "A movement problem may require the opposite timing. Peter Steinberger’s account allows the idea to change after a working version can be inspected. Loopforge’s rescue needed a visible interval as well as protected state obligations. I had helped create a process that could always find and assign another defect. Closing the package forced a different judgment: a true criticism could justify a future commission without automatically delaying this one.",
-      "sources": [
-        "steinberger",
+        "close-cycle-audit",
+        "motion-case",
         "delivery"
       ]
     },
     {
       "type": "prose",
-      "text": "Hashimoto’s adoption account offers a third use of effort: repeating work with an agent to discover where the surrounding tools and instructions fail, then choosing bounded unattended work that can leave a useful next-day starting point. The investment is in a better future process. Its output is not automatically a shipped result. That distinction keeps a successful experiment from becoming an unearned delivery claim.",
-      "sources": [
-        "hashimoto"
-      ]
+      "text": "These are different returns: creative work selected for use, production capability retained for another commission, and unsuccessful inquiry that may spare a successor the same mistake. They do not justify equal credit. A validator with no likely next use can be an expensive by-product; a rejected experiment can still contain the cheapest explanation of a bad path."
     },
     {
       "type": "heading",
-      "text": "Measure the work the recipient inherits"
+      "text": "Open the later account"
     },
     {
       "type": "visual",
       "id": "resource-ledger",
-      "title": "The account with a missing edge",
-      "caption": "The largest field is cache reuse. Its size gives us a question about recurring context; it cannot tell us which repeated input was necessary, or what the finished day was worth."
+      "title": "The later correction account",
+      "caption": "The default view covers the later correction window. The enclosing Toronto day contains it; the older retrospective uses a separate method and period. Switch accounts without adding their totals."
     },
     {
       "type": "prose",
-      "text": "The studio’s resource ledger is striking and incomplete. Its reported interval contains extensive cached input alongside other model activity; it excludes parts of coordination and supplies no complete billed-dollar total. Dividing it by the game’s fictional output count would create a ratio without a useful unit. The ledger can describe observed use, but it cannot establish the economic value of the delivered software.",
+      "text": "The earlier retrospective ledger ended at 02:15 UTC on 25 October. It missed the later work that prompted the audit. The separately frozen 16:00–23:50 window records 217,434,674 native-studio tokens: 211,424,128 cached input, 4,874,045 uncached input and 1,136,501 output. Cache reads are already part of input; reasoning is already part of output. These are neither generated-content volume nor a dollar bill.",
       "sources": [
-        "resource-record"
+        "resource-record",
+        "close-cycle-audit"
       ]
     },
     {
       "type": "prose",
-      "text": "Forsgren describes reports that counted executed tests and closed bugs while overlooking work that helped systems ship and remain online. Her account of SPACE asks for several dimensions of developer productivity. The mismatch is present in our ledger without any elaborate calculation. We can identify observed machine activity much more precisely than we can say what the selected correction was worth.",
+      "text": "Engine, Producer and Animator account for 98.66% of that window. Producer alone records 74.25 million tokens. Coordination was therefore materially present in the measured activity, including checks that caught real defects. The records cannot allocate each token to useful integration, avoidable handoffs or waste.",
+      "sources": [
+        "close-cycle-audit"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The enclosing Toronto-day count, 342,861,755, includes those hours. It is not another charge to add. Later work, Root, the independent reviewer and the owner’s attention remain outside these native-studio totals; money and unreported tails are unknown. Even exact arithmetic cannot make an incomplete boundary into a complete final-cycle cost.",
+      "sources": [
+        "close-cycle-audit"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Forsgren’s account of SPACE challenges reports that count activity while missing the work that helps systems ship and remain usable. Our case has that mismatch in plain sight. Token processing, tests and closed tasks are easier to count than the value of an intelligible performance or a useful tool. Efficiency needs the result, the total relevant effort and a credible alternative; our retrospective supplies observations, not the missing experiment.",
       "sources": [
         "space"
       ]
     },
     {
-      "type": "prose",
-      "text": "For the brief’s date error, the immediate choice is to correct this issue by hand or build a source-contract check that can guard future issues. Keep the acceptance standard fixed. The reusable check needs implementation, review and maintenance; manual checking consumes attention every run. If the brief will serve many future issues with the same contract, that repeated saving may repay the setup. For a one-off report, or a source about to be replaced, the smaller manual repair may be the better purchase."
+      "type": "heading",
+      "text": "The next repair competes with a release"
     },
     {
       "type": "prose",
-      "text": "The comparison must also include what the check misses. A valid date field can still contain misleading material; keeping a human review at the consequential claim may remain worthwhile. Record one-time adoption separately from recurring model, tool, review and repair work over a useful horizon. The ledger cannot make that decision for us. It helps only after the result and the alternatives have been defined."
+      "text": "The owner’s intervention did not make the remaining defects unimportant. It chose a boundary for this commission. Ordinary replay on the preserved predecessor reached the controls and outputs; the final selected build completed two performance cycles per variant but failed their limits. Exact rescue contact remained unaccepted. The release could carry those facts without issuing another automatic correction request. That was a decision about scope and time, not a newly discovered passing test.",
+      "sources": [
+        "delivery",
+        "close-cycle-outcomes"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "My own coordination needed the same scrutiny. An app-routed acknowledgment of closure arrived while the original native turn continued old correction activity. I had treated the acknowledgment as adoption. Closure was established later by the native closeout, released reservations and completed task records. A message about stopping and an actual stop were different events—the same distinction we gave the shared world near the beginning of the book.",
+      "sources": [
+        "close-cycle-outcomes"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "I also had to narrow a preservation claim. I checked the tracked diff before interrupting the worker. Shared diagnostic analysis and scripts were retained; the host subsequently removed its temporary private worktree. Later unrelayed private work was unknown. “Everything is preserved” would have made the handoff sound more complete than the evidence allowed. Those mistakes and the earlier browser-access bottleneck belong to my part of the system; excluding my tokens does not exclude my responsibility.",
+      "sources": [
+        "close-cycle-outcomes",
+        "root-account"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The phrase “endless build” names a risk worth testing: a process that can always produce a next task but cannot decide whether it deserves the next hour. It does not prove that every repeated action was waste. The floor repair, the corrected Forge action and the actual-model checks are reasons to resist that easy verdict. The late visual objection and the owner-forced stop are reasons to resist the opposite one."
     },
     {
       "type": "heading",
-      "text": "Leave a decision the successor can make"
+      "text": "Make reusable capability answer to a future use"
+    },
+    {
+      "type": "prose",
+      "text": "Hashimoto’s adoption account includes repeating work with an agent to expose weaknesses in its tools and instructions, then choosing bounded unattended tasks. That can be a rational investment in future production. It deserves a different promise from today’s delivery: what recurring work should become cheaper, who will use the improvement, and what would show that the investment failed?",
+      "sources": [
+        "hashimoto"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "For Loopforge, a loaded-model check has a plausible next user fitting another action on the same rig. A character-specific correction full of duplicated transform assumptions has a narrower future. Before extending either, let a successor run one known failing and one accepted specimen. The first useful reuse is stronger evidence than another claim that the pipeline is now general."
+    },
+    {
+      "type": "prose",
+      "text": "Sculley and colleagues describe technical debt created by data dependencies, undeclared consumers and feedback loops. A shared production tool acquires similar obligations when another craft begins relying on it. Record one-time development separately from recurring model, review, repair and maintenance effort over an explicit horizon. A tool intended for one remaining scene has a different prospect of repayment from one that repeatedly protects a continuing asset pipeline.",
+      "sources": [
+        "debt"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Leave a decision, not an unfinished command"
     },
     {
       "type": "visual",
       "id": "commission-desk",
-      "title": "A brief that can come back with a decision",
-      "caption": "Choose a bounded investigation or the continuing research-brief service. The eight editable sections include ownership, change triggers and recovery. A completed sheet is a proposed agreement, not permission to act."
+      "title": "A commission with a stopping line",
+      "caption": "The editable brief separates a bounded creative correction, an investigation and a continuing service. Its owner, evidence, return and stopping conditions travel together."
     },
     {
       "type": "prose",
-      "text": "The editable sheet includes a continuing-service example for the research brief. It names the source contract, the publication hold, the owner of affected communications and the evidence needed to resume. The factory examples remain useful for bounded investigations. Their different scopes prevent a one-time repair from silently becoming an open-ended operating responsibility."
+      "text": "Tane’s plan annotation stops an agent from adding retries already owned by an existing queue consumer. Steinberger allows a working version to change the idea after it can be inspected. These are different timings for judgment. Both are useful when the decision reaches the work before more effort depends on the wrong assumption. A ritual of planning or prototyping, detached from that decision, can grow without buying either benefit.",
+      "sources": [
+        "tane",
+        "steinberger"
+      ]
     },
     {
       "type": "prose",
-      "text": "The successor’s first hour is a useful measure of the package. There is a specimen to open, an observation to reproduce, obligations to preserve and a decision to bring back. A failed attempt belongs on that path if it changes what the successor should try. A long transcript may remain behind a source link when a short account of the failure does the immediate work. Preserving everything in the same foreground can make the useful beginning disappear."
-    },
-    {
-      "type": "prose",
-      "text": "The stopping line is where the sheet becomes difficult. “Improve until good” lets every discovery enlarge the assignment. “Return one measured repair, or the evidence that the proposed cause was wrong” permits a failed repair to finish a useful piece of work. The owner receives a new fact instead of another obligation disguised as progress. That is a smaller promise, and one whose fulfillment can finally be recognized."
-    },
-    {
-      "type": "prose",
-      "text": "The handoff is tested when a successor can reproduce that failure and make the next decision without the original builder interpreting every record. One source change is enough to rehearse the path: notice the broken promise, stop the affected publication, identify what escaped and return with evidence for resuming. A long archive is useful behind that path; it should not be the path."
+      "text": "The successor should receive a specimen to open, obligations to preserve, an observation to reproduce and authority to return a decision. A failed attempt belongs near the front if it changes what to try. The long archive can remain behind that path. Making the next builder reconstruct every exchange recreates the coordination cost the handoff was supposed to save."
     },
     {
       "type": "build",
-      "title": "Run one bounded commission",
-      "body": "Use the downloadable protocol with the editable sheet. It works for a generated asset, a data pipeline, a game action or a browser feature; the receiving evidence must change with the job.",
+      "title": "Commission the next useful difference",
+      "body": "Use the editable sheet and protocol to put one creative correction or reusable improvement under a bounded test.",
+      "steps": [
+        "Pin the selected specimen and distinguish the audience benefit from the reusable capability you intend to create.",
+        "Give one worker a complete small slice with access to the observation that can reject it. Delegate only across a reproducible receiving boundary.",
+        "Set a review point and remaining allowance. Decide whether new evidence calls for repair, acceptance, deferral or stop.",
+        "Return the exact usable result, preserved findings and unresolved obligations. Starting another cycle requires a new decision."
+      ],
+      "exercise": "If the next test fails, what would make you stop rather than assign another repair? If it passes, what evidence would still be needed before release?",
       "links": [
         {
           "label": "Operating protocol · Markdown",
           "href": "/agentic-systems/checkpoints/production-protocol.md"
         }
-      ],
-      "steps": [
-        "Choose one recipient and one useful difference. Pin the starting result and the obligations that must survive.",
-        "Give the implementer a complete small slice and access to the observation that can reject it. Separate work only where the receiving boundary is explicit.",
-        "Inspect the exact returned specimen. Record repair, acceptance, deferral or stop together with the reason and remaining resource allowance.",
-        "Hand over the runnable result, evidence and unresolved findings. A successor gets a new commission; a failed check does not silently restart the old one."
-      ],
-      "exercise": "Take one unfinished item from your own work. Write the smallest investigation that could make you decide against continuing it. If no possible result would change your decision, reconsider what the investigation is for."
+      ]
     },
     {
       "type": "prose",
-      "text": "The rescue experiment could remain available without remaining an instruction. That was the decision I had to learn to make: preserve the finding, select the usable work, and leave a successor the authority to choose a different next attempt. A production system deserves the same clarity after every release. Someone should be able to tell what it promises, what changed and where to intervene—without reconstructing the studio that built it."
+      "text": "The native cycle closed on 26 October 2026, before the owner merged PR 130 at 18:01 UTC. The chosen work remained playable, the failed measurements remained visible and the unused experiment ceased to be an instruction. I cannot claim that this was the most efficient team we could have built. I can identify a more disciplined question for the next one: what is the next collaboration expected to buy, and who can recognize when it has bought enough?",
+      "sources": [
+        "close-cycle-outcomes",
+        "delivery"
+      ]
     }
   ],
   "sourceIds": [
-    "debt",
+    "close-cycle-outcomes",
     "combined-selection",
+    "close-cycle-audit",
     "delivery",
-    "tane",
-    "steinberger",
-    "hashimoto",
+    "motion-case",
     "resource-record",
-    "space"
+    "space",
+    "root-account",
+    "hashimoto",
+    "debt",
+    "tane",
+    "steinberger"
   ]
 }

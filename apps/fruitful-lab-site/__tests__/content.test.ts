@@ -13,6 +13,7 @@ describe("Fruitful Lab customer site config", () => {
   it("defines stable public navigation paths for the marketing foundation", () => {
     expect(PRIMARY_NAV.map((item) => item.href)).toEqual([
       "/services",
+      "/how-we-work",
       "/resources",
       "/blog",
       "/about",
@@ -29,10 +30,10 @@ describe("Fruitful Lab customer site config", () => {
 
   it("starts with the agreed service and blog skeleton", () => {
     expect(SERVICE_PACKAGES.map((service) => service.title)).toEqual([
-      "Full-Funnel Growth Systems",
-      "Paid Media and Campaign Support",
-      "AI Workflow and Marketing Ops",
-      "Content and Email Engines",
+      "Fit Call",
+      "Growth Systems Diagnostic",
+      "Implementation Sprint",
+      "Scale Partnership",
     ]);
 
     expect(BLOG_POSTS.map((post) => `/blog/${post.slug}`)).toEqual([

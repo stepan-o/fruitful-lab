@@ -4,7 +4,7 @@ import { CANONICAL_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-const STATIC_ROUTES = ["", "/services", "/resources", "/blog", "/about", "/contact", "/privacy", "/terms"] as const;
+const STATIC_ROUTES = ["", "/services", "/how-we-work", "/resources", "/blog", "/about", "/contact", "/privacy", "/terms"] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

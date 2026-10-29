@@ -35,11 +35,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <article>
-      <section className="border-b border-[var(--border)] bg-[var(--background)]">
-        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-20">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--sage)]">{post.category}</p>
-          <h1 className="mt-4 text-4xl font-semibold leading-tight text-[var(--heading)] sm:text-5xl">{post.title}</h1>
-          <p className="mt-4 text-sm text-[var(--sage)]">{post.date}</p>
+      <section className="page-header">
+        <div className="relative z-10 mx-auto max-w-3xl px-5 py-16 sm:px-8 lg:py-20">
+          <p className="eyebrow">{post.category}</p>
+          <h1 className="mt-4 text-4xl font-extrabold leading-tight text-[var(--heading)] sm:text-5xl">{post.title}</h1>
+          <p className="mt-4 text-sm text-[var(--muted)]">{post.date}</p>
           <p className="mt-6 text-lg leading-8 text-[var(--muted)]">{post.excerpt}</p>
         </div>
       </section>
@@ -64,7 +64,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="mt-12 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
             <h2 className="text-xl font-semibold text-[var(--heading)]">Want to turn this into a working system?</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--muted)]">Book a conversation and we can look at the offer, funnel, content, and workflow pieces together.</p>
-            <Link className="mt-5 inline-flex min-h-11 items-center justify-center rounded-md bg-[var(--heading)] px-5 text-sm font-semibold text-white" href="/contact">
+            <Link className="btn btn-primary mt-5 min-h-11 px-5 py-2 text-sm" href="/contact">
               Book a call
             </Link>
           </div>

@@ -1,71 +1,29 @@
 # Getting to know the people in Back to the Dawn
 
-Illustrated case study · Revision 2 · 20 October 2026
+## Who gets to say what day it is?
 
-A prison gives a game a practical way to introduce a large cast: sooner or later, almost everyone has to be in the same place. During the morning count in *Back to the Dawn*, Bruce stands in front of rows of inmates and addresses them as a group. The player gets a moment to look at the people with whom they will be spending much of the game. Before learning their histories, it is already possible to start picking them out.
+![Bruce faces ranks of prisoners. His speech panel hangs above the room while the player sees the inmates from behind.](/loopforge-design/reference/bttd-headcount.fa367be83cef.webp)
 
-That first recognition has somewhere to lead. The player is trying to escape, and fellow inmates have information, interests and relationships that can help or obstruct the attempt. The game's official description names 47 inmates and connects learning about them with the prospects of success. There are reasons to approach these people beyond completing a collection of biographies. [Steam description](https://store.steampowered.com/app/1735700/Back_to_the_Dawn/) · [Publisher overview](https://clearrivergames.com/games/back-to-the-dawn/)
+Figure 1. Bruce opens the morning count. Game © Metal Head Games / Spiral Up Games. Frame from Keith Ballard’s playthrough. [Count at 37:13](https://www.youtube.com/watch?v=SW3Qpd8F7v4&t=2233s)
 
-For Loopforge, this offers a way to think about the ten workers arriving at Security. The player needs them to make the factory run. Their lives will complicate that task, and the task will give the player occasions to discover their lives. The morning at LIMEN's door can establish both at once.
+Bruce starts by telling the prisoners that it’s the first of the month. His line has the rhythm of a routine announcement right through to the part where he calls the new arrivals “some more dipshits.” It costs him nothing to insult them. He can do it in the course of giving them the date. They have had to assemble to hear it. Look below the speech panel. We face Bruce along with the ranks, so we see the backs of the people he has just introduced. A giraffe’s head sticks up over the hazard stripe. A little orange fox stands several rows back. Bruce can lump them together in a sentence much faster than our eye can get through looking at them.
 
-## A crowd you can begin to recognize
+In the original Loopforge Security painting the workers have their papers up in front of their chests. LIMEN’s blade is down at his side. He can afford to wait like that. When STILETTO walks through without showing a card, bob looks at the hand that should have *asked* for one. “She didn’t show you a card,” in the studio dialogue, makes her the offender. “You didn’t ask for her ID” has him addressing the man with the blade about a choice that man just made. One pronoun turns an observation any of us could make from the back row into a remarkably indiscreet thing to say from the front. [The Security painting and approved exchange](/stepanoskin/loopforge/design#day-one-intro)
 
-![Bruce faces rows of inmates with different heights, head shapes, tails and body proportions, grouped by their prison uniforms.](/loopforge-design/reference/bttd-headcount.fa367be83cef.webp)
+## Four answers in the time it takes to hear one
 
-Figure 1. Bruce conducts morning count. Shared uniforms leave room for substantial differences in silhouette, including among inmates seen from behind. [Watch at 37:13](https://www.youtube.com/watch?v=SW3Qpd8F7v4&t=2233s). Game © Metal Head Games / Spiral Up Games; frame from Keith Ballard's playthrough.
+For the Loopforge count, keep the position the game gives us in Bruce’s room. Let the player look at a crowd while a supervisor speaks over it. The further decision in our performance brief is audible. Start four replies on the same provocation and let the bubbles hang long enough to read. The count frame above establishes the sightlines. The specified overlap and these four replies belong to the Day 1 cut.
 
-The uniforms make the group immediately understandable as prisoners, while bodies prevent it from becoming a repeated unit. Some inmates stand well above their neighbors. Heads, ears, shoulders and tails keep distinguishing them even when their faces are turned away. The camera can stay wide enough to show an institution at work without making all its inhabitants interchangeable.
+Try playing the replies in order. After lou says “noone...” the next speaker can sound like a man contradicting him. After max says “you, sir!” gus can sound like a man trying to top a joke. Those are two little arguments the scene never needed. Start them together and lou has chosen ben as his audience before he knows anybody else will speak. max flatters LIMEN by taking the question literally. gus quite possibly means it. ed asks which page to use. By the time LIMEN turns the register round, ed has his pen out. Four workers can occupy the same few seconds and still have considerable privacy from one another.
 
-Bruce's position is just as useful. He faces the rows from the front; other guards occupy the edges. The arrangement tells us who may address the room and who is expected to listen. His dialogue panel sits over that arrangement, so an individual line need not take us away from the gathering. We can keep looking at the people being spoken to.
+The discarded “I carry pretty well” gave gus time to audition. “I DO!” gives LIMEN time to *hear* a man who can call the queue. When the next sound out of gus is “NEXT!”, that casting decision has taken place in front of us. At rehearsal put lou close enough to ben to mutter. Keep gus loud enough to be picked out from the desk. Then listen from both places. Someone standing where LIMEN stands ought to have excellent grounds for hiring gus and quite poor grounds for reporting what lou said.
 
-Loopforge's workers will also share a visual family. Their blue enamel should make them recognizable as workers, with differences large enough to survive a view from the back of the queue. gus's broad body and recessed head, ed's narrow upright figure and kit's larger head are proposed ways to achieve that. LIMEN's size, pale armor and cyan blade set him apart before he speaks. The purpose of the differences becomes clearer when the crowd moves: gus makes room with a whole-body step; ed tries to put somebody else in the right place.
+## Somebody remembers your show
 
-The shot needs time for those small acts to register. If we cut to a new angle with each speech bubble, the player must keep finding the people again. Holding the room lets a change become noticeable: a worker who was reaching for an ID now keeps both hands still, or a colleague leaves a gap where the queue would otherwise close. The dialogue can draw our attention while the rest of the group continues to exist.
+![In Cell A103, Sam sits facing Thomas. A clock, headcount reminder and relationship indicator remain visible.](/loopforge-design/reference/bttd-sam.728f650af505.webp)
 
-## A few words can make one of them familiar
+Figure 2. Sam and Thomas before headcount. Game © Metal Head Games / Spiral Up Games. Frame from Keith Ballard’s playthrough. [Cell A103 at 28:45](https://www.youtube.com/watch?v=SW3Qpd8F7v4&t=1725s)
 
-![Sam and Thomas converse in Cell A103, with a short dialogue panel, the speaker's name, a relationship display and the approaching headcount time visible.](/loopforge-design/reference/bttd-sam.728f650af505.webp)
+At 07:02 the game is already telling Thomas when to prepare for headcount. His cellmate is trying to place his face. Sam thinks he might have seen Thomas’s show. Look at that *might*. It gives Thomas the small, pleasant distinction of recognition and leaves room for the possibility that Sam barely remembers him. In a corner of the same frame the relationship display still reads zero. Sam’s hesitation tells us more about what it would be like to share a cell with him than any value that meter could display.
 
-Figure 2. Sam and Thomas in Cell A103. The exchange fits into the morning routine; the clock and approaching headcount remain visible. [Watch at 28:45](https://www.youtube.com/watch?v=SW3Qpd8F7v4&t=1725s). Game © Metal Head Games / Spiral Up Games; frame from Keith Ballard's playthrough.
-
-The cell conversation gives the player a much smaller unit of attention. Two people share a space; one speaks, and the interface makes clear who that person is. There is room to take in a remark before the next arrives. The prison day continues around the exchange, keeping the conversation connected to a place and a time.
-
-This is a useful scale for getting to know Loopforge's workers. sam can offer an arm and bob can refuse it in a few words. The refusal may tell us more than a paragraph describing bob as proud or afraid of being useless. sam's next movement adds another detail: do they reach again, withdraw impatiently, or stay close without insisting? A later exchange can take up what remains unsettled.
-
-The player's wider task gives such encounters practical weight. Someone who knows the work, trusts a colleague or remembers an earlier mistake may be able to help with a problem. But usefulness cannot be the only reason to keep talking. An amusing exchange or a small unsolicited kindness can make a person worth returning to before the player needs anything from them. If every conversation ends by dispensing a task or a resource, the workers will begin to feel like another set of machines to operate.
-
-## A protagonist keeps the discovery oriented
-
-The cell exchange has a clear center: Thomas is meeting someone whose life shares the space of his own. The wider escape purpose lets the player decide which conversations to pursue without understanding the whole prison first. A crowd of distinctive faces becomes approachable because the audience has a continuing position from which to encounter them.
-
-Loopforge should preserve that orientation while separating the roles. bob is the protagonist whose working life we follow; the operator controls conditions around him. The player’s production goal supplies practical reasons to engage with the crew. bob’s promises and relationships supply personal reasons to return. Neither requires ten biographies at the entrance.
-
-This changes the opening draft. Before LIMEN stops the queue, bob and sam establish a small shared expectation: a task waiting for him on the Conveyor. After the injury, that task still matters, but getting to it has changed. The episode can close on his request for company rather than a summary of his new psychological state. Later attention can move toward ed at the desk or gus waiting for sam, without losing the life that brought us into the factory.
-
-The distinction also keeps us from treating workers as a collection to complete. Some conversations will be missed; some histories will never be fully known. What matters is that the people continue to act and that consequential changes can be encountered through the world.
-
-## Why the animals matter
-
-The animal cast makes bodily difference available everywhere. Ears and tails distinguish inmates in a queue; differences in size affect how the room reads around them. Within the recognizably human institution of a prison, those features also invite associations with strength, caution, sociability or predation. A character can fulfill an expectation or make us revise it once we know them better.
-
-Robots give Loopforge another supply of associations. gus can have a body well suited to carrying and still dislike being treated as permanently available for heavy work. mae can be proud of a finish that nobody else has time to inspect. sam can know how to repair a colleague without knowing when to leave them alone. In each case, the mechanical fact makes the human difficulty more particular.
-
-The metaphor works best when it has something to do. A worn joint affects the pace of a handoff. A clearance card determines who may cross a door. A spare part creates a reason to ask someone for a favor. These objects can carry questions of dependence, legitimacy and debt because they have uses inside the factory. Filling the dialogue with references to circuits and firmware would add very little by comparison.
-
-## What happens after the conversation
-
-Loopforge's intended agents can act on what they believe. That commitment gives us a way to continue the morning encounter while the player is busy elsewhere. bob may wait at the next station. ed may enforce the rule that earned him approval. sam may seek a chance to help without asking LIMEN first. The player can discover the change by watching work happen.
-
-This is an ambition for our own system; the reference footage tells us nothing about *Back to the Dawn*'s internal AI. What it does let us study is the connection between a visible person, a short exchange and a reason to remember the encounter. Loopforge then has to make a remembered encounter affect what that person does.
-
-That also requires care about who knows what. lou's view of the strike is blocked in our proposed opening. If they later give an account of it, some of that account must come from someone else. jo may have seen enough to disagree. The disagreement is an opportunity to learn about both workers, as long as the game remembers which parts each could actually know.
-
-The first episode can therefore end with an orderly queue and several unfinished relationships. The player has seen enough to recognize some of the workers tomorrow. The next scene earns its place by giving those recognitions a consequence.
-
-[Compare the narrative references](NARRATIVE_STUDIES.md) · [Meet the proposed cast](OPENING_CAST.md) · [Read the opening episode](OPENING_EPISODE.md) · [Character dramaturgy](CHARACTER_DRAMATURGY.md)
-
-## Sources and image credits
-
-The two frames are from Keith Ballard's [A Hardcore Prison RPG with Furries! — Let's Play Back to the Dawn, Part 1](https://www.youtube.com/watch?v=SW3Qpd8F7v4), at approximately 37:13 and 28:45. They were captured on 20 October 2026 and resized without changing the composition. They are used here to discuss the game's presentation; they are not assets for Loopforge or inputs for its character generation. [Image provenance and file record](reference/back-to-the-dawn-media.json)
-
-The [official Steam description](https://store.steampowered.com/app/1735700/Back_to_the_Dawn/) supplies the count of 47 inmates and the escape premise. The [publisher overview](https://clearrivergames.com/games/back-to-the-dawn/) connects discovering inmates' stories with the player's chances of success. The readings of composition and the proposed applications to Loopforge are our analysis.
+That’s a better model for writing bob and max than an exchange whose sole purpose is to establish that the workers are friends. bob has found something max can do that he’d like to learn. max wants to know which bit impressed him. We have found a reason for these two to seek one another out again before the factory has given them a single job to do together. [Approved script](/stepanoskin/loopforge/design#day-one-intro) · [Writing style](/stepanoskin/loopforge/design#writing-style) · [Frame credits and provenance](reference/back-to-the-dawn-media.json)

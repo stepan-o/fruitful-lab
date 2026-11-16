@@ -2,7 +2,7 @@
 
 Editorial brief · Revision 7 · 21 October 2026
 
-For the approved Day 1 cut, see [Writing style](/stepanoskin/loopforge/design#writing-style). It compares the studio dialogue, the first rewrite and the final script.
+Why does jo object to “pleasure” in max’s imitation? He has six years’ acquaintance with the man being flattered. The Day 1 [writing study](/stepanoskin/loopforge/design#writing-style) starts with his objection.
 
 After LIMEN strikes bob, the queue becomes easier to manage. Nobody moves without being told. bob gets up, tests the leg and goes back to waiting. A successful inspection can look like this.
 

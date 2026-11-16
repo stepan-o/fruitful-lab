@@ -132,7 +132,7 @@ Figure 2. Conveyor Intake. sam is the heavy tray-carrying worker at the center o
 
 *max stands between the rails, card raised. ed has the register open. gus holds the queue. STILETTO plants herself in the Conveyor doorway and points both blades at LIMEN.*
 
-**STILETTO** IF YOU DON'T GET ME THOSE WORKERS IN THE NEXT 20 MINUTES I'LL USE YOUR MANURE-FILLED BRAINS TOWARDS THE QUOTA
+**STILETTO** IF YOU DON'T GET ME THOSE WORKERS IN THE NEXT 20 MINUTES I'LL USE YOUR MANURE-FILLED ROBOT BRAINS TOWARDS THE QUOTA
 
 *max turns to look. LIMEN holds the photograph beside max’s face.*
 

@@ -1,0 +1,46 @@
+.day-one-script {
+  max-width: 48rem;
+}
+
+.day-one-script h3 {
+  margin: 2.5rem 0 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--serif);
+}
+
+.day-one-script figure {
+  margin: 0 0 1.5rem;
+}
+
+.day-one-script figure a {
+  display: block;
+  cursor: zoom-in;
+}
+
+.day-one-script img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.day-one-script figcaption {
+  margin-top: .5rem;
+  font-size: .875rem;
+  color: var(--muted);
+}
+
+.day-one-script p {
+  max-width: 68ch;
+  margin: .45rem 0;
+  line-height: 1.55;
+}
+
+.day-one-script p > strong:first-child {
+  color: var(--gold);
+}
+
+.day-one-script p:has(> em:only-child) {
+  margin: 1rem 0;
+  color: var(--muted);
+}

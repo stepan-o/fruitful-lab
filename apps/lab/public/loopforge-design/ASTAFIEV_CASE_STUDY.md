@@ -1,33 +1,17 @@
 # Astafiev and the felt world
 
-Editorial case study · 20 October 2026
+## When the recruits fall into step
 
-## Reading the opening
+A sound reaches a trainload of new recruits before they can see who is making it. In the first chapter of *Cursed and Killed*, Astafiev lets us mishear it with them. There might be a dying creature out there. What might be a creature gives way to what might be a forest making noises in the frost. The sentences keep offering the ear something to make of the sound. The fog stays put. Then a boy up on a luggage rack moves his cap off his ear. For the first time somebody can actually do something about our desire to hear better. [Book One, chapter one, Russian text](https://mybook.ru/author/viktor-astafev/proklyaty-i-ubity-4/read/)
 
-Viktor Astafiev’s *Cursed and Killed* (*Прокляты и убиты*), Book One, *Чертова яма*, opens with a stopping train. The Russian verbs “хрустнул, сжался, взвизгнул” give iron a strained, almost bodily movement. Accumulating clauses prolong its settling; the fog then deprives us of orientation. [Russian opening, Chapter One](https://mybook.ru/author/viktor-astafev/proklyaty-i-ubity-4/read/)
+The sound resolves into men singing. A lesser passage could stop there with the mystery solved. Astafiev carries it out of the wagon. The recruits can pick out songs they learned in school. One song drowns out the others. Men who had been straggling start marching in time before they notice they have done it. By the time Lyoshka is in the barracks the song is still going on in him. A boy has gone from trying to hear something to obeying it. We have felt some of its pull ourselves. That gives the narrator standing to speak of submission when the word finally comes.
 
-Cold becomes audible; wood becomes vulnerable. The narrator openly judges and imagines. This is much more than neutral observation.
+There are two ways to write the click behind max’s ear. If its job is to identify the mechanism, give the reader a clear shot of the joint. If its job is to introduce bob, let it catch *his* ear. He leans closer. The real LIMEN has time to speak and the kid is still looking at the imitation. The risk in staying with bob that long is precisely what makes his curiosity dear. We would quite like to know how max did it, too. The old studio opener made him ask directions. Everybody in the audience wanted that information. Here we get to want something because bob does. [Day 1 intro](/stepanoskin/loopforge/design#day-one-intro)
 
-Recognition takes time. A distant howl grows; recruits quiet down; Лешка moves his cap away from his ear. Human singing becomes identifiable only after we have experienced uncertainty. The named person enters through an act of attention.
+## A sergeant with nothing left to correct
 
-Further into the same chapter, food and heat draw strangers together around a stove. Need, teasing and practical help begin to distinguish individuals. Warmth and coarseness accompany dread.
+On his round of the barracks Yashkin hears someone praying and orders him to stop, *на всякий случай* — just in case. The little phrase comes from the narrator. Yashkin can go on giving the order in perfect earnest. A moment later the narration observes that everybody is doing nothing, so the sergeant soon runs out of corrections. Even a man this well suited to finding fault needs raw material. At the stove his back still shivers. One could laugh at his officiousness and quite sincerely wish someone would get him warm. Astafiev has spent enough time with the man to do both. [Yashkin’s round in chapter one](https://mybook.ru/author/viktor-astafev/proklyaty-i-ubity-4/read/)
 
-For Loopforge, adopt this attention to experience and range of feeling. Do not borrow the wartime setting or reproduce the imagery.
+Game writing has other means of putting that second voice beside the official one. During STILETTO’s threat, max turns his face towards the noise. LIMEN holds the photograph up beside the turned face. An earlier pass gave him “Eyes here, please.” That line straightens max up and makes the moment an ordinary reprimand. Keep the photograph there and the audience can see the lengths to which LIMEN will go to conduct a perfectly normal check. The man with the card need never suspect he’s funny.
 
-## Testing our own opening
-
-The earlier Loopforge overview began:
-
-“He arrives with his ID ready and a small job to look forward to. sam has left the first Conveyor guide for him. LIMEN interrupts that morning. By the time bob is cleared, the job is still waiting, but getting to it has become harder—and he has asked someone to wait for him.”
-
-This passage gives the reader conclusions in place of encounters. “A small job to look forward to” assigns a feeling without making its object imaginable. “The first Conveyor guide” relies on unexplained terminology to suggest a working life. We cannot picture the task or understand why bob wants it. The writer has provided a reason for the plot to begin, but little reason to be interested in the person it happens to.
-
-The final sentence compresses an injury, a delay and a request into an announcement that circumstances have changed. Its vagueness also changes the moral emphasis: “getting to it has become harder” conceals what LIMEN did. The prose asks for concern while omitting the actions through which concern could develop.
-
-A clearer account of the strike would repair the causal sequence. It would still leave the creative work of introducing bob: how he attends to the people around him, what he expects from them, and what he does with an instruction. Those particulars must be chosen and staged. An editorial rule cannot choose them for the writer.
-
-## The adopted standard
-
-The [editorial brief](EDITORIAL_VOICE.md) calls for an intimate, materially felt account of factory life, with room for anger, affection and comedy. The narrator can judge; the writing has to earn that judgment through its knowledge of the people and the place. Correctly listing the events does not meet this standard.
-
-For the game, the work continues in composition, sound, gesture and silence. Prose can establish the intended experience for the production team; the playable encounter has to deliver it through the world. Adding a speech bubble that explains the intended feeling does not finish that work. bob’s short portrait is now approved; the nine other worker portraits are drafts. The earlier episode still awaits revision. Its eventual performance must earn the familiarity on which later events depend.
+There’s also a limit to borrowing Astafiev’s luxuriance. An abandoned Wash pass let a bead of black swell in the seam of an apparently clean brain. It made us watch the seam, anticipate another discharge and expect the discovery to matter to bob. The work that actually comes back to trouble his body is the loader stroke. His knee gives and he finishes it sitting down. The direction worth lingering over is the one that changes how this particular worker can get the job done. [The Conveyor cut and the storyboard](/stepanoskin/loopforge/design#day-one-intro) · [Writing style](/stepanoskin/loopforge/design#writing-style)

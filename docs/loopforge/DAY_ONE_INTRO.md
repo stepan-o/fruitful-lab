@@ -2,9 +2,9 @@
 
 ### At the gate
 
-![LIMEN holds his cyan blade beside the workers waiting at Security.](/media/files/42d2f07b9d72f8ce0bc776641a06047304a1eab567f5ca9c3efd3dd31619560a.webp)
+![LIMEN holds his cyan blade while ed and the other workers wait at Security.](/media/files/42d2f07b9d72f8ce0bc776641a06047304a1eab567f5ca9c3efd3dd31619560a.webp)
 
-Figure 1. LIMEN at Security. Original Loopforge concept art.
+Figure 1. LIMEN and ed at Security. Original Loopforge concept art.
 
 *Ten workers shuffle toward Security. max has drawn his long jaw back into his collar. He lets the queue bunch up behind him before he speaks.*
 
@@ -40,11 +40,9 @@ Figure 1. LIMEN at Security. Original Loopforge concept art.
 
 *LIMEN holds it. STILETTO goes straight through to Conveyor. bob gets his weight back on both feet.*
 
-**bob** You didn’t ask for hers.
+**bob** You didn’t ask for her ID.
 
 **LIMEN** Would you like me to call her back?
-
-**bob** No, sir.
 
 *LIMEN lets bob through. At Intake, a brain sits crooked in its cradle.*
 

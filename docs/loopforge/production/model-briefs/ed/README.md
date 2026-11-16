@@ -10,7 +10,7 @@ Revised prose draft grounded in the owner-approved appearance.
 
 ## Visual reference
 
-The approved ensemble “badass” shot is the lead identity reference. See [The cast](/loopforge-design/narrative-cast.html#ed) and its individual concept. Prepare a single-body A-pose derived from that ensemble identity; use the individual sheet for mechanical detail. Never submit the entire group to Meshy. The comic graduation shot is an acting illustration.
+The approved ensemble “badass” shot is the lead identity reference. See [The cast](/stepanoskin/loopforge/design#cast-ed) and its individual concept. Prepare a single-body A-pose derived from that ensemble identity; use the individual sheet for mechanical detail. Never submit the entire group to Meshy. The comic graduation shot is an acting illustration.
 
 Tall angular dark-blue goon, swept-back skull, narrow eyes, open toothed jaw, pointed chin, large round ear receiver and layered shoulder plates. Long expressive pointing index. The original LIMEN Security far-right assistant remains the source; not a generic smiling worker.
 

@@ -10,7 +10,7 @@ Owner-approved paragraph, preserved verbatim.
 
 ## Visual reference
 
-The approved ensemble “badass” shot is the lead identity reference. See [The cast](/loopforge-design/narrative-cast.html#bob) and its individual concept. Prepare a single-body A-pose derived from that ensemble identity; use the individual sheet for mechanical detail. Never submit the entire group to Meshy. The comic graduation shot is an acting illustration.
+The approved ensemble “badass” shot is the lead identity reference. See [The cast](/stepanoskin/loopforge/design#cast-bob) and its individual concept. Prepare a single-body A-pose derived from that ensemble identity; use the individual sheet for mechanical detail. Never submit the entire group to Meshy. The comic graduation shot is an acting illustration.
 
 Small narrow blue frame; flat small head beneath two oversized convex cyan fly-eye lenses, above and wider than the head; moderately large articulated hands, cream chest stripe. Do not return to a round ordinary head or huge mitten hands.
 

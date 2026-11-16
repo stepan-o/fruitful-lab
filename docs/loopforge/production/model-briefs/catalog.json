@@ -13,7 +13,7 @@
       "provenance": "The new A-pose is generated from the Set 1 concept sheet and Security interaction art. Older body renders remain for comparison only; do not mix them with the new front as multi-view inputs. The existing motion bank is retained for retargeting and contact review.",
       "viewer": "/stepanoskin/loopforge/play/agent-test/limen",
       "viewerLabel": "Inspect body, emitter and energy",
-      "record": "/loopforge-design/narrative-cast.html#limen",
+      "record": "/stepanoskin/loopforge/design#cast-limen",
       "parts": [
         "Rebuilt body: 31,213 / 17,991 / 7,995 triangles; 24-joint rig",
         "20 retained motions shared by the scene and review player",
@@ -237,7 +237,7 @@
       "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker",
       "viewerLabel": "Compare corrected and original motions",
-      "record": "/loopforge-design/narrative-cast.html#worker",
+      "record": "/stepanoskin/loopforge/design#narrative-cast",
       "parts": [
         "25,893-triangle accepted body",
         "24-joint source / 34-joint corrected skin",
@@ -520,7 +520,7 @@
       "provenance": "Original body, blade, welder and motion briefs recovered. Rebuild notes preserve the later acting meanings and offline corrections; a fresh Meshy export does not include those corrections.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/stiletto",
       "viewerLabel": "Inspect blades, welders and visor",
-      "record": "/loopforge-design/narrative-cast.html#stiletto",
+      "record": "/stepanoskin/loopforge/design#cast-stiletto",
       "parts": [
         "41,124-triangle body / 24 skin joints",
         "Blade module: 4,117 triangles, reused on both arms",
@@ -854,7 +854,7 @@
       "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",
       "viewerLabel": "Compare Hot Walk, sway and mask fitting",
       "referenceViewer": "/stepanoskin/loopforge/play/asset-review/worker",
-      "record": "/loopforge-design/narrative-cast.html#cathexis",
+      "record": "/stepanoskin/loopforge/design#cast-cathexis",
       "parts": [
         "51,034-triangle accepted v2 body; original mechanical face retained",
         "51,031-triangle rigged delivery; Hot Walk / Happy Sway source and corrected candidates",
@@ -1407,7 +1407,7 @@
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=bob",
       "viewerLabel": "Inspect body and every motion",
-      "record": "/loopforge-design/narrative-cast.html#bob",
+      "record": "/stepanoskin/loopforge/design#cast-bob",
       "parts": [
         "Individual blue-family body",
         "Neutral rig and source motion bank",
@@ -1483,7 +1483,7 @@
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=sam",
       "viewerLabel": "Inspect body and every motion",
-      "record": "/loopforge-design/narrative-cast.html#sam",
+      "record": "/stepanoskin/loopforge/design#cast-sam",
       "parts": [
         "Individual blue-family body",
         "Neutral rig and source motion bank",
@@ -1559,7 +1559,7 @@
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=ed",
       "viewerLabel": "Inspect body and every motion",
-      "record": "/loopforge-design/narrative-cast.html#ed",
+      "record": "/stepanoskin/loopforge/design#cast-ed",
       "parts": [
         "Individual blue-family body",
         "Neutral rig and source motion bank",
@@ -1635,7 +1635,7 @@
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=jo",
       "viewerLabel": "Inspect body and every motion",
-      "record": "/loopforge-design/narrative-cast.html#jo",
+      "record": "/stepanoskin/loopforge/design#cast-jo",
       "parts": [
         "Individual blue-family body",
         "Neutral rig and source motion bank",
@@ -1711,7 +1711,7 @@
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=gus",
       "viewerLabel": "Inspect body and every motion",
-      "record": "/loopforge-design/narrative-cast.html#gus",
+      "record": "/stepanoskin/loopforge/design#cast-gus",
       "parts": [
         "Individual blue-family body",
         "Neutral rig and source motion bank",
@@ -1783,7 +1783,7 @@
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=max",
       "viewerLabel": "Inspect body and every motion",
-      "record": "/loopforge-design/narrative-cast.html#max",
+      "record": "/stepanoskin/loopforge/design#cast-max",
       "parts": [
         "Individual blue-family body",
         "Neutral rig and source motion bank",
@@ -1855,7 +1855,7 @@
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=mae",
       "viewerLabel": "Inspect body and every motion",
-      "record": "/loopforge-design/narrative-cast.html#mae",
+      "record": "/stepanoskin/loopforge/design#cast-mae",
       "parts": [
         "Individual blue-family body",
         "Neutral rig and source motion bank",
@@ -1927,7 +1927,7 @@
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=kit",
       "viewerLabel": "Inspect body and every motion",
-      "record": "/loopforge-design/narrative-cast.html#kit",
+      "record": "/stepanoskin/loopforge/design#cast-kit",
       "parts": [
         "Individual blue-family body",
         "Neutral rig and source motion bank",
@@ -1999,7 +1999,7 @@
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=lou",
       "viewerLabel": "Inspect body and every motion",
-      "record": "/loopforge-design/narrative-cast.html#lou",
+      "record": "/stepanoskin/loopforge/design#cast-lou",
       "parts": [
         "Individual blue-family body",
         "Neutral rig and source motion bank",
@@ -2071,7 +2071,7 @@
       "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
       "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=ben",
       "viewerLabel": "Inspect body and every motion",
-      "record": "/loopforge-design/narrative-cast.html#ben",
+      "record": "/stepanoskin/loopforge/design#cast-ben",
       "parts": [
         "Individual blue-family body",
         "Neutral rig and source motion bank",

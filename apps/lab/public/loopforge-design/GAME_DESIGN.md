@@ -4694,6 +4694,8 @@ Figure 2. Conveyor Intake. sam is the heavy tray-carrying worker at the center o
 
 *ed laughs first. Behind him, the factory lights go out.*
 
+[The cast — portraits and character briefs](/stepanoskin/loopforge/design#narrative-cast)
+
 
 # Focused console rebuild — retained interfaces and implementation baseline
 

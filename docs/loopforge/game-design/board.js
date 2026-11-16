@@ -88,7 +88,15 @@
     if(b.dataset.screen)renderScreen(b.dataset.screen);
     if(b.dataset.adviser)renderAdviser(b.dataset.adviser);
   });
-  window.addEventListener('hashchange',()=>openPanel(location.hash.slice(1),false));
+  function openFromHash() {
+    const target = document.getElementById(location.hash.slice(1) || 'player-desires');
+    const panel = target?.closest('.panel');
+    if (!panel) return;
+    const revealTarget = panel.hidden && target !== panel;
+    openPanel(panel.id, false);
+    if (revealTarget) target.scrollIntoView({block: 'start'});
+  }
+  window.addEventListener('hashchange',openFromHash);
   renderStage('line',false);renderRoute('order',false);renderPerson('limen',false);renderRumor('accident',false);renderBDI('blame',false);renderBeat('mandate',false);renderHorizon('minute',false);renderMechanic('flow',false);renderScreen('factory',false);renderAdviser('limen',false);
-  openPanel(location.hash.slice(1)||'player-desires',false);
+  openFromHash();
 })();

@@ -10,7 +10,7 @@ Revised prose draft grounded in the owner-approved appearance.
 
 ## Visual reference
 
-The approved ensemble “badass” shot is the lead identity reference. See [The cast](/loopforge-design/narrative-cast.html#sam) and its individual concept. Prepare a single-body A-pose derived from that ensemble identity; use the individual sheet for mechanical detail. Never submit the entire group to Meshy. The comic graduation shot is an acting illustration.
+The approved ensemble “badass” shot is the lead identity reference. See [The cast](/stepanoskin/loopforge/design#cast-sam) and its individual concept. Prepare a single-body A-pose derived from that ensemble identity; use the individual sheet for mechanical detail. Never submit the entire group to Meshy. The comic graduation shot is an acting illustration.
 
 Great rounded humped shoulders with head carried low and forward, vertical mouth grille, squat sturdy legs, thick working arms. Blue worn enamel and dull brass. Preserve the industrial porter silhouette; do not straighten the hump into a generic humanoid.
 

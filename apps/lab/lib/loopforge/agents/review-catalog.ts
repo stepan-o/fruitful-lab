@@ -5,7 +5,7 @@ export const limenReviewAsset:ProductionReviewAsset={
 };
 export const workerReviewAsset:ProductionReviewAsset={
  id:'worker-01-motions',shortName:'Workers',navDetail:'10 characters · motion fitting',title:'The opening workers · bodies & motion',revision:'opening-cast / motion-transfer-v1',
- route:'/stepanoskin/loopforge/play/asset-review/worker',conceptRoute:'/loopforge-design/narrative-cast.html',
+ route:'/stepanoskin/loopforge/play/asset-review/worker',conceptRoute:'/stepanoskin/loopforge/design#narrative-cast',
  status:'Ten rigged candidates · contact fitting underway',
  description:'Inspect bob, sam, ed, jo, gus, max, mae, kit, lou and ben with 22 clips each and three body detail levels. The accepted Worker 01 bank remains available as a separate source reference.',
  checks:['Distinct silhouettes and body materials','All motion clips on each worker','Portrait, floor and console detail','Per-character contacts, transitions and device review']

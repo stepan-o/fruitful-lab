@@ -10,7 +10,7 @@ Revised prose draft grounded in the owner-approved appearance.
 
 ## Visual reference
 
-The approved ensemble “badass” shot is the lead identity reference. See [The cast](/loopforge-design/narrative-cast.html#ben) and its individual concept. Prepare a single-body A-pose derived from that ensemble identity; use the individual sheet for mechanical detail. Never submit the entire group to Meshy. The comic graduation shot is an acting illustration.
+The approved ensemble “badass” shot is the lead identity reference. See [The cast](/stepanoskin/loopforge/design#cast-ben) and its individual concept. Prepare a single-body A-pose derived from that ensemble identity; use the individual sheet for mechanical detail. Never submit the entire group to Meshy. The comic graduation shot is an acting illustration.
 
 Short squat rounded barrel body and back, low broad oval hood, tiny square cyan eyes, circular shoulder joints, long thin forearms and short legs. Keep ben low and round; unlike gus’s square mass or sam’s raised hump.
 

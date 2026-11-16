@@ -10,7 +10,7 @@ Revised prose draft grounded in the owner-approved appearance.
 
 ## Visual reference
 
-The approved ensemble “badass” shot is the lead identity reference. See [The cast](/loopforge-design/narrative-cast.html#mae) and its individual concept. Prepare a single-body A-pose derived from that ensemble identity; use the individual sheet for mechanical detail. Never submit the entire group to Meshy. The comic graduation shot is an acting illustration.
+The approved ensemble “badass” shot is the lead identity reference. See [The cast](/stepanoskin/loopforge/design#cast-mae) and its individual concept. Prepare a single-body A-pose derived from that ensemble identity; use the individual sheet for mechanical detail. Never submit the entire group to Meshy. The comic graduation shot is an acting illustration.
 
 Short compact square blue craftswoman, broad blunt bob-shaped angular head casing, narrow rectangular cyan eyes in dark slot, short neck, small precise hands and exposed separated legs. No hood, skirt or dress. No baby proportions. Different from RIVET WITCH.
 

@@ -4698,13 +4698,13 @@ Figure 2. Conveyor Intake. sam is the heavy tray-carrying worker at the center o
 
 ## Writing style
 
-A tray of brains is ordinary here. The awkward part is asking the man you just told off to take the other end. Write from the worker’s side of the load. Let him shift his grip before he admits it’s heavy.
+**Tone.** Loopforge is a workplace black comedy told from the floor. Treat the grotesque as daily work. Give the crew room for pride, boredom and spite. A supervisor can call an injury a delay. The stage direction says who hurt whom.
 
-Workmates skip what both men know and can argue for a minute over one word. Give each man a reason to care how it comes out. He can do a friend a good turn and still glance round to see who saw. In a crowd, let the loud answer carry over the one meant for a neighbor.
+**Dialogue.** Write for the person within earshot. Workmates have shorthand, old disagreements and jokes they can risk with only one other man. STILETTO speaks with shop-floor precision. LIMEN can make an order sound like a favor. Both can be funny while going about their business in earnest.
 
-STILETTO knows the work. Even furious, she can tell you exactly how long you’ve got. LIMEN can take all morning to extend a courtesy. Play them both in earnest. Give the workers the pleasure of doing the voices. A good imitation ought to send somebody in the next room back to work.
+**Timing.** Give an unfamiliar job one clear order and time to see it done. Pick up the pace once the player knows the work. Let a crowd answer at once. Cut the spoken reply when someone’s next move gives it.
 
-[Astafiev on bodily experience](/loopforge-design/narrative-astafiev.html) · [Tarantino on talk between workmates](/loopforge-design/narrative-dialogue.html) · [Dostoevsky on mixed motives](/loopforge-design/narrative-studies.html) · [Back to the Dawn on a crowd in earshot](/loopforge-design/narrative-reference.html)
+[Astafiev](/loopforge-design/narrative-astafiev.html) · [Tarantino](/loopforge-design/narrative-dialogue.html) · [Dostoevsky](/loopforge-design/narrative-studies.html) · [Back to the Dawn](/loopforge-design/narrative-reference.html)
 
 
 # Focused console rebuild — retained interfaces and implementation baseline

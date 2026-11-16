@@ -2,6 +2,8 @@
 
 Editorial brief · Revision 7 · 21 October 2026
 
+For the approved Day 1 cut, see [Writing style](/stepanoskin/loopforge/design#writing-style). It compares the studio dialogue, the first rewrite and the final script.
+
 After LIMEN strikes bob, the queue becomes easier to manage. Nobody moves without being told. bob gets up, tests the leg and goes back to waiting. A successful inspection can look like this.
 
 The writing should stay with bob long enough for us to feel the effort of that return. It should also notice the worker who makes room and the one who watches LIMEN instead. Their conduct gives the scene its life. Calling it a demonstration of authority tells us very little about being there.

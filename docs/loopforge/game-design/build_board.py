@@ -369,6 +369,10 @@ intro_css_hash = hashlib.sha256((ROOT/'day-one-intro.css').read_bytes()).hexdige
 intro_css = f'<link rel="stylesheet" href="day-one-intro.css?v={intro_css_hash}">'
 intro = (f'<header class="section-head"><span class="kicker">Approved script and storyboards</span>'
          f'<h2>{e(intro_title)}</h2></header><div class="day-one-script">{intro_body}</div>')
+writing_style_source = (ROOT.parent/'DAY_ONE_WRITING_STYLE.md').read_text()
+writing_style_title, writing_style_body, _ = render_narrative(writing_style_source, {})
+writing_style = (f'<header class="section-head"><h2>{e(writing_style_title)}</h2></header>'
+                 f'<div class="narrative-foundation">{writing_style_body}</div>')
 cast = render_cast(ROOT.parent, inline)
 shutil.copyfile(ROOT.parent/'OPENING_CAST.md', OUT/'OPENING_CAST.md')
 cast_css_hash = hashlib.sha256((ROOT/'cast.css').read_bytes()).hexdigest()[:12]
@@ -378,7 +382,7 @@ floor_scale_link='<button class="link-button" data-panel="floor-scale">Factory f
 conveyor+=floor_scale_link
 ui_html+=floor_scale_link
 engine+=floor_scale_link
-panels=[('player-desires','Player desires & scenarios',desires),('day-one-intro',intro_title,intro),('narrative-cast','The cast',cast),('dramaturgy','Character dramaturgy and narrative design',dramaturgy),('agents','Agents: character & motion',agent_direction),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('model-briefs','Model briefs',render_model_briefs()),('floor-scale','Factory floor: scale & feel',floor_scale),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
+panels=[('player-desires','Player desires & scenarios',desires),('day-one-intro',intro_title,intro),('narrative-cast','The cast',cast),('writing-style',writing_style_title,writing_style),('dramaturgy','Character dramaturgy and narrative design',dramaturgy),('agents','Agents: character & motion',agent_direction),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('model-briefs','Model briefs',render_model_briefs()),('floor-scale','Factory floor: scale & feel',floor_scale),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
 head='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101412"><meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow"><title>Loopforge — Game design</title><link rel="stylesheet" href="styles.css"></head><body>'
 head=head.replace('href="styles.css"','href="styles.css?v='+hashlib.sha256((ROOT/'styles.css').read_bytes()).hexdigest()[:12]+'"')
 head=head.replace('</head>','<link rel="stylesheet" href="model-briefs.css?v='+hashlib.sha256((ROOT/'model-briefs.css').read_bytes()).hexdigest()[:12]+'"></head>')
@@ -400,7 +404,7 @@ page=page.replace('</body>',sound_script+style_script+producer_script+study_scri
 
 # A complete, static copy has every path and character, including text that the board reveals on selection.
 full=head+'<main class="record"><a href="index.html">← Interactive design board</a><header class="hero" style="display:block"><span class="kicker">Author reference · contains story spoilers</span><h1>'+e(d['title'])+'</h1>'+p(d['version'])+p(d['purpose'])+p(d['statusNote'])+'</header>'
-full+='<section>'+desires+'</section><section id="day-one-intro">'+intro+'</section><section id="narrative-cast">'+cast+'</section><section id="dramaturgy">'+dramaturgy+'</section>'
+full+='<section>'+desires+'</section><section id="day-one-intro">'+intro+'</section><section id="narrative-cast">'+cast+'</section><section id="writing-style">'+writing_style+'</section><section id="dramaturgy">'+dramaturgy+'</section>'
 full+='<section>'+loop_study_full+'</section><section>'+conveyor_full+'</section><section>'+first_turn+'</section><section id="agents">'+agent_direction+'</section><section>'+floor_scale+'</section>'
 full+='<section><h2>World and story grounding</h2>'+world+'</section><section><h2>Act 1 progression</h2>'+early_rules+''.join(stage(s) for s in d['stages'])+act2+'</section>'
 full+='<section><h2>Proposed trajectories</h2>'+p('Illustrative paths through the shared progression, not locked classes or predetermined endings.')+early_combinations+''.join(trajectory(r) for r in d['trajectories'])+'</section>'
@@ -554,6 +558,7 @@ mh('Sound direction',3);fields(sound_data['direction']);mh('Remaining sounds',3)
 (OUT/'SOUND_LIBRARY.md').write_text('\n\n'.join(md[sound_start:])+'\n')
 md.append(intro_source.replace('# Day 1 intro', '## Day 1 intro', 1).strip())
 md.append('[The cast — portraits and character briefs](/stepanoskin/loopforge/design#narrative-cast)')
+md.append(writing_style_source.replace('# Writing style', '## Writing style', 1).strip())
 (OUT/'GAME_DESIGN.md').write_text('\n\n'.join(md)+'\n')
 
 

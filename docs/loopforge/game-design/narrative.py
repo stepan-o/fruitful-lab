@@ -78,7 +78,11 @@ def render(source, media):
             while i < len(lines) and not lines[i].strip(): i += 1
             caption = lines[i] if i < len(lines) and lines[i].startswith('Figure ') else ''
             if caption: i += 1
-            parts.append(f'<figure><a href="{E(src)}" aria-label="Open full reference image"><img src="{E(src)}" alt="{E(alt)}" width="{image["width"]}" height="{image["height"]}" loading="lazy" decoding="async"></a><figcaption>{inline(caption)}</figcaption></figure>')
+            responsive = ''
+            if image.get('previews'):
+                candidates = ', '.join(f'{E(v["src"])} {v["width"]}w' for v in image['previews'])
+                responsive = f' srcset="{candidates}" sizes="(max-width: 800px) 95vw, 768px"'
+            parts.append(f'<figure><a href="{E(src)}" aria-label="Open full reference image"><img src="{E(src)}"{responsive} alt="{E(alt)}" width="{image["width"]}" height="{image["height"]}" loading="lazy" decoding="async"></a><figcaption>{inline(caption)}</figcaption></figure>')
         elif line.startswith('|'):
             rows = []
             while i < len(lines) and lines[i].strip().startswith('|'):

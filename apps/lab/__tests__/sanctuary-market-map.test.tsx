@@ -82,6 +82,32 @@ test("free cloud entry and source records follow the chosen game",()=>{
  expect(screen.queryByRole("link",{name:/NVIDIA: Diablo/})).not.toBeInTheDocument();
 });
 
+test("RimWorld follows the seller of the PC copy and the publisher of the console edition", () => {
+ render(<MarketMap initialGameId="cyberpunk"/>);
+ game(/^RimWorld/);
+ const publisher = within(screen.getByRole("article", {name: "Bring it to market"}));
+ expect(access()).toHaveValue("steam");
+ expect(computing()).toHaveValue("pc");
+ expect(publisher.getByText("Ludeon Studios")).toBeVisible();
+ expect(screen.getByText("Game purchase · Valve")).toBeVisible();
+
+ fireEvent.click(screen.getByRole("button", {name: "Ludeon website with Your PC"}));
+ expect(screen.getByText("Game purchase · Ludeon Studios")).toBeVisible();
+ expect(screen.getByText(/Registering the same copy on Steam adds no second charge/)).toBeVisible();
+
+ fireEvent.click(screen.getByRole("button", {name: "Epic Games Store with NVIDIA GeForce NOW"}));
+ expect(screen.getByText("A separate NVIDIA service")).toBeVisible();
+ fireEvent.change(access(), {target: {value: "ps-store"}});
+ expect(computing()).toHaveValue("ps5");
+ expect(publisher.getByText("Double Eleven")).toBeVisible();
+ expect(within(screen.getByRole("article", {name: "Make the game"})).getByText("Ludeon Studios / Double Eleven")).toBeVisible();
+ fireEvent.change(access(), {target: {value: "xbox-store"}});
+ expect(computing()).toHaveValue("xbox");
+ expect(publisher.getByText("Double Eleven")).toBeVisible();
+ fireEvent.click(screen.getByText(/Sources & scope/));
+ expect(screen.getByRole("link", {name: /Xbox Store · RimWorld Console Edition/})).toBeVisible();
+});
+
 test("every offered connection is well formed and selection changes always produce an evidenced route",()=>{
  const known=new Set(computeOptions.map(item=>item.id));
  for(const item of marketGames){

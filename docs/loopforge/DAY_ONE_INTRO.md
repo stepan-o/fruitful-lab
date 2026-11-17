@@ -152,7 +152,9 @@ Figure 2. Conveyor Intake. sam is the heavy tray-carrying worker at the center o
 
 ### End of shift
 
-*The shift bell rings. mae cuts the feed. kit stops the drive. The others turn toward the door.*
+**BELL** RIIIIING!
+
+*mae cuts the feed. kit stops the drive. The others turn toward the door.*
 
 **STILETTO** WHO SAID YOU COULD GO?!
 

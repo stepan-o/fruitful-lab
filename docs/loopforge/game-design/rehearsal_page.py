@@ -17,6 +17,7 @@ def build_rehearsal(root, out, script):
         ('<!--FLOOR_PLATE-->', (root.parent/'maps/factory-floor-plan.svg').read_text()),
         ('REHEARSAL_DATA', data),
         ('/*REHEARSAL_SCORE*/', (root/'day-one-sequence.mjs').read_text()),
+        ('/*BUILD_MARKERS*/', (root/'day-one-build-markers.mjs').read_text()),
         ('/*REHEARSAL_PLAYER*/', (root/'day-one-player.mjs').read_text()),
     ]:
         page = page.replace(tag, source)

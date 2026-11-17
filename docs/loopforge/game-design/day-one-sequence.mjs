@@ -4,7 +4,7 @@ export function makeSequence(floor, script) {
   const cast = {
     bob: [126.2,121.5], sam: [125.1,121.1], ed: [124.2,121.9], max: [127.3,120.7],
     jo: [128.7,120.6], gus: [129.4,118.9], mae: [127.7,118.9], kit: [126.3,118.6],
-    lou: [124.7,117.5], ben: [126,117], LIMEN: [126.8,125.3], STILETTO: [132,118.3],
+    lou: [124.7,117.5], ben: [126,117], LIMEN: [125.32,125.13], STILETTO: [132,118.3],
   };
   const tracks = Object.fromEntries(Object.entries(cast).map(([id,p])=>[id, [{t:0,p}]]));
   // Explicit holds and path corners keep replay independent of frame rate.
@@ -33,7 +33,18 @@ export function makeSequence(floor, script) {
   walk('sam',26.6,1.25,[125.05,123.7]);
   walk('ed',26.9,1.20,[124.16,123.3]);
   walk('ed',31,1.1,[124.05,122.3]);
-  walk('STILETTO',29.3,1.85,[133.1,123.4],[133.2,126.7],[130.2,127.4],[130.1,129.6],[124.4,132.2],[120.8,132.25]);
+  // She approaches outside the queue and waits on the east side of the desk aisle.
+  // He leaves the checking position, works the west post, and only then releases her lane.
+  const gate = {hinge:[floor.doorway.x + .15, floor.doorway.y + .85], length:3.50};
+  walk('STILETTO',24.6,1.65,[131.25,121.9],[128.35,123.55]);
+  const atPost = walk('LIMEN',29.2,1.4,[125.75,127.05]);
+  const openAt = atPost + .75;
+  gate.openings = [[atPost,openAt,44,44.75],[77,77.6,84,84.6],[109.5,110.1,116,116.6],
+    [139,139.6,164,164.6],[181,181.6,Infinity,Infinity]];
+  const throughGate = walk('STILETTO',openAt,1.75,[128.15,125.1],[128.15,130.1]);
+  walk('STILETTO',throughGate,1.75,[124.4,132.2],[120.8,132.25]);
+  gate.hold = {start:atPost, end:throughGate+.6};
+  walk('LIMEN',gate.hold.end,1.4,[126.8,125.3]);
   walk('bob',37.8,1.15,[127.8,124.45],threshold,[127.1,130.2],[121.2,133],intake);
   walk('sam',39,1.1,[125.65,124.8]);
   walk('STILETTO',53,1.4,[120.7,133.45]);
@@ -112,7 +123,7 @@ export function makeSequence(floor, script) {
     return w;
   }
   const beats=[
-    [0,'At the gate','gate'],[25.4,'The fallen card','gate'],[40.5,'The first brain','line'],
+    [0,'At the gate','gate'],[25.4,'The fallen card','passage'],[40.5,'The first brain','line'],
     [77,'Two volunteers','gate'],[95.7,'The second brain','line'],[130,'The fourth check','door'],
     [143,'The crew fills in','wide'],[165.4,'Run it','follow'],[179.8,'End of shift','wide'],
     [cuts[0].at,'The register','gate'],[cuts[1].at,'Outside','yard'],
@@ -133,7 +144,7 @@ export function makeSequence(floor, script) {
     [0,3,'max','draws his jaw into his collar'],[13,16.6,'max','clicks his jaw'],[19.4,21.4,'bob','laughs'],
     [23.2,25.4,'bob','offers his card'],[26.35,27.35,'LIMEN','strikes bob’s leg'],
     [26.75,32,'sam','kneels beside bob'],[27.45,30.1,'ed','stops the card with his boot'],[30.1,31.5,'ed','pockets the card'],
-    [29.5,36,'LIMEN','holds the gate'],[32,35.1,'bob','gets his weight back'],
+    [gate.hold.start,gate.hold.end,'LIMEN','holds the gate'],[32,35.1,'bob','gets his weight back'],
     [40,77.8,'LIMEN','checks sam’s ID'],[51,53,'bob','pulls the loader'],[53,55.8,'bob','finishes the pull seated'],
     [54.7,56.9,'STILETTO','inspects the cradle'],[56.9,60,'bob','pulls himself up by the rail'],
     [61.7,64.9,'bob','rinses the grit away'],[68.6,70.8,'bob','clamps the cradle and starts the drive'],
@@ -160,7 +171,7 @@ export function makeSequence(floor, script) {
     product(2,[[101.5,0],[106,0],[114.9,1],[118,1],[121,2],[122.8,2],[126.1,3],[127.1,3],[128.1,4]],1),
     product(3,[[113.5,0],[168.8,0],[170.1,1],[171.8,1],[172.8,2],[174.3,2],[175.6,3],[176.4,3],[177.2,4]],2),
   ];
-  return {cast,tracks,beats,speech,cues,products,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
+  return {cast,tracks,beats,speech,cues,gate,products,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
 }
 
 export function samplePath(keys,t) {
@@ -170,4 +181,16 @@ export function samplePath(keys,t) {
   if(!b||b.t===a.t)return {p:a.p,moving:false,from:a.p,to:a.p};
   const f=Math.max(0,(t-a.t)/(b.t-a.t));
   return {p:[a.p[0]+(b.p[0]-a.p[0])*f,a.p[1]+(b.p[1]-a.p[1])*f],moving:a.p[0]!==b.p[0]||a.p[1]!==b.p[1],from:a.p,to:b.p};
+}
+
+// A boom lifts vertically at the west post. Its overhead projection shrinks as it rises.
+export function gateTipAt(gate, t) {
+  const opening = gate.openings.find(([start,,,closed]) => start <= t && t < closed);
+  let angle = 0;
+  if (opening) {
+    const [start, open, release, closed] = opening;
+    const fraction = t < open ? (t-start)/(open-start) : t <= release ? 1 : (closed-t)/(closed-release);
+    angle = fraction * Math.PI / 2;
+  }
+  return [gate.hinge[0] + gate.length*Math.cos(angle), gate.hinge[1]];
 }

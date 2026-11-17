@@ -25,7 +25,17 @@
 .studyHead {padding-bottom:1.1rem}
 .study h3,.wallet h3 {margin:.45rem 0 0}
 .tabs {display:flex;flex-wrap:wrap;padding:0 clamp(1rem,3vw,2rem) 1.35rem;gap:.4rem}
-.tabs button,.enlarge,.film button,.dialog button,.wallet select {
+.tabs button,.study .principle {margin:0 0 .65rem;color:var(--pink);font-size:.8rem;font-weight:600}
+.voices {padding:1.5rem clamp(1rem,3vw,2rem);border-top:1px solid var(--line);background:#1d1923}
+.voices h4 {margin:0 0 1.2rem;font:500 1.4rem/1.2 Georgia,serif}
+.voices figure {margin:0;min-width:0}
+.voices blockquote {margin:0;border-left:2px solid var(--pink);padding-left:1rem}
+.voices blockquote p {font:400 1.08rem/1.55 Georgia,serif}
+.voices .designerVoice blockquote p {font-size:clamp(1.4rem,3vw,2rem)}
+.voices figcaption {margin:.6rem 0 0 1rem;font:.75rem/1.5 system-ui,sans-serif;color:#dbcddd}
+.voices a {display:inline-flex;align-items:center;min-height:44px;color:inherit;text-decoration:underline;text-underline-offset:.2em}
+.playerVoices {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin-top:1.5rem}
+.enlarge,.film button,.dialog button,.wallet select {
   border:1px solid #8f8295;background:transparent;color:inherit;min-height:44px;padding:.55rem .85rem;
   font:600 .82rem/1.2 system-ui,sans-serif;cursor:pointer;
 }
@@ -39,7 +49,7 @@
 .film>div {flex:1 1 18rem}.film strong {margin:.25rem 0}
 .film iframe {width:100%;aspect-ratio:16/9;border:0}
 .filmLink {flex-basis:100%;font-size:.8rem}
-.dialog {border:1px solid #766b80;color:#f1e9ed;background:#151219;max-width:96vw;width:max-content;max-height:94vh;padding:0;overflow:auto}
+.study .dialog {border:1px solid #766b80;color:#f1e9ed;background:#151219;max-width:96vw;width:max-content;max-height:94vh;padding:0;overflow:auto}
 .dialog::backdrop {background:#0a090de8}
 .dialog>div {display:flex;position:sticky;top:0;left:0;justify-content:space-between;align-items:center;gap:1rem;background:#201c27;padding:.4rem 1rem;max-width:95vw}
 .dialog img {display:block;width:max(950px,92vw);height:auto}
@@ -66,6 +76,7 @@
   .inspection figcaption {flex-wrap:wrap}
 }
 @media(max-width:580px){
+  .playerVoices {grid-template-columns:1fr}
   .receipt {grid-template-columns:1fr}.ticket {border-right:0;border-bottom:2px dashed #807480}
   .tabs {gap:.35rem}.tabs button {flex:1;padding-inline:.5rem}
   .stats dt {font-size:.73rem}.leadCaption>strong br {display:initial}

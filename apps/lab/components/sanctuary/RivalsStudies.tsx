@@ -44,9 +44,21 @@ export function RivalsOpening() {
 }
 
 const screens = [
-  { id: "rivals-wheel", label: "Early wheel", title: "Make room for Hulk", detail: "The wheel gives one hero most of the frame. Its neighbours are easy to discover, but the distance to a particular face depends on where you begin." },
-  { id: "rivals-gallery", label: "Released gallery", title: "Scan the cast", detail: "Repeated portrait cards give different bodies equal space. Your eye can move between rows before you commit to a character." },
-  { id: "rivals-selection", label: "Match selection", title: "Pick for a team", detail: "The portraits bend around the featured hero again. Now the selection is a commitment other players need to see before the match begins." },
+  {
+    id: "rivals-wheel", label: "Early wheel", title: "Showcase one hero",
+    principle: "Visual hierarchy and scale",
+    detail: "Compare the size of Hulk’s illustration with the small portraits around it. The featured character gets most of the attention and space.",
+  },
+  {
+    id: "rivals-gallery", label: "Released gallery", title: "Browse the cast",
+    principle: "Gestalt similarity · recognition rather than recall",
+    detail: "Matching cards give faces and names a repeated position. Notice that this view also has a scrollbar and a class filter. The full cast extends beyond the visible rows.",
+  },
+  {
+    id: "rivals-selection", label: "Match selection", title: "Choose while the team forms",
+    principle: "Visibility of system status",
+    detail: "The 27-second countdown and six team slots carry information the gallery does not need. The arc at the right holds the character choices for this timed decision.",
+  },
 ] as const;
 
 export function RivalsInterface() {
@@ -55,7 +67,7 @@ export function RivalsInterface() {
   const dialog = useRef<HTMLDialogElement>(null);
   const [inspecting, setInspecting] = useState(false);
   const current = screens[selected];
-  return <section className={styles.study} aria-labelledby="rivals-ui-title">
+  return <section id="rivals-interface" className={styles.study} aria-labelledby="rivals-ui-title">
     <div className={styles.studyHead}><span className={styles.kicker}>Interface study · 2024–25</span>
       <h3 id="rivals-ui-title">Three ways to find a hero</h3></div>
     <div className={styles.tabs} role="group" aria-label="Choose a hero interface">
@@ -64,7 +76,7 @@ export function RivalsInterface() {
     </div>
     <figure className={styles.inspection} aria-live="polite">
       <Frame key={current.id} id={current.id} />
-      <figcaption><div><strong>{current.title}</strong><p>{current.detail}</p><Credit id={current.id}/></div>
+      <figcaption><div><strong>{current.title}</strong><p className={styles.principle}>{current.principle}</p><p>{current.detail}</p><Credit id={current.id}/></div>
         <button className={styles.enlarge} type="button" aria-haspopup="dialog"
           onClick={() => { setInspecting(true); dialog.current?.showModal(); }}>Enlarge screen ↗</button></figcaption>
     </figure>
@@ -72,6 +84,31 @@ export function RivalsInterface() {
       <div><span>{media[current.id].title}</span><button type="button" onClick={() => dialog.current?.close()}>Close ×</button></div>
       {inspecting && <Image width={1920} height={1080} sizes="(max-width: 960px) 960px, 95vw" src={media[current.id].image} alt={media[current.id].alt}/>}
     </dialog>
+    <section className={styles.voices} aria-labelledby="rivals-voices-title">
+      <h4 id="rivals-voices-title">What the designer wanted, what players asked for</h4>
+      <figure className={styles.designerVoice}>
+        <blockquote cite={media["rivals-wheel"].sourceUrl}>
+          <p>“presents an artistic immersive experience”</p>
+        </blockquote>
+        <figcaption>Dino, art director, describing the hero selector in Art Vision.<br/>
+          <a href={media["rivals-wheel"].sourceUrl}>Excerpt quoted by Justin Wagner, PC Gamer · 21 April 2025 ↗</a>
+        </figcaption>
+      </figure>
+      <div className={styles.playerVoices}>
+        <figure>
+          <blockquote cite="https://www.reddit.com/r/marvelrivals/comments/1m2ltae/its_time_to_remove_the_hero_select_wheel/">
+            <p>“as we get more and more characters it’s gonna be annoying to scroll and find the one you’re looking for.”</p>
+          </blockquote>
+          <figcaption><a href="https://www.reddit.com/r/marvelrivals/comments/1m2ltae/its_time_to_remove_the_hero_select_wheel/">u/imjokeslol · r/marvelrivals · 17 July 2025 ↗</a></figcaption>
+        </figure>
+        <figure>
+          <blockquote cite="https://www.reddit.com/r/marvelrivals/comments/1m2ltae/comment/n3pxrlm/">
+            <p>“the change they really need is a favorite section, that you can customize, as the default so you can quickly get to characters you know you will likely play.”</p>
+          </blockquote>
+          <figcaption><a href="https://www.reddit.com/r/marvelrivals/comments/1m2ltae/comment/n3pxrlm/">u/datguy078 · reply in the same discussion ↗</a></figcaption>
+        </figure>
+      </div>
+    </section>
     <div className={styles.film}>
       <div><span className={styles.kicker}>From the studio</span><strong>Art Vision · GUI &amp; Video</strong>
         <p>Art director Dino and the visual team show the design in motion.</p></div>

@@ -56,16 +56,16 @@ beforeAll(() => {
 });
 
 describe("Sanctuary reader", () => {
-  it("has a complete navigable 35-chapter edition with resolvable evidence and media", () => {
-    expect(chapters).toHaveLength(35);
-    expect(new Set(chapters.map((c) => c.id)).size).toBe(35);
+  it("has a complete navigable 36-chapter edition with resolvable evidence and media", () => {
+    expect(chapters).toHaveLength(36);
+    expect(new Set(chapters.map((c) => c.id)).size).toBe(36);
     expect(new Set(chapters.map((c) => c.part)).size).toBe(7);
     for (const chapter of chapters) {
       expect(chapter.paragraphs.length).toBeGreaterThanOrEqual(3);
       expect(chapter.evidence.length).toBeGreaterThan(30);
       expect(chapter.visual.diagram.nodes).toHaveLength(4);
       expect(chapter.visual.sceneTitle.length).toBeGreaterThan(3);
-      if (!["studio-to-screen","three-ecosystems","platform-business","mobile-freemium"].includes(chapter.id)) expect(chapter.figures?.some(figure=>figure.asset === chapter.visual.screenshot.asset)).toBe(true);
+      if (!["studio-to-screen","three-ecosystems","platform-business","mobile-freemium","marvel-rivals"].includes(chapter.id)) expect(chapter.figures?.some(figure=>figure.asset === chapter.visual.screenshot.asset)).toBe(true);
       for (const [paragraphIndex, ids] of Object.entries(
         chapter.paragraphCitations ?? {},
       )) {
@@ -187,7 +187,7 @@ describe("Sanctuary reader", () => {
     window.history.replaceState(null,"","/");
   });
   it("opens at the arcade, keeps its evidence inline and continues through the purchase history", () => {
-    expect(chapters.slice(0,14).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","three-ecosystems","mobile-freemium","valve-platform","epic-infrastructure","rockstar-world","the-fork","platform-business","cloud-gaming","making-worlds","concord","several-histories","diablo-second-life"]);
+    expect(chapters.slice(0,15).map(c=>c.id)).toEqual(["insert-coin","studio-to-screen","three-ecosystems","mobile-freemium","valve-platform","epic-infrastructure","rockstar-world","marvel-rivals","the-fork","platform-business","cloud-gaming","making-worlds","concord","several-histories","diablo-second-life"]);
     expect(chapters.find(c=>c.id==="concord")!.part).toBe(0);
     expect(chapters.find(c=>c.id==="how-many-lives")!.part).toBe(2);
     const current = chapters[0];

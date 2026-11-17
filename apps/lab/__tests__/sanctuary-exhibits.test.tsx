@@ -1,3 +1,4 @@
+import { RivalsWallet } from "@/components/sanctuary/RivalsStudies";
 import {FreemiumOffer} from "@/components/sanctuary/AcquiredWorlds";
 import {sanctuaryMedia} from "@/lib/sanctuary/media";
 import { fireEvent, render, screen, within } from "@testing-library/react";
@@ -40,6 +41,12 @@ describe("Sanctuary exhibits", () => {
       chapters.map((c) => c.id).sort(),
     );
     for (const [index, c] of chapters.entries()) {
+      if (c.id === "marvel-rivals") {
+        const {container, unmount} = render(<RivalsWallet/>);
+        expect(screen.getByRole("group", {name:"Choose a Jeff offer"})).toBeVisible();
+        expect(container.querySelector("img,video,audio,iframe")).toBeNull();
+        unmount(); continue;
+      }
       if(c.id==="three-ecosystems"){
         const {container,unmount}=render(<PlatformHistory/>);
         expect(screen.getByRole("group",{name:"Choose a financial case study"})).toBeVisible();

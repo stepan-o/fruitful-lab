@@ -1,7 +1,9 @@
 /** Dated, deliberately short verbatim excerpts. Never silently refresh these from live URLs. */
-export const rightsReviewDate = "3 October 2026; Valve and world-building material reviewed 7 October 2026; Activision / King reviewed 8 October 2026; Atari historical print material reviewed 9 October 2026";
+export const rightsReviewDate = "3 October 2026; Valve and world-building material reviewed 7 October 2026; Activision / King reviewed 8 October 2026; Atari historical print material reviewed 9 October 2026; Marvel Rivals reviewed 17 November 2026";
 export const bg3Notice = "Sanctuary Economics is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards.";
 export const rightsSources = [
+  { id: "rivals-netease-terms", kind: "Publisher terms", title: "NetEase · Terms of Use", url: "https://protocol.unisdk.easebar.com/release/latest_v487.html", version: "15 December 2024 edition, reviewed 17 November 2026", quote: "", reading: "Our review of individual frames addresses their use in criticism. NetEase retains its rights in the game and recognizes the rights of its licensors. The source register records the purpose and attribution for each frame." },
+  { id: "rivals-youtube-terms", kind: "Video platform terms", title: "YouTube · Permissions and Restrictions", url: "https://ca.youtube.com/t/terms", version: "Reviewed 17 November 2026", quote: "You may also show YouTube videos through the embeddable YouTube player.", reading: "The developers’ film is shown through the official player when a reader opens it." },
 {
   "id": "atari-historical-print",
   "kind": "Publisher policy · rights reserved",

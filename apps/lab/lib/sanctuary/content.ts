@@ -1,3 +1,4 @@
+import { rivalsChapter, rivalsSources } from "./rivals-chapter";
 import { businessHistorySources } from "./business-history";
 import { mobileChapter, mobileSources } from "./mobile-chapter";
 import { portfolioAssets } from "./acquired-portfolio";
@@ -25,6 +26,7 @@ export const sources: EvidenceSource[] = [
   {"id": "combat-launch-museum", "title": "Science Museum Group — Combat, 1977 packaging (2007-5026/5)", "url": "https://collection.sciencemuseumgroup.org.uk/objects/co8225471", "note": "Museum object record identifies Combat as a launch game included with the console and explains its 27 gameplay variations. Supports the caption; no claim that all variants were separate cartridges."},
   {"id": "xbox-d4-catalog-2024", "title": "Xbox — Diablo IV joins Game Pass and the multiplatform strategy, 15 February 2024", "url": "https://news.xbox.com/en-us/2024/02/15/xbox-promise-bring-more-games-to-more-players/", "note": "Announces Diablo IV catalog access from 28 March 2024 and explains reaching players across platforms while retaining investment in hardware. Historical announcement, not a current tier list or evidence that distribution alone caused Blizzard’s monetization design."},
   ...businessHistorySources,
+  ...rivalsSources,
   ...mobileSources,
   {"id": "microsoft-cod-launch", "title": "Satya Nadella — Microsoft FY2025 Q1 earnings call, 30 October 2024", "url": "https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q1", "note": "The CEO reports record Game Pass subscriber adds on Black Ops 6 launch day and PlayStation/Steam unit sales up over 60% year-on-year. Launch comparison, not annual revenue, retention or profit; no independent channel rates or causal Game Pass effect is inferred. It documents simultaneous subscription acquisition and sales through other platforms."},
   {"id": "cod-game-pass-launch", "title": "Xbox — Black Ops 6 joins Game Pass at launch, 15 October 2024", "url": "https://news.xbox.com/en-us/2024/10/15/xbox-game-pass-october-2024-wave-2/", "note": "Lists 25 October 2024 launch-day access through Game Pass Ultimate and PC Game Pass. These eligible plans are not the whole subscription range. Paired with Microsoft’s 30 October launch report and the April 2026 change to future releases."},
@@ -1977,8 +1979,8 @@ const manuscript: Omit<Chapter,"visual">[] = [
 ];
 
 // Stable IDs survive editorial reordering; overview chapters use only explicitly placed figures.
-const openingOrder = ["insert-coin", "studio-to-screen", "three-ecosystems", "mobile-freemium", "valve-platform", "epic-infrastructure", "rockstar-world", "the-fork", "platform-business", "cloud-gaming", "making-worlds", "concord", "several-histories", "diablo-second-life", "diablo-market", "diablo-service", "how-many-lives", "shape-of-money", "six-games", "the-reset", "why-people-play", "play-beyond-score", "familiar-verbs", "anatomy-of-loop", "loot-table", "the-checklist", "access", "identity", "time", "power", "what-things-cost", "two-key-lock", "abstraction-and-surface", "what-decides", "does-it-work"];
-const allChapters = [mobileChapter, ...diabloHistoryChapters, ...manuscript, ...businessOverviewChapters, ...companyChapters, worldBuildingChapter];
+const openingOrder = ["insert-coin", "studio-to-screen", "three-ecosystems", "mobile-freemium", "valve-platform", "epic-infrastructure", "rockstar-world", "marvel-rivals", "the-fork", "platform-business", "cloud-gaming", "making-worlds", "concord", "several-histories", "diablo-second-life", "diablo-market", "diablo-service", "how-many-lives", "shape-of-money", "six-games", "the-reset", "why-people-play", "play-beyond-score", "familiar-verbs", "anatomy-of-loop", "loot-table", "the-checklist", "access", "identity", "time", "power", "what-things-cost", "two-key-lock", "abstraction-and-surface", "what-decides", "does-it-work"];
+const allChapters = [mobileChapter, rivalsChapter, ...diabloHistoryChapters, ...manuscript, ...businessOverviewChapters, ...companyChapters, worldBuildingChapter];
 const orderedChapters = [...openingOrder.map(id=>allChapters.find(chapter=>chapter.id===id)!), ...allChapters.filter(chapter=>!openingOrder.includes(chapter.id))];
 export const chapters: Chapter[] = orderedChapters.map((chapter) => {
   const visual = chapterVisuals[chapter.id];
@@ -1987,7 +1989,7 @@ export const chapters: Chapter[] = orderedChapters.map((chapter) => {
     part: chapter.part,
     embeddedAssets: chapter.id === "three-ecosystems" ? portfolioAssets : chapter.embeddedAssets,
     visual,
-    figures: ["studio-to-screen","three-ecosystems","platform-business","mobile-freemium"].includes(chapter.id) ? chapter.figures ?? [] : [
+    figures: ["studio-to-screen","three-ecosystems","platform-business","mobile-freemium","marvel-rivals"].includes(chapter.id) ? chapter.figures ?? [] : [
       chapter.figures?.find((figure) => figure.asset === visual.screenshot.asset) ?? visual.screenshot,
       ...(chapter.figures ?? []).filter(
         (figure) => figure.asset !== visual.screenshot.asset,

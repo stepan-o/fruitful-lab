@@ -1,4 +1,4 @@
-/** Selected, evidenced routes, reviewed 7 October 2026. Never infer compatibility
+/** Selected, evidenced routes. Individual games can have a later review date. Never infer compatibility
  * from company ownership, a store listing, cross-play or cross-progression. */
 export type MarketRole = "make" | "publish" | "access" | "compute";
 export type ComputeId = "pc" | "ps5" | "xbox" | "gfn" | "ps-cloud" | "xbox-cloud";
@@ -9,7 +9,7 @@ export type AccessPath = {
 };
 export type MarketGame = {
  id: string; name: string; genre: string; developer: string; publisher: string;
- observation: string; boundary: string; sources: MarketSource[]; access: AccessPath[];
+ observation: string; boundary: string; reviewed?: string; sources: MarketSource[]; access: AccessPath[];
 };
 export const marketReviewDate = "7 October 2026";
 export const marketRoles: {id: MarketRole; title: string; job: string}[] = [
@@ -48,6 +48,16 @@ const spiderPC=src("Sony: Spider-Man 2 on PC & port credits","https://www.playst
 const sonyStudios=src("Sony: PlayStation Studios","https://www.playstation.com/en-us/corporate/playstation-studios/");
 const sonyHardware=src("Sony: direct PS5 sales","https://direct.playstation.com/en-us/hardware/ps5");
 const xboxHardware=src("Microsoft: direct Xbox console sales","https://www.xbox.com/en-US/consoles/xbox-series-x");
+const rimworldStore = src("Ludeon Studios · direct download and expansions", "https://rimworldgame.com/");
+const rimworldRegistration = src("Ludeon Studios · register a direct purchase on Steam", "https://rimworldgame.com/index.php/getmygame/");
+const rimworldSteam = src("Steam · RimWorld PC edition and credits", "https://store.steampowered.com/app/294100/RimWorld/");
+const rimworldEpic = src("Epic Games Store · RimWorld PC edition", "https://store.epicgames.com/en-US/p/rimworld");
+const rimworldSteamGFN = src("SteamDB · NVIDIA cloud support for the Steam edition", "https://steamdb.info/app/294100/info/");
+const rimworldEpicGFN = src("NVIDIA · RimWorld through the Epic Games Store", "https://blogs.nvidia.com/blog/geforce-now-thursday-august-12/");
+const rimworldConsole = src("Double Eleven · Console Edition credits", "https://double11.com/games/rimworld-console-edition/");
+const rimworldPS = src("PlayStation Store · PS4 edition and PS5 compatibility", "https://store.playstation.com/en-us/product/UP4415-CUSA31488_00-D11RIMWORLD00001/");
+const rimworldXbox = src("Xbox Store · RimWorld Console Edition", "https://www.xbox.com/en-us/games/store/rimworld-console-edition/9NC6WKX645VJ");
+const rimworldConsoleCredits = { developer: "Ludeon Studios / Double Eleven", publisher: "Double Eleven" };
 export const marketGames:MarketGame[]=[
  {id:"diablo",name:"Diablo IV",genre:"Action role-playing",developer:"Blizzard Entertainment",publisher:"Blizzard Entertainment",observation:"Blizzard makes and publishes Diablo IV. A Steam purchase can run on your PC or NVIDIA’s servers; a PlayStation purchase takes a different route to the same world.",boundary:"Cross-play and shared progress do not make a purchase valid in every store. Only evidenced routes are enabled here; this map does not assume Xbox or Sony cloud support for Diablo IV. Its console online-play requirements still apply.",sources:[d4Xbox,d4PS,d4Steam,d4Battle,d4Pass],access:[
   bought("steam","Steam","Valve",["pc","gfn"],[d4Steam],"A PC copy sold through Steam; Battle.net account linking is required."),
@@ -84,6 +94,35 @@ export const marketGames:MarketGame[]=[
   {...bought("steam","Steam","Valve",["pc"],[spiderPC]),developer:"Insomniac / Nixxes",publisher:"PlayStation Publishing",detail:"Sony’s PC edition is sold through Steam, with PC adaptation by Nixxes."},
   {...bought("epic","Epic Games Store","Epic Games",["pc"],[spiderPC]),developer:"Insomniac / Nixxes",publisher:"PlayStation Publishing",detail:"Sony’s PC edition is sold through Epic, with PC adaptation by Nixxes."},
  ]},
+ {
+  id: "rimworld", name: "RimWorld", genre: "Colony simulation",
+  developer: "Ludeon Studios", publisher: "Ludeon Studios", reviewed: "17 November 2026",
+  observation: "Two players can stream RimWorld through Steam on GeForce NOW even if only one paid Valve. The other can buy directly from Ludeon and register that copy on Steam. NVIDIA also streams the Epic edition.",
+  boundary: "These routes follow the base game. Expansions are optional purchases. The console examples show the separately sold Console Edition running on the player’s own hardware.",
+  sources: [rimworldStore, rimworldConsole],
+  access: [
+   {
+    id: "ludeon", name: "Ludeon website", company: "Ludeon Studios", kind: "purchase",
+    compute: ["pc", "gfn"], sources: [rimworldRegistration, rimworldSteamGFN],
+    detail: "Download the game directly for Windows, macOS or Linux. To stream a direct purchase on GeForce NOW, first register it on Steam and select Steam in GeForce NOW.",
+    payment: "Pay Ludeon once for the base game. Registering the same copy on Steam adds no second charge.",
+   },
+   bought("steam", "Steam", "Valve", ["pc", "gfn"], [rimworldSteam, rimworldSteamGFN],
+    "Buy the PC game from Valve. Play it on your computer or select Steam in GeForce NOW to stream your copy."),
+   bought("epic", "Epic Games Store", "Epic Games", ["pc", "gfn"], [rimworldEpic, rimworldEpicGFN],
+    "Buy the PC game from Epic. Run it on your own computer or stream the Epic copy through GeForce NOW."),
+   {
+    ...bought("ps-store", "PlayStation Store", "Sony", ["ps5"], [rimworldPS],
+     "Buy the PS4 Console Edition from Sony. A PS5 can run it through backward compatibility."),
+    ...rimworldConsoleCredits,
+   },
+   {
+    ...bought("xbox-store", "Xbox Store", "Microsoft", ["xbox"], [rimworldXbox],
+     "Buy the Console Edition from Microsoft and run it on Xbox One or Xbox Series X|S."),
+    ...rimworldConsoleCredits,
+   },
+  ],
+ },
 ];
 export const computeOptions:{id:ComputeId;name:string;short:string;company:string;cloud:boolean;detail:string}[]=[
  {id:"pc",name:"Your PC",short:"PC",company:"Hardware retailer",cloud:false,detail:"Your computer renders the game. The purchase of that equipment is separate from the game license."},

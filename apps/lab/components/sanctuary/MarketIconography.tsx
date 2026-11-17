@@ -29,7 +29,7 @@ function Storefront({accessId}:{accessId:string}) {
  const sony=accessId.startsWith("ps-");
  const xbox=["xbox-store","pc-pass","ultimate"].includes(accessId);
  const portrait=accessId==="epic"||sony;
- const name=accessId==="steam"?"STEAM":accessId==="battle"?"BATTLE.NET":accessId==="gog"?"GOG":accessId==="epic"?"EPIC GAMES":sony?(accessId==="ps-plus"?"PS PLUS":"PLAYSTATION"):xbox?(accessId==="xbox-store"?"XBOX":"GAME PASS"):"STORE";
+ const name=accessId==="steam"?"STEAM":accessId==="battle"?"BATTLE.NET":accessId==="gog"?"GOG":accessId==="epic"?"EPIC GAMES":sony?(accessId==="ps-plus"?"PS PLUS":"PLAYSTATION"):xbox?(accessId==="xbox-store"?"XBOX":"GAME PASS"):accessId==="ludeon"?"LUDEON":"STORE";
  return <>
   <path d="M24 120 27 24l160-8 4 97Z" fill="#091a23" stroke="#c5aa74" strokeWidth="1.5"/>
   <g transform="matrix(1 -.05 0 1 33 29)">

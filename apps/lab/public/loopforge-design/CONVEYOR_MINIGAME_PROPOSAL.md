@@ -36,7 +36,7 @@ Owner direction: remove all player building. Keep the room topology and cinemati
 
 ## Continuous first-floor plan
 
-![Top-down factory plan](/loopforge-design/factory-floor-plan.193f23a74311.svg)
+![Top-down factory plan](/loopforge-design/factory-floor-plan.9d1f7a569b97.svg)
 
 Nine repacked zones, fourteen connections and a common 15 m hall height. Theatre and Logistics fill the eastern rectangles; Security has a direct Theatre corridor. Hatching marks pipe walls. This separate factory-floor authoring study is not the compact Day1 runtime.
 

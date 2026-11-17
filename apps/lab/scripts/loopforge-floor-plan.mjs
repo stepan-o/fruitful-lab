@@ -18,10 +18,11 @@ function load(name) {
   return mod.exports;
 }
 const f = load('floor'), shell = load('envelope'), capacity = load('capacity'), kit = load('equipment');
+const opening = load('day-one-floor').DAY_ONE_FLOOR;
+const board = path.resolve(app, '../../docs/loopforge/game-design');
 const escape = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const rect = (r, attrs) => `<rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" ${attrs}/>`;
 const points = shell.BUILDING_OUTLINE.map(p => `${p.x},${p.y}`).join(' ');
-const names = { weaving: ['WEAVING', 'GALLERY'], brewery: ['SUBSTRATE', 'BREWERY'], theatre: ['BURN-IN', 'THEATRE'], conveyor: ['LATTICE FORGE'], cortex: ['CORTEX', 'ASSEMBLY'], security: ['SECURITY'], lobby: ['LOBBY'], dispatch: ['DISPATCH'], shipping: ['LOGISTICS'] };
 let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1040" viewBox="0 0 1200 1040" role="img" aria-labelledby="title desc">
 <title id="title">Loopforge — continuous first-floor plan</title>
 <desc id="desc">Top-down measured design plan, north up. Nine repacked zones fill one building with narrow pipe walls around Brewery and Cortex. Every hall has a fifteen-metre structural height. An eight-metre corridor links Security to Theatre. The six managed rooms are Security, Lattice Forge, Burn-in Theatre, Substrate Brewery, Weaving Gallery and Cortex Assembly. Only Security and Lattice Forge are open on turn one. Gold thresholds mark fourteen connections, including the new Security to Theatre corridor. Dashed plots are clear construction reserves; copper marks are prototype machinery. Pipe walls do not grant extra access.</desc>
@@ -39,23 +40,22 @@ for (const z of f.ZONES) {
 }
 for (const q of capacity.CONSTRUCTION_RESERVES) svg += rect(q.rect, 'fill="#365b4926" stroke="#6c9b83" stroke-width=".35" stroke-dasharray="1.4 1"');
 for (const q of capacity.DELIVERY_AISLES) svg += rect(q.rect, 'fill="#c0a96e16" stroke="#af9c66" stroke-width=".22" stroke-dasharray="2 1"');
-for (const q of kit.EQUIPMENT_STUDY) svg += `<g><title>${escape(q.name)}</title>${rect(q.footprint, 'fill="#976c40" stroke="#c99f65" stroke-width=".2"')}</g>`;
+for (const q of kit.EQUIPMENT_STUDY.filter(q => !['security','conveyor'].includes(q.room))) svg += `<g><title>${escape(q.name)}</title>${rect(q.footprint, 'fill="#976c40" stroke="#c99f65" stroke-width=".2"')}</g>`;
 for (const p of f.PORTALS) svg += `<g><title>${escape(p.id)} — ${f.portalOpen(p, f.INITIAL_UNLOCKED) ? 'open' : 'sealed'}</title>${rect(f.portalRect(p), `fill="${f.portalOpen(p, f.INITIAL_UNLOCKED) ? '#e3c46f' : '#8f7b53'}" stroke="#e3c46f" stroke-width=".2"`)}</g>`;
 const corridor=f.PORTALS.find(p=>p.id==='security-theatre');
 svg += `<text x="${(corridor.start.x+corridor.end.x)/2}" y="${corridor.start.y+5.1}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="3" fill="#fff1c1">SECURITY ↔ THEATRE</text>`;
 // Labels sit clear of equipment and reserve outlines. Units remain in each room.
 for (const z of f.ZONES) {
-  const r = z.rect, x = r.x+r.w/2, y = r.y+r.h/2;
-  const font = r.w < 40 ? 3.3 : 4.1;
-  const lines = names[z.id]; const labelWidth = Math.min(r.w-2, 55);
-  svg += `<g font-family="system-ui,sans-serif" text-anchor="middle"><rect x="${x-labelWidth/2}" y="${y-13}" width="${labelWidth}" height="28" rx="1" fill="#13211ee8"/><text x="${x}" y="${y-7.5}" font-size="3" fill="#c9b77f" letter-spacing=".55">${escape(z.number)} · ${z.kind === 'support' ? 'SUPPORT' : f.accessible(z.id, f.INITIAL_UNLOCKED) ? 'ONLINE' : 'SEALED'}</text>`;
-  lines.forEach((line,i) => svg += `<text x="${x}" y="${y-1.5+i*5}" font-size="${font}" font-weight="650" fill="#eee2bd">${line}</text>`);
-  svg += `<text x="${x}" y="${y+11.5}" font-size="3" fill="#9db5a6">${r.w} × ${r.h} m</text></g>`;
+  const r = z.rect;
+  const x = r.x + 1.6, y = r.y + 4.3;
+  svg += `<g font-family="system-ui,sans-serif" stroke="#11201d" stroke-width=".8" paint-order="stroke" stroke-linejoin="round"><text x="${x}" y="${y}" font-size="2.7" fill="#fff0c9">${escape(z.short.toUpperCase())}</text><text x="${x}" y="${y+3.6}" font-size="2.45" fill="#c3d6c8">${r.w} × ${r.h} m · ${z.kind==='support'?'SUPPORT':f.INITIAL_UNLOCKED.includes(z.id)?'DAY 1':'SEALED'}</text></g>`;
 }
+for (const q of opening.fixtures) svg += `<g><title>${escape(q.name)}</title>${rect(q.rect,'fill="#f7b274" stroke="#4d382d" stroke-width=".18"')}</g>`;
+svg += `<polyline points="${opening.egress.map(p=>p.join(',')).join(' ')}" fill="none" stroke="#8edac3" stroke-width=".65" stroke-dasharray="1.5 1"/><path d="M70 128h5" stroke="#8edac3" stroke-width="1.5"/><text x="69" y="134" text-anchor="end" font-family="system-ui,sans-serif" font-size="3.4" fill="#a3e5cf">STAFF ENTRANCE / EXIT</text>`;
 svg += `</g><g font-family="system-ui,sans-serif"><path d="M72 924H221M72 919V929M146.5 919V929M221 919V929" stroke="#d2bf88" stroke-width="2"/><text x="72" y="947" fill="#b9c7b9" font-size="13">0</text><text x="139" y="947" fill="#b9c7b9" font-size="13">20</text><text x="206" y="947" fill="#b9c7b9" font-size="13">40 m</text>
 <rect x="310" y="918" width="14" height="14" fill="#29453b" stroke="#8b9d86"/><text x="333" y="930" font-size="14" fill="#c2ccbf">Opening rooms</text><rect x="510" y="918" width="14" height="14" fill="#1a2928" stroke="#8b9d86"/><text x="533" y="930" font-size="14" fill="#c2ccbf">Sealed wing</text><rect x="686" y="918" width="14" height="14" fill="url(#service)"/><text x="709" y="930" font-size="14" fill="#c2ccbf">Pipe walls</text><rect x="880" y="918" width="20" height="10" fill="#b29a62"/><text x="909" y="930" font-size="14" fill="#c2ccbf">Door / passage</text>
-<rect x="310" y="952" width="14" height="14" fill="none" stroke="#6c9b83" stroke-dasharray="3 2"/><text x="333" y="964" font-size="14" fill="#c2ccbf">Construction reserve</text><rect x="560" y="952" width="14" height="14" fill="#976c40"/><text x="583" y="964" font-size="14" fill="#c2ccbf">Prototype equipment</text><text x="835" y="964" font-size="14" fill="#aab9ad">${shell.BUILDING_AREA.toLocaleString('en-US')} m² enclosed footprint</text>
-<text x="60" y="996" font-size="12" fill="#879b8f">${escape(f.FLOOR_VERSION)} · ${f.PORTALS.length} connections · Security–Theatre corridor sealed until Theatre opens · machinery remains a scale study</text></g></svg>\n`;
+<rect x="310" y="952" width="14" height="14" fill="none" stroke="#6c9b83" stroke-dasharray="3 2"/><text x="333" y="964" font-size="14" fill="#c2ccbf">Construction reserve</text><rect x="560" y="952" width="14" height="14" fill="#976c40"/><text x="583" y="964" font-size="14" fill="#c2ccbf">Working footprint</text><text x="835" y="964" font-size="14" fill="#aab9ad">${shell.BUILDING_AREA.toLocaleString('en-US')} m² enclosed footprint</text>
+<text x="60" y="996" font-size="12" fill="#879b8f">${escape(f.FLOOR_VERSION)} · ${f.PORTALS.length} connections · Security–Theatre corridor sealed until Theatre opens · staff entrance on the south Lobby wall</text></g></svg>\n`;
 const hash = createHash('sha256').update(svg).digest('hex').slice(0,12);
 const filename = `factory-floor-plan.${hash}.svg`;
 const metadata = { version: f.FLOOR_VERSION, src: '/loopforge-design/'+filename, width:1200, height:1040, buildingArea:shell.BUILDING_AREA, serviceArea:shell.SERVICE_AREA, pipeWallArea:shell.PIPE_WALL_AREA, hallHeight:f.FIRST_FLOOR_HEIGHT, connections:f.PORTALS.length };
@@ -63,6 +63,7 @@ const outputs = new Map([
   [path.resolve(app,'../../docs/loopforge/maps/factory-floor-plan.svg'),svg],
   [path.resolve(app,'../../docs/loopforge/game-design/factory-floor-plan.json'),JSON.stringify(metadata,null,2)+'\n'],
   [path.join(app,'public/loopforge-design',filename),svg],
+  [path.join(board,'day-one-geometry.json'), JSON.stringify({ ...opening, zones: f.ZONES, portals: f.PORTALS.map(p=>({id:p.id,rect:f.portalRect(p)})), reserves: capacity.CONSTRUCTION_RESERVES, aisles: capacity.DELIVERY_AISLES })+'\n'],
 ]);
 const check = process.argv.includes('--check');
 for(const [file,content] of outputs){

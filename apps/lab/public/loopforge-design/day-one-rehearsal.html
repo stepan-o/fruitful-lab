@@ -799,7 +799,8 @@ new ResizeObserver(()=>{
   const dpr=Math.min(devicePixelRatio,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
   ctx.setTransform(dpr,0,0,dpr,0,0);draw();
 }).observe(canvas);
-if(location.hash==='#forge-hall')setHall(true);
-const initialBeat=location.hash==='#end-of-shift'?score.beats.find(b=>b.name==='End of shift'):null;
-update(initialBeat?score.editTime(initialBeat.at):0,true);
+const initialBeatName={'#forge-hall':'Run it','#end-of-shift':'End of shift'}[location.hash];
+const initialBeat=score.beats.find(beat=>beat.name===initialBeatName);
+setHall(location.hash==='#forge-hall');
+update(initialBeat?score.editTime(initialBeat.at):0,!hallView);
 </script></body></html>

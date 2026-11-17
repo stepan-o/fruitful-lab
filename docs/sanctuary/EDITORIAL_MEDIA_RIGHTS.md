@@ -311,8 +311,10 @@ existing illustrations remain unchanged.
 The six stills identify a costume, compare three layouts for selecting heroes,
 and examine two dated seasonal offers. Each full frame has a source, credit,
 individual analytical purpose and review date in the public register. The
-selection includes NetEase’s own update illustrations, NetEase images credited
-by Esports Insider and PC Gamer, and two Interface In Game screen captures. The
+selection includes the official Incognito Dolphin reveal with its original notices,
+two NetEase update illustrations, a development frame credited by PC Gamer and
+two Interface In Game screen captures. Esports Insider supplies the historical
+costume and bundle prices. The
 archive names no individual capture author. The chapter uses the project's
 limited criticism/review basis. Source access and attribution alone confer no
 general image licence. The external media and our original diagrams have no

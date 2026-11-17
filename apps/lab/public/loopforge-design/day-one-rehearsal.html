@@ -194,39 +194,49 @@ export function makeSequence(floor, script) {
   }
   walk('STILETTO',156.9,1.5,[132.4,129.4],[133.4,129.4]);
   // The bell starts an unauthorized walkout. STILETTO catches the crew in motion,
-  // then holds them through the overlapping replies before releasing them.
+  // then they recover after one beat and answer on the move. She calls after them.
   const bell=179.8;
   const call=bell+3.0;
-  const release=call+8.0;
+  const resume=call+1.2;
+  const dismissal=call+4.9;
   const shutdown={mae:bell+1.0,kit:bell+1.2};
   const departures=[
-    {id:'mae',at:release+2.0,turn:bell+1.3,brake:call+.22,lane:-1},
-    {id:'sam',at:release+.45,turn:bell+.55,brake:call+.24,lane:0},
-    {id:'bob',at:release+.8,turn:bell+.65,brake:call+.32,lane:-1},
-    {id:'jo',at:release+.12,turn:bell+.25,brake:call+.12,lane:1},
-    {id:'kit',at:release+2.35,turn:bell+1.5,brake:call+.28,lane:1},
-    {id:'max',at:release+.65,turn:bell+.4,brake:call+.10,lane:0},
-    {id:'lou',at:release+.25,turn:bell+.35,brake:call+.18,lane:-1},
-    {id:'ben',at:release+.95,turn:bell+.80,brake:call+.20,lane:1},
+    {id:'mae',spacing:2,at:resume+.12,turn:bell+1.3,brake:call+.22,lane:-1},
+    {id:'sam',spacing:0.45,at:resume+.14,turn:bell+.55,brake:call+.24,lane:0},
+    {id:'bob',spacing:0.8,at:resume+.22,turn:bell+.65,brake:call+.32,lane:-1},
+    {id:'jo',spacing:0.12,at:resume+.02,turn:bell+.25,brake:call+.12,lane:1},
+    {id:'kit',apronY:134.5,spacing:2.35,at:resume+.18,turn:bell+1.5,brake:call+.28,lane:1},
+    {id:'max',spacing:0.65,at:resume,turn:bell+.4,brake:call+.10,lane:0},
+    {id:'lou',spacing:0.25,at:resume+.08,turn:bell+.35,brake:call+.18,lane:-1},
+    {id:'ben',apronY:132,spacing:0.95,at:resume+.10,turn:bell+.80,brake:call+.20,lane:1},
   ];
   const reader=[125,124.3], merge=[126.35,130.1], walkSpeed=1.55;
   const viaReader=[[126.35,127.1],[125.5,125.5],reader];
   for(const worker of departures){
     const {id,at,turn,brake}=worker;
     const [x,y]=tracks[id].at(-1).p;
-    // One continuous approach, a caught-in-the-act hold, then the same exit route.
+    // The shout catches a step for a moment; the replies continue along the exit route.
     walk(id,turn,3/(brake-turn),[x,y-3]);
     worker.apron=[x,133.5];
-    worker.onApron=walk(id,at,walkSpeed,worker.apron);
+    // Recover into different walking rhythms while retaining the clear merge slots.
+    const approach=distance([x,y-3],worker.apron);
+    worker.onApron=call+1+worker.spacing+approach/walkSpeed;
     worker.atMerge=worker.onApron+distance(worker.apron,merge)/walkSpeed;
+    // Stagger the turn corners within the open aisle as the group regains its stride.
+    if(worker.apronY!==undefined)worker.apron[1]=worker.apronY;
   }
   departures.sort((a,b)=>a.atMerge-b.atMerge);
   const tallies=[];
   let mergeFree=0;
   for(const worker of departures){
     const crossing=Math.max(worker.atMerge,mergeFree);
-    const release=worker.onApron+crossing-worker.atMerge;
-    worker.counted=walk(worker.id,release,walkSpeed,merge,...viaReader);
+    const approach=distance(tracks[worker.id].at(-1).p,worker.apron);
+    const toMerge=distance(worker.apron,merge);
+    // Spread the reader spacing over the whole approach so nobody stalls or creeps.
+    const pace=(approach+toMerge)/(crossing-worker.at);
+    worker.onApron=walk(worker.id,worker.at,pace,worker.apron);
+    walk(worker.id,worker.onApron,pace,merge);
+    worker.counted=walk(worker.id,crossing,walkSpeed,...viaReader);
     tallies.push(worker.counted);
     mergeFree=crossing+1.12;
   }
@@ -301,9 +311,9 @@ export function makeSequence(floor, script) {
     [93,95.35],[95.8,97.8],[97.9,101.6],[102,104],[104.1,106.9],[107,110.3],
     [119.7,122.2],[122.3,126.9],[131.45,threatEnd],[165.5,167.1],[177.4,179.6],
     [bell,bell+1.65],
-    [call,call+2.65],
-    [call+2.8,call+5.85],[call+2.95,call+6.05],[call+3.1,call+6.2],[call+3.25,call+6.3],
-    [call+6.4,release+1.0],
+    [call,call+1.25],
+    [call+1.3,call+4.35],[call+1.45,call+4.55],[call+1.6,call+4.7],[call+1.75,call+4.8],
+    [dismissal,dismissal+2.6],
     [eight+.1,eight+3.2],[yard+.1,yard+3.2],[yard+3.3,yard+5],[yard+5.4,yard+9.4],
   ];
   if(windows.length!==script.length) throw Error('Approved dialogue changed; retime the score.');
@@ -329,8 +339,9 @@ export function makeSequence(floor, script) {
     [bell,shutdown.mae,'mae','cuts the feed'],[bell,shutdown.kit,'kit','stops the drive'],
     ...departures.map(({id,turn,brake})=>[turn,brake,id,'breaks for the door']),
     [call,call+.5,'STILETTO','catches the crew mid-step'],
-    [call+.5,release,'STILETTO','holds the departing crew'],
-    [release,release+1.5,'STILETTO','waves them out'],
+    [call+.5,resume,'STILETTO','gets a momentary freeze'],
+    ...departures.map(({id,at})=>[at,dismissal+2.6,id,'keeps walking']),
+    [dismissal,dismissal+2.6,'STILETTO','waves after their backs'],
     [eight, eight+3.2,'ed','offers LIMEN the register'],[eight+3.3,eight+6,'ed','clips his pen beside bob’s card'],
     [yard+5.1,yard+8,'max','pulls his jaw back'],[yard+9.4,yard+12,'ed','laughs first'],
   ].map(([start,end,actor,label])=>({start,end,actor,label}));
@@ -345,7 +356,7 @@ export function makeSequence(floor, script) {
     product(2,[[101.5,0],[106,0],[114.9,1],[118,1],[121,2],[122.8,2],[126.1,3],[127.1,3],[128.1,4]],1),
     product(3,[[113.5,0],[168.8,0],[170.1,1],[171.8,1],[172.8,2],[174.3,2],[175.6,3],[176.4,3],[177.2,4]],2),
   ];
-  return {start,cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,bell,call,shutdown,release,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
+  return {start,cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,bell,call,shutdown,resume,dismissal,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
 }
 
 export function samplePath(keys,t) {

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { decks, deckNames, type Deck } from "@/lib/loopforge/content";
 import Chrome from "@/components/loopforge/Chrome";
@@ -8,7 +7,6 @@ import Conveyor from "@/components/loopforge/Conveyor";
 import Exhibits from "@/components/loopforge/Exhibits";
 import styles from "@/components/loopforge/loopforge.module.css";
 import { imageAsset, parseManifest } from "@/lib/assets/types";
-const SupervisorAtlas = dynamic(() => import("@/components/loopforge/SupervisorAtlas"));
 
 export function generateStaticParams() {
   return Object.entries(decks).flatMap(([deck, chapters]) =>
@@ -42,11 +40,9 @@ export default async function Page({
   const index = chapters.findIndex((c) => c.id === p.chapter);
   if (index < 0) notFound();
   const chapter = chapters[index];
-  const isCast = deck === "overview" && chapter.id === "the-cast";
   const isWebview = deck === "architecture" && chapter.id === "webview";
   const webviewArt = isWebview ? imageAsset(parseManifest((await import("@/lib/assets/generated/loopforge-focused.json")).default, "loopforge-focused"), "lobby-room") : undefined;
   const WebviewStudy = isWebview ? (await import("@/components/loopforge/WebviewStudy")).default : null;
-  const atlasAssets = isCast ? (await import("@/lib/loopforge/supervisor-assets")).supervisorAssets : null;
   const url = (id: string) => `/stepanoskin/loopforge/${deck}/${id}`;
   return (
     <div className={styles.page}>
@@ -121,9 +117,8 @@ export default async function Page({
             {deck === "overview" && chapter.id === "the-factory" && <Link href="/stepanoskin/loopforge/overview/before-the-factory" className={styles.workshopLink}>
               <span>STORY WORKSHOP</span><strong>Before the factory ↗</strong><small>Six possible histories. Twelve concept paintings. Explore the robot society behind Loopforge.</small>
             </Link>}
-            {atlasAssets && <SupervisorAtlas assets={atlasAssets} />}
             {WebviewStudy && <WebviewStudy />}
-            {chapter.exhibit && !isCast && <>
+            {chapter.exhibit && <>
             <div className={styles.sectionHeading}>
               <span className={styles.eyebrow}>WORKING EXHIBIT</span>
               <span>Explore the idea ↓</span>

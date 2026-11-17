@@ -71,27 +71,6 @@ export const overview: Chapter[] = [
     principle: "The player chooses policy. The engine resolves consequences.",
   },
   {
-    id: "the-cast",
-    title: "The supervisors",
-    kicker: "Five supervisors / expertise and refusal",
-    heading: "An organization chart\nwith unresolved grievances.",
-    lead: "You need their expertise. You inherit their rivalries. An assignment gives them a room; it does not guarantee their obedience.",
-    art: "conflict",
-    caption: "Limen and Stiletto at the conveyor · original concept art",
-    exhibit: "cast",
-    sections: [
-      {
-        title: "Success changes the balance",
-        body: "A specialist who rescues the shift earns confidence and influence. Repeated success can make your instructions seem unnecessary. The same expertise that keeps a room working gives its supervisor the means to take control of it.",
-      },
-      {
-        title: "An argument has consequences",
-        body: "Supporting one supervisor can weaken another’s loyalty. Suppression can end an immediate confrontation while leaving the grievance intact. A repair, a stoppage and a refusal must each leave a visible consequence; the accounts of why it happened can still disagree.",
-      },
-    ],
-    principle: "A reliable world can contain unreliable witnesses.",
-  },
-  {
     id: "the-rooms",
     title: "The rooms",
     kicker: "Production geography / a tour of the line",

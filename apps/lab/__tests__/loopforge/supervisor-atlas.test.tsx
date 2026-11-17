@@ -30,7 +30,9 @@ test("a room-table assignment updates the supervisor, room and available scene t
   expect(screen.getByRole("heading", { name: "Rivet Witch / Lattice Forge" })).toBeVisible();
   expect(within(screen.getByRole("group", { name: "Scene variations" })).getByRole("button", { name: "Repair" })).toBeVisible();
   await user.click(within(screen.getByRole("group", { name: "Choose a room" })).getByRole("button", { name: /Cortex Assembly/ }));
-  expect(screen.getByRole("heading", { name: "Cortex Assembly is still closed." })).toBeVisible();
+  expect(screen.getByRole("heading", { name: "Align, cool and prove" })).toBeVisible();
+  expect(screen.getByText(/was closed in the original simulation/)).toBeVisible();
+  expect(screen.getByRole("button", { name: "Enlarge Cortex Assembly room study" })).toBeVisible();
   expect(screen.queryByRole("group", { name: "Scene variations" })).not.toBeInTheDocument();
   expect(screen.getByRole("heading", { name: "System Refactor" })).toBeVisible();
 });
@@ -43,4 +45,14 @@ test("pairings without joint art show separate references rather than an invente
   expect(screen.getByRole("button", { name: "Enlarge Rivet Witch — individual reference" })).toBeVisible();
   expect(screen.getByRole("button", { name: "Enlarge Thrum — individual reference" })).toBeVisible();
   expect(screen.queryByRole("group", { name: "Pair scenes" })).not.toBeInTheDocument();
+});
+
+test("a floor-plan entry opens its service room and exposes a marked action for each supervisor", async () => {
+  const user = userEvent.setup();
+  render(<SupervisorAtlas assets={assets} initialRoom="logistics" />);
+  expect(screen.getByRole("heading", { name: "Limen / Logistics" })).toBeVisible();
+  await user.click(screen.getByRole("link", { name: "Stiletto in Logistics: Clear the dock" }));
+  expect(screen.getByRole("heading", { name: "Stiletto / Logistics" })).toBeVisible();
+  expect(screen.getByRole("link", { name: "Locate G3 on the factory floor" })).toHaveAttribute("href", "/loopforge-design/factory-layout-proposal.html#asset-G3");
+  expect(screen.getByRole("button", { name: "Enlarge Logistics room study" })).toBeVisible();
 });

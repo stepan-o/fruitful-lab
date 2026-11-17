@@ -78,10 +78,12 @@ def render_proposal(root, out, intro_html):
                   f'<defs><clipPath id="clip-{key}"><rect x="{vx}" y="{vy}" width="{vw}" height="{vh}"/></clipPath></defs>'
                   f'<g clip-path="url(#clip-{key})"><use href="#shell"/>{shapes}{"".join(tags)}<circle class="work-mark" cx="{sx}" cy="{sy}" r="2"/>'
                   f'</g></svg>')
+        atlas_room = 'conveyor' if key == 'forge' else key
         details.append(f'<section class="room-sheet" data-room="{key}"{" hidden" if key!="security" else ""}>'
                        f'<h3>{name}</h3><p>{escape(room["volume"])}</p>{detail}'
                        f'<p class="key">Gold tags locate build objects. The cyan dot marks an operator or actor position.</p>'
                        f'<p>{escape(room["blocking"])}</p><div class="art-strip">{"".join(map(photo,room["art"]))}</div>'
+                       f'<p><a href="/stepanoskin/loopforge/design?atlasRoom={atlas_room}#supervisor-rooms">Supervisor interactions in {name} →</a></p>'
                        f'<ol class="asset-list">{"".join(rows)}</ol></section>')
     page = (root/'factory-layout-proposal.html').read_text()
     for tag, value in [('<!--APPROVED_INTRO-->', intro_html), ('<!--OBJECT_MARKS-->', ''.join(plan)),

@@ -1,13 +1,13 @@
 # Loopforge supervisor scene library
 
-6 October 2026 · The Game / The supervisors · research and implementation record
+Original research, 6 October 2026 · Updated floor proposal, 17 November 2026
 
 ## Scope and checklist
 
 - [x] Inspect original character bible, room art, interaction art and current original simulation rules.
 - [x] Preserve the edited story bible and first-shift information boundary: neither player nor workforce knows the replacement plan at entry.
 - [x] Map 62 existing paintings, all 30 supervisor/room cells and all ten supervisor pairs.
-- [x] Add concise introductions, strengths, pressure and proposed refusal paths to the existing cast chapter.
+- [x] Add concise introductions, strengths, pressure and proposed refusal paths for each supervisor.
 - [x] Show a single event painting under authorized and independent-action readings.
 - [x] Verify responsive media, desktop/phone layouts, keyboard interactions and image inspection.
 - [x] Complete repository checks.
@@ -23,7 +23,7 @@ Assigned scope: `apps/lab` Loopforge overview and `docs/loopforge`. Branch `code
 - Current original mechanics: `backend/sim_sim/config/sim_sim_1.default.json` and `backend/sim_sim/kernel/state.py`, especially outcome tables, critical-event handling and conflict resolution.
 - Historical prose specification: `docs/sim_sim/sim_sim_spec_v1.md`, sections 8–12. Current code takes precedence where they differ.
 - Art inventory: [SUPERVISOR_ART_SOURCES.json](SUPERVISOR_ART_SOURCES.json). Every source path, original SHA-256 and dimension is recorded. All 62 room/event/pair images were visually reviewed in six contact sheets, with larger inspection for chosen examples.
-- Public destination: `/stepanoskin/loopforge/overview/the-cast`, within the existing eight-chapter game overview. Chapter navigation now names it “The supervisors.”
+- [Game Design → Supervisor × room](/stepanoskin/loopforge/design#supervisor-rooms) follows Character dramaturgy. Select a cell for its original scenes, proposed blocking and the corresponding objects on the floor plan.
 - These are original concept scenes, not screenshots of the website teaching prototype. Public copy identifies rule-based outcomes, art studies and proposed behavior.
 - The introduction scenes and refusal paths are new writing proposals. They do not assign secret knowledge about Brain 2.0 to a supervisor or disclose the replacement plan to readers of this chapter.
 
@@ -33,7 +33,7 @@ Assigned scope: `apps/lab` Loopforge overview and `docs/loopforge`. Branch `code
 2. Stiletto and Thrum have Theatre art but no dedicated Theatre outcome-table branch. Witch has illustrated Theatre failure variants, while her modeled Theatre outcome repairs first and produces slowly. These are identified as art studies rather than invented mechanical rules.
 3. Thrum’s Weaving scene can represent routine preparation or Harmonic Dissolution; there is no separately named dissolution painting. Witch’s experiment paintings can represent System Refactor, but the filename itself does not establish the mechanic.
 4. Six paintings cover four unique confrontational pairs: Limen/Stiletto, Limen/Cathexis, Stiletto/Cathexis and Stiletto/Witch. The first three are modeled hostile pairs; Stiletto/Witch is grounded in art and the character bible but is not in that hostile-pair list. Missing joint scenes use explicitly labeled separate references.
-5. Native rooms are Security/Limen, Conveyor/Stiletto, Theatre/Cathexis, Brewery/Witch and Weaving/Thrum. Cortex is locked in the original; new supervisor/Cortex effects remain unassigned.
+5. Native rooms are Security/Limen, Conveyor/Stiletto, Theatre/Cathexis, Brewery/Witch and Weaving/Thrum. Cortex was locked in the original. The floor proposal now stages five commissioning interactions there. Three named Cortex room paintings accompany those proposals.
 6. The original model’s “success” is a production classification, not a moral or safety judgment. Stiletto can deliver output while causing harm; Thrum can relieve stress while producing nothing.
 
 ## Lead-ins and behavior

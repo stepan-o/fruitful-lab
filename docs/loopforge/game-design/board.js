@@ -66,9 +66,56 @@
     document.querySelectorAll('[data-adviser-case]').forEach(el=>el.hidden=el.dataset.adviserCase!==c.id);
     if(notify)announce(c.name+' staffing proposal selected');
   }
+  const atlasFrame = document.getElementById('supervisor-atlas-frame');
+  if (atlasFrame) {
+    const artDialog = document.getElementById('supervisor-art-dialog');
+    const image = artDialog.querySelector('img');
+    let opener;
+    let observer;
+    atlasFrame.addEventListener('supervisor:inspect', event => {
+      const {title, src, alt} = event.detail;
+      opener = atlasFrame.contentDocument.activeElement;
+      artDialog.querySelector('h3').textContent = title;
+      artDialog.querySelector('p').textContent = alt;
+      image.src = src;
+      image.alt = alt;
+      artDialog.showModal();
+      event.preventDefault();
+    });
+    artDialog.querySelector('button').addEventListener('click', () => artDialog.close());
+    artDialog.addEventListener('click', event => { if (event.target === artDialog) artDialog.close(); });
+    artDialog.addEventListener('close', () => { image.removeAttribute('src'); opener?.focus({preventScroll:true}); });
+    atlasFrame.addEventListener('load', () => {
+      const doc = atlasFrame.contentDocument;
+      const root = doc?.getElementById('supervisor-atlas-root');
+      if (!root) return;
+      observer?.disconnect();
+      observer = new ResizeObserver(() => {
+        const height = Math.ceil(root.getBoundingClientRect().height);
+        if (height) atlasFrame.style.height = height + 'px';
+      });
+      observer.observe(root);
+      doc.addEventListener('click', event => {
+        const link = event.target.closest('a[href^="#"]');
+        const target = link && doc.getElementById(link.hash.slice(1));
+        if (!target) return;
+        event.preventDefault();
+        requestAnimationFrame(() => {
+          target.focus({preventScroll:true});
+          target.scrollIntoView({block:'start'});
+        });
+      });
+    });
+  }
   function openPanel(id,updateHash=true){
     const panel=document.getElementById(id);if(!panel||!panel.classList.contains('panel'))return;
     document.querySelectorAll('.panel').forEach(el=>el.hidden=el.id!==id);
+    if (id === 'supervisor-rooms' && atlasFrame && !atlasFrame.hasAttribute('src')) {
+      const src = new URL(atlasFrame.dataset.src, location.origin);
+      const room = new URLSearchParams(location.search).get('atlasRoom');
+      if (room) src.searchParams.set('room', room);
+      atlasFrame.src = src.href;
+    }
     document.dispatchEvent(new Event('design:panelchange'));
     document.querySelectorAll('[data-panel]').forEach(el=>el.setAttribute('aria-current',String(el.dataset.panel===id)));
     if(updateHash)history.replaceState(null,'','#'+id);

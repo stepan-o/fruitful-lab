@@ -75,3 +75,12 @@
 .table-scroll:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
 .table-scroll table{width:100%;min-width:32rem;border-collapse:collapse}
 .table-scroll th,.table-scroll td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid var(--line)}
+
+#supervisor-atlas-frame{width:100%;display:block;border:0;min-height:32rem;background:#101a18}
+#supervisor-art-dialog{box-sizing:border-box;width:min(96vw,1550px);max-height:94dvh;overflow:auto;margin:auto;padding:12px 18px;color:#ece5d1;background:#101a18;border:1px solid #a69b72}
+#supervisor-art-dialog::backdrop{background:#040a0ef5}
+#supervisor-art-dialog>div{display:flex;align-items:center;justify-content:space-between;gap:16px}
+#supervisor-art-dialog h3{font-size:1.2rem;margin:0}
+#supervisor-art-dialog button{color:inherit;background:transparent;border:1px solid #8b917d;padding:10px 14px;min-height:44px}
+#supervisor-art-dialog img{display:block;max-width:100%;max-height:70dvh;object-fit:contain;margin:12px auto}
+#supervisor-art-dialog p{font-size:.9rem}

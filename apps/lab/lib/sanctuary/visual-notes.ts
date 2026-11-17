@@ -44,6 +44,15 @@ function sourceNote(asset:string,alt:string,caption:string):VisualNote {
 
 /** Internal art-direction notebook. Descriptions and motion rationale are not public reader content. */
 export function chapterVisualNotes(chapter:Chapter,sources:EvidenceSource[]):VisualNote[] {
+ if (chapter.id === "marvel-rivals") return [
+  {id:"scene-marvel-rivals",title:"Jeff in the dolphin disguise",kind:"Editorial visual citation",
+   description:"The complete costume frame opens the chapter alongside three launch figures and a credited caption.",
+   reading:"Readers can recognize the shark inside his paid disguise before encountering the terms of buying it.",references:sourceLinks(sources)},
+  {id:"diagram-marvel-rivals",title:"The gallery and the wardrobe",kind:"Interface comparison and purchase model",
+   description:"Three selectable screens compare the shape of the roster. The receipt changes with the selected Jeff offer and the reader’s earned balance.",
+   reading:"The interface changes with the task, and the same bundle price can require different amounts of additional currency.",
+   behavior:"Only the selected screen mounts. The film opens on request. The receipt can be read and used without motion.",references:sourceLinks(sources)},
+ ];
  if(chapter.id==="three-ecosystems") return [
   {id:"scene-three-ecosystems",title:"Three invitations to play",kind:"Credited promotional portfolio",description:"Official Call of Duty, Diablo IV and Candy Crush posters appear beside their original studio credits; gameplay views mount only when requested.",reading:"Recognizable franchises identify the distinct businesses Microsoft acquired before King’s full chapter follows.",behavior:"Existing responsive cards and an optional gameplay view. Publisher images are not recolored or animated.",boundary:"These are selected franchises, not a valuation assigned to each part of the acquisition. Rights and analytical purposes remain in the source register.",references:sourceLinks(sources)},
   {id:"diagram-three-ecosystems",title:"Three businesses around games",kind:"Reported financial histories and editorial visual citations",description:"The PlayStation/Xbox/NVIDIA selector follows the PS5 launch anecdote. Source-backed charts retain fiscal boundaries, optional category/YoY views and accessible year details. The credited Activision/Blizzard/King portfolio follows Microsoft’s acquisition; publisher copy counts remain separate from revenue.",reading:"The comparison distinguishes business positions and the work that sustains them. It does not rank market shares or attribute all non-console revenue to subscriptions.",behavior:"Existing selectable chart and poster components; images remain chapter-scoped and lazy. The single subscription inscription observes visibility and motion preferences.",references:sourceLinks(sources)},

@@ -1,0 +1,62 @@
+{
+  "rivals-dolphin": {
+    "title": "Jeff in the Incognito Dolphin costume",
+    "image": "https://esportsinsider.com/wp-content/uploads/2025/05/Jeff--large.jpg",
+    "alt": "Jeff’s blue shark face peeks out of a fluffy pink dolphin costume.",
+    "sourceUrl": "https://esportsinsider.com/best-marvel-rivals-skins",
+    "source": "Antonia Haynes, Esports Insider. The image is credited to NetEase Games.",
+    "sourceDate": "2025 retrospective on the launch costume",
+    "credit": "NetEase Games via Esports Insider",
+    "purpose": "Shows the two animals in the same silhouette. Recognizing Jeff inside the disguise is the joke the costume sells."
+  },
+  "rivals-wheel": {
+    "title": "Hero gallery concept",
+    "image": "https://cdn.mos.cms.futurecdn.net/m45fTftTDqCUaJGvNnPqvH.png",
+    "alt": "Development concept for Hulk’s hero gallery, with the roster arranged around a wheel.",
+    "sourceUrl": "https://www.pcgamer.com/games/fps/marvel-rivals-hero-gallery-ui-used-to-look-a-lot-cooler-but-also-a-lot-harder-to-use/",
+    "source": "NetEase Games, Art Vision Vol. 01. Frame published by Justin Wagner, PC Gamer.",
+    "sourceDate": "21 April 2025",
+    "credit": "NetEase Games via PC Gamer",
+    "purpose": "Examines the space given to the featured hero in an early radial layout."
+  },
+  "rivals-gallery": {
+    "title": "Heroes gallery",
+    "image": "https://interfaceingame.com/wp-content/uploads/marvel-rivals/marvel-rivals-heroes.png",
+    "alt": "The Heroes gallery organizes selectable characters in a grid of illustrated portrait cards.",
+    "sourceUrl": "https://interfaceingame.com/screenshots/marvel-rivals-heroes/",
+    "source": "Interface In Game, Heroes. The archive names no individual capture author.",
+    "sourceDate": "Archive of the December 2024 release. Capture date unspecified.",
+    "credit": "Marvel / NetEase Games · Interface In Game",
+    "purpose": "Compares the shipped grid with the development wheel and pre-match arc."
+  },
+  "rivals-selection": {
+    "title": "Pre-match hero selection",
+    "image": "https://interfaceingame.com/wp-content/uploads/marvel-rivals/marvel-rivals-hero-selection.png",
+    "alt": "The pre-match hero select screen arranges hero portraits along an arc beside the featured character.",
+    "sourceUrl": "https://interfaceingame.com/screenshots/marvel-rivals-hero-selection/",
+    "source": "Interface In Game, Hero Selection. The archive names no individual capture author.",
+    "sourceDate": "Archive of the December 2024 release. Capture date unspecified.",
+    "credit": "Marvel / NetEase Games · Interface In Game",
+    "purpose": "Shows the curved selector surviving in the screen used to assemble a team."
+  },
+  "rivals-van-dyne": {
+    "title": "Van Dyne’s anniversary offer",
+    "image": "https://r.res.easebar.com/pic/20251203/163ce7bb-ca62-4833-93bd-72b7c9fd42be.png",
+    "alt": "Publisher illustration for the Van Dyne’s anniversary event featuring Psylocke’s Daring Daifuku costume.",
+    "sourceUrl": "https://www.marvelrivals.com/gameupdate/20251203/41548_1274523.html",
+    "source": "Marvel Rivals team, December 4 update announcement, first event illustration.",
+    "sourceDate": "3 December 2025",
+    "credit": "Marvel / NetEase Games",
+    "purpose": "Identifies the specific limited-time costume offer whose minimum and maximum outlay the chapter compares."
+  },
+  "rivals-incursion": {
+    "title": "The Incursion battle pass",
+    "image": "https://r.res.easebar.com/pic/20261111/7b4bcbca-f070-4ffc-a093-9f73ae952437.png",
+    "alt": "Official illustration presenting The Incursion, the Season 11 costume pass.",
+    "sourceUrl": "https://www.marvelrivals.com/gameupdate/20261111/41548_1319332.html",
+    "source": "Marvel Rivals team, Season 11 launch notes, battle-pass illustration.",
+    "sourceDate": "11 November 2026",
+    "credit": "Marvel / NetEase Games",
+    "purpose": "Shows how the season presents costumes as a collection alongside a separately playable new hero."
+  }
+}

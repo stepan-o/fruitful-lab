@@ -305,3 +305,21 @@ local research archive; full-composition build inputs are capped at 1200px. No b
 The images join the existing immutable `sanctuary-arcade` pack. Responsive WebPs
 are lazy loaded; inspection mounts only on demand. The historical prose and all
 existing illustrations remain unchanged.
+
+## Marvel Rivals · reviewed 17 November 2026
+
+The six stills identify a costume, compare three layouts for selecting heroes,
+and examine two dated seasonal offers. Each full frame has a source, credit,
+individual analytical purpose and review date in the public register. The
+selection includes NetEase’s own update illustrations, NetEase images credited
+by Esports Insider and PC Gamer, and two Interface In Game screen captures. The
+archive names no individual capture author. The chapter uses the project's
+limited criticism/review basis. Source access and attribution alone confer no
+general image licence. The external media and our original diagrams have no
+role in Loopforge. All stills can be withdrawn independently.
+
+The optional Art Vision film uses the official channel’s YouTube player and has
+a direct channel link. No footage, soundtrack or player thumbnail is extracted.
+See [NetEase’s terms](https://protocol.unisdk.easebar.com/release/latest_v487.html),
+[YouTube’s player terms](https://ca.youtube.com/t/terms) and
+[Canadian Copyright Act s.29.1](https://laws-lois.justice.gc.ca/eng/acts/C-42/section-29.1.html).

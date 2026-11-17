@@ -235,7 +235,7 @@ for(const a of [...floor.anchors,...floor.stations.map(s=>({name:s.name,scene:s.
   const row=byId('anchors').insertRow();
   for(const v of [a.name,a.scene.join(', '),a.floor.join(', ')])row.insertCell().textContent=v;
 }
-let width=1,height=1,scale=1,center=[0,0],time=0,playing=true,whole=false,lastFrame=performance.now(),lastVoice='',frame=0;
+let width=1,height=1,scale=1,center=[0,0],time=0,playing=true,whole=false,lastFrame=null,lastVoice='',frame=0;
 byId('scrub').max=score.duration;
 const timer=t=>[Math.floor(t/60),String(Math.floor(t%60)).padStart(2,'0')].join(':');
 const project=([x,y])=>[(x-center[0])*scale+width/2,(y-center[1])*scale+height/2];
@@ -449,14 +449,14 @@ function draw(){
   byId('play').textContent=playing?'Pause':time>=score.duration?'Replay':'Play';
 }
 function render(now){
-  if(playing)time=Math.min(score.duration,time+(now-lastFrame)/1000);
+  if(playing && lastFrame !== null)time=Math.min(score.duration,time+(now-lastFrame)/1000);
   if(time>=score.duration)playing=false;
   lastFrame=now;draw();
   frame=playing?requestAnimationFrame(render):0;
 }
 function update(t,run=playing){
   cancelAnimationFrame(frame);time=Math.max(0,Math.min(score.duration,t));playing=run;
-  lastFrame=performance.now();draw();frame=playing?requestAnimationFrame(render):0;
+  lastFrame=null;draw();frame=playing?requestAnimationFrame(render):0;
 }
 byId('play').onclick=()=>update(time>=score.duration?0:time,!playing);
 byId('restart').onclick=()=>update(0,true);

@@ -149,15 +149,33 @@ const bell=s.beats.find(b=>b.name==='End of shift').at;
 const moving=(id,t)=>samplePath(s.tracks[id],t).moving;
 const position=(id,t)=>samplePath(s.tracks[id],t).p;
 const between=(a,b,t)=>Math.hypot(...position(a,t).map((v,i)=>v-position(b,t)[i]));
-const release=s.release;
-assert(s.departures.every(w=>!moving(w.id,bell+1)),'wait for the supervisor to release the crew');
-assert.equal(s.departures.filter(w=>moving(w.id,release+1)).length,6);
-const endSpeech=s.speech.filter(q=>q.start>=bell && q.start<release+1);
+const betweenPositions=(a,b)=>Math.hypot(...a.map((v,i)=>v-b[i]));
+const resume=s.resume;
+assert(s.departures.every(w=>!moving(w.id,bell-.01)),'the crew is still at work before the bell');
+assert.equal(s.departures.filter(w=>moving(w.id,bell+1)).length,6,
+  'six workers begin leaving while mae and kit shut down');
+assert(s.departures.every(w=>moving(w.id,s.call-.01)),'the shout catches all eight in motion');
+for(const worker of s.departures){
+  assert(position(worker.id,s.call)[1]<position(worker.id,bell)[1]-2,
+    worker.id+' has visibly left the station before the shout');
+  assert(!moving(worker.id,s.call+.4),worker.id+' briefly freezes at the shout');
+  assert(worker.at-worker.brake>=.7 && worker.at-worker.brake<=1.3,
+    worker.id+' recovers after a momentary freeze');
+  assert(moving(worker.id,worker.at+.01),worker.id+' resumes during the replies');
+  assert(worker.at<s.dismissal-3,worker.id+' is already leaving before STILETTO dismisses them');
+  for(let t=worker.at+.01;t<s.dismissal+2.6;t+=.1){
+    const pace=betweenPositions(position(worker.id,t),position(worker.id,t+.01))/.01;
+    assert(pace>=.8-1e-8,worker.id+' keeps a visible walking pace through the exchange');
+  }
+}
+assert(s.departures.every(w=>moving(w.id,s.call+1.5)),
+  'all eight are moving again as the replies overlap');
+const endSpeech=s.speech.filter(q=>q.start>=bell && q.start<s.dismissal+1);
 const [bellCue,...endCall]=endSpeech;
 assert.equal(bellCue.speaker,'BELL');
 assert.equal(bellCue.start,bell);
-assert(bellCue.end-bellCue.start>=1 && bellCue.end<=endCall[0].start,
-  'show the bell on its own before STILETTO speaks');
+assert(bellCue.end-bellCue.start>=1 && endCall[0].start-bellCue.start>=2.5,
+  'give the bell and the walkout time to land before STILETTO speaks');
 assert.equal(endCall.length,6);
 assert.equal(endCall[0].speaker,'STILETTO');
 assert.equal(endCall.at(-1).speaker,'STILETTO');
@@ -165,19 +183,33 @@ assert.match(endCall.at(-1).text,/SHIFT’S OVER/);
 const replies=endCall.slice(1,5);
 assert(Math.min(...replies.map(q=>q.end))-Math.max(...replies.map(q=>q.start))>=2.5,
   'all four replies share a readable overlap before dismissal');
-for(const [id,off] of Object.entries(s.shutdown)){
-  assert(!moving(id,off-.01) && !moving(id,off+.01),id+' finishes at the controls before release');
-  const departure=s.departures.find(worker=>worker.id===id);
-  assert(off<release && moving(id,departure.at+.01));
+for(const reply of replies){
+  assert(moving(reply.speaker,reply.start+.05),reply.speaker+' answers while walking');
 }
-assert(s.departures.every(w=>moving(w.id,release+2.5)));
+assert(s.departures.every(w=>moving(w.id,s.dismissal+.1)),
+  'STILETTO calls the dismissal after a crew that keeps walking');
+for(const [id,off] of Object.entries(s.shutdown)){
+  assert(!moving(id,off-.01) && !moving(id,off+.01),id+' finishes at the controls before walking away');
+  const departure=s.departures.find(worker=>worker.id===id);
+  assert(off<resume && moving(id,departure.at+.01));
+}
+assert(s.departures.every(w=>w.at<=resume+.25),'the brief freeze resolves across the whole crew');
 const lastCheck=s.tallies.at(-1);
 for(const [i,t] of s.tallies.entries()){
   assert.deepEqual(position('ed',t),position('ed',bell),'ed stays at the register');
-  if(i)assert(t-s.tallies[i-1]>=1.12-1e-8);
+  if(i)assert(t-s.tallies[i-1]>=.45-1e-8);
   assert(s.departures.some(w=>between('ed',w.id,t)<1.5),'the worker passes the clerk');
 }
-assert(lastCheck-s.tallies[0]<9,'keep the single reader occupied during the release');
+assert(lastCheck-s.tallies[0]<4,'complete all eight checkouts briskly');
+const ending=s.speech.filter(q=>q.start>=bell);
+let spokenThrough=ending[0].end;
+for(const line of ending.slice(1)){
+  const gap=s.editTime(line.start)-s.editTime(spokenThrough);
+  assert(gap<1.4,'keep the ending dialogue connected');
+  if(line.start>s.dismissal)assert(gap<1,'handoff straight from dismissal to register to yard');
+  spokenThrough=Math.max(spokenThrough,line.end);
+}
+assert(s.duration-s.editTime(bell)<28,'keep the whole bell-to-blackout ending compact');
 assert(moving('LIMEN',lastCheck+1.8) && !moving('ed',lastCheck+1.8));
 const [morningCut,cut]=s.cuts;
 assert.equal(s.cuts.length,2);

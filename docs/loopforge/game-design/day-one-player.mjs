@@ -226,7 +226,8 @@ function equipment(w,view){
     }else for(let i=.35;i<fw;i+=.55)line([[x+i,y+.1],[x+i,y+h-.1]],'#c3b38f',2);
     if(q.kind==='machine'){
       box(cx-.66,y-.06,1.32,.38,'#34413f','#baa98b');
-      box(cx+.20,y+.01,.20,.16,'#bdcbae');
+      const stopped=w>=(q.id==='intake'?score.shutdown.mae:score.shutdown.kit);
+      box(cx+.20,y+.01,.20,.16,stopped?'#56615a':'#bdcbae');
       if(q.id==='forge'){
         for(const px of [x+.12,x+fw-.34])box(px,y+.65,.23,h-1,'#b7a37a','#615d54');
         box(x+.40,y+h-.66,fw-.8,.34,'#353d3c','#b6a589');
@@ -252,8 +253,15 @@ function brains(w){
   }
 }
 function facing(id,pose,w,positions){
-  if(pose.moving)return Math.atan2(pose.to[1]-pose.from[1],pose.to[0]-pose.from[0]);
+  const leaving=score.departures.find(worker=>worker.id===id);
   const towards=(other)=>Math.atan2(positions[other].p[1]-pose.p[1],positions[other].p[0]-pose.p[0]);
+  if(leaving && w>=leaving.brake && w<leaving.at){
+    if(id==='sam')return Math.atan2(floor.stations[0].y-pose.p[1],floor.stations[0].x-pose.p[0]);
+    if(id==='lou')return towards('ben');
+    const turn=Math.min(1,(w-leaving.brake)/.3);
+    return -Math.PI/2+(towards('STILETTO')+Math.PI/2)*turn;
+  }
+  if(pose.moving)return Math.atan2(pose.to[1]-pose.from[1],pose.to[0]-pose.from[0]);
   if(w>=score.yard && id==='ed')return towards('max');
   if(w>130&&w<140&&id==='STILETTO')return towards('LIMEN');
   if(w>130&&w<140&&id==='LIMEN')return towards('max');
@@ -315,7 +323,7 @@ function drawCast(w,voices){
       }
     }
     if(boss){
-      const extent=cue&&/strikes|blades/.test(cue.label)?1.12:.56;
+      const extent=cue&&/strikes|blades|catches|waves/.test(cue.label)?1.12:.56;
       const hands=id==='LIMEN'?[1]:[-1,1];
       for(const d of hands){
         const grip=offset(.12,d*.44);
@@ -413,6 +421,8 @@ function draw(){
   let view=hallView?'hall':beat.view;
   if(!hallView && beat.view==='entrance' && w>=score.cuts[0].to)view='gate';
   if(inspecting)view=selectedObject.room==='Security'?'securityObjects':selectedObject.room==='Conveyor'?'conveyorObjects':selectedObject.room==='Factory entrance'?'entrance':'hall';
+  if(!hallView && !inspecting && w>=score.bell-1.1 && w<score.bell)view='release';
+  if(!hallView && !inspecting && beat.name==='The register' && w<score.dismissal+2.6)view='wide';
   if(!hallView && !inspecting && beat.view==='line' && w>=40.5 && w<43.7)view='hall';
   chooseCamera(view,w);
   drawBuilding(w,view);equipment(w,view);brains(w);drawCast(w,voices);
@@ -421,15 +431,17 @@ function draw(){
   if(signature!==lastVoice){
     lastVoice=signature;byId('voices').replaceChildren(...voices.map(v=>{
       const el=document.createElement('div');el.className='bubble';el.style.setProperty('--voice',colours[v.speaker]);
+      if(v.speaker==='BELL')el.classList.add('bell-cue');
+      if(v.start===score.call)el.classList.add('shout-cue');
       const name=document.createElement('b');name.textContent=v.speaker+(v.aside?' · '+v.aside:'');
       const words=document.createElement('span');words.textContent=v.text;el.append(name,words);return el;
     }));
   }
   const actions=score.cues.filter(q=>q.start<=w&&w<q.end);
   byId('action').textContent=actions.filter(q=>q.actor!=='LIMEN'||actions.length<=2||beat.view==='gate'||beat.view==='passage').slice(-2).map(q=>q.actor+' '+q.label).join(' · ');
-  if(w>=score.end-3.4)byId('action').textContent='Factory lights out';
+  if(w>=score.yard+10.5)byId('action').textContent='Factory lights out';
   const completed=score.products.filter(b=>b.keys.at(-1).t<=w).length;
-  byId('count').textContent=w+1e-8>=179.8?score.tallies.filter(t=>t<=w).length+' / 8 checked out':completed+' / 3 cortexes';
+  byId('count').textContent=w+1e-8>=score.bell?score.tallies.filter(t=>t<=w).length+' / 8 checked out':completed+' / 3 cortexes';
   const edit=score.cuts.find(c=>w>=c.to&&w<c.to+3);
   byId('cut').hidden=!edit;
   if(edit)byId('cut').textContent='Cut · '+edit.label+' · +'+Math.round(edit.to-edit.at)+' s';

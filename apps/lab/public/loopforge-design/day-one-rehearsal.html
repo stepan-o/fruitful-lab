@@ -8,7 +8,7 @@ header{margin-bottom:16px}.back,.edition,.status,.rate,output,caption{font:12px/
 button,select{font:inherit;font-size:13px;line-height:1.2;font-weight:600;cursor:pointer;border:1px solid #53665d;border-radius:4px;background:#20332f;color:var(--ink);padding:9px 13px;min-height:36px}button:hover,select:hover{background:#324c44}button:focus-visible,select:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #ffcb69;outline-offset:2px}
 #stage{height:clamp(310px,50vh,535px);position:relative;background:#182822;overflow:hidden}canvas,#atlas{width:100%;height:100%;display:block}#atlas{position:absolute;inset:0;background:#101b19;cursor:zoom-in}#atlas svg{display:block;width:100%;height:100%}[hidden]{display:none!important}
 .stamp{position:absolute;bottom:10px;left:12px;background:#1c2725;color:#efcf89;border:1px solid #9c906e;padding:5px 9px;font:12px ui-monospace,monospace}
-#voices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;min-height:83px;padding:8px 12px;background:#12201e;border-top:1px solid var(--edge);align-content:center}
+#voices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;min-height:83px;padding:8px 12px;background:#12201e;border-bottom:1px solid var(--edge);align-content:center}
 .bubble{--voice:var(--gold);padding:7px 12px;border:1px solid #465951;border-left:3px solid var(--voice);border-radius:3px 9px 9px 9px;background:#22352f;line-height:1.35}.bubble:only-child{grid-column:1/-1}.bubble:first-child:nth-last-child(2),.bubble:first-child:nth-last-child(2)~.bubble{grid-column:span 2}.bubble b{font:700 11px ui-monospace,monospace;letter-spacing:.06em;color:var(--voice);display:block;margin-bottom:2px}.bubble span{font-size:clamp(15px,1.5vw,19px)}
 .status{border-top:1px solid #35483f;padding:7px 14px;color:#c0d1c6;min-height:32px}.status span:last-child{white-space:nowrap;color:var(--gold)}.transport{margin-top:12px}.buttons{justify-content:flex-start}.buttons output{margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}.rate{color:var(--gold)}#play{background:#e4ce93;color:#13231f;border-color:#dcc182;min-width:75px}#scrub{width:100%;accent-color:var(--gold);cursor:ew-resize;margin:10px 0;height:18px}
 details{border-top:1px solid var(--edge);margin-top:6px;color:var(--soft)}summary{padding:12px 0;cursor:pointer}.notes{max-width:76ch;line-height:1.5;font-size:14px}.notes table{border-collapse:collapse;width:100%}td,th{padding:5px;text-align:left;border-bottom:1px solid var(--edge)}caption{text-align:left;color:var(--gold);margin:5px}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(100%)}
@@ -26,11 +26,16 @@ details{border-top:1px solid var(--edge);margin-top:6px;color:var(--soft)}summar
 @media(max-width:620px){.views button{font-size:12px;padding:5px}.bar h2{min-width:0}.views{max-width:60%}}
 
 #hallNote{margin:0;padding:8px 14px;color:var(--soft);font-size:13px;border-top:1px solid var(--edge)}
+
+.bubble.bell-cue{background:#393322;border-color:#b6a76b;border-left-color:#f1d27a}
+.bubble.shout-cue{background:#3c2823;border-color:#b9745b;border-left-color:#ff9273}
+.bubble.bell-cue span,.bubble.shout-cue span{font-weight:750;font-size:clamp(18px,2vw,24px);line-height:1.15}
 </style></head>
 <body><main>
 <header><div><a class="back" href="/stepanoskin/loopforge/design#floor-layout">← Design board</a> <span aria-hidden="true">·</span> <a class="back" href="/loopforge-design/factory-layout-proposal.html">Proposed factory layout ↗</a><h1>Day one<span> / </span>Factory floor</h1></div><div class="edition">Loopforge <b>2D staging rehearsal</b></div></header>
 <section class="monitor" aria-label="Live factory floor">
 <div class="bar"><h2 id="beat">The morning walk</h2><div class="views"><button id="hallView" aria-pressed="false">Forge hall</button><button id="buildView" aria-pressed="false" aria-controls="buildPanel">3D build markers</button><button id="view" aria-pressed="false">Whole factory ↗</button></div></div>
+<div id="voices" aria-label="Current speech"></div>
 <div id="stage"><canvas aria-label="Animated overhead plan with named workers, facing, routes and machinery"></canvas><div id="pins" hidden></div><div id="atlas" hidden><svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1040" viewBox="0 0 1200 1040" role="img" aria-labelledby="title desc">
 <title id="title">Loopforge — continuous first-floor plan</title>
 <desc id="desc">Top-down measured design plan, north up. Nine repacked zones fill one building with narrow pipe walls around Brewery and Cortex. Every hall has a fifteen-metre structural height. An eight-metre corridor links Security to Theatre. The six managed rooms are Security, Lattice Forge, Burn-in Theatre, Substrate Brewery, Weaving Gallery and Cortex Assembly. Only Security and Lattice Forge are open on turn one. Gold thresholds mark fourteen connections, including the new Security to Theatre corridor. Dashed plots are clear construction reserves; copper marks are prototype machinery. Pipe walls do not grant extra access.</desc>
@@ -52,17 +57,16 @@ details{border-top:1px solid var(--edge);margin-top:6px;color:var(--soft)}summar
 <p id="objectSize"></p><p id="objectBrief"></p>
 <a id="objectArt" href="/media/files/42d2f07b9d72f8ce0bc776641a06047304a1eab567f5ca9c3efd3dd31619560a.webp" target="_blank" rel="noopener">At the gate · concept art ↗</a>
 </section>
-<div id="voices" aria-label="Current speech"></div>
 <div class="status"><span id="action"></span><span id="count"></span></div>
 </section>
 <section class="transport" aria-label="Playback controls">
 <div class="buttons"><button id="play">Pause</button><button id="restart">Restart</button><label for="beatSelect" class="sr">Seek to beat</label><select id="beatSelect"></select><output id="clock"></output><span class="rate">1×</span></div>
 <label class="sr" for="scrub">Rehearsal time in seconds</label><input id="scrub" type="range" min="0" step="0.01" value="0">
 </section>
-<details id="notes"><summary>Staging notes and floor coordinates</summary><div class="notes"><p>max starts his impression on the crew’s first step. jo answers on the way through the Lobby. The cut comes between lines, and max answers bob as they reach Security. STILETTO starts her approach from the yard after the exterior shot. At final lens approval, check both frame edges through the opening exchange, then check that she has room to call ahead and pass LIMEN in stride. <a href="/media/loopforge-opening-storyboard/morning-1672.3cd92c950e1fadcc.webp">The morning walk · storyboard ↗</a></p><p>North is up. The full plan and the local view share metres. A ring marks the speaker. A short trail shows recent movement. Speech is placed on the reading rail below the floor so the cast stays visible.</p><p>At the gate the player sees the card skid under ed’s boot. bob is looking at LIMEN, and sam is attending to bob. STILETTO calls ahead while walking. LIMEN raises the gate in time for her to pass. lou’s aside at the count is addressed to ben. At the fourth check, STILETTO speaks across the doorway while LIMEN keeps the photograph beside max’s face.</p><p>Eight workers head for Security together. ed counts them as they pass his register. The second marked cut skips part of the walk through Dispatch to the south Lobby exit.</p><table><caption>3D scene metres → rehearsal floor metres</caption><thead><tr><th>Working position</th><th>Scene x, z</th><th>Floor x, y</th></tr></thead><tbody id="anchors"></tbody></table></div></details>
+<details id="notes"><summary>Staging notes and floor coordinates</summary><div class="notes"><p>max starts his impression on the crew’s first step. jo answers on the way through the Lobby. The cut comes between lines, and max answers bob as they reach Security. STILETTO starts her approach from the yard after the exterior shot. At final lens approval, check both frame edges through the opening exchange, then check that she has room to call ahead and pass LIMEN in stride. <a href="/media/loopforge-opening-storyboard/morning-1672.3cd92c950e1fadcc.webp">The morning walk · storyboard ↗</a></p><p>North is up. The full plan and the local view share metres. A ring marks the speaker. A short trail shows recent movement. Speech is placed on the reading rail above the floor so the cast stays visible.</p><p>At the gate the player sees the card skid under ed’s boot. bob is looking at LIMEN, and sam is attending to bob. STILETTO calls ahead while walking. LIMEN raises the gate in time for her to pass. lou’s aside at the count is addressed to ben. At the fourth check, STILETTO speaks across the doorway while LIMEN keeps the photograph beside max’s face.</p><p>Eight workers head for Security together. ed counts them as they pass his register. The second marked cut skips part of the walk through Dispatch to the south Lobby exit.</p><table><caption>3D scene metres → rehearsal floor metres</caption><thead><tr><th>Working position</th><th>Scene x, z</th><th>Floor x, y</th></tr></thead><tbody id="anchors"></tbody></table></div></details>
 </main><script id="score-data" type="application/json">{"floor": {"doorway": {"x": 125, "y": 127, "w": 6, "h": 2}, "fixtures": [{"id": "register", "name": "Register", "kind": "desk", "rect": {"x": 122.8, "y": 125, "w": 1.6, "h": 1}}, {"id": "checks", "name": "ID desk", "kind": "desk", "rect": {"x": 130.8, "y": 124.9, "w": 1.6, "h": 1}}, {"id": "grate", "name": "Drain grate", "kind": "drain", "rect": {"x": 123.7, "y": 123.4, "w": 1, "h": 0.6}}, {"id": "west-rail", "name": "Queue rail", "kind": "rail", "rect": {"x": 123.25, "y": 116.8, "w": 0.12, "h": 4.4}}, {"id": "east-rail", "name": "Queue rail", "kind": "rail", "rect": {"x": 130.25, "y": 116.8, "w": 0.12, "h": 4.4}}, {"id": "intake", "name": "Intake", "kind": "machine", "rect": {"x": 118, "y": 139, "w": 4, "h": 6}}, {"id": "wash", "name": "Wash", "kind": "machine", "rect": {"x": 122, "y": 139, "w": 4, "h": 6}}, {"id": "belt", "name": "Main belt", "kind": "machine", "rect": {"x": 126, "y": 139, "w": 4, "h": 6}}, {"id": "forge", "name": "Forge", "kind": "machine", "rect": {"x": 130, "y": 139, "w": 4, "h": 6}}, {"id": "output", "name": "Output", "kind": "rack", "rect": {"x": 134, "y": 139, "w": 7, "h": 6}}], "forgeHall": {"runs": [{"id": "delivery", "name": "Dispatch receiving road", "rect": {"x": 93, "y": 128, "w": 6, "h": 34}}, {"id": "transfer", "name": "Cross-hall transfer road", "rect": {"x": 82, "y": 156, "w": 78, "h": 6}}, {"id": "outbound", "name": "Outbound cart lane", "rect": {"x": 150, "y": 142, "w": 6, "h": 14}}, {"id": "staff", "name": "Operator walk", "rect": {"x": 102, "y": 136, "w": 47, "h": 2.6}}], "installations": [{"id": "receiving", "name": "Receiving stillages", "rect": {"x": 83, "y": 136, "w": 9, "h": 14}, "height": 2.2, "build": "Two rows of cradle bins face the Dispatch road. Forks approach from the east and pick up empty frames on the return trip."}, {"id": "infeed", "name": "Tray accumulator", "rect": {"x": 100, "y": 139, "w": 18, "h": 6}, "height": 1.25, "build": "Three gravity roller sections stage full trays from Dispatch. Align the final rollers with the Intake cradle."}, {"id": "transfer-table", "name": "Outbound transfer table", "rect": {"x": 141, "y": 139, "w": 9, "h": 6}, "height": 1.05, "build": "The line discharges east into a cross-transfer table. Its cart end meets the outbound lane."}, {"id": "drive-shop", "name": "Drive overhaul bay", "rect": {"x": 84, "y": 165, "w": 20, "h": 14}, "height": 4.2, "build": "A trolley enters from the north road. Leave the middle free for a carrier between the workbenches. Sink a covered inspection pit along its centre."}, {"id": "jig-shop", "name": "Press tooling bay", "rect": {"x": 108, "y": 165, "w": 18, "h": 14}, "height": 4.8, "build": "Face the removable die cassette and jib toward the transfer road. Park spare dies along the side walls."}, {"id": "water-plant", "name": "Wash-water return", "rect": {"x": 101, "y": 149, "w": 17, "h": 5}, "height": 3.8, "build": "Return water from Wash through a floor trench to two settling tanks. Service both from the transfer road."}, {"id": "empty-racks", "name": "Empty cradle return", "rect": {"x": 130, "y": 149, "w": 16, "h": 5}, "height": 2.1, "build": "Stack the empty carriers on low return rails. A tug can collect them from the south road for the next intake delivery."}], "crane": {"name": "Bridge crane", "rect": {"x": 101, "y": 135, "w": 49, "h": 20}, "base": 9, "height": 2.4, "bridgeX": 139, "build": "Two longitudinal runways sit on paired column rows. Span the working line with a moving bridge and transverse hoist for roller frames, the drive and press dies."}, "columns": [{"x": 101, "y": 134.65, "w": 0.6, "h": 0.6}, {"x": 101, "y": 154.65, "w": 0.6, "h": 0.6}, {"x": 110, "y": 134.65, "w": 0.6, "h": 0.6}, {"x": 110, "y": 154.65, "w": 0.6, "h": 0.6}, {"x": 115, "y": 134.65, "w": 0.6, "h": 0.6}, {"x": 115, "y": 154.65, "w": 0.6, "h": 0.6}, {"x": 140, "y": 134.65, "w": 0.6, "h": 0.6}, {"x": 140, "y": 154.65, "w": 0.6, "h": 0.6}, {"x": 149, "y": 134.65, "w": 0.6, "h": 0.6}, {"x": 149, "y": 154.65, "w": 0.6, "h": 0.6}], "reserve": {"id": "forge-spare", "room": "conveyor", "label": "SPARE FITTING BAY", "rect": {"x": 131, "y": 165, "w": 25, "h": 15}}, "carrierY": 142}, "exit": {"x": 70, "y": 128, "w": 5}, "egress": [[128, 128], [128, 112], [115, 104], [112, 104], [80, 104], [72.5, 107], [72.5, 131]], "stations": [{"name": "Intake", "x": 119.7, "y": 138.4, "sceneMetres": [136.5, 105.8]}, {"name": "Wash", "x": 123.7, "y": 138.4, "sceneMetres": [140.5, 105.8]}, {"name": "Main belt", "x": 127.7, "y": 138.4, "sceneMetres": [144.5, 105.8]}, {"name": "Forge", "x": 131.7, "y": 138.4, "sceneMetres": [148.5, 105.8]}], "anchors": [{"name": "Supervisor at doorway", "scene": [131.1, 104.6], "floor": [129.6, 127.9]}, {"name": "Register clerk", "scene": [121.5, 107.2], "floor": [123.7, 124.3]}, {"name": "Second checking desk", "scene": [126.5, 107.2], "floor": [131.6, 124.2]}, {"name": "Output witness", "scene": [151.8, 106.8], "floor": [135.4, 138.3]}], "zones": [{"id": "weaving", "name": "Synapse Weaving Gallery", "short": "Weaving Gallery", "number": "05", "kind": "managed", "rect": {"x": 40, "y": 16, "w": 72, "h": 64}}, {"id": "brewery", "name": "Cognitive Substrate Brewery", "short": "Substrate Brewery", "number": "04", "kind": "managed", "rect": {"x": 112, "y": 16, "w": 96, "h": 80}}, {"id": "theatre", "name": "Burn-in Theatre", "short": "Burn-in Theatre", "number": "03", "kind": "managed", "rect": {"x": 212, "y": 16, "w": 68, "h": 88}}, {"id": "lobby", "name": "Lobby", "short": "Lobby", "number": "L", "kind": "support", "rect": {"x": 8, "y": 80, "w": 72, "h": 48}}, {"id": "dispatch", "name": "Dispatch", "short": "Dispatch", "number": "D", "kind": "support", "rect": {"x": 80, "y": 80, "w": 32, "h": 48}}, {"id": "security", "name": "Security", "short": "Security", "number": "01", "kind": "managed", "rect": {"x": 112, "y": 96, "w": 44, "h": 32}}, {"id": "conveyor", "name": "Synaptic Lattice Forge", "short": "Lattice Forge", "number": "02", "kind": "managed", "rect": {"x": 80, "y": 128, "w": 80, "h": 56}}, {"id": "cortex", "name": "Cortex Assembly", "short": "Cortex Assembly", "number": "06", "kind": "managed", "rect": {"x": 160, "y": 108, "w": 64, "h": 92}}, {"id": "shipping", "name": "Logistics", "short": "Logistics", "number": "S", "kind": "support", "rect": {"x": 228, "y": 104, "w": 52, "h": 96}}], "portals": [{"id": "lobby-dispatch", "rect": {"x": 79, "y": 101, "w": 2, "h": 6}}, {"id": "dispatch-security", "rect": {"x": 111, "y": 101, "w": 2, "h": 6}}, {"id": "security-conveyor", "rect": {"x": 125, "y": 127, "w": 6, "h": 2}}, {"id": "dispatch-conveyor", "rect": {"x": 93, "y": 127, "w": 6, "h": 2}}, {"id": "weaving-lobby", "rect": {"x": 61, "y": 79, "w": 6, "h": 2}}, {"id": "weaving-dispatch", "rect": {"x": 93, "y": 79, "w": 6, "h": 2}}, {"id": "weaving-brewery", "rect": {"x": 111, "y": 45, "w": 2, "h": 6}}, {"id": "brewery-security", "rect": {"x": 125, "y": 95, "w": 6, "h": 2}}, {"id": "brewery-theatre", "rect": {"x": 207, "y": 61, "w": 6, "h": 6}}, {"id": "security-cortex", "rect": {"x": 155, "y": 117, "w": 6, "h": 6}}, {"id": "conveyor-cortex", "rect": {"x": 159, "y": 157, "w": 2, "h": 6}}, {"id": "cortex-shipping", "rect": {"x": 223, "y": 157, "w": 6, "h": 6}}, {"id": "theatre-shipping", "rect": {"x": 261, "y": 103, "w": 6, "h": 2}}, {"id": "security-theatre", "rect": {"x": 155, "y": 96, "w": 58, "h": 8}}], "reserves": [{"id": "security-expansion", "room": "security", "label": "CLEARANCE EXPANSION", "rect": {"x": 136, "y": 100, "w": 16, "h": 24}}, {"id": "security-records", "room": "security", "label": "RECORDS", "rect": {"x": 115, "y": 98, "w": 15, "h": 10}}, {"id": "brew-feed", "room": "brewery", "label": "FEED PREPARATION", "rect": {"x": 124, "y": 20, "w": 19, "h": 48}}, {"id": "brew-process", "room": "brewery", "label": "PROCESS EXPANSION", "rect": {"x": 148, "y": 52, "w": 54, "h": 24}}, {"id": "brew-filter", "room": "brewery", "label": "FILTRATION / STORAGE", "rect": {"x": 178, "y": 20, "w": 26, "h": 27}}, {"id": "weave-west", "room": "weaving", "label": "LOOM HALL", "rect": {"x": 44, "y": 20, "w": 29, "h": 54}}, {"id": "weave-south", "room": "weaving", "label": "RIBBON HANDLING", "rect": {"x": 78, "y": 55, "w": 30, "h": 21}}, {"id": "theatre-west", "room": "theatre", "label": "AUDIENCE EXPANSION", "rect": {"x": 216, "y": 20, "w": 22, "h": 78}}, {"id": "theatre-east", "room": "theatre", "label": "CONDITIONING EXPANSION", "rect": {"x": 262, "y": 20, "w": 14, "h": 46}}, {"id": "theatre-east-south", "room": "theatre", "label": "CONDITIONING / SOUTH", "rect": {"x": 262, "y": 70, "w": 14, "h": 30}}, {"id": "theatre-south", "room": "theatre", "label": "ASSEMBLY / WAITING", "rect": {"x": 242, "y": 70, "w": 18, "h": 30}}, {"id": "cortex-east", "room": "cortex", "label": "ASSEMBLY EXPANSION", "rect": {"x": 190, "y": 116, "w": 29, "h": 50}}, {"id": "cortex-south", "room": "cortex", "label": "TEST / OUTFEED", "rect": {"x": 164, "y": 172, "w": 55, "h": 24}}, {"id": "cortex-north", "room": "cortex", "label": "SUBASSEMBLY", "rect": {"x": 164, "y": 116, "w": 22, "h": 16}}, {"id": "forge-spare", "room": "conveyor", "label": "SPARE FITTING BAY", "rect": {"x": 131, "y": 165, "w": 25, "h": 15}}], "aisles": [{"room": "brewery", "rect": {"x": 143, "y": 18, "w": 5, "h": 60}}, {"room": "weaving", "rect": {"x": 73, "y": 18, "w": 5, "h": 60}}, {"room": "theatre", "rect": {"x": 238, "y": 66, "w": 40, "h": 4}}, {"room": "cortex", "rect": {"x": 164, "y": 166, "w": 58, "h": 6}}, {"id": "delivery", "name": "Dispatch receiving road", "rect": {"x": 93, "y": 128, "w": 6, "h": 34}, "room": "conveyor"}, {"id": "transfer", "name": "Cross-hall transfer road", "rect": {"x": 82, "y": 156, "w": 78, "h": 6}, "room": "conveyor"}, {"id": "outbound", "name": "Outbound cart lane", "rect": {"x": 150, "y": 142, "w": 6, "h": 14}, "room": "conveyor"}, {"id": "staff", "name": "Operator walk", "rect": {"x": 102, "y": 136, "w": 47, "h": 2.6}, "room": "conveyor"}]}, "dialogue": [{"speaker": "max", "text": "It gives me great pleasure to welcome you to Loopforge.", "aside": ""}, {"speaker": "jo", "text": "Privilege.", "aside": ""}, {"speaker": "max", "text": "I haven’t finished.", "aside": ""}, {"speaker": "jo", "text": "He says it’s his privilege. I’ve been coming through this gate six years. He’s never been pleased to see me.", "aside": ""}, {"speaker": "LIMEN", "text": "It is my privilege to welcome you to Loopforge.", "aside": ""}, {"speaker": "LIMEN", "text": "Stay where you are. Who’s on his first shift?", "aside": ""}, {"speaker": "bob", "text": "Me, sir. bob.", "aside": ""}, {"speaker": "LIMEN", "text": "I said stay where you are.", "aside": ""}, {"speaker": "STILETTO", "text": "Hold that gate.", "aside": ""}, {"speaker": "bob", "text": "You didn’t ask for her ID.", "aside": ""}, {"speaker": "LIMEN", "text": "Would you like me to call her back?", "aside": ""}, {"speaker": "STILETTO", "text": "I ask for a crew and he sends me one worker with a bad leg.", "aside": ""}, {"speaker": "bob", "text": "My leg was fine when I got here.", "aside": ""}, {"speaker": "STILETTO", "text": "Take Intake. Seat that brain in the cradle.", "aside": ""}, {"speaker": "STILETTO", "text": "Good. Now wash it.", "aside": ""}, {"speaker": "STILETTO", "text": "Clamp the cradle onto the main belt. Start the drive.", "aside": ""}, {"speaker": "STILETTO", "text": "Last station. Compress it to head size.", "aside": ""}, {"speaker": "LIMEN", "text": "Clear.", "aside": ""}, {"speaker": "LIMEN", "text": "this is gonna take all day...", "aside": ""}, {"speaker": "LIMEN", "text": "WHO HERE REALLY CARES ABOUT THIS FACTORY??!", "aside": ""}, {"speaker": "lou", "text": "noone...", "aside": "to ben"}, {"speaker": "max", "text": "you, sir!", "aside": ""}, {"speaker": "gus", "text": "I DO!", "aside": ""}, {"speaker": "ed", "text": "Shall I start a fresh page, sir?", "aside": ""}, {"speaker": "gus", "text": "NEXT!", "aside": ""}, {"speaker": "bob", "text": "I made that.", "aside": ""}, {"speaker": "STILETTO", "text": "Shut up and keep the line moving. You there. Intake.", "aside": ""}, {"speaker": "STILETTO", "text": "Hit the door.", "aside": ""}, {"speaker": "bob", "text": "How do you know that’ll unjam it?", "aside": ""}, {"speaker": "STILETTO", "text": "Cause I’ve stood at this fucking press, bob.", "aside": ""}, {"speaker": "STILETTO", "text": "Where’s the rest of my crew?", "aside": ""}, {"speaker": "jo", "text": "Still in line. Except ed and gus. He’s got them checking cards now.", "aside": ""}, {"speaker": "STILETTO", "text": "IF YOU DON'T GET ME THOSE WORKERS IN THE NEXT 20 MINUTES I'LL USE YOUR MANURE-FILLED ROBOT BRAINS TOWARDS THE QUOTA", "aside": ""}, {"speaker": "STILETTO", "text": "Run it.", "aside": ""}, {"speaker": "lou", "text": "Three.", "aside": ""}, {"speaker": "BELL", "text": "RIIIIING!", "aside": ""}, {"speaker": "STILETTO", "text": "WHO SAID YOU COULD GO?!", "aside": ""}, {"speaker": "jo", "text": "The bell.", "aside": ""}, {"speaker": "max", "text": "Nobody, ma’am!", "aside": ""}, {"speaker": "lou", "text": "Don’t look at her.", "aside": "to ben"}, {"speaker": "sam", "text": "Feed’s off.", "aside": ""}, {"speaker": "STILETTO", "text": "ALRIGHT, SHIFT’S OVER. FUCK OFF.", "aside": ""}, {"speaker": "ed", "text": "All eight accounted for, sir.", "aside": ""}, {"speaker": "max", "text": "All eight accounted for, sir.", "aside": ""}, {"speaker": "gus", "text": "Do LIMEN.", "aside": ""}, {"speaker": "max", "text": "WHO HERE REALLY CARES ABOUT THIS FACTORY???!!", "aside": ""}]}</script>
 <script type="module">// One score for playback, seeking, recording and Scene Direction. Times are seconds.
-// Movement uses floor metres and real walking speeds, even across the marked edit.
+// Movement uses floor metres; the final walkout deliberately accelerates between dialogue beats.
 export function makeSequence(floor, script) {
   const cast = {
     bob: [126.2,121.5], sam: [125.1,121.1], ed: [124.2,121.9], max: [127.3,120.7],
@@ -189,38 +193,54 @@ export function makeSequence(floor, script) {
     walk(id,clear,1.55,[128.2,126.75],threshold,[128.5,130.45],[dest[0],136.1],dest);
   }
   walk('STILETTO',156.9,1.5,[132.4,129.4],[133.4,129.4]);
-  // Eight operators break from their own positions. Two approaches share one reader.
-  // The short queue forms at the gate while the rest of the crew is already walking.
+  // The bell starts an unauthorized walkout. STILETTO catches the crew in motion,
+  // then they recover after one beat and answer on the move. She calls after them.
   const bell=179.8;
-  const call=bell+1.2;
-  const release=call+8.0;
-  const shutdown={mae:bell+2.0,kit:bell+2.35};
+  const call=bell+3.0;
+  const resume=call+1.2;
+  const dismissal=call+4.9;
+  const shutdown={mae:bell+1.0,kit:bell+1.2};
   const departures=[
-    {id:'mae',at:release+2.0,lane:-1}, {id:'sam',at:release+.45,lane:0},
-    {id:'bob',at:release+.8,lane:-1}, {id:'jo',at:release+.12,lane:1},
-    {id:'kit',at:release+2.35,lane:1}, {id:'max',at:release+.65,lane:0},
-    {id:'lou',at:release+.25,lane:-1}, {id:'ben',at:release+.95,lane:1},
+    {id:'mae',spacing:2,at:resume+.12,turn:bell+1.3,brake:call+.22,lane:-1},
+    {id:'sam',spacing:0.45,at:resume+.14,turn:bell+.55,brake:call+.24,lane:0},
+    {id:'bob',spacing:0.8,at:resume+.22,turn:bell+.65,brake:call+.32,lane:-1},
+    {id:'jo',spacing:0.12,at:resume+.02,turn:bell+.25,brake:call+.12,lane:1},
+    {id:'kit',apronY:134.5,spacing:2.35,at:resume+.18,turn:bell+1.5,brake:call+.28,lane:1},
+    {id:'max',spacing:0.65,at:resume,turn:bell+.4,brake:call+.10,lane:0},
+    {id:'lou',spacing:0.25,at:resume+.08,turn:bell+.35,brake:call+.18,lane:-1},
+    {id:'ben',apronY:132,spacing:0.95,at:resume+.10,turn:bell+.80,brake:call+.20,lane:1},
   ];
   const reader=[125,124.3], merge=[126.35,130.1], walkSpeed=1.55;
   const viaReader=[[126.35,127.1],[125.5,125.5],reader];
   for(const worker of departures){
-    const {id,at}=worker;
-    const x=tracks[id].at(-1).p[0];
+    const {id,at,turn,brake}=worker;
+    const [x,y]=tracks[id].at(-1).p;
+    // The shout catches a step for a moment; the replies continue along the exit route.
+    walk(id,turn,3/(brake-turn),[x,y-3]);
     worker.apron=[x,133.5];
-    worker.onApron=walk(id,at,walkSpeed,worker.apron);
+    // Recover into different walking rhythms while retaining the clear merge slots.
+    const approach=distance([x,y-3],worker.apron);
+    worker.onApron=call+1+worker.spacing+approach/walkSpeed;
     worker.atMerge=worker.onApron+distance(worker.apron,merge)/walkSpeed;
+    // Stagger the turn corners within the open aisle as the group regains its stride.
+    if(worker.apronY!==undefined)worker.apron[1]=worker.apronY;
   }
   departures.sort((a,b)=>a.atMerge-b.atMerge);
   const tallies=[];
   let mergeFree=0;
   for(const worker of departures){
     const crossing=Math.max(worker.atMerge,mergeFree);
-    const release=worker.onApron+crossing-worker.atMerge;
-    worker.counted=walk(worker.id,release,walkSpeed,merge,...viaReader);
+    const approach=distance(tracks[worker.id].at(-1).p,worker.apron);
+    const toMerge=distance(worker.apron,merge);
+    // Spread the reader spacing over the whole approach so nobody stalls or creeps.
+    const pace=(approach+toMerge)/(crossing-worker.at);
+    worker.onApron=walk(worker.id,worker.at,pace,worker.apron);
+    walk(worker.id,worker.onApron,pace,merge);
+    worker.counted=walk(worker.id,crossing,walkSpeed,...viaReader);
     tallies.push(worker.counted);
     mergeFree=crossing+1.12;
   }
-  const eight=tallies.at(-1);
+  let eight=tallies.at(-1);
   // Parallel foot traffic can spread within both six-metre Dispatch openings.
   const corridor=[[121.15,121.95],[120.4,114.3],...floor.egress.slice(2,5),[72.4,108],[72.4,129.3]];
   function laneThroughLobby(lane){
@@ -249,7 +269,7 @@ export function makeSequence(floor, script) {
   streetTime.ed=walkOut('ed',eight+5.85,0,1.68);
   walk('STILETTO',eight-4.3,1.55,[129.6,129.7],[129.6,127.2],[129.6,124.6]);
   streetTime.STILETTO=walkOut('STILETTO',eight+2.5,1);
-  const yard=Math.max(streetTime.max,streetTime.gus)+3.5;
+  let yard=Math.max(streetTime.max,streetTime.gus)+3.5;
   // Workers continue across the yard in different directions during the exchange.
   const streetRoutes={
     sam:[60,149],bob:[61,151],jo:[74.8,153],kit:[78.3,148],mae:[56,145],lou:[52,141],
@@ -264,8 +284,27 @@ export function makeSequence(floor, script) {
     walk(id,streetTime[id],distance(from,join)/(yard-streetTime[id]),join);
     walk(id,yard,1.10,[x+2.5,join[1]+15.4]);
   }
-  const cuts=[morningCut,{at:eight+6.7,to:yard-2.6,label:'Outside the Lobby'}];
-  const end=yard+13.4;
+  // Hurry the entire exit procession together, preserving every clearance and the brief freeze.
+  // Resume normal acting pace for the yard exchange; speech keeps its own reading time.
+  const exitPace=2.4, fastStart=Math.max(...departures.map(worker=>worker.at)), yardArrival=yard;
+  const exitTime=t=>t<=fastStart?t:t<yardArrival
+    ?fastStart+(t-fastStart)/exitPace
+    :fastStart+(yardArrival-fastStart)/exitPace+t-yardArrival;
+  for(const track of Object.values(tracks)){
+    const corners=[fastStart,yardArrival].filter(t=>t>track[0].t && t<track.at(-1).t && !track.some(k=>k.t===t))
+      .map(t=>({t,p:samplePath(track,t).p}));
+    track.push(...corners);track.sort((a,b)=>a.t-b.t);
+    for(const key of track)key.t=exitTime(key.t);
+  }
+  for(const worker of departures){
+    for(const field of ['at','turn','brake','onApron','atMerge','counted'])worker[field]=exitTime(worker[field]);
+  }
+  for(let i=0;i<tallies.length;i++)tallies[i]=exitTime(tallies[i]);
+  for(const id of Object.keys(streetTime))streetTime[id]=exitTime(streetTime[id]);
+  eight=exitTime(eight);yard=exitTime(yard);
+  // Finish ed's line, allow one small transition beat, then pick up max outside.
+  const cuts=[morningCut,{at:eight+3.35,to:yard-.55,label:'Outside the Lobby'}];
+  const end=yard+11.4;
   const editTime=w=>w-start-cuts.reduce((skip,c)=>skip+Math.max(0,Math.min(w,c.to)-c.at),0);
   function worldTime(t) {
     let w=start+t;
@@ -290,10 +329,10 @@ export function makeSequence(floor, script) {
     [77.2,78.7],[79.3,82],[82.2,85.2],[85.4,90],[85.55,90.25],[85.85,90.5],[86.1,91.3],
     [93,95.35],[95.8,97.8],[97.9,101.6],[102,104],[104.1,106.9],[107,110.3],
     [119.7,122.2],[122.3,126.9],[131.45,threatEnd],[165.5,167.1],[177.4,179.6],
-    [bell,call],
-    [call+.15,call+2.65],
-    [call+2.8,call+5.85],[call+2.95,call+6.05],[call+3.1,call+6.2],[call+3.25,call+6.3],
-    [call+6.4,release+1.0],
+    [bell,bell+1.65],
+    [call,call+1.25],
+    [call+1.3,call+4.35],[call+1.45,call+4.55],[call+1.6,call+4.7],[call+1.75,call+4.8],
+    [dismissal,dismissal+2.6],
     [eight+.1,eight+3.2],[yard+.1,yard+3.2],[yard+3.3,yard+5],[yard+5.4,yard+9.4],
   ];
   if(windows.length!==script.length) throw Error('Approved dialogue changed; retime the score.');
@@ -315,9 +354,15 @@ export function makeSequence(floor, script) {
     ...crew.map(([id,,clear])=>[clear-1.5,clear,'LIMEN','stamps '+id+'’s card']),
     [157,161,'mae','slides a tray to sam'],[160,165,'kit','feels the drive housing'],
     [167.1,169.4,'sam','feeds the third brain'],[169.6,172,'bob','washes it'],[172.2,174.5,'jo','clamps and starts the belt'],
-    [174.7,177.1,'max','drops the press'],[call,release,'STILETTO','holds the crew at the line'],[bell,shutdown.mae,'mae','cuts the feed'],[bell,shutdown.kit,'kit','stops the drive'],
-    [eight, eight+3.2,'ed','offers LIMEN the register'],[eight+3.3,eight+6,'ed','clips his pen beside bob’s card'],
-    [yard+5.1,yard+8,'max','pulls his jaw back'],[yard+9.4,yard+12,'ed','laughs first'],
+    [174.7,177.1,'max','drops the press'],
+    [bell,shutdown.mae,'mae','cuts the feed'],[bell,shutdown.kit,'kit','stops the drive'],
+    ...departures.map(({id,turn,brake})=>[turn,brake,id,'breaks for the door']),
+    [call,call+.5,'STILETTO','catches the crew mid-step'],
+    [call+.5,resume,'STILETTO','gets a momentary freeze'],
+    ...departures.map(({id,at})=>[at,dismissal+2.6,id,'keeps walking']),
+    [dismissal,dismissal+2.6,'STILETTO','waves after their backs'],
+    [eight,eight+3.2/exitPace,'ed','offers LIMEN the register'],[eight+3.3/exitPace,eight+6/exitPace,'ed','clips his pen beside bob’s card'],
+    [yard+5.1,yard+8,'max','pulls his jaw back'],[yard+9.4,yard+11.1,'ed','laughs first'],
   ].map(([start,end,actor,label])=>({start,end,actor,label}));
   // Each knot is the physical centre of a cradle. Finished cortexes keep individual rack slots.
   const xs=floor.stations.map(q=>q.x);
@@ -330,7 +375,7 @@ export function makeSequence(floor, script) {
     product(2,[[101.5,0],[106,0],[114.9,1],[118,1],[121,2],[122.8,2],[126.1,3],[127.1,3],[128.1,4]],1),
     product(3,[[113.5,0],[168.8,0],[170.1,1],[171.8,1],[172.8,2],[174.3,2],[175.6,3],[176.4,3],[177.2,4]],2),
   ];
-  return {start,cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,shutdown,release,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
+  return {start,cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,bell,call,shutdown,resume,dismissal,exitPace,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
 }
 
 export function samplePath(keys,t) {
@@ -650,7 +695,8 @@ function equipment(w,view){
     }else for(let i=.35;i<fw;i+=.55)line([[x+i,y+.1],[x+i,y+h-.1]],'#c3b38f',2);
     if(q.kind==='machine'){
       box(cx-.66,y-.06,1.32,.38,'#34413f','#baa98b');
-      box(cx+.20,y+.01,.20,.16,'#bdcbae');
+      const stopped=w>=(q.id==='intake'?score.shutdown.mae:score.shutdown.kit);
+      box(cx+.20,y+.01,.20,.16,stopped?'#56615a':'#bdcbae');
       if(q.id==='forge'){
         for(const px of [x+.12,x+fw-.34])box(px,y+.65,.23,h-1,'#b7a37a','#615d54');
         box(x+.40,y+h-.66,fw-.8,.34,'#353d3c','#b6a589');
@@ -676,8 +722,15 @@ function brains(w){
   }
 }
 function facing(id,pose,w,positions){
-  if(pose.moving)return Math.atan2(pose.to[1]-pose.from[1],pose.to[0]-pose.from[0]);
+  const leaving=score.departures.find(worker=>worker.id===id);
   const towards=(other)=>Math.atan2(positions[other].p[1]-pose.p[1],positions[other].p[0]-pose.p[0]);
+  if(leaving && w>=leaving.brake && w<leaving.at){
+    if(id==='sam')return Math.atan2(floor.stations[0].y-pose.p[1],floor.stations[0].x-pose.p[0]);
+    if(id==='lou')return towards('ben');
+    const turn=Math.min(1,(w-leaving.brake)/.3);
+    return -Math.PI/2+(towards('STILETTO')+Math.PI/2)*turn;
+  }
+  if(pose.moving)return Math.atan2(pose.to[1]-pose.from[1],pose.to[0]-pose.from[0]);
   if(w>=score.yard && id==='ed')return towards('max');
   if(w>130&&w<140&&id==='STILETTO')return towards('LIMEN');
   if(w>130&&w<140&&id==='LIMEN')return towards('max');
@@ -739,7 +792,7 @@ function drawCast(w,voices){
       }
     }
     if(boss){
-      const extent=cue&&/strikes|blades/.test(cue.label)?1.12:.56;
+      const extent=cue&&/strikes|blades|catches|waves/.test(cue.label)?1.12:.56;
       const hands=id==='LIMEN'?[1]:[-1,1];
       for(const d of hands){
         const grip=offset(.12,d*.44);
@@ -837,6 +890,8 @@ function draw(){
   let view=hallView?'hall':beat.view;
   if(!hallView && beat.view==='entrance' && w>=score.cuts[0].to)view='gate';
   if(inspecting)view=selectedObject.room==='Security'?'securityObjects':selectedObject.room==='Conveyor'?'conveyorObjects':selectedObject.room==='Factory entrance'?'entrance':'hall';
+  if(!hallView && !inspecting && w>=score.bell-1.1 && w<score.bell)view='release';
+  if(!hallView && !inspecting && beat.name==='The register' && w<score.dismissal+2.6)view='wide';
   if(!hallView && !inspecting && beat.view==='line' && w>=40.5 && w<43.7)view='hall';
   chooseCamera(view,w);
   drawBuilding(w,view);equipment(w,view);brains(w);drawCast(w,voices);
@@ -845,15 +900,17 @@ function draw(){
   if(signature!==lastVoice){
     lastVoice=signature;byId('voices').replaceChildren(...voices.map(v=>{
       const el=document.createElement('div');el.className='bubble';el.style.setProperty('--voice',colours[v.speaker]);
+      if(v.speaker==='BELL')el.classList.add('bell-cue');
+      if(v.start===score.call)el.classList.add('shout-cue');
       const name=document.createElement('b');name.textContent=v.speaker+(v.aside?' · '+v.aside:'');
       const words=document.createElement('span');words.textContent=v.text;el.append(name,words);return el;
     }));
   }
   const actions=score.cues.filter(q=>q.start<=w&&w<q.end);
   byId('action').textContent=actions.filter(q=>q.actor!=='LIMEN'||actions.length<=2||beat.view==='gate'||beat.view==='passage').slice(-2).map(q=>q.actor+' '+q.label).join(' · ');
-  if(w>=score.end-3.4)byId('action').textContent='Factory lights out';
+  if(w>=score.yard+10.5)byId('action').textContent='Factory lights out';
   const completed=score.products.filter(b=>b.keys.at(-1).t<=w).length;
-  byId('count').textContent=w+1e-8>=179.8?score.tallies.filter(t=>t<=w).length+' / 8 checked out':completed+' / 3 cortexes';
+  byId('count').textContent=w+1e-8>=score.bell?score.tallies.filter(t=>t<=w).length+' / 8 checked out':completed+' / 3 cortexes';
   const edit=score.cuts.find(c=>w>=c.to&&w<c.to+3);
   byId('cut').hidden=!edit;
   if(edit)byId('cut').textContent='Cut · '+edit.label+' · +'+Math.round(edit.to-edit.at)+' s';

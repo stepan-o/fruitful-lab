@@ -152,12 +152,18 @@ const between=(a,b,t)=>Math.hypot(...position(a,t).map((v,i)=>v-position(b,t)[i]
 const release=s.release;
 assert(s.departures.every(w=>!moving(w.id,bell+1)),'wait for the supervisor to release the crew');
 assert.equal(s.departures.filter(w=>moving(w.id,release+1)).length,6);
-const endCall=s.speech.filter(q=>q.start>=bell && q.start<release+1);
+const endSpeech=s.speech.filter(q=>q.start>=bell && q.start<release+1);
+const [bellCue,...endCall]=endSpeech;
+assert.equal(bellCue.speaker,'BELL');
+assert.equal(bellCue.start,bell);
+assert(bellCue.end-bellCue.start>=1 && bellCue.end<=endCall[0].start,
+  'show the bell on its own before STILETTO speaks');
 assert.equal(endCall.length,6);
 assert.equal(endCall[0].speaker,'STILETTO');
 assert.equal(endCall.at(-1).speaker,'STILETTO');
 assert.match(endCall.at(-1).text,/SHIFT’S OVER/);
-assert(endCall.slice(1,5).every(q=>q.start<bell+3.3 && q.end>bell+5.8),
+const replies=endCall.slice(1,5);
+assert(Math.min(...replies.map(q=>q.end))-Math.max(...replies.map(q=>q.start))>=2.5,
   'all four replies share a readable overlap before dismissal');
 for(const [id,off] of Object.entries(s.shutdown)){
   assert(!moving(id,off-.01) && !moving(id,off+.01),id+' finishes at the controls before release');

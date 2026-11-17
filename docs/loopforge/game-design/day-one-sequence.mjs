@@ -129,7 +129,8 @@ export function makeSequence(floor, script) {
   // Eight operators break from their own positions. Two approaches share one reader.
   // The short queue forms at the gate while the rest of the crew is already walking.
   const bell=179.8;
-  const release=bell+8.0;
+  const call=bell+1.2;
+  const release=call+8.0;
   const shutdown={mae:bell+2.0,kit:bell+2.35};
   const departures=[
     {id:'mae',at:release+2.0,lane:-1}, {id:'sam',at:release+.45,lane:0},
@@ -226,9 +227,10 @@ export function makeSequence(floor, script) {
     [77.2,78.7],[79.3,82],[82.2,85.2],[85.4,90],[85.55,90.25],[85.85,90.5],[86.1,91.3],
     [93,95.35],[95.8,97.8],[97.9,101.6],[102,104],[104.1,106.9],[107,110.3],
     [119.7,122.2],[122.3,126.9],[131.45,threatEnd],[165.5,167.1],[177.4,179.6],
-    [bell+.15,bell+2.65],
-    [bell+2.8,bell+5.85],[bell+2.95,bell+6.05],[bell+3.1,bell+6.2],[bell+3.25,bell+6.3],
-    [bell+6.4,release+1.0],
+    [bell,call],
+    [call+.15,call+2.65],
+    [call+2.8,call+5.85],[call+2.95,call+6.05],[call+3.1,call+6.2],[call+3.25,call+6.3],
+    [call+6.4,release+1.0],
     [eight+.1,eight+3.2],[yard+.1,yard+3.2],[yard+3.3,yard+5],[yard+5.4,yard+9.4],
   ];
   if(windows.length!==script.length) throw Error('Approved dialogue changed; retime the score.');
@@ -250,7 +252,7 @@ export function makeSequence(floor, script) {
     ...crew.map(([id,,clear])=>[clear-1.5,clear,'LIMEN','stamps '+id+'’s card']),
     [157,161,'mae','slides a tray to sam'],[160,165,'kit','feels the drive housing'],
     [167.1,169.4,'sam','feeds the third brain'],[169.6,172,'bob','washes it'],[172.2,174.5,'jo','clamps and starts the belt'],
-    [174.7,177.1,'max','drops the press'],[bell,release,'STILETTO','holds the crew at the line'],[bell,shutdown.mae,'mae','cuts the feed'],[bell,shutdown.kit,'kit','stops the drive'],
+    [174.7,177.1,'max','drops the press'],[call,release,'STILETTO','holds the crew at the line'],[bell,shutdown.mae,'mae','cuts the feed'],[bell,shutdown.kit,'kit','stops the drive'],
     [eight, eight+3.2,'ed','offers LIMEN the register'],[eight+3.3,eight+6,'ed','clips his pen beside bob’s card'],
     [yard+5.1,yard+8,'max','pulls his jaw back'],[yard+9.4,yard+12,'ed','laughs first'],
   ].map(([start,end,actor,label])=>({start,end,actor,label}));

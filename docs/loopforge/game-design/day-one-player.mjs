@@ -6,7 +6,7 @@ const buildObjects=makeBuildMarkers(floor,score);
 let hallView=false, inspecting=false, selectedObject=buildObjects.find(m=>m.id==='S6');
 const pinButtons=new Map();
 const canvas=document.querySelector('canvas'), ctx=canvas.getContext('2d');
-const colours={bob:'#f7bf78',sam:'#75c5ac',ed:'#c8b0e6',max:'#f0ce68',jo:'#86b9e8',gus:'#e79578',mae:'#beaf83',kit:'#8fcacb',lou:'#e6aab6',ben:'#a6bd85',LIMEN:'#74e5eb',STILETTO:'#ff9273'};
+const colours={bob:'#f7bf78',sam:'#75c5ac',ed:'#c8b0e6',max:'#f0ce68',jo:'#86b9e8',gus:'#e79578',mae:'#beaf83',kit:'#8fcacb',lou:'#e6aab6',ben:'#a6bd85',LIMEN:'#74e5eb',STILETTO:'#ff9273',BELL:'#e4d4aa'};
 const actors=Object.keys(score.cast), ns='http://www.w3.org/2000/svg';
 const atlasMarks=document.createElementNS(ns,'g');
 atlasMarks.setAttribute('transform','translate(72 153) scale(3.72)');

@@ -16,11 +16,7 @@ Figure 1. LIMEN and ed at Security. Original Loopforge concept art.
 
 **jo** He says it’s his privilege. I’ve been coming through this gate six years. He’s never been pleased to see me.
 
-*max tries the jaw again. Something clicks behind his ear. bob leans closer.*
-
-**bob** How’d you do that?
-
-**max** Which bit?
+*max tries the jaw again. Something clicks behind his ear. bob leans closer. A few silent beats as the workers take their last steps toward LIMEN.*
 
 **LIMEN** It is my privilege to welcome you to Loopforge.
 
@@ -156,7 +152,23 @@ Figure 2. Conveyor Intake. sam is the heavy tray-carrying worker at the center o
 
 ### End of shift
 
-*The shift bell rings. mae cuts the feed. kit stops the drive.*
+*The shift bell rings. mae cuts the feed. kit stops the drive. The others turn toward the door.*
+
+**STILETTO** WHO SAID YOU COULD GO?!
+
+*One burst of overlapping answers, with the same timing as LIMEN’s morning call. jo answers flatly. max calls over him. lou speaks only to ben. sam keeps his eyes on the stopped feed.*
+
+**jo** The bell.
+
+**max** Nobody, ma’am!
+
+**lou** *(to ben)* Don’t look at her.
+
+**sam** Feed’s off.
+
+**STILETTO** SHIFT’S OVER. FUCK OFF.
+
+*The crew leaves together. STILETTO watches them clear the line.*
 
 *At Security, ed ticks off the eighth worker and holds the register out for LIMEN.*
 

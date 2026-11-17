@@ -56,8 +56,8 @@ export function makeSequence(floor, script) {
   const start=maxAtQueue-arrivals.max;
   for(const [id] of ranks)for(const key of tracks[id])key.t+=start;
   tracks.LIMEN[0].t=start;
-  // The edit falls in the breath after jo's long reply. Keep bob and max's answer
-  // on the incoming shot as they take the final steps into the queue.
+  // The edit falls after jo's reply. Hold the incoming approach in silence
+  // as the workers take their final steps toward LIMEN.
   const morningCut={at:start+12.5,to:maxAtQueue-3.5,label:'Through Dispatch to Security'};
   walk('bob',22,.95,[126.15,124.25]);
   walk('bob',26.9,1,[125.9,124]);
@@ -129,12 +129,13 @@ export function makeSequence(floor, script) {
   // Eight operators break from their own positions. Two approaches share one reader.
   // The short queue forms at the gate while the rest of the crew is already walking.
   const bell=179.8;
+  const release=bell+8.0;
   const shutdown={mae:bell+2.0,kit:bell+2.35};
   const departures=[
-    {id:'mae',at:shutdown.mae,lane:-1}, {id:'sam',at:bell+.45,lane:0},
-    {id:'bob',at:bell+.8,lane:-1}, {id:'jo',at:bell+.12,lane:1},
-    {id:'kit',at:shutdown.kit,lane:1}, {id:'max',at:bell+.65,lane:0},
-    {id:'lou',at:bell+.25,lane:-1}, {id:'ben',at:bell+.95,lane:1},
+    {id:'mae',at:release+2.0,lane:-1}, {id:'sam',at:release+.45,lane:0},
+    {id:'bob',at:release+.8,lane:-1}, {id:'jo',at:release+.12,lane:1},
+    {id:'kit',at:release+2.35,lane:1}, {id:'max',at:release+.65,lane:0},
+    {id:'lou',at:release+.25,lane:-1}, {id:'ben',at:release+.95,lane:1},
   ];
   const reader=[125,124.3], merge=[126.35,130.1], walkSpeed=1.55;
   const viaReader=[[126.35,127.1],[125.5,125.5],reader];
@@ -219,12 +220,15 @@ export function makeSequence(floor, script) {
   ].map(([at,name,view])=>({at,name,view}));
   const windows=[
     [start,start+3.1],[start+3.05,start+3.85],[start+3.95,start+5.2],[start+5.35,start+12.05],
-    [morningCut.to+.28,morningCut.to+1.95],[maxAtQueue-1.35,maxAtQueue],[greeting,19.9],
+    [greeting,19.9],
     [20,22.9],[22.9,25.1],[25.1,27.3],[requestAt,31.2],[32.8,35.3],[35.4,38.3],
     [40.9,45.2],[45.4,48.1],[48.2,51.5],[55.2,58.1],[63.8,68.1],[70.4,73.7],
     [77.2,78.7],[79.3,82],[82.2,85.2],[85.4,90],[85.55,90.25],[85.85,90.5],[86.1,91.3],
     [93,95.35],[95.8,97.8],[97.9,101.6],[102,104],[104.1,106.9],[107,110.3],
     [119.7,122.2],[122.3,126.9],[131.45,threatEnd],[165.5,167.1],[177.4,179.6],
+    [bell+.15,bell+2.65],
+    [bell+2.8,bell+5.85],[bell+2.95,bell+6.05],[bell+3.1,bell+6.2],[bell+3.25,bell+6.3],
+    [bell+6.4,release+1.0],
     [eight+.1,eight+3.2],[yard+.1,yard+3.2],[yard+3.3,yard+5],[yard+5.4,yard+9.4],
   ];
   if(windows.length!==script.length) throw Error('Approved dialogue changed; retime the score.');
@@ -246,7 +250,7 @@ export function makeSequence(floor, script) {
     ...crew.map(([id,,clear])=>[clear-1.5,clear,'LIMEN','stamps '+id+'’s card']),
     [157,161,'mae','slides a tray to sam'],[160,165,'kit','feels the drive housing'],
     [167.1,169.4,'sam','feeds the third brain'],[169.6,172,'bob','washes it'],[172.2,174.5,'jo','clamps and starts the belt'],
-    [174.7,177.1,'max','drops the press'],[bell,shutdown.mae,'mae','cuts the feed'],[bell,shutdown.kit,'kit','stops the drive'],
+    [174.7,177.1,'max','drops the press'],[bell,release,'STILETTO','holds the crew at the line'],[bell,shutdown.mae,'mae','cuts the feed'],[bell,shutdown.kit,'kit','stops the drive'],
     [eight, eight+3.2,'ed','offers LIMEN the register'],[eight+3.3,eight+6,'ed','clips his pen beside bob’s card'],
     [yard+5.1,yard+8,'max','pulls his jaw back'],[yard+9.4,yard+12,'ed','laughs first'],
   ].map(([start,end,actor,label])=>({start,end,actor,label}));
@@ -261,7 +265,7 @@ export function makeSequence(floor, script) {
     product(2,[[101.5,0],[106,0],[114.9,1],[118,1],[121,2],[122.8,2],[126.1,3],[127.1,3],[128.1,4]],1),
     product(3,[[113.5,0],[168.8,0],[170.1,1],[171.8,1],[172.8,2],[174.3,2],[175.6,3],[176.4,3],[177.2,4]],2),
   ];
-  return {start,cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,shutdown,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
+  return {start,cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,shutdown,release,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
 }
 
 export function samplePath(keys,t) {

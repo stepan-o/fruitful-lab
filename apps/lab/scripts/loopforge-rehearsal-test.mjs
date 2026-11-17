@@ -52,7 +52,7 @@ assert.equal(issues.size,0,'swept clearance');
 assert.equal(ids.length,12);
 assert.equal(s.tallies.length,8);
 assert.equal(s.products.length,3);
-assert(s.speech.slice(22,26).every(q=>q.start<86.2&&q.end>=90));
+assert(s.speech.slice(20,24).every(q=>q.start<86.2&&q.end>=90));
 for(const id of ids)assert(samplePath(s.tracks[id],s.end).p[1]>floor.exit.y);
 for(const product of s.products)assert(samplePath(product.keys,s.end).p[0]>=134);
 console.log('Passed all routes, return counts, volunteer overlap and product arrivals.');
@@ -149,11 +149,22 @@ const bell=s.beats.find(b=>b.name==='End of shift').at;
 const moving=(id,t)=>samplePath(s.tracks[id],t).moving;
 const position=(id,t)=>samplePath(s.tracks[id],t).p;
 const between=(a,b,t)=>Math.hypot(...position(a,t).map((v,i)=>v-position(b,t)[i]));
-assert.equal(s.departures.filter(w=>moving(w.id,bell+1)).length,6);
+const release=s.release;
+assert(s.departures.every(w=>!moving(w.id,bell+1)),'wait for the supervisor to release the crew');
+assert.equal(s.departures.filter(w=>moving(w.id,release+1)).length,6);
+const endCall=s.speech.filter(q=>q.start>=bell && q.start<release+1);
+assert.equal(endCall.length,6);
+assert.equal(endCall[0].speaker,'STILETTO');
+assert.equal(endCall.at(-1).speaker,'STILETTO');
+assert.match(endCall.at(-1).text,/SHIFT’S OVER/);
+assert(endCall.slice(1,5).every(q=>q.start<bell+3.3 && q.end>bell+5.8),
+  'all four replies share a readable overlap before dismissal');
 for(const [id,off] of Object.entries(s.shutdown)){
-  assert(!moving(id,off-.01) && moving(id,off+.01),id+' must finish at the controls');
+  assert(!moving(id,off-.01) && !moving(id,off+.01),id+' finishes at the controls before release');
+  const departure=s.departures.find(worker=>worker.id===id);
+  assert(off<release && moving(id,departure.at+.01));
 }
-assert(s.departures.every(w=>moving(w.id,bell+2.5)));
+assert(s.departures.every(w=>moving(w.id,release+2.5)));
 const lastCheck=s.tallies.at(-1);
 for(const [i,t] of s.tallies.entries()){
   assert.deepEqual(position('ed',t),position('ed',bell),'ed stays at the register');
@@ -168,7 +179,7 @@ const morning=s.beats[0], gateBeat=s.beats.find(b=>b.name==='At the gate');
 assert.equal(s.worldTime(0),morning.at);
 assert.equal(s.editTime(morning.at),0);
 assert.equal(s.worldTime(s.editTime(morningCut.at)),morningCut.to);
-assert.equal(gateBeat.at,s.speech[6].start);
+assert.equal(gateBeat.at,s.speech[4].start);
 const entrants=ids.filter(id=>id!==id.toUpperCase());
 assert.equal(entrants.length,10);
 const frontTimes=[];
@@ -198,19 +209,20 @@ for(const id of [...entrants,'STILETTO']){
   }
 }
 assert(frontTimes.at(-1)>Math.max(...frontTimes.slice(0,-1)),'STILETTO follows the entire crew inside');
-const walkingLines=s.speech.slice(0,6);
+const walkingLines=s.speech.slice(0,4);
 assert.equal(walkingLines[0].start,s.start);
 assert.equal(walkingLines[0].speaker,'max');
-assert.equal(s.speech[6].speaker,'LIMEN');
+assert.equal(s.speech[4].speaker,'LIMEN');
 for(const [i,q] of walkingLines.entries()){
   assert(q.end<=morningCut.at || q.start>=morningCut.to,'finish the line before cutting');
   assert(moving(q.speaker,q.start) && moving(q.speaker,q.end-.01),'speak in motion');
   if(i)assert(s.editTime(q.start)-s.editTime(walkingLines[i-1].end)<.85,'keep the conversation moving');
   assert(between(q.speaker,'max',q.start)<4,'the speakers are within earshot');
 }
-const reply=walkingLines.at(-1);
-assert.deepEqual(position('max',reply.end),s.cast.max,'finish the reply on reaching the queue');
-assert(gateBeat.at-reply.end>0 && gateBeat.at-reply.end<.5,'hand the greeting to LIMEN');
+assert(!s.speech.some(q=>q.start<gateBeat.at && q.end>morningCut.to),
+  'the final approach to LIMEN stays silent');
+assert(s.editTime(gateBeat.at)-s.editTime(walkingLines.at(-1).end)>3,
+  'give the arrival several silent beats');
 for(const t of [s.start+.2,morningCut.at-.01,morningCut.to+.01,gateBeat.at]){
   assert(Math.abs(s.worldTime(s.editTime(t))-t)<1e-7);
 }

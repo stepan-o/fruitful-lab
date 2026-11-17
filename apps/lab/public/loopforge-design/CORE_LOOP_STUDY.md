@@ -14,7 +14,7 @@ Research synthesis and design proposals. These are overlapping design lenses, no
 
 **Action loop.** Read a situation → commit → observe a consequence → revise the next choice. A repeated button press without a consequential return is not enough to explain the experience.
 
-**Progression.** New capabilities and pressures change the loop: Cathexis and the Theatre make an already-familiar adviser choice mean something new. Unlocking is not itself the whole core loop.
+**Progression.** New capabilities and pressures change the loop: CATHEXIS and the Theatre make an already-familiar adviser choice mean something new. Unlocking is not itself the whole core loop.
 
 **Session / run structure.** Days, weeks, expeditions and resets organise repeated play. They can contain several kinds of loop. A roguelike run can centre on either reflex combat or turn-based decisions.
 
@@ -272,7 +272,7 @@ Loopforge inference: yesterday’s confirmed output, an adviser’s explanation 
 
 **One day · about one minute.** Choose a direction and receive a meaningful answer. Routine days target about 60 seconds across the complete flow; reading-heavy days may take 2–3 minutes. Planning and major decisions pause.
 
-**Part 01 · proposed 4–5 days.** Give safety, output and deliberate balancing room to feel different before Cathexis changes the puzzle. Roughly 6–8 minutes is a pacing hypothesis, not a timer unlock. Demonstrated operation and investment determine access.
+**Part 01 · proposed 4–5 days.** Give safety, output and deliberate balancing room to feel different before CATHEXIS changes the puzzle. Roughly 6–8 minutes is a pacing hypothesis, not a timer unlock. Demonstrated operation and investment determine access.
 
 **Up to a 30-minute session.** Let a way of running the factory acquire visible consequences and face a new pressure. The room sequence expands capability, then makes earlier commitments matter. Exact session coverage and later pacing remain untested.
 
@@ -312,13 +312,13 @@ Illustrative token vocabulary (not live state):
 
 - Conveyor · Wear warning · Observed
 
-- Stiletto · “Still on target.” · Statement
+- STILETTO · “Still on target.” · Statement
 
 - Quota · Dispatch recorded · Confirmed
 
-#### 02 · Cathexis + Burn-in Theatre
+#### 02 · CATHEXIS + Burn-in Theatre
 
-**Player agency.** Give Cathexis influence, constrain it or pursue a specific side route; choose where she works and how to respond to her.
+**Player agency.** Give CATHEXIS influence, constrain it or pursue a specific side route; choose where she works and how to respond to her.
 
 **Direct status.** Room token: Theatre operating or idle. Supervisor token: assignment and visible willingness. Eligible worker cohorts record their actual treatment.
 
@@ -332,17 +332,17 @@ Illustrative token vocabulary (not live state):
 
 - Theatre · Session completed · Confirmed
 
-- Cathexis · “They listened.” · Statement
+- CATHEXIS · “They listened.” · Statement
 
 - Floor report · Singing continues · Witnessed
 
-#### 03 · Rivet Witch + Brewery
+#### 03 · RIVET WITCH + Brewery
 
 **Player agency.** Use the first engineer to restore damaged equipment or to develop substrate production; accept the lost time and output.
 
 **Direct status.** Room token: engineering work, downtime or Brewery throughput. A completed repair changes recorded condition.
 
-**Indirect evidence.** The repair burden makes earlier operating choices visible. Unresolved damage competes with expansion and can change Witch’s conduct.
+**Indirect evidence.** The repair burden makes earlier operating choices visible. Unresolved damage competes with expansion and can change RIVET WITCH’s conduct.
 
 **Still hidden.** Her interpretation of neglect and the workforce’s accumulated history remain distinct from mechanical condition.
 
@@ -352,13 +352,13 @@ Illustrative token vocabulary (not live state):
 
 - Conveyor · Engineering stop · Confirmed
 
-- Brewery · Waiting for Witch · Confirmed
+- Brewery · Waiting for RIVET WITCH · Confirmed
 
-- Witch · “It was left to fail.” · Interpretation
+- RIVET WITCH · “It was left to fail.” · Interpretation
 
-#### 04 · Thrum + Weaving Gallery
+#### 04 · THRUM + Weaving Gallery
 
-**Player agency.** Use Thrum’s specialist capacity and relief, accepting possible productivity or discipline costs; decide how to handle other supervisors’ objections.
+**Player agency.** Use THRUM’s specialist capacity and relief, accepting possible productivity or discipline costs; decide how to handle other supervisors’ objections.
 
 **Direct status.** Room token: Gallery output and current assignment. Surface an observed pause or intervention, not an invisible stress formula.
 
@@ -394,7 +394,7 @@ Illustrative token vocabulary (not live state):
 
 - Shift report · Replacement claim · Unconfirmed
 
-- Stiletto · Requests assurance · Observed
+- STILETTO · Requests assurance · Observed
 
 ### UI and engine contract
 

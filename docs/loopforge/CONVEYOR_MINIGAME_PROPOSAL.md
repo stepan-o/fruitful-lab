@@ -154,7 +154,7 @@ Room operating policy and later facility access remain design levers. Free place
 
 **Shared policy catalog.** Apply relevant policies per room; their exact cost, reversibility and implementation remain open.
 
-**Specialists.** Witch introduces engineering; Thrum introduces relief with productivity/discipline costs. No repair tool in parts 01–02.
+**Specialists.** RIVET WITCH introduces engineering; THRUM introduces relief with productivity/discipline costs. No repair tool in parts 01–02.
 
 **Cash.** Construction removal leaves no immediate first-day cash sink. Longer-run funding, payroll and repair require a separate economy pass. Do not replace removed building with an undisclosed fee.
 

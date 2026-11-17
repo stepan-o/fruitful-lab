@@ -39,7 +39,7 @@
         ],
         [
           "Loopforge interpretation",
-          "Backing Stiletto can express affection, ambition, curiosity or calculated risk. Do not infer one motivation from the button clicked, or divide players into seven fixed types."
+          "Backing STILETTO can express affection, ambition, curiosity or calculated risk. Do not infer one motivation from the button clicked, or divide players into seven fixed types."
         ],
         [
           "Limit",
@@ -759,7 +759,7 @@
     ],
     [
       "Disagreement is more useful than a morality score",
-      "LIMEN, STILETTO and Cathexis may judge the same act differently, when they know about it. Their judgment is character evidence, not the game’s final moral verdict."
+      "LIMEN, STILETTO and CATHEXIS may judge the same act differently, when they know about it. Their judgment is character evidence, not the game’s final moral verdict."
     ],
     [
       "Expression needs enough information",
@@ -783,7 +783,7 @@
       "situation": "You have a working line and a delivery obligation. Keeping some of today’s output could make tomorrow’s factory stronger.",
       "choices": "Choose the adviser whose proposed arrangement fits the opportunity; accept or adjust it. At dispatch, retain actual produced workers or permanently commit them to the weekly quota.",
       "payoff": "Enjoy a stronger production rhythm and the contribution of the workers you kept. The unpaid quota remains visible; capacity limits mean more workers are not always the answer.",
-      "echo": "Tomorrow’s facts show what the retained workforce actually changed. Later, Cathexis inherits those particular workers and their unindoctrinated history; Act 1 does not expose it as a stat.",
+      "echo": "Tomorrow’s facts show what the retained workforce actually changed. Later, CATHEXIS inherits those particular workers and their unindoctrinated history; Act 1 does not expose it as a stat.",
       "ui": "Roster → concise plan → operating cameras → dispatch before/after totals → next-day read. Green impulses accompany real production, with bounded mechanical SFX; no modal per brain.",
       "engine": "Capacity, workforce IDs, accepted plan, physical production and immutable dispatch must carry across days. Display observed improvement, not an invented counterfactual.",
       "gap": "Multi-day retention and throughput must be playable. No station-level staffing, new resource or assumed cash payout is required by this scenario."
@@ -799,7 +799,7 @@
       "echo": "Lower output and persistent equipment condition change the next day’s options. A supervisor who knows what you chose can recall it; approval is personal, not unanimous.",
       "ui": "Known warning on the camera → action/receipt with explicit output sacrifice → quieter work and observable workforce → tomorrow’s brief. Red light requires an actual accident, not a scary prediction.",
       "engine": "Load and risk evolve from state and seeded resolution. Easing prevents additional exposure; it does not repair existing wear. Private stress and memories remain filtered.",
-      "gap": "Existing shudder fixture supplies a starting point. Need a safe multi-day route that remains viable. No repair action exists before Witch arrives in Part 03."
+      "gap": "Existing shudder fixture supplies a starting point. Need a safe multi-day route that remains viable. No repair action exists before RIVET WITCH arrives in Part 03."
     },
     {
       "id": "S3",
@@ -845,8 +845,8 @@
       "title": "Let her win them over",
       "part": "Part 02",
       "desire": "Relationship influence · order · care · attachment",
-      "situation": "Cathexis offers a programme that can make a strained workforce act together. LIMEN objects to her disregard for procedure; STILETTO wants workers back on the line.",
-      "choices": "Choose Cathexis as adviser and consider her Theatre arrangement, or retain another adviser and override placements. Proposed programme event: publicly back a particular promise or limit a specific claim. This is a factory-wide commitment, not a priority menu or free extra consultation.",
+      "situation": "CATHEXIS offers a programme that can make a strained workforce act together. LIMEN objects to her disregard for procedure; STILETTO wants workers back on the line.",
+      "choices": "Choose CATHEXIS as adviser and consider her Theatre arrangement, or retain another adviser and override placements. Proposed programme event: publicly back a particular promise or limit a specific claim. This is a factory-wide commitment, not a priority menu or free extra consultation.",
       "payoff": "Her session delivers a recognizable coordination benefit and worker response at a production opportunity cost. Public backing increases the weight of her voice; limiting it preserves another kind of authority but loses some appeal.",
       "echo": "The message, audience and endorsement persist. Empowerment and constraint carry different future liabilities. Flipping assignments or repeating reassurance cannot erase the commitment; these tensions can mature into later arcs without forcing an immediate revolt.",
       "ui": "New roster pitch → structured proposal → Theatre audience scene → focused endorsement decision if triggered → visible reaction and later conflicting accounts. Keep raw conditioning, loyalty and worker influence hidden.",
@@ -858,7 +858,7 @@
       "title": "What if she ran the line?",
       "part": "Part 02",
       "desire": "Experimentation · authority · relationship influence",
-      "situation": "Cathexis is a compelling speaker and a poor fit for Conveyor work. You still have the authority to put her there.",
+      "situation": "CATHEXIS is a compelling speaker and a poor fit for Conveyor work. You still have the authority to put her there.",
       "choices": "Override the proposed assignment after a concise, attributed warning. Try the mismatch or keep her where her capabilities matter; curiosity is allowed, not prescribed.",
       "payoff": "The result shows this particular mismatch: disrupted coordination, a distinctive protest or lost worker respect reflected in behaviour. Surprise comes from character and conditions, not a random comedy card.",
       "echo": "Restoring the assignment can restore capability without erasing humiliation or the workers’ memory. A later conversation or conflict can point to the same incident.",
@@ -953,7 +953,7 @@
     "Which two or three expression trajectories should the first multi-day slice prove? Proposed starting set: efficient growth, protective order and backing a risky favourite. All seven remain coverage goals; no requirement to show every scenario in one run.",
     "What actual safety and coordination benefit makes the Security exception a genuine dilemma? The present prototype fixture does not yet supply its full downstream effect.",
     "Which observable support/credit/disclosure commitments belong inside the one daily adviser conversation, and which need a factory-wide event? Avoid extra conversations that become relationship farming.",
-    "What benefits make Cathexis’s programme tempting, and what durable liabilities distinguish public empowerment from constraint? Specify these before implementing generic relationship modifiers.",
+    "What benefits make CATHEXIS’s programme tempting, and what durable liabilities distinguish public empowerment from constraint? Specify these before implementing generic relationship modifiers.",
     "What commissioning cost and income timing allow Theatre readiness before the weekly settlement? No assumed daily wage, repair bill or retained-worker resale.",
     "Which exact room, cast and outcome art already exists for each beat? Audit the supervisor atlas before generation; use explicit placeholders until the match is verified."
   ]

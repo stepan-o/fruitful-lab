@@ -26,18 +26,18 @@ export async function loadStiletto(stage:CharacterStage,signal:AbortSignal,onFra
  const {scene,shadow}=stage;
  const integrity='sha256-'+btoa(String.fromCharCode(...stilettoFile.sha256.match(/../g)!.map(x=>parseInt(x,16))));
  const response=await fetch(stilettoFile.src,{signal:AbortSignal.any([signal,AbortSignal.timeout(60000)]),integrity,credentials:'same-origin'});
- if(!response.ok)throw Error('The stiletto could not be downloaded. Please retry.');
+ if(!response.ok)throw Error('The STILETTO model could not be downloaded. Please retry.');
  const bytes=new Uint8Array(await response.arrayBuffer());signal.throwIfAborted();
  const container=await LoadAssetContainerAsync(bytes,scene,{pluginExtension:'.glb',name:'stiletto-01-motion-review.glb'});
  if(signal.aborted){container.dispose();signal.throwIfAborted();}
- const root=new TransformNode('Stiletto 01 motion review',scene);
+ const root=new TransformNode('STILETTO 01 motion review',scene);
  let fill:DirectionalLight|null=null;
  let toolContainer:Awaited<ReturnType<typeof LoadAssetContainerAsync>>|null=null,welderPromise:Promise<void>|null=null;
  const welders:Mesh[]=[];let toolMode:StilettoTools='both',appearanceMode:StilettoSurface='textured',highlighted=false,flameEnabled=true,fxMotion=true,fxTime=0;
  const flames:ReturnType<typeof createWelderFlame>[]=[];let visor:ReturnType<typeof createFaceEmission>|null=null;
  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
  try{
-  if(container.skeletons[0]?.bones.length!==24||!review.clips.every(c=>container.animationGroups.some(g=>g.name===c.id)&&(!c.corrected||container.animationGroups.some(g=>g.name===c.id+'__corrected'))))throw Error('The stiletto rig or motion bank is incomplete.');
+  if(container.skeletons[0]?.bones.length!==24||!review.clips.every(c=>container.animationGroups.some(g=>g.name===c.id)&&(!c.corrected||container.animationGroups.some(g=>g.name===c.id+'__corrected'))))throw Error('The STILETTO rig or motion bank is incomplete.');
   container.addAllToScene();container.rootNodes.forEach(n=>{n.parent=root;});container.animationGroups.forEach(g=>g.stop());
   if(!container.meshes.some(m=>m.name==='LeftBlade')||!container.meshes.some(m=>m.name==='RightBlade'))throw Error('Blade attachments missing.');
   const neutral=container.transformNodes.map(n=>({n,p:n.position.clone(),r:n.rotationQuaternion?.clone()??Quaternion.FromEulerVector(n.rotation),s:n.scaling.clone()}));
@@ -48,10 +48,10 @@ export async function loadStiletto(stage:CharacterStage,signal:AbortSignal,onFra
   // Align with the eye-level helmet cut; the forehead ridge is not the visor.
   const visorCut={x:2.5,y:166.3,rx:2.9,ry:.55,zMin:5,slope:.4};
   visor=createFaceEmission(body,visorCut,new Color3(1,.025,.045),head,.08,headBone.getAbsoluteInverseBindMatrix(),{bottom:159.5,top:visorCut.y-visorCut.x*visorCut.slope,halfWidth:.4});
-  const hips=container.transformNodes.find(n=>n.name==='Hips');if(!hips)throw Error('Stiletto pelvis missing.');
+  const hips=container.transformNodes.find(n=>n.name==='Hips');if(!hips)throw Error('STILETTO pelvis missing.');
   const meshes=container.meshes.filter(m=>m.getTotalVertices()>0);
   meshes.forEach(m=>{m.isPickable=false;m.receiveShadows=true;m.alwaysSelectAsActiveMesh=true;shadow.addShadowCaster(m);});
-  fill=new DirectionalLight('Stiletto inspection lamp',new Vector3(.25,-.5,1),scene);fill.diffuse=new Color3(.82,.9,1);fill.intensity=2.5;fill.includedOnlyMeshes=meshes;fill.renderPriority=5;
+  fill=new DirectionalLight('STILETTO inspection lamp',new Vector3(.25,-.5,1),scene);fill.diffuse=new Color3(.82,.9,1);fill.intensity=2.5;fill.includedOnlyMeshes=meshes;fill.renderPriority=5;
   const appearance=container.materials.filter((m):m is PBRMaterial=>m instanceof PBRMaterial).map(m=>{m.maxSimultaneousLights=6;return {m,texture:m.albedoTexture,mr:m.metallicTexture,color:m.albedoColor.clone(),metallic:m.metallic,roughness:m.roughness};});
   // Classify the original body vertices, before skinning. The enamel follows the
   // shoulders through animation, regardless of the skinned mesh node's axis basis.

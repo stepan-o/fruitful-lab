@@ -31,7 +31,7 @@ Proposed first pacing budget, to test rather than treat as balance: situation 5s
 
 Part 01 should let the player try a way to lead, enjoy a recognizable result and respond when that approach is tested. More days earn their place through new stakes and payoffs, not through lessons about mechanics.
 
-**Proposed first test:** Revised proposal: four or five completed two-room days, roughly six to eight minutes including the opening and heavier decisions, before Cathexis joins a ready factory’s next planning cycle. The owner asked for a somewhat longer opening; these exact numbers remain a playtest hypothesis, not a timer or fixed unlock date.
+**Proposed first test:** Revised proposal: four or five completed two-room days, roughly six to eight minutes including the opening and heavier decisions, before CATHEXIS joins a ready factory’s next planning cycle. The owner asked for a somewhat longer opening; these exact numbers remain a playtest hypothesis, not a timer or fixed unlock date.
 
 **First night and day · build, then choose a way to lead.** Enter through the Lobby, set up Security and commission the starter Conveyor. After the morning leadership call, choose LIMEN or STILETTO, authorize the arrangement and see it work. Commit output to growth or the weekly obligation. Give the player a benefit they can enjoy and a cost they can recognize.
 
@@ -41,11 +41,11 @@ Part 01 should let the player try a way to lead, enjoy a recognizable result and
 
 **Fourth or fifth result · own the consequences.** Give the response time to pay off. A stronger line, preserved workers, disputed authority or a remembered act of support makes this factory feel different. Keep a fifth day only if it adds a distinct choice or return.
 
-**Handoff · Cathexis offers another kind of power.** Readiness and commissioning bring Cathexis and the Theatre into the next planning cycle. Her ability to influence the workforce should tempt or unsettle the way the player already runs the place. Existing workers and memories persist.
+**Handoff · CATHEXIS offers another kind of power.** Readiness and commissioning bring CATHEXIS and the Theatre into the next planning cycle. Her ability to influence the workforce should tempt or unsettle the way the player already runs the place. Existing workers and memories persist.
 
 Proposed readiness uses completed operation, a viable workforce and line, irreversible output commitments and the capacity/investment required for the Theatre. Tune viable protective, productive and adaptive routes toward the four-to-five-day test window. Exact thresholds and funding remain open. Neither completing the week, trying both advisers, overriding someone nor suffering an accident is a prerequisite.
 
-The first weekly quota remains due on day seven. Under this proposal, Cathexis enters while the same obligation is still active. The player learns what her programme changes under an existing pressure; a completed week is not a prerequisite for meeting her.
+The first weekly quota remains due on day seven. Under this proposal, CATHEXIS enters while the same obligation is still active. The player learns what her programme changes under an existing pressure; a completed week is not a prerequisite for meeting her.
 
 Compare four and five completed two-room days in owner playtests. Ask what the player wanted, what felt like their achievement and what they want to try next. Remove a day that only repeats information. If authority or commitment is unclear, fix its presentation; if it is clear but uninteresting, revise the situation and payoff.
 

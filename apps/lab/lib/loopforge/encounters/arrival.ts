@@ -84,10 +84,10 @@ export function arrival(){
  holds.bob={agent:'bob',motion:'fall',yaw:180,cue:cue('Electrocuted_Fall',6.333,0)};
  holds.sam=assistance('Kneel_To_Help');holdStarts.sam=clock;
  framing='card';
- const pickup=flow(add('ed collects bob’s card while Sam kneels',1,'Idle_02',line('sam','Easy, bob. I’ve got you.',3,'warm',['bob'],[],'care'),[gesture('ed','Pickup_Card',0,1.5)]));
+ const pickup=flow(add('ed collects bob’s card while sam kneels',1,'Idle_02',line('sam','Easy, bob. I’ve got you.',3,'warm',['bob'],[],'care'),[gesture('ed','Pickup_Card',0,1.5)]));
  pickup.transfers=[{prop:'bob:id',from:droppedCard,to:{kind:'hand',agent:'ed',socket:'right',grip:'edge'},observedBy:['ed']}];
  pickup.effects=[{agent:'ed',remember:'I collected bob’s card. Found credentials belong at Security.',observe:{fact:'card.intention.bob',value:'keep-at-security'}}];
- flow(add('ed lifts as Sam finishes kneeling',1.4,'Idle_02',undefined,[gesture('ed','Pickup_Card',1.5,1.5)]));
+ flow(add('ed lifts as sam finishes kneeling',1.4,'Idle_02',undefined,[gesture('ed','Pickup_Card',1.5,1.5)]));
  holds.sam=assistance('Attend_Bob',0,true);holdStarts.sam=clock;
  hold(add('ed lifts the card',2.4,'Idle_02',undefined,[gesture('ed','Pickup_Card',3.6,1.5)]));
  add('ed stows bob’s card',1,'Idle_11',undefined,[gesture('ed','Stow_Card',0,1.6)]).transfers=[{prop:'bob:id',from:{kind:'hand',agent:'ed',socket:'right',grip:'edge'},to:stowed('ed'),observedBy:['ed']}];
@@ -176,13 +176,13 @@ export function arrival(){
  framing='sam-inspection';
  add('sam starts reporting',1,'Idle_02',line('sam','sam. Conveyor.',2,'plain',['limen','ed','gus']));
  // The second check continues on the same clock while the player follows bob.
- add('Sam credential status — awaiting validation',1.25,'Stand_and_Chat',undefined,[gesture('sam','Quiet_Wait',0,1)]).credentialStatus={actorId:'sam'};
- add('Sam waits through the credential check',1,'Alert',undefined,[gesture('sam','Listening_Gesture',0,1)]).credentialStatus={actorId:'sam'};
+ add('sam credential status — awaiting validation',1.25,'Stand_and_Chat',undefined,[gesture('sam','Quiet_Wait',0,1)]).credentialStatus={actorId:'sam'};
+ add('sam waits through the credential check',1,'Alert',undefined,[gesture('sam','Listening_Gesture',0,1)]).credentialStatus={actorId:'sam'};
  const samCheck=add('sam’s credential record is checked',.6,'Stand_and_Chat',undefined,[gesture('sam','Quiet_Wait',0,1)]);samCheck.credentialStatus={actorId:'sam'};
  samCheck.effects=[{fact:'checkpoint.cleared.sam',value:true},{fact:'checkpoint.card-checked.sam',value:true},{fact:'checkpoint.workers-passed',value:2},{fact:'checkpoint.temporary-presentation.sam',value:true}];
- add('Sam credential status — verified for Conveyor',2.25,'Idle_02',undefined,[gesture('sam','Quiet_Wait',0,1)]).credentialStatus={actorId:'sam'};
+ add('sam credential status — verified for Conveyor',2.25,'Idle_02',undefined,[gesture('sam','Quiet_Wait',0,1)]).credentialStatus={actorId:'sam'};
  holds.sam=gesture('sam','Quiet_Wait',0,1,180);holdStarts.sam=clock;
- action('sam-second','Sam is checked second after the real tutorial output.',[{fact:'line.tutorial-output',equals:1},{fact:'credential.valid.sam',equals:true}],true);
+ action('sam-second','sam is checked second after the real tutorial output.',[{fact:'line.tutorial-output',equals:1},{fact:'credential.valid.sam',equals:true}],true);
  framing='assembly';
  add('LIMEN considers the queue',1,'Idle_11',line('limen','this is gonna take all day...',3,'aside',['limen']));
  add('Who cares about this factory?',1.3,'Shouting_Angrily',line('limen','WHO HERE REALLY CARES ABOUT THIS FACTORY??!',4,'command',crew.filter(id=>id!=='bob'),['WHO HERE','FACTORY']));
@@ -200,7 +200,7 @@ export function arrival(){
  add('IDs and papers ready',1.1,'Shouting_Angrily',line('limen','IDs AND PAPERS READY!!!',3,'command',crew.filter(id=>id!=='bob'),['IDs','PAPERS'])).effects=[{fact:'checkpoint.ids-requested',value:true}];
  add('ed repeats the order',.8,'Idle_02',line('ed','IDs AND PAPERS!',2,'command',crew.filter(id=>id!=='bob')),[gesture('ed','Discuss_While_Moving',1,1,0)]);
  add('gus likes the volume',.8,'Idle_11',line('gus','NEXT!!!',2,'outburst',crew.filter(id=>id!=='bob'),['NEXT']));
- action('helpers','After the first tutorial output and Sam clearance, ed and gus take the Security controls.',[{fact:'checkpoint.cleared.sam',equals:true},{fact:'line.tutorial-output',equals:1}],true);
+ action('helpers','After the first tutorial output and sam clearance, ed and gus take the Security controls.',[{fact:'checkpoint.cleared.sam',equals:true},{fact:'line.tutorial-output',equals:1}],true);
  framing='checkpoint';
  add('sam finally clears',2,'Alert',undefined,[walk('sam',[125.3,112])]);
  add('sam crosses after the lesson',2.6,'Idle_02',undefined,[walk('sam',[125.3,108.3])]);

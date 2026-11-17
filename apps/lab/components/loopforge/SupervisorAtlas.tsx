@@ -44,15 +44,15 @@ const roomStudies: Record<string, { src: string; caption: string }> = {
   },
   "cortex-witch": {
     "src": "/loopforge-design/reference/floor-cortex-witch.b823b884d467.webp",
-    "caption": "Rivet Witch in the original Cortex room art. The proposed commissioning action is staged around the machinery shown here."
+    "caption": "RIVET WITCH in the original Cortex room art. The proposed commissioning action is staged around the machinery shown here."
   },
   "cortex-cathexis": {
     "src": "/loopforge-design/reference/floor-cortex-cathexis.bffafb56f4af.webp",
-    "caption": "Cathexis in the original Cortex room art. The proposed commissioning action is staged around the machinery shown here."
+    "caption": "CATHEXIS in the original Cortex room art. The proposed commissioning action is staged around the machinery shown here."
   },
   "cortex-stiletto": {
     "src": "/loopforge-design/reference/floor-cortex-stiletto.5a4dc3658ef7.webp",
-    "caption": "Stiletto in the original Cortex room art. The proposed commissioning action is staged around the machinery shown here."
+    "caption": "STILETTO in the original Cortex room art. The proposed commissioning action is staged around the machinery shown here."
   }
 };
 const allRooms = [...rooms, ...serviceRooms];

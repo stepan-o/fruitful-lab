@@ -28,10 +28,13 @@ export async function loadCast(stage:CharacterStage,signal:AbortSignal,progress:
  const {scene,shadow}=stage,started=performance.now(),packs=new Map<string,Pack>(),puppets=new Map<string,Puppet>();let bytes=0,disposed=false,mode:'skeletal'|'hybrid'='hybrid';
  const resources:AssetContainer[]=[];
  // Same-origin requests retain the viewer's protected-preview session; integrity still verifies every asset.
- async function fetchAsset(id:string){const entry=manifest.assets[id as keyof typeof manifest.assets].variants[0];const integrity='sha256-'+btoa(String.fromCharCode(...entry.sha256.match(/../g)!.map(x=>parseInt(x,16))));const r=await fetch(entry.src,{signal,integrity,credentials:'same-origin'});if(!r.ok)throw new Error(`Unable to load ${id}`);bytes+=entry.bytes;return r;}
+ function assetLabel(id:string) {
+  return id.replace(/^(limen|stiletto)\b/, supervisor => supervisor.toUpperCase()).replaceAll('-', ' ');
+ }
+ async function fetchAsset(id:string){const entry=manifest.assets[id as keyof typeof manifest.assets].variants[0];const integrity='sha256-'+btoa(String.fromCharCode(...entry.sha256.match(/../g)!.map(x=>parseInt(x,16))));const r=await fetch(entry.src,{signal,integrity,credentials:'same-origin'});if(!r.ok)throw new Error(`Unable to load ${assetLabel(id)}`);bytes+=entry.bytes;return r;}
  try{
   // Bounded sequential decode prevents eight simultaneous GLB parsers on phones.
-  for(const name of [...groups,'limen','stiletto',...groups.map(x=>x+'-low')]){progress('Loading '+name.replaceAll('-',' ')+'…');const raw=await (await fetchAsset(name)).arrayBuffer();if(signal.aborted)throw new DOMException('Aborted','AbortError');const container=await LoadAssetContainerAsync(new Uint8Array(raw),scene,{pluginExtension:'.glb',name:name+'.glb'});resources.push(container);const rig=await (await fetchAsset(name+'-rig')).json() as Rig;
+  for(const name of [...groups,'limen','stiletto',...groups.map(x=>x+'-low')]){progress('Loading '+assetLabel(name)+'…');const raw=await (await fetchAsset(name)).arrayBuffer();if(signal.aborted)throw new DOMException('Aborted','AbortError');const container=await LoadAssetContainerAsync(new Uint8Array(raw),scene,{pluginExtension:'.glb',name:name+'.glb'});resources.push(container);const rig=await (await fetchAsset(name+'-rig')).json() as Rig;
    if(!container.skeletons.length||!rig.bones.every(n=>container.skeletons[0].bones.some(b=>b.name===n))||!rig.clips.every(c=>container.animationGroups.some(g=>g.name===c)))throw new Error('Character rig is incomplete');packs.set(name,{container,rig});
   }
   const baked=await (await fetchAsset('worker-baked')).json() as {vertexData:string;width:number;height:number};const binary=Uint8Array.from(atob(baked.vertexData),c=>c.charCodeAt(0)),floats=new Float32Array(binary.buffer);

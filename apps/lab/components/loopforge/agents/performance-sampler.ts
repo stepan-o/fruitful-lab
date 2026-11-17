@@ -27,10 +27,10 @@ export function createPerformanceSampler(groups:AnimationGroup[],prefix='',rootM
  let forgeState:ForgePressResult|undefined;
  function evaluate(cue:MotionCue,seconds:number,result:(Quaternion|Vector3)[]){
   if(cue.clip==='Max_Forge_Control_Press'){
-   if(!forgePress||!maxForgeControl)throw Error('Max Forge procedure requires the actual Max control/skin interface');
-   if(cue.loop||cue.rate!==1||![-2.7,-1.4,0].includes(cue.start??NaN))throw Error('Max Forge procedure requires its authored three-phase clock');
+   if(!forgePress||!maxForgeControl)throw Error('max Forge procedure requires the actual max control/skin interface');
+   if(cue.loop||cue.rate!==1||![-2.7,-1.4,0].includes(cue.start??NaN))throw Error('max Forge procedure requires its authored three-phase clock');
    const quiet=cue.forgeQuiet;
-   if(!quiet||quiet.start.cue.clip!=='Quiet_Wait'||quiet.end.cue.clip!=='Quiet_Wait')throw Error('Max Forge procedure requires actual assembled quiet endpoints');
+   if(!quiet||quiet.start.cue.clip!=='Quiet_Wait'||quiet.end.cue.clip!=='Quiet_Wait')throw Error('max Forge procedure requires actual assembled quiet endpoints');
    const key=JSON.stringify(quiet);
    if(key!==forgeQuietKey){evaluate(quiet.start.cue,quiet.start.seconds,quietStart);evaluate(quiet.end.cue,quiet.end.seconds,quietEnd);forgeQuietKey=key;}
    forgeState=forgePress.sample(quietStart,quietEnd,(cue.start??0)+seconds*(cue.rate??1),maxForgeControl(),result);return;

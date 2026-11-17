@@ -207,7 +207,7 @@
       224
     ],
     "volume": "Retain the 80 × 56 m repair hall, 50 m line and 15 m roof. A full-size bridge crane spans the hot bed. An operator on foot should look small between its columns.",
-    "blocking": "STILETTO and Rivet Witch can confront each other across a loaded bed while the line advances. Keep bob’s motor housing reachable from Intake and leave the operator walk clear.",
+    "blocking": "STILETTO and RIVET WITCH can confront each other across a loaded bed while the line advances. Keep bob’s motor housing reachable from Intake and leave the operator walk clear.",
     "art": [
       {
         "source": "rooms/04_loopforge_rooms_neural_lattice_converyor_1.png",
@@ -217,7 +217,7 @@
       {
         "source": "characters/interactions/argue_stiletto_rivet_witch_conveyor.png",
         "media": "supervisors/argue-stiletto-rivet-witch-conveyor",
-        "caption": "STILETTO and Witch · blade and tool above the moving line"
+        "caption": "STILETTO and RIVET WITCH · blade and tool above the moving line"
       }
     ],
     "objects": [
@@ -299,7 +299,7 @@
       167
     ],
     "volume": "A long ceremonial axis ends at the raised instrument. Reserve an 8 m-wide, 18 m-deep approach between the looms, framed by 9 m illuminated columns.",
-    "blocking": "THRUM kneels or conducts down the centre. Witch can stand at the side of a comb and gather loose ribbons with both hands. Keep these two positions clear at the same time.",
+    "blocking": "THRUM kneels or conducts down the centre. RIVET WITCH can stand at the side of a comb and gather loose ribbons with both hands. Keep these two positions clear at the same time.",
     "art": [
       {
         "source": "rooms/05_loopforge_rooms_weaving_room_3.png",
@@ -314,7 +314,7 @@
       {
         "source": "characters/weaving_operations/rivet_witch_weaving_repair.png",
         "media": "supervisors/rivet-witch-weaving-repair",
-        "caption": "Witch · fingers working a loose ribbon at the comb"
+        "caption": "RIVET WITCH · fingers working a loose ribbon at the comb"
       }
     ],
     "objects": [
@@ -398,7 +398,7 @@
       167
     ],
     "volume": "A single steaming vat owns the room. An 8 m vessel sits below a hanging electrode crown. Tanks climb to 8 m behind it. Leave 2 m around the hot rim for the operator and a spotter.",
-    "blocking": "Witch can lean over the rim with a tool and reach the sampling board without turning her back on the vat. Keep the console on the camera side of the steam.",
+    "blocking": "RIVET WITCH can lean over the rim with a tool and reach the sampling board without turning her back on the vat. Keep the console on the camera side of the steam.",
     "art": [
       {
         "source": "rooms/06_loopforge_rooms_cognition_brewery_3_rivet_witch.png",
@@ -408,7 +408,7 @@
       {
         "source": "characters/brewery operations/rivet_witch_brewery_success_1.png",
         "media": "supervisors/rivet-witch-brewery-success-1",
-        "caption": "Rivet Witch · tool over the bath, logbook within reach"
+        "caption": "RIVET WITCH · tool over the bath, logbook within reach"
       }
     ],
     "objects": [
@@ -476,7 +476,7 @@
       167
     ],
     "volume": "Keep the hot furnace across the aisle from the cold cyan test vessels. A single brain-sized workpiece travels through an oversized chamber. Allow a 4 m service ring and an overhead lift.",
-    "blocking": "Witch works the side instrument desk while the chamber stays in frame. The retained smart crew can align a core from opposite sides and withdraw before the hoist lowers.",
+    "blocking": "RIVET WITCH works the side instrument desk while the chamber stays in frame. The retained smart crew can align a core from opposite sides and withdraw before the hoist lowers.",
     "art": [
       {
         "source": "rooms/08_loopforge_rooms_brain_forge_3.png",
@@ -486,7 +486,7 @@
       {
         "source": "rooms/08_loopforge_rooms_brain_forge_8_rivet_witch.png",
         "media": "local/cortex-witch",
-        "caption": "Witch at the instrument desk beside the illuminated test cell"
+        "caption": "RIVET WITCH at the instrument desk beside the illuminated test cell"
       }
     ],
     "objects": [
@@ -692,7 +692,7 @@
       61
     ],
     "volume": "Fill the entire 6 m-deep gap above Lobby and Dispatch. Carry the same double-height bent, saddle spacing and valve colour along the south face of all three tech rooms. Mirror the service return along their north wall.",
-    "blocking": "Rivet Witch can isolate one room at a branch wheel while the rest of the header remains charged. Carry the wet lines and dry hoist above three clear staff thresholds; keep the concourse and escape of the queue on the floor below.",
+    "blocking": "RIVET WITCH can isolate one room at a branch wheel while the rest of the header remains charged. Carry the wet lines and dry hoist above three clear staff thresholds; keep the concourse and escape of the queue on the floor below.",
     "art": [
       {
         "source": "rooms/06_loopforge_rooms_cognition_brewery_3_rivet_witch.png",

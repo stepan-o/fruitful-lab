@@ -200,7 +200,7 @@ test("narration receives named facts, assigned voice and explicit quota outcome"
   expect(input.committedFacts).toMatchObject({ runComplete: true, quota: 240 });
   expect(input.committedFacts.rooms[0]).toMatchObject({
     name: "Security",
-    supervisor: "Limen",
+    supervisor: "LIMEN",
   });
   expect(input.committedFacts.rooms[0]).not.toHaveProperty("room");
   expect(input.assignedSpeaker).toBe("cathexis");

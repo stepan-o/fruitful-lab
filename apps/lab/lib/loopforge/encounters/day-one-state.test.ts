@@ -19,7 +19,7 @@ it('keeps the assignment visible while a departing operator no longer occupies t
  expect(view.stationOperators.intake).toBe('bob');expect(view.stationOccupancy.intake).toBeNull();expect(view.departed).toBe(0);
 });
 
-it('retains Bob at Belt while Sam operates Forge and excludes departed actors',()=>{
+it('retains bob at Belt while sam operates Forge and excludes departed actors',()=>{
  const {world:w}=arrival();w.facts['day.stage']='production';w.facts['line.operator.belt']='jo';
  w.agents.bob={...w.agents.bob,room:'conveyor',position:conveyorControl('belt')};w.agents.sam={...w.agents.sam,room:'conveyor',position:conveyorControl('forge')};w.agents.jo={...w.agents.jo,room:'conveyor',position:[145800,109600]};
  const before=dayOneState(w.facts,w.agents)!;expect(before.stationOccupancy.belt).toBe('bob');expect(before.stationOccupancy.forge).toBe('sam');expect(Object.values(before.stationOccupancy).filter(Boolean)).toHaveLength(2);

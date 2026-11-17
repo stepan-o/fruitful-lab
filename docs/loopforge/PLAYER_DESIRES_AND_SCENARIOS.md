@@ -324,7 +324,7 @@ Study RimWorld for authorship, Suzerain for governing through people, Frostpunk 
 
 **Evidence.** Quantic Foundry’s motivation model groups reported preferences including strategy, challenge, story, fantasy, design and discovery. Its development article describes a self-selected survey sample.
 
-**Loopforge interpretation.** Backing Stiletto can express affection, ambition, curiosity or calculated risk. Do not infer one motivation from the button clicked, or divide players into seven fixed types.
+**Loopforge interpretation.** Backing STILETTO can express affection, ambition, curiosity or calculated risk. Do not infer one motivation from the button clicked, or divide players into seven fixed types.
 
 **Limit.** A preference taxonomy is neither a causal model of enjoyment nor an estimate of our audience. Community preferences do not directly measure attachment to NPCs.
 
@@ -348,7 +348,7 @@ Study RimWorld for authorship, Suzerain for governing through people, Frostpunk 
 
 **Let success be enjoyable.** Show the clean batch, the workers still present, the supervisor who delivered. Do not automatically answer every success with betrayal or an accident. New complexity can test what the player built without erasing it.
 
-**Disagreement is more useful than a morality score.** LIMEN, STILETTO and Cathexis may judge the same act differently, when they know about it. Their judgment is character evidence, not the game’s final moral verdict.
+**Disagreement is more useful than a morality score.** LIMEN, STILETTO and CATHEXIS may judge the same act differently, when they know about it. Their judgment is character evidence, not the game’s final moral verdict.
 
 **Expression needs enough information.** Explain the intended action, known sacrifice and kind of uncertainty before commitment. Keep hidden motives and future details hidden. Surprise should complicate a comprehensible decision.
 
@@ -370,7 +370,7 @@ Conditional situations, not seven compulsory missions. No scenario below is clai
 
 **Immediate payoff and cost.** Enjoy a stronger production rhythm and the contribution of the workers you kept. The unpaid quota remains visible; capacity limits mean more workers are not always the answer.
 
-**Later echo.** Tomorrow’s facts show what the retained workforce actually changed. Later, Cathexis inherits those particular workers and their unindoctrinated history; Act 1 does not expose it as a stat.
+**Later echo.** Tomorrow’s facts show what the retained workforce actually changed. Later, CATHEXIS inherits those particular workers and their unindoctrinated history; Act 1 does not expose it as a stat.
 
 **Interface and sensory feedback.** Roster → concise plan → operating cameras → dispatch before/after totals → next-day read. Green impulses accompany real production, with bounded mechanical SFX; no modal per brain.
 
@@ -394,7 +394,7 @@ Conditional situations, not seven compulsory missions. No scenario below is clai
 
 **Author view: causal support.** Load and risk evolve from state and seeded resolution. Easing prevents additional exposure; it does not repair existing wear. Private stress and memories remain filtered.
 
-**Not yet delivered / guardrail.** Existing shudder fixture supplies a starting point. Need a safe multi-day route that remains viable. No repair action exists before Witch arrives in Part 03.
+**Not yet delivered / guardrail.** Existing shudder fixture supplies a starting point. Need a safe multi-day route that remains viable. No repair action exists before RIVET WITCH arrives in Part 03.
 
 ### S3 · My factory, my rules · Part 01
 
@@ -454,9 +454,9 @@ Conditional situations, not seven compulsory missions. No scenario below is clai
 
 **Player wants.** Relationship influence · order · care · attachment
 
-**Situation.** Cathexis offers a programme that can make a strained workforce act together. LIMEN objects to her disregard for procedure; STILETTO wants workers back on the line.
+**Situation.** CATHEXIS offers a programme that can make a strained workforce act together. LIMEN objects to her disregard for procedure; STILETTO wants workers back on the line.
 
-**Commitment.** Choose Cathexis as adviser and consider her Theatre arrangement, or retain another adviser and override placements. Proposed programme event: publicly back a particular promise or limit a specific claim. This is a factory-wide commitment, not a priority menu or free extra consultation.
+**Commitment.** Choose CATHEXIS as adviser and consider her Theatre arrangement, or retain another adviser and override placements. Proposed programme event: publicly back a particular promise or limit a specific claim. This is a factory-wide commitment, not a priority menu or free extra consultation.
 
 **Immediate payoff and cost.** Her session delivers a recognizable coordination benefit and worker response at a production opportunity cost. Public backing increases the weight of her voice; limiting it preserves another kind of authority but loses some appeal.
 
@@ -472,7 +472,7 @@ Conditional situations, not seven compulsory missions. No scenario below is clai
 
 **Player wants.** Experimentation · authority · relationship influence
 
-**Situation.** Cathexis is a compelling speaker and a poor fit for Conveyor work. You still have the authority to put her there.
+**Situation.** CATHEXIS is a compelling speaker and a poor fit for Conveyor work. You still have the authority to put her there.
 
 **Commitment.** Override the proposed assignment after a concise, attributed warning. Try the mismatch or keep her where her capabilities matter; curiosity is allowed, not prescribed.
 
@@ -540,7 +540,7 @@ Conditional situations, not seven compulsory missions. No scenario below is clai
 
 - Which observable support/credit/disclosure commitments belong inside the one daily adviser conversation, and which need a factory-wide event? Avoid extra conversations that become relationship farming.
 
-- What benefits make Cathexis’s programme tempting, and what durable liabilities distinguish public empowerment from constraint? Specify these before implementing generic relationship modifiers.
+- What benefits make CATHEXIS’s programme tempting, and what durable liabilities distinguish public empowerment from constraint? Specify these before implementing generic relationship modifiers.
 
 - What commissioning cost and income timing allow Theatre readiness before the weekly settlement? No assumed daily wage, repair bill or retained-worker resale.
 

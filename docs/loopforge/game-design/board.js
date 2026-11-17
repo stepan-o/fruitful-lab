@@ -27,7 +27,7 @@
   function renderRumor(id,notify=true){
     const c=d.stress.cases.find(x=>x.id===id)||d.stress.cases[0];
     document.querySelectorAll('[data-rumor]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.rumor===c.id)));
-    document.getElementById('rumor-detail').innerHTML=`<article class="rumor-case"><span class="status">Conceptual scenario · proposed sequence</span><h3>${escape(c.name)}</h3><div class="two-col"><dl>${def('Physical truth',c.truth)}${def('Who learns what',c.reach)}${def('What they believe',c.interpretation)}</dl><dl>${def('Player response',c.choice)}${def('Consequences',c.aftermath)}${def('Thrum’s role',c.thrum)}</dl></div></article>`;
+    document.getElementById('rumor-detail').innerHTML=`<article class="rumor-case"><span class="status">Conceptual scenario · proposed sequence</span><h3>${escape(c.name)}</h3><div class="two-col"><dl>${def('Physical truth',c.truth)}${def('Who learns what',c.reach)}${def('What they believe',c.interpretation)}</dl><dl>${def('Player response',c.choice)}${def('Consequences',c.aftermath)}${def('THRUM’s role',c.thrum)}</dl></div></article>`;
     if(notify)announce(c.name+' selected');
   }
   function renderBDI(id,notify=true){

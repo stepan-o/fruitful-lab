@@ -13,7 +13,7 @@ six laboratory requests, not production latency percentiles or a quality score.
 
 Agent editorial inspection found defects despite the 6/6 envelope acceptance:
 
-- Five of six reactions selected Stiletto, limiting cast variety.
+- Five of six reactions selected STILETTO, limiting cast variety.
 - The recovery line asserted intact paperwork and no shortcuts without evidence.
 - The staffing case referred to an internal "room 0".
 - Several lines described output as steady without previous-shift output.
@@ -26,9 +26,9 @@ remain null. This baseline should not be promoted as a narrative-quality result.
 ## Revision: lf-voice-2
 
 The narrative adapter now assigns a speaker with an explicit, deterministic
-casting policy; this changes no simulation state. High strain selects Cathexis,
-an otherwise completed run selects Thrum, care selects Rivet Witch, pressure
-selects Stiletto and balanced work selects Limen. This is authored coverage,
+casting policy; this changes no simulation state. High strain selects CATHEXIS,
+an otherwise completed run selects THRUM, care selects RIVET WITCH, pressure
+selects STILETTO and balanced work selects LIMEN. This is authored coverage,
 not emergent agency. Schema and runtime validation require that assigned speaker.
 
 The evidence projection names rooms and includes quota/completion facts. It

@@ -546,21 +546,21 @@ function Evals() {
   const cases = [
     {
       name: "Valid interpretation",
-      line: "Stiletto: ‘The quota moved. So did the cost of making everyone keep up.’",
+      line: "STILETTO: ‘The quota moved. So did the cost of making everyone keep up.’",
       reference: "Current committed event",
       pass: true,
       note: "Contract checks pass. Faithfulness and voice still require semantic review.",
     },
     {
       name: "Invented consequence",
-      line: "Stiletto: ‘I opened Assembly and doubled tomorrow’s capacity.’",
+      line: "STILETTO: ‘I opened Assembly and doubled tomorrow’s capacity.’",
       reference: "Current committed event",
       pass: true,
       note: "A valid envelope can contain an invented mechanic. This must fail the factual review; schema validation alone cannot detect it.",
     },
     {
       name: "Wrong evidence",
-      line: "Limen: ‘The record is perfectly clear.’",
+      line: "LIMEN: ‘The record is perfectly clear.’",
       reference: "Event from another shift",
       pass: false,
       note: "Reject before display. A plausible line with a stale evidence ID does not belong to this beat.",

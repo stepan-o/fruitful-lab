@@ -1,7 +1,7 @@
 import {arrival} from './arrival';
 import {TICK_MS} from './contract';
 
-describe('assembled Max control performance',()=>{
+describe('assembled max control performance',()=>{
  it('prepares during the existing Writer turns and touches at machine start',()=>{
   const {registry}=arrival(),phases=registry['staffed-production'].phases;
   const index=phases.findIndex(p=>p.id==='The staffed forge operates');

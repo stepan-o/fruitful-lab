@@ -122,8 +122,8 @@ export default function EngineNotes() {
         <p>LIMEN, Worker 01 and STILETTO share a production asset library,
           direct model navigation and six evidence gates: body, equipment,
           motion, contacts, CCTV readability and performance. Each gate records
-          what was accepted and what is still open. Cathexis, Rivet Witch and
-          Thrum have awaiting-model entries. Immutable runtime hashes tie
+          what was accepted and what is still open. CATHEXIS, RIVET WITCH and
+          THRUM have awaiting-model entries. Immutable runtime hashes tie
           collision reports to the exact reviewed asset; source masters stay
           outside deployment bundles.</p>
         <p>Close inspection supports mouse/touch orbit, scroll/pinch zoom and reset; CCTV presets stay fixed. The older rejected-model action fixture is archived separately. Current character adapters preserve their specialized controls.

@@ -402,7 +402,7 @@
           "sourceFile": "Animation_Confident_Walk_withSkin.fbx",
           "sourceSha256": "420ab45096d9f04af5bbe9914482c17371bc3ec695bb34038c9d2c749e3fe42e",
           "duration": 5.76666667,
-          "note": "Original export observation: Owner confirms Hot Walk in Meshy and selects it as Cathexis’s default walk. The hip-led crossover and attitude are intentional. This worker is only a motion stand-in; retarget and check actual mesh clearance on Cathexis. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+          "note": "Original export observation: Owner confirms Hot Walk in Meshy and selects it as CATHEXIS’s default walk. The hip-led crossover and attitude are intentional. This worker is only a motion stand-in; retarget and check actual mesh clearance on CATHEXIS. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
         },
         {
           "label": "Alert",

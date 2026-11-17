@@ -492,16 +492,16 @@ toMatchInlineSnapshot(`
   "limen": {
     "condition": 70,
     "losses": 0,
-    "player": "117cc7241c99b1b78bd1c7cd63281c7c75c46d735b0bc794f2f165a4d053bafa",
+    "player": "500971e23b272b370e40d049e8a4fa6ef630f0eee4f652548e3d0d2aa86b881c",
     "produced": 20,
-    "truth": "1bcb50ec037347b03bade9fde6de0f102cbaf083c5d7b21978748a05563de704",
+    "truth": "ae3a29a0d666d1aed7c4d07e005e4626a0f45a4c94ff5da2082a13a623b3f7f3",
   },
   "stiletto": {
     "condition": 67,
     "losses": 0,
-    "player": "43c920fe176ba48cc1c3ec083a48d0536fd165d0813730cbceca7ce59a1bf6ee",
+    "player": "89699eced96785a1a376e6e77e6a03e91381ac6454e42a34edbcb6fd6e4c10f5",
     "produced": 24,
-    "truth": "5bc926b3566cbac10b90bd986dd1682dc9d6375f373925a543d04d3bc0557b0a",
+    "truth": "187b03e3108686d1eb3f345f0c5c8cd4c835c1d0720668791ff3e73269b7d194",
   },
 }
 `);

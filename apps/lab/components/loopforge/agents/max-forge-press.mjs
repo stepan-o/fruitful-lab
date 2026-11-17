@@ -1,4 +1,4 @@
-/** Max-only authored control reach. Source-only candidate; no measured contact or visual pass.
+/** max-only authored control reach. Source-only candidate; no measured contact or visual pass.
  * Numeric transform utilities retained from the selected leg solver; that solver is unchanged.
  * All pose coordinates include native model transforms and exclude placement root. */
 const EPS = 1e-12;
@@ -9,8 +9,8 @@ const dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0);
 const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
 const norm=a=>Math.hypot(...a);
 const lerp=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t);
-function unit(v){const n=norm(v);if(!(n>EPS))throw Error('Max leg blend: degenerate direction');return mul(v,1/n);}
-function finite(v,n){if(v.length!==n||v.some(x=>!Number.isFinite(x)))throw Error('Max leg blend: nonfinite transform');return v;}
+function unit(v){const n=norm(v);if(!(n>EPS))throw Error('max leg blend: degenerate direction');return mul(v,1/n);}
+function finite(v,n){if(v.length!==n||v.some(x=>!Number.isFinite(x)))throw Error('max leg blend: nonfinite transform');return v;}
 const identity=()=>[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1];
 const position=m=>m.slice(12,15);
 function mm(a,b){const o=Array(16).fill(0);for(let c=0;c<4;c++)for(let r=0;r<4;r++)for(let k=0;k<4;k++)o[c*4+r]+=a[k*4+r]*b[c*4+k];return o;}
@@ -18,7 +18,7 @@ function dir(m,v){return [0,1,2].map(i=>m[i]*v[0]+m[4+i]*v[1]+m[8+i]*v[2]);}
 function inverse(m){
  const a=m[0],b=m[4],c=m[8],d=m[1],e=m[5],f=m[9],g=m[2],h=m[6],i=m[10];
  const det=a*(e*i-f*h)-b*(d*i-f*g)+c*(d*h-e*g);
- if(Math.abs(det)<EPS)throw Error('Max leg blend: singular matrix');
+ if(Math.abs(det)<EPS)throw Error('max leg blend: singular matrix');
  const n=[(e*i-f*h)/det,(f*g-d*i)/det,(d*h-e*g)/det,0,(c*h-b*i)/det,(a*i-c*g)/det,(b*g-a*h)/det,0,(b*f-c*e)/det,(c*d-a*f)/det,(a*e-b*d)/det,0,0,0,0,1];
  n.splice(12,3,...mul(dir(n,position(m)),-1));return n;
 }
@@ -30,9 +30,9 @@ function compose(p,q,s){
 }
 function decompose(m){
  let x=m.slice(0,3),y=m.slice(4,7),z=m.slice(8,11),s=[norm(x),norm(y),norm(z)];
- if(s.some(v=>v<EPS))throw Error('Max leg blend: degenerate basis');
+ if(s.some(v=>v<EPS))throw Error('max leg blend: degenerate basis');
  if(dot(cross(x,y),z)<0)s[0]=-s[0];x=mul(x,1/s[0]);y=mul(y,1/s[1]);z=mul(z,1/s[2]);
- if(Math.max(Math.abs(dot(x,y)),Math.abs(dot(y,z)),Math.abs(dot(z,x)))>1e-5)throw Error('Max leg blend: sheared rig needs explicit handling');
+ if(Math.max(Math.abs(dot(x,y)),Math.abs(dot(y,z)),Math.abs(dot(z,x)))>1e-5)throw Error('max leg blend: sheared rig needs explicit handling');
  const m00=x[0],m01=y[0],m02=z[0],m10=x[1],m11=y[1],m12=z[1],m20=x[2],m21=y[2],m22=z[2];
  const trace=m00+m11+m22;let q;
  if(trace>0){const t=Math.sqrt(trace+1)*2;q=[(m21-m12)/t,(m02-m20)/t,(m10-m01)/t,t/4];}
@@ -41,8 +41,8 @@ function decompose(m){
  else {const t=Math.sqrt(1+m22-m00-m11)*2;q=[(m02+m20)/t,(m12+m21)/t,t/4,(m10-m01)/t];}
  return {p:position(m),q:unit(q),s};
 }
-function fromTo(a,b){a=unit(a);b=unit(b);const d=dot(a,b);if(d<-.9999999999)throw Error('Max leg blend: antiparallel direction needs an authored pole');return unit([...cross(a,b),1+d]);}
-function fk(h,pose){const w=[];for(let i=0;i<h.length;i++){const p=h[i].parent;if(p>=i)throw Error('Max leg blend: hierarchy is not parent-first');const m=compose(pose[i].p,pose[i].q,pose[i].s);w.push(p<0?m:mm(w[p],m));}return w;}
+function fromTo(a,b){a=unit(a);b=unit(b);const d=dot(a,b);if(d<-.9999999999)throw Error('max leg blend: antiparallel direction needs an authored pole');return unit([...cross(a,b),1+d]);}
+function fk(h,pose){const w=[];for(let i=0;i<h.length;i++){const p=h[i].parent;if(p>=i)throw Error('max leg blend: hierarchy is not parent-first');const m=compose(pose[i].p,pose[i].q,pose[i].s);w.push(p<0?m:mm(w[p],m));}return w;}
 const clone=p=>p.map(n=>({p:n.p.slice(),q:n.q.slice(),s:n.s.slice()}));
 
 export const FORGE_PRESS = Object.freeze({
@@ -69,7 +69,7 @@ function mixPose(a,b,t){
 }));}
 function writeOrientation(h,pose,world,i,task){
  const parent=h[i].parent,local=mm(inverse(parent<0?identity():world[parent]),task),d=decompose(local);
- if(d.s.some((v,j)=>Math.abs(v-pose[i].s[j])>1e-5))throw Error('Max Forge: orientation would change native scale');
+ if(d.s.some((v,j)=>Math.abs(v-pose[i].s[j])>1e-5))throw Error('max Forge: orientation would change native scale');
  pose[i].q=mul(d.q,norm(pose[i].q));
 }
 function leaned(h,pose,spine,axis,angle){
@@ -82,19 +82,19 @@ function leaned(h,pose,spine,axis,angle){
  * The expected contact frame uses local -Z palm outward and local +Y fingers.
  * Caller must verify that convention against the actual loaded hand surface. */
 export function sampleMaxForgePress({hierarchy,quietStart,quietEnd,control,seconds,fittedLeanRadians}){
- if(!Number.isFinite(seconds))throw Error('Max Forge: invalid phase time');
- if(quietStart.length!==hierarchy.length||quietEnd.length!==hierarchy.length)throw Error('Max Forge: incomplete quiet pose');
+ if(!Number.isFinite(seconds))throw Error('max Forge: invalid phase time');
+ if(quietStart.length!==hierarchy.length||quietEnd.length!==hierarchy.length)throw Error('max Forge: incomplete quiet pose');
  for(const p of [quietStart,quietEnd])for(const n of p){finite(n.p,3);finite(n.q,4);finite(n.s,3);}
  finite(control.point,3);finite(control.normal,3);finite(control.forward,3);finite(control.handContactLocal,3);
  const t=Math.max(FORGE_PRESS.preparationStart,Math.min(FORGE_PRESS.duration,seconds)),settle=interval(t,FORGE_PRESS.preparationStart,FORGE_PRESS.recoverAt);
  const base=mixPose(quietStart,quietEnd,settle),pose=clone(base),names=new Map(hierarchy.map((n,i)=>[n.name,i]));
- if(names.size!==hierarchy.length)throw Error('Max Forge: duplicate node names');
- const ids=FORGE_PRESS_JOINTS.map(n=>{const i=names.get(n);if(i===undefined)throw Error('Max Forge: missing '+n);return i;});
+ if(names.size!==hierarchy.length)throw Error('max Forge: duplicate node names');
+ const ids=FORGE_PRESS_JOINTS.map(n=>{const i=names.get(n);if(i===undefined)throw Error('max Forge: missing '+n);return i;});
  const [,, ,arm,elbow,hand]=ids;
- if(hierarchy[elbow].parent!==arm||hierarchy[hand].parent!==elbow)throw Error('Max Forge: unexpected arm chain');
+ if(hierarchy[elbow].parent!==arm||hierarchy[hand].parent!==elbow)throw Error('max Forge: unexpected arm chain');
  // Lower body is the existing immutable quiet support pose, never the Push lunge.
  for(let i=0;i<hierarchy.length;i++)if(/^(Hips|(?:Left|Right)(?:UpLeg|Leg|Foot|ToeBase))$/.test(hierarchy[i].name)){
-  if(['p','q','s'].some(k=>quietStart[i][k].some((v,j)=>v!==quietEnd[i][k][j])))throw Error('Max Forge: quiet support endpoints differ');
+  if(['p','q','s'].some(k=>quietStart[i][k].some((v,j)=>v!==quietEnd[i][k][j])))throw Error('max Forge: quiet support endpoints differ');
  }
  if(t===FORGE_PRESS.preparationStart||t>=FORGE_PRESS.recoverAt)return {pose,applied:false,phase:t===FORGE_PRESS.preparationStart?'ready':'recovered',contactExpected:false};
  const up=unit(control.normal),toward=unit(sub(control.forward,mul(up,dot(control.forward,up))));
@@ -126,18 +126,18 @@ export function sampleMaxForgePress({hierarchy,quietStart,quietEnd,control,secon
    return norm(sub(contactWrist,a))<=norm(sub(e,a))+norm(sub(r,e))-FORGE_PRESS.reachReserveMetres;};
   if(canReach(0))return 0;
   let lo=0,hi=FORGE_PRESS.maximumTorsoLeanRadians;
-  if(!canReach(hi))throw Error('Max Forge: actual control unreachable within authored torso bound');
+  if(!canReach(hi))throw Error('max Forge: actual control unreachable within authored torso bound');
   for(let k=0;k<18;k++){const mid=(lo+hi)/2;if(canReach(mid))hi=mid;else lo=mid;}
   return hi;
  }
  const torsoLean=fittedLeanRadians??Math.max(requiredLean(quietStart),requiredLean(quietEnd));
- if(!Number.isFinite(torsoLean)||torsoLean<0||torsoLean>FORGE_PRESS.maximumTorsoLeanRadians)throw Error('Max Forge: invalid fitted torso lean');
+ if(!Number.isFinite(torsoLean)||torsoLean<0||torsoLean>FORGE_PRESS.maximumTorsoLeanRadians)throw Error('max Forge: invalid fitted torso lean');
  const trunkPose=leaned(hierarchy,base,trunk[0],leanAxis,torsoLean*weight);
  pose[trunk[0]].q=trunkPose.pose[trunk[0]].q;let world=trunkPose.world;
  // One intentional raise, normal approach, held contact and withdrawal. No button
  // penetration/depression is invented: the visible control surface remains fixed.
  const start=point(startWorld[hand],control.handContactLocal),end=point(endWorld[hand],control.handContactLocal);
- const left=names.get('LeftArm');if(left===undefined)throw Error('Max Forge: missing contralateral shoulder');
+ const left=names.get('LeftArm');if(left===undefined)throw Error('max Forge: missing contralateral shoulder');
  const shoulderLine=sub(position(startWorld[arm]),position(startWorld[left]));
  const routeOut=unit(sub(shoulderLine,mul(up,dot(shoulderLine,up))));
  // The failed direct raise crossed thigh then torso. Both cubic control points
@@ -155,7 +155,7 @@ export function sampleMaxForgePress({hierarchy,quietStart,quietEnd,control,secon
  const wrist=sub(contact,dir(handTask,control.handContactLocal)),shoulder=position(world[arm]);
  const initialElbow=position(world[elbow]),initialWrist=position(world[hand]);
  const upper=norm(sub(initialElbow,shoulder)),lower=norm(sub(initialWrist,initialElbow)),reach=norm(sub(wrist,shoulder));
- if(reach>upper+lower||reach<Math.abs(upper-lower)||reach<EPS)throw Error(`Max Forge: unreachable wrist at ${t}s: ${reach} outside [${Math.abs(upper-lower)},${upper+lower}]`);
+ if(reach>upper+lower||reach<Math.abs(upper-lower)||reach<EPS)throw Error(`max Forge: unreachable wrist at ${t}s: ${reach} outside [${Math.abs(upper-lower)},${upper+lower}]`);
  const outward=unit(sub(position(world[arm]),position(world[left]))),axis=unit(sub(wrist,shoulder));
  const nativePole=sub(initialElbow,shoulder),authoredPole=mul(unit(add(outward,mul(up,-.5))),upper);
  const poleWeight=t<=FORGE_PRESS.raiseEnd?interval(t,FORGE_PRESS.preparationStart,FORGE_PRESS.preparationStart+.65):
@@ -171,10 +171,10 @@ export function sampleMaxForgePress({hierarchy,quietStart,quietEnd,control,secon
  pointJoint(arm,elbow,elbowTarget);pointJoint(elbow,hand,wrist);
  handTask.splice(12,3,...wrist);writeOrientation(hierarchy,pose,world,hand,handTask);world=fk(hierarchy,pose);
  const actualContact=point(world[hand],control.handContactLocal),residual=norm(sub(actualContact,contact));
- if(residual>FORGE_PRESS.residualMetres)throw Error('Max Forge: contact-point solve residual '+residual);
+ if(residual>FORGE_PRESS.residualMetres)throw Error('max Forge: contact-point solve residual '+residual);
  const allowed=new Set(ids);
  for(let i=0;i<pose.length;i++)for(const key of ['p','q','s'])if(key!=='q'||!allowed.has(i)){
-  if(pose[i][key].some((v,j)=>v!==base[i][key][j]))throw Error('Max Forge: protected transform changed');
+  if(pose[i][key].some((v,j)=>v!==base[i][key][j]))throw Error('max Forge: protected transform changed');
  }
  return {pose,applied:true,phase,contactExpected:phase==='press',contactPoint:actualContact,contactTarget:contact,wristTarget:wrist,elbowTarget,
   reach,reachLimit:upper+lower,reachSlack:upper+lower-reach,contactResidual:residual,torsoLeanRadians:torsoLean*weight,
@@ -201,45 +201,45 @@ export function prepareMaxForgePress({hierarchy,quietStart,quietEnd,control}){
 export function measureMaxPalmContact(triangles,referenceLocal,referenceMesh){
  finite(referenceLocal,3);
  if(!referenceMesh||referenceMesh.space!=='RightHand-local-native'||referenceMesh.complete!==true)
-  throw Error('Max Forge: complete measured reference mesh required');
+  throw Error('max Forge: complete measured reference mesh required');
  const {vertices,triangles:indices,metresPerHandUnit}=referenceMesh;
  if(!Array.isArray(vertices)||!vertices.length||!Array.isArray(indices)||!indices.length||
   !Number.isFinite(metresPerHandUnit)||metresPerHandUnit<=EPS)
-  throw Error('Max Forge: invalid reference mesh/scale');
+  throw Error('max Forge: invalid reference mesh/scale');
  const weights=vertices.map(v=>{
   finite(v.point,3);
-  if(!Array.isArray(v.influences)||!v.influences.length)throw Error('Max Forge: missing full vertex influences');
+  if(!Array.isArray(v.influences)||!v.influences.length)throw Error('max Forge: missing full vertex influences');
   let hand=0;
   for(const influence of v.influences){
    if(typeof influence.bone!=='string'||!Number.isFinite(influence.weight)||influence.weight<0)
-    throw Error('Max Forge: invalid reference influence');
+    throw Error('max Forge: invalid reference influence');
    if(influence.bone==='RightHand')hand+=influence.weight;
   }
   return hand;
  });
  const selectedIndices=new Set(),forbiddenIndices=new Set();let positiveHandFaces=0;
  for(const tri of indices){
-  if(tri.length!==3||tri.some(i=>!Number.isInteger(i)||i<0||i>=vertices.length))throw Error('Max Forge: incomplete reference topology');
+  if(tri.length!==3||tri.some(i=>!Number.isInteger(i)||i<0||i>=vertices.length))throw Error('max Forge: incomplete reference topology');
   if(!tri.some(i=>weights[i]>0))continue;
   positiveHandFaces++;
   for(const i of tri)selectedIndices.add(i);
   if(tri.some(i=>weights[i]<.95))for(const i of tri)forbiddenIndices.add(i);
  }
- if(!selectedIndices.size)throw Error('Max Forge: reference has no hand/wrist volume');
+ if(!selectedIndices.size)throw Error('max Forge: reference has no hand/wrist volume');
  const envelope=[...selectedIndices].map(i=>({point:vertices[i].point,forbidden:forbiddenIndices.has(i)}));
  const candidates=[],seen=new Set();
  for(const face of triangles){
   if(face.handWeights.length!==3||face.handWeights.some(w=>w!==1))continue;
-  if(face.points.length!==3)throw Error('Max Forge: incomplete rigid contact face');
+  if(face.points.length!==3)throw Error('max Forge: incomplete rigid contact face');
   face.points.forEach(p=>finite(p,3));
   for(let corner=0;corner<3;corner++){
    const point=face.points[corner],key=JSON.stringify(point);if(seen.has(key))continue;seen.add(key);
    if(![...selectedIndices].some(i=>weights[i]===1&&norm(sub(vertices[i].point,point))<=1e-6))
-    throw Error('Max Forge: rigid contact point absent from full reference mesh');
+    throw Error('max Forge: rigid contact point absent from full reference mesh');
    candidates.push({face,corner,point});
   }
  }
- if(!candidates.length)throw Error('Max Forge: no actual rigid contact point');
+ if(!candidates.length)throw Error('max Forge: no actual rigid contact point');
  // A45-degree authored contact-normal limit is an additional rejection bound.
  // Minimize tilt from local-Z-down via a two-dimensional convex half-plane fit.
  // The sqrt(2) term conservatively enforces the new2mm reference clearance
@@ -278,7 +278,7 @@ export function measureMaxPalmContact(triangles,referenceLocal,referenceMesh){
   }
   if(valid&&(!best||slope<best.slope))best={...candidate,normal,slope,minForbiddenGap};
  }
- if(!best)throw Error('Max Forge: no rigid contact plane clears complete measured wrist within45degrees');
+ if(!best)throw Error('max Forge: no rigid contact plane clears complete measured wrist within45degrees');
  const barycentric=[0,0,0];barycentric[best.corner]=1;
  return {triangle:best.face.id,barycentric,handWeights:best.face.handWeights.slice(),point:best.point.slice(),
   handContactNormalLocal:best.normal.slice(),method:'rigid surface contact; complete mixed-wrist support-plane fit',candidateFaces:triangles.length,
@@ -294,24 +294,24 @@ export function measureMaxPalmContact(triangles,referenceLocal,referenceMesh){
 export function createMaxForgePressAdapter(channels,placementRoot){
  const nodes=[],index=new Map();
  function include(node){
-  if(node===placementRoot)return -1;if(!node)throw Error('Max Forge: node outside placement root');
+  if(node===placementRoot)return -1;if(!node)throw Error('max Forge: node outside placement root');
   if(index.has(node))return index.get(node);const parent=include(node.parent),i=nodes.length;
   nodes.push({node,parent});index.set(node,i);return i;
  }
  for(const c of channels)include(c.target);
  const hierarchy=nodes.map(({node,parent})=>({name:node.name,parent}));
  const rest=nodes.map(({node})=>{
-  if(!node.rotationQuaternion&&norm(node.rotation.asArray())>EPS)throw Error('Max Forge: explicit quaternion required');
+  if(!node.rotationQuaternion&&norm(node.rotation.asArray())>EPS)throw Error('max Forge: explicit quaternion required');
   return {p:node.position.asArray(),q:node.rotationQuaternion?.asArray()??[0,0,0,1],s:node.scaling.asArray()};
  });
  function pose(values){const out=clone(rest);channels.forEach((c,i)=>{
   const n=out[index.get(c.target)],v=values[i].asArray();
   if(c.path==='position')n.p=v;else if(c.path==='rotationQuaternion')n.q=v;else if(c.path==='scaling')n.s=v;
-  else throw Error('Max Forge: unsupported channel '+c.path);
+  else throw Error('max Forge: unsupported channel '+c.path);
  });return out;}
  let key='',prepared;
  return {sample(quietStartValues,quietEndValues,seconds,controlWorld,result){
-  if(result.length!==channels.length)throw Error('Max Forge: incomplete sampler output');
+  if(result.length!==channels.length)throw Error('max Forge: incomplete sampler output');
   placementRoot.computeWorldMatrix(true);const matrix=Array.from(placementRoot.getWorldMatrix().asArray());
   const inv=inverse(matrix),start=pose(quietStartValues),end=pose(quietEndValues);
   const control={point:point(inv,controlWorld.point),normal:unit(dir(inv,controlWorld.normal)),

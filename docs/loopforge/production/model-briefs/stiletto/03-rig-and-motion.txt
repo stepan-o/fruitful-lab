@@ -36,7 +36,7 @@ Do not substitute or silently rename:
 - Left_Slash (97) is a sword-and-shield stance in the preview; it does not represent a forearm tool cutting a conveyor obstruction.
 - Double_Blade_Spin (91) previews a held double-ended weapon. It is NOT a pair of integrated forearm blades.
 - Confused_Scratch (36), hand rubbing (318), hand-on-hip, neck/face touching, clapping and chest pounding are unsuitable stock motions for blade-equipped STILETTO.
-- Hot Walk remains Cathexis's intended default gait; do not transfer that naming/character choice to STILETTO.
+- Hot Walk remains CATHEXIS's intended default gait; do not transfer that naming/character choice to STILETTO.
 
 REPORT
 

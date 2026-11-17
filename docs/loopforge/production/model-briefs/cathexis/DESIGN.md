@@ -12,7 +12,7 @@ Current appearance vocabulary: full porcelain for composure, exposed original me
 
 ## Body and room conditions
 
-One delicate theatrical body, open-front layered skirt, brass/porcelain construction and mechanical heels. Body dirt options are dry soot (A), wet oil (B), caked grime (C); they are material treatments on the accepted mesh/UV/rig, not independently regenerated bodies. Brewery residue follows the chosen material direction. Dirt can accompany frustration, but is independent of mood and damage. A dirty character can briefly regain composure; clean Cathexis can be furious. Existing art also depicts successful production while she is filthy and angry.
+One delicate theatrical body, open-front layered skirt, brass/porcelain construction and mechanical heels. Body dirt options are dry soot (A), wet oil (B), caked grime (C); they are material treatments on the accepted mesh/UV/rig, not independently regenerated bodies. Brewery residue follows the chosen material direction. Dirt can accompany frustration, but is independent of mood and damage. A dirty character can briefly regain composure; clean CATHEXIS can be furious. Existing art also depicts successful production while she is filthy and angry.
 
 ## Acting
 

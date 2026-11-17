@@ -50,7 +50,7 @@ page or handover gate. The first meaningful action is choosing today's adviser.
 - Original sim-sim metal, glass and status-plate assets establish the material
   system. Use authored portrait/control/frame art, native readable text and
   semantic controls. No generic line-icon dashboard or gradient-card substitute.
-- Loopforge's soot, worn brass, green-black, cyan cognition and Stiletto crimson
+- Loopforge's soot, worn brass, green-black, cyan cognition and STILETTO crimson
   govern the image/light/sound palette. Local movement, mechanical engagement,
   restrained signal disturbance and committed-state feedback carry the juice.
 - Phone composition uses the same loop with readable focused context and controls;

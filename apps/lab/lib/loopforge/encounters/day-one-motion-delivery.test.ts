@@ -26,7 +26,7 @@ const details:WorkerDetail[]=['portrait','floor','console'];
 const banks=new Map(openingWorkers.map(worker=>[worker.id,details.map(detail=>({detail,names:deliveredNames(worker.id,detail)}))]));
 function requireDelivered(worker:OpeningWorkerId,cue:MotionCue){
  if(cue.clip==='Max_Forge_Control_Press'){
-  if(worker!=='max'||!cue.forgeQuiet)throw Error('Forge procedure lacks its Max endpoint contract');
+  if(worker!=='max'||!cue.forgeQuiet)throw Error('Forge procedure lacks its max endpoint contract');
   requireDelivered(worker,cue.forgeQuiet.start.cue);requireDelivered(worker,cue.forgeQuiet.end.cue);return;
  }
  for(const {detail,names}of banks.get(worker)!)if(!names.has(cue.clip))throw Error(`${worker}/${detail}: Missing performance: ${cue.clip}`);
@@ -54,7 +54,7 @@ it('keeps every current and blended worker cue executable through the complete o
  for(const clip of ['Draw_ID','ID_Ready','Stow_ID'])expect(samMotions.has(clip)).toBe(false);
 });
 
-it('rejects unavailable Sam card acting instead of silently accepting a missing-motion alias',()=>{
+it('rejects unavailable sam card acting instead of silently accepting a missing-motion alias',()=>{
  expect(()=>requireDelivered('sam',{clip:'Draw_ID'})).toThrow('sam/portrait: Missing performance: Draw_ID');
  expect(()=>requireDelivered('sam',{clip:'unavailable-motion'})).toThrow('Missing performance: unavailable-motion');
 });

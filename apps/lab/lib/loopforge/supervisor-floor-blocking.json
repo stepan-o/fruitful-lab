@@ -34,7 +34,7 @@
           "S2",
           "S3"
         ],
-        "action": "Witch checks a worker’s tool or badge, then points to the Brewery or Weaving door. A worker bound for Conveyor waits while a specialist changes lanes.",
+        "action": "RIVET WITCH checks a worker’s tool or badge, then points to the Brewery or Weaving door. A worker bound for Conveyor waits while a specialist changes lanes.",
         "space": "Stand on the cleared side of the desk so both destination signs and the gate remain visible."
       },
       "thrum": {
@@ -83,7 +83,7 @@
           "F2"
         ],
         "action": "Kneel at the drive housing with a micro-torch. A worker holds the tray at the stop until she closes the cover, stands clear and signals the restart.",
-        "space": "Give the cover a hinge and Witch a knee mark outside its swing. Keep the waiting rack in the repair shot."
+        "space": "Give the cover a hinge and RIVET WITCH a knee mark outside its swing. Keep the waiting rack in the repair shot."
       },
       "thrum": {
         "title": "Set a slower rhythm",
@@ -129,7 +129,7 @@
           "T1",
           "T3"
         ],
-        "action": "Witch opens the side console before the session. For the illustrated lecture variation she takes the apron with a technical diagram; workers turn from the screen to each other.",
+        "action": "RIVET WITCH opens the side console before the session. For the illustrated lecture variation she takes the apron with a technical diagram; workers turn from the screen to each other.",
         "space": "Reserve a console-service position and a separate teaching mark under the screen. The repair panel must open without blocking the aisle."
       },
       "thrum": {
@@ -177,7 +177,7 @@
           "B2",
           "B3"
         ],
-        "action": "Witch stirs below the hanging crown, draws a sample, then works the outlet. For System Refactor she brings a separate experiment vessel to the rim while the branch valves elsewhere close.",
+        "action": "RIVET WITCH stirs below the hanging crown, draws a sample, then works the outlet. For System Refactor she brings a separate experiment vessel to the rim while the branch valves elsewhere close.",
         "space": "Allow one continuous turn from vat to logbook. Give the experiment vessel its own perch and keep the outlet gauge in view."
       },
       "thrum": {
@@ -224,7 +224,7 @@
           "W1",
           "W4"
         ],
-        "action": "Witch gathers the slack, adjusts the comb and tests tension against a stationary drum. Leave a prepared spool in place for the next shift.",
+        "action": "RIVET WITCH gathers the slack, adjusts the comb and tests tension against a stationary drum. Leave a prepared spool in place for the next shift.",
         "space": "Give her a reachable adjustment wheel and a place to hang the bundle. A stopped output drum makes the time cost visible."
       },
       "thrum": {
@@ -272,7 +272,7 @@
           "C2",
           "C3"
         ],
-        "action": "Witch aligns the ribbon cassette, closes the hot fixture and reads the cold proof trace from the side desk. A failed trace sends the same tagged unit back onto the spur.",
+        "action": "RIVET WITCH aligns the ribbon cassette, closes the hot fixture and reads the cold proof trace from the side desk. A failed trace sends the same tagged unit back onto the spur.",
         "space": "Keep a two-person service ring between the hot chamber and cold vessels, with a clear route to the instrument desk."
       },
       "thrum": {
@@ -318,7 +318,7 @@
           "L1",
           "L2"
         ],
-        "action": "Witch checks the actuator from the wall side and works the door by hand while the crew uses the second leaf.",
+        "action": "RIVET WITCH checks the actuator from the wall side and works the door by hand while the crew uses the second leaf.",
         "space": "Expose a service cover and leave one clear opening during the inspection."
       },
       "thrum": {
@@ -365,7 +365,7 @@
           "D2",
           "D3"
         ],
-        "action": "Witch tags a die stillage for maintenance, takes it out of the outgoing file and marks a replacement on the desk.",
+        "action": "RIVET WITCH tags a die stillage for maintenance, takes it out of the outgoing file and marks a replacement on the desk.",
         "space": "Leave one off-line parking place in reach of the desk."
       },
       "thrum": {
@@ -412,7 +412,7 @@
           "G1",
           "G4"
         ],
-        "action": "Witch holds the first 2.0 in the commissioning berth and checks its proof record against its physical tag before sign-off.",
+        "action": "RIVET WITCH holds the first 2.0 in the commissioning berth and checks its proof record against its physical tag before sign-off.",
         "space": "The lift stays usable while the prototype is parked and ordinary allocations continue at the adjacent desk."
       },
       "thrum": {
@@ -460,7 +460,7 @@
           "P2",
           "P3"
         ],
-        "action": "Witch closes the branch wheel, samples the dead leg and withdraws the filter while the other two feeds remain live.",
+        "action": "RIVET WITCH closes the branch wheel, samples the dead leg and withdraws the filter while the other two feeds remain live.",
         "space": "Place the return wheel and sample cock within one platform bay. Keep the dry trolley above her reach."
       },
       "thrum": {
@@ -495,7 +495,7 @@
         "B3",
         "P2"
       ],
-      "action": "Witch reaches the branch wheel from the platform. LIMEN holds the isolation tag at ground level. The waiting fitter can see both the closed branch and the missing authorization."
+      "action": "RIVET WITCH reaches the branch wheel from the platform. LIMEN holds the isolation tag at ground level. The waiting fitter can see both the closed branch and the missing authorization."
     },
     "limen-thrum": {
       "marks": [
@@ -516,7 +516,7 @@
         "F1",
         "F2"
       ],
-      "action": "Place Witch’s torch inside the open drive cover and STILETTO’s blade over the start switch on the far side. A worker holds the waiting tray until both tools clear."
+      "action": "Place RIVET WITCH’s torch inside the open drive cover and STILETTO’s blade over the start switch on the far side. A worker holds the waiting tray until both tools clear."
     },
     "stiletto-thrum": {
       "marks": [
@@ -530,7 +530,7 @@
         "T1",
         "T3"
       ],
-      "action": "Witch exposes the projector controls at the side while CATHEXIS holds the audience from the apron. A restored beam interrupts her address and shows who controls the image."
+      "action": "RIVET WITCH exposes the projector controls at the side while CATHEXIS holds the audience from the apron. A restored beam interrupts her address and shows who controls the image."
     },
     "cathexis-thrum": {
       "marks": [
@@ -544,7 +544,7 @@
         "W1",
         "W2"
       ],
-      "action": "Witch tensions the comb from the side while THRUM listens from the centre steps. The take-up drum starts only after their two checks agree."
+      "action": "RIVET WITCH tensions the comb from the side while THRUM listens from the centre steps. The take-up drum starts only after their two checks agree."
     }
   }
 }

@@ -2,7 +2,7 @@
 
 ## Entry and navigation
 
-Game Design → Agents → Asset review library. This is the current cast entry point; the rejected-model action fixture appears only in a collapsed historical section and identifies itself as legacy on direct entry. The library is the permanent index of character candidates. Every implemented player links directly to every other implemented player and back to the library. Navigation and library cards follow All models → Worker 01 → LIMEN → STILETTO → CATHEXIS → Model briefs, with the worker before every supervisor. The active subject is marked; selecting another releases the previous scene. No background model preloading. Rivet Witch and Thrum appear as “awaiting model” entries with their review focus, without dead player links or invented readiness.
+Game Design → Agents → Asset review library. This is the current cast entry point; the rejected-model action fixture appears only in a collapsed historical section and identifies itself as legacy on direct entry. The library is the permanent index of character candidates. Every implemented player links directly to every other implemented player and back to the library. Navigation and library cards follow All models → Worker 01 → LIMEN → STILETTO → CATHEXIS → Model briefs, with the worker before every supervisor. The active subject is marked; selecting another releases the previous scene. No background model preloading. RIVET WITCH and THRUM appear as “awaiting model” entries with their review focus, without dead player links or invented readiness.
 
 The common structure is a review workbench, separate from player-facing game UI and simulation authority. LIMEN, Worker 01 and STILETTO retain specialized controls. Shared navigation and six evidence gates are implemented. CATHEXIS now uses a configurable shell with separate static-assembly and baked-motion adapters; earlier specialized players can migrate incrementally. Do not duplicate a complete viewer for every new character.
 
@@ -56,9 +56,9 @@ A cast definition should select a shared runtime adapter and optional equipment/
 
 ## Next three intakes
 
-- **Cathexis:** recognizable presence and the approved Hot Walk direction on her own rig. Test foot placement, expressive idle, persuasion and worker-facing acting. The worker stand-in's animation is not proof that her rig is clear. Crowd reaction and indoctrination contacts need a later paired scene.
-- **Rivet Witch:** engineer silhouette and tool identity. Inspection and repair require authored machine contact targets. Record grip/socket limitations before requesting catalog gestures; a generic wave cannot stand in for a successful repair.
-- **Thrum:** distinctive posture, rhythm and vibration effects. Calm, exhaustion and relaxed discipline must be visibly distinguishable. Check worker reactions in paired scenes before treating a gesture as a gameplay intervention.
+- **CATHEXIS:** recognizable presence and the approved Hot Walk direction on her own rig. Test foot placement, expressive idle, persuasion and worker-facing acting. The worker stand-in's animation is not proof that her rig is clear. Crowd reaction and indoctrination contacts need a later paired scene.
+- **RIVET WITCH:** engineer silhouette and tool identity. Inspection and repair require authored machine contact targets. Record grip/socket limitations before requesting catalog gestures; a generic wave cannot stand in for a successful repair.
+- **THRUM:** distinctive posture, rhythm and vibration effects. Calm, exhaustion and relaxed discipline must be visibly distinguishable. Check worker reactions in paired scenes before treating a gesture as a gameplay intervention.
 
 For every intake: validate downloaded contents and names → assemble and normalize a runtime derivative → mount equipment → expose source clips → flag contacts → author corrections → inspect the final exported bytes under factory lighting → record owner acceptance by slice. Missing visualization stays a design/production gap, never an invented completed action. The deterministic engine owns action eligibility and outcomes; animation visualizes permitted events.
 

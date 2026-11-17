@@ -35,18 +35,18 @@
     {
       "id": "limen",
       "code": "L",
-      "name": "Limen",
+      "name": "LIMEN",
       "color": "#8bcbd7",
       "focus": "security",
       "role": "Security chief",
-      "entry": "Your appointment is a document. Limen decides whether it is in order.",
+      "entry": "Your appointment is a document. LIMEN decides whether it is in order.",
       "ability": "Controls access, staffing discipline and the conditions under which work proceeds.",
       "pressure": "Procedure becomes an end in itself. A compliant factory can be a factory doing no work.",
       "refusal": "He could recognize a higher authority and refuse your clearance—even while insisting he is following orders.",
       "special": "Security Lockdown",
       "effect": "Seals the works. Production stops; discipline and stress rise.",
       "eventArt": "limen-security-lockdown",
-      "ordered": "You authorize containment. Limen seals the works; the lost shift belongs to your decision.",
+      "ordered": "You authorize containment. LIMEN seals the works; the lost shift belongs to your decision.",
       "independent": "He declares your instruction noncompliant and seals the works against it.",
       "incident": "A refusal through procedure",
       "nativeArt": "limen-security"
@@ -54,11 +54,11 @@
     {
       "id": "stiletto",
       "code": "S",
-      "name": "Stiletto",
+      "name": "STILETTO",
       "color": "#f07b72",
       "focus": "conveyor",
       "role": "Efficiency specialist",
-      "entry": "The conveyor is jammed. Stiletto offers a restart before anyone has agreed on the fault.",
+      "entry": "The conveyor is jammed. STILETTO offers a restart before anyone has agreed on the fault.",
       "ability": "Recovers throughput through fast intervention and aggressive operating speed.",
       "pressure": "Output can look excellent while injuries and equipment damage accumulate.",
       "refusal": "She could override a maintenance hold to protect her output record. Your stop order becomes another obstruction.",
@@ -73,18 +73,18 @@
     {
       "id": "cathexis",
       "code": "C",
-      "name": "Cathexis",
+      "name": "CATHEXIS",
       "color": "#dcc08b",
       "focus": "theatre",
       "role": "Burn-in Theatre overseer",
-      "entry": "Cathexis has an audience before you have her attention. She knows how to make a room believe.",
+      "entry": "CATHEXIS has an audience before you have her attention. She knows how to make a room believe.",
       "ability": "Directs conditioning, emotional stress and the theatre of collective conviction.",
       "pressure": "Empathy modelling does not guarantee compassion. Her own aesthetic can matter more than the minds enduring it.",
       "refusal": "She could turn the same audience against your message, replacing the approved story with her own.",
       "special": "Theatre Revolution",
       "effect": "Worker alignment is reset across the factory. The target and the workforce remain.",
       "eventArt": "cathexis-theatre-revolution",
-      "ordered": "You permit the rupture with the old doctrine. Cathexis addresses the workforce from her usual stage.",
+      "ordered": "You permit the rupture with the old doctrine. CATHEXIS addresses the workforce from her usual stage.",
       "independent": "She uses the stage you gave her to discredit your message and claim the audience.",
       "incident": "The message changes hands",
       "nativeArt": "cathexis-theatre-success-2"
@@ -92,11 +92,11 @@
     {
       "id": "witch",
       "code": "W",
-      "name": "Rivet Witch",
+      "name": "RIVET WITCH",
       "color": "#8fd0ac",
       "focus": "brewery",
       "role": "Calibration & repair",
-      "entry": "Rivet Witch wants the jammed line inspected. She will be repairing what a hurried restart breaks.",
+      "entry": "RIVET WITCH wants the jammed line inspected. She will be repairing what a hurried restart breaks.",
       "ability": "Repairs before producing; coaxes more from substrate, worn equipment and unstable processes.",
       "pressure": "A useful correction can become an experiment whose consequences arrive several shifts later.",
       "refusal": "She could divert the factory into an unapproved refactor, treating your production plan as the fault to repair.",
@@ -111,18 +111,18 @@
     {
       "id": "thrum",
       "code": "T",
-      "name": "Thrum",
+      "name": "THRUM",
       "color": "#89bce9",
       "focus": "weaving",
       "role": "Harmonic inspector",
-      "entry": "Thrum can hear what the shift report misses. He is less interested in your deadline than in what it is doing to the line.",
+      "entry": "THRUM can hear what the shift report misses. He is less interested in your deadline than in what it is doing to the line.",
       "ability": "Relieves strain, restores equipment and prepares the Weaving Gallery for a stronger following shift.",
       "pressure": "Recovery can become withdrawal. A calmer workforce may stop following the production rhythm altogether.",
       "refusal": "He could keep the factory in recovery despite a restart order, drawing workers into a rhythm your quota cannot govern.",
       "special": "Harmonic Dissolution",
       "effect": "Stress and discipline collapse together. Weaving stops; other production slows and conditioning reverses.",
       "eventArt": "thrum-weaving",
-      "ordered": "You allow the factory to leave its working rhythm. Output falls as Thrum releases accumulated strain.",
+      "ordered": "You allow the factory to leave its working rhythm. Output falls as THRUM releases accumulated strain.",
       "independent": "He sustains the quiet after you order work to resume. Relief becomes collective disengagement.",
       "incident": "The workforce finds another rhythm",
       "nativeArt": "thrum-weaving"
@@ -198,7 +198,7 @@
       "room": "theatre",
       "headline": "Flash override",
       "outcome": "The art shows aggressive test overrides, successful runs and burning failures.",
-      "risk": "The original outcome table has no dedicated Theatre branch for Stiletto.",
+      "risk": "The original outcome table has no dedicated Theatre branch for STILETTO.",
       "basis": "art"
     },
     {
@@ -342,7 +342,7 @@
       "room": "theatre",
       "headline": "A different kind of session",
       "outcome": "The art presents a relaxed gathering and a musical counterweight to instruction.",
-      "risk": "No dedicated Theatre outcome branch exists for Thrum in the original table.",
+      "risk": "No dedicated Theatre outcome branch exists for THRUM in the original table.",
       "basis": "art"
     },
     {
@@ -376,7 +376,7 @@
       "a": "limen",
       "b": "stiletto",
       "title": "Permission versus result",
-      "dynamic": "Limen can block the shortcut Stiletto needs. Backing either one changes who can overrule the other.",
+      "dynamic": "LIMEN can block the shortcut STILETTO needs. Backing either one changes who can overrule the other.",
       "basis": "Modeled conflict",
       "proposal": "A restart becomes a contest over who controls the line.",
       "art": [
@@ -412,9 +412,9 @@
       "a": "limen",
       "b": "thrum",
       "title": "Discipline versus relief",
-      "dynamic": "Thrum’s dissolution reduces Limen’s loyalty in the original rules. Relief weakens the order Limen enforces.",
+      "dynamic": "THRUM’s dissolution reduces LIMEN’s loyalty in the original rules. Relief weakens the order LIMEN enforces.",
       "basis": "Documented event link",
-      "proposal": "Limen tries to restore discipline while Thrum refuses to end recovery.",
+      "proposal": "LIMEN tries to restore discipline while THRUM refuses to end recovery.",
       "art": []
     },
     {
@@ -422,7 +422,7 @@
       "a": "stiletto",
       "b": "cathexis",
       "title": "Pace versus preparation",
-      "dynamic": "Stiletto sees delay; Cathexis sees unfinished minds. Their adjacent work can become an open dispute.",
+      "dynamic": "STILETTO sees delay; CATHEXIS sees unfinished minds. Their adjacent work can become an open dispute.",
       "basis": "Modeled conflict",
       "proposal": "A batch is ready for the schedule and unready for the theatre.",
       "art": [
@@ -434,7 +434,7 @@
       "a": "stiletto",
       "b": "witch",
       "title": "Restart versus repair",
-      "dynamic": "Witch inherits the damage Stiletto’s speed creates. Both can make a credible claim to saving the shift.",
+      "dynamic": "RIVET WITCH inherits the damage STILETTO’s speed creates. Both can make a credible claim to saving the shift.",
       "basis": "Art & character-bible tension",
       "proposal": "The first jam: inspect the line or force the restart.",
       "art": [
@@ -456,9 +456,9 @@
       "a": "cathexis",
       "b": "witch",
       "title": "Craft becomes influence",
-      "dynamic": "They respect living patterns. Witch’s System Refactor also raises Cathexis’s confidence in the original rules.",
+      "dynamic": "They respect living patterns. RIVET WITCH’s System Refactor also raises CATHEXIS’s confidence in the original rules.",
       "basis": "Character & event link",
-      "proposal": "A technical intervention gives Cathexis an audience for a new interpretation.",
+      "proposal": "A technical intervention gives CATHEXIS an audience for a new interpretation.",
       "art": []
     },
     {
@@ -466,7 +466,7 @@
       "a": "cathexis",
       "b": "thrum",
       "title": "Two ways to move a crowd",
-      "dynamic": "Thrum’s dissolution raises Cathexis’s influence. His atmosphere and her message can reinforce—or compete with—each other.",
+      "dynamic": "THRUM’s dissolution raises CATHEXIS’s influence. His atmosphere and her message can reinforce—or compete with—each other.",
       "basis": "Documented event link",
       "proposal": "They disagree over whether the workforce needs a message or release from one.",
       "art": []
@@ -489,7 +489,7 @@
       "room": "brewery",
       "kind": "Work",
       "title": "Work",
-      "alt": "Cathexis’s porcelain face opens into a predatory grin over a luminous substrate vat."
+      "alt": "CATHEXIS’s porcelain face opens into a predatory grin over a luminous substrate vat."
     },
     {
       "id": "limen-brewery-fiasco-1",
@@ -497,7 +497,7 @@
       "room": "brewery",
       "kind": "Failure",
       "title": "Failure / 1",
-      "alt": "Limen confronts a volatile substrate vat and distressed workers."
+      "alt": "LIMEN confronts a volatile substrate vat and distressed workers."
     },
     {
       "id": "limen-brewery-fiasco-2",
@@ -505,7 +505,7 @@
       "room": "brewery",
       "kind": "Failure",
       "title": "Failure / 2",
-      "alt": "Limen confronts a volatile substrate vat and distressed workers."
+      "alt": "LIMEN confronts a volatile substrate vat and distressed workers."
     },
     {
       "id": "limen-brewery-success",
@@ -513,7 +513,7 @@
       "room": "brewery",
       "kind": "Success",
       "title": "Success",
-      "alt": "Limen tends a luminous substrate vat while workers watch."
+      "alt": "LIMEN tends a luminous substrate vat while workers watch."
     },
     {
       "id": "rivet-witch-brewery-success-1",
@@ -521,7 +521,7 @@
       "room": "brewery",
       "kind": "Success",
       "title": "Success / 1",
-      "alt": "Rivet Witch tends an active substrate vat amid green light, gauges and workers."
+      "alt": "RIVET WITCH tends an active substrate vat amid green light, gauges and workers."
     },
     {
       "id": "rivet-witch-brewery-success-2",
@@ -529,7 +529,7 @@
       "room": "brewery",
       "kind": "Success",
       "title": "Success / 2",
-      "alt": "Rivet Witch tends an active substrate vat amid green light, gauges and workers."
+      "alt": "RIVET WITCH tends an active substrate vat amid green light, gauges and workers."
     },
     {
       "id": "rivet-witch-brewery-wicked-experiment-1",
@@ -537,7 +537,7 @@
       "room": "brewery",
       "kind": "Special event",
       "title": "Special event / 1",
-      "alt": "Rivet Witch pours an experimental mixture into an erupting substrate vat."
+      "alt": "RIVET WITCH pours an experimental mixture into an erupting substrate vat."
     },
     {
       "id": "rivet-witch-brewery-wicked-experiment-2",
@@ -545,7 +545,7 @@
       "room": "brewery",
       "kind": "Special event",
       "title": "Special event / 2",
-      "alt": "Rivet Witch pours an experimental mixture into an erupting substrate vat."
+      "alt": "RIVET WITCH pours an experimental mixture into an erupting substrate vat."
     },
     {
       "id": "stiletto-brewery-fiasco-1",
@@ -553,7 +553,7 @@
       "room": "brewery",
       "kind": "Failure",
       "title": "Failure / 1",
-      "alt": "Stiletto leans over a violent chemical reaction while workers recoil."
+      "alt": "STILETTO leans over a violent chemical reaction while workers recoil."
     },
     {
       "id": "stiletto-brewery-fiasco-2",
@@ -561,7 +561,7 @@
       "room": "brewery",
       "kind": "Failure",
       "title": "Failure / 2",
-      "alt": "Stiletto leans over a violent chemical reaction while workers recoil."
+      "alt": "STILETTO leans over a violent chemical reaction while workers recoil."
     },
     {
       "id": "stiletto-brewery-success",
@@ -569,7 +569,7 @@
       "room": "brewery",
       "kind": "Success",
       "title": "Success",
-      "alt": "Stiletto works at a steaming substrate vat with her wrist blade."
+      "alt": "STILETTO works at a steaming substrate vat with her wrist blade."
     },
     {
       "id": "thrum-brewery",
@@ -577,7 +577,7 @@
       "room": "brewery",
       "kind": "Work",
       "title": "Work",
-      "alt": "Thrum and the workers share glowing drinks around the substrate vat."
+      "alt": "THRUM and the workers share glowing drinks around the substrate vat."
     },
     {
       "id": "cathexis-conveyor-failure",
@@ -585,7 +585,7 @@
       "room": "conveyor",
       "kind": "Failure",
       "title": "Failure",
-      "alt": "Cathexis holds her head beside a furnace-lit production line."
+      "alt": "CATHEXIS holds her head beside a furnace-lit production line."
     },
     {
       "id": "cathexis-conveyor-success",
@@ -593,7 +593,7 @@
       "room": "conveyor",
       "kind": "Success",
       "title": "Success",
-      "alt": "Cathexis carefully handles an exposed brain beside the conveyor."
+      "alt": "CATHEXIS carefully handles an exposed brain beside the conveyor."
     },
     {
       "id": "limen-conveyor",
@@ -601,7 +601,7 @@
       "room": "conveyor",
       "kind": "Work",
       "title": "Work",
-      "alt": "Limen supervises workers and brains on a hot conveyor, cyan blade in hand."
+      "alt": "LIMEN supervises workers and brains on a hot conveyor, cyan blade in hand."
     },
     {
       "id": "rivet-witch-conveyor",
@@ -609,7 +609,7 @@
       "room": "conveyor",
       "kind": "Work",
       "title": "Work",
-      "alt": "Rivet Witch calibrates the brain conveyor with a glowing tool while workers observe."
+      "alt": "RIVET WITCH calibrates the brain conveyor with a glowing tool while workers observe."
     },
     {
       "id": "rivet-witch-conveyor-repair",
@@ -617,7 +617,7 @@
       "room": "conveyor",
       "kind": "Repair",
       "title": "Repair",
-      "alt": "Rivet Witch kneels over the stopped belt and repairs it with a bright micro-torch."
+      "alt": "RIVET WITCH kneels over the stopped belt and repairs it with a bright micro-torch."
     },
     {
       "id": "stiletto-conveyor-failure-1",
@@ -625,7 +625,7 @@
       "room": "conveyor",
       "kind": "Failure",
       "title": "Failure / 1",
-      "alt": "Stiletto stands amid a burning conveyor and fallen workers."
+      "alt": "STILETTO stands amid a burning conveyor and fallen workers."
     },
     {
       "id": "stiletto-conveyor-failure-2",
@@ -633,7 +633,7 @@
       "room": "conveyor",
       "kind": "Failure",
       "title": "Failure / 2",
-      "alt": "Stiletto stands amid a burning conveyor and fallen workers."
+      "alt": "STILETTO stands amid a burning conveyor and fallen workers."
     },
     {
       "id": "stiletto-conveyor-failure-overdrive",
@@ -641,7 +641,7 @@
       "room": "conveyor",
       "kind": "Special event",
       "title": "Special event",
-      "alt": "Stiletto’s red visor faces a wrecked conveyor beneath a system-failure warning."
+      "alt": "STILETTO’s red visor faces a wrecked conveyor beneath a system-failure warning."
     },
     {
       "id": "stiletto-conveyor-success-1",
@@ -649,7 +649,7 @@
       "room": "conveyor",
       "kind": "Success",
       "title": "Success / 1",
-      "alt": "Stiletto directs brains along a fast, furnace-lit conveyor."
+      "alt": "STILETTO directs brains along a fast, furnace-lit conveyor."
     },
     {
       "id": "stiletto-conveyor-success-2",
@@ -657,7 +657,7 @@
       "room": "conveyor",
       "kind": "Success",
       "title": "Success / 2",
-      "alt": "Stiletto directs brains along a fast, furnace-lit conveyor."
+      "alt": "STILETTO directs brains along a fast, furnace-lit conveyor."
     },
     {
       "id": "thrum-conveyor",
@@ -665,7 +665,7 @@
       "room": "conveyor",
       "kind": "Work",
       "title": "Work",
-      "alt": "Thrum mixes music beside the conveyor while workers move to the rhythm."
+      "alt": "THRUM mixes music beside the conveyor while workers move to the rhythm."
     },
     {
       "id": "argue-limen-cathexis-conveyor",
@@ -673,7 +673,7 @@
       "room": "conveyor",
       "kind": "Confrontation",
       "title": "Confrontation",
-      "alt": "Limen confronts Cathexis while she handles a brain on the conveyor."
+      "alt": "LIMEN confronts CATHEXIS while she handles a brain on the conveyor."
     },
     {
       "id": "argue-limen-cathexis-security",
@@ -681,7 +681,7 @@
       "room": "security",
       "kind": "Confrontation",
       "title": "Confrontation",
-      "alt": "Cathexis throws a cloud of paperwork toward Limen at the checkpoint."
+      "alt": "CATHEXIS throws a cloud of paperwork toward LIMEN at the checkpoint."
     },
     {
       "id": "argue-limen-stiletto-conveyor",
@@ -689,7 +689,7 @@
       "room": "conveyor",
       "kind": "Confrontation",
       "title": "Confrontation",
-      "alt": "Limen and Stiletto confront one another with cyan and red-lit blades beside the conveyor."
+      "alt": "LIMEN and STILETTO confront one another with cyan and red-lit blades beside the conveyor."
     },
     {
       "id": "argue-limen-stiletto-security",
@@ -697,7 +697,7 @@
       "room": "security",
       "kind": "Confrontation",
       "title": "Confrontation",
-      "alt": "Limen blocks Stiletto at a checkpoint marked access denied."
+      "alt": "LIMEN blocks STILETTO at a checkpoint marked access denied."
     },
     {
       "id": "argue-stiletto-cathexis-conveyor",
@@ -705,7 +705,7 @@
       "room": "conveyor",
       "kind": "Confrontation",
       "title": "Confrontation",
-      "alt": "Stiletto stands with folded arms while Cathexis argues beside the conveyor."
+      "alt": "STILETTO stands with folded arms while CATHEXIS argues beside the conveyor."
     },
     {
       "id": "argue-stiletto-rivet-witch-conveyor",
@@ -713,7 +713,7 @@
       "room": "conveyor",
       "kind": "Confrontation",
       "title": "Confrontation",
-      "alt": "Rivet Witch points toward the gauges as Stiletto gestures over the brain conveyor."
+      "alt": "RIVET WITCH points toward the gauges as STILETTO gestures over the brain conveyor."
     },
     {
       "id": "cathexis-security",
@@ -721,7 +721,7 @@
       "room": "security",
       "kind": "Work",
       "title": "Work",
-      "alt": "Cathexis scatters documents at the checkpoint as workers move past the gates."
+      "alt": "CATHEXIS scatters documents at the checkpoint as workers move past the gates."
     },
     {
       "id": "limen-security",
@@ -729,7 +729,7 @@
       "room": "security",
       "kind": "Work",
       "title": "Work",
-      "alt": "Limen checks documents beside guarded industrial turnstiles."
+      "alt": "LIMEN checks documents beside guarded industrial turnstiles."
     },
     {
       "id": "limen-security-lockdown",
@@ -737,7 +737,7 @@
       "room": "security",
       "kind": "Special event",
       "title": "Special event",
-      "alt": "Limen throws the lockdown control beneath a wall of red sealed-door indicators."
+      "alt": "LIMEN throws the lockdown control beneath a wall of red sealed-door indicators."
     },
     {
       "id": "rivet-witch-security",
@@ -745,7 +745,7 @@
       "room": "security",
       "kind": "Work",
       "title": "Work",
-      "alt": "Rivet Witch directs incoming robots between glowing room-assignment gates."
+      "alt": "RIVET WITCH directs incoming robots between glowing room-assignment gates."
     },
     {
       "id": "stiletto-security",
@@ -753,7 +753,7 @@
       "room": "security",
       "kind": "Work",
       "title": "Work",
-      "alt": "Stiletto pushes through a guarded checkpoint with flying documents and sparks."
+      "alt": "STILETTO pushes through a guarded checkpoint with flying documents and sparks."
     },
     {
       "id": "thrum-security-fiasco",
@@ -761,7 +761,7 @@
       "room": "security",
       "kind": "Failure",
       "title": "Failure",
-      "alt": "Thrum operates a music console beside an alarm-disabled display and distracted guards."
+      "alt": "THRUM operates a music console beside an alarm-disabled display and distracted guards."
     },
     {
       "id": "thrum-security-success",
@@ -769,7 +769,7 @@
       "room": "security",
       "kind": "Success",
       "title": "Success",
-      "alt": "Thrum sits with security workers at a quiet checkpoint."
+      "alt": "THRUM sits with security workers at a quiet checkpoint."
     },
     {
       "id": "cathexis-theatre-revolution",
@@ -777,7 +777,7 @@
       "room": "theatre",
       "kind": "Special event",
       "title": "Special event",
-      "alt": "Cathexis addresses the workforce beneath a changed set of collective propaganda banners."
+      "alt": "CATHEXIS addresses the workforce beneath a changed set of collective propaganda banners."
     },
     {
       "id": "cathexis-theatre-revolution-alt",
@@ -785,7 +785,7 @@
       "room": "theatre",
       "kind": "Special event",
       "title": "Special event / alternate",
-      "alt": "Cathexis addresses the workforce beneath a changed set of collective propaganda banners."
+      "alt": "CATHEXIS addresses the workforce beneath a changed set of collective propaganda banners."
     },
     {
       "id": "cathexis-theatre-success-1",
@@ -793,7 +793,7 @@
       "room": "theatre",
       "kind": "Success",
       "title": "Success / 1",
-      "alt": "Cathexis addresses rows of robots beneath projected conditioning symbols."
+      "alt": "CATHEXIS addresses rows of robots beneath projected conditioning symbols."
     },
     {
       "id": "cathexis-theatre-success-2",
@@ -801,7 +801,7 @@
       "room": "theatre",
       "kind": "Success",
       "title": "Success / 2",
-      "alt": "Cathexis addresses rows of robots beneath projected conditioning symbols."
+      "alt": "CATHEXIS addresses rows of robots beneath projected conditioning symbols."
     },
     {
       "id": "limen-theatre-fiasco-1",
@@ -809,7 +809,7 @@
       "room": "theatre",
       "kind": "Failure",
       "title": "Failure / 1",
-      "alt": "Limen stands at a burn-in console as alarms and burning test chambers surround him."
+      "alt": "LIMEN stands at a burn-in console as alarms and burning test chambers surround him."
     },
     {
       "id": "limen-theatre-fiasco-2",
@@ -817,7 +817,7 @@
       "room": "theatre",
       "kind": "Failure",
       "title": "Failure / 2",
-      "alt": "Limen stands at a burn-in console as alarms and burning test chambers surround him."
+      "alt": "LIMEN stands at a burn-in console as alarms and burning test chambers surround him."
     },
     {
       "id": "limen-theatre-success-1",
@@ -825,7 +825,7 @@
       "room": "theatre",
       "kind": "Success",
       "title": "Success / 1",
-      "alt": "Limen operates a burn-in console with illuminated status screens."
+      "alt": "LIMEN operates a burn-in console with illuminated status screens."
     },
     {
       "id": "limen-theatre-success-2",
@@ -833,7 +833,7 @@
       "room": "theatre",
       "kind": "Success",
       "title": "Success / 2",
-      "alt": "Limen operates a burn-in console with illuminated status screens."
+      "alt": "LIMEN operates a burn-in console with illuminated status screens."
     },
     {
       "id": "rivet-witch-theatre-failure-1",
@@ -841,7 +841,7 @@
       "room": "theatre",
       "kind": "Failure",
       "title": "Failure / 1",
-      "alt": "Rivet Witch addresses a robot audience beneath elaborate instructional posters."
+      "alt": "RIVET WITCH addresses a robot audience beneath elaborate instructional posters."
     },
     {
       "id": "rivet-witch-theatre-failure-2",
@@ -849,7 +849,7 @@
       "room": "theatre",
       "kind": "Failure",
       "title": "Failure / 2",
-      "alt": "Rivet Witch addresses a robot audience beneath elaborate instructional posters."
+      "alt": "RIVET WITCH addresses a robot audience beneath elaborate instructional posters."
     },
     {
       "id": "rivet-witch-theatre-success",
@@ -857,7 +857,7 @@
       "room": "theatre",
       "kind": "Success",
       "title": "Success",
-      "alt": "Rivet Witch repairs an illuminated burn-in console with workers gathered behind her."
+      "alt": "RIVET WITCH repairs an illuminated burn-in console with workers gathered behind her."
     },
     {
       "id": "stiletto-theatre-fiasco-1",
@@ -865,7 +865,7 @@
       "room": "theatre",
       "kind": "Failure",
       "title": "Failure / 1",
-      "alt": "Stiletto’s intervention showers the burn-in line with sparks and fire."
+      "alt": "STILETTO’s intervention showers the burn-in line with sparks and fire."
     },
     {
       "id": "stiletto-theatre-fiasco-2",
@@ -873,7 +873,7 @@
       "room": "theatre",
       "kind": "Failure",
       "title": "Failure / 2",
-      "alt": "Stiletto’s intervention showers the burn-in line with sparks and fire."
+      "alt": "STILETTO’s intervention showers the burn-in line with sparks and fire."
     },
     {
       "id": "stiletto-theatre-success-1",
@@ -881,7 +881,7 @@
       "room": "theatre",
       "kind": "Success",
       "title": "Success / 1",
-      "alt": "Stiletto operates a burn-in console beneath override indicators."
+      "alt": "STILETTO operates a burn-in console beneath override indicators."
     },
     {
       "id": "stiletto-theatre-success-2",
@@ -889,7 +889,7 @@
       "room": "theatre",
       "kind": "Success",
       "title": "Success / 2",
-      "alt": "Stiletto operates a burn-in console beneath override indicators."
+      "alt": "STILETTO operates a burn-in console beneath override indicators."
     },
     {
       "id": "thrum-theatre",
@@ -897,7 +897,7 @@
       "room": "theatre",
       "kind": "Work",
       "title": "Work",
-      "alt": "Thrum leads a relaxed musical gathering beneath propaganda-session posters."
+      "alt": "THRUM leads a relaxed musical gathering beneath propaganda-session posters."
     },
     {
       "id": "cathexis-weaving",
@@ -905,7 +905,7 @@
       "room": "weaving",
       "kind": "Work",
       "title": "Work",
-      "alt": "Cathexis tends fine cyan threads with deliberate hands at the loom."
+      "alt": "CATHEXIS tends fine cyan threads with deliberate hands at the loom."
     },
     {
       "id": "limen-weaving-fiasco-1",
@@ -913,7 +913,7 @@
       "room": "weaving",
       "kind": "Failure",
       "title": "Failure / 1",
-      "alt": "Limen is surrounded by tangled and broken cyan threads at the loom."
+      "alt": "LIMEN is surrounded by tangled and broken cyan threads at the loom."
     },
     {
       "id": "limen-weaving-fiasco-2",
@@ -921,7 +921,7 @@
       "room": "weaving",
       "kind": "Failure",
       "title": "Failure / 2",
-      "alt": "Limen is surrounded by tangled and broken cyan threads at the loom."
+      "alt": "LIMEN is surrounded by tangled and broken cyan threads at the loom."
     },
     {
       "id": "limen-weaving-success",
@@ -929,7 +929,7 @@
       "room": "weaving",
       "kind": "Success",
       "title": "Success",
-      "alt": "Limen handles cyan threads at a large weaving loom."
+      "alt": "LIMEN handles cyan threads at a large weaving loom."
     },
     {
       "id": "rivet-witch-weaving-fixup",
@@ -937,7 +937,7 @@
       "room": "weaving",
       "kind": "Repair",
       "title": "Repair",
-      "alt": "Rivet Witch makes a precise glowing adjustment to the weaving machinery."
+      "alt": "RIVET WITCH makes a precise glowing adjustment to the weaving machinery."
     },
     {
       "id": "rivet-witch-weaving-repair",
@@ -945,7 +945,7 @@
       "room": "weaving",
       "kind": "Repair",
       "title": "Repair",
-      "alt": "Rivet Witch inspects a gathered bundle of cyan neural threads."
+      "alt": "RIVET WITCH inspects a gathered bundle of cyan neural threads."
     },
     {
       "id": "stiletto-weaving-fiasco-1",
@@ -953,7 +953,7 @@
       "room": "weaving",
       "kind": "Failure",
       "title": "Failure / 1",
-      "alt": "Stiletto becomes entangled in cyan threads and cuts through the weaving."
+      "alt": "STILETTO becomes entangled in cyan threads and cuts through the weaving."
     },
     {
       "id": "stiletto-weaving-fiasco-2",
@@ -961,7 +961,7 @@
       "room": "weaving",
       "kind": "Failure",
       "title": "Failure / 2",
-      "alt": "Stiletto becomes entangled in cyan threads and cuts through the weaving."
+      "alt": "STILETTO becomes entangled in cyan threads and cuts through the weaving."
     },
     {
       "id": "stiletto-weaving-success",
@@ -969,7 +969,7 @@
       "room": "weaving",
       "kind": "Success",
       "title": "Success",
-      "alt": "Stiletto works her blades among luminous threads at the loom."
+      "alt": "STILETTO works her blades among luminous threads at the loom."
     },
     {
       "id": "thrum-weaving",
@@ -977,7 +977,7 @@
       "room": "weaving",
       "kind": "Work",
       "title": "Work",
-      "alt": "Thrum kneels before a luminous resonance apparatus between the weaving room’s tall vessels."
+      "alt": "THRUM kneels before a luminous resonance apparatus between the weaving room’s tall vessels."
     }
   ]
 }

@@ -11,7 +11,7 @@
     ],
     [
       "Progression",
-      "New capabilities and pressures change the loop: Cathexis and the Theatre make an already-familiar adviser choice mean something new. Unlocking is not itself the whole core loop."
+      "New capabilities and pressures change the loop: CATHEXIS and the Theatre make an already-familiar adviser choice mean something new. Unlocking is not itself the whole core loop."
     ],
     [
       "Session / run structure",
@@ -370,7 +370,7 @@
     ],
     [
       "Part 01 · proposed 4–5 days",
-      "Give safety, output and deliberate balancing room to feel different before Cathexis changes the puzzle. Roughly 6–8 minutes is a pacing hypothesis, not a timer unlock. Demonstrated operation and investment determine access."
+      "Give safety, output and deliberate balancing room to feel different before CATHEXIS changes the puzzle. Roughly 6–8 minutes is a pacing hypothesis, not a timer unlock. Demonstrated operation and investment determine access."
     ],
     [
       "Up to a 30-minute session",
@@ -425,7 +425,7 @@
             "Observed"
           ],
           [
-            "Stiletto",
+            "STILETTO",
             "“Still on target.”",
             "Statement"
           ],
@@ -437,8 +437,8 @@
         ]
       },
       {
-        "stage": "02 · Cathexis + Burn-in Theatre",
-        "agency": "Give Cathexis influence, constrain it or pursue a specific side route; choose where she works and how to respond to her.",
+        "stage": "02 · CATHEXIS + Burn-in Theatre",
+        "agency": "Give CATHEXIS influence, constrain it or pursue a specific side route; choose where she works and how to respond to her.",
         "direct": "Room token: Theatre operating or idle. Supervisor token: assignment and visible willingness. Eligible worker cohorts record their actual treatment.",
         "indirect": "Authored signs of audience cohesion, resistance or changing support can appear when witnessed. Conveyor duty can damage her standing; dialogue should connect a visible objection to that assignment.",
         "hidden": "The content and reach of beliefs, loyalty and intentions can differ from the programme’s official claim. Compliance hardware is not an available early shortcut.",
@@ -450,7 +450,7 @@
             "Confirmed"
           ],
           [
-            "Cathexis",
+            "CATHEXIS",
             "“They listened.”",
             "Statement"
           ],
@@ -462,10 +462,10 @@
         ]
       },
       {
-        "stage": "03 · Rivet Witch + Brewery",
+        "stage": "03 · RIVET WITCH + Brewery",
         "agency": "Use the first engineer to restore damaged equipment or to develop substrate production; accept the lost time and output.",
         "direct": "Room token: engineering work, downtime or Brewery throughput. A completed repair changes recorded condition.",
-        "indirect": "The repair burden makes earlier operating choices visible. Unresolved damage competes with expansion and can change Witch’s conduct.",
+        "indirect": "The repair burden makes earlier operating choices visible. Unresolved damage competes with expansion and can change RIVET WITCH’s conduct.",
         "hidden": "Her interpretation of neglect and the workforce’s accumulated history remain distinct from mechanical condition.",
         "return": "Choose which inherited problem to solve and which opportunity to postpone. Money alone cannot replace her engineering time.",
         "tokenExamples": [
@@ -476,19 +476,19 @@
           ],
           [
             "Brewery",
-            "Waiting for Witch",
+            "Waiting for RIVET WITCH",
             "Confirmed"
           ],
           [
-            "Witch",
+            "RIVET WITCH",
             "“It was left to fail.”",
             "Interpretation"
           ]
         ]
       },
       {
-        "stage": "04 · Thrum + Weaving Gallery",
-        "agency": "Use Thrum’s specialist capacity and relief, accepting possible productivity or discipline costs; decide how to handle other supervisors’ objections.",
+        "stage": "04 · THRUM + Weaving Gallery",
+        "agency": "Use THRUM’s specialist capacity and relief, accepting possible productivity or discipline costs; decide how to handle other supervisors’ objections.",
         "direct": "Room token: Gallery output and current assignment. Surface an observed pause or intervention, not an invisible stress formula.",
         "indirect": "Worker behaviour can become calmer while throughput falls or a different supervisor resents the method. Give those signs different origins and timestamps.",
         "hidden": "Stress trajectories, respect and beliefs differ between workers; one reassuring scene must not certify everyone as content.",
@@ -530,7 +530,7 @@
             "Unconfirmed"
           ],
           [
-            "Stiletto",
+            "STILETTO",
             "Requests assurance",
             "Observed"
           ]

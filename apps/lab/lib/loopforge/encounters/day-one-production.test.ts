@@ -17,7 +17,7 @@ describe('real staffed production state',()=>{
  it('rejects unstaffed or duplicate assignments',()=>{const {world,action,registry}=fixture();world.facts['line.staffed']=false;expect(admit(world,{id:action.id,action:action.id,initiator:'bob'},registry,space).active).toHaveLength(0);expect(()=>staffedProduction({...operators,forge:'bob'},ids,[],[])).toThrow(/distinct/);});
 });
 
-describe('Max Forge one complete non-cyclic stroke',()=>{
+describe('max Forge one complete non-cyclic stroke',()=>{
  it('keeps all six work seconds and source .4 through the exact final sample without wrapping',()=>{
   const {action}=fixture(),phase=action.phases.find(p=>p.id==='The staffed forge operates')!;
   const cue=phase.perform!.find(p=>p.agent==='max')!.cue!;
@@ -30,7 +30,7 @@ describe('Max Forge one complete non-cyclic stroke',()=>{
   const release=action.phases.find(p=>p.id==='The first operational output is ready')!;
   expect(release.perform!.find(p=>p.agent==='max')!.cue!.clip).toBe('Quiet_Wait');expect(release.ticks).toBe(100);
  });
- it('preserves other workers, station guards, effect timing and non-Max Forge assignments',()=>{
+ it('preserves other workers, station guards, effect timing and non-max Forge assignments',()=>{
   const {action}=fixture();
   for(const phase of action.phases.filter(p=>p.process)){
    expect(phase.ticks).toBe(120);expect(phase.process!.staffing).toHaveLength(4);

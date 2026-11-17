@@ -42,7 +42,7 @@ export async function loadOpeningWorker(stage:CharacterStage,worker:OpeningWorke
   let forgePalm:ReturnType<typeof measureLoadedMaxPalm>|undefined;
   const reviewSampler=createPerformanceSampler(container.animationGroups,'','source');
   const performer=createPerformanceSampler(container.animationGroups,'','y-up',worker==='max'?root:undefined,worker==='max'?()=>{
-   if(!forgePalm)throw Error('Max Forge: actual palm measurement is missing');
+   if(!forgePalm)throw Error('max Forge: actual palm measurement is missing');
    return {point:maxForgeControlTop(),normal:[0,1,0],forward:[0,0,1],handContactLocal:forgePalm.point,handContactNormalLocal:forgePalm.handContactNormalLocal};
   }:undefined);
   if(worker==='max'){

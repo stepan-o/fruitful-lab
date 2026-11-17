@@ -90,7 +90,7 @@ export function initialState(seed: number, startingWorkers = 24): State {
   };
 }
 export function name(id: SupervisorId) {
-  return id === "limen" ? "LIMEN" : "Stiletto";
+  return id === "limen" ? "LIMEN" : "STILETTO";
 }
 export function brief(id: SupervisorId, workers = 24): Briefing {
   return id === "limen"
@@ -98,7 +98,7 @@ export function brief(id: SupervisorId, workers = 24): Briefing {
         assessment:
           "The line is operational. It must still be operational at the end of the week.",
         context:
-          "Stiletto will favour a faster start. I expect we will disagree.",
+          "STILETTO will favour a faster start. I expect we will disagree.",
         priority: "Keep the line within operating limits.",
         rationale:
           "Put me on Security and STILETTO on Conveyor. I will enforce admission procedures; she can run the line. We need seven working days, not one impressive morning.",

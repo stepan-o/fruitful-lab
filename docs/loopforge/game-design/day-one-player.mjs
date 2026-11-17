@@ -472,7 +472,7 @@ new ResizeObserver(()=>{
   const dpr=Math.min(devicePixelRatio,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
   ctx.setTransform(dpr,0,0,dpr,0,0);draw();
 }).observe(canvas);
-const initialBeatName={'#forge-hall':'Run it','#end-of-shift':'End of shift','#the-fallen-card':'The fallen card'}[location.hash];
+const initialBeatName={'#forge-hall':'Run it','#end-of-shift':'End of shift','#the-fallen-card':'The fallen card','#fourth-check':'The fourth check'}[location.hash];
 const initialBeat=score.beats.find(beat=>beat.name===initialBeatName);
 setHall(location.hash==='#forge-hall');
 update(initialBeat?score.editTime(initialBeat.at):0,!hallView);

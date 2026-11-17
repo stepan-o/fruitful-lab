@@ -183,7 +183,11 @@ for(const id of [...entrants,'STILETTO']){
   }
   const front=crossing(1,floor.exit.y,-1), radius=NAVIGATION_ROOT_RADIUS_MM/1000;
   assert(front.across>=floor.exit.x+radius && front.across<=floor.exit.x+floor.exit.w-radius);
-  assert(front.t<morningCut.at,id+' must enter the front door on camera');
+  if(id==='STILETTO'){
+    assert(track[0].t>morningCut.at && front.t<morningCut.to,'the supervisor enters in the omitted stretch of travel');
+  }else{
+    assert(front.t<morningCut.at,id+' must enter the front door on camera');
+  }
   frontTimes.push(front.t);
   let prior=front.t;
   for(const pid of ['lobby-dispatch','dispatch-security']){
@@ -221,3 +225,8 @@ assert(ids.filter(id=>moving(id,s.yard)).length>=8,'the yard should have other p
 const laugh=s.cues.find(c=>c.label==='laughs first').start;
 assert(position('ed',laugh)[1]>floor.exit.y && between('ed','max',laugh)<8,'ed can hear max outside');
 console.log('Passed hall material flow, road clearances, concurrent shutdown, register and walking exchange.');
+
+const threat=s.speech.find(q=>q.text.startsWith("IF YOU DON'T GET ME"));
+assert(threat && threat.end-threat.start>=6.5 && threat.end-threat.start<7);
+assert(samplePath(s.tracks.max,threat.end+.05).moving,'max acts as the threat ends');
+assert(s.gate.openings.some(([start,open])=>start<=threat.end && open>=threat.end));

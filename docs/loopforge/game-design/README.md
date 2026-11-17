@@ -1,3 +1,9 @@
+## Standing Loopforge design reference
+
+Use Tynan Sylvester, *Designing Games: A Guide to Engineering Experiences* (O’Reilly, 2013), as a standing reference for Loopforge game and level design. The project reference copy is `Designing Games - Tynan Sylvester 2013.pdf`. Chapter 1 connects the action on screen to the experience it produces. In chapters 11–12, iteration and observation give the designer a way to test that connection. Apply this when blocking a scene, sizing a room, choosing a signature object or explaining a process through its physical layout.
+
+For the first floor, frame the wait from inside the queue and let a first-time player trace a stalled batch before showing the route overlay. Record where their attention goes in the opening and which material handoff they lose. Use those observations to revise the camera or the floor before commissioning final meshes.
+
 20 October cast revision 3 / editorial revision 5: bob’s owner-approved paragraph is preserved verbatim in `OPENING_CAST.md`, the dramaturgy foundation and the deck introduction. Nine short worker portraits are new drafts. The earlier usefulness-based diagnosis and arc are retired. Proposed art/performance cues and relationship differences are kept separate from the approved text; the earlier episode is explicitly marked for revision. No new models, animations, dialogue runtime or BDI behavior are introduced.
 
 Earlier on 20 October — editorial revision 4 (superseded by revision 5 above): `EDITORIAL_VOICE.md` replaces the rejected long guide with a concise brief on narrative voice and its expression in prose, dialogue and performance. The Astafiev study remains separate and linked. At that point the cast and episode were unapproved drafts; that revision did not change their scripts or the deployed rehearsal.

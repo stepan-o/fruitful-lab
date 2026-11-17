@@ -2,6 +2,8 @@
 import json
 import re
 
+from factory_rooms import render_proposal
+
 
 def build_rehearsal(root, out, script, intro_html):
     dialogue = []
@@ -23,5 +25,4 @@ def build_rehearsal(root, out, script, intro_html):
         page = page.replace(tag, source)
     (out/'day-one-rehearsal.html').write_text(page)
 
-    proposal = (root/'factory-layout-proposal.html').read_text()
-    (out/'factory-layout-proposal.html').write_text(proposal.replace('<!--APPROVED_INTRO-->', intro_html))
+    render_proposal(root, out, intro_html)

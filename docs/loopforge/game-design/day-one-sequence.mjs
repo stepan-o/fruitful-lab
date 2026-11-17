@@ -66,7 +66,7 @@ export function makeSequence(floor, script) {
   walk('ed',31,1.1,[124.05,122.3]);
   // STILETTO comes in from the street after the crew, travelling on their east side
   // in Security. Set her stride from the distance to her speaking mark.
-  const supervisorStart=start+3.25;
+  const supervisorStart=morningCut.at+0.5; // Enter from the yard after the crew’s exterior shot.
   const street=cast.STILETTO;
   const request=[131.45,121.75], requestAt=28.9;
   const path=[[doorX-1.5,entrance.y+1.15],[doorX-1.45,entrance.y-.8],
@@ -82,8 +82,9 @@ export function makeSequence(floor, script) {
   const gate = {hinge:[floor.doorway.x + .15, floor.doorway.y + .85], length:3.50};
   const atPost = walk('LIMEN',requestAt,1.4,[125.75,127.05]);
   const openAt = atPost + .75;
+  const threatEnd = 138.05;
   gate.openings = [[atPost,openAt,44,44.75],[77,77.6,84,84.6],[109.5,110.1,116,116.6],
-    [139,139.6,164,164.6],[181,181.6,Infinity,Infinity]];
+    [threatEnd-.4,threatEnd+.2,164,164.6],[181,181.6,Infinity,Infinity]];
   gate.hold = {start:atPost, end:throughGate+.6};
   walk('LIMEN',gate.hold.end,1.4,[126.8,125.3]);
   walk('bob',37.25,1.46,[127.8,124.45],threshold,[121,134.2],intake);
@@ -109,7 +110,7 @@ export function makeSequence(floor, script) {
   walk('bob',118,1.18,belt);
   walk('bob',123.4,1.17,forge);
   walk('STILETTO',125.7,1.85,[132.5,130.8],threat);
-  walk('max',139.3,1.45,[128.3,126.5],[128.55,127.85],[129,129.6],[132.75,136.45]);
+  walk('max',threatEnd-.1,1.45,[128.3,126.5],[128.55,127.85],[129,129.6],[132.75,136.45]);
   walk('bob',141.0,1.08,wash);
   walk('jo',146,1.2,belt);
   walk('max',148.4,1.25,forge);
@@ -213,7 +214,7 @@ export function makeSequence(floor, script) {
   const beats=[
     [start,'The morning walk','entrance'],[greeting,'At the gate','gate'],[25.4,'The fallen card','passage'],[40.5,'The first brain','line'],
     [77,'Two volunteers','gate'],[95.7,'The second brain','line'],[130,'The fourth check','door'],
-    [143,'The crew fills in','wide'],[165.4,'Run it','follow'],[179.8,'End of shift','release'],
+    [141.65,'The crew fills in','wide'],[165.4,'Run it','follow'],[179.8,'End of shift','release'],
     [tallies[0]-.7,'The register','gate'],[cuts[1].at,'Outside','yard'],
   ].map(([at,name,view])=>({at,name,view}));
   const windows=[
@@ -223,7 +224,7 @@ export function makeSequence(floor, script) {
     [40.9,45.2],[45.4,48.1],[48.2,51.5],[55.2,58.1],[63.8,68.1],[70.4,73.7],
     [77.2,78.7],[79.3,82],[82.2,85.2],[85.4,90],[85.55,90.25],[85.85,90.5],[86.1,91.3],
     [93,95.35],[95.8,97.8],[97.9,101.6],[102,104],[104.1,106.9],[107,110.3],
-    [119.7,122.2],[122.3,126.9],[131.45,139.4],[165.5,167.1],[177.4,179.6],
+    [119.7,122.2],[122.3,126.9],[131.45,threatEnd],[165.5,167.1],[177.4,179.6],
     [eight+.1,eight+3.2],[yard+.1,yard+3.2],[yard+3.3,yard+5],[yard+5.4,yard+9.4],
   ];
   if(windows.length!==script.length) throw Error('Approved dialogue changed; retime the score.');
@@ -240,8 +241,8 @@ export function makeSequence(floor, script) {
     [75,77,'bob','closes the press'],[89.1,92.5,'LIMEN','turns the register'],[91.8,95.4,'gus','holds the second desk'],
     [101.7,108.9,'bob','faces the jammed press'],[108.9,110.3,'bob','knocks the press door free'],
     [101.5,106,'sam','loads a full tray'],[115.8,118.5,'bob','runs Wash'],[121,123.6,'bob','starts the belt'],
-    [126.6,129,'bob','closes the press'],[131.1,139.4,'LIMEN','compares the photo to max'],
-    [131.1,139.6,'STILETTO','points both blades at LIMEN'],[139.4,141.8,'max','ducks under the blade'],
+    [126.6,129,'bob','closes the press'],[131.1,threatEnd,'LIMEN','compares the photo to max'],
+    [131.1,139.6,'STILETTO','points both blades at LIMEN'],[threatEnd,140.5,'max','ducks under the blade'],
     ...crew.map(([id,,clear])=>[clear-1.5,clear,'LIMEN','stamps '+id+'’s card']),
     [157,161,'mae','slides a tray to sam'],[160,165,'kit','feels the drive housing'],
     [167.1,169.4,'sam','feeds the third brain'],[169.6,172,'bob','washes it'],[172.2,174.5,'jo','clamps and starts the belt'],

@@ -56,5 +56,10 @@ export function makeBuildMarkers(floor, score) {
   mark('H8','Forge hall',crane.name,crane.rect,crane.base,crane.height,crane.build);
   const road=floor.forgeHall.runs.find(q=>q.id==='transfer');
   mark('H9','Forge hall',road.name,road.rect,0,0,'Stripe the six-metre clear road from receiving to the eastern transfer lane. Keep it open in front of each overhaul bay.');
+  const door=floor.exit;
+  mark('E1','Factory entrance','Open staff doors',{x:door.x,y:door.y-.22,w:door.w,h:.44},0,4.0,
+    'Set a recessed double steel door in the south Lobby wall. Park both leaves behind the side jambs during arrivals and departures. Keep the full five-metre staff opening clear.');
+  mark('E2','Factory entrance','Loopforge sign and lamps',{x:door.x-.85,y:door.y-.46,w:door.w+1.7,h:.46},4.25,1.4,
+    'Hang the curved LOOPFORGE / AI BRAIN FACTORY sign above the doors, facing south toward the yard. Put a warm lamp at either end so the opening reads from across the wet apron.');
   return markers;
 }

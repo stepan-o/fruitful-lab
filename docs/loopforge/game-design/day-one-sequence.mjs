@@ -23,11 +23,42 @@ export function makeSequence(floor, script) {
   const [intake,wash,belt,forge]=floor.stations.map(q=>[q.x,q.y]);
   const witness=floor.anchors[3].floor, register=floor.anchors[1].floor, checks=floor.anchors[2].floor;
   const threshold=[128.4,128.1], threat=floor.anchors[0].floor;
-  // Morning count. The line bunches around max while the supervisor overtakes it on the east.
-  for (const [id,p] of Object.entries(cast).filter(([id])=>id!=='LIMEN'&&id!=='STILETTO')) {
-    tracks[id][0].p=[p[0],p[1]-1.35];
-    walk(id,.15,.67,p);
+  // The approved dialogue uses the Security count as its zero. Run the morning approach
+  // before that downbeat, on the same continuous tracks as the rest of the shift.
+  const entrance=floor.exit, doorX=entrance.x+entrance.w/2;
+  const portalCentre=id=>{
+    const {x,y,w,h}=floor.portals.find(p=>p.id===id).rect;
+    return [x+w/2,y+h/2];
+  };
+  const [west,westY]=portalCentre('lobby-dispatch');
+  const [east,eastY]=portalCentre('dispatch-security');
+  // Each lane bends around the Lobby corner, traverses both Dispatch portals, then
+  // fans into its own part of the queue. Deeper marks fill first within each lane.
+  const ranks=[
+    ['ed',1,0],['bob',0,.35],['jo',-1,.75],
+    ['sam',1,2.35],['max',0,2.8],['gus',-1,3.1],
+    ['lou',1,5.05],['kit',0,5.65],['mae',-1,5.6],['ben',0,8.25],
+  ];
+  const speed=1.55;
+  let finalArrival=0, lastEntry=0;
+  for(const [id,lane,gap] of ranks){
+    const [qx,qy]=cast[id], offset=lane*1.45, x=doorX+offset;
+    const bendX=126.65-offset, bendY=westY+offset;
+    const start=[x+lane*(.35+gap*.10),entrance.y+4.9+gap];
+    tracks[id]=[{t:0,p:start}];
+    const crossed=walk(id,0,speed,[x,entrance.y+1.3],[x,entrance.y-.8]);
+    lastEntry=Math.max(lastEntry,crossed);
+    const arrived=walk(id,crossed,speed,[x,bendY+2],[x+2,bendY],[west,bendY],
+      [east,eastY+offset],[bendX-2,eastY+offset],[bendX,eastY+offset+2],
+      [qx,114.1],[qx,qy-1.35]);
+    finalArrival=Math.max(finalArrival,arrived);
   }
+  const start=-finalArrival;
+  for(const [id] of ranks){
+    for(const key of tracks[id])key.t+=start;
+    walk(id,.15,.67,cast[id]);
+  }
+  const morningCut={at:start+lastEntry+1,to:-5.5,label:'Through Dispatch to Security'};
   walk('bob',22,.95,[126.15,124.25]);
   walk('bob',26.9,1,[125.9,124]);
   walk('sam',26.6,1.25,[125.05,123.7]);
@@ -158,19 +189,23 @@ export function makeSequence(floor, script) {
     walk(id,streetTime[id],distance(from,join)/(yard-streetTime[id]),join);
     walk(id,yard,1.10,[x+2.5,join[1]+15.4]);
   }
-  const cuts=[{at:eight+6.7,to:yard-2.6,label:'Outside the Lobby'}];
+  const cuts=[morningCut,{at:eight+6.7,to:yard-2.6,label:'Outside the Lobby'}];
   const end=yard+13.4;
-  const editTime=w=>w-cuts.reduce((skip,c)=>skip+Math.max(0,Math.min(w,c.to)-c.at),0);
+  const editTime=w=>w-start-cuts.reduce((skip,c)=>skip+Math.max(0,Math.min(w,c.to)-c.at),0);
   function worldTime(t) {
-    let w=t;
-    for(const c of cuts)if(w>=c.at-1e-8)w+=c.to-c.at;
+    let w=start+t;
+    for(const c of cuts){
+      const boundary=editTime(c.at);
+      if(t<boundary)break;
+      w=c.to+(t-boundary);
+    }
     return w;
   }
   const beats=[
-    [0,'At the gate','gate'],[25.4,'The fallen card','passage'],[40.5,'The first brain','line'],
+    [start,'The morning walk','entrance'],[morningCut.to,'At the gate','gate'],[25.4,'The fallen card','passage'],[40.5,'The first brain','line'],
     [77,'Two volunteers','gate'],[95.7,'The second brain','line'],[130,'The fourth check','door'],
     [143,'The crew fills in','wide'],[165.4,'Run it','follow'],[179.8,'End of shift','release'],
-    [tallies[0]-.7,'The register','gate'],[cuts[0].at,'Outside','yard'],
+    [tallies[0]-.7,'The register','gate'],[cuts[1].at,'Outside','yard'],
   ].map(([at,name,view])=>({at,name,view}));
   const windows=[
     [1,4.2],[4.1,5.6],[5.6,7.2],[7.3,13.4],[13.6,15.3],[15.4,16.8],[16.7,19.9],
@@ -215,7 +250,7 @@ export function makeSequence(floor, script) {
     product(2,[[101.5,0],[106,0],[114.9,1],[118,1],[121,2],[122.8,2],[126.1,3],[127.1,3],[128.1,4]],1),
     product(3,[[113.5,0],[168.8,0],[170.1,1],[171.8,1],[172.8,2],[174.3,2],[175.6,3],[176.4,3],[177.2,4]],2),
   ];
-  return {cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,shutdown,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
+  return {start,cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,shutdown,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
 }
 
 export function samplePath(keys,t) {

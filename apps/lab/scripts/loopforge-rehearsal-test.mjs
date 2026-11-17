@@ -151,8 +151,40 @@ for(const [i,t] of s.tallies.entries()){
 }
 assert(lastCheck-s.tallies[0]<9,'keep the single reader occupied during the release');
 assert(moving('LIMEN',lastCheck+1.8) && !moving('ed',lastCheck+1.8));
-const [cut]=s.cuts;
-assert.equal(s.cuts.length,1);
+const [morningCut,cut]=s.cuts;
+assert.equal(s.cuts.length,2);
+const morning=s.beats[0], gateBeat=s.beats.find(b=>b.name==='At the gate');
+assert.equal(s.worldTime(0),morning.at);
+assert.equal(s.editTime(morning.at),0);
+assert.equal(s.worldTime(s.editTime(morningCut.at)),morningCut.to);
+assert.equal(gateBeat.at,morningCut.to);
+const entrants=ids.filter(id=>id!==id.toUpperCase());
+assert.equal(entrants.length,10);
+for(const id of entrants){
+  const keys=s.tracks[id].filter(key=>key.t<=s.speech[0].start);
+  assert(keys[0].p[1]>floor.exit.y+4,id+' must begin in the yard');
+  function crossing(axis,edge,sign){
+    const i=keys.findIndex((key,i)=>i>0 && sign*(keys[i-1].p[axis]-edge)<0 && sign*(key.p[axis]-edge)>=0);
+    assert(i>0,id+' must cross '+edge);
+    const a=keys[i-1],b=keys[i],f=(edge-a.p[axis])/(b.p[axis]-a.p[axis]);
+    return {t:a.t+(b.t-a.t)*f,across:a.p[1-axis]+(b.p[1-axis]-a.p[1-axis])*f};
+  }
+  const front=crossing(1,floor.exit.y,-1), radius=NAVIGATION_ROOT_RADIUS_MM/1000;
+  assert(front.across>=floor.exit.x+radius && front.across<=floor.exit.x+floor.exit.w-radius);
+  assert(front.t<morningCut.at,id+' must enter the front door on camera');
+  let prior=front.t;
+  for(const pid of ['lobby-dispatch','dispatch-security']){
+    const {x,y,w,h}=floor.portals.find(p=>p.id===pid).rect;
+    const next=crossing(0,x+w/2,1);
+    assert(next.t>prior && next.across>=y+radius && next.across<=y+h-radius);
+    prior=next.t;
+  }
+  assert.deepEqual(position(id,0),[s.cast[id][0],s.cast[id][1]-1.35]);
+}
+assert(s.speech.every(q=>q.start>=0),'keep the approved dialogue at Security');
+for(const t of [s.start+.2,morningCut.at-.01,morningCut.to+.01,0]){
+  assert(Math.abs(s.worldTime(s.editTime(t))-t)<1e-7);
+}
 assert(cut.at>lastCheck && cut.to<s.yard);
 for(const t of [bell,lastCheck,cut.to+.01,s.yard,s.end]){
   assert(Math.abs(s.worldTime(s.editTime(t))-t)<1e-7,'seek across the Dispatch cut');

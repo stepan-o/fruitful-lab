@@ -45,6 +45,7 @@ function chooseCamera(mode,w){
   const third=samplePath(score.products[2].keys,w).p;
   const workerY=samplePath(score.tracks.max,w).p[1];
   const shot={
+    entrance:[floor.exit.x+floor.exit.w/2,floor.exit.y+4.3,20,22],
     gate:[127.6,122.2,16,14.4],passage:[127.6,125.15,16,14.5],line:[127.6,138.15,25,14.5],door:[128.6,126.75,14.8,12.8],
     wide:[127,132.25,26,24],release:[127,134.4,25,15],hall:[120,156,84,60],follow:[Math.max(120.1,Math.min(134,third[0])),140.7,13.5,11],
     yard:[72.4,Math.max(134,(128+workerY)/2),21,Math.max(16,workerY-128+5)],securityObjects:[128.5,122.4,17.8,15.8],conveyorObjects:[129,141.7,27,13],
@@ -87,7 +88,7 @@ function drawBuilding(w,view){
   }
   for(const p of floor.portals){const r=p.rect;box(r.x,r.y,r.w,r.h,'#81795a');}
   drawHall(view==='hall');
-  if(view==='yard'){
+  if(view==='yard'||view==='entrance'){
     const on=w<score.yard+10.5;
     for(const x of [61,64.2,67.4,76.5,79.7]){
       box(x,126.85,2.2,.85,on?'#e8b875':'#263437','#546569');
@@ -96,12 +97,38 @@ function drawBuilding(w,view){
   }
   box(floor.doorway.x,127.45,floor.doorway.w,1.1,'#6f725d');
   for(const x of [125,131])box(x-.13,127.45,.26,1.1,'#dcc68b');
-  box(floor.exit.x,127.7,floor.exit.w,.6,'#c9b98e');
+  drawStaffEntrance(view==='entrance',w<score.yard+10.5);
   if(view==='hall')return;
-  label([72.5,126.9],'LOBBY EXIT','#e0d1aa');
+  if(view!=='entrance')label([72.5,126.9],'LOBBY EXIT','#e0d1aa');
   label([124.2,113.3],'SECURITY   /   01','#9fbabb',11);
 
-  label([72.5,142.4],'OUTSIDE   /   SOUTH YARD','#89b6a3',10);
+  if(view!=='entrance')label([72.5,142.4],'OUTSIDE   /   SOUTH YARD','#89b6a3',10);
+}
+function drawStaffEntrance(close,lit){
+  const {x,y,w}=floor.exit, cx=x+w/2;
+  // The wall stops at the jambs. Show the tiles continuing underneath the open doors.
+  box(x,y-.55,w,1.1,'#62615a');
+  for(const side of [-1,1]){
+    const jamb=side<0?x:x+w;
+    box(side<0?jamb-.45:jamb,y-.55,.45,1.1,'#625342','#bc9b6b');
+    box(side<0?jamb-2.3:jamb+.45,y-.5,1.85,.3,'#45504b','#777b68');
+  }
+  if(!close)return;
+  for(let dy=1;dy<16;dy+=1.3){
+    for(let dx=-7;dx<7;dx+=2.5){
+      const bx=cx+dx+(Math.round(dy)%2)*1.25;
+      line([[bx,y+dy],[bx+1.5,y+dy]],'#96978138',1);
+    }
+  }
+  for(const side of [-1,1]){
+    const lamp=cx+side*(w/2+.9);
+    box(lamp-.25,y-.35,.5,.6,lit?'#fad699':'#484c47','#ad9160');
+    if(lit)line([[lamp,y+.4],[lamp+side*.25,y+2.3]],'#eac28566',3);
+  }
+  // Elevate the lettering on screen to keep the passage and arrivals visible below it.
+  box(cx-4.15,y-4.05,8.3,1.65,'#273630','#bd9e67');
+  label([cx,y-3.56],'LOOPFORGE','#f6d696',Math.max(10,Math.min(19,scale*.85)));
+  label([cx,y-2.86],'AI BRAIN FACTORY','#d9c497',Math.max(7,Math.min(10,scale*.52)));
 }
 function drawHall(overview){
   const hall=floor.forgeHall;
@@ -252,7 +279,7 @@ function drawCast(w,voices){
     if(sx< -10||sx>width+10||sy< -10||sy>height+10)continue;
     // Recent trail is sampled from the same route as the token.
     if(pos.moving){
-      const trail=[];for(let ago=2;ago>=0;ago-=.25)trail.push(samplePath(score.tracks[id],Math.max(0,w-ago)).p);
+      const trail=[];for(let ago=2;ago>=0;ago-=.25)trail.push(samplePath(score.tracks[id],Math.max(score.start,w-ago)).p);
       line(trail,c+'88',1.8,[3,3]);
     }
     const speaking=voices.some(v=>v.speaker===id);
@@ -331,6 +358,9 @@ function selectObject(marker){
   selectedObject=marker;
   byId('objectSelect').value=marker.id;
   const {x,y,w,h}=marker.rect;
+  const reference=byId('objectArt'), entrance=marker.room==='Factory entrance';
+  reference.href=entrance?'/media/loopforge-opening-storyboard/morning-1672.3cd92c950e1fadcc.webp':'/media/files/42d2f07b9d72f8ce0bc776641a06047304a1eab567f5ca9c3efd3dd31619560a.webp';
+  reference.textContent=entrance?'The morning walk · storyboard ↗':'At the gate · concept art ↗';
   const metres=n=>Number(n.toFixed(2));
   const mount=marker.mount?' · attach to '+marker.mount:' · base '+marker.base+' m';
   byId('objectSize').textContent='Floor x '+metres(x)+' m, y '+metres(y)+' m · '+metres(w)+' × '+metres(h)+' m footprint · '+marker.height+' m high'+mount;
@@ -360,7 +390,8 @@ function drawBuildPins(){
     pin.hidden=marker.room!==selectedObject.room;
     if(pin.hidden)continue;
     const anchor=[r.x+r.w/2,r.y+r.h/2], [sx,sy]=project(anchor);
-    const offset=marker.room==='Security' && !['S3','S5','S6','S9'].includes(marker.id)?-1:1;
+    const above=marker.id==='E2'||(marker.room==='Security'&&!['S3','S5','S6','S9'].includes(marker.id));
+    const offset=above?-1:1;
     const labelY=Math.min(height-15,Math.max(15,sy+offset*23));
     ctx.strokeStyle='#e8ce99';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(sx,labelY);ctx.stroke();
     pin.style.left=sx+'px';pin.style.top=labelY+'px';
@@ -372,10 +403,10 @@ function setInspecting(value){
 }
 function draw(){
   const w=score.worldTime(time);
-  const index=score.beats.findLastIndex(b=>b.at<=w);
+  const index=score.beats.findLastIndex(b=>b.at<=w+1e-8);
   const beat=score.beats[index], voices=score.speech.filter(q=>q.start<=w&&w<q.end);
   let view=hallView?'hall':beat.view;
-  if(inspecting)view=selectedObject.room==='Security'?'securityObjects':selectedObject.room==='Conveyor'?'conveyorObjects':'hall';
+  if(inspecting)view=selectedObject.room==='Security'?'securityObjects':selectedObject.room==='Conveyor'?'conveyorObjects':selectedObject.room==='Factory entrance'?'entrance':'hall';
   if(!hallView && !inspecting && beat.view==='line' && w>=40.5 && w<43.7)view='hall';
   chooseCamera(view,w);
   drawBuilding(w,view);equipment(w,view);brains(w);drawCast(w,voices);
@@ -392,7 +423,7 @@ function draw(){
   byId('action').textContent=actions.filter(q=>q.actor!=='LIMEN'||actions.length<=2||beat.view==='gate'||beat.view==='passage').slice(-2).map(q=>q.actor+' '+q.label).join(' · ');
   if(w>=score.end-3.4)byId('action').textContent='Factory lights out';
   const completed=score.products.filter(b=>b.keys.at(-1).t<=w).length;
-  byId('count').textContent=w>=179.8?score.tallies.filter(t=>t<=w).length+' / 8 checked out':completed+' / 3 cortexes';
+  byId('count').textContent=w+1e-8>=179.8?score.tallies.filter(t=>t<=w).length+' / 8 checked out':completed+' / 3 cortexes';
   const edit=score.cuts.find(c=>w>=c.to&&w<c.to+3);
   byId('cut').hidden=!edit;
   if(edit)byId('cut').textContent='Cut · '+edit.label+' · +'+Math.round(edit.to-edit.at)+' s';
@@ -425,6 +456,7 @@ byId('atlas').onclick=()=>setView(false);
 initBuildPins();
 byId('buildView').onclick=()=>{
   if(inspecting){setInspecting(false);draw();return;}
+  if(!hallView && score.worldTime(time)<score.cuts[0].to)selectObject(buildObjects.find(m=>m.id==='E1'));
   if(hallView)selectObject(buildObjects.find(m=>m.id==='H8'));
   if(whole)setView(false);setHall(false);
   setInspecting(true);update(time,false);

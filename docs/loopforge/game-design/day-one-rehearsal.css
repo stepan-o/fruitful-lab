@@ -21,3 +21,5 @@ details{border-top:1px solid var(--edge);margin-top:6px;color:var(--soft)}summar
 #buildPanel p{margin:6px 0}#objectSize{color:var(--gold);font:12px/1.45 ui-monospace,monospace}
 #buildPanel a{color:#b9d8d2}
 @media(max-width:620px){.views button{font-size:12px;padding:5px}.bar h2{min-width:0}.views{max-width:60%}}
+
+#hallNote{margin:0;padding:8px 14px;color:var(--soft);font-size:13px;border-top:1px solid var(--edge)}

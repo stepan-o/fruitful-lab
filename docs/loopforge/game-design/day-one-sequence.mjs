@@ -42,20 +42,20 @@ export function makeSequence(floor, script) {
   gate.openings = [[atPost,openAt,44,44.75],[77,77.6,84,84.6],[109.5,110.1,116,116.6],
     [139,139.6,164,164.6],[181,181.6,Infinity,Infinity]];
   const throughGate = walk('STILETTO',openAt,1.75,[128.15,125.1],[128.15,130.1]);
-  walk('STILETTO',throughGate,1.75,[124.4,132.2],[120.8,132.25]);
+  walk('STILETTO',throughGate,1.75,[124.4,133.4],[122.4,136.25]);
   gate.hold = {start:atPost, end:throughGate+.6};
   walk('LIMEN',gate.hold.end,1.4,[126.8,125.3]);
-  walk('bob',37.8,1.15,[127.8,124.45],threshold,[127.1,130.2],[121.2,133],intake);
+  walk('bob',37.25,1.46,[127.8,124.45],threshold,[121,134.2],intake);
   walk('sam',39,1.1,[125.65,124.8]);
-  walk('STILETTO',53,1.4,[120.7,133.45]);
-  walk('STILETTO',57,1.5,[122.3,133],[124.5,132.5]);
+  walk('STILETTO',53,1.4,[120.7,137.45]);
+  walk('STILETTO',57,1.5,[122.3,137],[124.5,136.5]);
   walk('bob',58.2,.98,wash);
   walk('bob',65.2,1.1,belt);
-  walk('STILETTO',65,1.45,[128.6,132.5]);
+  walk('STILETTO',65,1.45,[128.6,136.5]);
   walk('bob',71.5,1.12,forge);
-  walk('STILETTO',71.1,1.5,[132.45,132.55]);
+  walk('STILETTO',71.1,1.5,[132.45,136.55]);
   // Clear sam while the first cortex lands. The front of the queue advances around the desks.
-  walk('sam',77.8,1.42,[125.5,126.8],[126,128.3],[125.8,131.1],[122.1,132.05]);
+  walk('sam',77.8,1.42,[125.5,126.8],[126,128.3],[125.8,131.1],[122.1,136.05]);
   walk('jo',78,1.05,[128.6,122.8]);
   walk('max',79,1,[127.1,122]);
   walk('gus',89.4,1.4,[129.75,122.1],[130.4,123.4],checks);
@@ -63,58 +63,102 @@ export function makeSequence(floor, script) {
   walk('jo',92.7,1.30,[127.8,124.7]);
   walk('sam',99,1.45,intake);
   walk('bob',109.5,1.2,wash);
-  walk('jo',110,1.45,threshold,[128.75,130.8],[126.8,132.5]);
+  walk('jo',110,1.45,threshold,[128.75,130.8],[126.8,136.5]);
   walk('max',111.5,1.10,[127.65,124.8]);
   walk('bob',118,1.18,belt);
   walk('bob',123.4,1.17,forge);
-  walk('STILETTO',127.9,1.75,[132.5,130.8],threat);
-  walk('max',139.3,1.45,[128.3,126.5],[128.55,127.85],[129,129.6],[132.75,132.45]);
+  walk('STILETTO',125.7,1.85,[132.5,130.8],threat);
+  walk('max',139.3,1.45,[128.3,126.5],[128.55,127.85],[129,129.6],[132.75,136.45]);
   walk('bob',141.0,1.08,wash);
   walk('jo',146,1.2,belt);
-  walk('max',147.3,1.25,forge);
+  walk('max',148.4,1.25,forge);
   // Four checks overlap the previous worker's walk to the line.
   const crew=[
-    ['mae',139.9,145.5,[116.9,133.9]],
-    ['kit',142.8,148.9,[128.95,134.4]],
+    ['mae',139.9,145.5,[116.9,137.9]],
+    ['kit',142.8,148.9,[128.95,138.4]],
     ['lou',145.8,152.4,witness],
-    ['ben',149.4,155.9,[136.8,132.9]],
+    ['ben',149.4,155.9,[136.8,136.9]],
   ];
   for(const [id,advance,clear,dest] of crew) {
     walk(id,advance,1.5,[127,122.8],[127.6,124.65]);
-    walk(id,clear,1.55,[128.2,126.75],threshold,[128.5,130.45],[dest[0],132.1],dest);
+    walk(id,clear,1.55,[128.2,126.75],threshold,[128.5,130.45],[dest[0],136.1],dest);
   }
   walk('STILETTO',156.9,1.5,[132.4,129.4],[133.4,129.4]);
-  // Departure uses the checkpoint and both Dispatch portals. Each physical crossing
-  // is counted at the register. The same route continues beyond the edit to the yard.
-  const dispatch=floor.egress.slice(2);
-  const finalOrder=['jo','kit','bob','max','sam','lou','mae','ben'];
+  // Eight operators break from their own positions. Two approaches share one reader.
+  // The short queue forms at the gate while the rest of the crew is already walking.
+  const bell=179.8;
+  const shutdown={mae:bell+2.0,kit:bell+2.35};
+  const departures=[
+    {id:'mae',at:shutdown.mae,lane:-1}, {id:'sam',at:bell+.45,lane:0},
+    {id:'bob',at:bell+.8,lane:-1}, {id:'jo',at:bell+.12,lane:1},
+    {id:'kit',at:shutdown.kit,lane:1}, {id:'max',at:bell+.65,lane:0},
+    {id:'lou',at:bell+.25,lane:-1}, {id:'ben',at:bell+.95,lane:1},
+  ];
+  const reader=[125,124.3], merge=[126.35,130.1], walkSpeed=1.55;
+  const viaReader=[[126.35,127.1],[125.5,125.5],reader];
+  const distance=(a,b)=>Math.hypot(b[0]-a[0],b[1]-a[1]);
+  for(const worker of departures){
+    const {id,at}=worker;
+    const x=tracks[id].at(-1).p[0];
+    worker.apron=[x,133.5];
+    worker.onApron=walk(id,at,walkSpeed,worker.apron);
+    worker.atMerge=worker.onApron+distance(worker.apron,merge)/walkSpeed;
+  }
+  departures.sort((a,b)=>a.atMerge-b.atMerge);
   const tallies=[];
-  function returnThroughLobby(id,start,slot,clerk=false) {
-    const angle=(12+slot*14)*Math.PI/180;
-    const dest=[72.5+9*Math.cos(angle),130.4+9*Math.sin(angle)];
-    let leave=start;
-    if (!clerk) {
-      const from=tracks[id].at(-1).p;
-      let t=walk(id,start,1.55,[from[0],132],[126.35,130.1],[126.35,127.1]);
-      const counted=walk(id,t,1.55,[125.5,125.5],[125,124.3]);
-      tallies.push(counted);
-      leave=counted;
-    }
-    walk(id,leave,1.6,[124,122],[121.7,121.9],[120.8,114.4],...dispatch.slice(0,-1),[72.5,129.4],[72.5,130.4],dest);
+  let mergeFree=0;
+  for(const worker of departures){
+    const crossing=Math.max(worker.atMerge,mergeFree);
+    const release=worker.onApron+crossing-worker.atMerge;
+    worker.counted=walk(worker.id,release,walkSpeed,merge,...viaReader);
+    tallies.push(worker.counted);
+    mergeFree=crossing+1.12;
   }
-  finalOrder.forEach((id,i)=>returnThroughLobby(id,181+i*3.65,i>=4?i+1:i));
-  const eight=Math.max(...tallies);
-  returnThroughLobby('LIMEN',eight+2.7,10,true);
-  returnThroughLobby('ed',eight+6.1,11,true);
-  returnThroughLobby('gus',eight+10.5,4,true);
-  walk('STILETTO',eight-3,1.55,[129,129.7],[129,127.2],[128.8,124.5]);
-  returnThroughLobby('STILETTO',eight+13.7,9,true);
-  const yard=Math.max(...Object.values(tracks).map(track=>track.at(-1).t))+1;
-  const cuts=[{at:tallies[0]+1.7,to:tallies.at(-2)-1.8,label:'Later at the register'},{at:eight+9,to:yard-3,label:'Outside the Lobby'}];
-  for (const id of ['max','gus']) {
-    const [x,y]=tracks[id].at(-1).p;
-    walk(id,yard,1.1,[x,y+1.5],[x-.4,y+3.4]);
+  const eight=tallies.at(-1);
+  // Parallel foot traffic can spread within both six-metre Dispatch openings.
+  const corridor=[[121.15,121.95],[120.4,114.3],...floor.egress.slice(2,5),[72.4,108],[72.4,129.3]];
+  function laneThroughLobby(lane){
+    // Offset both straight runs at each corner so neighbouring paths stay parallel around bends.
+    const normals=corridor.slice(1).map(([x,y],i)=>{
+      const [px,py]=corridor[i], length=distance(corridor[i],[x,y]);
+      return [(y-py)/length,(px-x)/length];
+    });
+    return corridor.map(([x,y],i)=>{
+      if(i===0)return [x,y];
+      const a=normals[i-1], b=normals[i]||a;
+      const m=lane*1.18/(1+a[0]*b[0]+a[1]*b[1]);
+      return [x+(a[0]+b[0])*m,y+(a[1]+b[1])*m];
+    });
   }
+  function walkOut(id,start,lane,speed=1.6){
+    return walk(id,start,speed,[124,122],...laneThroughLobby(lane));
+  }
+  const streetTime={};
+  for(const {id,counted,lane} of departures)streetTime[id]=walkOut(id,counted,lane);
+  // gus closes his desk and catches max. LIMEN passes ed during the offer. ed leaves after pocketing the pen.
+  const maxCheck=departures.find(worker=>worker.id==='max').counted;
+  walk('gus',maxCheck+2.75,1.6,[129.6,122.2],[125.6,122.4]);
+  streetTime.gus=walkOut('gus',tracks.gus.at(-1).t,1);
+  streetTime.LIMEN=walkOut('LIMEN',eight+1.4,-1);
+  streetTime.ed=walkOut('ed',eight+5.85,0,1.68);
+  walk('STILETTO',eight-4.3,1.55,[129.6,129.7],[129.6,127.2],[129.6,124.6]);
+  streetTime.STILETTO=walkOut('STILETTO',eight+2.5,1);
+  const yard=Math.max(streetTime.max,streetTime.gus)+3.5;
+  // Workers continue across the yard in different directions during the exchange.
+  const streetRoutes={
+    sam:[60,149],bob:[61,151],jo:[74.8,153],kit:[78.3,148],mae:[56,145],lou:[52,141],
+    ben:[76.4,155],LIMEN:[60,140],STILETTO:[79,142],ed:[68.3,146],
+  };
+  for(const [id,destination] of Object.entries(streetRoutes)){
+    walk(id,streetTime[id],id==='ed'?1.35:1.45,destination);
+  }
+  for(const [id,x] of [['max',72.2],['gus',73.55]]){
+    const join=[x,id==='gus'?134.65:134.4];
+    const from=tracks[id].at(-1).p;
+    walk(id,streetTime[id],distance(from,join)/(yard-streetTime[id]),join);
+    walk(id,yard,1.10,[x+2.5,join[1]+15.4]);
+  }
+  const cuts=[{at:eight+6.7,to:yard-2.6,label:'Outside the Lobby'}];
   const end=yard+13.4;
   const editTime=w=>w-cuts.reduce((skip,c)=>skip+Math.max(0,Math.min(w,c.to)-c.at),0);
   function worldTime(t) {
@@ -125,8 +169,8 @@ export function makeSequence(floor, script) {
   const beats=[
     [0,'At the gate','gate'],[25.4,'The fallen card','passage'],[40.5,'The first brain','line'],
     [77,'Two volunteers','gate'],[95.7,'The second brain','line'],[130,'The fourth check','door'],
-    [143,'The crew fills in','wide'],[165.4,'Run it','follow'],[179.8,'End of shift','wide'],
-    [cuts[0].at,'The register','gate'],[cuts[1].at,'Outside','yard'],
+    [143,'The crew fills in','wide'],[165.4,'Run it','follow'],[179.8,'End of shift','release'],
+    [tallies[0]-.7,'The register','gate'],[cuts[0].at,'Outside','yard'],
   ].map(([at,name,view])=>({at,name,view}));
   const windows=[
     [1,4.2],[4.1,5.6],[5.6,7.2],[7.3,13.4],[13.6,15.3],[15.4,16.8],[16.7,19.9],
@@ -156,14 +200,14 @@ export function makeSequence(floor, script) {
     ...crew.map(([id,,clear])=>[clear-1.5,clear,'LIMEN','stamps '+id+'’s card']),
     [157,161,'mae','slides a tray to sam'],[160,165,'kit','feels the drive housing'],
     [167.1,169.4,'sam','feeds the third brain'],[169.6,172,'bob','washes it'],[172.2,174.5,'jo','clamps and starts the belt'],
-    [174.7,177.1,'max','drops the press'],[179.8,182.3,'mae','cuts the feed'],[179.8,182.5,'kit','stops the drive'],
+    [174.7,177.1,'max','drops the press'],[bell,shutdown.mae,'mae','cuts the feed'],[bell,shutdown.kit,'kit','stops the drive'],
     [eight, eight+3.2,'ed','offers LIMEN the register'],[eight+3.3,eight+6,'ed','clips his pen beside bob’s card'],
     [yard+5.1,yard+8,'max','pulls his jaw back'],[yard+9.4,yard+12,'ed','laughs first'],
   ].map(([start,end,actor,label])=>({start,end,actor,label}));
   // Each knot is the physical centre of a cradle. Finished cortexes keep individual rack slots.
   const xs=floor.stations.map(q=>q.x);
   function product(id,times,slot) {
-    const points=[...xs.map(x=>[x,136]),[135.05+slot*.55,136]];
+    const points=[...xs.map(x=>[x,floor.forgeHall.carrierY]),[135.05+slot*.55,floor.forgeHall.carrierY]];
     return {id,keys:times.map(([at,index])=>({t:at,p:points[index]}))};
   }
   const products=[
@@ -171,7 +215,7 @@ export function makeSequence(floor, script) {
     product(2,[[101.5,0],[106,0],[114.9,1],[118,1],[121,2],[122.8,2],[126.1,3],[127.1,3],[128.1,4]],1),
     product(3,[[113.5,0],[168.8,0],[170.1,1],[171.8,1],[172.8,2],[174.3,2],[175.6,3],[176.4,3],[177.2,4]],2),
   ];
-  return {cast,tracks,beats,speech,cues,gate,products,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
+  return {cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,shutdown,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
 }
 
 export function samplePath(keys,t) {

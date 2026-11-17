@@ -19,6 +19,9 @@ function load(name) {
 }
 const f = load('floor'), shell = load('envelope'), capacity = load('capacity'), kit = load('equipment');
 const opening = load('day-one-floor').DAY_ONE_FLOOR;
+const hall = opening.forgeHall;
+const reserves = [...capacity.CONSTRUCTION_RESERVES.filter(q=>q.room!=='conveyor'),hall.reserve];
+const aisles = [...capacity.DELIVERY_AISLES.filter(q=>q.room!=='conveyor'),...hall.runs.map(q=>({...q,room:'conveyor'}))];
 const board = path.resolve(app, '../../docs/loopforge/game-design');
 const escape = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const rect = (r, attrs) => `<rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" ${attrs}/>`;
@@ -38,8 +41,8 @@ for (const z of f.ZONES) {
   const open = f.accessible(z.id, f.INITIAL_UNLOCKED);
   svg += rect(z.rect, `fill="${z.kind === 'support' ? '#27342f' : open ? '#29453b' : '#1a2928'}" stroke="#8b9d86" stroke-width=".45"`);
 }
-for (const q of capacity.CONSTRUCTION_RESERVES) svg += rect(q.rect, 'fill="#365b4926" stroke="#6c9b83" stroke-width=".35" stroke-dasharray="1.4 1"');
-for (const q of capacity.DELIVERY_AISLES) svg += rect(q.rect, 'fill="#c0a96e16" stroke="#af9c66" stroke-width=".22" stroke-dasharray="2 1"');
+for (const q of reserves) svg += rect(q.rect, 'fill="#365b4926" stroke="#6c9b83" stroke-width=".35" stroke-dasharray="1.4 1"');
+for (const q of aisles) svg += rect(q.rect, 'fill="#c0a96e16" stroke="#af9c66" stroke-width=".22" stroke-dasharray="2 1"');
 for (const q of kit.EQUIPMENT_STUDY.filter(q => !['security','conveyor'].includes(q.room))) svg += `<g><title>${escape(q.name)}</title>${rect(q.footprint, 'fill="#976c40" stroke="#c99f65" stroke-width=".2"')}</g>`;
 for (const p of f.PORTALS) svg += `<g><title>${escape(p.id)} — ${f.portalOpen(p, f.INITIAL_UNLOCKED) ? 'open' : 'sealed'}</title>${rect(f.portalRect(p), `fill="${f.portalOpen(p, f.INITIAL_UNLOCKED) ? '#e3c46f' : '#8f7b53'}" stroke="#e3c46f" stroke-width=".2"`)}</g>`;
 const corridor=f.PORTALS.find(p=>p.id==='security-theatre');
@@ -50,6 +53,10 @@ for (const z of f.ZONES) {
   const x = r.x + 1.6, y = r.y + 4.3;
   svg += `<g font-family="system-ui,sans-serif" stroke="#11201d" stroke-width=".8" paint-order="stroke" stroke-linejoin="round"><text x="${x}" y="${y}" font-size="2.7" fill="#fff0c9">${escape(z.short.toUpperCase())}</text><text x="${x}" y="${y+3.6}" font-size="2.45" fill="#c3d6c8">${r.w} × ${r.h} m · ${z.kind==='support'?'SUPPORT':f.INITIAL_UNLOCKED.includes(z.id)?'DAY 1':'SEALED'}</text></g>`;
 }
+for (const q of hall.installations) svg += `<g><title>${escape(q.name)}</title>${rect(q.rect,'fill="#71583e" stroke="#ceaa78" stroke-width=".25"')}</g>`;
+for (const col of hall.columns) svg += rect(col,'fill="#d5be93"');
+const crane=hall.crane.rect;
+svg += `<path d="M${crane.x} ${crane.y}h${crane.w} M${crane.x} ${crane.y+crane.h}h${crane.w} M${hall.crane.bridgeX} ${crane.y}v${crane.h}" fill="none" stroke="#d6b86d" stroke-width=".38" stroke-dasharray="1.2 .6"><title>Overhead crane runways and bridge</title></path>`;
 for (const q of opening.fixtures) svg += `<g><title>${escape(q.name)}</title>${rect(q.rect,'fill="#f7b274" stroke="#4d382d" stroke-width=".18"')}</g>`;
 svg += `<polyline points="${opening.egress.map(p=>p.join(',')).join(' ')}" fill="none" stroke="#8edac3" stroke-width=".65" stroke-dasharray="1.5 1"/><path d="M70 128h5" stroke="#8edac3" stroke-width="1.5"/><text x="69" y="134" text-anchor="end" font-family="system-ui,sans-serif" font-size="3.4" fill="#a3e5cf">STAFF ENTRANCE / EXIT</text>`;
 svg += `</g><g font-family="system-ui,sans-serif"><path d="M72 924H221M72 919V929M146.5 919V929M221 919V929" stroke="#d2bf88" stroke-width="2"/><text x="72" y="947" fill="#b9c7b9" font-size="13">0</text><text x="139" y="947" fill="#b9c7b9" font-size="13">20</text><text x="206" y="947" fill="#b9c7b9" font-size="13">40 m</text>
@@ -63,7 +70,7 @@ const outputs = new Map([
   [path.resolve(app,'../../docs/loopforge/maps/factory-floor-plan.svg'),svg],
   [path.resolve(app,'../../docs/loopforge/game-design/factory-floor-plan.json'),JSON.stringify(metadata,null,2)+'\n'],
   [path.join(app,'public/loopforge-design',filename),svg],
-  [path.join(board,'day-one-geometry.json'), JSON.stringify({ ...opening, zones: f.ZONES, portals: f.PORTALS.map(p=>({id:p.id,rect:f.portalRect(p)})), reserves: capacity.CONSTRUCTION_RESERVES, aisles: capacity.DELIVERY_AISLES })+'\n'],
+  [path.join(board,'day-one-geometry.json'), JSON.stringify({ ...opening, zones: f.ZONES, portals: f.PORTALS.map(p=>({id:p.id,rect:f.portalRect(p)})), reserves, aisles })+'\n'],
 ]);
 const check = process.argv.includes('--check');
 for(const [file,content] of outputs){

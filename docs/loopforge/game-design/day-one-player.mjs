@@ -3,7 +3,7 @@ const {floor,dialogue}=JSON.parse(document.querySelector('#score-data').textCont
 const score=makeSequence(floor,dialogue);
 const byId=id=>document.getElementById(id);
 const buildObjects=makeBuildMarkers(floor,score);
-let inspecting=false, selectedObject=buildObjects.find(m=>m.id==='S6');
+let hallView=false, inspecting=false, selectedObject=buildObjects.find(m=>m.id==='S6');
 const pinButtons=new Map();
 const canvas=document.querySelector('canvas'), ctx=canvas.getContext('2d');
 const colours={bob:'#f7bf78',sam:'#75c5ac',ed:'#c8b0e6',max:'#f0ce68',jo:'#86b9e8',gus:'#e79578',mae:'#beaf83',kit:'#8fcacb',lou:'#e6aab6',ben:'#a6bd85',LIMEN:'#74e5eb',STILETTO:'#ff9273'};
@@ -43,10 +43,11 @@ function label(p,txt,colour,size=10,align='center'){
 }
 function chooseCamera(mode,w){
   const third=samplePath(score.products[2].keys,w).p;
+  const workerY=samplePath(score.tracks.max,w).p[1];
   const shot={
-    gate:[127.6,122.2,16,14.4],passage:[127.6,125.15,16,14.5],line:[127.4,134.35,23.4,10.6],door:[128.6,126.75,14.8,12.8],
-    wide:[127,128,23,23],follow:[Math.max(120.1,Math.min(134,third[0])),135.0,12.8,10.5],
-    yard:[72.5,135.2,21.5,14.2],securityObjects:[128.5,122.4,17.8,15.8],conveyorObjects:[127,135.4,24,10.6],
+    gate:[127.6,122.2,16,14.4],passage:[127.6,125.15,16,14.5],line:[127.6,138.15,25,14.5],door:[128.6,126.75,14.8,12.8],
+    wide:[127,132.25,26,24],release:[127,134.4,25,15],hall:[120,156,84,60],follow:[Math.max(120.1,Math.min(134,third[0])),140.7,13.5,11],
+    yard:[72.4,Math.max(134,(128+workerY)/2),21,Math.max(16,workerY-128+5)],securityObjects:[128.5,122.4,17.8,15.8],conveyorObjects:[129,141.7,27,13],
   }[mode];
   center=shot.slice(0,2);scale=Math.min(width/shot[2],height/shot[3]);
 }
@@ -70,7 +71,7 @@ function drawCheckpoint(){
     label([x+w/2,y],title,'#acbfb6',Math.max(6,Math.min(10,w*scale/(title.length*.65))));
   }
 }
-function drawBuilding(){
+function drawBuilding(w,view){
   ctx.fillStyle='#142824';ctx.fillRect(0,0,width,height);
   for(const z of floor.zones){
     const r=z.rect;
@@ -85,15 +86,72 @@ function drawBuilding(){
     ctx.setLineDash([3,4]);box(r.x,r.y,r.w,r.h,'#7a9e7f0b','#71857266');ctx.setLineDash([]);
   }
   for(const p of floor.portals){const r=p.rect;box(r.x,r.y,r.w,r.h,'#81795a');}
+  drawHall(view==='hall');
+  if(view==='yard'){
+    const on=w<score.yard+10.5;
+    for(const x of [61,64.2,67.4,76.5,79.7]){
+      box(x,126.85,2.2,.85,on?'#e8b875':'#263437','#546569');
+      if(on)box(x-.4,128.1,3,2.6,'#e9b35f25');
+    }
+  }
   box(floor.doorway.x,127.45,floor.doorway.w,1.1,'#6f725d');
   for(const x of [125,131])box(x-.13,127.45,.26,1.1,'#dcc68b');
   box(floor.exit.x,127.7,floor.exit.w,.6,'#c9b98e');
+  if(view==='hall')return;
   label([72.5,126.9],'LOBBY EXIT','#e0d1aa');
   label([124.2,113.3],'SECURITY   /   01','#9fbabb',11);
-  label([127.2,139.1],'LATTICE FORGE   /   02','#c2ad92',11);
+
   label([72.5,142.4],'OUTSIDE   /   SOUTH YARD','#89b6a3',10);
 }
-function equipment(w){
+function drawHall(overview){
+  const hall=floor.forgeHall;
+  const r=hall.crane.rect;
+  // Cast-iron bed, north operating apron and service side of the line.
+  box(99,138.8,51.4,6.5,'#362e29','#817464');
+  for(const road of hall.runs){
+    const {x,y,w,h}=road.rect;
+    box(x,y,w,h,road.id==='staff'?'#55574b':'#514b41','#827a60');
+    const across=w>h;
+    line(across?[[x+.3,y+h*.5],[x+w-.3,y+h*.5]]:[[x+w*.5,y+.3],[x+w*.5,y+h-.3]],'#ceba7a',1,[5,6]);
+  }
+  for(const q of hall.installations){
+    const {x,y,w,h}=q.rect;
+    box(x,y,w,h,'#364348','#a99b83');
+    if(q.id==='water-plant'){
+      for(const f of [.25,.75])ellipse([x+w*f,y+h/2],2.65,1.85,'#446367','#99b4ac');
+      line([[x+w*.25,y],[x+w*.25,146.5],[123.7,146.5],[123.7,145]],'#729998',2);
+    }else if(q.id==='drive-shop'||q.id==='jig-shop'){
+      box(x+1,y+1.1,w-2,h-2.2,'#504d43','#928779');
+      for(const bx of [x+1,x+w-3])box(bx,y+2,2,h-4,'#69635a','#c2ac7b');
+      box(x+w*.34,y+2.6,w*.32,h-5.2,q.id==='drive-shop'?'#232b2f':'#927756','#b89f7c');
+      for(let yy=y+3.2;yy<y+h-3;yy+=1.3)line([[x+w*.36,yy],[x+w*.64,yy]],'#736e63',1);
+      box(x+w*.35,y-.4,w*.30,.7,'#6c6654');
+    }else if(q.id==='receiving'||q.id==='empty-racks'){
+      for(let xx=x+.8;xx<x+w-1.5;xx+=3.5)for(let yy=y+.8;yy<y+h-1;yy+=3.3)
+        box(xx,yy,2.25,2,'#78674f','#bdaa8b');
+    }else{
+      for(let xx=x+.5;xx<x+w-.35;xx+=.75)line([[xx,y+.35],[xx,y+h-.35]],'#8c9992',1.4);
+    }
+  }
+  const spare=hall.reserve.rect;
+  box(spare.x,spare.y,spare.w,spare.h,'#5d544022','#8a806a');
+  for(const py of [r.y,r.y+r.h])line([[r.x,py],[r.x+r.w,py]],'#afad9f',1.5,[7,3]);
+  for(const col of hall.columns)box(col.x,col.y,col.w,col.h,'#929a98','#333c3c');
+  // The bridge is overhead, with an open lattice through which the line remains visible.
+  const bx=hall.crane.bridgeX;
+  for(const x of [bx-.6,bx+.6])line([[x,r.y],[x,r.y+r.h]],'#cbb27a',1.5);
+  for(let y=r.y;y<r.y+r.h;y+=2)line([[bx-.6,y],[bx+.6,y+1],[bx-.6,y+2]],'#ae9b71',1);
+  box(bx-.65,147,1.3,1.6,'#867653','#dcc591');
+  if(overview){
+    for(const [point,name] of [
+      [[88,133.6],'RECEIVING'],[[121.5,132],'ASSEMBLY LINE  →'],[[150,136.5],'OUTBOUND'],
+      [[109.5,151.6],'WATER RETURN'],[[137.8,151.6],'CRADLES'],[[142,147.2],'CRANE'],
+      [[120,158.9],'TRANSFER ROAD'],[[94,173],'DRIVE SHOP'],[[117,173],'TOOLING'],
+      [[144,172.5],'SPARE BAY']
+    ]){label(point,name,'#fff1cb',Math.max(7,Math.min(11,scale*1.7)));}
+  }
+}
+function equipment(w,view){
   for(const q of floor.fixtures){
     const {x,y,w:fw,h}=q.rect,cx=x+fw/2,cy=y+h/2;
     if(q.kind==='rail'){
@@ -115,7 +173,7 @@ function equipment(w){
     if(q.kind==='desk'){
       box(x,y,fw,h,'#465553','#8a9891');
       box(x+.15,y+.15,fw*.48,h*.66,q.id==='register'?'#f3deb4':'#95c7c1');
-      label([cx,y+h+.38],q.name.toUpperCase(),'#e2dac4',Math.min(12,Math.max(8,scale*.49)));
+      if(view!=='hall')label([cx,y+h+.38],q.name.toUpperCase(),'#e2dac4',Math.min(12,Math.max(8,scale*.49)));
       continue;
     }
     box(x-.08,y-.06,fw+.16,h+.2,'#252b28','#6e6757');
@@ -137,7 +195,15 @@ function equipment(w){
       for(const d of [-1,1])box(cx+(d<0?-1.46:press?.06:jam?.3:.62),y+.13,press?1.4:.86,h-.26,'#414c48','#b1afa1');
       if(jam)label([cx,y-.55],'JAM','#ffab7e',11);
     }else for(let i=.35;i<fw;i+=.55)line([[x+i,y+.1],[x+i,y+h-.1]],'#c3b38f',2);
-    label([cx,y+h+.55],q.name.toUpperCase(),'#f0d5a8',Math.max(9,Math.min(13,scale*.54)));
+    if(q.kind==='machine'){
+      box(cx-.66,y-.06,1.32,.38,'#34413f','#baa98b');
+      box(cx+.20,y+.01,.20,.16,'#bdcbae');
+      if(q.id==='forge'){
+        for(const px of [x+.12,x+fw-.34])box(px,y+.65,.23,h-1,'#b7a37a','#615d54');
+        box(x+.40,y+h-.66,fw-.8,.34,'#353d3c','#b6a589');
+      }
+    }
+    if(scale>10)label([cx,y+h+.55],q.name.toUpperCase(),'#f0d5a8',Math.max(9,Math.min(13,scale*.54)));
   }
   line([score.gate.hinge,gateTipAt(score.gate,w)],'#e8c477',3);
   ellipse(score.gate.hinge,.17,.17,'#e8c477','#39453d');
@@ -159,7 +225,7 @@ function brains(w){
 function facing(id,pose,w,positions){
   if(pose.moving)return Math.atan2(pose.to[1]-pose.from[1],pose.to[0]-pose.from[0]);
   const towards=(other)=>Math.atan2(positions[other].p[1]-pose.p[1],positions[other].p[0]-pose.p[0]);
-  if(w>score.cuts[1].to){return id==='max'?towards('gus'):towards('max');}
+  if(w>=score.yard && id==='ed')return towards('max');
   if(w>130&&w<140&&id==='STILETTO')return towards('LIMEN');
   if(w>130&&w<140&&id==='LIMEN')return towards('max');
   if(id==='lou'&&w>=85&&w<=90)return towards('ben');
@@ -236,7 +302,7 @@ function drawCast(w,voices){
     if(cue&&/photo|offers his card|stamps|register|clips his pen/.test(cue.label)){
       const card=offset(.5,.25);box(card[0]-.14,card[1]-.09,.28,.18,'#f6e9bc');
     }
-    names.push({id,sx,sy,r:rad*scale,c});
+    if(scale>10 || speaking)names.push({id,sx,sy,r:rad*scale,c});
   }
   drawNames(names);
 }
@@ -308,13 +374,11 @@ function draw(){
   const w=score.worldTime(time);
   const index=score.beats.findLastIndex(b=>b.at<=w);
   const beat=score.beats[index], voices=score.speech.filter(q=>q.start<=w&&w<q.end);
-  const view=inspecting?(selectedObject.room==='Security'?'securityObjects':'conveyorObjects'):beat.view;
+  let view=hallView?'hall':beat.view;
+  if(inspecting)view=selectedObject.room==='Security'?'securityObjects':selectedObject.room==='Conveyor'?'conveyorObjects':'hall';
+  if(!hallView && !inspecting && beat.view==='line' && w>=40.5 && w<43.7)view='hall';
   chooseCamera(view,w);
-  drawBuilding();equipment(w);brains(w);drawCast(w,voices);
-  if(w>=score.end-3.4){
-    const opacity=Math.min(.68,(w-score.end+3.4)*.45);
-    box(8,80,72,48,'rgba(1,7,6,'+opacity+')');
-  }
+  drawBuilding(w,view);equipment(w,view);brains(w);drawCast(w,voices);
   if(inspecting)drawBuildPins();
   const signature=voices.map(v=>v.start).join(',');
   if(signature!==lastVoice){
@@ -332,7 +396,7 @@ function draw(){
   const edit=score.cuts.find(c=>w>=c.to&&w<c.to+3);
   byId('cut').hidden=!edit;
   if(edit)byId('cut').textContent='Cut · '+edit.label+' · +'+Math.round(edit.to-edit.at)+' s';
-  byId('beat').textContent=beat.name;byId('beatSelect').value=index;
+  byId('beat').textContent=hallView?'Lattice Forge · 80 × 56 m':beat.name;byId('beatSelect').value=index;
   byId('clock').value=timer(time)+' / '+timer(score.duration);
   byId('scrub').value=time;
   byId('play').textContent=playing?'Pause':time>=score.duration?'Replay':'Play';
@@ -347,17 +411,22 @@ function update(t,run=playing){
   cancelAnimationFrame(frame);time=Math.max(0,Math.min(score.duration,t));playing=run;
   lastFrame=null;draw();frame=playing?requestAnimationFrame(render):0;
 }
-byId('play').onclick=()=>{setInspecting(false);update(time>=score.duration?0:time,!playing);};
-byId('restart').onclick=()=>{setInspecting(false);update(0,true);};
-byId('scrub').oninput=e=>{setInspecting(false);update(Number(e.target.value));};
-byId('beatSelect').onchange=e=>{setInspecting(false);update(score.editTime(score.beats[Number(e.target.value)].at));};
-function setView(value){if(value)setInspecting(false);whole=value;byId('atlas').hidden=!value;byId('view').textContent=value?'Follow scene ↙':'Whole factory ↗';byId('view').setAttribute('aria-pressed',String(value));draw();}
+byId('play').onclick=()=>{setInspecting(false);setHall(false);update(time>=score.duration?0:time,!playing);};
+byId('restart').onclick=()=>{setInspecting(false);setHall(false);update(0,true);};
+byId('scrub').oninput=e=>{setInspecting(false);setHall(false);update(Number(e.target.value));};
+byId('beatSelect').onchange=e=>{setInspecting(false);setHall(false);update(score.editTime(score.beats[Number(e.target.value)].at));};
+function setHall(value){
+  hallView=value;byId('hallView').setAttribute('aria-pressed',String(value));byId('hallNote').hidden=!value;
+}
+byId('hallView').onclick=()=>{const open=!hallView;setInspecting(false);if(whole)setView(false);setHall(open);draw();};
+function setView(value){if(value){setInspecting(false);setHall(false);}whole=value;byId('atlas').hidden=!value;byId('view').textContent=value?'Follow scene ↙':'Whole factory ↗';byId('view').setAttribute('aria-pressed',String(value));draw();}
 byId('view').onclick=()=>setView(!whole);
 byId('atlas').onclick=()=>setView(false);
 initBuildPins();
 byId('buildView').onclick=()=>{
   if(inspecting){setInspecting(false);draw();return;}
-  if(whole)setView(false);
+  if(hallView)selectObject(buildObjects.find(m=>m.id==='H8'));
+  if(whole)setView(false);setHall(false);
   setInspecting(true);update(time,false);
 };
 new ResizeObserver(()=>{
@@ -365,4 +434,6 @@ new ResizeObserver(()=>{
   const dpr=Math.min(devicePixelRatio,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
   ctx.setTransform(dpr,0,0,dpr,0,0);draw();
 }).observe(canvas);
-update(0,true);
+if(location.hash==='#forge-hall')setHall(true);
+const initialBeat=location.hash==='#end-of-shift'?score.beats.find(b=>b.name==='End of shift'):null;
+update(initialBeat?score.editTime(initialBeat.at):0,true);

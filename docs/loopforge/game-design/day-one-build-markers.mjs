@@ -45,9 +45,16 @@ export function makeBuildMarkers(floor, score) {
     'Inset a steel trough and overhead spray manifold. Face the hand control north so bob can reach it from the working aisle.');
   fixture('C3','Conveyor','Main belt and cradle clamp','belt',1.05,
     'Run rollers east–west. Put a working clamp and start paddle on the north side. Keep the cradle continuous across the station seams.');
-  fixture('C4','Conveyor','Forge press','forge',2.20,
+  fixture('C4','Conveyor','Forge press','forge',5.80,
     'Build the guards and moving press door around the cradle centerline. Give the north face a readable handle for the jam and release.');
   fixture('C5','Conveyor','Output rack','output',1.05,
     'Continue the belt into three visible rack slots. Keep the north aisle open for the crew to see the finished cortexes.');
+  floor.forgeHall.installations.forEach((item,i)=>{
+    mark('H'+(i+1),'Forge hall',item.name,item.rect,0,item.height,item.build);
+  });
+  const crane=floor.forgeHall.crane;
+  mark('H8','Forge hall',crane.name,crane.rect,crane.base,crane.height,crane.build);
+  const road=floor.forgeHall.runs.find(q=>q.id==='transfer');
+  mark('H9','Forge hall',road.name,road.rect,0,0,'Stripe the six-metre clear road from receiving to the eastern transfer lane. Keep it open in front of each overhaul bay.');
   return markers;
 }

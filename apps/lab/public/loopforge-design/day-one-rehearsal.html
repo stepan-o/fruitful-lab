@@ -13,12 +13,23 @@ button,select{font:inherit;font-size:13px;line-height:1.2;font-weight:600;cursor
 .status{border-top:1px solid #35483f;padding:7px 14px;color:#c0d1c6;min-height:32px}.status span:last-child{white-space:nowrap;color:var(--gold)}.transport{margin-top:12px}.buttons{justify-content:flex-start}.buttons output{margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}.rate{color:var(--gold)}#play{background:#e4ce93;color:#13231f;border-color:#dcc182;min-width:75px}#scrub{width:100%;accent-color:var(--gold);cursor:ew-resize;margin:10px 0;height:18px}
 details{border-top:1px solid var(--edge);margin-top:6px;color:var(--soft)}summary{padding:12px 0;cursor:pointer}.notes{max-width:76ch;line-height:1.5;font-size:14px}.notes table{border-collapse:collapse;width:100%}td,th{padding:5px;text-align:left;border-bottom:1px solid var(--edge)}caption{text-align:left;color:var(--gold);margin:5px}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(100%)}
 @media(max-width:620px){main{padding:9px 8px 20px}header{margin-bottom:10px}.edition{font-size:10px}.bar{padding:6px 9px}h2{font-size:16px}#stage{height:clamp(270px,43svh,440px)}#voices{grid-template-columns:repeat(2,minmax(0,1fr));min-height:100px;padding:6px;gap:4px}.bubble{padding:5px 8px}.bubble:first-child:nth-last-child(2),.bubble:first-child:nth-last-child(2)~.bubble{grid-column:auto}.bubble span{font-size:14px}.status{font-size:10px;padding:6px 8px;gap:5px}.buttons{gap:4px;flex-wrap:wrap}.buttons button,.buttons select{padding:6px;font-size:12px}#play{min-width:53px}output,.rate{font-size:11px}.buttons select{max-width:42vw}.stamp{font-size:10px}h1{font-size:24px}}
+
+.views{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px}
+.views [aria-pressed=true]{background:#e4ce93;color:#13231f}
+#pins{position:absolute;inset:0;pointer-events:none}
+#pins button{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;min-height:26px;min-width:30px;padding:2px 4px;background:#253333;color:#efcf89;border:1px solid #d7b778;font:600 12px ui-monospace,monospace}
+#pins [aria-pressed=true]{background:#ecd195;color:#182526}
+#buildPanel{padding:10px 14px;border-top:1px solid var(--edge);background:#192825;color:var(--ink);font-size:14px}
+#buildPanel label{margin-right:6px;font-weight:650}#buildPanel select{max-width:100%}
+#buildPanel p{margin:6px 0}#objectSize{color:var(--gold);font:12px/1.45 ui-monospace,monospace}
+#buildPanel a{color:#b9d8d2}
+@media(max-width:620px){.views button{font-size:12px;padding:5px}.bar h2{min-width:0}.views{max-width:60%}}
 </style></head>
 <body><main>
 <header><div><a class="back" href="/stepanoskin/loopforge/design#day-one-intro">← Design board</a><h1>Day one<span> / </span>Factory floor</h1></div><div class="edition">Loopforge <b>2D staging rehearsal</b></div></header>
 <section class="monitor" aria-label="Live factory floor">
-<div class="bar"><h2 id="beat">At the gate</h2><button id="view" aria-pressed="false">Whole factory ↗</button></div>
-<div id="stage"><canvas aria-label="Animated overhead plan with named workers, facing, routes and machinery"></canvas><div id="atlas" hidden><svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1040" viewBox="0 0 1200 1040" role="img" aria-labelledby="title desc">
+<div class="bar"><h2 id="beat">At the gate</h2><div class="views"><button id="buildView" aria-pressed="false" aria-controls="buildPanel">3D build markers</button><button id="view" aria-pressed="false">Whole factory ↗</button></div></div>
+<div id="stage"><canvas aria-label="Animated overhead plan with named workers, facing, routes and machinery"></canvas><div id="pins" hidden></div><div id="atlas" hidden><svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1040" viewBox="0 0 1200 1040" role="img" aria-labelledby="title desc">
 <title id="title">Loopforge — continuous first-floor plan</title>
 <desc id="desc">Top-down measured design plan, north up. Nine repacked zones fill one building with narrow pipe walls around Brewery and Cortex. Every hall has a fifteen-metre structural height. An eight-metre corridor links Security to Theatre. The six managed rooms are Security, Lattice Forge, Burn-in Theatre, Substrate Brewery, Weaving Gallery and Cortex Assembly. Only Security and Lattice Forge are open on turn one. Gold thresholds mark fourteen connections, including the new Security to Theatre corridor. Dashed plots are clear construction reserves; copper marks are prototype machinery. Pipe walls do not grant extra access.</desc>
 <defs><pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8 0H0V8" fill="none" stroke="#70857c" stroke-opacity=".17" stroke-width=".2"/></pattern><pattern id="service" width="3" height="3" patternUnits="userSpaceOnUse"><rect width="3" height="3" fill="#34352b"/><path d="M-1 1L1 -1M0 3L3 0M2 4L4 2" stroke="#777151" stroke-width=".18"/></pattern></defs>
@@ -33,6 +44,11 @@ details{border-top:1px solid var(--edge);margin-top:6px;color:var(--soft)}summar
 <rect x="310" y="952" width="14" height="14" fill="none" stroke="#6c9b83" stroke-dasharray="3 2"/><text x="333" y="964" font-size="14" fill="#c2ccbf">Construction reserve</text><rect x="560" y="952" width="14" height="14" fill="#976c40"/><text x="583" y="964" font-size="14" fill="#c2ccbf">Working footprint</text><text x="835" y="964" font-size="14" fill="#aab9ad">41,536 m² enclosed footprint</text>
 <text x="60" y="996" font-size="12" fill="#879b8f">loopforge-floor-1/5 · 14 connections · Security–Theatre corridor sealed until Theatre opens · staff entrance on the south Lobby wall</text></g></svg>
 </div><div class="stamp" id="cut" hidden></div></div>
+<section id="buildPanel" hidden aria-label="3D object handoff">
+<label for="objectSelect">Build in 3D</label> <select id="objectSelect"></select>
+<p id="objectSize"></p><p id="objectBrief"></p>
+<a href="/media/files/42d2f07b9d72f8ce0bc776641a06047304a1eab567f5ca9c3efd3dd31619560a.webp" target="_blank" rel="noopener">At the gate · concept art ↗</a>
+</section>
 <div id="voices" aria-label="Current speech"></div>
 <div class="status"><span id="action"></span><span id="count"></span></div>
 </section>
@@ -48,7 +64,7 @@ export function makeSequence(floor, script) {
   const cast = {
     bob: [126.2,121.5], sam: [125.1,121.1], ed: [124.2,121.9], max: [127.3,120.7],
     jo: [128.7,120.6], gus: [129.4,118.9], mae: [127.7,118.9], kit: [126.3,118.6],
-    lou: [124.7,117.5], ben: [126,117], LIMEN: [126.8,125.3], STILETTO: [132,118.3],
+    lou: [124.7,117.5], ben: [126,117], LIMEN: [125.32,125.13], STILETTO: [132,118.3],
   };
   const tracks = Object.fromEntries(Object.entries(cast).map(([id,p])=>[id, [{t:0,p}]]));
   // Explicit holds and path corners keep replay independent of frame rate.
@@ -77,7 +93,18 @@ export function makeSequence(floor, script) {
   walk('sam',26.6,1.25,[125.05,123.7]);
   walk('ed',26.9,1.20,[124.16,123.3]);
   walk('ed',31,1.1,[124.05,122.3]);
-  walk('STILETTO',29.3,1.85,[133.1,123.4],[133.2,126.7],[130.2,127.4],[130.1,129.6],[124.4,132.2],[120.8,132.25]);
+  // She approaches outside the queue and waits on the east side of the desk aisle.
+  // He leaves the checking position, works the west post, and only then releases her lane.
+  const gate = {hinge:[floor.doorway.x + .15, floor.doorway.y + .85], length:3.50};
+  walk('STILETTO',24.6,1.65,[131.25,121.9],[128.35,123.55]);
+  const atPost = walk('LIMEN',29.2,1.4,[125.75,127.05]);
+  const openAt = atPost + .75;
+  gate.openings = [[atPost,openAt,44,44.75],[77,77.6,84,84.6],[109.5,110.1,116,116.6],
+    [139,139.6,164,164.6],[181,181.6,Infinity,Infinity]];
+  const throughGate = walk('STILETTO',openAt,1.75,[128.15,125.1],[128.15,130.1]);
+  walk('STILETTO',throughGate,1.75,[124.4,132.2],[120.8,132.25]);
+  gate.hold = {start:atPost, end:throughGate+.6};
+  walk('LIMEN',gate.hold.end,1.4,[126.8,125.3]);
   walk('bob',37.8,1.15,[127.8,124.45],threshold,[127.1,130.2],[121.2,133],intake);
   walk('sam',39,1.1,[125.65,124.8]);
   walk('STILETTO',53,1.4,[120.7,133.45]);
@@ -156,7 +183,7 @@ export function makeSequence(floor, script) {
     return w;
   }
   const beats=[
-    [0,'At the gate','gate'],[25.4,'The fallen card','gate'],[40.5,'The first brain','line'],
+    [0,'At the gate','gate'],[25.4,'The fallen card','passage'],[40.5,'The first brain','line'],
     [77,'Two volunteers','gate'],[95.7,'The second brain','line'],[130,'The fourth check','door'],
     [143,'The crew fills in','wide'],[165.4,'Run it','follow'],[179.8,'End of shift','wide'],
     [cuts[0].at,'The register','gate'],[cuts[1].at,'Outside','yard'],
@@ -177,7 +204,7 @@ export function makeSequence(floor, script) {
     [0,3,'max','draws his jaw into his collar'],[13,16.6,'max','clicks his jaw'],[19.4,21.4,'bob','laughs'],
     [23.2,25.4,'bob','offers his card'],[26.35,27.35,'LIMEN','strikes bob’s leg'],
     [26.75,32,'sam','kneels beside bob'],[27.45,30.1,'ed','stops the card with his boot'],[30.1,31.5,'ed','pockets the card'],
-    [29.5,36,'LIMEN','holds the gate'],[32,35.1,'bob','gets his weight back'],
+    [gate.hold.start,gate.hold.end,'LIMEN','holds the gate'],[32,35.1,'bob','gets his weight back'],
     [40,77.8,'LIMEN','checks sam’s ID'],[51,53,'bob','pulls the loader'],[53,55.8,'bob','finishes the pull seated'],
     [54.7,56.9,'STILETTO','inspects the cradle'],[56.9,60,'bob','pulls himself up by the rail'],
     [61.7,64.9,'bob','rinses the grit away'],[68.6,70.8,'bob','clamps the cradle and starts the drive'],
@@ -204,7 +231,7 @@ export function makeSequence(floor, script) {
     product(2,[[101.5,0],[106,0],[114.9,1],[118,1],[121,2],[122.8,2],[126.1,3],[127.1,3],[128.1,4]],1),
     product(3,[[113.5,0],[168.8,0],[170.1,1],[171.8,1],[172.8,2],[174.3,2],[175.6,3],[176.4,3],[177.2,4]],2),
   ];
-  return {cast,tracks,beats,speech,cues,products,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
+  return {cast,tracks,beats,speech,cues,gate,products,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
 }
 
 export function samplePath(keys,t) {
@@ -216,10 +243,79 @@ export function samplePath(keys,t) {
   return {p:[a.p[0]+(b.p[0]-a.p[0])*f,a.p[1]+(b.p[1]-a.p[1])*f],moving:a.p[0]!==b.p[0]||a.p[1]!==b.p[1],from:a.p,to:b.p};
 }
 
+// A boom lifts vertically at the west post. Its overhead projection shrinks as it rises.
+export function gateTipAt(gate, t) {
+  const opening = gate.openings.find(([start,,,closed]) => start <= t && t < closed);
+  let angle = 0;
+  if (opening) {
+    const [start, open, release, closed] = opening;
+    const fraction = t < open ? (t-start)/(open-start) : t <= release ? 1 : (closed-t)/(closed-release);
+    angle = fraction * Math.PI / 2;
+  }
+  return [gate.hinge[0] + gate.length*Math.cos(angle), gate.hinge[1]];
+}
+
+// Day 1 blockout handoff. x increases east, y increases south, dimensions are metres.
+// Reuse the playable fixture rectangles so a footprint edit also moves its handoff pin.
+export function makeBuildMarkers(floor, score) {
+  const {gate,cast}=score;
+  const markers = [];
+  function mark(id, room, name, rect, base, height, build) {
+    markers.push({id, room, name, rect, base, height, build});
+  }
+  function fixture(id, room, name, source, height, build) {
+    mark(id, room, name, floor.fixtures.find(f => f.id === source).rect, 0, height, build);
+  }
+  fixture('S1','Security','West queue rail','west-rail',1.12,
+    'Run two scuffed steel tubes north–south. Bolt three banded posts to the deck. Hang inspection tags on the outside face.');
+  fixture('S2','Security','East queue rail','east-rail',1.12,
+    'Instance the west rail here. End both rails before the desks. STILETTO approaches along its outside and turns in beyond its south end.');
+  fixture('S3','Security','Register and pen clip','register',1.02,
+    'Face the clerk north. Seat an open paper ledger in a recessed lip. Keep its near edge within reach when LIMEN turns it toward ed.');
+  fixture('S4','Security','Card drain','grate',0,
+    'Set a slotted grate flush with the deck. Recess the slats below the rim so bob’s card can skid across to ed’s boot.');
+  fixture('S5','Security','ID checking desk','checks',1.02,
+    'Face the clerk north. Block in a sloped photo reader and a pale card tray. Leave the aisle between the desks open.');
+  mark('S6','Security','Lift gate and west control post',
+    {x:gate.hinge[0]-.17,y:gate.hinge[1]-.17,w:gate.length+.34,h:.34},0,gate.length+1.05,
+    'Anchor the pivot at the west end, 1.05 m above the deck. Raise the boom vertically. LIMEN works the post from Security. STILETTO waits on the east, then walks through the raised span.');
+  mark('S7','Security','Intake sign and strip light',
+    {x:123.35,y:116.25,w:5.4,h:.28},2.65,.48,
+    'Suspend a blackened steel BLUE-COLLAR INTAKE sign above the queue. Face it north toward arrivals. Tuck one cold tube under its hood.');
+  mark('S8','Security','Visitor hold sign and strip light',
+    {x:130.7,y:116.25,w:4.1,h:.28},2.65,.48,
+    'Hang VISITOR-CONTRACTOR HOLD beside the intake sign, facing north. Keep the approach underneath clear. This sign identifies the waiting side of Security.');
+  function carried(id,name,actor,w,h,thickness,build){
+    const [x,y]=cast[actor];
+    mark(id,'Security',name,{x:x-w/2,y:y-h/2,w,h},0,thickness,build);
+    markers.at(-1).mount=actor+' · opening mark';
+  }
+  carried('S9','LIMEN’s cyan blade','LIMEN',.12,1.12,.06,
+    'Mount to LIMEN’s forearm. Give the pale cutting edge a darker teal spine. Pose it low at rest so the sweep toward bob’s leg reads against the steel floor.');
+  carried('S10','Worker credential','bob',.22,.28,.003,
+    'Instance a worn paper credential for the queue. Give bob’s copy two states, held and loose, so it leaves his hand, skids to the grate, then disappears into ed’s pocket.');
+  mark('S11','Security','Riveted checkpoint deck',{x:122.55,y:115.6,w:11.35,h:12.1},-.08,.08,
+    'Tile the receiving pen with dark steel panels and bolted seams. The top sits flush with the surrounding floor and drain. Leave the moving cast readable against it.');
+  fixture('C1','Conveyor','Intake loader','intake',1.25,
+    'Block in the longitudinal rails, hand lever and low motor housing. Leave room on the operator side for bob to sit down and pull.');
+  fixture('C2','Conveyor','Wash basin','wash',1.10,
+    'Inset a steel trough and overhead spray manifold. Face the hand control north so bob can reach it from the working aisle.');
+  fixture('C3','Conveyor','Main belt and cradle clamp','belt',1.05,
+    'Run rollers east–west. Put a working clamp and start paddle on the north side. Keep the cradle continuous across the station seams.');
+  fixture('C4','Conveyor','Forge press','forge',2.20,
+    'Build the guards and moving press door around the cradle centerline. Give the north face a readable handle for the jam and release.');
+  fixture('C5','Conveyor','Output rack','output',1.05,
+    'Continue the belt into three visible rack slots. Keep the north aisle open for the crew to see the finished cortexes.');
+  return markers;
+}
+
 // Browser projection. All physical state is evaluated at the requested time.
 const {floor,dialogue}=JSON.parse(document.querySelector('#score-data').textContent);
 const score=makeSequence(floor,dialogue);
 const byId=id=>document.getElementById(id);
+const buildObjects=makeBuildMarkers(floor,score);
+let inspecting=false, selectedObject=buildObjects.find(m=>m.id==='S6');
+const pinButtons=new Map();
 const canvas=document.querySelector('canvas'), ctx=canvas.getContext('2d');
 const colours={bob:'#f7bf78',sam:'#75c5ac',ed:'#c8b0e6',max:'#f0ce68',jo:'#86b9e8',gus:'#e79578',mae:'#beaf83',kit:'#8fcacb',lou:'#e6aab6',ben:'#a6bd85',LIMEN:'#74e5eb',STILETTO:'#ff9273'};
 const actors=Object.keys(score.cast), ns='http://www.w3.org/2000/svg';
@@ -259,11 +355,31 @@ function label(p,txt,colour,size=10,align='center'){
 function chooseCamera(mode,w){
   const third=samplePath(score.products[2].keys,w).p;
   const shot={
-    gate:[127.1,122.4,15.7,12],line:[127.4,134.35,23.4,10.6],door:[128.6,126.75,14.8,12.8],
+    gate:[127.6,122.2,16,14.4],passage:[127.6,125.15,16,14.5],line:[127.4,134.35,23.4,10.6],door:[128.6,126.75,14.8,12.8],
     wide:[127,128,23,23],follow:[Math.max(120.1,Math.min(134,third[0])),135.0,12.8,10.5],
-    yard:[72.5,135.2,21.5,14.2],
+    yard:[72.5,135.2,21.5,14.2],securityObjects:[128.5,122.4,17.8,15.8],conveyorObjects:[127,135.4,24,10.6],
   }[mode];
   center=shot.slice(0,2);scale=Math.min(width/shot[2],height/shot[3]);
+}
+function drawCheckpoint(){
+  const deck=buildObjects.find(m=>m.id==='S11').rect;
+  box(deck.x,deck.y,deck.w,deck.h,'#1c2c30','#465657');
+  // Seams are flush with the floor. Only the two authored queue rails obstruct travel.
+  for(let row=0;row<6;row++){
+    for(let col=0;col<4;col++){
+      const x=122.65+col*2.79,y=115.7+row*1.99;
+      box(x,y,2.72,1.92,(col+row)%3===0?'#273a3c':'#243438','#304448');
+      box(x+.12,y+.12,.09,.09,'#657775');
+      box(x+2.50,y+1.70,.09,.09,'#445955');
+    }
+  }
+  for(const marker of buildObjects.filter(m=>m.id==='S7'||m.id==='S8')){
+    const {x,y,w}=marker.rect;
+    box(x,y-.22,w,.49,'#273838','#576d69');
+    box(x+.14,y+.30,w-.28,.09,'#a9d8d2');
+    const title=marker.id==='S7'?'BLUE-COLLAR INTAKE':'VISITOR-CONTRACTOR HOLD';
+    label([x+w/2,y],title,'#acbfb6',Math.max(6,Math.min(10,w*scale/(title.length*.65))));
+  }
 }
 function drawBuilding(){
   ctx.fillStyle='#142824';ctx.fillRect(0,0,width,height);
@@ -275,6 +391,7 @@ function drawBuilding(){
   const left=Math.floor(center[0]-width/scale/2),top=Math.floor(center[1]-height/scale/2);
   for(let x=left;x<left+width/scale+2;x++)line([[x,top],[x,top+height/scale+2]],x%5?'#d9e6cb0b':'#d9e6cb16');
   for(let y=top;y<top+height/scale+2;y++)line([[left,y],[left+width/scale+2,y]],y%5?'#d9e6cb0b':'#d9e6cb16');
+  drawCheckpoint();
   for(const r of floor.reserves.map(q=>q.rect)){
     ctx.setLineDash([3,4]);box(r.x,r.y,r.w,r.h,'#7a9e7f0b','#71857266');ctx.setLineDash([]);
   }
@@ -290,14 +407,24 @@ function drawBuilding(){
 function equipment(w){
   for(const q of floor.fixtures){
     const {x,y,w:fw,h}=q.rect,cx=x+fw/2,cy=y+h/2;
-    if(q.kind==='rail'){box(x,y,fw,h,'#c3c5ad','#536660');continue;}
+    if(q.kind==='rail'){
+      const mid=x+fw/2;
+      line([[mid,y],[mid,y+h]],'#0c191d',Math.max(3,scale*.29));
+      line([[mid,y],[mid,y+h]],'#697c7b',Math.max(2,scale*.17));
+      line([[mid-.04,y],[mid-.04,y+h]],'#a1b3ae',1);
+      for(const py of [y+.09,y+h*.5,y+h-.09])box(mid-fw/2,py-.09,fw,.18,'#3a4c4e','#80918b');
+      if(q.id==='west-rail'){
+        for(const py of [y+1.05,y+2.75])box(mid-.18,py,.14,.22,'#ada98d','#64675a');
+      }
+      continue;
+    }
     if(q.kind==='drain'){
       box(x,y,fw,h,'#112422','#bdc7af');
       for(let i=.1;i<fw;i+=.2)line([[x+i,y],[x+i,y+h]],'#9ba8a0');
       continue;
     }
     if(q.kind==='desk'){
-      box(x,y,fw,h,'#886d50','#ceba8d');
+      box(x,y,fw,h,'#465553','#8a9891');
       box(x+.15,y+.15,fw*.48,h*.66,q.id==='register'?'#f3deb4':'#95c7c1');
       label([cx,y+h+.38],q.name.toUpperCase(),'#e2dac4',Math.min(12,Math.max(8,scale*.49)));
       continue;
@@ -323,9 +450,8 @@ function equipment(w){
     }else for(let i=.35;i<fw;i+=.55)line([[x+i,y+.1],[x+i,y+h-.1]],'#c3b38f',2);
     label([cx,y+h+.55],q.name.toUpperCase(),'#f0d5a8',Math.max(9,Math.min(13,scale*.54)));
   }
-  // Gate arm pivots for individual admissions, while the side lane stays clear.
-  const open=(w>=29&&w<=44)||(w>=77&&w<=84)||(w>=109.5&&w<=116)||(w>=139&&w<=164)||w>=181;
-  line([[125.15,127.85],open?[125.28,126.6]:[127.25,127.85]],'#e8c477',3);
+  line([score.gate.hinge,gateTipAt(score.gate,w)],'#e8c477',3);
+  ellipse(score.gate.hinge,.17,.17,'#e8c477','#39453d');
   if(w>=26.55&&w<30.2){
     const p=samplePath([{t:26.55,p:[126.1,124.2]},{t:27.5,p:[124.14,123.46]}],w).p;
     box(p[0]-.16,p[1]-.1,.32,.2,'#fff0ae','#f4d589');
@@ -351,8 +477,12 @@ function facing(id,pose,w,positions){
   if(id==='sam'&&w<32)return towards('bob');
   if(id==='ed'&&w>=26&&w<31)return Math.PI/2;
   if(id==='bob'&&w<19.9)return towards('max');
+  if(id==='LIMEN' && w>=score.gate.hold.start && w<score.gate.hold.end){
+    return Math.atan2(score.gate.hinge[1]-pose.p[1],score.gate.hinge[0]-pose.p[0]);
+  }
+  if(id==='LIMEN' && w<score.gate.hold.start)return towards(w>=22?'bob':'max');
   if(id==='LIMEN')return w>=39&&w<78?towards('sam'):-Math.PI/2;
-  if(id==='STILETTO')return towards('bob');
+  if(id==='STILETTO')return w<score.gate.openings[0][1]?towards('LIMEN'):towards('bob');
   if(w>=25&&w<37&&id==='bob')return towards('LIMEN');
   return Math.PI/2;
 }
@@ -373,20 +503,45 @@ function drawCast(w,voices){
     const speaking=voices.some(v=>v.speaker===id);
     const cue=score.cues.find(q=>q.actor===id&&q.start<=w&&w<q.end);
     const low=cue&&/kneels|seated|ducks/.test(cue.label);
-    const rad=(boss?.43:.37)*(low?.80:1);
+    const checkpoint=w<40.5;
+    const rad=(checkpoint&&id==='LIMEN'?.52:boss?.43:.37)*(low?.80:1);
     const dir=[Math.cos(angle),Math.sin(angle)],side=[-dir[1],dir[0]];
     const offset=(d,s)=>[p[0]+dir[0]*d+side[0]*s,p[1]+dir[1]*d+side[1]*s];
     if(speaking)ellipse(p,rad+.19,rad+.19,null,c);
     ctx.save();ctx.translate(sx,sy);ctx.rotate(angle);ctx.scale(scale,scale);
     ctx.fillStyle='#0a1615';ctx.fillRect(-rad*.9,-rad*1.15,rad*1.8,rad*2.3);
-    ctx.fillStyle=c;ctx.fillRect(-rad*.64,-rad,rad*1.25,rad*2);
+    ctx.fillStyle=checkpoint?'#667674':c;ctx.fillRect(-rad*.64,-rad,rad*1.25,rad*2);
+    if(checkpoint){
+      for(const flank of [-1,1]){
+        ctx.fillStyle='#27383b';ctx.fillRect(-rad*.82,flank*rad*.81-rad*.24,rad*1.38,rad*.48);
+        ctx.fillStyle='#95a5a0';ctx.fillRect(-rad*.48,flank*rad*.81-rad*.15,rad*.44,rad*.15);
+      }
+    }
     ctx.restore();
     ellipse(p,rad*.76,rad*.76,'#20332e',c);
     line([offset(rad*.14,-rad*.43),offset(rad*.7,0),offset(rad*.14,rad*.43)],'#fff5d5',2);
+    if(checkpoint){
+      line([offset(rad*.54,-rad*.32),offset(rad*.65,0),offset(rad*.54,rad*.32)],'#caf8f1',1.6);
+      if(['bob','max','jo','ben'].includes(id) && w<26.7){
+        const card=offset(.42,.25);
+        box(card[0]-.11,card[1]-.14,.22,.28,'#cbd3b9','#667671');
+      }
+    }
     if(boss){
       const extent=cue&&/strikes|blades/.test(cue.label)?1.12:.56;
       const hands=id==='LIMEN'?[1]:[-1,1];
-      for(const d of hands)line([offset(.12,d*.44),offset(extent,d*.56)],c,2.5);
+      for(const d of hands){
+        const grip=offset(.12,d*.44);
+        if(checkpoint && id==='LIMEN'){
+          const engaging=cue?.label.startsWith('strikes');
+          const shoulderTip=offset(.85,.53);
+          const target=poses.bob.p;
+          const stroke=engaging?Math.sin(Math.PI*(w-cue.start)/(cue.end-cue.start)):0;
+          const tip=shoulderTip.map((v,i)=>v+(target[i]-v)*stroke);
+          line([grip,tip],'#317d82',5);
+          line([grip,tip],'#a5fff4',2);
+        }else line([grip,offset(extent,d*.56)],c,2.5);
+      }
     }
     if(id==='max'&&cue&&/jaw/.test(cue.label))line([offset(.2,-.1),offset(.66+.16*Math.sin(w*7),0)],c,3);
     if(cue&&/photo|offers his card|stamps|register|clips his pen/.test(cue.label)){
@@ -417,16 +572,61 @@ function drawNames(names){
     ctx.fillStyle='#15231fee';ctx.fillRect(x,y,tw,th);ctx.fillStyle=c;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(id,x+tw/2,y+th/2);
   }
 }
+function selectObject(marker){
+  selectedObject=marker;
+  byId('objectSelect').value=marker.id;
+  const {x,y,w,h}=marker.rect;
+  const metres=n=>Number(n.toFixed(2));
+  const mount=marker.mount?' · attach to '+marker.mount:' · base '+marker.base+' m';
+  byId('objectSize').textContent='Floor x '+metres(x)+' m, y '+metres(y)+' m · '+metres(w)+' × '+metres(h)+' m footprint · '+marker.height+' m high'+mount;
+  byId('objectBrief').textContent=marker.build;
+  for(const [id,pin] of pinButtons)pin.setAttribute('aria-pressed',String(id===marker.id));
+}
+function initBuildPins(){
+  let group;
+  for(const marker of buildObjects){
+    if(group?.label!==marker.room){
+      group=document.createElement('optgroup');group.label=marker.room;byId('objectSelect').append(group);
+    }
+    group.append(new Option(marker.id+' · '+marker.name,marker.id));
+    const pin=document.createElement('button');
+    pin.type='button';pin.textContent=marker.id;pin.setAttribute('aria-label',marker.id+' '+marker.name);
+    pin.onclick=()=>{selectObject(marker);draw();};
+    byId('pins').append(pin);pinButtons.set(marker.id,pin);
+  }
+  byId('objectSelect').onchange=e=>{selectObject(buildObjects.find(m=>m.id===e.target.value));draw();};
+  selectObject(selectedObject);
+}
+function drawBuildPins(){
+  const {x,y,w,h}=selectedObject.rect;
+  box(x,y,w,h,'#f5cd662c','#f5cb78');
+  for(const marker of buildObjects){
+    const pin=pinButtons.get(marker.id),r=marker.rect;
+    pin.hidden=marker.room!==selectedObject.room;
+    if(pin.hidden)continue;
+    const anchor=[r.x+r.w/2,r.y+r.h/2], [sx,sy]=project(anchor);
+    const offset=marker.room==='Security' && !['S3','S5','S6','S9'].includes(marker.id)?-1:1;
+    const labelY=Math.min(height-15,Math.max(15,sy+offset*23));
+    ctx.strokeStyle='#e8ce99';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(sx,labelY);ctx.stroke();
+    pin.style.left=sx+'px';pin.style.top=labelY+'px';
+  }
+}
+function setInspecting(value){
+  inspecting=value;byId('buildPanel').hidden=!value;byId('pins').hidden=!value;
+  byId('buildView').setAttribute('aria-pressed',String(value));
+}
 function draw(){
   const w=score.worldTime(time);
   const index=score.beats.findLastIndex(b=>b.at<=w);
   const beat=score.beats[index], voices=score.speech.filter(q=>q.start<=w&&w<q.end);
-  chooseCamera(beat.view,w);
+  const view=inspecting?(selectedObject.room==='Security'?'securityObjects':'conveyorObjects'):beat.view;
+  chooseCamera(view,w);
   drawBuilding();equipment(w);brains(w);drawCast(w,voices);
   if(w>=score.end-3.4){
     const opacity=Math.min(.68,(w-score.end+3.4)*.45);
     box(8,80,72,48,'rgba(1,7,6,'+opacity+')');
   }
+  if(inspecting)drawBuildPins();
   const signature=voices.map(v=>v.start).join(',');
   if(signature!==lastVoice){
     lastVoice=signature;byId('voices').replaceChildren(...voices.map(v=>{
@@ -436,7 +636,7 @@ function draw(){
     }));
   }
   const actions=score.cues.filter(q=>q.start<=w&&w<q.end);
-  byId('action').textContent=actions.filter(q=>q.actor!=='LIMEN'||actions.length<=2||beat.view==='gate').slice(-2).map(q=>q.actor+' '+q.label).join(' · ');
+  byId('action').textContent=actions.filter(q=>q.actor!=='LIMEN'||actions.length<=2||beat.view==='gate'||beat.view==='passage').slice(-2).map(q=>q.actor+' '+q.label).join(' · ');
   if(w>=score.end-3.4)byId('action').textContent='Factory lights out';
   const completed=score.products.filter(b=>b.keys.at(-1).t<=w).length;
   byId('count').textContent=w>=179.8?score.tallies.filter(t=>t<=w).length+' / 8 checked out':completed+' / 3 cortexes';
@@ -458,13 +658,19 @@ function update(t,run=playing){
   cancelAnimationFrame(frame);time=Math.max(0,Math.min(score.duration,t));playing=run;
   lastFrame=null;draw();frame=playing?requestAnimationFrame(render):0;
 }
-byId('play').onclick=()=>update(time>=score.duration?0:time,!playing);
-byId('restart').onclick=()=>update(0,true);
-byId('scrub').oninput=e=>update(Number(e.target.value));
-byId('beatSelect').onchange=e=>update(score.editTime(score.beats[Number(e.target.value)].at));
-function setView(value){whole=value;byId('atlas').hidden=!value;byId('view').textContent=value?'Follow scene ↙':'Whole factory ↗';byId('view').setAttribute('aria-pressed',String(value));draw();}
+byId('play').onclick=()=>{setInspecting(false);update(time>=score.duration?0:time,!playing);};
+byId('restart').onclick=()=>{setInspecting(false);update(0,true);};
+byId('scrub').oninput=e=>{setInspecting(false);update(Number(e.target.value));};
+byId('beatSelect').onchange=e=>{setInspecting(false);update(score.editTime(score.beats[Number(e.target.value)].at));};
+function setView(value){if(value)setInspecting(false);whole=value;byId('atlas').hidden=!value;byId('view').textContent=value?'Follow scene ↙':'Whole factory ↗';byId('view').setAttribute('aria-pressed',String(value));draw();}
 byId('view').onclick=()=>setView(!whole);
 byId('atlas').onclick=()=>setView(false);
+initBuildPins();
+byId('buildView').onclick=()=>{
+  if(inspecting){setInspecting(false);draw();return;}
+  if(whole)setView(false);
+  setInspecting(true);update(time,false);
+};
 new ResizeObserver(()=>{
   const r=canvas.getBoundingClientRect();width=r.width;height=r.height;
   const dpr=Math.min(devicePixelRatio,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);

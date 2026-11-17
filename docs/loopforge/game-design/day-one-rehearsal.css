@@ -10,3 +10,14 @@ button,select{font:inherit;font-size:13px;line-height:1.2;font-weight:600;cursor
 .status{border-top:1px solid #35483f;padding:7px 14px;color:#c0d1c6;min-height:32px}.status span:last-child{white-space:nowrap;color:var(--gold)}.transport{margin-top:12px}.buttons{justify-content:flex-start}.buttons output{margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}.rate{color:var(--gold)}#play{background:#e4ce93;color:#13231f;border-color:#dcc182;min-width:75px}#scrub{width:100%;accent-color:var(--gold);cursor:ew-resize;margin:10px 0;height:18px}
 details{border-top:1px solid var(--edge);margin-top:6px;color:var(--soft)}summary{padding:12px 0;cursor:pointer}.notes{max-width:76ch;line-height:1.5;font-size:14px}.notes table{border-collapse:collapse;width:100%}td,th{padding:5px;text-align:left;border-bottom:1px solid var(--edge)}caption{text-align:left;color:var(--gold);margin:5px}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(100%)}
 @media(max-width:620px){main{padding:9px 8px 20px}header{margin-bottom:10px}.edition{font-size:10px}.bar{padding:6px 9px}h2{font-size:16px}#stage{height:clamp(270px,43svh,440px)}#voices{grid-template-columns:repeat(2,minmax(0,1fr));min-height:100px;padding:6px;gap:4px}.bubble{padding:5px 8px}.bubble:first-child:nth-last-child(2),.bubble:first-child:nth-last-child(2)~.bubble{grid-column:auto}.bubble span{font-size:14px}.status{font-size:10px;padding:6px 8px;gap:5px}.buttons{gap:4px;flex-wrap:wrap}.buttons button,.buttons select{padding:6px;font-size:12px}#play{min-width:53px}output,.rate{font-size:11px}.buttons select{max-width:42vw}.stamp{font-size:10px}h1{font-size:24px}}
+
+.views{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px}
+.views [aria-pressed=true]{background:#e4ce93;color:#13231f}
+#pins{position:absolute;inset:0;pointer-events:none}
+#pins button{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;min-height:26px;min-width:30px;padding:2px 4px;background:#253333;color:#efcf89;border:1px solid #d7b778;font:600 12px ui-monospace,monospace}
+#pins [aria-pressed=true]{background:#ecd195;color:#182526}
+#buildPanel{padding:10px 14px;border-top:1px solid var(--edge);background:#192825;color:var(--ink);font-size:14px}
+#buildPanel label{margin-right:6px;font-weight:650}#buildPanel select{max-width:100%}
+#buildPanel p{margin:6px 0}#objectSize{color:var(--gold);font:12px/1.45 ui-monospace,monospace}
+#buildPanel a{color:#b9d8d2}
+@media(max-width:620px){.views button{font-size:12px;padding:5px}.bar h2{min-width:0}.views{max-width:60%}}

@@ -72,7 +72,7 @@ Use these as design north stars for specific problems:
 * **Failure**: primarily **soft-fail spiral** (visible deterioration, harder recovery) with a clear **hard-fail** threshold (e.g., insolvency + staffing collapse).
 * v1 must support “restart and try another regime.”
 
-**Retention hook:** players replay to try a “Witch run,” “Thrum run,” “Stiletto greed run,” etc.
+**Retention hook:** players replay to try a “RIVET WITCH run,” “THRUM run,” “STILETTO greed run,” etc.
 
 ---
 
@@ -94,7 +94,7 @@ Prediction clarity changes based on “control” conditions:
 * **Orderly security (LIMEN)** → previews become **crisper** (tighter ranges, confident UI edges).
 * **Chaos security (CATHEXIS / THRUM failure)** → previews become **noisy/fuzzed** (wider ranges, “??” accents).
 * **Repair/precision (RIVET WITCH)** → equipment signals become clearer and stabilize forecasts.
-* **Stiletto security** → previews stay readable but carry a **pressure/danger accent** (sharp, high-risk vibe).
+* **STILETTO security** → previews stay readable but carry a **pressure/danger accent** (sharp, high-risk vibe).
 
 ### “Why” is available but optional
 
@@ -102,7 +102,7 @@ Prediction clarity changes based on “control” conditions:
 * Expanded/tooltip: a single-line driver:
 
     * “Hazard rising: discipline low + equipment worn”
-    * “Throughput high: discipline strong + Stiletto synergy”
+    * “Throughput high: discipline strong + STILETTO synergy”
 
 ---
 
@@ -222,7 +222,7 @@ Directive panel must show:
 
 ### Spotlight rule
 
-* **Max one major popup per day**:
+* **max one major popup per day**:
 
     * conflict choice OR critical allow/suppress OR major accident
 * Major popup presentation:
@@ -333,7 +333,7 @@ This is the “comic” in interactive comic—mandatory for vibe retention.
 
 * **Red** = danger/lockdown
 * **Amber** = unstable/rising risk
-* **Teal/Sea-green** = weaving/witch precision
+* **Teal/Sea-green** = weaving/RIVET WITCH precision
 * **Cold cyan** = security instrumentation
 * Avoid using color alone: always pair with iconography.
 

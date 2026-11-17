@@ -1,7 +1,7 @@
 export const cast = [
   {
     id: "limen",
-    name: "Limen",
+    name: "LIMEN",
     role: "Security · procedure",
     room: "Security",
     quote: "State your purpose. Then state it again—correctly.",
@@ -10,7 +10,7 @@ export const cast = [
   },
   {
     id: "stiletto",
-    name: "Stiletto",
+    name: "STILETTO",
     role: "Forge · velocity",
     room: "Lattice Forge",
     quote: "If you can see me, you’re already late.",
@@ -19,7 +19,7 @@ export const cast = [
   },
   {
     id: "cathexis",
-    name: "Cathexis",
+    name: "CATHEXIS",
     role: "Theatre · meaning",
     room: "Burn-in Theatre",
     quote: "A mind should leave here with a reason to awaken.",
@@ -28,7 +28,7 @@ export const cast = [
   },
   {
     id: "witch",
-    name: "Rivet Witch",
+    name: "RIVET WITCH",
     role: "Brewery · improvisation",
     room: "Cognition Brewery",
     quote: "It is not broken. It is negotiating.",
@@ -37,7 +37,7 @@ export const cast = [
   },
   {
     id: "thrum",
-    name: "Thrum",
+    name: "THRUM",
     role: "Gallery · resonance",
     room: "Weaving Gallery",
     quote: "Listen. The fault was here before the alarm.",

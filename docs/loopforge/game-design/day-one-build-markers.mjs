@@ -21,7 +21,7 @@ export function makeBuildMarkers(floor, score) {
     'Face the clerk north. Block in a sloped photo reader and a pale card tray. Leave the aisle between the desks open.');
   mark('S6','Security','Lift gate and west control post',
     {x:gate.hinge[0]-.17,y:gate.hinge[1]-.17,w:gate.length+.34,h:.34},0,gate.length+1.05,
-    'Anchor the pivot at the west end, 1.05 m above the deck. Raise the boom vertically. LIMEN works the post from Security. STILETTO waits on the east, then walks through the raised span.');
+    'Anchor the pivot at the west end, 1.05 m above the deck. Raise the boom vertically. LIMEN works the post from Security. STILETTO calls from the east aisle and walks through the raised span without breaking stride.');
   mark('S7','Security','Intake sign and strip light',
     {x:123.35,y:116.25,w:5.4,h:.28},2.65,.48,
     'Suspend a blackened steel BLUE-COLLAR INTAKE sign above the queue. Face it north toward arrivals. Tuck one cold tube under its hood.');
@@ -45,9 +45,21 @@ export function makeBuildMarkers(floor, score) {
     'Inset a steel trough and overhead spray manifold. Face the hand control north so bob can reach it from the working aisle.');
   fixture('C3','Conveyor','Main belt and cradle clamp','belt',1.05,
     'Run rollers east–west. Put a working clamp and start paddle on the north side. Keep the cradle continuous across the station seams.');
-  fixture('C4','Conveyor','Forge press','forge',2.20,
+  fixture('C4','Conveyor','Forge press','forge',5.80,
     'Build the guards and moving press door around the cradle centerline. Give the north face a readable handle for the jam and release.');
   fixture('C5','Conveyor','Output rack','output',1.05,
     'Continue the belt into three visible rack slots. Keep the north aisle open for the crew to see the finished cortexes.');
+  floor.forgeHall.installations.forEach((item,i)=>{
+    mark('H'+(i+1),'Forge hall',item.name,item.rect,0,item.height,item.build);
+  });
+  const crane=floor.forgeHall.crane;
+  mark('H8','Forge hall',crane.name,crane.rect,crane.base,crane.height,crane.build);
+  const road=floor.forgeHall.runs.find(q=>q.id==='transfer');
+  mark('H9','Forge hall',road.name,road.rect,0,0,'Stripe the six-metre clear road from receiving to the eastern transfer lane. Keep it open in front of each overhaul bay.');
+  const door=floor.exit;
+  mark('E1','Factory entrance','Open staff doors',{x:door.x,y:door.y-.22,w:door.w,h:.44},0,4.0,
+    'Set a recessed double steel door in the south Lobby wall. Park both leaves behind the side jambs during arrivals and departures. Keep the full five-metre staff opening clear.');
+  mark('E2','Factory entrance','Loopforge sign and lamps',{x:door.x-.85,y:door.y-.46,w:door.w+1.7,h:.46},4.25,1.4,
+    'Hang the curved LOOPFORGE / AI BRAIN FACTORY sign above the doors, facing south toward the yard. Put a warm lamp at either end so the opening reads from across the wet apron.');
   return markers;
 }

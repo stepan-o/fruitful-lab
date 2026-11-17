@@ -58,7 +58,7 @@ Is this working as I intended?
 
 **Carried outward.** A visible hesitation or growing queue becomes a question for the minute loop. Inspection retains the event and its source rather than demanding the player remember a fleeting animation.
 
-**Example.** Limen’s procedure or Stiletto’s output policy changes the confirmed production and condition readouts. A matching illustrated room state and recorded report ground the result. Future spatial motion can show the different cadence; present feedback must work without it.
+**Example.** LIMEN’s procedure or STILETTO’s output policy changes the confirmed production and condition readouts. A matching illustrated room state and recorded report ground the result. Future spatial motion can show the different cadence; present feedback must work without it.
 
 **Design trap.** A constant spectacle with no readable state is noise. A click required every second turns direction into busywork. Neither should be the main source of difficulty.
 
@@ -76,7 +76,7 @@ Whose judgment will I back today, and what did it cost?
 
 **Carried outward.** Retained workers, committed quota, wear, memories and unresolved issues persist. Early relief does not repair damage. Later engineering, conditioning and information dynamics deepen the same daily cadence.
 
-**Example.** Choose Stiletto for output, approve her arrangement, observe her automatic Conveyor response, decide whether to back or override her Security recommendation, then split today’s completed robots between factory and quota. The resulting wear and reactions give tomorrow’s choice meaning.
+**Example.** Choose STILETTO for output, approve her arrangement, observe her automatic Conveyor response, decide whether to back or override her Security recommendation, then split today’s completed robots between factory and quota. The resulting wear and reactions give tomorrow’s choice meaning.
 
 **Design trap.** A minute of production followed by several minutes of mandatory menus misses the pace. Reading every supervisor’s full brief, repeating yesterday’s report or confirming every automatic act creates busywork. Quiet successful days remain valid, with no compulsory accident or repair action.
 
@@ -94,7 +94,7 @@ What kind of factory did my successful decisions create?
 
 **Carried outward.** Save the exact factory, people, commitments and unresolved matters. A session boundary does not reset relationships, reroll incidents or manufacture an ending.
 
-**Example.** Across early delivery cycles, Limen’s procedures preserve the line but limit output. Retaining completed robots strengthens the factory while leaving more quota for later. Choosing Stiletto on a later day changes the operating approach, while prior commitments and wear remain.
+**Example.** Across early delivery cycles, LIMEN’s procedures preserve the line but limit output. Retaining completed robots strengthens the factory while leaving more quota for later. Choosing STILETTO on a later day changes the operating approach, while prior commitments and wear remain.
 
 **Design trap.** Thirty minutes of unrelated alerts has no arc. Thirty minutes without a visible payoff feels like preparation for a game that has not started. A session need not complete Act 1 or Brain 2.0.
 
@@ -152,7 +152,7 @@ Agreed expression-first framing · proposed four-to-five-day test
 
 Part 01 should let the player try a way to lead, enjoy a recognizable result and respond when that approach is tested. More days earn their place through new stakes and payoffs, not through lessons about mechanics.
 
-Revised proposal: four or five completed two-room days, roughly six to eight minutes including the opening and heavier decisions, before Cathexis joins a ready factory’s next planning cycle. The owner asked for a somewhat longer opening; these exact numbers remain a playtest hypothesis, not a timer or fixed unlock date.
+Revised proposal: four or five completed two-room days, roughly six to eight minutes including the opening and heavier decisions, before CATHEXIS joins a ready factory’s next planning cycle. The owner asked for a somewhat longer opening; these exact numbers remain a playtest hypothesis, not a timer or fixed unlock date.
 
 **First night and day · make it work, choose how to lead.** Enter the morning console in a prebuilt factory. Receive the quota, choose LIMEN or STILETTO and authorize their arrangement. Recognize how the same equipment and workers operate under their method, then commit output to growth or quota.
 
@@ -162,11 +162,11 @@ Revised proposal: four or five completed two-room days, roughly six to eight min
 
 **Fourth or fifth result · own the consequences.** Give the response time to pay off. A stronger line, preserved workers, disputed authority or a remembered act of support makes this factory feel different. Keep a fifth day only if it adds a distinct choice or return.
 
-**Handoff · Cathexis offers another kind of power.** Readiness and commissioning bring Cathexis and the Theatre into the next planning cycle. Her ability to influence the workforce should tempt or unsettle the way the player already runs the place. Existing workers and memories persist.
+**Handoff · CATHEXIS offers another kind of power.** Readiness and commissioning bring CATHEXIS and the Theatre into the next planning cycle. Her ability to influence the workforce should tempt or unsettle the way the player already runs the place. Existing workers and memories persist.
 
 Proposed readiness uses completed operation, a viable workforce and line, irreversible output commitments and the capacity/investment required for the Theatre. Tune viable protective, productive and adaptive routes toward the four-to-five-day test window. Exact thresholds and funding remain open. Neither completing the week, trying both advisers, overriding someone nor suffering an accident is a prerequisite.
 
-The first weekly quota remains due on day seven. Under this proposal, Cathexis enters while the same obligation is still active. The player learns what her programme changes under an existing pressure; a completed week is not a prerequisite for meeting her.
+The first weekly quota remains due on day seven. Under this proposal, CATHEXIS enters while the same obligation is still active. The player learns what her programme changes under an existing pressure; a completed week is not a prerequisite for meeting her.
 
 **Console / daily context.** Show the relevant change from yesterday, remaining quota and days left. Do not restart each morning with an unchanged generic introduction.
 
@@ -178,7 +178,7 @@ The first weekly quota remains due on day seven. Under this proposal, Cathexis e
 
 **Dispatch / next-day handoff.** Show irreversible growth-versus-delivery totals and carry the same workers, wear and memories forward. A persistent multi-day prototype is required; replaying the opening fixture is insufficient.
 
-**Development / arrival.** Explain the visible readiness and investment requirements, then show actual eligibility and commissioning. Introduce Cathexis and the powered Theatre together as a new decision family. Exact unlock controls and costs need design.
+**Development / arrival.** Explain the visible readiness and investment requirements, then show actual eligibility and commissioning. Introduce CATHEXIS and the powered Theatre together as a new decision family. Exact unlock controls and costs need design.
 
 Compare four and five completed two-room days in owner playtests. Ask what the player wanted, what felt like their achievement and what they want to try next. Remove a day that only repeats information. If authority or commitment is unclear, fix its presentation; if it is clear but uninteresting, revise the situation and payoff.
 
@@ -236,7 +236,7 @@ Each day has one primary adviser choice, a concise plan and enough visible work 
 
 **Assignment and operating mandate.** Choose the adviser, who selects the daily priority and proposes assignments. Accept or override particular placements. Overrides are remembered challenges to their judgment; the proposal remains distinct from the actual orders and their execution.
 
-**Physical line and local policy.** Operate pace/feed controls and choose an adviser, assignments and responses. Shared room policies remain a proposed next lever. Engineering repair stays unavailable until Witch. Agents and their interactions make consequences physically visible.
+**Physical line and local policy.** Operate pace/feed controls and choose an adviser, assignments and responses. Shared room policies remain a proposed next lever. Engineering repair stays unavailable until RIVET WITCH. Agents and their interactions make consequences physically visible.
 
 **Intervention during the shift.** The adviser resolves events in their assigned room automatically. Elsewhere, accept or override available responses. Repair enters that set only with engineering in Part 03; stopping or slowing before then cannot restore condition.
 
@@ -260,7 +260,7 @@ Present from the start. First make the physical cause readable.
 
 Whose method am I relying on?
 
-Limen and Stiletto pursue different priorities; the same order can provoke different actions.
+LIMEN and STILETTO pursue different priorities; the same order can provoke different actions.
 
 Also present from the start. Introduce personalities through work before explaining a psychology model.
 
@@ -270,7 +270,7 @@ What is the operation consuming?
 
 Work pressure, wear and stress affect capability and responses. Relief or prevention costs productive capacity.
 
-Early operation reveals strain and physical cost. Engineering repair appears in Part 03 and Thrum’s specialist relief later; hidden worker history already exists.
+Early operation reveals strain and physical cost. Engineering repair appears in Part 03 and THRUM’s specialist relief later; hidden worker history already exists.
 
 #### 4 · Accounts and beliefs
 
@@ -314,35 +314,35 @@ Agreed opening rules; example trajectories and mastery checks remain proposals. 
 
 **Read the starting facts.** Enter the producer console with funds, workers, condition, empty assignments and two available rooms. Answer leadership and acknowledge the weekly quota before selecting an adviser. Keep this opening within the longer-day allowance.
 
-**Choose the first adviser.** Introduce Limen’s safety and compliance approach and Stiletto’s productivity approach, with understandable costs. The chosen adviser selects the priority and proposes the initial arrangement; the player may override assignments.
+**Choose the first adviser.** Introduce LIMEN’s safety and compliance approach and STILETTO’s productivity approach, with understandable costs. The chosen adviser selects the priority and proposes the initial arrangement; the player may override assignments.
 
 **Run the arrangement.** Start the continuous shift. Their assigned room has automatic event authority; elsewhere their recommendations can be overridden. Observe output and actual consequences. Repair is not an early control.
 
 **Commit the day’s output.** Allocate completed robots to the factory or weekly quota, with clear before/after totals and an irreversible commitment. A proposed default may help, but the allocation remains the player’s decision.
 
-**Carry the result into tomorrow.** Review hard facts and choose the next adviser. Safety, output and adaptive balance have different consequences as the deadline approaches. Cathexis arrives when the capability gate is earned, not because a session or week ended.
+**Carry the result into tomorrow.** Review hard facts and choose the next adviser. Safety, output and adaptive balance have different consequences as the deadline approaches. CATHEXIS arrives when the capability gate is earned, not because a session or week ended.
 
 #### Protect the line
 
-**Choice.** Choose Limen and support preventive procedures; commit scarce daily output between growth and quota.
+**Choice.** Choose LIMEN and support preventive procedures; commit scarce daily output between growth and quota.
 
 **Gain.** Avoid or reduce the hazard and preserve the workforce. The factory becomes more predictable.
 
-**Cost.** Lower output and earning potential leave fewer robots for both destinations. Stiletto has a concrete throughput objection.
+**Cost.** Lower output and earning potential leave fewer robots for both destinations. STILETTO has a concrete throughput objection.
 
-**Later echo.** Preserved equipment remains useful through Part 02 and may need less engineering time when Witch arrives. The early workforce still lacks Theatre indoctrination.
+**Later echo.** Preserved equipment remains useful through Part 02 and may need less engineering time when RIVET WITCH arrives. The early workforce still lacks Theatre indoctrination.
 
 **Design check.** The safety path must remain capable of progress. An injury is not required to create tension, expense or a consequential disagreement.
 
 #### Protect the delivery
 
-**Choice.** Choose Stiletto and back her productive approach; decide how much of the larger output to retain permanently.
+**Choice.** Choose STILETTO and back her productive approach; decide how much of the larger output to retain permanently.
 
 **Gain.** More near-term output can meet an obligation or finance the next improvement. The gamble can succeed.
 
 **Cost.** Wear and exposure persist through Parts 01–02. More retained workers cannot repair the line; an accident can reduce the capacity needed to finish the week.
 
-**Later echo.** Witch may later inherit substantial damage while Cathexis inherits the workers’ experiences. Neither outcome is erased by changing advisers.
+**Later echo.** RIVET WITCH may later inherit substantial damage while CATHEXIS inherits the workers’ experiences. Neither outcome is erased by changing advisers.
 
 **Design check.** An accident is not a scripted punishment for this choice. Repeated exposure should raise comprehensible risk; success must not erase the underlying cost.
 
@@ -354,17 +354,17 @@ Agreed opening rules; example trajectories and mastery checks remain proposals. 
 
 **Cost.** The earlier allocation and physical costs remain; advisers and other supervisors remember overrides.
 
-**Later echo.** The next specialists encounter the pattern of decisions, not a neutral reset between Limen and Stiletto.
+**Later echo.** The next specialists encounter the pattern of decisions, not a neutral reset between LIMEN and STILETTO.
 
 **Design check.** Balance is viable but not a universally optimal alternating sequence. It adds no third adviser or priority selector.
 
 ### Later Act 1 sessions
 
-**Theatre / Cathexis.** Cathexis encounters an existing workforce, including early unindoctrinated cohorts. Conditioning interacts with the operating approach already established; better coordination can strengthen her independent audience.
+**Theatre / CATHEXIS.** CATHEXIS encounters an existing workforce, including early unindoctrinated cohorts. Conditioning interacts with the operating approach already established; better coordination can strengthen her independent audience.
 
-**Brewery / Rivet Witch.** Witch introduces engineering and the Brewery together. Repairing inherited damage competes for her time with turning conveyor waste into substrate; earlier supervisor combinations shape the response to downtime.
+**Brewery / RIVET WITCH.** RIVET WITCH introduces engineering and the Brewery together. Repairing inherited damage competes for her time with turning conveyor waste into substrate; earlier supervisor combinations shape the response to downtime.
 
-**Weaving / Thrum.** Precision, scarce expertise and genuine stress relief compete for time. Smart-worker sales versus retention make an immediate gain oppose future capacity.
+**Weaving / THRUM.** Precision, scarce expertise and genuine stress relief compete for time. Smart-worker sales versus retention make an immediate gain oppose future capacity.
 
 **Cortex approach.** Existing work and memories acquire new stakes when replacement rumours spread. Apparent performance and actual contribution diverge. The full-run resolution is outside this session pass.
 
@@ -378,7 +378,7 @@ Production ticks and routine event resolution need no model call. Morning briefi
 - Changes have costs in work, time and remembered treatment. Do not add an action-point currency merely to stop assignment spam.
 - A short debrief identifies one causal lesson and one live issue. Preserve deeper traces for inspection without making routine play a log-reading job.
 - Safe and aggressive operating methods both need viable choices and characteristic liabilities. Neither is universally correct.
-- Keep the first slice to conveyor, Security, Limen, Stiletto, simple money/workforce accounting and one consequential recovery path. Defer new rooms and rich dialogue until this loop is playable.
+- Keep the first slice to conveyor, Security, LIMEN, STILETTO, simple money/workforce accounting and one consequential recovery path. Defer new rooms and rich dialogue until this loop is playable.
 
 ### Session tests
 
@@ -459,7 +459,7 @@ Obedience, helpful initiative, self-interest, sabotage and breakdown can produce
 
 *Source doctrine*
 
-Following a rule and adapting to actual conditions each have strengths and failure modes. Limen and Stiletto make this tension visible before more sophisticated forms of agency arrive.
+Following a rule and adapting to actual conditions each have strengths and failure modes. LIMEN and STILETTO make this tension visible before more sophisticated forms of agency arrive.
 
 [Source](sources/field-manual.md)
 
@@ -481,7 +481,7 @@ A witnessed accident, a credible report and an invented rumour can produce diffe
 
 *Agreed direction*
 
-Thrum’s unusually strong reduction of stress is a real benefit. Its costs in productivity and discipline generate conflicts with other supervisors and force allocation choices.
+THRUM’s unusually strong reduction of stress is a real benefit. Its costs in productivity and discipline generate conflicts with other supervisors and force allocation choices.
 
 ### Mastery opens complexity
 
@@ -533,19 +533,19 @@ Give every new behavioural layer a visible consequence and a way to inspect its 
 
 *Agreed direction*
 
-Repair is introduced with Witch in Part 03, but earlier operation determines its importance. Theatre participation and worker experience exist before direct inspection in Act 2. Reveal controls when they become usable while preserving the underlying history throughout.
+Repair is introduced with RIVET WITCH in Part 03, but earlier operation determines its importance. Theatre participation and worker experience exist before direct inspection in Act 2. Reveal controls when they become usable while preserving the underlying history throughout.
 
 ## Act 1 progression
 
 ### Opening rules and what unlocks later
 
-**Day one — current scene and later planning proposal.** The approved opening uses the prebuilt Lobby, Security and Conveyor. Bob passes the checkpoint, learns the four operations under STILETTO, works with sam, joins the staffed line and leaves with the original cast before night. No building, morning quota acknowledgment, adviser choice or allocation decision is playable in this scene. The older night-setup/morning-planning sequence is a separate planning proposal, not a description of current Day1. Later days may present the previous arrangement as a proposal baseline.
+**Day one — current scene and later planning proposal.** The approved opening uses the prebuilt Lobby, Security and Conveyor. bob passes the checkpoint, learns the four operations under STILETTO, works with sam, joins the staffed line and leaves with the original cast before night. No building, morning quota acknowledgment, adviser choice or allocation decision is playable in this scene. The older night-setup/morning-planning sequence is a separate planning proposal, not a description of current Day1. Later days may present the previous arrangement as a proposal baseline.
 
 **Daily commitment.** Split completed robots between the factory and the weekly quota. Confirmed allocations cannot be reversed: retained workers cannot later be shipped to rescue the quota, and committed deliveries cannot be recalled.
 
 **Parts 01–02.** Operate, prevent further damage, respond to incidents and live with the consequences. Repair is neither an available action nor an early tutorial, locked button or spending prompt. No station-level staffing task is introduced.
 
-**Part 03.** Witch brings engineering. Only an engineer can perform repairs. Her time and lost production are the core costs; a cash bill is not a default requirement.
+**Part 03.** RIVET WITCH brings engineering. Only an engineer can perform repairs. Her time and lost production are the core costs; a cash bill is not a default requirement.
 
 **Hidden worker history.** Record missing indoctrination when robots are produced before the Theatre opens. A supervisor can learn or infer it and choose to report it earlier; direct inspection arrives in Act 2.
 
@@ -555,7 +555,7 @@ Repair is introduced with Witch in Part 03, but earlier operation determines its
 
 *Agreed opening and expression anchors · proposed four-to-five-day test and readiness gate*
 
-**Arrival.** Limen and Stiletto
+**Arrival.** LIMEN and STILETTO
 
 **Visible operation.** First entry: Lobby → Security setup → Lattice Forge setup at night → morning leadership call → adviser selection → brief and assignments → operation. Security teaches placement with two fixed sockets. No supervisor has an assignment before morning orders are accepted. The first morning shows factory totals and the end-of-week quota; the adviser proposes the initial worker/supervisor arrangement.
 
@@ -569,17 +569,17 @@ Repair is introduced with Witch in Part 03, but earlier operation determines its
 
 **Hidden development.** Robots produced while the Theatre is closed have no indoctrination history. Retained workers accumulate their own experiences; that absence does not automatically make them disobedient. Workers and supervisors remember whose methods you backed. Wear also accumulates beyond today’s output.
 
-**Carried forward.** Cathexis inherits the workforce you retained, its experiences, the condition of the line and the authority established between Limen and Stiletto.
+**Carried forward.** CATHEXIS inherits the workforce you retained, its experiences, the condition of the line and the authority established between LIMEN and STILETTO.
 
 ### Burn-in Theatre
 
 *Inherited conditioning and authority arc · optional cohort/return and mastery conditions proposed · no later-day implementation or performance claim*
 
-**Arrival.** Cathexis
+**Arrival.** CATHEXIS
 
 **Visible operation.** Open the Burn-in Theatre in a factory already shaped by LIMEN, STILETTO and the workers’ ordinary lives. CATHEXIS’s programme can influence the existing workforce while production and the weekly obligation continue. LIMEN’s authorized routine and STILETTO’s concise practical lesson remain alternative Theatre approaches. These later days are proposed; no Theatre visit runs in the current Day1 scene.
 
-**Learning.** Better coordination can strengthen Cathexis’s influence over workers. Loyalty to you, confidence in herself and respect from her audience can move in different directions. Her programme interacts with the practices already established by Limen and Stiletto.
+**Learning.** Better coordination can strengthen CATHEXIS’s influence over workers. Loyalty to you, confidence in herself and respect from her audience can move in different directions. Her programme interacts with the practices already established by LIMEN and STILETTO.
 
 **Decision.** Choose the programme, the authority to grant and whether a particular cohort should attend now. Keep producing or arrange a useful activity directly when that is better. Earlier learning survives a postponed visit; attendance does not recharge jo or max. In the matched illustrative Day7 schedules, attendance yields A/C/D totals of 5/4/4 against 7/5/5 for postponement when the same old cue is actually usable. Without that cue, the postponement comparison is 6/5/5. These are source fixtures, not measured capacities or a universal efficiency bonus. The histories across A, C and D differ; only each attend/postpone pair shares the same prior state.
 
@@ -587,27 +587,27 @@ Repair is introduced with Witch in Part 03, but earlier operation determines its
 
 **Proposed gate.** Require an actual useful response and the existing viable production, worker, funding and weekly-obligation conditions once implemented. Remove the proposed fixed two-session prerequisite for the Brewery: a repeated visit must earn its own value, not serve as an attendance fee. A failed confirmation remains unresolved until the person actually demonstrates it. The successful first-session alternatives and failed-confirmation recovery remain available.
 
-**Hidden development.** Different production cohorts carry different conditioning and experience histories. Cathexis’s confidence, worker respect and loyalty can diverge. A supervisor may learn or infer which workers missed indoctrination and decide whether to mention it in a briefing. Equipment damage continues to accumulate.
+**Hidden development.** Different production cohorts carry different conditioning and experience histories. CATHEXIS’s confidence, worker respect and loyalty can diverge. A supervisor may learn or infer which workers missed indoctrination and decide whether to mention it in a briefing. Equipment damage continues to accumulate.
 
-**Carried forward.** One proposed return makes the choice tangible. After kit and lou attend, lou asks kit whether he wants help requesting Wash practice, receives his consent and takes that limited request to the line lead. The player can back the requested practice or continue production. In the worked return, practice leaves four outputs; hearing and declining the request leaves six; a no-request continuation can make seven. Directly arranging the same practice without another Theatre session remains possible. No qualification, productivity bonus or restored loyalty is awarded. Stage safe release, local receipt, observer clearance and the actual forward stroke, held stop and withdrawal/reset before claiming the encounter works. If the initiative is not worth its cost to watch, omit the second visit. Later, Witch still inherits both physical wear and a social arrangement that may support or resist downtime.
+**Carried forward.** One proposed return makes the choice tangible. After kit and lou attend, lou asks kit whether he wants help requesting Wash practice, receives his consent and takes that limited request to the line lead. The player can back the requested practice or continue production. In the worked return, practice leaves four outputs; hearing and declining the request leaves six; a no-request continuation can make seven. Directly arranging the same practice without another Theatre session remains possible. No qualification, productivity bonus or restored loyalty is awarded. Stage safe release, local receipt, observer clearance and the actual forward stroke, held stop and withdrawal/reset before claiming the encounter works. If the initiative is not worth its cost to watch, omit the second visit. Later, RIVET WITCH still inherits both physical wear and a social arrangement that may support or resist downtime.
 
 ### Cognitive Substrate Brewery
 
 *Agreed engineering unlock · proposed mastery gate*
 
-**Arrival.** Rivet Witch
+**Arrival.** RIVET WITCH
 
-**Visible operation.** Rivet Witch arrives with the Cognitive Substrate Brewery. Conveyor scraps can now become substrate. Her arrival also introduces repair as a player mechanic: engineering can restore equipment damaged during the earlier stages.
+**Visible operation.** RIVET WITCH arrives with the Cognitive Substrate Brewery. Conveyor scraps can now become substrate. Her arrival also introduces repair as a player mechanic: engineering can restore equipment damaged during the earlier stages.
 
-**Learning.** Only engineers can repair. Witch’s time is shared between technical work in existing rooms and the Brewery. Repair costs include time and lost production; money alone cannot provide the missing expertise.
+**Learning.** Only engineers can repair. RIVET WITCH’s time is shared between technical work in existing rooms and the Brewery. Repair costs include time and lost production; money alone cannot provide the missing expertise.
 
-**Decision.** Choose when to rely on Witch’s advice and where to assign her engineering work. Address the Conveyor, Theatre or another eligible fault, or keep her on substrate production. Back her proposed scope or challenge it, with consequences for both the machinery and her willingness to cooperate.
+**Decision.** Choose when to rely on RIVET WITCH’s advice and where to assign her engineering work. Address the Conveyor, Theatre or another eligible fault, or keep her on substrate production. Back her proposed scope or challenge it, with consequences for both the machinery and her willingness to cooperate.
 
-**Friction.** The damage inherited from Parts 01–02 competes for the only available engineer. Repairing one room can interrupt that room and Brewery output while the weekly quota continues. Witch resents unfinished faults; thorough work can take longer than the other supervisors will accept.
+**Friction.** The damage inherited from Parts 01–02 competes for the only available engineer. Repairing one room can interrupt that room and Brewery output while the weekly quota continues. RIVET WITCH resents unfinished faults; thorough work can take longer than the other supervisors will accept.
 
-**Proposed gate.** Candidate evidence: establish useful substrate production while preserving a viable line and handling competing demands on Witch’s engineering time.
+**Proposed gate.** Candidate evidence: establish useful substrate production while preserving a viable line and handling competing demands on RIVET WITCH’s engineering time.
 
-**Hidden development.** Inspections can expose the lasting cost of earlier choices. Limen and Stiletto may dispute whose decisions caused the damage; Cathexis’s programme shapes how workers interpret the stoppages. Witch remembers whether you let her finish or repeatedly pulled her away.
+**Hidden development.** Inspections can expose the lasting cost of earlier choices. LIMEN and STILETTO may dispute whose decisions caused the damage; CATHEXIS’s programme shapes how workers interpret the stoppages. RIVET WITCH remembers whether you let her finish or repeatedly pulled her away.
 
 **Carried forward.** Weaving inherits a substrate supply, the remaining faults and the relationships formed around deciding what to fix first.
 
@@ -615,19 +615,19 @@ Repair is introduced with Witch in Part 03, but earlier operation determines its
 
 *Agreed stage · proposed gate*
 
-**Arrival.** Thrum
+**Arrival.** THRUM
 
 **Visible operation.** Connect the Brewery and Weaving Gallery, complete Brain 1.5 and produce the first smart workers. They sell for more and improve advanced production when retained.
 
-**Learning.** Selling smart output can fund development; retaining smart workers builds future capacity. Payment timing remains to design. Thrum can relieve worker stress at a cost to production and discipline.
+**Learning.** Selling smart output can fund development; retaining smart workers builds future capacity. Payment timing remains to design. THRUM can relieve worker stress at a cost to production and discipline.
 
-**Decision.** Sell the first smart workers to fund expansion or keep them to strengthen production. Decide when to rely on Thrum’s judgment and whether to back his relief measures over another supervisor’s objections.
+**Decision.** Sell the first smart workers to fund expansion or keep them to strengthen production. Decide when to rely on THRUM’s judgment and whether to back his relief measures over another supervisor’s objections.
 
-**Friction.** The advanced chain must start with your existing workforce while deliveries continue. Retaining its valuable output delays income. Giving Thrum time to relieve strain costs production and can put him in conflict with Limen or Stiletto.
+**Friction.** The advanced chain must start with your existing workforce while deliveries continue. Retaining its valuable output delays income. Giving THRUM time to relieve strain costs production and can put him in conflict with LIMEN or STILETTO.
 
 **Proposed gate.** Candidate evidence: sustain smart-worker production and generate enough surplus to invest beyond the current operation.
 
-**Hidden development.** Some workers experience the new arrivals as needed help; others see preferential treatment or competition. Thrum’s relief can win support from workers while making other supervisors question his contribution.
+**Hidden development.** Some workers experience the new arrivals as needed help; others see preferential treatment or competition. THRUM’s relief can win support from workers while making other supervisors question his contribution.
 
 **Carried forward.** The factory gains the means to fund Cortex Assembly. Its mixture of workers, alliances and unresolved commitments determines how difficult that next step will be.
 
@@ -643,7 +643,7 @@ Repair is introduced with Witch in Part 03, but earlier operation determines its
 
 **Decision.** Commit surplus to the prototype while keeping deliveries moving. Decide whom to trust as supervisors fear replacement: promise continued roles, leave the threat hanging or use it to demand more. Whether the newcomers actually replace anyone is decided at the Act 2 handover.
 
-**Friction.** The prototype needs development funds and productive capacity. Retaining valuable output delays income; assigning Witch to repairs delays other work. Frightened supervisors may hide mistakes, claim credit or blame colleagues, while you still need their cooperation to finish.
+**Friction.** The prototype needs development funds and productive capacity. Retaining valuable output delays income; assigning RIVET WITCH to repairs delays other work. Frightened supervisors may hide mistakes, claim credit or blame colleagues, while you still need their cooperation to finish.
 
 **Proposed gate.** Candidate evidence: finish Brain 2.0 with a functioning first floor and a workable plan for its continued operation.
 
@@ -664,7 +664,7 @@ A second factory floor opens. The first becomes mostly auto-managed, with contin
 ### Inherited state
 
 - Individual workers with accumulated wear, memories, beliefs and relationships.
-- A functioning or compromised operating regime, including commitments to Cathexis.
+- A functioning or compromised operating regime, including commitments to CATHEXIS.
 - Promises, rumours and competing accounts of who deserves credit or replacement.
 - Material capacity, retained expertise and the costs paid to complete Brain 2.0.
 - Accident history, supervisor stress and self-doubt, the director’s responses, disputed responsibility and different audiences’ knowledge.
@@ -685,7 +685,7 @@ Thought access reveals a robot's interpretation, not omniscient truth. Its exact
 
 *Agreed opening fork · proposed trajectories · Begins with the first adviser choice*
 
-Choose Limen or Stiletto before any first-day assignments exist. Safety and compliance trade output for preserved capacity; productivity trades more output for wear and exposure. Balance is a pattern of informed decisions across days, not a third adviser or a player-set priority.
+Choose LIMEN or STILETTO before any first-day assignments exist. Safety and compliance trade output for preserved capacity; productivity trades more output for wear and exposure. Balance is a pattern of informed decisions across days, not a third adviser or a player-set priority.
 
 #### Prioritize safety and compliance
 
@@ -693,7 +693,7 @@ Choose Limen or Stiletto before any first-day assignments exist. Safety and comp
 
 **Liability.** Lower output leaves fewer robots to divide between growth and the weekly quota, and less earning potential.
 
-**Response.** Use subsequent adviser choices and permanent daily allocations to sustain viable production. Preserve condition through prevention; repair becomes available only with Witch.
+**Response.** Use subsequent adviser choices and permanent daily allocations to sustain viable production. Preserve condition through prevention; repair becomes available only with RIVET WITCH.
 
 #### Prioritize production
 
@@ -701,7 +701,7 @@ Choose Limen or Stiletto before any first-day assignments exist. Safety and comp
 
 **Liability.** Wear and accident exposure accumulate. Retaining a larger workforce does not restore damaged machinery.
 
-**Response.** Reduce further exposure or accept constrained output before Part 03. Once Witch arrives, decide what engineering work displaces Brewery production.
+**Response.** Reduce further exposure or accept constrained output before Part 03. Once RIVET WITCH arrives, decide what engineering work displaces Brewery production.
 
 #### Adapt the balance
 
@@ -711,7 +711,7 @@ Choose Limen or Stiletto before any first-day assignments exist. Safety and comp
 
 **Response.** Choose each day’s adviser and use allowed overrides with a coherent purpose. Alternating portraits mechanically is not an optimal policy, and balance does not provide a third priority button.
 
-### The Cathexis commitment
+### The CATHEXIS commitment
 
 *Agreed central fork · proposed branch details · Theatre through late Act 1*
 
@@ -721,7 +721,7 @@ Commit one way and manage its pitfall. Assignment oscillation and reassurance al
 
 **Gain.** Powerful conditioning, coordination and genuine worker commitment.
 
-**Liability.** Cathexis and her audience acquire expectations and independent leverage. Loyalty can remain strong, but support has conditions.
+**Liability.** CATHEXIS and her audience acquire expectations and independent leverage. Loyalty can remain strong, but support has conditions.
 
 **Response.** Honour negotiated commitments, accept concessions, or deliberately channel a movement. High confidence alone must not guarantee betrayal.
 
@@ -731,7 +731,7 @@ Commit one way and manage its pitfall. Assignment oscillation and reassurance al
 
 **Liability.** Humiliation may reduce worker respect while increasing resentment. A compliance circuit may restrict adaptability or provoke a worker response; exact costs are open.
 
-**Response.** Support the remaining organisation through other methods. If a circuit guarantees Cathexis cannot initiate revolution, the game must honour that guarantee.
+**Response.** Support the remaining organisation through other methods. If a circuit guarantees CATHEXIS cannot initiate revolution, the game must honour that guarantee.
 
 #### Build a specific alternative
 
@@ -793,7 +793,7 @@ Two newcomers are said to be replacing the worst performers. The player determin
 
 **Response.** Negotiate a new division of roles. Keeping everyone must not erase the tensions that prompted the threat.
 
-### Why assignment oscillation and reassurance cannot solve the Cathexis fork
+### Why assignment oscillation and reassurance cannot solve the CATHEXIS fork
 
 - Beliefs and personal allegiance outlast assignments.
 - Public humiliation damages standing and can increase resentment; it does not restore loyalty.
@@ -806,61 +806,61 @@ These are illustrative paths, not exhaustive branches, locked classes or predete
 
 ### Supervisor combinations
 
-**Limen plus Cathexis serving the programme.** Safety and conditioning can reinforce order, with slower growth and constraints on initiative. Witch may inherit less damage but face procedural resistance to changing the operation.
+**LIMEN plus CATHEXIS serving the programme.** Safety and conditioning can reinforce order, with slower growth and constraints on initiative. RIVET WITCH may inherit less damage but face procedural resistance to changing the operation.
 
-**Stiletto plus Cathexis sustaining the push.** Higher output and commitment can sustain expansion while wear accumulates. Witch’s necessary stoppages can challenge both production claims and promises made to workers.
+**STILETTO plus CATHEXIS sustaining the push.** Higher output and commitment can sustain expansion while wear accumulates. RIVET WITCH’s necessary stoppages can challenge both production claims and promises made to workers.
 
-**Stiletto’s expansion followed by independent Cathexis authority.** A larger early workforce carries experiences from before indoctrination was available. Cathexis may organize those experiences into demands; Witch’s findings can support or complicate them.
+**STILETTO’s expansion followed by independent CATHEXIS authority.** A larger early workforce carries experiences from before indoctrination was available. CATHEXIS may organize those experiences into demands; RIVET WITCH’s findings can support or complicate them.
 
-**Limen’s restraint followed by more Stiletto discretion.** Preserved equipment supports a later push. Witch inherits the cost of that change; backing her work tests whether the earlier safety commitments still mean anything.
+**LIMEN’s restraint followed by more STILETTO discretion.** Preserved equipment supports a later push. RIVET WITCH inherits the cost of that change; backing her work tests whether the earlier safety commitments still mean anything.
 
-These combinations are proposed trajectories, not guaranteed outcomes or a menu of classes. Daily advisers, actual room assignments, event responses, permanent allocations and remembered results determine which version develops. Balancing Limen and Stiletto is viable; it does not remove the separate need to commit on Cathexis.
+These combinations are proposed trajectories, not guaranteed outcomes or a menu of classes. Daily advisers, actual room assignments, event responses, permanent allocations and remembered results determine which version develops. Balancing LIMEN and STILETTO is viable; it does not remove the separate need to commit on CATHEXIS.
 
 ### Procedural order
 
 *Proposed trajectory*
 
-Begin with Limen’s safety priority, then constrain Cathexis to the official programme. Later engineering must work within an authority structure built before repair was possible.
+Begin with LIMEN’s safety priority, then constrain CATHEXIS to the official programme. Later engineering must work within an authority structure built before repair was possible.
 
-**Security + Lattice Forge.** Choose Limen from an unassigned opening. Accept or revise his initial arrangement, then divide scarce daily production between permanent retention and the weekly quota. Prevention preserves equipment but can delay growth.
+**Security + Lattice Forge.** Choose LIMEN from an unassigned opening. Accept or revise his initial arrangement, then divide scarce daily production between permanent retention and the weekly quota. Prevention preserves equipment but can delay growth.
 
-**Burn-in Theatre.** Use Cathexis to reinforce the programme. Earlier workers retain their experiences and missing conditioning until actual Theatre participation changes them. Commit to limiting her independence; any compliance circuit remains a separately designed side route.
+**Burn-in Theatre.** Use CATHEXIS to reinforce the programme. Earlier workers retain their experiences and missing conditioning until actual Theatre participation changes them. Commit to limiting her independence; any compliance circuit remains a separately designed side route.
 
-**Cognitive Substrate Brewery.** Witch introduces engineering. A better-preserved line can leave more of her time for the Brewery, but Limen’s procedures and the established programme may obstruct the changes she considers necessary.
+**Cognitive Substrate Brewery.** RIVET WITCH introduces engineering. A better-preserved line can leave more of her time for the Brewery, but LIMEN’s procedures and the established programme may obstruct the changes she considers necessary.
 
-**Weaving Gallery + Brain 1.5.** Retain smart workers where precision raises value. Thrum's preparation must coexist with the operating schedule rather than continually being overridden. Permit a bounded Thrum intervention when stress demands it, accepting that Limen may object to the loss of discipline.
+**Weaving Gallery + Brain 1.5.** Retain smart workers where precision raises value. THRUM's preparation must coexist with the operating schedule rather than continually being overridden. Permit a bounded THRUM intervention when stress demands it, accepting that LIMEN may object to the loss of discipline.
 
 **Cortex Assembly + Brain 2.0.** Complete Cortex with a dependable but potentially brittle first floor. Replacement rumours invite formal accusations, selected records and appeals to higher authority.
 
 **Pitfall.** The factory obeys but struggles with an exceptional condition. Removing discretion can make the director the bottleneck.
 
-**Recovery.** From Part 03, allocate Witch’s time to a technical correction, make an explicit exception or expand someone’s mandate. Record the lost production and changed authority; no history is reset.
+**Recovery.** From Part 03, allocate RIVET WITCH’s time to a technical correction, make an explicit exception or expand someone’s mandate. Record the lost production and changed authority; no history is reset.
 
-**Act 2 inheritance.** Act 2 receives a capable first floor whose obedience and resilience may be very different. A compliant Cathexis cannot lead a prohibited revolution, but worker reactions and other actors remain consequential.
+**Act 2 inheritance.** Act 2 receives a capable first floor whose obedience and resilience may be very different. A compliant CATHEXIS cannot lead a prohibited revolution, but worker reactions and other actors remain consequential.
 
-**Design test.** Can this route reach Brain 2.0 without an unavoidable quota failure? Does better judgment create a viable evolution rather than a compulsory switch to Stiletto? Can sustained safety avoid the accident altogether without blocking progress?
+**Design test.** Can this route reach Brain 2.0 without an unavoidable quota failure? Does better judgment create a viable evolution rather than a compulsory switch to STILETTO? Can sustained safety avoid the accident altogether without blocking progress?
 
 ### Production before everything
 
 *Proposed trajectory*
 
-The player backs Stiletto's discretion and empowers Cathexis to keep the workforce committed to an aggressive production programme.
+The player backs STILETTO's discretion and empowers CATHEXIS to keep the workforce committed to an aggressive production programme.
 
-**Security + Lattice Forge.** Choose Stiletto before initial assignments. Higher output gives more robots to divide between the factory and the weekly quota; each retained robot is permanently unavailable for delivery. Wear and risk accumulate without an early repair option.
+**Security + Lattice Forge.** Choose STILETTO before initial assignments. Higher output gives more robots to divide between the factory and the weekly quota; each retained robot is permanently unavailable for delivery. Wear and risk accumulate without an early repair option.
 
-**Burn-in Theatre.** Give Cathexis authority to sustain the production programme. A larger early workforce brings its own unindoctrinated history. Her message can secure cooperation while creating expectations about what the sacrifices will achieve.
+**Burn-in Theatre.** Give CATHEXIS authority to sustain the production programme. A larger early workforce brings its own unindoctrinated history. Her message can secure cooperation while creating expectations about what the sacrifices will achieve.
 
-**Cognitive Substrate Brewery.** Witch arrives to a damaged operation. Letting her repair competes with the Brewery and the output both Stiletto and Cathexis have promised. Deferring that work can preserve today’s production while narrowing later options.
+**Cognitive Substrate Brewery.** RIVET WITCH arrives to a damaged operation. Letting her repair competes with the Brewery and the output both STILETTO and CATHEXIS have promised. Deferring that work can preserve today’s production while narrowing later options.
 
-**Weaving Gallery + Brain 1.5.** Sell valuable smart output to accelerate expansion. Retaining too little expertise makes the advanced chain fragile; Thrum's recovery may become essential. Defending his relief programme against Stiletto becomes part of recovery, not an automatic productivity upgrade.
+**Weaving Gallery + Brain 1.5.** Sell valuable smart output to accelerate expansion. Retaining too little expertise makes the advanced chain fragile; THRUM's recovery may become essential. Defending his relief programme against STILETTO becomes part of recovery, not an automatic productivity upgrade.
 
 **Cortex Assembly + Brain 2.0.** Reach Cortex quickly enough to expose the cost of the promises. As replacement rumours circulate, each supervisor tries to separate their own results from the damage.
 
 **Pitfall.** A major repair and a credibility crisis arrive together. The workforce has heard promises the director cannot cheaply fulfil.
 
-**Recovery.** Accept engineering downtime once Witch is available, slow expansion or concede authority to restore cooperation. Future daily production can be allocated differently; already retained workers cannot be cashed out or reassigned to the quota.
+**Recovery.** Accept engineering downtime once RIVET WITCH is available, slow expansion or concede authority to restore cooperation. Future daily production can be allocated differently; already retained workers cannot be cashed out or reassigned to the quota.
 
-**Act 2 inheritance.** Act 2 opens with a larger or wealthier operation, accumulated wear, and a powerful account of who paid for success. Cathexis may remain an ally or demand a change in policy.
+**Act 2 inheritance.** Act 2 opens with a larger or wealthier operation, accumulated wear, and a powerful account of who paid for success. CATHEXIS may remain an ally or demand a change in policy.
 
 **Design test.** Can recovery happen before a terminal collapse? Are the early gains substantial enough to justify the risk, without generating an accidental infinite scrap economy?
 
@@ -868,15 +868,15 @@ The player backs Stiletto's discretion and empowers Cathexis to keep the workfor
 
 *Proposed trajectory*
 
-Adapt between Limen’s safety and Stiletto’s output, then commit to Cathexis’s independent authority under concrete terms. The resulting coalition inherits the physical and social costs of the early choices.
+Adapt between LIMEN’s safety and STILETTO’s output, then commit to CATHEXIS’s independent authority under concrete terms. The resulting coalition inherits the physical and social costs of the early choices.
 
 **Security + Lattice Forge.** Choose either initial adviser, then use later factual results to decide when to change advisers or override assignments. Balance is an evolving approach, not a free priority setting. Weekly quota commitments and factory allocations cannot be reversed.
 
-**Burn-in Theatre.** Back Cathexis with specific commitments to workers. Her audience includes early cohorts with experiences from before the Theatre. Her growing influence can make those experiences politically important; support or restrictions must survive actual production pressure.
+**Burn-in Theatre.** Back CATHEXIS with specific commitments to workers. Her audience includes early cohorts with experiences from before the Theatre. Her growing influence can make those experiences politically important; support or restrictions must survive actual production pressure.
 
-**Cognitive Substrate Brewery.** When Witch arrives, her inspections can give worker complaints material support or challenge them. Granting her engineering time honours some commitments while sacrificing Brewery output and testing the others.
+**Cognitive Substrate Brewery.** When RIVET WITCH arrives, her inspections can give worker complaints material support or challenge them. Granting her engineering time honours some commitments while sacrificing Brewery output and testing the others.
 
-**Weaving Gallery + Brain 1.5.** Retain enough smart workers to stabilize advanced production. Accept Thrum's preparation when necessary; the cost may be slower accumulation of expansion money. Protecting genuine relief may require renegotiating the coalition’s expectations about output and obedience.
+**Weaving Gallery + Brain 1.5.** Retain enough smart workers to stabilize advanced production. Accept THRUM's preparation when necessary; the cost may be slower accumulation of expansion money. Protecting genuine relief may require renegotiating the coalition’s expectations about output and obedience.
 
 **Cortex Assembly + Brain 2.0.** Finance Cortex through a sustainable chain. Address the replacement rumour before incompatible assurances become the basis of several alliances.
 
@@ -888,25 +888,25 @@ Adapt between Limen’s safety and Stiletto’s output, then commit to Cathexis�
 
 **Design test.** Are agreements enforceable enough to matter? Does this path carry real economic and political costs rather than becoming the universally correct dialogue route?
 
-### An alternative to Cathexis
+### An alternative to CATHEXIS
 
 *Proposed side route exploration*
 
-The player deliberately builds the capacity to transfer conditioning away from Cathexis. This explores the requested specific side route; the worker-cadre solution itself is not yet accepted.
+The player deliberately builds the capacity to transfer conditioning away from CATHEXIS. This explores the requested specific side route; the worker-cadre solution itself is not yet accepted.
 
 **Security + Lattice Forge.** Choose the first adviser from an unassigned opening. Establish viable weekly production and commit daily output to the factory or quota with the later institutional change in mind.
 
-**Burn-in Theatre.** Manage Cathexis through a declared temporary arrangement, accepting its cost. Endless assignment shuffling is not a substitute for the promised alternative.
+**Burn-in Theatre.** Manage CATHEXIS through a declared temporary arrangement, accepting its cost. Endless assignment shuffling is not a substitute for the promised alternative.
 
-**Cognitive Substrate Brewery.** Witch introduces repair. Allocate her scarce time between inherited damage and the Brewery; an incident can divert work intended to support the later handover. Assigning blame changes who will cooperate.
+**Cognitive Substrate Brewery.** RIVET WITCH introduces repair. Allocate her scarce time between inherited damage and the Brewery; an incident can divert work intended to support the later handover. Assigning blame changes who will cooperate.
 
-**Weaving Gallery + Brain 1.5.** After Brain 1.5, retain and train a skilled cadre for the Theatre. Training competes directly with advanced throughput and revenue. Allocation to Thrum’s relief competes with both training and production.
+**Weaving Gallery + Brain 1.5.** After Brain 1.5, retain and train a skilled cadre for the Theatre. Training competes directly with advanced throughput and revenue. Allocation to THRUM’s relief competes with both training and production.
 
-**Cortex Assembly + Brain 2.0.** Complete an explicit transfer of responsibility, then finance Cortex with reduced dependence on a single supervisor. Cathexis can resent or negotiate the loss of her role.
+**Cortex Assembly + Brain 2.0.** Complete an explicit transfer of responsibility, then finance Cortex with reduced dependence on a single supervisor. CATHEXIS can resent or negotiate the loss of her role.
 
 **Pitfall.** The transition weakens production before the new arrangement can support itself. The new cadre may also develop its own agenda or status interests.
 
-**Recovery.** Delay Cortex, keep a limited negotiated role for Cathexis, or accept obligations to the new group. None of these should reset the cost of the handover.
+**Recovery.** Delay Cortex, keep a limited negotiated role for CATHEXIS, or accept obligations to the new group. None of these should reset the cost of the handover.
 
 **Act 2 inheritance.** Act 2 receives more distributed authority and a new constituency, not an institution free of politics.
 
@@ -914,7 +914,7 @@ The player deliberately builds the capacity to transfer conditioning away from C
 
 ## Supervisors
 
-### Limen
+### LIMEN
 
 Hierarchy, paperwork and threat assessment give him certainty. Obedience is to an authority structure, not automatically to the player's interests or to morality.
 
@@ -930,7 +930,7 @@ Hierarchy, paperwork and threat assessment give him certainty. Obedience is to a
 
 **Under threat.** May frame exceptions as evidence against improvisers or appeal to higher authority. Protecting a colleague remains possible when history and motives support it.
 
-### Stiletto
+### STILETTO
 
 A highly autonomous, risk-tolerant efficiency specialist. She acts on conditions and treats many protocols as obstacles.
 
@@ -942,11 +942,11 @@ A highly autonomous, risk-tolerant efficiency specialist. She acts on conditions
 
 **Advice.** Can report a repair stoppage accurately while omitting the accumulated damage behind it. Confidence in her own methods can also make that account sincere.
 
-**Relationship.** Limen challenges her discretion; Witch inherits the faults it can create. These disagreements concern real competing priorities.
+**Relationship.** LIMEN challenges her discretion; RIVET WITCH inherits the faults it can create. These disagreements concern real competing priorities.
 
 **Under threat.** May chase visible results, take credit for output or shift responsibility for damage. Concealment and honest defence are separate possibilities.
 
-### Cathexis
+### CATHEXIS
 
 The Theatre overseer models emotion and choreographs instability. Emotional understanding is not a guarantee of compassion.
 
@@ -960,9 +960,9 @@ The Theatre overseer models emotion and choreographs instability. Emotional unde
 
 **Relationship.** The current design explicitly makes paperwork and Security a poor fit. Loyalty to the director, self-confidence and respect among workers must remain distinct.
 
-**Under threat.** May protect herself by defining whose sacrifices matter or whom the workforce should blame. A supported, loyal Cathexis can also defend the director or another supervisor.
+**Under threat.** May protect herself by defining whose sacrifices matter or whom the workforce should blame. A supported, loyal CATHEXIS can also defend the director or another supervisor.
 
-### Rivet Witch
+### RIVET WITCH
 
 An engineer who reads systems through intimate technical knowledge and respects craft more than titles. Useful corrections can have delayed effects.
 
@@ -974,11 +974,11 @@ An engineer who reads systems through intimate technical knowledge and respects 
 
 **Advice.** Can identify the physical cause of a failure while downplaying the scope or risks of her own correction.
 
-**Relationship.** Leaving known faults unresolved damages the relationship. Stiletto's speed and Limen's demands for documentation can each obstruct her work.
+**Relationship.** Leaving known faults unresolved damages the relationship. STILETTO's speed and LIMEN's demands for documentation can each obstruct her work.
 
 **Under threat.** May reveal another supervisor's neglected defects, defend her downtime as necessary or conceal a speculative change. Her diagnostic expertise makes these claims consequential.
 
-### Thrum
+### THRUM
 
 A sophisticated vibration specialist and techno-monk. His sensitivity to structural and social strain gives him a different account of the factory's condition.
 
@@ -990,31 +990,31 @@ A sophisticated vibration specialist and techno-monk. His sensitivity to structu
 
 **Advice.** Can explain stress the official output record misses while undervaluing the deadline or assuming recovery solves a deeper disagreement.
 
-**Relationship.** Limen can object to reduced discipline; Stiletto to lost throughput. Cathexis can benefit from or compete over the social atmosphere. Witch shares his sensitivity to strain but may need the same room for production.
+**Relationship.** LIMEN can object to reduced discipline; STILETTO to lost throughput. CATHEXIS can benefit from or compete over the social atmosphere. RIVET WITCH shares his sensitivity to strain but may need the same room for production.
 
 **Under threat.** A narrow output ranking can make him a target for replacement or scapegoating precisely when he is keeping stressed workers functional. Defending his role becomes a consequential choice.
 
 ## Supervisor relationships
 
-**Limen ↔ Stiletto.** Procedure versus discretion; checkpoint and conveyor confrontations are both pictured and modeled.
+**LIMEN ↔ STILETTO.** Procedure versus discretion; checkpoint and conveyor confrontations are both pictured and modeled.
 
-**Limen ↔ Cathexis.** Formal access versus authority over an audience; both can delegitimize the other's control.
+**LIMEN ↔ CATHEXIS.** Formal access versus authority over an audience; both can delegitimize the other's control.
 
-**Stiletto ↔ Cathexis.** A batch can be ready for the production schedule and unready for the conditioning programme.
+**STILETTO ↔ CATHEXIS.** A batch can be ready for the production schedule and unready for the conditioning programme.
 
-**Stiletto ↔ Witch.** A fast restart creates the repair someone else must own; both can claim to be saving the shift.
+**STILETTO ↔ RIVET WITCH.** A fast restart creates the repair someone else must own; both can claim to be saving the shift.
 
-**Limen ↔ Witch.** Undocumented corrections can save equipment while violating the procedure that authorizes work.
+**LIMEN ↔ RIVET WITCH.** Undocumented corrections can save equipment while violating the procedure that authorizes work.
 
-**Limen ↔ Thrum.** Relief and dissolution can undermine the discipline Limen relies on; the old event lowers his loyalty.
+**LIMEN ↔ THRUM.** Relief and dissolution can undermine the discipline LIMEN relies on; the old event lowers his loyalty.
 
-**Stiletto ↔ Thrum.** Proposed tension: immediate output versus preparation and recovery.
+**STILETTO ↔ THRUM.** Proposed tension: immediate output versus preparation and recovery.
 
-**Cathexis ↔ Witch.** Technical refactor can generate political momentum; the old event raises Cathexis's confidence.
+**CATHEXIS ↔ RIVET WITCH.** Technical refactor can generate political momentum; the old event raises CATHEXIS's confidence.
 
-**Cathexis ↔ Thrum.** Relief and collective conviction can reinforce each other; the old dissolution raises Cathexis's influence.
+**CATHEXIS ↔ THRUM.** Relief and collective conviction can reinforce each other; the old dissolution raises CATHEXIS's influence.
 
-**Witch ↔ Thrum.** Technical calibration and resonance offer an affinity grounded in the character bible; exact joint mechanics remain open.
+**RIVET WITCH ↔ THRUM.** Technical calibration and resonance offer an affinity grounded in the character bible; exact joint mechanics remain open.
 
 ## Information and the daily consultation
 
@@ -1038,13 +1038,13 @@ The player can question an explanation, reassure, blame, make a promise or overr
 
 ### Repair stoppage example
 
-**record.** Part 03 or later: Witch stops the line for engineering work. Earlier operation had damaged it. The necessity and scope of her refit can still be disputed.
+**record.** Part 03 or later: RIVET WITCH stops the line for engineering work. Earlier operation had damaged it. The necessity and scope of her refit can still be disputed.
 
-**statement.** Stiletto: “Witch stopped the line for half the shift. That's your missing quota.”
+**statement.** STILETTO: “RIVET WITCH stopped the line for half the shift. That's your missing quota.”
 
-**belief.** Stiletto may sincerely judge downtime as the main failure, or knowingly omit her own contribution.
+**belief.** STILETTO may sincerely judge downtime as the main failure, or knowingly omit her own contribution.
 
-**response.** Backing the accusation can damage Witch's standing without changing the mechanical history. Investigating the origin and purpose of the stoppage can produce a different attribution.
+**response.** Backing the accusation can damage RIVET WITCH's standing without changing the mechanical history. Investigating the origin and purpose of the stoppage can produce a different attribution.
 
 ### Scapegoating and protection
 
@@ -1136,7 +1136,7 @@ Workers and supervisors carry stress of their own. Work pressure, accidents, dec
 
 **Physical truth.** An accident injures workers and interrupts the conveyor. Its physical consequences happen regardless of whether leadership announces it.
 
-**Who learns what.** The local crew witnesses the accident. Supervisors learn through contacts, reports or visible effects. From Part 03, Witch may also learn through an engineering request.
+**Who learns what.** The local crew witnesses the accident. Supervisors learn through contacts, reports or visible effects. From Part 03, RIVET WITCH may also learn through an engineering request.
 
 **What they believe.** One room learns that equipment failed. Another hears that leadership knowingly forced a dangerous restart. Recipients may agree on the injury and disagree about responsibility.
 
@@ -1144,7 +1144,7 @@ Workers and supervisors carry stress of their own. Work pressure, accidents, dec
 
 **Consequences.** Witnesses need actual relief and safer conditions. Later recipients may fear for themselves or distrust the earlier silence. Prompt disclosure can also spread immediate distress; no communication option should be universally free.
 
-**Thrum’s role.** Thrum can ease the affected workers’ stress once available. Doing so takes productive capacity and loosens discipline while the missing output still has to be addressed.
+**THRUM’s role.** THRUM can ease the affected workers’ stress once available. Doing so takes productive capacity and loosens discipline while the missing output still has to be addressed.
 
 ### A false accident takes hold
 
@@ -1158,7 +1158,7 @@ Workers and supervisors carry stress of their own. Work pressure, accidents, dec
 
 **Consequences.** Fear can affect attendance, cooperation or concentration even while the original accident remains fictional. A later real incident caused by the resulting disruption would be a separate event.
 
-**Thrum’s role.** Relief can help distressed workers regain capacity without proving the rumour false. Reassurance, evidence and stress recovery solve different parts of the problem.
+**THRUM’s role.** Relief can help distressed workers regain capacity without proving the rumour false. Reassurance, evidence and stress recovery solve different parts of the problem.
 
 ### An attempted rumour fails
 
@@ -1172,43 +1172,43 @@ Workers and supervisors carry stress of their own. Work pressure, accidents, dec
 
 **Consequences.** It may leave no wider effect. A recipient may remember the attempt or revise their opinion of the source, but that consequence is conditional—not an obligatory punishment.
 
-**Thrum’s role.** No audience became distressed, so no relief intervention is required for this claim. Thrum should not be consumed by a crisis the simulation never produced.
+**THRUM’s role.** No audience became distressed, so no relief intervention is required for this claim. THRUM should not be consumed by a crisis the simulation never produced.
 
 ### Player influence
 
 **Disclosure.** Choose the scope, timing and certainty of an official account. Separate confirmed facts from unresolved causes.
 
-**Investigation.** Seek witnesses, operating records or a supervisor’s explanation. Witch can add engineering evidence from Part 03. Follow-up attention during the daily briefing has an opportunity cost.
+**Investigation.** Seek witnesses, operating records or a supervisor’s explanation. RIVET WITCH can add engineering evidence from Part 03. Follow-up attention during the daily briefing has an opportunity cost.
 
 **Access and channels.** Influence official reporting, permissions and contact where the factory’s rules allow. The player does not have an omnipotent switch for who knows.
 
-**Framing.** Attribute responsibility, offer reassurance or let Cathexis interpret the event. Credibility and the recipient’s experience constrain the result.
+**Framing.** Attribute responsibility, offer reassurance or let CATHEXIS interpret the event. Credibility and the recipient’s experience constrain the result.
 
 **Material response.** Reduce dangerous exposure or accept lower output. From Part 03, allocate engineering time to actual repair. Communication does not restore lost workers or damaged equipment.
 
-**Relief.** Once Thrum arrives, decide when and where to deploy his unusually strong ability to lower stress, accepting its production and discipline costs.
+**Relief.** Once THRUM arrives, decide when and where to deploy his unusually strong ability to lower stress, accepting its production and discipline costs.
 
-### Thrum’s relief
+### THRUM’s relief
 
-Thrum provides genuine, unusually strong stress relief. His near-unique value is that he can make the workers feel better, even when today’s production result looks poor.
+THRUM provides genuine, unusually strong stress relief. His near-unique value is that he can make the workers feel better, even when today’s production result looks poor.
 
 The Brewery scene becomes a shared gathering; workers dance beside the conveyor; the Theatre becomes a relaxed musical session. These are positive experiences for the workers. The original rules likewise trade output and discipline for relief in several placements.
 
 Relief consumes productive time and reduces discipline. Low stress does not automatically mean high compliance, and a fall in discipline need not mean the workers are incapable.
 
-**Limen.** May see recovered but less compliant workers as a loss of order. His old response to Harmonic Dissolution includes lower loyalty.
+**LIMEN.** May see recovered but less compliant workers as a loss of order. His old response to Harmonic Dissolution includes lower loyalty.
 
-**Stiletto.** May see idle stations and missed output. Immediate production goals can make her oppose an intervention that improves the workforce’s condition.
+**STILETTO.** May see idle stations and missed output. Immediate production goals can make her oppose an intervention that improves the workforce’s condition.
 
-**Cathexis.** Can benefit from the changed social atmosphere or compete over its meaning. The old dissolution increases her influence; it does not establish that she always opposes Thrum.
+**CATHEXIS.** Can benefit from the changed social atmosphere or compete over its meaning. The old dissolution increases her influence; it does not establish that she always opposes THRUM.
 
-**Rivet Witch.** Can share his understanding of strain while still needing the Brewery for chemistry. Their affinity does not remove competition for time and equipment.
+**RIVET WITCH.** Can share his understanding of strain while still needing the Brewery for chemistry. Their affinity does not remove competition for time and equipment.
 
-Keeping Thrum effective can mean protecting his mandate against another supervisor’s legitimate priorities. Under replacement anxiety, his low visible output can make him a scapegoat even when he is preventing a deeper breakdown.
+Keeping THRUM effective can mean protecting his mandate against another supervisor’s legitimate priorities. Under replacement anxiety, his low visible output can make him a scapegoat even when he is preventing a deeper breakdown.
 
-Thrum’s established specialty is worker relief. It does not repair machinery, erase memories or settle blame. Whether and how he can help another supervisor’s stress is a separate open design question.
+THRUM’s established specialty is worker relief. It does not repair machinery, erase memories or settle blame. Whether and how he can help another supervisor’s stress is a separate open design question.
 
-Before he arrives, the early game must remain viable through managing pressure and avoiding repeated shocks. Exact lesser recovery methods remain open; they should not make Thrum’s specialty redundant.
+Before he arrives, the early game must remain viable through managing pressure and avoiding repeated shocks. Exact lesser recovery methods remain open; they should not make THRUM’s specialty redundant.
 
 ### Across the run
 
@@ -1218,7 +1218,7 @@ Before he arrives, the early game must remain viable through managing pressure a
 
 **Brewery.** Repair evidence can confirm or undermine an account. Who caused damage and who delayed output become competing claims.
 
-**Weaving and Thrum.** Add a powerful positive intervention with real productivity and discipline costs. Recovery becomes a contested allocation decision.
+**Weaving and THRUM.** Add a powerful positive intervention with real productivity and discipline costs. Recovery becomes a contested allocation decision.
 
 **Late Act 1.** Accident stories and replacement rumours overlap. Advisers may hide, exaggerate or expose events to protect themselves.
 
@@ -1233,7 +1233,7 @@ Kasedo’s 19 December 2022 known-issues post confirms that losing a science shi
 - Define who witnesses each incident and how official and informal reports reach other rooms.
 - Define the lifespan, distortion and rejection of claims without making every rumour a guaranteed crisis.
 - Distinguish temporary stress relief from lasting changes in credibility and memory.
-- Define Thrum’s reach, duration and availability in different rooms while preserving his positive effect and its costs.
+- Define THRUM’s reach, duration and availability in different rooms while preserving his positive effect and its costs.
 
 ## BDI and supervisor agency
 
@@ -1285,7 +1285,7 @@ A supervisor can sincerely obey a misunderstood order. The player then interpret
 
 ### The same accident, three responses
 
-Illustrative later Act 1 state: repeated output pushes and a deferred repair leave the conveyor vulnerable. Stiletto restarts it, believing the director values recovery over delay. An accident injures workers and damages the line. Her self-confidence falls and stress rises. Witch is now available to inspect it.
+Illustrative later Act 1 state: repeated output pushes and a deferred repair leave the conveyor vulnerable. STILETTO restarts it, believing the director values recovery over delay. An accident injures workers and damages the line. Her self-confidence falls and stress rises. RIVET WITCH is now available to inspect it.
 
 These are authored causal examples, not a running simulation or guaranteed responses to dialogue options. Each shows one plausible interpretation; a different relationship history can produce another.
 
@@ -1307,7 +1307,7 @@ These are authored causal examples, not a running simulation or guaranteed respo
 
 #### Reassure and fund a safer restart
 
-“You still have my trust. Hold for Witch’s inspection.”
+“You still have my trust. Hold for RIVET WITCH’s inspection.”
 
 **Belief formed.** “The director will support a pause when there is evidence of danger.”
 
@@ -1323,7 +1323,7 @@ These are authored causal examples, not a running simulation or guaranteed respo
 
 #### Turn the incident against a colleague
 
-“Back my account that Limen caused the delay.”
+“Back my account that LIMEN caused the delay.”
 
 **Belief formed.** “My protection depends on supporting the director’s version.”
 
@@ -1333,7 +1333,7 @@ These are authored causal examples, not a running simulation or guaranteed respo
 
 **Next action.** Deliver a selective report if she accepts the bargain; refusal remains possible under other beliefs and loyalties.
 
-**Later echo.** Recipients may accept, reject or relay it. Limen can learn who blamed him; the coalition changes while the original damage remains.
+**Later echo.** Recipients may accept, reject or relay it. LIMEN can learn who blamed him; the coalition changes while the original damage remains.
 
 **Causal explanation.** Log the bargain, her actual belief and chosen statement separately. Acceptance is an example outcome, not a dialogue command that overrides agency.
 
@@ -1414,21 +1414,21 @@ The Attack on Titan reference sets a standard for character collisions: strong l
 
 ### One possible collision course
 
-Authored later Act 1 specimen, after Witch has introduced engineering. The sequence depends on actual choices, contacts and subsequent unlocks. It does not prescribe an accident, argument or replacement in every run; no early repair capability is implied.
+Authored later Act 1 specimen, after RIVET WITCH has introduced engineering. The sequence depends on actual choices, contacts and subsequent unlocks. It does not prescribe an accident, argument or replacement in every run; no early repair capability is implied.
 
 #### A mandate with two meanings
 
 **Factory condition.** The quota presses while the conveyor shows warning signs. The player authorizes a faster restart and defers the repair.
 
-**Different interpretations.** Stiletto hears that recovery earns trust. Limen believes a stop procedure is being overridden. Both think they are protecting the factory.
+**Different interpretations.** STILETTO hears that recovery earns trust. LIMEN believes a stop procedure is being overridden. Both think they are protecting the factory.
 
-**Action.** Stiletto resumes production; Limen records an objection if his reporting plan calls for it.
+**Action.** STILETTO resumes production; LIMEN records an objection if his reporting plan calls for it.
 
 **What changes.** A precedent about whose judgment counts enters their memories. The equipment retains the unresolved hazard.
 
 **Pressure carried forward.** The risk comes from the hazard and operating choice. A sustained safe stop can take this run away from the accident path.
 
-**Trace to inspect.** Player authorization → Stiletto’s perceived mandate → restart attempt; Limen’s witnessed override → objection. Store physical wear separately from either account.
+**Trace to inspect.** Player authorization → STILETTO’s perceived mandate → restart attempt; LIMEN’s witnessed override → objection. Store physical wear separately from either account.
 
 **Visual grounding.** Original conveyor confrontation: procedural and production priorities. This plate does not establish an accident.
 
@@ -1436,11 +1436,11 @@ Authored later Act 1 specimen, after Witch has introduced engineering. The seque
 
 **Factory condition.** The unresolved hazard is exposed during operation. A recorded random draw within the current risk conditions resolves an accident.
 
-**Different interpretations.** Stiletto sees her restart followed by harm and doubts her judgment. Workers on the line witness the consequences; other rooms do not automatically know.
+**Different interpretations.** STILETTO sees her restart followed by harm and doubts her judgment. Workers on the line witness the consequences; other rooms do not automatically know.
 
 **Action.** The line loses capacity. Available response plans handle rescue, stoppage and repair requests; exact plans remain to be designed.
 
-**What changes.** Workers or equipment are damaged. Stiletto’s stress and self-confidence change. Witnesses retain their own experience.
+**What changes.** Workers or equipment are damaged. STILETTO’s stress and self-confidence change. Witnesses retain their own experience.
 
 **Pressure carried forward.** The missing capacity makes the quota harder. Repair needs and absences create opportunities for information to travel.
 
@@ -1450,57 +1450,57 @@ Authored later Act 1 specimen, after Witch has introduced engineering. The seque
 
 #### Private support and public silence
 
-**Factory condition.** In the daily briefing, Stiletto argues that output recovery remains the priority. The player reassures her and accepts that proposal. Wider disclosure is restricted.
+**Factory condition.** In the daily briefing, STILETTO argues that output recovery remains the priority. The player reassures her and accepts that proposal. Wider disclosure is restricted.
 
 **Different interpretations.** In this version she concludes that the director protects her while output recovers. The director’s intention and her interpretation remain separate.
 
-**Action.** She commits to recovering the batch and gives a selective report. Witch receives the repair request because the machinery needs work.
+**Action.** She commits to recovering the batch and gives a selective report. RIVET WITCH receives the repair request because the machinery needs work.
 
 **What changes.** Support reduces some self-doubt, yet pressure remains. A private obligation and a limited public account now coexist.
 
-**Pressure carried forward.** Witch’s repair judgment can obstruct the very recovery Stiletto believes she owes the director.
+**Pressure carried forward.** RIVET WITCH’s repair judgment can obstruct the very recovery STILETTO believes she owes the director.
 
 **Trace to inspect.** Consultation wording + prior history → accepted belief revision → recovery intention → attributed statement to named recipients. Record that reassurance did not repair the line.
 
-**Visual grounding.** Stiletto character reference. The proposed private exchange is described in the trace.
+**Visual grounding.** STILETTO character reference. The proposed private exchange is described in the trace.
 
 #### The repair becomes an accusation
 
-**Factory condition.** Witch’s inspection finds work that requires downtime. The earlier damage and the present stoppage both contribute to lost output.
+**Factory condition.** RIVET WITCH’s inspection finds work that requires downtime. The earlier damage and the present stoppage both contribute to lost output.
 
-**Different interpretations.** Witch believes an open fault must be closed. Stiletto sees her recovery promise becoming impossible. Limen may treat the stoppage as evidence that his objection was justified.
+**Different interpretations.** RIVET WITCH believes an open fault must be closed. STILETTO sees her recovery promise becoming impossible. LIMEN may treat the stoppage as evidence that his objection was justified.
 
-**Action.** Witch holds the line if her plan and authority allow it. Stiletto can attribute the delay to Witch in a report that another supervisor actually receives.
+**Action.** RIVET WITCH holds the line if her plan and authority allow it. STILETTO can attribute the delay to RIVET WITCH in a report that another supervisor actually receives.
 
 **What changes.** Technical responsibility and public blame diverge. Backing or challenging the accusation changes credibility and willingness to cooperate.
 
 **Pressure carried forward.** The repair can succeed while the working relationship deteriorates. An honest finding has become material for a self-protective account.
 
-**Trace to inspect.** Inspection evidence → repair intention → actual stoppage; Stiletto’s threatened commitment → selective attribution. The player’s response is another event, not the official truth.
+**Trace to inspect.** Inspection evidence → repair intention → actual stoppage; STILETTO’s threatened commitment → selective attribution. The player’s response is another event, not the official truth.
 
-**Visual grounding.** Rivet Witch character reference. Her exact repair and the accusation require recorded actions.
+**Visual grounding.** RIVET WITCH character reference. Her exact repair and the accusation require recorded actions.
 
 #### A healthier floor looks less disciplined
 
-**Factory condition.** Later, once Thrum is available, unresolved strain or accident news leaves an affected crew stressed. The player gives him productive time for relief.
+**Factory condition.** Later, once THRUM is available, unresolved strain or accident news leaves an affected crew stressed. The player gives him productive time for relief.
 
-**Different interpretations.** Thrum regards recovery as necessary. Limen sees discipline weakening; Stiletto sees another missed production window. Cathexis may gain an audience if these workers have contact with her.
+**Different interpretations.** THRUM regards recovery as necessary. LIMEN sees discipline weakening; STILETTO sees another missed production window. CATHEXIS may gain an audience if these workers have contact with her.
 
-**Action.** Thrum’s intervention lowers worker stress at its established cost. Other supervisors choose whether to object, cooperate or carry their criticism into a report.
+**Action.** THRUM’s intervention lowers worker stress at its established cost. Other supervisors choose whether to object, cooperate or carry their criticism into a report.
 
 **What changes.** Workers can feel better while authority becomes more contested. Relief does not decide whose account of the accident is true.
 
 **Pressure carried forward.** A low output ranking can now penalize the person preventing a deeper collapse. News of replacement gives that discrepancy new stakes.
 
-**Trace to inspect.** Crew stress + allocation → relief action → lower stress and lost productive time → observed discipline changes → distinct supervisor interpretations. Cathexis influence requires a real contact or action.
+**Trace to inspect.** Crew stress + allocation → relief action → lower stress and lost productive time → observed discipline changes → distinct supervisor interpretations. CATHEXIS influence requires a real contact or action.
 
-**Visual grounding.** Original Thrum conveyor gathering: visible relief with attention diverted from production.
+**Visual grounding.** Original THRUM conveyor gathering: visible relief with attention diverted from production.
 
 #### The report becomes a survival strategy
 
 **Factory condition.** The replacement rumour reaches supervisors through recorded channels near the end of Act 1. They interpret the proposed criteria through their own record.
 
-**Different interpretations.** Stiletto can point to repair downtime; Limen to ignored warnings; Thrum to recovered workers. No account alone describes the whole run.
+**Different interpretations.** STILETTO can point to repair downtime; LIMEN to ignored warnings; THRUM to recovered workers. No account alone describes the whole run.
 
 **Action.** Each may defend a colleague, disclose a previously withheld fact, refuse the preferred story or shift blame. Select from their actual beliefs and commitments.
 
@@ -1582,7 +1582,7 @@ Room scenes, decision interfaces and the later 3D view share room/event identity
 
 ### A jam becomes a decision
 
-**Notice.** Later Act 1 example, with Witch available: a known conveyor hazard becomes a jam. The illustrated room shows a matching stopped-line scene and a persistent incident entry. The future 3D view can depict the same halt. Neither view may reveal an unseen event through an omniscient cut.
+**Notice.** Later Act 1 example, with RIVET WITCH available: a known conveyor hazard becomes a jam. The illustrated room shows a matching stopped-line scene and a persistent incident entry. The future 3D view can depict the same halt. Neither view may reveal an unseen event through an omniscient cut.
 
 **Understand.** The inspector separates observed damage, prior warnings and a supervisor’s account. Act 1 does not expose hidden loyalty, internal stress scores or true motives.
 
@@ -1724,7 +1724,7 @@ Current Day 1 has a pure TypeScript action kernel, copied local public snapshots
 ### Boundary checks
 
 - Actual R10 browser export: 22 completed actions, three output events, twelve outside actors and 590 ordered events. Recording includes a diagnostic gap; this is not an uninterrupted motion/performance pass.
-- Actual custody preserves Ed holding Bob's card while Bob's belief remains different. Sixteen turns lack at least one addressed heard receipt; real staging corrections remain open.
+- Actual custody preserves ed holding bob's card while bob's belief remains different. Sixteen turns lack at least one addressed heard receipt; real staging corrections remain open.
 - Shared individual/scripted actions reject stale process stages and conflicting single-workpiece use. Root sweeps constrain routes; imported body/tool clearance still requires viewing.
 - Unpublished R12 passed full-app types, eight focused tests and lint. R13 clock/status/Focus changes require their own validation and actual replay.
 - Whole-app checking includes generated route validators and all configured roots; preserve per-command results and same-namespace cleanup.
@@ -2059,7 +2059,7 @@ Study RimWorld for authorship, Suzerain for governing through people, Frostpunk 
 
 **Evidence.** Quantic Foundry’s motivation model groups reported preferences including strategy, challenge, story, fantasy, design and discovery. Its development article describes a self-selected survey sample.
 
-**Loopforge interpretation.** Backing Stiletto can express affection, ambition, curiosity or calculated risk. Do not infer one motivation from the button clicked, or divide players into seven fixed types.
+**Loopforge interpretation.** Backing STILETTO can express affection, ambition, curiosity or calculated risk. Do not infer one motivation from the button clicked, or divide players into seven fixed types.
 
 **Limit.** A preference taxonomy is neither a causal model of enjoyment nor an estimate of our audience. Community preferences do not directly measure attachment to NPCs.
 
@@ -2083,7 +2083,7 @@ Study RimWorld for authorship, Suzerain for governing through people, Frostpunk 
 
 **Let success be enjoyable.** Show the clean batch, the workers still present, the supervisor who delivered. Do not automatically answer every success with betrayal or an accident. New complexity can test what the player built without erasing it.
 
-**Disagreement is more useful than a morality score.** LIMEN, STILETTO and Cathexis may judge the same act differently, when they know about it. Their judgment is character evidence, not the game’s final moral verdict.
+**Disagreement is more useful than a morality score.** LIMEN, STILETTO and CATHEXIS may judge the same act differently, when they know about it. Their judgment is character evidence, not the game’s final moral verdict.
 
 **Expression needs enough information.** Explain the intended action, known sacrifice and kind of uncertainty before commitment. Keep hidden motives and future details hidden. Surprise should complicate a comprehensible decision.
 
@@ -2105,7 +2105,7 @@ Conditional situations, not seven compulsory missions. No scenario below is clai
 
 **Immediate payoff and cost.** Enjoy a stronger production rhythm and the contribution of the workers you kept. The unpaid quota remains visible; capacity limits mean more workers are not always the answer.
 
-**Later echo.** Tomorrow’s facts show what the retained workforce actually changed. Later, Cathexis inherits those particular workers and their unindoctrinated history; Act 1 does not expose it as a stat.
+**Later echo.** Tomorrow’s facts show what the retained workforce actually changed. Later, CATHEXIS inherits those particular workers and their unindoctrinated history; Act 1 does not expose it as a stat.
 
 **Interface and sensory feedback.** Roster → concise plan → operating cameras → dispatch before/after totals → next-day read. Green impulses accompany real production, with bounded mechanical SFX; no modal per brain.
 
@@ -2129,7 +2129,7 @@ Conditional situations, not seven compulsory missions. No scenario below is clai
 
 **Author view: causal support.** Load and risk evolve from state and seeded resolution. Easing prevents additional exposure; it does not repair existing wear. Private stress and memories remain filtered.
 
-**Not yet delivered / guardrail.** Existing shudder fixture supplies a starting point. Need a safe multi-day route that remains viable. No repair action exists before Witch arrives in Part 03.
+**Not yet delivered / guardrail.** Existing shudder fixture supplies a starting point. Need a safe multi-day route that remains viable. No repair action exists before RIVET WITCH arrives in Part 03.
 
 ### S3 · My factory, my rules · Part 01
 
@@ -2189,9 +2189,9 @@ Conditional situations, not seven compulsory missions. No scenario below is clai
 
 **Player wants.** Relationship influence · order · care · attachment
 
-**Situation.** Cathexis offers a programme that can make a strained workforce act together. LIMEN objects to her disregard for procedure; STILETTO wants workers back on the line.
+**Situation.** CATHEXIS offers a programme that can make a strained workforce act together. LIMEN objects to her disregard for procedure; STILETTO wants workers back on the line.
 
-**Commitment.** Choose Cathexis as adviser and consider her Theatre arrangement, or retain another adviser and override placements. Proposed programme event: publicly back a particular promise or limit a specific claim. This is a factory-wide commitment, not a priority menu or free extra consultation.
+**Commitment.** Choose CATHEXIS as adviser and consider her Theatre arrangement, or retain another adviser and override placements. Proposed programme event: publicly back a particular promise or limit a specific claim. This is a factory-wide commitment, not a priority menu or free extra consultation.
 
 **Immediate payoff and cost.** Her session delivers a recognizable coordination benefit and worker response at a production opportunity cost. Public backing increases the weight of her voice; limiting it preserves another kind of authority but loses some appeal.
 
@@ -2207,7 +2207,7 @@ Conditional situations, not seven compulsory missions. No scenario below is clai
 
 **Player wants.** Experimentation · authority · relationship influence
 
-**Situation.** Cathexis is a compelling speaker and a poor fit for Conveyor work. You still have the authority to put her there.
+**Situation.** CATHEXIS is a compelling speaker and a poor fit for Conveyor work. You still have the authority to put her there.
 
 **Commitment.** Override the proposed assignment after a concise, attributed warning. Try the mismatch or keep her where her capabilities matter; curiosity is allowed, not prescribed.
 
@@ -2275,7 +2275,7 @@ Conditional situations, not seven compulsory missions. No scenario below is clai
 
 - Which observable support/credit/disclosure commitments belong inside the one daily adviser conversation, and which need a factory-wide event? Avoid extra conversations that become relationship farming.
 
-- What benefits make Cathexis’s programme tempting, and what durable liabilities distinguish public empowerment from constraint? Specify these before implementing generic relationship modifiers.
+- What benefits make CATHEXIS’s programme tempting, and what durable liabilities distinguish public empowerment from constraint? Specify these before implementing generic relationship modifiers.
 
 - What commissioning cost and income timing allow Theatre readiness before the weekly settlement? No assumed daily wage, repair bill or retained-worker resale.
 
@@ -2298,7 +2298,7 @@ Research synthesis and design proposals. These are overlapping design lenses, no
 
 **Action loop.** Read a situation → commit → observe a consequence → revise the next choice. A repeated button press without a consequential return is not enough to explain the experience.
 
-**Progression.** New capabilities and pressures change the loop: Cathexis and the Theatre make an already-familiar adviser choice mean something new. Unlocking is not itself the whole core loop.
+**Progression.** New capabilities and pressures change the loop: CATHEXIS and the Theatre make an already-familiar adviser choice mean something new. Unlocking is not itself the whole core loop.
 
 **Session / run structure.** Days, weeks, expeditions and resets organise repeated play. They can contain several kinds of loop. A roguelike run can centre on either reflex combat or turn-based decisions.
 
@@ -2556,7 +2556,7 @@ Loopforge inference: yesterday’s confirmed output, an adviser’s explanation 
 
 **One day · about one minute.** Choose a direction and receive a meaningful answer. Routine days target about 60 seconds across the complete flow; reading-heavy days may take 2–3 minutes. Planning and major decisions pause.
 
-**Part 01 · proposed 4–5 days.** Give safety, output and deliberate balancing room to feel different before Cathexis changes the puzzle. Roughly 6–8 minutes is a pacing hypothesis, not a timer unlock. Demonstrated operation and investment determine access.
+**Part 01 · proposed 4–5 days.** Give safety, output and deliberate balancing room to feel different before CATHEXIS changes the puzzle. Roughly 6–8 minutes is a pacing hypothesis, not a timer unlock. Demonstrated operation and investment determine access.
 
 **Up to a 30-minute session.** Let a way of running the factory acquire visible consequences and face a new pressure. The room sequence expands capability, then makes earlier commitments matter. Exact session coverage and later pacing remain untested.
 
@@ -2596,13 +2596,13 @@ Illustrative token vocabulary (not live state):
 
 - Conveyor · Wear warning · Observed
 
-- Stiletto · “Still on target.” · Statement
+- STILETTO · “Still on target.” · Statement
 
 - Quota · Dispatch recorded · Confirmed
 
-#### 02 · Cathexis + Burn-in Theatre
+#### 02 · CATHEXIS + Burn-in Theatre
 
-**Player agency.** Give Cathexis influence, constrain it or pursue a specific side route; choose where she works and how to respond to her.
+**Player agency.** Give CATHEXIS influence, constrain it or pursue a specific side route; choose where she works and how to respond to her.
 
 **Direct status.** Room token: Theatre operating or idle. Supervisor token: assignment and visible willingness. Eligible worker cohorts record their actual treatment.
 
@@ -2616,17 +2616,17 @@ Illustrative token vocabulary (not live state):
 
 - Theatre · Session completed · Confirmed
 
-- Cathexis · “They listened.” · Statement
+- CATHEXIS · “They listened.” · Statement
 
 - Floor report · Singing continues · Witnessed
 
-#### 03 · Rivet Witch + Brewery
+#### 03 · RIVET WITCH + Brewery
 
 **Player agency.** Use the first engineer to restore damaged equipment or to develop substrate production; accept the lost time and output.
 
 **Direct status.** Room token: engineering work, downtime or Brewery throughput. A completed repair changes recorded condition.
 
-**Indirect evidence.** The repair burden makes earlier operating choices visible. Unresolved damage competes with expansion and can change Witch’s conduct.
+**Indirect evidence.** The repair burden makes earlier operating choices visible. Unresolved damage competes with expansion and can change RIVET WITCH’s conduct.
 
 **Still hidden.** Her interpretation of neglect and the workforce’s accumulated history remain distinct from mechanical condition.
 
@@ -2636,13 +2636,13 @@ Illustrative token vocabulary (not live state):
 
 - Conveyor · Engineering stop · Confirmed
 
-- Brewery · Waiting for Witch · Confirmed
+- Brewery · Waiting for RIVET WITCH · Confirmed
 
-- Witch · “It was left to fail.” · Interpretation
+- RIVET WITCH · “It was left to fail.” · Interpretation
 
-#### 04 · Thrum + Weaving Gallery
+#### 04 · THRUM + Weaving Gallery
 
-**Player agency.** Use Thrum’s specialist capacity and relief, accepting possible productivity or discipline costs; decide how to handle other supervisors’ objections.
+**Player agency.** Use THRUM’s specialist capacity and relief, accepting possible productivity or discipline costs; decide how to handle other supervisors’ objections.
 
 **Direct status.** Room token: Gallery output and current assignment. Surface an observed pause or intervention, not an invisible stress formula.
 
@@ -2678,7 +2678,7 @@ Illustrative token vocabulary (not live state):
 
 - Shift report · Replacement claim · Unconfirmed
 
-- Stiletto · Requests assurance · Observed
+- STILETTO · Requests assurance · Observed
 
 ### UI and engine contract
 
@@ -2803,9 +2803,9 @@ Owner direction: remove all player building. Keep the room topology and cinemati
 
 ## Continuous first-floor plan
 
-![Top-down factory plan](/loopforge-design/factory-floor-plan.9d1f7a569b97.svg)
+![Top-down factory plan](/loopforge-design/factory-floor-plan.32180aa96dbe.svg)
 
-Nine repacked zones, fourteen connections and a common 15 m hall height. Theatre and Logistics fill the eastern rectangles; Security has a direct Theatre corridor. Hatching marks pipe walls. This separate factory-floor authoring study is not the compact Day1 runtime.
+Nine repacked zones, fourteen connections and a common 15 m hall height. Theatre and Logistics fill the eastern rectangles; Security has a direct Theatre corridor. In the Lattice Forge, the crane covers a continuous eastbound line. The cross-road serves the overhaul bays and spare fitting bay. [Inspect the Forge hall](/loopforge-design/day-one-rehearsal.html#forge-hall).
 
 **I made this work.** A queue shrinks because of a change I made. The limiting step moves somewhere else, giving me a new problem I can actually see.
 
@@ -2921,7 +2921,7 @@ Room operating policy and later facility access remain design levers. Free place
 
 **Shared policy catalog.** Apply relevant policies per room; their exact cost, reversibility and implementation remain open.
 
-**Specialists.** Witch introduces engineering; Thrum introduces relief with productivity/discipline costs. No repair tool in parts 01–02.
+**Specialists.** RIVET WITCH introduces engineering; THRUM introduces relief with productivity/discipline costs. No repair tool in parts 01–02.
 
 **Cash.** Construction removal leaves no immediate first-day cash sink. Longer-run funding, payroll and repair require a separate economy pass. Do not replace removed building with an undisclosed fee.
 
@@ -3074,13 +3074,13 @@ The build gun is an explicit tool state, and onboarding introduces concrete cons
 
 ## Opening rules and what unlocks later
 
-**Day one — current scene and later planning proposal.** The approved opening uses the prebuilt Lobby, Security and Conveyor. Bob passes the checkpoint, learns the four operations under STILETTO, works with sam, joins the staffed line and leaves with the original cast before night. No building, morning quota acknowledgment, adviser choice or allocation decision is playable in this scene. The older night-setup/morning-planning sequence is a separate planning proposal, not a description of current Day1. Later days may present the previous arrangement as a proposal baseline.
+**Day one — current scene and later planning proposal.** The approved opening uses the prebuilt Lobby, Security and Conveyor. bob passes the checkpoint, learns the four operations under STILETTO, works with sam, joins the staffed line and leaves with the original cast before night. No building, morning quota acknowledgment, adviser choice or allocation decision is playable in this scene. The older night-setup/morning-planning sequence is a separate planning proposal, not a description of current Day1. Later days may present the previous arrangement as a proposal baseline.
 
 **Daily commitment.** Split completed robots between the factory and the weekly quota. Confirmed allocations cannot be reversed: retained workers cannot later be shipped to rescue the quota, and committed deliveries cannot be recalled.
 
 **Parts 01–02.** Operate, prevent further damage, respond to incidents and live with the consequences. Repair is neither an available action nor an early tutorial, locked button or spending prompt. No station-level staffing task is introduced.
 
-**Part 03.** Witch brings engineering. Only an engineer can perform repairs. Her time and lost production are the core costs; a cash bill is not a default requirement.
+**Part 03.** RIVET WITCH brings engineering. Only an engineer can perform repairs. Her time and lost production are the core costs; a cash bill is not a default requirement.
 
 **Hidden worker history.** Record missing indoctrination when robots are produced before the Theatre opens. A supervisor can learn or infer it and choose to report it earlier; direct inspection arrives in Act 2.
 
@@ -3130,7 +3130,7 @@ The demonstrated first shift is an authored introduction with six manual gates: 
 
 **Dispatch / next-day handoff.** Show irreversible growth-versus-delivery totals and carry the same workers, wear and memories forward. A persistent multi-day prototype is required; replaying the opening fixture is insufficient.
 
-**Development / arrival.** Explain the visible readiness and investment requirements, then show actual eligibility and commissioning. Introduce Cathexis and the powered Theatre together as a new decision family. Exact unlock controls and costs need design.
+**Development / arrival.** Explain the visible readiness and investment requirements, then show actual eligibility and commissioning. Introduce CATHEXIS and the powered Theatre together as a new decision family. Exact unlock controls and costs need design.
 
 This is a proposed arc, not an implemented schedule. The one-day kernel cannot validate it. Use explicit world requirements for commissioning, never an invisible judgment of player understanding. Payment timing must allow investment when the factory is ready; do not require money that arrives only after the weekly deadline.
 
@@ -3314,7 +3314,7 @@ Use one money-like currency, two workforce categories and relevant production in
 
 Conveyor + Security → Burn-in Theatre → Substrate Brewery → Weaving + Brain 1.5 → Cortex + Brain 2.0
 
-This is a capability sequence, not a shift calendar or material-flow diagram. The Theatre is not required for basic output; workers made beforehand are unindoctrinated. Repair is introduced with Witch at the Brewery stage. Mastery and investment govern progression.
+This is a capability sequence, not a shift calendar or material-flow diagram. The Theatre is not required for basic output; workers made beforehand are unindoctrinated. Repair is introduced with RIVET WITCH at the Brewery stage. Mastery and investment govern progression.
 
 #### Every project must explain
 
@@ -3391,7 +3391,7 @@ The author map can show the complete progression. The player sees only discovera
 
 **New rooms.** Add the room’s production or programme controls to its inspector and expose its meaningful material links. Avoid a new top-level screen for each mechanic.
 
-**Engineering in Part 03.** Witch’s arrival introduces repair as an action, showing required engineering time and the production displaced. No early locked repair button or repair tutorial.
+**Engineering in Part 03.** RIVET WITCH’s arrival introduces repair as an action, showing required engineering time and the production displaced. No early locked repair button or repair tutorial.
 
 **Brain 2.0.** Unlock permitted thought/history detail within existing dossiers and records, alongside new production and intervention capability. Existing mental histories are preserved.
 
@@ -3486,7 +3486,7 @@ True system complexity, revealed information and the effort required to play are
 
 **Player perceives.** Today’s completed robots, workforce count, committed quota progress, remaining weekly obligation and deadline. Funds and actual development commitments are separate.
 
-**Player can influence.** Preview and confirm the daily split between factory and weekly quota. Spend money on eligible development. Engineering assignment becomes possible with Witch; it is not an early repair purchase.
+**Player can influence.** Preview and confirm the daily split between factory and weekly quota. Spend money on eligible development. Engineering assignment becomes possible with RIVET WITCH; it is not an early repair purchase.
 
 **Engine resolves.** Validate completed inventory and worker identity, then record an irreversible allocation. Prevent recall of quota commitments and later dispatch of retained workers. Payment is a separate contract rule still to design.
 
@@ -3542,7 +3542,7 @@ True system complexity, revealed information and the effort required to play are
 
 **Player perceives.** Clashes over work, cooperation or refusal, remembered public decisions and changing behaviour. Pair relationships need not appear as numerical meters.
 
-**Player can influence.** Back an authority boundary, assign people whose methods can coexist, or address a specific breach in consultation. Training Limen or modifying a supervisor are possible side routes to design, not generic upgrades.
+**Player can influence.** Back an authority boundary, assign people whose methods can coexist, or address a specific breach in consultation. Training LIMEN or modifying a supervisor are possible side routes to design, not generic upgrades.
 
 **Engine resolves.** Track directed relationships, witnessed treatment and incompatible commitments. Resolve encounters through each actor’s knowledge and available plans. A supported training or modification changes specific capabilities or constraints rather than erasing personality and history.
 
@@ -3564,43 +3564,43 @@ True system complexity, revealed information and the effort required to play are
 
 **Interface demand.** One incident thread can represent many recipients. Never expose the full rumour graph in Act 1 by default.
 
-#### Cathexis and the Burn-in Theatre
+#### CATHEXIS and the Burn-in Theatre
 
 *First major social expansion*
 
-**Player perceives.** Programme, attendance, slogans and changed behaviour; Cathexis’s growing audience becomes visible through action.
+**Player perceives.** Programme, attendance, slogans and changed behaviour; CATHEXIS’s growing audience becomes visible through action.
 
 **Player can influence.** Choose programme and authority, make a commitment or pursue a designed constraint/side route. Conveyor assignment, compliance modification and revolutionary direction require their own consequences.
 
-**Engine resolves.** Record actual programme participation and its effects on beliefs, respect and allegiance. Workers produced before Theatre opening remain unindoctrinated until actual participation changes that history. Keep Cathexis’s loyalty and confidence separate. Reassignment cannot clear history; exact programme coverage and commitment branches remain open.
+**Engine resolves.** Record actual programme participation and its effects on beliefs, respect and allegiance. Workers produced before Theatre opening remain unindoctrinated until actual participation changes that history. Keep CATHEXIS’s loyalty and confidence separate. Reassignment cannot clear history; exact programme coverage and commitment branches remain open.
 
 **History carried forward.** Coordination can improve while independent authority grows. The chosen fork brings a downstream liability that conversation cannot indefinitely cancel.
 
 **Interface demand.** Introduce one programme decision family, not a screen for every belief. The audience’s behaviour carries much of the feedback.
 
-#### Rivet Witch and the Brewery
+#### RIVET WITCH and the Brewery
 
 *Part 03 · substrate production and engineering*
 
-**Player perceives.** Witch’s arrival introduces substrate production and engineering. Existing room damage now becomes actionable, with competing requests for her time.
+**Player perceives.** RIVET WITCH’s arrival introduces substrate production and engineering. Existing room damage now becomes actionable, with competing requests for her time.
 
-**Player can influence.** Fund and staff the function; prioritize technical repair versus current output and decide how much discretion to grant Witch.
+**Player can influence.** Fund and staff the function; prioritize technical repair versus current output and decide how much discretion to grant RIVET WITCH.
 
-**Engine resolves.** Route Conveyor waste into substrate under the production recipe. For repairs, require engineering capability and reserve Witch’s time; resolve downtime and actual restoration without simultaneous incompatible Brewery work. Record reactions to neglected or completed faults. Cash alone cannot grant repair capability.
+**Engine resolves.** Route Conveyor waste into substrate under the production recipe. For repairs, require engineering capability and reserve RIVET WITCH’s time; resolve downtime and actual restoration without simultaneous incompatible Brewery work. Record reactions to neglected or completed faults. Cash alone cannot grant repair capability.
 
 **History carried forward.** New production depends on the earlier line and its backlog. A useful repair can become an authority dispute.
 
 **Interface demand.** Add one material flow when it becomes usable; summarize its source and destination rather than introducing a general inventory game.
 
-#### Thrum, Weaving and relief
+#### THRUM, Weaving and relief
 
 *Advanced chain completes*
 
 **Player perceives.** Precision work, changed worker behaviour after relief, lower productive attention and other supervisors’ objections.
 
-**Player can influence.** Allocate Thrum’s time between advanced production, preparation and available relief actions; accept the output/discipline cost explicitly.
+**Player can influence.** Allocate THRUM’s time between advanced production, preparation and available relief actions; accept the output/discipline cost explicitly.
 
-**Engine resolves.** Update worker stress, productive time and discipline through distinct effects. Thrum’s room fit and other supervisors’ interpretations affect future plans. Relief is not an all-purpose mental reset.
+**Engine resolves.** Update worker stress, productive time and discipline through distinct effects. THRUM’s room fit and other supervisors’ interpretations affect future plans. Relief is not an all-purpose mental reset.
 
 **History carried forward.** A healthier workforce may be harder to discipline. Other supervisors can oppose a beneficial intervention for understandable reasons.
 
@@ -3682,7 +3682,7 @@ True system complexity, revealed information and the effort required to play are
 
 **Engine.** Validate the command and apply the stop at its boundary. Output and exposure change; existing damage remains. Repair requires a separate engineering action, available only from Part 03.
 
-**Minds and information.** Witnesses learn what occurred. Limen may interpret the support as backing procedure; Stiletto may see a threatened delivery. Each receives only available evidence and updates plans through the existing rules.
+**Minds and information.** Witnesses learn what occurred. LIMEN may interpret the support as backing procedure; STILETTO may see a threatened delivery. Each receives only available evidence and updates plans through the existing rules.
 
 **Projection.** Publish permitted changes, an attributed report and any actionable decision. Private confidence, loyalty and undisclosed knowledge remain off the player stream.
 
@@ -3710,7 +3710,7 @@ True system complexity, revealed information and the effort required to play are
 
 **New rooms.** Add a working production or social function. Reveal its new decision only when the player has earned and can use it; retain the same selection, action and evidence patterns.
 
-**Engineering.** Part 03 adds repair to eligible room actions when Witch arrives. Her engineering time competes with the Brewery; early accumulated damage is now actionable.
+**Engineering.** Part 03 adds repair to eligible room actions when RIVET WITCH arrives. Her engineering time competes with the Brewery; early accumulated damage is now actionable.
 
 **Brain 2.0.** Expose permitted internal histories and new ways to intervene. This is a change in knowledge and agency over an existing society.
 
@@ -3723,7 +3723,7 @@ True system complexity, revealed information and the effort required to play are
 - Include a safe route, a risk route and one recoverable setback with a visible cost. Use controlled fixtures to exercise branches without forcing them in every run.
 - Check the complete chain: order → physical result → witnessed evidence → interpretation → later intention → new action → player-visible consequence.
 - Add engine state only when it supports a behaviour, consequence, observation or test. Deferring a feature is different from fabricating its history at an unlock.
-- Exercise an early safety and output path without any repair command. Introduce engineering only with Part 03 and verify that the inherited condition changes Witch’s work priorities.
+- Exercise an early safety and output path without any repair command. Introduce engineering only with Part 03 and verify that the inherited condition changes RIVET WITCH’s work priorities.
 - Preserve unindoctrinated worker histories through Theatre opening and later Act 2 inspection; test early supervisor disclosure without leaking hidden state in the player projection.
 
 ### Legacy and new direction
@@ -3734,7 +3734,7 @@ The old Sim Sim Director Console is the visual starting point: illustrated CCTV 
 
 ### Open UI decisions
 
-- How long does Part 01 sustain an enjoyable way to lead? Compare four and five completed two-room days, conditional on visible readiness and investment, then test Cathexis as a new temptation rather than a reward for memorizing mechanics.
+- How long does Part 01 sustain an enjoyable way to lead? Compare four and five completed two-room days, conditional on visible readiness and investment, then test CATHEXIS as a new temptation rather than a reward for memorizing mechanics.
 - Which staffing orders are direct, and which are requests mediated by Security or another supervisor?
 - Which situations require a decision pause, which can be delegated, and how do manual pause/speed controls behave?
 - How much can the director infer from a room before consulting someone, and what evidence becomes available after Brain 2.0?
@@ -3777,7 +3777,7 @@ The proposed daily adviser decision begins from known factory facts and the last
 
 **Orders still require execution.** An accepted recommendation or player override becomes a recorded order, not a guaranteed forecast or guaranteed obedience. The supervisor doing the work can interpret, cooperate with or resist it through the existing BDI rules.
 
-**Available capability.** Advisers can only propose actions permitted at the current stage. Limen, Stiletto and Cathexis cannot repair; engineering arrives with Witch. Advice cannot recall committed quota units or turn retained workers back into deliverable stock.
+**Available capability.** Advisers can only propose actions permitted at the current stage. LIMEN, STILETTO and CATHEXIS cannot repair; engineering arrives with RIVET WITCH. Advice cannot recall committed quota units or turn retained workers back into deliverable stock.
 
 ### Interface
 
@@ -3799,17 +3799,17 @@ The proposed daily adviser decision begins from known factory facts and the last
 
 ### Choosing and learning
 
-**Limen.** Procedure and controlled access. Useful when order or safe coordination is in question; his response can cost speed and discretion.
+**LIMEN.** Procedure and controlled access. Useful when order or safe coordination is in question; his response can cost speed and discretion.
 
-**Stiletto.** Output and delivery. Useful when flow and deadlines dominate the visible problem; her approach can carry wear, exposure and overconfidence.
+**STILETTO.** Output and delivery. Useful when flow and deadlines dominate the visible problem; her approach can carry wear, exposure and overconfidence.
 
-**Cathexis.** Belief, coordination and influence. Useful when the workforce’s collective response matters; success can increase her independent authority.
+**CATHEXIS.** Belief, coordination and influence. Useful when the workforce’s collective response matters; success can increase her independent authority.
 
-**Rivet Witch.** Faults, repair and technical integrity. Useful when the chain keeps breaking; thorough work can consume today’s output and available time.
+**RIVET WITCH.** Faults, repair and technical integrity. Useful when the chain keeps breaking; thorough work can consume today’s output and available time.
 
-**Thrum.** Worker strain, resonance and relief. Useful when the workforce needs recovery; his approach can reduce productive time and discipline.
+**THRUM.** Worker strain, resonance and relief. Useful when the workforce needs recovery; his approach can reduce productive time and discipline.
 
-**Learn the choice before doubting the speaker.** Begin with Limen and Stiletto giving sincere, comprehensible assessments. Their different priorities still carry real costs. Establish what facts mean, what each notices and how their recommendation changes work.
+**Learn the choice before doubting the speaker.** Begin with LIMEN and STILETTO giving sincere, comprehensible assessments. Their different priorities still carry real costs. Establish what facts mean, what each notices and how their recommendation changes work.
 
 **Gain evidence through use.** After a shift, connect the chosen adviser’s priority, actions and one visible benefit or cost. Preserve a short record of their advice. Do not reduce reliability to a universal success score when changing conditions and player overrides matter.
 
@@ -3839,25 +3839,25 @@ The proposed daily adviser decision begins from known factory facts and the last
 
 **Distinct relationship effects.** Respect for the director’s judgment, loyalty to the director’s intentions and confidence in one’s own judgment can change separately. Peer relationships and worker respect remain distinct. Being backed can increase confidence without making an adviser more loyal; a successful override can later complicate their initial resentment.
 
-### Stiletto advises for the day and runs the conveyor
+### STILETTO advises for the day and runs the conveyor
 
-Authored example after Witch arrives and engineering becomes available. Exact event options and relationship magnitudes are not yet balanced.
+Authored example after RIVET WITCH arrives and engineering becomes available. Exact event options and relationship magnitudes are not yet balanced.
 
-**Conveyor event.** A fault calls for a response in Stiletto’s assigned room. She chooses to clear the batch at reduced load. The action resolves automatically and is logged; the player sees what she did and what it cost.
+**Conveyor event.** A fault calls for a response in STILETTO’s assigned room. She chooses to clear the batch at reduced load. The action resolves automatically and is logged; the player sees what she did and what it cost.
 
-**Brewery event.** Witch encounters a problem in the Brewery. Stiletto recommends keeping output moving. The player gets the proposed response and may instead authorize Witch’s stoppage and repair.
+**Brewery event.** RIVET WITCH encounters a problem in the Brewery. STILETTO recommends keeping output moving. The player gets the proposed response and may instead authorize RIVET WITCH’s stoppage and repair.
 
-**The override.** Choosing repair records an override of Stiletto’s recommendation. Witch executes or responds to the actual order under her own agency. The original recommendation remains in the record.
+**The override.** Choosing repair records an override of STILETTO’s recommendation. RIVET WITCH executes or responds to the actual order under her own agency. The original recommendation remains in the record.
 
-**Different reactions.** Stiletto dislikes being overruled. Witch may respect the director for accepting a necessary repair. Limen may welcome the stop procedure while objecting to an improvised access change. Cathexis and Thrum interpret the decision through its effects on workers and their own concerns, when they learn of it.
+**Different reactions.** STILETTO dislikes being overruled. RIVET WITCH may respect the director for accepting a necessary repair. LIMEN may welcome the stop procedure while objecting to an improvised access change. CATHEXIS and THRUM interpret the decision through its effects on workers and their own concerns, when they learn of it.
 
 **Tomorrow and later.** Yesterday’s report shows the actual output, stoppage and costs. The next adviser interprets those facts. Remembered support or humiliation can change future advice, initiative and willingness to cooperate.
 
 ### Same pressure, different advice
 
-Authored comparison after all five initial supervisors have arrived and engineering is available. Yesterday’s report shows a daily production shortfall against the plan, conveyor interruptions and time spent on earlier engineering work; the weekly quota is still due ahead. Stiletto currently runs the Conveyor, Limen Security, Cathexis the Theatre, Witch the Brewery and Thrum Weaving. Each potential adviser interprets the same facts. These alternatives are shown together for author review; the player hears only the chosen adviser.
+Authored comparison after all five initial supervisors have arrived and engineering is available. Yesterday’s report shows a daily production shortfall against the plan, conveyor interruptions and time spent on earlier engineering work; the weekly quota is still due ahead. STILETTO currently runs the Conveyor, LIMEN Security, CATHEXIS the Theatre, RIVET WITCH the Brewery and THRUM Weaving. Each potential adviser interprets the same facts. These alternatives are shown together for author review; the player hears only the chosen adviser.
 
-#### Limen — Protect the line through control
+#### LIMEN — Protect the line through control
 
 **Assessment of yesterday.** The repeated stops show that recovery has not brought the line under control.
 
@@ -3865,13 +3865,13 @@ Authored comparison after all five initial supervisors have arrived and engineer
 
 **Priority they choose.** Restore controlled, safe operation before pursuing recovery output.
 
-> “Let Witch inspect it before we restart. I will keep the floor clear. Stiletto can recover the delivery once the line is released.”
+> “Let RIVET WITCH inspect it before we restart. I will keep the floor clear. STILETTO can recover the delivery once the line is released.”
 
-**Move.** Witch: Brewery → conveyor inspection; accept the temporary substrate loss.
+**Move.** RIVET WITCH: Brewery → conveyor inspection; accept the temporary substrate loss.
 
-**Keep and constrain.** Limen stays in Security. Stiletto retains the conveyor assignment, with restart conditional on the inspection.
+**Keep and constrain.** LIMEN stays in Security. STILETTO retains the conveyor assignment, with restart conditional on the inspection.
 
-**Operating tradeoff.** A bounded stoppage may prevent worse damage. Substrate production stalls and Stiletto loses discretion over restarting.
+**Operating tradeoff.** A bounded stoppage may prevent worse damage. Substrate production stalls and STILETTO loses discretion over restarting.
 
 **Author-only causal interpretation.**
 
@@ -3885,7 +3885,7 @@ Authored comparison after all five initial supervisors have arrived and engineer
 
 **Statement choice.** Explains the inspection and restart condition; frames Security’s control as necessary coordination.
 
-#### Stiletto — Preserve output and present competence
+#### STILETTO — Preserve output and present competence
 
 **Assessment of yesterday.** The missed delivery is the immediate failure. Full stoppages consumed time that could have completed useful work.
 
@@ -3893,11 +3893,11 @@ Authored comparison after all five initial supervisors have arrived and engineer
 
 **Priority they choose.** Recover output and protect the next delivery.
 
-> “Keep Witch on substrate while I clear this batch at reduced load. Then she gets the line. Don’t stop three rooms to solve one problem.”
+> “Keep RIVET WITCH on substrate while I clear this batch at reduced load. Then she gets the line. Don’t stop three rooms to solve one problem.”
 
 **Keep.** Retain the current roster for a short, conditional batch-clearing phase.
 
-**Schedule.** Reduce conveyor load now; move Witch for inspection at the agreed stop boundary.
+**Schedule.** Reduce conveyor load now; move RIVET WITCH for inspection at the agreed stop boundary.
 
 **Operating tradeoff.** Preserves near-term production if her estimate of the fault is sound. Continued operation retains exposure; inspection and the later loss of Brewery output still happen.
 
@@ -3913,7 +3913,7 @@ Authored comparison after all five initial supervisors have arrived and engineer
 
 **Statement choice.** Emphasizes the cost of disrupting several rooms. Whether she admits, overlooks or conceals a warning depends on her actual knowledge and intent.
 
-#### Rivet Witch — Remove the recurring defect
+#### RIVET WITCH — Remove the recurring defect
 
 **Assessment of yesterday.** Earlier engineering time has not removed the recurring fault. Repeated interruptions suggest the underlying defect remains.
 
@@ -3923,9 +3923,9 @@ Authored comparison after all five initial supervisors have arrived and engineer
 
 > “The same fault keeps taking your shifts. Put me on the line and let me finish the work.”
 
-**Move.** Witch: Brewery → conveyor repair; request enough time to address the reported underlying defect.
+**Move.** RIVET WITCH: Brewery → conveyor repair; request enough time to address the reported underlying defect.
 
-**Change the mandate.** Stiletto holds output recovery until repair completion. Keep the other room assignments unless their own conditions require intervention.
+**Change the mandate.** STILETTO holds output recovery until repair completion. Keep the other room assignments unless their own conditions require intervention.
 
 **Operating tradeoff.** Trades immediate output and substrate production for a more durable repair, if her diagnosis is right. The remaining weekly quota may require a different allocation of future production.
 
@@ -3998,7 +3998,7 @@ Authored comparison after all five initial supervisors have arrived and engineer
 
 ### First playable test
 
-Test the prebuilt morning opening, mandatory leadership call, two unassigned advisers, proposals grounded in the inherited line, own-room authority, overrides elsewhere and permanent allocation. No repair before Witch. New BDI and character acting remain the next production slice.
+Test the prebuilt morning opening, mandatory leadership call, two unassigned advisers, proposals grounded in the inherited line, own-room authority, overrides elsewhere and permanent allocation. No repair before RIVET WITCH. New BDI and character acting remain the next production slice.
 
 ### Open decisions
 
@@ -4015,7 +4015,7 @@ Players should understand why they are choosing, what they are authorizing and h
 
 **Make the central choice visible.** Start → paused producer console with incoming leadership as the sole gameplay action → Answer leadership → cinematic call → Acknowledge quota → console → Choose adviser → dedicated roster → inspect priority/tradeoff → appoint → structured brief and placements → authorize → run → permanent allocation. Early close leaves gameplay locked. Settings, skin switching and menu/resume preserve acknowledgement and drafts. The first-day flow is verified; the new daily pacing and proposed briefing/plan shortcut remain to be tested. Later weekly calls require actual completed-week facts.
 
-**Say what the action means.** Use concrete labels such as Accept Stiletto’s arrangement or Stop the Brewery for Witch’s repair. Explain the known operational sacrifice and who is being overruled. Avoid vague dialogue stances whose mechanical commitment is impossible to infer.
+**Say what the action means.** Use concrete labels such as Accept STILETTO’s arrangement or Stop the Brewery for RIVET WITCH’s repair. Explain the known operational sacrifice and who is being overruled. Avoid vague dialogue stances whose mechanical commitment is impossible to infer.
 
 **Show authority before consequences.** Mark the adviser’s assigned room as automatically managed. Other-room response decisions clearly show their recommendation and the player’s override. A token move changes a named person’s work and may change delegated authority; make both meanings visible.
 
@@ -4049,7 +4049,7 @@ The factory is an interconnected set of functions. Each room has an outcome rang
 
 **Theatre → workforce beliefs → behaviour → production.** Conditioning acts across the operation; it is not automatically a mandatory manufacturing step.
 
-**Pressure and believed news → stress → behaviour.** Physical accidents and informational shocks can feed the production loop through the workers who experience or believe them. Thrum can interrupt the stress accumulation at a cost.
+**Pressure and believed news → stress → behaviour.** Physical accidents and informational shocks can feed the production loop through the workers who experience or believe them. THRUM can interrupt the stress accumulation at a cost.
 
 ### Economy
 
@@ -4057,7 +4057,7 @@ The factory is an interconnected set of functions. Each room has an outcome rang
 - The quota is due at the end of the week. Every day, allocate completed robots to the factory or the quota; the confirmed allocation is irreversible.
 - Payment timing, prices and excess deliveries remain open. The Conveyor mini-game study proposes opening funds plus daily quota progress payments to support early investment; this is not yet an accepted or implemented contract.
 - Smart output is more valuable and retained smart workers improve advanced throughput. Define its place in the contract before adding another allocation destination.
-- Engineering unlocks with Witch in Part 03. Repairs require engineering capability and time, with production forgone; a cash charge or purchased substitute engineer is not assumed.
+- Engineering unlocks with RIVET WITCH in Part 03. Repairs require engineering capability and time, with production forgone; a cash charge or purchased substitute engineer is not assumed.
 - Expose additional materials when their functions become relevant. The spatial conveyor proposal uses explicit batches, queues and worker task routes without per-station staffing controls.
 
 ### Workers
@@ -4078,14 +4078,14 @@ The factory is an interconnected set of functions. Each room has an outcome rang
 - Unlocks add a new kind of decision and enough time to experience it. They should not be rewards for reaching an arbitrary day.
 - Preserve the commitment boundary through saves and replay. Retained workers cannot be liquidated into a later quota allocation; quota commitments cannot be recalled.
 - Make safety, output and adaptive balance viable before engineering arrives. Early pressure reduction can prevent further damage; it does not restore existing condition. Severe damage can cause failure, but viable early paths must be able to reach Part 03.
-- Repair requires an engineer. Limen, Stiletto and Cathexis lack that capability; smart-worker status alone does not grant it. New engineers would require a separately designed unlock.
-- Parts 01–02 show current operating consequences without introducing a repair control, repair backlog dashboard or repair purchase. Witch’s arrival makes the previously accumulated damage actionable.
+- Repair requires an engineer. LIMEN, STILETTO and CATHEXIS lack that capability; smart-worker status alone does not grant it. New engineers would require a separately designed unlock.
+- Parts 01–02 show current operating consequences without introducing a repair control, repair backlog dashboard or repair purchase. RIVET WITCH’s arrival makes the previously accumulated damage actionable.
 
 First-floor delegation is an agreed Act 2 direction. Candidate policies include staffing, maintenance, dispatch priorities and exception escalation. Exact requirements remain open.
 
 ## Recovery and failure
 
-### Cathexis turns her audience against the programme
+### CATHEXIS turns her audience against the programme
 
 **Loss.** Theatre control or worker cooperation is lost.
 
@@ -4097,7 +4097,7 @@ First-floor delegation is an agreed Act 2 direction. Candidate policies include 
 
 **Loss.** Reduced capacity makes the remaining weekly quota harder; previously retained output cannot be reclaimed.
 
-**Recovery.** Before Part 03, change the operating approach and use surviving capacity. After Witch arrives, divert her engineering time from the Brewery to restore eligible damage. Catastrophic destruction can remain a failure.
+**Recovery.** Before Part 03, change the operating approach and use surviving capacity. After RIVET WITCH arrives, divert her engineering time from the Brewery to restore eligible damage. Catastrophic destruction can remain a failure.
 
 **Persistent consequence.** Lost workers, missed production and the recorded responsibility remain. Repair does not reverse earlier daily allocations.
 
@@ -4107,7 +4107,7 @@ First-floor delegation is an agreed Act 2 direction. Candidate policies include 
 
 **Recovery.** Adapt staffing and commitments to the altered operating conditions.
 
-**Persistent consequence.** Witch's leverage and possible Cathexis momentum outlast the immediate repair.
+**Persistent consequence.** RIVET WITCH's leverage and possible CATHEXIS momentum outlast the immediate repair.
 
 ### A false accusation gains official backing
 
@@ -4160,9 +4160,9 @@ The engine boundary above records Rust-native discipline, provider portability, 
 
 ### Exact major forks
 
-Safety, output and adaptive balance begin with the first adviser choice. Cathexis’s commitment and accident consequences add later forks. Their combinations form Act 1 trajectories; exact viable arrangements remain to test.
+Safety, output and adaptive balance begin with the first adviser choice. CATHEXIS’s commitment and accident consequences add later forks. Their combinations form Act 1 trajectories; exact viable arrangements remain to test.
 
-### The Cathexis side route
+### The CATHEXIS side route
 
 Define a concrete alternative with its own cost. The trained worker cadre is an exploration, not accepted canon. Decide the real costs and availability of humiliation, circuits and negotiated revolutionary action.
 
@@ -4204,7 +4204,7 @@ Two arrive in Act 2; selection from a larger randomized pool is tentative. Defin
 
 ### Failure and recovery
 
-Repair is unavailable and absent from player controls in Parts 01–02. Define viable reduced-capacity paths before Witch arrives, catastrophic failure conditions, and the engineering time and downtime required for later recovery.
+Repair is unavailable and absent from player controls in Parts 01–02. Define viable reduced-capacity paths before RIVET WITCH arrives, catastrophic failure conditions, and the engineering time and downtime required for later recovery.
 
 ### Scope of individual simulation
 
@@ -4218,7 +4218,7 @@ Act 2 social dynamics determine the run's outcome. The ending structure and viab
 
 Define exposure, report channels, credibility, rejection and lingering effects. Choose how much of a rumour’s history the player can infer in Act 1 and inspect in Act 2.
 
-### Thrum’s relief and its costs
+### THRUM’s relief and its costs
 
 Define room-specific relief, the competing claims on productive time, and how discipline changes affect other supervisors. Preserve an almost unique positive specialty without making him a universal reset. His established role is worker relief; any effect on supervisor stress needs a separate decision.
 
@@ -4240,7 +4240,7 @@ Prove the console → room observation → focused action → console loop with 
 
 ### Session pacing and live interventions
 
-A whole game day targets about one minute, two to three at most for heavier days. Fit adviser choice, brief/plan, live operation, warranted pauses and permanent allocation into that experience. Discard the earlier three-shifts-per-thirty-minutes proposal; test the weekly delivery cycle and mastery-based room unlocks at this cadence. Part 01 must first establish how many useful two-room cycles players need before Cathexis. Test four or five two-room days with distinct expressive choices and payoffs, followed by a readiness-based Theatre handoff. Exact timing remains proposed; completing the whole week is not a prerequisite.
+A whole game day targets about one minute, two to three at most for heavier days. Fit adviser choice, brief/plan, live operation, warranted pauses and permanent allocation into that experience. Discard the earlier three-shifts-per-thirty-minutes proposal; test the weekly delivery cycle and mastery-based room unlocks at this cadence. Part 01 must first establish how many useful two-room cycles players need before CATHEXIS. Test four or five two-room days with distinct expressive choices and payoffs, followed by a readiness-based Theatre handoff. Exact timing remains proposed; completing the whole week is not a prerequisite.
 
 ### Adviser-led staffing
 
@@ -4248,14 +4248,14 @@ The daily adviser choice sets the assessment, priority, arrangement and response
 
 ## Continuity changes
 
-- The new progression starts with Limen and Stiletto. The older story-bible opening places Witch at the first jam and presents all five supervisors at entry; that scene needs a later writing revision. Witch's inspection dispute belongs after her arrival.
+- The new progression starts with LIMEN and STILETTO. The older story-bible opening places RIVET WITCH at the first jam and presents all five supervisors at entry; that scene needs a later writing revision. RIVET WITCH's inspection dispute belongs after her arrival.
 - The original sim unlocks rooms by day and requires Theatre-washed brains for sale or conversion. The current design replaces those assumptions with mastery-based progression and basic output from the complete conveyor.
 - The original sim stores worker pools and room averages. Individual worker minds and Act 2 thought access are the intended extension, not existing implementation.
 - The old critical events generally use confidence, native room and an allow-or-suppress prompt. Independent refusal, worker-specific respect and political action are new design work.
 - The exact old percentages, conversions, capacities and event thresholds are not adopted. Current story and gameplay direction takes precedence over archived formulas.
 - The website's current teaching prototype is not the complete game described here. The six alternative prehistories and twenty bridge paintings remain explorations, not established canon.
-- The accident aftermath is now a major Act 1 fork alongside Cathexis. It is likely on many operating paths but must be avoidable through sustained safety; no mastery gate should demand a disaster. BDI will affect actions, extending beyond the old read-only cognitive diagnostic layer.
-- Day one has no inherited assignments. The first adviser proposes them. Quotas are weekly, daily output allocations are permanent, and engineering begins with Witch in Part 03. Earlier repair purchases and station-staffing examples are superseded.
+- The accident aftermath is now a major Act 1 fork alongside CATHEXIS. It is likely on many operating paths but must be avoidable through sustained safety; no mastery gate should demand a disaster. BDI will affect actions, extending beyond the old read-only cognitive diagnostic layer.
+- Day one has no inherited assignments. The first adviser proposes them. Quotas are weekly, daily output allocations are permanent, and engineering begins with RIVET WITCH in Part 03. Earlier repair purchases and station-staffing examples are superseded.
 - 12 October: the factory is prebuilt. Remove all player building and the night-zero placement tutorial. The producer console opens with leadership’s call. Individual agents are the next visual focus: BDI drives intention and action, independent of any LLM or rendering tier.
 
 ## Concept review questions
@@ -4266,7 +4266,7 @@ The daily adviser choice sets the assessment, priority, arrangement and response
 - Can Act 2 explain an Act 1 behaviour through the same worker's existing history?
 - Would a different supervisor's beliefs or report change a meaningful decision?
 - Can we explain why an outcome happened without making every future outcome predictable?
-- Can a rumour genuinely fail, and can Thrum genuinely help, without either outcome being overridden by a prewritten crisis?
+- Can a rumour genuinely fail, and can THRUM genuinely help, without either outcome being overridden by a prewritten crisis?
 - Does each proposed arc create a character collision whose competing commitments and causal history can be watched and inspected?
 - Can the shared cinematic factory and focused decision interfaces make spatial changes, supervisor authority and individual consequences both enjoyable and legible, while other rooms keep operating?
 - In the exact current build, can a viewer see who acts on whom while speech, status and controls are present, and can the next player action be understood without an author explanation?
@@ -4516,8 +4516,6 @@ A candidate environmental texture from the long synthetic soundscape. This is ne
 
 **Soundtrack.** Not sourced or implemented. Plan separate music control, stems and ducking under important signals.
 
-[Play the 2D floor rehearsal](/loopforge-design/day-one-rehearsal.html)
-
 ## Day 1 intro
 
 ### At the gate
@@ -4695,6 +4693,10 @@ Figure 2. Conveyor Intake. sam is the heavy tray-carrying worker at the center o
 **max** WHO HERE REALLY CARES ABOUT THIS FACTORY???!!
 
 *ed laughs first. Behind him, the factory lights go out.*
+
+## 2D floor & proposed layout
+
+[Play the 2D floor rehearsal](/loopforge-design/day-one-rehearsal.html) · [Explore the proposed layout](/loopforge-design/factory-layout-proposal.html) · [Full-size floor plan](/loopforge-design/factory-floor-plan.32180aa96dbe.svg)
 
 [The cast — portraits and character briefs](/stepanoskin/loopforge/design#narrative-cast)
 
@@ -4917,7 +4919,7 @@ Compact read-only instruments report money, workers, known line condition and we
 | Answer | Activate the receiver with pointer, touch or keyboard. | Receiver depresses/lifts, the ring stops, a connection cue plays. Fade into the existing full-screen leadership scene. No simulation advance. |
 | Hear mandate | Opening handover and weekly quota in short labelled topics over the leadership artwork. | No fabricated previous-week results. Routine console chrome and light are absent. Caption controls remain usable during transitions. |
 | Acknowledge | Activate **Acknowledge quota** after reaching the mandate topic. | Return to console; **Choose adviser** becomes available on the internal selector. A bounded release cue can reinforce the change. This is acknowledgement, not negotiation or spending. |
-| Choose adviser | Activate the internal selector to open the dedicated roster. | All available supervisors have current short pitches; inspect before appointing. LIMEN and Stiletto are the two initial candidates. Five channels accommodate the later cast. |
+| Choose adviser | Activate the internal selector to open the dedicated roster. | All available supervisors have current short pitches; inspect before appointing. LIMEN and STILETTO are the two initial candidates. Five channels accommodate the later cast. |
 | Commit and plan | Appoint → structured comic briefing → proposed placements → accept or override → authorize → start. | Adviser appointment remains the first strategic fork. The console provides access, not a duplicated roster or briefing. |
 
 The required sequence is **Start → producer console with incoming call as sole gameplay action → Answer leadership → cinematic call → Acknowledge quota → producer console → Choose adviser → roster/appointment → brief → placements**. Closing before acknowledgement returns to the still-waiting console and cannot unlock adviser selection or production. Help about receiving the call, mute, settings and menu/exit remain usable. Reopening an acknowledged mandate does not lock an active run again. Settings, skin switching and menu/resume preserve acknowledgement and all unconfirmed placement/dispatch choices; they never remount or restart the run.
@@ -5064,7 +5066,7 @@ The factory summary can retain all six room positions, including named unpowered
 
 **Actor does not mean first-person, free camera or constant clicking.** It means the player can form an intention, take a consequential action and recognise its effect. Most substantive play must be making and testing those choices. Brief observation is the payoff and the information for the next move. A successful safe arrangement can run without busywork; delegation becomes more valuable as rooms open.
 
-For the first Conveyor proof, test this proposed sequence: notice output accumulating in one camera → open that machinery’s operating controls → change an available feed/pace constraint → see the accepted command and its local response → return to the same room feeds and read the changed queue, throughput and wear exposure. If the only satisfying interaction is starting the shift and waiting for an incident popup, the loop fails this gate even if the scene is beautiful. Exact controls and numbers still need the room-puzzle design; this plan does not invent repair before Rivet Witch arrives.
+For the first Conveyor proof, test this proposed sequence: notice output accumulating in one camera → open that machinery’s operating controls → change an available feed/pace constraint → see the accepted command and its local response → return to the same room feeds and read the changed queue, throughput and wear exposure. If the only satisfying interaction is starting the shift and waiting for an incident popup, the loop fails this gate even if the scene is beautiful. Exact controls and numbers still need the room-puzzle design; this plan does not invent repair before RIVET WITCH arrives.
 
 The adviser still resolves events in their own effectively assigned room without asking. A CCTV cue there is a receipt, not a retroactive veto. In other rooms the player can accept or override permitted responses. Direct machinery controls cannot silently bypass a pending incident, adviser delegation or an authority restriction. Mode, room, camera and render cadence never change who has authority.
 
@@ -5331,7 +5333,7 @@ See [Agents: character, movement and contact](AGENT_CHARACTER_AND_ANIMATION_DIRE
 
 17 October 2026. Current character review and integration direction.
 
-The [asset review library](/stepanoskin/loopforge/play/asset-review) is the entry point for **Worker 01, LIMEN, STILETTO and CATHEXIS**. Worker 01 comes before the supervisors. Each character has its own equipment/motion controls, shared review gates and factory/CCTV inspection. Mouse/touch orbit belongs to close inspection; CCTV remains fixed. Rivet Witch and Thrum remain later cast work.
+The [asset review library](/stepanoskin/loopforge/play/asset-review) is the entry point for **Worker 01, LIMEN, STILETTO and CATHEXIS**. Worker 01 comes before the supervisors. Each character has its own equipment/motion controls, shared review gates and factory/CCTV inspection. Mouse/touch orbit belongs to close inspection; CCTV remains fixed. RIVET WITCH and THRUM remain later cast work.
 
 The owner has approved the initial cast and its basic movement palette, including the completed Worker 01 cleanup on 17 October. Worker acceptance covers the nineteen corrected motions, including the final Confused Scratch palm contact and Alert-derived free arm. LIMEN supplies the cyan emitter identity; STILETTO supplies blade-arm acting; CATHEXIS supplies the accepted theatrical motions and full/half Grace fit. Exact inventories and scene work live in the [review records](production/CHARACTER_REVIEW_STRUCTURE.md). These accepted performances are the starting material for factory encounters. Paired acting, prop contacts, crowd performance and integration into main play remain to build.
 
@@ -5453,11 +5455,11 @@ Sources: original Loopforge character sheets and room interaction art, already p
 | Workers | Worn industrial skull/visor heads, exposed joints and ribbed bodies, repair plates, brass/steel with restrained eye light. Smaller and less ornate than supervisors. | Weight shifts under a brain cradle; planted feet at a press; both hands meet handles. Waiting, hesitation and fatigue have distinct silhouettes. Start with three compatible body variants and stable cosmetic seeds. | Identical upright toy figures, oversized round heads, floating hands, synchronized marching, random twitching as a substitute for stress. |
 | LIMEN | Broad, heavy dark armour; skull-like face, cyan eyes/accents, straps and equipment. A single asymmetric cyan blade is the primary dark-CCTV recognition cue; retain its outline when labels are hidden. A low, stable centre of mass. | Deliberate steps; a planted blocking stance at a gate; head looks at a worker before a stop gesture. Inspection visibly holds that worker and the queue behind them. | The same slim rig silhouette as STILETTO, fast flailing, or cyan glow covering every surface. |
 | STILETTO | Narrow elongated silhouette, articulated black chrome, sharp forearms, restrained red visor. Clear distinction between hard polish and dirty surroundings. | Short decisive turns, forward intent, crisp pointing and impatient checking. Workers hurry in response; she cannot perform engineering repairs. | Bulky armour, soft round proportions, indiscriminate spikes, a permanent attack pose or excessive bloom hiding articulation. |
-| Cathexis | Cracked porcelain, warm eyes/core, crown/headphones, trailing cables and distressed fabric. An inviting face that can become disturbing. | Open-handed address, controlled head tilt, attention spreading across a worker group. A refusal or loss of trust changes who turns toward her. | A generic metal worker painted white; workers applauding regardless of their actual response. |
-| Rivet Witch | Hood, round green goggles, brass mask, dense tools/cables and heavy boots. Her kit has a practical working silhouette. | Kneel, brace, inspect, wrench and test at authored machine sockets. The work changes an actual repair task once engineering is available. | A repair beam, tools missing the machine, or decorative repair motion producing free condition recovery. |
-| Thrum | Rectangular speaker/boombox head, central blue lens, chest resonator, monk-like cloth and tuning-fork imagery. | Deliberate pauses, resonant torso/hand movement, workers visibly settling or turning toward him. Lost discipline and lost throughput remain possible costs. | A human face in a hood, nightclub strobing, or universal happiness unrelated to beliefs and stress. |
+| CATHEXIS | Cracked porcelain, warm eyes/core, crown/headphones, trailing cables and distressed fabric. An inviting face that can become disturbing. | Open-handed address, controlled head tilt, attention spreading across a worker group. A refusal or loss of trust changes who turns toward her. | A generic metal worker painted white; workers applauding regardless of their actual response. |
+| RIVET WITCH | Hood, round green goggles, brass mask, dense tools/cables and heavy boots. Her kit has a practical working silhouette. | Kneel, brace, inspect, wrench and test at authored machine sockets. The work changes an actual repair task once engineering is available. | A repair beam, tools missing the machine, or decorative repair motion producing free condition recovery. |
+| THRUM | Rectangular speaker/boombox head, central blue lens, chest resonator, monk-like cloth and tuning-fork imagery. | Deliberate pauses, resonant torso/hand movement, workers visibly settling or turning toward him. Lost discipline and lost throughput remain possible costs. | A human face in a hood, nightclub strobing, or universal happiness unrelated to beliefs and stress. |
 
-Use silhouette geometry for the head, torso, blades, hood and speaker head. Bake fine screws, cracks, seams and surface wear into normal/roughness/colour maps. Eyes are small emissive accents; glow must not erase faces. Limit palette noise so cyan LIMEN, red STILETTO, porcelain Cathexis, green Witch and blue Thrum remain distinguishable in the same dirty amber factory light.
+Use silhouette geometry for the head, torso, blades, hood and speaker head. Bake fine screws, cracks, seams and surface wear into normal/roughness/colour maps. Eyes are small emissive accents; glow must not erase faces. Limit palette noise so cyan LIMEN, red STILETTO, porcelain CATHEXIS, green RIVET WITCH and blue THRUM remain distinguishable in the same dirty amber factory light.
 
 Review each at the actual work camera size, in silhouette and under final lighting, then at a close interaction angle. A beautiful full-resolution sheet is not evidence that a 60-pixel worker reads. Do not add high-frequency scratches to solve a weak outline. Workers keep individual IDs and appearance through task changes, injuries, room changes and rendering tiers.
 
@@ -5534,11 +5536,11 @@ Verified 12 October 2026; recommendations above are design judgments, not perfor
 - [Babylon lightmaps](https://doc.babylonjs.com/guidedLearning/lightmaps/) — static lighting as an environment optimization.
 - [Babylon crowd navigation](https://doc.babylonjs.com/features/featuresDeepDive/crowdNavigation/) — available navigation tools, not a guarantee of deterministic cross-runtime simulation.
 
-## Worker motion bank and Cathexis gait — 13 October 2026
+## Worker motion bank and CATHEXIS gait — 13 October 2026
 
 Worker 01’s 19 exported motions are available in the [production review player](/stepanoskin/loopforge/play/asset-review/worker), linked from Game design → Agents → Asset review. The new Idle and Injured Walk share the same FBX rig as the other standalone exports. They are review candidates; machine-contact authoring and several clearance adjustments remain. See [the complete inventory and audit](production/WORKER_MOTION_REVIEW.md).
 
-The owner selects **Hot Walk as Cathexis’s default walk**. Keep that public name even though the source FBX says `Confident_Walk`. Preserve the expressive gait; fix mesh intersections without erasing its character. Worker 01 is a temporary motion stand-in until Cathexis’s own mesh/rig can be reviewed. Style approval does not certify retargeting or factory contact. `afraid_recoil` and `work_cradle` remain missing custom motions.
+The owner selects **Hot Walk as CATHEXIS’s default walk**. Keep that public name even though the source FBX says `Confident_Walk`. Preserve the expressive gait; fix mesh intersections without erasing its character. Worker 01 is a temporary motion stand-in until CATHEXIS’s own mesh/rig can be reviewed. Style approval does not certify retargeting or factory contact. `afraid_recoil` and `work_cradle` remain missing custom motions.
 
 
 # This is bob
@@ -5907,7 +5909,7 @@ Five observed presentation defects need correction: speech and credential panels
 
 Keep the approved cast and room direction, the reading holds, the four explicit tutorial verbs, the progression from solo to paired to staffed work, and the distinct night result. A small optional wording improvement can distinguish the first staffed output from the cumulative total. It must preserve the three output categories rather than altering mechanics to fit a label.
 
-The automatic staffed-work slowdown remains a required investigation. Its capture is not a controlled comparison: focus, recording and diagnostic conditions changed. Logical ticks, rendered frames and wall time must be reported separately. Sam's precision polish remains deferred; these findings do not authorize a blanket animation or asset replacement.
+The automatic staffed-work slowdown remains a required investigation. Its capture is not a controlled comparison: focus, recording and diagnostic conditions changed. Logical ticks, rendered frames and wall time must be reported separately. sam's precision polish remains deferred; these findings do not authorize a blanket animation or asset replacement.
 
 ### The next proof
 
@@ -5958,7 +5960,7 @@ Decision: 12 October 2026. First assembly implemented; action integration and fu
 
 **The blade is how you tell LIMEN from other robots in a dark factory room through a CCTV camera angle.** Recognition must work before reading a name, opening a portrait or zooming in. It is part of the interface's visual language, not an optional close-up ornament.
 
-Preserve the original character sheet: a heavy dark security body with a single asymmetric cyan blade extending from its arm. A narrow white-cyan core, torn cyan braids and deliberate heavy movement distinguish it from worker eye lights, Thrum's blue lens and fixed cyan machinery. Colour alone is insufficient. Shape, placement, rhythm and local contrast carry identity together. Keep the body mechanically controlled while its contained energy moves fiercely; do not turn LIMEN into a flailing swordsman.
+Preserve the original character sheet: a heavy dark security body with a single asymmetric cyan blade extending from its arm. A narrow white-cyan core, torn cyan braids and deliberate heavy movement distinguish it from worker eye lights, THRUM's blue lens and fixed cyan machinery. Colour alone is insufficient. Shape, placement, rhythm and local contrast carry identity together. Keep the body mechanically controlled while its contained energy moves fiercely; do not turn LIMEN into a flailing swordsman.
 
 When powered and visible, the blade retains a restrained luminous core at rest. Rich activity arrives in phrases, not continuous fireworks. This differs from the console beacon, whose default is dark with brief event impulses. An extinguished, stowed or fully occluded blade must not appear through armour or walls to preserve a recognition cue. Use body shape, motion and the existing accessible inspection/name affordance when the blade cannot be seen.
 

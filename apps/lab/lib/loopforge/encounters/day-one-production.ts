@@ -1,9 +1,9 @@
 import {conveyorControl,CONVEYOR_STATIONS,type ConveyorStation} from './arrival-layout';
 import type {Action,Performance,Point,ProcessCue,MotionCue} from './contract';
 export type DayOneOperators=Record<ConveyorStation,string>;
-// The Max source is a push-and-stop take, not a cyclic work loop. Play its
+// The max source is a push-and-stop take, not a cyclic work loop. Play its
 // source .4..2.5999999046325684 exactly once over the existing six-second phase.
-// The endpoint is the stored float32 duration in all three Max delivery banks.
+// The endpoint is the stored float32 duration in all three max delivery banks.
 const maxForgePush:MotionCue={clip:'Push_Forward_and_Stop',start:.4,rate:(2.5999999046325684-.4)/6,loop:false,blend:.2};
 /** The Director supplies assignments and chronology. This builds actual work,
  * not a visual output counter: every phase is guarded by all staffed controls. */

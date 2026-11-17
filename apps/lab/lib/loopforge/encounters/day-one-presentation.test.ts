@@ -20,7 +20,7 @@ beforeAll(()=>{
 });
 const at=(tick:number)=>{const view=frames.get(tick);if(!view)throw Error('Missing replay frame '+tick);return view;};
 
-it('keeps Jo inspection distinct from staffed production and the end of the day',()=>{
+it('keeps jo inspection distinct from staffed production and the end of the day',()=>{
  const view=at(jo.start);
  expect(view.dayOne).toMatchObject({stage:'production',crew:2,productionOutputs:1});
  expect(view.credentialStatus).toMatchObject({actorId:'jo',verified:false});

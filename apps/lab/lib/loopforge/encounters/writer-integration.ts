@@ -6,10 +6,10 @@ import type {Registry,Phase,Performance,World} from './contract';
 export function integrateWriter(registry:Registry,world:World){
  const bindings=mapping.phaseBindings.map(b=>({...b}));
  const overrides:Record<string,string>={
- 'ed collects bob’s card':'ed collects bob’s card while Sam kneels',
+ 'ed collects bob’s card':'ed collects bob’s card while sam kneels',
  'sam releases the supporting hand':'sam releases as ed steps back',
  'sam comes when called':'LIMEN steps into the inspection lane',
- 'sam presents the card':'Sam waits through the credential check',
+ 'sam presents the card':'sam waits through the credential check',
  'sam’s card is checked':'sam’s credential record is checked'};
  for(const b of bindings){b.anchorPhaseOrGeneratedPrefix=overrides[b.anchorPhaseOrGeneratedPrefix]??b.anchorPhaseOrGeneratedPrefix;
   if(b.turnId==='S03-T01')b.placement='insert-before';

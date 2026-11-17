@@ -152,7 +152,7 @@ She choreographs it.
     * Pockets full of custom bits, keys, tension gauges.
     * Often has pinned paper notes or clipped calibration slips near her station.
 * **Signature tool:** slim **micro-torch / soldering stylus** that throws golden sparks; she wields it like a wand, precise and deliberate. The sparks feel ritualistic, not industrial.
-* **Environment palette:** Rivet Witch scenes glow **teal-green and brass-gold**—steam haze, backlit substrate tanks, glass columns of luminous fluid. She feels at home in mist and humming machinery.
+* **Environment palette:** RIVET WITCH scenes glow **teal-green and brass-gold**—steam haze, backlit substrate tanks, glass columns of luminous fluid. She feels at home in mist and humming machinery.
 * **Behavioral tells:**
     * Tilts her head slightly before adjusting something—like she’s listening for a hidden frequency.
     * Touches machines gently before altering them.
@@ -182,7 +182,7 @@ She choreographs it.
 
 ---
 
-Rivet Witch doesn’t overpower systems.
+RIVET WITCH doesn’t overpower systems.
 
 She persuades them.
 

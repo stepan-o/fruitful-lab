@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#15211f"><title>Factory floor proposal · Loopforge</title>
+<style>
+:root{color-scheme:dark;--paper:#15211f;--ink:#f1eddd;--rule:#4c6057;--muted:#bfcdc1;--gold:#f1cc84;font-family:"Instrument Sans",system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper)}main{max-width:1050px;margin:auto;padding:24px clamp(14px,4vw,48px) 64px}a{color:var(--gold);text-underline-offset:.2em}nav{display:flex;flex-wrap:wrap;gap:1rem}nav,a,button,summary{touch-action:manipulation}header{margin:30px 0 20px}h1,h2{font-family:Georgia,serif;font-weight:500;line-height:1.1}h1{font-size:clamp(2.4rem,6.2vw,4.4rem);letter-spacing:-.045em;margin:.12em 0}h2{font-size:clamp(1.6rem,3.4vw,2.3rem);margin:1.35em 0 .45em}h3{font-size:1rem}p,li,dd{max-width:76ch;line-height:1.5}p{margin:.45em 0 .9em}figure{margin:0}.options{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 8px}button{font:inherit;font-size:.88em;padding:9px 13px;border:1px solid var(--rule);border-radius:3px;background:#1d302a;color:var(--ink);cursor:pointer}button[aria-pressed=true]{background:var(--gold);border-color:var(--gold);color:#17201d;font-weight:650}button:focus-visible,a:focus-visible,summary:focus-visible,.plate:focus-visible{outline:3px solid #8cdeec;outline-offset:2px}.plate{border:1px solid var(--rule);background:#101b19;overflow-x:auto}.plate svg{display:block;width:100%;min-width:620px;height:auto}.plate .room{fill:#253b34;stroke:#9ba697;stroke-width:2.8}.plate .service{fill:#303c37}.plate .shop{fill:#343b30}.plate .work{fill:#3e4b42;stroke:#91a28d;stroke-width:1.5}.plate text{fill:#f3efdc;font:600 17px system-ui,sans-serif}.plate .micro{font:12px system-ui,sans-serif;fill:#c5d0be}.plate .tiny{font:11px system-ui,sans-serif;fill:#c5d0be}.plate .door{stroke:#f1cc84;stroke-width:6;fill:none}.plate .hatch{stroke:#dc9f85;stroke-width:7;fill:none;stroke-dasharray:3 2}.plate .path{fill:none;stroke-linejoin:round;stroke-linecap:round;stroke-width:4.2}.plate [hidden],[hidden]{display:none!important}.key,figcaption,.hint{font-size:.86rem;color:var(--muted)}.key{display:flex;flex-wrap:wrap;gap:6px 22px;margin:.7rem 0}.key i{display:inline-block;width:22px;border-top:3px solid var(--gold);margin-right:5px;vertical-align:middle}.key .freight{border-top:4px dotted #dc9f85}.route-copy{border-left:3px solid var(--gold);padding:1px 14px;margin:12px 0 20px}.route-copy h3{margin:.3em 0}.route-copy p{margin:.25em 0}#intro-player iframe{width:100%;height:min(82vh,800px);min-height:420px;border:1px solid var(--rule);margin-top:12px}.beats{margin:0;padding:0;list-style:none}.beats li{display:grid;grid-template-columns:minmax(105px,1fr) 3fr;gap:1em;border-top:1px solid var(--rule);padding:11px 0;max-width:none}.beats b{color:var(--gold)}details{border-top:1px solid var(--rule);padding:.85em 0}summary{cursor:pointer;font-weight:650}article{max-width:48rem}article img{width:100%;height:auto}article figure{margin:1em 0}article h3{font:1.7rem Georgia,serif}.hint{display:none}@media(max-width:675px){.hint{display:block}.beats li{grid-template-columns:1fr;gap:3px}main{padding-top:14px}.options{gap:5px}}@media print{.plate svg{min-width:0}.options,nav,.hint{display:none}}
+
+.room-inset{display:block;width:100%;max-height:260px;background:#11201c;border:1px solid var(--rule)}
+.room-inset .room{fill:#273e36;stroke:#99ac99;stroke-width:1.5}.room-inset .work{fill:#33463c;stroke:#91a28d;stroke-width:1}
+.room-inset .door{fill:none;stroke:#f1cc84;stroke-width:3}.room-inset .hatch{fill:none;stroke:#e9a984;stroke-width:3;stroke-dasharray:2 1}
+.object-shape{fill:#38534b;stroke:#a8ba94;stroke-width:2.7}.plate:not(.show-objects) .object-pin{display:none}.plate:not(.show-objects) #object-plan .object-shape{opacity:.55}.object-pin rect,.detail-tag rect{fill:#283a2e;stroke:#ead39b;stroke-width:.9}
+.plate .object-pin text,.detail-tag text{font:600 9px system-ui;fill:#ffde91}.detail-tag text{font-size:8px}.object-pin:hover rect,.object-pin:focus rect{fill:#656138}
+.work-mark{fill:#85eee3;stroke:#122c26;stroke-width:1}.room-sheet{border-top:1px solid var(--rule);margin-top:12px}
+.room-sheet h3{font:1.8rem Georgia,serif;margin:.65em 0 .25em}.room-sheet .art-strip{display:flex;flex-wrap:wrap;gap:12px;margin:15px 0}
+.art-strip figure{flex:1 1 160px;max-width:310px}.art-strip img{display:block;width:100%;height:auto;aspect-ratio:1.5;object-fit:contain;background:#0e1816}
+.art-strip figcaption{font-size:.81rem;line-height:1.35;margin-top:5px}.asset-list{padding:0;list-style:none}.asset-list li{padding:9px 0;border-top:1px solid var(--rule);max-width:none}.asset-list p{margin:3px 0}.asset-list li:target,.asset-list li:focus{outline:2px solid var(--gold);outline-offset:3px}
+.size{font:12px monospace;color:var(--gold);margin-left:.45em}.room-select{font:inherit;color:var(--ink);background:#273d33;padding:8px;border:1px solid var(--rule)}.chain-key{display:flex;flex-wrap:wrap;gap:6px;margin:.6em 0}
+.chain-key button{font-size:.8rem}.pipe-bed{fill:#263b35;stroke:#859989;stroke-width:1.6}.pipe-supply{fill:none;stroke:#79bfb3;stroke-width:2}.pipe-return{fill:none;stroke:#9d9573;stroke-width:1.5}
+.route-copy ol{padding-left:1.5rem}.route-copy li{margin:.4em 0}
+</style></head><body><main>
+<nav aria-label="Review navigation"><a href="day-one-rehearsal.html">← Play the Day 1 rehearsal</a><a href="#intro">Complete intro</a><a href="#advanced">Brain 2.0 route</a><a href="#assets">Room objects &amp; concept art</a><a href="/stepanoskin/loopforge/design#supervisor-rooms">Supervisor × room</a></nav>
+<header><h1>Factory floor proposal</h1><p>Put five workroom doors behind LIMEN’s checkpoint. Give the east end of the Forge two freight shutters. A pipe gallery ties the three high-tech rooms together. Trace a basic delivery or follow the scrap, substrate, ribbon and core that go into the first Brain 2.0.</p></header>
+<section aria-label="Proposed floor and scenarios">
+<div class="options" aria-label="Highlight a route">
+<button data-route="staff" aria-pressed="true">Five staff doors</button><button data-route="arrival" aria-pressed="false">Morning arrival</button><button data-route="basic" aria-pressed="false">Theatre closed</button><button data-route="program" aria-pressed="false">Through Theatre</button><button id="advanced" data-route="advanced" aria-pressed="false">Brain 2.0 chain</button><button id="assets" data-route="assets" aria-pressed="false">Room objects &amp; art</button><button data-route="release" aria-pressed="false">Shift release</button>
+</div>
+<figure><div class="plate" tabindex="0" aria-label="Scrollable factory plan">
+<svg viewBox="0 0 960 680" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="plan-title plan-desc"><title id="plan-title">Proposed first-floor doors and carrier routes</title><desc id="plan-desc">North is up. From the south yard, staff enter the Lobby, pass Dispatch and clear the gate. The inspected side of Security opens to Weaving, Brewery and Cortex to the north, Theatre to the east and Forge to the south. Forge has a freight shutter into Theatre and another into Logistics. Theatre discharges directly south to Logistics.</desc>
+<defs>
+<pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" stroke="#23342d" fill="none"/></pattern>
+<marker id="arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="3" markerHeight="3" orient="auto-start-reverse"><path d="M0 0 8 4 0 8Z" fill="#9ce1d9"/></marker>
+<marker id="load" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="3" markerHeight="3" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#ffb58d"/></marker>
+<marker id="wet" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="3" markerHeight="3" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#72e2d0"/></marker>
+<marker id="dry" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="3" markerHeight="3" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#f1c480"/></marker>
+<marker id="proof" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="3" markerHeight="3" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#d7a8f6"/></marker>
+<pattern id="saddles" width="32" height="24" patternUnits="userSpaceOnUse"><path d="M3 0V24M6 0V24" stroke="#748478" stroke-width="1.3"/></pattern>
+</defs>
+<rect width="960" height="680" fill="url(#grid)"/>
+<g id="shell"><g class="room" fill="#253b34" stroke="#9ba697" stroke-width="2.8">
+<rect x="160" y="52" width="280" height="163"/><rect x="440" y="52" width="200" height="163"/><rect x="640" y="52" width="260" height="163"/>
+<rect class="service" x="18" y="240" width="182" height="170"/><rect class="service" x="200" y="240" width="120" height="170"/>
+<path d="M320 239H900V294H520V410H320Z"/>
+<rect class="shop" x="200" y="410" width="320" height="220"/><rect x="520" y="294" width="380" height="182"/>
+<rect class="service" x="520" y="476" width="380" height="154"/>
+</g>
+<g aria-label="High-tech service galleries">
+<rect class="pipe-bed" x="160" y="215" width="740" height="24"/><rect class="pipe-bed" x="160" y="41" width="740" height="11"/>
+<path class="pipe-supply" d="M160 227H900 M160 45H900 M895 45V227"/>
+<path class="pipe-return" d="M160 234H900 M160 49H900 M899 49V234"/>
+<rect x="160" y="215" width="740" height="24" fill="url(#saddles)"/>
+<g fill="none" stroke="#adc6a5" stroke-width="1.5" stroke-dasharray="3 2"><path d="M382 215V239M404 215V239M529 215V239M551 215V239M748 215V239M770 215V239"/></g>
+</g>
+<!-- Security entry pen is enclosed on three sides. The south gate admits the secure apron. -->
+<path d="M320 284H443V369H426 M400 369H320" fill="none" stroke="#a7b2a5" stroke-width="3"/>
+<g class="work" fill="#3e4b42" stroke="#91a28d" stroke-width="1.5"><rect x="386" y="352" width="10" height="10"/><rect x="402" y="344" width="6" height="6"/><rect x="430" y="352" width="9" height="10"/>
+<rect x="229" y="437" width="244" height="15"/><rect x="467" y="436" width="22" height="19"/>
+<path d="M218 568H297V613H218Z M310 568H389V613H310Z M402 568H486V613H402Z"/>
+<rect x="691" y="352" width="72" height="31"/><path d="M715 352V383 M739 352V383 M691 367H763"/>
+<rect x="678" y="317" width="98" height="6"/><rect x="816" y="523" width="65" height="20"/><rect x="778" y="579" width="70" height="20"/></g>
+<g class="door" fill="none" stroke="#f1cc84" stroke-width="5">
+<path d="M124 410h26 M200 299v23 M320 299v23 M400 369h26 M400 410h26 M382 215h22 M529 215h22 M748 215h22 M616 294h22 M382 239h22 M529 239h22 M748 239h22 M520 519v13 M808 476h12"/>
+</g>
+<g class="hatch" fill="none" stroke="#dc9f85" stroke-width="6" stroke-dasharray="3 2"><path d="M520 432v24 M520 489v24 M234 410h17 M828 476h24 M900 519v26"/></g></g>
+<g id="object-plan"><!--OBJECT_MARKS--></g>
+<g>
+<text x="18" y="42" class="micro">N ↑</text><text x="180" y="88">Weaving Gallery</text><text x="460" y="88">Substrate Brewery</text><text x="660" y="88">Cortex Assembly</text>
+<text x="175" y="205" class="tiny">Pipe gallery ↓</text><text x="180" y="110" class="micro">Ribbon looms</text><text x="460" y="110" class="micro">Vat floor</text><text x="660" y="110" class="micro">Brain 2.0 prototype</text>
+<text x="35" y="270">Lobby</text><text x="209" y="270">Dispatch</text><text x="36" y="445" class="micro">South yard</text>
+<text x="330" y="263">Security</text><text x="676" y="285" class="micro">Cleared staff concourse</text><text x="329" y="332" class="tiny">ID queue</text><text x="329" y="355" class="tiny">Register</text>
+<text x="328" y="397" class="tiny">Gate apron</text>
+<text x="213" y="495">Lattice Forge</text><text x="213" y="517" class="micro">Intake → Wash → Belt → Press</text>
+<text x="214" y="551" class="tiny">Crane road and overhaul bays</text><text x="429" y="429" class="tiny">Output rack</text>
+<text x="536" y="316">Burn-in Theatre</text><text x="783" y="325" class="tiny">Projection stage</text><text x="688" y="401" class="tiny">Conditioning cradles</text><text x="540" y="469" class="tiny">Receiving</text>
+<text x="536" y="555">Logistics</text><text x="537" y="576" class="tiny">Receiving and allocation</text>
+<text x="817" y="515" class="tiny">Quota dock</text><text x="772" y="616" class="tiny">Retained muster</text>
+</g>
+<g class="path" stroke="#9ce1d9" marker-end="url(#arrow)" data-layer="staff">
+<path d="M414 363V388H474V256H393V182"/><path d="M474 256H540V182"/><path d="M540 256H759V182"/><path d="M570 256H626V303"/><path d="M414 388V427"/></g>
+<g class="path" fill="none" data-layer="arrival" hidden>
+<path stroke="#9ce1d9" marker-end="url(#arrow)" d="M131 468V311H398Q407 311 407 322V338"/>
+<path stroke="#e9c4df" stroke-dasharray="7 5" d="M145 487V305H410Q420 305 420 315V426"/></g>
+<g class="path" stroke="#ffb58d" marker-end="url(#load)" data-layer="basic" hidden>
+<path d="M245 445H480V501H659"/><path d="M659 501H727V534H924"/><path d="M727 534V588H809"/></g>
+<g class="path" stroke="#ffb58d" marker-end="url(#load)" data-layer="program" hidden>
+<path d="M245 445H567V370H719"/><path d="M745 370H840V485H693V505"/><path d="M693 505V533H924"/><path d="M748 533V588H809"/></g>
+
+<g class="path" data-layer="advanced" hidden>
+<g data-material="scrap" stroke="#ffb58d" stroke-dasharray="3 6" marker-end="url(#load)"><path d="M483 473H499V222H571V185"/><path d="M571 180V146H545"/></g>
+<g data-material="wet" stroke="#72e2d0" marker-end="url(#wet)"><path d="M554 149H600V229H280V156H252"/><path d="M600 229H779V149"/></g>
+<g data-material="dry" stroke="#f1c480" stroke-dasharray="9 4" marker-end="url(#dry)"><path d="M480 444H505V218H330V183"/><path d="M329 180V218H870V181"/><path d="M505 218H874V178"/><path d="M866 178H766V152"/></g>
+<g data-material="proof" stroke="#d7a8f6" marker-end="url(#proof)"><path d="M777 146H825"/><path d="M831 150V186H883V492H865"/><path d="M883 420H846V371H768"/><path d="M755 379H839V486H685V505"/><path d="M865 492V507H659V533H923"/><path d="M748 533V588H810"/></g>
+</g>
+<g class="path" stroke="#9ce1d9" marker-end="url(#arrow)" data-layer="release" hidden>
+<path d="M449 460H414V341Q414 311 397 311H138V464"/><path d="M330 459V423H414"/><path d="M242 460V420H403"/></g>
+</svg></div><figcaption><div class="key"><span><i></i>Staff door or gate</span><span><i class="freight"></i>Freight shutter</span><span>Door and route study · north up · schematic</span></div><span class="hint">Scroll the plan sideways to inspect the east wing.</span></figcaption></figure>
+<div class="route-copy" aria-live="polite">
+<div data-copy="staff"><h3>One check, five destinations</h3><p>Walk through the ID pen and its south gate. Forge is straight ahead. Turn east on the cleared apron to reach the north doors for Weaving, Brewery and Cortex, or the audience aisle in Theatre. The pen walls keep the incoming queue on LIMEN’s side of the gate. The four later-room doors can be signed and shut on Day 1.</p></div>
+<div data-copy="arrival" hidden><h3>Two arrivals through the same front door</h3><p>The crew takes the solid path. max speaks on the first step, jo answers through the Lobby and bob gets his last exchange with max on the approach to Security. STILETTO takes the dashed path after the crew’s exterior shot. Her final approach, the open boom and the Forge staff door lie on one axis. LIMEN steps to the pier and opens the boom ahead of her. She speaks and crosses at walking pace.</p></div>
+<div data-copy="basic" hidden><h3>Forge to Logistics with Theatre closed</h3><p>lou counts the cortex onto the rack. For routine production, an adjacent fitting stand seats the cortex in a body on a wheeled pallet. A switch at the outfeed sends the pallet down the existing outbound lane. It turns east on the cross-road and passes through the lower shutter directly into Logistics. The choice at allocation sends the unit to the quota dock or to next-shift muster.</p></div>
+<div data-copy="program" hidden><h3>Forge to Burn-in Theatre to Logistics</h3><p>A scheduled pallet goes straight east through the upper shutter. A side track takes it from Theatre receiving into a free conditioning cradle facing CATHEXIS’s stage. When its session ends, the far-side track carries the same pallet through the south shutter into Logistics receiving. Staff enter via the concourse and use the side aisle. Only units that actually attend acquire a session record.</p></div>
+<div data-copy="advanced" hidden><h3>Commissioning batch · Brain 2.0</h3>
+<div class="chain-key" aria-label="Trace a material"><button data-trace="all" aria-pressed="true">All transfers</button><button data-trace="scrap" aria-pressed="false">Scrap totes</button><button data-trace="wet" aria-pressed="false">Liquid substrate</button><button data-trace="dry" aria-pressed="false">Cores &amp; ribbon</button><button data-trace="proof" aria-pressed="false">Tested output</button></div>
+<ol><li><b>Release the order.</b> Dispatch sends raw trays through its receiving hatch. LIMEN clears the assigned crew. STILETTO’s line washes, clamps and presses a base cortex. lou puts the tagged project core on the dry hoist at F2. Basic deliveries continue on the lower Forge–Logistics road.</li>
+<li><b>Recover the substrate.</b> At F4 the crew diverts usable trimmings into closed totes. The overhead carrier tips a tote into B4. RIVET WITCH brews and filters it at B1–B2. A sample clears the batch. A wet header carries measured substrate west to Weaving and east to Cortex. An isolated batch stays in its tank.</li>
+<li><b>Establish Brain 1.5.</b> THRUM’s looms draw substrate through the combs and wind conductive ribbon. A specialist leads the existing crew at pilot jig W4, combining a reserved base core, ribbon and substrate. Return completed pilot units to the Forge fitting stand by dry rail. Retaining smart workers from this run supplies the skilled crew for commissioning.</li>
+<li><b>Assemble a new prototype.</b> Fund and open Cortex. The hoist delivers a fresh tagged core and a sealed spool to C4. The wet branch charges a separate jacket. The smart crew aligns the ribbon around the core in C1 while the engineer controls the cycle. Move the same unit to the cold proof bench C2. A failed unit returns to the jig or waits on the test spur. Short inputs leave the core parked in its receiving socket.</li>
+<li><b>Release the first 2.0.</b> A passed proof records the prototype and releases the east lift. Keep that first unit in a marked commissioning berth in Logistics. Subsequent units go to fitting and allocation there, with a side descent into a Theatre cradle if a programme is scheduled. Theatre returns attended units through its south shutter. Logistics records quota dispatch or next-shift retention; the empty carrier returns on the lower deck.</li></ol>
+<p>The solid carriers run over the staff aisle. Only liquid enters the pipe headers. The first 1.5 batch can run while Cortex is sealed. The recipe, hoists, proof cycle and first-prototype berth are level-design proposals; funding, specialist availability and the working 1.5 line are the commissioning gates.</p></div>
+<div data-copy="assets" id="room-inspector" hidden><h3>Room objects &amp; concept art</h3><label for="room-choice">Inspect a room </label><select id="room-choice" class="room-select"><!--ROOM_OPTIONS--></select>
+<p>Choose a room or select a gold object mark on the floor. Dimensions are proposed blockout targets. The height is the top of the installed object above the floor.</p><!--ROOM_SHEETS--></div>
+<div data-copy="release" hidden><h3>Eight leave the line together</h3><p>Six workers turn for the gate on the bell. mae cuts the feed and kit stops the drive, then they join the flow. ed ticks eight individual crossings. Everyone ahead keeps moving through Dispatch and the Lobby while ed offers the register to LIMEN. max and gus reach the yard together. ed laughs before the windows go dark.</p></div>
+</div></section>
+<h2>What moves on the plan</h2>
+<p>Keep the south entrance, Lobby, Dispatch and the crane-served 80 × 56 m Forge. Widen the cleared side of Security into the central cross-aisle. Fill the gap above Lobby and Dispatch with a 6 m service gallery. Repeat its flanged pipes along the entire Weaving–Brewery–Cortex wall and carry the return across their opposite wall. The three staff doors pass below the pipe rack. Slide Theatre’s north wall about 6 m south to keep the concourse clear. Move Cortex to the north-east and bring Theatre down alongside the Forge outfeed. Logistics takes the south-east corner, where its receiving floor shares a wall with both rooms. Keep the dock on the exterior.</p>
+<p>Dispatch supplies stillages through a receiving hatch at the west end of the Forge. Seal the old personnel shortcuts from Lobby and Dispatch into Weaving. A Logistics worker clears Security and follows the Forge service walk to a staff wicket beside the lower freight shutter. Theatre attendants have a separate wicket next to their outbound shutter. No staff door connects Security to Logistics.</p>
+<p>Use the rack as a visible buffer. A busy Theatre holds scheduled units at receiving. When its receiving slots fill, hold them at Forge Output and stop feeding the press when the rack fills. Keep their intended destination. Release them in order when a cradle clears. Empty pallets return on the lower deck of the transfer track to the Forge empty-cradle rack. The Theatre programme, fitting stand and pallet handling are proposed staging.</p>
+<h2 id="intro">The complete Day 1 intro</h2>
+<p><a href="day-one-rehearsal.html">Open the full-screen rehearsal</a> · <a href="day-one-rehearsal.html#the-fallen-card">Watch STILETTO’s pass</a> · <a href="day-one-rehearsal.html#fourth-check">Watch the fourth check</a> · <a href="day-one-rehearsal.html#end-of-shift">Watch the release</a></p>
+<p>The linked rehearsal plays on the current floor. The blocking below carries the same script onto the proposed plan. The three cortexes stay visible at Output through lou’s count. The first shipment and first Theatre session are later operating scenarios.</p>
+<details id="play-intro"><summary>Play the complete intro here</summary><div id="intro-player"></div></details>
+<ol class="beats">
+<li><b>Front door</b><span>Ten workers cross the yard. max starts his impression on the first step. jo corrects him as they enter. Cut across the long stretch of Dispatch between lines. bob’s question and max’s answer finish as they take their places.</span></li>
+<li><b>At the gate</b><span>Frame LIMEN and his cyan blade against the bunched queue, as in the gate painting. bob steps up early. The blade catches his leg. sam kneels as ed traps the sliding card at the grate and pockets it. bob can see LIMEN, but his attention is off ed. STILETTO comes from the entrance behind them, calls “Hold that gate” on approach and walks through to Conveyor. bob challenges the missing ID check.</span></li>
+<li><b>First brain</b><span>bob’s knee gives at Intake. He finishes the pull from the motor housing. STILETTO checks the seat, steps over his leg and walks beside the cradle. Give bob a handrail to get up. Follow the wash, belt clamp, drive and press to the first cortex on the rack. During the run LIMEN is checking sam.</span></li>
+<li><b>Two volunteers</b><span>sam clears and leaves for Intake. LIMEN calls down the queue. lou mutters to ben, max and gus call over each other and ed offers a fresh page through the noise. ed takes the register while gus takes the second desk.</span></li>
+<li><b>Second brain</b><span>bob knocks the stuck press door free as sam stages the next tray. bob washes and starts the belt. jo comes through with news of the queue. The second cortex lands beside the first while STILETTO heads back to the doorway.</span></li>
+<li><b>Fourth check</b><span>STILETTO points at LIMEN from the Forge doorway. Keep the gate, ID photograph, max’s face and her blades in one sightline. The threat clears after 6.6 seconds as max starts moving. LIMEN continues the inspection during the threat. max ducks under her blade and the next card is already coming up.</span></li>
+<li><b>Full crew</b><span>Four stamp cuts admit mae, kit, lou and ben. mae stages trays, kit watches the drive, lou takes Output and ben stands by for relief. On “Run it,” follow one brain continuously through sam at Intake, bob at Wash, jo at the belt and max at the press. lou counts the third cortex. Leave all three on the rack.</span></li>
+<li><b>Bell to blackout</b><span>mae and kit shut down while the others leave. ed checks off eight line workers at the register. LIMEN walks past the offered book. ed clips his pen beside bob’s card. The shift disperses through the front door. In the yard max imitates ed, then LIMEN for gus. ed laughs first and the lights go out behind him.</span></li>
+</ol>
+<details><summary>Read the full approved script and see its concept art</summary><article><!--APPROVED_INTRO--></article></details>
+<h2 id="handoff">Meshy and final camera handoff</h2>
+<p>Each <a href="#assets">room sheet</a> pairs original art with keyed footprints, target heights and actor positions. Start with the hero silhouette at worker scale. Generate rigid housings, then split doors, spools, clamps, dials and trolleys at their working pivots. Build repeated seats, pipe bends and loom frames once. Add cables, transparent liquid, projected images and legible signs in-engine. Fit a simple collider and test the actor contact before adding surface detail.</p>
+<p>For the final opening cameras, review the widest and tightest lenses at phone and desktop crops. Keep STILETTO outside the exterior composition, including her shadow, while max and jo speak. On the first Security shot, the queue and LIMEN should hold attention until her approach. Check silhouettes behind the rails, her sightline to the pier and the unbroken stride through it.</p>
+<ul>
+<li><strong>At the south entrance</strong> — a working double door, the overhead factory sign and enough yard for ten staggered starts plus STILETTO’s later approach.</li>
+<li><strong>At Security</strong> — the queue rails, boom and west pier, LIMEN’s blade clearance, the two desks, register, grate and card slide. Allow sam to kneel while ed stops the card. Mark all five doors on the cleared side. Keep the short apron from the boom to Forge free for the through-pass and fourth check.</li>
+<li><strong>In the Forge</strong> — preserve the long carrier bed, rails, operator walk, overhead crane, receiving stillages, transfer road and overhaul bays. Block three rack positions, the adjacent body-fitting stand, the pallet switch and upper/lower shutters at full carrier width.</li>
+<li><strong>Inside Theatre</strong> — a receiving stop, a row of docking cradles facing the stage, the operator’s side aisle and a separate outbound track. Leave an occupied cradle in place while a second pallet arrives. Keep the screen and CATHEXIS visible to the audience.</li>
+<li><strong>At Logistics</strong> — both receiving mouths, a body-width staff wicket beside each, allocation position, two marked lanes, retained muster, quota dock and empty return. A retained unit reports next shift. A quota unit leaves the building.</li>
+</ul>
+<p>For blockout acceptance, walk from the checkpoint into each unlocked workroom. Trace one identified unit across every handoff with Theatre running, closed and full. On the advanced line, isolate a Brewery batch, starve a loom and fail the Cortex proof in turn. The player should be able to point to the waiting item and its destination. Trace a Logistics attendant on foot beside the freight. Rehearse all eight beats at 1× with simultaneous crossings, a loaded rack and a clear camera view of the card, the fourth check and the third brain. Recheck aisle widths, turn radii and sightlines against the metric floor before moving runtime walls.</p>
+<p>Standing craft reference · Tynan Sylvester, <cite>Designing Games</cite> (2013), chapters 1, 11 and 12. For this floor, review the checkpoint from a waiting worker’s position, then watch a first-time player trace one stalled batch with route highlights off. Record the first place they lose track of it.</p>
+<details><summary>Original maps and design sources</summary><p>The old Sim4 plan puts Weaving northwest, Security in the middle, Theatre northeast and Shipping down the east side. The Sim4 room list gives Weaving links to Lobby, Dispatch and Brewery. The later sim explicitly pairs Conveyor with Theatre. The five doors beyond Security are the current design requirement. The routine basic-output route preserves the current game’s pre-Theatre quota and retention choices.</p>
+<p><a href="https://github.com/stepan-o/loopforge/blob/3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9/frontend/loopforge-webview/public/assets/factory_floor_layout_annotated.png">Old annotated floor</a> · <a href="https://github.com/stepan-o/loopforge/blob/3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9/backend/sim4/world/loopforge_layout.py">Sim4 room neighbours</a> · <a href="https://github.com/stepan-o/loopforge/blob/3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9/docs/sim_sim/sim_sim_spec_v1.md">Legacy production loop</a> · <a href="/stepanoskin/loopforge/design#conveyor">Current Conveyor study</a> · <a href="/stepanoskin/loopforge/design#day-one-intro">Day 1 intro</a></p></details>
+</main><script>
+const buttons = document.querySelectorAll('button[data-route]');
+function showRoute(route) {
+  for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.route === route));
+  for (const group of document.querySelectorAll('[data-layer]')) group.toggleAttribute('hidden', group.dataset.layer !== route);
+  for (const copy of document.querySelectorAll('[data-copy]')) copy.hidden = copy.dataset.copy !== route;
+  const plate = document.querySelector('.plate');
+  plate.classList.toggle('show-objects', route === 'assets');
+  const centre = {advanced: 0.70, assets: 0.53, staff: 0.55, arrival: 0.30, basic: 0.66, program: 0.74, release: 0.34}[route];
+  plate.scrollLeft = Math.max(0, centre * plate.scrollWidth - plate.clientWidth / 2);
+}
+for (const button of buttons) button.addEventListener('click', () => {
+  showRoute(button.dataset.route);
+  history.replaceState(null, '', '#' + button.dataset.route);
+});
+const roomChoice = document.getElementById('room-choice');
+function showRoom(key) {
+  roomChoice.value = key;
+  for (const sheet of document.querySelectorAll('[data-room]')) sheet.hidden = sheet.dataset.room !== key;
+}
+showRoom('security');
+roomChoice.addEventListener('change', () => { location.hash = 'room-' + roomChoice.value; });
+for (const button of document.querySelectorAll('[data-trace]')) button.addEventListener('click', () => {
+  const material = button.dataset.trace;
+  for (const item of document.querySelectorAll('[data-material]')) item.toggleAttribute('hidden', material !== 'all' && material !== item.dataset.material);
+  for (const item of document.querySelectorAll('[data-trace]')) item.setAttribute('aria-pressed', String(item === button));
+});
+function readRoute() {
+  const route = location.hash.slice(1);
+  const target = document.getElementById(route);
+  const room = route.startsWith('room-') ? [...roomChoice.options].find(option => option.value === route.slice(5))?.value : target?.closest('[data-room]')?.dataset.room;
+  if (room) {
+    showRoute('assets'); showRoom(room);
+    if (target) target.focus();
+    return;
+  }
+  showRoute([...buttons].some(button => button.dataset.route === route) ? route : 'staff');
+}
+readRoute();
+window.addEventListener('hashchange', readRoute);
+document.getElementById('play-intro').addEventListener('toggle', event => {
+  const mount = document.getElementById('intro-player');
+  if (!event.currentTarget.open) { mount.replaceChildren(); return; }
+  const player = document.createElement('iframe');
+  player.title = 'Complete Day 1 rehearsal on the current floor';
+  player.src = 'day-one-rehearsal.html';
+  mount.replaceChildren(player);
+});
+</script></body></html>

@@ -208,10 +208,10 @@
     {
       "id": "Hot_Walk",
       "label": "Hot Walk",
-      "actor": "Cathexis",
+      "actor": "CATHEXIS",
       "loop": true,
       "duration": 5.76666667,
-      "note": "Owner confirms Hot Walk in Meshy and selects it as Cathexis\u2019s default walk. The hip-led crossover and attitude are intentional. This worker is only a motion stand-in; retarget and check actual mesh clearance on Cathexis.",
+      "note": "Owner confirms Hot Walk in Meshy and selects it as CATHEXIS\u2019s default walk. The hip-led crossover and attitude are intentional. This worker is only a motion stand-in; retarget and check actual mesh clearance on CATHEXIS.",
       "sourceFile": "Animation_Confident_Walk_withSkin.fbx",
       "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Hot_walk.zip",
       "sourceSha256": "420ab45096d9f04af5bbe9914482c17371bc3ec695bb34038c9d2c749e3fe42e",

@@ -13,7 +13,8 @@ const compiled = ts.transpileModule(fs.readFileSync(navigation,'utf8'),{compiler
 const navigationExports={};
 new Function('exports','require',compiled)(navigationExports,require);
 const {simultaneousDistanceSquared,segmentBoxDistanceSquared,NAVIGATION_ROOT_RADIUS_MM,NAVIGATION_ROOT_SEPARATION_MM}=navigationExports;
-const dialogue=fs.readFileSync(new URL('../DAY_ONE_INTRO.md',folder),'utf8').split('\n').filter(l=>l.startsWith('**'));
+const dialogue=[...fs.readFileSync(new URL('../DAY_ONE_INTRO.md',folder),'utf8')
+  .matchAll(/^\*\*(\w+)\*\*\s+(.+)$/gm)].map(([,speaker,text])=>({speaker,text}));
 const s=makeSequence(floor,dialogue);
 const ids=Object.keys(s.cast);
 const knots=[...new Set(Object.values(s.tracks).flat().map(k=>k.t))].sort((a,b)=>a-b);
@@ -22,7 +23,8 @@ function violation(id,time,distance){
   const previous=issues.get(id);
   if(!previous||distance<previous.distance)issues.set(id,{id,time,distance});
 }
-const solid=floor.fixtures.filter(q=>q.kind!=='drain');
+const solid=[...floor.fixtures.filter(q=>q.kind!=='drain'),...floor.forgeHall.installations,
+  ...floor.forgeHall.columns.map((rect,i)=>({id:'crane post '+i,rect}))];
 // Actual wall segments, split at the apertures used by the episode.
 function wall(x,y,w,h){solid.push({id:'wall '+[x,y],rect:{x,y,w,h}});}
 wall(80,128,45,0);wall(131,128,25,0);
@@ -87,7 +89,17 @@ const [sx,sy]=samplePath(track,passage).p;
 assert(sx>hx+.5 && sx<hx+g.length-.4,'cross inside the span of the raised boom');
 const mark=samplePath(s.tracks.LIMEN,passage).p;
 const open=g.openings[0][1];
-assert.deepEqual(samplePath(track,open-.5).p,samplePath(track,open).p,'wait until the gate is up');
+const request=s.speech.find(q=>q.speaker==='STILETTO' && q.text==='Hold that gate.');
+assert(request,'the command is attached to the approved line');
+assert(track[0].t>s.start && request.start<open && request.end<passage);
+assert(samplePath(track,request.start).p[1]<hy && samplePath(track,passage+.8).p[1]>hy);
+const stride=[];
+for(let i=1;i<track.length && track[i-1].t<g.hold.end;i++){
+  const a=track[i-1],b=track[i];
+  if(b.t>a.t)stride.push(Math.hypot(b.p[0]-a.p[0],b.p[1]-a.p[1])/(b.t-a.t));
+}
+assert(Math.min(...stride)>1 && Math.max(...stride)-Math.min(...stride)<1e-8,
+  'STILETTO keeps her walking pace from the street into Conveyor');
 assert(passage>open && passage<g.hold.end);
 assert.deepEqual(samplePath(s.tracks.LIMEN,g.hold.start).p,mark,'LIMEN has reached the post');
 assert.deepEqual(samplePath(s.tracks.LIMEN,g.hold.end).p,mark,'hold position until STILETTO clears the threshold');
@@ -104,3 +116,117 @@ const markers=makeBuildMarkers(floor,s);
 assert.equal(new Set(markers.map(m=>m.id)).size,markers.length);
 for(const {rect,base,height} of markers)assert(rect.w>0 && rect.h>0 && height>=0 && Number.isFinite(base));
 console.log('STILETTO crossed behind LIMEN at',passage.toFixed(2),'s. Closest approach',clearance.toFixed(2),'m.');
+
+
+// Keep the material path continuous and the heavy traffic lanes clear of fixed equipment.
+const hall=floor.forgeHall;
+const keyed=items=>Object.fromEntries(items.map(item=>[item.id,item.rect]));
+const plants=keyed(hall.installations), machines=keyed(floor.fixtures), roads=keyed(hall.runs);
+const portal=floor.portals.find(p=>p.id==='dispatch-conveyor').rect;
+assert.equal(roads.delivery.x,portal.x);
+assert.equal(roads.delivery.w,portal.w);
+assert(roads.delivery.y<=portal.y+portal.h);
+const line=[plants.infeed,machines.intake,machines.wash,machines.belt,machines.forge,machines.output,plants['transfer-table']];
+for(const [i,section] of line.entries()){
+  assert(section.y<hall.carrierY && hall.carrierY<section.y+section.h);
+  if(i)assert.equal(line[i-1].x+line[i-1].w,section.x,'carrier bed has a gap');
+}
+assert.equal(line.at(-1).x+line.at(-1).w,roads.outbound.x);
+assert.equal(roads.outbound.y+roads.outbound.h,roads.transfer.y);
+const overlaps=(a,b)=>a.x<b.x+b.w && b.x<a.x+a.w && a.y<b.y+b.h && b.y<a.y+a.h;
+for(const road of Object.values(roads)){
+  for(const obstacle of [...Object.values(plants),...Object.values(machines),...hall.columns]){
+    assert(!overlaps(road,obstacle),'traffic lane overlaps fixed equipment');
+  }
+}
+const press=markers.find(m=>m.id==='C4');
+assert(hall.crane.base>press.height && hall.crane.base+hall.crane.height<15);
+assert(press.rect.x>=hall.crane.rect.x && press.rect.x+press.rect.w<=hall.crane.rect.x+hall.crane.rect.w);
+assert.equal(markers.filter(m=>m.room==='Forge hall').length,9);
+
+// The reader serializes just the crossing. Leaving the line and walking home are ensemble actions.
+const bell=s.beats.find(b=>b.name==='End of shift').at;
+const moving=(id,t)=>samplePath(s.tracks[id],t).moving;
+const position=(id,t)=>samplePath(s.tracks[id],t).p;
+const between=(a,b,t)=>Math.hypot(...position(a,t).map((v,i)=>v-position(b,t)[i]));
+assert.equal(s.departures.filter(w=>moving(w.id,bell+1)).length,6);
+for(const [id,off] of Object.entries(s.shutdown)){
+  assert(!moving(id,off-.01) && moving(id,off+.01),id+' must finish at the controls');
+}
+assert(s.departures.every(w=>moving(w.id,bell+2.5)));
+const lastCheck=s.tallies.at(-1);
+for(const [i,t] of s.tallies.entries()){
+  assert.deepEqual(position('ed',t),position('ed',bell),'ed stays at the register');
+  if(i)assert(t-s.tallies[i-1]>=1.12-1e-8);
+  assert(s.departures.some(w=>between('ed',w.id,t)<1.5),'the worker passes the clerk');
+}
+assert(lastCheck-s.tallies[0]<9,'keep the single reader occupied during the release');
+assert(moving('LIMEN',lastCheck+1.8) && !moving('ed',lastCheck+1.8));
+const [morningCut,cut]=s.cuts;
+assert.equal(s.cuts.length,2);
+const morning=s.beats[0], gateBeat=s.beats.find(b=>b.name==='At the gate');
+assert.equal(s.worldTime(0),morning.at);
+assert.equal(s.editTime(morning.at),0);
+assert.equal(s.worldTime(s.editTime(morningCut.at)),morningCut.to);
+assert.equal(gateBeat.at,s.speech[6].start);
+const entrants=ids.filter(id=>id!==id.toUpperCase());
+assert.equal(entrants.length,10);
+const frontTimes=[];
+for(const id of [...entrants,'STILETTO']){
+  const keys=s.tracks[id].filter(key=>key.t<=request.end);
+  assert(keys[0].p[1]>floor.exit.y+4,id+' must begin in the yard');
+  function crossing(axis,edge,sign){
+    const i=keys.findIndex((key,i)=>i>0 && sign*(keys[i-1].p[axis]-edge)<0 && sign*(key.p[axis]-edge)>=0);
+    assert(i>0,id+' must cross '+edge);
+    const a=keys[i-1],b=keys[i],f=(edge-a.p[axis])/(b.p[axis]-a.p[axis]);
+    return {t:a.t+(b.t-a.t)*f,across:a.p[1-axis]+(b.p[1-axis]-a.p[1-axis])*f};
+  }
+  const front=crossing(1,floor.exit.y,-1), radius=NAVIGATION_ROOT_RADIUS_MM/1000;
+  assert(front.across>=floor.exit.x+radius && front.across<=floor.exit.x+floor.exit.w-radius);
+  if(id==='STILETTO'){
+    assert(track[0].t>morningCut.at && front.t<morningCut.to,'the supervisor enters in the omitted stretch of travel');
+  }else{
+    assert(front.t<morningCut.at,id+' must enter the front door on camera');
+  }
+  frontTimes.push(front.t);
+  let prior=front.t;
+  for(const pid of ['lobby-dispatch','dispatch-security']){
+    const {x,y,w,h}=floor.portals.find(p=>p.id===pid).rect;
+    const next=crossing(0,x+w/2,1);
+    assert(next.t>prior && next.across>=y+radius && next.across<=y+h-radius);
+    prior=next.t;
+  }
+}
+assert(frontTimes.at(-1)>Math.max(...frontTimes.slice(0,-1)),'STILETTO follows the entire crew inside');
+const walkingLines=s.speech.slice(0,6);
+assert.equal(walkingLines[0].start,s.start);
+assert.equal(walkingLines[0].speaker,'max');
+assert.equal(s.speech[6].speaker,'LIMEN');
+for(const [i,q] of walkingLines.entries()){
+  assert(q.end<=morningCut.at || q.start>=morningCut.to,'finish the line before cutting');
+  assert(moving(q.speaker,q.start) && moving(q.speaker,q.end-.01),'speak in motion');
+  if(i)assert(s.editTime(q.start)-s.editTime(walkingLines[i-1].end)<.85,'keep the conversation moving');
+  assert(between(q.speaker,'max',q.start)<4,'the speakers are within earshot');
+}
+const reply=walkingLines.at(-1);
+assert.deepEqual(position('max',reply.end),s.cast.max,'finish the reply on reaching the queue');
+assert(gateBeat.at-reply.end>0 && gateBeat.at-reply.end<.5,'hand the greeting to LIMEN');
+for(const t of [s.start+.2,morningCut.at-.01,morningCut.to+.01,gateBeat.at]){
+  assert(Math.abs(s.worldTime(s.editTime(t))-t)<1e-7);
+}
+assert(cut.at>lastCheck && cut.to<s.yard);
+for(const t of [bell,lastCheck,cut.to+.01,s.yard,s.end]){
+  assert(Math.abs(s.worldTime(s.editTime(t))-t)<1e-7,'seek across the Dispatch cut');
+}
+for(let t=s.yard;t<s.yard+9.4;t+=.25){
+  assert(moving('max',t) && moving('gus',t) && between('max','gus',t)<2,'the pair walk in step');
+}
+assert(ids.filter(id=>moving(id,s.yard)).length>=8,'the yard should have other people in motion');
+const laugh=s.cues.find(c=>c.label==='laughs first').start;
+assert(position('ed',laugh)[1]>floor.exit.y && between('ed','max',laugh)<8,'ed can hear max outside');
+console.log('Passed hall material flow, road clearances, concurrent shutdown, register and walking exchange.');
+
+const threat=s.speech.find(q=>q.text.startsWith("IF YOU DON'T GET ME"));
+assert(threat && threat.end-threat.start>=6.5 && threat.end-threat.start<7);
+assert(samplePath(s.tracks.max,threat.end+.05).moving,'max acts as the threat ends');
+assert(s.gate.openings.some(([start,open])=>start<=threat.end && open>=threat.end));

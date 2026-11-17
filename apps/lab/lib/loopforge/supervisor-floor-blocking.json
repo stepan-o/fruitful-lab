@@ -1,0 +1,550 @@
+{
+  "rooms": {
+    "security": {
+      "limen": {
+        "title": "Read, stamp, admit",
+        "marks": [
+          "S2",
+          "S3"
+        ],
+        "action": "LIMEN stands between the register and the west pier. A card crosses the counter before the boom rises. During lockdown his hand goes to the sealing control while the red indicators advance down the wall.",
+        "space": "Keep the waiting worker, LIMEN’s hand and the first sealed door in one tight frame. Keep the grate free for bob’s card."
+      },
+      "stiletto": {
+        "title": "Claim the lane",
+        "marks": [
+          "S1",
+          "S3"
+        ],
+        "action": "Enter on the crew’s axis and call for the gate in stride. On a later assignment she waves the next Conveyor crew through as loose papers fall back onto the reader.",
+        "space": "LIMEN steps to the pier. Leave a continuous passing lane and a side pocket for workers reassigned out of the queue."
+      },
+      "cathexis": {
+        "title": "Draw attention off the reader",
+        "marks": [
+          "S1",
+          "S2"
+        ],
+        "action": "CATHEXIS lifts the papers from the register and draws the waiting workers toward her. The unattended opening behind her explains how a worker gets through unchecked.",
+        "space": "Frame the moving file and the empty reader together. One worker can watch her while a second slips past."
+      },
+      "witch": {
+        "title": "Sort by trade",
+        "marks": [
+          "S2",
+          "S3"
+        ],
+        "action": "RIVET WITCH checks a worker’s tool or badge, then points to the Brewery or Weaving door. A worker bound for Conveyor waits while a specialist changes lanes.",
+        "space": "Stand on the cleared side of the desk so both destination signs and the gate remain visible."
+      },
+      "thrum": {
+        "title": "Quiet the checkpoint",
+        "marks": [
+          "S1",
+          "S2"
+        ],
+        "action": "THRUM sits with the guards. On the failed watch, he works a portable sound console while the alarm panel goes dark and an arrival waits for a check.",
+        "space": "Allow a seated cluster beside the reader. Keep the empty checking position visible beyond them."
+      }
+    },
+    "conveyor": {
+      "limen": {
+        "title": "Pace the bed",
+        "marks": [
+          "F1",
+          "F2"
+        ],
+        "action": "Walk the operator side with the blade lowered. Hold a carrier short of the press until the hands on the clamp are clear. The next cradle waits behind it.",
+        "space": "Keep both the safe handoff and the accumulating cradle visible down the carrier bed."
+      },
+      "stiletto": {
+        "title": "Drive the carriers",
+        "marks": [
+          "F1",
+          "F2",
+          "F3"
+        ],
+        "action": "Walk beside a loaded cradle and command the restart at the motor. Overdrive sends units through quickly while the drive heats, then leaves a stopped bed and workers down beside it.",
+        "space": "Leave a full walking strip beside the hot bed. Give the player a view past flying sparks to the workers and the last moving carrier."
+      },
+      "cathexis": {
+        "title": "Hold one brain",
+        "marks": [
+          "F1",
+          "F2"
+        ],
+        "action": "CATHEXIS cups one exposed brain at the operator ledge. On a clean pass she settles it before the clamp arrives. On a bad run she recoils while another cradle advances.",
+        "space": "Reserve room for both hands over the cradle. Show the next carrier approaching behind the one she is attending."
+      },
+      "witch": {
+        "title": "Claim the stopped drive",
+        "marks": [
+          "F1",
+          "F2"
+        ],
+        "action": "Kneel at the drive housing with a micro-torch. A worker holds the tray at the stop until she closes the cover, stands clear and signals the restart.",
+        "space": "Give the cover a hinge and RIVET WITCH a knee mark outside its swing. Keep the waiting rack in the repair shot."
+      },
+      "thrum": {
+        "title": "Set a slower rhythm",
+        "marks": [
+          "F1",
+          "F3"
+        ],
+        "action": "Place THRUM’s portable console beside the carrier bed. Workers begin matching their lifts to his pulse. Fewer trays reach Output while their shoulders drop.",
+        "space": "Preserve the walking strip between console and rollers. Frame a worker’s changed cadence against the loaded trays waiting behind."
+      }
+    },
+    "theatre": {
+      "limen": {
+        "title": "Follow the indicators",
+        "marks": [
+          "T2",
+          "T3"
+        ],
+        "action": "LIMEN runs the seated bank from the side console, switching one row at a time. In a bad session the warning travels along a row before the chamber fails.",
+        "space": "He must see the row lights over the console. The camera can hold his hand on the control as the far berth changes."
+      },
+      "stiletto": {
+        "title": "Override a test",
+        "marks": [
+          "T2",
+          "T3"
+        ],
+        "action": "At the side desk STILETTO cuts a burn-in cycle short and releases the stop. In the failure painting sparks spread through the berths and she has to turn back toward the audience.",
+        "space": "Keep the override lever, active cradle and loose pallet on the same diagonal. The side aisle stays passable."
+      },
+      "cathexis": {
+        "title": "Take the audience",
+        "marks": [
+          "T1",
+          "T2"
+        ],
+        "action": "CATHEXIS steps into the light just below the three screens and turns the seated rows toward her. For Theatre Revolution, change the projected symbols and let the audience turn together.",
+        "space": "Keep her silhouette legible from the last row. An arriving pallet can dock at the side while she holds the floor."
+      },
+      "witch": {
+        "title": "Repair the projector",
+        "marks": [
+          "T1",
+          "T3"
+        ],
+        "action": "RIVET WITCH opens the side console before the session. For the illustrated lecture variation she takes the apron with a technical diagram; workers turn from the screen to each other.",
+        "space": "Reserve a console-service position and a separate teaching mark under the screen. The repair panel must open without blocking the aisle."
+      },
+      "thrum": {
+        "title": "Turn a session into music",
+        "marks": [
+          "T1",
+          "T2"
+        ],
+        "action": "THRUM sets a mixer at the front corner. The seated workers follow his hands and relax under the still-visible programme posters.",
+        "space": "Leave the projection cone clear and keep the active row, mixer and CATHEXIS’s empty centre mark in the same wide shot."
+      }
+    },
+    "brewery": {
+      "limen": {
+        "title": "Check the batch by procedure",
+        "marks": [
+          "B1",
+          "B3"
+        ],
+        "action": "LIMEN reads the sampling board before authorizing a draw. In a fiasco he is still facing the indicators when the mixture rises behind him and the workers retreat.",
+        "space": "Keep the rear rim visible over his shoulder; a spotter needs an unobstructed way back from it."
+      },
+      "stiletto": {
+        "title": "Force the vat",
+        "marks": [
+          "B1",
+          "B2"
+        ],
+        "action": "Lean over the hot rim and use the wrist blade to hurry the mix. One batch stabilizes. In the failure variation the plume pushes the crew away from the filter outlet.",
+        "space": "Give the blade a clear arc above the rim. Leave the opposite side open for the operators’ retreat."
+      },
+      "cathexis": {
+        "title": "Inspect the surface",
+        "marks": [
+          "B1",
+          "B3"
+        ],
+        "action": "CATHEXIS leans across the green bath and her face changes in its light. A worker waits with the sample cup while the rest of the batch sits in the vat.",
+        "space": "Set the sample position low enough to see her face reflected and the waiting hand in the foreground."
+      },
+      "witch": {
+        "title": "Sample and release",
+        "marks": [
+          "B1",
+          "B2",
+          "B3"
+        ],
+        "action": "RIVET WITCH stirs below the hanging crown, draws a sample, then works the outlet. For System Refactor she brings a separate experiment vessel to the rim while the branch valves elsewhere close.",
+        "space": "Allow one continuous turn from vat to logbook. Give the experiment vessel its own perch and keep the outlet gauge in view."
+      },
+      "thrum": {
+        "title": "Share the batch",
+        "marks": [
+          "B1",
+          "B3"
+        ],
+        "action": "THRUM sets out cups and the crew gathers at the sampling side. A cup passes hand to hand as the collection outlet stays shut.",
+        "space": "Provide a gathering arc clear of the hot rim. The idle collection vessel should stay in the background."
+      }
+    },
+    "weaving": {
+      "limen": {
+        "title": "Thread the comb",
+        "marks": [
+          "W1",
+          "W4"
+        ],
+        "action": "LIMEN pinches the ribbon across the loom at the repair edge. On a bad pull the glowing strands loop around his hands and the take-up spool stops.",
+        "space": "Keep the loom’s side open so the camera can see the tension travel from hand to winding drum."
+      },
+      "stiletto": {
+        "title": "Cut a snarl",
+        "marks": [
+          "W1",
+          "W4"
+        ],
+        "action": "STILETTO leans in with both blades. A clean cut lets the drum turn again; in failure a loose sheet wraps around her forearm and the broken ends fall on the floor.",
+        "space": "Reserve blade reach beside the comb and keep the other loom visible through the centre aisle."
+      },
+      "cathexis": {
+        "title": "Lay a ribbon evenly",
+        "marks": [
+          "W1",
+          "W3"
+        ],
+        "action": "CATHEXIS spreads the live threads across the illuminated comb. Her hands move deliberately and the take-up drum advances at a steady rate.",
+        "space": "Place the standing mark sideways to a luminous column so individual threads read against her hands."
+      },
+      "witch": {
+        "title": "Tune tomorrow’s run",
+        "marks": [
+          "W1",
+          "W4"
+        ],
+        "action": "RIVET WITCH gathers the slack, adjusts the comb and tests tension against a stationary drum. Leave a prepared spool in place for the next shift.",
+        "space": "Give her a reachable adjustment wheel and a place to hang the bundle. A stopped output drum makes the time cost visible."
+      },
+      "thrum": {
+        "title": "Conduct the resonator",
+        "marks": [
+          "W2",
+          "W3"
+        ],
+        "action": "THRUM kneels on the gallery axis facing the instrument. For Harmonic Dissolution the same instrument draws the crew in while winding stops at both looms.",
+        "space": "Keep the approach and stair clear. From behind THRUM, both lit columns and the still spools should frame the group."
+      }
+    },
+    "cortex": {
+      "limen": {
+        "title": "Hold for proof",
+        "marks": [
+          "C2",
+          "C4"
+        ],
+        "action": "At receiving LIMEN matches one core tag to its proof slip. He holds the hoist stop until a technician releases the cold bench. A mismatched tag stays on the test spur.",
+        "space": "Put the tag, stop and waiting core within a single sightline; keep the outward lift clear."
+      },
+      "stiletto": {
+        "title": "Press for release",
+        "marks": [
+          "C1",
+          "C4"
+        ],
+        "action": "STILETTO follows the core to the furnace mouth and demands an early transfer. If the operator holds the test, the next core parks at receiving.",
+        "space": "Reserve a blade-width gap outside the clamp stroke. Let the audience see the unlatched cradle and the cold bench beyond."
+      },
+      "cathexis": {
+        "title": "Witness activation",
+        "marks": [
+          "C1",
+          "C3"
+        ],
+        "action": "CATHEXIS takes the console-side witness position as a worker brings the first stable core into the light. She addresses the crew while the proof operator records the result.",
+        "space": "Keep her face, the operator’s hand and the test lamp in frame. A performance cannot sign off the test."
+      },
+      "witch": {
+        "title": "Align, cool and prove",
+        "marks": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "action": "RIVET WITCH aligns the ribbon cassette, closes the hot fixture and reads the cold proof trace from the side desk. A failed trace sends the same tagged unit back onto the spur.",
+        "space": "Keep a two-person service ring between the hot chamber and cold vessels, with a clear route to the instrument desk."
+      },
+      "thrum": {
+        "title": "Listen for drift",
+        "marks": [
+          "C2",
+          "C3"
+        ],
+        "action": "At the cold bench THRUM asks for a quiet interval and compares two test pulses. The operator holds the unit until the second reading settles.",
+        "space": "Give him a listening mark outside the lift path. Let the still carrier and the pulsing lamp show what the pause costs."
+      }
+    },
+    "lobby": {
+      "limen": {
+        "title": "Order the file",
+        "marks": [
+          "L1",
+          "L2"
+        ],
+        "action": "At the claims counter LIMEN calls the next card and the next worker steps off the doorway axis. The gate inside can continue working.",
+        "space": "Leave a recess for claims so the tail of the arriving file can keep moving."
+      },
+      "stiletto": {
+        "title": "Pass the arrivals",
+        "marks": [
+          "L1"
+        ],
+        "action": "She takes the same exterior doors after the workers and walks the clear edge of the crowd into Dispatch.",
+        "space": "Protect the delayed reveal in the opening lens; the approach must accommodate her full stride."
+      },
+      "cathexis": {
+        "title": "Work the notice board",
+        "marks": [
+          "L2",
+          "L3"
+        ],
+        "action": "CATHEXIS reads one notice aloud, drawing a few workers toward the lamps while the rest file inside.",
+        "space": "Leave listening room against the wall with an open line to the entrance."
+      },
+      "witch": {
+        "title": "Inspect a sticking leaf",
+        "marks": [
+          "L1",
+          "L2"
+        ],
+        "action": "RIVET WITCH checks the actuator from the wall side and works the door by hand while the crew uses the second leaf.",
+        "space": "Expose a service cover and leave one clear opening during the inspection."
+      },
+      "thrum": {
+        "title": "Let the shift gather",
+        "marks": [
+          "L2",
+          "L3"
+        ],
+        "action": "THRUM sits beneath the number drums. Workers linger beside him while the next posted number advances.",
+        "space": "Keep a small seating edge clear of the arrival file and show the changing drum above the group."
+      }
+    },
+    "dispatch": {
+      "limen": {
+        "title": "Release an order",
+        "marks": [
+          "D1",
+          "D2"
+        ],
+        "action": "LIMEN matches the order on the standing desk to one board slot and turns its card to cleared.",
+        "space": "Keep the board readable past his shoulder and one tray visible at the hatch."
+      },
+      "stiletto": {
+        "title": "Pull the next tray",
+        "marks": [
+          "D1",
+          "D3"
+        ],
+        "action": "She takes a hot order off the board and signals the loader to send its stillage through ahead of the waiting job.",
+        "space": "The two order slots and the single physical loading mouth must be visible together."
+      },
+      "cathexis": {
+        "title": "Gather support for a job",
+        "marks": [
+          "D1",
+          "D2"
+        ],
+        "action": "CATHEXIS addresses the handlers beside the order board. One handler turns toward her while the clerk waits to release a tray.",
+        "space": "Give the group a side bay so it can gather without blocking the transfer hatch."
+      },
+      "witch": {
+        "title": "Reserve a repair load",
+        "marks": [
+          "D2",
+          "D3"
+        ],
+        "action": "RIVET WITCH tags a die stillage for maintenance, takes it out of the outgoing file and marks a replacement on the desk.",
+        "space": "Leave one off-line parking place in reach of the desk."
+      },
+      "thrum": {
+        "title": "Space the releases",
+        "marks": [
+          "D1",
+          "D3"
+        ],
+        "action": "THRUM spaces the handlers’ lifts. The hatch receives one tray at a time and the board shows a second order still waiting.",
+        "space": "Keep a straight view from the board to the loading stop."
+      }
+    },
+    "logistics": {
+      "limen": {
+        "title": "Audit the destination",
+        "marks": [
+          "G1",
+          "G3"
+        ],
+        "action": "LIMEN reconciles a tag with the open ledger before lifting the dock or muster stop. A disputed unit stays at receiving.",
+        "space": "Give him sight of both stops from the desk. Keep the disputed carrier outside the turning circle."
+      },
+      "stiletto": {
+        "title": "Clear the dock",
+        "marks": [
+          "G1",
+          "G3"
+        ],
+        "action": "STILETTO urges a quota load toward the exterior door. The clerk records the commitment before the stop releases.",
+        "space": "Show the loaded dock and the retained lane side by side so the destination is legible."
+      },
+      "cathexis": {
+        "title": "Receive a retained worker",
+        "marks": [
+          "G1",
+          "G3"
+        ],
+        "action": "CATHEXIS meets a newly retained worker at muster, asks about its Theatre session and escorts it away from the quota lane.",
+        "space": "Leave two standing positions past the retention stop and keep the unclaimed quota pallet in view."
+      },
+      "witch": {
+        "title": "Inspect the first prototype",
+        "marks": [
+          "G1",
+          "G4"
+        ],
+        "action": "RIVET WITCH holds the first 2.0 in the commissioning berth and checks its proof record against its physical tag before sign-off.",
+        "space": "The lift stays usable while the prototype is parked and ordinary allocations continue at the adjacent desk."
+      },
+      "thrum": {
+        "title": "Settle the muster",
+        "marks": [
+          "G2",
+          "G3"
+        ],
+        "action": "THRUM meets the retained group under the manifest shelves. One worker joins the group as a quota load rolls outside.",
+        "space": "Keep the quiet wall and exterior dock visible on different sides of the receiver."
+      }
+    },
+    "pipes": {
+      "limen": {
+        "title": "Authorize an isolation",
+        "marks": [
+          "P1",
+          "P2"
+        ],
+        "action": "LIMEN locks the branch tag while a technician reads the gauge. The two remaining branches stay charged.",
+        "space": "Give the tag and the gauge the same sightline from the service platform."
+      },
+      "stiletto": {
+        "title": "Demand the dry transfer",
+        "marks": [
+          "P2",
+          "P3"
+        ],
+        "action": "STILETTO calls for an urgent core cassette at the trolley landing. A full receiving socket holds it on the rail.",
+        "space": "Keep her work mark outside the hanger sweep and the staff doorway open underneath."
+      },
+      "cathexis": {
+        "title": "Address the waiting crew",
+        "marks": [
+          "P1",
+          "P2"
+        ],
+        "action": "CATHEXIS speaks from the foot of the service landing when a branch is isolated. Workers can see the dark flow glass behind her.",
+        "space": "Keep the listeners off the access ladder and away from the freight crossing."
+      },
+      "witch": {
+        "title": "Isolate one branch",
+        "marks": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "action": "RIVET WITCH closes the branch wheel, samples the dead leg and withdraws the filter while the other two feeds remain live.",
+        "space": "Place the return wheel and sample cock within one platform bay. Keep the dry trolley above her reach."
+      },
+      "thrum": {
+        "title": "Listen at the return",
+        "marks": [
+          "P1",
+          "P2"
+        ],
+        "action": "THRUM asks for one quiet pump cycle and listens at a return saddle. A worker watches the flow glass before reopening the branch.",
+        "space": "Provide a protected maintenance mark and preserve the wet and dry markings in the shot."
+      }
+    }
+  },
+  "pairs": {
+    "limen-stiletto": {
+      "marks": [
+        "S2",
+        "S3",
+        "F2"
+      ],
+      "action": "At Security the reader stands between their forearms and the crew can still pass behind LIMEN. At the Forge give them opposite sides of the loaded press, with the operator visible between them."
+    },
+    "limen-cathexis": {
+      "marks": [
+        "S2",
+        "F1"
+      ],
+      "action": "Across the Security ledger, CATHEXIS lifts a sheet while LIMEN keeps one hand on the reader. At the belt they face each other across a cradle as the next carrier approaches."
+    },
+    "limen-witch": {
+      "marks": [
+        "B3",
+        "P2"
+      ],
+      "action": "RIVET WITCH reaches the branch wheel from the platform. LIMEN holds the isolation tag at ground level. The waiting fitter can see both the closed branch and the missing authorization."
+    },
+    "limen-thrum": {
+      "marks": [
+        "S1",
+        "S2"
+      ],
+      "action": "THRUM sits in the guards’ recess while LIMEN stands at the reader. Frame the arriving worker whose card neither has taken."
+    },
+    "stiletto-cathexis": {
+      "marks": [
+        "F1",
+        "F2"
+      ],
+      "action": "CATHEXIS keeps both hands over a brain and STILETTO reaches toward the restart from across the bed. Keep the next moving cradle visible behind them."
+    },
+    "stiletto-witch": {
+      "marks": [
+        "F1",
+        "F2"
+      ],
+      "action": "Place RIVET WITCH’s torch inside the open drive cover and STILETTO’s blade over the start switch on the far side. A worker holds the waiting tray until both tools clear."
+    },
+    "stiletto-thrum": {
+      "marks": [
+        "F1",
+        "F3"
+      ],
+      "action": "THRUM cues a slower lift from the rail. STILETTO strides beside the same carrier to urge it forward. The worker between them has one clamp to close."
+    },
+    "cathexis-witch": {
+      "marks": [
+        "T1",
+        "T3"
+      ],
+      "action": "RIVET WITCH exposes the projector controls at the side while CATHEXIS holds the audience from the apron. A restored beam interrupts her address and shows who controls the image."
+    },
+    "cathexis-thrum": {
+      "marks": [
+        "T1",
+        "T2"
+      ],
+      "action": "CATHEXIS addresses the rows head-on. THRUM plays from the side aisle. Leave a front-row worker able to turn from one to the other without leaving the berth."
+    },
+    "witch-thrum": {
+      "marks": [
+        "W1",
+        "W2"
+      ],
+      "action": "RIVET WITCH tensions the comb from the side while THRUM listens from the centre steps. The take-up drum starts only after their two checks agree."
+    }
+  }
+}

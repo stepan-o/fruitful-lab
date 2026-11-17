@@ -1,5 +1,5 @@
 import {worldPoint} from '../spatial/floor';
-/** Shared geometry for the Forge cycle control and Max's hand target.
+/** Shared geometry for the Forge cycle control and max's hand target.
  * The existing stop button and indicator keep their distinct meanings. */
 export const MAX_FORGE_CYCLE_CONTROL={
  plan:[148.5,105.30] as const,

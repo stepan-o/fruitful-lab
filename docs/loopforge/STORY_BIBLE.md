@@ -54,11 +54,11 @@ Now the works has been assigned a new project: Brain 2.0. Before it can build th
 
 Five supervisors stand between your instructions and the production floor. They know how this place runs. Your appointment gives you authority over them; what they will do with your orders remains to be seen.
 
-Limen checks your authorization and hands you the shift target.
+LIMEN checks your authorization and hands you the shift target.
 
 “Non-negotiable.”
 
-On the floor, a conveyor has jammed. Rivet Witch wants it inspected before it moves again. Stiletto says she can have it running now. The workers wait beside the unfinished batch.
+On the floor, a conveyor has jammed. RIVET WITCH wants it inspected before it moves again. STILETTO says she can have it running now. The workers wait beside the unfinished batch.
 
 Your first shift starts with the decision to restart the line—or keep it stopped while production falls further behind quota.
 

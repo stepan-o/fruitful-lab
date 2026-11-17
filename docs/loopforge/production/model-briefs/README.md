@@ -1,6 +1,6 @@
 # Model briefs — Loopforge production archive
 
-14 October 2026. Four reusable character kits: LIMEN body/emitter, Worker 01, STILETTO body/blade/welder and CATHEXIS body/face system/material conditions. Game Design → Model briefs is the maintained visual entry; each current model viewer links back to its brief. Rivet Witch and Thrum are not yet generated and have no completed briefs in this release.
+14 October 2026. Four reusable character kits: LIMEN body/emitter, Worker 01, STILETTO body/blade/welder and CATHEXIS body/face system/material conditions. Game Design → Model briefs is the maintained visual entry; each current model viewer links back to its brief. RIVET WITCH and THRUM are not yet generated and have no completed briefs in this release.
 
 ## Next sheet revision — 18 October 2026
 

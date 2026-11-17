@@ -27,7 +27,7 @@
   function renderRumor(id,notify=true){
     const c=d.stress.cases.find(x=>x.id===id)||d.stress.cases[0];
     document.querySelectorAll('[data-rumor]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.rumor===c.id)));
-    document.getElementById('rumor-detail').innerHTML=`<article class="rumor-case"><span class="status">Conceptual scenario · proposed sequence</span><h3>${escape(c.name)}</h3><div class="two-col"><dl>${def('Physical truth',c.truth)}${def('Who learns what',c.reach)}${def('What they believe',c.interpretation)}</dl><dl>${def('Player response',c.choice)}${def('Consequences',c.aftermath)}${def('Thrum’s role',c.thrum)}</dl></div></article>`;
+    document.getElementById('rumor-detail').innerHTML=`<article class="rumor-case"><span class="status">Conceptual scenario · proposed sequence</span><h3>${escape(c.name)}</h3><div class="two-col"><dl>${def('Physical truth',c.truth)}${def('Who learns what',c.reach)}${def('What they believe',c.interpretation)}</dl><dl>${def('Player response',c.choice)}${def('Consequences',c.aftermath)}${def('THRUM’s role',c.thrum)}</dl></div></article>`;
     if(notify)announce(c.name+' selected');
   }
   function renderBDI(id,notify=true){
@@ -66,9 +66,105 @@
     document.querySelectorAll('[data-adviser-case]').forEach(el=>el.hidden=el.dataset.adviserCase!==c.id);
     if(notify)announce(c.name+' staffing proposal selected');
   }
+  const atlasFrame = document.getElementById('supervisor-atlas-frame');
+  if (atlasFrame) {
+    const artDialog = document.getElementById('supervisor-art-dialog');
+    const image = artDialog.querySelector('img');
+    let opener;
+    let observer;
+    atlasFrame.addEventListener('supervisor:inspect', event => {
+      const {title, src, alt} = event.detail;
+      opener = atlasFrame.contentDocument.activeElement;
+      artDialog.querySelector('h3').textContent = title;
+      artDialog.querySelector('p').textContent = alt;
+      image.src = src;
+      image.alt = alt;
+      artDialog.showModal();
+      event.preventDefault();
+    });
+    artDialog.querySelector('button').addEventListener('click', () => artDialog.close());
+    artDialog.addEventListener('click', event => { if (event.target === artDialog) artDialog.close(); });
+    artDialog.addEventListener('close', () => { image.removeAttribute('src'); opener?.focus({preventScroll:true}); });
+    atlasFrame.addEventListener('load', () => {
+      const doc = atlasFrame.contentDocument;
+      const root = doc?.getElementById('supervisor-atlas-root');
+      if (!root) return;
+      observer?.disconnect();
+      observer = new ResizeObserver(() => {
+        const height = Math.ceil(root.getBoundingClientRect().height);
+        if (height) atlasFrame.style.height = height + 'px';
+      });
+      observer.observe(root);
+      doc.addEventListener('click', event => {
+        const link = event.target.closest('a[href^="#"]');
+        const target = link && doc.getElementById(link.hash.slice(1));
+        if (!target) return;
+        event.preventDefault();
+        requestAnimationFrame(() => {
+          target.focus({preventScroll:true});
+          target.scrollIntoView({block:'start'});
+        });
+      });
+    });
+  }
+  const floorViewer = document.getElementById('floor-viewer');
+  const floorViews = [...document.querySelectorAll('.floor-views a')];
+  const standalone = document.getElementById('floor-standalone');
+  let floorObserver;
+
+  function closeFloorView() {
+    floorObserver?.disconnect();
+    floorViewer.replaceChildren();
+  }
+
+  function showFloorView(link) {
+    if (floorViewer.firstElementChild?.src === link.href) return;
+    closeFloorView();
+    for (const view of floorViews) view.setAttribute('aria-current', String(view === link));
+    standalone.href = link.href;
+    standalone.textContent = link.id === 'proposed-layout' ? 'Open layout full screen ↗' : 'Open rehearsal full screen ↗';
+
+    const frame = document.createElement('iframe');
+    frame.title = link.textContent;
+    frame.addEventListener('load', () => {
+      const doc = frame.contentDocument;
+      const main = doc?.querySelector('main');
+      if (!main || frame !== floorViewer.firstElementChild) return;
+      for (const anchor of doc.querySelectorAll('a[href]:not([target])')) {
+        if (!anchor.getAttribute('href').startsWith('#')) anchor.target = '_top';
+      }
+      floorObserver = new ResizeObserver(() => {
+        const height = Math.ceil(main.getBoundingClientRect().height);
+        if (height) frame.style.height = height + 'px';
+      });
+      floorObserver.observe(main);
+    });
+    frame.src = link.href;
+    floorViewer.append(frame);
+  }
+
+  for (const link of floorViews) link.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    showFloorView(link);
+    history.replaceState(null, '', '#' + link.id);
+  });
+
   function openPanel(id,updateHash=true){
     const panel=document.getElementById(id);if(!panel||!panel.classList.contains('panel'))return;
     document.querySelectorAll('.panel').forEach(el=>el.hidden=el.id!==id);
+    if (id === 'floor-layout') {
+      const selected = floorViews.find(view => !updateHash && '#' + view.id === location.hash);
+      showFloorView(selected || floorViews[0]);
+    } else if (floorViewer.childElementCount) {
+      closeFloorView();
+    }
+    if (id === 'supervisor-rooms' && atlasFrame && !atlasFrame.hasAttribute('src')) {
+      const src = new URL(atlasFrame.dataset.src, location.origin);
+      const room = new URLSearchParams(location.search).get('atlasRoom');
+      if (room) src.searchParams.set('room', room);
+      atlasFrame.src = src.href;
+    }
     document.dispatchEvent(new Event('design:panelchange'));
     document.querySelectorAll('[data-panel]').forEach(el=>el.setAttribute('aria-current',String(el.dataset.panel===id)));
     if(updateHash)history.replaceState(null,'','#'+id);

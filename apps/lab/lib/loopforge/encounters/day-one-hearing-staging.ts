@@ -25,17 +25,17 @@ export function stageDayOneHearing(registry:Registry,world:World){
    if(turn==='S04-T07')out.push(...travel('lou',[[126400,117200]],'H1 local aside','workers-reverse'));
    if(turn==='S04-T08')out.push(...travel('max',[[123200,115600]],'H2 answer from Lobby','workers-reverse'));
    if(turn==='S04-T09')out.push(...travel('max',[[121300,119100]],'H2 return to waiting place','workers-reverse'));
-   if(turn==='S04-T11')out.push(...travel('gus',[[125300,115300],[125300,113800]],'H3 dogleg around Ed','checkpoint'));
+   if(turn==='S04-T11')out.push(...travel('gus',[[125300,115300],[125300,113800]],'H3 dogleg around ed','checkpoint'));
    if(turn==='S05-T01'){
-    // Sam takes the selected mark first. Bob's selected straight south-aisle
+    // sam takes the selected mark first. bob's selected straight south-aisle
     // approach would cross it, so he uses the existing parallel supervision lane.
-    out.push(...travel('sam',[[134000,108500],[138500,108500]],'H4 Sam meeting','conveyor-wide'));
-    out.push(...travel('bob',[[148500,107200],[136500,107200],[136500,108500]],'H4 Bob parallel approach','conveyor-wide'));
+    out.push(...travel('sam',[[134000,108500],[138500,108500]],'H4 sam meeting','conveyor-wide'));
+    out.push(...travel('bob',[[148500,107200],[136500,107200],[136500,108500]],'H4 bob parallel approach','conveyor-wide'));
     out.push(...travel('stiletto',[[150300,108500],[140500,108500],[140500,107200]],'H4 local assignment','pair-work-reply'));
    }
    if(phase.id==='bob and sam start the second workpiece')out.push(...travel('stiletto',[[142300,107200],[150300,107200]],'H4 clear the Wash approach','pair-work-reply'));
-   // Replace the obsolete pre-meeting route; do not send Bob back to Forge or
-   // Sam to his old entrance root. Later Belt/Forge visits remain untouched.
+   // Replace the obsolete pre-meeting route; do not send bob back to Forge or
+   // sam to his old entrance root. Later Belt/Forge visits remain untouched.
    const intake=phase.id.startsWith('bob reaches paired intake /'),wash=phase.id.startsWith('sam reaches paired wash /');
    if(intake||wash){
     if(phase.turn||phase.effects?.length||phase.process||phase.transfers?.length)throw Error('D6 cannot discard a consequential travel phase');

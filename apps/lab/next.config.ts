@@ -8,6 +8,13 @@ const nextConfig: NextConfig = {
   distDir: isInternalResearchMode() ? ".next-research" : ".next",
   // Internal reference media is never copied into production server bundles.
   outputFileTracingExcludes: { "/*": ["./assets/research/**/*"] },
+  async redirects() {
+    return [{
+      source: "/stepanoskin/loopforge/overview/the-cast",
+      destination: "/stepanoskin/loopforge/design#supervisor-rooms",
+      permanent: true,
+    }];
+  },
   async rewrites() {
     return [{ source: "/stepanoskin/loopforge/design", destination: "/loopforge-design/index.html" }];
   },

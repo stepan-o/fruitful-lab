@@ -19,14 +19,14 @@ it('retains the four selected genuine nonreceipts',()=>{
  expect(received('S04-T06')).not.toContain('jo');expect(received('S04-T13')).not.toContain('jo');
  expect(received('S04-T14')).toEqual([]);expect(received('S08-T07')).toEqual(['ben','max','stiletto']);
 });
-it('keeps Jo third, with lawful station arrival after the local conversation',()=>{
+it('keeps jo third, with lawful station arrival after the local conversation',()=>{
  const w=turnWorld.get('S05-T10')!;expect(w.facts['checkpoint.cleared.jo']).toBe(true);
  expect(w.facts['checkpoint.workers-passed']).toBe(3);expect(w.agents.jo.position).toEqual([141000,108500]);
  expect(w.facts['line.crew.jo']).not.toBe(true);expect(w.facts['line.operator.belt']).not.toBe('jo');
  expect(final.facts['checkpoint.workers-passed']).toBe(8);
  expect(final.events.filter(e=>e.kind==='effect'&&e.detail===JSON.stringify({fact:'checkpoint.cleared.max',value:true}))).toHaveLength(1);
 });
-it('moves Bob only after the completed third process and returns him before shutdown',()=>{
+it('moves bob only after the completed third process and returns him before shutdown',()=>{
  const w=turnWorld.get('S08-T08')!,v=project(w,take.registry);
  expect(w.facts['line.output']).toBe(3);expect(w.facts['line.stage']).toBe(4);expect(w.facts['line.staffed-output']).toBe(1);
  expect(v.process?.active).toBeUndefined();expect(w.agents.bob.position).toEqual([139000,107200]);

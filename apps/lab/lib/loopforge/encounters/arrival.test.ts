@@ -54,7 +54,7 @@ it('revoking an earned clearance interrupts the crossing before the doorway',()=
 });
 it('keeps sam attending bob while ed picks up and stows the card',()=>{
  const t=take();
- for(const name of ['ed collects bob’s card while Sam kneels','ed lifts as Sam finishes kneeling','ed lifts the card','ed keeps the found card']){
+ for(const name of ['ed collects bob’s card while sam kneels','ed lifts as sam finishes kneeling','ed lifts the card','ed keeps the found card']){
   const v=project(replay(t,startOf(t,name)+20),t.registry);
   expect(v.actors.find(a=>a.id==='bob')?.cue).toMatchObject({clip:'Electrocuted_Fall',start:6.333,rate:0});
   expect(v.actors.find(a=>a.id==='sam')?.cue).toMatchObject({clip:name.includes('kneel')?'Kneel_To_Help':'Attend_Bob',rootMotion:'preserve'});
@@ -77,7 +77,7 @@ it('keeps the opening concise without speeding up contact time independently of 
  const t=take();expect(entryPlayback(t.registry).endTick/20).toBeLessThanOrEqual(140);expect(t.total/20).toBeLessThanOrEqual(1200);
  const phases=Object.values(t.registry).flatMap(a=>a.phases);
  expect(phases.filter(p=>p.turn)).toHaveLength(108);expect(phases.filter(p=>p.turn?.kind==='reaction-only')).toHaveLength(13);
- for(const [name,seconds] of [['ed collects bob’s card while Sam kneels',1.5],['ed stows bob’s card',1.6]] as const){
+ for(const [name,seconds] of [['ed collects bob’s card while sam kneels',1.5],['ed stows bob’s card',1.6]] as const){
   const p=phases.find(p=>p.id===name)!,c=p.perform.find(p=>p.agent==='ed')!.cue!;
   expect((c.start??0)+p.ticks/20*(c.rate??1)).toBeCloseTo(seconds,5);
   expect(p.transfers).toHaveLength(1);
@@ -124,7 +124,7 @@ it('routes every arrival through the clear main entrance before they spread arou
 });
 
 
-it('performs the temporary Sam check before clearance without inventing physical card transfer',()=>{
+it('performs the temporary sam check before clearance without inventing physical card transfer',()=>{
  const t=take(),start=startOf(t,'sam’s credential record is checked'),before=replay(t,start);
  expect(before.facts['line.output']).toBe(1);expect(before.facts['checkpoint.card-checked.sam']).toBeUndefined();expect(before.facts['checkpoint.cleared.sam']).toBeUndefined();
  expect(before.props?.['sam:id'].location).toMatchObject({kind:'stowed',agent:'sam'});

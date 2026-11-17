@@ -70,7 +70,7 @@ Frostpunk is a reference for connecting a central machine and survival pressure 
 
 Visual study: [convoy decision composition](https://www.gamewatcher.com/reviews/frostpunk-review/13025) and [housing decision screenshot](https://abbysblog.net/blog/frostpunk). The observed composition uses a legible illustrated foreground and compact decisions, with the wider world receding behind it. Fade and audio timing below are our proposed direction, not measured reproductions of Frostpunk’s implementation. No Frostpunk artwork or audio is shipped.
 
-Loopforge retains soot, worn brass, industrial green-black, cyan cognition and Stiletto red. Its character comes from its own painted factory art and mechanical rhythm. Avoid generic dashboard cards, pristine science-fiction glass, cartoon apparatus and unmotivated glitch decoration.
+Loopforge retains soot, worn brass, industrial green-black, cyan cognition and STILETTO red. Its character comes from its own painted factory art and mechanical rhythm. Avoid generic dashboard cards, pristine science-fiction glass, cartoon apparatus and unmotivated glitch decoration.
 
 ## One event, one directed response
 

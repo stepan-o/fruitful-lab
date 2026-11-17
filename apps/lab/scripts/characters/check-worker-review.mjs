@@ -15,7 +15,7 @@ const doc=await io.readBinary(bytes),root=doc.getRoot();
 assert.equal(root.listSkins().length,1);assert.equal(root.listSkins()[0].listJoints().length,24);
 assert.equal(root.listAnimations().length,19);assert.equal(data.clips.length,19);
 assert.deepEqual(root.listAnimations().map(a=>a.getName()).sort(),data.clips.map(c=>c.id).sort());
-assert.equal(data.clips.find(c=>c.id==='Hot_Walk').actor,'Cathexis');assert.equal(data.clips.find(c=>c.id==='Hot_Walk').label,'Hot Walk');
+assert.equal(data.clips.find(c=>c.id==='Hot_Walk').actor,'CATHEXIS');assert.equal(data.clips.find(c=>c.id==='Hot_Walk').label,'Hot Walk');
 assert.deepEqual(data.missing,['afraid_recoil','work_cradle']);
 let triangles=0;
 for(const mesh of root.listMeshes())for(const p of mesh.listPrimitives()){

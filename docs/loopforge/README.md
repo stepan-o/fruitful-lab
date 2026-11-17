@@ -110,7 +110,7 @@ motion does not introduce automatic machinery audio.
 
 - Factory entrance: `/stepanoskin/loopforge` (overview, engine and play menu).
 - Overview: `/stepanoskin/loopforge/overview/the-factory` (8 chapters).
-- Supervisor scene library: `/stepanoskin/loopforge/overview/the-cast`
+- Supervisor scene library: [Game Design → Supervisor × room](/stepanoskin/loopforge/design#supervisor-rooms)
   ([five supervisors, room and pair tables, 62 original paintings](SUPERVISOR_ATLAS.md)).
 - Story workshop: `/stepanoskin/loopforge/overview/before-the-factory`
   ([six prehistory directions, twelve concept paintings](PREHISTORY_GALLERY.md)).

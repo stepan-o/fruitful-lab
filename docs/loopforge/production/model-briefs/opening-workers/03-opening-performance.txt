@@ -6,10 +6,10 @@ Follow OPENING_EPISODE.md revision 9 and the current engine sequence. Ten distin
 APPROACH AND WAITING
 The camera follows the workers from behind as they walk TOWARDS the open factory entrance. Bodies, feet and path agree. Stagger pairs and singles; gather unevenly around Security without queue pens. Most wait in Quiet_Wait: planted feet, small head and torso movement. Use strong gestures once when an event warrants them. A worker holding an ID uses the fitted ID_Ready pose, including reading stops after ID_Walk. Do not replace it with a general idle.
 
-BOB AND SAM
+bob AND sam
 bob misunderstands LIMEN’s greeting, steps forward with his card and receives one cyan-blade strike. He drops the card and falls. sam runs round his feet, kneels and supports him. Keep the held floor pose alive without replaying the impact. sam releases the supporting hand BEFORE bob rises. bob gets up as STILETTO approaches, then keeps his limp through the checkpoint and Conveyor tutorial. Match palms, elbows, wrists, supporting surfaces and planted feet on the actual two bodies. No actor translation may counterfeit a hand contact.
 
-ED AND THE CARD
+ed AND THE CARD
 The camera must show ed collecting bob’s card while bob looks towards sam. Pickup and stow transfers commit at the authored contact frames; the card remains owned by bob but held, then stowed, by ed. Fit the card edge to ed’s actual skinned fingers at portrait, floor and overview detail. No floating card or jump from the floor. Do not grant bob knowledge of the transfer.
 
 STILETTO’S PASSAGE

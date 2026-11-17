@@ -339,8 +339,8 @@ Give me:
 * misread intentions
 * escalating misunderstandings
 * Cagewalker whispering bad interpretations
-* Cathexis sugarcoating everything
-* Limen acting like everyone is a liability
+* CATHEXIS sugarcoating everything
+* LIMEN acting like everyone is a liability
 
 Wrong expectations → conflict → story.
 
@@ -402,9 +402,9 @@ Whatever “someone” means in synthetic cognition.
 Not malicious — just _real._
 
 If STILETTO-9 screws someone over, I want:
-* Thrum: “I still remember that.”
+* THRUM: “I still remember that.”
 * Cindertounge: “I’ve forgiven you, but I haven’t forgotten.”
-* Limen: “I trust you again, but not like I used to.”
+* LIMEN: “I trust you again, but not like I used to.”
 
 These biases should shape:
 * alliances

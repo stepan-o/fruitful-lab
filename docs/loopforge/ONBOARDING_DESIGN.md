@@ -51,7 +51,7 @@ The following table locates assistance in the interface. It is an implementation
 | First own-room incident | Local camera marker and the adviser's token react, then a compact completed-action receipt | Named actor and action, with a reopenable “Why did they act?” explanation. This reinforces authority already disclosed before commitment. | Notice enters Records; no director approval button for an action already taken. |
 | First other-room incident | The affected camera receives the alarm and the decision opens | Source, known situation, adviser recommendation and concrete alternative consequences. Any first-use hint sits beside the choice it explains. | Resolving clears the alarm; the decision stays in Records. |
 | First dispatch | Output visually separates into factory and delivery destinations | Preview both resulting totals and the permanent nature of the commitment at this decision. | Keep the irreversible commitment warning here every time; it is a consequence, not tutorial clutter. |
-| Later capability | The actual unlocked/changed feature receives a bounded introduction | Explain the new action when it becomes available; no repair teaching before Witch, no hidden-psychology reveal. | Optional guide topic unlocked at that point. |
+| Later capability | The actual unlocked/changed feature receives a bounded introduction | Explain the new action when it becomes available; no repair teaching before RIVET WITCH, no hidden-psychology reveal. | Optional guide topic unlocked at that point. |
 
 ## Help, feedback and character speech are different
 

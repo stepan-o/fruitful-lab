@@ -85,10 +85,10 @@ routes+=early_combinations
 routes+=detail('Compare all four inheritances',table([(r['name'],r['inheritance']) for r in d['trajectories']]))
 routes+='<button class="link-button" data-panel="commitments">Inspect the commitments behind these paths →</button>'
 
-commit=heading('Decisions with a lasting cost','The major Act 1 forks','Cathexis and the accident aftermath are central arcs. Operating authority shapes exposure; the succession threat changes how their consequences are reported. Exact branches remain proposals.')
-commit+='<div class="fork-intro"><figure>'+pic('cathexis-theatre-success-1','Cathexis leads a theatre session beneath obedience propaganda')+'<figcaption>Obedience and conformity: collective conviction serves the programme.</figcaption></figure><figure>'+pic('cathexis-theatre-revolution','Cathexis addresses the same audience beneath her own imagery')+'<figcaption>Revolution: the same audience and apparatus can carry a different authority. This is an interpretation of the original art.</figcaption></figure></div>'
+commit=heading('Decisions with a lasting cost','The major Act 1 forks','CATHEXIS and the accident aftermath are central arcs. Operating authority shapes exposure; the succession threat changes how their consequences are reported. Exact branches remain proposals.')
+commit+='<div class="fork-intro"><figure>'+pic('cathexis-theatre-success-1','CATHEXIS leads a theatre session beneath obedience propaganda')+'<figcaption>Obedience and conformity: collective conviction serves the programme.</figcaption></figure><figure>'+pic('cathexis-theatre-revolution','CATHEXIS addresses the same audience beneath her own imagery')+'<figcaption>Revolution: the same audience and apparatus can carry a different authority. This is an interpretation of the original art.</figcaption></figure></div>'
 commit+=fork(next(x for x in d['forks'] if x['id']=='cathexis'))
-commit+='<h3>Why switching back and forth fails</h3><ul class="rules-list"><li><strong>Beliefs outlast assignments.</strong>The audience remembers the message after Cathexis leaves the room.</li><li><strong>Humiliation is not a reset.</strong>Damaging respect can reduce influence while making her less loyal.</li><li><strong>Contradictory promises accumulate.</strong>Reassurance loses force when repeated actions contradict it.</li><li><strong>Conversation still matters.</strong>It can negotiate a concession or repair a specific breach. It cannot erase an incompatible operating policy.</li></ul>'
+commit+='<h3>Why switching back and forth fails</h3><ul class="rules-list"><li><strong>Beliefs outlast assignments.</strong>The audience remembers the message after CATHEXIS leaves the room.</li><li><strong>Humiliation is not a reset.</strong>Damaging respect can reduce influence while making her less loyal.</li><li><strong>Contradictory promises accumulate.</strong>Reassurance loses force when repeated actions contradict it.</li><li><strong>Conversation still matters.</strong>It can negotiate a concession or repair a specific breach. It cannot erase an incompatible operating policy.</li></ul>'
 commit+='<div class="section-divider"></div>'+fork(next(x for x in d['forks'] if x['id']=='accident'))+'<button class="link-button" data-panel="bdi">Trace the supervisor’s decision after an accident →</button>'
 commit+=detail('Operating authority and succession',fork(next(x for x in d['forks'] if x['id']=='operation'))+fork(next(x for x in d['forks'] if x['id']=='succession')))
 commit+='<div class="section-divider"></div><h3>Consequences that redirect the run</h3>'+p('Recovery should preserve the price paid and narrow or change the next set of choices. These incidents illustrate the intended structure; their triggers and available remedies are not yet specified.')
@@ -105,7 +105,7 @@ people+=detail('Example: the repair stoppage',p(ex['record'])+'<blockquote class
 people+=detail('When supervisors fear replacement',ul(inf['scapegoating']))
 people+=detail('Keep these relationships distinct',table(inf['traits']))
 people+=detail('The supervisor relationships',table(d['relationships']))
-people+='<div class="callout">Exact supervisor loyalty may remain hidden in Act 1. That is a candidate design. Their behaviour and the origins of their reports must still give the player evidence to reason with.</div><button class="link-button" data-panel="stress">Trace stress, news and Thrum’s relief →</button>'
+people+='<div class="callout">Exact supervisor loyalty may remain hidden in Act 1. That is a candidate design. Their behaviour and the origins of their reports must still give the player evidence to reason with.</div><button class="link-button" data-panel="stress">Trace stress, news and THRUM’s relief →</button>'
 
 ap=d['advisedPlanning']
 def adviser_case(c):
@@ -127,8 +127,8 @@ stress+='<div class="information-flow">'+''.join('<div class="information-step">
 stress+='<div class="choice-row rumor-choices" role="group" aria-label="Compare information scenarios">'+''.join(f'<button class="choice" data-rumor="{x["id"]}" aria-pressed="{str(i==0).lower()}"><b>{e(x["name"])}</b><small>{e(x["short"])}</small></button>' for i,x in enumerate(st['cases']))+'</div><div id="rumor-detail"></div>'
 stress+=detail('What creates stress and what remains separate',table(st['sources'])+ul(st['separations']))
 stress+=detail('The player’s influence over information',table(st['levers']))
-stress+='<div class="section-divider"></div><span class="status agreed">Agreed direction</span><h3>Thrum can actually make them feel better</h3>'+p(th['thesis'])
-stress+='<div class="fork-intro"><figure>'+pic('thrum-conveyor','Thrum plays music while conveyor workers dance')+'<figcaption>The workers gain relief; the conveyor loses productive attention.</figcaption></figure><figure>'+pic('thrum-brewery','Thrum and workers share glowing drinks at the substrate vat')+'<figcaption>The Brewery becomes a gathering. Chemistry and discipline give way.</figcaption></figure></div>'+p(th['art'])+p(th['tradeoff'])
+stress+='<div class="section-divider"></div><span class="status agreed">Agreed direction</span><h3>THRUM can actually make them feel better</h3>'+p(th['thesis'])
+stress+='<div class="fork-intro"><figure>'+pic('thrum-conveyor','THRUM plays music while conveyor workers dance')+'<figcaption>The workers gain relief; the conveyor loses productive attention.</figcaption></figure><figure>'+pic('thrum-brewery','THRUM and workers share glowing drinks at the substrate vat')+'<figcaption>The Brewery becomes a gathering. Chemistry and discipline give way.</figcaption></figure></div>'+p(th['art'])+p(th['tradeoff'])
 stress+=table(th['neighbours'])+'<div class="inheritance"><span class="kicker">A role worth protecting</span>'+p(th['route'])+'</div>'
 stress+='<div class="callout">'+e(th['limit'])+'</div>'+p(th['early'])
 stress+=detail('How this layer develops across the run',table(st['arcLinks']))
@@ -257,7 +257,7 @@ factory+=render_current_prose('# Current evidence\n\n'+f['currentEvidence'].repl
 factory+='<div class="material-map">'+''.join('<div class="flow"><h4>'+e(k)+'</h4>'+p(v)+'</div>' for k,v in f['flows'])+'</div>'
 factory+='<div class="two-col"><div><h3>The small economy</h3>'+ul(f['economy'])+'</div><div><h3>The workers beneath the count</h3>'+ul(f['workers'])+'</div></div>'
 factory+='<div class="section-divider"></div><h3>Room outcomes are distributions</h3>'+p('A supervisor can excel, regularly fail or produce a real gamble in different rooms. Outcomes also depend on the conditions inherited from earlier decisions. The old tables offer useful character-grounded contrasts; their exact probabilities are not adopted here.')
-factory+=table([('Limen on the conveyor','Slow, safer operation in the old rules; a different operating method from Stiletto.'),('Stiletto on the conveyor','Higher output with wear and possible casualties. A production success need not be safe.'),('Cathexis in the Theatre','Strong conditioning and growing confidence. Her poor conveyor fit can erode loyalty and, in the new design, worker respect.'),('Witch at the Brewery','Repair-first work and potentially exceptional substrate output. Her work elsewhere can sacrifice today for tomorrow.'),('Thrum in Weaving','Preparation and restoration in the old rules. The exact relationship to new continuous advanced production needs redesign.')])
+factory+=table([('LIMEN on the conveyor','Slow, safer operation in the old rules; a different operating method from STILETTO.'),('STILETTO on the conveyor','Higher output with wear and possible casualties. A production success need not be safe.'),('CATHEXIS in the Theatre','Strong conditioning and growing confidence. Her poor conveyor fit can erode loyalty and, in the new design, worker respect.'),('RIVET WITCH at the Brewery','Repair-first work and potentially exceptional substrate output. Her work elsewhere can sacrifice today for tomorrow.'),('THRUM in Weaving','Preparation and restoration in the old rules. The exact relationship to new continuous advanced production needs redesign.')])
 factory+=detail('Production questions to resolve before balancing',ul(f['constraints']))
 factory+=detail('First floor after the transition',p('Act 2 should make the first floor mostly autonomous while preserving material and social feedback. Candidate delegation rules cover staffing, maintenance, dispatch priorities and when a supervisor escalates an exception. How that arrangement is earned remains open.'))
 
@@ -365,18 +365,35 @@ intro_art = {
         ],
     },
 }
-build_rehearsal(ROOT, OUT, intro_source)
 intro_title, intro_body, _ = render_narrative(intro_source, intro_art)
+build_rehearsal(ROOT, OUT, intro_source, intro_body)
 intro_css_hash = hashlib.sha256((ROOT/'day-one-intro.css').read_bytes()).hexdigest()[:12]
 intro_css = f'<link rel="stylesheet" href="day-one-intro.css?v={intro_css_hash}">'
 intro = (f'<header class="section-head"><span class="kicker">Approved script and storyboards</span>'
-         f'<h2>{e(intro_title)}</h2><a class="link-button" href="/loopforge-design/day-one-rehearsal.html">Play the 2D floor rehearsal →</a></header><div class="day-one-script">{intro_body}</div>')
+         f'<h2>{e(intro_title)}</h2><a class="link-button" href="#floor-layout">2D floor &amp; proposed layout →</a></header><div class="day-one-script">{intro_body}</div>')
+floor_title = '2D floor & proposed layout'
+floor_heading = f'<header class="section-head"><h2>{e(floor_title)}</h2></header>'
+rehearsal_url = '/loopforge-design/day-one-rehearsal.html'
+proposal_url = '/loopforge-design/factory-layout-proposal.html'
+map_url = e(conveyor_data['floorPlan']['src'], quote=True)
+floor_links = (
+    f'<a id="floor-rehearsal" href="{rehearsal_url}">2D floor rehearsal</a>'
+    f'<a id="proposed-layout" href="{proposal_url}">Proposed layout</a>'
+)
+floor_panel = (floor_heading
+    + f'<nav class="floor-views" aria-label="Floor views">{floor_links}</nav>'
+    + '<div class="floor-tools"><a id="floor-standalone" href="' + rehearsal_url + '">Open rehearsal full screen ↗</a>'
+    + f'<a href="{map_url}" target="_blank" rel="noopener">Full-size floor plan ↗</a></div>'
+    + '<div id="floor-viewer"></div>')
+floor_record = (floor_heading + f'<p><a href="{rehearsal_url}">Play the Day 1 floor rehearsal</a> · '
+    + f'<a href="{proposal_url}">Explore the proposed layout</a> · <a href="{map_url}">Full-size floor plan</a></p>')
 writing_style_source = (ROOT.parent/'DAY_ONE_WRITING_STYLE.md').read_text()
 writing_style_title, writing_style_body, _ = render_narrative(writing_style_source, {})
 writing_style = (f'<header class="section-head"><h2>{e(writing_style_title)}</h2></header>'
                  f'<div class="narrative-foundation">{writing_style_body}</div>')
 cast = render_cast(ROOT.parent, inline)
 shutil.copyfile(ROOT.parent/'OPENING_CAST.md', OUT/'OPENING_CAST.md')
+shutil.copyfile(ROOT.parent/'SUPERVISOR_ATLAS.md', OUT/'sources/SUPERVISOR_ATLAS.md')
 cast_css_hash = hashlib.sha256((ROOT/'cast.css').read_bytes()).hexdigest()[:12]
 cast_css = f'<link rel="stylesheet" href="cast.css?v={cast_css_hash}">'
 floor_scale=render_floor_scale()
@@ -384,7 +401,15 @@ floor_scale_link='<button class="link-button" data-panel="floor-scale">Factory f
 conveyor+=floor_scale_link
 ui_html+=floor_scale_link
 engine+=floor_scale_link
-panels=[('player-desires','Player desires & scenarios',desires),('day-one-intro',intro_title,intro),('narrative-cast','The cast',cast),('writing-style',writing_style_title,writing_style),('dramaturgy','Character dramaturgy and narrative design',dramaturgy),('agents','Agents: character & motion',agent_direction),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('model-briefs','Model briefs',render_model_briefs()),('floor-scale','Factory floor: scale & feel',floor_scale),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
+supervisor_panel = (
+    '<header class="section-head"><h2>Supervisor × room</h2>'
+    '<p>Choose an assignment to see what the supervisor does, which painting it comes from, and where to stage it on the factory floor.</p></header>'
+    '<iframe id="supervisor-atlas-frame" title="Supervisor assignments, concept art and floor staging" '
+    'data-src="/stepanoskin/loopforge/design/supervisor-rooms"></iframe>'
+    '<dialog id="supervisor-art-dialog" aria-labelledby="supervisor-art-title"><div><h3 id="supervisor-art-title"></h3>'
+    '<button type="button" autofocus>Close ×</button></div><img alt=""><p></p></dialog>'
+)
+panels=[('player-desires','Player desires & scenarios',desires),('day-one-intro',intro_title,intro),('floor-layout',floor_title,floor_panel),('narrative-cast','The cast',cast),('writing-style',writing_style_title,writing_style),('dramaturgy','Character dramaturgy and narrative design',dramaturgy),('supervisor-rooms','Supervisor × room',supervisor_panel),('agents','Agents: character & motion',agent_direction),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('model-briefs','Model briefs',render_model_briefs()),('floor-scale','Factory floor: scale & feel',floor_scale),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
 head='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101412"><meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow"><title>Loopforge — Game design</title><link rel="stylesheet" href="styles.css"></head><body>'
 head=head.replace('href="styles.css"','href="styles.css?v='+hashlib.sha256((ROOT/'styles.css').read_bytes()).hexdigest()[:12]+'"')
 head=head.replace('</head>','<link rel="stylesheet" href="model-briefs.css?v='+hashlib.sha256((ROOT/'model-briefs.css').read_bytes()).hexdigest()[:12]+'"></head>')
@@ -406,12 +431,12 @@ page=page.replace('</body>',sound_script+style_script+producer_script+study_scri
 
 # A complete, static copy has every path and character, including text that the board reveals on selection.
 full=head+'<main class="record"><a href="index.html">← Interactive design board</a><header class="hero" style="display:block"><span class="kicker">Author reference · contains story spoilers</span><h1>'+e(d['title'])+'</h1>'+p(d['version'])+p(d['purpose'])+p(d['statusNote'])+'</header>'
-full+='<section>'+desires+'</section><section id="day-one-intro">'+intro+'</section><section id="narrative-cast">'+cast+'</section><section id="writing-style">'+writing_style+'</section><section id="dramaturgy">'+dramaturgy+'</section>'
+full+='<section>'+desires+'</section><section id="day-one-intro">'+intro+'</section><section id="floor-layout">'+floor_record+'</section><section id="narrative-cast">'+cast+'</section><section id="writing-style">'+writing_style+'</section><section id="dramaturgy">'+dramaturgy+'</section>'
 full+='<section>'+loop_study_full+'</section><section>'+conveyor_full+'</section><section>'+first_turn+'</section><section id="agents">'+agent_direction+'</section><section>'+floor_scale+'</section>'
 full+='<section><h2>World and story grounding</h2>'+world+'</section><section><h2>Act 1 progression</h2>'+early_rules+''.join(stage(s) for s in d['stages'])+act2+'</section>'
 full+='<section><h2>Proposed trajectories</h2>'+p('Illustrative paths through the shared progression, not locked classes or predetermined endings.')+early_combinations+''.join(trajectory(r) for r in d['trajectories'])+'</section>'
 full+='<section><h2>Commitments and recovery</h2>'+commit+'</section><section><h2>Supervisors and information</h2>'+advice_full+''.join(person(c) for c in d['characters'])+people[people.index('<div class="section-divider"></div><h3>From an incident to a public account'): ]+'</section>'
-stress_full=stress.replace('<div id="rumor-detail"></div>',''.join('<article><h3>'+e(x['name'])+'</h3>'+defs([('Physical truth',x['truth']),('Who learns what',x['reach']),('What they believe',x['interpretation']),('Player response',x['choice']),('Consequences',x['aftermath']),('Thrum’s role',x['thrum'])])+'</article>' for x in st['cases']))
+stress_full=stress.replace('<div id="rumor-detail"></div>',''.join('<article><h3>'+e(x['name'])+'</h3>'+defs([('Physical truth',x['truth']),('Who learns what',x['reach']),('What they believe',x['interpretation']),('Player response',x['choice']),('Consequences',x['aftermath']),('THRUM’s role',x['thrum'])])+'</article>' for x in st['cases']))
 # Scenario controls have no purpose in the static complete record.
 start=stress_full.index('<div class="choice-row rumor-choices"');end=stress_full.index('</div>',start)+6
 stress_full=stress_full[:start]+stress_full[end:]
@@ -473,7 +498,7 @@ mh('Major commitments')
 for f0 in d['forks']:
     mh(f0['title'],3);mp('*'+f0['status']+' · '+f0['timing']+'*');mp(f0['text'])
     for x in f0['paths']:mh(x['name'],4);fields([('Gain',x['gain']),('Liability',x['cost']),('Response',x['response'])])
-mh('Why assignment oscillation and reassurance cannot solve the Cathexis fork',3)
+mh('Why assignment oscillation and reassurance cannot solve the CATHEXIS fork',3)
 ml(['Beliefs and personal allegiance outlast assignments.','Public humiliation damages standing and can increase resentment; it does not restore loyalty.','Repeated contradictory promises make reassurance ineffective.','Conversation can negotiate real terms or repair a particular breach; it cannot erase an incompatible operating policy.'])
 mh('Proposed trajectories');mp('These are illustrative paths, not exhaustive branches, locked classes or predetermined endings.');mh('Supervisor combinations',3);fields(early['combinations']);mp(early['boundary'])
 for r in d['trajectories']:
@@ -487,8 +512,8 @@ mh('Supervisor relationships');fields(d['relationships'])
 mh('Information and the daily consultation');fields(inf['layers']);mp(inf['consultation']);mp(inf['proposal']);mh('Repair stoppage example',3);fields(list(ex.items()));mh('Scapegoating and protection',3);ml(inf['scapegoating']);mh('Distinct relationships',3);fields(inf['traits'])
 mh('The accident and its aftermath');mp(ac['premise']);fields(ac['causes']);mp(ac['disclosure']);mp(ac['feedback']);mp(ac['guardrail']);mp(ac['visibility'])
 mh('Stress and information propagation');mp(st['intro']);mp('*'+st['status']+'*');mh('Sources of stress',3);fields(st['sources']);mh('Distinct effects',3);ml(st['separations']);mh('How a claim travels',3);fields(st['chain'])
-for x in st['cases']:mh(x['name'],3);fields([('Physical truth',x['truth']),('Who learns what',x['reach']),('What they believe',x['interpretation']),('Player response',x['choice']),('Consequences',x['aftermath']),('Thrum’s role',x['thrum'])])
-mh('Player influence',3);fields(st['levers']);mh('Thrum’s relief',3);mp(th['thesis']);mp(th['art']);mp(th['tradeoff']);fields(th['neighbours']);mp(th['route']);mp(th['limit']);mp(th['early']);mh('Across the run',3);fields(st['arcLinks']);mh('IXION reference',3);mp(st['reference']['text']);mp('['+st['reference']['title']+']('+st['reference']['url']+')');ml(st['open'])
+for x in st['cases']:mh(x['name'],3);fields([('Physical truth',x['truth']),('Who learns what',x['reach']),('What they believe',x['interpretation']),('Player response',x['choice']),('Consequences',x['aftermath']),('THRUM’s role',x['thrum'])])
+mh('Player influence',3);fields(st['levers']);mh('THRUM’s relief',3);mp(th['thesis']);mp(th['art']);mp(th['tradeoff']);fields(th['neighbours']);mp(th['route']);mp(th['limit']);mp(th['early']);mh('Across the run',3);fields(st['arcLinks']);mh('IXION reference',3);mp(st['reference']['text']);mp('['+st['reference']['title']+']('+st['reference']['url']+')');ml(st['open'])
 mh('BDI and supervisor agency');mp(b['intro']);mp('*'+b['status']+'*')
 for label,title,body in b['triad']:mh(label+' · '+title,3);mp(body)
 mp(b['state']);fields(b['loop']);mp(b['persistence']);mp(b['ambiguity']);mh('Sources of action',3);fields(b['modes'])
@@ -558,8 +583,9 @@ for c in sound_data['clips']:
     mp('[Play / download edit]('+file['src']+') · ['+source['title']+' — '+source['author']+']('+source['url']+') · CC0')
 mh('Sound direction',3);fields(sound_data['direction']);mh('Remaining sounds',3);fields(sound_data['gaps'])
 (OUT/'SOUND_LIBRARY.md').write_text('\n\n'.join(md[sound_start:])+'\n')
-md.append('[Play the 2D floor rehearsal](/loopforge-design/day-one-rehearsal.html)')
 md.append(intro_source.replace('# Day 1 intro', '## Day 1 intro', 1).strip())
+mh(floor_title)
+mp(f'[Play the 2D floor rehearsal]({rehearsal_url}) · [Explore the proposed layout]({proposal_url}) · [Full-size floor plan]({map_url})')
 md.append('[The cast — portraits and character briefs](/stepanoskin/loopforge/design#narrative-cast)')
 md.append(writing_style_source.replace('# Writing style', '## Writing style', 1).strip())
 (OUT/'GAME_DESIGN.md').write_text('\n\n'.join(md)+'\n')

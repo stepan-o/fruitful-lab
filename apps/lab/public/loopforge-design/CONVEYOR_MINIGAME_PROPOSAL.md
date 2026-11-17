@@ -36,9 +36,9 @@ Owner direction: remove all player building. Keep the room topology and cinemati
 
 ## Continuous first-floor plan
 
-![Top-down factory plan](/loopforge-design/factory-floor-plan.9d1f7a569b97.svg)
+![Top-down factory plan](/loopforge-design/factory-floor-plan.32180aa96dbe.svg)
 
-Nine repacked zones, fourteen connections and a common 15 m hall height. Theatre and Logistics fill the eastern rectangles; Security has a direct Theatre corridor. Hatching marks pipe walls. This separate factory-floor authoring study is not the compact Day1 runtime.
+Nine repacked zones, fourteen connections and a common 15 m hall height. Theatre and Logistics fill the eastern rectangles; Security has a direct Theatre corridor. In the Lattice Forge, the crane covers a continuous eastbound line. The cross-road serves the overhaul bays and spare fitting bay. [Inspect the Forge hall](/loopforge-design/day-one-rehearsal.html#forge-hall).
 
 **I made this work.** A queue shrinks because of a change I made. The limiting step moves somewhere else, giving me a new problem I can actually see.
 
@@ -154,7 +154,7 @@ Room operating policy and later facility access remain design levers. Free place
 
 **Shared policy catalog.** Apply relevant policies per room; their exact cost, reversibility and implementation remain open.
 
-**Specialists.** Witch introduces engineering; Thrum introduces relief with productivity/discipline costs. No repair tool in parts 01–02.
+**Specialists.** RIVET WITCH introduces engineering; THRUM introduces relief with productivity/discipline costs. No repair tool in parts 01–02.
 
 **Cash.** Construction removal leaves no immediate first-day cash sink. Longer-run funding, payroll and repair require a separate economy pass. Do not replace removed building with an undisclosed fee.
 

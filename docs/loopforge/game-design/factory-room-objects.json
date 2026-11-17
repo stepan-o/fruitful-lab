@@ -1,0 +1,750 @@
+[
+  {
+    "id": "lobby",
+    "name": "Lobby & front door",
+    "view": [
+      15,
+      235,
+      187,
+      209
+    ],
+    "volume": "Broad arrival hall. Keep the procession on a 5 m approach under a high brass lintel. Put the low desks against the walls so ten arrivals can move together.",
+    "blocking": "The first shot belongs to max and jo. Frame the ten against the double doors. Check STILETTO against the widest final lens, shadows, reflections and the door windows on both aspect ratios.",
+    "art": [
+      {
+        "source": "rooms/01_loopforge_factory_rooms_lobby.png",
+        "media": "focused/lobby-room",
+        "caption": "Lobby painting · lit counters and the brass doorway"
+      },
+      {
+        "source": "world/loopforge_factory_entrance_2.png",
+        "media": "local/entrance",
+        "caption": "Exterior · the doors and factory name give the workers scale"
+      }
+    ],
+    "objects": [
+      {
+        "id": "L1",
+        "name": "Factory double doors and brass nameplate",
+        "form": "door",
+        "box": [
+          121,
+          403,
+          32,
+          7
+        ],
+        "height": 5.8,
+        "brief": "Separate the two door leaves, lintel and illuminated lettering. Put each hinge pivot on its jamb. Keep the yard-facing camera sightline open."
+      },
+      {
+        "id": "L2",
+        "name": "Claims counters and desk lamps",
+        "form": "desk",
+        "box": [
+          32,
+          350,
+          49,
+          10
+        ],
+        "height": 1.5,
+        "brief": "Build a counter module with a paper shelf and separate lamp shade. Leave room for a worker to lean in and hand over a card."
+      },
+      {
+        "id": "L3",
+        "name": "Number drums and notice wall",
+        "form": "screen",
+        "box": [
+          48,
+          282,
+          47,
+          7
+        ],
+        "height": 3.6,
+        "brief": "Stack mechanical totals above pinned sheets. Give the drums a separate axle and reserve sign faces for legible authored type."
+      }
+    ]
+  },
+  {
+    "id": "dispatch",
+    "name": "Dispatch",
+    "view": [
+      197,
+      238,
+      125,
+      175
+    ],
+    "volume": "A tall scheduling wall dominates a narrow office. Keep the front staff crossing clear and put the loading pocket against the common Forge wall.",
+    "blocking": "A dispatcher can point to a single order, turn to a stillage and send it out while the morning crew passes behind.",
+    "art": [
+      {
+        "source": "rooms/02_loopforge_rooms_dispatch.png",
+        "media": "focused/dispatch-room",
+        "caption": "Dispatch painting · a whole wall of illuminated job cards"
+      }
+    ],
+    "objects": [
+      {
+        "id": "D1",
+        "name": "Assignment board",
+        "form": "screen",
+        "box": [
+          214,
+          277,
+          87,
+          7
+        ],
+        "height": 4.4,
+        "brief": "One brass-framed bank of removable amber and green cards. Mount its bottom row at pointing height and split card faces from the frame."
+      },
+      {
+        "id": "D2",
+        "name": "Dispatcher’s standing desk",
+        "form": "desk",
+        "box": [
+          274,
+          336,
+          23,
+          13
+        ],
+        "height": 1.2,
+        "brief": "Angle the slotted ledger toward the board. Preserve the aisle from the desk to the hatch."
+      },
+      {
+        "id": "D3",
+        "name": "Loaded stillage and transfer hatch",
+        "form": "rails",
+        "box": [
+          227,
+          385,
+          27,
+          25
+        ],
+        "height": 3.0,
+        "brief": "Fork pockets, tray stops and an independently sliding shutter. Align the rollers with the Forge receiving lane."
+      }
+    ]
+  },
+  {
+    "id": "security",
+    "name": "Security",
+    "view": [
+      317,
+      275,
+      132,
+      138
+    ],
+    "volume": "Keep the inspection inside the existing pen. A 3.2 m queue channel narrows to a single reader under a 3.4 m canopy. The high roof is visible again only beyond the boom.",
+    "blocking": "LIMEN can step to the pier while STILETTO passes behind. Leave the width of a kneeling actor by the grate and keep the fourth-check sightline from the photo to the Forge door.",
+    "art": [
+      {
+        "source": "rooms/03_loopforge_rooms_access_control_2.png",
+        "media": "local/security",
+        "caption": "Access Control · one grated lane and shoulder-high barriers"
+      },
+      {
+        "source": "characters/interactions/argue_limen_stiletto_security.png",
+        "media": "supervisors/argue-limen-stiletto-security",
+        "caption": "LIMEN and STILETTO · opposite sides of a single reader"
+      }
+    ],
+    "objects": [
+      {
+        "id": "S1",
+        "name": "Caged ID lane and grated deck",
+        "form": "rails",
+        "box": [
+          400,
+          304,
+          13,
+          38
+        ],
+        "height": 3.4,
+        "brief": "Build mesh, overhead sign and rails as bays around the clear channel. Cut a removable floor grate with a stop edge for the card."
+      },
+      {
+        "id": "S2",
+        "name": "Two desks and register",
+        "form": "desk",
+        "box": [
+          386,
+          351,
+          11,
+          10
+        ],
+        "height": 1.25,
+        "brief": "Set LIMEN’s reader and ed’s ledger on the west side, gus at the second desk opposite. Separate register, stamp and card from the furniture.",
+        "instances": [
+          [
+            430,
+            352,
+            9,
+            10
+          ]
+        ]
+      },
+      {
+        "id": "S3",
+        "name": "Cyan boom and control pier",
+        "form": "door",
+        "box": [
+          400,
+          366,
+          26,
+          5
+        ],
+        "height": 2.5,
+        "brief": "Place the pivot at the west end. Test the full raised arc with a moving supervisor and a worker waiting on the other side."
+      }
+    ]
+  },
+  {
+    "id": "forge",
+    "name": "Lattice Forge",
+    "view": [
+      198,
+      408,
+      324,
+      224
+    ],
+    "volume": "Retain the 80 × 56 m repair hall, 50 m line and 15 m roof. A full-size bridge crane spans the hot bed. An operator on foot should look small between its columns.",
+    "blocking": "STILETTO and RIVET WITCH can confront each other across a loaded bed while the line advances. Keep bob’s motor housing reachable from Intake and leave the operator walk clear.",
+    "art": [
+      {
+        "source": "rooms/04_loopforge_rooms_neural_lattice_converyor_1.png",
+        "media": "board/forge",
+        "caption": "Neural Lattice · hot open carriers running into a deep hall"
+      },
+      {
+        "source": "characters/interactions/argue_stiletto_rivet_witch_conveyor.png",
+        "media": "supervisors/argue-stiletto-rivet-witch-conveyor",
+        "caption": "STILETTO and RIVET WITCH · blade and tool above the moving line"
+      }
+    ],
+    "objects": [
+      {
+        "id": "F1",
+        "name": "Carrier bed, loader and wash cradle",
+        "form": "rails",
+        "box": [
+          229,
+          437,
+          176,
+          15
+        ],
+        "height": 2.5,
+        "brief": "Build straight rollers, loader slide, clamp jaw and spray arch separately. Use a repeatable rail pitch. Leave hand access along the north face."
+      },
+      {
+        "id": "F2",
+        "name": "Press, three-slot rack and transfer table",
+        "form": "press",
+        "box": [
+          411,
+          436,
+          78,
+          19
+        ],
+        "height": 5.2,
+        "brief": "Separate ram, stuck press door and indexed rack. lou can count all three cortexes. At the east end a project cradle can transfer onto the dry hoist."
+      },
+      {
+        "id": "F3",
+        "name": "Travelling bridge crane",
+        "form": "bridge",
+        "box": [
+          244,
+          421,
+          155,
+          11
+        ],
+        "height": 10.5,
+        "brief": "Suspend the bridge above the carrier bed. Separate cross-travel trolley, hook and runway. Its floor projection remains walkable.",
+        "instances": [
+          [
+            393,
+            421,
+            7,
+            48
+          ],
+          [
+            244,
+            465,
+            155,
+            4
+          ]
+        ]
+      },
+      {
+        "id": "F4",
+        "name": "Scrap recovery pocket and hoist",
+        "form": "vat",
+        "box": [
+          473,
+          466,
+          19,
+          16
+        ],
+        "height": 2.3,
+        "brief": "Catch useful trimmings in a lidded tote. Keep the transfer to the hoist separate from the clean cortex table and from the melt chute."
+      }
+    ]
+  },
+  {
+    "id": "weaving",
+    "name": "Weaving Gallery",
+    "view": [
+      158,
+      50,
+      284,
+      167
+    ],
+    "volume": "A long ceremonial axis ends at the raised instrument. Reserve an 8 m-wide, 18 m-deep approach between the looms, framed by 9 m illuminated columns.",
+    "blocking": "THRUM kneels or conducts down the centre. RIVET WITCH can stand at the side of a comb and gather loose ribbons with both hands. Keep these two positions clear at the same time.",
+    "art": [
+      {
+        "source": "rooms/05_loopforge_rooms_weaving_room_3.png",
+        "media": "board/weaving",
+        "caption": "Weaving room · luminous columns behind the long ribbon frames"
+      },
+      {
+        "source": "characters/weaving_operations/thrum_weaving.png",
+        "media": "supervisors/thrum-weaving",
+        "caption": "THRUM · kneeling on axis below the instrument"
+      },
+      {
+        "source": "characters/weaving_operations/rivet_witch_weaving_repair.png",
+        "media": "supervisors/rivet-witch-weaving-repair",
+        "caption": "RIVET WITCH · fingers working a loose ribbon at the comb"
+      }
+    ],
+    "objects": [
+      {
+        "id": "W1",
+        "name": "Ribbon loom and comb banks",
+        "form": "loom",
+        "box": [
+          217,
+          138,
+          41,
+          33
+        ],
+        "height": 2.1,
+        "brief": "Mirror two comb beds across the approach. Separate rollers, ribbon sheet and winding drum. Give the repair side a clear 1.8 m aisle.",
+        "instances": [
+          [
+            326,
+            138,
+            41,
+            33
+          ]
+        ]
+      },
+      {
+        "id": "W2",
+        "name": "Harmonic instrument and stepped dais",
+        "form": "dais",
+        "box": [
+          276,
+          116,
+          36,
+          20
+        ],
+        "height": 5.8,
+        "brief": "Put the resonator above a short stair with a kneeling mark on axis. Separate tuning arms and luminous core from the fixed brass frame."
+      },
+      {
+        "id": "W3",
+        "name": "Luminous neural columns",
+        "form": "bank",
+        "box": [
+          369,
+          112,
+          32,
+          48
+        ],
+        "height": 9,
+        "brief": "Set paired translucent cylinders on heavy sockets with overhead cables. Instance a mate on the west wall; keep the centreline visible.",
+        "instances": [
+          [
+            177,
+            112,
+            32,
+            48
+          ]
+        ]
+      },
+      {
+        "id": "W4",
+        "name": "Ribbon spooler and pilot fitting jig",
+        "form": "rails",
+        "box": [
+          305,
+          173,
+          43,
+          19
+        ],
+        "height": 2,
+        "brief": "Take up finished ribbon here. Put a tagged base core and substrate cartridge beside the jig for the first 1.5 pilot. The outgoing spool clips into a dry cradle."
+      }
+    ]
+  },
+  {
+    "id": "brewery",
+    "name": "Substrate Brewery",
+    "view": [
+      438,
+      50,
+      204,
+      167
+    ],
+    "volume": "A single steaming vat owns the room. An 8 m vessel sits below a hanging electrode crown. Tanks climb to 8 m behind it. Leave 2 m around the hot rim for the operator and a spotter.",
+    "blocking": "RIVET WITCH can lean over the rim with a tool and reach the sampling board without turning her back on the vat. Keep the console on the camera side of the steam.",
+    "art": [
+      {
+        "source": "rooms/06_loopforge_rooms_cognition_brewery_3_rivet_witch.png",
+        "media": "board/brewery",
+        "caption": "Brewery · green bath, a working rim and vertical vessels"
+      },
+      {
+        "source": "characters/brewery operations/rivet_witch_brewery_success_1.png",
+        "media": "supervisors/rivet-witch-brewery-success-1",
+        "caption": "RIVET WITCH · tool over the bath, logbook within reach"
+      }
+    ],
+    "objects": [
+      {
+        "id": "B1",
+        "name": "Reclamation vat and electrode crown",
+        "form": "vat",
+        "box": [
+          524,
+          131,
+          32,
+          32
+        ],
+        "height": 6.5,
+        "brief": "Separate vessel, fluid plane, crown and lowering spindle. Place slag input at the rear and a sample tap on the operator side."
+      },
+      {
+        "id": "B2",
+        "name": "Filter train and substrate day tanks",
+        "form": "bank",
+        "box": [
+          582,
+          115,
+          36,
+          39
+        ],
+        "height": 8,
+        "brief": "Use glass-lined tanks with removable filter housings. The outlet feeds the wet header. Leave space to withdraw a spent filter."
+      },
+      {
+        "id": "B3",
+        "name": "Sampling console and valve board",
+        "form": "desk",
+        "box": [
+          477,
+          155,
+          25,
+          14
+        ],
+        "height": 1.6,
+        "brief": "A sloped bank, handwheel and sample cup sit within arm’s reach. Mark an isolated batch visibly while the clean tank remains available."
+      },
+      {
+        "id": "B4",
+        "name": "Scrap tote tipper",
+        "form": "press",
+        "box": [
+          560,
+          174,
+          22,
+          18
+        ],
+        "height": 3.4,
+        "brief": "Catch the sealed tote below the dry rail. Separate tip frame and lid. Tip only at the rear feed mouth and return the empty tote."
+      }
+    ]
+  },
+  {
+    "id": "cortex",
+    "name": "Cortex Assembly",
+    "view": [
+      638,
+      50,
+      264,
+      167
+    ],
+    "volume": "Keep the hot furnace across the aisle from the cold cyan test vessels. A single brain-sized workpiece travels through an oversized chamber. Allow a 4 m service ring and an overhead lift.",
+    "blocking": "RIVET WITCH works the side instrument desk while the chamber stays in frame. The retained smart crew can align a core from opposite sides and withdraw before the hoist lowers.",
+    "art": [
+      {
+        "source": "rooms/08_loopforge_rooms_brain_forge_3.png",
+        "media": "board/cortex",
+        "caption": "Original Brain Forge · hot chamber, carrier line and cold glass bank"
+      },
+      {
+        "source": "rooms/08_loopforge_rooms_brain_forge_8_rivet_witch.png",
+        "media": "local/cortex-witch",
+        "caption": "RIVET WITCH at the instrument desk beside the illuminated test cell"
+      }
+    ],
+    "objects": [
+      {
+        "id": "C1",
+        "name": "Integration furnace and clamping chamber",
+        "form": "press",
+        "box": [
+          746,
+          127,
+          40,
+          34
+        ],
+        "height": 7.5,
+        "brief": "Give the refractory mouth the silhouette of the painting. Separate lift, clamps and chamber door. Provide two opposing jig sockets for ribbon cassettes."
+      },
+      {
+        "id": "C2",
+        "name": "Cold test vessels and proof bench",
+        "form": "bank",
+        "box": [
+          806,
+          118,
+          37,
+          42
+        ],
+        "height": 7,
+        "brief": "Keep the cyan jacket clear of the warm furnace. Add a removable test cradle and a return spur for units that fail the proof cycle."
+      },
+      {
+        "id": "C3",
+        "name": "Calibration console",
+        "form": "desk",
+        "box": [
+          699,
+          168,
+          26,
+          14
+        ],
+        "height": 1.6,
+        "brief": "An engineer must be able to see the chamber and the cold bench over the angled controls. Keep the lever, meters and lamps independent."
+      },
+      {
+        "id": "C4",
+        "name": "Dry receiving and outward lift",
+        "form": "rails",
+        "box": [
+          857,
+          168,
+          32,
+          23
+        ],
+        "height": 5,
+        "brief": "Give arriving cores and spools separate indexed sockets. The outgoing cradle uses the east hoist over the staff aisle."
+      }
+    ]
+  },
+  {
+    "id": "theatre",
+    "name": "Burn-in Theatre",
+    "view": [
+      518,
+      291,
+      384,
+      187
+    ],
+    "volume": "The north wall moves 24 drawing units south, roughly 6 m. Give the audience a 22 × 20 m bowl inside the shallower hall. Keep the stage-to-last-row sightline; the rear receiving strip absorbs the remaining depth.",
+    "blocking": "CATHEXIS stands on the apron in front of the three images with room to turn toward the audience. A technician can service a row from the side without crossing her light beam.",
+    "art": [
+      {
+        "source": "rooms/07_loopforge_rooms_burnin_theatre_3.png",
+        "media": "board/theatre",
+        "caption": "Burn-in Theatre · rows of occupied cradles and the control gallery"
+      },
+      {
+        "source": "characters/theatre_operations/cathexis_theatre_success_2.png",
+        "media": "supervisors/cathexis-theatre-success-2",
+        "caption": "CATHEXIS · addressing the audience under three projection screens"
+      }
+    ],
+    "objects": [
+      {
+        "id": "T1",
+        "name": "Three screens and projecting stage apron",
+        "form": "screen",
+        "box": [
+          674,
+          311,
+          107,
+          13
+        ],
+        "height": 6.2,
+        "brief": "Separate screen faces, projectors and the stepped apron. Draw a line from each occupied row to the central screen; keep CATHEXIS’s silhouette below it."
+      },
+      {
+        "id": "T2",
+        "name": "Stepped conditioning cradle bank",
+        "form": "seats",
+        "box": [
+          683,
+          346,
+          89,
+          45
+        ],
+        "height": 2.4,
+        "brief": "Instance four rows of four berths on shallow risers. Split restraints and docking rails. Bring a pallet into an empty berth while its neighbour is occupied."
+      },
+      {
+        "id": "T3",
+        "name": "Side console and transfer spur",
+        "form": "desk",
+        "box": [
+          796,
+          398,
+          30,
+          15
+        ],
+        "height": 1.6,
+        "brief": "Keep the programme controls at the end of an aisle. The operator sees the stage and the outbound stop; her body clears the passing pallet."
+      }
+    ]
+  },
+  {
+    "id": "logistics",
+    "name": "Logistics",
+    "view": [
+      518,
+      474,
+      384,
+      158
+    ],
+    "volume": "Low task lighting and tall archive shelves make this a paperwork floor with a dock at its edge. Reserve a 6 m pallet turn in receiving and keep retained muster on the quiet side.",
+    "blocking": "A receiver lifts the oversized ledger, checks the unit tag and releases one of two stops. A worker going to muster can walk past the desk without stepping into a dock lane.",
+    "art": [
+      {
+        "source": "rooms/10_loopforge_rooms_shipping_2.png",
+        "media": "focused/logistics-room",
+        "caption": "Shipping painting · an open ledger, deep files and a receiving counter"
+      }
+    ],
+    "objects": [
+      {
+        "id": "G1",
+        "name": "Receiving desk and giant shipping ledger",
+        "form": "desk",
+        "box": [
+          612,
+          511,
+          40,
+          17
+        ],
+        "height": 1.45,
+        "brief": "Model the ledger as a separate hinged prop. Make the cradle tag readable from the receiver’s standing mark."
+      },
+      {
+        "id": "G2",
+        "name": "Wall of pigeonholes and manifest drawers",
+        "form": "screen",
+        "box": [
+          555,
+          592,
+          151,
+          11
+        ],
+        "height": 4,
+        "brief": "Repeat a deep drawer module. Reserve a few open slots for manifests and leave the dock turn free."
+      },
+      {
+        "id": "G3",
+        "name": "Allocation stops, quota dock and muster rack",
+        "form": "rails",
+        "box": [
+          817,
+          524,
+          66,
+          18
+        ],
+        "height": 2.6,
+        "brief": "Two separate stops lead to the east loading door and south muster. Separate gates and indicator plates so a retained unit cannot appear on both branches."
+      },
+      {
+        "id": "G4",
+        "name": "Commissioning berth and fitting lift",
+        "form": "press",
+        "box": [
+          845,
+          481,
+          28,
+          22
+        ],
+        "height": 3.8,
+        "brief": "Catch the east lift at a locked proof berth. Hold the first 2.0 here for sign-off. Fit later 2.0 cores in transport bodies before quota or muster; a Theatre-bound unit takes its fitting cradle at the upper stop."
+      }
+    ]
+  },
+  {
+    "id": "pipes",
+    "name": "High-tech pipe galleries",
+    "view": [
+      156,
+      192,
+      752,
+      61
+    ],
+    "volume": "Fill the entire 6 m-deep gap above Lobby and Dispatch. Carry the same double-height bent, saddle spacing and valve colour along the south face of all three tech rooms. Mirror the service return along their north wall.",
+    "blocking": "RIVET WITCH can isolate one room at a branch wheel while the rest of the header remains charged. Carry the wet lines and dry hoist above three clear staff thresholds; keep the concourse and escape of the queue on the floor below.",
+    "art": [
+      {
+        "source": "rooms/06_loopforge_rooms_cognition_brewery_3_rivet_witch.png",
+        "media": "board/brewery",
+        "caption": "Brewery · copper branches, green vessels and overhead feeds"
+      },
+      {
+        "source": "rooms/05_loopforge_rooms_weaving_room_3.png",
+        "media": "board/weaving",
+        "caption": "Weaving · the same vertical service rhythm at the loom bank"
+      }
+    ],
+    "objects": [
+      {
+        "id": "P1",
+        "name": "Repeated pipe bent and return saddle",
+        "form": "bridge",
+        "box": [
+          177,
+          217,
+          30,
+          19
+        ],
+        "height": 6.2,
+        "brief": "Repeat the same flanged frame on both tech walls. Make straight, elbow and expansion-loop parts. Put the lowest overhead support above a 4.5 m clear door opening."
+      },
+      {
+        "id": "P2",
+        "name": "Branch valve and sample manifold",
+        "form": "desk",
+        "box": [
+          579,
+          225,
+          18,
+          10
+        ],
+        "height": 4.8,
+        "brief": "Mount isolation wheels, glass flow indicators and a return branch at each room. Use geometry and labels as well as colour to distinguish supply from return."
+      },
+      {
+        "id": "P3",
+        "name": "Dry overhead rail and transfer hanger",
+        "form": "rails",
+        "box": [
+          663,
+          218,
+          42,
+          5
+        ],
+        "height": 7.4,
+        "brief": "Keep sealed cores, scrap totes and ribbon cassettes on carriers above the wet pipes. Separate the trolley and hoist pivot. Leave an access platform clear of the staff doors."
+      }
+    ]
+  }
+]

@@ -71,27 +71,6 @@ export const overview: Chapter[] = [
     principle: "The player chooses policy. The engine resolves consequences.",
   },
   {
-    id: "the-cast",
-    title: "The supervisors",
-    kicker: "Five supervisors / expertise and refusal",
-    heading: "An organization chart\nwith unresolved grievances.",
-    lead: "You need their expertise. You inherit their rivalries. An assignment gives them a room; it does not guarantee their obedience.",
-    art: "conflict",
-    caption: "Limen and Stiletto at the conveyor · original concept art",
-    exhibit: "cast",
-    sections: [
-      {
-        title: "Success changes the balance",
-        body: "A specialist who rescues the shift earns confidence and influence. Repeated success can make your instructions seem unnecessary. The same expertise that keeps a room working gives its supervisor the means to take control of it.",
-      },
-      {
-        title: "An argument has consequences",
-        body: "Supporting one supervisor can weaken another’s loyalty. Suppression can end an immediate confrontation while leaving the grievance intact. A repair, a stoppage and a refusal must each leave a visible consequence; the accounts of why it happened can still disagree.",
-      },
-    ],
-    principle: "A reliable world can contain unreliable witnesses.",
-  },
-  {
     id: "the-rooms",
     title: "The rooms",
     kicker: "Production geography / a tour of the line",
@@ -141,7 +120,7 @@ export const overview: Chapter[] = [
     heading: "A clean ledger.\nA very untidy meeting.",
     lead: "The most productive room can still be the least trusted one. The game lives in the gap between what happened and what it meant to someone.",
     art: "brewery",
-    caption: "Rivet Witch’s Cognition Substrate Brewery · original concept art",
+    caption: "RIVET WITCH’s Cognition Substrate Brewery · original concept art",
     exhibit: "alive",
     sections: [
       {
@@ -346,7 +325,7 @@ export const architecture: Chapter[] = [
     heading: "Remember selectively.\nForget nothing authoritative.",
     lead: "Mechanical history and a character’s memory are different records. A compact recollection is context, never a replacement for the event log.",
     art: "cathexis",
-    caption: "Cathexis · original character study",
+    caption: "CATHEXIS · original character study",
     exhibit: "ownership",
     sections: [
       {
@@ -400,7 +379,7 @@ export const architecture: Chapter[] = [
     heading: "Choose the smallest model\nthat passes the job.",
     lead: "Narrative needs controlled voice, faithful interpretation and low tail latency. General benchmark rankings do not answer that particular question.",
     art: "thrum",
-    caption: "Thrum · tuning is a repeatable comparison",
+    caption: "THRUM · tuning is a repeatable comparison",
     exhibit: "evals",
     sections: [
       {
@@ -509,7 +488,7 @@ architecture.splice(
     heading: "A character needs a reason.\nThen a plan it can keep.",
     lead: "Beliefs describe what an agent knows. Desires represent competing priorities. Intentions are commitments to act, with conditions for continuation, success and abandonment.",
     art: "limen",
-    caption: "Limen · procedure as a persistent motive",
+    caption: "LIMEN · procedure as a persistent motive",
     exhibit: "bdi",
     sections: [
       {

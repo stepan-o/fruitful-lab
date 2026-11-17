@@ -126,7 +126,7 @@ Five observed presentation defects need correction: speech and credential panels
 
 Keep the approved cast and room direction, the reading holds, the four explicit tutorial verbs, the progression from solo to paired to staffed work, and the distinct night result. A small optional wording improvement can distinguish the first staffed output from the cumulative total. It must preserve the three output categories rather than altering mechanics to fit a label.
 
-The automatic staffed-work slowdown remains a required investigation. Its capture is not a controlled comparison: focus, recording and diagnostic conditions changed. Logical ticks, rendered frames and wall time must be reported separately. Sam's precision polish remains deferred; these findings do not authorize a blanket animation or asset replacement.
+The automatic staffed-work slowdown remains a required investigation. Its capture is not a controlled comparison: focus, recording and diagnostic conditions changed. Logical ticks, rendered frames and wall time must be reported separately. sam's precision polish remains deferred; these findings do not authorize a blanket animation or asset replacement.
 
 ### The next proof
 

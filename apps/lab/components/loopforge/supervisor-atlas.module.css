@@ -119,3 +119,14 @@
  .roomTable th:first-child { width:92px; }
  .closed { padding:24px; }
 }
+
+.frame { display:flow-root; padding:clamp(12px,2vw,26px); background:#101a18; color-scheme:dark; }
+.frame .matrixSection:first-child { margin:0; padding-top:0; }
+.frame .stage { margin-top:32px; }
+.frame a { color:#dccba0; }
+.thumb { display:block; width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; }
+.roomTable a[aria-current=true] { outline:2px solid var(--supervisor-color); outline-offset:-2px; }
+.marks { display:flex; flex-wrap:wrap; align-items:center; gap:6px 14px; font:12px/1.4 Arial,sans-serif; margin-top:10px; }
+.marks a { display:inline-flex; align-items:center; min-height:44px; text-decoration:underline; text-underline-offset:3px; }
+.pairBlocking { margin:0 0 22px; max-width:780px; }
+.pairBlocking>p { font:17px/1.6 Georgia,serif; margin-top:8px; }

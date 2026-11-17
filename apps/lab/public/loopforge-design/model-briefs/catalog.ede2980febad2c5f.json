@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "revision": "model-briefs-2026-10-22-room-delivery",
+  "date": "2026-10-22",
+  "models": [
+    {
+      "id": "limen",
+      "name": "LIMEN",
+      "subtitle": "Security chief · body + emitter",
+      "status": "Rebuilt body installed · contact review pending",
+      "downloadBytes": 1968311,
+      "src": "/loopforge-design/model-briefs/limen.83f02c0acdfd0aec.json"
+    },
+    {
+      "id": "worker",
+      "name": "Worker 01",
+      "subtitle": "Factory worker · body + motion bank",
+      "status": "Worker 01 motion cleanup approved",
+      "downloadBytes": 982202,
+      "src": "/loopforge-design/model-briefs/worker.8d3a90cef93622aa.json"
+    },
+    {
+      "id": "stiletto",
+      "name": "STILETTO",
+      "subtitle": "Twin blades · interchangeable forearm modules",
+      "status": "Prototype acting accepted",
+      "downloadBytes": 1219470,
+      "src": "/loopforge-design/model-briefs/stiletto.fe73c67a0c6b4eba.json"
+    },
+    {
+      "id": "cathexis",
+      "name": "CATHEXIS",
+      "subtitle": "Theatre diva · intact mechanism + Grace coverage",
+      "status": "Body, Grace fit and four motions approved",
+      "downloadBytes": 6632188,
+      "src": "/loopforge-design/model-briefs/cathexis.89d3bf41c8100c94.json"
+    },
+    {
+      "id": "bob",
+      "name": "bob",
+      "subtitle": "Fly eyes · flat head",
+      "status": "Rigged motion candidate · review available",
+      "downloadBytes": 160632,
+      "src": "/loopforge-design/model-briefs/bob.bd8301b9971c61c0.json"
+    },
+    {
+      "id": "sam",
+      "name": "sam",
+      "subtitle": "Rounded shoulders · low head",
+      "status": "Rigged motion candidate · review available",
+      "downloadBytes": 190731,
+      "src": "/loopforge-design/model-briefs/sam.60fc081e59f39703.json"
+    },
+    {
+      "id": "ed",
+      "name": "ed",
+      "subtitle": "Swept skull · pointing finger",
+      "status": "Rigged motion candidate · review available",
+      "downloadBytes": 263638,
+      "src": "/loopforge-design/model-briefs/ed.f327116191e4b9b7.json"
+    },
+    {
+      "id": "jo",
+      "name": "jo",
+      "subtitle": "Work cap · blue jacket",
+      "status": "Rigged motion candidate · review available",
+      "downloadBytes": 250949,
+      "src": "/loopforge-design/model-briefs/jo.4d18d7b1bf1f0915.json"
+    },
+    {
+      "id": "gus",
+      "name": "gus",
+      "subtitle": "Square shoulders · recessed head",
+      "status": "Rigged motion candidate · review available",
+      "downloadBytes": 253834,
+      "src": "/loopforge-design/model-briefs/gus.2983619d67230df6.json"
+    },
+    {
+      "id": "max",
+      "name": "max",
+      "subtitle": "Long face · narrow frame",
+      "status": "Rigged motion candidate · review available",
+      "downloadBytes": 116954,
+      "src": "/loopforge-design/model-briefs/max.56ecca15d26a91cc.json"
+    },
+    {
+      "id": "mae",
+      "name": "mae",
+      "subtitle": "Blunt head · compact frame",
+      "status": "Rigged motion candidate · review available",
+      "downloadBytes": 302554,
+      "src": "/loopforge-design/model-briefs/mae.ad0eea31c133c92b.json"
+    },
+    {
+      "id": "kit",
+      "name": "kit",
+      "subtitle": "Piston forearms · pipe",
+      "status": "Rigged motion candidate · review available",
+      "downloadBytes": 317144,
+      "src": "/loopforge-design/model-briefs/kit.1f2e5cb1d96eb84a.json"
+    },
+    {
+      "id": "lou",
+      "name": "lou",
+      "subtitle": "Long neck · spare frame",
+      "status": "Rigged motion candidate · review available",
+      "downloadBytes": 226381,
+      "src": "/loopforge-design/model-briefs/lou.d1cb3c0e5de983c6.json"
+    },
+    {
+      "id": "ben",
+      "name": "ben",
+      "subtitle": "Oval hood · barrel body",
+      "status": "Rigged motion candidate · review available",
+      "downloadBytes": 249650,
+      "src": "/loopforge-design/model-briefs/ben.11dc8e460eec813a.json"
+    }
+  ]
+}

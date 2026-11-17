@@ -18,7 +18,7 @@ it('retains durable completion with full retained event history and ends only af
  expect(DAY_ONE_CREW).toHaveLength(8);expect(dayOneReviewPoints(t.registry).map(p=>p.id)).toEqual(['lobby','conveyor','security','production','output','departure','night']);
 });
 
-it('interrupts the paired cycle if Sam leaves the Wash control without manufacturing output',()=>{
+it('interrupts the paired cycle if sam leaves the Wash control without manufacturing output',()=>{
  const t=arrival();let s=t.world;
  while(s.tick<t.total){s=advance(s,t.registry,t.space,t.planner);const p=project(s,t.registry).process?.active;if(p?.station==='wash'&&p.operator.agent==='sam'&&!p.staffing)break;}
  expect(s.facts['line.output']).toBe(1);expect(project(s,t.registry).process?.active?.operator.agent).toBe('sam');

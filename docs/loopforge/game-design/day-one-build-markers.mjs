@@ -21,7 +21,7 @@ export function makeBuildMarkers(floor, score) {
     'Face the clerk north. Block in a sloped photo reader and a pale card tray. Leave the aisle between the desks open.');
   mark('S6','Security','Lift gate and west control post',
     {x:gate.hinge[0]-.17,y:gate.hinge[1]-.17,w:gate.length+.34,h:.34},0,gate.length+1.05,
-    'Anchor the pivot at the west end, 1.05 m above the deck. Raise the boom vertically. LIMEN works the post from Security. STILETTO waits on the east, then walks through the raised span.');
+    'Anchor the pivot at the west end, 1.05 m above the deck. Raise the boom vertically. LIMEN works the post from Security. STILETTO calls from the east aisle and walks through the raised span without breaking stride.');
   mark('S7','Security','Intake sign and strip light',
     {x:123.35,y:116.25,w:5.4,h:.28},2.65,.48,
     'Suspend a blackened steel BLUE-COLLAR INTAKE sign above the queue. Face it north toward arrivals. Tuck one cold tube under its hood.');

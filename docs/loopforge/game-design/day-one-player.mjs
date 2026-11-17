@@ -44,8 +44,10 @@ function label(p,txt,colour,size=10,align='center'){
 function chooseCamera(mode,w){
   const third=samplePath(score.products[2].keys,w).p;
   const workerY=samplePath(score.tracks.max,w).p[1];
+  // Pan with the walkers while jo finishes her line inside the Lobby.
+  const entrancePan=inspecting?0:Math.min(8,Math.max(0,(w-score.start-4)*1.1));
   const shot={
-    entrance:[floor.exit.x+floor.exit.w/2,floor.exit.y+4.3,20,22],
+    entrance:[floor.exit.x+floor.exit.w/2,floor.exit.y+4.3-entrancePan,20,22],
     gate:[127.6,122.2,16,14.4],passage:[127.6,125.15,16,14.5],line:[127.6,138.15,25,14.5],door:[128.6,126.75,14.8,12.8],
     wide:[127,132.25,26,24],release:[127,134.4,25,15],hall:[120,156,84,60],follow:[Math.max(120.1,Math.min(134,third[0])),140.7,13.5,11],
     yard:[72.4,Math.max(134,(128+workerY)/2),21,Math.max(16,workerY-128+5)],securityObjects:[128.5,122.4,17.8,15.8],conveyorObjects:[129,141.7,27,13],
@@ -273,6 +275,9 @@ function drawCast(w,voices){
   const names=[];
   for(const [i,id] of actors.entries()){
     const pos=poses[id], p=pos.p, c=colours[id],boss=id===id.toUpperCase(),angle=facing(id,pos,w,poses);
+    const visible=w>=score.tracks[id][0].t;
+    dots[i].setAttribute('visibility',visible?'visible':'hidden');
+    if(!visible)continue;
     dots[i].setAttribute('cx',p[0]);dots[i].setAttribute('cy',p[1]);
     if(whole)continue;
     const [sx,sy]=project(p);
@@ -406,6 +411,7 @@ function draw(){
   const index=score.beats.findLastIndex(b=>b.at<=w+1e-8);
   const beat=score.beats[index], voices=score.speech.filter(q=>q.start<=w&&w<q.end);
   let view=hallView?'hall':beat.view;
+  if(!hallView && beat.view==='entrance' && w>=score.cuts[0].to)view='gate';
   if(inspecting)view=selectedObject.room==='Security'?'securityObjects':selectedObject.room==='Conveyor'?'conveyorObjects':selectedObject.room==='Factory entrance'?'entrance':'hall';
   if(!hallView && !inspecting && beat.view==='line' && w>=40.5 && w<43.7)view='hall';
   chooseCamera(view,w);
@@ -466,7 +472,7 @@ new ResizeObserver(()=>{
   const dpr=Math.min(devicePixelRatio,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
   ctx.setTransform(dpr,0,0,dpr,0,0);draw();
 }).observe(canvas);
-const initialBeatName={'#forge-hall':'Run it','#end-of-shift':'End of shift'}[location.hash];
+const initialBeatName={'#forge-hall':'Run it','#end-of-shift':'End of shift','#the-fallen-card':'The fallen card'}[location.hash];
 const initialBeat=score.beats.find(beat=>beat.name===initialBeatName);
 setHall(location.hash==='#forge-hall');
 update(initialBeat?score.editTime(initialBeat.at):0,!hallView);

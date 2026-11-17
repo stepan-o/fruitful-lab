@@ -365,12 +365,12 @@ intro_art = {
         ],
     },
 }
-build_rehearsal(ROOT, OUT, intro_source)
 intro_title, intro_body, _ = render_narrative(intro_source, intro_art)
+build_rehearsal(ROOT, OUT, intro_source, intro_body)
 intro_css_hash = hashlib.sha256((ROOT/'day-one-intro.css').read_bytes()).hexdigest()[:12]
 intro_css = f'<link rel="stylesheet" href="day-one-intro.css?v={intro_css_hash}">'
 intro = (f'<header class="section-head"><span class="kicker">Approved script and storyboards</span>'
-         f'<h2>{e(intro_title)}</h2><a class="link-button" href="/loopforge-design/day-one-rehearsal.html">Play the 2D floor rehearsal →</a></header><div class="day-one-script">{intro_body}</div>')
+         f'<h2>{e(intro_title)}</h2><a class="link-button" href="/loopforge-design/day-one-rehearsal.html">Play the 2D floor rehearsal →</a> <a class="link-button" href="/loopforge-design/factory-layout-proposal.html">Review the proposed factory layout →</a></header><div class="day-one-script">{intro_body}</div>')
 writing_style_source = (ROOT.parent/'DAY_ONE_WRITING_STYLE.md').read_text()
 writing_style_title, writing_style_body, _ = render_narrative(writing_style_source, {})
 writing_style = (f'<header class="section-head"><h2>{e(writing_style_title)}</h2></header>'

@@ -3,7 +3,7 @@ import json
 import re
 
 
-def build_rehearsal(root, out, script):
+def build_rehearsal(root, out, script, intro_html):
     dialogue = []
     for speaker, text in re.findall(r'^\*\*(\w+)\*\*\s+(.+)$', script, re.MULTILINE):
         aside = re.match(r'^\*\((.*?)\)\*\s*', text)
@@ -22,3 +22,6 @@ def build_rehearsal(root, out, script):
     ]:
         page = page.replace(tag, source)
     (out/'day-one-rehearsal.html').write_text(page)
+
+    proposal = (root/'factory-layout-proposal.html').read_text()
+    (out/'factory-layout-proposal.html').write_text(proposal.replace('<!--APPROVED_INTRO-->', intro_html))

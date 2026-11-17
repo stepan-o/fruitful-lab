@@ -4516,8 +4516,6 @@ A candidate environmental texture from the long synthetic soundscape. This is ne
 
 **Soundtrack.** Not sourced or implemented. Plan separate music control, stems and ducking under important signals.
 
-[Play the 2D floor rehearsal](/loopforge-design/day-one-rehearsal.html)
-
 ## Day 1 intro
 
 ### At the gate
@@ -4695,6 +4693,10 @@ Figure 2. Conveyor Intake. sam is the heavy tray-carrying worker at the center o
 **max** WHO HERE REALLY CARES ABOUT THIS FACTORY???!!
 
 *ed laughs first. Behind him, the factory lights go out.*
+
+## 2D floor & proposed layout
+
+[Play the 2D floor rehearsal](/loopforge-design/day-one-rehearsal.html) · [Explore the proposed layout](/loopforge-design/factory-layout-proposal.html) · [Full-size floor plan](/loopforge-design/factory-floor-plan.32180aa96dbe.svg)
 
 [The cast — portraits and character briefs](/stepanoskin/loopforge/design#narrative-cast)
 

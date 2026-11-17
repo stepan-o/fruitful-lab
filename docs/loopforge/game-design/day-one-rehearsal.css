@@ -23,3 +23,7 @@ details{border-top:1px solid var(--edge);margin-top:6px;color:var(--soft)}summar
 @media(max-width:620px){.views button{font-size:12px;padding:5px}.bar h2{min-width:0}.views{max-width:60%}}
 
 #hallNote{margin:0;padding:8px 14px;color:var(--soft);font-size:13px;border-top:1px solid var(--edge)}
+
+.bubble.bell-cue{background:#393322;border-color:#b6a76b;border-left-color:#f1d27a}
+.bubble.shout-cue{background:#3c2823;border-color:#b9745b;border-left-color:#ff9273}
+.bubble.bell-cue span,.bubble.shout-cue span{font-weight:750;font-size:clamp(18px,2vw,24px);line-height:1.15}

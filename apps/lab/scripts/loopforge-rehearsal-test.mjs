@@ -150,14 +150,24 @@ const moving=(id,t)=>samplePath(s.tracks[id],t).moving;
 const position=(id,t)=>samplePath(s.tracks[id],t).p;
 const between=(a,b,t)=>Math.hypot(...position(a,t).map((v,i)=>v-position(b,t)[i]));
 const release=s.release;
-assert(s.departures.every(w=>!moving(w.id,bell+1)),'wait for the supervisor to release the crew');
+assert(s.departures.every(w=>!moving(w.id,bell-.01)),'the crew is still at work before the bell');
+assert.equal(s.departures.filter(w=>moving(w.id,bell+1)).length,6,
+  'six workers begin leaving while mae and kit shut down');
+assert(s.departures.every(w=>moving(w.id,s.call-.01)),'the shout catches all eight in motion');
+for(const worker of s.departures){
+  assert(position(worker.id,s.call)[1]<position(worker.id,bell)[1]-2,
+    worker.id+' has visibly left the station before the shout');
+  assert(!moving(worker.id,s.call+.4) && !moving(worker.id,release-.01),
+    worker.id+' stops for the shout and waits through the replies');
+  assert(moving(worker.id,worker.at+.01),worker.id+' resumes after dismissal');
+}
 assert.equal(s.departures.filter(w=>moving(w.id,release+1)).length,6);
 const endSpeech=s.speech.filter(q=>q.start>=bell && q.start<release+1);
 const [bellCue,...endCall]=endSpeech;
 assert.equal(bellCue.speaker,'BELL');
 assert.equal(bellCue.start,bell);
-assert(bellCue.end-bellCue.start>=1 && bellCue.end<=endCall[0].start,
-  'show the bell on its own before STILETTO speaks');
+assert(bellCue.end-bellCue.start>=1 && endCall[0].start-bellCue.start>=2.5,
+  'give the bell and the walkout time to land before STILETTO speaks');
 assert.equal(endCall.length,6);
 assert.equal(endCall[0].speaker,'STILETTO');
 assert.equal(endCall.at(-1).speaker,'STILETTO');
@@ -170,7 +180,7 @@ for(const [id,off] of Object.entries(s.shutdown)){
   const departure=s.departures.find(worker=>worker.id===id);
   assert(off<release && moving(id,departure.at+.01));
 }
-assert(s.departures.every(w=>moving(w.id,release+2.5)));
+assert(s.departures.every(w=>w.at<=release+2.5),'all eight resume within the dismissal beat');
 const lastCheck=s.tallies.at(-1);
 for(const [i,t] of s.tallies.entries()){
   assert.deepEqual(position('ed',t),position('ed',bell),'ed stays at the register');

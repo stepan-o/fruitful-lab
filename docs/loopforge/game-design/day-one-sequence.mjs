@@ -126,23 +126,29 @@ export function makeSequence(floor, script) {
     walk(id,clear,1.55,[128.2,126.75],threshold,[128.5,130.45],[dest[0],136.1],dest);
   }
   walk('STILETTO',156.9,1.5,[132.4,129.4],[133.4,129.4]);
-  // Eight operators break from their own positions. Two approaches share one reader.
-  // The short queue forms at the gate while the rest of the crew is already walking.
+  // The bell starts an unauthorized walkout. STILETTO catches the crew in motion,
+  // then holds them through the overlapping replies before releasing them.
   const bell=179.8;
-  const call=bell+1.2;
+  const call=bell+3.0;
   const release=call+8.0;
-  const shutdown={mae:bell+2.0,kit:bell+2.35};
+  const shutdown={mae:bell+1.0,kit:bell+1.2};
   const departures=[
-    {id:'mae',at:release+2.0,lane:-1}, {id:'sam',at:release+.45,lane:0},
-    {id:'bob',at:release+.8,lane:-1}, {id:'jo',at:release+.12,lane:1},
-    {id:'kit',at:release+2.35,lane:1}, {id:'max',at:release+.65,lane:0},
-    {id:'lou',at:release+.25,lane:-1}, {id:'ben',at:release+.95,lane:1},
+    {id:'mae',at:release+2.0,turn:bell+1.3,brake:call+.22,lane:-1},
+    {id:'sam',at:release+.45,turn:bell+.55,brake:call+.24,lane:0},
+    {id:'bob',at:release+.8,turn:bell+.65,brake:call+.32,lane:-1},
+    {id:'jo',at:release+.12,turn:bell+.25,brake:call+.12,lane:1},
+    {id:'kit',at:release+2.35,turn:bell+1.5,brake:call+.28,lane:1},
+    {id:'max',at:release+.65,turn:bell+.4,brake:call+.10,lane:0},
+    {id:'lou',at:release+.25,turn:bell+.35,brake:call+.18,lane:-1},
+    {id:'ben',at:release+.95,turn:bell+.80,brake:call+.20,lane:1},
   ];
   const reader=[125,124.3], merge=[126.35,130.1], walkSpeed=1.55;
   const viaReader=[[126.35,127.1],[125.5,125.5],reader];
   for(const worker of departures){
-    const {id,at}=worker;
-    const x=tracks[id].at(-1).p[0];
+    const {id,at,turn,brake}=worker;
+    const [x,y]=tracks[id].at(-1).p;
+    // One continuous approach, a caught-in-the-act hold, then the same exit route.
+    walk(id,turn,3/(brake-turn),[x,y-3]);
     worker.apron=[x,133.5];
     worker.onApron=walk(id,at,walkSpeed,worker.apron);
     worker.atMerge=worker.onApron+distance(worker.apron,merge)/walkSpeed;
@@ -227,8 +233,8 @@ export function makeSequence(floor, script) {
     [77.2,78.7],[79.3,82],[82.2,85.2],[85.4,90],[85.55,90.25],[85.85,90.5],[86.1,91.3],
     [93,95.35],[95.8,97.8],[97.9,101.6],[102,104],[104.1,106.9],[107,110.3],
     [119.7,122.2],[122.3,126.9],[131.45,threatEnd],[165.5,167.1],[177.4,179.6],
-    [bell,call],
-    [call+.15,call+2.65],
+    [bell,bell+1.65],
+    [call,call+2.65],
     [call+2.8,call+5.85],[call+2.95,call+6.05],[call+3.1,call+6.2],[call+3.25,call+6.3],
     [call+6.4,release+1.0],
     [eight+.1,eight+3.2],[yard+.1,yard+3.2],[yard+3.3,yard+5],[yard+5.4,yard+9.4],
@@ -252,7 +258,12 @@ export function makeSequence(floor, script) {
     ...crew.map(([id,,clear])=>[clear-1.5,clear,'LIMEN','stamps '+id+'’s card']),
     [157,161,'mae','slides a tray to sam'],[160,165,'kit','feels the drive housing'],
     [167.1,169.4,'sam','feeds the third brain'],[169.6,172,'bob','washes it'],[172.2,174.5,'jo','clamps and starts the belt'],
-    [174.7,177.1,'max','drops the press'],[call,release,'STILETTO','holds the crew at the line'],[bell,shutdown.mae,'mae','cuts the feed'],[bell,shutdown.kit,'kit','stops the drive'],
+    [174.7,177.1,'max','drops the press'],
+    [bell,shutdown.mae,'mae','cuts the feed'],[bell,shutdown.kit,'kit','stops the drive'],
+    ...departures.map(({id,turn,brake})=>[turn,brake,id,'breaks for the door']),
+    [call,call+.5,'STILETTO','catches the crew mid-step'],
+    [call+.5,release,'STILETTO','holds the departing crew'],
+    [release,release+1.5,'STILETTO','waves them out'],
     [eight, eight+3.2,'ed','offers LIMEN the register'],[eight+3.3,eight+6,'ed','clips his pen beside bob’s card'],
     [yard+5.1,yard+8,'max','pulls his jaw back'],[yard+9.4,yard+12,'ed','laughs first'],
   ].map(([start,end,actor,label])=>({start,end,actor,label}));
@@ -267,7 +278,7 @@ export function makeSequence(floor, script) {
     product(2,[[101.5,0],[106,0],[114.9,1],[118,1],[121,2],[122.8,2],[126.1,3],[127.1,3],[128.1,4]],1),
     product(3,[[113.5,0],[168.8,0],[170.1,1],[171.8,1],[172.8,2],[174.3,2],[175.6,3],[176.4,3],[177.2,4]],2),
   ];
-  return {start,cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,shutdown,release,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
+  return {start,cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,bell,call,shutdown,release,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
 }
 
 export function samplePath(keys,t) {

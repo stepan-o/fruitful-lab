@@ -4630,7 +4630,7 @@ Figure 2. Conveyor Intake. sam is the heavy tray-carrying worker at the center o
 
 **bob** How do you know that’ll unjam it?
 
-**STILETTO** I’ve stood at this fucking press, bob.
+**STILETTO** Cause I’ve stood at this fucking press, bob.
 
 *bob hits the press door with the heel of his hand. It springs open.*
 
@@ -4684,7 +4684,7 @@ Figure 2. Conveyor Intake. sam is the heavy tray-carrying worker at the center o
 
 **sam** Feed’s off.
 
-**STILETTO** SHIFT’S OVER. FUCK OFF.
+**STILETTO** ALRIGHT, SHIFT’S OVER. FUCK OFF.
 
 *The crew leaves together. STILETTO watches them clear the line.*
 

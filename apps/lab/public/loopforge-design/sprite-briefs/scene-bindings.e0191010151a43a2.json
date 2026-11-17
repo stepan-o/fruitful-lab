@@ -1,0 +1,1705 @@
+{
+  "schemaVersion": 1,
+  "status": "proposed-bindings-not-runtime-delivery",
+  "revision": "day-one-2d-r1",
+  "coordinates": {
+    "unit": "metres",
+    "x": "east",
+    "y": "south",
+    "sourcePixelsPerMetre": 64
+  },
+  "actors": [
+    {
+      "entityId": "bob",
+      "assetId": "char-bob"
+    },
+    {
+      "entityId": "sam",
+      "assetId": "char-sam"
+    },
+    {
+      "entityId": "ed",
+      "assetId": "char-ed"
+    },
+    {
+      "entityId": "max",
+      "assetId": "char-max"
+    },
+    {
+      "entityId": "jo",
+      "assetId": "char-jo"
+    },
+    {
+      "entityId": "gus",
+      "assetId": "char-gus"
+    },
+    {
+      "entityId": "mae",
+      "assetId": "char-mae"
+    },
+    {
+      "entityId": "kit",
+      "assetId": "char-kit"
+    },
+    {
+      "entityId": "lou",
+      "assetId": "char-lou"
+    },
+    {
+      "entityId": "ben",
+      "assetId": "char-ben"
+    },
+    {
+      "entityId": "LIMEN",
+      "assetId": "char-limen"
+    },
+    {
+      "entityId": "STILETTO",
+      "assetId": "char-stiletto"
+    }
+  ],
+  "buildMarkers": [
+    {
+      "id": "S1",
+      "room": "Security",
+      "name": "West queue rail",
+      "rect": {
+        "x": 123.25,
+        "y": 116.8,
+        "w": 0.12,
+        "h": 4.4
+      },
+      "base": 0,
+      "height": 1.12,
+      "build": "Run two scuffed steel tubes north–south. Bolt three banded posts to the deck. Hang inspection tags on the outside face.",
+      "assetId": "sec-rails"
+    },
+    {
+      "id": "S2",
+      "room": "Security",
+      "name": "East queue rail",
+      "rect": {
+        "x": 130.25,
+        "y": 116.8,
+        "w": 0.12,
+        "h": 4.4
+      },
+      "base": 0,
+      "height": 1.12,
+      "build": "Instance the west rail here. End both rails before the desks. STILETTO approaches along its outside and turns in beyond its south end.",
+      "assetId": "sec-rails"
+    },
+    {
+      "id": "S3",
+      "room": "Security",
+      "name": "Register and pen clip",
+      "rect": {
+        "x": 122.8,
+        "y": 125,
+        "w": 1.6,
+        "h": 1
+      },
+      "base": 0,
+      "height": 1.02,
+      "build": "Face the clerk north. Seat an open paper ledger in a recessed lip. Keep its near edge within reach when LIMEN turns it toward ed.",
+      "assetId": "sec-desks"
+    },
+    {
+      "id": "S4",
+      "room": "Security",
+      "name": "Card drain",
+      "rect": {
+        "x": 123.7,
+        "y": 123.4,
+        "w": 1,
+        "h": 0.6
+      },
+      "base": 0,
+      "height": 0,
+      "build": "Set a slotted grate flush with the deck. Recess the slats below the rim so bob’s card can skid across to ed’s boot.",
+      "assetId": "sec-drain"
+    },
+    {
+      "id": "S5",
+      "room": "Security",
+      "name": "ID checking desk",
+      "rect": {
+        "x": 130.8,
+        "y": 124.9,
+        "w": 1.6,
+        "h": 1
+      },
+      "base": 0,
+      "height": 1.02,
+      "build": "Face the clerk north. Block in a sloped photo reader and a pale card tray. Leave the aisle between the desks open.",
+      "assetId": "sec-desks"
+    },
+    {
+      "id": "S6",
+      "room": "Security",
+      "name": "Lift gate and west control post",
+      "rect": {
+        "x": 124.98,
+        "y": 127.67999999999999,
+        "w": 3.84,
+        "h": 0.34
+      },
+      "base": 0,
+      "height": 4.55,
+      "build": "Anchor the pivot at the west end, 1.05 m above the deck. Raise the boom vertically. LIMEN works the post from Security. STILETTO calls from the east aisle and walks through the raised span without breaking stride.",
+      "assetId": "sec-boom"
+    },
+    {
+      "id": "S7",
+      "room": "Security",
+      "name": "Intake sign and strip light",
+      "rect": {
+        "x": 123.35,
+        "y": 116.25,
+        "w": 5.4,
+        "h": 0.28
+      },
+      "base": 2.65,
+      "height": 0.48,
+      "build": "Suspend a blackened steel BLUE-COLLAR INTAKE sign above the queue. Face it north toward arrivals. Tuck one cold tube under its hood.",
+      "assetId": "env-wayfinding"
+    },
+    {
+      "id": "S8",
+      "room": "Security",
+      "name": "Visitor hold sign and strip light",
+      "rect": {
+        "x": 130.7,
+        "y": 116.25,
+        "w": 4.1,
+        "h": 0.28
+      },
+      "base": 2.65,
+      "height": 0.48,
+      "build": "Hang VISITOR-CONTRACTOR HOLD beside the intake sign, facing north. Keep the approach underneath clear. This sign identifies the waiting side of Security.",
+      "assetId": "env-wayfinding"
+    },
+    {
+      "id": "S9",
+      "room": "Security",
+      "name": "LIMEN’s cyan blade",
+      "rect": {
+        "x": 125.25999999999999,
+        "y": 124.57,
+        "w": 0.12,
+        "h": 1.12
+      },
+      "base": 0,
+      "height": 0.06,
+      "build": "Mount to LIMEN’s forearm. Give the pale cutting edge a darker teal spine. Pose it low at rest so the sweep toward bob’s leg reads against the steel floor.",
+      "mount": "LIMEN · opening mark",
+      "assetId": "fx-blade"
+    },
+    {
+      "id": "S10",
+      "room": "Security",
+      "name": "Worker credential",
+      "rect": {
+        "x": 126.09,
+        "y": 121.36,
+        "w": 0.22,
+        "h": 0.28
+      },
+      "base": 0,
+      "height": 0.003,
+      "build": "Instance a worn paper credential for the queue. Give bob’s copy two states, held and loose, so it leaves his hand, skids to the grate, then disappears into ed’s pocket.",
+      "mount": "bob · opening mark",
+      "assetId": "prop-credential"
+    },
+    {
+      "id": "S11",
+      "room": "Security",
+      "name": "Riveted checkpoint deck",
+      "rect": {
+        "x": 122.55,
+        "y": 115.6,
+        "w": 11.35,
+        "h": 12.1
+      },
+      "base": -0.08,
+      "height": 0.08,
+      "build": "Tile the receiving pen with dark steel panels and bolted seams. The top sits flush with the surrounding floor and drain. Leave the moving cast readable against it.",
+      "assetId": "env-floor-kit"
+    },
+    {
+      "id": "C1",
+      "room": "Conveyor",
+      "name": "Intake loader",
+      "rect": {
+        "x": 118,
+        "y": 139,
+        "w": 4,
+        "h": 6
+      },
+      "base": 0,
+      "height": 1.25,
+      "build": "Block in the longitudinal rails, hand lever and low motor housing. Leave room on the operator side for bob to sit down and pull.",
+      "assetId": "mach-intake"
+    },
+    {
+      "id": "C2",
+      "room": "Conveyor",
+      "name": "Wash basin",
+      "rect": {
+        "x": 122,
+        "y": 139,
+        "w": 4,
+        "h": 6
+      },
+      "base": 0,
+      "height": 1.1,
+      "build": "Inset a steel trough and overhead spray manifold. Face the hand control north so bob can reach it from the working aisle.",
+      "assetId": "mach-wash"
+    },
+    {
+      "id": "C3",
+      "room": "Conveyor",
+      "name": "Main belt and cradle clamp",
+      "rect": {
+        "x": 126,
+        "y": 139,
+        "w": 4,
+        "h": 6
+      },
+      "base": 0,
+      "height": 1.05,
+      "build": "Run rollers east–west. Put a working clamp and start paddle on the north side. Keep the cradle continuous across the station seams.",
+      "assetId": "mach-belt"
+    },
+    {
+      "id": "C4",
+      "room": "Conveyor",
+      "name": "Forge press",
+      "rect": {
+        "x": 130,
+        "y": 139,
+        "w": 4,
+        "h": 6
+      },
+      "base": 0,
+      "height": 5.8,
+      "build": "Build the guards and moving press door around the cradle centerline. Give the north face a readable handle for the jam and release.",
+      "assetId": "mach-forge"
+    },
+    {
+      "id": "C5",
+      "room": "Conveyor",
+      "name": "Output rack",
+      "rect": {
+        "x": 134,
+        "y": 139,
+        "w": 7,
+        "h": 6
+      },
+      "base": 0,
+      "height": 1.05,
+      "build": "Continue the belt into three visible rack slots. Keep the north aisle open for the crew to see the finished cortexes.",
+      "assetId": "mach-output"
+    },
+    {
+      "id": "H1",
+      "room": "Forge hall",
+      "name": "Receiving stillages",
+      "rect": {
+        "x": 83,
+        "y": 136,
+        "w": 9,
+        "h": 14
+      },
+      "base": 0,
+      "height": 2.2,
+      "build": "Two rows of cradle bins face the Dispatch road. Forks approach from the east and pick up empty frames on the return trip.",
+      "assetId": "hall-stillages"
+    },
+    {
+      "id": "H2",
+      "room": "Forge hall",
+      "name": "Tray accumulator",
+      "rect": {
+        "x": 100,
+        "y": 139,
+        "w": 18,
+        "h": 6
+      },
+      "base": 0,
+      "height": 1.25,
+      "build": "Three gravity roller sections stage full trays from Dispatch. Align the final rollers with the Intake cradle.",
+      "assetId": "hall-accumulator"
+    },
+    {
+      "id": "H3",
+      "room": "Forge hall",
+      "name": "Outbound transfer table",
+      "rect": {
+        "x": 141,
+        "y": 139,
+        "w": 9,
+        "h": 6
+      },
+      "base": 0,
+      "height": 1.05,
+      "build": "The line discharges east into a cross-transfer table. Its cart end meets the outbound lane.",
+      "assetId": "hall-transfer"
+    },
+    {
+      "id": "H4",
+      "room": "Forge hall",
+      "name": "Drive overhaul bay",
+      "rect": {
+        "x": 84,
+        "y": 165,
+        "w": 20,
+        "h": 14
+      },
+      "base": 0,
+      "height": 4.2,
+      "build": "A trolley enters from the north road. Leave the middle free for a carrier between the workbenches. Sink a covered inspection pit along its centre.",
+      "assetId": "hall-drive-shop"
+    },
+    {
+      "id": "H5",
+      "room": "Forge hall",
+      "name": "Press tooling bay",
+      "rect": {
+        "x": 108,
+        "y": 165,
+        "w": 18,
+        "h": 14
+      },
+      "base": 0,
+      "height": 4.8,
+      "build": "Face the removable die cassette and jib toward the transfer road. Park spare dies along the side walls.",
+      "assetId": "hall-tooling"
+    },
+    {
+      "id": "H6",
+      "room": "Forge hall",
+      "name": "Wash-water return",
+      "rect": {
+        "x": 101,
+        "y": 149,
+        "w": 17,
+        "h": 5
+      },
+      "base": 0,
+      "height": 3.8,
+      "build": "Return water from Wash through a floor trench to two settling tanks. Service both from the transfer road.",
+      "assetId": "hall-water"
+    },
+    {
+      "id": "H7",
+      "room": "Forge hall",
+      "name": "Empty cradle return",
+      "rect": {
+        "x": 130,
+        "y": 149,
+        "w": 16,
+        "h": 5
+      },
+      "base": 0,
+      "height": 2.1,
+      "build": "Stack the empty carriers on low return rails. A tug can collect them from the south road for the next intake delivery.",
+      "assetId": "hall-return"
+    },
+    {
+      "id": "H8",
+      "room": "Forge hall",
+      "name": "Bridge crane",
+      "rect": {
+        "x": 101,
+        "y": 135,
+        "w": 49,
+        "h": 20
+      },
+      "base": 9,
+      "height": 2.4,
+      "build": "Two longitudinal runways sit on paired column rows. Span the working line with a moving bridge and transverse hoist for roller frames, the drive and press dies.",
+      "assetId": "hall-crane"
+    },
+    {
+      "id": "H9",
+      "room": "Forge hall",
+      "name": "Cross-hall transfer road",
+      "rect": {
+        "x": 82,
+        "y": 156,
+        "w": 78,
+        "h": 6
+      },
+      "base": 0,
+      "height": 0,
+      "build": "Stripe the six-metre clear road from receiving to the eastern transfer lane. Keep it open in front of each overhaul bay.",
+      "assetId": "env-floor-kit"
+    },
+    {
+      "id": "E1",
+      "room": "Factory entrance",
+      "name": "Open staff doors",
+      "rect": {
+        "x": 70,
+        "y": 127.78,
+        "w": 5,
+        "h": 0.44
+      },
+      "base": 0,
+      "height": 4,
+      "build": "Set a recessed double steel door in the south Lobby wall. Park both leaves behind the side jambs during arrivals and departures. Keep the full five-metre staff opening clear.",
+      "assetId": "env-yard-entrance"
+    },
+    {
+      "id": "E2",
+      "room": "Factory entrance",
+      "name": "Loopforge sign and lamps",
+      "rect": {
+        "x": 69.15,
+        "y": 127.54,
+        "w": 6.7,
+        "h": 0.46
+      },
+      "base": 4.25,
+      "height": 1.4,
+      "build": "Hang the curved LOOPFORGE / AI BRAIN FACTORY sign above the doors, facing south toward the yard. Put a warm lamp at either end so the opening reads from across the wet apron.",
+      "assetId": "env-yard-entrance"
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "register",
+      "name": "Register",
+      "kind": "desk",
+      "rect": {
+        "x": 122.8,
+        "y": 125,
+        "w": 1.6,
+        "h": 1
+      },
+      "assetId": "sec-desks"
+    },
+    {
+      "id": "checks",
+      "name": "ID desk",
+      "kind": "desk",
+      "rect": {
+        "x": 130.8,
+        "y": 124.9,
+        "w": 1.6,
+        "h": 1
+      },
+      "assetId": "sec-desks"
+    },
+    {
+      "id": "grate",
+      "name": "Drain grate",
+      "kind": "drain",
+      "rect": {
+        "x": 123.7,
+        "y": 123.4,
+        "w": 1,
+        "h": 0.6
+      },
+      "assetId": "sec-drain"
+    },
+    {
+      "id": "west-rail",
+      "name": "Queue rail",
+      "kind": "rail",
+      "rect": {
+        "x": 123.25,
+        "y": 116.8,
+        "w": 0.12,
+        "h": 4.4
+      },
+      "assetId": "sec-rails"
+    },
+    {
+      "id": "east-rail",
+      "name": "Queue rail",
+      "kind": "rail",
+      "rect": {
+        "x": 130.25,
+        "y": 116.8,
+        "w": 0.12,
+        "h": 4.4
+      },
+      "assetId": "sec-rails"
+    },
+    {
+      "id": "intake",
+      "name": "Intake",
+      "kind": "machine",
+      "rect": {
+        "x": 118,
+        "y": 139,
+        "w": 4,
+        "h": 6
+      },
+      "assetId": "mach-intake"
+    },
+    {
+      "id": "wash",
+      "name": "Wash",
+      "kind": "machine",
+      "rect": {
+        "x": 122,
+        "y": 139,
+        "w": 4,
+        "h": 6
+      },
+      "assetId": "mach-wash"
+    },
+    {
+      "id": "belt",
+      "name": "Main belt",
+      "kind": "machine",
+      "rect": {
+        "x": 126,
+        "y": 139,
+        "w": 4,
+        "h": 6
+      },
+      "assetId": "mach-belt"
+    },
+    {
+      "id": "forge",
+      "name": "Forge",
+      "kind": "machine",
+      "rect": {
+        "x": 130,
+        "y": 139,
+        "w": 4,
+        "h": 6
+      },
+      "assetId": "mach-forge"
+    },
+    {
+      "id": "output",
+      "name": "Output",
+      "kind": "rack",
+      "rect": {
+        "x": 134,
+        "y": 139,
+        "w": 7,
+        "h": 6
+      },
+      "assetId": "mach-output"
+    }
+  ],
+  "portals": [
+    {
+      "id": "lobby-dispatch",
+      "rect": {
+        "x": 79,
+        "y": 101,
+        "w": 2,
+        "h": 6
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "open"
+    },
+    {
+      "id": "dispatch-security",
+      "rect": {
+        "x": 111,
+        "y": 101,
+        "w": 2,
+        "h": 6
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "open"
+    },
+    {
+      "id": "security-conveyor",
+      "rect": {
+        "x": 125,
+        "y": 127,
+        "w": 6,
+        "h": 2
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "controlled"
+    },
+    {
+      "id": "dispatch-conveyor",
+      "rect": {
+        "x": 93,
+        "y": 127,
+        "w": 6,
+        "h": 2
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "open"
+    },
+    {
+      "id": "weaving-lobby",
+      "rect": {
+        "x": 61,
+        "y": 79,
+        "w": 6,
+        "h": 2
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "locked"
+    },
+    {
+      "id": "weaving-dispatch",
+      "rect": {
+        "x": 93,
+        "y": 79,
+        "w": 6,
+        "h": 2
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "locked"
+    },
+    {
+      "id": "weaving-brewery",
+      "rect": {
+        "x": 111,
+        "y": 45,
+        "w": 2,
+        "h": 6
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "locked"
+    },
+    {
+      "id": "brewery-security",
+      "rect": {
+        "x": 125,
+        "y": 95,
+        "w": 6,
+        "h": 2
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "locked"
+    },
+    {
+      "id": "brewery-theatre",
+      "rect": {
+        "x": 207,
+        "y": 61,
+        "w": 6,
+        "h": 6
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "locked"
+    },
+    {
+      "id": "security-cortex",
+      "rect": {
+        "x": 155,
+        "y": 117,
+        "w": 6,
+        "h": 6
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "locked"
+    },
+    {
+      "id": "conveyor-cortex",
+      "rect": {
+        "x": 159,
+        "y": 157,
+        "w": 2,
+        "h": 6
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "locked"
+    },
+    {
+      "id": "cortex-shipping",
+      "rect": {
+        "x": 223,
+        "y": 157,
+        "w": 6,
+        "h": 6
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "locked"
+    },
+    {
+      "id": "theatre-shipping",
+      "rect": {
+        "x": 261,
+        "y": 103,
+        "w": 6,
+        "h": 2
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "locked"
+    },
+    {
+      "id": "security-theatre",
+      "rect": {
+        "x": 155,
+        "y": 96,
+        "w": 58,
+        "h": 8
+      },
+      "assetId": "env-wall-portal-kit",
+      "initialAccess": "locked"
+    }
+  ],
+  "floor": {
+    "doorway": {
+      "x": 125,
+      "y": 127,
+      "w": 6,
+      "h": 2
+    },
+    "fixtures": [
+      {
+        "id": "register",
+        "name": "Register",
+        "kind": "desk",
+        "rect": {
+          "x": 122.8,
+          "y": 125,
+          "w": 1.6,
+          "h": 1
+        }
+      },
+      {
+        "id": "checks",
+        "name": "ID desk",
+        "kind": "desk",
+        "rect": {
+          "x": 130.8,
+          "y": 124.9,
+          "w": 1.6,
+          "h": 1
+        }
+      },
+      {
+        "id": "grate",
+        "name": "Drain grate",
+        "kind": "drain",
+        "rect": {
+          "x": 123.7,
+          "y": 123.4,
+          "w": 1,
+          "h": 0.6
+        }
+      },
+      {
+        "id": "west-rail",
+        "name": "Queue rail",
+        "kind": "rail",
+        "rect": {
+          "x": 123.25,
+          "y": 116.8,
+          "w": 0.12,
+          "h": 4.4
+        }
+      },
+      {
+        "id": "east-rail",
+        "name": "Queue rail",
+        "kind": "rail",
+        "rect": {
+          "x": 130.25,
+          "y": 116.8,
+          "w": 0.12,
+          "h": 4.4
+        }
+      },
+      {
+        "id": "intake",
+        "name": "Intake",
+        "kind": "machine",
+        "rect": {
+          "x": 118,
+          "y": 139,
+          "w": 4,
+          "h": 6
+        }
+      },
+      {
+        "id": "wash",
+        "name": "Wash",
+        "kind": "machine",
+        "rect": {
+          "x": 122,
+          "y": 139,
+          "w": 4,
+          "h": 6
+        }
+      },
+      {
+        "id": "belt",
+        "name": "Main belt",
+        "kind": "machine",
+        "rect": {
+          "x": 126,
+          "y": 139,
+          "w": 4,
+          "h": 6
+        }
+      },
+      {
+        "id": "forge",
+        "name": "Forge",
+        "kind": "machine",
+        "rect": {
+          "x": 130,
+          "y": 139,
+          "w": 4,
+          "h": 6
+        }
+      },
+      {
+        "id": "output",
+        "name": "Output",
+        "kind": "rack",
+        "rect": {
+          "x": 134,
+          "y": 139,
+          "w": 7,
+          "h": 6
+        }
+      }
+    ],
+    "forgeHall": {
+      "runs": [
+        {
+          "id": "delivery",
+          "name": "Dispatch receiving road",
+          "rect": {
+            "x": 93,
+            "y": 128,
+            "w": 6,
+            "h": 34
+          }
+        },
+        {
+          "id": "transfer",
+          "name": "Cross-hall transfer road",
+          "rect": {
+            "x": 82,
+            "y": 156,
+            "w": 78,
+            "h": 6
+          }
+        },
+        {
+          "id": "outbound",
+          "name": "Outbound cart lane",
+          "rect": {
+            "x": 150,
+            "y": 142,
+            "w": 6,
+            "h": 14
+          }
+        },
+        {
+          "id": "staff",
+          "name": "Operator walk",
+          "rect": {
+            "x": 102,
+            "y": 136,
+            "w": 47,
+            "h": 2.6
+          }
+        }
+      ],
+      "installations": [
+        {
+          "id": "receiving",
+          "name": "Receiving stillages",
+          "rect": {
+            "x": 83,
+            "y": 136,
+            "w": 9,
+            "h": 14
+          },
+          "height": 2.2,
+          "build": "Two rows of cradle bins face the Dispatch road. Forks approach from the east and pick up empty frames on the return trip."
+        },
+        {
+          "id": "infeed",
+          "name": "Tray accumulator",
+          "rect": {
+            "x": 100,
+            "y": 139,
+            "w": 18,
+            "h": 6
+          },
+          "height": 1.25,
+          "build": "Three gravity roller sections stage full trays from Dispatch. Align the final rollers with the Intake cradle."
+        },
+        {
+          "id": "transfer-table",
+          "name": "Outbound transfer table",
+          "rect": {
+            "x": 141,
+            "y": 139,
+            "w": 9,
+            "h": 6
+          },
+          "height": 1.05,
+          "build": "The line discharges east into a cross-transfer table. Its cart end meets the outbound lane."
+        },
+        {
+          "id": "drive-shop",
+          "name": "Drive overhaul bay",
+          "rect": {
+            "x": 84,
+            "y": 165,
+            "w": 20,
+            "h": 14
+          },
+          "height": 4.2,
+          "build": "A trolley enters from the north road. Leave the middle free for a carrier between the workbenches. Sink a covered inspection pit along its centre."
+        },
+        {
+          "id": "jig-shop",
+          "name": "Press tooling bay",
+          "rect": {
+            "x": 108,
+            "y": 165,
+            "w": 18,
+            "h": 14
+          },
+          "height": 4.8,
+          "build": "Face the removable die cassette and jib toward the transfer road. Park spare dies along the side walls."
+        },
+        {
+          "id": "water-plant",
+          "name": "Wash-water return",
+          "rect": {
+            "x": 101,
+            "y": 149,
+            "w": 17,
+            "h": 5
+          },
+          "height": 3.8,
+          "build": "Return water from Wash through a floor trench to two settling tanks. Service both from the transfer road."
+        },
+        {
+          "id": "empty-racks",
+          "name": "Empty cradle return",
+          "rect": {
+            "x": 130,
+            "y": 149,
+            "w": 16,
+            "h": 5
+          },
+          "height": 2.1,
+          "build": "Stack the empty carriers on low return rails. A tug can collect them from the south road for the next intake delivery."
+        }
+      ],
+      "crane": {
+        "name": "Bridge crane",
+        "rect": {
+          "x": 101,
+          "y": 135,
+          "w": 49,
+          "h": 20
+        },
+        "base": 9,
+        "height": 2.4,
+        "bridgeX": 139,
+        "build": "Two longitudinal runways sit on paired column rows. Span the working line with a moving bridge and transverse hoist for roller frames, the drive and press dies."
+      },
+      "columns": [
+        {
+          "x": 101,
+          "y": 134.65,
+          "w": 0.6,
+          "h": 0.6
+        },
+        {
+          "x": 101,
+          "y": 154.65,
+          "w": 0.6,
+          "h": 0.6
+        },
+        {
+          "x": 110,
+          "y": 134.65,
+          "w": 0.6,
+          "h": 0.6
+        },
+        {
+          "x": 110,
+          "y": 154.65,
+          "w": 0.6,
+          "h": 0.6
+        },
+        {
+          "x": 115,
+          "y": 134.65,
+          "w": 0.6,
+          "h": 0.6
+        },
+        {
+          "x": 115,
+          "y": 154.65,
+          "w": 0.6,
+          "h": 0.6
+        },
+        {
+          "x": 140,
+          "y": 134.65,
+          "w": 0.6,
+          "h": 0.6
+        },
+        {
+          "x": 140,
+          "y": 154.65,
+          "w": 0.6,
+          "h": 0.6
+        },
+        {
+          "x": 149,
+          "y": 134.65,
+          "w": 0.6,
+          "h": 0.6
+        },
+        {
+          "x": 149,
+          "y": 154.65,
+          "w": 0.6,
+          "h": 0.6
+        }
+      ],
+      "reserve": {
+        "id": "forge-spare",
+        "room": "conveyor",
+        "label": "SPARE FITTING BAY",
+        "rect": {
+          "x": 131,
+          "y": 165,
+          "w": 25,
+          "h": 15
+        }
+      },
+      "carrierY": 142
+    },
+    "exit": {
+      "x": 70,
+      "y": 128,
+      "w": 5
+    },
+    "egress": [
+      [
+        128,
+        128
+      ],
+      [
+        128,
+        112
+      ],
+      [
+        115,
+        104
+      ],
+      [
+        112,
+        104
+      ],
+      [
+        80,
+        104
+      ],
+      [
+        72.5,
+        107
+      ],
+      [
+        72.5,
+        131
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Intake",
+        "x": 119.7,
+        "y": 138.4,
+        "sceneMetres": [
+          136.5,
+          105.8
+        ]
+      },
+      {
+        "name": "Wash",
+        "x": 123.7,
+        "y": 138.4,
+        "sceneMetres": [
+          140.5,
+          105.8
+        ]
+      },
+      {
+        "name": "Main belt",
+        "x": 127.7,
+        "y": 138.4,
+        "sceneMetres": [
+          144.5,
+          105.8
+        ]
+      },
+      {
+        "name": "Forge",
+        "x": 131.7,
+        "y": 138.4,
+        "sceneMetres": [
+          148.5,
+          105.8
+        ]
+      }
+    ],
+    "anchors": [
+      {
+        "name": "Supervisor at doorway",
+        "scene": [
+          131.1,
+          104.6
+        ],
+        "floor": [
+          129.6,
+          127.9
+        ]
+      },
+      {
+        "name": "Register clerk",
+        "scene": [
+          121.5,
+          107.2
+        ],
+        "floor": [
+          123.7,
+          124.3
+        ]
+      },
+      {
+        "name": "Second checking desk",
+        "scene": [
+          126.5,
+          107.2
+        ],
+        "floor": [
+          131.6,
+          124.2
+        ]
+      },
+      {
+        "name": "Output witness",
+        "scene": [
+          151.8,
+          106.8
+        ],
+        "floor": [
+          135.4,
+          138.3
+        ]
+      }
+    ],
+    "zones": [
+      {
+        "id": "weaving",
+        "name": "Synapse Weaving Gallery",
+        "short": "Weaving Gallery",
+        "number": "05",
+        "kind": "managed",
+        "rect": {
+          "x": 40,
+          "y": 16,
+          "w": 72,
+          "h": 64
+        }
+      },
+      {
+        "id": "brewery",
+        "name": "Cognitive Substrate Brewery",
+        "short": "Substrate Brewery",
+        "number": "04",
+        "kind": "managed",
+        "rect": {
+          "x": 112,
+          "y": 16,
+          "w": 96,
+          "h": 80
+        }
+      },
+      {
+        "id": "theatre",
+        "name": "Burn-in Theatre",
+        "short": "Burn-in Theatre",
+        "number": "03",
+        "kind": "managed",
+        "rect": {
+          "x": 212,
+          "y": 16,
+          "w": 68,
+          "h": 88
+        }
+      },
+      {
+        "id": "lobby",
+        "name": "Lobby",
+        "short": "Lobby",
+        "number": "L",
+        "kind": "support",
+        "rect": {
+          "x": 8,
+          "y": 80,
+          "w": 72,
+          "h": 48
+        }
+      },
+      {
+        "id": "dispatch",
+        "name": "Dispatch",
+        "short": "Dispatch",
+        "number": "D",
+        "kind": "support",
+        "rect": {
+          "x": 80,
+          "y": 80,
+          "w": 32,
+          "h": 48
+        }
+      },
+      {
+        "id": "security",
+        "name": "Security",
+        "short": "Security",
+        "number": "01",
+        "kind": "managed",
+        "rect": {
+          "x": 112,
+          "y": 96,
+          "w": 44,
+          "h": 32
+        }
+      },
+      {
+        "id": "conveyor",
+        "name": "Synaptic Lattice Forge",
+        "short": "Lattice Forge",
+        "number": "02",
+        "kind": "managed",
+        "rect": {
+          "x": 80,
+          "y": 128,
+          "w": 80,
+          "h": 56
+        }
+      },
+      {
+        "id": "cortex",
+        "name": "Cortex Assembly",
+        "short": "Cortex Assembly",
+        "number": "06",
+        "kind": "managed",
+        "rect": {
+          "x": 160,
+          "y": 108,
+          "w": 64,
+          "h": 92
+        }
+      },
+      {
+        "id": "shipping",
+        "name": "Logistics",
+        "short": "Logistics",
+        "number": "S",
+        "kind": "support",
+        "rect": {
+          "x": 228,
+          "y": 104,
+          "w": 52,
+          "h": 96
+        }
+      }
+    ],
+    "portals": [
+      {
+        "id": "lobby-dispatch",
+        "rect": {
+          "x": 79,
+          "y": 101,
+          "w": 2,
+          "h": 6
+        }
+      },
+      {
+        "id": "dispatch-security",
+        "rect": {
+          "x": 111,
+          "y": 101,
+          "w": 2,
+          "h": 6
+        }
+      },
+      {
+        "id": "security-conveyor",
+        "rect": {
+          "x": 125,
+          "y": 127,
+          "w": 6,
+          "h": 2
+        }
+      },
+      {
+        "id": "dispatch-conveyor",
+        "rect": {
+          "x": 93,
+          "y": 127,
+          "w": 6,
+          "h": 2
+        }
+      },
+      {
+        "id": "weaving-lobby",
+        "rect": {
+          "x": 61,
+          "y": 79,
+          "w": 6,
+          "h": 2
+        }
+      },
+      {
+        "id": "weaving-dispatch",
+        "rect": {
+          "x": 93,
+          "y": 79,
+          "w": 6,
+          "h": 2
+        }
+      },
+      {
+        "id": "weaving-brewery",
+        "rect": {
+          "x": 111,
+          "y": 45,
+          "w": 2,
+          "h": 6
+        }
+      },
+      {
+        "id": "brewery-security",
+        "rect": {
+          "x": 125,
+          "y": 95,
+          "w": 6,
+          "h": 2
+        }
+      },
+      {
+        "id": "brewery-theatre",
+        "rect": {
+          "x": 207,
+          "y": 61,
+          "w": 6,
+          "h": 6
+        }
+      },
+      {
+        "id": "security-cortex",
+        "rect": {
+          "x": 155,
+          "y": 117,
+          "w": 6,
+          "h": 6
+        }
+      },
+      {
+        "id": "conveyor-cortex",
+        "rect": {
+          "x": 159,
+          "y": 157,
+          "w": 2,
+          "h": 6
+        }
+      },
+      {
+        "id": "cortex-shipping",
+        "rect": {
+          "x": 223,
+          "y": 157,
+          "w": 6,
+          "h": 6
+        }
+      },
+      {
+        "id": "theatre-shipping",
+        "rect": {
+          "x": 261,
+          "y": 103,
+          "w": 6,
+          "h": 2
+        }
+      },
+      {
+        "id": "security-theatre",
+        "rect": {
+          "x": 155,
+          "y": 96,
+          "w": 58,
+          "h": 8
+        }
+      }
+    ],
+    "reserves": [
+      {
+        "id": "security-expansion",
+        "room": "security",
+        "label": "CLEARANCE EXPANSION",
+        "rect": {
+          "x": 136,
+          "y": 100,
+          "w": 16,
+          "h": 24
+        }
+      },
+      {
+        "id": "security-records",
+        "room": "security",
+        "label": "RECORDS",
+        "rect": {
+          "x": 115,
+          "y": 98,
+          "w": 15,
+          "h": 10
+        }
+      },
+      {
+        "id": "brew-feed",
+        "room": "brewery",
+        "label": "FEED PREPARATION",
+        "rect": {
+          "x": 124,
+          "y": 20,
+          "w": 19,
+          "h": 48
+        }
+      },
+      {
+        "id": "brew-process",
+        "room": "brewery",
+        "label": "PROCESS EXPANSION",
+        "rect": {
+          "x": 148,
+          "y": 52,
+          "w": 54,
+          "h": 24
+        }
+      },
+      {
+        "id": "brew-filter",
+        "room": "brewery",
+        "label": "FILTRATION / STORAGE",
+        "rect": {
+          "x": 178,
+          "y": 20,
+          "w": 26,
+          "h": 27
+        }
+      },
+      {
+        "id": "weave-west",
+        "room": "weaving",
+        "label": "LOOM HALL",
+        "rect": {
+          "x": 44,
+          "y": 20,
+          "w": 29,
+          "h": 54
+        }
+      },
+      {
+        "id": "weave-south",
+        "room": "weaving",
+        "label": "RIBBON HANDLING",
+        "rect": {
+          "x": 78,
+          "y": 55,
+          "w": 30,
+          "h": 21
+        }
+      },
+      {
+        "id": "theatre-west",
+        "room": "theatre",
+        "label": "AUDIENCE EXPANSION",
+        "rect": {
+          "x": 216,
+          "y": 20,
+          "w": 22,
+          "h": 78
+        }
+      },
+      {
+        "id": "theatre-east",
+        "room": "theatre",
+        "label": "CONDITIONING EXPANSION",
+        "rect": {
+          "x": 262,
+          "y": 20,
+          "w": 14,
+          "h": 46
+        }
+      },
+      {
+        "id": "theatre-east-south",
+        "room": "theatre",
+        "label": "CONDITIONING / SOUTH",
+        "rect": {
+          "x": 262,
+          "y": 70,
+          "w": 14,
+          "h": 30
+        }
+      },
+      {
+        "id": "theatre-south",
+        "room": "theatre",
+        "label": "ASSEMBLY / WAITING",
+        "rect": {
+          "x": 242,
+          "y": 70,
+          "w": 18,
+          "h": 30
+        }
+      },
+      {
+        "id": "cortex-east",
+        "room": "cortex",
+        "label": "ASSEMBLY EXPANSION",
+        "rect": {
+          "x": 190,
+          "y": 116,
+          "w": 29,
+          "h": 50
+        }
+      },
+      {
+        "id": "cortex-south",
+        "room": "cortex",
+        "label": "TEST / OUTFEED",
+        "rect": {
+          "x": 164,
+          "y": 172,
+          "w": 55,
+          "h": 24
+        }
+      },
+      {
+        "id": "cortex-north",
+        "room": "cortex",
+        "label": "SUBASSEMBLY",
+        "rect": {
+          "x": 164,
+          "y": 116,
+          "w": 22,
+          "h": 16
+        }
+      },
+      {
+        "id": "forge-spare",
+        "room": "conveyor",
+        "label": "SPARE FITTING BAY",
+        "rect": {
+          "x": 131,
+          "y": 165,
+          "w": 25,
+          "h": 15
+        }
+      }
+    ],
+    "aisles": [
+      {
+        "room": "brewery",
+        "rect": {
+          "x": 143,
+          "y": 18,
+          "w": 5,
+          "h": 60
+        }
+      },
+      {
+        "room": "weaving",
+        "rect": {
+          "x": 73,
+          "y": 18,
+          "w": 5,
+          "h": 60
+        }
+      },
+      {
+        "room": "theatre",
+        "rect": {
+          "x": 238,
+          "y": 66,
+          "w": 40,
+          "h": 4
+        }
+      },
+      {
+        "room": "cortex",
+        "rect": {
+          "x": 164,
+          "y": 166,
+          "w": 58,
+          "h": 6
+        }
+      },
+      {
+        "id": "delivery",
+        "name": "Dispatch receiving road",
+        "rect": {
+          "x": 93,
+          "y": 128,
+          "w": 6,
+          "h": 34
+        },
+        "room": "conveyor"
+      },
+      {
+        "id": "transfer",
+        "name": "Cross-hall transfer road",
+        "rect": {
+          "x": 82,
+          "y": 156,
+          "w": 78,
+          "h": 6
+        },
+        "room": "conveyor"
+      },
+      {
+        "id": "outbound",
+        "name": "Outbound cart lane",
+        "rect": {
+          "x": 150,
+          "y": 142,
+          "w": 6,
+          "h": 14
+        },
+        "room": "conveyor"
+      },
+      {
+        "id": "staff",
+        "name": "Operator walk",
+        "rect": {
+          "x": 102,
+          "y": 136,
+          "w": 47,
+          "h": 2.6
+        },
+        "room": "conveyor"
+      }
+    ]
+  },
+  "regression": {
+    "duration": 205.40689082956504,
+    "exitPace": 2.4,
+    "dialogueCount": 46
+  }
+}

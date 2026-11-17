@@ -150,6 +150,42 @@
     history.replaceState(null, '', '#' + link.id);
   });
 
+  // Register the production handoff next to its source layout in the existing tab system.
+  const floorTab = document.querySelector('.nav [data-panel="floor-layout"]');
+  const floorPanel = document.getElementById('floor-layout');
+  if (floorTab && floorPanel && !document.getElementById('sprite-briefs')) {
+    const tab = document.createElement('button');
+    tab.type = 'button';
+    tab.dataset.panel = 'sprite-briefs';
+    tab.textContent = '2D asset briefs';
+    tab.setAttribute('aria-current', 'false');
+    floorTab.after(tab);
+
+    const section = document.createElement('section');
+    section.id = 'sprite-briefs';
+    section.className = 'panel';
+    section.hidden = true;
+    section.setAttribute('aria-label', tab.textContent);
+    section.innerHTML = `<header class="section-head"><h2>2D asset briefs</h2>
+      <a href="/loopforge-design/sprite-briefs.html">Open the artist and ENGINE handoff separately ↗</a></header>
+      <iframe id="sprite-briefs-frame" title="2D artist briefs and ENGINE handoff"
+        style="display:block;width:100%;min-width:0;height:1000px;border:0"
+        data-src="/loopforge-design/sprite-briefs.html"></iframe>`;
+    floorPanel.after(section);
+  }
+  const spriteFrame = document.getElementById('sprite-briefs-frame');
+  let spriteObserver;
+  spriteFrame?.addEventListener('load', () => {
+    const root = spriteFrame.contentDocument?.querySelector('.sb-page');
+    if (!root) return;
+    spriteObserver?.disconnect();
+    spriteObserver = new ResizeObserver(() => {
+      const height = Math.ceil(root.getBoundingClientRect().height);
+      if (height) spriteFrame.style.height = height + 'px';
+    });
+    spriteObserver.observe(root);
+  });
+
   function openPanel(id,updateHash=true){
     const panel=document.getElementById(id);if(!panel||!panel.classList.contains('panel'))return;
     document.querySelectorAll('.panel').forEach(el=>el.hidden=el.id!==id);
@@ -158,6 +194,9 @@
       showFloorView(selected || floorViews[0]);
     } else if (floorViewer.childElementCount) {
       closeFloorView();
+    }
+    if (id === 'sprite-briefs' && spriteFrame && !spriteFrame.hasAttribute('src')) {
+      spriteFrame.src = spriteFrame.dataset.src;
     }
     if (id === 'supervisor-rooms' && atlasFrame && !atlasFrame.hasAttribute('src')) {
       const src = new URL(atlasFrame.dataset.src, location.origin);

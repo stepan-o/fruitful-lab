@@ -197,10 +197,19 @@ assert(s.departures.every(w=>w.at<=resume+.25),'the brief freeze resolves across
 const lastCheck=s.tallies.at(-1);
 for(const [i,t] of s.tallies.entries()){
   assert.deepEqual(position('ed',t),position('ed',bell),'ed stays at the register');
-  if(i)assert(t-s.tallies[i-1]>=1.12-1e-8);
+  if(i)assert(t-s.tallies[i-1]>=.45-1e-8);
   assert(s.departures.some(w=>between('ed',w.id,t)<1.5),'the worker passes the clerk');
 }
-assert(lastCheck-s.tallies[0]<9,'keep the single reader occupied during the release');
+assert(lastCheck-s.tallies[0]<4,'complete all eight checkouts briskly');
+const ending=s.speech.filter(q=>q.start>=bell);
+let spokenThrough=ending[0].end;
+for(const line of ending.slice(1)){
+  const gap=s.editTime(line.start)-s.editTime(spokenThrough);
+  assert(gap<1.4,'keep the ending dialogue connected');
+  if(line.start>s.dismissal)assert(gap<1,'handoff straight from dismissal to register to yard');
+  spokenThrough=Math.max(spokenThrough,line.end);
+}
+assert(s.duration-s.editTime(bell)<28,'keep the whole bell-to-blackout ending compact');
 assert(moving('LIMEN',lastCheck+1.8) && !moving('ed',lastCheck+1.8));
 const [morningCut,cut]=s.cuts;
 assert.equal(s.cuts.length,2);

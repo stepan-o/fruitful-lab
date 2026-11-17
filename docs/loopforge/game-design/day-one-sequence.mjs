@@ -1,5 +1,5 @@
 // One score for playback, seeking, recording and Scene Direction. Times are seconds.
-// Movement uses floor metres and real walking speeds, even across the marked edit.
+// Movement uses floor metres; the final walkout deliberately accelerates between dialogue beats.
 export function makeSequence(floor, script) {
   const cast = {
     bob: [126.2,121.5], sam: [125.1,121.1], ed: [124.2,121.9], max: [127.3,120.7],
@@ -173,7 +173,7 @@ export function makeSequence(floor, script) {
     tallies.push(worker.counted);
     mergeFree=crossing+1.12;
   }
-  const eight=tallies.at(-1);
+  let eight=tallies.at(-1);
   // Parallel foot traffic can spread within both six-metre Dispatch openings.
   const corridor=[[121.15,121.95],[120.4,114.3],...floor.egress.slice(2,5),[72.4,108],[72.4,129.3]];
   function laneThroughLobby(lane){
@@ -202,7 +202,7 @@ export function makeSequence(floor, script) {
   streetTime.ed=walkOut('ed',eight+5.85,0,1.68);
   walk('STILETTO',eight-4.3,1.55,[129.6,129.7],[129.6,127.2],[129.6,124.6]);
   streetTime.STILETTO=walkOut('STILETTO',eight+2.5,1);
-  const yard=Math.max(streetTime.max,streetTime.gus)+3.5;
+  let yard=Math.max(streetTime.max,streetTime.gus)+3.5;
   // Workers continue across the yard in different directions during the exchange.
   const streetRoutes={
     sam:[60,149],bob:[61,151],jo:[74.8,153],kit:[78.3,148],mae:[56,145],lou:[52,141],
@@ -217,8 +217,27 @@ export function makeSequence(floor, script) {
     walk(id,streetTime[id],distance(from,join)/(yard-streetTime[id]),join);
     walk(id,yard,1.10,[x+2.5,join[1]+15.4]);
   }
-  const cuts=[morningCut,{at:eight+6.7,to:yard-2.6,label:'Outside the Lobby'}];
-  const end=yard+13.4;
+  // Hurry the entire exit procession together, preserving every clearance and the brief freeze.
+  // Resume normal acting pace for the yard exchange; speech keeps its own reading time.
+  const exitPace=2.4, fastStart=Math.max(...departures.map(worker=>worker.at)), yardArrival=yard;
+  const exitTime=t=>t<=fastStart?t:t<yardArrival
+    ?fastStart+(t-fastStart)/exitPace
+    :fastStart+(yardArrival-fastStart)/exitPace+t-yardArrival;
+  for(const track of Object.values(tracks)){
+    const corners=[fastStart,yardArrival].filter(t=>t>track[0].t && t<track.at(-1).t && !track.some(k=>k.t===t))
+      .map(t=>({t,p:samplePath(track,t).p}));
+    track.push(...corners);track.sort((a,b)=>a.t-b.t);
+    for(const key of track)key.t=exitTime(key.t);
+  }
+  for(const worker of departures){
+    for(const field of ['at','turn','brake','onApron','atMerge','counted'])worker[field]=exitTime(worker[field]);
+  }
+  for(let i=0;i<tallies.length;i++)tallies[i]=exitTime(tallies[i]);
+  for(const id of Object.keys(streetTime))streetTime[id]=exitTime(streetTime[id]);
+  eight=exitTime(eight);yard=exitTime(yard);
+  // Finish ed's line, allow one small transition beat, then pick up max outside.
+  const cuts=[morningCut,{at:eight+3.35,to:yard-.55,label:'Outside the Lobby'}];
+  const end=yard+11.4;
   const editTime=w=>w-start-cuts.reduce((skip,c)=>skip+Math.max(0,Math.min(w,c.to)-c.at),0);
   function worldTime(t) {
     let w=start+t;
@@ -275,8 +294,8 @@ export function makeSequence(floor, script) {
     [call+.5,resume,'STILETTO','gets a momentary freeze'],
     ...departures.map(({id,at})=>[at,dismissal+2.6,id,'keeps walking']),
     [dismissal,dismissal+2.6,'STILETTO','waves after their backs'],
-    [eight, eight+3.2,'ed','offers LIMEN the register'],[eight+3.3,eight+6,'ed','clips his pen beside bob’s card'],
-    [yard+5.1,yard+8,'max','pulls his jaw back'],[yard+9.4,yard+12,'ed','laughs first'],
+    [eight,eight+3.2/exitPace,'ed','offers LIMEN the register'],[eight+3.3/exitPace,eight+6/exitPace,'ed','clips his pen beside bob’s card'],
+    [yard+5.1,yard+8,'max','pulls his jaw back'],[yard+9.4,yard+11.1,'ed','laughs first'],
   ].map(([start,end,actor,label])=>({start,end,actor,label}));
   // Each knot is the physical centre of a cradle. Finished cortexes keep individual rack slots.
   const xs=floor.stations.map(q=>q.x);
@@ -289,7 +308,7 @@ export function makeSequence(floor, script) {
     product(2,[[101.5,0],[106,0],[114.9,1],[118,1],[121,2],[122.8,2],[126.1,3],[127.1,3],[128.1,4]],1),
     product(3,[[113.5,0],[168.8,0],[170.1,1],[171.8,1],[172.8,2],[174.3,2],[175.6,3],[176.4,3],[177.2,4]],2),
   ];
-  return {start,cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,bell,call,shutdown,resume,dismissal,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
+  return {start,cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,bell,call,shutdown,resume,dismissal,exitPace,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
 }
 
 export function samplePath(keys,t) {

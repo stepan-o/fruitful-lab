@@ -422,6 +422,7 @@ function draw(){
   if(!hallView && beat.view==='entrance' && w>=score.cuts[0].to)view='gate';
   if(inspecting)view=selectedObject.room==='Security'?'securityObjects':selectedObject.room==='Conveyor'?'conveyorObjects':selectedObject.room==='Factory entrance'?'entrance':'hall';
   if(!hallView && !inspecting && w>=score.bell-1.1 && w<score.bell)view='release';
+  if(!hallView && !inspecting && beat.name==='The register' && w<score.dismissal+2.6)view='wide';
   if(!hallView && !inspecting && beat.view==='line' && w>=40.5 && w<43.7)view='hall';
   chooseCamera(view,w);
   drawBuilding(w,view);equipment(w,view);brains(w);drawCast(w,voices);
@@ -438,7 +439,7 @@ function draw(){
   }
   const actions=score.cues.filter(q=>q.start<=w&&w<q.end);
   byId('action').textContent=actions.filter(q=>q.actor!=='LIMEN'||actions.length<=2||beat.view==='gate'||beat.view==='passage').slice(-2).map(q=>q.actor+' '+q.label).join(' · ');
-  if(w>=score.end-3.4)byId('action').textContent='Factory lights out';
+  if(w>=score.yard+10.5)byId('action').textContent='Factory lights out';
   const completed=score.products.filter(b=>b.keys.at(-1).t<=w).length;
   byId('count').textContent=w+1e-8>=score.bell?score.tallies.filter(t=>t<=w).length+' / 8 checked out':completed+' / 3 cortexes';
   const edit=score.cuts.find(c=>w>=c.to&&w<c.to+3);

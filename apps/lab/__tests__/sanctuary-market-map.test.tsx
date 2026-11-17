@@ -87,13 +87,20 @@ test("RimWorld follows the seller of the PC copy and the publisher of the consol
  game(/^RimWorld/);
  const publisher = within(screen.getByRole("article", {name: "Bring it to market"}));
  expect(access()).toHaveValue("steam");
- expect(computing()).toHaveValue("pc");
+ expect(computing()).toHaveValue("gfn");
+ expect(screen.getByRole("button", {name: "Steam with NVIDIA GeForce NOW"})).toHaveAttribute("aria-pressed", "true");
  expect(publisher.getByText("Ludeon Studios")).toBeVisible();
  expect(screen.getByText("Game purchase · Valve")).toBeVisible();
 
  fireEvent.click(screen.getByRole("button", {name: "Ludeon website with Your PC"}));
  expect(screen.getByText("Game purchase · Ludeon Studios")).toBeVisible();
  expect(screen.getByText(/Registering the same copy on Steam adds no second charge/)).toBeVisible();
+
+ fireEvent.click(screen.getByRole("button", {name: "Ludeon website with NVIDIA GeForce NOW"}));
+ expect(computing()).toHaveValue("gfn");
+ expect(screen.getByText(/first register it on Steam/)).toBeVisible();
+ expect(screen.getByText("Game purchase · Ludeon Studios")).toBeVisible();
+ expect(screen.getByText("A separate NVIDIA service")).toBeVisible();
 
  fireEvent.click(screen.getByRole("button", {name: "Epic Games Store with NVIDIA GeForce NOW"}));
  expect(screen.getByText("A separate NVIDIA service")).toBeVisible();

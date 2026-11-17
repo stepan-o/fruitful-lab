@@ -36,10 +36,11 @@ Six games expose selected major arrangements:
 - Spider-Man 2: Sony studio, publication, catalog and console/cloud; separate
   Steam/Epic PC editions preserve Nixxes port credits and the PC publishing label.
 - RimWorld (17 November 2026): Ludeon sells its self-published PC game directly.
-  A buyer can download it or register the same purchase on Steam. Buying from
-  Valve instead moves the sale to Steam. An Epic purchase can run locally or on
-  GeForce NOW. The local PlayStation and Xbox examples switch to the Console
-  Edition, co-developed with and published by Double Eleven.
+  A direct buyer can play the download locally or register the purchase on Steam
+  to stream it through GeForce NOW. Players who buy on Steam or Epic can use
+  either their own PC or GeForce NOW with the corresponding store account.
+  The local PlayStation and Xbox examples switch to the Console Edition,
+  co-developed with and published by Double Eleven.
 
 Company-led presets coexist with the game-first choices. Sony and Microsoft each
 have catalog + bought console and catalog + cloud presets. Their four mapped jobs

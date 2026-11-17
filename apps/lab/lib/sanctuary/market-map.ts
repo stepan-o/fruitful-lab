@@ -52,7 +52,8 @@ const rimworldStore = src("Ludeon Studios · direct download and expansions", "h
 const rimworldRegistration = src("Ludeon Studios · register a direct purchase on Steam", "https://rimworldgame.com/index.php/getmygame/");
 const rimworldSteam = src("Steam · RimWorld PC edition and credits", "https://store.steampowered.com/app/294100/RimWorld/");
 const rimworldEpic = src("Epic Games Store · RimWorld PC edition", "https://store.epicgames.com/en-US/p/rimworld");
-const rimworldGFN = src("NVIDIA · RimWorld through the Epic Games Store", "https://blogs.nvidia.com/blog/geforce-now-thursday-august-12/");
+const rimworldSteamGFN = src("SteamDB · NVIDIA cloud support for the Steam edition", "https://steamdb.info/app/294100/info/");
+const rimworldEpicGFN = src("NVIDIA · RimWorld through the Epic Games Store", "https://blogs.nvidia.com/blog/geforce-now-thursday-august-12/");
 const rimworldConsole = src("Double Eleven · Console Edition credits", "https://double11.com/games/rimworld-console-edition/");
 const rimworldPS = src("PlayStation Store · PS4 edition and PS5 compatibility", "https://store.playstation.com/en-us/product/UP4415-CUSA31488_00-D11RIMWORLD00001/");
 const rimworldXbox = src("Xbox Store · RimWorld Console Edition", "https://www.xbox.com/en-us/games/store/rimworld-console-edition/9NC6WKX645VJ");
@@ -96,19 +97,19 @@ export const marketGames:MarketGame[]=[
  {
   id: "rimworld", name: "RimWorld", genre: "Colony simulation",
   developer: "Ludeon Studios", publisher: "Ludeon Studios", reviewed: "17 November 2026",
-  observation: "Two players can launch RimWorld from Steam even if only one paid Valve. Ludeon sells the PC game on its own website and lets buyers register their copy on Steam. On consoles, Double Eleven shares the development credit and publishes the game.",
+  observation: "Two players can stream RimWorld through Steam on GeForce NOW even if only one paid Valve. The other can buy directly from Ludeon and register that copy on Steam. NVIDIA also streams the Epic edition.",
   boundary: "These routes follow the base game. Expansions are optional purchases. The console examples show the separately sold Console Edition running on the player’s own hardware.",
   sources: [rimworldStore, rimworldConsole],
   access: [
    {
     id: "ludeon", name: "Ludeon website", company: "Ludeon Studios", kind: "purchase",
-    compute: ["pc"], sources: [rimworldRegistration],
-    detail: "Download the game directly for Windows, macOS or Linux. You can also register that copy on your Steam account.",
+    compute: ["pc", "gfn"], sources: [rimworldRegistration, rimworldSteamGFN],
+    detail: "Download the game directly for Windows, macOS or Linux. To stream a direct purchase on GeForce NOW, first register it on Steam and select Steam in GeForce NOW.",
     payment: "Pay Ludeon once for the base game. Registering the same copy on Steam adds no second charge.",
    },
-   bought("steam", "Steam", "Valve", ["pc"], [rimworldSteam],
-    "Buy the PC game in Valve’s store. Ludeon makes and publishes this edition."),
-   bought("epic", "Epic Games Store", "Epic Games", ["pc", "gfn"], [rimworldEpic, rimworldGFN],
+   bought("steam", "Steam", "Valve", ["pc", "gfn"], [rimworldSteam, rimworldSteamGFN],
+    "Buy the PC game from Valve. Play it on your computer or select Steam in GeForce NOW to stream your copy."),
+   bought("epic", "Epic Games Store", "Epic Games", ["pc", "gfn"], [rimworldEpic, rimworldEpicGFN],
     "Buy the PC game from Epic. Run it on your own computer or stream the Epic copy through GeForce NOW."),
    {
     ...bought("ps-store", "PlayStation Store", "Sony", ["ps5"], [rimworldPS],

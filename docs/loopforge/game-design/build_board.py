@@ -1,3 +1,4 @@
+from rehearsal_page import build_rehearsal
 from conveyor_proposal import render_conveyor, conveyor_markdown
 from core_loop_study import render_core_loop_study, core_loop_markdown
 from player_desires import render_player_desires, player_desires_markdown
@@ -364,11 +365,12 @@ intro_art = {
         ],
     },
 }
+build_rehearsal(ROOT, OUT, intro_source)
 intro_title, intro_body, _ = render_narrative(intro_source, intro_art)
 intro_css_hash = hashlib.sha256((ROOT/'day-one-intro.css').read_bytes()).hexdigest()[:12]
 intro_css = f'<link rel="stylesheet" href="day-one-intro.css?v={intro_css_hash}">'
 intro = (f'<header class="section-head"><span class="kicker">Approved script and storyboards</span>'
-         f'<h2>{e(intro_title)}</h2></header><div class="day-one-script">{intro_body}</div>')
+         f'<h2>{e(intro_title)}</h2><a class="link-button" href="/loopforge-design/day-one-rehearsal.html">Play the 2D floor rehearsal →</a></header><div class="day-one-script">{intro_body}</div>')
 writing_style_source = (ROOT.parent/'DAY_ONE_WRITING_STYLE.md').read_text()
 writing_style_title, writing_style_body, _ = render_narrative(writing_style_source, {})
 writing_style = (f'<header class="section-head"><h2>{e(writing_style_title)}</h2></header>'
@@ -556,6 +558,7 @@ for c in sound_data['clips']:
     mp('[Play / download edit]('+file['src']+') · ['+source['title']+' — '+source['author']+']('+source['url']+') · CC0')
 mh('Sound direction',3);fields(sound_data['direction']);mh('Remaining sounds',3);fields(sound_data['gaps'])
 (OUT/'SOUND_LIBRARY.md').write_text('\n\n'.join(md[sound_start:])+'\n')
+md.append('[Play the 2D floor rehearsal](/loopforge-design/day-one-rehearsal.html)')
 md.append(intro_source.replace('# Day 1 intro', '## Day 1 intro', 1).strip())
 md.append('[The cast — portraits and character briefs](/stepanoskin/loopforge/design#narrative-cast)')
 md.append(writing_style_source.replace('# Writing style', '## Writing style', 1).strip())

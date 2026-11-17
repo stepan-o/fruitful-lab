@@ -25,7 +25,7 @@
 .studyHead {padding-bottom:1.1rem}
 .study h3,.wallet h3 {margin:.45rem 0 0}
 .tabs {display:flex;flex-wrap:wrap;padding:0 clamp(1rem,3vw,2rem) 1.35rem;gap:.4rem}
-.tabs button,.study .principle {margin:0 0 .65rem;color:var(--pink);font-size:.8rem;font-weight:600}
+.study .principle {margin:0 0 .65rem;color:var(--pink);font-size:.8rem;font-weight:600}
 .voices {padding:1.5rem clamp(1rem,3vw,2rem);border-top:1px solid var(--line);background:#1d1923}
 .voices h4 {margin:0 0 1.2rem;font:500 1.4rem/1.2 Georgia,serif}
 .voices figure {margin:0;min-width:0}
@@ -35,7 +35,7 @@
 .voices figcaption {margin:.6rem 0 0 1rem;font:.75rem/1.5 system-ui,sans-serif;color:#dbcddd}
 .voices a {display:inline-flex;align-items:center;min-height:44px;color:inherit;text-decoration:underline;text-underline-offset:.2em}
 .playerVoices {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin-top:1.5rem}
-.enlarge,.film button,.dialog button,.wallet select {
+.tabs button,.enlarge,.film button,.dialog button,.wallet select {
   border:1px solid #8f8295;background:transparent;color:inherit;min-height:44px;padding:.55rem .85rem;
   font:600 .82rem/1.2 system-ui,sans-serif;cursor:pointer;
 }

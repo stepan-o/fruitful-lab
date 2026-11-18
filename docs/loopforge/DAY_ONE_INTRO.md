@@ -126,7 +126,7 @@ Figure 2. Conveyor Intake. sam is the heavy tray-carrying worker at the center o
 
 ### Security — the fourth check
 
-*max stands between the rails, card raised. ed has the register open. gus holds the queue. STILETTO plants herself in the Conveyor doorway and points both blades at LIMEN.*
+*max holds his card up at the ID desk. ed has the register open. gus holds the queue. STILETTO crosses from Conveyor to the inspection boom and points both blades at LIMEN.*
 
 **STILETTO** IF YOU DON'T GET ME THOSE WORKERS IN THE NEXT 20 MINUTES I'LL USE YOUR MANURE-FILLED ROBOT BRAINS TOWARDS THE QUOTA
 

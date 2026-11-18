@@ -83,7 +83,7 @@
     "name": "Security",
     "view": [317, 275, 132, 138],
     "volume": "Keep the inspection inside the existing pen. A 3.2 m queue channel narrows to a single reader under a 3.4 m canopy. The high roof is visible again only beyond the boom.",
-    "blocking": "LIMEN can step to the pier while STILETTO passes behind. Leave the width of a kneeling actor by the grate and keep the fourth-check sightline from the photo to the Forge door.",
+    "blocking": "LIMEN can step to the pier while STILETTO passes behind. Leave the width of a kneeling actor by the grate and keep the fourth-check sightline from the photo desk to STILETTO at the boom.",
     "art": [
       {
         "source": "rooms/03_loopforge_rooms_access_control_2.png",

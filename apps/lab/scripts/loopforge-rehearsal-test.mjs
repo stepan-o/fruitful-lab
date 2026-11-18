@@ -288,7 +288,8 @@ assert.equal(theatre.y+theatre.h,room('shipping').y);
 assert(cortex.x>=room('brewery').x+room('brewery').w && cortex.y<theatre.y);
 const gatePortal=floor.portals.find(p=>p.id==='inspection-gate');
 assert.equal(gatePortal.initialAccess,'controlled');
-assert(floor.doorway.y>gatePortal.rect.y+5);
+const apronDepth=floor.doorway.y-gatePortal.rect.y;
+assert(apronDepth>=3 && apronDepth<=5,'short cleared apron between the boom and Forge');
 for(const [id,points] of Object.entries(floor.reviewPaths.staff)){
   const opening=floor.portals.find(p=>p.id==='security-'+id);
   assert.equal(opening.initialAccess,id==='conveyor'?'open':'locked');
@@ -303,8 +304,29 @@ assert.equal(Object.keys(floor.reviewPaths.staff).length,5);
 assert(!floor.portals.some(p=>p.from==='security'&&p.to==='shipping'));
 for(const t of [threat.start,threat.end-.15]){
   assert(between('LIMEN','max',t)<1.5,'LIMEN can hold the photograph beside max');
-  assert(between('max','STILETTO',t)<2.4,'the blade is at the same doorway as max');
+  assert(between('max','STILETTO',t)<2.4,'the blade reaches the ID check across the boom');
 }
+// Check the blocking across the camera change, not just during the spoken threat.
+const checkpointBeat=s.beats.find(b=>b.name==='The fourth check');
+const photo=floor.contact.photo, clerk=floor.contact.fourthClerk;
+assert.deepEqual(position('max',checkpointBeat.at-1),photo);
+assert.deepEqual(position('LIMEN',checkpointBeat.at-1),clerk);
+assert(position('STILETTO',checkpointBeat.at)[1]>floor.doorway.y);
+assert(position('STILETTO',threat.start)[1]<floor.doorway.y-2);
+const desk=machines.checks;
+assert(segmentBoxDistanceSquared(photo,photo,{minX:desk.x,maxX:desk.x+desk.w,minY:desk.y,maxY:desk.y+desk.h})<1.6**2);
+for(const t of knots.filter(t=>t>=checkpointBeat.at && t<=threat.end-.15)){
+  assert.deepEqual(position('LIMEN',t),clerk);
+  assert.deepEqual(position('max',t),photo);
+}
+for(const id of ['mae','kit','lou','ben']){
+  const stamp=s.cues.find(c=>c.label==='stamps '+id+'’s card');
+  assert.deepEqual(position(id,stamp.start),photo);
+  assert.deepEqual(position('LIMEN',stamp.end),clerk);
+  const arrival=s.tracks[id].find(k=>k.t>stamp.end && k.p[1]>=142.5);
+  assert(arrival && arrival.t-stamp.end<5,'fast release from the ID desk for '+id);
+}
+assert(s.beats.find(b=>b.name==='Run it').at-threat.end<14,'resume production as the last worker arrives');
 for(const [id,control] of [['mae',floor.contact.feedCutoff],['kit',floor.contact.driveStop]]){
   assert(betweenPositions(position(id,s.shutdown[id]),control)<.8,id+' can reach shutdown control');
 }

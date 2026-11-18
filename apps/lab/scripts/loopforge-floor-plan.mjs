@@ -55,7 +55,7 @@ const script=[...fs.readFileSync(path.resolve(board,'../DAY_ONE_INTRO.md'),'utf8
 const score=makeSequence(floor,script);
 const route=(id,from,until)=>score.tracks[id].filter(k=>k.t>=from && k.t<=until).map(k=>k.p)
   .filter((p,i,points)=>!i||p.some((v,j)=>v!==points[i-1][j]));
-const gate=middle('inspection-gate'), apron=[gate[0],gate[1]+4.5];
+const gate=middle('inspection-gate'), apron=[gate[0],(gate[1]+middle('security-conveyor')[1])/2];
 const eastAisle=design.partitions[1][0][0]+7, crossY=middle('security-theatre')[1]-7;
 const staff={};
 for(const id of ['weaving','brewery','cortex','theatre','conveyor']){

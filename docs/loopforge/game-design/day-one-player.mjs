@@ -46,15 +46,22 @@ function chooseCamera(mode,w){
   const workerY=samplePath(score.tracks.max,w).p[1];
   // Pan with the walkers while jo finishes her line inside the Lobby.
   const entrancePan=inspecting?0:Math.min(8,Math.max(0,(w-score.start-4)*1.1));
-  const [cx,cy]=floor.anchors[0].floor;
+  const [gx,gy]=floor.gate.hinge;
+  const photo=floor.contact.photo, supervisor=samplePath(score.tracks.STILETTO,w).p;
+  // Establish the desk, approaching supervisor and second output together, then close on the check.
+  const wideCheck=Math.max(0,Math.min(1,(129.6-w)/1.5));
+  const southEdge=Math.max(supervisor[1],photo[1]) + wideCheck*(floor.forgeHall.carrierY-supervisor[1]);
+  const checkCenter=[(supervisor[0]+photo[0])/2,(southEdge+photo[1])/2];
+  const checkHeight=Math.max(11,southEdge-photo[1]+6);
   const [sx,sy]=[floor.stations[2].x,floor.stations[2].y];
   const yard=floor.exit;
   const hall=floor.zones.find(z=>z.id==='conveyor').rect;
   const shot={
     entrance:[floor.exit.x+floor.exit.w/2,floor.exit.y+4.3-entrancePan,20,22],
-    gate:[127.6,122.2,16,14.4],passage:[127.6,125.15,16,14.5],line:[sx,sy,26,13],door:[cx-1.85,cy-.2,14.8,12.8],
-    wide:[sx,135.6,32,28],release:[sx,141.2,26,15],hall:[hall.x+hall.w/2,hall.y+hall.h/2,hall.w+4,hall.h+4],follow:[Math.max(120.1,Math.min(134,third[0])),floor.forgeHall.carrierY-1.3,13.5,11],
-    yard:[yard.x+yard.w/2,Math.max(yard.y+6,(yard.y+workerY)/2),21,Math.max(16,workerY-yard.y+5)],securityObjects:[128.5,122.4,17.8,15.8],conveyorObjects:[sx+1.3,sy+3.3,27,13],
+    gate:[gx+2.7,gy-5.8,16,14.4],passage:[gx+2.7,gy-2.85,16,14.5],line:[sx,sy,26,13],
+    checkpoint:[...checkCenter,17,checkHeight],
+    wide:[sx,(photo[1]+sy)/2,32,23],release:[sx,141.2,26,15],hall:[hall.x+hall.w/2,hall.y+hall.h/2,hall.w+4,hall.h+4],follow:[Math.max(120.1,Math.min(134,third[0])),floor.forgeHall.carrierY-1.3,13.5,11],
+    yard:[yard.x+yard.w/2,Math.max(yard.y+6,(yard.y+workerY)/2),21,Math.max(16,workerY-yard.y+5)],securityObjects:[gx+3.6,gy-5.6,17.8,15.8],conveyorObjects:[sx+1.3,sy+3.3,27,13],
   }[mode];
   center=shot.slice(0,2);scale=Math.min(width/shot[2],height/shot[3]);
 }
@@ -280,7 +287,9 @@ function facing(id,pose,w,positions){
   if(pose.moving)return Math.atan2(pose.to[1]-pose.from[1],pose.to[0]-pose.from[0]);
   if(w>=score.yard && id==='ed')return towards('max');
   if(w>130&&w<140&&id==='STILETTO')return towards('LIMEN');
-  if(w>130&&w<140&&id==='LIMEN')return towards('max');
+  if(id==='LIMEN' && pose.from===floor.contact.fourthClerk){
+    return Math.atan2(floor.contact.photo[1]-pose.p[1],floor.contact.photo[0]-pose.p[0]);
+  }
   if(id==='lou'&&w>=85&&w<=90)return towards('ben');
   if(id==='sam'&&w<32)return towards('bob');
   if(id==='ed'&&w>=26&&w<31)return Math.PI/2;

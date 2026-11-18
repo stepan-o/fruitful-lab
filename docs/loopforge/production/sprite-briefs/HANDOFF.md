@@ -1,14 +1,14 @@
 # Day 1 — 2D sprite production handoff
 
-## Approved factory placement · revision 2
+## Approved factory placement · revision 3
 
-Build the room polygons, wall runs and portal spans from `scene-bindings.json`. Use the measured footprint under each asset brief for placement and scale. The entrance opens onto the Lobby, and Dispatch feeds the enclosed inspection pen. The boom and Forge staff doorway face each other across a 10.25 m cleared apron. LIMEN brings max to the Forge jamb for the fourth check. The north row runs Weaving, Brewery, Cortex. Theatre receives the Forge outfeed on the east and discharges south to Logistics. All four future workroom doors stay locked during the intro.
+Build the room polygons, wall runs and portal spans from `scene-bindings.json`. Use the measured footprint under each asset brief for placement and scale. The entrance opens onto the Lobby, and Dispatch feeds the enclosed inspection pen. The boom and Forge staff doorway face each other across a 4.25 m cleared apron. For the fourth check, LIMEN keeps max at the ID desk. STILETTO crosses from the Forge and stops just beyond the boom. mae, kit, lou and ben hurry to their stations as each card is stamped. The north row runs Weaving, Brewery, Cortex. Theatre receives the Forge outfeed on the east and discharges south to Logistics. All four future workroom doors stay locked during the intro.
 
 The layout inspector groups Security equipment into three room objects. Its S1 groups the rails (build markers S1 and S2), S2 groups the desks (S3 and S5), and S3 locates the boom (S6). Use the build-marker IDs in `scene-bindings.json` when assembling the individual sprites.
 
 The pack includes the measured SVG, editable geometry and the same route score used by the rehearsal. The older Sim4 and compact 3D scene coordinates are historical reference frames.
 
-Revision day-one-2d-r2 · 17 November 2026
+Revision day-one-2d-r3 · 18 November 2026
 
 The owner approved the floor design and selected a sprite-based first implementation. This pack commissions the assets needed to replace the 2D flow sketch with a controllable, replayable prototype. The approved floor, cast identities, dialogue and staging are the source. The sprite projection, resolutions, frame counts and file contract below are proposed production defaults for ENGINE and the artists to implement together. They are not claims that sprite artwork, importers or the live game already exist.
 

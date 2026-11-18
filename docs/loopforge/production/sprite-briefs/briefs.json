@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "day-one-2d-r2",
+  "revision": "day-one-2d-r3",
   "date": "2026-11-17",
   "title": "2D asset briefs",
   "status": "Level design approved; sprite production specification proposed. No new sprite sheets or playable sprite implementation have been delivered by this document.",
@@ -617,7 +617,7 @@
         [
           "twin-blade-threat",
           "N, NW · 10 frames + hold + 6 recovery",
-          "Plant in doorway and aim both blades at LIMEN; clear max’s duck route."
+          "Plant on the Forge side of the inspection boom. Aim both blades toward LIMEN at the ID desk and leave room for max to duck past."
         ],
         [
           "catch-shout",

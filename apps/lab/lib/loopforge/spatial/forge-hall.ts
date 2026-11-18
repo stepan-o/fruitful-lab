@@ -1,3 +1,4 @@
+// Historical pre-redesign Forge study. The approved rehearsal uses approved-factory.json.
 // Day 1 installation inside the existing 80 × 56 m Forge shell. North is Security.
 import type { Rect } from './floor';
 

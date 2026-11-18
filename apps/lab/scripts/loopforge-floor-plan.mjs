@@ -1,80 +1,110 @@
-/** Export the actual floor authority as an original, inspectable 2D design plate.
- * TypeScript is already a build dependency; no browser/renderer dependency here. */
+// Export the approved design in metres. The Sim4 runtime owns its historical floor.
 import fs from 'node:fs';
+import {makeSequence} from '../../../docs/loopforge/game-design/day-one-sequence.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
-import ts from 'typescript';
-const app = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const spatial = path.join(app, 'lib/loopforge/spatial');
-const cache = new Map();
-function load(name) {
-  const file = path.resolve(spatial, name + '.ts');
-  if (path.dirname(file) !== spatial) throw new Error('Only spatial source modules may be exported.');
-  if (cache.has(file)) return cache.get(file);
-  const mod = { exports: {} }; cache.set(file, mod.exports);
-  const js = ts.transpileModule(fs.readFileSync(file, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 } }).outputText;
-  new Function('require', 'module', 'exports', js)(id => load(id), mod, mod.exports);
-  return mod.exports;
-}
-const f = load('floor'), shell = load('envelope'), capacity = load('capacity'), kit = load('equipment');
-const opening = load('day-one-floor').DAY_ONE_FLOOR;
-const hall = opening.forgeHall;
-const reserves = [...capacity.CONSTRUCTION_RESERVES.filter(q=>q.room!=='conveyor'),hall.reserve];
-const aisles = [...capacity.DELIVERY_AISLES.filter(q=>q.room!=='conveyor'),...hall.runs.map(q=>({...q,room:'conveyor'}))];
+const app = fileURLToPath(new URL('../', import.meta.url));
+const source = path.join(app, 'lib/loopforge/spatial/approved-factory.json');
 const board = path.resolve(app, '../../docs/loopforge/game-design');
-const escape = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
-const rect = (r, attrs) => `<rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" ${attrs}/>`;
-const points = shell.BUILDING_OUTLINE.map(p => `${p.x},${p.y}`).join(' ');
-let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1040" viewBox="0 0 1200 1040" role="img" aria-labelledby="title desc">
-<title id="title">Loopforge — continuous first-floor plan</title>
-<desc id="desc">Top-down measured design plan, north up. Nine repacked zones fill one building with narrow pipe walls around Brewery and Cortex. Every hall has a fifteen-metre structural height. An eight-metre corridor links Security to Theatre. The six managed rooms are Security, Lattice Forge, Burn-in Theatre, Substrate Brewery, Weaving Gallery and Cortex Assembly. Only Security and Lattice Forge are open on turn one. Gold thresholds mark fourteen connections, including the new Security to Theatre corridor. Dashed plots are clear construction reserves; copper marks are prototype machinery. Pipe walls do not grant extra access.</desc>
-<defs><pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8 0H0V8" fill="none" stroke="#70857c" stroke-opacity=".17" stroke-width=".2"/></pattern><pattern id="service" width="3" height="3" patternUnits="userSpaceOnUse"><rect width="3" height="3" fill="#34352b"/><path d="M-1 1L1 -1M0 3L3 0M2 4L4 2" stroke="#777151" stroke-width=".18"/></pattern></defs>
-<rect width="1200" height="1040" fill="#101b19"/><rect x="24" y="24" width="1152" height="992" fill="none" stroke="#596157"/>
-<g font-family="system-ui,sans-serif"><text x="60" y="63" fill="#b5a678" font-size="13" letter-spacing="3">LOOPFORGE / FLOOR 01 / SPATIAL DESIGN</text><text x="60" y="103" fill="#eee2bd" font-size="30" font-weight="650">One factory. Six production rooms.</text><text x="60" y="133" fill="#aab9ad" font-size="15">Repacked rooms · all halls ${f.FIRST_FLOOR_HEIGHT} m high · north up · one design tile ≈ one metre</text>
-<path d="M1117 110V65M1110 77L1117 65L1124 77" fill="none" stroke="#dfcf9e" stroke-width="2"/><text x="1117" y="51" fill="#dfcf9e" font-size="13" text-anchor="middle">N</text></g>
-<g transform="translate(72 153) scale(3.72)">
-<rect width="280" height="200" fill="url(#grid)"/>
-<polygon points="${points}" fill="url(#service)" stroke="#d0b675" stroke-width="1" stroke-linejoin="miter"/>
-`;
-for (const z of f.ZONES) {
-  const open = f.accessible(z.id, f.INITIAL_UNLOCKED);
-  svg += rect(z.rect, `fill="${z.kind === 'support' ? '#27342f' : open ? '#29453b' : '#1a2928'}" stroke="#8b9d86" stroke-width=".45"`);
+const publicDir = path.join(app,'public/loopforge-design');
+const design = JSON.parse(fs.readFileSync(source));
+const bounds = points => {
+  const xs=points.map(p=>p[0]), ys=points.map(p=>p[1]);
+  return {x:Math.min(...xs),y:Math.min(...ys),w:Math.max(...xs)-Math.min(...xs),h:Math.max(...ys)-Math.min(...ys)};
+};
+const zones = design.zones.map(z=>({...z,rect:bounds(z.polygon)}));
+const portals = design.portals.map(p=>{
+  const r=bounds(p.span);
+  return {...p,rect:r.w?{...r,y:r.y-.25,h:.5}:{...r,x:r.x-.25,w:.5}};
+});
+const portal=id=>portals.find(p=>p.id===id);
+const middle=id=>portal(id).span[0].map((v,i)=>(v+portal(id).span[1][i])/2);
+const [exitX,exitY]=portal('staff-entrance').span[0];
+const exit={x:exitX,y:exitY,w:portal('staff-entrance').rect.w};
+// Union coincident collinear wall runs, then subtract openings once on both sides.
+const runs=new Map();
+function add([a,b],kind){
+  const axis=a[1]===b[1]?0:1, fixed=a[1-axis];
+  if(a[1-axis]!==b[1-axis]) throw Error('Expected an orthogonal wall');
+  const key=[axis,fixed].join(',');
+  if(!runs.has(key))runs.set(key,{axis,fixed,solid:[],open:[]});
+  runs.get(key)[kind].push([Math.min(a[axis],b[axis]),Math.max(a[axis],b[axis])]);
 }
-for (const q of reserves) svg += rect(q.rect, 'fill="#365b4926" stroke="#6c9b83" stroke-width=".35" stroke-dasharray="1.4 1"');
-for (const q of aisles) svg += rect(q.rect, 'fill="#c0a96e16" stroke="#af9c66" stroke-width=".22" stroke-dasharray="2 1"');
-for (const q of kit.EQUIPMENT_STUDY.filter(q => !['security','conveyor'].includes(q.room))) svg += `<g><title>${escape(q.name)}</title>${rect(q.footprint, 'fill="#976c40" stroke="#c99f65" stroke-width=".2"')}</g>`;
-for (const p of f.PORTALS) svg += `<g><title>${escape(p.id)} — ${f.portalOpen(p, f.INITIAL_UNLOCKED) ? 'open' : 'sealed'}</title>${rect(f.portalRect(p), `fill="${f.portalOpen(p, f.INITIAL_UNLOCKED) ? '#e3c46f' : '#8f7b53'}" stroke="#e3c46f" stroke-width=".2"`)}</g>`;
-const corridor=f.PORTALS.find(p=>p.id==='security-theatre');
-svg += `<text x="${(corridor.start.x+corridor.end.x)/2}" y="${corridor.start.y+5.1}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="3" fill="#fff1c1">SECURITY ↔ THEATRE</text>`;
-// Labels sit clear of equipment and reserve outlines. Units remain in each room.
-for (const z of f.ZONES) {
-  const r = z.rect;
-  const x = r.x + 1.6, y = r.y + 4.3;
-  svg += `<g font-family="system-ui,sans-serif" stroke="#11201d" stroke-width=".8" paint-order="stroke" stroke-linejoin="round"><text x="${x}" y="${y}" font-size="2.7" fill="#fff0c9">${escape(z.short.toUpperCase())}</text><text x="${x}" y="${y+3.6}" font-size="2.45" fill="#c3d6c8">${r.w} × ${r.h} m · ${z.kind==='support'?'SUPPORT':f.INITIAL_UNLOCKED.includes(z.id)?'DAY 1':'SEALED'}</text></g>`;
+for(const z of zones)z.polygon.forEach((p,i)=>add([p,z.polygon[(i+1)%z.polygon.length]],'solid'));
+design.partitions.forEach(edge=>add(edge,'solid'));
+portals.forEach(p=>add(p.span,'open'));
+const walls=[];
+for(const {axis,fixed,solid,open} of runs.values()){
+  const edges=[...new Set([...solid,...open].flat())].sort((a,b)=>a-b);
+  for(let i=1;i<edges.length;i++){
+    const lo=edges[i-1],hi=edges[i],mid=(lo+hi)/2;
+    if(!solid.some(([a,b])=>a<mid&&mid<b)||open.some(([a,b])=>a<mid&&mid<b))continue;
+    walls.push(axis===0?{x:lo,y:fixed,w:hi-lo,h:0}:{x:fixed,y:lo,w:0,h:hi-lo});
+  }
 }
-for (const q of hall.installations) svg += `<g><title>${escape(q.name)}</title>${rect(q.rect,'fill="#71583e" stroke="#ceaa78" stroke-width=".25"')}</g>`;
-for (const col of hall.columns) svg += rect(col,'fill="#d5be93"');
-const crane=hall.crane.rect;
-svg += `<path d="M${crane.x} ${crane.y}h${crane.w} M${crane.x} ${crane.y+crane.h}h${crane.w} M${hall.crane.bridgeX} ${crane.y}v${crane.h}" fill="none" stroke="#d6b86d" stroke-width=".38" stroke-dasharray="1.2 .6"><title>Overhead crane runways and bridge</title></path>`;
-for (const q of opening.fixtures) svg += `<g><title>${escape(q.name)}</title>${rect(q.rect,'fill="#f7b274" stroke="#4d382d" stroke-width=".18"')}</g>`;
-svg += `<polyline points="${opening.egress.map(p=>p.join(',')).join(' ')}" fill="none" stroke="#8edac3" stroke-width=".65" stroke-dasharray="1.5 1"/><path d="M70 128h5" stroke="#8edac3" stroke-width="1.5"/><text x="69" y="134" text-anchor="end" font-family="system-ui,sans-serif" font-size="3.4" fill="#a3e5cf">STAFF ENTRANCE / EXIT</text>`;
-svg += `</g><g font-family="system-ui,sans-serif"><path d="M72 924H221M72 919V929M146.5 919V929M221 919V929" stroke="#d2bf88" stroke-width="2"/><text x="72" y="947" fill="#b9c7b9" font-size="13">0</text><text x="139" y="947" fill="#b9c7b9" font-size="13">20</text><text x="206" y="947" fill="#b9c7b9" font-size="13">40 m</text>
-<rect x="310" y="918" width="14" height="14" fill="#29453b" stroke="#8b9d86"/><text x="333" y="930" font-size="14" fill="#c2ccbf">Opening rooms</text><rect x="510" y="918" width="14" height="14" fill="#1a2928" stroke="#8b9d86"/><text x="533" y="930" font-size="14" fill="#c2ccbf">Sealed wing</text><rect x="686" y="918" width="14" height="14" fill="url(#service)"/><text x="709" y="930" font-size="14" fill="#c2ccbf">Pipe walls</text><rect x="880" y="918" width="20" height="10" fill="#b29a62"/><text x="909" y="930" font-size="14" fill="#c2ccbf">Door / passage</text>
-<rect x="310" y="952" width="14" height="14" fill="none" stroke="#6c9b83" stroke-dasharray="3 2"/><text x="333" y="964" font-size="14" fill="#c2ccbf">Construction reserve</text><rect x="560" y="952" width="14" height="14" fill="#976c40"/><text x="583" y="964" font-size="14" fill="#c2ccbf">Working footprint</text><text x="835" y="964" font-size="14" fill="#aab9ad">${shell.BUILDING_AREA.toLocaleString('en-US')} m² enclosed footprint</text>
-<text x="60" y="996" font-size="12" fill="#879b8f">${escape(f.FLOOR_VERSION)} · ${f.PORTALS.length} connections · Security–Theatre corridor sealed until Theatre opens · staff entrance on the south Lobby wall</text></g></svg>\n`;
-const hash = createHash('sha256').update(svg).digest('hex').slice(0,12);
-const filename = `factory-floor-plan.${hash}.svg`;
-const metadata = { version: f.FLOOR_VERSION, src: '/loopforge-design/'+filename, width:1200, height:1040, buildingArea:shell.BUILDING_AREA, serviceArea:shell.SERVICE_AREA, pipeWallArea:shell.PIPE_WALL_AREA, hallHeight:f.FIRST_FLOOR_HEIGHT, connections:f.PORTALS.length };
-const outputs = new Map([
-  [path.resolve(app,'../../docs/loopforge/maps/factory-floor-plan.svg'),svg],
-  [path.resolve(app,'../../docs/loopforge/game-design/factory-floor-plan.json'),JSON.stringify(metadata,null,2)+'\n'],
-  [path.join(app,'public/loopforge-design',filename),svg],
-  [path.join(board,'day-one-geometry.json'), JSON.stringify({ ...opening, zones: f.ZONES, portals: f.PORTALS.map(p=>({id:p.id,rect:f.portalRect(p)})), reserves, aisles })+'\n'],
-]);
-const check = process.argv.includes('--check');
-for(const [file,content] of outputs){
-  if(check){if(!fs.existsSync(file)||fs.readFileSync(file,'utf8')!==content) throw new Error(`Stale floor plan: run npm run floor-plan:build (${file})`);}
-  else {fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,content);}
+const byId=Object.fromEntries([...design.fixtures,...design.forgeHall.installations,...portals].map(q=>[q.id,q.rect]));
+byId.crane=design.forgeHall.crane.rect;
+const roomObjects=Object.fromEntries(Object.entries(design.roomObjects).map(([id,items])=>[id,items.map(q=>typeof q==='string'?byId[q]:q)]));
+const yard=middle('staff-entrance'),west=middle('lobby-dispatch'),east=middle('dispatch-security');
+const egress=[middle('security-conveyor'),middle('inspection-gate'),[120.4,east[1]],east,west,[yard[0],west[1]+3],[yard[0],yard[1]+3]];
+const floor={...design,zones,portals,walls,roomObjects,exit,egress,doorway:portal('security-conveyor').rect,
+  reserves:[design.forgeHall.reserve],aisles:design.forgeHall.runs.map(q=>({...q,room:'conveyor'}))};
+// Trace the actual editorial paths for the two moving-crew overlays on the layout tab.
+const script=[...fs.readFileSync(path.resolve(board,'../DAY_ONE_INTRO.md'),'utf8').matchAll(/^\*\*(\w+)\*\*\s+(.+)$/gm)].map(([,speaker,text])=>({speaker,text}));
+const score=makeSequence(floor,script);
+const route=(id,from,until)=>score.tracks[id].filter(k=>k.t>=from && k.t<=until).map(k=>k.p)
+  .filter((p,i,points)=>!i||p.some((v,j)=>v!==points[i-1][j]));
+const gate=middle('inspection-gate'), apron=[gate[0],gate[1]+4.5];
+const eastAisle=design.partitions[1][0][0]+7, crossY=middle('security-theatre')[1]-7;
+const staff={};
+for(const id of ['weaving','brewery','cortex','theatre','conveyor']){
+  const opening=middle('security-'+id);
+  staff[id]=id==='conveyor'?[gate,apron,opening,[opening[0],opening[1]+2]]:
+    [gate,apron,[eastAisle,apron[1]],[eastAisle,crossY],[opening[0],crossY],opening,
+      ...(id==='theatre'?[[opening[0],opening[1]+3]]:[middle(id+'-inner'),[opening[0],middle(id+'-inner')[1]-3]])];
 }
-console.log(`${check?'Verified':'Exported'} ${f.FLOOR_VERSION}: ${shell.BUILDING_AREA} m² envelope, ${shell.SERVICE_AREA} m² service infill; ${filename}`);
+floor.reviewPaths={staff,arrival:{workers:route('max',score.start,18),supervisor:route('STILETTO',score.start,52)},
+  release:Object.fromEntries(['mae','max','lou'].map(id=>[id,route(id,score.bell,score.streetTime[id])]))};
+const rect=(r,fill)=>`<rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" fill="${fill}"/>`;
+const pathLine=(a,b,color,width)=>`<path d="M${a.join(' ')}L${b.join(' ')}" stroke="${color}" stroke-width="${width}"/>`;
+const parts=['<g id="shell">'];
+for(const z of zones)parts.push(`<polygon points="${z.polygon.map(p=>p.join(',')).join(' ')}" fill="${z.id==='conveyor'?'#40392e':z.kind==='support'?'#32433c':'#273c35'}"/>`);
+for(const r of design.galleries)parts.push(rect(r,'#485445'),pathLine([r.x,r.y+r.h*.55],[r.x+r.w,r.y+r.h*.55],'#a2b099',.42));
+const [supply,returnGallery]=design.galleries;
+for(const r of design.galleries){
+  parts.push(pathLine([r.x,r.y+r.h*.78],[r.x+r.w,r.y+r.h*.78],'#78928b',.35));
+  for(let x=r.x+1;x<r.x+r.w;x+=8)parts.push(pathLine([x,r.y+.2],[x,r.y+r.h-.2],'#8d9b84',.29));
+}
+parts.push(pathLine([supply.x+supply.w-1,returnGallery.y+1],[supply.x+supply.w-1,supply.y+supply.h*.55],'#a2b099',.48));
+for(const id of ['weaving','brewery','cortex']){
+  const [a,b]=portal('security-'+id).span;
+  const y=middle(id+'-inner')[1];
+  for(const [x] of [a,b])parts.push(pathLine([x,y],[x,a[1]],'#bbccba',.27));
+}
+for(const r of walls)parts.push(pathLine([r.x,r.y],[r.x+r.w,r.y+r.h],'#a6b2a1',.48));
+for(const p of portals)parts.push(pathLine(...p.span,p.kind==='freight'?'#d89b7f':'#f0cb85',.85));
+for(const q of design.forgeHall.runs)parts.push(rect(q.rect,'#5a5544'));
+for(const r of [...design.forgeHall.installations,...design.fixtures])parts.push(rect(r.rect,'#a48b66'));
+for(const [key,rs] of Object.entries(roomObjects))if(/^[WBCGTLPD]/.test(key)&&key!=='L1')for(const r of rs)parts.push(rect(r,'#667b6d'));
+parts.push('</g>');
+const shell=parts.join('\n');
+const labels=zones.map(z=>{
+  const [x,y]=z.polygon[0];
+  return `<text x="${x+2}" y="${y+4.7}" fill="#eff1dd" font-size="2.65">${z.short}</text>`;
+}).join('\n');
+const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="24.75 35.75 240 170" role="img" aria-labelledby="planTitle"><title id="planTitle">Approved factory · Day 1 · north up</title>
+<rect x="24.75" y="35.75" width="240" height="170" fill="#152520"/>${shell}<g font-family="system-ui,sans-serif">${labels}
+<text x="30" y="42" fill="#e1d5ac" font-size="3">FACTORY 01   /   N ↑</text>
+<text x="163" y="106" fill="#ced9c7" font-size="2.2">CLEARED STAFF CONCOURSE</text>
+<text x="32" y="199" fill="#c3d0c2" font-size="2.5">Gold · staff openings       Copper · freight       Day 1 · Security and Forge</text>
+<path d="M220 198h20m-20 -1v2m20 -2v2" stroke="#e1d5ac" stroke-width=".4"/><text x="228" y="202" fill="#ded6b4" font-size="2">20 m</text></g></svg>\n`;
+const hash=createHash('sha256').update(svg).digest('hex').slice(0,12);
+const name=`factory-floor-plan.${hash}.svg`;
+const metadata={version:design.version,src:'/loopforge-design/'+name,width:1200,height:850,hallHeight:design.hallHeight,connections:portals.length};
+const outputs=[[path.join(board,'day-one-geometry.json'),JSON.stringify(floor)+'\n'],[path.resolve(board,'../maps/factory-floor-plan.svg'),svg],[path.join(publicDir,name),svg],[path.join(board,'factory-floor-plan.json'),JSON.stringify(metadata,null,2)+'\n']];
+for(const [file,data] of outputs){
+  if(process.argv.includes('--check')){if(fs.readFileSync(file,'utf8')!==data)throw Error('Stale export '+file);}
+  else {fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,data);}
+}
+console.log(design.version,name);

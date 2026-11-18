@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "day-one-2d-r1",
+  "revision": "day-one-2d-r2",
   "date": "2026-11-17",
   "title": "2D asset briefs",
   "status": "Level design approved; sprite production specification proposed. No new sprite sheets or playable sprite implementation have been delivered by this document.",
@@ -650,12 +650,12 @@
       "name": "Walls, cutaways & doorframes",
       "group": "Environment",
       "priority": "P0",
-      "quantity": "1 modular kit; 14 portal placements",
+      "quantity": "1 modular kit, instanced at every opening in scene-bindings.json",
       "brief": "Retain the approved factory outline and room connections. Low cutaway walls describe the building without covering the performance.",
       "parts": "Straight/corner/T/end wall modules, north/east/south/west facings, door jambs and threshold, separate front occlusion pieces; no roof in active rooms.",
       "states": "Open passage and closed/locked door panels; doors to later rooms remain closed. Staff entrance is its own asset.",
       "assembly": "Use zones and portals from geometry; do not rescale passages to fit art. Ground collision polygon is independent of painted wall height. Cutaway/opacity responds to camera, not simulation access.",
-      "accept": "Arrival and eight-worker exit pass through Lobby–Dispatch–Security without clipping. All 14 portals have a declared open/locked state in ENGINE.",
+      "accept": "Ten workers can use the entrance and both Dispatch doors. Match each portal’s span, purpose and initialAccess. The boom controls the inspection pen. A separate staff opening leads from the cleared apron to Forge.",
       "references": [],
       "clips": []
     },
@@ -668,7 +668,7 @@
       "brief": "The shared beginning and end: wet apron, recessed double steel door, curved LOOPFORGE / AI BRAIN FACTORY sign and warm lamps. Factory lights going out must remain readable behind the final laugh.",
       "parts": "E1 door recess, separate two parked leaves, E2 sign frame, editable lettering layer, two lamp fittings, window strip and isolated light pools; paving uses env-floor-kit.",
       "states": "Doors parked open during arrivals/departures; lamps/windows on and off; illuminated sign emission separate from unlit metal.",
-      "assembly": "Five-metre opening at floor.exit, centred x72.5 y128. Opening remains clear at both states. Sign and front wall are occluder layers; fade if they cover the crew.",
+      "assembly": "Use floor.exit for both jamb positions and clear width. Keep the sign and lamps on the south Lobby wall. Fade foreground dressing if it covers the arrivals.",
       "accept": "Ten entering workers, STILETTO’s later arrival, and all departing actors remain visible. Blackout changes the factory, not the dialogue rail.",
       "references": [],
       "clips": []
@@ -696,7 +696,7 @@
       "brief": "Weaving Gallery, Substrate Brewery, Burn-in Theatre, Cortex Assembly and Logistics exist on the approved map. For this first playable they need floors, perimeter shapes and locked thresholds visible in the overview.",
       "parts": "Reuse floor/wall kit; room-name label anchors, locked-door icon, muted silhouette shapes only where already shown in the floor sketch.",
       "states": "Locked/inactive; no interiors, supervisor-room encounters or operating machinery commissioned in this pack.",
-      "assembly": "Use canonical zones/reserves/aisles. The broad floor map preserves scale; never turn the whole 41,536 m² footprint into a single high-resolution texture.",
+      "assembly": "Instance wall runs from floor.walls. The Security pen opens south onto the cleared apron. Forge is straight ahead. The concourse serves Weaving, Brewery, Cortex and Theatre. Theatre shares the Forge outfeed wall and the Logistics receiving wall. Use the polygon boundary for Security.",
       "accept": "Overview matches approved topology; player cannot mistake inactive rooms for finished content.",
       "references": [],
       "clips": []
@@ -766,7 +766,7 @@
       "brief": "A west-hinged boom raises vertically, rather than swinging through the queue. Its changing projected length and post indicator explain access.",
       "parts": "Fixed post, independently animated boom, hinge cap, control button, red/green indicator masks. Keep front/back portions separately sortable.",
       "states": "closed → raising (8 frames) → open hold → lowering (8); stopped intermediate pose. Indicators reflect authority, not the picture’s last frame.",
-      "assembly": "Hinge and 3.5 m boom from score.gate. Pivot at west hinge; supply projected frame socket path. Collision/open permission is ENGINE-owned.",
+      "assembly": "Use floor.gate.hinge and floor.gate.length at inspection-gate. Register the tip and pier against both ends of that opening. ENGINE controls access and lift timing.",
       "accept": "STILETTO crosses while LIMEN holds it. Restart/seek to any gate phase yields the same pose and route state.",
       "references": [],
       "clips": []
@@ -822,7 +822,7 @@
       "brief": "Longitudinal feed rails, hand lever and low motor housing. bob must be able to sit on the housing and finish his pull.",
       "parts": "Base, back rail, front rail, independent loader lever and carriage, motor casing with seat edge, feed light.",
       "states": "empty / crooked load / aligned load; lever pull 12 frames with addressable half-stroke hold; feed on/off.",
-      "assembly": "Use fixture intake exactly (4×6 m for process stations; Output 7×6 m). Carrier centreline y142, shared height plane. Contacts: lever_grip, seat, brace_rail, cradle_in/out, operator_stand, feed_cutoff.",
+      "assembly": "Use fixture intake exactly from scene-bindings.json. Align cradle sockets to floor.forgeHall.carrierY. Contacts: lever_grip, seat, brace_rail, cradle_in/out, operator_stand, feed_cutoff.",
       "accept": "The first brain begins crooked; a seated bob finishes the same stroke, then stands using the rail.",
       "references": [],
       "clips": []
@@ -836,7 +836,7 @@
       "brief": "Inset steel trough with overhead spray and north-facing hand control. Dirty rinse must visibly become clear.",
       "parts": "Trough back/base/front lip; manifold, valve/hand control, independent water mask; no product baked into it.",
       "states": "off → dirty spray → clear spray → off; 6 control frames, hold while active.",
-      "assembly": "Use fixture wash exactly (4×6 m for process stations; Output 7×6 m). Carrier centreline y142, shared height plane. Contacts: valve_grip, cradle_in/out, water_origin, drain_origin, operator_stand.",
+      "assembly": "Use fixture wash exactly from scene-bindings.json. Align cradle sockets to floor.forgeHall.carrierY. Contacts: valve_grip, cradle_in/out, water_origin, drain_origin, operator_stand.",
       "accept": "Same cradle arrives and leaves. Grit clears while bob holds control; release stops the spray.",
       "references": [],
       "clips": []
@@ -850,7 +850,7 @@
       "brief": "East–west rollers with a clamp and start paddle on north side. The brain moves as one persistent carried object.",
       "parts": "Static base/front lip, tileable roller/belt strip, open/closed clamp, start paddle, drive housing and light.",
       "states": "stopped/running; clamp 6 close + 6 open frames; roller loop 8; drive power on/off.",
-      "assembly": "Use fixture belt exactly (4×6 m for process stations; Output 7×6 m). Carrier centreline y142, shared height plane. Contacts: clamp_grip, start_switch, kit_inspect, drive_stop, cradle_in/out, operator_stand.",
+      "assembly": "Use fixture belt exactly from scene-bindings.json. Align cradle sockets to floor.forgeHall.carrierY. Contacts: clamp_grip, start_switch, kit_inspect, drive_stop, cradle_in/out, operator_stand.",
       "accept": "bob then jo use identical contacts; kit touches the housing and stops drive on bell. Rollers stop without resetting carrier position.",
       "references": [],
       "clips": []
@@ -864,7 +864,7 @@
       "brief": "Tall guarded press compressed into a readable cutaway silhouette. The north handle is reachable; the stuck door is unmistakably half open.",
       "parts": "Base, rear guard, separate front guard, moving door, platen/die, handle and indicator; draw behind/over product as separate layers.",
       "states": "open → close (8) → compress (4 + hold) → open (8); jammed-half-open hold; knock release (6).",
-      "assembly": "Use fixture forge exactly (4×6 m for process stations; Output 7×6 m). Carrier centreline y142, shared height plane. Contacts: handle, palm_hit, cradle_in/out, press_axis, operator_stand.",
+      "assembly": "Use fixture forge exactly from scene-bindings.json. Align cradle sockets to floor.forgeHall.carrierY. Contacts: handle, palm_hit, cradle_in/out, press_axis, operator_stand.",
       "accept": "bob’s palm visibly contacts the same stuck door that springs free. Second/third cycles operate normally. Tall guard cannot hide the cause or output.",
       "references": [],
       "clips": []
@@ -878,7 +878,7 @@
       "brief": "Low rack continues the line east, with three separate cortex landing places visible to lou.",
       "parts": "Rear rack, surface rollers, three slot masks, front lip; no baked cortexes.",
       "states": "empty/occupied by independent products; short 4-frame landing settle belongs to product.",
-      "assembly": "Use fixture output exactly (4×6 m for process stations; Output 7×6 m). Carrier centreline y142, shared height plane. Contacts: rack_slot_1/2/3, cradle_in, lou_witness.",
+      "assembly": "Use fixture output exactly from scene-bindings.json. Align cradle sockets to floor.forgeHall.carrierY. Contacts: rack_slot_1/2/3, cradle_in, lou_witness.",
       "accept": "Count visibly changes one→two→three. All three remain after bell and no finished object jumps to another slot.",
       "references": [],
       "clips": []
@@ -920,7 +920,7 @@
       "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
       "parts": "Two rows of low cradle bins, open and empty variants; east-facing fork sockets.",
       "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
-      "assembly": "9×14 m from forgeHall. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
       "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
       "references": [],
       "clips": []
@@ -934,7 +934,7 @@
       "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
       "parts": "Three repeatable gravity-roller sections, end cap and staged tray child slots aligned with Intake.",
       "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
-      "assembly": "18×6 m from forgeHall. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
       "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
       "references": [],
       "clips": []
@@ -948,7 +948,7 @@
       "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
       "parts": "Cross-transfer rollers, cart docking end and low guarding; match Output height.",
       "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
-      "assembly": "9×6 m from forgeHall. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
       "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
       "references": [],
       "clips": []
@@ -962,7 +962,7 @@
       "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
       "parts": "Two workbenches, drive component, toolboard, covered inspection pit and parked trolley; clear central lane.",
       "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
-      "assembly": "20×14 m from forgeHall. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
       "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
       "references": [],
       "clips": []
@@ -976,7 +976,7 @@
       "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
       "parts": "Die cassette, spare die racks and compact jib; road-facing retrieval side.",
       "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
-      "assembly": "18×14 m from forgeHall. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
       "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
       "references": [],
       "clips": []
@@ -990,7 +990,7 @@
       "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
       "parts": "Two settling tanks, visible pipe return and flush trench covers; Wash connection aligns.",
       "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
-      "assembly": "17×5 m from forgeHall. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
       "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
       "references": [],
       "clips": []
@@ -1004,7 +1004,7 @@
       "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
       "parts": "Low return rails and stackable empty carriers; use prop-carrier-tray instances.",
       "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
-      "assembly": "16×5 m from forgeHall. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
       "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
       "references": [],
       "clips": []
@@ -1018,7 +1018,7 @@
       "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
       "parts": "Two runways, moving bridge and hoist on separate layers, ten repeatable columns from geometry.",
       "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
-      "assembly": "49×20 m envelope from forgeHall. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots.",
       "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
       "references": [],
       "clips": []

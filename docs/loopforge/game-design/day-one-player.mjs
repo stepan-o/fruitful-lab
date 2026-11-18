@@ -9,7 +9,7 @@ const canvas=document.querySelector('canvas'), ctx=canvas.getContext('2d');
 const colours={bob:'#f7bf78',sam:'#75c5ac',ed:'#c8b0e6',max:'#f0ce68',jo:'#86b9e8',gus:'#e79578',mae:'#beaf83',kit:'#8fcacb',lou:'#e6aab6',ben:'#a6bd85',LIMEN:'#74e5eb',STILETTO:'#ff9273',BELL:'#e4d4aa'};
 const actors=Object.keys(score.cast), ns='http://www.w3.org/2000/svg';
 const atlasMarks=document.createElementNS(ns,'g');
-atlasMarks.setAttribute('transform','translate(72 153) scale(3.72)');
+
 byId('atlas').querySelector('svg').append(atlasMarks);
 const dots=actors.map(id=>{
   const dot=document.createElementNS(ns,'circle');
@@ -46,11 +46,15 @@ function chooseCamera(mode,w){
   const workerY=samplePath(score.tracks.max,w).p[1];
   // Pan with the walkers while jo finishes her line inside the Lobby.
   const entrancePan=inspecting?0:Math.min(8,Math.max(0,(w-score.start-4)*1.1));
+  const [cx,cy]=floor.anchors[0].floor;
+  const [sx,sy]=[floor.stations[2].x,floor.stations[2].y];
+  const yard=floor.exit;
+  const hall=floor.zones.find(z=>z.id==='conveyor').rect;
   const shot={
     entrance:[floor.exit.x+floor.exit.w/2,floor.exit.y+4.3-entrancePan,20,22],
-    gate:[127.6,122.2,16,14.4],passage:[127.6,125.15,16,14.5],line:[127.6,138.15,25,14.5],door:[128.6,126.75,14.8,12.8],
-    wide:[127,132.25,26,24],release:[127,134.4,25,15],hall:[120,156,84,60],follow:[Math.max(120.1,Math.min(134,third[0])),140.7,13.5,11],
-    yard:[72.4,Math.max(134,(128+workerY)/2),21,Math.max(16,workerY-128+5)],securityObjects:[128.5,122.4,17.8,15.8],conveyorObjects:[129,141.7,27,13],
+    gate:[127.6,122.2,16,14.4],passage:[127.6,125.15,16,14.5],line:[sx,sy,26,13],door:[cx-1.85,cy-.2,14.8,12.8],
+    wide:[sx,135.6,32,28],release:[sx,141.2,26,15],hall:[hall.x+hall.w/2,hall.y+hall.h/2,hall.w+4,hall.h+4],follow:[Math.max(120.1,Math.min(134,third[0])),floor.forgeHall.carrierY-1.3,13.5,11],
+    yard:[yard.x+yard.w/2,Math.max(yard.y+6,(yard.y+workerY)/2),21,Math.max(16,workerY-yard.y+5)],securityObjects:[128.5,122.4,17.8,15.8],conveyorObjects:[sx+1.3,sy+3.3,27,13],
   }[mode];
   center=shot.slice(0,2);scale=Math.min(width/shot[2],height/shot[3]);
 }
@@ -60,7 +64,7 @@ function drawCheckpoint(){
   // Seams are flush with the floor. Only the two authored queue rails obstruct travel.
   for(let row=0;row<6;row++){
     for(let col=0;col<4;col++){
-      const x=122.65+col*2.79,y=115.7+row*1.99;
+      const x=deck.x+.1+col*2.79,y=deck.y+.1+row*1.99;
       box(x,y,2.72,1.92,(col+row)%3===0?'#273a3c':'#243438','#304448');
       box(x+.12,y+.12,.09,.09,'#657775');
       box(x+2.50,y+1.70,.09,.09,'#445955');
@@ -79,7 +83,9 @@ function drawBuilding(w,view){
   for(const z of floor.zones){
     const r=z.rect;
     const col={security:'#273d3e',conveyor:'#413a31',lobby:'#36403a'}[z.id]||'#293633';
-    box(r.x,r.y,r.w,r.h,col,'#a5a78d');
+    ctx.beginPath();
+    z.polygon.forEach((p,i)=>ctx[i?'lineTo':'moveTo'](...project(p)));
+    ctx.closePath();ctx.fillStyle=col;ctx.fill();
   }
   const left=Math.floor(center[0]-width/scale/2),top=Math.floor(center[1]-height/scale/2);
   for(let x=left;x<left+width/scale+2;x++)line([[x,top],[x,top+height/scale+2]],x%5?'#d9e6cb0b':'#d9e6cb16');
@@ -88,23 +94,30 @@ function drawBuilding(w,view){
   for(const r of floor.reserves.map(q=>q.rect)){
     ctx.setLineDash([3,4]);box(r.x,r.y,r.w,r.h,'#7a9e7f0b','#71857266');ctx.setLineDash([]);
   }
-  for(const p of floor.portals){const r=p.rect;box(r.x,r.y,r.w,r.h,'#81795a');}
+  for(const r of floor.galleries)box(r.x,r.y,r.w,r.h,'#465548');
+  for(const id of ['L2','L3','D1','D2','D3'])for(const r of floor.roomObjects[id])box(r.x,r.y,r.w,r.h,'#59675c','#829381');
+  for(const r of floor.walls)line([[r.x,r.y],[r.x+r.w,r.y+r.h]],'#a6b2a1',Math.max(1,.18*scale));
+  for(const p of floor.portals){
+    const r=p.rect;
+    box(r.x,r.y,r.w,r.h,p.initialAccess==='locked'?'#c3a67a':'#727766');
+  }
   drawHall(view==='hall');
   if(view==='yard'||view==='entrance'){
     const on=w<score.yard+10.5;
-    for(const x of [61,64.2,67.4,76.5,79.7]){
-      box(x,126.85,2.2,.85,on?'#e8b875':'#263437','#546569');
-      if(on)box(x-.4,128.1,3,2.6,'#e9b35f25');
+    for(const dx of [-9,-5.8,-2.6,7.7,10.9]){
+      const x=floor.exit.x+dx;
+      box(x,floor.exit.y-1.15,2.2,.85,on?'#e8b875':'#263437','#546569');
+      if(on)box(x-.4,floor.exit.y+.1,3,2.6,'#e9b35f25');
     }
   }
-  box(floor.doorway.x,127.45,floor.doorway.w,1.1,'#6f725d');
-  for(const x of [125,131])box(x-.13,127.45,.26,1.1,'#dcc68b');
+  const door=floor.doorway;
+  for(const x of [door.x,door.x+door.w])box(x-.13,door.y,.26,door.h,'#dcc68b');
   drawStaffEntrance(view==='entrance',w<score.yard+10.5);
   if(view==='hall')return;
-  if(view!=='entrance')label([72.5,126.9],'LOBBY EXIT','#e0d1aa');
+  if(view!=='entrance')label([floor.exit.x+floor.exit.w/2,floor.exit.y-1.1],'LOBBY EXIT','#e0d1aa');
   label([124.2,113.3],'SECURITY   /   01','#9fbabb',11);
 
-  if(view!=='entrance')label([72.5,142.4],'OUTSIDE   /   SOUTH YARD','#89b6a3',10);
+  if(view!=='entrance')label([floor.exit.x+floor.exit.w/2,floor.exit.y+14.4],'OUTSIDE   /   SOUTH YARD','#89b6a3',10);
 }
 function drawStaffEntrance(close,lit){
   const {x,y,w}=floor.exit, cx=x+w/2;
@@ -136,7 +149,8 @@ function drawHall(overview){
   const hall=floor.forgeHall;
   const r=hall.crane.rect;
   // Cast-iron bed, north operating apron and service side of the line.
-  box(99,138.8,51.4,6.5,'#362e29','#817464');
+  const first=hall.installations.find(q=>q.id==='infeed').rect, end=hall.installations.find(q=>q.id==='transfer-table').rect;
+  box(first.x-.2,first.y-.2,end.x+end.w-first.x+.4,first.h+.4,'#362e29','#817464');
   for(const road of hall.runs){
     const {x,y,w,h}=road.rect;
     box(x,y,w,h,road.id==='staff'?'#55574b':'#514b41','#827a60');
@@ -148,7 +162,7 @@ function drawHall(overview){
     box(x,y,w,h,'#364348','#a99b83');
     if(q.id==='water-plant'){
       for(const f of [.25,.75])ellipse([x+w*f,y+h/2],2.65,1.85,'#446367','#99b4ac');
-      line([[x+w*.25,y],[x+w*.25,146.5],[123.7,146.5],[123.7,145]],'#729998',2);
+      line([[x+w*.25,y],[x+w*.25,y-1.5],[floor.stations[1].x,y-1.5],[floor.stations[1].x,first.y+first.h]],'#729998',2);
     }else if(q.id==='drive-shop'||q.id==='jig-shop'){
       box(x+1,y+1.1,w-2,h-2.2,'#504d43','#928779');
       for(const bx of [x+1,x+w-3])box(bx,y+2,2,h-4,'#69635a','#c2ac7b');
@@ -170,14 +184,12 @@ function drawHall(overview){
   const bx=hall.crane.bridgeX;
   for(const x of [bx-.6,bx+.6])line([[x,r.y],[x,r.y+r.h]],'#cbb27a',1.5);
   for(let y=r.y;y<r.y+r.h;y+=2)line([[bx-.6,y],[bx+.6,y+1],[bx-.6,y+2]],'#ae9b71',1);
-  box(bx-.65,147,1.3,1.6,'#867653','#dcc591');
+  box(bx-.65,hall.carrierY,1.3,1.6,'#867653','#dcc591');
   if(overview){
-    for(const [point,name] of [
-      [[88,133.6],'RECEIVING'],[[121.5,132],'ASSEMBLY LINE  →'],[[150,136.5],'OUTBOUND'],
-      [[109.5,151.6],'WATER RETURN'],[[137.8,151.6],'CRADLES'],[[142,147.2],'CRANE'],
-      [[120,158.9],'TRANSFER ROAD'],[[94,173],'DRIVE SHOP'],[[117,173],'TOOLING'],
-      [[144,172.5],'SPARE BAY']
-    ]){label(point,name,'#fff1cb',Math.max(7,Math.min(11,scale*1.7)));}
+    for(const q of [...hall.installations,hall.reserve,...hall.runs.filter(r=>r.id==='transfer')]){
+      const {x,y,w,h}=q.rect;
+      label([x+w/2,y+h/2],(q.name||q.label).toUpperCase(),'#fff1cb',Math.max(7,Math.min(11,scale*1.7)));
+    }
   }
 }
 function equipment(w,view){
@@ -235,10 +247,14 @@ function equipment(w,view){
     }
     if(scale>10)label([cx,y+h+.55],q.name.toUpperCase(),'#f0d5a8',Math.max(9,Math.min(13,scale*.54)));
   }
+  for(const [id,point] of [['mae',floor.contact.feedCutoff],['kit',floor.contact.driveStop]]){
+    const [x,y]=point;
+    box(x-.23,y-.13,.46,.26,w<score.shutdown[id]?'#d7ba74':'#646b62','#b6aa7e');
+  }
   line([score.gate.hinge,gateTipAt(score.gate,w)],'#e8c477',3);
   ellipse(score.gate.hinge,.17,.17,'#e8c477','#39453d');
   if(w>=26.55&&w<30.2){
-    const p=samplePath([{t:26.55,p:[126.1,124.2]},{t:27.5,p:[124.14,123.46]}],w).p;
+    const p=samplePath([{t:26.55,p:floor.contact.credential[0]},{t:27.5,p:floor.contact.credential[1]}],w).p;
     box(p[0]-.16,p[1]-.1,.32,.2,'#fff0ae','#f4d589');
   }
 }

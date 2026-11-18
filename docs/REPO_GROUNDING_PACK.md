@@ -1,3 +1,7 @@
+## Loopforge Day 1 factory floor — 17 November 2026
+
+Edit Day 1 room boundaries, portals, equipment and interaction marks in `apps/lab/lib/loopforge/spatial/approved-factory.json`. Regenerate the map, board and sprite handoff using `docs/loopforge/game-design/README.md`. The board at `/stepanoskin/loopforge/design#floor-layout` links the playable rehearsal and its 1× recording.
+
 ## Sanctuary Economics · Marvel Rivals · 17 November 2026
 
 The reader places `?chapter=marvel-rivals` between `rockstar-world` and `the-fork`. The chapter uses a dated launch wallet, a three-screen design comparison, six individually credited frames and the optional official Art Vision player. Source and publication records live in `apps/lab/lib/sanctuary/rivals-chapter.ts`, `rivals-media.json` and the public credits register.

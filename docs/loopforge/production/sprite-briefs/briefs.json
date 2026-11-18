@@ -568,7 +568,7 @@
         [
           "ignore-register",
           "N, NW · 4 upper-body frames",
-          "Walk past ed’s offer without reaching for the book."
+          "Walk slowly past ed’s offer without reaching for the book. Keep a 1.25 m/s stride behind the workers through blackout."
         ]
       ]
     },
@@ -627,7 +627,7 @@
         [
           "dismiss-backs",
           "N, NW · 8 frames",
-          "Wave after their backs; feet remain planted while crew keeps walking."
+          "Wave after their backs while following at a slow 1.25 m/s walk. Use the walk-compatible upper-body overlay; she is still inside at blackout."
         ]
       ]
     },
@@ -669,7 +669,7 @@
       "parts": "E1 door recess, separate two parked leaves, E2 sign frame, editable lettering layer, two lamp fittings, window strip and isolated light pools; paving uses env-floor-kit.",
       "states": "Doors parked open during arrivals/departures; lamps/windows on and off; illuminated sign emission separate from unlit metal.",
       "assembly": "Use floor.exit for both jamb positions and clear width. Keep the sign and lamps on the south Lobby wall. Fade foreground dressing if it covers the arrivals.",
-      "accept": "Ten entering workers, STILETTO’s later arrival, and all departing actors remain visible. Blackout changes the factory, not the dialogue rail.",
+      "accept": "Ten entering workers, STILETTO’s later arrival, and all ten departing workers remain visible. LIMEN and STILETTO follow slowly and may remain inside at blackout. Blackout changes the factory, not the dialogue rail.",
       "references": [],
       "clips": []
     },

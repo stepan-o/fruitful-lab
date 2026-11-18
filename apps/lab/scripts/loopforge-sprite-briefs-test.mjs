@@ -38,6 +38,7 @@ for(const e of [...bindings.actors,...bindings.fixtures,...bindings.portals,...b
 assert.equal(bindings.regression.dialogueCount,46);
 assert.equal(bindings.regression.duration,score.duration);
 assert.equal(bindings.regression.exitPace,2.4);
+assert.equal(bindings.regression.supervisorWalkSpeed,1.25);
 dom.window.HTMLElement.prototype.scrollIntoView=function(){};
 dom.window.eval(read('docs/loopforge/game-design/sprite-briefs.js'));
 const input=document.getElementById('sb-search');input.value='palm';input.dispatchEvent(new dom.window.Event('input'));

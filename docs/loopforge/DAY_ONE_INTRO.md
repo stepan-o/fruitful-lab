@@ -170,13 +170,13 @@ Figure 2. Conveyor Intake. sam is the heavy tray-carrying worker at the center o
 
 **STILETTO** ALRIGHT, SHIFT’S OVER. FUCK OFF.
 
-*The crew leaves together. STILETTO watches them clear the line.*
+*The crew hurries out together. STILETTO watches them clear the line, then follows at a slow walk.*
 
 *At Security, ed ticks off the eighth worker and holds the register out for LIMEN.*
 
 **ed** All eight accounted for, sir.
 
-*LIMEN walks straight past him. ed sets the register down and clips his pen into the pocket with bob’s card.*
+*LIMEN walks slowly straight past him. ed sets the register down and clips his pen into the pocket with bob’s card, then hurries after the workers. Both supervisors keep walking behind them.*
 
 *Outside, max falls into step beside gus. His chin comes up.*
 
@@ -188,4 +188,4 @@ Figure 2. Conveyor Intake. sam is the heavy tray-carrying worker at the center o
 
 **max** WHO HERE REALLY CARES ABOUT THIS FACTORY???!!
 
-*ed laughs first. Behind him, the factory lights go out.*
+*ed laughs first. Behind him, the factory lights go out. Cut at the same beat, with LIMEN and STILETTO still walking inside.*

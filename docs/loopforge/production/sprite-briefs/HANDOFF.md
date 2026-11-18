@@ -65,9 +65,9 @@ For dialogue during locomotion, supply torso/head/arm overlays compatible with t
 | Catch | STILETTO shouts after approximately three seconds; each worker brakes into a mid-step hold for about 1.1 s |
 | Replies | Resume walking as the four replies begin. jo, max, lou and sam coexist in the top rail; lou’s aside remains directed to ben |
 | Dismissal | “ALRIGHT, SHIFT’S OVER. FUCK OFF.” is delivered into their backs, not to a re-formed lineup |
-| Clearance | Preserve the approved 2.4× exit acceleration and individual eight checkouts; match the hurry animation to feet instead of merely speeding a walk sheet |
+| Clearance | Preserve the workers’ 2.4× exit acceleration and individual eight checkouts; match the hurry animation to feet instead of merely speeding a walk sheet. LIMEN and STILETTO follow at a steady 1.25 m/s walk |
 | Closing exchanges | No long waits for a character to cross an empty map. Use the approved travel cuts; keep the under-one-second gaps between dismissal, ed’s count and the yard exchange |
-| Blackout | ed laughs first; factory lamps and windows go out behind the crew. Do not blank the dialogue layer |
+| Blackout | ed laughs first; factory lamps and windows go out behind the crew. Preserve the 190.604-second edit; both supervisors are still walking inside. Account for all ten workers outside, without waiting for the supervisors or accelerating them. Do not blank the dialogue layer |
 
 The current edited rehearsal is about 3:25 total, with roughly 26 seconds from bell to blackout. These are regression references, not fresh balance targets. The bundled sequence module is the exact timing authority. It carries world time and edited time separately: ENGINE must preserve the cuts or the physical long walk will reopen the gaps that were removed.
 

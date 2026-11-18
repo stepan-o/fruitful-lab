@@ -51,7 +51,29 @@ assert.equal(ids.length,12);
 assert.equal(s.tallies.length,8);
 assert.equal(s.products.length,3);
 assert(s.speech.slice(20,24).every(q=>q.start<86.2&&q.end>=90));
-for(const id of ids)assert(samplePath(s.tracks[id],s.end).p[1]>floor.exit.y);
+const workers=ids.filter(id=>id===id.toLowerCase());
+assert.equal(workers.length,10,'eight line workers plus ed and gus');
+for(const id of workers)assert(samplePath(s.tracks[id],s.end).p[1]>floor.exit.y,id+' leaves before blackout');
+assert(Math.abs(s.duration-190.60391778732966)<1e-8,'preserve the approved final cut and intro duration');
+function exitToDispatch(id){
+  const keys=s.tracks[id], edge=floor.portals.find(p=>p.id==='dispatch-security').rect.x;
+  const i=keys.findIndex((b,i)=>i && b.t>s.bell && keys[i-1].p[0]>edge && b.p[0]<=edge);
+  assert(i>0,id+' has a continuous exit through Dispatch');
+  const a=keys[i-1],b=keys[i];
+  return a.t+(b.t-a.t)*(edge-a.p[0])/(b.p[0]-a.p[0]);
+}
+for(const [id,departure] of Object.entries(s.supervisorDepartures)){
+  const keys=s.tracks[id];
+  for(let i=1;i<keys.length;i++){
+    const a=keys[i-1],b=keys[i];
+    if(a.t<departure-1e-8)continue;
+    const distance=Math.hypot(b.p[0]-a.p[0],b.p[1]-a.p[1]);
+    if(b.t===a.t){assert.equal(distance,0,id+' never teleports');continue;}
+    assert(Math.abs(distance/(b.t-a.t)-1.25)<1e-8,id+' keeps a steady walk, including after the cut');
+  }
+  assert(exitToDispatch(id)>Math.max(...workers.map(exitToDispatch)),id+' follows every worker through Dispatch');
+  assert(samplePath(keys,s.end).moving && s.streetTime[id]>s.end,id+' is still walking inside at blackout');
+}
 for(const product of s.products)assert(samplePath(product.keys,s.end).p[0]>=134);
 console.log('Passed all routes, return counts, volunteer overlap and product arrivals.');
 

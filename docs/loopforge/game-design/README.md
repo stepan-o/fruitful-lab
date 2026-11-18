@@ -137,3 +137,13 @@ node apps/lab/scripts/loopforge-floor-plan.mjs --check
 node apps/lab/scripts/loopforge-rehearsal-test.mjs
 node apps/lab/scripts/loopforge-sprite-briefs-test.mjs
 ```
+
+### End-of-shift departure — 18 November 2026
+
+The sequence keeps the worker exit tracks and the 190.604-second edit unchanged.
+LIMEN and STILETTO follow at 1.25 m/s; their routes continue beyond blackout,
+without an exterior-arrival completion gate. All ten workers must be outside.
+The rehearsal test checks steady supervisor speed, worker-first Dispatch passage,
+swept clearances and the fixed cut alongside the earlier fourth-check correction.
+Review the departure at `day-one-rehearsal.html#end-of-shift`. The 1× recording
+is regenerated from the same published score after changing the sequence.

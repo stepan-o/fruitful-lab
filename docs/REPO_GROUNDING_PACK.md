@@ -1,6 +1,6 @@
 ## Loopforge Day 1 factory floor — 17 November 2026
 
-Edit Day 1 room boundaries, portals, equipment and interaction marks in `apps/lab/lib/loopforge/spatial/approved-factory.json`. Regenerate the map, board and sprite handoff using `docs/loopforge/game-design/README.md`. The board at `/stepanoskin/loopforge/design#floor-layout` links the playable rehearsal and its 1× recording.
+Edit Day 1 room boundaries, portals, equipment and interaction marks in `apps/lab/lib/loopforge/spatial/approved-factory.json`. Regenerate the map, board and sprite handoff using `docs/loopforge/game-design/README.md`. The board at `/stepanoskin/loopforge/design#floor-layout` links the playable rehearsal and its 1× recording. The fourth-check deep link is `/loopforge-design/day-one-rehearsal.html#fourth-check`. The inspection boom is 4.25 m from the Forge doorway. At end of shift the workers retain their hurried exit; LIMEN and STILETTO follow at 1.25 m/s. The 190.604-second edit cuts while the supervisors are still inside. All ten workers remain accounted for. Departure review: `/loopforge-design/day-one-rehearsal.html#end-of-shift`.
 
 ## Sanctuary Economics · Marvel Rivals · 17 November 2026
 

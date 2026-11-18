@@ -1074,7 +1074,7 @@ Owner direction: remove all player building. Keep the room topology and cinemati
 
 ## Continuous first-floor plan
 
-![Top-down factory plan](/loopforge-design/factory-floor-plan.3800c0ed567f.svg)
+![Top-down factory plan](/loopforge-design/factory-floor-plan.73eea13acbcc.svg)
 
 Nine rooms share a 15 m hall height. Beyond the inspection pen, Security serves five workrooms. Cortex is northeast. Theatre receives directly from the Forge outfeed and shares a freight opening with Logistics. In the Lattice Forge, the crane covers a continuous eastbound line. The cross-road serves the overhaul bays and spare fitting bay. [Inspect the Forge hall](/loopforge-design/day-one-rehearsal.html#forge-hall).
 

@@ -41,7 +41,7 @@ const floor=JSON.parse(fs.readFileSync('./day-one-geometry.json','utf8'));
 const text=fs.readFileSync('../DAY_ONE_INTRO.md','utf8');
 const dialogue=[...text.matchAll(/^\\*\\*(\\w+)\\*\\*\\s+(.+)$/gm)].map(m=>({speaker:m[1],text:m[2]}));
 const score=makeSequence(floor,dialogue);
-console.log(JSON.stringify({floor,markers:makeBuildMarkers(floor,score),actors:Object.keys(score.cast),duration:score.duration,exitPace:score.exitPace,dialogueCount:dialogue.length}));'''
+console.log(JSON.stringify({floor,markers:makeBuildMarkers(floor,score),actors:Object.keys(score.cast),duration:score.duration,exitPace:score.exitPace,supervisorWalkSpeed:score.supervisorWalkSpeed,dialogueCount:dialogue.length}));'''
     measured=json.loads(subprocess.check_output(['node','--input-type=module','-e',code],cwd=ROOT,text=True))
     mapping={
       'S1':'sec-rails','S2':'sec-rails','S3':'sec-desks','S4':'sec-drain','S5':'sec-desks','S6':'sec-boom',
@@ -58,7 +58,7 @@ console.log(JSON.stringify({floor,markers:makeBuildMarkers(floor,score),actors:O
         'fixtures':[{**f,'assetId':{'register':'sec-desks','checks':'sec-desks','grate':'sec-drain','west-rail':'sec-rails','east-rail':'sec-rails','intake':'mach-intake','wash':'mach-wash','belt':'mach-belt','forge':'mach-forge','output':'mach-output'}[f['id']]} for f in measured['floor']['fixtures']],
         'portals':[{**p,'assetId':'env-wall-portal-kit'} for p in measured['floor']['portals']],
         'floor':measured['floor'],
-        'regression':{k:measured[k] for k in ['duration','exitPace','dialogueCount']}}
+        'regression':{k:measured[k] for k in ['duration','exitPace','supervisorWalkSpeed','dialogueCount']}}
     template={'schemaVersion':1,'status':'template-not-delivered','assetId':'char-bob','revision':None,
       'files':[],'dependencies':['prop-credential'],
       'sprite':{'sourceSize':[256,256],'pivotPx':[128,208],'trimRect':None,'sortAnchorPx':[128,208],'groundFootprintMetres':None,'layer':'actor','sockets':{}},

@@ -1,5 +1,5 @@
 // One score for playback, seeking, recording and Scene Direction. Times are seconds.
-// Movement uses floor metres; the final walkout deliberately accelerates between dialogue beats.
+// Movement uses floor metres; workers hurry out while supervisors follow at a walk.
 export function makeSequence(floor, script) {
   const cast = {...floor.queue, STILETTO:[floor.exit.x-7.5,floor.exit.y+4.7]};
   const tracks = Object.fromEntries(Object.entries(cast).map(([id,p])=>[id, [{t:0,p}]]));
@@ -226,7 +226,7 @@ export function makeSequence(floor, script) {
     walk(id,streetTime[id],distance(from,join)/(yard-streetTime[id]),join);
     walk(id,yard,1.10,[x+2.5,join[1]+15.4]);
   }
-  // Hurry the entire exit procession together, preserving every clearance and the brief freeze.
+  // Hurry the workers, preserving their clearance slots and the brief freeze.
   // Resume normal acting pace for the yard exchange; speech keeps its own reading time.
   const exitPace=2.4, fastStart=Math.max(...departures.map(worker=>worker.at)), yardArrival=yard;
   const exitTime=t=>t<=fastStart?t:t<yardArrival
@@ -244,6 +244,20 @@ export function makeSequence(floor, script) {
   for(let i=0;i<tallies.length;i++)tallies[i]=exitTime(tallies[i]);
   for(const id of Object.keys(streetTime))streetTime[id]=exitTime(streetTime[id]);
   eight=exitTime(eight);yard=exitTime(yard);
+  // The supervisors keep their own stride through the compressed worker exit.
+  // Retain their departure cues, then rebuild each leg by distance, including
+  // travel beyond the final cut. Blackout never asks them to catch the workers.
+  const supervisorWalkSpeed=1.25;
+  const supervisorDepartures={LIMEN:eight+2.05/exitPace,STILETTO:eight-8/exitPace};
+  for(const [id,departure] of Object.entries(supervisorDepartures)){
+    const old=tracks[id], first=old.findIndex(k=>Math.abs(k.t-departure)<1e-8);
+    const street=old.find(k=>Math.abs(k.t-streetTime[id])<1e-8).p;
+    const route=old.slice(first+1).map(k=>k.p).filter((p,i,points)=>i===0||distance(p,points[i-1])>1e-8);
+    tracks[id]=old.slice(0,first+1);
+    supervisorDepartures[id]=old[first].t;
+    walk(id,supervisorDepartures[id],supervisorWalkSpeed,...route);
+    streetTime[id]=tracks[id].find(k=>k.t>departure && distance(k.p,street)<1e-8).t;
+  }
   // Finish ed's line, allow one small transition beat, then pick up max outside.
   const cuts=[morningCut,{at:eight+3.35,to:yard-.55,label:'Outside the Lobby'}];
   const end=yard+11.4;
@@ -317,7 +331,7 @@ export function makeSequence(floor, script) {
     product(2,[[101.5,0],[106,0],[114.9,1],[118,1],[121,2],[122.8,2],[126.1,3],[127.1,3],[128.1,4]],1),
     product(3,[[113.5,0],[154.8,0],[156.1,1],[157.8,1],[158.8,2],[160.3,2],[161.6,3],[162.4,3],[163.2,4]],2),
   ];
-  return {start,cast,tracks,beats,speech,cues,gate,products,departures,streetTime,yard,bell,call,shutdown,resume,dismissal,exitPace,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
+  return {start,cast,tracks,beats,speech,cues,gate,products,departures,supervisorDepartures,supervisorWalkSpeed,streetTime,yard,bell,call,shutdown,resume,dismissal,exitPace,tallies:tallies.sort((a,b)=>a-b),cuts,end,editTime,duration:editTime(end),worldTime};
 }
 
 export function samplePath(keys,t) {

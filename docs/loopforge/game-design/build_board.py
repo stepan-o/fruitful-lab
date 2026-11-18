@@ -370,23 +370,25 @@ build_rehearsal(ROOT, OUT, intro_source, intro_body)
 intro_css_hash = hashlib.sha256((ROOT/'day-one-intro.css').read_bytes()).hexdigest()[:12]
 intro_css = f'<link rel="stylesheet" href="day-one-intro.css?v={intro_css_hash}">'
 intro = (f'<header class="section-head"><span class="kicker">Approved script and storyboards</span>'
-         f'<h2>{e(intro_title)}</h2><a class="link-button" href="#floor-layout">2D floor &amp; proposed layout →</a></header><div class="day-one-script">{intro_body}</div>')
-floor_title = '2D floor & proposed layout'
+         f'<h2>{e(intro_title)}</h2><a class="link-button" href="#floor-layout">2D floor &amp; approved layout →</a></header><div class="day-one-script">{intro_body}</div>')
+floor_title = '2D floor & approved layout'
 floor_heading = f'<header class="section-head"><h2>{e(floor_title)}</h2></header>'
 rehearsal_url = '/loopforge-design/day-one-rehearsal.html'
 proposal_url = '/loopforge-design/factory-layout-proposal.html'
+recording_url = '/loopforge-design/recordings/day-one-approved-1x.mp4'
 map_url = e(conveyor_data['floorPlan']['src'], quote=True)
 floor_links = (
     f'<a id="floor-rehearsal" href="{rehearsal_url}">2D floor rehearsal</a>'
-    f'<a id="proposed-layout" href="{proposal_url}">Proposed layout</a>'
+    f'<a id="proposed-layout" href="{proposal_url}">Approved layout</a>'
 )
 floor_panel = (floor_heading
     + f'<nav class="floor-views" aria-label="Floor views">{floor_links}</nav>'
     + '<div class="floor-tools"><a id="floor-standalone" href="' + rehearsal_url + '">Open rehearsal full screen ↗</a>'
-    + f'<a href="{map_url}" target="_blank" rel="noopener">Full-size floor plan ↗</a></div>'
+    + f'<a href="{recording_url}">Watch the 1× recording</a>'
+    + f'<a href="{map_url}" target="_blank" rel="noopener">Full-size floor plan ↗</a><a href="/loopforge-design/factory-floor-plan.32180aa96dbe.svg">Historical floor · pre-redesign</a></div>'
     + '<div id="floor-viewer"></div>')
 floor_record = (floor_heading + f'<p><a href="{rehearsal_url}">Play the Day 1 floor rehearsal</a> · '
-    + f'<a href="{proposal_url}">Explore the proposed layout</a> · <a href="{map_url}">Full-size floor plan</a></p>')
+    + f'<a href="{proposal_url}">Explore the approved layout</a> · <a href="{recording_url}">Watch the 1× recording</a> · <a href="{map_url}">Full-size floor plan</a></p>')
 writing_style_source = (ROOT.parent/'DAY_ONE_WRITING_STYLE.md').read_text()
 writing_style_title, writing_style_body, _ = render_narrative(writing_style_source, {})
 writing_style = (f'<header class="section-head"><h2>{e(writing_style_title)}</h2></header>'
@@ -585,7 +587,7 @@ mh('Sound direction',3);fields(sound_data['direction']);mh('Remaining sounds',3)
 (OUT/'SOUND_LIBRARY.md').write_text('\n\n'.join(md[sound_start:])+'\n')
 md.append(intro_source.replace('# Day 1 intro', '## Day 1 intro', 1).strip())
 mh(floor_title)
-mp(f'[Play the 2D floor rehearsal]({rehearsal_url}) · [Explore the proposed layout]({proposal_url}) · [Full-size floor plan]({map_url})')
+mp(f'[Play the 2D floor rehearsal]({rehearsal_url}) · [Explore the approved layout]({proposal_url}) · [Watch the 1× recording]({recording_url}) · [Full-size floor plan]({map_url})')
 md.append('[The cast — portraits and character briefs](/stepanoskin/loopforge/design#narrative-cast)')
 md.append(writing_style_source.replace('# Writing style', '## Writing style', 1).strip())
 (OUT/'GAME_DESIGN.md').write_text('\n\n'.join(md)+'\n')

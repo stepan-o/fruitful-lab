@@ -10,7 +10,7 @@ Earlier on 20 October — editorial revision 4 (superseded by revision 5 above):
 
 # Loopforge game design board
 
-The design board places **2D floor & proposed layout** (`#floor-layout`) immediately after **Day 1 intro**. The tab opens the Day 1 floor rehearsal and lets readers switch to the interactive factory layout. Next come **The cast** (`#narrative-cast`), **Writing style** (`#writing-style`) and **Character dramaturgy and narrative design** (`#dramaturgy`). **Supervisor × room** (`#supervisor-rooms`) follows dramaturgy. Its grid links the original paintings and each proposed interaction to marked objects on the factory plan. bob is the ordinary-life protagonist; the player remains the operator. The chapter covers a dramaturgy/character-creation primer, pressure and relief, conditional collision arcs, limited agency, offstage events and persistent traces. It retains Producer/Puppeteer lineage while moving player understanding into the world.
+The design board places **2D floor & approved layout** (`#floor-layout`) immediately after **Day 1 intro**. The tab opens the Day 1 floor rehearsal and lets readers switch to the interactive factory layout. Next come **The cast** (`#narrative-cast`), **Writing style** (`#writing-style`) and **Character dramaturgy and narrative design** (`#dramaturgy`). **Supervisor × room** (`#supervisor-rooms`) follows dramaturgy. Its grid links the original paintings and each proposed interaction to marked objects on the factory plan. bob is the ordinary-life protagonist; the player remains the operator. The chapter covers a dramaturgy/character-creation primer, pressure and relief, conditional collision arcs, limited agency, offstage events and persistent traces. It retains Producer/Puppeteer lineage while moving player understanding into the world.
 
 `EDITORIAL_VOICE.md` was revised before the essays, studies, cast and script. `NARRATIVE_STUDIES.md` compares selected Dostoevsky passages, official Attack on Titan sources and creator interviews, the illustrated Back to the Dawn study, Sanctuary’s first two chapters, and the original production notes. `FEATURE_ASSESSMENT.md` adds evidence-based criteria, attention/agency distinctions, alternatives and build/prototype/rework/defer/cut decisions. These are author methods, not new player screens or implemented behavior.
 
@@ -117,3 +117,33 @@ cast treatments and one comparison before remodelling. Current model players
 follow; scene integration, test procedures and concept galleries are disclosures.
 Detailed acceptance requirements remain in the linked production standard.
 The Agents tab is second in the deck, immediately after Player desires & scenarios.
+
+### Editing the approved Day 1 floor
+
+Edit `apps/lab/lib/loopforge/spatial/approved-factory.json` in metres, east and south.
+Room polygons and pen partitions form walls. Portal spans cut both sides of each
+opening. The Forge is 80 × 56 m. The south jamb of the inspection pen and the
+Forge entrance are separate openings across the apron. The room inspector uses
+four drawing units per metre. Its ink and dimensions come from the exported floor.
+The older Sim4 floor is available under **Historical floor · pre-redesign**.
+
+From the repository root, run the floor exporter first, followed by both publishers.
+
+```sh
+node apps/lab/scripts/loopforge-floor-plan.mjs
+python3 docs/loopforge/game-design/build_board.py
+python3 docs/loopforge/game-design/sprite_briefs.py
+node apps/lab/scripts/loopforge-floor-plan.mjs --check
+node apps/lab/scripts/loopforge-rehearsal-test.mjs
+node apps/lab/scripts/loopforge-sprite-briefs-test.mjs
+```
+
+### End-of-shift departure — 18 November 2026
+
+The sequence keeps the worker exit tracks and the 190.604-second edit unchanged.
+LIMEN and STILETTO follow at 1.25 m/s; their routes continue beyond blackout,
+without an exterior-arrival completion gate. All ten workers must be outside.
+The rehearsal test checks steady supervisor speed, worker-first Dispatch passage,
+swept clearances and the fixed cut alongside the earlier fourth-check correction.
+Review the departure at `day-one-rehearsal.html#end-of-shift`. The 1× recording
+is regenerated from the same published score after changing the sequence.

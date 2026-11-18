@@ -1,6 +1,14 @@
 # Day 1 — 2D sprite production handoff
 
-Revision day-one-2d-r1 · 17 November 2026
+## Approved factory placement · revision 3
+
+Build the room polygons, wall runs and portal spans from `scene-bindings.json`. Use the measured footprint under each asset brief for placement and scale. The entrance opens onto the Lobby, and Dispatch feeds the enclosed inspection pen. The boom and Forge staff doorway face each other across a 4.25 m cleared apron. For the fourth check, LIMEN keeps max at the ID desk. STILETTO crosses from the Forge and stops just beyond the boom. mae, kit, lou and ben hurry to their stations as each card is stamped. The north row runs Weaving, Brewery, Cortex. Theatre receives the Forge outfeed on the east and discharges south to Logistics. All four future workroom doors stay locked during the intro.
+
+The layout inspector groups Security equipment into three room objects. Its S1 groups the rails (build markers S1 and S2), S2 groups the desks (S3 and S5), and S3 locates the boom (S6). Use the build-marker IDs in `scene-bindings.json` when assembling the individual sprites.
+
+The pack includes the measured SVG, editable geometry and the same route score used by the rehearsal. The older Sim4 and compact 3D scene coordinates are historical reference frames.
+
+Revision day-one-2d-r3 · 18 November 2026
 
 The owner approved the floor design and selected a sprite-based first implementation. This pack commissions the assets needed to replace the 2D flow sketch with a controllable, replayable prototype. The approved floor, cast identities, dialogue and staging are the source. The sprite projection, resolutions, frame counts and file contract below are proposed production defaults for ENGINE and the artists to implement together. They are not claims that sprite artwork, importers or the live game already exist.
 
@@ -57,9 +65,9 @@ For dialogue during locomotion, supply torso/head/arm overlays compatible with t
 | Catch | STILETTO shouts after approximately three seconds; each worker brakes into a mid-step hold for about 1.1 s |
 | Replies | Resume walking as the four replies begin. jo, max, lou and sam coexist in the top rail; lou’s aside remains directed to ben |
 | Dismissal | “ALRIGHT, SHIFT’S OVER. FUCK OFF.” is delivered into their backs, not to a re-formed lineup |
-| Clearance | Preserve the approved 2.4× exit acceleration and individual eight checkouts; match the hurry animation to feet instead of merely speeding a walk sheet |
+| Clearance | Preserve the workers’ 2.4× exit acceleration and individual eight checkouts; match the hurry animation to feet instead of merely speeding a walk sheet. LIMEN and STILETTO follow at a steady 1.25 m/s walk |
 | Closing exchanges | No long waits for a character to cross an empty map. Use the approved travel cuts; keep the under-one-second gaps between dismissal, ed’s count and the yard exchange |
-| Blackout | ed laughs first; factory lamps and windows go out behind the crew. Do not blank the dialogue layer |
+| Blackout | ed laughs first; factory lamps and windows go out behind the crew. Preserve the 190.604-second edit; both supervisors are still walking inside. Account for all ten workers outside, without waiting for the supervisors or accelerating them. Do not blank the dialogue layer |
 
 The current edited rehearsal is about 3:25 total, with roughly 26 seconds from bell to blackout. These are regression references, not fresh balance targets. The bundled sequence module is the exact timing authority. It carries world time and edited time separately: ENGINE must preserve the cuts or the physical long walk will reopen the gaps that were removed.
 

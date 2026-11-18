@@ -41,7 +41,7 @@ const floor=JSON.parse(fs.readFileSync('./day-one-geometry.json','utf8'));
 const text=fs.readFileSync('../DAY_ONE_INTRO.md','utf8');
 const dialogue=[...text.matchAll(/^\\*\\*(\\w+)\\*\\*\\s+(.+)$/gm)].map(m=>({speaker:m[1],text:m[2]}));
 const score=makeSequence(floor,dialogue);
-console.log(JSON.stringify({floor,markers:makeBuildMarkers(floor,score),actors:Object.keys(score.cast),duration:score.duration,exitPace:score.exitPace,dialogueCount:dialogue.length}));'''
+console.log(JSON.stringify({floor,markers:makeBuildMarkers(floor,score),actors:Object.keys(score.cast),duration:score.duration,exitPace:score.exitPace,supervisorWalkSpeed:score.supervisorWalkSpeed,dialogueCount:dialogue.length}));'''
     measured=json.loads(subprocess.check_output(['node','--input-type=module','-e',code],cwd=ROOT,text=True))
     mapping={
       'S1':'sec-rails','S2':'sec-rails','S3':'sec-desks','S4':'sec-drain','S5':'sec-desks','S6':'sec-boom',
@@ -51,15 +51,14 @@ console.log(JSON.stringify({floor,markers:makeBuildMarkers(floor,score),actors:O
       'E1':'env-yard-entrance','E2':'env-yard-entrance'}
     assert set(mapping)=={m['id'] for m in measured['markers']}
     assert set(mapping.values())<=ids
-    active={'lobby-dispatch','dispatch-security','security-conveyor','dispatch-conveyor'}
     bindings={'schemaVersion':1,'status':'proposed-bindings-not-runtime-delivery','revision':data['revision'],
         'coordinates':{'unit':'metres','x':'east','y':'south','sourcePixelsPerMetre':64},
         'actors':[{'entityId':c,'assetId':'char-'+c.lower()} for c in measured['actors']],
         'buildMarkers':[{**m,'assetId':mapping[m['id']]} for m in measured['markers']],
         'fixtures':[{**f,'assetId':{'register':'sec-desks','checks':'sec-desks','grate':'sec-drain','west-rail':'sec-rails','east-rail':'sec-rails','intake':'mach-intake','wash':'mach-wash','belt':'mach-belt','forge':'mach-forge','output':'mach-output'}[f['id']]} for f in measured['floor']['fixtures']],
-        'portals':[{**p,'assetId':'env-wall-portal-kit','initialAccess':'controlled' if p['id']=='security-conveyor' else 'open' if p['id'] in active else 'locked'} for p in measured['floor']['portals']],
+        'portals':[{**p,'assetId':'env-wall-portal-kit'} for p in measured['floor']['portals']],
         'floor':measured['floor'],
-        'regression':{k:measured[k] for k in ['duration','exitPace','dialogueCount']}}
+        'regression':{k:measured[k] for k in ['duration','exitPace','supervisorWalkSpeed','dialogueCount']}}
     template={'schemaVersion':1,'status':'template-not-delivered','assetId':'char-bob','revision':None,
       'files':[],'dependencies':['prop-credential'],
       'sprite':{'sourceSize':[256,256],'pivotPx':[128,208],'trimRect':None,'sortAnchorPx':[128,208],'groundFootprintMetres':None,'layer':'actor','sockets':{}},
@@ -69,7 +68,16 @@ console.log(JSON.stringify({floor,markers:makeBuildMarkers(floor,score),actors:O
       'requiredMarkerFields':['name','frame','cosmeticOnly'],
       'note':'Replace all nulls and empty delivery arrays with validated export data. Frames are not authored by this brief. Gameplay events come from ENGINE, not markers.'}
     files={'briefs.json':encoded(data),'scene-bindings.json':encoded(bindings),'manifest.template.json':encoded(template),'HANDOFF.md':(SOURCE/'HANDOFF.md').read_bytes()}
-    for a in assets: files['briefs/'+a['id']+'.md']=asset_markdown(a,common).encode()
+    # The browser catalogue and individual downloadable briefs carry the same sizes.
+    for a in assets:
+        placements = [m for m in bindings['buildMarkers'] if m['assetId']==a['id']]
+        if placements:
+            measured_text = ' '.join(f"{m['id']} at ({m['rect']['x']:.3f}, {m['rect']['y']:.3f}) m, {m['rect']['w']:g} × {m['rect']['h']:g} m." for m in placements)
+            a['assembly'] += ' ' + measured_text
+        files['briefs/'+a['id']+'.md']=asset_markdown(a,common).encode()
+    files['briefs.json']=encoded(data)
+    files['reference/approved-factory.json']=(ROOT.parents[2]/'apps/lab/lib/loopforge/spatial/approved-factory.json').read_bytes()
+    files['reference/factory-floor-plan.svg']=(ROOT.parent/'maps/factory-floor-plan.svg').read_bytes()
     for name in ['day-one-geometry.json','day-one-sequence.mjs','day-one-build-markers.mjs']:
         files['reference/'+name]=(ROOT/name).read_bytes()
     files['reference/DAY_ONE_INTRO.md']=(ROOT.parent/'DAY_ONE_INTRO.md').read_bytes()
@@ -101,7 +109,7 @@ P0 = first contact and line dependencies. P1 = required completion. All records 
     groups=list(dict.fromkeys(a['group'] for a in assets))
     counts={g:sum(a['group']==g for a in assets) for g in groups}
     hero=next(x for x in cast_art['ensembles'] if x['id']=='ensemble-badass')['variants'][0]
-    heading='<header class="sb-head"><span class="sb-eyebrow">ARTIST + ENGINE HANDOFF · DAY ONE · R1</span><h1>Day 1 sprite production</h1><p>The approved floor becomes a live 2D scene: distinct workers, precise contacts, a working line, and an exit that keeps moving.</p></header>'
+    heading='<header class="sb-head"><span class="sb-eyebrow">ARTIST + ENGINE HANDOFF · DAY ONE · R2</span><h1>Day 1 sprite production</h1><p>The approved floor becomes a live 2D scene: distinct workers, precise contacts, a working line, and an exit that keeps moving.</p></header>'
     intro='<section class="sb-overview"><div>'+heading+'<div class="sb-stats"><span><b>12</b>characters</span><span><b>5</b>line stations</span><span><b>53</b>asset briefs</span></div></div><figure><a href="'+E(next(x for x in cast_art['ensembles'] if x['id']=='ensemble-badass')['input']['src'])+'" target="_blank" rel="noopener"><img src="'+E(hero['src'])+'" width="'+str(hero['width'])+'" height="'+str(hero['height'])+'" alt="Approved blue worker ensemble, the identity reference for the sprite cast"></a><figcaption>Approved cast reference. Sprite sheets still to produce.</figcaption></figure></section>'
     intro+='<div class="sb-downloads"><a class="sb-primary" download href="'+zipurl+'">Download complete handoff · '+str(round(len(raw)/1024))+' KB ZIP</a><a download href="'+urls['briefs.json']+'">Asset manifest</a><a download href="'+urls['scene-bindings.json']+'">Scene bindings</a><a download href="'+urls['HANDOFF.md']+'">ENGINE handoff · MD</a></div>'
     intro+='<p class="sb-status"><strong>Level approved · assets briefed.</strong> '+E(data['status'])+'</p>'

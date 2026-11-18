@@ -38,6 +38,7 @@ for(const e of [...bindings.actors,...bindings.fixtures,...bindings.portals,...b
 assert.equal(bindings.regression.dialogueCount,46);
 assert.equal(bindings.regression.duration,score.duration);
 assert.equal(bindings.regression.exitPace,2.4);
+assert.equal(bindings.regression.supervisorWalkSpeed,1.25);
 dom.window.HTMLElement.prototype.scrollIntoView=function(){};
 dom.window.eval(read('docs/loopforge/game-design/sprite-briefs.js'));
 const input=document.getElementById('sb-search');input.value='palm';input.dispatchEvent(new dom.window.Event('input'));
@@ -66,4 +67,26 @@ assert.equal(board.window.document.getElementById('sprite-briefs').hidden,false)
 assert.equal(board.window.location.hash,'#sprite-briefs');
 assert.equal(board.window.document.querySelector('.nav [data-panel="sprite-briefs"]').getAttribute('aria-current'),'true');
 console.log('PASS: 53 briefs, 12 actors, 27 build markers, geometry/script bindings, published links, filters, deep links, tab order and lazy loading.');
+
+
+assert.deepEqual(bindings.portals.map(({assetId,...portal})=>portal),floor.portals);
+const zipHref=document.querySelector('a[download][href$=".zip"]').getAttribute('href');
+const archiveCheck=spawnSync('python3',['-c',`
+import hashlib,json,sys,zipfile,pathlib
+with zipfile.ZipFile(sys.argv[1]) as pack:
+    read=lambda name:pack.read('loopforge-day-one-2d/'+name)
+    for name,digest in json.loads(read('checksums.json')).items():
+        assert hashlib.sha256(read(name)).hexdigest()==digest, name
+    for name,path in [('day-one-geometry.json','docs/loopforge/game-design/day-one-geometry.json'),
+                      ('approved-factory.json','apps/lab/lib/loopforge/spatial/approved-factory.json'),
+                      ('factory-floor-plan.svg','docs/loopforge/maps/factory-floor-plan.svg')]:
+        assert read('reference/'+name)==pathlib.Path(path).read_bytes()
+    assert read('scene-bindings.json')==pathlib.Path(sys.argv[2]).read_bytes()
+`,path.join(publicRoot,zipHref),path.join(publicRoot,bindingURL)],{cwd:root,encoding:'utf8'});
+assert.equal(archiveCheck.status,0,archiveCheck.stderr);
+const plate=read('docs/loopforge/maps/factory-floor-plan.svg');
+const shell=plate.split('<g id="shell">')[1].split('</g>')[0];
+assert(read('apps/lab/public/loopforge-design/factory-layout-proposal.html').includes(shell));
+assert(read('apps/lab/public/loopforge-design/day-one-rehearsal.html').includes(plate));
+console.log('Passed map identity, portal permissions and every downloadable pack checksum.');
 dom.window.close();board.window.close();

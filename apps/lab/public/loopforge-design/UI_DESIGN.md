@@ -1044,13 +1044,13 @@ PC press gallery labelled version 3.1 on 8 October 2026; navigation link still s
 
 Owner-approved demonstrated Day1: three workpieces and twelve departures. Broader operating, policy and economy studies below remain proposals.
 
-### What is playable now
+### Four controls in the compact 3D prototype
 
-The approved Day 1 scene demonstrates an ordered line: Intake → Wash → Main Belt → Forge. Ordinary controls advance the tutorial; later paired and staffed sequences use the same four physical control positions. Eight assigned crew do not imply eight machine controls. The display distinguishes assigned workers from actual occupied controls.
+The compact 3D prototype demonstrates an ordered line: Intake → Wash → Main Belt → Forge. Ordinary controls advance the tutorial; later paired and staffed sequences use the same four physical control positions. Eight assigned crew do not imply eight machine controls. The display distinguishes assigned workers from actual occupied controls.
 
 The recorded day completes one tutorial output, one paired output and one staffed output, for a total of three. These are completed process outputs. They are not evidence of dispatch, retained new workers, earnings or an implemented production economy.
 
-The current geometry stays. Keep the working aisle and real approaches to the four pedestals. Use a local Forge/output view and explicit support-post names when the master is too small to explain that work. No new stations, invisible routes or worker relocation are needed to improve the picture.
+In that prototype, keep the working aisle and real approaches to the four pedestals. Use a local Forge/output view and explicit support-post names when the master is too small to explain that work. No new stations, invisible routes or worker relocation are needed to improve the picture.
 
 ### Later scenarios must fit this room
 
@@ -1068,15 +1068,15 @@ A prebuilt conveyor is a physical operating puzzle: regulate flow, choose whose 
 
 Owner direction: remove all player building. Keep the room topology and cinematic factory. Workers and supervisors are BDI agents; LLM use is optional. Supervisors influence capability, interpretation, decisions and other agents.
 
-**Recommendation.** Keep the compact Day1 rooms and real four control positions. Correct the stable reading area and local work views before extending operating scenarios.
+**Recommendation.** Use the four north-facing machine controls and the working aisle in the approved 80 × 56 m Forge. Check the Forge and output views before extending operating scenarios.
 
 ## Where the fun comes from
 
 ## Continuous first-floor plan
 
-![Top-down factory plan](/loopforge-design/factory-floor-plan.32180aa96dbe.svg)
+![Top-down factory plan](/loopforge-design/factory-floor-plan.73eea13acbcc.svg)
 
-Nine repacked zones, fourteen connections and a common 15 m hall height. Theatre and Logistics fill the eastern rectangles; Security has a direct Theatre corridor. In the Lattice Forge, the crane covers a continuous eastbound line. The cross-road serves the overhaul bays and spare fitting bay. [Inspect the Forge hall](/loopforge-design/day-one-rehearsal.html#forge-hall).
+Nine rooms share a 15 m hall height. Beyond the inspection pen, Security serves five workrooms. Cortex is northeast. Theatre receives directly from the Forge outfeed and shares a freight opening with Logistics. In the Lattice Forge, the crane covers a continuous eastbound line. The cross-road serves the overhaul bays and spare fitting bay. [Inspect the Forge hall](/loopforge-design/day-one-rehearsal.html#forge-hall).
 
 **I made this work.** A queue shrinks because of a change I made. The limiting step moves somewhere else, giving me a new problem I can actually see.
 
@@ -1150,15 +1150,15 @@ Author layout reference · More capacity. More coordination.
 
 **What carries forward.** These are authored scenario comparisons, not player construction options. Physical routes shape exposure and later social consequences.
 
-## Compact Day1 and the broader floor study
+## Day 1 floor and earlier studies
 
-The demonstrated scene connects Lobby, compact Security and Conveyor. The nine-zone map is a separate larger factory study; it does not describe this slice’s room dimensions, unlocked rooms or routes.
+The top-down rehearsal, room inspector and artist placements use the approved nine-zone plan.
 
-**Current Day1.** Lobby16×11m; Security8×7.5m plus4×2.5m connector; Conveyor24×14m; four control pads and existing circulation.
+**Day 1 rehearsal.** The crew enters through the south Lobby, crosses Dispatch and queues in the Security pen. Beyond the inspection boom, the Forge doorway opens across the apron. Four later workroom doors stay shut.
 
-**Broader proposal.** The retained nine-zone/15m-hall map describes later factory planning, including Theatre and Logistics; those routes and unlocks are not demonstrated here.
+**Earlier compact 3D prototype.** The 16 × 11 m Lobby, 8 × 7.5 m Security room, 4 × 2.5 m connector and 24 × 14 m Conveyor belong to the earlier 3D scene.
 
-**Author tooling.** The separate factory-floor route inspects its own broader source layout. It is not a Day1 gameplay purchase or unlock.
+**Historical Sim4 floor.** The separate factory-floor study preserves the earlier room arrangement. Use the approved plan and scene bindings for Day 1 placement.
 
 ## The operating loop
 

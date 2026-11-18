@@ -23,21 +23,21 @@ export function makeBuildMarkers(floor, score) {
     {x:gate.hinge[0]-.17,y:gate.hinge[1]-.17,w:gate.length+.34,h:.34},0,gate.length+1.05,
     'Anchor the pivot at the west end, 1.05 m above the deck. Raise the boom vertically. LIMEN works the post from Security. STILETTO calls from the east aisle and walks through the raised span without breaking stride.');
   mark('S7','Security','Intake sign and strip light',
-    {x:123.35,y:116.25,w:5.4,h:.28},2.65,.48,
+    floor.checkpointMarks.S7,2.65,.48,
     'Suspend a blackened steel BLUE-COLLAR INTAKE sign above the queue. Face it north toward arrivals. Tuck one cold tube under its hood.');
   mark('S8','Security','Visitor hold sign and strip light',
-    {x:130.7,y:116.25,w:4.1,h:.28},2.65,.48,
+    floor.checkpointMarks.S8,2.65,.48,
     'Hang VISITOR-CONTRACTOR HOLD beside the intake sign, facing north. Keep the approach underneath clear. This sign identifies the waiting side of Security.');
   function carried(id,name,actor,w,h,thickness,build){
     const [x,y]=cast[actor];
     mark(id,'Security',name,{x:x-w/2,y:y-h/2,w,h},0,thickness,build);
-    markers.at(-1).mount=actor+' · opening mark';
+    markers.at(-1).mount=actor+' · inspection mark';
   }
   carried('S9','LIMEN’s cyan blade','LIMEN',.12,1.12,.06,
     'Mount to LIMEN’s forearm. Give the pale cutting edge a darker teal spine. Pose it low at rest so the sweep toward bob’s leg reads against the steel floor.');
   carried('S10','Worker credential','bob',.22,.28,.003,
     'Instance a worn paper credential for the queue. Give bob’s copy two states, held and loose, so it leaves his hand, skids to the grate, then disappears into ed’s pocket.');
-  mark('S11','Security','Riveted checkpoint deck',{x:122.55,y:115.6,w:11.35,h:12.1},-.08,.08,
+  mark('S11','Security','Riveted checkpoint deck',floor.checkpointMarks.S11,-.08,.08,
     'Tile the receiving pen with dark steel panels and bolted seams. The top sits flush with the surrounding floor and drain. Leave the moving cast readable against it.');
   fixture('C1','Conveyor','Intake loader','intake',1.25,
     'Block in the longitudinal rails, hand lever and low motor housing. Leave room on the operator side for bob to sit down and pull.');
@@ -58,7 +58,7 @@ export function makeBuildMarkers(floor, score) {
   mark('H9','Forge hall',road.name,road.rect,0,0,'Stripe the six-metre clear road from receiving to the eastern transfer lane. Keep it open in front of each overhaul bay.');
   const door=floor.exit;
   mark('E1','Factory entrance','Open staff doors',{x:door.x,y:door.y-.22,w:door.w,h:.44},0,4.0,
-    'Set a recessed double steel door in the south Lobby wall. Park both leaves behind the side jambs during arrivals and departures. Keep the full five-metre staff opening clear.');
+    'Set a recessed double steel door in the south Lobby wall. Park both leaves behind the side jambs during arrivals and departures. Keep the full staff opening clear.');
   mark('E2','Factory entrance','Loopforge sign and lamps',{x:door.x-.85,y:door.y-.46,w:door.w+1.7,h:.46},4.25,1.4,
     'Hang the curved LOOPFORGE / AI BRAIN FACTORY sign above the doors, facing south toward the yard. Put a warm lamp at either end so the opening reads from across the wet apron.');
   return markers;

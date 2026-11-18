@@ -25,11 +25,9 @@ function violation(id,time,distance){
 }
 const solid=[...floor.fixtures.filter(q=>q.kind!=='drain'),...floor.forgeHall.installations,
   ...floor.forgeHall.columns.map((rect,i)=>({id:'crane post '+i,rect}))];
-// Actual wall segments, split at the apertures used by the episode.
-function wall(x,y,w,h){solid.push({id:'wall '+[x,y],rect:{x,y,w,h}});}
-wall(80,128,45,0);wall(131,128,25,0);
-for(const x of [80,112]){wall(x,96,0,5);wall(x,107,0,21);}
-wall(8,128,floor.exit.x-8,0);wall(floor.exit.x+floor.exit.w,128,80-(floor.exit.x+floor.exit.w),0);
+solid.push(...floor.walls.map(rect=>({id:'wall '+[rect.x,rect.y],rect})));
+for(const p of floor.portals.filter(p=>p.initialAccess==='locked'||p.kind==='freight'))solid.push({id:p.id,rect:p.rect});
+for(const id of ['L2','L3','D1','D2','D3'])for(const rect of floor.roomObjects[id])solid.push({id,rect});
 for(let k=1;k<knots.length;k++){
   const start=knots[k-1],end=knots[k];
   const positions=ids.map(id=>[start,end].map(t=>samplePath(s.tracks[id],t).p));
@@ -53,7 +51,29 @@ assert.equal(ids.length,12);
 assert.equal(s.tallies.length,8);
 assert.equal(s.products.length,3);
 assert(s.speech.slice(20,24).every(q=>q.start<86.2&&q.end>=90));
-for(const id of ids)assert(samplePath(s.tracks[id],s.end).p[1]>floor.exit.y);
+const workers=ids.filter(id=>id===id.toLowerCase());
+assert.equal(workers.length,10,'eight line workers plus ed and gus');
+for(const id of workers)assert(samplePath(s.tracks[id],s.end).p[1]>floor.exit.y,id+' leaves before blackout');
+assert(Math.abs(s.duration-190.60391778732966)<1e-8,'preserve the approved final cut and intro duration');
+function exitToDispatch(id){
+  const keys=s.tracks[id], edge=floor.portals.find(p=>p.id==='dispatch-security').rect.x;
+  const i=keys.findIndex((b,i)=>i && b.t>s.bell && keys[i-1].p[0]>edge && b.p[0]<=edge);
+  assert(i>0,id+' has a continuous exit through Dispatch');
+  const a=keys[i-1],b=keys[i];
+  return a.t+(b.t-a.t)*(edge-a.p[0])/(b.p[0]-a.p[0]);
+}
+for(const [id,departure] of Object.entries(s.supervisorDepartures)){
+  const keys=s.tracks[id];
+  for(let i=1;i<keys.length;i++){
+    const a=keys[i-1],b=keys[i];
+    if(a.t<departure-1e-8)continue;
+    const distance=Math.hypot(b.p[0]-a.p[0],b.p[1]-a.p[1]);
+    if(b.t===a.t){assert.equal(distance,0,id+' never teleports');continue;}
+    assert(Math.abs(distance/(b.t-a.t)-1.25)<1e-8,id+' keeps a steady walk, including after the cut');
+  }
+  assert(exitToDispatch(id)>Math.max(...workers.map(exitToDispatch)),id+' follows every worker through Dispatch');
+  assert(samplePath(keys,s.end).moving && s.streetTime[id]>s.end,id+' is still walking inside at blackout');
+}
 for(const product of s.products)assert(samplePath(product.keys,s.end).p[0]>=134);
 console.log('Passed all routes, return counts, volunteer overlap and product arrivals.');
 
@@ -280,3 +300,67 @@ const threat=s.speech.find(q=>q.text.startsWith("IF YOU DON'T GET ME"));
 assert(threat && threat.end-threat.start>=6.5 && threat.end-threat.start<7);
 assert(samplePath(s.tracks.max,threat.end+.05).moving,'max acts as the threat ends');
 assert(s.gate.openings.some(([start,open])=>start<=threat.end && open>=threat.end));
+
+// The approved shell is allowed to change dimensions, but these adjacencies and
+// acting contacts are part of the approved layout and performance.
+const room=id=>floor.zones.find(z=>z.id===id).rect;
+const forgeRoom=room('conveyor'), theatre=room('theatre'), cortex=room('cortex');
+assert.equal(forgeRoom.x+forgeRoom.w,theatre.x);
+assert.equal(theatre.y+theatre.h,room('shipping').y);
+assert(cortex.x>=room('brewery').x+room('brewery').w && cortex.y<theatre.y);
+const gatePortal=floor.portals.find(p=>p.id==='inspection-gate');
+assert.equal(gatePortal.initialAccess,'controlled');
+const apronDepth=floor.doorway.y-gatePortal.rect.y;
+assert(apronDepth>=3 && apronDepth<=5,'short cleared apron between the boom and Forge');
+for(const [id,points] of Object.entries(floor.reviewPaths.staff)){
+  const opening=floor.portals.find(p=>p.id==='security-'+id);
+  assert.equal(opening.initialAccess,id==='conveyor'?'open':'locked');
+  for(let i=1;i<points.length;i++){
+    for(const rect of floor.walls){
+      const {x,y,w,h}=rect;
+      assert(segmentBoxDistanceSquared(points[i-1],points[i],{minX:x,maxX:x+w,minY:y,maxY:y+h})>(NAVIGATION_ROOT_RADIUS_MM/1000)**2,id+' concourse route touches wall');
+    }
+  }
+}
+assert.equal(Object.keys(floor.reviewPaths.staff).length,5);
+assert(!floor.portals.some(p=>p.from==='security'&&p.to==='shipping'));
+for(const t of [threat.start,threat.end-.15]){
+  assert(between('LIMEN','max',t)<1.5,'LIMEN can hold the photograph beside max');
+  assert(between('max','STILETTO',t)<2.4,'the blade reaches the ID check across the boom');
+}
+// Check the blocking across the camera change, not just during the spoken threat.
+const checkpointBeat=s.beats.find(b=>b.name==='The fourth check');
+const photo=floor.contact.photo, clerk=floor.contact.fourthClerk;
+assert.deepEqual(position('max',checkpointBeat.at-1),photo);
+assert.deepEqual(position('LIMEN',checkpointBeat.at-1),clerk);
+assert(position('STILETTO',checkpointBeat.at)[1]>floor.doorway.y);
+assert(position('STILETTO',threat.start)[1]<floor.doorway.y-2);
+const desk=machines.checks;
+assert(segmentBoxDistanceSquared(photo,photo,{minX:desk.x,maxX:desk.x+desk.w,minY:desk.y,maxY:desk.y+desk.h})<1.6**2);
+for(const t of knots.filter(t=>t>=checkpointBeat.at && t<=threat.end-.15)){
+  assert.deepEqual(position('LIMEN',t),clerk);
+  assert.deepEqual(position('max',t),photo);
+}
+for(const id of ['mae','kit','lou','ben']){
+  const stamp=s.cues.find(c=>c.label==='stamps '+id+'’s card');
+  assert.deepEqual(position(id,stamp.start),photo);
+  assert.deepEqual(position('LIMEN',stamp.end),clerk);
+  const arrival=s.tracks[id].find(k=>k.t>stamp.end && k.p[1]>=142.5);
+  assert(arrival && arrival.t-stamp.end<5,'fast release from the ID desk for '+id);
+}
+assert(s.beats.find(b=>b.name==='Run it').at-threat.end<14,'resume production as the last worker arrives');
+for(const [id,control] of [['mae',floor.contact.feedCutoff],['kit',floor.contact.driveStop]]){
+  assert(betweenPositions(position(id,s.shutdown[id]),control)<.8,id+' can reach shutdown control');
+}
+for(const [i,id] of ['sam','bob','jo','max'].entries()){
+  const [x,y]=position(id,bell-.1),r=floor.fixtures.find(q=>q.id===['intake','wash','belt','forge'][i]).rect;
+  assert(x>=r.x && x<=r.x+r.w && r.y-y>0 && r.y-y<.8,id+' reaches the north control face');
+}
+const output=machines.output;
+assert.equal(new Set(s.products.map(p=>p.keys.at(-1).p.join(','))).size,3);
+for(const p of s.products){
+  const [x,y]=samplePath(p.keys,s.end).p;
+  assert(x>output.x && x<output.x+output.w && y>output.y && y<output.y+output.h);
+}
+assert.deepEqual(s.departures.map(w=>w.id).sort(),['ben','bob','jo','kit','lou','mae','max','sam']);
+console.log('Passed five cleared destinations, fourth-check reach, six controls and three persistent rack slots.');

@@ -1,3 +1,7 @@
+## Loopforge Day 1 factory floor — 17 November 2026
+
+The design board, top-down rehearsal and downloadable art and Engine handoff share `apps/lab/lib/loopforge/spatial/approved-factory.json`. It places Cortex northeast, Theatre beside the Forge outfeed and five workroom entrances beyond Security. The older Sim4 map remains available as a historical reference. The fourth ID check stays at the reader. STILETTO approaches from the Forge across the 4.25 m apron, and the final four workers hurry to the conveyor as their cards clear. At end of shift the workers retain their hurried exit; LIMEN and STILETTO follow at 1.25 m/s. The 190.604-second edit cuts while the supervisors are still inside. All ten workers remain accounted for. Departure review: `/loopforge-design/day-one-rehearsal.html#end-of-shift`.
+
 ## Sanctuary Economics · Marvel Rivals · 17 November 2026
 
 The reader places `?chapter=marvel-rivals` between `rockstar-world` and `the-fork`. The chapter uses a dated launch wallet, a three-screen design comparison, six individually credited frames and the optional official Art Vision player. Source and publication records live in `apps/lab/lib/sanctuary/rivals-chapter.ts`, `rivals-media.json` and the public credits register.

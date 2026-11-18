@@ -1,0 +1,1231 @@
+{
+  "schemaVersion": 1,
+  "revision": "day-one-2d-r3",
+  "date": "2026-11-17",
+  "title": "2D asset briefs",
+  "status": "Level design approved; sprite production specification proposed. No new sprite sheets or playable sprite implementation have been delivered by this document.",
+  "scope": "First Day 1 sprite prototype from the approved floor rehearsal: 10 workers, LIMEN and STILETTO; street, Lobby, Dispatch, Security and Lattice Forge; three cortexes; the full fast exit. Later-room shells are included; later supervisors and room interactions are a separate expansion.",
+  "commonClips": [
+    [
+      "idle",
+      "8 directions · 4 frames per direction · loop",
+      "Quiet breathing/mechanical settling; one neutral held pose per facing. No perpetual comedy."
+    ],
+    [
+      "walk",
+      "8 directions · 8 frames per direction · loop",
+      "In-place feet; foot-down markers and stride length. World position comes from ENGINE."
+    ],
+    [
+      "hurry",
+      "8 directions · 8 frames per direction · loop",
+      "A fast purposeful exit, with longer stride; not a sped-up shuffle. Preserve bob’s injured version."
+    ],
+    [
+      "start-stop",
+      "8 directions · 3 start + 3 stop frames per direction",
+      "Brake on either foot; retain a held mid-step pose, then resume from that planted foot."
+    ],
+    [
+      "turn",
+      "16 transitions · 3 frames per adjacent 45° turn",
+      "Both turn directions; body follows head. No mirrored asymmetrical equipment."
+    ],
+    [
+      "talk",
+      "8 directions · 4 upper-body frames per direction · loop",
+      "Subtle head/chest/arm articulation composited over idle or walk. No phoneme lip-sync commission."
+    ],
+    [
+      "listen",
+      "8 directions · 2 held poses per direction",
+      "Attention and glance-back pose, compatible with walking and tools."
+    ]
+  ],
+  "assets": [
+    {
+      "id": "char-bob",
+      "name": "bob",
+      "group": "Characters",
+      "priority": "P0",
+      "quantity": "1 unique actor",
+      "brief": "Small narrow blue frame; flat small head beneath two oversized convex cyan fly-eye lenses, above and wider than the head; moderately large articulated hands, cream chest stripe. Do not return to a round ordinary head or huge mitten hands. Follow the small novice through injury, learning, three outputs and the exit. Keep the flat head and fly eyes legible; the bad leg persists after the strike.",
+      "parts": "Layered body: rear arm/tool, lower body, torso/head, front arm/tool; separate shadow and emissive mask. Equipment integral to identity stays attached. Export flattened full-body frames too for actions that cannot cleanly split.",
+      "states": "Common seven clip families below, plus the bespoke list. Workers use blue-family shades; supervisors retain their approved palettes. Injury is a persistent appearance/motion state on bob.",
+      "assembly": "Ground pivot between planted feet. Sockets: hand_l, hand_r, look, prop, foot_l, foot_r; add pocket for bob/ed, blade_tip_l/r for supervisors, and support contact for bob/sam. All socket tracks are in untrimmed frame pixels.",
+      "accept": "Recognizable with names hidden against Security and Forge floors. No foot sliding, hand/prop separation, false mirroring, or body/tool penetration. Test bespoke actions against the actual paired actor/fixture.",
+      "references": [
+        {
+          "label": "Approved character reference",
+          "url": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp"
+        },
+        {
+          "label": "Cast and approved ensemble",
+          "url": "/stepanoskin/loopforge/design#narrative-cast"
+        }
+      ],
+      "clips": [
+        [
+          "laugh",
+          "S, SE, E · 6 frames",
+          "Laugh toward max, then settle; do not interrupt locomotion unnecessarily."
+        ],
+        [
+          "offer-card",
+          "S, SE · 8 frames + hold",
+          "Reach, expose card socket, wait, retract. Credential is a separate object."
+        ],
+        [
+          "hit-fall",
+          "N, NW · 10 frames + floor hold",
+          "Blade-side flinch, knee collapse, floor landing; no gore. Match sam’s paired help anchors."
+        ],
+        [
+          "supported-rise",
+          "N, NW · 12 frames",
+          "Plant hand, accept sam’s support, regain both feet; injured stance at end."
+        ],
+        [
+          "injured-idle-walk-hurry",
+          "8 directions · 2 / 8 / 8 frames",
+          "Consistent injured leg; no mirroring. Hurrying is asymmetric, not magically healed."
+        ],
+        [
+          "loader-pull-seated",
+          "S, SE · 14 frames + seated hold",
+          "Stand/pull → knee gives → sit on housing → finish lever stroke. Split into three addressable phases."
+        ],
+        [
+          "rail-rise",
+          "S, SE · 10 frames",
+          "Hand anchors to rail; pelvis lifts from housing; bad leg trails."
+        ],
+        [
+          "wash-control",
+          "S, SE · 6 frames + hold + 4 release",
+          "Reach valve, hold while dirty water clears, release. Spray is a separate effect."
+        ],
+        [
+          "clamp-start",
+          "S, SE · 10 frames",
+          "Close clamp then press drive switch, two separate contact markers."
+        ],
+        [
+          "press-control",
+          "S, SE · 8 frames",
+          "Operate handle; independent press motion owns the door."
+        ],
+        [
+          "palm-unjam",
+          "S, SE · 10 frames",
+          "Anticipate, heel-of-hand strike, recoil. The confirmed door release is independent."
+        ]
+      ]
+    },
+    {
+      "id": "char-sam",
+      "name": "sam",
+      "group": "Characters",
+      "priority": "P0",
+      "quantity": "1 unique actor",
+      "brief": "Great rounded humped shoulders with head carried low and forward, vertical mouth grille, squat sturdy legs, thick working arms. Blue worn enamel and dull brass. Preserve the industrial porter silhouette; do not straighten the hump into a generic humanoid. Weight comes from rounded shoulders and thick working arms. Help bob with specific support contact; carry and feed trays without hiding the brain.",
+      "parts": "Layered body: rear arm/tool, lower body, torso/head, front arm/tool; separate shadow and emissive mask. Equipment integral to identity stays attached. Export flattened full-body frames too for actions that cannot cleanly split.",
+      "states": "Common seven clip families below, plus the bespoke list. Workers use blue-family shades; supervisors retain their approved palettes. Injury is a persistent appearance/motion state on bob.",
+      "assembly": "Ground pivot between planted feet. Sockets: hand_l, hand_r, look, prop, foot_l, foot_r; add pocket for bob/ed, blade_tip_l/r for supervisors, and support contact for bob/sam. All socket tracks are in untrimmed frame pixels.",
+      "accept": "Recognizable with names hidden against Security and Forge floors. No foot sliding, hand/prop separation, false mirroring, or body/tool penetration. Test bespoke actions against the actual paired actor/fixture.",
+      "references": [
+        {
+          "label": "Approved character reference",
+          "url": "/media/loopforge-cast/sam-1280.d7a6b3f29ae9aef1.webp"
+        },
+        {
+          "label": "Cast and approved ensemble",
+          "url": "/stepanoskin/loopforge/design#narrative-cast"
+        }
+      ],
+      "clips": [
+        [
+          "card-present",
+          "S, SE · 6 frames + hold",
+          "Show and recover own credential before taking the assigned role. No effect on bob’s stolen card."
+        ],
+        [
+          "kneel-support",
+          "S, SE · 12 frames + hold + 8 release",
+          "Kneel beside bob, support upper arm/torso, let him recover. Paired contacts must agree with bob."
+        ],
+        [
+          "tray-lift-carry-place",
+          "S, SE · 12 lift + 8 place; carry walk in 8 directions, 8 frames",
+          "Two-hand tray sockets, load kept level; release only on confirmed transfer."
+        ],
+        [
+          "feed-seat",
+          "S, SE · 10 frames",
+          "Align cradle, push brain into square seat, release hands."
+        ],
+        [
+          "reply-moving",
+          "N, NW · 4 upper-body frames",
+          "“Feed’s off.” Eyes briefly track stopped feed while feet continue toward exit."
+        ]
+      ]
+    },
+    {
+      "id": "char-ed",
+      "name": "ed",
+      "group": "Characters",
+      "priority": "P1",
+      "quantity": "1 unique actor",
+      "brief": "Tall angular dark-blue goon, swept-back skull, narrow eyes, open toothed jaw, pointed chin, large round ear receiver and layered shoulder plates. Long expressive pointing index. The original LIMEN Security far-right assistant remains the source; not a generic smiling worker. Severe, precise clerk who borrows authority. His early theft and late laugh need clear, contrasting gestures.",
+      "parts": "Layered body: rear arm/tool, lower body, torso/head, front arm/tool; separate shadow and emissive mask. Equipment integral to identity stays attached. Export flattened full-body frames too for actions that cannot cleanly split.",
+      "states": "Common seven clip families below, plus the bespoke list. Workers use blue-family shades; supervisors retain their approved palettes. Injury is a persistent appearance/motion state on bob.",
+      "assembly": "Ground pivot between planted feet. Sockets: hand_l, hand_r, look, prop, foot_l, foot_r; add pocket for bob/ed, blade_tip_l/r for supervisors, and support contact for bob/sam. All socket tracks are in untrimmed frame pixels.",
+      "accept": "Recognizable with names hidden against Security and Forge floors. No foot sliding, hand/prop separation, false mirroring, or body/tool penetration. Test bespoke actions against the actual paired actor/fixture.",
+      "references": [
+        {
+          "label": "Approved character reference",
+          "url": "/media/loopforge-cast/ed-1280.51ea5ec63125128f.webp"
+        },
+        {
+          "label": "Cast and approved ensemble",
+          "url": "/stepanoskin/loopforge/design#narrative-cast"
+        }
+      ],
+      "clips": [
+        [
+          "card-present",
+          "S, SE · 6 frames + hold",
+          "Show and recover own credential before taking the assigned role. No effect on bob’s stolen card."
+        ],
+        [
+          "boot-stop-pocket",
+          "S, SE · 12 frames",
+          "Trap bob’s sliding card with boot; pick it up and pocket it without a duplicate remaining on floor."
+        ],
+        [
+          "pen-offer-write",
+          "S, SE · 8 offer + 6 writing loop",
+          "Produce pen, offer help, tick ledger at each confirmed clearance."
+        ],
+        [
+          "register-offer-set",
+          "S, SE · 8 offer + hold + 6 set-down",
+          "Hold register toward LIMEN; he ignores it. Put it back before leaving."
+        ],
+        [
+          "pen-clip",
+          "S, SE · 8 frames",
+          "Clip pen beside the retained card; pocket socket remains consistent."
+        ],
+        [
+          "laugh-first",
+          "N, NE, E · 8 frames",
+          "First laugh in the yard, growing from a small release of posture."
+        ]
+      ]
+    },
+    {
+      "id": "char-jo",
+      "name": "jo",
+      "group": "Characters",
+      "priority": "P1",
+      "quantity": "1 unique actor",
+      "brief": "Low wide flat head with a projecting metal work cap, two small horizontal cyan eyes, worn blue work jacket and trousers, exposed mechanical knees and cuffs. Adult average factory hand; retain the cap and clothing silhouette. Low work cap and relaxed jacket carry the dry delivery. A flat reply can be a head turn, not a broad theatrical pose.",
+      "parts": "Layered body: rear arm/tool, lower body, torso/head, front arm/tool; separate shadow and emissive mask. Equipment integral to identity stays attached. Export flattened full-body frames too for actions that cannot cleanly split.",
+      "states": "Common seven clip families below, plus the bespoke list. Workers use blue-family shades; supervisors retain their approved palettes. Injury is a persistent appearance/motion state on bob.",
+      "assembly": "Ground pivot between planted feet. Sockets: hand_l, hand_r, look, prop, foot_l, foot_r; add pocket for bob/ed, blade_tip_l/r for supervisors, and support contact for bob/sam. All socket tracks are in untrimmed frame pixels.",
+      "accept": "Recognizable with names hidden against Security and Forge floors. No foot sliding, hand/prop separation, false mirroring, or body/tool penetration. Test bespoke actions against the actual paired actor/fixture.",
+      "references": [
+        {
+          "label": "Approved character reference",
+          "url": "/media/loopforge-cast/jo-1280.d522f249ba45622a.webp"
+        },
+        {
+          "label": "Cast and approved ensemble",
+          "url": "/stepanoskin/loopforge/design#narrative-cast"
+        }
+      ],
+      "clips": [
+        [
+          "card-present",
+          "S, SE · 6 frames + hold",
+          "Show and recover credential."
+        ],
+        [
+          "clamp-start",
+          "S, SE · 10 frames",
+          "Clamp first, drive switch second; fit the same station as bob."
+        ],
+        [
+          "reply-moving",
+          "N, NW · 4 upper-body frames",
+          "“The bell.” A small glance back over continuing feet."
+        ]
+      ]
+    },
+    {
+      "id": "char-gus",
+      "name": "gus",
+      "group": "Characters",
+      "priority": "P1",
+      "quantity": "1 unique actor",
+      "brief": "Massive square navy shoulders with pale yoke, small recessed skull, broad rectangular chest and heavy boots. Distinguish his squared upright mass from sam’s rounded hunched mass. Worker-scale security helper, never supervisor-scale. Square mass, recessed head and a whole-chest turn distinguish him from sam. His volunteer response is immediate and loud.",
+      "parts": "Layered body: rear arm/tool, lower body, torso/head, front arm/tool; separate shadow and emissive mask. Equipment integral to identity stays attached. Export flattened full-body frames too for actions that cannot cleanly split.",
+      "states": "Common seven clip families below, plus the bespoke list. Workers use blue-family shades; supervisors retain their approved palettes. Injury is a persistent appearance/motion state on bob.",
+      "assembly": "Ground pivot between planted feet. Sockets: hand_l, hand_r, look, prop, foot_l, foot_r; add pocket for bob/ed, blade_tip_l/r for supervisors, and support contact for bob/sam. All socket tracks are in untrimmed frame pixels.",
+      "accept": "Recognizable with names hidden against Security and Forge floors. No foot sliding, hand/prop separation, false mirroring, or body/tool penetration. Test bespoke actions against the actual paired actor/fixture.",
+      "references": [
+        {
+          "label": "Approved character reference",
+          "url": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp"
+        },
+        {
+          "label": "Cast and approved ensemble",
+          "url": "/stepanoskin/loopforge/design#narrative-cast"
+        }
+      ],
+      "clips": [
+        [
+          "card-present",
+          "S, SE · 6 frames + hold",
+          "Show and recover own credential before taking the assigned role. No effect on bob’s stolen card."
+        ],
+        [
+          "volunteer-call",
+          "S, SE · 8 frames",
+          "Lift posture/arm for “I DO!”, then go to second desk."
+        ],
+        [
+          "desk-next",
+          "N, NE · 8 frames + hold",
+          "Call “NEXT!”, receive card, inspect and return through separate prop sockets."
+        ],
+        [
+          "yard-listen",
+          "N, NE, E · 4 upper-body frames",
+          "Fall into step with max and ask for the impression without stopping the exit."
+        ]
+      ]
+    },
+    {
+      "id": "char-max",
+      "name": "max",
+      "group": "Characters",
+      "priority": "P1",
+      "quantity": "1 unique actor",
+      "brief": "Tall slender upright blue body, long narrow masklike exposed face with straight pale central nose ridge, small horizontal cyan optics, narrow shoulders, ordinary hands. Use the approved long-faced character reassigned from the mae proposal; discard the previous oversized unilateral ear design. Long solemn face becomes a compact imitation of LIMEN; the exact jaw/collar mechanism must survive the sprite scale.",
+      "parts": "Layered body: rear arm/tool, lower body, torso/head, front arm/tool; separate shadow and emissive mask. Equipment integral to identity stays attached. Export flattened full-body frames too for actions that cannot cleanly split.",
+      "states": "Common seven clip families below, plus the bespoke list. Workers use blue-family shades; supervisors retain their approved palettes. Injury is a persistent appearance/motion state on bob.",
+      "assembly": "Ground pivot between planted feet. Sockets: hand_l, hand_r, look, prop, foot_l, foot_r; add pocket for bob/ed, blade_tip_l/r for supervisors, and support contact for bob/sam. All socket tracks are in untrimmed frame pixels.",
+      "accept": "Recognizable with names hidden against Security and Forge floors. No foot sliding, hand/prop separation, false mirroring, or body/tool penetration. Test bespoke actions against the actual paired actor/fixture.",
+      "references": [
+        {
+          "label": "Approved character reference",
+          "url": "/media/loopforge-cast/max-1280.670fd60bac802ebf.webp"
+        },
+        {
+          "label": "Cast and approved ensemble",
+          "url": "/stepanoskin/loopforge/design#narrative-cast"
+        }
+      ],
+      "clips": [
+        [
+          "jaw-imitation",
+          "S, SE, E · 8 frames + hold + 4 return",
+          "Retract jaw into collar, click, lift chin; compatible with walking in yard."
+        ],
+        [
+          "card-photo-pose",
+          "S, SE · 6 frames + hold",
+          "Raise credential and turn face slightly for LIMEN’s comparison."
+        ],
+        [
+          "duck-blade",
+          "S, SE · 8 frames",
+          "Duck under STILETTO’s extended blade while crossing, then recover stride."
+        ],
+        [
+          "press-control",
+          "S, SE · 8 frames",
+          "Drop the press through the same machine contact used by bob."
+        ],
+        [
+          "reply-moving",
+          "N, NW · 4 upper-body frames",
+          "Call over jo, then continue walking; no second full-body stop."
+        ]
+      ]
+    },
+    {
+      "id": "char-mae",
+      "name": "mae",
+      "group": "Characters",
+      "priority": "P1",
+      "quantity": "1 unique actor",
+      "brief": "Short compact square blue craftswoman, broad blunt bob-shaped angular head casing, narrow rectangular cyan eyes in dark slot, short neck, small precise hands and exposed separated legs. No hood, skirt or dress. No baby proportions. Different from RIVET WITCH. Compact square craftswoman; small precise hands and economical motion, never a childlike body.",
+      "parts": "Layered body: rear arm/tool, lower body, torso/head, front arm/tool; separate shadow and emissive mask. Equipment integral to identity stays attached. Export flattened full-body frames too for actions that cannot cleanly split.",
+      "states": "Common seven clip families below, plus the bespoke list. Workers use blue-family shades; supervisors retain their approved palettes. Injury is a persistent appearance/motion state on bob.",
+      "assembly": "Ground pivot between planted feet. Sockets: hand_l, hand_r, look, prop, foot_l, foot_r; add pocket for bob/ed, blade_tip_l/r for supervisors, and support contact for bob/sam. All socket tracks are in untrimmed frame pixels.",
+      "accept": "Recognizable with names hidden against Security and Forge floors. No foot sliding, hand/prop separation, false mirroring, or body/tool penetration. Test bespoke actions against the actual paired actor/fixture.",
+      "references": [
+        {
+          "label": "Approved character reference",
+          "url": "/media/loopforge-cast/mae-1280.e5a67ebc7fb7f9c5.webp"
+        },
+        {
+          "label": "Cast and approved ensemble",
+          "url": "/stepanoskin/loopforge/design#narrative-cast"
+        }
+      ],
+      "clips": [
+        [
+          "card-present",
+          "S, SE · 6 frames + hold",
+          "Show and recover credential."
+        ],
+        [
+          "tray-slide",
+          "S, SE · 10 frames",
+          "Slide fresh tray within sam’s reach; keep hands attached until transfer."
+        ],
+        [
+          "feed-off",
+          "S, SE · 6 frames",
+          "Cut the feed immediately on bell, release control and join departure."
+        ]
+      ]
+    },
+    {
+      "id": "char-kit",
+      "name": "kit",
+      "group": "Characters",
+      "priority": "P1",
+      "quantity": "1 unique actor",
+      "brief": "Adult wiry Popeye-like robot: tiny squinting skull with heavy jaw, short brass/steel pipe at mouth corner, lean ribbed torso, thin upper arms and enormous blue piston forearms tapering to ordinary hands. Pale forearm stripe, sturdy boots. Preserve pipe and forearm silhouette, not oversized hands or baby head. Wiry torso, piston forearms and pipe. Inspect by touch, not by waving the entire arm through the drive.",
+      "parts": "Layered body: rear arm/tool, lower body, torso/head, front arm/tool; separate shadow and emissive mask. Equipment integral to identity stays attached. Export flattened full-body frames too for actions that cannot cleanly split.",
+      "states": "Common seven clip families below, plus the bespoke list. Workers use blue-family shades; supervisors retain their approved palettes. Injury is a persistent appearance/motion state on bob.",
+      "assembly": "Ground pivot between planted feet. Sockets: hand_l, hand_r, look, prop, foot_l, foot_r; add pocket for bob/ed, blade_tip_l/r for supervisors, and support contact for bob/sam. All socket tracks are in untrimmed frame pixels.",
+      "accept": "Recognizable with names hidden against Security and Forge floors. No foot sliding, hand/prop separation, false mirroring, or body/tool penetration. Test bespoke actions against the actual paired actor/fixture.",
+      "references": [
+        {
+          "label": "Approved character reference",
+          "url": "/media/loopforge-cast/kit-1280.455885256f5671bc.webp"
+        },
+        {
+          "label": "Cast and approved ensemble",
+          "url": "/stepanoskin/loopforge/design#narrative-cast"
+        }
+      ],
+      "clips": [
+        [
+          "card-present",
+          "S, SE · 6 frames + hold",
+          "Show and recover credential."
+        ],
+        [
+          "drive-feel",
+          "S, SE · 8 frames + hold",
+          "Two fingertips contact housing; a small diagnostic lean."
+        ],
+        [
+          "drive-off",
+          "S, SE · 6 frames",
+          "Stop drive on bell, release and turn into the exit lane."
+        ]
+      ]
+    },
+    {
+      "id": "char-lou",
+      "name": "lou",
+      "group": "Characters",
+      "priority": "P1",
+      "quantity": "1 unique actor",
+      "brief": "Exceptionally long curved neck and forward beaky skull with twin receiver housings; narrow exposed rib torso, very long thin arms and legs. Maintain a coherent biped and expressive neck without collapsing this into standard worker proportions. Long neck gets to a conversation first. Confidential asides remain directed toward ben even as both walk.",
+      "parts": "Layered body: rear arm/tool, lower body, torso/head, front arm/tool; separate shadow and emissive mask. Equipment integral to identity stays attached. Export flattened full-body frames too for actions that cannot cleanly split.",
+      "states": "Common seven clip families below, plus the bespoke list. Workers use blue-family shades; supervisors retain their approved palettes. Injury is a persistent appearance/motion state on bob.",
+      "assembly": "Ground pivot between planted feet. Sockets: hand_l, hand_r, look, prop, foot_l, foot_r; add pocket for bob/ed, blade_tip_l/r for supervisors, and support contact for bob/sam. All socket tracks are in untrimmed frame pixels.",
+      "accept": "Recognizable with names hidden against Security and Forge floors. No foot sliding, hand/prop separation, false mirroring, or body/tool penetration. Test bespoke actions against the actual paired actor/fixture.",
+      "references": [
+        {
+          "label": "Approved character reference",
+          "url": "/media/loopforge-cast/lou-1280.0d77f26b20c9667e.webp"
+        },
+        {
+          "label": "Cast and approved ensemble",
+          "url": "/stepanoskin/loopforge/design#narrative-cast"
+        }
+      ],
+      "clips": [
+        [
+          "card-present",
+          "S, SE · 6 frames + hold",
+          "Show and recover credential."
+        ],
+        [
+          "count-output",
+          "S, SE · 6 frames",
+          "Eyes/neck track third cortex; restrained counting indication."
+        ],
+        [
+          "aside-moving",
+          "N, NW, E, W · 4 upper-body frames",
+          "Lean toward ben without moving their root or stopping the legs."
+        ]
+      ]
+    },
+    {
+      "id": "char-ben",
+      "name": "ben",
+      "group": "Characters",
+      "priority": "P1",
+      "quantity": "1 unique actor",
+      "brief": "Short squat rounded barrel body and back, low broad oval hood, tiny square cyan eyes, circular shoulder joints, long thin forearms and short legs. Keep ben low and round; unlike gus’s square mass or sam’s raised hump. Low rounded hood and barrel body; quiet listener beside lou, with elbow space rather than an invented comic routine.",
+      "parts": "Layered body: rear arm/tool, lower body, torso/head, front arm/tool; separate shadow and emissive mask. Equipment integral to identity stays attached. Export flattened full-body frames too for actions that cannot cleanly split.",
+      "states": "Common seven clip families below, plus the bespoke list. Workers use blue-family shades; supervisors retain their approved palettes. Injury is a persistent appearance/motion state on bob.",
+      "assembly": "Ground pivot between planted feet. Sockets: hand_l, hand_r, look, prop, foot_l, foot_r; add pocket for bob/ed, blade_tip_l/r for supervisors, and support contact for bob/sam. All socket tracks are in untrimmed frame pixels.",
+      "accept": "Recognizable with names hidden against Security and Forge floors. No foot sliding, hand/prop separation, false mirroring, or body/tool penetration. Test bespoke actions against the actual paired actor/fixture.",
+      "references": [
+        {
+          "label": "Approved character reference",
+          "url": "/media/loopforge-cast/ben-1280.fedd3740d78d1cfc.webp"
+        },
+        {
+          "label": "Cast and approved ensemble",
+          "url": "/stepanoskin/loopforge/design#narrative-cast"
+        }
+      ],
+      "clips": [
+        [
+          "card-present",
+          "S, SE · 6 frames + hold",
+          "Show and recover credential."
+        ],
+        [
+          "relief-ready",
+          "S, SE · 4 frames + hold",
+          "Stand clear of operator lane, ready to take a task."
+        ],
+        [
+          "aside-listen",
+          "N, NW, E, W · 2 upper-body poses",
+          "Acknowledge lou while continuing to walk."
+        ]
+      ]
+    },
+    {
+      "id": "char-limen",
+      "name": "LIMEN",
+      "group": "Characters",
+      "priority": "P0",
+      "quantity": "1 unique actor",
+      "brief": "Pale steel, deep teal optics, cyan forearm blade. Pale steel, deep teal and cyan forearm blade. Precise procedure and broad authority contrast with workers; do not replace his approved metal grin.",
+      "parts": "Layered body: rear arm/tool, lower body, torso/head, front arm/tool; separate shadow and emissive mask. Equipment integral to identity stays attached. Export flattened full-body frames too for actions that cannot cleanly split.",
+      "states": "Common seven clip families below, plus the bespoke list. Workers use blue-family shades; supervisors retain their approved palettes. Injury is a persistent appearance/motion state on bob.",
+      "assembly": "Ground pivot between planted feet. Sockets: hand_l, hand_r, look, prop, foot_l, foot_r; add pocket for bob/ed, blade_tip_l/r for supervisors, and support contact for bob/sam. All socket tracks are in untrimmed frame pixels.",
+      "accept": "Recognizable with names hidden against Security and Forge floors. No foot sliding, hand/prop separation, false mirroring, or body/tool penetration. Test bespoke actions against the actual paired actor/fixture.",
+      "references": [
+        {
+          "label": "Approved character reference",
+          "url": "/media/loopforge-cast/limen-1280.d7e1da56bf536e71.webp"
+        },
+        {
+          "label": "Cast and approved ensemble",
+          "url": "/stepanoskin/loopforge/design#narrative-cast"
+        }
+      ],
+      "clips": [
+        [
+          "stop-order",
+          "N, NW · 8 frames + hold",
+          "Stop gesture toward queue, blade remains readable and clear of body."
+        ],
+        [
+          "blade-strike",
+          "N, NW · 10 frames",
+          "Anticipation, single leg-height sweep, recover. Pair with bob’s hit-fall; no looping attack."
+        ],
+        [
+          "gate-control",
+          "S, SE · 6 frames + hold + 4 release",
+          "Operate west post; boom is a separate mechanical asset."
+        ],
+        [
+          "id-photo-check",
+          "N, NW · 10 frames + inspect hold",
+          "Receive card, compare photograph beside face, return card."
+        ],
+        [
+          "register-turn-stamp",
+          "N, NW · 8 turn + 8 stamp",
+          "Turn ledger toward ed; stamp once per confirmed check."
+        ],
+        [
+          "volunteer-shout",
+          "N, NW · 8 frames",
+          "Chest/head authority with opening for simultaneous replies."
+        ],
+        [
+          "ignore-register",
+          "N, NW · 4 upper-body frames",
+          "Walk slowly past ed’s offer without reaching for the book. Keep a 1.25 m/s stride behind the workers through blackout."
+        ]
+      ]
+    },
+    {
+      "id": "char-stiletto",
+      "name": "STILETTO",
+      "group": "Characters",
+      "priority": "P0",
+      "quantity": "1 unique actor",
+      "brief": "Black chrome, red shoulders and T visor, two blade arms. Original sheet predates the approved red accents. Black chrome, red shoulder bands and T visor; two blade arms with no invented hands. Her straight-through walk and pointed impatience must read at room scale.",
+      "parts": "Layered body: rear arm/tool, lower body, torso/head, front arm/tool; separate shadow and emissive mask. Equipment integral to identity stays attached. Export flattened full-body frames too for actions that cannot cleanly split.",
+      "states": "Common seven clip families below, plus the bespoke list. Workers use blue-family shades; supervisors retain their approved palettes. Injury is a persistent appearance/motion state on bob.",
+      "assembly": "Ground pivot between planted feet. Sockets: hand_l, hand_r, look, prop, foot_l, foot_r; add pocket for bob/ed, blade_tip_l/r for supervisors, and support contact for bob/sam. All socket tracks are in untrimmed frame pixels.",
+      "accept": "Recognizable with names hidden against Security and Forge floors. No foot sliding, hand/prop separation, false mirroring, or body/tool penetration. Test bespoke actions against the actual paired actor/fixture.",
+      "references": [
+        {
+          "label": "Approved character reference",
+          "url": "/media/loopforge-cast/stiletto-1280.189604eaf0fbc0f9.webp"
+        },
+        {
+          "label": "Cast and approved ensemble",
+          "url": "/stepanoskin/loopforge/design#narrative-cast"
+        }
+      ],
+      "clips": [
+        [
+          "hold-gate-order",
+          "S, SE · 6 upper-body frames",
+          "Call while approaching, without a ceremonial stop."
+        ],
+        [
+          "inspect-cradle",
+          "S, SE · 8 frames + hold",
+          "Lean past bob toward the seated brain, keep both blade tips clear."
+        ],
+        [
+          "step-over-leg",
+          "E, SE · 8 frames",
+          "Step over bob’s extended leg without displacing him."
+        ],
+        [
+          "instruct-point",
+          "S, SE · 8 frames",
+          "Direct blade toward work target without touching worker."
+        ],
+        [
+          "twin-blade-threat",
+          "N, NW · 10 frames + hold + 6 recovery",
+          "Plant on the Forge side of the inspection boom. Aim both blades toward LIMEN at the ID desk and leave room for max to duck past."
+        ],
+        [
+          "catch-shout",
+          "N, NW · 8 frames",
+          "“WHO SAID YOU COULD GO?!” A sharp interruption after the crew has started moving."
+        ],
+        [
+          "dismiss-backs",
+          "N, NW · 8 frames",
+          "Wave after their backs while following at a slow 1.25 m/s walk. Use the walk-compatible upper-body overlay; she is still inside at blackout."
+        ]
+      ]
+    },
+    {
+      "id": "env-floor-kit",
+      "name": "Floor surfaces & lane markings",
+      "group": "Environment",
+      "priority": "P0",
+      "quantity": "4 material families + markings",
+      "brief": "A quiet industrial ground plane for Security, Lobby/Dispatch, Forge and the wet south yard. Use approved Security #A7B2D3 and Lobby/Conveyor #666860 as palette references; worn steel details stay lower contrast than limbs and tools.",
+      "parts": "Seamless 4 m tiles; edge/corner pieces; flush checkpoint deck S11, joint/grate surrounds, queue and road stripes, subtle grime/wet decals. Provide dry base and separate wet sheen, not a baked character reflection.",
+      "states": "Static base; optional sheen overlay. No animated rain requirement.",
+      "assembly": "64 px per ground metre at source size; tile 256×256. Map x east, y south exactly as geometry. Deck is flush; no new navigation obstacle. Markings follow authored runs and clear aisles. S11 at (122.550, 121.600) m, 11.35 × 12.1 m. H9 at (75.500, 160.000) m, 79.25 × 6 m.",
+      "accept": "Tile seams disappear at 1×/0.5×; cards, blue workers and black STILETTO remain visible. Decals never imply a blocked route.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "env-wall-portal-kit",
+      "name": "Walls, cutaways & doorframes",
+      "group": "Environment",
+      "priority": "P0",
+      "quantity": "1 modular kit, instanced at every opening in scene-bindings.json",
+      "brief": "Retain the approved factory outline and room connections. Low cutaway walls describe the building without covering the performance.",
+      "parts": "Straight/corner/T/end wall modules, north/east/south/west facings, door jambs and threshold, separate front occlusion pieces; no roof in active rooms.",
+      "states": "Open passage and closed/locked door panels; doors to later rooms remain closed. Staff entrance is its own asset.",
+      "assembly": "Use zones and portals from geometry; do not rescale passages to fit art. Ground collision polygon is independent of painted wall height. Cutaway/opacity responds to camera, not simulation access.",
+      "accept": "Ten workers can use the entrance and both Dispatch doors. Match each portal’s span, purpose and initialAccess. The boom controls the inspection pen. A separate staff opening leads from the cleared apron to Forge.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "env-yard-entrance",
+      "name": "South yard & staff entrance",
+      "group": "Environment",
+      "priority": "P1",
+      "quantity": "1 entrance assembly + yard kit",
+      "brief": "The shared beginning and end: wet apron, recessed double steel door, curved LOOPFORGE / AI BRAIN FACTORY sign and warm lamps. Factory lights going out must remain readable behind the final laugh.",
+      "parts": "E1 door recess, separate two parked leaves, E2 sign frame, editable lettering layer, two lamp fittings, window strip and isolated light pools; paving uses env-floor-kit.",
+      "states": "Doors parked open during arrivals/departures; lamps/windows on and off; illuminated sign emission separate from unlit metal.",
+      "assembly": "Use floor.exit for both jamb positions and clear width. Keep the sign and lamps on the south Lobby wall. Fade foreground dressing if it covers the arrivals. E1 at (55.750, 138.030) m, 6.5 × 0.44 m. E2 at (54.900, 137.790) m, 8.2 × 0.46 m.",
+      "accept": "Ten entering workers, STILETTO’s later arrival, and all ten departing workers remain visible. LIMEN and STILETTO follow slowly and may remain inside at blackout. Blackout changes the factory, not the dialogue rail.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "env-dispatch-kit",
+      "name": "Lobby & Dispatch dressing",
+      "group": "Environment",
+      "priority": "P1",
+      "quantity": "1 kit, repeated props",
+      "brief": "Make the walk between street and Security feel like a receiving factory: battered service desk, noticeboard, pallets and stacked empty trays. This is supporting dressing, not a new playable workstation.",
+      "parts": "Desk, noticeboard, pallet, low crate, tray stack, wall conduit; front/back occlusion pieces where needed.",
+      "states": "Static. Labels are editable, no new readable story claims.",
+      "assembly": "Place outside approved egress lanes and portals. Reuse Forge stillages/trays where plausible; no duplicate asset commissions for the same object.",
+      "accept": "No props intrude into the three arrival lanes or fast exit. Wide shot stays quiet behind blue silhouettes.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "env-shell",
+      "name": "Inactive factory shell",
+      "group": "Environment",
+      "priority": "P1",
+      "quantity": "5 inactive room zones + service outline",
+      "brief": "Weaving Gallery, Substrate Brewery, Burn-in Theatre, Cortex Assembly and Logistics exist on the approved map. For this first playable they need floors, perimeter shapes and locked thresholds visible in the overview.",
+      "parts": "Reuse floor/wall kit; room-name label anchors, locked-door icon, muted silhouette shapes only where already shown in the floor sketch.",
+      "states": "Locked/inactive; no interiors, supervisor-room encounters or operating machinery commissioned in this pack.",
+      "assembly": "Instance wall runs from floor.walls. The Security pen opens south onto the cleared apron. Forge is straight ahead. The concourse serves Weaving, Brewery, Cortex and Theatre. Theatre shares the Forge outfeed wall and the Logistics receiving wall. Use the polygon boundary for Security.",
+      "accept": "Overview matches approved topology; player cannot mistake inactive rooms for finished content.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "env-wayfinding",
+      "name": "Wayfinding & safety sign kit",
+      "group": "Environment",
+      "priority": "P1",
+      "quantity": "S7, S8 + 8 reusable labels",
+      "brief": "Blackened steel signs and restrained stencils: BLUE-COLLAR INTAKE, VISITOR-CONTRACTOR HOLD, SECURITY / 01, LATTICE FORGE / 02, INTAKE, WASH, MAIN BELT, FORGE, OUTPUT and EXIT.",
+      "parts": "Blank metal sign shapes, border/stencil style, arrows, lamp hood and tube. Deliver exact editable text separately, with font source/license.",
+      "states": "Lit/unlit strip-light emission; static signs.",
+      "assembly": "S7/S8 attach at their build markers; all live text renders through ENGINE so localization and resolution do not require repainting. World labels may disappear at overview scale. S7 at (123.350, 122.250) m, 5.4 × 0.28 m. S8 at (130.700, 122.250) m, 4.1 × 0.28 m.",
+      "accept": "Text never covers faces, contact hands or moving credentials. Arrow direction agrees with actual route.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "env-light-shadow",
+      "name": "Contact shadows & practical light masks",
+      "group": "Environment",
+      "priority": "P0",
+      "quantity": "1 reusable shadow kit + light masks",
+      "brief": "Ground the sprites and make practical shutdown clear. Broad neutral actor illumination preserves palette distinctions; orange machinery light is localized.",
+      "parts": "Soft contact ellipse, long/short body shadow masks, lamp cone/pool, window glow and machine indicator masks. Straight-alpha grayscale masks.",
+      "states": "On/off and intensity driven by ENGINE; subtle idle flicker optional and disabled with reduced motion.",
+      "assembly": "Shadows follow ground pivots below actors; no baked shadows inside body sprites. Lit/unlit environment shares identical geometry.",
+      "accept": "Dark STILETTO remains visible; no outline halo from incorrect alpha. Sound-off/reduced-motion viewers still see blackout.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "sec-rails",
+      "name": "Queue rails",
+      "group": "Security",
+      "priority": "P0",
+      "quantity": "2 instances: S1, S2",
+      "brief": "Scuffed paired steel tubes with three banded posts and tags on the outer face. The outside aisle is STILETTO’s route.",
+      "parts": "Rail segment and posts split into rear/front strips; tags optional separate decal.",
+      "states": "Static; front strip may fade for readable contacts.",
+      "assembly": "Use west-rail/east-rail rectangles, 0.12×4.4 m; do not thicken collision to match projected height. Three post anchors per rail. S1 at (123.250, 122.800) m, 0.12 × 4.4 m. S2 at (130.250, 122.800) m, 0.12 × 4.4 m.",
+      "accept": "Card fall, sam’s kneel and STILETTO’s bypass remain legible; actors never walk through rails.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "sec-desks",
+      "name": "Register & ID desks",
+      "group": "Security",
+      "priority": "P0",
+      "quantity": "2 distinct tops on 1 desk base: S3, S5",
+      "brief": "North-facing clerk desks: recessed ledger lip on the west desk; sloped photo reader and pale card tray on the east. Keep centre aisle clear.",
+      "parts": "Common base/legs, separate front lip, register top, reader top, card tray and reading lamp mask. Register/pen/card are separate assets.",
+      "states": "Idle/work light; ledger can leave its recess for ed’s offer.",
+      "assembly": "Footprints 1.6×1 m at fixtures register/checks. Named contacts ledger_rest, card_in, card_out, photo_compare, clerk_stand; hand height aligns with characters without rescaling world. S3 at (122.800, 131.000) m, 1.6 × 1 m. S5 at (130.800, 130.900) m, 1.6 × 1 m.",
+      "accept": "LIMEN can turn book; ed can write and offer it; gus can check a credential without hand tunnelling.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "sec-boom",
+      "name": "Lift boom & control post",
+      "group": "Security",
+      "priority": "P0",
+      "quantity": "1 assembly: S6",
+      "brief": "A west-hinged boom raises vertically, rather than swinging through the queue. Its changing projected length and post indicator explain access.",
+      "parts": "Fixed post, independently animated boom, hinge cap, control button, red/green indicator masks. Keep front/back portions separately sortable.",
+      "states": "closed → raising (8 frames) → open hold → lowering (8); stopped intermediate pose. Indicators reflect authority, not the picture’s last frame.",
+      "assembly": "Use floor.gate.hinge and floor.gate.length at inspection-gate. Register the tip and pier against both ends of that opening. ENGINE controls access and lift timing. S6 at (124.730, 133.830) m, 6.54 × 0.34 m.",
+      "accept": "STILETTO crosses while LIMEN holds it. Restart/seek to any gate phase yields the same pose and route state.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "sec-drain",
+      "name": "Card drain grate",
+      "group": "Security",
+      "priority": "P0",
+      "quantity": "1: S4",
+      "brief": "Flush slotted metal grate with a darker recess, providing a visible destination for bob’s lost card.",
+      "parts": "Rim and slots; dark recess below; optional wet edge decal.",
+      "states": "Static.",
+      "assembly": "1×0.6 m at fixture grate; no raised collision. Credential always sorts above it until ed takes it. S4 at (123.700, 129.400) m, 1 × 0.6 m.",
+      "accept": "The card is visible on the way to ed’s boot; it never drops into a hole or vanishes early.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "prop-credential",
+      "name": "Worker credentials & photograph",
+      "group": "Props",
+      "priority": "P0",
+      "quantity": "10 logical IDs; 1 template + 10 inserts",
+      "brief": "Worn off-white paper with photo area, number/barcode and colored corner. bob’s card is the key custody prop, distinct from his own knowledge of it.",
+      "parts": "Front/back/edge frames in 8 facings, 10 simple portrait inserts cropped from cast, photo comparison close-up. No tiny illegible text needed in wide view.",
+      "states": "held → released/skidding → boot-stopped → pocketed; others held → desk → returned. bob’s remains with ed through blackout.",
+      "assembly": "Physical size 0.22×0.28 m; source drawing may be 64×80 px then scale to world, with a camera-local highlight for legibility. Do not enlarge collision. Prop owner/root ID never changes when art state changes. S10 at (126.090, 127.360) m, 0.22 × 0.28 m.",
+      "accept": "Exactly one rendered card per logical credential; no card in bob’s hand after loss, none respawned after a camera cut.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "prop-ledger-pen-stamp",
+      "name": "Ledger, pen & stamp",
+      "group": "Props",
+      "priority": "P1",
+      "quantity": "1 ledger, 1 pen, 1 stamp",
+      "brief": "Physical paper register and old stamp; ed’s earnest count is visible through hand work, then the unanswered offer.",
+      "parts": "Closed/open ledger, turned reading orientation, pages with editable tally mask, loose pen and clipped pen, raised/lowered stamp and ink mark decal.",
+      "states": "book closed/open/held/resting; pen held/clipped; stamp up/contact/release. Tally 0–8 is dynamic overlay, not nine separate books.",
+      "assembly": "Desk rest, two-hand book hold, pen grip and ed pocket sockets. Prop custody matches authoritative actions; visible stamp contact may play sound only.",
+      "accept": "Exactly eight exit ticks; ed puts book down and clips pen beside bob’s card before leaving. Book/pen never duplicate.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "mach-intake",
+      "name": "Intake loader",
+      "group": "Machines",
+      "priority": "P0",
+      "quantity": "1: C1",
+      "brief": "Longitudinal feed rails, hand lever and low motor housing. bob must be able to sit on the housing and finish his pull.",
+      "parts": "Base, back rail, front rail, independent loader lever and carriage, motor casing with seat edge, feed light.",
+      "states": "empty / crooked load / aligned load; lever pull 12 frames with addressable half-stroke hold; feed on/off.",
+      "assembly": "Use fixture intake exactly from scene-bindings.json. Align cradle sockets to floor.forgeHall.carrierY. Contacts: lever_grip, seat, brace_rail, cradle_in/out, operator_stand, feed_cutoff. C1 at (118.000, 145.000) m, 4 × 4 m.",
+      "accept": "The first brain begins crooked; a seated bob finishes the same stroke, then stands using the rail.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "mach-wash",
+      "name": "Wash basin & spray manifold",
+      "group": "Machines",
+      "priority": "P0",
+      "quantity": "1: C2",
+      "brief": "Inset steel trough with overhead spray and north-facing hand control. Dirty rinse must visibly become clear.",
+      "parts": "Trough back/base/front lip; manifold, valve/hand control, independent water mask; no product baked into it.",
+      "states": "off → dirty spray → clear spray → off; 6 control frames, hold while active.",
+      "assembly": "Use fixture wash exactly from scene-bindings.json. Align cradle sockets to floor.forgeHall.carrierY. Contacts: valve_grip, cradle_in/out, water_origin, drain_origin, operator_stand. C2 at (122.000, 145.000) m, 4 × 4 m.",
+      "accept": "Same cradle arrives and leaves. Grit clears while bob holds control; release stops the spray.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "mach-belt",
+      "name": "Main belt, clamp & drive",
+      "group": "Machines",
+      "priority": "P0",
+      "quantity": "1: C3",
+      "brief": "East–west rollers with a clamp and start paddle on north side. The brain moves as one persistent carried object.",
+      "parts": "Static base/front lip, tileable roller/belt strip, open/closed clamp, start paddle, drive housing and light.",
+      "states": "stopped/running; clamp 6 close + 6 open frames; roller loop 8; drive power on/off.",
+      "assembly": "Use fixture belt exactly from scene-bindings.json. Align cradle sockets to floor.forgeHall.carrierY. Contacts: clamp_grip, start_switch, kit_inspect, drive_stop, cradle_in/out, operator_stand. C3 at (126.000, 145.000) m, 4 × 4 m.",
+      "accept": "bob then jo use identical contacts; kit touches the housing and stops drive on bell. Rollers stop without resetting carrier position.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "mach-forge",
+      "name": "Forge press & sticking door",
+      "group": "Machines",
+      "priority": "P0",
+      "quantity": "1: C4",
+      "brief": "Tall guarded press compressed into a readable cutaway silhouette. The north handle is reachable; the stuck door is unmistakably half open.",
+      "parts": "Base, rear guard, separate front guard, moving door, platen/die, handle and indicator; draw behind/over product as separate layers.",
+      "states": "open → close (8) → compress (4 + hold) → open (8); jammed-half-open hold; knock release (6).",
+      "assembly": "Use fixture forge exactly from scene-bindings.json. Align cradle sockets to floor.forgeHall.carrierY. Contacts: handle, palm_hit, cradle_in/out, press_axis, operator_stand. C4 at (130.000, 145.000) m, 4 × 4 m.",
+      "accept": "bob’s palm visibly contacts the same stuck door that springs free. Second/third cycles operate normally. Tall guard cannot hide the cause or output.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "mach-output",
+      "name": "Three-slot output rack",
+      "group": "Machines",
+      "priority": "P0",
+      "quantity": "1: C5",
+      "brief": "Low rack continues the line east, with three separate cortex landing places visible to lou.",
+      "parts": "Rear rack, surface rollers, three slot masks, front lip; no baked cortexes.",
+      "states": "empty/occupied by independent products; short 4-frame landing settle belongs to product.",
+      "assembly": "Use fixture output exactly from scene-bindings.json. Align cradle sockets to floor.forgeHall.carrierY. Contacts: rack_slot_1/2/3, cradle_in, lou_witness. C5 at (134.000, 145.000) m, 7 × 4 m.",
+      "accept": "Count visibly changes one→two→three. All three remain after bell and no finished object jumps to another slot.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "prop-carrier-tray",
+      "name": "Cradle, tray & loaded carrier",
+      "group": "Props",
+      "priority": "P0",
+      "quantity": "3 active carriers; reusable tray stack",
+      "brief": "One consistent load carrier through Intake, Wash, Belt and Forge. The tray sam carries is handled separately from its brain, and mae can slide a fresh one into reach.",
+      "parts": "Empty cradle frame, retaining straps/clamp seat, tray with two hand grips, stack variant; front/back splits around brain.",
+      "states": "empty/loaded; crooked/seated product is a child transform; locked/unlocked fitting. Eight carried facings; line orientation fixed east–west.",
+      "assembly": "brain_seat, hand_l/r, machine_dock, stack_origin. No teleport or replacement on each station. Three carriers have distinct entity IDs even when they share art.",
+      "accept": "Hands align while sam lifts; mae’s tray slides under her hands. Product trajectory and ownership stay continuous at each transfer.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "prop-brain-cortex",
+      "name": "Raw brain → clean brain → cortex",
+      "group": "Props",
+      "priority": "P0",
+      "quantity": "1 state family, 3 persistent products",
+      "brief": "A soft folded brain made legible above the carrier: black grit in folds, then a cleaner surface, then a compact head-size cortex after the press.",
+      "parts": "Raw, clean and compressed silhouette layers; independent removable grit mask; subtle wet highlights; 4 landing-settle frames. No character face.",
+      "states": "dirty/crooked → dirty/seated → rinsing → clean → pressing → cortex; transitions keyed to confirmed process phases.",
+      "assembly": "Origin at contact with cradle/rack; no autonomous translation. Three distinct objects use the same family and assigned rack slots.",
+      "accept": "The player can follow one brain continuously and recognize the completed cortex. Third landing agrees with lou’s “Three.”",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "hall-stillages",
+      "name": "Receiving stillages",
+      "group": "Hall dressing",
+      "priority": "P1",
+      "quantity": "1 assembly: H1",
+      "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
+      "parts": "Two rows of low cradle bins, open and empty variants; east-facing fork sockets.",
+      "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots. H1 at (76.000, 145.000) m, 6 × 13 m.",
+      "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "hall-accumulator",
+      "name": "Tray accumulator",
+      "group": "Hall dressing",
+      "priority": "P1",
+      "quantity": "1 assembly: H2",
+      "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
+      "parts": "Three repeatable gravity-roller sections, end cap and staged tray child slots aligned with Intake.",
+      "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots. H2 at (87.500, 145.000) m, 30.5 × 4 m.",
+      "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "hall-transfer",
+      "name": "Outbound transfer table",
+      "group": "Hall dressing",
+      "priority": "P1",
+      "quantity": "1 assembly: H3",
+      "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
+      "parts": "Cross-transfer rollers, cart docking end and low guarding; match Output height.",
+      "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots. H3 at (141.000, 145.000) m, 6 × 4 m.",
+      "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "hall-drive-shop",
+      "name": "Drive overhaul bay",
+      "group": "Hall dressing",
+      "priority": "P1",
+      "quantity": "1 assembly: H4",
+      "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
+      "parts": "Two workbenches, drive component, toolboard, covered inspection pit and parked trolley; clear central lane.",
+      "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots. H4 at (79.250, 177.750) m, 19.75 × 11.25 m.",
+      "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "hall-tooling",
+      "name": "Press tooling bay",
+      "group": "Hall dressing",
+      "priority": "P1",
+      "quantity": "1 assembly: H5",
+      "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
+      "parts": "Die cassette, spare die racks and compact jib; road-facing retrieval side.",
+      "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots. H5 at (102.250, 177.750) m, 19.75 × 11.25 m.",
+      "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "hall-water",
+      "name": "Wash-water return",
+      "group": "Hall dressing",
+      "priority": "P1",
+      "quantity": "1 assembly: H6",
+      "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
+      "parts": "Two settling tanks, visible pipe return and flush trench covers; Wash connection aligns.",
+      "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots. H6 at (101.000, 153.000) m, 17 × 5 m.",
+      "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "hall-return",
+      "name": "Empty cradle return",
+      "group": "Hall dressing",
+      "priority": "P1",
+      "quantity": "1 assembly: H7",
+      "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
+      "parts": "Low return rails and stackable empty carriers; use prop-carrier-tray instances.",
+      "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots. H7 at (130.000, 153.000) m, 16 × 5 m.",
+      "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "hall-crane",
+      "name": "Bridge crane & structural columns",
+      "group": "Hall dressing",
+      "priority": "P1",
+      "quantity": "1 assembly: H8",
+      "brief": "Preserve the proposed Forge hall arrangement and industrial function. This kit establishes the working factory around the active five-station line.",
+      "parts": "Two runways, moving bridge and hoist on separate layers, ten repeatable columns from geometry.",
+      "states": "Static parked state for Day 1. Crane/hoist parts are separable for future movement, but no crane operation or vehicles are required by the approved sequence.",
+      "assembly": "Use the measured Forge hall build marker in scene-bindings.json. Ground geometry remains exact; elevated elements use occlusion masks and may fade above active workers. H9 transfer-road striping belongs to env-floor-kit. Contacts are parking/attachment anchors, not new gameplay slots. H8 at (90.000, 140.500) m, 57 × 18 m.",
+      "accept": "The hall overview matches its build marker; dressing does not occupy roads, staff walk or reserved spare bay. No active animation competes with the current story beat.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "fx-blade",
+      "name": "Cyan blade & restrained impact",
+      "group": "Effects",
+      "priority": "P0",
+      "quantity": "1 effect family",
+      "brief": "Make LIMEN’s one strike readable without gore or a screen-filling flash. STILETTO’s metal blades retain sharp silhouette rather than cyan energy.",
+      "parts": "Cyan core/edge mask, short sweep strip, 6-frame spark/contact burst; independent additive layer.",
+      "states": "Blade idle emission; single sweep/contact/recovery; no continuous strike loop.",
+      "assembly": "Bind sweep to blade_tip; impact attaches to bob’s injured leg at confirmed contact. No collision or injury decision inside an effect callback. S9 at (125.260, 130.570) m, 0.12 × 1.12 m.",
+      "accept": "Hit target and resulting fall remain visible; reduced motion removes sweep/flash but keeps contact pose and aftermath.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "fx-wash",
+      "name": "Spray, black grit & clear runoff",
+      "group": "Effects",
+      "priority": "P0",
+      "quantity": "1 three-stage effect",
+      "brief": "Make washing causal: spray hits folds, dirty runoff appears, then clears.",
+      "parts": "6-frame spray strips, 8-frame grit runoff and 6-frame clear runoff; bounded droplet sprites.",
+      "states": "start/dirty/clear/stop with held still states.",
+      "assembly": "Emit from manifold and brain mask; clip water to trough. Product remains visible; do not cover the operator’s hand.",
+      "accept": "Runoff never continues after shutoff; paused/seeked scene matches process phase.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "fx-contact",
+      "name": "Mechanical contacts & small dust",
+      "group": "Effects",
+      "priority": "P1",
+      "quantity": "1 reusable effect family",
+      "brief": "Provide a restrained physical accent for stamp, tray landing, clamp snap, press release and cortex landing.",
+      "parts": "4–6 frame impact accents, light dust puff and short metal glint; each available as a still pose.",
+      "states": "One-shot only on a confirmed presentation cue; no idle particles.",
+      "assembly": "Anchor to corresponding machine or prop contact; scale to contact size. Sound/FX can be suppressed independently.",
+      "accept": "No repeated cue when resuming or replay seeking; effect never substitutes for moving the actual door or prop.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "fx-bell",
+      "name": "Shift bell & cue",
+      "group": "Effects",
+      "priority": "P1",
+      "quantity": "1 bell assembly + caption cue",
+      "brief": "A physical factory bell announces the end of shift before STILETTO. Workers react to it, not to her dismissal.",
+      "parts": "Wall bell housing, striker, 6-frame vibration/strike; subtle signal lamp if needed.",
+      "states": "single ring; 2-frame reduced-motion strike/settle; visible BELL caption in dialogue rail.",
+      "assembly": "Mount above Forge entrance, outside actor path. Trigger uses score.bell; housing placement is a proposed art placement, not a new obstacle.",
+      "accept": "Clear with sound muted; no long animation delays crew departure or STILETTO’s shout.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "ui-dialogue",
+      "name": "Top dialogue rail & simultaneous replies",
+      "group": "Interface",
+      "priority": "P0",
+      "quantity": "1 responsive UI family",
+      "brief": "Dialogue belongs above the floor. One lead line can become four overlapping worker answers without covering the action. Preserve supervisor CAPS and worker lower case.",
+      "parts": "Scalable panel background, speaker chip, aside marker, bell icon and restrained shout accent; optional cast head crops reuse approved sprite art. Deliver SVG or 9-slice PNG plus padding/colour/type tokens.",
+      "states": "single line, four replies, aside, bell, shout, hidden. Plain text remains selectable and accessible; all 46 approved lines are data.",
+      "assembly": "ENGINE lays out four replies without a timed carousel. On narrow screens stack two columns or four rows and reserve measured space; auto camera fit uses remaining floor area. Editable text, never words baked into images.",
+      "accept": "No line clipping at 320/390/768 px or 200% text. Four replies coexist; dismissal appears while crew walks away. Colour is reinforced by names and placement.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "ui-interaction",
+      "name": "Interaction, selection & station feedback",
+      "group": "Interface",
+      "priority": "P0",
+      "quantity": "1 icon/state kit",
+      "brief": "For the first controllable prototype, distinguish selectable actor, reachable station, occupied slot, unavailable action, jam and successful output. This is a proposed input skin; it does not add new story actions.",
+      "parts": "Selection ring, target reticle, reach/contact marker, wait/blocked/confirm icons, four process action glyphs and output counter; vector source plus 1×/2× PNG fallback.",
+      "states": "normal/hover/focus/pressed/disabled/selected; shape changes accompany colour. Touch controls minimum 44 CSS px.",
+      "assembly": "Attach selection to ground pivot; show only public state. Interaction prompt names and key/button bindings come from ENGINE. A click may request a legal action, never skip its contact or result.",
+      "accept": "Keyboard and touch operate the same actions; injured bob, jam state and pending action are understandable without debug labels.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "ui-session",
+      "name": "Pause, resume, restart & loading states",
+      "group": "Interface",
+      "priority": "P1",
+      "quantity": "1 control family",
+      "brief": "A small coherent skin for starting the scene, pausing, muting, readable loading/error states and restarting the rehearsal. Use existing browser/ENGINE widgets where possible.",
+      "parts": "Play/pause, sound on/off, restart, speed indicator and help icons; scalable button/panel/focus tokens. No separate elaborate menu illustration.",
+      "states": "loading/ready/playing/paused/error/retry; mute and reduced-motion preferences persist.",
+      "assembly": "ENGINE owns controls, fonts, focus, progress and text. No artwork waits on network before becoming legible. Missing art uses a labelled silhouette fallback.",
+      "accept": "No autoplay sound; tab hiding pauses presentation work; pause preserves roots, props, dialogue and machine phases.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "audio-steps",
+      "name": "Footsteps & cloth/servo movement",
+      "group": "Sound",
+      "priority": "P1",
+      "quantity": "3 surface banks × 3 variations",
+      "brief": "Worker light/heavy steps, supervisors distinct; metal deck, concrete and wet yard.",
+      "parts": "48 kHz 24-bit WAV masters, clean mono localized cues; stereo ambience only. Separate tails and seamless loops. No baked music/voice/environment mix.",
+      "states": "One-shot/loop/tail files and a cue sheet; no clipping; preserve headroom for 4 overlapping replies if voices are added.",
+      "assembly": "foot_l/foot_r markers; hurry gait remains grounded; only nearest relevant feet are mixed.",
+      "accept": "Captioned bell and visible physical action carry meaning when muted. Preview all simultaneous cues together, not only isolated samples.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "audio-checkpoint",
+      "name": "Security prop contacts",
+      "group": "Sound",
+      "priority": "P1",
+      "quantity": "7 one-shots",
+      "brief": "Card flutter/skid, boot stop, pen clip, page turn, stamp thump and boom motor start/stop.",
+      "parts": "48 kHz 24-bit WAV masters, clean mono localized cues; stereo ambience only. Separate tails and seamless loops. No baked music/voice/environment mix.",
+      "states": "One-shot/loop/tail files and a cue sheet; no clipping; preserve headroom for 4 overlapping replies if voices are added.",
+      "assembly": "Card custody and gate cues; motor loop is a separate seamless file with release tail.",
+      "accept": "Captioned bell and visible physical action carry meaning when muted. Preview all simultaneous cues together, not only isolated samples.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "audio-conveyor",
+      "name": "Line mechanisms & washing",
+      "group": "Sound",
+      "priority": "P1",
+      "quantity": "5 mechanism families",
+      "brief": "Loader pull, spray/dirty runoff, belt drive, press close/compress/open and cortex landing; each loops only where the action does.",
+      "parts": "48 kHz 24-bit WAV masters, clean mono localized cues; stereo ambience only. Separate tails and seamless loops. No baked music/voice/environment mix.",
+      "states": "One-shot/loop/tail files and a cue sheet; no clipping; preserve headroom for 4 overlapping replies if voices are added.",
+      "assembly": "start/loop/stop stems; jam rattle and palm release are separately addressable.",
+      "accept": "Captioned bell and visible physical action carry meaning when muted. Preview all simultaneous cues together, not only isolated samples.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "audio-bell",
+      "name": "End-of-shift bell",
+      "group": "Sound",
+      "priority": "P1",
+      "quantity": "1 strike + decay tail",
+      "brief": "A distinctive hard factory bell. It must cut through the machinery, leaving room for the shout.",
+      "parts": "48 kHz 24-bit WAV masters, clean mono localized cues; stereo ambience only. Separate tails and seamless loops. No baked music/voice/environment mix.",
+      "states": "One-shot/loop/tail files and a cue sheet; no clipping; preserve headroom for 4 overlapping replies if voices are added.",
+      "assembly": "Single bell cue before departures; decay may overlap speech but is ducked below it.",
+      "accept": "Captioned bell and visible physical action carry meaning when muted. Preview all simultaneous cues together, not only isolated samples.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "audio-ambience",
+      "name": "Room tone & blackout",
+      "group": "Sound",
+      "priority": "P1",
+      "quantity": "3 loops + shutdown tail",
+      "brief": "Quiet yard, Security hum and Forge air/drive bed. Silence changes when drive stops and lamps go out.",
+      "parts": "48 kHz 24-bit WAV masters, clean mono localized cues; stereo ambience only. Separate tails and seamless loops. No baked music/voice/environment mix.",
+      "states": "One-shot/loop/tail files and a cue sheet; no clipping; preserve headroom for 4 overlapping replies if voices are added.",
+      "assembly": "Crossfade by room/camera; machinery layers stop on confirmed shutdown, not when sprites go offscreen.",
+      "accept": "Captioned bell and visible physical action carry meaning when muted. Preview all simultaneous cues together, not only isolated samples.",
+      "references": [],
+      "clips": []
+    },
+    {
+      "id": "audio-performance",
+      "name": "Nonverbal character acting",
+      "group": "Sound",
+      "priority": "P1",
+      "quantity": "4 gesture families",
+      "brief": "bob laugh/grunt, max jaw click, ed’s first laugh and restrained crowd breath/servo response. Dialogue voiceover is optional, with subtitles complete in the base prototype.",
+      "parts": "48 kHz 24-bit WAV masters, clean mono localized cues; stereo ambience only. Separate tails and seamless loops. No baked music/voice/environment mix.",
+      "states": "One-shot/loop/tail files and a cue sheet; no clipping; preserve headroom for 4 overlapping replies if voices are added.",
+      "assembly": "Voiceover, if commissioned later, uses the 46-line script and overlap groups; no new dialogue, compulsory TTS or per-line waiting gaps.",
+      "accept": "Captioned bell and visible physical action carry meaning when muted. Preview all simultaneous cues together, not only isolated samples.",
+      "references": [],
+      "clips": []
+    }
+  ],
+  "sources": [
+    {
+      "label": "Approved Day 1 script",
+      "url": "/stepanoskin/loopforge/design#day-one-intro"
+    },
+    {
+      "label": "Approved 2D rehearsal",
+      "url": "/loopforge-design/day-one-rehearsal.html"
+    },
+    {
+      "label": "Approved floor and build markers",
+      "url": "/loopforge-design/factory-layout-proposal.html"
+    },
+    {
+      "label": "Approved cast and ensemble",
+      "url": "/stepanoskin/loopforge/design#narrative-cast"
+    },
+    {
+      "label": "Cast readability standard",
+      "url": "/loopforge-design/production/CAST_READABILITY_STANDARD.md"
+    }
+  ]
+}

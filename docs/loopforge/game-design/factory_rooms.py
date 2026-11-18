@@ -5,11 +5,6 @@ from urllib.parse import quote
 
 ORIGINAL = ('https://github.com/stepan-o/loopforge/blob/3267ea7b2cc8efd95cd6dc833a1e1c16d1b3ffb9/'
             'frontend/loopforge-webview/public/assets/concept_art/')
-STANDING = {
-    'lobby': (96, 359), 'dispatch': (278, 359), 'security': (395, 365),
-    'forge': (427, 425), 'weaving': (292, 160), 'brewery': (518, 152),
-    'cortex': (718, 160), 'theatre': (727, 331), 'logistics': (640, 538), 'pipes': (599, 235),
-}
 # Normalized plan silhouettes. Bounds and finished height come from each object mark.
 SYMBOLS = {
     'desk': '<path d="M4 6H96V86H4ZM12 22H88M16 43H49V71H16ZM67 46H84"/>',
@@ -31,6 +26,14 @@ LOCAL = {'entrance':'floor-entrance.b642f399e3fb.webp','security':'floor-securit
 
 def render_proposal(root, out, intro_html):
     rooms = json.loads((root/'factory-room-objects.json').read_text())
+    floor = json.loads((root/'day-one-geometry.json').read_text())
+    scale = floor['plate']['unitsPerMetre']
+    x0, y0 = floor['plate']['worldOrigin']
+    def box(r):
+        return [(r['x']-x0)*scale, (r['y']-y0)*scale, r['w']*scale, r['h']*scale]
+    plate = (root.parent/'maps/factory-floor-plan.svg').read_text()
+    shell = plate.split('<g id="shell">', 1)[1].split('</g>', 1)[0]
+    shell = f'<g id="shell" transform="scale({scale}) translate({-x0} {-y0})">{shell}</g>'
     generated = out.parents[1]/'lib/assets/generated'
     media = {'board': json.loads((root/'art.json').read_text())}
     for pack in ('focused', 'supervisors'):
@@ -55,9 +58,12 @@ def render_proposal(root, out, intro_html):
         objects, pins, tags, rows = [], [], [], []
         for obj in room['objects']:
             mark, label = obj['id'], escape(obj['name'])
-            x, y, width, depth = obj['box']
+            boxes = [box(r) for r in floor['roomObjects'][mark]]
+            x, y = min(b[0] for b in boxes), min(b[1] for b in boxes)
+            width = max(b[0]+b[2] for b in boxes)-x
+            depth = max(b[1]+b[3] for b in boxes)-y
             cx, cy = x + width/2, y + depth/2
-            for ox, oy, ow, od in [obj['box'], *obj.get('instances', [])]:
+            for ox, oy, ow, od in boxes:
                 objects.append(f'<svg x="{ox}" y="{oy}" width="{ow}" height="{od}" viewBox="0 0 100 100" '
                                f'preserveAspectRatio="none" aria-hidden="true" class="object-shape">{SYMBOLS[obj["form"]]}</svg>')
             pins.append(f'<a class="object-pin" href="#asset-{mark}" aria-label="{mark} · {label}">'
@@ -66,9 +72,10 @@ def render_proposal(root, out, intro_html):
             tags.append(f'<g class="detail-tag"><rect x="{cx-9:g}" y="{cy-6:g}" width="18" height="12" rx="2"/>'
                         f'<text x="{cx:g}" y="{cy+2.8:g}" text-anchor="middle">{mark}</text></g>')
             rows.append(f'<li id="asset-{mark}" tabindex="-1"><strong>{mark} · {label}</strong> '
-                        f'<span class="size">{width/4:g} × {depth/4:g} m · {obj["height"]:g} m high</span>'
+                        f'<span class="size">{width/scale:g} × {depth/scale:g} m · {obj["height"]:g} m high</span>'
                         f'<p>{escape(obj["brief"])}</p></li>')
-        sx, sy = STANDING[key]
+        sx, sy = floor['standing'][key]
+        sx, sy = (sx-x0)*scale, (sy-y0)*scale
         shapes = ''.join(objects)
         plan.append(f'<g data-room-pins="{key}">{shapes}{"".join(pins)}</g>')
         vx, vy, vw, vh = room['view']
@@ -86,7 +93,14 @@ def render_proposal(root, out, intro_html):
                        f'<p><a href="/stepanoskin/loopforge/design?atlasRoom={atlas_room}#supervisor-rooms">Supervisor interactions in {name} →</a></p>'
                        f'<ol class="asset-list">{"".join(rows)}</ol></section>')
     page = (root/'factory-layout-proposal.html').read_text()
-    for tag, value in [('<!--APPROVED_INTRO-->', intro_html), ('<!--OBJECT_MARKS-->', ''.join(plan)),
+    for key, routes in floor['reviewPaths'].items():
+        paths = []
+        for actor, points in routes.items():
+            coords = ' '.join(f'{(x-x0)*scale:g},{(y-y0)*scale:g}' for x, y in points)
+            style = 'stroke="#e9c4df" stroke-dasharray="7 5"' if actor=='supervisor' else 'stroke="#9ce1d9"'
+            paths.append(f'<polyline points="{coords}" fill="none" {style} marker-end="url(#arrow)"/>')
+        page = page.replace(f'<!--ROUTE_{key.upper()}-->', ''.join(paths))
+    for tag, value in [('<!--APPROVED_SHELL-->', shell), ('<!--APPROVED_INTRO-->', intro_html), ('<!--OBJECT_MARKS-->', ''.join(plan)),
                        ('<!--ROOM_OPTIONS-->', ''.join(options)), ('<!--ROOM_SHEETS-->', ''.join(details))]:
         page = page.replace(tag, value)
     (out/'factory-layout-proposal.html').write_text(page)

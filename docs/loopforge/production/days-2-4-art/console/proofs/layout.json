@@ -1,0 +1,434 @@
+{
+  "classification": "Static art compositions using verified public ENGINE snapshots. The inspector uses the separately marked internal decision trace.",
+  "byView": {
+    "morning-desktop": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "activationAreas": [
+        {
+          "id": "bid-LIMEN",
+          "rect": [
+            176,
+            186,
+            456,
+            264
+          ]
+        },
+        {
+          "id": "bid-STILETTO",
+          "rect": [
+            648,
+            186,
+            456,
+            264
+          ]
+        },
+        {
+          "id": "commit",
+          "rect": [
+            176,
+            474,
+            250,
+            50
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#morning",
+        "reviewer selected LIMEN locally"
+      ]
+    },
+    "morning-phone": {
+      "viewport": [
+        390,
+        844
+      ],
+      "activationAreas": [
+        {
+          "id": "bid-LIMEN",
+          "rect": [
+            22,
+            165,
+            346,
+            186
+          ]
+        },
+        {
+          "id": "bid-STILETTO",
+          "rect": [
+            22,
+            359,
+            346,
+            186
+          ]
+        },
+        {
+          "id": "commit",
+          "rect": [
+            22,
+            563,
+            346,
+            46
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#morning",
+        "reviewer selected LIMEN locally"
+      ]
+    },
+    "morning-narrow": {
+      "viewport": [
+        320,
+        844
+      ],
+      "activationAreas": [
+        {
+          "id": "bid-LIMEN",
+          "rect": [
+            22,
+            165,
+            276,
+            180
+          ]
+        },
+        {
+          "id": "bid-STILETTO",
+          "rect": [
+            22,
+            353,
+            276,
+            180
+          ]
+        },
+        {
+          "id": "commit",
+          "rect": [
+            22,
+            551,
+            276,
+            46
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#morning",
+        "reviewer selected LIMEN locally"
+      ]
+    },
+    "committed-desktop": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "activationAreas": [
+        {
+          "id": "ack",
+          "rect": [
+            176,
+            474,
+            250,
+            50
+          ]
+        }
+      ],
+      "source": [
+        "console/proof-sources/console-state.json#morningCommit"
+      ]
+    },
+    "committed-phone": {
+      "viewport": [
+        390,
+        844
+      ],
+      "activationAreas": [
+        {
+          "id": "ack",
+          "rect": [
+            22,
+            543,
+            346,
+            46
+          ]
+        }
+      ],
+      "source": [
+        "console/proof-sources/console-state.json#morningCommit"
+      ]
+    },
+    "committed-narrow": {
+      "viewport": [
+        320,
+        844
+      ],
+      "activationAreas": [
+        {
+          "id": "ack",
+          "rect": [
+            22,
+            551,
+            276,
+            46
+          ]
+        }
+      ],
+      "source": [
+        "console/proof-sources/console-state.json#morningCommit"
+      ]
+    },
+    "close-desktop": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "activationAreas": [
+        {
+          "id": "commit",
+          "rect": [
+            176,
+            591,
+            244,
+            50
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#released"
+      ]
+    },
+    "close-phone": {
+      "viewport": [
+        390,
+        844
+      ],
+      "activationAreas": [
+        {
+          "id": "commit",
+          "rect": [
+            22,
+            666,
+            346,
+            46
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#released"
+      ]
+    },
+    "close-narrow": {
+      "viewport": [
+        320,
+        844
+      ],
+      "activationAreas": [
+        {
+          "id": "commit",
+          "rect": [
+            22,
+            666,
+            276,
+            46
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#released"
+      ]
+    },
+    "overnight-desktop": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "activationAreas": [
+        {
+          "id": "commit",
+          "rect": [
+            176,
+            548,
+            252,
+            50
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#released",
+        "console/proof-sources/console-state.json#releasedMorning"
+      ]
+    },
+    "overnight-phone": {
+      "viewport": [
+        390,
+        844
+      ],
+      "activationAreas": [
+        {
+          "id": "commit",
+          "rect": [
+            22,
+            549,
+            346,
+            46
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#released",
+        "console/proof-sources/console-state.json#releasedMorning"
+      ]
+    },
+    "overnight-narrow": {
+      "viewport": [
+        320,
+        844
+      ],
+      "activationAreas": [
+        {
+          "id": "commit",
+          "rect": [
+            22,
+            549,
+            276,
+            46
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#released",
+        "console/proof-sources/console-state.json#releasedMorning"
+      ]
+    },
+    "pass-expiry-desktop": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "activationAreas": [
+        {
+          "id": "commit",
+          "rect": [
+            176,
+            548,
+            252,
+            50
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#pass-expired",
+        "binding/samples.json#renewal-open"
+      ]
+    },
+    "pass-expiry-phone": {
+      "viewport": [
+        390,
+        844
+      ],
+      "activationAreas": [
+        {
+          "id": "commit",
+          "rect": [
+            22,
+            549,
+            346,
+            46
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#pass-expired",
+        "binding/samples.json#renewal-open"
+      ]
+    },
+    "pass-expiry-narrow": {
+      "viewport": [
+        320,
+        844
+      ],
+      "activationAreas": [
+        {
+          "id": "commit",
+          "rect": [
+            22,
+            569,
+            276,
+            46
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#pass-expired",
+        "binding/samples.json#renewal-open"
+      ]
+    },
+    "inspector-desktop": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "activationAreas": [
+        {
+          "id": "commit",
+          "rect": [
+            176,
+            591,
+            244,
+            50
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#endorsement",
+        "binding/review-only-hearing.json",
+        "console/proof-sources/console-state.json#developerInspection"
+      ]
+    },
+    "inspector-phone": {
+      "viewport": [
+        390,
+        844
+      ],
+      "activationAreas": [
+        {
+          "id": "commit",
+          "rect": [
+            22,
+            588,
+            346,
+            46
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#endorsement",
+        "binding/review-only-hearing.json",
+        "console/proof-sources/console-state.json#developerInspection"
+      ]
+    },
+    "inspector-narrow": {
+      "viewport": [
+        320,
+        844
+      ],
+      "activationAreas": [
+        {
+          "id": "commit",
+          "rect": [
+            22,
+            608,
+            276,
+            46
+          ]
+        }
+      ],
+      "source": [
+        "binding/samples.json#endorsement",
+        "binding/review-only-hearing.json",
+        "console/proof-sources/console-state.json#developerInspection"
+      ]
+    }
+  }
+}

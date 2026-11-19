@@ -1,0 +1,50 @@
+{
+  "use": "Developer evidence from Run.heard; excluded from the player adapter and its public snapshots.",
+  "sourceSha256": "c5dab58691656cf81b7bddeca10dddb3df9b77bb4846e06686216018f9c0d427",
+  "endorsements": [
+    {
+      "day": 4,
+      "tick": 9467,
+      "seq": 163,
+      "backing": "LIMEN",
+      "heard": [
+        "ben",
+        "bob",
+        "ed",
+        "gus",
+        "jo",
+        "kit",
+        "LIMEN",
+        "lou",
+        "max",
+        "sam",
+        "STILETTO"
+      ],
+      "outsideHearing": [
+        "mae"
+      ]
+    },
+    {
+      "day": 4,
+      "tick": 9467,
+      "seq": 163,
+      "backing": "STILETTO",
+      "heard": [
+        "ben",
+        "bob",
+        "ed",
+        "gus",
+        "jo",
+        "kit",
+        "LIMEN",
+        "lou",
+        "max",
+        "sam",
+        "STILETTO"
+      ],
+      "outsideHearing": [
+        "mae"
+      ]
+    }
+  ]
+}

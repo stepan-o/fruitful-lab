@@ -1,0 +1,5 @@
+# Native originals travel in the editable release ZIP. The recipes and records stay diffable.
+*.ora
+*.png
+__pycache__/
+dist-engineering/

@@ -1,0 +1,25 @@
+<section class="shift-art calibration" id="days-2-4-art" aria-labelledby="shift-art-title" tabindex="-1">
+  <header class="calibration-head">
+    <h3 id="shift-art-title">{{title}}</h3>
+    {{intro}}
+  </header>
+  <div class="shift-art-viewer" data-index="/loopforge-design/days-2-4-art/v1/gallery.json">
+    <div class="shift-art-controls" hidden>
+      <label>Scene <select name="scene"></select></label>
+      <label>Viewport <select name="viewport">
+        <option value="desktop">Desktop · 1280 px</option>
+        <option value="phone">Phone · 390 px</option>
+        <option value="narrow">Phone · 320 px</option>
+      </select></label>
+    </div>
+    <p class="shift-art-description"></p>
+    <p class="shift-art-status" role="status"></p>
+    <button class="shift-art-retry" type="button" hidden>Reload comparisons</button>
+    <div class="shift-art-shots"></div>
+    <noscript><p><a href="/loopforge-design/days-2-4-art/v1/gallery.json">Open the proof index</a></p></noscript>
+  </div>
+  <dialog class="shift-art-dialog" aria-labelledby="shift-art-inspect-title">
+    <header><h4 id="shift-art-inspect-title">Native-size proof</h4><button type="button" autofocus>Close</button></header>
+    <div class="shift-art-inspection" tabindex="0" role="region" aria-label="Scrollable native-size proof"></div>
+  </dialog>
+</section>

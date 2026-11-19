@@ -1,0 +1,42 @@
+{
+  "schema": "shift_floor_1",
+  "sourceSha256": {
+    "simulation": "c5dab58691656cf81b7bddeca10dddb3df9b77bb4846e06686216018f9c0d427",
+    "wire": "56c7872c62d5ed7974bc10143d995f3d051f69ac5351e7edc341d44a4bb431e0"
+  },
+  "morningCommit": {
+    "source": "morning-limen.json/accepted_baseline",
+    "tick": 5463,
+    "stepHash": "aabb7b1d6fd92958a4cccc07f3cc21eab17f0163af4ada74046eb4d3649fd77e",
+    "day": 2,
+    "phase": "shift",
+    "lead": "LIMEN",
+    "spent": null
+  },
+  "releasedMorning": {
+    "source": "nextMorning clone of binding/samples.json#released",
+    "tick": 7263,
+    "stepHash": "98a7c2b1c849aa7c1b1f7e27e04bc63635bf39fcb3f69664d4377f5198852bc7",
+    "day": 3,
+    "phase": "briefing",
+    "bobDuty": "standing"
+  },
+  "developerInspection": {
+    "source": "Conflicting orders → art-back-STILETTO→ last Run.thoughts for bob before settlement",
+    "visibility": "internal reviewer only",
+    "stepHash": "35b37c773e6624ef228903296480d9e9e49ed39ff820a19abad488a2162439ef",
+    "decision": {
+      "tick": 9617,
+      "day": 4,
+      "actor": "bob",
+      "intent": "stay in line",
+      "why": "Go 5 / stay 7; own caution 6",
+      "evidence": [
+        "STILETTO#161",
+        "LIMEN#160",
+        "witnessed earlier concession",
+        "Producer#163"
+      ]
+    }
+  }
+}

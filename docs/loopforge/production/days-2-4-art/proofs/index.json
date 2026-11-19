@@ -1,0 +1,174 @@
+{
+  "provenance": {
+    "class": "Authored static pixel-art compositions; camera framing and speech layout are authored; decisions, reported lines and output counts come from sampled-scene records.",
+    "runtime": "Rendering uses frozen, sampled working-source observations in sampled-scenes.json. sample_engine.cjs regenerates those records from a matching source checkout. The primary belt view is taken during a handoff, with the outfeed inset at the common bell. In the clash plates the outfeed camera uses mae\u2019s public position at the command instant, tick 9467. The reviewer annotation about receipt comes from the simulation\u2019s private per-event hearing log, never inferred from the later position. Numeric socket counters reveal all committed cores which share each measured rack anchor. The pass and custody staffing insets are the same instant at tick 6100. The clash frame recalls both conflicting orders while showing workers seven ticks after resolution. These are static art compositions, not live gameplay.",
+    "floor": "approved-factory/day-one-3",
+    "calibration": "08c8db11, PR155",
+    "comparison": "Within each checkpoint the same camera, metric scale, lighting, cast and room anchors are used at a given viewport.",
+    "sourceArt": "Day One B Security/Forge floors, bob and max, S5 supervisor plates, desk and boom, C4 press. Reused bob silhouette for sam, ed, jo, kit, ben and mae. Named gait stand-ins share the south-facing bob gait. Supervisor acting is provisional Day One S5 artwork; final character action and facing coverage is separate.",
+    "placeholders": "Composite belt roller geometry for Intake/Wash/Belt; desk paint reused on the measured register fixture. Custody is a report insert.",
+    "speech": "Room lines derive from the Days 2\u20134 ENGINE working source; the proof illustrator positions the bubbles. Blocked speech is never added. The receipt shows the earlier delivered question.",
+    "touch": "The selected signal and actionable controls have at least 44 CSS px hit regions in the proposed layout.",
+    "sizes": {
+      "desktop": [
+        1280,
+        720
+      ],
+      "phone": [
+        390,
+        844
+      ],
+      "narrow": [
+        320,
+        844
+      ]
+    },
+    "speed": "Still artwork; no playback speed.",
+    "color": "B/Raking light, nearest-neighbour sprite sampling."
+  },
+  "shots": [
+    {
+      "id": "desk-signal",
+      "title": "Desk signal",
+      "room": "Security",
+      "checkpoint": "missing-id-open",
+      "tick": 5671,
+      "description": "The desk holds the queue. Opening the signal costs no intervention.",
+      "images": {
+        "desktop": "desktop/desk-signal.png",
+        "phone": "phone/desk-signal.png",
+        "narrow": "narrow/desk-signal.png"
+      }
+    },
+    {
+      "id": "desk-open",
+      "title": "Open pass decision",
+      "room": "Security",
+      "checkpoint": "missing-id-open",
+      "tick": 5671,
+      "description": "The desk is still holding both lines while the player inspects the case.",
+      "images": {
+        "desktop": "desktop/desk-open.png",
+        "phone": "phone/desk-open.png",
+        "narrow": "narrow/desk-open.png"
+      }
+    },
+    {
+      "id": "pass-issued",
+      "title": "Daily pass issued",
+      "room": "Security",
+      "checkpoint": "missing-id-open",
+      "tick": 5692,
+      "description": "bob can enter this shift. jo has stepped forward for his own check.",
+      "images": {
+        "desktop": "desktop/pass-issued.png",
+        "phone": "phone/pass-issued.png",
+        "narrow": "narrow/pass-issued.png"
+      }
+    },
+    {
+      "id": "custody",
+      "title": "Detained for the shift",
+      "room": "Security",
+      "checkpoint": "missing-id-open",
+      "tick": 5972,
+      "description": "LIMEN detains bob. jo steps forward and Wash remains uncovered.",
+      "images": {
+        "desktop": "desktop/custody.png",
+        "phone": "phone/custody.png",
+        "narrow": "narrow/custody.png"
+      }
+    },
+    {
+      "id": "reply-delivered",
+      "title": "Reply delivered",
+      "room": "Conveyor",
+      "checkpoint": "sam-reply-at-wash",
+      "tick": 6242,
+      "description": "The reduced pace leaves time for sam to finish the reply to bob.",
+      "images": {
+        "desktop": "desktop/reply-delivered.png",
+        "phone": "phone/reply-delivered.png",
+        "narrow": "narrow/reply-delivered.png"
+      }
+    },
+    {
+      "id": "reply-cut",
+      "title": "Reply interrupted",
+      "room": "Conveyor",
+      "checkpoint": "sam-reply-at-wash",
+      "tick": 6210,
+      "description": "STILETTO cuts sam off before the claim is delivered. Work continues at the press.",
+      "images": {
+        "desktop": "desktop/reply-cut.png",
+        "phone": "phone/reply-cut.png",
+        "narrow": "narrow/reply-cut.png"
+      }
+    },
+    {
+      "id": "line-clear",
+      "title": "All-clear handoff",
+      "room": "Conveyor",
+      "checkpoint": "same-morning-bids",
+      "tick": 6124,
+      "description": "The crew waits for LIMEN\u2019s clearance. Three new cortexes have arrived by the bell, six cumulative.",
+      "images": {
+        "desktop": "desktop/line-clear.png",
+        "phone": "phone/line-clear.png",
+        "narrow": "narrow/line-clear.png"
+      }
+    },
+    {
+      "id": "line-rushed",
+      "title": "Rushed handoff",
+      "room": "Conveyor",
+      "checkpoint": "same-morning-bids",
+      "tick": 6194,
+      "description": "STILETTO calls the next handoff. Five new cortexes have arrived by the bell, eight cumulative.",
+      "images": {
+        "desktop": "desktop/line-rushed.png",
+        "phone": "phone/line-rushed.png",
+        "narrow": "narrow/line-rushed.png"
+      }
+    },
+    {
+      "id": "back-limen",
+      "title": "Public backing for LIMEN",
+      "room": "Security",
+      "checkpoint": "security-clash",
+      "tick": 9649,
+      "description": "The two orders conflict. bob and the other three workers stay. mae is at the outfeed, outside earshot of the endorsement.",
+      "images": {
+        "desktop": "desktop/back-limen.png",
+        "phone": "phone/back-limen.png",
+        "narrow": "narrow/back-limen.png"
+      }
+    },
+    {
+      "id": "back-stiletto",
+      "title": "Public backing for STILETTO",
+      "room": "Security",
+      "checkpoint": "security-clash",
+      "tick": 9649,
+      "description": "jo, kit and ben leave. bob waits and mae remains outside earshot at the outfeed.",
+      "images": {
+        "desktop": "desktop/back-stiletto.png",
+        "phone": "phone/back-stiletto.png",
+        "narrow": "narrow/back-stiletto.png"
+      }
+    },
+    {
+      "id": "crew-decides",
+      "title": "Crew decides",
+      "room": "Security",
+      "checkpoint": "security-clash",
+      "tick": 9649,
+      "description": "The crew hears conflicting orders. jo departs, while bob, kit and ben stay.",
+      "images": {
+        "desktop": "desktop/crew-decides.png",
+        "phone": "phone/crew-decides.png",
+        "narrow": "narrow/crew-decides.png"
+      }
+    }
+  ]
+}

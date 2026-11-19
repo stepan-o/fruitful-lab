@@ -150,16 +150,16 @@
     history.replaceState(null, '', '#' + link.id);
   });
 
-  // Register the production handoff next to its source layout in the existing tab system.
-  const floorTab = document.querySelector('.nav [data-panel="floor-layout"]');
-  const floorPanel = document.getElementById('floor-layout');
-  if (floorTab && floorPanel && !document.getElementById('sprite-briefs')) {
+  // Register the production handoff after the engine boundary in the existing tab system.
+  const engineTab = document.querySelector('.nav [data-panel="engine-boundary"]');
+  const enginePanel = document.getElementById('engine-boundary');
+  if (engineTab && enginePanel && !document.getElementById('sprite-briefs')) {
     const tab = document.createElement('button');
     tab.type = 'button';
     tab.dataset.panel = 'sprite-briefs';
     tab.textContent = '2D asset briefs';
     tab.setAttribute('aria-current', 'false');
-    floorTab.after(tab);
+    engineTab.after(tab);
 
     const section = document.createElement('section');
     section.id = 'sprite-briefs';
@@ -171,7 +171,7 @@
       <iframe id="sprite-briefs-frame" title="2D artist briefs and ENGINE handoff"
         style="display:block;width:100%;min-width:0;height:1000px;border:0"
         data-src="/loopforge-design/sprite-briefs.html"></iframe>`;
-    floorPanel.after(section);
+    enginePanel.after(section);
   }
   const spriteFrame = document.getElementById('sprite-briefs-frame');
   let spriteObserver;

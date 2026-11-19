@@ -1,0 +1,455 @@
+{
+  "version": 1,
+  "provenance": "Composed stills, native-size desktop and emulated phone layouts. Example state and counts are identified in the proof records.",
+  "groups": [
+    {
+      "id": "desk",
+      "title": "Security · discover the missing ID",
+      "description": "From the same check, inspect the desk signal and the open intervention.",
+      "shots": [
+        {
+          "id": "desk-signal",
+          "title": "Desk signal",
+          "description": "The desk holds the queue. Opening the signal costs no intervention.",
+          "images": {
+            "desktop": {
+              "file": "review/desk-signal-desktop.fbd06bbd87.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "fbd06bbd87014f2c2c001f0c181c3d88b80af2990e4d49523dcb0b997eedb5bf"
+            },
+            "phone": {
+              "file": "review/desk-signal-phone.2c35465290.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "2c3546529034ee3fe4b651757f3bfdfc47a8b46703a8adea2531ab025e1af412"
+            },
+            "narrow": {
+              "file": "review/desk-signal-narrow.358751ac42.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "358751ac42efd99f5f4110d1c98d88e0f879a5baf2f6a456d6cba355e6ada436"
+            }
+          }
+        },
+        {
+          "id": "desk-open",
+          "title": "Open pass decision",
+          "description": "The desk is still holding both lines while the player inspects the case.",
+          "images": {
+            "desktop": {
+              "file": "review/desk-open-desktop.6eb9f86bde.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "6eb9f86bde0e5be9c046a282d81b2d83b5b3a0f16c3c965a57f2c1d3c9facc53"
+            },
+            "phone": {
+              "file": "review/desk-open-phone.87e51bfff8.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "87e51bfff8a27d372ce68e15ead393f9339b1507bf9698e2113c41b8101d86e0"
+            },
+            "narrow": {
+              "file": "review/desk-open-narrow.859959eaaa.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "859959eaaa20b53d2fa1a3041d8074ece929716b538baba68827dee8023814fc"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Security · pass or detention",
+      "description": "Compare the outcome for bob and the next worker in line.",
+      "shots": [
+        {
+          "id": "pass-issued",
+          "title": "Daily pass issued",
+          "description": "bob can enter this shift. jo has stepped forward for his own check.",
+          "images": {
+            "desktop": {
+              "file": "review/pass-issued-desktop.73692231f4.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "73692231f4c4f07aba77de273775f2bfb0ed67846a41ee78fe5449fc7edf3c29"
+            },
+            "phone": {
+              "file": "review/pass-issued-phone.b64016dd0f.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "b64016dd0fe258e11bdde460133705dfbb7ca5d264d527d84010bc5d0cfe8c58"
+            },
+            "narrow": {
+              "file": "review/pass-issued-narrow.f2401a7632.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "f2401a76324825ebd627e5324848e22e8f769a440f897aa34e5a39a12e627db2"
+            }
+          }
+        },
+        {
+          "id": "custody",
+          "title": "Detained for the shift",
+          "description": "LIMEN detains bob. jo steps forward and Wash remains uncovered.",
+          "images": {
+            "desktop": {
+              "file": "review/custody-desktop.cbfb1caf73.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "cbfb1caf73ac098e9cf2c8e3c15fd4fa6317d4d048e71792b19754099eb60c26"
+            },
+            "phone": {
+              "file": "review/custody-phone.ebc14b3843.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "ebc14b3843eaa4a301fe66f7d085e24df369ef4fda210138aa3cc235c5d1139d"
+            },
+            "narrow": {
+              "file": "review/custody-narrow.1701f847e9.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "1701f847e91636dd59a4eda54ef59e4bd3f1cea2867056f6e28607facadfc49b"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "title": "Conveyor · interrupted reply",
+      "description": "Compare what is said at a working line as another station keeps running.",
+      "shots": [
+        {
+          "id": "reply-delivered",
+          "title": "Reply delivered",
+          "description": "The reduced pace leaves time for sam to finish the reply to bob.",
+          "images": {
+            "desktop": {
+              "file": "review/reply-delivered-desktop.894e1c5409.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "894e1c54095b00d01ce187a9d5f0929335e77d6e8e5357b18738c64dad31d61c"
+            },
+            "phone": {
+              "file": "review/reply-delivered-phone.94480d96e7.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "94480d96e7ff2b452f4642b4482ca56d60da3599c1542b6eb250cca816cad3f9"
+            },
+            "narrow": {
+              "file": "review/reply-delivered-narrow.413278186f.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "413278186f5e68487620cea6d28803e929c30fbe83c1df70b7eead984daed183"
+            }
+          }
+        },
+        {
+          "id": "reply-cut",
+          "title": "Reply interrupted",
+          "description": "STILETTO cuts sam off before the claim is delivered. Work continues at the press.",
+          "images": {
+            "desktop": {
+              "file": "review/reply-cut-desktop.2c83808555.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "2c838085554e044217dd1b2b33bb973cb92563dccc0e10c47de0f0344917f4f9"
+            },
+            "phone": {
+              "file": "review/reply-cut-phone.eb14cec108.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "eb14cec1086e5b6e0ca6824c28779c10050b5b66167d430e129aa03b1bd2133f"
+            },
+            "narrow": {
+              "file": "review/reply-cut-narrow.25a3efda23.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "25a3efda2327318559ab3b8d14af8ed8ae5c9f55e9e4969592b856025d3dd31f"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "pace",
+      "title": "Conveyor · handoff and output",
+      "description": "Follow the station signal, operator and cortexes reaching the rack.",
+      "shots": [
+        {
+          "id": "line-clear",
+          "title": "All-clear handoff",
+          "description": "The crew waits for LIMEN’s clearance. Three new cortexes have arrived by the bell, six cumulative.",
+          "images": {
+            "desktop": {
+              "file": "review/line-clear-desktop.e53cba8199.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "e53cba81993f6bcfd651b6c7ac596d44100ffd8984610e9e6066a70a84aab850"
+            },
+            "phone": {
+              "file": "review/line-clear-phone.b16f2ae16e.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "b16f2ae16e6f09acd0bfa39c37202c3719bd78103b24a6672263acaecf1a24d1"
+            },
+            "narrow": {
+              "file": "review/line-clear-narrow.b5c46052b9.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "b5c46052b94bfa703a35fc9833513d9eb674c37ba23e25d8afbc351b9d4feb8f"
+            }
+          }
+        },
+        {
+          "id": "line-rushed",
+          "title": "Rushed handoff",
+          "description": "STILETTO calls the next handoff. Five new cortexes have arrived by the bell, eight cumulative.",
+          "images": {
+            "desktop": {
+              "file": "review/line-rushed-desktop.64937024fc.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "64937024fc78852d89266d63a4f27337b07adc2906c5f0d5cd3bfb228d14781d"
+            },
+            "phone": {
+              "file": "review/line-rushed-phone.27f36d9294.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "27f36d92942058917e8c37a21f22d8a9c4ddc7b56ec9a14a565f99330a1cc729"
+            },
+            "narrow": {
+              "file": "review/line-rushed-narrow.4eb91dd1bd.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "4eb91dd1bdff7c8a09c9bfeb3d9c70657a49d9f8d854ca4e188ffa19ffe65008"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "clash",
+      "title": "Security · conflicting orders",
+      "description": "Compare the same crew with public backing for either supervisor or an unassisted decision.",
+      "shots": [
+        {
+          "id": "back-limen",
+          "title": "Public backing for LIMEN",
+          "description": "The two orders conflict. bob and the other three workers stay. mae is at the outfeed, outside earshot of the endorsement.",
+          "images": {
+            "desktop": {
+              "file": "review/back-limen-desktop.5873a1e1f9.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "5873a1e1f944fd62c19fa5c6ab907983c3bafeb2b9980e276783ae1ace591052"
+            },
+            "phone": {
+              "file": "review/back-limen-phone.75b4ae3c9b.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "75b4ae3c9b24e8e673efdc7a57cef1bf66fe3d0b614698144413c113c269712c"
+            },
+            "narrow": {
+              "file": "review/back-limen-narrow.9b22a73c8a.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "9b22a73c8af2d9c1d5720445d639f6908e1653674752b715ae2c26d9b6bd06fb"
+            }
+          }
+        },
+        {
+          "id": "back-stiletto",
+          "title": "Public backing for STILETTO",
+          "description": "jo, kit and ben leave. bob waits and mae remains outside earshot at the outfeed.",
+          "images": {
+            "desktop": {
+              "file": "review/back-stiletto-desktop.cfa50a81aa.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "cfa50a81aa974348a0cf32d94147e1d1e0475d0d46a298869f8d2154842838c9"
+            },
+            "phone": {
+              "file": "review/back-stiletto-phone.70d5e28f3d.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "70d5e28f3db9f902baac7bf19214802699dad40e95660b2a70c0c6c176bb7def"
+            },
+            "narrow": {
+              "file": "review/back-stiletto-narrow.cd692c518b.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "cd692c518b6a3a9330f6ae3c96e9fb461a85b4df59079e85810e1c58fbd7a71c"
+            }
+          }
+        },
+        {
+          "id": "crew-decides",
+          "title": "Crew decides",
+          "description": "The crew hears conflicting orders. jo departs, while bob, kit and ben stay.",
+          "images": {
+            "desktop": {
+              "file": "review/crew-decides-desktop.e075801e2a.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "e075801e2ac20808905d037325dc281cd3cbe45c7c7743aea3b4b929c2018912"
+            },
+            "phone": {
+              "file": "review/crew-decides-phone.2a764d0df1.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "2a764d0df19f4e1fb44d84cc7f88b5189a56ae8b5fd286feae4a1f01f28bb258"
+            },
+            "narrow": {
+              "file": "review/crew-decides-narrow.2ddcd380c4.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "2ddcd380c4ff598e1e556d923307a05272e59bee778717d9144cd036f5007a1e"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "bids",
+      "title": "Morning · choose a supervisor",
+      "description": "Follow a whole-room proposal through the explicit appointment.",
+      "shots": [
+        {
+          "id": "morning",
+          "title": "Morning bids",
+          "description": "The selector compares whole assignments. A focused commit key appoints the selected adviser.",
+          "images": {
+            "desktop": {
+              "file": "review/morning-desktop.6c79271d68.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "6c79271d68d289854230fe101d0e70f389860e39a89de3991f225f667e0b2fef"
+            },
+            "phone": {
+              "file": "review/morning-phone.56a5b4527f.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "56a5b4527f219bc4ee5f517fc1970b1643da334df78a377aed3800153bfe19d0"
+            },
+            "narrow": {
+              "file": "review/morning-narrow.658c8c4da1.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "658c8c4da1b2594ff863e190fd1228e1ac70eb8d8eb99899b5d2ccab5feadbd0"
+            }
+          }
+        },
+        {
+          "id": "committed",
+          "title": "Appointment confirmed",
+          "description": "LIMEN’s confirmed bid keeps him in Security and STILETTO at Conveyor. The appointment leaves the shift intervention available.",
+          "images": {
+            "desktop": {
+              "file": "review/committed-desktop.fd87180e1d.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "fd87180e1d9c82c8774b33d85668eb12f2d032fe60339ef11e5a245addc471ae"
+            },
+            "phone": {
+              "file": "review/committed-phone.d46374b52e.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "d46374b52eaa46ab5a4a00f15a932f80264bc7dfe51a2b5edeb7d1e13b896cf8"
+            },
+            "narrow": {
+              "file": "review/committed-narrow.308be401e2.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "308be401e2f2ed4acf88c6e5d0438f345bcd87876e36662b783c78d8e213931b"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "bell",
+      "title": "Shift close and overnight",
+      "description": "Compare the completed work, custody outcome and next morning.",
+      "shots": [
+        {
+          "id": "close",
+          "title": "Shift close",
+          "description": "The detained branch ends with zero finished this shift and three carried in. LIMEN’s attributed report remains readable at the bell.",
+          "images": {
+            "desktop": {
+              "file": "review/close-desktop.2471289f16.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "2471289f16514f311ed26c1e83fb3d1e2fcf5e2729b5136baef1460f0c57f4b7"
+            },
+            "phone": {
+              "file": "review/close-phone.63c7e19583.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "63c7e195833f712c81daaf35a0619bb60828c019497bdc77c01d64f7c247c651"
+            },
+            "narrow": {
+              "file": "review/close-narrow.a0c6bdf8ec.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "a0c6bdf8ec70861d6559ecc1176f7b6d8d4e94169978f8757abb40a1553db0ad"
+            }
+          }
+        },
+        {
+          "id": "overnight",
+          "title": "Overnight and next shift",
+          "description": "The case ends at the bell and the next morning carries the released worker forward.",
+          "images": {
+            "desktop": {
+              "file": "review/overnight-desktop.8b734983d1.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "8b734983d1a6be9efcdf218f3b6429051d21728af1acbe5a127d448abc08ba10"
+            },
+            "phone": {
+              "file": "review/overnight-phone.5fb8fefa58.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "5fb8fefa589f9ba1cfb39d3e1b041cb4ee9876a3ecea37b7b2b6702c71d40c41"
+            },
+            "narrow": {
+              "file": "review/overnight-narrow.a54b4f1660.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "a54b4f166018ee428fb728a479737093d4bee0df7139d122fe2417202938628b"
+            }
+          }
+        },
+        {
+          "id": "pass-expiry",
+          "title": "Daily pass expiry",
+          "description": "The matched pass branch closes at seven newly finished and ten total. The next actual ID check can open another pass decision.",
+          "images": {
+            "desktop": {
+              "file": "review/pass-expiry-desktop.a38ba6a3b9.webp",
+              "width": 1280,
+              "height": 720,
+              "sha256": "a38ba6a3b91241b709fbe54864e7a01334f596d04d74fd5fe96b516135aa0fb2"
+            },
+            "phone": {
+              "file": "review/pass-expiry-phone.a1cac05430.webp",
+              "width": 390,
+              "height": 844,
+              "sha256": "a1cac05430861ae0196ea5bf10a3fea8a7c966ef5bde7c2b12098a9ef2b10268"
+            },
+            "narrow": {
+              "file": "review/pass-expiry-narrow.ae5663c0f0.webp",
+              "width": 320,
+              "height": 844,
+              "sha256": "ae5663c0f0eb8e52a7c58766c3eda718b81688baa99298898db80af6733199df"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

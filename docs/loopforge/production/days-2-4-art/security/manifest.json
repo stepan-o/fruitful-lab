@@ -1,0 +1,500 @@
+{
+  "version": "1.0.0",
+  "family": "security",
+  "idPrefix": "sec-",
+  "units": "native integer pixels; rectangles [x,y,w,h], origin top-left. Pivot denotes anchor relative to source canvas.",
+  "palette": "B / Raking light. Cool oxidised enamel and brushed steel; upper-left light, matte paper, restrained brass and high-contrast ivory status shapes. Screen-space pieces are prelit.",
+  "origins": {
+    "security-original-pixelwork": {
+      "creator": "Loopforge Days 2–4 Security art lane, 2026-11-19",
+      "method": "Original per-pixel authored raster and layer geometry. No external stock or font pixels in exports.",
+      "rights": "Original commissioned project art supplied to the owner for Loopforge."
+    },
+    "bob-day-one-head": {
+      "creator": "Loopforge Day One calibration / bob r2",
+      "rights": "Owner-supplied Loopforge art from merged PR #155, reused according to the Day One handoff.",
+      "commit": "08c8db11",
+      "archive": "01-style-B.zip",
+      "sha256": "4982f06004024fed4e5852d965cc3237bbc2ef7ea158c00b00e1c16bbb1141bf",
+      "layers": {
+        "bob/char-bob-neutral-se-r2-03-torso-head.png": "bd2c149e58cdaaba11da2a73b294fced26a46e761c2464ca32dcf84fb37d58c8",
+        "bob/char-bob-neutral-se-r2-05-light-security.png": "8aa7869f9f9eb67a684f6d85abcbdfbf51fa547c7c9b50fc67b16633447e953a",
+        "bob/char-bob-neutral-se-r2-07-emissive.png": "75525a3315bef6ae690c51cb70a479c5847a333862bab371921da0ff5854114b"
+      },
+      "sourceCrop": [
+        114,
+        141,
+        144,
+        167
+      ],
+      "cropConvention": "left,top,right exclusive,bottom exclusive",
+      "transform": "Neutral SE head/torso with Security light and emission clipped to body alpha, nearest-neighbour crop. No max pixels reused."
+    }
+  },
+  "assets": [
+    {
+      "id": "sec-id-bob",
+      "file": "exports/sec-id-bob.png",
+      "size": [
+        40,
+        56
+      ],
+      "master": "masters/sec-id-bob.ora",
+      "purpose": "Inspectable original credential belonging to bob",
+      "placement": "Player-visible credential close-up, only when public custody/inspection permits.",
+      "sha256": "8154b30ee52c4e09cbfe68f2c2d86e6103572148966c2a587794dff65f865fbf",
+      "source": [
+        "security-original-pixelwork",
+        "bob-day-one-head"
+      ],
+      "pivot": [
+        20,
+        49
+      ],
+      "safeText": [
+        6,
+        37,
+        28,
+        9
+      ],
+      "slots": {
+        "holder": [
+          6,
+          37,
+          28,
+          9
+        ]
+      },
+      "scale": "Integer 2x or larger for live holder text."
+    },
+    {
+      "id": "sec-id-bob-world",
+      "file": "exports/sec-id-bob-world.png",
+      "size": [
+        15,
+        19
+      ],
+      "master": "masters/sec-id-bob-world.ora",
+      "purpose": "Desk/hand original credential",
+      "placement": "Hand or desk socket when the original is publicly visible. A hidden stowed item has no world sprite.",
+      "sha256": "feab2eec4f756983c52eeaaf3299a0dafef34827e1f67051b05f34ba36ae000a",
+      "source": [
+        "security-original-pixelwork",
+        "bob-day-one-head"
+      ],
+      "pivot": [
+        7,
+        17
+      ]
+    },
+    {
+      "id": "sec-pass-issued",
+      "file": "exports/sec-pass-issued.png",
+      "size": [
+        64,
+        40
+      ],
+      "master": "masters/sec-pass-issued.ora",
+      "purpose": "Confirmed shift-only permission, valid to bell",
+      "placement": "Inspection insert. Live case data owns the holder, issuer and date. Render a readable external label when showing a compact card.",
+      "sha256": "ca8bab0c228095cedf623ecf604965797f64b68b8b79f9471d9961890ac4138f",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        31,
+        34
+      ],
+      "safeText": [
+        17,
+        4,
+        31,
+        29
+      ],
+      "slots": {
+        "holder": [
+          17,
+          4,
+          31,
+          8
+        ],
+        "issuer": [
+          17,
+          14,
+          31,
+          8
+        ],
+        "validThrough": [
+          17,
+          25,
+          31,
+          8
+        ]
+      },
+      "scale": "At least 2x in an inspection insert; 3x for full-length issuer names."
+    },
+    {
+      "id": "sec-pass-issued-world",
+      "file": "exports/sec-pass-issued-world.png",
+      "size": [
+        21,
+        13
+      ],
+      "master": "masters/sec-pass-issued-world.ora",
+      "purpose": "Room-scale daily pass issued",
+      "placement": "Dedicated permission/desk insert or temporary pass socket. A permission record cannot move the original credential.",
+      "sha256": "040d8a9a06b0c9950918febb02bee5e6b7220711610b36feff5fb255e303d6fb",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        10,
+        10
+      ]
+    },
+    {
+      "id": "sec-pass-expired",
+      "file": "exports/sec-pass-expired.png",
+      "size": [
+        64,
+        40
+      ],
+      "master": "masters/sec-pass-expired.ora",
+      "purpose": "Expired shift permission after bell",
+      "placement": "Inspection insert. Live case data owns the holder, issuer and date. Render a readable external label when showing a compact card.",
+      "sha256": "bcb92f2c1ff25964aa48580ed335dc5808989e26de42ae165766758df86c33e6",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        31,
+        34
+      ],
+      "safeText": [
+        17,
+        4,
+        31,
+        29
+      ],
+      "slots": {
+        "holder": [
+          17,
+          4,
+          31,
+          8
+        ],
+        "issuer": [
+          17,
+          14,
+          31,
+          8
+        ],
+        "validThrough": [
+          17,
+          25,
+          31,
+          8
+        ]
+      },
+      "scale": "At least 2x in an inspection insert; 3x for full-length issuer names."
+    },
+    {
+      "id": "sec-pass-expired-world",
+      "file": "exports/sec-pass-expired-world.png",
+      "size": [
+        21,
+        13
+      ],
+      "master": "masters/sec-pass-expired-world.ora",
+      "purpose": "Room-scale daily pass expired",
+      "placement": "Dedicated permission/desk insert or temporary pass socket. A permission record cannot move the original credential.",
+      "sha256": "0aeb5726a27ba868bb9b4736663f226f189fe491f8db6436397215daff5257f3",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        10,
+        10
+      ]
+    },
+    {
+      "id": "sec-signal-action",
+      "file": "exports/sec-signal-action.png",
+      "size": [
+        24,
+        24
+      ],
+      "master": "masters/sec-signal-action.ora",
+      "purpose": "Desk case available for action",
+      "placement": "Anchor to local desk; composite above fixture/actors and below speech, with at least 44 x 44 CSS px semantic hit area. No automatic opening.",
+      "sha256": "24747d05a21058b8f49ba8a78750f8fb73ef0a00e747f67a7d090ad3a6d4586d",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        12,
+        23
+      ]
+    },
+    {
+      "id": "sec-custody-held",
+      "file": "exports/sec-custody-held.png",
+      "size": [
+        64,
+        48
+      ],
+      "master": "masters/sec-custody-held.ora",
+      "purpose": "Security custody held",
+      "placement": "UI insert inside an attributed Security report, alongside live worker/shift text; no scenery or movement anchor.",
+      "sha256": "6950fb3f8b4c3fde7f44aaa17712619b618978f7d21828e26e61ce1e890a3bff",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        32,
+        44
+      ]
+    },
+    {
+      "id": "sec-signal-report",
+      "file": "exports/sec-signal-report.png",
+      "size": [
+        24,
+        24
+      ],
+      "master": "masters/sec-signal-report.ora",
+      "purpose": "Read-only desk report",
+      "placement": "Anchor to local desk; composite above fixture/actors and below speech, with at least 44 x 44 CSS px semantic hit area. No automatic opening.",
+      "sha256": "c8694645b0fd7ea9d5f13c5fcabad445788a2678762fe04c2252d24fa3e265a3",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        12,
+        23
+      ]
+    },
+    {
+      "id": "sec-custody-released",
+      "file": "exports/sec-custody-released.png",
+      "size": [
+        64,
+        48
+      ],
+      "master": "masters/sec-custody-released.ora",
+      "purpose": "Release registered at the shift boundary",
+      "placement": "UI insert inside an attributed Security report, alongside live worker/shift text; no scenery or movement anchor.",
+      "sha256": "8ae4de49d77b9d28222261268f6af85666156035a07fb78aa55f9e1a23d7cecf",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        32,
+        44
+      ]
+    },
+    {
+      "id": "sec-panel-active",
+      "file": "exports/sec-panel-active.png",
+      "size": [
+        144,
+        88
+      ],
+      "master": "masters/sec-panel-active.ora",
+      "purpose": "Contextual room intervention / active",
+      "placement": "Overlay at lower edge of selected room, beneath frontmost semantic text/controls. Use live issuer/room/action labels, no world pausing.",
+      "sha256": "81bf47b949bd04475139896ec0b6bb6acd381f0ecfcd5583fec96a165877e90f",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "insets": [
+        24,
+        23,
+        8,
+        8
+      ],
+      "safeText": [
+        10,
+        26,
+        124,
+        52
+      ],
+      "slots": {
+        "stateHeader": [
+          27,
+          6,
+          106,
+          13
+        ],
+        "content": [
+          10,
+          26,
+          124,
+          52
+        ]
+      },
+      "stretch": "Stretch center and edges independently with nearest sampling. Header safe area uses 27px left, 11px right. Body uses 10px left/right, 26px top, 10px bottom. Glyph and bevel retain their native dimensions."
+    },
+    {
+      "id": "sec-panel-committed",
+      "file": "exports/sec-panel-committed.png",
+      "size": [
+        144,
+        88
+      ],
+      "master": "masters/sec-panel-committed.ora",
+      "purpose": "Contextual room intervention / committed",
+      "placement": "Overlay at lower edge of selected room, beneath frontmost semantic text/controls. Use live issuer/room/action labels, no world pausing.",
+      "sha256": "a16b8c33d5174731f6b9e318f2e7f42ec096e384bf20e680a052d938053eaf6f",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "insets": [
+        24,
+        23,
+        8,
+        8
+      ],
+      "safeText": [
+        10,
+        26,
+        124,
+        52
+      ],
+      "slots": {
+        "stateHeader": [
+          27,
+          6,
+          106,
+          13
+        ],
+        "content": [
+          10,
+          26,
+          124,
+          52
+        ]
+      },
+      "stretch": "Stretch center and edges independently with nearest sampling. Header safe area uses 27px left, 11px right. Body uses 10px left/right, 26px top, 10px bottom. Glyph and bevel retain their native dimensions."
+    },
+    {
+      "id": "sec-panel-expired",
+      "file": "exports/sec-panel-expired.png",
+      "size": [
+        144,
+        88
+      ],
+      "master": "masters/sec-panel-expired.ora",
+      "purpose": "Contextual room intervention / expired",
+      "placement": "Overlay at lower edge of selected room, beneath frontmost semantic text/controls. Use live issuer/room/action labels, no world pausing.",
+      "sha256": "925f0c664bb30a97404ecfe0ea0eb9efbe02298a3788d8d21505be81f8b34ec1",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "insets": [
+        24,
+        23,
+        8,
+        8
+      ],
+      "safeText": [
+        10,
+        26,
+        124,
+        52
+      ],
+      "slots": {
+        "stateHeader": [
+          27,
+          6,
+          106,
+          13
+        ],
+        "content": [
+          10,
+          26,
+          124,
+          52
+        ]
+      },
+      "stretch": "Stretch center and edges independently with nearest sampling. Header safe area uses 27px left, 11px right. Body uses 10px left/right, 26px top, 10px bottom. Glyph and bevel retain their native dimensions."
+    },
+    {
+      "id": "sec-panel-spent",
+      "file": "exports/sec-panel-spent.png",
+      "size": [
+        144,
+        88
+      ],
+      "master": "masters/sec-panel-spent.ora",
+      "purpose": "Contextual room intervention / spent",
+      "placement": "Overlay at lower edge of selected room, beneath frontmost semantic text/controls. Use live issuer/room/action labels, no world pausing.",
+      "sha256": "824229747a9329defc7fedace9e12f59ce52aec40234c0f6209fc7fce80e2e75",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "insets": [
+        24,
+        23,
+        8,
+        8
+      ],
+      "safeText": [
+        10,
+        26,
+        124,
+        52
+      ],
+      "slots": {
+        "stateHeader": [
+          27,
+          6,
+          106,
+          13
+        ],
+        "content": [
+          10,
+          26,
+          124,
+          52
+        ]
+      },
+      "stretch": "Stretch center and edges independently with nearest sampling. Header safe area uses 27px left, 11px right. Body uses 10px left/right, 26px top, 10px bottom. Glyph and bevel retain their native dimensions."
+    },
+    {
+      "id": "sec-focus-ring",
+      "file": "exports/sec-focus-ring.png",
+      "size": [
+        24,
+        24
+      ],
+      "master": "masters/sec-focus-ring.ora",
+      "purpose": "Keyboard, switch or controller focus",
+      "placement": "Final overlay around the interactive target; keep the center transparent.",
+      "sha256": "bb95c1fd1a089233f49a927bacd05ae4da011c08be9da96c41d442e2c3bfefcc",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "insets": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "safeText": [
+        9,
+        9,
+        6,
+        6
+      ],
+      "stretch": "Nine-slice at target bounds. Never stretch the corner brackets."
+    }
+  ],
+  "documentation": "README.md",
+  "proofs": [
+    "proofs/panel-320.png",
+    "proofs/security-contact-sheet.png",
+    "proofs/pass-records-320.png",
+    "proofs/pass-records.json"
+  ]
+}

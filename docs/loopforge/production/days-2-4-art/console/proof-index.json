@@ -1,0 +1,87 @@
+{
+  "shots": [
+    {
+      "id": "morning",
+      "title": "Morning bids",
+      "description": "The selector compares whole assignments. A focused commit key appoints the selected adviser.",
+      "images": {
+        "desktop": "proofs/morning-desktop.png",
+        "phone": "proofs/morning-phone.png",
+        "narrow": "proofs/morning-narrow.png"
+      },
+      "source": [
+        "binding/samples.json#morning",
+        "reviewer selected LIMEN locally"
+      ]
+    },
+    {
+      "id": "committed",
+      "title": "Appointment confirmed",
+      "description": "LIMEN\u2019s confirmed bid keeps him in Security and STILETTO at Conveyor. The appointment leaves the shift intervention available.",
+      "images": {
+        "desktop": "proofs/committed-desktop.png",
+        "phone": "proofs/committed-phone.png",
+        "narrow": "proofs/committed-narrow.png"
+      },
+      "source": [
+        "console/proof-sources/console-state.json#morningCommit"
+      ]
+    },
+    {
+      "id": "close",
+      "title": "Shift close",
+      "description": "The detained branch ends with zero finished this shift and three carried in. LIMEN\u2019s attributed report remains readable at the bell.",
+      "images": {
+        "desktop": "proofs/close-desktop.png",
+        "phone": "proofs/close-phone.png",
+        "narrow": "proofs/close-narrow.png"
+      },
+      "source": [
+        "binding/samples.json#released"
+      ]
+    },
+    {
+      "id": "overnight",
+      "title": "Overnight and next shift",
+      "description": "The case ends at the bell and the next morning carries the released worker forward.",
+      "images": {
+        "desktop": "proofs/overnight-desktop.png",
+        "phone": "proofs/overnight-phone.png",
+        "narrow": "proofs/overnight-narrow.png"
+      },
+      "source": [
+        "binding/samples.json#released",
+        "console/proof-sources/console-state.json#releasedMorning"
+      ]
+    },
+    {
+      "id": "pass-expiry",
+      "title": "Daily pass expiry",
+      "description": "The matched pass branch closes at seven newly finished and ten total. The next actual ID check can open another pass decision.",
+      "images": {
+        "desktop": "proofs/pass-expiry-desktop.png",
+        "phone": "proofs/pass-expiry-phone.png",
+        "narrow": "proofs/pass-expiry-narrow.png"
+      },
+      "source": [
+        "binding/samples.json#pass-expired",
+        "binding/samples.json#renewal-open"
+      ]
+    },
+    {
+      "id": "inspector",
+      "title": "Review-only actor inspection",
+      "description": "The internal inspector shows bob\u2019s actual hearing, prior concession evidence and decision score at tick 9617. The player ledger uses public reports.",
+      "images": {
+        "desktop": "proofs/inspector-desktop.png",
+        "phone": "proofs/inspector-phone.png",
+        "narrow": "proofs/inspector-narrow.png"
+      },
+      "source": [
+        "binding/samples.json#endorsement",
+        "binding/review-only-hearing.json",
+        "console/proof-sources/console-state.json#developerInspection"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1747 @@
+{
+  "schema": "loopforge.days-2-4.art/1",
+  "version": 1,
+  "style": "B / Raking light",
+  "floor": "approved-factory/day-one-3",
+  "groundPixelsPerMetre": 64,
+  "coordinateOrder": "rect and safeText: x,y,width,height; insets: left,top,right,bottom; pivot: x,y",
+  "atlases": {
+    "security": {
+      "file": "atlas/security.12862036f88d.png",
+      "size": [
+        512,
+        206
+      ],
+      "bytes": 6201,
+      "sha256": "12862036f88dbc1a45a3a6cbbc5401213cd0940ffd98b4213e4694ecc74f9278"
+    },
+    "floor": {
+      "file": "atlas/floor.861a692d41be.png",
+      "size": [
+        512,
+        60
+      ],
+      "bytes": 3504,
+      "sha256": "861a692d41be7826b9a97f50772af8f647d65c067a628bd915e3cd89c4d440c5"
+    },
+    "console": {
+      "file": "atlas/console.8a6ee8c8dfcf.png",
+      "size": [
+        512,
+        352
+      ],
+      "bytes": 5723,
+      "sha256": "8a6ee8c8dfcfa390040ce5aea0575845dc308f6a7d99c48de4dd9f976f4e8115"
+    }
+  },
+  "assets": {
+    "co-attendance-ticket": {
+      "id": "co-attendance-ticket",
+      "file": "console/exports/co-attendance-ticket.png",
+      "size": [
+        98,
+        43
+      ],
+      "master": "console/masters/co-attendance-ticket.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Worker availability report. Use confirmed public attendance evidence.",
+      "sha256": "a915549491f79a5ed3388107b99efbf46b1f1e76c121093705c6b52904a8a2ad",
+      "insets": [
+        24,
+        32,
+        11,
+        8
+      ],
+      "safeText": [
+        27,
+        7,
+        59,
+        24
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        1,
+        278,
+        98,
+        43
+      ],
+      "lane": "console"
+    },
+    "co-bid-committed": {
+      "id": "co-bid-committed",
+      "file": "console/exports/co-bid-committed.png",
+      "size": [
+        124,
+        77
+      ],
+      "master": "console/masters/co-bid-committed.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Whole bid committed; all rooms in this panel share one candidate selection.",
+      "sha256": "a8cffd5838832669d507e29bda602eb35137a8e94a9f9ecc002e84dc9e224a52",
+      "insets": [
+        17,
+        17,
+        13,
+        15
+      ],
+      "safeText": [
+        18,
+        10,
+        90,
+        56
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        142,
+        119,
+        124,
+        77
+      ],
+      "lane": "console"
+    },
+    "co-bid-idle": {
+      "id": "co-bid-idle",
+      "file": "console/exports/co-bid-idle.png",
+      "size": [
+        124,
+        77
+      ],
+      "master": "console/masters/co-bid-idle.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Whole bid idle; all rooms in this panel share one candidate selection.",
+      "sha256": "e037b57e4aeffaa304676d5233be231c10c505bd77b4e732c28b1e09bcbe3266",
+      "insets": [
+        17,
+        17,
+        13,
+        15
+      ],
+      "safeText": [
+        18,
+        10,
+        90,
+        56
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        268,
+        119,
+        124,
+        77
+      ],
+      "lane": "console"
+    },
+    "co-bid-selected": {
+      "id": "co-bid-selected",
+      "file": "console/exports/co-bid-selected.png",
+      "size": [
+        124,
+        77
+      ],
+      "master": "console/masters/co-bid-selected.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Whole bid selected; all rooms in this panel share one candidate selection.",
+      "sha256": "f4712bc109d6e1af096235710108d79d694e670ca87e9c9cffb197f674f514be",
+      "insets": [
+        17,
+        17,
+        13,
+        15
+      ],
+      "safeText": [
+        18,
+        10,
+        90,
+        56
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        1,
+        199,
+        124,
+        77
+      ],
+      "lane": "console"
+    },
+    "co-briefing-chassis": {
+      "id": "co-briefing-chassis",
+      "file": "console/exports/co-briefing-chassis.png",
+      "size": [
+        192,
+        116
+      ],
+      "master": "console/masters/co-briefing-chassis.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Recessed two-bid briefing board. Layout both candidates inside one assembly.",
+      "sha256": "28dad0ecc3f8b4ad01d2210c4f6ca9590e0d446d9acbb8d64f608db4913827a1",
+      "insets": [
+        10,
+        10,
+        11,
+        13
+      ],
+      "safeText": [
+        12,
+        12,
+        166,
+        89
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        1,
+        1,
+        192,
+        116
+      ],
+      "lane": "console"
+    },
+    "co-close-docket": {
+      "id": "co-close-docket",
+      "file": "console/exports/co-close-docket.png",
+      "size": [
+        178,
+        98
+      ],
+      "master": "console/masters/co-close-docket.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Continuous shift ledger with punch margins and bottom pressure roller.",
+      "sha256": "672f82262d17862edf4bb0114a4929ff502cd79b16eae908a5d5e61dfebed906",
+      "insets": [
+        17,
+        20,
+        21,
+        24
+      ],
+      "safeText": [
+        20,
+        10,
+        133,
+        73
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        195,
+        1,
+        178,
+        98
+      ],
+      "lane": "console"
+    },
+    "co-commit-pressed": {
+      "id": "co-commit-pressed",
+      "file": "console/exports/co-commit-pressed.png",
+      "size": [
+        100,
+        28
+      ],
+      "master": "console/masters/co-commit-pressed.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Physical confirm key, pressed. Commit both room assignments together.",
+      "sha256": "9a22f82547aacd6700bfff097b0b46e5bcf5273ea4d323a7dcd69cea64e2cc87",
+      "insets": [
+        19,
+        8,
+        9,
+        8
+      ],
+      "safeText": [
+        21,
+        5,
+        69,
+        16
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        301,
+        278,
+        100,
+        28
+      ],
+      "lane": "console"
+    },
+    "co-commit-ready": {
+      "id": "co-commit-ready",
+      "file": "console/exports/co-commit-ready.png",
+      "size": [
+        100,
+        28
+      ],
+      "master": "console/masters/co-commit-ready.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Physical confirm key, ready. Commit both room assignments together.",
+      "sha256": "d44c146f3dd2749e26c2e040e4efb8e64dad3ae0b44d8a4c5de3eda79a43ac5c",
+      "insets": [
+        19,
+        8,
+        9,
+        8
+      ],
+      "safeText": [
+        21,
+        5,
+        69,
+        16
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        403,
+        278,
+        100,
+        28
+      ],
+      "lane": "console"
+    },
+    "co-focus-ring": {
+      "id": "co-focus-ring",
+      "file": "console/exports/co-focus-ring.png",
+      "size": [
+        42,
+        24
+      ],
+      "master": "console/masters/co-focus-ring.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Keyboard focus overlay; place around the focused control above all control states.",
+      "sha256": "29fbd69973bfcc7da2ce08249a339305350b521e9ea20d694cc5bcdcd706d749",
+      "insets": [
+        12,
+        10,
+        12,
+        10
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        69,
+        323,
+        42,
+        24
+      ],
+      "lane": "console"
+    },
+    "co-next-shift": {
+      "id": "co-next-shift",
+      "file": "console/exports/co-next-shift.png",
+      "size": [
+        118,
+        58
+      ],
+      "master": "console/masters/co-next-shift.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Shift transition instrument: next-shift. Keep dates, expiries and releases in live text.",
+      "sha256": "85f1a2bcad868ee84291e8b3e66f7e04ed370343ebbf2d768390ac87463036b1",
+      "insets": [
+        43,
+        45,
+        9,
+        9
+      ],
+      "safeText": [
+        46,
+        10,
+        60,
+        35
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        127,
+        199,
+        118,
+        58
+      ],
+      "lane": "console"
+    },
+    "co-output-ticket": {
+      "id": "co-output-ticket",
+      "file": "console/exports/co-output-ticket.png",
+      "size": [
+        98,
+        43
+      ],
+      "master": "console/masters/co-output-ticket.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Rack count/shift production instrument. Draw only actual completed and retained counts.",
+      "sha256": "adbc84342c62045c66ae3673b6801d65b71326f6df0408207190b66c0e4da63f",
+      "insets": [
+        24,
+        32,
+        11,
+        8
+      ],
+      "safeText": [
+        27,
+        7,
+        59,
+        24
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        101,
+        278,
+        98,
+        43
+      ],
+      "lane": "console"
+    },
+    "co-overnight": {
+      "id": "co-overnight",
+      "file": "console/exports/co-overnight.png",
+      "size": [
+        118,
+        58
+      ],
+      "master": "console/masters/co-overnight.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Shift transition instrument: overnight. Keep dates, expiries and releases in live text.",
+      "sha256": "2df4d4c4401c5c2b78719ddcd6ab4937595c22f8c90031f575b4defa301a1901",
+      "insets": [
+        43,
+        45,
+        9,
+        9
+      ],
+      "safeText": [
+        46,
+        10,
+        60,
+        35
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        247,
+        199,
+        118,
+        58
+      ],
+      "lane": "console"
+    },
+    "co-review-instrument": {
+      "id": "co-review-instrument",
+      "file": "console/exports/co-review-instrument.png",
+      "size": [
+        139,
+        78
+      ],
+      "master": "console/masters/co-review-instrument.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Private reviewer instrument. Show only on explicit inspection; display Review only in live type.",
+      "sha256": "4c164acfc83e0bd5de1addea8018539793ddd7c58f9c0617a187aa1fa4281108",
+      "insets": [
+        32,
+        14,
+        12,
+        20
+      ],
+      "safeText": [
+        13,
+        17,
+        110,
+        40
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        1,
+        119,
+        139,
+        78
+      ],
+      "lane": "console"
+    },
+    "co-room-conveyor": {
+      "id": "co-room-conveyor",
+      "file": "console/exports/co-room-conveyor.png",
+      "size": [
+        32,
+        28
+      ],
+      "master": "console/masters/co-room-conveyor.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Mount identifying conveyor in the assignment panel.",
+      "sha256": "e529332ebae7e2986783d6679eba1be4813bdfaadba3531dfb49451ae0ca3257",
+      "pivot": [
+        16,
+        14
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        1,
+        323,
+        32,
+        28
+      ],
+      "lane": "console"
+    },
+    "co-room-security": {
+      "id": "co-room-security",
+      "file": "console/exports/co-room-security.png",
+      "size": [
+        32,
+        28
+      ],
+      "master": "console/masters/co-room-security.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Mount identifying security in the assignment panel.",
+      "sha256": "6d008c5dab4c46c3e6496a614cc98506a31c783643a52148e7ed278f51c50a94",
+      "pivot": [
+        16,
+        14
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        35,
+        323,
+        32,
+        28
+      ],
+      "lane": "console"
+    },
+    "co-supervisor-slot": {
+      "id": "co-supervisor-slot",
+      "file": "console/exports/co-supervisor-slot.png",
+      "size": [
+        52,
+        50
+      ],
+      "master": "console/masters/co-supervisor-slot.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Empty live cast token/portrait aperture; mask portrait within documented rect.",
+      "sha256": "a53c655247f9ec7421c3155c701364e2985e8def73675e89601180763ed1e859",
+      "insets": [
+        7,
+        7,
+        7,
+        8
+      ],
+      "portraitRect": [
+        8,
+        7,
+        36,
+        35
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        367,
+        199,
+        52,
+        50
+      ],
+      "lane": "console"
+    },
+    "co-witness-slip": {
+      "id": "co-witness-slip",
+      "file": "console/exports/co-witness-slip.png",
+      "size": [
+        98,
+        43
+      ],
+      "master": "console/masters/co-witness-slip.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Public attributed account. Fill speaker, room and delivered words from public report.",
+      "sha256": "a3a5fea60ba6a7e38d98ef952d99563ee71be57cc62cf43171c3774ea830962d",
+      "insets": [
+        24,
+        32,
+        11,
+        8
+      ],
+      "safeText": [
+        27,
+        7,
+        59,
+        24
+      ],
+      "atlas": "atlas/console.8a6ee8c8dfcf.png",
+      "rect": [
+        201,
+        278,
+        98,
+        43
+      ],
+      "lane": "console"
+    },
+    "fl-bubble": {
+      "id": "fl-bubble",
+      "file": "floor/exports/fl-bubble.png",
+      "size": [
+        60,
+        40
+      ],
+      "insets": [
+        8,
+        7,
+        11,
+        7
+      ],
+      "safeText": [
+        8,
+        7,
+        41,
+        26
+      ],
+      "space": "screen",
+      "master": "floor/masters/fl-bubble.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Live addressed speech, parchment face.",
+      "sha256": "c448c4770f0f71d9b3e67ce63305a70f5d268540fe71ccae6b4ac6564548112d",
+      "padding": [
+        8,
+        7,
+        11,
+        7
+      ],
+      "bodyInk": "#17282A",
+      "nameplate": "fl-bubble-nameplate",
+      "scaling": "nine-slice-nearest",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        1,
+        1,
+        60,
+        40
+      ],
+      "lane": "floor"
+    },
+    "fl-bubble-interrupted": {
+      "id": "fl-bubble-interrupted",
+      "file": "floor/exports/fl-bubble-interrupted.png",
+      "size": [
+        60,
+        40
+      ],
+      "insets": [
+        8,
+        7,
+        11,
+        7
+      ],
+      "safeText": [
+        8,
+        7,
+        41,
+        26
+      ],
+      "space": "screen",
+      "master": "floor/masters/fl-bubble-interrupted.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Interrupted utterance with torn corner and cutoff hatching.",
+      "sha256": "7ad0290744290d08acacc660790fa973c12b9efa544f236aa284d35bb56993bc",
+      "padding": [
+        8,
+        7,
+        11,
+        7
+      ],
+      "bodyInk": "#17282A",
+      "nameplate": "fl-bubble-nameplate",
+      "scaling": "nine-slice-nearest",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        63,
+        1,
+        60,
+        40
+      ],
+      "lane": "floor"
+    },
+    "fl-bubble-nameplate": {
+      "id": "fl-bubble-nameplate",
+      "file": "floor/exports/fl-bubble-nameplate.png",
+      "size": [
+        34,
+        16
+      ],
+      "insets": [
+        5,
+        3,
+        5,
+        3
+      ],
+      "safeText": [
+        5,
+        3,
+        24,
+        10
+      ],
+      "space": "screen",
+      "master": "floor/masters/fl-bubble-nameplate.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Highlighted field behind the live speaker name.",
+      "sha256": "934fbdde517e0598dc78257443e17fab384eef050bf89ecaa6229169533c7201",
+      "textInk": "#F4E8CD",
+      "scaling": "nine-slice-nearest",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        1,
+        43,
+        34,
+        16
+      ],
+      "lane": "floor"
+    },
+    "fl-cortex-finished": {
+      "id": "fl-cortex-finished",
+      "file": "floor/exports/fl-cortex-finished.png",
+      "size": [
+        27,
+        23
+      ],
+      "pivot": [
+        13,
+        22
+      ],
+      "space": "world",
+      "master": "floor/masters/fl-cortex-finished.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Finished cortex and press collar at their contact socket.",
+      "sha256": "fcb6654658c6753429e5a41fcef9c2902c1301beb48acfcd01fd85a3e9a3e0e8",
+      "anchor": "ENGINE-projected output slot at carrier height",
+      "depthGroup": "rack",
+      "nativeSlotPitchPx": 35.2,
+      "drawOrder": 1,
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        347,
+        1,
+        27,
+        23
+      ],
+      "lane": "floor"
+    },
+    "fl-gate-check": {
+      "id": "fl-gate-check",
+      "file": "floor/exports/fl-gate-check.png",
+      "size": [
+        36,
+        38
+      ],
+      "pivot": [
+        18,
+        36
+      ],
+      "space": "world",
+      "master": "floor/masters/fl-gate-check.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "A hollow inspection lens indicates the desk is checking the called worker.",
+      "sha256": "d63eca1a8eb0fc333d20528d4647c74a7f2c2a167454c1491675b93f1f79aa44",
+      "anchor": "gate.hinge",
+      "role": "passive indicator on the existing boom housing",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        125,
+        1,
+        36,
+        38
+      ],
+      "lane": "floor"
+    },
+    "fl-gate-held": {
+      "id": "fl-gate-held",
+      "file": "floor/exports/fl-gate-held.png",
+      "size": [
+        36,
+        38
+      ],
+      "pivot": [
+        18,
+        36
+      ],
+      "space": "world",
+      "master": "floor/masters/fl-gate-held.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "The shutter crosses the aperture while Security holds the workers behind bob.",
+      "sha256": "8263445a070a9800b5623d9c1b8bda1e9a3d1a35b6977f193f374b1ec1310ded",
+      "anchor": "gate.hinge",
+      "role": "passive indicator on the existing boom housing",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        163,
+        1,
+        36,
+        38
+      ],
+      "lane": "floor"
+    },
+    "fl-gate-released": {
+      "id": "fl-gate-released",
+      "file": "floor/exports/fl-gate-released.png",
+      "size": [
+        36,
+        38
+      ],
+      "pivot": [
+        18,
+        36
+      ],
+      "space": "world",
+      "master": "floor/masters/fl-gate-released.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "The semaphore arm lifts following the confirmed release or next check.",
+      "sha256": "62c5ac69e04834254dad0ab36ae067a2b75f81e2e87b8a55458b50e95cae986b",
+      "anchor": "gate.hinge",
+      "role": "passive indicator on the existing boom housing",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        201,
+        1,
+        36,
+        38
+      ],
+      "lane": "floor"
+    },
+    "fl-handoff-clear": {
+      "id": "fl-handoff-clear",
+      "file": "floor/exports/fl-handoff-clear.png",
+      "size": [
+        34,
+        37
+      ],
+      "pivot": [
+        17,
+        35
+      ],
+      "space": "world",
+      "master": "floor/masters/fl-handoff-clear.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "A broad check vane marks the supervisor's delivered all-clear for this handoff.",
+      "sha256": "ba90be0add3348c00a1284215fdea5ff2bf80964b396c7667e2655b77f0df951",
+      "anchor": "station control face",
+      "role": "state of an actual handoff at this station",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        239,
+        1,
+        34,
+        37
+      ],
+      "lane": "floor"
+    },
+    "fl-handoff-ready": {
+      "id": "fl-handoff-ready",
+      "file": "floor/exports/fl-handoff-ready.png",
+      "size": [
+        34,
+        37
+      ],
+      "pivot": [
+        17,
+        35
+      ],
+      "space": "world",
+      "master": "floor/masters/fl-handoff-ready.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Receiving cup and suspended piece indicate a staffed stage can accept a handoff.",
+      "sha256": "1269287de235eebd7301fea152214324788c8446386007f54add19e16b55abf9",
+      "anchor": "station control face",
+      "role": "state of an actual handoff at this station",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        275,
+        1,
+        34,
+        37
+      ],
+      "lane": "floor"
+    },
+    "fl-handoff-rushed": {
+      "id": "fl-handoff-rushed",
+      "file": "floor/exports/fl-handoff-rushed.png",
+      "size": [
+        34,
+        37
+      ],
+      "pivot": [
+        17,
+        35
+      ],
+      "space": "world",
+      "master": "floor/masters/fl-handoff-rushed.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Twin feed arrows mark an active rushed handoff.",
+      "sha256": "bd0f1c792f3319bb541b2b4cbeb2648a14a69fc6c7aed60b3299bae3cefa5107",
+      "anchor": "station control face",
+      "role": "state of an actual handoff at this station",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        311,
+        1,
+        34,
+        37
+      ],
+      "lane": "floor"
+    },
+    "fl-post-staffed": {
+      "id": "fl-post-staffed",
+      "file": "floor/exports/fl-post-staffed.png",
+      "size": [
+        24,
+        21
+      ],
+      "pivot": [
+        12,
+        20
+      ],
+      "space": "world",
+      "master": "floor/masters/fl-post-staffed.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "A hung occupancy tag means an operator has physically reached this control.",
+      "sha256": "793a757ea5820a70cc9855864636534f239ecabd61d3ecae8aa87af287da4bab",
+      "anchor": "operator post side of station control face",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        448,
+        1,
+        24,
+        21
+      ],
+      "lane": "floor"
+    },
+    "fl-post-vacant": {
+      "id": "fl-post-vacant",
+      "file": "floor/exports/fl-post-vacant.png",
+      "size": [
+        24,
+        21
+      ],
+      "pivot": [
+        12,
+        20
+      ],
+      "space": "world",
+      "master": "floor/masters/fl-post-vacant.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Empty clips and a dash mark an uncovered operator post.",
+      "sha256": "1ee21c16b3051c8523e4bf0b4d20f4c6b98da1269662ec8dd2514c2a6533ea41",
+      "anchor": "operator post side of station control face",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        474,
+        1,
+        24,
+        21
+      ],
+      "lane": "floor"
+    },
+    "fl-rack-cradle": {
+      "id": "fl-rack-cradle",
+      "file": "floor/exports/fl-rack-cradle.png",
+      "size": [
+        34,
+        22
+      ],
+      "pivot": [
+        17,
+        13
+      ],
+      "space": "world",
+      "master": "floor/masters/fl-rack-cradle.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Socket rollers and rear bed.",
+      "sha256": "b1d52a77f3e7a2c074e8b27237df3bbaad0f7a76e168af990fa6932f0783bead",
+      "anchor": "ENGINE-projected output slot at carrier height",
+      "depthGroup": "rack",
+      "nativeSlotPitchPx": 35.2,
+      "drawOrder": 0,
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        376,
+        1,
+        34,
+        22
+      ],
+      "lane": "floor"
+    },
+    "fl-rack-lip": {
+      "id": "fl-rack-lip",
+      "file": "floor/exports/fl-rack-lip.png",
+      "size": [
+        34,
+        22
+      ],
+      "pivot": [
+        17,
+        13
+      ],
+      "space": "world",
+      "master": "floor/masters/fl-rack-lip.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Separate foreground roller guard.",
+      "sha256": "d01979f92dce2216a13294718c23049884dc9f768a2ce483ab5fe7f9376186c2",
+      "anchor": "ENGINE-projected output slot at carrier height",
+      "depthGroup": "rack",
+      "nativeSlotPitchPx": 35.2,
+      "drawOrder": 2,
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        412,
+        1,
+        34,
+        22
+      ],
+      "lane": "floor"
+    },
+    "fl-tail-left": {
+      "id": "fl-tail-left",
+      "file": "floor/exports/fl-tail-left.png",
+      "size": [
+        12,
+        12
+      ],
+      "pivot": [
+        0,
+        11
+      ],
+      "space": "screen",
+      "master": "floor/masters/fl-tail-left.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Pointed paper tail linking the bubble to its speaker.",
+      "sha256": "6c9e4996f229e93f46822611362117f037c747b6b4e2efda0eb50a66bfcb59b1",
+      "panelSeam": [
+        7,
+        0
+      ],
+      "scaling": "fixed pixel size",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        37,
+        43,
+        12,
+        12
+      ],
+      "lane": "floor"
+    },
+    "fl-tail-right": {
+      "id": "fl-tail-right",
+      "file": "floor/exports/fl-tail-right.png",
+      "size": [
+        12,
+        12
+      ],
+      "pivot": [
+        11,
+        11
+      ],
+      "space": "screen",
+      "master": "floor/masters/fl-tail-right.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Pointed paper tail linking the bubble to its speaker.",
+      "sha256": "ddad42ccb0cd718f22c5c286513f86e484757f53f10938b7fbedc7e56cc8cbb8",
+      "panelSeam": [
+        4,
+        0
+      ],
+      "scaling": "fixed pixel size",
+      "atlas": "atlas/floor.861a692d41be.png",
+      "rect": [
+        51,
+        43,
+        12,
+        12
+      ],
+      "lane": "floor"
+    },
+    "sec-custody-held": {
+      "id": "sec-custody-held",
+      "file": "security/exports/sec-custody-held.png",
+      "size": [
+        64,
+        48
+      ],
+      "master": "security/masters/sec-custody-held.ora",
+      "purpose": "Security custody held",
+      "placement": "UI insert inside an attributed Security report, alongside live worker/shift text; no scenery or movement anchor.",
+      "sha256": "6950fb3f8b4c3fde7f44aaa17712619b618978f7d21828e26e61ce1e890a3bff",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        32,
+        44
+      ],
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        189,
+        91,
+        64,
+        48
+      ],
+      "lane": "security"
+    },
+    "sec-custody-released": {
+      "id": "sec-custody-released",
+      "file": "security/exports/sec-custody-released.png",
+      "size": [
+        64,
+        48
+      ],
+      "master": "security/masters/sec-custody-released.ora",
+      "purpose": "Release registered at the shift boundary",
+      "placement": "UI insert inside an attributed Security report, alongside live worker/shift text; no scenery or movement anchor.",
+      "sha256": "8ae4de49d77b9d28222261268f6af85666156035a07fb78aa55f9e1a23d7cecf",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        32,
+        44
+      ],
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        255,
+        91,
+        64,
+        48
+      ],
+      "lane": "security"
+    },
+    "sec-focus-ring": {
+      "id": "sec-focus-ring",
+      "file": "security/exports/sec-focus-ring.png",
+      "size": [
+        24,
+        24
+      ],
+      "master": "security/masters/sec-focus-ring.ora",
+      "purpose": "Keyboard, switch or controller focus",
+      "placement": "Final overlay around the interactive target; keep the center transparent.",
+      "sha256": "bb95c1fd1a089233f49a927bacd05ae4da011c08be9da96c41d442e2c3bfefcc",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "insets": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "safeText": [
+        9,
+        9,
+        6,
+        6
+      ],
+      "stretch": "Nine-slice at target bounds. Never stretch the corner brackets.",
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        453,
+        91,
+        24,
+        24
+      ],
+      "lane": "security"
+    },
+    "sec-id-bob": {
+      "id": "sec-id-bob",
+      "file": "security/exports/sec-id-bob.png",
+      "size": [
+        40,
+        56
+      ],
+      "master": "security/masters/sec-id-bob.ora",
+      "purpose": "Inspectable original credential belonging to bob",
+      "placement": "Player-visible credential close-up, only when public custody/inspection permits.",
+      "sha256": "8154b30ee52c4e09cbfe68f2c2d86e6103572148966c2a587794dff65f865fbf",
+      "source": [
+        "security-original-pixelwork",
+        "bob-day-one-head"
+      ],
+      "pivot": [
+        20,
+        49
+      ],
+      "safeText": [
+        6,
+        37,
+        28,
+        9
+      ],
+      "slots": {
+        "holder": [
+          6,
+          37,
+          28,
+          9
+        ]
+      },
+      "scale": "Integer 2x or larger for live holder text.",
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        147,
+        91,
+        40,
+        56
+      ],
+      "lane": "security"
+    },
+    "sec-id-bob-world": {
+      "id": "sec-id-bob-world",
+      "file": "security/exports/sec-id-bob-world.png",
+      "size": [
+        15,
+        19
+      ],
+      "master": "security/masters/sec-id-bob-world.ora",
+      "purpose": "Desk/hand original credential",
+      "placement": "Hand or desk socket when the original is publicly visible. A hidden stowed item has no world sprite.",
+      "sha256": "feab2eec4f756983c52eeaaf3299a0dafef34827e1f67051b05f34ba36ae000a",
+      "source": [
+        "security-original-pixelwork",
+        "bob-day-one-head"
+      ],
+      "pivot": [
+        7,
+        17
+      ],
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        27,
+        181,
+        15,
+        19
+      ],
+      "lane": "security"
+    },
+    "sec-panel-active": {
+      "id": "sec-panel-active",
+      "file": "security/exports/sec-panel-active.png",
+      "size": [
+        144,
+        88
+      ],
+      "master": "security/masters/sec-panel-active.ora",
+      "purpose": "Contextual room intervention / active",
+      "placement": "Overlay at lower edge of selected room, beneath frontmost semantic text/controls. Use live issuer/room/action labels, no world pausing.",
+      "sha256": "81bf47b949bd04475139896ec0b6bb6acd381f0ecfcd5583fec96a165877e90f",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "insets": [
+        24,
+        23,
+        8,
+        8
+      ],
+      "safeText": [
+        10,
+        26,
+        124,
+        52
+      ],
+      "slots": {
+        "stateHeader": [
+          27,
+          6,
+          106,
+          13
+        ],
+        "content": [
+          10,
+          26,
+          124,
+          52
+        ]
+      },
+      "stretch": "Stretch center and edges independently with nearest sampling. Header safe area uses 27px left, 11px right. Body uses 10px left/right, 26px top, 10px bottom. Glyph and bevel retain their native dimensions.",
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        1,
+        1,
+        144,
+        88
+      ],
+      "lane": "security"
+    },
+    "sec-panel-committed": {
+      "id": "sec-panel-committed",
+      "file": "security/exports/sec-panel-committed.png",
+      "size": [
+        144,
+        88
+      ],
+      "master": "security/masters/sec-panel-committed.ora",
+      "purpose": "Contextual room intervention / committed",
+      "placement": "Overlay at lower edge of selected room, beneath frontmost semantic text/controls. Use live issuer/room/action labels, no world pausing.",
+      "sha256": "a16b8c33d5174731f6b9e318f2e7f42ec096e384bf20e680a052d938053eaf6f",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "insets": [
+        24,
+        23,
+        8,
+        8
+      ],
+      "safeText": [
+        10,
+        26,
+        124,
+        52
+      ],
+      "slots": {
+        "stateHeader": [
+          27,
+          6,
+          106,
+          13
+        ],
+        "content": [
+          10,
+          26,
+          124,
+          52
+        ]
+      },
+      "stretch": "Stretch center and edges independently with nearest sampling. Header safe area uses 27px left, 11px right. Body uses 10px left/right, 26px top, 10px bottom. Glyph and bevel retain their native dimensions.",
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        147,
+        1,
+        144,
+        88
+      ],
+      "lane": "security"
+    },
+    "sec-panel-expired": {
+      "id": "sec-panel-expired",
+      "file": "security/exports/sec-panel-expired.png",
+      "size": [
+        144,
+        88
+      ],
+      "master": "security/masters/sec-panel-expired.ora",
+      "purpose": "Contextual room intervention / expired",
+      "placement": "Overlay at lower edge of selected room, beneath frontmost semantic text/controls. Use live issuer/room/action labels, no world pausing.",
+      "sha256": "925f0c664bb30a97404ecfe0ea0eb9efbe02298a3788d8d21505be81f8b34ec1",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "insets": [
+        24,
+        23,
+        8,
+        8
+      ],
+      "safeText": [
+        10,
+        26,
+        124,
+        52
+      ],
+      "slots": {
+        "stateHeader": [
+          27,
+          6,
+          106,
+          13
+        ],
+        "content": [
+          10,
+          26,
+          124,
+          52
+        ]
+      },
+      "stretch": "Stretch center and edges independently with nearest sampling. Header safe area uses 27px left, 11px right. Body uses 10px left/right, 26px top, 10px bottom. Glyph and bevel retain their native dimensions.",
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        293,
+        1,
+        144,
+        88
+      ],
+      "lane": "security"
+    },
+    "sec-panel-spent": {
+      "id": "sec-panel-spent",
+      "file": "security/exports/sec-panel-spent.png",
+      "size": [
+        144,
+        88
+      ],
+      "master": "security/masters/sec-panel-spent.ora",
+      "purpose": "Contextual room intervention / spent",
+      "placement": "Overlay at lower edge of selected room, beneath frontmost semantic text/controls. Use live issuer/room/action labels, no world pausing.",
+      "sha256": "824229747a9329defc7fedace9e12f59ce52aec40234c0f6209fc7fce80e2e75",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "insets": [
+        24,
+        23,
+        8,
+        8
+      ],
+      "safeText": [
+        10,
+        26,
+        124,
+        52
+      ],
+      "slots": {
+        "stateHeader": [
+          27,
+          6,
+          106,
+          13
+        ],
+        "content": [
+          10,
+          26,
+          124,
+          52
+        ]
+      },
+      "stretch": "Stretch center and edges independently with nearest sampling. Header safe area uses 27px left, 11px right. Body uses 10px left/right, 26px top, 10px bottom. Glyph and bevel retain their native dimensions.",
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        1,
+        91,
+        144,
+        88
+      ],
+      "lane": "security"
+    },
+    "sec-pass-expired": {
+      "id": "sec-pass-expired",
+      "file": "security/exports/sec-pass-expired.png",
+      "size": [
+        64,
+        40
+      ],
+      "master": "security/masters/sec-pass-expired.ora",
+      "purpose": "Expired shift permission after bell",
+      "placement": "Inspection insert. Live case data owns the holder, issuer and date. Render a readable external label when showing a compact card.",
+      "sha256": "bcb92f2c1ff25964aa48580ed335dc5808989e26de42ae165766758df86c33e6",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        31,
+        34
+      ],
+      "safeText": [
+        17,
+        4,
+        31,
+        29
+      ],
+      "slots": {
+        "holder": [
+          17,
+          4,
+          31,
+          8
+        ],
+        "issuer": [
+          17,
+          14,
+          31,
+          8
+        ],
+        "validThrough": [
+          17,
+          25,
+          31,
+          8
+        ]
+      },
+      "scale": "At least 2x in an inspection insert; 3x for full-length issuer names.",
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        321,
+        91,
+        64,
+        40
+      ],
+      "lane": "security"
+    },
+    "sec-pass-expired-world": {
+      "id": "sec-pass-expired-world",
+      "file": "security/exports/sec-pass-expired-world.png",
+      "size": [
+        21,
+        13
+      ],
+      "master": "security/masters/sec-pass-expired-world.ora",
+      "purpose": "Room-scale daily pass expired",
+      "placement": "Dedicated permission/desk insert or temporary pass socket. A permission record cannot move the original credential.",
+      "sha256": "0aeb5726a27ba868bb9b4736663f226f189fe491f8db6436397215daff5257f3",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        10,
+        10
+      ],
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        44,
+        181,
+        21,
+        13
+      ],
+      "lane": "security"
+    },
+    "sec-pass-issued": {
+      "id": "sec-pass-issued",
+      "file": "security/exports/sec-pass-issued.png",
+      "size": [
+        64,
+        40
+      ],
+      "master": "security/masters/sec-pass-issued.ora",
+      "purpose": "Confirmed shift-only permission, valid to bell",
+      "placement": "Inspection insert. Live case data owns the holder, issuer and date. Render a readable external label when showing a compact card.",
+      "sha256": "ca8bab0c228095cedf623ecf604965797f64b68b8b79f9471d9961890ac4138f",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        31,
+        34
+      ],
+      "safeText": [
+        17,
+        4,
+        31,
+        29
+      ],
+      "slots": {
+        "holder": [
+          17,
+          4,
+          31,
+          8
+        ],
+        "issuer": [
+          17,
+          14,
+          31,
+          8
+        ],
+        "validThrough": [
+          17,
+          25,
+          31,
+          8
+        ]
+      },
+      "scale": "At least 2x in an inspection insert; 3x for full-length issuer names.",
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        387,
+        91,
+        64,
+        40
+      ],
+      "lane": "security"
+    },
+    "sec-pass-issued-world": {
+      "id": "sec-pass-issued-world",
+      "file": "security/exports/sec-pass-issued-world.png",
+      "size": [
+        21,
+        13
+      ],
+      "master": "security/masters/sec-pass-issued-world.ora",
+      "purpose": "Room-scale daily pass issued",
+      "placement": "Dedicated permission/desk insert or temporary pass socket. A permission record cannot move the original credential.",
+      "sha256": "040d8a9a06b0c9950918febb02bee5e6b7220711610b36feff5fb255e303d6fb",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        10,
+        10
+      ],
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        67,
+        181,
+        21,
+        13
+      ],
+      "lane": "security"
+    },
+    "sec-signal-action": {
+      "id": "sec-signal-action",
+      "file": "security/exports/sec-signal-action.png",
+      "size": [
+        24,
+        24
+      ],
+      "master": "security/masters/sec-signal-action.ora",
+      "purpose": "Desk case available for action",
+      "placement": "Anchor to local desk; composite above fixture/actors and below speech, with at least 44 x 44 CSS px semantic hit area. No automatic opening.",
+      "sha256": "24747d05a21058b8f49ba8a78750f8fb73ef0a00e747f67a7d090ad3a6d4586d",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        12,
+        23
+      ],
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        479,
+        91,
+        24,
+        24
+      ],
+      "lane": "security"
+    },
+    "sec-signal-report": {
+      "id": "sec-signal-report",
+      "file": "security/exports/sec-signal-report.png",
+      "size": [
+        24,
+        24
+      ],
+      "master": "security/masters/sec-signal-report.ora",
+      "purpose": "Read-only desk report",
+      "placement": "Anchor to local desk; composite above fixture/actors and below speech, with at least 44 x 44 CSS px semantic hit area. No automatic opening.",
+      "sha256": "c8694645b0fd7ea9d5f13c5fcabad445788a2678762fe04c2252d24fa3e265a3",
+      "source": [
+        "security-original-pixelwork"
+      ],
+      "pivot": [
+        12,
+        23
+      ],
+      "atlas": "atlas/security.12862036f88d.png",
+      "rect": [
+        1,
+        181,
+        24,
+        24
+      ],
+      "lane": "security"
+    }
+  },
+  "lanes": {
+    "security": {
+      "version": "1.0.0",
+      "family": "security",
+      "idPrefix": "sec-",
+      "units": "native integer pixels; rectangles [x,y,w,h], origin top-left. Pivot denotes anchor relative to source canvas.",
+      "palette": "B / Raking light. Cool oxidised enamel and brushed steel; upper-left light, matte paper, restrained brass and high-contrast ivory status shapes. Screen-space pieces are prelit.",
+      "origins": {
+        "security-original-pixelwork": {
+          "creator": "Loopforge Days 2–4 Security art lane, 2026-11-19",
+          "method": "Original per-pixel authored raster and layer geometry. No external stock or font pixels in exports.",
+          "rights": "Original commissioned project art supplied to the owner for Loopforge."
+        },
+        "bob-day-one-head": {
+          "creator": "Loopforge Day One calibration / bob r2",
+          "rights": "Owner-supplied Loopforge art from merged PR #155, reused according to the Day One handoff.",
+          "commit": "08c8db11",
+          "archive": "01-style-B.zip",
+          "sha256": "4982f06004024fed4e5852d965cc3237bbc2ef7ea158c00b00e1c16bbb1141bf",
+          "layers": {
+            "bob/char-bob-neutral-se-r2-03-torso-head.png": "bd2c149e58cdaaba11da2a73b294fced26a46e761c2464ca32dcf84fb37d58c8",
+            "bob/char-bob-neutral-se-r2-05-light-security.png": "8aa7869f9f9eb67a684f6d85abcbdfbf51fa547c7c9b50fc67b16633447e953a",
+            "bob/char-bob-neutral-se-r2-07-emissive.png": "75525a3315bef6ae690c51cb70a479c5847a333862bab371921da0ff5854114b"
+          },
+          "sourceCrop": [
+            114,
+            141,
+            144,
+            167
+          ],
+          "cropConvention": "left,top,right exclusive,bottom exclusive",
+          "transform": "Neutral SE head/torso with Security light and emission clipped to body alpha, nearest-neighbour crop. No max pixels reused."
+        }
+      }
+    },
+    "floor": {
+      "version": "loopforge.days-2-4.floor-art/1",
+      "palette": "Day One B / Raking light",
+      "sourceRights": "Original commissioned Loopforge floor art. Room materials reference owner-provided calibration; no external stock or fonts.",
+      "geometry": "approved-factory/day-one-3",
+      "worldPixelsPerMetre": 64,
+      "sourceInputs": [
+        "PR 155 / 08c8db11 / 01-style-B.zip / floor-palette-roles-r02.json",
+        "PR 155 / 08c8db11 / 03-fourth-id-check.zip / exports/fixtures/sec-boom-states.png",
+        "docs/loopforge/production/sprite-briefs/briefs.json#mach-output,prop-brain-cortex",
+        "apps/lab/lib/loopforge/spatial/approved-factory.json"
+      ],
+      "nativeAxes": "x east, world y south. Floor Y flattens during projection. Upright sprites scale uniformly after projecting their anchor.",
+      "worldAnchors": {
+        "gateHingeM": [
+          124.9,
+          134
+        ],
+        "operatorPostsM": {
+          "intake": [
+            119.7,
+            144.4
+          ],
+          "wash": [
+            123.7,
+            144.4
+          ],
+          "belt": [
+            127.7,
+            144.4
+          ],
+          "forge": [
+            131.7,
+            144.4
+          ]
+        },
+        "outputSlotsM": [
+          [
+            135.05,
+            147
+          ],
+          [
+            135.6,
+            147
+          ],
+          [
+            136.15,
+            147
+          ]
+        ],
+        "outputPlaneM": 0.72,
+        "placement": "Read slot positions from the running view. Project each occupied or empty socket; composite rear, item, lip at the same projected point."
+      }
+    },
+    "console": {
+      "version": "1.0.0",
+      "lane": "console",
+      "pixelArt": "B / Raking light; straight RGBA sRGB palette; nearest-neighbor; highlights top left. All native exports contain graphics only.",
+      "palette": {
+        "ink": "#111a1b",
+        "shadow": "#152527",
+        "frame": "#26373a",
+        "steel": "#435657",
+        "edge": "#718080",
+        "mint": "#a6bcad",
+        "glass": "#21383a",
+        "deep": "#101d20",
+        "brass": "#8a6742",
+        "gold": "#c29458",
+        "lamp": "#f2cf83",
+        "warm": "#c1a981",
+        "paper": "#e2d2ac",
+        "ivory": "#f1e3c1",
+        "print": "#373a33",
+        "sage": "#81917a",
+        "night": "#23333d",
+        "slate": "#425463",
+        "blue": "#7f9a9e"
+      },
+      "rights": "Original project-authored hardware and icon drawings commissioned for Loopforge. Original Day One cast and Foundry plates are used solely as contextual proof material.",
+      "coordinates": "Rect = [x,y,width,height], native px, upper left origin. Insets = [left,top,right,bottom]. Nine-slice native borders at 1x minimum, plateau center may stretch. Render text separately in CSS px. Focus restores to the initiating control.",
+      "zOrder": [
+        "assembly backing",
+        "bid / docket",
+        "ticket / cast socket",
+        "runtime cast or values",
+        "focus ring"
+      ]
+    }
+  },
+  "integration": "binding/shift-art.mjs",
+  "handoff": "ENGINE.md",
+  "gallery": "gallery.json",
+  "sourceFiles": "The file and master fields are paths inside the editable ZIP."
+}

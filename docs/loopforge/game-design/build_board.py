@@ -415,13 +415,18 @@ supervisor_panel = (
     '<dialog id="supervisor-art-dialog" aria-labelledby="supervisor-art-title"><div><h3 id="supervisor-art-title"></h3>'
     '<button type="button" autofocus>Close ×</button></div><img alt=""><p></p></dialog>'
 )
+art_review_source = (ROOT/'days-2-4-art.md').read_text()
+art_review_title, art_review_intro, _ = render_narrative(art_review_source, {})
+art_review_panel = (ROOT/'days-2-4-gallery.html').read_text().replace(
+    '{{title}}', e(art_review_title)).replace('{{intro}}', art_review_intro)
 plan_source = (ROOT.parent/'production/DAY_ONE_PIXEL_ART_PLAN.md').read_text()
 plan_title, plan_body, _ = render_narrative(plan_source, {})
 # Nest the document headings below the board chapter and scope their deep links.
 plan_body = re.sub(r'<h2 id="([^"]+)">', r'<h3 id="pixel-art-plan-\1">', plan_body).replace('</h2>', '</h3>')
 pixel_art_plan = (
-    f'<header class="section-head"><h2>{e(plan_title.removeprefix("Loopforge | "))}</h2></header>'
-    f'{build_gallery(ROOT, OUT)}<div class="day-one-script">{plan_body}</div>'
+    '<header class="section-head"><h2>Pixel-art production plan</h2></header>'
+    f'{art_review_panel}{build_gallery(ROOT, OUT)}<div class="day-one-script">'
+    f'<h3>{e(plan_title.removeprefix("Loopforge | "))}</h3>{plan_body}</div>'
 )
 
 panels=[('player-desires','Player desires & scenarios',desires),('day-one-intro',intro_title,intro),('floor-layout',floor_title,floor_panel),('engine-boundary','Engine boundary',engine),('floor-scale','Factory floor: scale & feel',floor_scale),('pixel-art-plan','Pixel-art production plan',pixel_art_plan),('narrative-cast','The cast',cast),('writing-style',writing_style_title,writing_style),('dramaturgy','Character dramaturgy and narrative design',dramaturgy),('supervisor-rooms','Supervisor × room',supervisor_panel),('agents','Agents: character & motion',agent_direction),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('model-briefs','Model briefs',render_model_briefs()),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
@@ -448,10 +453,22 @@ gallery_script_hash = hashlib.sha256((ROOT/'day-one-gallery.js').read_bytes()).h
 page = page.replace('</body>', f'<script src="day-one-gallery.js?v={gallery_script_hash}"></script></body>')
 gallery_hash = hashlib.sha256((ROOT/'day-one-gallery.css').read_bytes()).hexdigest()[:12]
 gallery_css = f'<link rel="stylesheet" href="day-one-gallery.css?v={gallery_hash}">'
+shift_gallery = 'days-2-4-gallery'
+for ext in ('css', 'js'):
+    asset = ROOT / f'{shift_gallery}.{ext}'
+    shutil.copyfile(asset, OUT/asset.name)
+    asset_url = f'/loopforge-design/{asset.name}?v={hashlib.sha256(asset.read_bytes()).hexdigest()[:12]}'
+    if ext == 'css':
+        gallery_css += f'<link rel="stylesheet" href="{asset_url}">'
+    else:
+        page = page.replace('</body>', f'<script src="{asset_url}"></script></body>')
 (OUT/'index.html').write_text(page.replace('</head>', intro_css+cast_css+gallery_css+studio_css+'</head>'))
 
 # A complete, static copy has every path and character, including text that the board reveals on selection.
 full=head+'<main class="record"><a href="index.html">← Interactive design board</a><header class="hero" style="display:block"><span class="kicker">Author reference · contains story spoilers</span><h1>'+e(d['title'])+'</h1>'+p(d['version'])+p(d['purpose'])+p(d['statusNote'])+'</header>'
+art_review_link = '[Inspect the proof comparisons](/stepanoskin/loopforge/design#days-2-4-art)'
+_, review_links, _ = render_narrative('# Review\n\n' + art_review_link, {})
+full += '<section><h2>'+e(art_review_title)+'</h2>'+art_review_intro+review_links+'</section>'
 full+='<section>'+desires+'</section><section id="day-one-intro">'+intro.replace('href="#day-one-art-calibration"', 'href="/stepanoskin/loopforge/design#day-one-art-calibration"')+'</section><section id="floor-layout">'+floor_record+'</section><section id="narrative-cast">'+cast+'</section><section id="writing-style">'+writing_style+'</section><section id="dramaturgy">'+dramaturgy+'</section>'
 full+='<section>'+loop_study_full+'</section><section>'+conveyor_full+'</section><section>'+first_turn+'</section><section id="agents">'+agent_direction+'</section><section id="floor-scale">'+floor_scale+'</section>'
 full+='<section><h2>World and story grounding</h2>'+world+'</section><section><h2>Act 1 progression</h2>'+early_rules+''.join(stage(s) for s in d['stages'])+act2+'</section>'
@@ -608,6 +625,7 @@ md.append(intro_source.replace('# Day 1 intro', '## Day 1 intro', 1).strip())
 mh(floor_title)
 mp(f'[Play the 2D floor rehearsal]({rehearsal_url}) · [Explore the approved layout]({proposal_url}) · [Watch the 1× recording]({recording_url}) · [Full-size floor plan]({map_url})')
 md.append('[The cast — portraits and character briefs](/stepanoskin/loopforge/design#narrative-cast)')
+md.append(art_review_source.replace('# ', '## ', 1).strip()+'\n\n'+art_review_link)
 md.append(writing_style_source.replace('# Writing style', '## Writing style', 1).strip())
 (OUT/'GAME_DESIGN.md').write_text('\n\n'.join(md)+'\n')
 

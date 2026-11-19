@@ -29,9 +29,11 @@ Use *Designing Games* where its principles inform visual feedback, attention, em
 
 ## Current handoff
 
-**18 November 2026 · latest owner feedback.** B / Raking light is the selected calibration treatment. bob and max are the quality/style benchmark; their directional views and action frames may still need adjustment. Supervisor art needs improvement to meet that standard. Overview compositions need to be closer, informed by LEVEL's sketches.
+**19 November 2026 · Days 2–4 art pack v1.** The owner commissioned the art and ENGINE work in parallel. B / Raking light remains the selected treatment. At the Security desk a quiet signal opens the case on tap. The player can inspect it while the shift continues. The whole queue behind bob waits for Security to resolve the case.
 
-The four calibration lanes are published, but they are art proofs, not a complete live-game or full-intro asset acceptance. Missing cast/action/environment coverage and phone contact readability must remain explicit. Do not mark PR #155 as a complete finished sprite set.
+Use the [Days 2–4 review gallery](/stepanoskin/loopforge/design#days-2-4-art), [editable asset pack](/loopforge-design/days-2-4-art/v1/Loopforge-Days-2-4-Art.zip), [runtime manifest](/loopforge-design/days-2-4-art/v1/manifest.json) and [ENGINE handoff](/loopforge-design/days-2-4-art/v1/ENGINE.md). The three native atlases cover Security credentials and decisions, floor signals and speech, and the Producer console through shift close. The published pack includes the public-state adapter, layered masters and player-facing proofs. ENGINE’s separate workshop edition also includes capture fixtures and the private inspection review.
+
+The gallery shows composed art at specified viewports. ENGINE owns the live binding, animation timing and the 1× interaction window. The owner’s final acceptance takes place in the complete live 2D prototype. LEVEL and ENGINE own physical detention placement. Until they supply an anchor, use the custody record insert. bob and max remain the cast benchmark. Other worker identities, directional movement and supervisory acting still need their separate character pass.
 
 ## Delivery and continuity
 

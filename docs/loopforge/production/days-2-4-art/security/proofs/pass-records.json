@@ -1,0 +1,87 @@
+{
+  "provenance": "Observed isolated execution of the in-progress ENGINE checkout. This records the permission state for art QA; replay package and published protocol are owned by ENGINE.",
+  "schema": "shift-floor/1",
+  "seed": "early",
+  "sources": {
+    "contract.ts": "9dc94561208ccec7118595db26e01319894983f6c1ef91ffa8e2efbb543795e4",
+    "simulation.ts": "652111916a7b6982e7ca857d3c55c5b27592db582a02bc445582ba5721194566",
+    "events.ts": "64aa57af469b541dba046fb15aa4a455b3fef56d5bf306f114ba58438b80eed7",
+    "conveyor.ts": "b8ae0037216d7179ca66e1fb9d889af189d27c88146acaa3953c708d6cebad2a",
+    "navigation.ts": "412c53777cc04e4a7c7742856d2d6009a256b427d4f588cef628dc42982c1f89",
+    "inheritance.json": "76799e5d6c9e1bd50bad76d98f2a404894e1c9101af0fe582511560db84b7228"
+  },
+  "commands": [
+    {
+      "id": "art-appoint",
+      "day": 2,
+      "tick": 5463,
+      "action": "appoint",
+      "target": "LIMEN",
+      "room": "security",
+      "incident": "morning"
+    },
+    {
+      "id": "art-pass",
+      "day": 2,
+      "tick": 5671,
+      "action": "issue-pass",
+      "target": "bob",
+      "room": "security",
+      "incident": "D2-missing-bob"
+    }
+  ],
+  "issued": {
+    "tick": 5671,
+    "day": 2,
+    "phase": "shift",
+    "pass": {
+      "holder": "bob",
+      "issuer": "Producer",
+      "day": 2,
+      "valid": true
+    },
+    "event": {
+      "seq": 13,
+      "tick": 5671,
+      "day": 2,
+      "kind": "pass.issued",
+      "room": "security",
+      "anchor": "desk.register",
+      "at": [
+        126200,
+        130250
+      ],
+      "actor": "Producer",
+      "subject": "bob",
+      "text": "Valid for shift 2",
+      "audience": []
+    }
+  },
+  "expired": {
+    "tick": 7263,
+    "day": 2,
+    "phase": "close",
+    "pass": {
+      "holder": "bob",
+      "issuer": "Producer",
+      "day": 2,
+      "valid": false
+    },
+    "event": {
+      "seq": 119,
+      "tick": 7263,
+      "day": 2,
+      "kind": "pass.expired",
+      "room": "security",
+      "anchor": "desk.register",
+      "at": [
+        126200,
+        130250
+      ],
+      "actor": "LIMEN",
+      "subject": "bob",
+      "text": "Pass expired at the bell",
+      "audience": []
+    }
+  }
+}

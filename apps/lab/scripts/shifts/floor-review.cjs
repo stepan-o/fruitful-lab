@@ -61,6 +61,7 @@ async function record(browser, build, viewport) {
   try {
     await page.goto(process.env[candidate ? 'SHIFT_AFTER' : 'SHIFT_BEFORE']);
     await restore(held);
+    if (candidate) await page.waitForFunction(() => Number.isInteger(window.visibleRaster));
     const sec = candidate && await readRaster();
     assert.equal(await page.locator('#policy').textContent(), 'Line held');
     await snap('held');

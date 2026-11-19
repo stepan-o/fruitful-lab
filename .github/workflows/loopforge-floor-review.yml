@@ -1,0 +1,50 @@
+name: Compare the two shifts floors at normal speed
+on:
+  push:
+    branches: [codex/shifts-raking-player]
+    paths:
+      - 'apps/lab/lib/loopforge/shifts/**'
+      - 'apps/lab/public/loopforge-shifts/viewer.js'
+      - 'apps/lab/scripts/shifts/floor-review.cjs'
+      - 'apps/lab/scripts/shifts/portable*.py'
+      - '.github/workflows/loopforge-floor-review.yml'
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      BASE_SHA: 73658a934ccf9fab0bfe72657a266ad70d5bb299
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install the recording browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/review" playwright@1.56.1
+          "$RUNNER_TEMP/review/node_modules/.bin/playwright" install --with-deps chromium
+          echo "NODE_PATH=$RUNNER_TEMP/review/node_modules" >> "$GITHUB_ENV"
+      - name: Record both room checkpoints on desktop and touch
+        env:
+          SHIFT_BEFORE: http://127.0.0.1:4174/loopforge-shifts/index.html
+          SHIFT_AFTER: http://127.0.0.1:4173/loopforge-shifts/index.html
+        run: |
+          mkdir -p "$RUNNER_TEMP/baseline"
+          git archive "$BASE_SHA" apps/lab/public/loopforge-{intro,shifts} apps/lab/public/loopforge-design/days-2-4-art/v1 | tar -x -C "$RUNNER_TEMP/baseline"
+          python3 -m http.server 4174 --bind 127.0.0.1 --directory "$RUNNER_TEMP/baseline/apps/lab/public" > "$RUNNER_TEMP/before.log" 2>&1 &
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory apps/lab/public > "$RUNNER_TEMP/after.log" 2>&1 &
+          node apps/lab/scripts/shifts/floor-review.cjs
+      - name: Restore both checkpoints in the offline file
+        run: |
+          python3 apps/lab/scripts/shifts/portable.py "$RUNNER_TEMP/portable"
+          node apps/lab/scripts/shifts/portable-check.cjs "$RUNNER_TEMP/portable/Loopforge-Days-2-4.html"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: raking-floor-gameplay
+          path: shift-evidence/floors
+          retention-days: 30

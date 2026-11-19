@@ -3,12 +3,29 @@ import type {ArtView,Skin} from './skin';
 import geometry from '../intro/geometry.json';
 import {type Room,stations} from './contract';
 import atlas from '../../../public/loopforge-intro/sprites.json';
+import floorPack from '../../../public/loopforge-design/floor-correction/v1/manifest.json';
+import introSprites from './intro-sprites.json';
+
 type Images = Record<string,CanvasImageSource>;
-export const assets=['tile-security','tile-forge','desk-back','desk-front','press-back','press-front','char-limen-check','char-stiletto-check','char-bob-walk-S','char-max-walk-S','bob-security','bob-forge','boom'] as const;
-export async function loadArt():Promise<Images>{
-  const images:Images={}; await Promise.all(assets.map(async name=>{
-    const im=new Image();im.src='../loopforge-intro/'+name+'.webp';await im.decode();images[name]=im;
-  }));return images;
+declare global { interface Window { floorImages?: Record<string,string> } }
+const floorRoot = '../loopforge-design/floor-correction/v1/';
+let loading: Promise<Images> | undefined;
+
+export function loadArt(): Promise<Images> {
+  if (!loading) {
+    const images: Images = {};
+    const sources = introSprites.map(name => [name, '../loopforge-intro/' + name + '.webp']);
+    for (const {material, room} of Object.values(floorPack.rooms)) {
+      for (const {file} of [material, room]) sources.push([file, floorRoot + file]);
+    }
+    loading = Promise.all(sources.map(async ([name, url]) => {
+      const image = new Image();
+      image.src = window.floorImages?.[name] ?? url;
+      await image.decode();
+      images[name] = image;
+    })).then(() => images);
+  }
+  return loading;
 }
 export function drawBidPortrait(canvas:HTMLCanvasElement,lead:'LIMEN'|'STILETTO',images:Images){
   const key=lead==='LIMEN'?'char-limen-check':'char-stiletto-check';
@@ -25,25 +42,48 @@ export function floorView(w:number,h:number,room:Room){
   const xy=(x:number,y:number)=>[w/2+(x-center)*scale,h*.58+(y-cy)*scale*.67];
   return {sec,scale,xy};
 }
-// A room change or resize invalidates the tile layer. Verified worker ticks do not.
-let backdrop:{tile:CanvasImageSource; w:number; h:number; canvas:HTMLCanvasElement}|undefined;
-function floorTiles(ctx:CanvasRenderingContext2D,w:number,h:number,tile:CanvasImageSource,scale:number,sec:boolean) {
-  if (!backdrop || backdrop.tile!==tile || backdrop.w!==w || backdrop.h!==h) {
-    const canvas=document.createElement('canvas');
-    canvas.width=w;canvas.height=h;
-    const base=canvas.getContext('2d')!;
-    base.imageSmoothingEnabled=false;
-    base.fillStyle=sec?'#213d42':'#493522';base.fillRect(0,0,w,h);
-    const tw=Math.round(4*scale),th=Math.round(tw*.67);
-    for(let x=0;x<w;x+=tw)for(let y=0;y<h;y+=th)base.drawImage(tile,x,y,tw,th);
-    backdrop={tile,w,h,canvas};
+// Retain one raster per room. A resize or camera change replaces that room's raster.
+const backdrops = new Map<Room, {key: string; canvas: HTMLCanvasElement}>();
+function floorBackdrop(room: Room, w: number, h: number, view: ReturnType<typeof floorView>, images: Images) {
+  const {material, room: detail} = floorPack.rooms[room];
+  const {xy} = view;
+  const [ox, oy] = material.originM;
+  const [dx, dy] = material.extentM;
+  const [left, top] = xy(ox, oy);
+  const [right, bottom] = xy(ox + dx, oy + dy);
+  const key = [floorPack.version, w, h, left, top, right, bottom].join('|');
+  const cached = backdrops.get(room);
+  if (cached?.key === key) return cached.canvas;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = w;
+  canvas.height = h;
+  const base = canvas.getContext('2d')!;
+  base.imageSmoothingEnabled = false;
+  base.globalCompositeOperation = 'source-over';
+  base.globalAlpha = 1;
+  // The canvas bounds clip partial cells and the single room layer to the camera.
+  function draw(file: string, x: number, y: number, width: number, height: number) {
+    const [x0, y0] = xy(x, y).map(Math.round);
+    const [x1, y1] = xy(x + width, y + height).map(Math.round);
+    base.drawImage(images[file], x0, y0, x1 - x0, y1 - y0);
   }
-  ctx.drawImage(backdrop.canvas,0,0);
+  const tileW = right - left, tileH = bottom - top;
+  const cols = Math.ceil((w - left) / tileW), rows = Math.ceil((h - top) / tileH);
+  for (let row = Math.floor(-top / tileH); row < rows; row++) {
+    for (let col = Math.floor(-left / tileW); col < cols; col++) {
+      draw(material.file, ox + col * dx, oy + row * dy, dx, dy);
+    }
+  }
+  draw(detail.file, detail.originM[0], detail.originM[1], detail.extentM[0], detail.extentM[1]);
+  backdrops.set(room, {key, canvas});
+  return canvas;
 }
 export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView){
-  const {sec,scale,xy}=floorView(w,h,room);
+  const camera = floorView(w,h,room);
+  const {sec,scale,xy} = camera;
   ctx.imageSmoothingEnabled=false;
-  floorTiles(ctx,w,h,images[sec?'tile-security':'tile-forge'],scale,sec);
+  ctx.drawImage(floorBackdrop(room, w, h, camera, images), 0, 0);
   const sprites=atlas.sheets as Record<string,number[]>;
   function sprite(key:string,n:number,x:number,y:number,k=scale/64){
     const im=images[key];if(!im)return;

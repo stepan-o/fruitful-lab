@@ -1,3 +1,4 @@
+from day_one_gallery import build_gallery
 from rehearsal_page import build_rehearsal
 from conveyor_proposal import render_conveyor, conveyor_markdown
 from core_loop_study import render_core_loop_study, core_loop_markdown
@@ -370,7 +371,7 @@ build_rehearsal(ROOT, OUT, intro_source, intro_body)
 intro_css_hash = hashlib.sha256((ROOT/'day-one-intro.css').read_bytes()).hexdigest()[:12]
 intro_css = f'<link rel="stylesheet" href="day-one-intro.css?v={intro_css_hash}">'
 intro = (f'<header class="section-head"><span class="kicker">Approved script and storyboards</span>'
-         f'<h2>{e(intro_title)}</h2><a class="link-button" href="#floor-layout">2D floor &amp; approved layout →</a></header><div class="day-one-script">{intro_body}</div>')
+         f'<h2>{e(intro_title)}</h2><a class="link-button" href="#floor-layout">2D floor &amp; approved layout →</a> <a class="link-button" href="#day-one-art-calibration">Day One art calibration →</a></header><div class="day-one-script">{intro_body}</div>')
 floor_title = '2D floor & approved layout'
 floor_heading = f'<header class="section-head"><h2>{e(floor_title)}</h2></header>'
 rehearsal_url = '/loopforge-design/day-one-rehearsal.html'
@@ -417,7 +418,7 @@ plan_title, plan_body, _ = render_narrative(plan_source, {})
 plan_body = re.sub(r'<h2 id="([^"]+)">', r'<h3 id="pixel-art-plan-\1">', plan_body).replace('</h2>', '</h3>')
 pixel_art_plan = (
     f'<header class="section-head"><h2>{e(plan_title.removeprefix("Loopforge | "))}</h2></header>'
-    f'<div class="day-one-script">{plan_body}</div>'
+    f'{build_gallery(ROOT, OUT)}<div class="day-one-script">{plan_body}</div>'
 )
 
 panels=[('player-desires','Player desires & scenarios',desires),('day-one-intro',intro_title,intro),('floor-layout',floor_title,floor_panel),('pixel-art-plan','Pixel-art production plan',pixel_art_plan),('narrative-cast','The cast',cast),('writing-style',writing_style_title,writing_style),('dramaturgy','Character dramaturgy and narrative design',dramaturgy),('supervisor-rooms','Supervisor × room',supervisor_panel),('agents','Agents: character & motion',agent_direction),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('model-briefs','Model briefs',render_model_briefs()),('floor-scale','Factory floor: scale & feel',floor_scale),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('engine-boundary','Engine boundary',engine),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
@@ -438,11 +439,15 @@ page=head+'<a class="skip" href="#main">Skip to design content</a><div class="sh
 page=page.replace('</body>','<script src="model-briefs.js?v='+hashlib.sha256((ROOT/'model-briefs.js').read_bytes()).hexdigest()[:12]+'"></script></body>')
 page=page.replace('src="board.js"','src="board.js?v='+hashlib.sha256((ROOT/'board.js').read_bytes()).hexdigest()[:12]+'"')
 page=page.replace('</body>',sound_script+style_script+producer_script+study_script+conveyor_script+'</body>')
-(OUT/'index.html').write_text(page.replace('</head>', intro_css+cast_css+'</head>'))
+gallery_script_hash = hashlib.sha256((ROOT/'day-one-gallery.js').read_bytes()).hexdigest()[:12]
+page = page.replace('</body>', f'<script src="day-one-gallery.js?v={gallery_script_hash}"></script></body>')
+gallery_hash = hashlib.sha256((ROOT/'day-one-gallery.css').read_bytes()).hexdigest()[:12]
+gallery_css = f'<link rel="stylesheet" href="day-one-gallery.css?v={gallery_hash}">'
+(OUT/'index.html').write_text(page.replace('</head>', intro_css+cast_css+gallery_css+'</head>'))
 
 # A complete, static copy has every path and character, including text that the board reveals on selection.
 full=head+'<main class="record"><a href="index.html">← Interactive design board</a><header class="hero" style="display:block"><span class="kicker">Author reference · contains story spoilers</span><h1>'+e(d['title'])+'</h1>'+p(d['version'])+p(d['purpose'])+p(d['statusNote'])+'</header>'
-full+='<section>'+desires+'</section><section id="day-one-intro">'+intro+'</section><section id="floor-layout">'+floor_record+'</section><section id="narrative-cast">'+cast+'</section><section id="writing-style">'+writing_style+'</section><section id="dramaturgy">'+dramaturgy+'</section>'
+full+='<section>'+desires+'</section><section id="day-one-intro">'+intro.replace('href="#day-one-art-calibration"', 'href="/stepanoskin/loopforge/design#day-one-art-calibration"')+'</section><section id="floor-layout">'+floor_record+'</section><section id="narrative-cast">'+cast+'</section><section id="writing-style">'+writing_style+'</section><section id="dramaturgy">'+dramaturgy+'</section>'
 full+='<section>'+loop_study_full+'</section><section>'+conveyor_full+'</section><section>'+first_turn+'</section><section id="agents">'+agent_direction+'</section><section>'+floor_scale+'</section>'
 full+='<section><h2>World and story grounding</h2>'+world+'</section><section><h2>Act 1 progression</h2>'+early_rules+''.join(stage(s) for s in d['stages'])+act2+'</section>'
 full+='<section><h2>Proposed trajectories</h2>'+p('Illustrative paths through the shared progression, not locked classes or predetermined endings.')+early_combinations+''.join(trajectory(r) for r in d['trajectories'])+'</section>'
@@ -607,7 +612,7 @@ for path in OUT.glob('*.html'):
     content = path.read_text()
     content = re.sub(r'(href|src)="(?![a-z]+:|/|#)([^" ]+)"', lambda m: m[1]+'="/loopforge-design/'+m[2]+'"', content)
     path.write_text(content)
-for name in ['cast.css','day-one-intro.css','model-briefs.css','model-briefs.js','model-briefs.zip.mjs','conveyor.css','conveyor.js','loop-study.css','loop-study.js','styles.css','board.js','sound-library.js','style-review.js','style-review.css','producer-review.js','producer-review.css','art-provenance.json']:
+for name in ['cast.css','day-one-gallery.css','day-one-gallery.js','day-one-intro.css','model-briefs.css','model-briefs.js','model-briefs.zip.mjs','conveyor.css','conveyor.js','loop-study.css','loop-study.js','styles.css','board.js','sound-library.js','style-review.js','style-review.css','producer-review.js','producer-review.css','art-provenance.json']:
     shutil.copyfile(ROOT/name,OUT/name)
 print('Generated app design board and complete reading copies; original sources retained.')
 

@@ -31,7 +31,7 @@ Study applicable parts of *Designing Games* and cite the exact concept and verif
 
 ## Current handoff
 
-**18 November 2026 · owner-directed starting baseline.** The approved Day 1 rewrite is merged. LEVEL's corrected staging and the current script are the foundation for the 2D implementation. ENGINE is implementing that experience; this brief does not claim its completion.
+**19 November 2026 · approved script in the live intro.** The Day 1 rewrite and LEVEL’s corrected staging are in the [live Day One player](/stepanoskin/loopforge/play/day-one). [ENGINE’s delivery](https://github.com/stepan-o/fruitful-lab/pull/157) exposes speaker-anchored bubbles and both four-way replies. The owner’s review of pacing and legibility in the running scene remains open.
 
 LIMEN and STILETTO walk slowly behind the departing workers and remain inside when the scene cuts. Keep the current ending and its timing. Later-day exchanges remain proposals unless separately approved. Do not import the older studio opening chronology as current canon.
 

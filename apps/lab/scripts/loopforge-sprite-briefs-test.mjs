@@ -60,7 +60,7 @@ board.window.HTMLElement.prototype.scrollIntoView=function(){};
 board.window.eval(read('docs/loopforge/game-design/board.js'));
 const nav=[...board.window.document.querySelectorAll('.nav [data-panel]')].map(b=>b.dataset.panel);
 const floorIndex = nav.indexOf('floor-layout');
-assert.deepEqual(nav.slice(floorIndex, floorIndex + 3), ['floor-layout', 'engine-boundary', 'sprite-briefs']);
+assert.deepEqual(nav.slice(floorIndex, floorIndex + 4), ['floor-layout', 'engine-boundary', 'floor-scale', 'sprite-briefs']);
 const frame=board.window.document.getElementById('sprite-briefs-frame');assert.equal(frame.hasAttribute('src'),false);
 board.window.document.querySelector('.nav [data-panel="sprite-briefs"]').click();
 assert.equal(frame.getAttribute('src'),'/loopforge-design/sprite-briefs.html');

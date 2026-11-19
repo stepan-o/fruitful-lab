@@ -1,0 +1,99 @@
+{
+  "version": "raking-floor/1",
+  "date": "2026-11-19",
+  "baseline": "73658a934ccf9fab0bfe72657a266ad70d5bb299",
+  "geometry": "approved-factory/day-one-3",
+  "coordinates": "factory metres; x east, y south",
+  "originCorner": "northwest",
+  "projection": "orthographic ground; use floorView.xy",
+  "drawOrder": [
+    "material",
+    "room",
+    "existing rails, fixtures, contact shadows, actors, items, signal and UI"
+  ],
+  "blend": "source-over",
+  "opacity": 1,
+  "smoothing": false,
+  "rooms": {
+    "security": {
+      "material": {
+        "file": "security-material.webp",
+        "master": "masters/security-material.ora",
+        "repeat": true,
+        "originM": [
+          104.75,
+          95.5
+        ],
+        "extentM": [
+          4,
+          4
+        ],
+        "pixelsPerMetre": 64,
+        "sizePx": [
+          256,
+          256
+        ],
+        "sha256": "5e2f7e8e860e877b09911dfd962fe955a507f7eb6890c72f7ab80b060d936850"
+      },
+      "room": {
+        "file": "security-room.webp",
+        "master": "masters/security-room.ora",
+        "repeat": false,
+        "originM": [
+          113,
+          108
+        ],
+        "extentM": [
+          32,
+          30.25
+        ],
+        "pixelsPerMetre": 32,
+        "sizePx": [
+          1024,
+          968
+        ],
+        "sha256": "601cab6e96b56cffa1d063e00abf3b0a152faa401b4e7e0b880dceed0bef8c70"
+      }
+    },
+    "conveyor": {
+      "material": {
+        "file": "conveyor-material.webp",
+        "master": "masters/conveyor-material.ora",
+        "repeat": true,
+        "originM": [
+          74.75,
+          138.25
+        ],
+        "extentM": [
+          4,
+          4
+        ],
+        "pixelsPerMetre": 64,
+        "sizePx": [
+          256,
+          256
+        ],
+        "sha256": "3660880d40ce594ce6ef4752cc4f76ea91b8fe005d99d12d707188ded63a9c88"
+      },
+      "room": {
+        "file": "conveyor-room.webp",
+        "master": "masters/conveyor-room.ora",
+        "repeat": false,
+        "originM": [
+          108,
+          138.25
+        ],
+        "extentM": [
+          38,
+          23
+        ],
+        "pixelsPerMetre": 32,
+        "sizePx": [
+          1216,
+          736
+        ],
+        "sha256": "96d7211c9ae32faec84d8fbce8493d5d22e8850afa00341d26a80ca6678bab60"
+      }
+    }
+  }
+}

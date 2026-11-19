@@ -29,11 +29,13 @@ Use *Designing Games* where its principles inform visual feedback, attention, em
 
 ## Current handoff
 
-**19 November 2026 · Days 2–4 art pack v1.** The owner commissioned the art and ENGINE work in parallel. B / Raking light remains the selected treatment. At the Security desk a quiet signal opens the case on tap. The player can inspect it while the shift continues. The whole queue behind bob waits for Security to resolve the case.
+**19 November 2026 · Security and Conveyor floors · ready for ENGINE binding.** B / Raking light is the style lock. The live Days 2–4 player at `73658a9` repeats lighting and wear from the 18 November calibration every four metres. The floor correction gives each camera a repeatable enamel material and a single factory-anchored layer containing light, hardware and localized wear.
 
-Use the [Days 2–4 review gallery](/stepanoskin/loopforge/design#days-2-4-art), [editable asset pack](/loopforge-design/days-2-4-art/v1/Loopforge-Days-2-4-Art.zip), [runtime manifest](/loopforge-design/days-2-4-art/v1/manifest.json) and [ENGINE handoff](/loopforge-design/days-2-4-art/v1/ENGINE.md). The three native atlases cover Security credentials and decisions, floor signals and speech, and the Producer console through shift close. The published pack includes the public-state adapter, layered masters and player-facing proofs. ENGINE’s separate workshop edition also includes capture fixtures and the private inspection review.
+[Review the held queue and staffed line](/loopforge-design/floor-correction/v1/index.html) · [Download the editable floor pack](/loopforge-design/floor-correction/v1/Loopforge-Floor-Correction.zip) · [Placement manifest](/loopforge-design/floor-correction/v1/manifest.json) · [ENGINE migration note](/loopforge-design/floor-correction/v1/ENGINE.md)
 
-The gallery shows composed art at specified viewports. ENGINE owns the live binding, animation timing and the 1× interaction window. The owner’s final acceptance takes place in the complete live 2D prototype. LEVEL and ENGINE own physical detention placement. Until they supply an anchor, use the custody record insert. bob and max remain the cast benchmark. Other worker identities, directional movement and supervisory acting still need their separate character pass.
+The comparisons use matching desktop and 320 px camera frames. The live references show the old floor. The proposed views are composed proofs. ENGINE should bind the two layers in Days 2–4, including its portable player, and retain Day One's existing calibration URLs. The owner reviews the integrated player at 1×. On the narrow Conveyor camera the dialogue plate still overlaps the line.
+
+The [Days 2–4 art pack](/stepanoskin/loopforge/design#days-2-4-art) supplies the credentials, signals, speech and Producer console already bound in [the shifts player](/loopforge-shifts/index.html). bob and max remain the worker benchmark. Other identities, directional motion, supervisor acting and physical detention staging remain separate work.
 
 ## Delivery and continuity
 

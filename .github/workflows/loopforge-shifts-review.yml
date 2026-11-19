@@ -1,0 +1,35 @@
+name: Loopforge opening shifts at 1x
+on:
+  push:
+    branches: [codex/days-2-4-engine]
+permissions:
+  contents: read
+jobs:
+  play:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        scene: [security, conveyor, morning, clash]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install the recording browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/shift-review" playwright@1.56.1
+          "$RUNNER_TEMP/shift-review/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Play and record the comparison
+        env:
+          SCENE: ${{ matrix.scene }}
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory apps/lab/public > "$RUNNER_TEMP/server.log" 2>&1 &
+          NODE_PATH="$RUNNER_TEMP/shift-review/node_modules" node apps/lab/scripts/shifts/browser-review.cjs "$SCENE"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: loopforge-1x-${{ matrix.scene }}
+          path: shift-evidence
+          retention-days: 30

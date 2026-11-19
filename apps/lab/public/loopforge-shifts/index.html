@@ -3,9 +3,8 @@
 <section class="title"><div><small>OPERATIONS CONSOLE</small><h1>Opening shifts</h1></div><span id="clock">Day 2</span></section>
 <section id="brief" hidden><div class="briefing"><small>MORNING BRIEFING</small><h2>Appoint today’s adviser</h2><p>Choose one supervisor’s proposal for both rooms.</p><div class="bids"><button data-bid="LIMEN"><b>LIMEN</b><strong>Keep the posts</strong><span>Security · LIMEN checks IDs<br>Conveyor · STILETTO pushes the pace</span><q>Each worker clears my desk.</q></button><button data-bid="STILETTO"><b>STILETTO</b><strong>Swap the posts</strong><span>Security · STILETTO expedites entry<br>Conveyor · LIMEN calls every handoff</span><q>Get them onto the floor.</q></button></div></div></section>
 <section id="floor" hidden><nav aria-label="Room camera"><button data-room="security">Security</button><button data-room="conveyor">Conveyor</button><button id="play">Play 1×</button></nav>
-<div class="stage"><canvas id="room" aria-label="Live factory floor with named workers"></canvas><span id="cue"></span></div>
+<div class="stage"><canvas id="room" aria-label="Live factory floor with named workers"></canvas><span id="cue"></span><button id="signal" hidden aria-label="Open desk signal" aria-expanded="false" aria-controls="decision">ID check</button></div>
 <div class="strip"><span id="policy"></span><span id="mandate"></span></div>
-<button id="signal" hidden aria-expanded="false" aria-controls="decision">Open desk signal</button>
 <section id="decision" hidden aria-label="Security decision"><div><small>SECURITY · LIMEN</small><h2>bob is missing his ID</h2></div><p>The queue is held. A pass admits bob through today’s bell.</p><p id="deadline"></p><div class="buttons"><button id="pass">Issue daily pass</button><button id="watch">Keep watching</button></div></section>
 <div id="report" role="status" hidden></div>
 <div id="staff" aria-label="Station coverage"></div>

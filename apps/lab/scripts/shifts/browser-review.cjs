@@ -43,9 +43,10 @@ async function record(browser,name){
    await page.waitForTimeout(6500);
    const geometry=await page.evaluate(()=>{
      const pos=id=>{const r=document.querySelector(id).getBoundingClientRect();return {top:r.top,bottom:r.bottom,left:r.left,right:r.right};};
-     return {floor:pos('#room'),decision:pos('#decision'),pass:pos('#pass'),width:document.documentElement.scrollWidth,mandate:document.querySelector('#mandate').textContent,
+     return {floor:pos('#room'),signal:pos('#signal'),decision:pos('#decision'),pass:pos('#pass'),width:document.documentElement.scrollWidth,mandate:document.querySelector('#mandate').textContent,
        remaining:(current.scene.world.deadline-current.tick)/20,actors:current.scene.agents.filter(a=>['bob','LIMEN','jo'].includes(a.id))};
    });meta.decision=geometry;
+   check(geometry.signal.top>=geometry.floor.top&&geometry.signal.bottom<=geometry.floor.bottom&&geometry.signal.right<=geometry.floor.right&&geometry.signal.left>=geometry.floor.left,'Signal is outside the desk camera');
    check(geometry.mandate==='Intervention ready','Opening the signal consumed a mandate');
    check(geometry.width===320&&geometry.floor.top>=0&&geometry.decision.top>=geometry.floor.bottom&&geometry.pass.bottom<=844,'Decision obscures floor or exceeds viewport');
    check(geometry.remaining>2&&geometry.remaining<10,'Decision window left insufficient reading time');

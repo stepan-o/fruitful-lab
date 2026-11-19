@@ -8,10 +8,14 @@ export async function loadArt():Promise<Images>{
     const im=new Image();im.src='../loopforge-intro/'+name+'.webp';await im.decode();images[name]=im;
   }));return images;
 }
-export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images){
+export function floorView(w:number,h:number,room:Room){
   const sec=room==='security',scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
   const center=sec?127.15:127.4,cy=sec?129:144.35;
   const xy=(x:number,y:number)=>[w/2+(x-center)*scale,h*.58+(y-cy)*scale*.67];
+  return {sec,scale,xy};
+}
+export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images){
+  const {sec,scale,xy}=floorView(w,h,room);
   ctx.clearRect(0,0,w,h);ctx.imageSmoothingEnabled=false;
   ctx.fillStyle=sec?'#213d42':'#493522';ctx.fillRect(0,0,w,h);
   const tile=images[sec?'tile-security':'tile-forge'];

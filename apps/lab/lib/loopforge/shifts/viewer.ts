@@ -1,7 +1,7 @@
 import {subscription} from '../intro/protocol';
 import {envelope,read,schema,type Frame} from './wire';
 import {type Command,type Room} from './contract';
-import {paint,loadArt} from './painter';
+import {paint,loadArt,floorView} from './painter';
 const el=<T extends HTMLElement=HTMLElement>(id:string)=>document.getElementById(id) as T;
 const button=(id:string)=>el<HTMLButtonElement>(id);
 const hidden=(id:string,on:boolean)=>{el(id).hidden=on;};
@@ -23,6 +23,19 @@ function draw(){
   if(w<1||h<1)return;
   if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
   paint(ctx,w,h,frame.scene,room,frame.tick,art);
+  const signal=button('signal');
+  if(!signal.hidden){
+    const event=frame.scene.events.filter(e=>e.kind==='desk.signal').at(-1);
+    if(event){
+      const view=floorView(w,h,room);
+      const [x,y]=view.xy(event.at[0]/1000,event.at[1]/1000);
+      // Keep the control on the register face, below the workers and their nameplates.
+      const left=Math.max(3,Math.min(w-69,x-2.25*view.scale-33));
+      const top=Math.max(3,Math.min(h-52,y+1.25*view.scale));
+      signal.style.left=left+'px';
+      signal.style.top=top+'px';
+    }
+  }
 }
 function render(){
   if(!frame)return;
@@ -46,7 +59,7 @@ function render(){
   hidden('staff',sec);
   if(lastRoom!==signature){const boxes=w.coverage.map((id,i)=>{const span=document.createElement('span'),b=document.createElement('b');b.textContent=names[i];span.append(b,id||'Uncovered');return span;});el('staff').replaceChildren(...boxes);lastRoom=signature;}
   const recent=scene.events.filter(e=>e.kind==='queue.advanced'&&tick-e.tick<80).at(-1);
-  txt('cue',sec?(open?'LINE HELD · both desks':recent?recent.actor+' steps forward':w.called?'At the desk · '+w.called:'Security checkpoint'):('Rack · '+w.shiftOutput+' this shift'));
+  txt('cue',sec?(open?'LINE HELD · tap the desk signal':recent?recent.actor+' steps forward':w.called?'At the desk · '+w.called:'Security checkpoint'):('Rack · '+w.shiftOutput+' this shift'));
   hidden('faster',!live||!sec||w.lead!=='LIMEN'||w.quick||!w.waiting.length||w.pressure==='clash');
   hidden('slow',!live||sec||w.lead!=='LIMEN'||w.pace==='slow');
   hidden('rush',!live||sec||w.lead!=='LIMEN');

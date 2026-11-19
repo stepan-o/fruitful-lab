@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Security and Conveyor floors · Loopforge gameplay review</title>
+<style>
+:root{color-scheme:dark;font:16px/1.55 system-ui,sans-serif;background:#111a1c;color:#e8e9df}*{box-sizing:border-box}
+body{max-width:1080px;margin:auto;padding:clamp(16px,4vw,44px)}h1,h2{line-height:1.12;font-family:Georgia,serif;text-wrap:balance}
+h1{font-size:clamp(2.1rem,5.5vw,4rem);margin:.6em 0 .35em}h2{font-size:1.65rem;margin:0}
+p{max-width:74ch}.dim,figcaption{color:#bdc9c7}.dim{margin:.4rem 0 1rem}
+a{color:#f4d6a1;text-underline-offset:.2em}a:focus-visible,video:focus-visible{outline:3px solid #f4d6a1;outline-offset:3px}
+section{border-top:1px solid #3b5050;padding:1.5rem 0;margin-top:1rem}.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+figure{margin:0}video{display:block;width:100%;height:auto;background:#0a1012}.phone{max-width:658px}.phone video{max-width:320px}
+figcaption{margin-top:.6rem;font-size:.9rem}strong{color:#f0e8d6}li{margin:.5rem 0}code{font-size:.92em}
+@media(max-width:680px){.pair{grid-template-columns:1fr}.phone{max-width:320px}}
+</style></head><body>
+<header><a href="../../index.html">Play the Days 2–4 prototype</a><h1>Security and Conveyor floors</h1>
+<p>19 November 2026 · ENGINE MASTER · B / Raking light</p>
+<p>Watch jo step forward after bob receives his pass. Then follow the first workpiece through Wash, Belt and Forge to the rack. Both runs restore the same Day 2 checkpoints at ticks 5671 and 6142. The recordings include the room switches and resize check at the end.</p>
+<p><a href="Loopforge-Days-2-4-review.zip" download>Download the offline player and nine replay fixtures</a></p></header>
+<section><h2>Desktop</h2><p class="dim">Camera 872 × 370 px at restore · DPR 1</p><div class="pair "><figure><video controls playsinline preload="none" poster="before-1280.jpg" aria-label="Original swatches, desktop, normal speed"><source src="before-1280.mp4" type="video/mp4"></video>
+<figcaption><strong>Original swatches</strong> · <code>73658a93</code><br>Security / Missing ID, then Conveyor / Conveyor chat<br>1280 × 860 CSS px · desktop · 1× · <a href="before-1280.mp4">Open recording</a></figcaption></figure>
+<figure><video controls playsinline preload="none" poster="after-1280.jpg" aria-label="Corrected floors, desktop, normal speed"><source src="after-1280.mp4" type="video/mp4"></video>
+<figcaption><strong>Corrected floors</strong> · <code>13dedce7</code><br>Security / Missing ID, then Conveyor / Conveyor chat<br>1280 × 860 CSS px · desktop · 1× · <a href="after-1280.mp4">Open recording</a></figcaption></figure></div></section>
+<section><h2>Phone viewport</h2><p class="dim">Camera 304 × 266 px at restore · DPR 1</p><div class="pair phone"><figure><video controls playsinline preload="none" poster="before-320.jpg" aria-label="Original swatches, emulated touch, normal speed"><source src="before-320.mp4" type="video/mp4"></video>
+<figcaption><strong>Original swatches</strong> · <code>73658a93</code><br>Security / Missing ID, then Conveyor / Conveyor chat<br>320 × 740 CSS px · emulated touch · 1× · <a href="before-320.mp4">Open recording</a></figcaption></figure>
+<figure><video controls playsinline preload="none" poster="after-320.jpg" aria-label="Corrected floors, emulated touch, normal speed"><source src="after-320.mp4" type="video/mp4"></video>
+<figcaption><strong>Corrected floors</strong> · <code>13dedce7</code><br>Security / Missing ID, then Conveyor / Conveyor chat<br>320 × 740 CSS px · emulated touch · 1× · <a href="after-320.mp4">Open recording</a></figcaption></figure></div></section>
+<section><h2>What was checked</h2>
+<p>The footage comes from the running worker and viewer in Chromium 141.0.7390.37 on GitHub-hosted Ubuntu 24.04. Both builds ran in fresh contexts on the same runner at 20 simulation ticks per second. The phone used a 320 CSS-pixel touch viewport. The MP4 captions sit above the original viewport. Opening a recording at full size preserves the camera detail.</p>
+<ul><li>Each of the four WebPs loaded and decoded once per page. Ordinary ticks reused the same backdrop through jo’s first step and the first rack arrival. Switching rooms restored the cached camera. Resizing to 768 or 390 CSS pixels and back rebuilt each affected raster.</li>
+<li>Across 12 measured backdrop compositions, adjacent tile edges met on integer pixels. All background pixels were opaque. Each room overlay drew once with nearest-neighbour sampling, full alpha and source-over blending.</li>
+<li>All nine deterministic fixtures matched the original bytes, including ordered public events, hearing, command outcomes and terminal hashes. The immediate pass produced seven new rack arrivals. Watching Conveyor produced detention and zero.</li>
+<li>Opening the single-file player with networking disabled at 320 px admitted the pass, advanced jo, restored Conveyor chat and returned the original ID to bob on the slowed line. The player made zero HTTP requests.</li></ul>
+<p>The front layers retain their existing scale. The workpiece is small on the phone and speech briefly covers part of the lit aisle. Physical-phone, Safari and field performance remain unmeasured. The owner makes the final visual decision in the player.</p>
+<p><a href="measurements.json">Canvas and loading measurements</a> · <a href="https://github.com/stepan-o/fruitful-lab/actions/runs/44596096042">Original recordings</a> · <a href="https://github.com/stepan-o/fruitful-lab/actions/runs/44596633632">Repeat verification</a> · <a href="https://github.com/stepan-o/fruitful-lab/pull/167">ENGINE PR</a> · <a href="../../ENGINE-HANDOFF.md">Runtime handoff</a></p>
+</section></body></html>

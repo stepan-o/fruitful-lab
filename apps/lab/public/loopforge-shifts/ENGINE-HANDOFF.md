@@ -6,6 +6,17 @@
 
 Appoint either supervisor to play forward from Day 2. The bell opens the next morning through Day 4. The four review checkpoints use the same simulation as ordinary play. Each checkpoint restores the decisions, beliefs, props, work and queue that led to it. Select a room and press **Play 1×** to observe. The clock runs at twenty simulation ticks per second. Select a bid to inspect both assignments. **Commit assignment** submits the pair and starts the clock after admission.
 
+## Security and Conveyor floors · 19 November 2026
+
+[Play the two cameras](/loopforge-shifts/index.html) · [Matched 1× gameplay and measurements](/loopforge-shifts/review/floors/index.html) · [Download the portable player and fixtures](/loopforge-shifts/review/floors/Loopforge-Days-2-4-review.zip)
+
+[ENGINE integration `13dedce7`](https://github.com/stepan-o/fruitful-lab/commit/13dedce79122bd12d83cdbebb535a00c2483b331) binds [ART’s placement manifest](/loopforge-design/floor-correction/v1/manifest.json) to the Days 2–4 camera. PR #167 depends on [ART PR #166](https://github.com/stepan-o/fruitful-lab/pull/166). The renderer repeats each 4 m enamel material in factory coordinates and draws the corresponding room light and wear once beneath the props and cast. A page decodes four floor images. Each camera retains its last composited backdrop until its dimensions or projection change. The portable HTML embeds the same bytes. Extract the ZIP and open `Loopforge-Days-2-4.html` to play offline.
+
+1. Restore **Missing ID**. Follow the cool light across the held queue to LIMEN’s desk. Open the signal, issue the pass, close the report and press **Play 1×**. Watch bob leave and jo step up.
+2. Restore **Conveyor chat** and press **Play 1×**. Track the first carrier from Wash to Belt, Forge and the rack under the amber light. Switch to Security and back, resize, then restore.
+
+The nine frozen comparisons reproduce the initial private hashes, admitted inputs, public journals, hearing, event ticks and terminal results. The immediate pass yields seven rack arrivals. Watching Conveyor yields detention and zero. The 20 Hz worker and Day One calibration retain their original bytes. Both viewport comparisons and the offline run passed. Final visual acceptance and any merge rest with the owner. [Dependent ENGINE PR #167](https://github.com/stepan-o/fruitful-lab/pull/167)
+
 ## Saved art in the live player
 
 The host loads the v1 manifest and its three atlases once per page. The bundled ART selector sees only a frame accepted by `wire.read`. The presenter passes the current room, open case and locally selected bid. A deliberate button press calls the supplied `commandPayload` helper, then the existing worker admits or rejects that intention. The simulation runs independently at 20 Hz.

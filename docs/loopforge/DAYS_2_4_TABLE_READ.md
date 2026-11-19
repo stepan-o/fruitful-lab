@@ -8,23 +8,11 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 2A · On the way in
 
-*max shortens their stride to keep level with bob. They’ve been doing STILETTO for him since the corner.*
+**bob** When you picked me up, did you see my card?
 
-**max** Good. Now wash it.
+**sam** No. I was looking at your leg.
 
-**bob** Nearly. You looked me in the eye.
-
-**max** You said she leaned right over you.
-
-**bob** To see if I’d got the brain in straight. Here, do it again.
-
-*At the lobby door max leans past bob to inspect yesterday’s brain. bob puts a hand out, just as he did from the motor housing. max takes it.*
-
-**bob** She stepped over that.
-
-**max** I know. Lift your foot, bob.
-
-*bob looks down. The boot on the leg LIMEN cut is caught on the sill. He lets max pull him through. Half the crew has caught up behind them.*
+*bob limps over to the grate. sam looks down with him. The others bunch up behind them.*
 
 ### 2B · Good morning
 
@@ -92,7 +80,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 *With jo on Belt, the washed brain moves. A fresh tray brings sam level with bob. They talk across it.*
 
-**bob** When you got me up, did you see where my card went?
+**bob** Anybody turn one in?
 
 **sam** Somebody found one.
 

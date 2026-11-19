@@ -2,6 +2,12 @@ name: Loopforge opening shifts at 1x
 on:
   push:
     branches: [codex/days-2-4-engine]
+    paths:
+      - 'apps/lab/lib/loopforge/**'
+      - 'apps/lab/public/loopforge-intro/**'
+      - 'apps/lab/public/loopforge-shifts/**'
+      - 'apps/lab/scripts/shifts/browser-review.cjs'
+      - '.github/workflows/loopforge-shifts-review.yml'
 permissions:
   contents: read
 jobs:

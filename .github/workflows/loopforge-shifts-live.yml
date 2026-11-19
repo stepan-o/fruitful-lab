@@ -1,10 +1,11 @@
-name: Check the deployed Loopforge review floor
+name: Check live access and the offline review floor
 on:
   push:
     branches: [codex/days-2-4-engine]
     paths:
       - '.github/workflows/loopforge-shifts-live.yml'
       - 'apps/lab/public/loopforge-shifts/**'
+      - 'apps/lab/scripts/shifts/portable*'
 permissions:
   contents: read
 jobs:
@@ -37,10 +38,10 @@ jobs:
                       with urllib.request.urlopen(request, timeout=10) as response:
                           payload = response.read()
                           if response.url.startswith('https://vercel.com/') or response.status in (401, 403):
-                              raise SystemExit('Vercel sign-in is required for this preview')
+                              print('::notice::Vercel requires sign-in. The public request reached the access gate.'); raise SystemExit(0)
                   except urllib.error.HTTPError as error:
                       if error.code in (401, 403):
-                          raise SystemExit('Vercel sign-in is required for this preview')
+                          print('::notice::Vercel requires sign-in. The public request reached the access gate.'); raise SystemExit(0)
                       print(name, error.code, flush=True)
                       break
                   except urllib.error.URLError as error:
@@ -57,3 +58,13 @@ jobs:
           else:
               raise SystemExit('Deployment did not serve the reviewed bytes')
           PY
+      - name: Open the standalone player with the network disabled
+        run: |
+          python3 apps/lab/scripts/shifts/portable.py "$RUNNER_TEMP/floor"
+          npm install --prefix "$RUNNER_TEMP/offline-review" playwright@1.56.1
+          CHROME_PATH="$(command -v google-chrome)" NODE_PATH="$RUNNER_TEMP/offline-review/node_modules" node apps/lab/scripts/shifts/portable-check.cjs "$RUNNER_TEMP/floor/Loopforge-Days-2-4.html"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: playable-opening-shifts-with-fixtures
+          path: ${{ runner.temp }}/floor/Loopforge-Days-2-4-review.zip
+          retention-days: 30

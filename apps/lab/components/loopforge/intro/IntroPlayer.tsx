@@ -2,25 +2,29 @@
 import {useEffect,useRef,useState} from 'react';
 import {engine,envelope,reconstruct,schema,subscription,validEnvelope,type Frame} from '../../../lib/loopforge/intro/protocol';
 import {paint,type Bank,type Camera,type Skin} from './paint';
+import {Timing} from './metrics';
 import styles from './intro.module.css';
 const duration=190.60391778732966;
 const timestamp=(s:number)=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
-type Controls={toggle:()=>void;seek:(s:number)=>void;skin:(s:Skin)=>void;inspect:()=>void};
+type Controls={toggle:()=>void;seek:(s:number)=>void;skin:(s:Skin)=>void;inspect:()=>void;metrics:()=>string};
 export default function IntroPlayer(){
   const canvas=useRef<HTMLCanvasElement>(null),slider=useRef<HTMLInputElement>(null),clock=useRef<HTMLOutputElement>(null),controls=useRef<Controls|null>(null);
   const [ready,setReady]=useState(false),[playing,setPlaying]=useState(false),[skin,setSkin]=useState<Skin>('sprites');
+  const [metrics,setMetrics]=useState('');
   const [beat,setBeat]=useState('The morning walk'),[speech,setSpeech]=useState(''),[failure,setFailure]=useState(''),[trace,setTrace]=useState<string[]>([]);
   useEffect(()=>{
     const surface=canvas.current!,ctx=surface.getContext('2d',{alpha:false});
     if(!ctx){setFailure('Canvas is unavailable in this browser.');return;}
     const worker=new Worker(new URL('../../../lib/loopforge/intro/host.worker.ts',import.meta.url),{type:'module'});
+    const begun=performance.now(),cadence=new Timing(),drawing=new Timing(),response=new Timing();
+    let costs:number[]=[],inputAt=0,cold=0,lastActiveFrame=0;
     let live=true,frame:Frame|null=null,previous:Frame|null=null,bank:Bank|undefined,mode:Skin='sprites',seq=0,raf=0;
-    let received=0,now=0,elapsed=0,running=false,lastBeat='',lastSpeech='',width=0,height=0,lastDraw=0,needsDraw=true;
+    let received=0,elapsed=0,running=false,lastBeat='',lastSpeech='',width=0,height=0,lastDraw=0,needsDraw=true;
     let desiredHint='PAUSE';
     let session='hello',finished=false,recovering=false;
     const cam:Camera={x:0,y:0,scale:0,time:-1};
     const send=(type:string,p:object)=>worker.postMessage(envelope(type,++seq,p));
-    const command=(hint:string)=>{desiredHint=hint;send('INPUT_COMMAND',{client_cmd_id:'view-'+(seq+1),tick_target:(frame?.tick??0)+(running&&!finished?1:0),cmd:{type:'VIEW_CONTROL',payload:{hint}}});};
+    const command=(hint:string)=>{desiredHint=hint;inputAt=performance.now();send('INPUT_COMMAND',{client_cmd_id:'view-'+(seq+1),tick_target:(frame?.tick??0)+(running&&!finished?1:0),cmd:{type:'VIEW_CONTROL',payload:{hint}}});};
     function requestDraw(){needsDraw=true;if(!raf&&live)raf=requestAnimationFrame(draw);}
     function draw(time:number){
       raf=0;
@@ -29,6 +33,12 @@ export default function IntroPlayer(){
         ctx!.setTransform(surface.width/width,0,0,surface.height/height,0,0);
         paint(ctx!,width,height,frame,elapsed,bank,mode,cam,Math.min(.2,(time-lastDraw)/1000),previous??undefined,alpha);
         if(finished){ctx!.fillStyle='rgba(4,8,10,.94)';ctx!.fillRect(0,0,width,height);ctx!.fillStyle='#e9d4a6';ctx!.font='600 18px monospace';ctx!.textAlign='center';ctx!.fillText('END OF SHIFT',width/2,height/2);}
+        const done=performance.now();
+        drawing.add(done-time);
+        if(running&&lastActiveFrame)cadence.add(time-lastActiveFrame);
+        lastActiveFrame=running?time:0;
+        if(inputAt){response.add(done-inputAt);inputAt=0;}
+        if(!cold)cold=done-begun;
         lastDraw=time;needsDraw=false;
       }
       if(running&&!document.hidden)raf=requestAnimationFrame(draw);
@@ -49,9 +59,9 @@ export default function IntroPlayer(){
     worker.onmessage=({data:m})=>{
       if(!live)return;
       if(m.local==='failure'){setFailure(m.message);setReady(false);return;}
-      if(m.local==='trace'){setTrace(m.rows.map((r:{tick:number;actor:string;plan:string;reason:string})=>[r.tick,r.actor,r.plan,r.reason].join(' · ')));return;}
+      if(m.local==='trace'){setTrace(m.rows.map((r:{tick:number;actor:string;goal:string;plan:string;reason:string})=>[r.tick,r.actor,r.goal,r.plan,r.reason].join(' · ')));return;}
       if(m.local==='overlay'){
-        elapsed=m.seconds;finished=m.finished;
+        elapsed=m.seconds;finished=m.finished;costs=m.costs;
         if(running!==m.playing){running=m.playing;setPlaying(running);}
         if(lastBeat!==m.beat){lastBeat=m.beat;setBeat(lastBeat);}
         if(clock.current)clock.current.value=timestamp(elapsed)+' / 3:10';
@@ -84,8 +94,9 @@ export default function IntroPlayer(){
       }
     };
     controls.current={toggle(){if(finished){worker.postMessage({local:'restart-play'});return;}command(running?'PAUSE':'PLAY');},
-      seek(seconds){now=seconds;worker.postMessage({local:'locate',seconds:now});},
-      skin(next){mode=next;cam.scale=0;requestDraw();},inspect(){worker.postMessage({local:'inspect'});}};
+      seek(seconds){worker.postMessage({local:'locate',seconds});},
+      metrics(){return JSON.stringify({viewport:[width,height],backingPixels:[surface.width,surface.height],coldMountToDrawMs:cold,frameIntervals:cadence.result(),drawSubmission:drawing.result(),inputToNextDraw:response.result(),workerTotalMs:{simulation:costs[0],deliberation:costs[1],projectionAndHash:costs[2]},images:Object.keys(bank?.images??{}).length,workers:1,heapEstimate:(performance as Performance&{memory?:{usedJSHeapSize:number}}).memory?.usedJSHeapSize},null,2);},
+      skin(next){inputAt=performance.now();mode=next;cam.scale=0;requestDraw();},inspect(){worker.postMessage({local:'inspect'});}};
     const hidden=()=>{if(document.hidden&&running)command('PAUSE');};document.addEventListener('visibilitychange',hidden);
     send('VIEWER_HELLO',{viewer_name:'sprite-review',viewer_version:'1.0.0',supported_schema_versions:[schema],supports:{diff_stream:true,full_snapshot:true,replay_seek:false}});
     return ()=>{live=false;controls.current=null;resize.disconnect();cancelAnimationFrame(raf);worker.terminate();document.removeEventListener('visibilitychange',hidden);};
@@ -104,6 +115,6 @@ export default function IntroPlayer(){
         <label>View <select value={skin} onChange={e=>{const next=e.target.value as Skin;setSkin(next);controls.current?.skin(next);}}><option value="sprites">Pixel art</option><option value="model">3D study</option></select></label>
       </div>
     </section>
-    <details className={styles.notes}><summary>Production notes and agent trace</summary><p>bob and max use the delivered walk cycles. LIMEN and STILETTO use the fourth-check drawings. The eight other workers share bob’s walk as a temporary body, with colored arm bands. The 3D study shows the same session as projected solids.</p><button onClick={()=>controls.current?.inspect()}>Inspect recent decisions</button>{trace.length>0&&<pre>{trace.join('\n')}</pre>}</details>
+    <details className={styles.notes}><summary>Production notes and agent trace</summary><p><a href="/loopforge-intro/day-one-1x.mp4">Watch the normal-speed capture</a></p><p>bob and max use the delivered walk cycles. LIMEN and STILETTO use the fourth-check drawings. The eight other workers share bob’s walk as a temporary body, with colored arm bands. The 3D study shows the same session as projected solids.</p><button onClick={()=>controls.current?.inspect()}>Inspect recent decisions</button> <button onClick={()=>setMetrics(controls.current?.metrics()??'')}>Playback measurements</button>{metrics&&<pre>{metrics}</pre>}{trace.length>0&&<pre>{trace.join('\n')}</pre>}</details>
   </main>;
 }

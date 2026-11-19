@@ -4,7 +4,9 @@ import {projectIntro} from './projection';
 import {channels,digest,engine,envelope,operations,renderSpec,schema,validEnvelope,type Envelope,type Frame} from './protocol';
 export type HostMessage=Envelope|{local:'overlay';seconds:number;beat:string;finished:boolean;playing:boolean;costs:number[]}|{local:'trace';rows:Intro['trace']};
 export class Session {
-  sim=new Intro();
+  deliberationMs=0;
+  private fresh(){return new Intro(undefined,run=>{const start=performance.now();run();this.deliberationMs+=performance.now()-start;});}
+  sim=this.fresh();
   state:'hello'|'subscribe'|'live'='hello';
   playing=false;
   awaitingBaseline=false;
@@ -37,7 +39,7 @@ export class Session {
   }
   overlay(){
     const beat=score.beats.filter(b=>b.at<=worldAt(this.sim.world.tick)).at(-1)??score.beats[0];
-    this.send({local:'overlay',seconds:this.sim.finished?score.duration:this.sim.seconds,beat:beat.name,finished:this.sim.finished,playing:this.playing,costs:[this.simulationMs,this.serializeMs]});
+    this.send({local:'overlay',seconds:this.sim.finished?score.duration:this.sim.seconds,beat:beat.name,finished:this.sim.finished,playing:this.playing,costs:[Math.max(0,this.simulationMs-this.deliberationMs),this.deliberationMs,this.serializeMs]});
   }
   async progress(seconds:number){
     if(this.state!=='live'||!this.playing||this.awaitingBaseline)return;
@@ -53,7 +55,7 @@ export class Session {
     if(this.state!=='live'||!Number.isFinite(seconds)||seconds<0||seconds>score.duration+.001)return;
     const target=Math.min(lastTick,editTick(seconds));
     this.hints.clear();
-    if(target<this.sim.world.tick)this.sim=new Intro();
+    if(target<this.sim.world.tick)this.sim=this.fresh();
     this.advance(target);await this.record(true);this.overlay();
   }
   async receive(input:unknown){

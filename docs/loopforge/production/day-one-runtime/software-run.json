@@ -1,0 +1,145 @@
+{
+  "profile": "normal-speed CPU Skia with shipped webpack worker; no DOM, GPU compositor or network",
+  "system": {
+    "model": "Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz",
+    "node": "v22.23.1",
+    "os": "7.3.3-200.fc44.x86_64",
+    "memory": 12391776256,
+    "workerSha256": "6720cdb11eb2ee6c49a9fdc0f590dee0779237e6455e0a748468d99a07ad4c5e"
+  },
+  "coldAssetsAndWorkerMs": 252.60120599999993,
+  "runs": [
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "durationMs": 190641.582518,
+      "frame": {
+        "samples": 11417,
+        "meanMs": 16.69757218971709,
+        "p95CeilMs": 18,
+        "p99CeilMs": 19,
+        "maxMs": 100.35581599999568,
+        "over100": 1,
+        "over500": 0
+      },
+      "draw": {
+        "samples": 11418,
+        "meanMs": 6.626019695831106,
+        "p95CeilMs": 10,
+        "p99CeilMs": 16,
+        "maxMs": 86.18627699999979,
+        "over100": 0,
+        "over500": 0
+      },
+      "controlAckMs": [
+        86.69786599999998,
+        32.00817400000233
+      ],
+      "workerMs": [
+        820.2829320004919,
+        41.498710999698915,
+        1910.7488290000533
+      ],
+      "baselines": 2,
+      "diffs": 3811,
+      "finalHash": "fa5c31dd56749cc77691eb9611243fd85a67ebe6cc7007aa4248a2df5fd4a4ba",
+      "outputs": 3,
+      "images": 21,
+      "workers": 1,
+      "heapStart": 31310448,
+      "heapEnd": 26990304,
+      "rssStart": 240336896,
+      "rssEnd": 1324171264
+    },
+    {
+      "viewport": [
+        390,
+        580
+      ],
+      "durationMs": 190633.05999799998,
+      "frame": {
+        "samples": 11422,
+        "meanMs": 16.689657004727717,
+        "p95CeilMs": 18,
+        "p99CeilMs": 19,
+        "maxMs": 229.62914500001352,
+        "over100": 2,
+        "over500": 0
+      },
+      "draw": {
+        "samples": 11423,
+        "meanMs": 3.246393636697664,
+        "p95CeilMs": 5,
+        "p99CeilMs": 6,
+        "maxMs": 12.131416000018362,
+        "over100": 0,
+        "over500": 0
+      },
+      "controlAckMs": [
+        6.0018939999863505,
+        36.80199100001482
+      ],
+      "workerMs": [
+        683.5485680002021,
+        26.104423001088435,
+        1567.644634001597
+      ],
+      "baselines": 2,
+      "diffs": 3810,
+      "finalHash": "fa5c31dd56749cc77691eb9611243fd85a67ebe6cc7007aa4248a2df5fd4a4ba",
+      "outputs": 3,
+      "images": 21,
+      "workers": 1,
+      "heapStart": 27041936,
+      "heapEnd": 28006192,
+      "rssStart": 1324433408,
+      "rssEnd": 1484046336
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "durationMs": 190650.26665600005,
+      "frame": {
+        "samples": 11372,
+        "meanMs": 16.76418196508969,
+        "p95CeilMs": 18,
+        "p99CeilMs": 22,
+        "maxMs": 99.00480399996741,
+        "over100": 0,
+        "over500": 0
+      },
+      "draw": {
+        "samples": 11373,
+        "meanMs": 7.052027136199744,
+        "p95CeilMs": 12,
+        "p99CeilMs": 20,
+        "maxMs": 45.60615999996662,
+        "over100": 0,
+        "over500": 0
+      },
+      "controlAckMs": [
+        7.462002000014763,
+        31.373979999974836
+      ],
+      "workerMs": [
+        740.7179460034824,
+        27.668564994470216,
+        1994.853453998745
+      ],
+      "baselines": 2,
+      "diffs": 3810,
+      "finalHash": "fa5c31dd56749cc77691eb9611243fd85a67ebe6cc7007aa4248a2df5fd4a4ba",
+      "outputs": 3,
+      "images": 21,
+      "workers": 1,
+      "heapStart": 28038752,
+      "heapEnd": 26443624,
+      "rssStart": 1484308480,
+      "rssEnd": 2423513088
+    }
+  ]
+}

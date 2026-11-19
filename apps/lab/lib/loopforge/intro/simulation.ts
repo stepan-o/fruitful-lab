@@ -29,7 +29,7 @@ export class Intro {
   private attempts=new Map<string,number>();
   deliberations=0;
   private intentions=new Map<string,Opportunity>();
-  constructor(readonly policy:Policies=authored){
+  constructor(readonly policy:Policies=authored,readonly timedDeliberation?:(run:()=>void)=>void){
     for(const piece of this.pieces)this.world.facts[piece.id+'.socket']=0;
     this.deliberate();
   }
@@ -47,18 +47,23 @@ export class Intro {
   }
   private note(p:Opportunity,reason:string){this.trace.push({tick:this.world.tick,actor:p.actor,goal:p.goal,plan:p.action.id,reason});}
   private deliberate(){
+    if(this.timedDeliberation)this.timedDeliberation(()=>this.choose());
+    else this.choose();
+  }
+  private choose(){
     const w=this.world;
     while(this.cursor<library.length&&library[this.cursor].opens<=w.tick)this.waiting.push(library[this.cursor++]);
     if(!this.waiting.length)return;
     this.deliberations++;
     const candidates=new Map<string,Opportunity[]>();
     this.waiting=this.waiting.filter(p=>{
+      if(p.alternative&&w.props?.['bob:id']?.location.kind!=='floor')return false;
       if(w.tick>p.closes){if(!p.alternative)this.note(p,'Expired after reconsideration');return false;}
       const prior=w.agents[p.actor].beliefs['available.'+p.action.id];
       const observed=this.policy.observe(p,w);
       if(prior?.value!==observed){
         w.agents[p.actor].beliefs['available.'+p.action.id]={mode:'observed',source:p.perceive?'local contact':'scenario cue',tick:w.tick,value:observed};
-        this.note(p,observed?'Observed opportunity':'Waiting for contact');
+        this.note(p,observed?'Observed '+w.agents[p.actor].beliefs['available.'+p.action.id].source:'Waiting for a required observation');
       }
       const lane=p.actor+'/'+(p.action.channel??'body');
       const list=candidates.get(lane)??[];
@@ -67,7 +72,7 @@ export class Intro {
     });
     for(const options of candidates.values()){
       const p=this.policy.select(options,this.world,this.policy);
-      if(!p)continue;
+      if(!p||this.world.held[(p.action.channel??'actor')+':'+p.actor])continue;
       const tries=this.attempts.get(p.action.id)??0;
       const id=p.action.id+(tries?'#'+tries:'');
       this.attempts.set(p.action.id,tries+1);

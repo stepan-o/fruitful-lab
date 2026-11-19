@@ -57,12 +57,44 @@ export function operations(before:State,after:State):Op[]{
   for(const e of after.events)if(!before.events.some(x=>x.event_id===e.event_id))ops.push({op:'APPEND_EVENT',event:e});
   return ops;
 }
+function fields(input:unknown){
+  if(!input||typeof input!=='object'||Array.isArray(input))throw Error('INVALID_PAYLOAD');
+  const record=input as Record<string,unknown>;
+  return {
+    text(k:string){if(typeof record[k]!=='string')throw Error('INVALID_PAYLOAD');return record[k] as string;},
+    int(k:string){if(!Number.isSafeInteger(record[k]))throw Error('INVALID_PAYLOAD');return record[k] as number;},
+    flag(k:string){if(typeof record[k]!=='boolean')throw Error('INVALID_PAYLOAD');return record[k] as boolean;}
+  };
+}
+// Decode only registered fields. Future extensions cannot silently change the hash domain.
+function readWorld(input:unknown):PublicWorld{
+  const v=fields(input),layout=v.text('layout'),gate_mm=v.int('gate_mm'),outputs=v.int('outputs');
+  if(layout!=='approved-factory/day-one-3'||gate_mm<0||gate_mm>6200||outputs<0||outputs>3)throw Error('INVALID_PAYLOAD');
+  return {layout,gate_mm,outputs,jammed:v.flag('jammed')};
+}
+function readActor(input:unknown):Actor{
+  const v=fields(input),facing=v.text('facing');
+  if(!['N','S','E','W'].includes(facing))throw Error('INVALID_PAYLOAD');
+  return {agent_id:v.text('agent_id'),x:v.int('x'),y:v.int('y'),room:v.text('room'),facing,moving:v.flag('moving'),walked:v.int('walked'),injured:v.flag('injured'),action:v.text('action')};
+}
+function readItem(input:unknown):Item{
+  const v=fields(input),stage=v.int('stage');
+  if(stage<0||stage>4)throw Error('INVALID_PAYLOAD');
+  return {item_id:v.text('item_id'),x:v.int('x'),y:v.int('y'),stage,holder:v.text('holder')};
+}
+function readEvent(input:unknown):Utterance{
+  const v=fields(input),tick=v.int('tick'),until=v.int('until');
+  if(tick<0||until<=tick)throw Error('INVALID_PAYLOAD');
+  return {event_id:v.text('event_id'),tick,until,speaker:v.text('speaker'),text:v.text('text')};
+}
 export function reconstruct(previous:Frame|null,record:Envelope):Frame{
   if(!validEnvelope(record)||record.payload.schema_version!==schema||typeof record.payload.step_hash!=='string'||!/^([0-9a-f]{64})$/.test(record.payload.step_hash))throw Error('INVALID_PAYLOAD');
   if(record.msg_type==='FULL_SNAPSHOT'){
     const p=record.payload as unknown as Baseline;
     if(!Number.isSafeInteger(p.tick)||p.tick<0||!p.state?.world||![p.state.agents,p.state.items,p.state.events].every(Array.isArray))throw Error('INVALID_PAYLOAD');
-    return {tick:p.tick,hash:p.step_hash,state:p.state};
+    const state={world:readWorld(p.state.world),agents:p.state.agents.map(readActor),items:p.state.items.map(readItem),events:p.state.events.map(readEvent)};
+    if(state.agents.some((a,i)=>i>0&&a.agent_id<=state.agents[i-1].agent_id)||state.items.some((a,i)=>i>0&&a.item_id<=state.items[i-1].item_id))throw Error('INVALID_PAYLOAD');
+    return {tick:p.tick,hash:p.step_hash,state};
   }
   if(record.msg_type!=='FRAME_DIFF'||!previous)throw Error('Missing baseline');
   const p=record.payload as unknown as Diff;
@@ -70,11 +102,11 @@ export function reconstruct(previous:Frame|null,record:Envelope):Frame{
   const state:State={...previous.state,agents:[...previous.state.agents],items:[...previous.state.items],events:[...previous.state.events]};
   for(const op of p.ops){
     switch(op.op){
-      case 'UPSERT_WORLD':state.world=op.world;break;
-      case 'UPSERT_AGENT':{const i=state.agents.findIndex(a=>a.agent_id===op.agent.agent_id);if(i<0)throw Error('Unknown cast');state.agents[i]=op.agent;break;}
-      case 'UPSERT_ITEM':state.items=state.items.filter(i=>i.item_id!==op.item.item_id).concat(op.item).sort((a,b)=>order(a.item_id,b.item_id));break;
+      case 'UPSERT_WORLD':state.world=readWorld(op.world);break;
+      case 'UPSERT_AGENT':{const i=state.agents.findIndex(a=>a.agent_id===op.agent.agent_id);if(i<0)throw Error('Unknown cast');state.agents[i]=readActor(op.agent);break;}
+      case 'UPSERT_ITEM':state.items=state.items.filter(i=>i.item_id!==op.item.item_id).concat(readItem(op.item)).sort((a,b)=>order(a.item_id,b.item_id));break;
       case 'REMOVE_ITEM':state.items=state.items.filter(i=>i.item_id!==op.item_id);break;
-      case 'APPEND_EVENT':state.events.push(op.event);break;
+      case 'APPEND_EVENT':state.events.push(readEvent(op.event));break;
       case 'REMOVE_EVENT':state.events=state.events.filter(e=>e.event_id!==op.event_id);break;
       default:throw Error('Unsupported op');
     }

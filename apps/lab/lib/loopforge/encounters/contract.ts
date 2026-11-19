@@ -10,7 +10,7 @@ export type Value=string|number|boolean;
 export type Belief={value:Value;source:string;mode:'observed'|'reported';tick:number};
 export type EncounterZone=ZoneId|'outside';
 export type Agent={id:string;name:string;character:Character;room:EncounterZone;position:Point;yaw:number;beliefs:Record<string,Belief>;stress:number;trust:number;memory:string[]};
-export type Condition={prop:string;heldBy:string;equals:boolean}|{agent:string;near:string;within:number}|{fact:string;equals:Value}|{agent:string;belief:string;equals:Value}|{agent:string;feeling:'trust'|'stress';atLeast:number};
+export type Condition={agent:string;at:Point;within:number}|{prop:string;heldBy:string;equals:boolean}|{agent:string;near:string;within:number}|{fact:string;equals:Value}|{agent:string;belief:string;equals:Value}|{agent:string;feeling:'trust'|'stress';atLeast:number};
 /** Omitted observedBy preserves public encounter effects; [] commits private world truth. */
 export type Effect={fact:string;value:Value;observedBy?:string[]}|{agent:string;stress?:number;trust?:number;remember?:string;observe?:{fact:string;value:Value}};
 export type Delivery={tone:'plain'|'command'|'outburst'|'aside'|'hesitant'|'dry'|'warm';emotion?:'anger'|'nerves'|'doubt'|'relief'|'care';emphasis?:string[]};

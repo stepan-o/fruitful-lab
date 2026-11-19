@@ -52,6 +52,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
     const [width,height,cols,ox,oy]=cell;
     ctx.drawImage(im,(index%cols)*width,Math.floor(index/cols)*height,width,height,Math.round(px-ox*k),Math.round(py-oy*k),width*k,height*k);
   }
+  ctx.clearRect(0,0,w,h);
   ctx.imageSmoothingEnabled=false;ctx.fillStyle='#242b2c';ctx.fillRect(0,0,w,h);
   const forge=actors.find(a=>a.agent_id==='bob')?.room==='conveyor'&&cam.y>138;
   if(!iso){

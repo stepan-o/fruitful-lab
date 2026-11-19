@@ -46,6 +46,7 @@ function routesClear(s:World,moves:readonly {agent:string;to:Point}[],space:Spat
 }
 function conditionHolds(s:World,c:Condition):boolean {
  if('prop'in c)return !!s.props?.[c.prop]&&(propCustodian(s,c.prop)===c.heldBy)===c.equals;
+ if('at'in c){const a=s.agents[c.agent];return !!a&&Number.isFinite(c.within)&&c.within>=0&&Math.hypot(a.position[0]-c.at[0],a.position[1]-c.at[1])<=c.within;}
  if('near'in c){const a=s.agents[c.agent],b=s.agents[c.near];return !!a&&!!b&&Number.isFinite(c.within)&&c.within>=0&&Math.hypot(a.position[0]-b.position[0],a.position[1]-b.position[1])<=c.within;}
  return 'fact'in c?s.facts[c.fact]===c.equals:'belief'in c?s.agents[c.agent]?.beliefs[c.belief]?.value===c.equals:(s.agents[c.agent]?.[c.feeling]??-1)>=c.atLeast;
 }
@@ -110,7 +111,7 @@ export function advance(world:World,registry:Registry,space:SpatialServices,plan
   for(const move of moves){s.agents[move.agent].position=move.to;const room=space.roomAt?.(move.to);if(room)s.agents[move.agent].room=room;}
   if(!processReady(s,p.process)){s=cancel(s,a.intent.id);continue;}
   if(t<1)continue;
-  if(d.requires.some(c=>('prop'in c||'near'in c)&&!conditionHolds(s,c))){s=cancel(s,a.intent.id);continue;}
+  if(d.requires.some(c=>('prop'in c||'near'in c||'at'in c)&&!conditionHolds(s,c))){s=cancel(s,a.intent.id);continue;}
   if(p.completesWhen?.some(c=>!conditionHolds(s,c))){s=cancel(s,a.intent.id);continue;}
   const transfers=applyPropTransfers(s,p.transfers??[]);
   if(transfers===null){s=cancel(s,a.intent.id);continue;}

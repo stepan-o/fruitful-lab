@@ -43,6 +43,10 @@ test('invalid physical contact, alternative intention, interrupted production an
   assert(missed.trace.some(e=>e.plan==='strike'&&/Preconditions/.test(e.reason)));
   const guard=new Intro();until(guard,tickAt(29.8));guard.world.agents.ed.position=[121300,129460];until(guard,tickAt(30.8));assert(guard.world.completed.includes('watch-card'));assert.equal(guard.world.props['bob:id'].location.kind,'floor');
   const halt=new Intro();until(halt,tickAt(52));halt.world.agents.bob.position=[111000,142000];until(halt,tickAt(77));assert.equal(halt.pieces[0].stage,0);assert(halt.trace.some(e=>e.plan==='cortex-1-intake'&&e.reason.startsWith('Interrupted')));
+  const jam=new Intro();until(jam,tickAt(109.05));jam.world.agents.bob.position=[110000,142000];
+  until(jam,tickAt(110));assert.equal(jam.world.facts['press.jammed'],true);
+  const unheard=new Intro();until(unheard,tickAt(50));delete unheard.world.agents.bob.beliefs['heard.line.13'];
+  until(unheard,tickAt(62));assert.equal(unheard.pieces[0].stage,0);
   assert(!audible({position:[1000,1000]},{position:[30000,1000]}));
   assert(audible({position:[120000,140000]},{position:[120600,140000]}));
   const denied=new Intro();denied.world.facts['blocked.LIMEN']=true;until(denied,tickAt(44));assert.equal(denied.world.facts['gate.staffed'],undefined);assert(denied.routes.bob.elapsed<denied.world.tick);
@@ -55,6 +59,9 @@ test('canonical byte fixtures, ordered diffs, gaps, external hashes and offline 
   const frame=await offlineFrame(index,2,load);assert.equal(frame.hash,await digest(frame.state));
   assert.equal(frame.hash,golden.offlineEnd);
   await assert.rejects(offlineFrame(index,2,async()=>new Uint8Array([0])),/checksum/);
+  const extra=structuredClone(records['0.json']);extra.payload.state.agents[0].future='ignored';
+  assert.equal(await digest(reconstruct(null,extra).state),records['0.json'].payload.step_hash);
+  extra.payload.state.agents[0].facing='INVALID';assert.throws(()=>reconstruct(null,extra),/INVALID_PAYLOAD/);
   const zero=reconstruct(null,records['0.json']);assert.throws(()=>reconstruct(zero,records['2.json']),/TICK_GAP/);
   const live=new Intro();until(live,2);assert.deepEqual(frame.state,projectIntro(live));
 });

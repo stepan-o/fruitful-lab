@@ -29,7 +29,7 @@ export function opportunities():Opportunity[]{
   plan('watch-card','ed','Keep sight of the loose credential',30.1,30.35,{},{
     priority:30,alternative:true,perceive:w=>{
       const p=w.props?.['bob:id'].location;
-      return p?.kind==='floor'&&distance(w.agents.ed.position,p.position)>1400&&distance(w.agents.ed.position,p.position)<4500;
+      return p?.kind==='floor'&&distance(w.agents.ed.position,p.position)<4500;
     }
   });
   plan('gate-post','LIMEN','Let the supervisor through',score.gate.openings[0][0]-.05,score.gate.openings[0][0],{effects:[{fact:'gate.staffed',value:true}]},{perceive:w=>distance(w.agents.LIMEN.position,mm(geom.contact.patrolPost))<450});
@@ -44,13 +44,17 @@ export function opportunities():Opportunity[]{
       completesWhen:batch===1&&index===3?[{fact:'press.jammed',equals:false}]:[],effects:[{fact:piece+'.stage',value:index+1}]},
       {station:stations[index],from:index,to:index+1,operator:socket,workpiece:piece});
     plan(piece+'-'+stations[index],agent,'Run '+station.name+' for '+piece,start,ends[batch][index],phase,{
-      expected:piece+'.stage',perceive:w=>distance(w.agents[agent].position,socket.position)<=socket.within
+      expected:piece+'.stage',perceive:w=>{
+        const instruction=batch===0?[13,14,15,16][index]:batch===1&&index===0?26:undefined;
+        return distance(w.agents[agent].position,socket.position)<=socket.within&&
+          (instruction===undefined||w.agents[agent].beliefs['heard.line.'+instruction]?.source==='STILETTO');
+      }
     },{resources:[stations[index]],requires:[{fact:piece+'.socket',equals:index},...(batch===1&&index===3?[{fact:'press.jammed',equals:false}]:[])]});
   }));
   plan('press-jams','bob','Inspect the stalled door',101.65,101.75,{effects:[{fact:'press.jammed',value:true}]},{perceive:w=>distance(w.agents.bob.position,mm([131.7,144.4]))<750});
   plan('palm-release','bob','Free the jammed door',108.95,109.3,{effects:[{fact:'press.jammed',value:false}]},{
-    priority:90,perceive:w=>distance(w.agents.bob.position,mm([131.7,144.4]))<600
-  },{requires:[{fact:'press.jammed',equals:true}],resources:['forge']});
+    priority:90,perceive:w=>w.agents.bob.beliefs['heard.line.27']?.source==='STILETTO'&&distance(w.agents.bob.position,mm([131.7,144.4]))<600
+  },{requires:[{fact:'press.jammed',equals:true},{agent:'bob',at:mm([131.7,144.4]),within:600}],resources:['forge']});
   // The scanner is the physical handoff surface between the two marked roots.
   const tray=ground(geom.contact.photo.map((v,i)=>(v+geom.contact.fourthClerk[i])/2));
   const photoSteps:[string,string,number,PropLocation,PropLocation][]=[

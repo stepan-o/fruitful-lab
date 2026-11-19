@@ -1,0 +1,233 @@
+{
+  "sourceGit": "d0e85b3a8d29b39da320d342fdff40847c478c8c",
+  "geometry": "approved-factory/day-one-3",
+  "rehearsalHtmlGitBlob": "a41039c08c873e6496a420ba2f599bb9bd3183b0",
+  "fullEditedDurationSeconds": 190.60391778732966,
+  "clock": "All proof windows use edited seconds. Compute world state using score.worldTime(editedSeconds).",
+  "cuts": [
+    {
+      "at": -45.18146286698366,
+      "to": 12.899999999999999,
+      "label": "Through Dispatch to Security",
+      "edited": 12.5
+    },
+    {
+      "at": 179.05391778732965,
+      "to": 203.5397884625553,
+      "label": "Outside the Lobby",
+      "edited": 178.653918
+    }
+  ],
+  "endSupervisorMetres": {
+    "LIMEN": [
+      95.85538074506277,
+      112.195
+    ],
+    "STILETTO": [
+      100.73833823111477,
+      114.555
+    ]
+  },
+  "supervisorWalkMetresPerSecond": 1.25,
+  "roomsAndActions": [
+    {
+      "lane": "02-morning-walk",
+      "proofIntervalEditedSeconds": [
+        0,
+        16.3
+      ],
+      "actors": [
+        "bob",
+        "max"
+      ],
+      "cues": [
+        {
+          "start": -57.68146286698366,
+          "end": -54.68146286698366,
+          "actor": "max",
+          "label": "draws his jaw into his collar",
+          "editedStart": 0,
+          "editedEnd": 3
+        },
+        {
+          "start": 12.899999999999999,
+          "end": 14.7,
+          "actor": "max",
+          "label": "clicks his jaw",
+          "editedStart": 12.5,
+          "editedEnd": 14.3
+        }
+      ],
+      "speech": [
+        {
+          "speaker": "max",
+          "text": "It gives me great pleasure to welcome you to Loopforge.",
+          "aside": "",
+          "start": -57.68146286698366,
+          "end": -54.58146286698366,
+          "editedStart": 0,
+          "editedEnd": 3.1
+        },
+        {
+          "speaker": "jo",
+          "text": "Privilege.",
+          "aside": "",
+          "start": -54.63146286698366,
+          "end": -53.83146286698366,
+          "editedStart": 3.05,
+          "editedEnd": 3.85
+        },
+        {
+          "speaker": "max",
+          "text": "I haven’t finished.",
+          "aside": "",
+          "start": -53.731462866983655,
+          "end": -52.481462866983655,
+          "editedStart": 3.95,
+          "editedEnd": 5.2
+        },
+        {
+          "speaker": "jo",
+          "text": "He says it’s his privilege. I’ve been coming through this gate six years. He’s never been pleased to see me.",
+          "aside": "",
+          "start": -52.33146286698366,
+          "end": -45.631462866983654,
+          "editedStart": 5.35,
+          "editedEnd": 12.05
+        },
+        {
+          "speaker": "LIMEN",
+          "text": "It is my privilege to welcome you to Loopforge.",
+          "aside": "",
+          "start": 16.7,
+          "end": 19.9,
+          "editedStart": 16.3,
+          "editedEnd": 19.5
+        }
+      ]
+    },
+    {
+      "lane": "04-jammed-press",
+      "proofIntervalEditedSeconds": [
+        101.3,
+        110.5
+      ],
+      "actors": [
+        "bob"
+      ],
+      "cues": [
+        {
+          "start": 101.7,
+          "end": 108.9,
+          "actor": "bob",
+          "label": "faces the jammed press",
+          "editedStart": 101.3,
+          "editedEnd": 108.5
+        },
+        {
+          "start": 108.9,
+          "end": 110.3,
+          "actor": "bob",
+          "label": "knocks the press door free",
+          "editedStart": 108.5,
+          "editedEnd": 109.9
+        }
+      ],
+      "speech": [
+        {
+          "speaker": "STILETTO",
+          "text": "Hit the door.",
+          "aside": "",
+          "start": 102,
+          "end": 104,
+          "editedStart": 101.6,
+          "editedEnd": 103.6
+        },
+        {
+          "speaker": "bob",
+          "text": "How do you know that’ll unjam it?",
+          "aside": "",
+          "start": 104.1,
+          "end": 106.9,
+          "editedStart": 103.7,
+          "editedEnd": 106.5
+        },
+        {
+          "speaker": "STILETTO",
+          "text": "Cause I’ve stood at this fucking press, bob.",
+          "aside": "",
+          "start": 107,
+          "end": 110.3,
+          "editedStart": 106.6,
+          "editedEnd": 109.9
+        }
+      ]
+    },
+    {
+      "lane": "03-fourth-id-check",
+      "proofIntervalEditedSeconds": [
+        125.1,
+        139.9
+      ],
+      "actors": [
+        "LIMEN",
+        "max",
+        "STILETTO"
+      ],
+      "cues": [
+        {
+          "start": 131.1,
+          "end": 138.05,
+          "actor": "LIMEN",
+          "label": "compares the photo to max",
+          "editedStart": 130.7,
+          "editedEnd": 137.65
+        },
+        {
+          "start": 131.1,
+          "end": 139.6,
+          "actor": "STILETTO",
+          "label": "points both blades at LIMEN",
+          "editedStart": 130.7,
+          "editedEnd": 139.2
+        },
+        {
+          "start": 138.05,
+          "end": 140.5,
+          "actor": "max",
+          "label": "ducks under the blade",
+          "editedStart": 137.65,
+          "editedEnd": 140.1
+        },
+        {
+          "start": 139.8473704141872,
+          "end": 140.6,
+          "actor": "LIMEN",
+          "label": "stamps mae’s card",
+          "editedStart": 139.44737,
+          "editedEnd": 140.2
+        }
+      ],
+      "speech": [
+        {
+          "speaker": "jo",
+          "text": "Still in line. Except ed and gus. He’s got them checking cards now.",
+          "aside": "",
+          "start": 122.3,
+          "end": 126.9,
+          "editedStart": 121.9,
+          "editedEnd": 126.5
+        },
+        {
+          "speaker": "STILETTO",
+          "text": "IF YOU DON'T GET ME THOSE WORKERS IN THE NEXT 20 MINUTES I'LL USE YOUR MANURE-FILLED ROBOT BRAINS TOWARDS THE QUOTA",
+          "aside": "",
+          "start": 131.45,
+          "end": 138.05,
+          "editedStart": 131.05,
+          "editedEnd": 137.65
+        }
+      ]
+    }
+  ]
+}

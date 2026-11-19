@@ -34,13 +34,17 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 2C · The appointment
 
-**LIMEN** Give me Security. ed and gus have the books. STILETTO has her eight at Conveyor.
+**LIMEN** Keep us where we were. My clerks can give you the names of all eight workers we sent to Conveyor.
 
-**STILETTO** I had eight at the bell. I wanted five cortexes. I got three.
+**STILETTO** bob. When you put that first brain on the belt, who was waiting at the press?
 
-**STILETTO** Give me the gate and the two clerks. Give him my eight and a running start.
+**bob** Nobody, ma’am. I had to go after it.
 
-*The Producer accepts LIMEN’s bid. ed opens his desk. gus takes the queue. STILETTO walks ahead to Conveyor. She sights along the empty controls.*
+**STILETTO** Put him on Conveyor. Give me the gate and the clerks. I can get eight people through a fucking door.
+
+*The Producer appoints LIMEN. ed opens the register. gus calls sam up. STILETTO passes sam on her way to Conveyor.*
+
+**STILETTO** Three yesterday, sam. I want five. Feed the trays nose to tail.
 
 ### 2D · A pass
 
@@ -338,7 +342,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### S1 · STILETTO gets the gate
 
-*Keep the walk, greeting and two bids in 2A–2C. Play this from the appointment instead of the last direction in 2C. The Producer accepts STILETTO’s whole bid. LIMEN leaves for Conveyor. STILETTO takes the open register from ed.*
+*Keep the walk, greeting and two bids in 2A–2C. After STILETTO’s bid, replace the appointment and her order to sam with this pickup. The Producer accepts STILETTO’s whole bid. LIMEN leaves for Conveyor. STILETTO takes the open register from ed.*
 
 **STILETTO** Keep count, ed. gus, leave me a walking lane. Eight through there.
 

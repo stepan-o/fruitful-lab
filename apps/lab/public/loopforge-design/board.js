@@ -150,16 +150,16 @@
     history.replaceState(null, '', '#' + link.id);
   });
 
-  // Register the production handoff after the floor-scale guide in the existing tab system.
-  const scaleTab = document.querySelector('.nav [data-panel="floor-scale"]');
-  const scalePanel = document.getElementById('floor-scale');
-  if (scaleTab && scalePanel && !document.getElementById('sprite-briefs')) {
+  // Register the production handoff after the playable shifts in the existing tab system.
+  const shiftsTab = document.querySelector('.nav [data-panel="2d-shifts"]');
+  const shiftsPanel = document.getElementById('2d-shifts');
+  if (shiftsTab && shiftsPanel && !document.getElementById('sprite-briefs')) {
     const tab = document.createElement('button');
     tab.type = 'button';
     tab.dataset.panel = 'sprite-briefs';
     tab.textContent = '2D asset briefs';
     tab.setAttribute('aria-current', 'false');
-    scaleTab.after(tab);
+    shiftsTab.after(tab);
 
     const section = document.createElement('section');
     section.id = 'sprite-briefs';
@@ -171,7 +171,7 @@
       <iframe id="sprite-briefs-frame" title="2D artist briefs and ENGINE handoff"
         style="display:block;width:100%;min-width:0;height:1000px;border:0"
         data-src="/loopforge-design/sprite-briefs.html"></iframe>`;
-    scalePanel.after(section);
+    shiftsPanel.after(section);
   }
   const spriteFrame = document.getElementById('sprite-briefs-frame');
   let spriteObserver;
@@ -186,9 +186,22 @@
     spriteObserver.observe(root);
   });
 
+  const shiftsFrame = document.getElementById('shifts-player');
+  shiftsFrame?.addEventListener('load', () => {
+    const doc = shiftsFrame.contentDocument;
+    if (doc) doc.querySelectorAll('a[href]').forEach(link => { link.target = '_top'; });
+  });
+
   function openPanel(id,updateHash=true){
     const panel=document.getElementById(id);if(!panel||!panel.classList.contains('panel'))return;
     document.querySelectorAll('.panel').forEach(el=>el.hidden=el.id!==id);
+    if (id === '2d-shifts' && shiftsFrame) {
+      if (!shiftsFrame.hasAttribute('src')) shiftsFrame.src = shiftsFrame.dataset.src;
+    } else if (shiftsFrame?.hasAttribute('src')) {
+      // Keep the current checkpoint while the player reads another board tab.
+      const playButton = shiftsFrame.contentDocument?.getElementById('play');
+      if (playButton?.textContent === 'Pause') playButton.click();
+    }
     if (id === 'floor-layout') {
       const selected = floorViews.find(view => !updateHash && '#' + view.id === location.hash);
       showFloorView(selected || floorViews[0]);

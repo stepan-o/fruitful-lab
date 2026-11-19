@@ -2,7 +2,7 @@
 
 **Loopforge · Three mornings · WRITER review draft · 19 November 2026**
 
-Read the three shifts straight through. Lowercase names belong on the bubbles. Italics are business for the actors. The short marks in the headings also appear in the [BDI companion](DAYS_2_4_BDI.md). Pickups after the third bell give the cast another way through the same rooms.
+Read the three shifts straight through. Lowercase names belong on the bubbles. Italics are business for the actors. The short marks in the headings also appear in the [BDI companion](DAYS_2_4_BDI.md). Pickups after the third bell give the cast another way through the same rooms. The owner approved 2A and its ten crowd lines on 19 November. Review resumes at 2B.
 
 ## Day 2 · The photograph
 
@@ -270,7 +270,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ## Crowd lines for 2A
 
-*Draft options. Play one pair on the walk in. Keep the remark between the speaker and their walking companion.*
+*Approved options. Play one pair on the walk in. Keep the remark between the speaker and their walking companion.*
 
 | Speaker | To | Line |
 | --- | --- | --- |

@@ -60,7 +60,7 @@ For this approach bob has the most urgent question and a known witness beside hi
 | lou to ben, the lift | lou has heard gossip about the blade and has a private listener. LIMEN’s home habits are unknown. |
 | gus to max, the brain | Both were at Security for STILETTO’s Day One threat. gus can repeat what he heard and wonder aloud about the job. |
 
-These ten lines are WRITER proposals for review. For a hearsay line, seed a prior local report with a source and a recipient, or let it be heard on the approach. Suppress the line if that worker never received it. The draw supplies variety among reasons a worker already has to speak.
+The owner approved the 2A dialogue and all ten speaker-and-line pairs on 19 November. SYSTEMS still needs to validate the proposed reasons, hearing and selection rules. For a hearsay line, seed a prior local report with a source and a recipient, or let it be heard on the approach. Suppress the line if that worker never received it. The draw supplies variety among reasons a worker already has to speak.
 
 ### 2B · Good morning
 

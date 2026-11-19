@@ -224,7 +224,7 @@
     if(b.dataset.adviser)renderAdviser(b.dataset.adviser);
   });
   function openFromHash() {
-    const target = document.getElementById(location.hash.slice(1) || 'player-desires');
+    const target = document.getElementById(location.hash.slice(1) || 'studio');
     const panel = target?.closest('.panel');
     if (!panel) return;
     const revealTarget = panel.hidden && target !== panel;

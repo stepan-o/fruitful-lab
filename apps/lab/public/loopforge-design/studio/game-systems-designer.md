@@ -41,9 +41,9 @@ Read *Designing Games* in depth for the relevant decisions and provide verified 
 
 ## Current handoff
 
-**18 November 2026 · active owner commission, not an approved systems design.** Study and pre-synthesize; interview the owner one question at a time with suggested answers; propose a plan; implement the approved design study as a new tab immediately after Supervisor × room; deliver it for manual review.
+**19 November 2026 · study drafted locally.** The SYSTEMS checkout on `codex/days-2-4-systems` contains the interview record, proposed build plan and specialist prompts at `16a54fc`. The proposed design-board tab after Supervisor × room awaits owner approval of the plan. No published tab or associated PR was found. Its proposed accident dispute, Theatre expansion and weekly settlement remain design material.
 
-The target is an initial concept and concrete Days 2–4 draft, not a complete Act 1 implementation. ENGINE is finishing Day 1 independently. BDI must become a real decision/execution loop, but do not claim the future design is already integrated into the game.
+[ENGINE’s playable slice](/loopforge-shifts/index.html) implements two morning bids, one shift intervention, the shared Security hold, hearing and interrupted speech, staffed production, custody and individual responses to conflicting orders. The [matched outcomes](/loopforge-shifts/ENGINE-HANDOFF.md) and [dated evidence](/loopforge-shifts/review/2026-11-19.md) are the implementation baseline. SYSTEMS owns the study and the mapping from remaining proposals to the agreed rules. The owner decides whether to commission publication or any extension after play review.
 
 ## Delivery and continuity
 

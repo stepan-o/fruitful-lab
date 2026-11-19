@@ -26,6 +26,8 @@ function draw(){
 }
 function render(){
   if(!frame)return;
+  el<HTMLSelectElement>('checkpoint').disabled=false;
+  button('restore').disabled=false;
   const {scene,tick}=frame,w=scene.world,live=w.phase==='shift',sec=room==='security';
   hidden('brief',w.phase!=='briefing');hidden('floor',w.phase==='briefing');
   txt('clock','Day '+w.day+' · '+(w.phase==='briefing'?'Morning':Math.floor((tick-w.start)/20)+' s'));

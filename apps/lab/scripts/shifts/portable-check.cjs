@@ -10,10 +10,15 @@ async function main(){
     const context=await browser.newContext({viewport:{width:320,height:844},hasTouch:true,offline:true});
     const page=await context.newPage();
     const network=[],errors=[];
-    page.on('pageerror',err=>errors.push(err.message));
+    page.on('pageerror',err=>{errors.push(err.message);console.error(err.message);});
+    page.on('console',m=>{if(m.type()==='error')console.error(m.text());});
     page.on('request',req=>{if(/^https?:/.test(req.url()))network.push(req.url());});
     await page.addInitScript(()=>window.addEventListener('loopforge:frame',e=>{window.scene=e.detail;}));
     await page.goto(pathToFileURL(path.resolve(process.argv[2])).href);
+    await page.waitForFunction(()=>!!window.scene,null,{timeout:15000}).catch(async error=>{
+      console.error('Opening frame',await page.locator('#status').textContent(),await page.evaluate(()=>({context:window.isSecureContext,hash:!!crypto.subtle})));
+      throw error;
+    });
     await page.selectOption('#checkpoint','Missing ID');
     await page.waitForFunction(expected=>window.scene?.hash===expected,fixture.initial.step_hash);
     await page.tap('#play');

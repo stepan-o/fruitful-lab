@@ -18,13 +18,19 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 2B · Good morning
 
-**LIMEN** Good morning. Leave me room to see the last man.
+*LIMEN looks up as the crew bunches at the grate.*
 
-*The front rank eases back. There’s ben at the rear, perfectly visible.*
+**LIMEN** It is my privilege to welcome you to Loopforge.
 
-**ben** Morning.
+*On “Loopforge,” the [greeting replies](#greeting-replies) come in together. One possible draw:*
 
-*bob’s hand comes halfway up. LIMEN is still looking for ben. bob lets it drop.*
+**gus** Morning, sir!
+
+**jo** *(low, to max)* Missed us, did he?
+
+**sam** *(to bob at the grate)* Up you get. He’s looking.
+
+*bob straightens up. His eyes stay on the grate.*
 
 ### 2C · The appointment
 
@@ -128,7 +134,17 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 3B · Good morning
 
-**LIMEN** Good morning. Cards in your own hands, please.
+**LIMEN** It is my privilege to welcome you to Loopforge.
+
+*On “Loopforge,” the [greeting replies](#greeting-replies) come in together. One possible draw:*
+
+**ed** Good morning, sir.
+
+**gus** Morning, sir!
+
+**ben** Morning.
+
+**LIMEN** Cards in your own hands, please.
 
 *jo lets go of max’s card at once. max looks straight at the photograph.*
 
@@ -206,7 +222,17 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 4B · Good morning
 
-**LIMEN** Good morning. You may keep your places. I can see you from here.
+**LIMEN** It is my privilege to welcome you to Loopforge.
+
+*On “Loopforge,” the [greeting replies](#greeting-replies) come in together. One possible draw:*
+
+**ben** Morning.
+
+**lou** *(to ben)* Keep me a place.
+
+**ed** Good morning, sir.
+
+**LIMEN** You may keep your places. I can see you from here.
 
 *gus, coming up to take the front, stops broadside across the view. He turns sideways.*
 
@@ -284,6 +310,19 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 | kit | max | I heard that press door’s fixed. Can you open it with one hand yet? |
 | lou | ben | I heard he keeps that blade out at home. Imagine sharing a lift with him. |
 | gus | max | I heard her say she’d use his brain. Who’d have to wash it? |
+
+## Greeting replies
+
+*Use a fresh draw each morning. Pick several different workers who heard LIMEN and have someone in earshot to address. Give them the same entrance on “Loopforge.” Each name stays on its own bubble. The printed draws in 2B, 3B and 4B are examples.*
+
+| Worker | To | Reply |
+| --- | --- | --- |
+| gus | LIMEN | Morning, sir! |
+| ed | LIMEN | Good morning, sir. |
+| ben | LIMEN | Morning. |
+| jo | max, quietly, out of LIMEN’s hearing | Missed us, did he? |
+| sam | bob, if he’s still bent over the grate | Up you get. He’s looking. |
+| lou | ben, as places form in the queue | Keep me a place. |
 
 ## Pickups · Different evidence, different mornings
 
@@ -373,7 +412,11 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **max** First one’s my heel. Listen for the other one.
 
-**LIMEN** Good morning. Let’s see how far we get today.
+**LIMEN** It is my privilege to welcome you to Loopforge.
+
+*Draw a fresh simultaneous burst from the [greeting replies](#greeting-replies).*
+
+**LIMEN** Let’s see how far we get today.
 
 **gus** I’ve got the end, sir.
 
@@ -425,7 +468,11 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **jo** I spent all night holding an imaginary switch.
 
-**LIMEN** Good morning. Plenty of room on the way in.
+**LIMEN** It is my privilege to welcome you to Loopforge.
+
+*Draw a fresh simultaneous burst from the [greeting replies](#greeting-replies).*
+
+**LIMEN** Plenty of room on the way in.
 
 **jo** Could use some of that at the drive.
 
@@ -449,7 +496,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **mae** A tray came up off the rail. sam tried to seat it. Look where the rim caught them.
 
-*sam shows the mark. At the next appointment, after the crew’s approach and greeting, LIMEN bids.*
+*sam shows the mark. At the next appointment, after the walk-in, LIMEN’s usual welcome and the simultaneous worker replies, LIMEN bids.*
 
 **LIMEN** Give her the gate and the clerks. Give me Conveyor and the eight.
 

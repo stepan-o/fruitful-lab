@@ -49,7 +49,12 @@ def player():
     viewer, n = expression.subn(lambda m: "window.floorImages[" + m[1] + "]", viewer)
     if n != 1:
         raise ValueError("Unexpected sprite URL in viewer bundle")
-    boot = ('window.floorImages=' + json.dumps(art, separators=(",", ":")) + ';\n'
+    pack = PUBLIC / "loopforge-design/days-2-4-art/v1"
+    manifest = json.loads((pack / "manifest.json").read_bytes())
+    images = {a["file"]: "data:image/png;base64," + encoded((pack / a["file"]).read_bytes())
+              for a in manifest["atlases"].values()}
+    boot = ('window.shiftArtOffline=' + json.dumps({"manifest": manifest, "images": images}, separators=(",", ":")) + ';\n'
+            + 'window.floorImages=' + json.dumps(art, separators=(",", ":")) + ';\n'
             'window.floorKernel=URL.createObjectURL(new Blob([Uint8Array.from(atob("' + encoded(kernel) +
             '"), c=>c.charCodeAt(0))],{type:"text/javascript"}));')
     return replace_once(text, "</body>", script(boot) + script(viewer) + "</body>")

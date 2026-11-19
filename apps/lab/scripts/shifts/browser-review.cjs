@@ -60,6 +60,7 @@ async function record(browser,name){
   }
  }else if(id==='morning'){
   await tap('[data-bid="'+(name.endsWith('stiletto')?'STILETTO':'LIMEN')+'"]');
+  await tap('#commit');
   await page.waitForTimeout(2700);await tap('[data-room="conveyor"]');await shot('morning');
  }else{
   if(name==='chat-slow')await tap('#slow');

@@ -371,7 +371,7 @@ build_rehearsal(ROOT, OUT, intro_source, intro_body)
 intro_css_hash = hashlib.sha256((ROOT/'day-one-intro.css').read_bytes()).hexdigest()[:12]
 intro_css = f'<link rel="stylesheet" href="day-one-intro.css?v={intro_css_hash}">'
 intro = (f'<header class="section-head"><span class="kicker">Approved script and storyboards</span>'
-         f'<h2>{e(intro_title)}</h2><a class="link-button" href="#floor-layout">2D floor &amp; approved layout →</a> <a class="link-button" href="#day-one-art-calibration">Day One art calibration →</a></header><div class="day-one-script">{intro_body}</div>')
+         f'<h2>{e(intro_title)}</h2><a class="link-button" href="/stepanoskin/loopforge/play/day-one" target="_top">Play the live Day One intro →</a> <a class="link-button" href="#floor-layout">2D floor &amp; approved layout →</a> <a class="link-button" href="#day-one-art-calibration">Day One art calibration →</a></header><div class="day-one-script">{intro_body}</div>')
 floor_title = '2D floor & approved layout'
 floor_heading = f'<header class="section-head"><h2>{e(floor_title)}</h2></header>'
 rehearsal_url = '/loopforge-design/day-one-rehearsal.html'

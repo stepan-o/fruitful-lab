@@ -4734,6 +4734,8 @@ Compare what the player sees when LIMEN holds the queue, STILETTO pushes the lin
 
 [Astafiev](/loopforge-design/narrative-astafiev.html) · [Tarantino](/loopforge-design/narrative-dialogue.html) · [Dostoevsky](/loopforge-design/narrative-studies.html) · [Back to the Dawn](/loopforge-design/narrative-reference.html)
 
+**Days 2–4 for review.** [Read the three shifts](/loopforge-design/days-2-4-table-read.html) · [Follow the BDI decisions](/loopforge-design/days-2-4-decisions.html)
+
 
 # Focused console rebuild — retained interfaces and implementation baseline
 

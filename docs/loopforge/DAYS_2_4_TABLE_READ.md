@@ -22,15 +22,15 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **LIMEN** It is my privilege to welcome you to Loopforge.
 
-*On “Loopforge,” the [greeting replies](#greeting-replies) come in together. One possible draw:*
+*Three voices together on “Loopforge.” One [draw from the bank](#greeting-replies).*
 
-**gus** Morning, sir!
+**ed** Shall I open my desk, sir?
 
-**jo** *(low, to max)* Missed us, did he?
+**lou** *(to ben)* He ever say goodbye to you?
 
-**sam** *(to bob at the grate)* Up you get. He’s looking.
+**bob** Morning, sir. Remember me?
 
-*bob straightens up. His eyes stay on the grate.*
+*ben shakes his head. LIMEN turns to the Producer.*
 
 ### 2C · The appointment
 
@@ -138,11 +138,11 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 *On “Loopforge,” the [greeting replies](#greeting-replies) come in together. One possible draw:*
 
-**ed** Good morning, sir.
+**gus** TEN, SIR! Counting me.
 
-**gus** Morning, sir!
+**jo** *(low, to max)* Yours is better. You sound pleased.
 
-**ben** Morning.
+**ben** Thanks.
 
 **LIMEN** Cards in your own hands, please.
 
@@ -226,11 +226,11 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 *On “Loopforge,” the [greeting replies](#greeting-replies) come in together. One possible draw:*
 
-**ben** Morning.
+**mae** Morning. Can we have sam through first?
 
-**lou** *(to ben)* Keep me a place.
+**lou** *(to ben)* Go on, welcome him back.
 
-**ed** Good morning, sir.
+**kit** Heard you fine back here, sir.
 
 **LIMEN** You may keep your places. I can see you from here.
 
@@ -313,16 +313,26 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ## Greeting replies
 
-*Use a fresh draw each morning. Pick several different workers who heard LIMEN and have someone in earshot to address. Give them the same entrance on “Loopforge.” Each name stays on its own bubble. The printed draws in 2B, 3B and 4B are examples.*
+*Draw three different workers who heard the welcome and have a reason to answer. Draw one eligible line per worker. All three start on “Loopforge,” each in their own named bubble. Read lines to a workmate under the public voices. The same bank serves either appointment.*
 
-| Worker | To | Reply |
+| Worker | To | Line |
 | --- | --- | --- |
-| gus | LIMEN | Morning, sir! |
-| ed | LIMEN | Good morning, sir. |
-| ben | LIMEN | Morning. |
-| jo | max, quietly, out of LIMEN’s hearing | Missed us, did he? |
-| sam | bob, if he’s still bent over the grate | Up you get. He’s looking. |
-| lou | ben, as places form in the queue | Keep me a place. |
+| ed | LIMEN | Shall I open my desk, sir? |
+| ed | LIMEN | Morning, sir. I brought two pens. |
+| gus | LIMEN | TEN, SIR! Counting me. |
+| gus | LIMEN | Want me to yell it down the back? |
+| jo | max | Yours is better. You sound pleased. |
+| jo | LIMEN | Still here, sir. |
+| max | jo | After you, jo. It’s my privilege. |
+| max | gus | There’s your LIMEN, gus. Get him to do me. |
+| lou | ben | He ever say goodbye to you? |
+| lou | ben | Go on, welcome him back. |
+| ben | LIMEN | Thanks. |
+| sam | gus | That’s my foot, gus. |
+| mae | LIMEN | Morning. Can we have sam through first? |
+| kit | LIMEN | Heard you fine back here, sir. |
+| bob | LIMEN | Morning, sir. Remember me? |
+| bob | sam | If he asks who’s new, that’s nobody now, is it? |
 
 ## Pickups · Different evidence, different mornings
 

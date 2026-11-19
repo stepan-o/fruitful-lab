@@ -2,6 +2,12 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 19 November 2026 · A report you can reopen
+
+A player can look away from Security and miss the resolution. The desk now keeps a readable case file. Its flag changes when the shift intervention is spent, the panel shows who issued bob’s pass, and a separate insert records detention or release. A verified public report survives the short event window. On the floor, jo still has to take her own first step towards the desk.
+
+The first live phone recording put the flag too close to the gate. ENGINE registered it to the visible desk face and repeated the timed comparison. The same work placed the three rack sockets at carrier height and restored the calibrated Forge foreground around its operator. [Play the integrated shifts](/loopforge-shifts/index.html) · [Watch the before/after game capture](/loopforge-shifts/review/shifts-art-1x.mp4) · [Read the checkpoint and performance measurements](/loopforge-shifts/review/2026-11-19.md).
+
 ## 19 November 2026 · When the line starts again
 
 The same failed check held both Security desks while sam finished the first Intake handoff. With no intervention, LIMEN detained bob at 24.40 seconds and jo stepped forward 0.45 seconds later. Wash stayed uncovered. At the same desk an immediate pass brought bob to Wash and seven finished pieces reached the rack.

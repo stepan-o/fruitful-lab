@@ -4,7 +4,17 @@
 
 [Play the two-room factory](/loopforge-shifts/index.html) · [Replay fixture manifest](/loopforge-shifts/fixtures/index.json)
 
-Appoint either supervisor to play forward from Day 2. The bell opens the next morning through Day 4. The four review checkpoints use the same simulation as ordinary play. Each checkpoint restores the decisions, beliefs, props, work and queue that led to it. Select a room and press **Play 1×** to observe. The clock runs at twenty simulation ticks per second. Selecting a bid starts the clock.
+Appoint either supervisor to play forward from Day 2. The bell opens the next morning through Day 4. The four review checkpoints use the same simulation as ordinary play. Each checkpoint restores the decisions, beliefs, props, work and queue that led to it. Select a room and press **Play 1×** to observe. The clock runs at twenty simulation ticks per second. Select a bid to inspect both assignments. **Commit assignment** submits the pair and starts the clock after admission.
+
+## Saved art in the live player
+
+The host loads the v1 manifest and its three atlases once per page. The bundled ART selector sees only a frame accepted by `wire.read`. The presenter passes the current room, open case and locally selected bid. A deliberate button press calls the supplied `commandPayload` helper, then the existing worker admits or rejects that intention. The simulation runs independently at 20 Hz.
+
+The gate, signal and case copy identify a held line. Open the register, close its report, switch cameras and reopen it while the shift continues. Its report stays readable after spending the intervention and after resolution. The pass records its holder, issuer, shift and expiry. Detention uses the Security insert. The next worker moves on the existing route. On Conveyor, post tags follow physical coverage and the handoff lamps follow the active workpiece. Three rack sockets have separate rear, contents and foreground layers. The docket counts every arrival even when the same sockets are reused.
+
+Speech uses the last delivered words per speaker, a named plate and a tail. Interrupted speech takes the torn plate. At a clash the public endorsement and each committed choice appear independently. The open reviewer inspector is the separate entry point for recorded reasoning. The end docket records staffed controls, output, expiry or release and the subsequent morning carries the completed total.
+
+[Watch the normal-speed comparison](/loopforge-shifts/review/shifts-art-1x.mp4) · [Read the dated ENGINE evidence](/loopforge-shifts/review/2026-11-19.md)
 
 ## Matched runs
 
@@ -40,4 +50,6 @@ All fixtures include the ordered public journal, stable sequence numbers, absolu
 
 From the repository root, with the lab workspace dependencies installed, run `node apps/lab/scripts/shifts/day-one.cjs`, `node apps/lab/scripts/shifts/replays.cjs` and `node apps/lab/scripts/shifts/build.cjs`. The replay command checks the committed JSON byte-for-byte, two independent continuations from each restore, daily renewal, stale/duplicate commands, attributed hearing, physical handoffs, release and expiry. The scoped browser review records normal-speed room views, actions, viewport geometry, screenshots, actual events and terminal counts. The delayed mobile pass deliberately lands later than the fixture’s immediate pass.
 
-Provisional sprites reuse approved Day One assets. The station overlays and decision surface are ENGINE bindings for ART. Owner review is pending.
+The original credential and the worker’s motive are separate. A shown credential requires a public credential event or admitted pass. The private hearing trace remains in the reviewer evidence. The verified Day 4 endorsement at tick 9467 reached sam and missed mae in both restored backing runs.
+
+The remaining character dependencies are bob’s injured gait and credential handling, ed’s card handling, distinct worker silhouettes, directional movement and supervisory gestures. The detention insert covers the recorded custody result. A physical detention position and route still require LEVEL and character work. The carrier uses the earlier in-process token. The three sockets share capacity with cumulative output. The TypeScript kernel, bounded intentions and local KVP profile remain the migration boundary for a future Rust implementation and a future 3D viewer. Owner review is pending.

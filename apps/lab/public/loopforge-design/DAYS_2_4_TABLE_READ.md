@@ -2,7 +2,7 @@
 
 **Loopforge · Three mornings · WRITER review draft · 19 November 2026**
 
-Read the three shifts straight through. Lowercase names belong on the bubbles. Italics are business for the actors. The short marks in the headings also appear in the [BDI companion](DAYS_2_4_BDI.md). Pickups after the third bell give the cast another way through the same rooms. The owner approved 2A with its ten crowd lines and 2B with its sixteen greeting replies on 19 November. Review resumes at 2C.
+Read the three shifts straight through. Lowercase names belong on the bubbles. Italics are business for the actors. An emoji flashes over the named worker. Play the face and read only the words. The short marks in the headings also appear in the [BDI companion](DAYS_2_4_BDI.md). Pickups after the third bell give the cast another way through the same rooms. The owner approved 2A with its ten crowd lines and 2B with its sixteen greeting replies on 19 November. Review resumes at 2C.
 
 ## Day 2 · The photograph
 
@@ -34,17 +34,27 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 2C · The appointment
 
-**LIMEN** Keep us where we were. My clerks can give you the names of all eight workers we sent to Conveyor.
+**LIMEN** I think nowadays it has became increasingly common to undervalue stability.
 
-**STILETTO** bob. When you put that first brain on the belt, who was waiting at the press?
+*He points to ed, then gus.*
 
-**bob** Nobody, ma’am. I had to go after it.
+**LIMEN** You and you, you get to help me with ID checks again.
 
-**STILETTO** Put him on Conveyor. Give me the gate and the clerks. I can get eight people through a fucking door.
+*ed opens the register. gus takes the other desk. [One line from each clerk, one from the crowd.](#the-two-desks)*
 
-*The Producer appoints LIMEN. ed opens the register. gus calls sam up. STILETTO passes sam on her way to Conveyor.*
+**ed** Very sound, sir. Shall I just change the date on yesterday’s page?
 
-**STILETTO** Three yesterday, sam. I want five. Feed the trays nose to tail.
+**gus** 😎 Best gate in the business, sir. Ask anybody still standing at it.
+
+**mae** *(to sam)* Ever seen either of them move that fast for a tray?
+
+**sam** 🤭
+
+**LIMEN** I’ll keep these two at Security. STILETTO can keep her eight.
+
+**STILETTO** Give me the gate. Put him on Conveyor with all ten. I can open a fucking door by myself.
+
+*The Producer appoints LIMEN. bob catches ed’s eye. Before he can get a word in, gus calls sam up. ed holds his hand out for sam’s card.*
 
 ### 2D · A pass
 
@@ -56,7 +66,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 *sam takes it along to Intake. STILETTO meets them at the rails.*
 
-**STILETTO** Seat that one. Have the next ready to lift.
+**STILETTO** Three yesterday. I want five. Seat that one. Have the next ready to lift.
 
 *At Security max clears and goes to the Forge. Called at last, bob gets his empty hand out.*
 
@@ -68,7 +78,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 *The Producer issues a pass. LIMEN reads its date before he hands it to bob. Only when bob is through does gus let jo step up.*
 
-**bob** I look better on this one.
+**bob** *(to LIMEN, looking at the pass)* I look better on this one.
 
 *There’s no photograph. gus looks at the slip, too late for a comeback. bob folds it and walks to Wash.*
 
@@ -154,11 +164,13 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **max** Got the hang of this side, sir.
 
+**jo** 🤐
+
 *jo keeps a straight face until his light passes.*
 
 ### 3C · Places
 
-**STILETTO** Give me the gate. My clerks count them out. He counts eight into Conveyor.
+**STILETTO** Give me the gate. He can count all ten in at Conveyor.
 
 **LIMEN** Keep my clerks with me. Keep her crew with her. I should like to finish a check today.
 
@@ -248,7 +260,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **LIMEN** Leave the gate and both clerks to me. Let her take her eight. I’ll answer for whom I send.
 
-**STILETTO** ed, gus and me here. Him and the eight there. I can open a gate from this side.
+**STILETTO** Give me the gate. Send him all ten. ed and gus know the way.
 
 *The Producer appoints LIMEN. The intervention is still available. sam, mae, max and lou clear. At Conveyor, sam seats the first brain. mae keeps pace with the tray. It comes to rest at an empty Wash. STILETTO gives the hall time to produce somebody. The water stays off. She goes herself.*
 
@@ -284,7 +296,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **ben** I brought me. bob was still beside kit when I left.
 
-**mae** Then this one can sit.
+**mae** 😑 Then this one can sit.
 
 *She eases the waiting tray back onto its supports. jo leaves the drive off. No washed brain reaches the Forge. max takes their foot off the treadle.*
 
@@ -338,19 +350,36 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 | bob | LIMEN | Morning, sir. Remember me? |
 | bob | sam | If he asks who’s new, that’s nobody now, is it? |
 
+## The two desks
+
+*For 2C, draw one eligible ed line and one eligible gus line as they take their posts. Someone in the crowd who saw them takes a quieter shot at the pair. Draw one such worker and play their line to the person beside them. Here is the full bank.*
+
+| Who | To | Line |
+| --- | --- | --- |
+| ed | LIMEN | Very sound, sir. Shall I just change the date on yesterday’s page? |
+| ed | LIMEN | That ought to go up over the gate, sir. I could do the lettering. |
+| ed | LIMEN | People laugh at paperwork, sir. They do like their names crossed off when they go home. |
+| ed | LIMEN | If anybody asks when this factory last made a sound appointment, I’ve got the date right here. |
+| gus | LIMEN | 😎 Best gate in the business, sir. Ask anybody still standing at it. |
+| gus | LIMEN | A new man on this desk? Half the morning teaching him to say NEXT. |
+| gus | ed | Never doubted his judgment, ed. Especially when he pointed at me. |
+| gus | LIMEN | That’s what I like about this factory, sir. You do a thing well once, you’re doing it for life. |
+| mae | sam | Ever seen either of them move that fast for a tray? |
+| lou | ben | “You and you.” After all that service he nearly knows their names. |
+| jo | max | Six years at that belt. Where’s my speech? |
+| max | jo | I could do ed for you, but I’d need somebody else to do the work. |
+| sam | mae | Think they’d still want the desks if we put a tray on each? |
+| ben | lou | Funny. From back here it looked like they picked him. |
+
 ## Pickups · Different evidence, different mornings
 
 ### S1 · STILETTO gets the gate
 
-*Keep the walk, greeting and two bids in 2A–2C. After STILETTO’s bid, replace the appointment and her order to sam with this pickup. The Producer accepts STILETTO’s whole bid. LIMEN leaves for Conveyor. STILETTO takes the open register from ed.*
+*Play 2C through both bids. Here the Producer appoints STILETTO. She holds the gate open. ed is still at the register.*
 
-**STILETTO** Keep count, ed. gus, leave me a walking lane. Eight through there.
+**STILETTO** You can shut the book, ed. I meant ten.
 
-**gus** Even the little one?
-
-**STILETTO** He’s the one who knows the wash. Through.
-
-*bob walks with the others. Nobody asks to see his card.*
+*ed shuts the book. gus leaves his desk and the two go through with the others. bob is carried along between sam and jo, his card still in ed’s pocket. LIMEN takes ed to the tray bench beside sam and puts gus at the rack with lou.*
 
 ### S2 · All clear
 
@@ -374,7 +403,71 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **jo** Still got cramp in them.
 
-*LIMEN smiles when the press opens clean. At the bell the crew leaves and he closes the book.*
+*LIMEN smiles when the press opens clean. At the bell the crew leaves. LIMEN looks back at the rack.*
+
+### R2 · A word off the desk
+
+*During S2, ed and sam have a tray ready. They’re waiting for LIMEN’s call. bob is beyond earshot at Wash.*
+
+**sam** Since I’ve got you away from that book. Did anybody turn in a card yesterday?
+
+**ed** Nobody turned it in. I picked it up myself.
+
+**LIMEN** Intake, all clear.
+
+*sam seats the tray. If lou overheard bob asking sam about his card on the walk in, play the rack exchange too. Later, ed comes down to the rack for the empty trays. As he bends to lift them, two cards show above his pocket. gus sees them from the other end of the rack. ed takes the empty tray stack back to sam.*
+
+**lou** You two had the desks. Did any loose cards come your way?
+
+**gus** I just saw two in ed’s pocket. Couldn’t see the faces.
+
+*The next cortex comes down. They take an end each.*
+
+### R3 · What got as far as bob
+
+*On a later walk in, sam falls in beside bob before they reach the desks. Use this approach when they have the tray-bench exchange behind them. The usual welcome and its replies follow.*
+
+**sam** ed picked up a card. Told me himself.
+
+**bob** Did he say it was mine?
+
+**sam** Didn’t get that far. Tray was up.
+
+*Or, if the Intake call cut ed off before he answered and lou has found bob on the walk:*
+
+**lou** gus saw two cards in ed’s pocket.
+
+**bob** Did gus see my picture?
+
+**lou** Two edges, bob. That’s all he saw.
+
+*At the bell on that run, bob catches gus outside.*
+
+**bob** gus, did ed actually show them to you?
+
+**gus** He bent down. I could see into his pocket. I didn’t go through it.
+
+### R4 · Both cards
+
+*On the run with sam’s news, the next check kept bob and ed apart. On the fourth walk in, bob catches ed before the desks. gus walks on ahead.*
+
+**bob** sam says you picked up a card. Is it mine?
+
+*With lou’s news instead, bob opens with a different question.*
+
+**bob** gus saw two cards in your pocket. Can I see the other one?
+
+*In either reading, ed gets both cards out. bob puts a finger on his photograph.*
+
+**ed** I’d have given it back if you’d asked.
+
+**bob** I’m asking, ed.
+
+*ed lets go. bob takes his card.*
+
+**bob** 😮‍💨
+
+*At an individual check, bob can now hand over his original.*
 
 ### P1 · The desk without a pass
 
@@ -410,9 +503,9 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **bob** ed. That loose card at your desk. Has it got my ugly picture?
 
-**ed** Come to the desk when the book’s open. I’ll show you the entry.
+**ed** Catch me before I open up. I’ll show you what I found.
 
-*ed keeps the card. bob has a place to go when the desk opens.*
+*ed keeps the card. bob knows whom to catch before the next check.*
 
 ### H2 · A torn reply
 
@@ -436,7 +529,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **LIMEN** Keep me and the clerks here. Give her the eight again.
 
-**STILETTO** Swap us. The clerks and I can fill his floor.
+**STILETTO** Swap us. I’ll get all ten down to his floor.
 
 *The Producer accepts the swap. Play S1–S2 at the stations. When the press falls, jo listens for max’s heel. They point as the second knock comes. max grins.*
 
@@ -490,9 +583,9 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **jo** Could use some of that at the drive.
 
-**LIMEN** Let me take the eight on Conveyor again. She and the clerks got them to me together.
+**LIMEN** Let me have all ten on Conveyor again. She got them to me together.
 
-**STILETTO** I’ll keep the gate and the clerks. Let him wear out a switch with his eight.
+**STILETTO** I’ll keep the gate. Let him wear out a switch with all ten.
 
 *The Producer accepts STILETTO’s bid. She clears the crew in motion. At the belt, kit demonstrates letting the elbow rest at the side. jo tries it while waiting.*
 
@@ -512,7 +605,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 *sam shows the mark. At the next appointment, after the walk-in, LIMEN’s usual welcome and the simultaneous worker replies, LIMEN bids.*
 
-**LIMEN** Give her the gate and the clerks. Give me Conveyor and the eight.
+**LIMEN** Give her the gate. Give me Conveyor with all ten.
 
 **LIMEN** I want those trays coming in one at a time.
 

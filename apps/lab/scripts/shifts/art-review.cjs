@@ -48,6 +48,7 @@ async function film(browser,label,url){
   assert.deepEqual(errors,[]);
   await context.close();
   await video.saveAs(path.join(destination,label+'-1x.webm'));
+  await video.delete();
   const source=await fs.readFile(path.join(destination,label+'-1x.webm'));
   return {width:900,height:780,bytes:source.length,sha256:createHash('sha256').update(source).digest('hex')};
 }

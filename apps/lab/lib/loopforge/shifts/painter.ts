@@ -10,6 +10,15 @@ export async function loadArt():Promise<Images>{
     const im=new Image();im.src='../loopforge-intro/'+name+'.webp';await im.decode();images[name]=im;
   }));return images;
 }
+export function drawBidPortrait(canvas:HTMLCanvasElement,lead:'LIMEN'|'STILETTO',images:Images){
+  const key=lead==='LIMEN'?'char-limen-check':'char-stiletto-check';
+  const ctx=canvas.getContext('2d')!;
+  ctx.imageSmoothingEnabled=false;
+  // An upper-body crop of the first calibrated frame fits the pack's aperture.
+  const [x,y]=lead==='LIMEN'?[12,0]:[68,52];
+  ctx.drawImage(images[key],x,y,36,35,0,0,36,35);
+}
+export const registerDesk=[123.6,132] as const;
 export function floorView(w:number,h:number,room:Room){
   const sec=room==='security',scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
   const center=sec?127.15:127.4,cy=sec?129:144.35;
@@ -50,7 +59,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   if(sec){
     const [x0,y0]=xy(123.25,122.8),[x1,y1]=xy(130.25,127.2);
     ctx.strokeStyle='#729193';ctx.lineWidth=2;for(const x of [x0,x1]){ctx.beginPath();ctx.moveTo(x,y0);ctx.lineTo(x,y1);ctx.stroke();}
-    for(const [cx,cy] of [[123.6,132],[131.6,131.9]]){
+    for(const [cx,cy] of [registerDesk,[131.6,131.9]]){
       const [x,y]=xy(cx,cy);layers.push({y:cy-.7,draw:()=>sprite('desk-back',0,x,y)},{y:cy,draw:()=>sprite('desk-front',0,x,y)});
     }
     const [gx,gy]=xy(124.9,134);
@@ -60,23 +69,31 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
     ctx.fillStyle='#292f2d';ctx.fillRect(x,y,x2-x,scale*1.6);
     for(let i=0;i<4;i++){
       const [cx,yy]=xy(119.7+i*4,145.7),span=scale*2;
+      if(i===3){
+        // Day One's calibrated rear and grip share a registration point; the
+        // operator at the approved Forge control belongs between their depths.
+        const [px,root]=xy(132,geometry.stations[i].y);
+        const registered=root+(420-126)*scale/64;
+        layers.push({y:144.38,draw:()=>sprite('press-back',6,px,registered)},
+          {y:144.48,draw:()=>sprite('press-front',0,px,registered)});
+        continue;
+      }
       layers.push({y:146,draw:()=>{
-        if(i===3){sprite('press-back',0,cx,yy+scale*1.55,scale/96);return;}
         ctx.fillStyle=['#716944','#3a6268','#53636a'][i];ctx.fillRect(cx-span*.65,yy,span*1.3,span*.53);
         ctx.fillStyle='#25302d';ctx.fillRect(cx-span*.65,yy+span*.53,span*1.3,span*.18);
-        ctx.fillStyle=scene.world.coverage[i]?'#b8dec3':'#b89678';ctx.fillRect(cx-span*.45,yy+4,Math.max(3,scale*.2),4);
+
       }});
     }
     for (const [i,post] of view.posts.entries()) {
       const station=geometry.stations[i], [x,y]=xy(station.x,station.y);
       const hand=view.handoffs[i];
       layers.push({y:station.y+.01,draw:()=>{
-        skin.world(ctx,post.asset,x-scale*.23,y,scale);
-        if(hand.asset)skin.world(ctx,hand.asset,x+scale*.22,y,scale);
+        skin.world(ctx,post.asset,x+15*scale/64,y-9*scale/64,scale);
+        if(hand.asset)skin.world(ctx,hand.asset,x-23*scale/64,y-12*scale/64,scale);
       }});
     }
     for(const [sx,sy] of geometry.contact.outputSlots){
-      const [x,y]=xy(sx,sy);
+      const [x,ground]=xy(sx,sy),y=ground-.72*scale;
       const filled=view.rack.items.some((p:{at:number[]})=>p.at[0]===Math.round(sx*1000)&&p.at[1]===Math.round(sy*1000));
       layers.push({y:sy,draw:()=>{
         skin.world(ctx,'fl-rack-cradle',x,y,scale);
@@ -86,7 +103,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
     }
     for(const item of scene.items){
       if(item.status==='rack')continue;
-      const [x,y]=xy(item.at[0]/1000,item.at[1]/1000);
+      const [x,ground]=xy(item.at[0]/1000,item.at[1]/1000),y=ground-.72*scale;
       // The pack supplies finished cortexes only. Keep the existing carrier for WIP.
       layers.push({y:item.at[1]/1000+.02,draw:()=>{
         ctx.fillStyle='#292a30';ctx.fillRect(x-5,y-6,11,8);
@@ -106,7 +123,8 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
     layers.push({y:a.y/1000,draw:()=>{
       ctx.fillStyle='#07141466';ctx.beginPath();ctx.ellipse(x,y,scale*.38,scale*.14,0,0,Math.PI*2);ctx.fill();
       sprite(key,!sup&&a.moving?Math.floor(a.walked/105)%8:0,x,y,k);
-      if(a.id==='bob' && scene.world.pass?.valid)skin.world(ctx,'sec-pass-issued-world',x+scale*.23,y-scale*.5,scale);
+      if(a.id==='bob' && scene.world.pass?.day===scene.world.day)
+        skin.world(ctx,scene.world.pass.valid?'sec-pass-issued-world':'sec-pass-expired-world',x+scale*.23,y-scale*.5,scale);
       if(a.id==='bob' && returned && tick-returned.tick<58)skin.world(ctx,'sec-id-bob-world',x+scale*.23,y-scale*.5,scale);
       const choice=recentChoices.get(a.id);
       if(choice) tag(a.id+' · '+(choice==='go'?'goes':'stays'),x,y+12);
@@ -120,7 +138,8 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   for(const ev of view.speeches){
     const [ax,ay]=anchors.get(ev.speaker)??xy(ev.at[0]/1000,ev.at[1]/1000);
     if(ax<0||ax>w||ay<0||ay>h)continue;
-    ctx.font='600 14px sans-serif';
+    const bodyFont=w<580?'600 14px sans-serif':'600 16px sans-serif';
+    ctx.font=bodyFont;
     const limit=Math.min(230,w*.74),lines:string[]=[];
     let line='';
     for(const word of ev.text.split(' ')){
@@ -142,7 +161,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
     ctx.textAlign='left';ctx.font='bold 12px monospace';
     skin.draw(ctx,ev.nameplate,x+7,y+3,{width:ctx.measureText(ev.speaker).width+13,height:17});
     ctx.fillStyle='#fff1d3';ctx.fillText(ev.speaker,x+13,y+16);
-    ctx.fillStyle='#182626';ctx.font='600 14px sans-serif';
+    ctx.fillStyle='#182626';ctx.font=bodyFont;
     lines.forEach((l,i)=>ctx.fillText(l,x+9,y+34+i*17));
   }
 }

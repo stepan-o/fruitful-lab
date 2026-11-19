@@ -46,8 +46,13 @@ jobs:
           else
             node apps/lab/scripts/shifts/browser-review.cjs "$SCENE"
           fi
+      - name: Verify the self-contained player with networking disabled
+        if: matrix.scene == 'progression'
+        run: |
+          python3 apps/lab/scripts/shifts/portable.py "$RUNNER_TEMP/shift-offline"
+          NODE_PATH="$RUNNER_TEMP/shift-review/node_modules" node apps/lab/scripts/shifts/portable-check.cjs "$RUNNER_TEMP/shift-offline/Loopforge-Days-2-4.html"
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && matrix.scene != 'progression'
         with:
           name: loopforge-1x-${{ matrix.scene }}
           path: shift-evidence

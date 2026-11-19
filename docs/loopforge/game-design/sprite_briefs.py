@@ -134,7 +134,7 @@ P0 = first contact and line dependencies. P1 = required completion. All records 
     css=(ROOT/'sprite-briefs.css').read_bytes();js=(ROOT/'sprite-briefs.js').read_bytes()
     cssname='sprite-briefs.'+hashlib.sha256(css).hexdigest()[:12]+'.css';jsname='sprite-briefs.'+hashlib.sha256(js).hexdigest()[:12]+'.js'
     (out/cssname).write_bytes(css);(out/jsname).write_bytes(js)
-    page='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>Day 1 · 2D asset briefs · Loopforge</title><link rel="stylesheet" href="'+cssname+'"></head><body><main class="sb-page">'+intro+nav+catalogue+animation+handoff+sources+'</main><script src="'+jsname+'"></script></body></html>'
+    page='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>Day 1 · 2D asset briefs · Loopforge</title><link rel="stylesheet" href="/loopforge-design/'+cssname+'"></head><body><main class="sb-page">'+intro+nav+catalogue+animation+handoff+sources+'</main><script src="/loopforge-design/'+jsname+'"></script></body></html>'
     (out/'sprite-briefs.html').write_text(page)
 
 if __name__ == '__main__':

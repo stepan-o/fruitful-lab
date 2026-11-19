@@ -14,6 +14,8 @@ The owner approved the floor design and selected a sprite-based first implementa
 
 This direction supersedes the earlier 3D-first recommendation **for this first prototype**. The existing Model briefs tab remains the character-construction and 3D source archive. Do not commission new meshes, rigs or paid model generations for this pack. Artists may render existing approved models offline and paint over them, provided every result passes the same sprite and contact checks.
 
+The [delivered B calibration and engine bindings](/loopforge-design/day-one-calibration/08c8db11/ENGINE-MASTER.md) supersede the initial drawing targets below for the four delivered lanes. Use 70 native pixels for bob and 85 for max. The [floor-scale reference](/stepanoskin/loopforge/design#floor-scale) shows how to frame their contacts.
+
 ## 1. What this pack must make playable
 
 Ten workers arrive through the south entrance, Lobby and Dispatch. Security performs the injury, card theft, unequal passage and volunteer count. The conveyor makes three persistent cortexes: bob alone, bob with sam, then the full crew. The bell starts departure; STILETTO briefly catches the moving workers, receives four overlapping replies, and dismisses their backs. ed counts eight line workers, is ignored, pockets his pen beside bob’s card, and joins the final yard exchange. Factory lights go out.
@@ -69,7 +71,7 @@ For dialogue during locomotion, supply torso/head/arm overlays compatible with t
 | Closing exchanges | No long waits for a character to cross an empty map. Use the approved travel cuts; keep the under-one-second gaps between dismissal, ed’s count and the yard exchange |
 | Blackout | ed laughs first; factory lamps and windows go out behind the crew. Preserve the 190.604-second edit; both supervisors are still walking inside. Account for all ten workers outside, without waiting for the supervisors or accelerating them. Do not blank the dialogue layer |
 
-The current edited rehearsal is about 3:25 total, with roughly 26 seconds from bell to blackout. These are regression references, not fresh balance targets. The bundled sequence module is the exact timing authority. It carries world time and edited time separately: ENGINE must preserve the cuts or the physical long walk will reopen the gaps that were removed.
+The edited rehearsal runs 190.604 seconds. The bell is at 165.400 edited seconds, leaving 25.204 seconds until blackout. The bundled sequence module is the exact timing authority. It carries world time and edited time separately: ENGINE must preserve the cuts or the physical long walk will reopen the gaps that were removed.
 
 ## 4. Contacts, layering and object ownership
 

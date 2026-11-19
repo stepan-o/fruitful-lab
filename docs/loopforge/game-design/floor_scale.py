@@ -1,66 +1,32 @@
-"""Design-only synopsis of FACTORY_FLOOR_VISUAL_SCALE_PLAN.md; no game runtime."""
+"""Render the maintained floor-scale note on the board and in the static readers."""
 from html import escape
-import json
-from pathlib import Path
+import re
+
+from narrative import render
 
 
-def render_broader_floor_scale():
-    root = Path(__file__).resolve().parents[3]
-    pack = json.loads((root / 'apps/lab/lib/assets/generated/loopforge-focused.json').read_text())
-    vs = pack['assets']['lobby-room']['variants']
-    v = vs[0]
-    srcset = ', '.join(f'{x["src"]} {x["width"]}w' for x in vs)
-    art = f'<img src="{v["src"]}" srcset="{srcset}" sizes="(max-width:600px) calc(100vw - 38px), 640px" width="{v["width"]}" height="{v["height"]}" alt="Original Loopforge lobby: large pipe-framed doorway, paperwork walls and desk lamps form readable masses beneath the engraved detail" loading="lazy" decoding="async">'
-    def rows(items):
-        return '<table class="pairs"><tbody>'+''.join(f'<tr><th scope="row">{escape(k)}</th><td>{escape(v)}</td></tr>' for k,v in items)+'</tbody></table>'
-    views = [
-        ('01', 'Observe', 'Producer console · selected room', 'Read one room through three authored CCTV angles. Spot the constraint and choose where to act.', 'Same workers and events in every feed.'),
-        ('02', 'Act', 'Focused workspace', 'Adjust the process, authorize a response or commit resources. See the concrete tradeoff.', 'An intention becomes an accepted command.'),
-        ('03', 'Read the result', 'Return to the console', 'Restore the same room and angle. See the queue, machinery or worker consequence of your choice.', 'Use the result to decide the next move.'),
-    ]
-    sequence = [
-        ('Freeze the contract', 'Capture the current renderer, real device profiles, actor pixels, frame intervals and memory.'),
-        ('Find the composition', 'Three authored angles for Lobby, Security and Forge; primary/alternate framing, focused action and console return. Read work before adding grain.'),
-        ('Calibrate the finish', 'World-scale materials, far/work/close responses and separate lighting, antialiasing and bloom comparisons.'),
-        ('Prove motion', 'One worker and complete local task; stride, hands and machine progress agree with the simulation.'),
-        ('Prove depth', 'Static atmosphere, contact and a bounded beacon impulse whose shadows align.'),
-        ('Prove delivery', 'Versioned prefabs, visibility chunks, detail tiers, asset fallback and bounded disposal.'),
-        ('Run the combined slice', 'Console → room → process adjustment → physical response → console. Prove agency and the total three-camera budget on desktop; one active feed on a real phone.'),
-        ('Expand only after it passes', 'Apply the approved visual grammar to later rooms and recheck the worst transitions.'),
-    ]
-    return '''<div class="floor-scale-plan"><header class="section-head"><span class="kicker">Prebuilt-world calibration · 12 October 2026 · before the next build</span><h2>Observe the room.<br>Act on the factory.</h2><p>The factory keeps its scale. The producer console is the default observation hub: one selected room, three CCTV angles. Focused controls carry the active choices, then return you to see what changed.</p></header>
-<div class="callout"><strong>Proposed build contract.</strong> These are targets for the next implementation. The previous lobby is a calibration kit, not a finished visual standard. Every visual, interaction and performance gate must pass together.</div>
-<figure class="scale-reference">'''+art+'''<figcaption>Original lobby art — the doorway, desks and warm work pools read first. Fine engraved texture supports those forms. This is the artistic reference, not the current renderer.</figcaption></figure>
-<h3>The player is the actor.</h3><p>CCTV supplies evidence and payoff. The core loop is choosing, adjusting and committing—not waiting for the next popup. Related actions can stay in their workspace; returning restores the console room, angle and unfinished context.</p>
-<div class="scale-lenses">'''+''.join(f'<article><span class="phase-number">{n}</span><small>{escape(mode)}</small><h4>{escape(title)}</h4><p>{escape(question)}</p><strong>{escape(target)}</strong></article>' for n,title,mode,question,target in views)+'''</div>
-<p class="scale-continuity">One simulation → one room → three viewpoints. The camera never decides the outcome.</p>
-<h3>Three angles. Different information.</h3><p>Author the cameras around each room’s real equipment and connections. These are physical viewpoints, not three zoom levels.</p>'''+rows([
-        ('A · Flow / arrival', 'Read the incoming work and the operating cluster. Do not squeeze the entire hall into a tiny frame.'),
-        ('B · Work / contact', 'See workers at the key mechanism: effort, unsafe behaviour, waiting or a task response.'),
-        ('C · Exit / threshold', 'Reveal downstream accumulation, departure or a connected-room encounter the other angles obscure.'),
-        ('Desktop · proposed', 'One large feed and two smaller live alternatives; promote any angle. Compare this with equal panes during calibration.'),
-        ('Phone / short screen', 'One legible live feed and three angle selectors. Room selection is separate. Do not render invisible feeds.'),
-    ])+'''<div class="callout"><strong>Agency test:</strong> see a queue → open the relevant operating controls → adjust an available process constraint → see its response → return to the room feeds. If play amounts to Start shift and wait, this slice has failed. Quiet successful operation still needs no compulsory clicks.</div>
-<h3>Observation does not change authority</h3><p>The adviser still resolves incidents in their assigned room automatically. A feed shows the receipt; it cannot undo the act. Elsewhere, permitted responses can be accepted or overridden. Direct controls must obey those same rules. The prebuilt opening uses the same console route.</p>
-<h3>Readability is a separate axis</h3><p>Small alternate feeds show flow and silhouettes. A primary feed or operating workspace targets roughly 56–90 CSS pixels per worker; close inspection starts at 120–220. Measure inside the actual console. Any CCTV angle can be promoted; these size tiers do not define where its camera sits.</p>
-<h3>The grain problem has three layers</h3>'''+rows([
-        ('Shape', 'Large machinery, bodies and openings need readable silhouettes and contact. Fix these before texture.'),
-        ('Surface finish', 'Wear and engraved strokes need consistent world scale and quieter distant variants. Paper, stone, brass and enamel cannot all compete at the same contrast.'),
-        ('Camera noise', 'Optional final texture, independently controlled. It cannot rescue flat materials or cover a decision target.'),
-    ])+'''<h3>The room must contain an action</h3><p>For the lobby: arrival → waiting space → desk and clerk → response → departure toward Dispatch. Calibrate a roughly 10–14 m local cluster inside the accepted 72 × 48 m hall. Keep the actual doorway, circulation space and 15 m roof height. Each CCTV angle frames a useful part of that action. On phones, promote one angle rather than shrinking three feeds and the whole hall.</p>
-<h3>Movement must agree with the day</h3><p>The fixture moves workers about 1.1–1.44 m/s, while a minute represents an 18-hour shift. Multiplying walking speed by the calendar compression would destroy the feel. Schedule and preposition the crew during handover; keep live transfers authoritative, local handoffs visible and long journeys costly. Derive gait from distance and machine animation from task progress.</p>
-<div class="callout">An accident or returned form needs a readable physical consequence in the primary feed. An alternate angle can reveal another part of the event; close inspection adds detail. All depict the same logged outcome.</div>
-<h3>How the work is built</h3><ol class="scale-sequence">'''+''.join(f'<li><h4>{escape(a)}</h4><p>{escape(b)}</p></li>' for a,b in sequence)+'''</ol>
-<h3>Passing means both feel and speed</h3>'''+rows([
-        ('Visual', 'Recognisable Loopforge without grain; workers, material differences and action states read on desktop and phone. No sliding contacts, crawling texture or toy motion. Owner review decides the feel.'),
-        ('Performance', 'Target 30 fps on the modest tier and 60 on capable desktops for the entire console, including all visible camera passes. One engine, one room graph and one pose update. Measure frame intervals, input, loading and memory after switches. The existing 30 fps samples are a baseline, not certification.'),
-        ('Agency', 'Most substantive play is forming intentions and changing the factory. Observation supports those choices; no forced emergencies, navigation chores or repetitive acknowledgement.'),
-        ('Truth', '10 and 100 workers retain identity, position and outcomes across views and quality tiers. Renderer, asset loading and animation do not create gameplay state.'),
-        ('Expansion gate', 'One combined lobby / Security / conveyor slice passes every requirement before the remaining rooms get produced.'),
-    ])+'''<p>The complete plan includes provisional pixel, frame-time, load and memory budgets; asset deliverables; renderer boundaries; failure responses; and the evidence checklist. A real phone profile still needs measurement.</p>
-<p class="document-links"><a href="FACTORY_FLOOR_VISUAL_SCALE_PLAN.md">Read the complete build plan ↗</a> · <a href="/stepanoskin/loopforge/architecture/webview">Engine: webview & delivery ↗</a></p>
-<details><summary>Research behind the choices</summary><p><a href="https://www.factorio.com/blog/post/fff-146" target="_blank" rel="noreferrer">Factorio’s art workflow</a> revisits assets in game and deliberately clarifies shape and contrast. <a href="https://www.factorio.com/blog/post/fff-144" target="_blank" rel="noreferrer">Its resolution work</a> shows why larger renders can require redesign. Our inference: author for the playing distance, not just for a source image.</p><p><a href="https://doc.babylonjs.com/features/featuresDeepDive/mesh/LOD/" target="_blank" rel="noreferrer">Babylon screen-coverage detail</a> and <a href="https://doc.babylonjs.com/features/featuresDeepDive/mesh/copies/thinInstances/" target="_blank" rel="noreferrer">instance visibility tradeoffs</a> support work-area partitioning. <a href="https://www.factorio.com/blog/post/fff-264" target="_blank" rel="noreferrer">Texture residency and overdraw</a> must be profiled. These sources do not establish our performance numbers.</p></details></div>'''
-
-
-def render_floor_scale():
-    return '<h3 id="the-approved-day-1-rooms">The approved Day 1 rooms</h3><p>The owner approved the demonstrated R10 Day 1 slice. <a href="/stepanoskin/loopforge/play/scene-studies">Play the approved Day 1 scene</a> to follow arrival, Security, the four Conveyor controls, staffing and departure. The captured run reaches three completed outputs and all twelve cast members outside before the night result.</p><p>This slice uses a compact connected layout. Its occupied Lobby is 16 × 11 metres, Security is 8 × 7.5 metres with a 4 × 2.5 metre connector, and Conveyor is 24 × 14 metres. The larger full-factory plan remains a separate design reference. It does not describe the dimensions or unlocked rooms of this playable scene.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Comparison table"><table><thead><tr><th scope="col">Place</th><th scope="col">Implemented spatial job</th><th scope="col">Keep in the current layout</th></tr></thead><tbody><tr><td>Lobby</td><td>Gather, wait, approach the checkpoint and leave through the real entrance</td><td>A clear central route, room for reactions, and perimeter claims/forms furniture</td></tr><tr><td>Security</td><td>Inspect one applicant, support the two clerical posts and connect to Conveyor</td><td>The substantial portal, ed&#x27;s register, gus&#x27;s sorting desk, and the open connector</td></tr><tr><td>Conveyor</td><td>Operate Intake, Wash, Main Belt and Forge, then leave through Security</td><td>Four control pads, the control-side aisle, support positions and the tall Forge silhouette</td></tr></tbody></table></div><p>The camera and the movement rules use the same world. Existing routes retain doorway admission, connector reservation, furniture sweeps and separation between moving roots. Those checks use simplified root discs; they do not certify imported hands, bodies or blades. Reading pause freezes authoritative time and state and earns no travel, work, rest or physical shutdown.</p><h3 id="what-the-actual-view-shows">What the actual view shows</h3><p>The line&#x27;s left-to-right order and four control positions are readable in the captured staffed view. Dialogue and credential panels can obscure faces, and the Wash and Forge tutorial views crop the active worker. The selected correction is to stabilize the picture area and put reading content in a separate rail before fitting the local work views. Each work view should show the operator, control and local process result together. Keep the room and actor positions while correcting the view.</p><p>The front Security view establishes the portal. A working reverse should also make the two clerks&#x27; surfaces and the actual turn toward Conveyor clear. The ending records twelve departures; visible coverage of the exterior crossing must be assessed separately from that final state. The night illustration and approved pale blue Security floor remain part of the current direction.</p><figure><a href="/loopforge-dev-blog/media/2026-10-25-day-one/r10-staffed-layout-948c584293ef.png"><img src="/loopforge-dev-blog/media/2026-10-25-day-one/r10-staffed-layout-948c584293ef.png" alt="Actual R10 game, factory clock08:09:57. Four control pads and the main aisle remain legible in the staffed Conveyor. Still-frame layout evidence; no motion/contact certification." loading="lazy" decoding="async"></a><figcaption>Actual R10 game, factory clock08:09:57. Four control pads and the main aisle remain legible in the staffed Conveyor. Still-frame layout evidence; no motion/contact certification. Actual Loopforge game screenshot captured by Producer using the studio browser. Game/art asset attribution follows existing provenance; no licence transfer claimed.</figcaption></figure><figure><a href="/loopforge-dev-blog/media/2026-10-25-day-one/r10-forge-crop-2e3fa5238d95.png"><img src="/loopforge-dev-blog/media/2026-10-25-day-one/r10-forge-crop-2e3fa5238d95.png" alt="Actual R10 game, factory clock08:01:53. The Forge and workpiece are visible while bob is almost entirely below the picture. The correction concerns the work view, not station relocation." loading="lazy" decoding="async"></a><figcaption>Actual R10 game, factory clock08:01:53. The Forge and workpiece are visible while bob is almost entirely below the picture. The correction concerns the work view, not station relocation. Actual Loopforge game screenshot captured by Producer using the studio browser. Game/art asset attribution follows existing provenance; no licence transfer claimed.</figcaption></figure><h3 id="observation-work-and-future-camera-coverage">Observation, work and future camera coverage</h3><p>The current scene has authored story shots and three selectable room cameras: Lobby, Security and Conveyor. These are separate modes. The earlier proposal for three angles per selected room remains future design, not a claim that nine operating feeds are implemented.</p><p>Small feeds can communicate occupancy and broad movement. A larger operating view is needed to judge hands, documents and machine contact. The selected operational feeds have not been visually certified by this review: the supplied baseline journal did not select those buttons. Preserve the actual walls and camera mounts; a change of view must not create authority, knowledge, movement or output.</p><p>The broader scale-and-finish study below remains useful for material hierarchy, readable work areas and later factory development. Its larger hall dimensions, room programme and multi-feed presentation are proposals outside the compact Day 1 scene. Performance targets remain targets until measured under a controlled workload. Owner approval of the demonstrated slice is recorded; unpublished corrections and unrun performance checks remain separate.</p><details><summary>Broader factory scale and operating views — proposed beyond Day1</summary>' + render_broader_floor_scale() + "</details>"
+def render_floor_scale(source, plan):
+    current, archive = source.split('\n## Historical evidence\n')
+    media = {
+        plan['src']: plan,
+        '/loopforge-design/day-one-calibration/08c8db11/contact-poster.webp': {
+            'width': 960, 'height': 640,
+        },
+    }
+    title, body, _ = render(current, media)
+    _, history, _ = render('# Historical evidence\n' + archive, {})
+    # Keep the three original board bookmarks attached to their dated evidence.
+    history = history.replace('id="compact-r10-rooms-25-october-2026-retrospective"',
+                              'id="the-approved-day-1-rooms"')
+    history = history.replace('<p>At factory clock', '<p id="what-the-actual-view-shows">At factory clock')
+    history = history.replace('id="large-hall-study-and-cctv-proposal-11-12-october-2026"',
+                              'id="observation-work-and-future-camera-coverage"')
+    body = re.sub(r'<h2 id="([^"]+)">', r'<h3 id="floor-scale-\1">', body).replace('</h2>', '</h3>')
+    return (
+        f'<header class="section-head"><h2>{escape(title)}</h2></header>'
+        f'<div class="day-one-script scale-guide">{body}'
+        '<p class="floor-tools"><a href="/loopforge-design/FACTORY_FLOOR_VISUAL_SCALE_PLAN.md" download>'
+        'Download the floor-scale note</a></p>'
+        '<details><summary>Historical evidence · October 2026 · compact R10, 3D studies and CCTV</summary>'
+        f'{history}</details></div>'
+    )

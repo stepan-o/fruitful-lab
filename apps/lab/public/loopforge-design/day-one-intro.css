@@ -82,3 +82,27 @@
   height: 75vh;
   border: 0;
 }
+
+.scale-guide {
+  overflow-wrap: anywhere;
+}
+
+.scale-guide p {
+  margin-bottom: 1rem;
+}
+
+.scale-guide figure {
+  margin: 1rem 0 1.5rem;
+}
+
+.scale-guide summary {
+  min-height: 44px;
+  padding: .85rem 0;
+  cursor: pointer;
+  color: var(--gold);
+}
+
+.scale-guide details {
+  border-top: 1px solid var(--line);
+  margin-top: 2rem;
+}

@@ -1,8 +1,8 @@
 # How we build Loopforge
 
-Maintained instructions · 18 November 2026 · Owner-directed Codex studio
+Maintained instructions · 19 November 2026 · Owner-directed Codex studio
 
-The owner commissions dedicated specialist chats in Codex, sets priorities, resolves creative decisions and reviews the finished work. The design pages are our shared knowledge base and handoffs. A chat is a working session; its durable result belongs in the project.
+The owner opens and commissions dedicated specialist chats in Codex, sets priorities, resolves creative decisions and validates the playable result. [PRODUCER](/stepanoskin/loopforge/design/studio/producer) writes task prompts with the standard and role-specific instructions, maintains the briefs with specialist contributions, coordinates production and checks deliveries. PRODUCER recommends whether to continue, iterate or ship; the owner makes that call. The design pages are our shared knowledge base and handoffs. A chat is a working session; its durable result belongs in the project.
 
 The previous autonomous studio is closed. Its publications and source history remain useful evidence, but its Producer scheduling, Munder processes, token tranches and automatic handoff loops do not govern this workflow. No agent should restart that studio.
 
@@ -14,9 +14,9 @@ Use the latest approved design, source and delivered artifacts. Current owner in
 
 The current first prototype uses sprite-based 2D over a frontend-independent simulation. The approved factory is shared by the rehearsal, placement data, artist handoff and runtime. TypeScript is reused now with an explicit later Rust migration. KVP-0001 remains the architecture cornerstone. A future 3D skin must consume the same simulation, not introduce a second world.
 
-## Study, interview, plan, build, review
+## Onboard, interview, plan, build, review
 
-1. **Study and synthesize.** Inspect relevant design pages, actual artifacts and source. Reconcile conflicts and state what is implemented, approved, proposed or historical. For a new design problem, present an informed pre-synthesis before interviewing the owner.
+1. **Onboard: study and synthesize.** Inspect relevant design pages, actual artifacts and source. Reconcile conflicts and state what is implemented, approved, proposed or historical. For a new design problem, present an informed pre-synthesis before interviewing the owner.
 2. **Interview.** Ask one question at a time, with suggested answers and their tradeoffs. Ask only what the evidence does not settle. Allow a different answer. Use the answers to refine the scope.
 3. **Plan.** Present the concrete outcome, affected pages/assets/contracts, acceptance criteria and meaningful tradeoffs. Obtain approval of the proposed scope before implementing a new design. An already approved, bounded correction does not require repeating the whole interview.
 4. **Build and verify.** Finish the approved work. Inspect it in its intended context; repair observed problems. Coordinate interface changes without turning every action into another handoff. Do not describe unrun checks as passes.
@@ -38,7 +38,7 @@ Keep the source of each page clear. Edit authored Markdown/data and regenerate i
 
 ## Maintain your own brief
 
-Your role owns its brief under `docs/loopforge/studio-briefs/`. As part of each completed delivery, update its **Current handoff** and relevant references, then regenerate the published brief. Keep the role's durable mandate separate from its current assignment.
+Briefs live under `docs/loopforge/studio-briefs/`. PRODUCER maintains the set and its cross-role consistency; each specialist supplies and checks its craft-specific content. As part of each completed delivery, update the role's **Current handoff** and relevant references, coordinating with PRODUCER or any active editor, then regenerate the published brief. Keep the role's durable mandate separate from its current assignment.
 
 Record the date, approved baseline and source/build identifiers, what changed, review status, remaining gaps, next useful action and links to evidence. If another role depends on a changed contract, update the shared design reference and identify the affected role. Propose changes to another specialist's mandate; do not silently overwrite it.
 
@@ -58,7 +58,7 @@ Keep the [first and second studio publications](/loopforge-dev-blog/index.html) 
 
 ## Deliver without creating another coordination loop
 
-The owner manages assignments and cross-role priorities. Specialists complete their own approved scope, maintain its evidence and report concrete blockers. Do not create or restart other chats, autonomous workers, paid generation or studio processes without the applicable authorization. ENGINE owns shared simulation/runtime integration; page and asset specialists own their assigned source. Coordinate shared-file edits before overlapping work.
+The owner opens chats and decides assignments and cross-role priorities, supported by PRODUCER's prompts and recommendations. Specialists complete their own approved scope, maintain its evidence and report concrete blockers. PRODUCER checks deliveries but does not substitute its judgment for player acceptance or independently commission another iteration. No role launches other chats in this workflow. Do not restart autonomous workers, paid generation or studio processes without applicable authorization. ENGINE owns shared simulation/runtime integration; page and asset specialists own their assigned source. Coordinate shared-file edits before overlapping work.
 
 Use existing repository delivery rules: explicit file staging, a scoped PR, appropriate checks and a verified preview. Do not merge without authorization. No new provider, model service, account setting or spending commitment is implied by a role brief.
 

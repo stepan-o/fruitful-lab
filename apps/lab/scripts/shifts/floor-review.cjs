@@ -78,6 +78,7 @@ async function record(browser, build, viewport) {
     if (candidate) assert.deepEqual(await readRaster(), sec);
     await restore(chat);
     const belt = candidate && await readRaster();
+    if (candidate) assert.notEqual(belt.id, sec.id);
     await snap('wash');
     await activate('#play');
     await page.waitForFunction(() => frame.scene.events.some(e => e.kind === 'chat.interrupted'));
@@ -99,11 +100,21 @@ async function record(browser, build, viewport) {
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), viewport.width);
     assert.deepEqual(errors, []);
     const rasters = candidate ? await page.evaluate(() => window.rasters.map(({canvas, calls}) => {
+      const material = calls[0].file;
+      const tiles = calls.filter(call => call.file === material).map(call => call.args);
+      const continuous = (axis, extent) => {
+        const spans = new Map(tiles.map(rect => [rect[axis], rect[axis + 2]]));
+        const edges = [...spans.keys()].sort((a, b) => a - b);
+        return edges[0] <= 0 && edges.at(-1) + spans.get(edges.at(-1)) >= extent &&
+          edges.slice(1).every((edge, i) => edges[i] + spans.get(edges[i]) === edge);
+      };
+      const fullGrid = tiles.length === new Set(tiles.map(t => t.join(','))).size &&
+        tiles.length === new Set(tiles.map(t => t[0])).size * new Set(tiles.map(t => t[1])).size;
       const data = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
       let gaps = 0;
       for (let i = 3; i < data.length; i += 4) if (data[i] !== 255) gaps++;
       return {size: [canvas.width, canvas.height], material: calls[0].file, overlay: calls.at(-1).file,
-        rect: calls.at(-1).args, crisp: calls.every(c => c.crisp), gaps,
+        rect: calls.at(-1).args, joined: fullGrid && continuous(0, canvas.width) && continuous(1, canvas.height), crisp: calls.every(c => c.crisp), gaps,
         overlayDraws: calls.filter(c => c.file.endsWith('-room.webp')).length};
     })) : [];
     const files = ['conveyor-material.webp','conveyor-room.webp','security-material.webp','security-room.webp'];
@@ -111,6 +122,7 @@ async function record(browser, build, viewport) {
     assert.deepEqual(await page.evaluate(() => decodes.sort()), candidate ? files : []);
     for (const r of rasters) {
       assert.equal(r.gaps, 0);
+      assert(r.joined);
       assert.equal(r.overlayDraws, 1);
       assert(r.crisp);
       assert.equal(r.overlay, r.material.replace('-material', '-room'));

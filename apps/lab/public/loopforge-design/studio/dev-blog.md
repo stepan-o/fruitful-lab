@@ -2,6 +2,12 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 19 November 2026 · When the line starts again
+
+The same failed check held both Security desks while sam finished the first Intake handoff. With no intervention, LIMEN detained bob at 24.40 seconds and jo stepped forward 0.45 seconds later. Wash stayed uncovered. At the same desk an immediate pass brought bob to Wash and seven finished pieces reached the rack.
+
+The paired Conveyor run kept the crew and assignments. The extra words “ed logged a loose card” sent bob back to the register. The rushed run delivered only sam’s opening phrase. The [playable shifts](/loopforge-shifts/index.html) and [ordered fixtures](/loopforge-shifts/fixtures/index.json) expose both outcomes. ENGINE used provisional station art and the approved Day One sprites. Owner play review is pending.
+
 ## A studio carried by its pages
 
 **18 November 2026 · workflow established; individual game deliveries retain their own review status.**

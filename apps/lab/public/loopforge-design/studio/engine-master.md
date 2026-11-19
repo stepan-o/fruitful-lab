@@ -32,6 +32,8 @@ Use *Designing Games* when an engineering choice affects agency, feedback, learn
 
 ## Current handoff
 
+**19 November 2026 · Days 2–4, owner play review.** The [playable 2D shifts](/loopforge-shifts/index.html) continue from the Day One ending in PR #157. [PR #160](https://github.com/stepan-o/fruitful-lab/pull/160), now integrated into PR #157, carries the opening shifts. Owner play review remains pending. Restore Missing ID, Conveyor chat, Morning bids or Conflicting orders to compare from the same checkpoint. [The engine handoff](/loopforge-shifts/ENGINE-HANDOFF.md) gives the measured timings, event names and actor anchors. [Nine replay fixtures](/loopforge-shifts/fixtures/index.json) carry the public record and review-only hearing evidence. The player controls one intervention per shift. ART can bind the provisional interface to the same events.
+
 **18 November 2026 · active owner commission, completion not asserted here.** Implement the complete live 2D intro using the approved layout, current timing and PR #155 assets. Preserve three cortexes, actual credential custody, overlapping activity and supervisors still inside at blackout. Owner review is of the complete prototype. Missing art remains explicit and may use clearly identified placeholders while the shared game is assembled.
 
 The inherited local encounter adapter does not establish full KVP, and earlier scripted/bounded selectors do not establish general BDI. Inspect the current delivery before describing these gaps as fixed. SYSTEMS is designing the Days 2–4 behavior separately; align interfaces without making the Day 1 delivery wait for a complete Act 1 design.

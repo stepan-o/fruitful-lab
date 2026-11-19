@@ -46,6 +46,7 @@ function routesClear(s:World,moves:readonly {agent:string;to:Point}[],space:Spat
 }
 function conditionHolds(s:World,c:Condition):boolean {
  if('prop'in c)return !!s.props?.[c.prop]&&(propCustodian(s,c.prop)===c.heldBy)===c.equals;
+ if('at'in c){const a=s.agents[c.agent];return !!a&&Number.isFinite(c.within)&&c.within>=0&&Math.hypot(a.position[0]-c.at[0],a.position[1]-c.at[1])<=c.within;}
  if('near'in c){const a=s.agents[c.agent],b=s.agents[c.near];return !!a&&!!b&&Number.isFinite(c.within)&&c.within>=0&&Math.hypot(a.position[0]-b.position[0],a.position[1]-b.position[1])<=c.within;}
  return 'fact'in c?s.facts[c.fact]===c.equals:'belief'in c?s.agents[c.agent]?.beliefs[c.belief]?.value===c.equals:(s.agents[c.agent]?.[c.feeling]??-1)>=c.atLeast;
 }
@@ -53,13 +54,13 @@ function conditionHolds(s:World,c:Condition):boolean {
  * This belongs to world authority; animation playback cannot manufacture output. */
 function processReady(s:World,p:ProcessCue|undefined){
  if(!p)return true;
- if(s.facts['line.stage']!==p.from)return false;
+ if(s.facts[p.workpiece ? p.workpiece+'.stage' : 'line.stage']!==p.from)return false;
  return [p.operator,...(p.staffing??[])].every(slot=>{const a=s.agents[slot.agent];return !!a&&s.facts[`day.departed.${slot.agent}`]!==true&&Math.hypot(a.position[0]-slot.position[0],a.position[1]-slot.position[1])<=slot.within;});
 }
 /** The current Conveyor advances one workpiece at a time. Reserve it through
  * setup and execution, even when two selectors choose different operators.
  * This is not a multi-carrier capacity or safe-handover implementation. */
-const processResources=(d:Action)=>d.phases.some(p=>p.process)?['process:conveyor-workpiece']:[];
+const processResources=(d:Action)=>[...new Set(d.phases.flatMap(p=>p.process?['process:'+(p.process.workpiece??'conveyor-workpiece')]:[]))];
 function rejection(s:World,i:Intent,d:Action|undefined,space:SpatialServices):string|null {
  if(!d)return 'Unknown action.';
  if(!roomsConnected(d,s,space))return 'Rooms are not connected.';
@@ -71,6 +72,7 @@ function rejection(s:World,i:Intent,d:Action|undefined,space:SpatialServices):st
  if(d.phases.some(({process:p})=>p&&(!Number.isInteger(p.from)||p.from<0||p.from>3||p.to!==p.from+1)))return 'Invalid machine transition.';
  if(d.phases.some(p=>p.process&&[p.process.operator,...(p.process.staffing??[])].some(slot=>!d.participants.includes(slot.agent)||!Number.isFinite(slot.within)||slot.within<0||!slot.position.every(Number.isFinite))))return 'Invalid machine operator.';
  if(d.phases.some(p=>p.turn&&(!validateTurn(p.turn,p.id,d.participants)||!!p.say?.length)))return 'Invalid foreground turn.';
+ if(d.channel==='speech' && (d.participants.length!==1 || d.phases.some(p=>!p.say?.length || p.perform.length || p.effects?.length || p.transfers?.length || p.process || p.turn)))return 'Speech channel accepts utterances only.';
  if(!d.phases.length||d.phases.some(p=>!Number.isInteger(p.ticks)||p.ticks<1||p.perform.some(v=>!d.participants.includes(v.agent))||(p.say??[]).some(v=>!d.participants.includes(v.speaker))))return 'Invalid action definition.';
  // Admission validates the first phase. Later paths are checked as they execute,
  // against clearance and positions established by earlier phases. Predicting
@@ -84,7 +86,7 @@ function rejection(s:World,i:Intent,d:Action|undefined,space:SpatialServices):st
 export function admit(world:World,intent:Intent,registry:Registry,space:SpatialServices):World {
  if(world.done.includes(intent.id)||world.active.some(a=>a.intent.id===intent.id))return world;
  const s=copy(world),d=registry[intent.action],invalid=rejection(s,intent,d,space);
- const held=invalid?null:reserve([...d.participants.map(id=>`actor:${id}`),...d.resources,...propResources(d),...processResources(d)],intent.id,s.held);
+ const held=invalid?null:reserve([...d.participants.map(id=>`${d.channel??'actor'}:${id}`),...d.resources,...propResources(d),...processResources(d)],intent.id,s.held);
  if(invalid||!held){emit(s,{kind:'rejected',action:intent.id,agent:intent.initiator,detail:invalid??'Participants or station are already reserved.'});return s;}
  s.held=held;const a:Active={intent:{...intent},phase:0,start:s.tick,origins:{}};s.active.push(a);
  emit(s,{kind:'admitted',action:intent.id,agent:intent.initiator,detail:d.reason});startPhase(s,a,d,space);return s;
@@ -109,7 +111,7 @@ export function advance(world:World,registry:Registry,space:SpatialServices,plan
   for(const move of moves){s.agents[move.agent].position=move.to;const room=space.roomAt?.(move.to);if(room)s.agents[move.agent].room=room;}
   if(!processReady(s,p.process)){s=cancel(s,a.intent.id);continue;}
   if(t<1)continue;
-  if(d.requires.some(c=>('prop'in c||'near'in c)&&!conditionHolds(s,c))){s=cancel(s,a.intent.id);continue;}
+  if(d.requires.some(c=>('prop'in c||'near'in c||'at'in c)&&!conditionHolds(s,c))){s=cancel(s,a.intent.id);continue;}
   if(p.completesWhen?.some(c=>!conditionHolds(s,c))){s=cancel(s,a.intent.id);continue;}
   const transfers=applyPropTransfers(s,p.transfers??[]);
   if(transfers===null){s=cancel(s,a.intent.id);continue;}

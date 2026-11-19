@@ -1,0 +1,573 @@
+{
+  "q1e3": [
+    [
+      0.0001,
+      0
+    ],
+    [
+      0.1234,
+      0.123
+    ],
+    [
+      0.1235,
+      0.124
+    ],
+    [
+      -0.1235,
+      -0.124
+    ],
+    [
+      1.0004,
+      1
+    ],
+    [
+      1.0005,
+      1.001
+    ]
+  ],
+  "checkpoints": [
+    [
+      0,
+      "e1587c63b8d3ea4882eb33b654ec8e9f634016e5bd5ec59dc2f3c9cd17030153"
+    ],
+    [
+      1,
+      "c603c78470fb010b7903fe5b986d66328f83f0a5f6ec597ad7b5cb49e5a3e7f0"
+    ],
+    [
+      2,
+      "3bd9eff904ab852d8b098c3efa687bd77218a83dad640a5765e69c95a50fd492"
+    ],
+    [
+      1412,
+      "ef066faec8e7dff97f6ca2544862b9423045ff0fd8d5ca084163c6e3acc9192b"
+    ],
+    [
+      1702,
+      "bf101f263a947c351772278741d50ed77cc86cd859b9f527634524f50052b9ca"
+    ],
+    [
+      2902,
+      "d39191d90fd3730c9894b139b2327207fa0538386a8242e282f47f1238a8f340"
+    ],
+    [
+      3340,
+      "06eb79d4782844e4181d8218082b0a7760288967f0fd093aa0ae69bb70c8d168"
+    ],
+    [
+      3802,
+      "72b058e72bd06490a433cd1adf69e3ee0243c5601a366ac783d3d112e3f8d091"
+    ],
+    [
+      4622,
+      "535ebdd521e667ea57e423eb162bb8f6aba690f3c1875237f91b12ab38484b11"
+    ],
+    [
+      5463,
+      "fa5c31dd56749cc77691eb9611243fd85a67ebe6cc7007aa4248a2df5fd4a4ba"
+    ]
+  ],
+  "offline": {
+    "records": {
+      "0.json": {
+        "kvp_version": "0.1",
+        "msg_type": "FULL_SNAPSHOT",
+        "msg_id": "00000000-0000-4000-8000-000000000001",
+        "sent_at_ms": 0,
+        "payload": {
+          "schema_version": "day_one_1",
+          "tick": 0,
+          "state": {
+            "world": {
+              "layout": "approved-factory/day-one-3",
+              "gate_mm": 6200,
+              "jammed": false,
+              "outputs": 0
+            },
+            "agents": [
+              {
+                "agent_id": "LIMEN",
+                "x": 125320,
+                "y": 131130,
+                "room": "security",
+                "moving": false,
+                "facing": "S",
+                "walked": 0,
+                "injured": false,
+                "action": "idle"
+              },
+              {
+                "agent_id": "STILETTO",
+                "x": 48250,
+                "y": 142950,
+                "room": "outside",
+                "moving": false,
+                "facing": "S",
+                "walked": 0,
+                "injured": false,
+                "action": "idle"
+              },
+              {
+                "agent_id": "ben",
+                "x": 59000,
+                "y": 151400,
+                "room": "outside",
+                "moving": false,
+                "facing": "S",
+                "walked": 0,
+                "injured": false,
+                "action": "idle"
+              },
+              {
+                "agent_id": "bob",
+                "x": 59000,
+                "y": 143500,
+                "room": "outside",
+                "moving": false,
+                "facing": "S",
+                "walked": 0,
+                "injured": false,
+                "action": "idle"
+              },
+              {
+                "agent_id": "ed",
+                "x": 60800,
+                "y": 143150,
+                "room": "outside",
+                "moving": false,
+                "facing": "S",
+                "walked": 0,
+                "injured": false,
+                "action": "idle"
+              },
+              {
+                "agent_id": "gus",
+                "x": 56890,
+                "y": 146250,
+                "room": "outside",
+                "moving": false,
+                "facing": "S",
+                "walked": 0,
+                "injured": false,
+                "action": "idle"
+              },
+              {
+                "agent_id": "jo",
+                "x": 57125,
+                "y": 143900,
+                "room": "outside",
+                "moving": false,
+                "facing": "S",
+                "walked": 0,
+                "injured": false,
+                "action": "idle"
+              },
+              {
+                "agent_id": "kit",
+                "x": 59000,
+                "y": 148800,
+                "room": "outside",
+                "moving": false,
+                "facing": "S",
+                "walked": 0,
+                "injured": false,
+                "action": "idle"
+              },
+              {
+                "agent_id": "lou",
+                "x": 61305,
+                "y": 148200,
+                "room": "outside",
+                "moving": false,
+                "facing": "S",
+                "walked": 0,
+                "injured": false,
+                "action": "idle"
+              },
+              {
+                "agent_id": "mae",
+                "x": 56640,
+                "y": 148750,
+                "room": "outside",
+                "moving": false,
+                "facing": "S",
+                "walked": 0,
+                "injured": false,
+                "action": "idle"
+              },
+              {
+                "agent_id": "max",
+                "x": 59000,
+                "y": 145950,
+                "room": "outside",
+                "moving": false,
+                "facing": "S",
+                "walked": 0,
+                "injured": false,
+                "action": "idle"
+              },
+              {
+                "agent_id": "sam",
+                "x": 61035,
+                "y": 145500,
+                "room": "outside",
+                "moving": false,
+                "facing": "S",
+                "walked": 0,
+                "injured": false,
+                "action": "idle"
+              }
+            ],
+            "items": [],
+            "events": [
+              {
+                "event_id": "event-2",
+                "tick": 0,
+                "until": 63,
+                "speaker": "max",
+                "text": "It gives me great pleasure to welcome you to Loopforge."
+              }
+            ]
+          },
+          "step_hash": "e1587c63b8d3ea4882eb33b654ec8e9f634016e5bd5ec59dc2f3c9cd17030153"
+        }
+      },
+      "1.json": {
+        "kvp_version": "0.1",
+        "msg_type": "FRAME_DIFF",
+        "msg_id": "00000000-0000-4000-8000-000000000002",
+        "sent_at_ms": 0,
+        "payload": {
+          "schema_version": "day_one_1",
+          "from_tick": 0,
+          "to_tick": 1,
+          "step_hash": "c603c78470fb010b7903fe5b986d66328f83f0a5f6ec597ad7b5cb49e5a3e7f0",
+          "prev_step_hash": "e1587c63b8d3ea4882eb33b654ec8e9f634016e5bd5ec59dc2f3c9cd17030153",
+          "ops": [
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "ben",
+                "x": 59000,
+                "y": 151323,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 77,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "bob",
+                "x": 59000,
+                "y": 143423,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 77,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "ed",
+                "x": 60793,
+                "y": 143073,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 77,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "gus",
+                "x": 56898,
+                "y": 146173,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 77,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "jo",
+                "x": 57133,
+                "y": 143823,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 77,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "kit",
+                "x": 59000,
+                "y": 148723,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 77,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "lou",
+                "x": 61297,
+                "y": 148123,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 77,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "mae",
+                "x": 56648,
+                "y": 148673,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 77,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "max",
+                "x": 59000,
+                "y": 145873,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 77,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "sam",
+                "x": 61027,
+                "y": 145423,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 77,
+                "injured": false,
+                "action": "walk"
+              }
+            }
+          ]
+        }
+      },
+      "2.json": {
+        "kvp_version": "0.1",
+        "msg_type": "FRAME_DIFF",
+        "msg_id": "00000000-0000-4000-8000-000000000003",
+        "sent_at_ms": 0,
+        "payload": {
+          "schema_version": "day_one_1",
+          "from_tick": 1,
+          "to_tick": 2,
+          "step_hash": "3bd9eff904ab852d8b098c3efa687bd77218a83dad640a5765e69c95a50fd492",
+          "prev_step_hash": "c603c78470fb010b7903fe5b986d66328f83f0a5f6ec597ad7b5cb49e5a3e7f0",
+          "ops": [
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "ben",
+                "x": 59000,
+                "y": 151245,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 155,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "bob",
+                "x": 59000,
+                "y": 143345,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 155,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "ed",
+                "x": 60785,
+                "y": 142996,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 154,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "gus",
+                "x": 56905,
+                "y": 146096,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 154,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "jo",
+                "x": 57140,
+                "y": 143746,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 154,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "kit",
+                "x": 59000,
+                "y": 148645,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 155,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "lou",
+                "x": 61290,
+                "y": 148046,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 154,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "mae",
+                "x": 56655,
+                "y": 148596,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 154,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "max",
+                "x": 59000,
+                "y": 145795,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 155,
+                "injured": false,
+                "action": "walk"
+              }
+            },
+            {
+              "op": "UPSERT_AGENT",
+              "agent": {
+                "agent_id": "sam",
+                "x": 61020,
+                "y": 145346,
+                "room": "outside",
+                "moving": true,
+                "facing": "N",
+                "walked": 154,
+                "injured": false,
+                "action": "walk"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "index": {
+      "engine_name": "loopforge_intro_ts",
+      "schema_version": "day_one_1",
+      "available_start_tick": 0,
+      "available_end_tick": 2,
+      "snapshots": {
+        "0": {
+          "path": "0.json",
+          "msg_type": "FULL_SNAPSHOT",
+          "sha256": "85245bfbf464bc512b30257d4be1e4d49a64effa16a692ab2ba361c6c6cfc4c5"
+        }
+      },
+      "diffs": {
+        "1": {
+          "path": "1.json",
+          "msg_type": "FRAME_DIFF",
+          "sha256": "e23462faf45c6ca8eaac71428efbcdd4413815b944521bb937c50e22fb547ef7"
+        },
+        "2": {
+          "path": "2.json",
+          "msg_type": "FRAME_DIFF",
+          "sha256": "fb084ebc3aa0ad04d0da48b0766fa0b59ccd290871b29ed48077be7883d7e909"
+        }
+      }
+    }
+  },
+  "offlineEnd": "3bd9eff904ab852d8b098c3efa687bd77218a83dad640a5765e69c95a50fd492"
+}

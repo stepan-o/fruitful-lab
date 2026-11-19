@@ -8,21 +8,23 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 2A · On the way in
 
-*sam and bob are already halfway through an argument when the others catch them. sam keeps offering the same shoulder. bob limps round to the other side.*
+*max shortens their stride to keep level with bob. They’ve been doing STILETTO for him since the corner.*
 
-**bob** You were on my good side.
+**max** Good. Now wash it.
 
-**sam** I was on the side you fell on.
+**bob** Nearly. You looked me in the eye.
 
-**bob** That’s how I know.
+**max** You said she leaned right over you.
 
-*sam changes sides. bob takes the elbow for the step up. Behind them gus scuffs the floor with his boot. The grit squeaks.*
+**bob** To see if I’d got the brain in straight. Here, do it again.
 
-**gus** I heard the card hit. Thought that was his knee.
+*At the lobby door max leans past bob to inspect yesterday’s brain. bob puts a hand out, just as he did from the motor housing. max takes it.*
 
-**ed** His card hardly made a sound.
+**bob** She stepped over that.
 
-*gus looks up. ed holds the lobby door for him. bob and sam are already through.*
+**max** I know. Lift your foot, bob.
+
+*bob looks down. The boot on the leg LIMEN cut is caught on the sill. He lets max pull him through. Half the crew has caught up behind them.*
 
 ### 2B · Good morning
 
@@ -32,7 +34,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **ben** Morning.
 
-*bob starts to raise his hand. It goes back on sam’s elbow.*
+*bob’s hand comes halfway up. LIMEN is still looking for ben. bob lets it drop.*
 
 ### 2C · The appointment
 

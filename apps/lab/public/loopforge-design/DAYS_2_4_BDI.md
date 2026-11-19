@@ -27,7 +27,7 @@ The interview gives all ten workers a desire to chat, heed supervisors, avoid wo
 | Worker | What they personally bring from yesterday | What could make them speak first, and to whom |
 | --- | --- | --- |
 | bob | Was struck while stepping forward with his card. Remembers sam helping him. Knows he lacks it. | Ask sam whether they saw it. The approaching check makes that more pressing than a joke or a question about the machines. |
-| sam | Knelt beside bob. In this reading their attention was on the wound and they missed the pickup. | Answer bob honestly. If they see him struggling before he speaks, ask whether the leg takes weight or offer an arm. |
+| sam | Knelt beside bob. In this reading their attention was on LIMEN’s blade and they missed the pickup. | Answer bob honestly. If they see him struggling before he speaks, ask whether the leg takes weight or offer an arm. |
 | ed | Pocketed bob’s original, kept his own and worked the register. LIMEN walked past his final count. | Seek LIMEN’s permission to reopen the book, or confer with gus about their desks. The interview gives him custody and a preference for Security. Why he keeps the card, or what would move him to return it, is still a writing choice. |
 | gus | Won a clerk’s job. Asked max for another impression on the way out. | Catch up with max for an encore, or ask ed whether they are getting the desks again. The sight of LIMEN can cut the joke short. |
 | jo | Has heard LIMEN’s welcome for six years. Corrected max’s wording and later ran Belt. | Likely to answer max if the welcome comes up again. They can let a perfectly accurate impression pass without comment. |
@@ -37,13 +37,30 @@ The interview gives all ten workers a desire to chat, heed supervisors, avoid wo
 | lou | Chose ben for a private aside while others called out. Counted the third cortex at Output. | Fall in beside ben for a quiet word. A nearby clerk changes how much lou is willing to say. |
 | ben | Heard lou’s aside and stood by for relief. Comfortable sharing silence. | Likely to listen to lou. A direct question or someone crowding them gives ben more reason to speak first. |
 
-For this approach bob has the most urgent question and a known witness beside him. gus and max have the strongest established invitation to resume a social exchange. lou and ben have the clearest precedent for talking privately. Only the first pair needs to speak in this reading. Nobody but ed starts with knowledge of the pickup.
+For this approach bob has the most urgent question and a known witness beside him. gus and max have the strongest established invitation to resume a social exchange. lou and ben have the clearest precedent for talking privately. bob and sam open the scene. One nearby worker then speaks to a walking companion. Nobody but ed starts with knowledge of the pickup.
 
 ## Day 2 · The photograph
 
 ### 2A · On the way in
 
-**bob → sam.** As they approach yesterday’s check, bob knows his card is missing and remembers sam kneeling beside him. He wants it back before he has to face LIMEN again. He spends his first private question on the person who might actually have seen it drop. sam remembers looking at the wound. They answer within bob’s hearing and join his search when he stops by the grate. bob learns that sam missed the pickup. Both can see the grate near where he fell. Neither knows that ed has the card. The arriving workers close the gap behind them, bringing LIMEN’s greeting within earshot in 2B. If sam is elsewhere, bob needs another nearby witness or a later opportunity. No new evidence about custody carries overnight from this exchange.
+**bob → sam.** As they approach yesterday’s check, bob knows his card is missing and remembers sam kneeling beside him. He wants it back before he has to face LIMEN again. He spends his first private question on the person who might actually have seen it drop. sam was close enough to help and kept their eyes on LIMEN’s blade in case he swung again. They answer within bob’s hearing and join his search when he stops by the grate. bob learns that sam missed the pickup. Both can see the grate near where he fell. Neither knows that ed has the card. The arriving workers close the gap behind them, bringing LIMEN’s greeting within earshot in 2B. If sam is elsewhere, bob needs another nearby witness or a later opportunity. No new evidence about custody carries overnight from this exchange.
+
+**One voice from the crowd.** After sam’s answer, draw a worker from the bystanders close to their named listener, then draw one eligible remark belonging to that worker. Keep that speaker, listener and line together on replay. A line about the blade can follow hearing sam or seeing LIMEN at the gate. Someone already talking about a desk or the press can finish a separate conversation as the queue closes. Record only the witnesses the voice reaches. A listener can remember who repeated a rumor without accepting it as true.
+
+| Pair from the table read | What makes the remark available |
+| --- | --- |
+| jo to max, the smile | Someone has described a smile. Six years of greetings give jo an ordinary explanation for LIMEN’s expression. |
+| gus to ed, the stools | A report of seats for the clerks makes yesterday’s fellow volunteer worth asking. |
+| ben to lou, the departure | ben has heard a story about bob being carried. On this reading ben walked out behind him yesterday and can correct it. |
+| mae to kit, the nick | A report of a mark on the rail gives mae something she can ask a worker beside her to point out. Neither has inspected it yet. |
+| max to gus, the shout | max heard gus call the line yesterday. Remembering that voice from a dream is a proposed private detail. |
+| ed to gus, the count | A claim that ten worked Conveyor contradicts the book ed kept. gus is the other worker who had a desk. |
+| lou to ben, the card | lou has received a distorted report of bob’s question and wants a second account. It reveals nothing about custody. |
+| kit to max, the door | Someone claims the Forge door is fixed. kit asks yesterday’s press operator for a practical check. |
+| lou to ben, the lift | lou has heard gossip about the blade and has a private listener. LIMEN’s home habits are unknown. |
+| gus to max, the brain | Both were at Security for STILETTO’s Day One threat. gus can repeat what he heard and wonder aloud about the job. |
+
+These ten lines are WRITER proposals for review. For a hearsay line, seed a prior local report with a source and a recipient, or let it be heard on the approach. Suppress the line if that worker never received it. The draw supplies variety among reasons a worker already has to speak.
 
 ### 2B · Good morning
 
@@ -204,6 +221,6 @@ Repeated late starts and a quota shortfall can make STILETTO push her operating 
 
 **Pacing for owner review.** Read at conversational speed with one actor per named bubble. Use the length of a real card return, tray set or press stroke to separate replies. Only overlap independently intelligible speech and business. Let the useful words of sam’s second fragment land together or keep both out. On Day 3 hold long enough to see whose hand still has the card. On Day 4 leave a footstep between jo and ben so a reader can tell who copied whom. If the listener cannot distinguish waiting for a name from waiting for a peer, revise the staging before adding explanation. Owner review covers the drama. SYSTEMS owns behavioral approval and ENGINE owns live performance.
 
-**Timing check.** With speaker names and stage directions omitted, a synthetic read at 160 words per minute took 79 seconds for Day 2 (27 bubbles), 53 seconds for Day 3 (19) and 52 seconds for Day 4 (20). Those are voice-only durations including the approach and appointment. The travel, silent choices and machine work still need a staged 1× check.
+**Timing check.** With speaker names and stage directions omitted, a synthetic read at 160 words per minute took 79 seconds for Day 2 (27 bubbles), 53 seconds for Day 3 (19) and 52 seconds for Day 4 (20). These voice-only timings include the approach and appointment. The single variable crowd remark adds one bubble to the Day 2 timing. The travel, silent choices and machine work still need a staged 1× check.
 
 **Reading applied.** Tynan Sylvester, *Designing Games*, chapter 4, “Emergent Story,” printed pp. 90–91 (PDF pp. 98–99, counted from 1). Authorship can specify the conditions that make a kind of story possible and leave the actual sequence to interactions. That changed W1 into a test of one listener’s firsthand memory with the same call and gate, rather than an alternate line selected by the calendar. The concept cannot tell us whether ben’s threshold is believable. Play 4D and W1 for listeners and ask what ben waited to see.

@@ -10,7 +10,9 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **bob** When you picked me up, did you see my card?
 
-**sam** No. I was looking at your leg.
+**sam** No. I was looking at his blade.
+
+*One voice behind them. Draw one [paired crowd remark](#crowd-lines-for-2a).*
 
 *bob limps over to the grate. sam looks down with him. The others bunch up behind them.*
 
@@ -265,6 +267,23 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 **lou** You did the hard part standing up.
 
 *max sits on the low sill to shake feeling back into one foot. lou stops and waits for them. Then the two catch up.*
+
+## Crowd lines for 2A
+
+*Draft options. Play one pair on the walk in. Keep the remark between the speaker and their walking companion.*
+
+| Speaker | To | Line |
+| --- | --- | --- |
+| jo | max | I heard he smiled when he did it. That’s just his face. |
+| gus | ed | I heard the desk jobs come with stools. Did he say anything to you about stools? |
+| ben | lou | I heard they carried bob out. I walked out behind him. |
+| mae | kit | I heard the blade took a nick out of the rail. Show me where. |
+| max | gus | I heard that ‘NEXT’ of yours in my sleep. Sat straight up. |
+| ed | gus | I heard all ten of us worked Conveyor yesterday. Who do they think kept the book? |
+| lou | ben | I heard bob asked to see her card. Is that how you heard it? |
+| kit | max | I heard that press door’s fixed. Can you open it with one hand yet? |
+| lou | ben | I heard he keeps that blade out at home. Imagine sharing a lift with him. |
+| gus | max | I heard her say she’d use his brain. Who’d have to wash it? |
 
 ## Pickups · Different evidence, different mornings
 

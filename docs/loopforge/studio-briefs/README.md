@@ -6,7 +6,9 @@ Public entry: `/stepanoskin/loopforge/design#studio`. General instructions: `/st
 
 ## Maintain
 
-Edit `general.md` for shared workflow, the named role's Markdown for its mandate/references/current handoff, and `roles.json` for card metadata and the last-maintained date. Each specialist owns its own brief. `dev-blog.md` is the current journal index and links the frozen prior publications. Applied book concepts require verified chapter/page references plus the concrete application; the local PDF is never copied into public output.
+Edit `general.md` for shared workflow, the named role's Markdown for its mandate/references/current handoff, and `roles.json` for card metadata and the last-maintained date. PRODUCER maintains the brief set with specialist contributions and craft review; coordinate with active editors. The owner opens chats, makes iteration/ship decisions and validates gameplay. `dev-blog.md` is the current journal index and links the frozen prior publications. Applied book concepts require verified chapter/page references plus the concrete application; the local PDF is never copied into public output.
+
+PRODUCER's onboarding package is `producer.md`, `producer-reading.md` and `producer-playbook.md`, published at the corresponding studio routes. The latter two are documentation companions, registered in `COMPANIONS` in the generator and the exact rewrite allowlist. They are not extra roles and do not receive launch prompts. The three pages share package navigation and downloadable source copies.
 
 Run `python docs/loopforge/game-design/build_board.py` from the repository root to regenerate the board and all brief pages. For a role-only update, `python docs/loopforge/game-design/studio_briefs.py` regenerates standalone pages and downloads; run the full board build as well when card metadata or the landing design changes. Commit intended source and generated outputs together.
 
@@ -14,7 +16,7 @@ The generator uses the existing small narrative Markdown renderer. Links are exp
 
 ## Add a role
 
-Add a focused Markdown brief and a `roles.json` entry, then add its ID to the exact studio rewrite allowlist in `apps/lab/next.config.ts`. Regenerate and verify its page, references, downloads and prompt. Do not add roles as an autonomous organization chart; add them when the owner commissions them.
+PRODUCER proposes a focused role when an actual production gap calls for it. After owner commissioning, add its Markdown brief and a `roles.json` entry, then add its ID to the exact studio rewrite allowlist in `apps/lab/next.config.ts`. Regenerate and verify its page, references, downloads and prompt. Give the owner the task-specific prompt to open the chat. Do not add roles as an autonomous organization chart.
 
 ## Verify
 

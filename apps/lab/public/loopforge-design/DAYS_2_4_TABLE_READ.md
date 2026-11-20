@@ -2,7 +2,7 @@
 
 **Loopforge · Three mornings · Corrected table read · 20 November 2026**
 
-Read the three shifts straight through. Lowercase names belong on the bubbles. Italics are business for the actors. An emoji flashes over the named worker. Play the face and read only the words. The short marks in the headings also appear in the [BDI companion](DAYS_2_4_BDI.md). Pickups after the third bell give the cast another way through the same rooms. The owner approved 2A with its ten crowd lines and 2B with its sixteen greeting replies on 19 November. The adviser is appointed before the workers arrive. The stage directions include the owner-approved SYSTEMS corrections. The [ID-check bank](#id-checks-at-security) serves every shift with LIMEN at Security. The [worker chat bank](ROOM_CHAT_BANK.md) has separate draws for the queue, neighboring posts and the walk home. Each reading below uses one possible clearance order.
+Read the three shifts straight through. Lowercase names belong on the bubbles. Italics are business for the actors. An emoji flashes over the named worker. Play the face and read only the words. The short marks in the headings also appear in the [BDI companion](DAYS_2_4_BDI.md). Pickups after the third bell give the cast another way through the same rooms. The owner approved 2A with its ten crowd lines and 2B with its sixteen greeting replies on 19 November. The adviser is appointed before the workers arrive. On Day 2 with STILETTO at Security, intercut S1 with 2A and continue directly to S2. Use 2B and 2C when LIMEN holds Security. The stage directions include the owner-approved SYSTEMS corrections. The [ID-check bank](#id-checks-at-security) serves every shift with LIMEN at Security. The [worker chat bank](ROOM_CHAT_BANK.md) has separate draws for the queue, neighboring posts and the walk home. Each reading below uses one possible clearance order.
 
 ## Day 2 · The photograph
 
@@ -851,7 +851,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ## Greeting replies
 
-*Draw three different workers who heard the welcome and have a reason to answer. Draw one eligible line per worker. All three start on “Loopforge,” each in their own named bubble. Read lines to a workmate under the public voices. The same bank serves either appointment.*
+*Draw three different workers who heard the welcome and have a reason to answer. Draw one eligible line per worker. All three start on “Loopforge,” each in their own named bubble. Read lines to a workmate under the public voices. Use this bank when LIMEN greets the workers at his Security post.*
 
 | Worker | To | Line |
 | --- | --- | --- |
@@ -897,15 +897,42 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### S1 · STILETTO gets the gate
 
-*Use this if STILETTO won before shift start. Play the walk and LIMEN’s usual welcome. Then LIMEN goes ahead to Conveyor. At the gate ed has his pen out and gus makes for his old desk.*
+*Cut from the workers, still talking on the walk in, to the empty Security room. LIMEN enters alone. He stops at yesterday’s desk, runs a thumb along its edge and sighs.*
 
-**STILETTO** Going somewhere, gus?
+**LIMEN** *NEW, to himself* I’ll miss this desk.
 
-**gus** Thought you’d want a hand here.
+*He goes straight to Conveyor. Once he’s through, STILETTO comes in at her Day 1 marching pace and takes the gate. Back on the approach, the walking dialogue finishes. The crew comes up to the grate. STILETTO waits. The usual welcome never comes.*
 
-**STILETTO** I want both of yours on the rack. ed, take the pen with you. Through.
+**gus** Where’s the fat one?
 
-*She waves all ten on. bob goes between sam and jo, unchecked. At Conveyor, LIMEN puts ed at the tray bench beside sam and gus at the rack with lou.*
+**STILETTO** SHUT UP!! CONVEYOR!! NOW!! GO!!!
+
+*On “GO!!!” all ten break into a run straight to Conveyor. bob runs with his limp. Show three named bubbles over moving workers, drawn at random. One possible draw:*
+
+**sam** *NEW, to bob* Here, take my arm.
+
+**ed** *NEW* My pen!
+
+**jo** *NEW* I’m going!
+
+*ed catches his pen against his chest without breaking stride. STILETTO stays at Security. LIMEN is already at Conveyor when the first worker reaches him.*
+
+*Draw three different workers with a reason to speak. Use their own bubbles during the run. The ten proposed replies are below. The question and STILETTO’s answer precede the draw.*
+
+| Worker | Proposed response on the run | What prompts it |
+| --- | --- | --- |
+| bob | This leg’s doing its best! | He feels the injured leg drag as he tries to keep pace. |
+| sam | Here, take my arm. | bob is limping within reach. |
+| ed | My pen! | The pen slips as he starts running. He catches it on the move. |
+| gus | I only asked. | He asked about LIMEN and heard the answer. |
+| lou | There’s your answer, gus. | They heard gus ask and STILETTO shout back. |
+| ben | Coming through! | Another runner is just ahead. |
+| jo | I’m going! | They hear the order as they push off. |
+| max | She said now, gus. | gus is near enough to hear him. |
+| mae | Leave me some room! | Another runner crowds their stride. |
+| kit | Mind the hinge! | A neighbor is cutting close to the open boom. |
+
+*At Conveyor, LIMEN puts ed beside sam at the tray bench and gus opposite lou at the rack.*
 
 ### S2 · All clear
 
@@ -1049,15 +1076,13 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **max** First one’s my heel. Listen for the other one.
 
-**LIMEN** It is my privilege to welcome you to Loopforge.
-
-*Draw a fresh simultaneous burst from the [greeting replies](#greeting-replies).*
+*STILETTO clears the gate. At Conveyor, LIMEN watches the arriving crew. gus brings up the rear.*
 
 **LIMEN** Let’s see how far we get today.
 
 **gus** I’ve got the end, sir.
 
-*Play S1–S2 at the stations. When the press falls, jo listens for max’s heel. They point as the second knock comes. max grins.*
+*Play S2 at the stations. When the press falls, jo listens for max’s heel. They point as the second knock comes. max grins.*
 
 ### W1 · Take away one witness
 
@@ -1107,15 +1132,13 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **jo** I spent all night holding an imaginary switch.
 
-**LIMEN** It is my privilege to welcome you to Loopforge.
-
-*Draw a fresh simultaneous burst from the [greeting replies](#greeting-replies).*
+*STILETTO sends them through. At Conveyor, LIMEN sees the space between the workers coming down his aisle.*
 
 **LIMEN** Plenty of room on the way in.
 
 **jo** Could use some of that at the drive.
 
-*STILETTO clears the crew in motion. At adjacent Belt and drive positions the switch is stationary and the handoff has yet to be called. kit uses a free arm to show jo where to rest an elbow. jo tries it with their free hand clear of the switch. This is the V12 workmate conversation in one available Conveyor slot.*
+*At adjacent Belt and drive positions the switch is stationary and the handoff has yet to be called. kit uses a free arm to show jo where to rest an elbow. jo tries it with their free hand clear of the switch. This is the V12 workmate conversation in one available Conveyor slot.*
 
 **LIMEN** Belt, all clear.
 
@@ -1139,4 +1162,4 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **STILETTO** You keep the clerks. Leave me my eight. Show me the rail that threw it.
 
-*After the appointment, play the walk-in, LIMEN’s welcome and the crew’s simultaneous replies. If LIMEN gets Conveyor, play a checked handoff. If a worker later tells him they passed Security unchecked, he has a new question for STILETTO. At each bell the crew can still walk away.*
+*After the appointment, play the walk-in. With LIMEN at Security, use his welcome and the crew’s replies. With STILETTO at Security, she sends the crew to LIMEN for a checked handoff. If a worker later tells him they passed Security unchecked, he has a new question for STILETTO. At each bell the crew can still walk away.*

@@ -41,6 +41,8 @@ Read *Designing Games* in depth for the relevant decisions and provide verified 
 
 ## Current handoff
 
+**Owner correction · Day 2 swapped posts.** The private desk farewell plays while the workers are still walking in. STILETTO takes the gate after LIMEN leaves. Her reply to the crew sends all ten running directly to Conveyor with three randomly drawn worker reactions. Use the [revised S1 rules](/loopforge-design/studio/days-2-4-dialogue-validation.html) and [Day 2 table read](/loopforge-design/studio/day-2-stiletto-reading.html).
+
 **20 November 2026 · SYSTEMS accepts the corrected Days 2–4 writing package for ENGINE implementation.** WRITER applied all eight owner-approved corrections at `91067933` on PR #169. The subsequent handoff commit is `d829b0ef`. Source review verified the five documents against the downloadable ZIP, all 37 scene and alternate IDs, all 60 chat entries and G1–G11. The table read’s spoken lines and approved response banks match the earlier reviewed revision.
 
 [Corrected table read](https://github.com/stepan-o/fruitful-lab/blob/9106793390eae36254145457aa26aa1b0793910d/docs/loopforge/DAYS_2_4_TABLE_READ.md) · [Five-document download](https://github.com/stepan-o/fruitful-lab/raw/9106793390eae36254145457aa26aa1b0793910d/apps/lab/public/loopforge-design/dialogue-engine-review.zip) · [WRITER handoff](https://github.com/stepan-o/fruitful-lab/blob/d829b0efa9549dcd118bb066baaceff7704731f8/docs/loopforge/studio-briefs/writer.md)

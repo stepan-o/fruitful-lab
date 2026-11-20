@@ -4,7 +4,7 @@
 
 ## Table read
 
-*Read only the words after the names. NEW marks proposed speech. The owner supplied the pitches. The other unmarked lines come from the approved reading and banks. Play the small voices to the person beside you. At the grate, three readers will need to come in together.*
+*Read only the words after the names. NEW marks proposed speech. The owner supplied both pitches and STILETTO’s shouted order. Read the walking lines to a partner. The last three voices at Security come from workers already running.*
 
 ### 2P · Before the second shift
 
@@ -22,39 +22,33 @@
 
 **sam** No. I was looking at his blade.
 
+*Cut from the workers, still talking on the walk in, to the empty Security room. LIMEN enters alone. He stops at yesterday’s desk, runs a thumb along its edge and sighs.*
+
+**LIMEN** *NEW, to himself* I’ll miss this desk.
+
+*He goes straight to Conveyor. Once he’s through, STILETTO comes in at her Day 1 marching pace and takes the gate. Cut back to the workers, still walking.*
+
 *One voice behind them. Draw one [paired crowd remark](https://www.fruitfulab.net/loopforge-design/days-2-4-table-read.html#crowd-lines-for-2a).*
 
 **max** *(to gus)* I heard that ‘NEXT’ of yours in my sleep. Sat straight up.
 
-*bob limps over to the grate. sam looks down with him. The others bunch up behind them.*
-
-### 2B · Good morning
-
-*LIMEN looks up as the crew bunches at the grate.*
-
-**LIMEN** It is my privilege to welcome you to Loopforge.
-
-*Three voices together on “Loopforge.” One [draw from the bank](https://www.fruitfulab.net/loopforge-design/days-2-4-table-read.html#greeting-replies).*
-
-**ed** Shall I open my desk, sir?
-
-**lou** *(to ben)* He ever say goodbye to you?
-
-**bob** Morning, sir. Remember me?
-
-*ben shakes his head. LIMEN turns to the two desks.*
+*As the last walking line ends, the crew comes up to the grate. STILETTO waits. The usual welcome never comes.*
 
 ### S1 · STILETTO gets the gate
 
-*LIMEN walks on to Conveyor. ed takes the cap off his pen. He holds it between his teeth and waits for someone to open the book. gus turns sideways to slip behind yesterday’s desk. He’s still got one foot in line when STILETTO catches his eye.*
+**gus** Where’s the fat one?
 
-**STILETTO** Going somewhere, gus?
+**STILETTO** SHUT UP!! CONVEYOR!! NOW!! GO!!!
 
-**gus** Thought you’d want a hand here.
+*On “GO!!!” all ten break into a run straight to Conveyor. bob runs with his limp. Show three named bubbles over moving workers, drawn at random. One possible draw:*
 
-**STILETTO** I want both of yours on the rack. ed, take the pen with you. Through.
+**sam** *NEW, to bob* Here, take my arm.
 
-*gus comes back around the desk. ed caps his pen. STILETTO keeps her arm up. All ten go through. bob goes between sam and jo with a hand still in his empty pocket. He takes it out on the Conveyor side. By the time anyone turns to their neighbor, the neighbor is moving.*
+**ed** *NEW* My pen!
+
+**jo** *NEW* I’m going!
+
+*ed catches his pen against his chest without breaking stride. STILETTO stays at Security. LIMEN is already at Conveyor when the first worker reaches him.*
 
 ### S2 · All clear
 
@@ -142,20 +136,20 @@
 
 ## BDI companion for SYSTEMS and ENGINE
 
-This is one playable reading for wording review. The selected crowd pair, occupied posts, sight of ed’s pocket and outbound walking partners belong to this run. Use the same approach evidence, pairings and random draw on both appointments. The table-read casting above should then sound identical through ben’s headshake. Workers discover the new assignments at S1.
+This reading uses one walking pair, one draw of three runners, and one set of Conveyor neighbors. The walk-in dialogue starts outside under either appointment. On the swap the audience sees the desk farewell during that walk. The workers first see STILETTO when they reach Security.
 
-### Before the gate · 2P, 2A and 2B
+### Before the gate · 2P and 2A
 
 | Beat | What each person knows and wants | What they do with it · what a missed cue changes |
 | --- | --- | --- |
 | 2P · the bids | LIMEN ran yesterday’s gate with ed and gus. He trusts the Protocol and wants the same people in the same posts. STILETTO ran Conveyor with eight workers and saw the other two helping LIMEN when she came to the gate. She wants the Producer to give her the gate so she can send all ten through to him. She can make this bid from her own shift. | The Producer hears both whole proposals, picks STILETTO before arrival and retains one in-shift intervention. The workers are outside. No worker learns a post from the bid. |
 | 2A · bob and sam | bob feels the empty pocket and remembers sam kneeling by him after the strike. sam remembers watching the blade for a second swing. Both can reach the grate. | bob asks the person who helped him. sam gives the limit of their sight and looks down with him. bob hears a meaningful answer, so the wish for company can be satisfied even though the search stays open. lou is close enough to hear bob’s question on this walk. If it is masked for lou, suppress their later card question unless they acquire another local reason. An unheard answer supplies bob with no witness result. |
 | 2A · max to gus | max heard yesterday’s NEXT and remembers waking to it. gus is the one who called and is walking alongside. max wants him to know how far that voice carried. | Play this one passing remark to gus. He may recognize the tease. A changed appointment alone cannot replace this pair. Without the memory or the partner, draw another eligible pair from the ten or let the walk go quiet. No card lead passes between them. |
-| 2B · LIMEN and the chorus | LIMEN sees the familiar crew bunch at the grate and wants their attention. ed can see the desk he used and offers to open it. bob risks asking the man who struck him for recognition. lou remembers leaving without a goodbye and wants ben’s experience. | Freeze the eligible workers on “Loopforge.” Draw up to three distinct hearers, then one eligible line per worker from the shared sixteen. Start all on the same beat. Here LIMEN hears ed and bob. ben hears lou and shakes their head within lou’s sight. A masked aside earns no answer from ben. A missed headshake leaves lou without ben’s answer. Nobody else gets the contents of the private exchange from the chorus. |
+| During 2A · the empty desk | LIMEN remembers working here yesterday and wanted to keep the post. The desk is on his way to the room he was assigned. | He pauses, sighs, speaks to himself, then continues alone. The audience sees this. The crew is still walking outside and STILETTO enters after he leaves. |
 
-### From the pen to the rack · S1, S2 and R2
+### From the gate to the rack · S1, S2 and R2
 
-**S1, the desk.** ed wants yesterday’s book back. Uncapping his pen is an offer he can make before anyone appoints him. gus wants his old job too. Seeing an empty desk, he goes to it while an offer of help might still count. STILETTO sees him turn toward the line. She needs his hands at Output and the way through Security kept clear. She addresses him, hears his offer and gives him a destination. ed hears his name and takes the pen with him. If the gestures never happen, she can simply wave the crew through. If either worker misses a posting, keep the worker traveling or waiting for a local instruction until they actually reach a compatible free side.
+**S1, the gate.** gus expected to find LIMEN at yesterday’s desk. He sees STILETTO there alone and asks where LIMEN is. STILETTO hears him. She wants all ten at Conveyor now. Her order authorizes the whole crew to pass. All ten run as soon as she finishes. Draw exactly three distinct workers from those with a response grounded in this run, using the shift seed. Give each one named bubble while moving. The draws may change between runs. The first question and the shout are separate from the three replies. The response bank lives in the [S1 table read](/loopforge-design/days-2-4-table-read.html#s1-stiletto-gets-the-gate).
 
 **S1, the passage.** STILETTO authorizes expedited passage for all ten. After each crosses, record that person’s passage once. bob feels his empty pocket before and after the boom. Nobody asked for his original. There is no discovered case, desk entry, stamp, pass or detention. ed still holds both originals. LIMEN assigns the crew as they arrive. In this crossing order ed can occupy the tray-bench face next to sam, and gus the rack face opposite lou. mae has the feed, kit the drive and ben relief. Recheck real destinations and occupancy on another order. Do not move a worker to make a line eligible.
 
@@ -186,12 +180,12 @@ If lou’s opener misses bob, he gains no lead and the departure opportunity sta
 
 | Window | What opens it here | First delivery and close |
 | --- | --- | --- |
-| Security · 0 of 1 spent | The second distinct authorized worker bound for Conveyor physically clears the outbound boom. Count each crossing once, including a former clerk. | The remaining workers keep moving under STILETTO’s arm. No available pair receives an opener before the queue clears. Keep the result unused. |
+| Security · 0 of 1 spent | The second distinct authorized worker bound for Conveyor physically clears the outbound boom. Count each crossing once, including a former clerk. | All ten run on her order. The three reaction bubbles travel with the runners. No available pair receives an opener before the queue clears. Keep the result unused. |
 | Conveyor · first of two | K04. ed and sam occupy reachable sides at Intake with this tray ready, awaiting release. | ed hears sam’s opening question. One spent. sam’s hearing of the last clause is a separate receipt. The Intake call returns them to the load. |
 | Conveyor · second of two | K05. After a completed cycle and ed’s later trip for empties, gus and lou have a fresh rack handoff to wait for. | gus hears lou’s opening question about shouting. Their silent joke and the card question belong to this one uninterrupted meeting. Without that new opening line, debit on the first delivered K05 question. The incoming cortex closes it. |
 | Departure · 1 of 1 spent | Both walkers are off duty and within reach on the outbound path. | bob hears lou’s first addressed phrase. One spent. The partners walk on together. sam’s bench news stays with sam today. |
 
-Reserve a pair together. Spend only on the intended listener’s first intelligible receipt. Bystander-only hearing spends nothing. After debit, interruption or silence cannot refund the slot. Recheck on a material change and expire unused work windows at the bell. The bids, approach, chorus, postings, pen warning, genuine stage calls and immediate responses have their own triggers. They neither spend nor replenish a worker conversation. Never lengthen a wait for a line.
+Reserve a pair together. Spend only on the intended listener’s first intelligible receipt. Bystander-only hearing spends nothing. After debit, interruption or silence cannot refund the slot. Recheck on a material change and expire unused work windows at the bell. The bids, approach, dispatch and running reactions, postings, pen warning, genuine stage calls and immediate responses have their own triggers. They neither spend nor replenish a worker conversation. Never lengthen a wait for a line.
 
 ### What each worker carries into Day 3
 
@@ -206,7 +200,7 @@ Reserve a pair together. Spend only on the intended listener’s first intelligi
 | max | Remembers teasing gus on the walk and using the treadle after hearing Forge. Has the clean press opening to judge for themself. |
 | mae | Saw ed retrieve the pen and felt the tray leave her hands. Has a reason to check where he sets it next time they share a feed. |
 | kit | Saw the Belt drive take the load from the adjacent working position. This reading gives him no deliberate look at jo’s hand against their thigh and no reason yet to offer a remedy for cramp. |
-| ben | Heard lou’s aside and answered with a headshake. Stood relief and left at the bell. Has neither card report to pass on. |
+| ben | Ran through at STILETTO’s order. Stood relief and left at the bell. Has neither card report to pass on. |
 
 Reset the daily wish for company, conversation budgets and in-shift intervention on the next shift. Keep outstanding questions, the two originals with ed, and each attributed memory. LIMEN can remember a safe finished handoff. STILETTO can remember the gate she cleared. Seeing the rack or inspecting another worker’s pocket requires being there.
 
@@ -214,8 +208,8 @@ Reset the daily wish for company, conversation budgets and in-shift intervention
 
 In a speech-only read at 160 words per minute, the bench exchange took about eight seconds, the rack exchange twelve and the walk-out seven. The rack also needs time for gus’s silent NEXT. Start it while the next piece is still up the line. If that piece arrives sooner, let the load cut them off where it lands.
 
-The owner supplied both Day 2 pitches. Five floor lines carry the NEW mark for wording review. The new business with the pen, jo’s suspended hand and gus’s silent NEXT is proposed staging. At normal pace, let the little finger open on its second try. The distinction to listen for is whether jo moves on “I see it” or on “Belt, all clear.” To check the card thread, mask the pocket for gus while leaving sam’s bench hearing intact. sam still has a find to report, but lou cannot give bob the K12 news. Move only lou out of earshot at the exit and the audience can retain both workroom clues while bob retains neither. Owner wording review and SYSTEMS validation precede ENGINE integration.
+The owner set the entrance, the worker’s question, the exact shout and the draw of three. LIMEN’s farewell, the proposed running replies and five later floor lines are for wording review. The new business with the pen, jo’s suspended hand and gus’s silent NEXT is proposed staging. At normal pace, let the little finger open on its second try. The distinction to listen for is whether jo moves on “I see it” or on “Belt, all clear.” To check the card thread, mask the pocket for gus while leaving sam’s bench hearing intact. sam still has a find to report, but lou cannot give bob the K12 news. Move only lou out of earshot at the exit and the audience can retain both workroom clues while bob retains neither. Owner wording review and SYSTEMS validation precede ENGINE integration.
 
 The rack reading uses Tynan Sylvester’s account of how rules delimit the stories that can emerge in play, *Designing Games*, chapter 4, “Emergent Story,” printed pp. 90–91 (PDF pages 98–99, 1-based). The lip of the stack determines whether gus has anything he can identify to lou. The words alone cannot guarantee tomorrow’s question. The occluded-pocket reading above tests that limit.
 
-[Approved table read and pickups](https://github.com/stepan-o/fruitful-lab/blob/9106793390eae36254145457aa26aa1b0793910d/docs/loopforge/DAYS_2_4_TABLE_READ.md) · [Worker chat bank](https://github.com/stepan-o/fruitful-lab/blob/9106793390eae36254145457aa26aa1b0793910d/docs/loopforge/ROOM_CHAT_BANK.md) · [Approved SYSTEMS specification and alternate-exchange ledger](https://github.com/stepan-o/fruitful-lab/blob/1eb05b0bc5b4980665ad4f55b9633dd8667ad110/docs/loopforge/studio-briefs/days-2-4-dialogue-validation.md) · [ENGINE staging preview](https://fruitful-uqml6f17u-stepan-oskins-projects.vercel.app/loopforge-shifts/index.html)
+[Approved table read and pickups](https://github.com/stepan-o/fruitful-lab/blob/9106793390eae36254145457aa26aa1b0793910d/docs/loopforge/DAYS_2_4_TABLE_READ.md) · [Worker chat bank](https://github.com/stepan-o/fruitful-lab/blob/9106793390eae36254145457aa26aa1b0793910d/docs/loopforge/ROOM_CHAT_BANK.md) · [Current SYSTEMS specification and alternate-exchange ledger](/loopforge-design/studio/days-2-4-dialogue-validation.html) · [ENGINE staging preview](https://fruitful-uqml6f17u-stepan-oskins-projects.vercel.app/loopforge-shifts/index.html)

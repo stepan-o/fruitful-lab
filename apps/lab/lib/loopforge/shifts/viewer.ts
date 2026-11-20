@@ -11,6 +11,18 @@ let frame:Frame|undefined,playing=false,seq=0,serial=Promise.resolve(),room:Room
 let art:Awaited<ReturnType<typeof loadArt>>={},recovery=false;
 const canvas=el<HTMLCanvasElement>('room'),ctx=canvas.getContext('2d')!;
 const worker=new Worker('kernel.js');
+const welcomeVoice=el<HTMLAudioElement>('welcome-voice');
+const welcomeSound=el<HTMLInputElement>('welcome-sound');
+let voicePending=false;
+function silenceWelcome(){
+  voicePending=false;welcomeVoice.pause();
+}
+function playWelcome(){
+  if(voicePending&&welcomeSound.checked&&room==='security'&&!document.hidden)
+    void welcomeVoice.play().catch(()=>{voicePending=false;});
+}
+welcomeVoice.onended=()=>{voicePending=false;};
+welcomeSound.onchange=()=>{if(!welcomeSound.checked)silenceWelcome();};
 const post=(kind:string,p:object)=>worker.postMessage(envelope(kind,++seq,p));
 const reportError=(e:unknown)=>txt('status','Playback issue · '+String(e));
 let skin:Skin|undefined,view:ArtView|undefined,previewLead='',carry='',carryDay=0;
@@ -141,12 +153,19 @@ worker.onerror=e=>reportError(e.message);
 worker.onmessage=e=>{const m=e.data;serial=serial.then(async()=>{
   if(m.local==='inspection'){const choices=m.rows.map((v:{actor:string;intent:string;why:string;evidence:string[]})=>v.actor+' · '+v.intent+'\n'+v.why+'\n'+v.evidence.join(' · ')).join('\n');el('traceOut').textContent=[m.evidence.join('\n'),choices,m.receipts.join('\n')].filter(Boolean).join('\n\n')||'No observations yet.';return;}
   if(m.local==='saved'){button('load-state').disabled=false;txt('status','Saved at tick '+m.tick);return;}
-  if(m.local==='transport'){playing=m.playing;render();return;}
+  if(m.local==='transport'){playing=m.playing;if(playing)playWelcome();else welcomeVoice.pause();render();return;}
   switch(m.msg_type){
     case 'KERNEL_HELLO':post('SUBSCRIBE',subscription);break;
     case 'FULL_SNAPSHOT':case 'FRAME_DIFF':
       if(recovery&&m.msg_type==='FRAME_DIFF')return;
-      try{frame=await read(frame,m.msg_type,m.payload);recovery=false;}
+      try{
+        const seen=frame?.tick??0;
+        frame=await read(frame,m.msg_type,m.payload);recovery=false;
+        if(m.msg_type==='FULL_SNAPSHOT')silenceWelcome();
+        else if(frame.scene.events.some(e=>e.tick>seen&&e.kind==='speech.delivered'&&e.actor==='LIMEN'&&e.text==='It is my privilege to welcome you to Loopforge.')){
+          if(welcomeSound.checked&&room==='security'){voicePending=true;welcomeVoice.currentTime=0;playWelcome();}
+        }
+      }
       catch{if(!recovery){recovery=true;post('DESYNC_REPORT',{issue:'EXTERNAL_HASH_MISMATCH'});}break;}
       render();break;
     case 'COMMAND_REJECTED':txt('status',m.payload.reason);break;
@@ -163,7 +182,7 @@ function restore(){
 }
 bids.forEach(b=>b.onclick=()=>{previewLead=b.dataset.bid!;render();});
 bind('commit',()=>action('appoint',previewLead));
-cameras.forEach(b=>b.onclick=()=>{room=b.dataset.room as Room;render();});
+cameras.forEach(b=>b.onclick=()=>{room=b.dataset.room as Room;if(room!=='security')silenceWelcome();render();});
 function closeReport(){opened='';render();button('signal').focus();}
 bind('signal',()=>{
   if(!frame)return;

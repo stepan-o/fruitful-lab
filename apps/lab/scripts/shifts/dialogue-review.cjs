@@ -58,7 +58,10 @@ async function main(){
     };
     await f.locator('[data-bid="LIMEN"]').click();await f.locator('#commit').click();
     await event('speech.delivered','bob','sam','picked me up');await f.locator('#room').scrollIntoViewIfNeeded();await stamp('Morning approach');
-    await event('speech.delivered','LIMEN','crew','privilege');await page.waitForTimeout(2200);await pause();
+    await event('speech.delivered','LIMEN','crew','privilege');
+    await f.waitForFunction(()=>document.querySelector('#welcome-voice').currentTime>0.1,{},{timeout:6000});
+    receipts.push({greetingAudio:await f.locator('#welcome-voice').evaluate(a=>({time:a.currentTime,rate:a.playbackRate}))});
+    await page.waitForTimeout(2200);await pause();
     const layout=await f.evaluate(()=>({width:innerWidth,actual:document.documentElement.scrollWidth,
       overflow:[...document.querySelectorAll('body *')].filter(el=>el.getBoundingClientRect().right>innerWidth+1).slice(0,6).map(el=>[el.tagName,el.id,el.clientWidth])}));
     assert(layout.actual<=layout.width+1,JSON.stringify(layout));

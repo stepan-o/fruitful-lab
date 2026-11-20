@@ -30,6 +30,7 @@ def script(data):
 
 def player():
     text = (FLOOR / "index.html").read_text()
+    text = replace_once(text, 'src="limen-welcome.mp3"', 'src="data:audio/mpeg;base64,' + encoded((FLOOR / "limen-welcome.mp3").read_bytes()) + '"')
     css = (FLOOR / "floor.css").read_text()
     kernel = (FLOOR / "kernel.js").read_bytes()
     viewer = (FLOOR / "viewer.js").read_text()

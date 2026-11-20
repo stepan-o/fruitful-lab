@@ -58,10 +58,21 @@ async function main(){
     };
     await f.locator('[data-bid="LIMEN"]').click();await f.locator('#commit').click();
     await event('speech.delivered','bob','sam','picked me up');await f.locator('#room').scrollIntoViewIfNeeded();await stamp('Morning approach');
+    const opening = await f.locator('#speech-text').textContent();
+    assert(opening.startsWith('bob · When you picked me up'), opening);
+    const started = performance.now();
+    await f.waitForFunction(() => document.querySelector('#speech-text').textContent.startsWith('sam · No.'));
+    assert(performance.now() - started >= 4300, 'bob’s opening changed before it could be read');
     await event('speech.delivered','LIMEN','crew','privilege');
     await f.waitForFunction(()=>document.querySelector('#welcome-voice').currentTime>0.1,{},{timeout:6000});
     receipts.push({greetingAudio:await f.locator('#welcome-voice').evaluate(a=>({time:a.currentTime,rate:a.playbackRate}))});
-    await page.waitForTimeout(2200);await pause();
+    await f.waitForFunction(() => document.querySelector('#speech-text').textContent.split(' · ').length === 4);
+    const chorus = await f.locator('#speech-text').textContent();
+    await pause();await page.waitForTimeout(750);assert.equal(await f.locator('#speech-text').textContent(),chorus);
+    await photograph('greeting-replies');await play();
+    await page.waitForTimeout(5700);
+    assert.equal(await f.locator('#speech-text').textContent(),chorus);
+    await pause();
     const layout=await f.evaluate(()=>({width:innerWidth,actual:document.documentElement.scrollWidth,
       overflow:[...document.querySelectorAll('body *')].filter(el=>el.getBoundingClientRect().right>innerWidth+1).slice(0,6).map(el=>[el.tagName,el.id,el.clientWidth])}));
     assert(layout.actual<=layout.width+1,JSON.stringify(layout));
@@ -101,8 +112,7 @@ async function main(){
         ['4D · firsthand return','worker.choice','ben','go'],
         ['W1 · reported return','worker.choice','ben','stay']
       ];
-      // Each take has its own recorder. Trim relative to the end of that take,
-      // so test setup, worker restore time and inspection cannot shift a cut.
+      // Keep the full reading interval from Play through the reply or the crossing.
       for(const [i,[checkpoint,kind,actor,word]] of readings.entries()){
         const clip=await browser.newContext({viewport,recordVideo:{dir,size:viewport}});
         const shot=await clip.newPage();
@@ -114,11 +124,21 @@ async function main(){
           const box=document.createElement('div');box.textContent=label+' · tick '+window.floorFrame.tick;
           Object.assign(box.style,{position:'fixed',bottom:'0',left:'0',background:'#102523',color:'white',padding:'6px 8px',font:'13px system-ui',zIndex:9999});document.body.append(box);
         },process.env.GITHUB_SHA.slice(0,8)+' · 320 × 844 · standalone · 1× · seed early / 3241 · '+checkpoint);
+        const started = performance.now();
         await shot.locator('#play').click();await shot.locator('#room').scrollIntoViewIfNeeded();
         await shot.waitForFunction(([k,a,t])=>window.floorFrame.scene.events.some(e=>e.kind===k&&e.actor===a&&e.text.includes(t)),[kind,actor,word],{timeout:35000});
-        await shot.waitForTimeout(1450);
+        if(i===2){
+          await shot.waitForTimeout(1000);
+          await shot.locator('[data-room="conveyor"]').click();
+          await shot.locator('#room').scrollIntoViewIfNeeded();
+        }
+        const reply=i<2?word:i===2?'bob was still':'take my turn here';
+        await shot.waitForFunction(t=>document.querySelector('#speech-text').textContent.includes(t),reply);
+        const words=await shot.locator('#speech-text').textContent();
+        await shot.waitForFunction(t=>document.querySelector('#speech-text').textContent!==t,words);
+        const seconds=(performance.now()-started)/1000;
         const take=shot.video();await clip.close();const input=await take.path(),name='take-'+i+'.mp4';
-        execFileSync('ffmpeg',['-hide_banner','-loglevel','error','-y','-sseof','-6','-i',input,'-an','-r','12','-c:v','libx264','-crf','29','-pix_fmt','yuv420p',path.join(dir,name)]);
+        execFileSync('ffmpeg',['-hide_banner','-loglevel','error','-y','-sseof','-'+seconds.toFixed(3),'-i',input,'-an','-r','12','-c:v','libx264','-crf','29','-pix_fmt','yuv420p',path.join(dir,name)]);
         await fs.unlink(input);list.push("file '"+name+"'");
       }
       await fs.writeFile(path.join(dir,'cuts.txt'),list.join('\n'));

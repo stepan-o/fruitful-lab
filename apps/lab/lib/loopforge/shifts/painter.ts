@@ -189,39 +189,50 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   }
   layers.sort((a,b)=>a.y-b.y).forEach(l=>l.draw());
   if(!sec)for(let i=0;i<4;i++){const [x,y]=xy(119.7+i*4,147.5);tag(stations[i],x,Math.min(h-4,y+18));}
-  const occupied:{x:number;y:number;w:number;h:number}[]=[];
-  const contact=scene.events.filter(e=>e.kind==='gesture.seen'&&e.text==='hand.return'&&tick-e.tick<55).at(-1);
-  if(contact&&sec){
-    const [x,y]=xy(contact.at[0]/1000,contact.at[1]/1000);
-    occupied.push({x:x-30,y:y-46,w:60,h:57});
-  }
-  for(const ev of view.speeches){
-    const [ax,ay]=anchors.get(ev.speaker)??xy(ev.at[0]/1000,ev.at[1]/1000);
-    if(ax<0||ax>w||ay<0||ay>h)continue;
-    const bodyFont=w<580?'600 14px sans-serif':'600 16px sans-serif';
-    ctx.font=bodyFont;
-    const limit=Math.min(230,w*.74),lines:string[]=[];
-    let line='';
-    for(const word of ev.text.split(' ')){
-      const next=line?line+' '+word:word;
-      if(line&&ctx.measureText(next).width>limit){lines.push(line);line=word;}else line=next;
+  // Simultaneous voices share the reading interval. Stack their plates in event
+  // order and paint all tails first so none can strike through another line.
+  const group = view.speeches.length > 1;
+  const bodyFont = w < 580 ? '600 15px sans-serif' : '600 17px sans-serif';
+  const lineHeight = w < 580 ? 19 : 21;
+  const limit = Math.min(310, w - 42);
+  let stackTop = 5;
+  const hand = sec && scene.events.findLast(e => e.kind === 'gesture.seen' &&
+    e.text === 'hand.return' && tick - e.tick < 55);
+  const bubbles = view.speeches.map(ev => {
+    const [speakerX, speakerY] = anchors.get(ev.speaker) ?? xy(ev.at[0]/1000, ev.at[1]/1000);
+    const ax = Math.max(2, Math.min(w-2, speakerX)), ay = Math.max(2, Math.min(h-2, speakerY));
+    ctx.font = bodyFont;
+    const lines: string[] = [];
+    let line = '';
+    for (const word of ev.text.split(/\s+/)) {
+      const next = line ? line + ' ' + word : word;
+      if (line && ctx.measureText(next).width > limit) {lines.push(line); line = word;}
+      else line = next;
     }
     lines.push(line);
-    const bw=Math.max(70,...lines.map(l=>ctx.measureText(l).width+24)),bh=26+lines.length*17;
-    const x=Math.max(3,Math.min(w-bw-3,ax-bw/2));
-    const aim=Math.max(3,Math.min(h-bh-18,ay-bh-10));
-    const collides=(y:number)=>occupied.some(r=>x<r.x+r.w+2&&x+bw+2>r.x&&y<r.y+r.h+2&&y+bh+2>r.y);
-    const candidates=[aim,...occupied.flatMap(r=>[r.y-bh-4,r.y+r.h+4])].filter(y=>y>=3&&y+bh<=h-4&&!collides(y));
-    const y=candidates.sort((a,b)=>Math.abs(a-aim)-Math.abs(b-aim))[0]??aim;
-    occupied.push({x,y,w:bw,h:bh});
-    const tail=Math.max(x+8,Math.min(x+bw-14,ax));
+    const bw = Math.max(84, ...lines.map(l => ctx.measureText(l).width + 24));
+    const bh = 26 + lines.length * lineHeight;
+    const x = Math.max(3, Math.min(w-bw-3, group ? (w-bw)/2 : ax-bw/2));
+    let y = group ? stackTop : Math.max(3, Math.min(h-bh-4, ay-bh-12));
+    if (group) stackTop += bh + 5;
+    if (hand && !group) {
+      const [hx, hy] = xy(hand.at[0]/1000, hand.at[1]/1000);
+      if (x < hx+30 && x+bw > hx-30 && y < hy+11 && y+bh > hy-46)
+        y = hy-50-bh >= 3 ? hy-50-bh : Math.min(h-bh-4, hy+15);
+    }
+    return {ev, ax, ay, x, y, bw, bh, lines};
+  });
+  for (const {ax, ay, x, y, bw, bh} of bubbles) {
+    const tail = Math.max(x+8, Math.min(x+bw-14, ax));
     ctx.strokeStyle='#d7c7a8';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(tail,y+bh-2);ctx.lineTo(ax,ay);ctx.stroke();
     skin.draw(ctx,ax<tail?'fl-tail-left':'fl-tail-right',tail-5,y+bh-3);
+  }
+  for (const {ev, x, y, bw, bh, lines} of bubbles) {
     skin.draw(ctx,ev.asset,x,y,{width:bw,height:bh});
     ctx.textAlign='left';ctx.font='bold 12px monospace';
     skin.draw(ctx,ev.nameplate,x+7,y+3,{width:ctx.measureText(ev.speaker).width+13,height:17});
     ctx.fillStyle='#fff1d3';ctx.fillText(ev.speaker,x+13,y+16);
     ctx.fillStyle='#182626';ctx.font=bodyFont;
-    lines.forEach((l,i)=>ctx.fillText(l,x+9,y+34+i*17));
+    lines.forEach((line,i)=>ctx.fillText(line,x+10,y+36+i*lineHeight));
   }
 }

@@ -15,6 +15,7 @@ from model_briefs import render_model_briefs
 from narrative import build_narrative, inline, render as render_narrative
 from cast_page import render_cast
 from dramaturgy import render_dramaturgy
+from dialogue_engine import build_dialogue_engine
 from pathlib import Path
 import html, json, re, shutil, subprocess, hashlib
 from style_review import render_style_review
@@ -367,6 +368,7 @@ arc+=conveyor_link
 first_turn=render_first_turn()
 agent_direction=render_agents()
 dramaturgy=render_dramaturgy()
+dialogue_engine=build_dialogue_engine(ROOT.parent, OUT)
 intro_source = (ROOT.parent/'DAY_ONE_INTRO.md').read_text()
 supervisor_pack = json.loads((OUT.parents[1]/'lib/assets/generated/loopforge-supervisors.json').read_text())
 security = supervisor_pack['assets']['limen-security']
@@ -442,7 +444,7 @@ pixel_art_plan = (
     f'<h3>{e(plan_title.removeprefix("Loopforge | "))}</h3>{plan_body}</div>'
 )
 
-panels=[('player-desires','Player desires & scenarios',desires),('day-one-intro',intro_title,intro),('floor-layout',floor_title,floor_panel),('engine-boundary','Engine boundary',engine),('floor-scale','Factory floor: scale & feel',floor_scale),('2d-shifts','2D Shifts',shifts),('pixel-art-plan','Pixel-art production plan',pixel_art_plan),('narrative-cast','The cast',cast),('writing-style',writing_style_title,writing_style),('dramaturgy','Character dramaturgy and narrative design',dramaturgy),('supervisor-rooms','Supervisor × room',supervisor_panel),('agents','Agents: character & motion',agent_direction),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('model-briefs','Model briefs',render_model_briefs()),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
+panels=[('player-desires','Player desires & scenarios',desires),('day-one-intro',intro_title,intro),('floor-layout',floor_title,floor_panel),('engine-boundary','Engine boundary',engine),('floor-scale','Factory floor: scale & feel',floor_scale),('2d-shifts','2D Shifts',shifts),('pixel-art-plan','Pixel-art production plan',pixel_art_plan),('narrative-cast','The cast',cast),('writing-style',writing_style_title,writing_style),('dramaturgy','Character dramaturgy and narrative design',dramaturgy),('dialogue-engine','Dialogue Engine',dialogue_engine),('supervisor-rooms','Supervisor × room',supervisor_panel),('agents','Agents: character & motion',agent_direction),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('model-briefs','Model briefs',render_model_briefs()),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
 studio_panel, studio_css = build_studio(ROOT.parent, OUT)
 panels.insert(0, ('studio', 'Studio briefs', studio_panel))
 head='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101412"><meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow"><title>Loopforge — Game design</title><link rel="stylesheet" href="styles.css"></head><body>'
@@ -482,7 +484,7 @@ full=head+'<main class="record"><a href="index.html">← Interactive design boar
 art_review_link = '[Inspect the proof comparisons](/stepanoskin/loopforge/design#days-2-4-art)'
 _, review_links, _ = render_narrative('# Review\n\n' + art_review_link, {})
 full += '<section><h2>'+e(art_review_title)+'</h2>'+art_review_intro+review_links+'</section>'
-full+='<section>'+desires+'</section><section id="day-one-intro">'+intro.replace('href="#day-one-art-calibration"', 'href="/stepanoskin/loopforge/design#day-one-art-calibration"')+'</section><section id="floor-layout">'+floor_record+'</section><section id="narrative-cast">'+cast+'</section><section id="writing-style">'+writing_style+'</section><section id="dramaturgy">'+dramaturgy+'</section>'
+full+='<section>'+desires+'</section><section id="day-one-intro">'+intro.replace('href="#day-one-art-calibration"', 'href="/stepanoskin/loopforge/design#day-one-art-calibration"')+'</section><section id="floor-layout">'+floor_record+'</section><section id="narrative-cast">'+cast+'</section><section id="writing-style">'+writing_style+'</section><section id="dramaturgy">'+dramaturgy+'</section><section id="dialogue-engine">'+dialogue_engine+'</section>'
 full+='<section>'+loop_study_full+'</section><section>'+conveyor_full+'</section><section>'+first_turn+'</section><section id="agents">'+agent_direction+'</section><section id="floor-scale">'+floor_scale+'</section><section id="2d-shifts">'+shifts_intro+shifts_links+'</section>'
 full+='<section><h2>World and story grounding</h2>'+world+'</section><section><h2>Act 1 progression</h2>'+early_rules+''.join(stage(s) for s in d['stages'])+act2+'</section>'
 full+='<section><h2>Proposed trajectories</h2>'+p('Illustrative paths through the shared progression, not locked classes or predetermined endings.')+early_combinations+''.join(trajectory(r) for r in d['trajectories'])+'</section>'

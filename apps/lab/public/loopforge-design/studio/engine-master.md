@@ -41,9 +41,11 @@ Use *Designing Games* when an engineering choice affects agency, feedback, learn
 
 ## Current handoff
 
-**20 November 2026 · First complete Day 1–2 playthrough · Owner review in PR #177.** The landing opens the game menu. Enter factory starts the approved sprite intro. At blackout its worker identities, original ID cards, local observations and three finished cortexes pass into the Day 2 Producer console. Answer leadership, receive the weekly quota and commit a bid before the crew walks in. Each new rack arrival earns one credit. The configurable first-playtest target is 60 by Day 7.
+**20 November 2026 · Day 1–2 review corrections.** [Play from the landing](https://fruitful-g2dln906r-stepan-oskins-projects.vercel.app/stepanoskin/loopforge) · [Correction PR #178](https://github.com/stepan-o/fruitful-lab/pull/178) · [Correction screenshots and 1× clips](/loopforge-shifts/review/corrections/index.html) · [ENGINE handoff and evidence](/loopforge-shifts/ENGINE-HANDOFF.md). The branch starts at the merge of #177, `4398dc6f`. The corrected runtime is `b3833627`.
 
-LIMEN’s pitch assigns STILETTO to Conveyor for portrait staffing. STILETTO’s pitch assigns LIMEN to Conveyor for station clearances. The run ends at the Day 2 bell. The handoff records each matched comparison and keeps the earlier standalone players accessible. [Play from the landing](https://fruitful-hepumbsgm-stepan-oskins-projects.vercel.app/stepanoskin/loopforge) · [ENGINE review steps and measurements](/loopforge-shifts/ENGINE-HANDOFF.md) · [Implementation PR #177](https://github.com/stepan-o/fruitful-lab/pull/177)
+Pause the line, inspect bob and choose Wash. Resume to send him there. The phone camera frames the chosen post beside its crew, carrier state and time to bell. Day One now uses the corrected Security and Conveyor floors, saved queue rails, both desks, bob’s original ID, occupied-post signals and rack layers. The crew picker uses the approved cast portraits.
+
+The remaining art includes registered floor sprites for eight workers and the bodies of Intake, Wash and Belt. The [handoff](/loopforge-shifts/ENGINE-HANDOFF.md) maps the remaining scenes and assets. Owner play and visual acceptance are pending.
 
 ### Earlier deliveries
 

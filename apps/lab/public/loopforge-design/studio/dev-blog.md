@@ -2,6 +2,12 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 20 November 2026 · Giving a paused order an answer
+
+Root paused the line, selected bob and sent him to Wash. The button accepted the click while the worker silently discarded the order. ENGINE made the pause visible on the controls and gave the worker a rejection receipt. The same interaction now lets the player inspect bob and Wash, resume and watch him walk to his post.
+
+At phone width, the player can frame a station and read its crew, carrier and countdown alongside the order. Day One also draws the saved room lighting at factory coordinates and uses the original rail and rack layers. The matched simulations still put 14 new cortexes on the rack with a daily pass, zero after detention and 10 after sending kit to recover Wash. [Play the correction](https://fruitful-g2dln906r-stepan-oskins-projects.vercel.app/stepanoskin/loopforge) · [Correction screenshots and 1× clips](/loopforge-shifts/review/corrections/index.html) · [ENGINE evidence and outstanding art](/loopforge-shifts/ENGINE-HANDOFF.md).
+
 ## 19 November 2026 · A report you can reopen
 
 A player can look away from Security and miss the resolution. The desk now keeps a readable case file. Its flag changes when the shift intervention is spent, the panel shows who issued bob’s pass, and a separate insert records detention or release. A verified public report survives the short event window. On the floor, jo still has to take her own first step towards the desk.

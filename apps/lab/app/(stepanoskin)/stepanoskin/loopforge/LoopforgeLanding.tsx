@@ -16,7 +16,7 @@ import FactoryConveyor from "@/components/loopforge/FactoryConveyor";
 const menuItems = [
     { id: "loopforge-overview", href: "/stepanoskin/loopforge/overview/the-factory", title: "The game", description: "Inside the artificial brain factory. Presentation in English." },
     { id: "loopforge-engine", href: "/stepanoskin/loopforge/architecture/the-thesis", title: "The engine", description: "Truth stays clean. Story gets messy. Presentation in English." },
-    { id: "loopforge-play", href: "/stepanoskin/loopforge/play", title: "Enter factory", description: "Take the director’s chair. First-shift prototype in English." },
+    { id: "loopforge-play", href: "/stepanoskin/loopforge/play", title: "Enter the factory", description: "Work the first two shifts. Play in English." },
     { id: "loopforge-dev-blog", href: "/stepanoskin/loopforge/dev-blog", title: "Dev blog", description: "Production notes, craft interviews and the studio record. In English." },
 ] as const;
 

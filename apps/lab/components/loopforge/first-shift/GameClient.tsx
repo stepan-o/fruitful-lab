@@ -1,7 +1,14 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import FirstShift from "./FirstShift";
+import dynamic from "next/dynamic";
+import ProducerConsole from "./ProducerConsole";
+import LeadershipCall from "./LeadershipCall";
+import {endCampaign,freshCampaign,loadCampaign,saveCampaign,type Campaign} from "../../../lib/loopforge/shifts/campaign-save";
+import type {PlayerView} from "../../../lib/loopforge/first-shift/contract";
+import floorStyle from "./shift-floor.module.css";
+const IntroPlayer=dynamic(()=>import("../intro/IntroPlayer"),{ssr:false});
+const ShiftFloor=dynamic(()=>import("./ShiftFloor"),{ssr:false});
 import ThemeProvider, { useConsoleTheme } from "./ThemeProvider";
 import ThemeSettings from "./ThemeSettings";
 import GraphicsSettings from "../graphics/GraphicsSettings";
@@ -10,7 +17,7 @@ import { Art, Control, Kicker, materialStyle, type Media } from "./ConsoleParts"
 import s from "./themes.module.css";
 
 function GameSession({ media }: { media: Media }) {
-  const [started, setStarted] = useState(false), [menu, setMenu] = useState(true), [settings, setSettings] = useState(false);
+  const [run,setRun]=useState<Campaign|null>(null), [menu, setMenu] = useState(true), [settings, setSettings] = useState(false);
   const theme = useConsoleTheme()!;
   const start = useRef<HTMLButtonElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
@@ -18,7 +25,20 @@ function GameSession({ media }: { media: Media }) {
   useEffect(() => { if (settings) dialog.current?.showModal(); else dialog.current?.close(); }, [settings]);
   useEffect(() => { if (menu) start.current?.focus(); }, [menu]);
   function closeSettings() { setSettings(false); settingsButton.current?.focus(); }
-  function enter() { setStarted(true); setMenu(false); }
+  useEffect(()=>{setRun(loadCampaign());},[]);
+  function enter() {
+    const current=run??freshCampaign();saveCampaign(current);setRun(current);setMenu(false);
+  }
+  function phase(next:Campaign["phase"]) {
+    if(!run)return;const updated={...run,phase:next};saveCampaign(updated);setRun(updated);
+  }
+  function finish(){endCampaign();setMenu(true);setRun(null);}
+  const view:PlayerView={
+    tick:run?.source?.tick??0,day:2,shiftTick:0,phase:"choose",cash:0,condition:100,
+    workers:run?.source?.agents.filter(a=>a.character==="worker").length??0,
+    quota:run?.quota??0,committed:run?.source?.pieces.length??0,produced:0,retained:0,losses:0,
+    people:[],events:[],adviser:null,assignments:null,briefing:null,pending:null,
+  };
   return <div className={s.game} style={{ ...materialStyle(media), ...theme.style }} data-theme={theme.recipe.shell}>
     {menu && <main className={s.menu} aria-label="Loopforge start menu">
       <ConsoleBeacon active={!settings} />
@@ -29,16 +49,27 @@ function GameSession({ media }: { media: Media }) {
         <Art media={media} id="logo" className={s.menuLogo} sizes="320px" priority />
         <h1>First shift</h1>
         <p className={s.menuMotto}>Truth stays clean.<br />Story gets messy.</p>
-        <button ref={start} className={s.startControl} disabled={theme.loading} onClick={enter}>{started ? "Resume shift" : "Start shift"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
+        <button ref={start} className={s.startControl} disabled={theme.loading} onClick={enter}>{run ? "Resume shift" : "Enter factory"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
         <button ref={settingsButton} className={s.menuSetting} onClick={() => setSettings(true)}>Settings <span>Graphics / presentation</span></button>
         <Link href="/stepanoskin/loopforge" prefetch={false}>← Back to Loopforge</Link>
-        <small className={s.sessionNote}>{started ? "Your shift is paused. Resume to return to the console." : "First shift · playable prototype"}</small>
-        <small className={s.sessionNote}>Progress lasts while this page stays open.</small>
+        <small className={s.sessionNote}>{run ? "Your shift is paused. Resume to continue." : "Days 1–2 · Week one"}</small>
+        <small className={s.sessionNote}>Progress is saved in this tab.</small>
         {theme.error && <p role="alert">{theme.message}</p>}
       </section>
     </main>}
-    {/* Never key or unmount the run when changing equipment or returning to menu. */}
-    {started && <div hidden={menu} inert={menu}><FirstShift media={media} suspended={menu} onOpenMenu={() => setMenu(true)} /></div>}
+    {!menu&&run&&<>
+      <div className={floorStyle.toolbar}><span>{run.phase==="intro"?"DAY 1 · FIRST SHIFT":run.phase==="console"?"DAY 2 · LEADERSHIP CALLING":"DAY 2 · PRODUCER CONSOLE"}</span><button onClick={()=>setMenu(true)}>Main menu</button></div>
+      {run.phase==="intro"&&<IntroPlayer campaign={{seconds:run.seconds,onProgress:seconds=>{
+        if(Math.floor(seconds*4)!==Math.floor(run.seconds*4)){run.seconds=seconds;saveCampaign(run);}
+      },onDeparture:source=>{
+        run.source=source;run.progress={tick:source.tick,commands:[]};phase("console");
+      }}}/>}
+      {run.phase==="console"&&<ProducerConsole media={media} skin={theme.recipe.console} view={view} incoming busy={false} effects active ticking={false}
+        primaryLabel="Awaiting leadership" speed={1} onLeadership={()=>phase("call")}
+        onAdviser={()=>{}} onPrimary={()=>{}} onRoom={()=>{}} onInspect={()=>{}} onFeedback={()=>{}} onNavigate={()=>{}} onSpeed={()=>{}}/>}
+      {run.phase==="call"&&<LeadershipCall rack media={media} view={view} onClose={()=>phase("console")} onContinue={()=>phase("floor")}/>}
+      {run.phase==="floor"&&<ShiftFloor run={run} suspended={menu} onFinish={finish}/>}
+    </>}
     <dialog ref={dialog} className={s.menuDialog} onClose={closeSettings} aria-labelledby="menu-settings-title"
       onClick={e => { if (e.target === dialog.current) closeSettings(); }}>
       <ConsoleBeacon active={settings} />

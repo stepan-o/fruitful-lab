@@ -1,3 +1,5 @@
+import {stationTick,lineCommand,newLine} from './station-line';
+import {swapOpening} from './swap-opening';
 import {checkReading} from './inspections';
 import {workmates} from './workmates';
 import {freshDialogue} from './dialogue-state';
@@ -18,9 +20,13 @@ const counter=meters(123.7,130.25),secondDesk=meters(131.6,130.2);
 const demandPost=meters(129.4,132.4);
 const ownOriginal=(s:Run)=>propCustodian(s.world,'bob:id')==='bob';
 const eventId=(s:Run,kind:string)=>'D'+s.day+'-'+kind;
-function freshWorld():World{
-  const agents=Object.fromEntries(inheritance.agents.map(a=>[a.id,{...structuredClone(a),yaw:0}])) as unknown as Record<string,Agent>;
-  const world:World={version:ENCOUNTER_VERSION,tick:inheritance.tick,sequence:0,agents,resources:[...stations],props:structuredClone(inheritance.props) as unknown as World['props'],facts:{'injury.bob':inheritance.injury},held:{},active:[],done:[],completed:[],events:[]};
+export type Inheritance = {
+  tick:number; agents:Omit<Agent,'name'|'yaw'>[]; props:World['props']; pieces:{id:string}[];
+  injury:World['facts'][string]; concessions:number;
+};
+function freshWorld(source:Inheritance):World{
+  const agents=Object.fromEntries(source.agents.map(a=>[a.id,{...structuredClone(a),yaw:0}])) as unknown as Record<string,Agent>;
+  const world:World={version:ENCOUNTER_VERSION,tick:source.tick,sequence:0,agents,resources:[...stations],props:structuredClone(source.props) as unknown as World['props'],facts:{'injury.bob':source.injury},held:{},active:[],done:[],completed:[],events:[]};
   for(const a of Object.values(agents)){
     if(a.character!=='worker')continue;
     const id=a.id+':id';
@@ -31,12 +37,13 @@ function freshWorld():World{
   agents.ed.beliefs['have.bobs.id']={value:true,mode:'observed',source:'Day One pickup',tick:world.tick};
   return world;
 }
-export function start(seed:Run['seed']='early'):Run{
-  const world=freshWorld();
-  const run:Run={dialogue:freshDialogue(3241),version:'shift-floor/1',seed,day:2,phase:'briefing',tick:world.tick,start:world.tick,world,tasks:{},rules:{},
+export function start(seed:Run['seed']='early', delivered?:Inheritance):Run{
+  const source=delivered??(inheritance as unknown as Inheritance);
+  const world=freshWorld(source);
+  const run:Run={...(delivered?{line:newLine(3241)}:{}),dialogue:freshDialogue(3241),version:'shift-floor/1',seed,day:2,phase:'briefing',tick:world.tick,start:world.tick,world,tasks:{},rules:{},
     lead:'LIMEN',pace:'rushed',queue:[],called:'',checking:0,quick:false,case:null,spent:null,pass:null,caseReleaseSeq:0,
-    pressure:'quiet',pressureAt:0,concessions:inheritance.concessions,authority:3,confidence:3,loyalty:3,chat:'idle',chatAt:0,partner:'',nextIntake:0,
-    pieces:[],completed:inheritance.pieces.map(p=>p.id),coverage:['','','',''],nextPiece:0,announced:'',stageClear:'',
+    pressure:'quiet',pressureAt:0,concessions:source.concessions,authority:3,confidence:3,loyalty:3,chat:'idle',chatAt:0,partner:'',nextIntake:0,
+    pieces:[],completed:source.pieces.map(p=>p.id),coverage:['','','',''],nextPiece:0,announced:'',stageClear:'',
     marks:[],thoughts:[],heard:{},backing:null,history:{},overnight:[],injuryExposure:0};
   seedHistory(run);return run;
 }
@@ -72,6 +79,7 @@ function release(s:Run,id:string,reason:string){
   s.queue.splice(i,1);
   const t=s.tasks[id];t.duty='cleared';
   const n=t.station;
+  if(s.line&&s.lead==='LIMEN'&&['bob','jo'].includes(id))t.station=-1;
   const support:Record<string,Point>={ed:meters(120.6,143.7),gus:meters(134.9,143.8),
     mae:meters(119,143.25),lou:meters(134,143),kit:meters(128.8,144.3),ben:meters(117.9,142.8)};
   if(id==='mae'&&s.lead==='STILETTO'&&s.dialogue.posts.ed)support.mae=meters(121.4,143.2);
@@ -82,7 +90,7 @@ function release(s:Run,id:string,reason:string){
   const supportFace:Record<string,string>={ed:'tray',gus:'rack',mae:'tray',lou:'rack',
     kit:s.backing==='STILETTO'?'tray':'drive',ben:support.ben[0]>126000?'drive':'tray'};
   s.dialogue.faces[id]=n>=0?stations[n]:supportFace[id];
-  const post=n>=0?controls[n]:support[id];s.dialogue.posts[id]=post;go(s,id,post);
+  const post=n>=0?(t.station<0?meters(controls[n][0]/1000,143.45):controls[n]):support[id];s.dialogue.posts[id]=post;go(s,id,post);
   if(reason==='Credential verified')observe(s,id,'saw.checked.card',pos(s,id),true);
   if(reason==='Daily pass')observe(s,id,'saw.pass',pos(s,id));
   if(reason!=='Responded to STILETTO')s.dialogue.authorized.push(id);
@@ -291,7 +299,7 @@ export function step(s:Run){
     }
     return;
   }
-  if(d.phase==='work'&&s.tick>=d.bell){finish(s);return;}
+  if(d.phase==='work'&&s.tick>=d.bell){finish(s);if(s.line)s.phase='close';return;}
   advanceMorning(s);updateSpeech(s);cardContact(s);
   if(d.phase!=='work')return;
 
@@ -300,6 +308,7 @@ export function step(s:Run){
     if(t.duty==='cleared'&&dist(pos(s,id),t.destination)<80){
       t.duty=t.station>=0?'working':'standing';
       const e=mark(s,'post.arrived','conveyor','actor.'+id,pos(s,id),id,t.station>=0?stations[t.station]:'support','Arrived at assigned post');
+      if(s.line&&s.lead==='LIMEN'&&id==='sam'&&t.station===0)heard(s,phrase('STILETTO',scripts['2D'][4][1],'sam'),'conveyor','first load');
       if((id==='kit'&&s.backing==='STILETTO'||id==='ben'&&s.backing!=='STILETTO')&&t.choice==='go')openWindow(s,'conveyor','relief#'+e.seq);
     }
     if(t.duty==='approaching'&&t.moving&&s.caseReleaseSeq){
@@ -307,7 +316,13 @@ export function step(s:Run){
     }
   }
 
-  pressure(s);check(s);s.world.tick=s.tick-1;production(s);workmates(s);
+  if(s.line){
+    if(s.lead==='STILETTO')swapOpening(s);
+    else {pressure(s);check(s);}
+    stationTick(s);
+    if(s.lead==='STILETTO'&&!s.line.handoff)return;
+  }else{pressure(s);check(s);s.world.tick=s.tick-1;production(s);}
+  workmates(s);
   const pause=s.marks.filter(e=>e.day===s.day&&e.kind==='handoff.finished').at(-1);
   if(pause&&pause.seq!==d.lastPause){
     d.lastPause=pause.seq;
@@ -328,7 +343,9 @@ export function admitCommand(s:Run,cmd:Command){
   else if(cmd.action==='appoint'){
     if(s.phase!=='briefing'||!['LIMEN','STILETTO'].includes(cmd.target)||cmd.room!=='security'||cmd.incident!=='morning')reason='Bid closed';
     else begin(s,cmd.target as Lead);
-  }else if(s.phase!=='shift'||s.spent)reason=s.spent?'Intervention spent':'Shift closed';
+  }else if(s.line&&(cmd.action==='clear'||cmd.action==='assign'))reason=lineCommand(s,cmd);
+  else if(s.line&&cmd.action!=='issue-pass')reason='Unavailable mandate';
+  else if(s.phase!=='shift'||s.spent)reason=s.spent?'Intervention spent':'Shift closed';
   else{
     switch(cmd.action){
       case 'issue-pass':

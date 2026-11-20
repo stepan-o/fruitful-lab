@@ -1,3 +1,4 @@
+import {farewell,gatherAtGate} from './swap-opening';
 import type {Run,Point} from './contract';
 import {geom,mm,moveCast,roomAt,score,tickAt,worldAt,type Route} from '../intro/floor';
 import {readingTime} from './reading';
@@ -15,6 +16,10 @@ export function seedHistory(s:Run){
   remember(s,'STILETTO','gate.shift.1','Day One gate and crew',true);
 }
 export function morningBids(s:Run){
+  if(s.line&&s.day===2)return {
+    LIMEN:'We have to stick to the Protocol. No need to change anything.',
+    STILETTO:'Give me the gate, send LIMEN to conveyor. It took him two helpers to count to eight.'
+  };
   const key=knows(s,'LIMEN','saw.bruise')&&knows(s,'LIMEN','mae.injury.report')?'A1':knows(s,'LIMEN','slow.and.steady')?'Q1':
     knows(s,'LIMEN','reckless')?'4P':Object.keys(s.world.agents.STILETTO.beliefs).filter(k=>k.startsWith('gate.shift.')&&knows(s,'STILETTO',k)).length>=2?'3P':'2P';
   const bids=key==='Q1'?scripts.Q1.slice(0,2):key==='A1'?scripts.A1.slice(1):scripts[key];
@@ -198,10 +203,15 @@ export function advanceMorning(s:Run){
     }
     if(d.cue===1){
       d.cue=2;
+      if(s.line&&s.lead==='STILETTO'){
+        heard(s,phrase('lou','Did you know that he keeps that blade out at home? Imagine sharing a lift with him.','ben'),'security','passing aside');
+        d.ready=s.tick+75;return;
+      }
       const ok=manuscript.crowd.filter(([a,b],i)=>dist(pos(s,a),pos(s,b))<5000&&(knows(s,a,'rumor.'+i)||i===9&&knows(s,a,'heard.brain.threat')||i===4&&knows(s,a,'heard.call')));
       if(ok.length){const [a,b,t]=draw(s,ok);heard(s,phrase(a,t,b),'security','passing aside');d.ready=s.tick+lineTime(t);}
       return;
     }
+    if(s.line&&s.lead==='STILETTO'&&!s.line.opening){farewell(s);d.ready=s.tick+34;return;}
     if(d.arrival)return;
     if(d.gathering){
       if(workers.some(id=>dist(pos(s,id),s.tasks[id].destination)>100))return;
@@ -213,6 +223,7 @@ export function advanceMorning(s:Run){
     const gathering=workers.filter(id=>dist(pos(s,id),s.tasks[id].destination)>120);
     if(gathering.some(id=>dist(pos(s,id),s.tasks[id].destination)>3000) ||
        (gathering.length && workers.some(id=>s.tasks[id].moving)))return;
+    if(s.line&&s.lead==='STILETTO'){gatherAtGate(s);return;}
     if(knows(s,'max','two.hands.one.card')&&sees(s,'LIMEN',pos(s,'max'),'max'))
       observe(s,'max','two.hands.one.card',pos(s,'max'));
     if(!workers.some(id=>dist(pos(s,id),desk)<3200&&sees(s,'LIMEN',pos(s,id),id)))return;

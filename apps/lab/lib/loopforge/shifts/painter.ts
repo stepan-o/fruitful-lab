@@ -11,12 +11,12 @@ declare global { interface Window { floorImages?: Record<string,string> } }
 const floorRoot = '../loopforge-design/floor-correction/v1/';
 let loading: Promise<Images> | undefined;
 
-export function loadArt(): Promise<Images> {
+export function loadArt(root='..'): Promise<Images> {
   if (!loading) {
     const images: Images = {};
-    const sources = introSprites.map(name => [name, '../loopforge-intro/' + name + '.webp']);
+    const sources = introSprites.map(name => [name, root+'/loopforge-intro/' + name + '.webp']);
     for (const {material, room} of Object.values(floorPack.rooms)) {
-      for (const {file} of [material, room]) sources.push([file, floorRoot + file]);
+      for (const {file} of [material, room]) sources.push([file, root+floorRoot.slice(2) + file]);
     }
     loading = Promise.all(sources.map(async ([name, url]) => {
       const image = new Image();

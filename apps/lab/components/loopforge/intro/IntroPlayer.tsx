@@ -7,7 +7,10 @@ import styles from './intro.module.css';
 const duration=190.60391778732966;
 const timestamp=(s:number)=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
 type Controls={toggle:()=>void;seek:(s:number)=>void;skin:(s:Skin)=>void;inspect:()=>void;metrics:()=>string};
-export default function IntroPlayer(){
+type Playthrough={seconds:number; onProgress:(seconds:number)=>void; onDeparture:(source:import('../../../lib/loopforge/shifts/simulation').Inheritance)=>void};
+export default function IntroPlayer({campaign}:{campaign?:Playthrough}){
+  const campaignRef=useRef(campaign);
+  campaignRef.current=campaign;
   const canvas=useRef<HTMLCanvasElement>(null),slider=useRef<HTMLInputElement>(null),clock=useRef<HTMLOutputElement>(null),controls=useRef<Controls|null>(null);
   const [ready,setReady]=useState(false),[playing,setPlaying]=useState(false),[skin,setSkin]=useState<Skin>('sprites');
   const [metrics,setMetrics]=useState('');
@@ -20,7 +23,8 @@ export default function IntroPlayer(){
     let costs:number[]=[],inputAt=0,cold=0,lastActiveFrame=0;
     let live=true,frame:Frame|null=null,previous:Frame|null=null,bank:Bank|undefined,mode:Skin='sprites',seq=0,raf=0;
     let received=0,elapsed=0,running=false,lastBeat='',lastSpeech='',width=0,height=0,lastDraw=0,needsDraw=true;
-    let desiredHint='PAUSE';
+    let desiredHint='PAUSE', began=false, delivered=false, captureRequested=false;
+    function startStory(){if(!campaignRef.current||began||!bank||!frame)return;began=true;if(campaignRef.current.seconds>0)worker.postMessage({local:'locate',seconds:campaignRef.current.seconds});else command('PLAY');}
     let session='hello',finished=false,recovering=false;
     const cam:Camera={x:0,y:0,scale:0,time:-1};
     const send=(type:string,p:object)=>worker.postMessage(envelope(type,++seq,p));
@@ -52,16 +56,21 @@ export default function IntroPlayer(){
       const res=await fetch('/loopforge-intro/sprites.json');if(!res.ok)throw Error('The sprite register could not be loaded.');
       const art:Bank['art']=await res.json(),images:Bank['images']={};
       await Promise.all(Object.keys(art.sheets).map(async key=>{const img=new Image();img.src='/loopforge-intro/'+key+'.webp';await img.decode();images[key]=img;}));
-      if(!live)return;bank={art,images};setReady(!!frame);requestDraw();
+      if(!live)return;bank={art,images};setReady(!!frame);startStory();requestDraw();
     }
     load().catch(e=>{if(live)setFailure(String(e));});
     worker.onerror=e=>{setFailure(e.message||'The simulation worker could not start.');setReady(false);};
     worker.onmessage=({data:m})=>{
       if(!live)return;
+      if(m.local==='departure'){if(!delivered){delivered=true;campaignRef.current?.onDeparture(m.source);}return;}
       if(m.local==='failure'){setFailure(m.message);setReady(false);return;}
       if(m.local==='trace'){setTrace(m.rows.map((r:{tick:number;actor:string;goal:string;plan:string;reason:string})=>[r.tick,r.actor,r.goal,r.plan,r.reason].join(' · ')));return;}
       if(m.local==='overlay'){
         elapsed=m.seconds;finished=m.finished;costs=m.costs;
+        if(campaignRef.current&&began){
+          if(elapsed>0)campaignRef.current.onProgress(elapsed);
+          if(finished&&!captureRequested){captureRequested=true;worker.postMessage({local:'departure'});}
+        }
         if(running!==m.playing){running=m.playing;setPlaying(running);}
         if(lastBeat!==m.beat){lastBeat=m.beat;setBeat(lastBeat);}
         if(clock.current)clock.current.value=timestamp(elapsed)+' / 3:10';
@@ -81,7 +90,7 @@ export default function IntroPlayer(){
           if(session!=='live'||(recovering&&m.msg_type==='FRAME_DIFF'))return;
           try{
             const next=reconstruct(frame,m);previous=m.msg_type==='FRAME_DIFF'?frame:null;frame=next;received=performance.now();recovering=false;
-            if(!previous){cam.scale=0;setReady(!!bank);worker.postMessage({local:'applied',tick:frame.tick,hash:frame.hash});}
+            if(!previous){cam.scale=0;setReady(!!bank);worker.postMessage({local:'applied',tick:frame.tick,hash:frame.hash});if(began&&campaignRef.current&&desiredHint==='PAUSE'&&!running&&!finished)command('PLAY');startStory();}
             const lines=frame.state.events.map(e=>e.speaker+' · '+e.text).join('\n');
             if(lines!==lastSpeech){lastSpeech=lines;setSpeech(lines);}
             requestDraw();
@@ -102,19 +111,19 @@ export default function IntroPlayer(){
     return ()=>{live=false;controls.current=null;resize.disconnect();cancelAnimationFrame(raf);worker.terminate();document.removeEventListener('visibilitychange',hidden);};
   },[]);
   return <main className={styles.page}>
-    <header><a href="/stepanoskin/loopforge/design#day-one-intro">← Game design</a><span>LOOPFORGE</span></header>
+    <header>{!campaign&&<a href="/stepanoskin/loopforge/design#day-one-intro">← Game design</a>}<span>LOOPFORGE</span></header>
     <section className={styles.console} aria-label="Day One live player">
       <div className={styles.title}><div><small>FACTORY FLOOR</small><h1>Day One</h1></div><p>{beat}</p></div>
       <canvas ref={canvas} className={styles.surface} aria-label="Live factory floor with character names and speech bubbles"/>
       <span className={styles.sr} aria-live="polite">{speech}</span>
       {failure&&<p role="alert">{failure}</p>}
       <div className={styles.controls}><button disabled={!ready} onClick={()=>controls.current?.toggle()}>{playing?'Pause':ready?'Play':'Loading…'}</button>
-        <button disabled={!ready} onClick={()=>{if(slider.current)slider.current.value='0';controls.current?.seek(0);}}>Restart</button>
+        {!campaign&&<><button disabled={!ready} onClick={()=>{if(slider.current)slider.current.value='0';controls.current?.seek(0);}}>Restart</button>
         <input ref={slider} aria-label="Scene time" type="range" min="0" max={duration} step=".05" defaultValue="0" onChange={e=>{if(clock.current)clock.current.value=timestamp(Number(e.target.value))+' / 3:10';}} onPointerUp={e=>controls.current?.seek(Number(e.currentTarget.value))} onKeyUp={e=>controls.current?.seek(Number(e.currentTarget.value))}/>
-        <output ref={clock}>0:00 / 3:10</output>
-        <label>View <select value={skin} onChange={e=>{const next=e.target.value as Skin;setSkin(next);controls.current?.skin(next);}}><option value="sprites">Pixel art</option><option value="model">3D study</option></select></label>
+        </>}<output ref={clock}>0:00 / 3:10</output>
+        {!campaign&&<label>View <select value={skin} onChange={e=>{const next=e.target.value as Skin;setSkin(next);controls.current?.skin(next);}}><option value="sprites">Pixel art</option><option value="model">3D study</option></select></label>}
       </div>
     </section>
-    <details className={styles.notes}><summary>Production notes and agent trace</summary><p><a href="/loopforge-intro/day-one-1x.mp4">Watch the normal-speed capture</a></p><p>bob and max use the delivered walk cycles. LIMEN and STILETTO use the fourth-check drawings. The eight other workers share bob’s walk as a temporary body, with colored arm bands. The 3D study shows the same session as projected solids.</p><button onClick={()=>controls.current?.inspect()}>Inspect recent decisions</button> <button onClick={()=>setMetrics(controls.current?.metrics()??'')}>Playback measurements</button>{metrics&&<pre>{metrics}</pre>}{trace.length>0&&<pre>{trace.join('\n')}</pre>}</details>
+    {!campaign&&<details className={styles.notes}><summary>Production notes and agent trace</summary><p><a href="/loopforge-intro/day-one-1x.mp4">Watch the normal-speed capture</a></p><p>bob and max use the delivered walk cycles. LIMEN and STILETTO use the fourth-check drawings. The eight other workers share bob’s walk as a temporary body, with colored arm bands. The 3D study shows the same session as projected solids.</p><button onClick={()=>controls.current?.inspect()}>Inspect recent decisions</button> <button onClick={()=>setMetrics(controls.current?.metrics()??'')}>Playback measurements</button>{metrics&&<pre>{metrics}</pre>}{trace.length>0&&<pre>{trace.join('\n')}</pre>}</details>}
   </main>;
 }

@@ -59,7 +59,7 @@ For this approach bob has the most urgent question and a known witness beside hi
 
 ### 2P · Before the second shift
 
-The Producer hears both complete proposals before the crew approaches. LIMEN has worked one shift at Security with two helpers and wants the same procedure again. STILETTO has seen one late crew and the three cortexes on her rack. She wants the gate to get LIMEN a staffed line. Those memories are already available. The workers have not arrived to supply testimony. Accepting the whole bid establishes both supervisors’ mandates, the two helpers’ destination and the remaining shift intervention. The printed run awards Security to LIMEN.
+The Producer hears both complete proposals before the crew approaches. At yesterday’s bell LIMEN heard ed account for the eight workers sent to Conveyor. Today he uses that count to ask for his gate and both clerks again. STILETTO saw both clerks working alongside him and had to come to the gate for workers. Hearing his pitch gives her the eight for her retort. The three are LIMEN, ed and gus. A missed count removes the reason for that particular retort. She wants the gate to get LIMEN a staffed line. Those memories are already available. The workers have not arrived to supply testimony. Accepting the whole bid establishes both supervisors’ mandates, the two helpers’ destination and the remaining shift intervention. The printed run awards Security to LIMEN.
 
 ### 2A · On the way in
 

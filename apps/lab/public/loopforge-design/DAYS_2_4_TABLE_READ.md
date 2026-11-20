@@ -8,13 +8,13 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 2P · Before the second shift
 
-*The crew is still outside. The supervisors give the Producer their bids.*
+*Pre-shift, with the Producer. The two pitches are NEW. The crew is still outside.*
 
-**LIMEN** I’d keep yesterday’s posts. ed and gus with me at Security. STILETTO takes her eight.
+**LIMEN** All eight accounted for, Producer — I’d keep my gate and both my clerks.
 
-**STILETTO** Put me on the gate. He can have all ten on Conveyor. I’d like him to see a full crew before the bell for once.
+**STILETTO** Give me the gate — it took him three people to count to eight.
 
-*The Producer takes LIMEN’s bid. One intervention remains for the shift.*
+*The Producer accepts LIMEN’s pitch. LIMEN takes Security with ed and gus. STILETTO takes the other eight on Conveyor. One intervention remains. Only then does the crew start its walk in.*
 
 ### 2A · On the way in
 

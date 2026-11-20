@@ -36,9 +36,9 @@ export function drawBidPortrait(canvas:HTMLCanvasElement,lead:'LIMEN'|'STILETTO'
   ctx.drawImage(images[key],x,y,36,35,0,0,36,35);
 }
 export const registerDesk=[123.6,132] as const;
-export function floorView(w:number,h:number,room:Room){
+export function floorView(w:number,h:number,room:Room,approach=false){
   const sec=room==='security',scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
-  const center=sec?127.15:127.4,cy=sec?129:144.35;
+  const center=sec?127.15:127.4,cy=sec?(approach?125.1:129):144.35;
   const xy=(x:number,y:number)=>[w/2+(x-center)*scale,h*.58+(y-cy)*scale*.67];
   return {sec,scale,xy};
 }
@@ -80,7 +80,7 @@ function floorBackdrop(room: Room, w: number, h: number, view: ReturnType<typeof
   return canvas;
 }
 export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView){
-  const camera = floorView(w,h,room);
+  const camera = floorView(w,h,room,scene.world.stage==='walk'||scene.world.stage==='welcome');
   const {sec,scale,xy} = camera;
   ctx.imageSmoothingEnabled=false;
   ctx.drawImage(floorBackdrop(room, w, h, camera, images), 0, 0);
@@ -166,15 +166,35 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
       if(a.id==='bob' && scene.world.pass?.day===scene.world.day)
         skin.world(ctx,scene.world.pass.valid?'sec-pass-issued-world':'sec-pass-expired-world',x+scale*.23,y-scale*.5,scale);
       if(a.id==='bob' && returned && tick-returned.tick<58)skin.world(ctx,'sec-id-bob-world',x+scale*.23,y-scale*.5,scale);
+      const act=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='gesture.seen'&&['hand.return','demonstrated.open.palm'].includes(e.text)&&tick-e.tick<55);
+      const reaction=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='gesture.seen'&&/^\p{Extended_Pictographic}/u.test(e.text)&&tick-e.tick<38);
+      if(reaction)tag(a.id+' '+reaction.text,x,top-6);
+      if(act){
+        const hand=x+scale*.22,level=y-scale*.56,reach=Math.min(1,(tick-act.tick)/12);
+        ctx.fillStyle='#cb9c75';ctx.fillRect(hand,level,scale*.32,3);
+        if(act.text==='hand.return'){
+          const edge=hand+(1-reach)*scale*.42;
+          ctx.fillStyle='#263534';ctx.fillRect(edge-1,level-4,10,7);
+          ctx.fillStyle='#f5dfae';ctx.fillRect(edge,level-3,8,5);
+          ctx.fillStyle='#5a6359';ctx.fillRect(edge+1,level-2,2,3);
+        }
+      }
+      const contact=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='worker.approaches'&&tick-e.tick<115);
+      if(contact)tag(a.id+' → '+contact.subject,x,y+13);
       const choice=recentChoices.get(a.id);
       if(choice) tag(a.id+' · '+(choice==='go'?'goes':'stays'),x,y+12);
-      else if(a.id==='bob'||a.id==='LIMEN'||a.id==='STILETTO'||a.id===scene.world.called||(!sec&&scene.world.coverage.includes(a.id)))
+      else if(!contact&&(a.id==='bob'||a.id==='LIMEN'||a.id==='STILETTO'||a.id===scene.world.called||(!sec&&scene.world.coverage.includes(a.id))))
         tag(a.id,x,y+12,sup?'#ffd395':'#e8f1eb');
     }});
   }
   layers.sort((a,b)=>a.y-b.y).forEach(l=>l.draw());
   if(!sec)for(let i=0;i<4;i++){const [x,y]=xy(119.7+i*4,147.5);tag(stations[i],x,Math.min(h-4,y+18));}
   const occupied:{x:number;y:number;w:number;h:number}[]=[];
+  const contact=scene.events.filter(e=>e.kind==='gesture.seen'&&e.text==='hand.return'&&tick-e.tick<55).at(-1);
+  if(contact&&sec){
+    const [x,y]=xy(contact.at[0]/1000,contact.at[1]/1000);
+    occupied.push({x:x-30,y:y-46,w:60,h:57});
+  }
   for(const ev of view.speeches){
     const [ax,ay]=anchors.get(ev.speaker)??xy(ev.at[0]/1000,ev.at[1]/1000);
     if(ax<0||ax>w||ay<0||ay>h)continue;

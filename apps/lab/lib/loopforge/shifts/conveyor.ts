@@ -1,3 +1,5 @@
+import {heard,occupied,phrase,pos,scripts,sees} from './dialogue';
+import {remember} from './events';
 import {admit,advance} from '../encounters/kernel';
 import {operationPhase} from '../encounters/shared-actions';
 import type {Action,SpatialServices} from '../encounters/contract';
@@ -23,7 +25,15 @@ export function production(s:Run){
     const stage=Number(s.world.facts[p.id+'.stage']);
     if(stage>p.stage){
       p.stage=stage;p.status='travel';p.ready=s.tick+16;
-      const i=stage-1;mark(s,'handoff.finished','conveyor','control.'+stations[i],controls[i],s.coverage[i],p.id,stations[i]);
+      const i=stage-1;const e=mark(s,'handoff.finished','conveyor','control.'+stations[i],controls[i],s.coverage[i],p.id,stations[i]);
+      if(i===2&&s.pace==='all-clear'&&occupied(s,'jo')){
+        remember(s,'jo','stiff.hand','held Belt switch#'+e.seq,true);
+        if(occupied(s,'kit')&&sees(s,'kit',pos(s,'jo'),'jo'))remember(s,'kit','saw.cramp','saw jo flex#'+e.seq,true);
+        if(s.dialogue.completed.includes('V12'))remember(s,'jo','elbow.helped','used elbow at Belt#'+e.seq,true);
+      }
+      if(i===3&&s.pace==='all-clear'&&s.nextPiece===1)heard(s,phrase('jo',scripts.S2.at(-1)![1],'jo'),'conveyor','release');
+      if(i===3&&occupied(s,'jo'))remember(s,'jo','double.knock','heard press#'+e.seq,true);
+      if(i===0&&occupied(s,'mae'))remember(s,'sam','shared.tray','Intake#'+e.seq,true);
     }
     if(p.status==='travel'){
       const slot=geom.contact.outputSlots[s.completed.length%geom.contact.outputSlots.length];
@@ -43,7 +53,7 @@ export function production(s:Run){
     if(s.world.active.some(a=>a.intent.action===key))continue;
     if(!id){
       const workers=Object.keys(s.tasks).filter(a=>s.tasks[a].duty==='working');
-      if(workers.length===1&&s.tasks[workers[0]].station!==i&&s.tasks[stationOwners[i]].duty!=='detained'){
+      if(workers.length===1&&s.tasks[workers[0]].station!==i&&s.dialogue.order.length===1&&s.tasks[stationOwners[i]].duty!=='detained'){
         const worker=workers[0];s.tasks[worker].station=i;s.tasks[worker].duty='cleared';go(s,worker,controls[i]);
       }
       continue;
@@ -51,10 +61,16 @@ export function production(s:Run){
     if(s.pace==='all-clear'&&s.stageClear!==key){
       if(s.announced!==key){s.announced=key;p.ready=s.tick+36;mark(s,'handoff.wait','conveyor','control.'+stations[i],controls[i],id,p.id,'Awaiting all-clear');}
       if(s.tick<p.ready)continue;
-      const ev=say(s,'LIMEN','All clear. '+geom.stations[i].name+'.','conveyor','clear.'+key,[id]);
+      const ev=say(s,'LIMEN',['Intake, all clear.','Wash, all clear.','Belt, all clear.','Forge, all clear.'][i],'conveyor','clear.'+key,[id]);
       if(!s.heard[ev.seq].includes(id)){p.ready=s.tick+20;continue;}
       s.stageClear=key;
+      if(i<3&&id===stationOwners[i]){
+        const response=scripts.S2[i*2+1];
+        heard(s,phrase(id,response[1],'LIMEN'),'conveyor','received all-clear');
+      }
     }
+    // A grip demonstration occupies the free hands until the advice is over.
+    if(i===2&&s.dialogue.exchanges.some(x=>x.topic==='V12'))continue;
     const ticks=s.pace==='pushed'?26:s.pace==='rushed'?36:s.pace==='slow'?63:48;
     const phase=operationPhase({id:key,ticks,perform:[],effects:[{fact:p.id+'.stage',value:i+1}]},
       {station:stations[i],from:i,to:i+1,workpiece:p.id,operator:{agent:id,position:controls[i],within:350}});
@@ -68,41 +84,10 @@ export function production(s:Run){
       mark(s,'handoff.started','conveyor','control.'+stations[i],controls[i],id,p.id,s.pace);
     }
   }
-  if(s.tick>=s.nextIntake&&s.coverage[0]&&!s.pieces.some(p=>p.status!=='rack')){
+  if(!['stopped','reporting'].includes(s.dialogue.injury)&&s.tick>=s.nextIntake&&s.dialogue.bell-s.tick>275&&s.coverage[0]&&!s.pieces.some(p=>p.status!=='rack')){
     const id='D'+s.day+'-C'+ ++s.nextPiece;
     s.world.facts[id+'.stage']=0;
     s.pieces.push({id,stage:0,status:'process',ready:s.tick,at:meters(geom.stations[0].x,geom.forgeHall.carrierY)});
     s.nextIntake=s.tick+20;
-  }
-}
-export function conversation(s:Run){
-  const bob=s.world.agents.bob,sam=s.world.agents.sam;
-  if(!bob.beliefs['missing.original']?.value||s.tasks.bob.duty!=='working')return;
-  if(!audible(bob,sam)||s.tasks.sam.duty!=='working')return;
-  if(s.chat==='idle'){
-    s.chat='question';s.chatAt=s.tick;s.partner='sam';
-    thought(s,'bob','ask sam','The original is missing and sam is within earshot.',['missing.original']);
-    say(s,'bob','sam, seen my ID?','conveyor','bob.asked.for.id',['sam']);return;
-  }
-  if(s.chat==='question'&&s.tick-s.chatAt>=Hz*2&&sam.beliefs['bob.asked.for.id']){
-    say(s,'sam','Heard something this morning.','conveyor','sam.heard.something',['bob']);s.chat='reply';s.chatAt=s.tick;return;
-  }
-  if(s.chat==='reply'){
-    if((s.pace==='rushed'||s.pace==='pushed')&&s.tick-s.chatAt>=Hz*1.4&&s.pressure!=='approach'&&audible(s.world.agents.STILETTO,sam)){
-      s.chat='interrupted';say(s,'STILETTO','Hands on the line. Now.','conveyor','hurry');
-      mark(s,'chat.interrupted','conveyor','actor.sam',sam.position,'STILETTO','sam','Reply interrupted before the next words');return;
-    }
-    if(s.tick-s.chatAt>=Hz*3){
-      const knows=!!sam.beliefs['ed.logged.card'];
-      say(s,'sam',knows?'ed logged a loose card. Ask at his desk.':'Try asking at the desk.','conveyor',knows?'ask.ed':'ask.desk',['bob']);
-      s.chat='finished';s.chatAt=s.tick;return;
-    }
-  }
-  if(s.chat==='finished'&&s.tick-s.chatAt>Hz*2&&bob.beliefs['ask.ed']&&!s.world.held['actor:bob']){
-    thought(s,'bob','visit ed','sam named ed. Wash is between operations.',['ask.ed','missing.original']);
-    s.tasks.bob.duty='seeking';go(s,'bob',returnSpot);
-    mark(s,'worker.departed','conveyor','actor.bob',bob.position,'bob','ed','Going to the register');
-  }else if(s.chat==='interrupted'&&s.tick-s.chatAt>=Hz*12){
-    s.chat='idle';s.chatAt=s.tick;
   }
 }

@@ -55,7 +55,7 @@ function render(){
   for(const bid of view.bids){
     const button=bids.find(b=>b.dataset.bid===bid.lead)!;
     button.setAttribute('aria-pressed',String(previewLead===bid.lead));
-    skin?.decorate(button,bid.asset);
+    skin?.decorate(button,bid.asset);button.querySelector('q')!.textContent=w.bids[bid.lead];
   }
   decorate('chassis','co-briefing-chassis');
   decorate('commit','co-commit-ready');
@@ -81,9 +81,9 @@ function render(){
   decorate('decision',panel?.asset);decorate('pass','co-commit-ready');
   hidden('pass',!open);button('pass').disabled=!panel?.mayIssue;
   txt('pass',w.spent?'Intervention spent':'Issue daily pass');
-  txt('case-heading',open?'bob is missing his ID':w.status==='pass'?'Daily pass · bob':'Security custody · bob');
+  txt('case-heading',open?w.caseSubject+' is missing an ID':w.status==='pass'?'Daily pass · '+w.caseSubject:'Security custody · '+w.caseSubject);
   el('signal').setAttribute('aria-label',open?'Open desk signal':'Inspect Security report');
-  txt('case-detail',open?'The line is held. A pass admits bob through today’s bell.':w.report?.text??'');
+  txt('case-detail',open?'The line is held. A pass admits '+w.caseSubject+' through today’s bell.':w.report?.text??'');
   txt('deadline',open?Math.ceil((w.deadline-tick)/20)+' s until LIMEN closes the case':'');
   const pass=view.pass;
   const original=view.returnedOriginal.at(-1);
@@ -139,7 +139,8 @@ function render(){
 }
 worker.onerror=e=>reportError(e.message);
 worker.onmessage=e=>{const m=e.data;serial=serial.then(async()=>{
-  if(m.local==='inspection'){el('traceOut').textContent=m.rows.map((v:{actor:string;intent:string;why:string})=>v.actor+' · '+v.intent+'\n'+v.why).join('\n')||'No recorded decision for this worker yet.';return;}
+  if(m.local==='inspection'){const choices=m.rows.map((v:{actor:string;intent:string;why:string;evidence:string[]})=>v.actor+' · '+v.intent+'\n'+v.why+'\n'+v.evidence.join(' · ')).join('\n');el('traceOut').textContent=[m.evidence.join('\n'),choices,m.receipts.join('\n')].filter(Boolean).join('\n\n')||'No observations yet.';return;}
+  if(m.local==='saved'){button('load-state').disabled=false;txt('status','Saved at tick '+m.tick);return;}
   if(m.local==='transport'){playing=m.playing;render();return;}
   switch(m.msg_type){
     case 'KERNEL_HELLO':post('SUBSCRIBE',subscription);break;
@@ -156,7 +157,7 @@ worker.onmessage=e=>{const m=e.data;serial=serial.then(async()=>{
 function bind(id:string,fn:()=>void){button(id).addEventListener('click',fn);}
 function restore(){
   const name=el<HTMLSelectElement>('checkpoint').value;
-  previewLead='';carryDay=0;room=name==='Conveyor chat'?'conveyor':'security';opened='';txt('status','');txt('traceOut','');
+  previewLead='';carryDay=0;room=(name==='Conveyor chat'||name.startsWith('G5')&&!name.includes('exit'))?'conveyor':'security';opened='';txt('status','');txt('traceOut','');
   delete el('log').dataset.last;
   worker.postMessage({local:'load',name});
 }
@@ -172,9 +173,11 @@ bind('signal',()=>{
 });
 bind('watch',closeReport);
 el('decision').addEventListener('keydown',e=>{if(e.key==='Escape')closeReport();});
-bind('pass',()=>action('issue-pass','bob'));
+bind('pass',()=>action('issue-pass',frame?.scene.world.caseSubject??'bob'));
 for(const [id,name,target] of orderButtons)bind(id,()=>action(name,target));
 bind('play',()=>worker.postMessage({local:'play',on:!playing}));
+bind('save-state',()=>worker.postMessage({local:'save-state'}));
+bind('load-state',()=>worker.postMessage({local:'load-state'}));
 bind('restore',restore);el('checkpoint').addEventListener('change',restore);
 bind('next',()=>{opened='';previewLead='';room='security';worker.postMessage({local:'morning'});});
 bind('trace',()=>worker.postMessage({local:'inspect',actor:el<HTMLSelectElement>('who').value}));

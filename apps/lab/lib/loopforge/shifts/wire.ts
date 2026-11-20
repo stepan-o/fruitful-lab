@@ -1,3 +1,4 @@
+import {morningBids} from './morning';
 import {canonical,envelope,order} from '../intro/protocol';
 import {geom} from '../intro/floor';
 import type {Point,Run,Mark} from './contract';
@@ -5,8 +6,8 @@ export {canonical,envelope};
 export const schema='shift_floor_1';
 export const engine='loopforge_shifts_ts';
 export function project(s:Run){
-  const world={day:s.day,phase:s.phase,start:s.start,lead:s.lead,pace:s.pace,spent:s.spent,quick:s.quick,called:s.called,
-    waiting:[...s.queue],status:s.case?.status??'none',caseId:s.case?.id??'',deadline:s.case?.deadline??0,
+  const world={bids:morningBids(s),stage:s.dialogue.phase,day:s.day,phase:s.phase,start:s.start,lead:s.lead,pace:s.pace,spent:s.spent,quick:s.quick,called:s.called,
+    waiting:[...s.queue],status:s.case?.status??'none',caseId:s.case?.id??'',caseSubject:s.case?.subject??'',deadline:s.case?.deadline??0,
     report:s.marks.filter(e=>e.day===s.day&&e.kind==='report.received').at(-1)??null,
     pressure:s.pressure,backing:s.backing,coverage:[...s.coverage],completed:[...s.completed],pass:s.pass?{...s.pass}:null,
     shiftOutput:s.pieces.filter(p=>p.status==='rack').length, chat:s.chat};

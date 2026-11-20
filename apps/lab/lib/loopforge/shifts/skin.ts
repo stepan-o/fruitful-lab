@@ -22,7 +22,9 @@ export function select(frame:Frame, room:Room, openCase:string, previewLead:stri
 }
 
 export function payload(frame:Frame, room:Room, openCase:string, action:Command['action'], target:string, id:string) {
-  return commandPayload(frame, {room,openCase}, action, target, id);
+  const payload=commandPayload(frame,{room,openCase},action,action==='issue-pass'?'bob':target,id);
+  if(payload&&action==='issue-pass')payload.cmd.target=frame.scene.world.caseSubject;
+  return payload;
 }
 
 export async function loadSkin() {

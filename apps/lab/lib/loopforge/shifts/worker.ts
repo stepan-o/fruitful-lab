@@ -5,6 +5,7 @@ import {type Run,type Command} from './contract';
 import {full,diff,schema,engine,envelope,project,type Frame} from './wire';
 
 let run=restorePoint('Morning bids'),frame:Frame|undefined,checkpoint:Checkpoint='Morning bids';
+let saved:Run|undefined;
 let sequence=0,playing=false,connected=false,subscribed=false,serial=Promise.resolve();
 const cache=new Map<Checkpoint,Run>();
 function post(type:string,payload:object){self.postMessage(envelope(type,++sequence,payload));}
@@ -27,6 +28,8 @@ setInterval(()=>{
   if(steps)queue(async()=>{for(let i=0;i<steps;i++)await tick();});
 },25);
 self.onmessage=e=>{const msg=e.data;queue(async()=>{
+  if(msg.local==='save-state'&&subscribed){saved=structuredClone(run);self.postMessage({local:'saved',tick:run.tick});return;}
+  if(msg.local==='load-state'&&saved&&subscribed){run=structuredClone(saved);playing=false;debt=0;await snapshot();status();return;}
   if(msg.local==='load'&&subscribed){
     if(!names.includes(msg.name))return;
     checkpoint=msg.name;
@@ -36,7 +39,14 @@ self.onmessage=e=>{const msg=e.data;queue(async()=>{
   if(msg.local==='play'&&subscribed){playing=!!msg.on&&run.phase==='shift';lastTime=performance.now();debt=0;status();return;}
   if(msg.local==='morning'&&subscribed&&nextMorning(run)){playing=false;await snapshot();status();return;}
   if(msg.local==='inspect'&&subscribed){
-    self.postMessage({local:'inspection',rows:run.thoughts.filter(t=>t.actor===msg.actor).slice(-8),beliefs:run.world.agents[msg.actor]?.beliefs,exposure:run.injuryExposure});return;
+    const actor=msg.actor;
+    if(!Object.hasOwn(run.world.agents,actor))return;
+    const beliefs=run.world.agents[actor].beliefs;
+    const evidence=Object.entries(beliefs).filter(([key,b])=>b.value&&['desk.lead','anonymous.find','boot.lead','ed.invitation','hand.return','jo.reported.return','recognized.original','kit.reported.order','ben.reported.bob','jo.crossed.'+run.day].includes(key))
+      .map(([key,b])=>key+' · '+b.mode+' · '+b.source);
+    const receipts=run.marks.filter(e=>['speech.delivered','gesture.seen'].includes(e.kind)&&run.heard[e.seq]?.includes(actor)).slice(-6)
+      .map(e=>'Day '+e.day+' · '+e.tick+' · '+e.actor+' · '+e.text);
+    self.postMessage({local:'inspection',rows:run.thoughts.filter(t=>t.actor===actor).slice(-6),evidence,receipts});return;
   }
   if(!validEnvelope(msg))return;
   if(msg.msg_type==='VIEWER_HELLO'){

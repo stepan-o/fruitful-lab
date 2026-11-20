@@ -22,17 +22,15 @@
 
 **sam** No. I was looking at his blade.
 
-*Cut from the workers, still talking on the walk in, to the empty Security room. LIMEN enters alone. He stops at yesterday’s desk, runs a thumb along its edge and sighs.*
+*One worker behind them picks up the conversation. Draw one [“Did you know that…” remark](/loopforge-design/days-2-4-table-read.html#crowd-lines-for-2a) for a pair walking together. One possible draw:*
+
+**lou** *(to ben)* Did you know that he keeps that blade out at home? Imagine sharing a lift with him.
+
+*Cut to the empty Security room as the crew keeps walking. LIMEN enters alone. He stops at yesterday’s desk, runs a thumb along its edge and sighs.*
 
 **LIMEN** *NEW, to himself* I’ll miss this desk.
 
-*He goes straight to Conveyor. Once he’s through, STILETTO comes in at her Day 1 marching pace and takes the gate. Cut back to the workers, still walking.*
-
-*One voice behind them. Draw one [paired crowd remark](https://www.fruitfulab.net/loopforge-design/days-2-4-table-read.html#crowd-lines-for-2a).*
-
-**max** *(to gus)* I heard that ‘NEXT’ of yours in my sleep. Sat straight up.
-
-*As the last walking line ends, the crew comes up to the grate. STILETTO waits. The usual welcome never comes.*
+*He goes straight to Conveyor. Once he’s through, STILETTO comes in at her Day 1 marching pace and takes the gate. Cut back as the crew walks up to the grate. STILETTO waits. The usual welcome never comes.*
 
 ### S1 · STILETTO gets the gate
 
@@ -144,7 +142,7 @@ This reading uses one walking pair, one draw of three runners, and one set of Co
 | --- | --- | --- |
 | 2P · the bids | LIMEN ran yesterday’s gate with ed and gus. He trusts the Protocol and wants the same people in the same posts. STILETTO ran Conveyor with eight workers and saw the other two helping LIMEN when she came to the gate. She wants the Producer to give her the gate so she can send all ten through to him. She can make this bid from her own shift. | The Producer hears both whole proposals, picks STILETTO before arrival and retains one in-shift intervention. The workers are outside. No worker learns a post from the bid. |
 | 2A · bob and sam | bob feels the empty pocket and remembers sam kneeling by him after the strike. sam remembers watching the blade for a second swing. Both can reach the grate. | bob asks the person who helped him. sam gives the limit of their sight and looks down with him. bob hears a meaningful answer, so the wish for company can be satisfied even though the search stays open. lou is close enough to hear bob’s question on this walk. If it is masked for lou, suppress their later card question unless they acquire another local reason. An unheard answer supplies bob with no witness result. |
-| 2A · max to gus | max heard yesterday’s NEXT and remembers waking to it. gus is the one who called and is walking alongside. max wants him to know how far that voice carried. | Play this one passing remark to gus. He may recognize the tease. A changed appointment alone cannot replace this pair. Without the memory or the partner, draw another eligible pair from the ten or let the walk go quiet. No card lead passes between them. |
+| 2A · one passing rumor | In this draw lou has heard a story about LIMEN’s blade. Hearing sam mention it puts lou in mind of sharing a lift with him. ben is walking alongside. | Immediately after sam’s answer, draw one eligible swapped-post remark for its actual pair. lou repeats the rumor to ben in this read. Neither has seen LIMEN at home. Run the empty-desk cut after this line. |
 | During 2A · the empty desk | LIMEN remembers working here yesterday and wanted to keep the post. The desk is on his way to the room he was assigned. | He pauses, sighs, speaks to himself, then continues alone. The audience sees this. The crew is still walking outside and STILETTO enters after he leaves. |
 
 ### From the gate to the rack · S1, S2 and R2
@@ -197,7 +195,7 @@ Reserve a pair together. Spend only on the intended listener’s first intelligi
 | gus | Saw two edges and told lou. Knows he never saw a face. Has learned to take a load with lou and remembers the little NEXT they shared. |
 | lou | Knows the two edges through gus alone. Heard bob ask about his picture and told him the limit. The same news is spent with this listener. |
 | jo | Remembers being recognized as ready, having to wait for the actual Belt call, and the cramp afterward. Their fingers were safe and the wait cost them. |
-| max | Remembers teasing gus on the walk and using the treadle after hearing Forge. Has the clean press opening to judge for themself. |
+| max | Remembers using the treadle after hearing Forge. Has the clean press opening to judge for themself. |
 | mae | Saw ed retrieve the pen and felt the tray leave her hands. Has a reason to check where he sets it next time they share a feed. |
 | kit | Saw the Belt drive take the load from the adjacent working position. This reading gives him no deliberate look at jo’s hand against their thigh and no reason yet to offer a remedy for cramp. |
 | ben | Ran through at STILETTO’s order. Stood relief and left at the bell. Has neither card report to pass on. |

@@ -834,20 +834,20 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ## Crowd lines for 2A
 
-*Approved options. Play one pair on the walk in. Keep the remark between the speaker and their walking companion.*
+*Immediately after sam’s answer, while the crew is walking, draw one eligible remark with its named speaker and companion. The swapped-post opening uses the “Did you know that…” column. Its proposed wordings use the existing rumors. A dash means the pair has no line on that route. Cut to LIMEN at the empty desk after the draw.*
 
-| Speaker | To | Line |
-| --- | --- | --- |
-| jo | max | I heard he smiled when he did it. That’s just his face. |
-| gus | ed | I heard the desk jobs come with stools. Did he say anything to you about stools? |
-| ben | lou | I heard they carried bob out. I walked out behind him. |
-| mae | kit | I heard the blade took a nick out of the rail. Show me where. |
-| max | gus | I heard that ‘NEXT’ of yours in my sleep. Sat straight up. |
-| ed | gus | I heard all ten of us worked Conveyor yesterday. Who do they think kept the book? |
-| lou | ben | I heard bob asked to see her card. Is that how you heard it? |
-| kit | max | I heard that press door’s fixed. Can you open it with one hand yet? |
-| lou | ben | I heard he keeps that blade out at home. Imagine sharing a lift with him. |
-| gus | max | I heard her say she’d use his brain. Who’d have to wash it? |
+| Speaker | To | LIMEN at Security | STILETTO at Security |
+| --- | --- | --- | --- |
+| jo | max | I heard he smiled when he did it. That’s just his face. | Did you know that he smiled when he did it? That’s just his face. |
+| gus | ed | I heard the desk jobs come with stools. Did he say anything to you about stools? | Did you know that the desk jobs come with stools? Did he say anything to you about stools? |
+| ben | lou | I heard they carried bob out. I walked out behind him. | Did you know that they’re saying bob had to be carried out? I walked out behind him. |
+| mae | kit | I heard the blade took a nick out of the rail. Show me where. | Did you know that the blade took a nick out of the rail? Show me where. |
+| max | gus | I heard that ‘NEXT’ of yours in my sleep. Sat straight up. | — |
+| ed | gus | I heard all ten of us worked Conveyor yesterday. Who do they think kept the book? | Did you know that people think all ten of us worked Conveyor yesterday? Who do they think kept the book? |
+| lou | ben | I heard bob asked to see her card. Is that how you heard it? | Did you know that bob asked to see her card? Is that how you heard it? |
+| kit | max | I heard that press door’s fixed. Can you open it with one hand yet? | Did you know that the press door’s fixed? Can you open it with one hand yet? |
+| lou | ben | I heard he keeps that blade out at home. Imagine sharing a lift with him. | Did you know that he keeps that blade out at home? Imagine sharing a lift with him. |
+| gus | max | I heard her say she’d use his brain. Who’d have to wash it? | Did you know that she said she’d use his brain? Who’d have to wash it? |
 
 ## Greeting replies
 
@@ -897,11 +897,11 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### S1 · STILETTO gets the gate
 
-*Cut from the workers, still talking on the walk in, to the empty Security room. LIMEN enters alone. He stops at yesterday’s desk, runs a thumb along its edge and sighs.*
+*After sam’s answer and the one “Did you know that…” draw in 2A, cut to the empty Security room as the crew keeps walking. LIMEN enters alone. He stops at yesterday’s desk, runs a thumb along its edge and sighs.*
 
 **LIMEN** *NEW, to himself* I’ll miss this desk.
 
-*He goes straight to Conveyor. Once he’s through, STILETTO comes in at her Day 1 marching pace and takes the gate. Back on the approach, the walking dialogue finishes. The crew comes up to the grate. STILETTO waits. The usual welcome never comes.*
+*He goes straight to Conveyor. Once he’s through, STILETTO comes in at her Day 1 marching pace and takes the gate. Cut back as the crew walks up to the grate. STILETTO waits. The usual welcome never comes.*
 
 **gus** Where’s the fat one?
 

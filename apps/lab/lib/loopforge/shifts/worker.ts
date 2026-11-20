@@ -5,6 +5,7 @@ import {type Run,type Command} from './contract';
 import {full,diff,schema,engine,envelope,project,type Frame} from './wire';
 
 let run=restorePoint('Morning bids'),frame:Frame|undefined,checkpoint:Checkpoint='Morning bids';
+let saved:Run|undefined;
 let sequence=0,playing=false,connected=false,subscribed=false,serial=Promise.resolve();
 const cache=new Map<Checkpoint,Run>();
 function post(type:string,payload:object){self.postMessage(envelope(type,++sequence,payload));}
@@ -27,6 +28,8 @@ setInterval(()=>{
   if(steps)queue(async()=>{for(let i=0;i<steps;i++)await tick();});
 },25);
 self.onmessage=e=>{const msg=e.data;queue(async()=>{
+  if(msg.local==='save-state'&&subscribed){saved=structuredClone(run);self.postMessage({local:'saved',tick:run.tick});return;}
+  if(msg.local==='load-state'&&saved&&subscribed){run=structuredClone(saved);playing=false;debt=0;await snapshot();status();return;}
   if(msg.local==='load'&&subscribed){
     if(!names.includes(msg.name))return;
     checkpoint=msg.name;

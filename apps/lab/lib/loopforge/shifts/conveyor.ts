@@ -43,7 +43,7 @@ export function production(s:Run){
     if(s.world.active.some(a=>a.intent.action===key))continue;
     if(!id){
       const workers=Object.keys(s.tasks).filter(a=>s.tasks[a].duty==='working');
-      if(workers.length===1&&s.tasks[workers[0]].station!==i&&s.tasks[stationOwners[i]].duty!=='detained'){
+      if(workers.length===1&&s.tasks[workers[0]].station!==i&&s.dialogue.order.length===1&&s.tasks[stationOwners[i]].duty!=='detained'){
         const worker=workers[0];s.tasks[worker].station=i;s.tasks[worker].duty='cleared';go(s,worker,controls[i]);
       }
       continue;
@@ -51,7 +51,7 @@ export function production(s:Run){
     if(s.pace==='all-clear'&&s.stageClear!==key){
       if(s.announced!==key){s.announced=key;p.ready=s.tick+36;mark(s,'handoff.wait','conveyor','control.'+stations[i],controls[i],id,p.id,'Awaiting all-clear');}
       if(s.tick<p.ready)continue;
-      const ev=say(s,'LIMEN','All clear. '+geom.stations[i].name+'.','conveyor','clear.'+key,[id]);
+      const ev=say(s,'LIMEN',['Intake, all clear.','Wash, all clear.','Belt, all clear.','Forge, all clear.'][i],'conveyor','clear.'+key,[id]);
       if(!s.heard[ev.seq].includes(id)){p.ready=s.tick+20;continue;}
       s.stageClear=key;
     }
@@ -68,41 +68,10 @@ export function production(s:Run){
       mark(s,'handoff.started','conveyor','control.'+stations[i],controls[i],id,p.id,s.pace);
     }
   }
-  if(s.tick>=s.nextIntake&&s.coverage[0]&&!s.pieces.some(p=>p.status!=='rack')){
+  if(s.tick>=s.nextIntake&&s.dialogue.bell-s.tick>275&&s.coverage[0]&&!s.pieces.some(p=>p.status!=='rack')){
     const id='D'+s.day+'-C'+ ++s.nextPiece;
     s.world.facts[id+'.stage']=0;
     s.pieces.push({id,stage:0,status:'process',ready:s.tick,at:meters(geom.stations[0].x,geom.forgeHall.carrierY)});
     s.nextIntake=s.tick+20;
-  }
-}
-export function conversation(s:Run){
-  const bob=s.world.agents.bob,sam=s.world.agents.sam;
-  if(!bob.beliefs['missing.original']?.value||s.tasks.bob.duty!=='working')return;
-  if(!audible(bob,sam)||s.tasks.sam.duty!=='working')return;
-  if(s.chat==='idle'){
-    s.chat='question';s.chatAt=s.tick;s.partner='sam';
-    thought(s,'bob','ask sam','The original is missing and sam is within earshot.',['missing.original']);
-    say(s,'bob','sam, seen my ID?','conveyor','bob.asked.for.id',['sam']);return;
-  }
-  if(s.chat==='question'&&s.tick-s.chatAt>=Hz*2&&sam.beliefs['bob.asked.for.id']){
-    say(s,'sam','Heard something this morning.','conveyor','sam.heard.something',['bob']);s.chat='reply';s.chatAt=s.tick;return;
-  }
-  if(s.chat==='reply'){
-    if((s.pace==='rushed'||s.pace==='pushed')&&s.tick-s.chatAt>=Hz*1.4&&s.pressure!=='approach'&&audible(s.world.agents.STILETTO,sam)){
-      s.chat='interrupted';say(s,'STILETTO','Hands on the line. Now.','conveyor','hurry');
-      mark(s,'chat.interrupted','conveyor','actor.sam',sam.position,'STILETTO','sam','Reply interrupted before the next words');return;
-    }
-    if(s.tick-s.chatAt>=Hz*3){
-      const knows=!!sam.beliefs['ed.logged.card'];
-      say(s,'sam',knows?'ed logged a loose card. Ask at his desk.':'Try asking at the desk.','conveyor',knows?'ask.ed':'ask.desk',['bob']);
-      s.chat='finished';s.chatAt=s.tick;return;
-    }
-  }
-  if(s.chat==='finished'&&s.tick-s.chatAt>Hz*2&&bob.beliefs['ask.ed']&&!s.world.held['actor:bob']){
-    thought(s,'bob','visit ed','sam named ed. Wash is between operations.',['ask.ed','missing.original']);
-    s.tasks.bob.duty='seeking';go(s,'bob',returnSpot);
-    mark(s,'worker.departed','conveyor','actor.bob',bob.position,'bob','ed','Going to the register');
-  }else if(s.chat==='interrupted'&&s.tick-s.chatAt>=Hz*12){
-    s.chat='idle';s.chatAt=s.tick;
   }
 }

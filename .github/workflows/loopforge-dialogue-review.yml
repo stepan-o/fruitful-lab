@@ -1,0 +1,42 @@
+name: Watch the accepted shift dialogue at 1×
+on:
+  push:
+    branches: [codex/accepted-shifts-dialogue]
+    paths:
+      - 'apps/lab/lib/loopforge/shifts/**'
+      - 'apps/lab/public/loopforge-shifts/**'
+      - 'apps/lab/scripts/shifts/dialogue-review.cjs'
+      - '.github/workflows/loopforge-dialogue-review.yml'
+permissions:
+  contents: read
+jobs:
+  gameplay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        surface: [standalone, embedded, portable]
+        width: [1280, 320]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare recording and portable build
+        run: |
+          npm install --prefix "$RUNNER_TEMP/recording" playwright@1.56.1
+          "$RUNNER_TEMP/recording/node_modules/.bin/playwright" install --with-deps chromium
+          python3 apps/lab/scripts/shifts/portable.py "$RUNNER_TEMP/player"
+          echo "NODE_PATH=$RUNNER_TEMP/recording/node_modules" >> "$GITHUB_ENV"
+          echo "OFFLINE_PLAYER=$RUNNER_TEMP/player/Loopforge-Days-2-4.html" >> "$GITHUB_ENV"
+      - name: Play both comparisons with captions
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory apps/lab/public > "$RUNNER_TEMP/server.log" 2>&1 &
+          node apps/lab/scripts/shifts/dialogue-review.cjs ${{ matrix.surface }} ${{ matrix.width }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dialogue-1x-${{ matrix.surface }}-${{ matrix.width }}
+          path: shift-evidence
+          retention-days: 30

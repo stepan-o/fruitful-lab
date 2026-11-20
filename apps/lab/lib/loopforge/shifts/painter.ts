@@ -36,9 +36,9 @@ export function drawBidPortrait(canvas:HTMLCanvasElement,lead:'LIMEN'|'STILETTO'
   ctx.drawImage(images[key],x,y,36,35,0,0,36,35);
 }
 export const registerDesk=[123.6,132] as const;
-export function floorView(w:number,h:number,room:Room){
+export function floorView(w:number,h:number,room:Room,approach=false){
   const sec=room==='security',scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
-  const center=sec?127.15:127.4,cy=sec?129:144.35;
+  const center=sec?127.15:127.4,cy=sec?(approach?125.1:129):144.35;
   const xy=(x:number,y:number)=>[w/2+(x-center)*scale,h*.58+(y-cy)*scale*.67];
   return {sec,scale,xy};
 }
@@ -80,7 +80,7 @@ function floorBackdrop(room: Room, w: number, h: number, view: ReturnType<typeof
   return canvas;
 }
 export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView){
-  const camera = floorView(w,h,room);
+  const camera = floorView(w,h,room,scene.world.stage==='walk'||scene.world.stage==='welcome');
   const {sec,scale,xy} = camera;
   ctx.imageSmoothingEnabled=false;
   ctx.drawImage(floorBackdrop(room, w, h, camera, images), 0, 0);
@@ -166,9 +166,13 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
       if(a.id==='bob' && scene.world.pass?.day===scene.world.day)
         skin.world(ctx,scene.world.pass.valid?'sec-pass-issued-world':'sec-pass-expired-world',x+scale*.23,y-scale*.5,scale);
       if(a.id==='bob' && returned && tick-returned.tick<58)skin.world(ctx,'sec-id-bob-world',x+scale*.23,y-scale*.5,scale);
+      const act=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='gesture.seen'&&e.text==='hand.return'&&tick-e.tick<55);
+      if(act){ctx.fillStyle='#f3ebcf';ctx.fillRect(x+scale*.18,y-scale*.52,scale*.22,scale*.14);}
+      const contact=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='worker.approaches'&&tick-e.tick<115);
+      if(contact)tag(a.id+' → '+contact.subject,x,y+13);
       const choice=recentChoices.get(a.id);
       if(choice) tag(a.id+' · '+(choice==='go'?'goes':'stays'),x,y+12);
-      else if(a.id==='bob'||a.id==='LIMEN'||a.id==='STILETTO'||a.id===scene.world.called||(!sec&&scene.world.coverage.includes(a.id)))
+      else if(!contact&&(a.id==='bob'||a.id==='LIMEN'||a.id==='STILETTO'||a.id===scene.world.called||(!sec&&scene.world.coverage.includes(a.id))))
         tag(a.id,x,y+12,sup?'#ffd395':'#e8f1eb');
     }});
   }

@@ -3,7 +3,7 @@ export type {Point};
 export type Room = 'security' | 'conveyor';
 export type Lead = 'LIMEN' | 'STILETTO';
 export type Phase = 'briefing' | 'shift' | 'close';
-export type Duty = 'waiting' | 'approaching' | 'cleared' | 'working' | 'detained' | 'clerk' | 'supervising' | 'standing' | 'seeking';
+export type Duty = 'waiting' | 'approaching' | 'cleared' | 'working' | 'detained' | 'clerk' | 'supervising' | 'standing' | 'seeking' | 'walking' | 'departing' | 'outside';
 export type Rule = 'appoint' | 'issue-pass' | 'accelerate' | 'slow' | 'rush' | 'endorse';
 export type Command = {id:string; day:number; action:Rule; room:Room; target:string; incident:string; tick:number};
 export type Mark = {seq:number; tick:number; day:number; kind:string; room:Room; anchor:string; at:Point; actor:string; subject:string; text:string; audience:string[]};
@@ -13,6 +13,7 @@ export type Pressure = 'quiet' | 'approach' | 'demand' | 'refusal' | 'clash' | '
 export type Case = {id:string; opened:number; deadline:number; status:'open'|'pass'|'detention'};
 export type Thought = {tick:number; day:number; actor:string; intent:string; why:string; evidence:string[]};
 export type Run = {
+  dialogue:import('./dialogue-state').Dialogue;
   version:'shift-floor/1'; day:number; phase:Phase; tick:number; start:number; seed:'early'|'late';
   world:World; tasks:Record<string,Task>; rules:Record<string,Action>; lead:Lead; pace:'rushed'|'pushed'|'slow'|'all-clear';
   queue:string[]; called:string; checking:number; quick:boolean; case:Case|null; spent:Rule|null;

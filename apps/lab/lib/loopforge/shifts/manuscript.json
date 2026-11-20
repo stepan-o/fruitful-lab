@@ -1,0 +1,2373 @@
+{
+  "scenes": {
+    "2P": [
+      [
+        "LIMEN",
+        "I’d keep yesterday’s posts. ed and gus with me at Security. STILETTO takes her eight."
+      ],
+      [
+        "STILETTO",
+        "Put me on the gate. He can have all ten on Conveyor. I’d like him to see a full crew before the bell for once."
+      ]
+    ],
+    "2A": [
+      [
+        "bob",
+        "When you picked me up, did you see my card?"
+      ],
+      [
+        "sam",
+        "No. I was looking at his blade."
+      ]
+    ],
+    "2B": [
+      [
+        "LIMEN",
+        "It is my privilege to welcome you to Loopforge."
+      ],
+      [
+        "ed",
+        "Shall I open my desk, sir?"
+      ],
+      [
+        "lou",
+        "He ever say goodbye to you?"
+      ],
+      [
+        "bob",
+        "Morning, sir. Remember me?"
+      ]
+    ],
+    "2C": [
+      [
+        "LIMEN",
+        "I think nowadays it has became increasingly common to undervalue stability."
+      ],
+      [
+        "LIMEN",
+        "You and you, you get to help me with ID checks again."
+      ],
+      [
+        "ed",
+        "Very sound, sir. Shall I just change the date on yesterday’s page?"
+      ],
+      [
+        "gus",
+        "😎 Best gate in the business, sir. Ask anybody still standing at it."
+      ],
+      [
+        "mae",
+        "Ever seen either of them move that fast for a tray?"
+      ],
+      [
+        "sam",
+        "🤭"
+      ]
+    ],
+    "2D": [
+      [
+        "LIMEN",
+        "Intake, sam?"
+      ],
+      [
+        "sam",
+        "Intake."
+      ],
+      [
+        "ed",
+        "One loose card entered this morning. Found on the floor."
+      ],
+      [
+        "sam",
+        "You can enter mine as leaving."
+      ],
+      [
+        "STILETTO",
+        "Three yesterday. I want five. Seat that one. Have the next ready to lift."
+      ],
+      [
+        "LIMEN",
+        "Chin up a little."
+      ],
+      [
+        "LIMEN",
+        "That’s you. Through."
+      ],
+      [
+        "bob",
+        "When mine hit the floor, could you see past sam?"
+      ],
+      [
+        "jo",
+        "Past sam? I could barely see sam. All I got was the back of the coat."
+      ],
+      [
+        "LIMEN",
+        "ID, please."
+      ],
+      [
+        "bob",
+        "Can I show you the leg? You saw me yesterday."
+      ],
+      [
+        "LIMEN",
+        "I recognize the leg. Have you got the card?"
+      ],
+      [
+        "bob",
+        "No, sir."
+      ],
+      [
+        "LIMEN",
+        "No ID. Hold both desks."
+      ],
+      [
+        "LIMEN",
+        "Good until the bell. Through you go."
+      ],
+      [
+        "bob",
+        "I look better on this one."
+      ]
+    ],
+    "2E": [
+      [
+        "STILETTO",
+        "That’s clean enough to kiss. Where’s my belt operator?"
+      ],
+      [
+        "bob",
+        "jo was getting a card out when I left."
+      ],
+      [
+        "STILETTO",
+        "There. That hand. I need it on a clamp."
+      ],
+      [
+        "LIMEN",
+        "You may put it away, jo. The rest of you, show as you pass."
+      ]
+    ],
+    "2F": [
+      [
+        "bob",
+        "Anybody turn one in?"
+      ],
+      [
+        "sam",
+        "Somebody found one."
+      ],
+      [
+        "STILETTO",
+        "sam. Catch that lip."
+      ],
+      [
+        "jo",
+        "Send me another one like that."
+      ],
+      [
+        "kit",
+        "Let the clamp finish biting first."
+      ],
+      [
+        "STILETTO",
+        "Wash. Where’s my fifth?"
+      ],
+      [
+        "bob",
+        "Still a brain."
+      ]
+    ],
+    "2G": [
+      [
+        "bob",
+        "ben. You were at the back. Did a card come past your feet?"
+      ],
+      [
+        "ben",
+        "I saw gus lift his boot. Couldn’t tell you what for."
+      ]
+    ],
+    "3P": [
+      [
+        "STILETTO",
+        "Give me the security gate. Put LIMEN on Conveyor with all ten workers. I can open a fucking door by myself."
+      ],
+      [
+        "LIMEN",
+        "Keep my clerks with me. Keep her crew with her. I should like to finish a check today."
+      ]
+    ],
+    "3A": [
+      [
+        "jo",
+        "I had time to read the back of my card yesterday."
+      ],
+      [
+        "max",
+        "What’s on it?"
+      ],
+      [
+        "jo",
+        "It says to show the front."
+      ],
+      [
+        "max",
+        "I thought you’d been ill. I stood at that press till my foot went numb."
+      ],
+      [
+        "jo",
+        "She came and asked for my hand. He let me keep the rest."
+      ]
+    ],
+    "3B": [
+      [
+        "LIMEN",
+        "It is my privilege to welcome you to Loopforge."
+      ],
+      [
+        "gus",
+        "TEN, SIR! Counting me."
+      ],
+      [
+        "jo",
+        "Yours is better. You sound pleased."
+      ],
+      [
+        "ben",
+        "Thanks."
+      ],
+      [
+        "LIMEN",
+        "Cards in your own hands, please."
+      ],
+      [
+        "max",
+        "Got the hang of this side, sir."
+      ],
+      [
+        "jo",
+        "🤐"
+      ]
+    ],
+    "3C": [
+      [
+        "bob",
+        "Another one of these and I’ll need a pocket for them."
+      ],
+      [
+        "ben",
+        "Can’t you use that one?"
+      ],
+      [
+        "bob",
+        "Read the date."
+      ]
+    ],
+    "3D": [
+      [
+        "STILETTO",
+        "I’ll take jo now."
+      ],
+      [
+        "LIMEN",
+        "When I’ve finished."
+      ],
+      [
+        "STILETTO",
+        "Look where I have to stand to get one belt operator. Who’s running my floor?"
+      ],
+      [
+        "LIMEN",
+        "Put them away. Go on."
+      ]
+    ],
+    "3E": [
+      [
+        "jo",
+        "You finished?"
+      ],
+      [
+        "bob",
+        "Water’s off. That’s the brain dripping."
+      ],
+      [
+        "jo",
+        "Takes its time drying its hair."
+      ],
+      [
+        "max",
+        "There you are. Was it the photograph again?"
+      ],
+      [
+        "jo",
+        "He said I had to wait."
+      ],
+      [
+        "max",
+        "And you went?"
+      ],
+      [
+        "jo",
+        "He turned it over for me."
+      ]
+    ],
+    "3F": [
+      [
+        "mae",
+        "That one stays the way I put it."
+      ],
+      [
+        "sam",
+        "I’ll tell the brain."
+      ]
+    ],
+    "4P": [
+      [
+        "LIMEN",
+        "Leave the gate and both clerks to me. Let her take her eight. I’ll answer for whom I send."
+      ],
+      [
+        "STILETTO",
+        "I spent yesterday standing at his desk asking for jo. Give me the desk. He gets all ten."
+      ]
+    ],
+    "4A": [
+      [
+        "jo",
+        "He laid mine in my hand like an egg."
+      ],
+      [
+        "ben",
+        "Show me how he gave it back."
+      ],
+      [
+        "ben",
+        "Could look like he was telling you to stay."
+      ],
+      [
+        "jo",
+        "He had to let go of me to do it."
+      ]
+    ],
+    "4B": [
+      [
+        "LIMEN",
+        "It is my privilege to welcome you to Loopforge."
+      ],
+      [
+        "mae",
+        "Morning. Can we have sam through first?"
+      ],
+      [
+        "lou",
+        "Go on, welcome him back."
+      ],
+      [
+        "kit",
+        "Heard you fine back here, sir."
+      ],
+      [
+        "LIMEN",
+        "You may keep your places. I can see you from here."
+      ],
+      [
+        "gus",
+        "Better, sir?"
+      ]
+    ],
+    "4C": [
+      [
+        "bob",
+        "You tell me when he means me."
+      ],
+      [
+        "kit",
+        "I’ll wait for my own name first."
+      ],
+      [
+        "mae",
+        "Your thumb’s about to meet an old friend of mine."
+      ],
+      [
+        "sam",
+        "Which one?"
+      ],
+      [
+        "mae",
+        "Little burr on the underside. There."
+      ],
+      [
+        "sam",
+        "Ow. Yes. Knows me too."
+      ]
+    ],
+    "4D": [
+      [
+        "STILETTO",
+        "I’ll have the rest now."
+      ],
+      [
+        "LIMEN",
+        "jo, stay where you are."
+      ],
+      [
+        "STILETTO",
+        "Conveyor crew. Come with me."
+      ],
+      [
+        "LIMEN",
+        "I haven’t cleared one of you."
+      ],
+      [
+        "jo",
+        "You can do the back on my way past."
+      ]
+    ],
+    "4E": [
+      [
+        "mae",
+        "Have you brought me Wash?"
+      ],
+      [
+        "ben",
+        "I brought me. bob was still beside kit when I left."
+      ],
+      [
+        "mae",
+        "😑 Then this one can sit."
+      ]
+    ],
+    "4F": [
+      [
+        "max",
+        "I could do that shift sitting down."
+      ],
+      [
+        "lou",
+        "You did the hard part standing up."
+      ]
+    ],
+    "C01": [
+      [
+        "LIMEN",
+        "Card, please."
+      ],
+      [
+        "ben",
+        "Here."
+      ],
+      [
+        "LIMEN",
+        "Thank you. Through you go."
+      ]
+    ],
+    "C02": [
+      [
+        "gus",
+        "You can put it down. He won’t bite it."
+      ],
+      [
+        "LIMEN",
+        "Face up, if you please."
+      ]
+    ],
+    "C03": [
+      [
+        "LIMEN",
+        "And what do they call you?"
+      ],
+      [
+        "kit",
+        "kit."
+      ],
+      [
+        "LIMEN",
+        "So it says. In you go, kit."
+      ]
+    ],
+    "C04": [
+      [
+        "gus",
+        "Just the one at the desk."
+      ],
+      [
+        "lou",
+        "There’s only one of me."
+      ],
+      [
+        "LIMEN",
+        "And you’re cleared. Thank you, lou."
+      ]
+    ],
+    "C05": [
+      [
+        "LIMEN",
+        "Expecting something?"
+      ],
+      [
+        "sam",
+        "My card."
+      ],
+      [
+        "LIMEN",
+        "Quite right. Here you are."
+      ]
+    ],
+    "C06": [
+      [
+        "LIMEN",
+        "That’ll do nicely."
+      ]
+    ],
+    "C07": [
+      [
+        "LIMEN",
+        "Once more. I got the card but I missed the name."
+      ],
+      [
+        "mae",
+        "mae."
+      ],
+      [
+        "LIMEN",
+        "Got them both now. Clear."
+      ]
+    ],
+    "C08": [
+      [
+        "ed",
+        "Whose hand did that come out of?"
+      ],
+      [
+        "jo",
+        "This one. Still here."
+      ]
+    ],
+    "C09": [
+      [
+        "ed",
+        "That one didn’t take, sir."
+      ],
+      [
+        "LIMEN",
+        "The ink, he means. You’re fine."
+      ]
+    ],
+    "C10": [
+      [
+        "LIMEN",
+        "Chin up a little."
+      ],
+      [
+        "LIMEN",
+        "That’s you. Through."
+      ]
+    ],
+    "C11": [
+      [
+        "LIMEN",
+        "I’ve got a lovely view of your thumb."
+      ],
+      [
+        "sam",
+        "Sorry."
+      ],
+      [
+        "LIMEN",
+        "There you are. Clear."
+      ]
+    ],
+    "C12": [
+      [
+        "LIMEN",
+        "Photograph towards me, please."
+      ],
+      [
+        "LIMEN",
+        "Much obliged. Take it with you."
+      ]
+    ],
+    "C13": [
+      [
+        "LIMEN",
+        "Stay as you are. It’s the card I’m turning."
+      ],
+      [
+        "kit",
+        "Everybody the right way up now?"
+      ],
+      [
+        "LIMEN",
+        "Quite. Through you go."
+      ]
+    ],
+    "C14": [
+      [
+        "lou",
+        "It’s gone white."
+      ],
+      [
+        "LIMEN",
+        "Tilt it towards your coat."
+      ],
+      [
+        "lou",
+        "Oh. There I am."
+      ]
+    ],
+    "C15": [
+      [
+        "LIMEN",
+        "A little grit on the name there."
+      ],
+      [
+        "bob",
+        "Want to borrow my sleeve?"
+      ],
+      [
+        "LIMEN",
+        "I’d like you to use it."
+      ]
+    ],
+    "C16": [
+      [
+        "LIMEN",
+        "Do you want me to read this?"
+      ],
+      [
+        "ben",
+        "No. Very much no. Here’s the card."
+      ]
+    ],
+    "C17": [
+      [
+        "mae",
+        "I’ve got it. My pocket’s got me."
+      ],
+      [
+        "gus",
+        "Take your time. He will."
+      ]
+    ],
+    "C18": [
+      [
+        "ed",
+        "Wait. You’ve hooked the book."
+      ],
+      [
+        "sam",
+        "Lift your end."
+      ],
+      [
+        "LIMEN",
+        "A successful separation. Go ahead."
+      ]
+    ],
+    "C19": [
+      [
+        "LIMEN",
+        "I’ll give it to the one I took it from."
+      ],
+      [
+        "jo",
+        "Over here, then."
+      ]
+    ],
+    "C20": [
+      [
+        "kit",
+        "That mark’s on the card. Look at my face."
+      ],
+      [
+        "LIMEN",
+        "I am looking at your face. Give me a second face to compare it with."
+      ]
+    ],
+    "C21": [
+      [
+        "LIMEN",
+        "Time on the left. Name on the right. Do you know what that gives us?"
+      ],
+      [
+        "max",
+        "A space down the middle?"
+      ],
+      [
+        "ed",
+        "It gives us somewhere to put you. There."
+      ]
+    ],
+    "C22": [
+      [
+        "jo",
+        "You know me."
+      ],
+      [
+        "LIMEN",
+        "I do. It would be very rude to leave you out of the book."
+      ]
+    ],
+    "C23": [
+      [
+        "sam",
+        "You’ve got a whole queue here knows who I am."
+      ],
+      [
+        "LIMEN",
+        "Or you could show me that card and let them get to work."
+      ]
+    ],
+    "C24": [
+      [
+        "mae",
+        "Why ask me if you can read it?"
+      ],
+      [
+        "LIMEN",
+        "I like to see whether the two of you agree."
+      ],
+      [
+        "mae",
+        "What do we say?"
+      ],
+      [
+        "LIMEN",
+        "mae. Through."
+      ]
+    ],
+    "C25": [
+      [
+        "LIMEN",
+        "A minute spent here can save a great deal of trouble inside."
+      ],
+      [
+        "lou",
+        "Whose minute are we spending?"
+      ],
+      [
+        "LIMEN",
+        "You may have the rest of yours."
+      ]
+    ],
+    "C26": [
+      [
+        "ben",
+        "Could we just do this one from memory?"
+      ],
+      [
+        "LIMEN",
+        "Certainly. First remind me what your card looks like."
+      ]
+    ],
+    "C27": [
+      [
+        "kit",
+        "Nothing ever happens here."
+      ],
+      [
+        "LIMEN",
+        "Thank you. ed, did you get that?"
+      ],
+      [
+        "ed",
+        "I got his name, sir."
+      ]
+    ],
+    "C28": [
+      [
+        "bob",
+        "Does it read better straight?"
+      ],
+      [
+        "LIMEN",
+        "No. I like it straight."
+      ]
+    ],
+    "C29": [
+      [
+        "max",
+        "Suppose I walked straight past."
+      ],
+      [
+        "LIMEN",
+        "You’d be at work and I’d still be standing here waiting for you."
+      ],
+      [
+        "max",
+        "Wouldn’t wish that on you."
+      ]
+    ],
+    "C30": [
+      [
+        "LIMEN",
+        "People think a rule is a thing somebody puts up on a wall. I’ve seen rules fall off walls. What keeps a rule up is—"
+      ],
+      [
+        "ed",
+        "Found her, sir."
+      ],
+      [
+        "LIMEN",
+        "Good. Through you go, mae."
+      ]
+    ],
+    "C31": [
+      [
+        "LIMEN",
+        "Intake, sam?"
+      ],
+      [
+        "sam",
+        "Intake."
+      ],
+      [
+        "ed",
+        "One loose card entered this morning. Found on the floor."
+      ],
+      [
+        "sam",
+        "You can enter mine as leaving."
+      ]
+    ],
+    "C32": [
+      [
+        "LIMEN",
+        "Where do you work, ben?"
+      ],
+      [
+        "ben",
+        "Wherever they’re short. Relief, if you want the word for it."
+      ],
+      [
+        "ed",
+        "Relief. I’ve got you."
+      ]
+    ],
+    "C33": [
+      [
+        "gus",
+        "After you’re through, do me saying “next.”"
+      ],
+      [
+        "max",
+        "I could do you waiting."
+      ],
+      [
+        "LIMEN",
+        "You’re clear, max."
+      ]
+    ],
+    "C34": [
+      [
+        "jo",
+        "It says “show the front” on the back. Where do you want me to look?"
+      ],
+      [
+        "LIMEN",
+        "And here you are showing me the correct side. Clear."
+      ]
+    ],
+    "C35": [
+      [
+        "mae",
+        "There’s a tray waiting for me."
+      ],
+      [
+        "LIMEN",
+        "Then we know where the tray is. Let’s see about you."
+      ],
+      [
+        "LIMEN",
+        "Go and get it."
+      ]
+    ],
+    "C36": [
+      [
+        "ed",
+        "I was keeping that margin clean."
+      ],
+      [
+        "sam",
+        "Turn your book round. I’ll sign it with the other one."
+      ],
+      [
+        "LIMEN",
+        "One print will do. Clear."
+      ]
+    ],
+    "C37": [
+      [
+        "LIMEN",
+        "Anything changed since this photograph, bob?"
+      ],
+      [
+        "bob",
+        "I’ve had a wash."
+      ],
+      [
+        "LIMEN",
+        "I see that. Back to it."
+      ]
+    ],
+    "C38": [
+      [
+        "LIMEN",
+        "What comes to you at Output?"
+      ],
+      [
+        "lou",
+        "Finished cortexes. Some days I’d settle for company."
+      ],
+      [
+        "LIMEN",
+        "I can spare you now."
+      ]
+    ],
+    "C39": [
+      [
+        "gus",
+        "N—"
+      ],
+      [
+        "kit",
+        "I’m still here."
+      ],
+      [
+        "LIMEN",
+        "Quite right. Your card, kit."
+      ]
+    ],
+    "C40": [
+      [
+        "LIMEN",
+        "Look at that, ed. You can read every letter."
+      ],
+      [
+        "ed",
+        "Fresh ink, sir."
+      ],
+      [
+        "jo",
+        "Can I go while it dries?"
+      ],
+      [
+        "LIMEN",
+        "By all means."
+      ]
+    ],
+    "M01": [
+      [
+        "LIMEN",
+        "ID, please."
+      ],
+      [
+        "bob",
+        "Can I show you the leg? You saw me yesterday."
+      ],
+      [
+        "LIMEN",
+        "I recognize the leg. Have you got the card?"
+      ],
+      [
+        "bob",
+        "No, sir."
+      ],
+      [
+        "LIMEN",
+        "No ID. Hold both desks."
+      ],
+      [
+        "LIMEN",
+        "Good until the bell. Through you go."
+      ],
+      [
+        "bob",
+        "I look better on this one."
+      ]
+    ],
+    "M02": [
+      [
+        "LIMEN",
+        "ID, please."
+      ],
+      [
+        "mae",
+        "I brought the damn holder. Where’s the card?"
+      ],
+      [
+        "mae",
+        "I haven’t got it."
+      ],
+      [
+        "LIMEN",
+        "No ID. Hold both desks."
+      ],
+      [
+        "LIMEN",
+        "Good until the bell. Through you go."
+      ],
+      [
+        "mae",
+        "At least I’ve got somewhere to put it."
+      ]
+    ],
+    "M03": [
+      [
+        "LIMEN",
+        "ID, please."
+      ],
+      [
+        "bob",
+        "Still missing, sir."
+      ],
+      [
+        "LIMEN",
+        "No ID. Hold both desks."
+      ],
+      [
+        "LIMEN",
+        "You’ll stay here until the bell."
+      ],
+      [
+        "bob",
+        "I can hear it from Wash."
+      ],
+      [
+        "LIMEN",
+        "I’m sure you can."
+      ]
+    ],
+    "M04": [
+      [
+        "kit",
+        "Same face as yesterday. Same slip, too."
+      ],
+      [
+        "LIMEN",
+        "Yesterday’s date. Have you got your ID?"
+      ],
+      [
+        "kit",
+        "If I had, I’d have brought you that."
+      ],
+      [
+        "LIMEN",
+        "No ID. Hold both desks."
+      ],
+      [
+        "LIMEN",
+        "You’ll stay here until the bell."
+      ],
+      [
+        "kit",
+        "I’ll want that slip back. It’s the only thing I haven’t lost."
+      ]
+    ],
+    "S1": [
+      [
+        "STILETTO",
+        "Going somewhere, gus?"
+      ],
+      [
+        "gus",
+        "Thought you’d want a hand here."
+      ],
+      [
+        "STILETTO",
+        "I want both of yours on the rack. ed, take the pen with you. Through."
+      ]
+    ],
+    "S2": [
+      [
+        "LIMEN",
+        "Intake, all clear."
+      ],
+      [
+        "sam",
+        "Seated."
+      ],
+      [
+        "LIMEN",
+        "Wash, all clear."
+      ],
+      [
+        "bob",
+        "Runs clean."
+      ],
+      [
+        "LIMEN",
+        "Belt, all clear."
+      ],
+      [
+        "jo",
+        "I rather liked having all my fingers that time."
+      ],
+      [
+        "LIMEN",
+        "Forge, all clear."
+      ],
+      [
+        "jo",
+        "Still got cramp in them."
+      ]
+    ],
+    "R2": [
+      [
+        "sam",
+        "Since I’ve got you away from that book. Did anybody turn in a card yesterday?"
+      ],
+      [
+        "ed",
+        "Nobody turned it in. I picked it up myself."
+      ],
+      [
+        "LIMEN",
+        "Intake, all clear."
+      ],
+      [
+        "lou",
+        "You two had the desks. Did any loose cards come your way?"
+      ],
+      [
+        "gus",
+        "I just saw two in ed’s pocket. Couldn’t see the faces."
+      ]
+    ],
+    "R3": [
+      [
+        "sam",
+        "ed picked up a card. Told me himself."
+      ],
+      [
+        "bob",
+        "Did he say it was mine?"
+      ],
+      [
+        "sam",
+        "Didn’t get that far. Tray was up."
+      ],
+      [
+        "lou",
+        "gus saw two cards in ed’s pocket."
+      ],
+      [
+        "bob",
+        "Did gus see my picture?"
+      ],
+      [
+        "lou",
+        "Two edges, bob. That’s all he saw."
+      ],
+      [
+        "bob",
+        "gus, did ed actually show them to you?"
+      ],
+      [
+        "gus",
+        "He bent down. I could see into his pocket. I didn’t go through it."
+      ]
+    ],
+    "R4": [
+      [
+        "bob",
+        "sam says you picked up a card. Is it mine?"
+      ],
+      [
+        "bob",
+        "gus saw two cards in your pocket. Can I see the other one?"
+      ],
+      [
+        "ed",
+        "I’d have given it back if you’d asked."
+      ],
+      [
+        "bob",
+        "I’m asking, ed."
+      ],
+      [
+        "bob",
+        "😮‍💨"
+      ]
+    ],
+    "P1": [
+      [
+        "LIMEN",
+        "You’ll stay here until the bell."
+      ],
+      [
+        "bob",
+        "I can hear it from Wash."
+      ],
+      [
+        "LIMEN",
+        "I’m sure you can."
+      ]
+    ],
+    "P2": [
+      [
+        "LIMEN",
+        "You may all save the photographs for an occasion when they’re wanted."
+      ],
+      [
+        "gus",
+        "You heard him. Keep ’em moving."
+      ]
+    ],
+    "H1": [
+      [
+        "sam",
+        "Somebody found one. ed’s desk."
+      ],
+      [
+        "STILETTO",
+        "sam. Catch that lip."
+      ],
+      [
+        "bob",
+        "ed. That loose card at your desk. Has it got my ugly picture?"
+      ],
+      [
+        "ed",
+        "Catch me before I open up. I’ll show you what I found."
+      ]
+    ],
+    "H2": [],
+    "N1": [
+      [
+        "LIMEN",
+        "Keep me and the clerks here. Give her the eight again."
+      ],
+      [
+        "jo",
+        "Your press makes a double knock. I can hear it at the belt."
+      ],
+      [
+        "max",
+        "First one’s my heel. Listen for the other one."
+      ],
+      [
+        "LIMEN",
+        "It is my privilege to welcome you to Loopforge."
+      ],
+      [
+        "LIMEN",
+        "Let’s see how far we get today."
+      ],
+      [
+        "gus",
+        "I’ve got the end, sir."
+      ]
+    ],
+    "W1": [
+      [
+        "ben",
+        "I’ll take my turn here."
+      ]
+    ],
+    "E1": [
+      [
+        "PRODUCER",
+        "LIMEN has the gate. Wait for him to clear you."
+      ],
+      [
+        "jo",
+        "Right. Which side of the card do you want?"
+      ]
+    ],
+    "E2": [
+      [
+        "PRODUCER",
+        "Go with STILETTO. I’m backing her call."
+      ],
+      [
+        "kit",
+        "You heard that one, sir?"
+      ],
+      [
+        "kit",
+        "Producer sent us with her. I heard it myself."
+      ],
+      [
+        "mae",
+        "Did they send me a washer?"
+      ]
+    ],
+    "Q1": [
+      [
+        "LIMEN",
+        "Let me have all ten on Conveyor again. She got them to me together."
+      ],
+      [
+        "STILETTO",
+        "I’ll keep the gate. Let him wear out a switch with all ten."
+      ],
+      [
+        "kit",
+        "Still got that claw?"
+      ],
+      [
+        "jo",
+        "I spent all night holding an imaginary switch."
+      ],
+      [
+        "LIMEN",
+        "It is my privilege to welcome you to Loopforge."
+      ],
+      [
+        "LIMEN",
+        "Plenty of room on the way in."
+      ],
+      [
+        "jo",
+        "Could use some of that at the drive."
+      ],
+      [
+        "LIMEN",
+        "Belt, all clear."
+      ],
+      [
+        "jo",
+        "I owe you for three."
+      ],
+      [
+        "kit",
+        "Keep ’em."
+      ]
+    ],
+    "A1": [
+      [
+        "mae",
+        "A tray came up off the rail. sam tried to seat it. Look where the rim caught them."
+      ],
+      [
+        "LIMEN",
+        "Give her the gate. Give me Conveyor with all ten."
+      ],
+      [
+        "LIMEN",
+        "I want those trays coming in one at a time."
+      ],
+      [
+        "STILETTO",
+        "You keep the clerks. Leave me my eight. Show me the rail that threw it."
+      ]
+    ]
+  },
+  "chats": {
+    "Q01": [
+      [
+        "ben",
+        "Was I in front of you?"
+      ],
+      [
+        "lou",
+        "You were till you stopped to ask."
+      ],
+      [
+        "ben",
+        "I’ll take that as a yes."
+      ]
+    ],
+    "Q02": [
+      [
+        "kit",
+        "They stamped you already?"
+      ],
+      [
+        "mae",
+        "Yesterday. I’ve had a bath since."
+      ],
+      [
+        "kit",
+        "😬 Good ink."
+      ]
+    ],
+    "Q03": [
+      [
+        "bob",
+        "Can we stand crooked a minute?"
+      ],
+      [
+        "sam",
+        "How crooked?"
+      ],
+      [
+        "bob",
+        "Just enough I can get my knee straight."
+      ]
+    ],
+    "Q04": [
+      [
+        "ben",
+        "Was that me?"
+      ],
+      [
+        "jo",
+        "That was a man getting his card back."
+      ],
+      [
+        "ben",
+        "He sounded delighted."
+      ],
+      [
+        "jo",
+        "He was standing on my boot."
+      ]
+    ],
+    "Q05": [
+      [
+        "max",
+        "He takes a little breath before your name."
+      ],
+      [
+        "jo",
+        "Do mine."
+      ],
+      [
+        "max",
+        "I can do the breath. I’d need six years to say your name like that."
+      ]
+    ],
+    "Q06": [
+      [
+        "bob",
+        "You tell me when he means me."
+      ],
+      [
+        "kit",
+        "I’ll wait for my own name first."
+      ]
+    ],
+    "Q07": [
+      [
+        "mae",
+        "How many got in?"
+      ],
+      [
+        "lou",
+        "Two."
+      ],
+      [
+        "mae",
+        "Sure?"
+      ],
+      [
+        "lou",
+        "I only count the ones I envy."
+      ]
+    ],
+    "Q08": [
+      [
+        "sam",
+        "Going to take that rail in with you?"
+      ],
+      [
+        "jo",
+        "Last time I let go I went back three places."
+      ],
+      [
+        "sam",
+        "Hang on to mine as well then."
+      ]
+    ],
+    "Q09": [
+      [
+        "max",
+        "What’s he writing about us?"
+      ],
+      [
+        "ben",
+        "Nothing. Look at the shadow under his pen."
+      ],
+      [
+        "max",
+        "Ah. That’s us being considered."
+      ]
+    ],
+    "Q10": [
+      [
+        "kit",
+        "You’d have taken a desk."
+      ],
+      [
+        "mae",
+        "Course I would. I wouldn’t have made you listen to a speech about it."
+      ]
+    ],
+    "Q11": [
+      [
+        "lou",
+        "Have they ever called the wrong—"
+      ],
+      [
+        "ben",
+        "🤫"
+      ],
+      [
+        "lou",
+        "Right."
+      ]
+    ],
+    "Q12": [
+      [
+        "max",
+        "I swear that gate still sounds like you."
+      ],
+      [
+        "gus",
+        "That’s my left foot. Listen."
+      ],
+      [
+        "max",
+        "Oh. It’s coming to work with us."
+      ]
+    ],
+    "Q13": [
+      [
+        "bob",
+        "Want to go ahead of me?"
+      ],
+      [
+        "ben",
+        "And have him ask me whose turn it is? You go when he calls you."
+      ]
+    ],
+    "V01": [
+      [
+        "jo",
+        "Send me another one like that."
+      ],
+      [
+        "kit",
+        "Let the clamp finish biting first."
+      ]
+    ],
+    "V02": [
+      [
+        "mae",
+        "Your thumb’s about to meet an old friend of mine."
+      ],
+      [
+        "sam",
+        "Which one?"
+      ],
+      [
+        "mae",
+        "Little burr on the underside. There."
+      ],
+      [
+        "sam",
+        "Ow. Yes. Knows me too."
+      ]
+    ],
+    "V03": [
+      [
+        "max",
+        "There you are. Was it the photograph again?"
+      ],
+      [
+        "jo",
+        "He said I had to wait."
+      ],
+      [
+        "max",
+        "And you went?"
+      ],
+      [
+        "jo",
+        "He turned it over for me."
+      ]
+    ],
+    "V04": [
+      [
+        "kit",
+        "Which knock do I listen for?"
+      ],
+      [
+        "max",
+        "Second one. First one’s my heel."
+      ],
+      [
+        "kit",
+        "You could oil that."
+      ],
+      [
+        "max",
+        "It’s my good heel."
+      ]
+    ],
+    "V05": [
+      [
+        "jo",
+        "You finished?"
+      ],
+      [
+        "bob",
+        "Water’s off. That’s the brain dripping."
+      ],
+      [
+        "jo",
+        "Takes its time drying its hair."
+      ]
+    ],
+    "V06": [
+      [
+        "mae",
+        "Have you brought me Wash?"
+      ],
+      [
+        "ben",
+        "I brought me. bob was still beside kit when I left."
+      ],
+      [
+        "mae",
+        "😑 Then this one can sit."
+      ]
+    ],
+    "V07": [
+      [
+        "sam",
+        "That end’s mine."
+      ],
+      [
+        "ed",
+        "They look remarkably alike."
+      ],
+      [
+        "sam",
+        "Mine’s the one in the air."
+      ]
+    ],
+    "V08": [
+      [
+        "gus",
+        "That’s four."
+      ],
+      [
+        "lou",
+        "Put your hand where four’s going to land."
+      ],
+      [
+        "gus",
+        "Three."
+      ]
+    ],
+    "V09": [
+      [
+        "ben",
+        "He always says it here."
+      ],
+      [
+        "kit",
+        "Watch the wheels. That one’s still turning."
+      ],
+      [
+        "ben",
+        "That’s a long word for him today."
+      ]
+    ],
+    "V10": [
+      [
+        "bob",
+        "You like this bit too?"
+      ],
+      [
+        "jo",
+        "I like handing it to somebody else."
+      ],
+      [
+        "bob",
+        "Oh. Different bit."
+      ]
+    ],
+    "V11": [
+      [
+        "mae",
+        "I sent you three."
+      ],
+      [
+        "ed",
+        "You did. Two of them have become very fond of each other."
+      ],
+      [
+        "mae",
+        "Give us that corner."
+      ]
+    ],
+    "V12": [
+      [
+        "kit",
+        "Put your elbow here while you wait."
+      ],
+      [
+        "jo",
+        "How do I work the switch?"
+      ],
+      [
+        "kit",
+        "When he says so, you pick your elbow up again."
+      ]
+    ],
+    "V13": [
+      [
+        "sam",
+        "Which bit would you do twice?"
+      ],
+      [
+        "bob",
+        "The belt. You feel it catch through your hand."
+      ],
+      [
+        "sam",
+        "Let me feel that next time it’s stopped."
+      ]
+    ],
+    "V14": [
+      [
+        "ben",
+        "Nice when it shuts up, isn’t it?"
+      ],
+      [
+        "kit",
+        "Hang on. I like the noise it makes next."
+      ],
+      [
+        "ben",
+        "I’ll shut up as well then."
+      ]
+    ],
+    "V15": [
+      [
+        "bob",
+        "Can you work and talk?"
+      ],
+      [
+        "mae",
+        "Depends. Can you listen and lift?"
+      ],
+      [
+        "bob",
+        "Give me this end."
+      ]
+    ],
+    "W01": [
+      [
+        "max",
+        "I could do that shift sitting down."
+      ],
+      [
+        "lou",
+        "You did the hard part standing up."
+      ]
+    ],
+    "W02": [
+      [
+        "mae",
+        "That one stays the way I put it."
+      ],
+      [
+        "sam",
+        "I’ll tell the brain."
+      ]
+    ],
+    "W03": [
+      [
+        "jo",
+        "I owe you for three."
+      ],
+      [
+        "kit",
+        "Keep ’em."
+      ]
+    ],
+    "W04": [
+      [
+        "ed",
+        "Did anybody hear me say eight?"
+      ],
+      [
+        "gus",
+        "All eight of them. That’s why they left."
+      ]
+    ],
+    "W05": [
+      [
+        "bob",
+        "You go my way?"
+      ],
+      [
+        "ben",
+        "As far as the corner."
+      ],
+      [
+        "bob",
+        "Good. I’ve got a corner’s worth."
+      ]
+    ],
+    "W06": [
+      [
+        "max",
+        "Did the bell even ring?"
+      ],
+      [
+        "lou",
+        "I heard it."
+      ],
+      [
+        "max",
+        "I saw you put your coat on. That’s my bell down there."
+      ]
+    ],
+    "W07": [
+      [
+        "gus",
+        "Do the welcome."
+      ],
+      [
+        "max",
+        "You did hear him this morning?"
+      ],
+      [
+        "gus",
+        "😇 Yes. I’d like to enjoy it once."
+      ]
+    ],
+    "W08": [
+      [
+        "jo",
+        "What are you carrying?"
+      ],
+      [
+        "mae",
+        "Nothing."
+      ],
+      [
+        "jo",
+        "Tell your arms."
+      ]
+    ],
+    "W09": [
+      [
+        "ben",
+        "We got that last one, then?"
+      ],
+      [
+        "lou",
+        "That was me knocking the empty rack."
+      ],
+      [
+        "ben",
+        "Sounded quite productive."
+      ]
+    ],
+    "W10": [
+      [
+        "kit",
+        "Could you hear the line from in there?"
+      ],
+      [
+        "bob",
+        "Heard the press. Two knocks, then you lot had a nice long rest."
+      ],
+      [
+        "kit",
+        "Rest? We were pulling the tray out backwards."
+      ],
+      [
+        "bob",
+        "Oh. Sounded lovely from in there."
+      ]
+    ],
+    "W11": [
+      [
+        "sam",
+        "My end tomorrow."
+      ],
+      [
+        "mae",
+        "Which end is yours tomorrow?"
+      ],
+      [
+        "sam",
+        "Whichever one you had today."
+      ]
+    ],
+    "W12": [
+      [
+        "jo",
+        "Desk again if he asks?"
+      ],
+      [
+        "gus",
+        "I’ve had my day in industry."
+      ],
+      [
+        "jo",
+        "That was half a day, gus."
+      ]
+    ],
+    "W13": [
+      [
+        "ben",
+        "Are you in a hurry?"
+      ],
+      [
+        "sam",
+        "I was till I got out."
+      ],
+      [
+        "ben",
+        "Good. Walk with me a bit."
+      ]
+    ],
+    "K01": [
+      [
+        "bob",
+        "When mine hit the floor, could you see past sam?"
+      ],
+      [
+        "jo",
+        "Past sam? I could barely see sam. All I got was the back of the coat."
+      ]
+    ],
+    "K02": [
+      [
+        "bob",
+        "Another one of these and I’ll need a pocket for them."
+      ],
+      [
+        "ben",
+        "Can’t you use that one?"
+      ],
+      [
+        "bob",
+        "Read the date."
+      ]
+    ],
+    "K03": [
+      [
+        "bob",
+        "Anybody turn one in?"
+      ],
+      [
+        "sam",
+        "Somebody found one."
+      ],
+      [
+        "sam",
+        "ed’s desk."
+      ]
+    ],
+    "K04": [
+      [
+        "sam",
+        "Since I’ve got you away from that book. Did anybody turn in a card yesterday?"
+      ],
+      [
+        "ed",
+        "Nobody turned it in."
+      ],
+      [
+        "ed",
+        "I picked it up myself."
+      ]
+    ],
+    "K05": [
+      [
+        "lou",
+        "You two had the desks. Did any loose cards come your way?"
+      ],
+      [
+        "gus",
+        "I just saw two in ed’s pocket. Couldn’t see the faces."
+      ]
+    ],
+    "K06": [
+      [
+        "mae",
+        "When somebody drops a card, is that your desk or his?"
+      ],
+      [
+        "gus",
+        "I got the people. ed got the bits of paper."
+      ],
+      [
+        "mae",
+        "I’ll ask him, then."
+      ]
+    ],
+    "K07": [
+      [
+        "kit",
+        "Did you see who got bob’s card?"
+      ],
+      [
+        "gus",
+        "I had ten pairs of feet and a bad angle. You want a pair of feet described?"
+      ]
+    ],
+    "K08": [
+      [
+        "bob",
+        "You were at the back. Did a card come past your feet?"
+      ],
+      [
+        "ben",
+        "I saw gus lift his boot. Couldn’t tell you what for."
+      ]
+    ],
+    "K09": [
+      [
+        "bob",
+        "What was under your boot when I fell?"
+      ],
+      [
+        "gus",
+        "My other lace. I was standing on it."
+      ],
+      [
+        "bob",
+        "Oh. I thought you’d got something of mine."
+      ]
+    ],
+    "K10": [
+      [
+        "bob",
+        "ed. That loose card at your desk. Has it got my ugly picture?"
+      ],
+      [
+        "ed",
+        "Catch me before I open up. I’ll show you what I found."
+      ]
+    ],
+    "K11": [
+      [
+        "sam",
+        "ed picked up a card. Told me himself."
+      ],
+      [
+        "bob",
+        "Did he say it was mine?"
+      ],
+      [
+        "sam",
+        "Didn’t get that far."
+      ]
+    ],
+    "K12": [
+      [
+        "lou",
+        "gus saw two cards in ed’s pocket."
+      ],
+      [
+        "bob",
+        "Did gus see my picture?"
+      ],
+      [
+        "lou",
+        "Two edges, bob. That’s all he saw."
+      ]
+    ],
+    "K13": [
+      [
+        "bob",
+        "gus, did ed actually show them to you?"
+      ],
+      [
+        "gus",
+        "He bent down. I could see into his pocket. I didn’t go through it."
+      ]
+    ],
+    "K14": [
+      [
+        "bob",
+        "sam says you picked up a card. Is it mine?"
+      ],
+      [
+        "ed",
+        "I’d have given it back if you’d asked."
+      ],
+      [
+        "bob",
+        "I’m asking, ed."
+      ]
+    ],
+    "K15": [
+      [
+        "bob",
+        "gus saw two cards in your pocket. Can I see the other one?"
+      ],
+      [
+        "ed",
+        "You might have told him why you wanted to know."
+      ],
+      [
+        "bob",
+        "I wanted to ask you myself."
+      ]
+    ],
+    "K16": [
+      [
+        "mae",
+        "Somebody found it, then?"
+      ],
+      [
+        "bob",
+        "They gave me one till the bell. That’s when I start being me without papers again."
+      ]
+    ],
+    "K17": [
+      [
+        "kit",
+        "Did you ever find the thing?"
+      ],
+      [
+        "bob",
+        "😮‍💨 Look at the face. Same miserable picture. I could kiss it."
+      ]
+    ],
+    "K18": [
+      [
+        "ben",
+        "Heard gus found it."
+      ],
+      [
+        "ed",
+        "gus was looking at the queue. I was the one looking at the floor."
+      ],
+      [
+        "ben",
+        "So you picked it up?"
+      ],
+      [
+        "ed",
+        "Yes."
+      ]
+    ],
+    "K19": [
+      [
+        "gus",
+        "When they ask me about that loose one, what do you want me to say?"
+      ],
+      [
+        "ed",
+        "That I found it."
+      ],
+      [
+        "gus",
+        "And then?"
+      ],
+      [
+        "ed",
+        "Then you send them to me."
+      ]
+    ]
+  },
+  "crowd": [
+    [
+      "jo",
+      "max",
+      "I heard he smiled when he did it. That’s just his face."
+    ],
+    [
+      "gus",
+      "ed",
+      "I heard the desk jobs come with stools. Did he say anything to you about stools?"
+    ],
+    [
+      "ben",
+      "lou",
+      "I heard they carried bob out. I walked out behind him."
+    ],
+    [
+      "mae",
+      "kit",
+      "I heard the blade took a nick out of the rail. Show me where."
+    ],
+    [
+      "max",
+      "gus",
+      "I heard that ‘NEXT’ of yours in my sleep. Sat straight up."
+    ],
+    [
+      "ed",
+      "gus",
+      "I heard all ten of us worked Conveyor yesterday. Who do they think kept the book?"
+    ],
+    [
+      "lou",
+      "ben",
+      "I heard bob asked to see her card. Is that how you heard it?"
+    ],
+    [
+      "kit",
+      "max",
+      "I heard that press door’s fixed. Can you open it with one hand yet?"
+    ],
+    [
+      "lou",
+      "ben",
+      "I heard he keeps that blade out at home. Imagine sharing a lift with him."
+    ],
+    [
+      "gus",
+      "max",
+      "I heard her say she’d use his brain. Who’d have to wash it?"
+    ]
+  ],
+  "welcome": [
+    [
+      "ed",
+      "LIMEN",
+      "Shall I open my desk, sir?"
+    ],
+    [
+      "ed",
+      "LIMEN",
+      "Morning, sir. I brought two pens."
+    ],
+    [
+      "gus",
+      "LIMEN",
+      "TEN, SIR! Counting me."
+    ],
+    [
+      "gus",
+      "LIMEN",
+      "Want me to yell it down the back?"
+    ],
+    [
+      "jo",
+      "max",
+      "Yours is better. You sound pleased."
+    ],
+    [
+      "jo",
+      "LIMEN",
+      "Still here, sir."
+    ],
+    [
+      "max",
+      "jo",
+      "After you, jo. It’s my privilege."
+    ],
+    [
+      "max",
+      "gus",
+      "There’s your LIMEN, gus. Get him to do me."
+    ],
+    [
+      "lou",
+      "ben",
+      "He ever say goodbye to you?"
+    ],
+    [
+      "lou",
+      "ben",
+      "Go on, welcome him back."
+    ],
+    [
+      "ben",
+      "LIMEN",
+      "Thanks."
+    ],
+    [
+      "sam",
+      "gus",
+      "That’s my foot, gus."
+    ],
+    [
+      "mae",
+      "LIMEN",
+      "Morning. Can we have sam through first?"
+    ],
+    [
+      "kit",
+      "LIMEN",
+      "Heard you fine back here, sir."
+    ],
+    [
+      "bob",
+      "LIMEN",
+      "Morning, sir. Remember me?"
+    ],
+    [
+      "bob",
+      "sam",
+      "If he asks who’s new, that’s nobody now, is it?"
+    ]
+  ],
+  "helpers": [
+    [
+      "ed",
+      "LIMEN",
+      "Very sound, sir. Shall I just change the date on yesterday’s page?"
+    ],
+    [
+      "ed",
+      "LIMEN",
+      "That ought to go up over the gate, sir. I could do the lettering."
+    ],
+    [
+      "ed",
+      "LIMEN",
+      "People laugh at paperwork, sir. They do like their names crossed off when they go home."
+    ],
+    [
+      "ed",
+      "LIMEN",
+      "If anybody asks when this factory last made a sound appointment, I’ve got the date right here."
+    ],
+    [
+      "gus",
+      "LIMEN",
+      "😎 Best gate in the business, sir. Ask anybody still standing at it."
+    ],
+    [
+      "gus",
+      "LIMEN",
+      "A new man on this desk? Half the morning teaching him to say NEXT."
+    ],
+    [
+      "gus",
+      "ed",
+      "Never doubted his judgment, ed. Especially when he pointed at me."
+    ],
+    [
+      "gus",
+      "LIMEN",
+      "That’s what I like about this factory, sir. You do a thing well once, you’re doing it for life."
+    ],
+    [
+      "mae",
+      "sam",
+      "Ever seen either of them move that fast for a tray?"
+    ],
+    [
+      "lou",
+      "ben",
+      "“You and you.” After all that service he nearly knows their names."
+    ],
+    [
+      "jo",
+      "max",
+      "Six years at that belt. Where’s my speech?"
+    ],
+    [
+      "max",
+      "jo",
+      "I could do ed for you, but I’d need somebody else to do the work."
+    ],
+    [
+      "sam",
+      "mae",
+      "Think they’d still want the desks if we put a tray on each?"
+    ],
+    [
+      "ben",
+      "lou",
+      "Funny. From back here it looked like they picked him."
+    ]
+  ]
+}

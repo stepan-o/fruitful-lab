@@ -35,6 +35,7 @@ async function review(){
     const dayOne=await save();assert.equal(dayOne.source.pieces.length,3);
     await button('Answer leadership').click();await button('Receive the quota').click();
     await page.getByText(/Day 1 put 3 on the rack/).waitFor();await button('Acknowledge quota').click();
+    await page.getByRole('heading',{name:'Post the supervisors'}).waitFor();
     await button('Main menu').click();await page.reload();await button(/^Resume shift/).click();
     assert.deepEqual((await save()).source,dayOne.source);
     await button(manual?/^STILETTO/:/^LIMEN/).click();
@@ -77,7 +78,8 @@ async function review(){
     if(manual)assert.match(bell,/^2 /);else assert.ok(parseInt(bell)>0);
     await shot('bell');await button('Return to main menu').click();
     await button(/^Enter factory/).click();await page.getByRole('heading',{name:'Day One'}).waitFor();
-    assert.equal((await save()).source,null);assert.deepEqual(errors,[]);
+    const fresh=await save();assert.equal(fresh.source,undefined);assert.notEqual(fresh.id,dayOne.id);
+    assert.equal(fresh.phase,'intro');assert.equal(fresh.progress.commands.length,0);assert.deepEqual(errors,[]);
     console.log(JSON.stringify({origin:process.env.PLAY_ORIGIN,size,sizes,bell,errors}));
     await fs.writeFile(path.join(dir,'review.json'),JSON.stringify({origin:process.env.PLAY_ORIGIN,size,sizes,bell,errors},null,2));
   }catch(e){console.error((await page.locator('body').innerText()).slice(-2800));await shot('last-frame');throw e;}

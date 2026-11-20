@@ -14,7 +14,6 @@ async function main(){
   try{
     const context=await browser.newContext({viewport,hasTouch:width===320,offline:surface==='portable',
       recordVideo:{dir,size:viewport}});
-    const started=Date.now(),segments=[];
     const page=await context.newPage(),errors=[],receipts=[];
     page.on('pageerror',e=>errors.push(e.message));
     await page.addInitScript(()=>{
@@ -73,14 +72,14 @@ async function main(){
       await event('chat.interrupted','STILETTO','sam');await pause();
       await load('G5 · exit after '+cutoff+' cutoff');await play();
       await event('speech.delivered',cutoff==='late'?'ed':'ben','bob',cutoff==='late'?'show you':'boot');
-      await page.waitForTimeout(1200);segments.push([Math.max(0,(Date.now()-started)/1000-4),4]);await pause();await inspect('bob',cutoff==='late'?'desk.lead':'boot.lead');
+      await page.waitForTimeout(1200);await pause();await inspect('bob',cutoff==='late'?'desk.lead':'boot.lead');
     }
     await load('3D · hands at the desk');await play();await event('check.return','LIMEN','jo');
     await photograph('return');await pause();
     for(const [name,act] of [['4D · firsthand return','go'],['W1 · reported return','stay']]){
       await load(name);await play();await event('worker.choice','ben','','');await page.waitForTimeout(700);
       assert(await f.evaluate(t=>window.floorFrame.scene.events.some(e=>e.kind==='worker.choice'&&e.actor==='ben'&&e.text===t),act));
-      await photograph('rail-'+act);segments.push([Math.max(0,(Date.now()-started)/1000-3.6),3.6]);
+      await photograph('rail-'+act);
       await f.locator('[data-room="conveyor"]').click();
       if(act==='go')await event('speech.delivered','ben','mae','bob was still');
       else await page.waitForTimeout(6500);
@@ -90,13 +89,34 @@ async function main(){
     await photograph('late-check');await pause();
     assert.deepEqual(errors,[]);
     await fs.writeFile(path.join(dir,'capture.json'),JSON.stringify({build:process.env.GITHUB_SHA,seed:'early / 3241',viewport,surface,speed:1,receipts,errors},null,2));
-    const video=page.video();await context.close();
-    if(surface==='standalone'&&width===320&&segments.length===4){
-      const input=await video.path(),list=[];
-      for(const [i,[offset,length]] of segments.entries()){
-        const name='take-'+i+'.mp4';
-        execFileSync('ffmpeg',['-hide_banner','-loglevel','error','-y','-ss',offset.toFixed(2),'-i',input,'-t',String(length),'-an','-r','12','-c:v','libx264','-crf','30','-pix_fmt','yuv420p',path.join(dir,name)]);
-        list.push("file '"+name+"'");
+    await context.close();
+    if(surface==='standalone'&&width===320){
+      const list=[];
+      const readings=[
+        ['G5 · exit after early cutoff','speech.delivered','ben','boot'],
+        ['G5 · exit after late cutoff','speech.delivered','ed','show you'],
+        ['4D · firsthand return','worker.choice','ben','go'],
+        ['W1 · reported return','worker.choice','ben','stay']
+      ];
+      // Each take has its own recorder. Trim relative to the end of that take,
+      // so test setup, worker restore time and inspection cannot shift a cut.
+      for(const [i,[checkpoint,kind,actor,word]] of readings.entries()){
+        const clip=await browser.newContext({viewport,recordVideo:{dir,size:viewport}});
+        const shot=await clip.newPage();
+        await shot.addInitScript(()=>window.addEventListener('loopforge:frame',e=>window.floorFrame=e.detail));
+        await shot.goto('http://127.0.0.1:4173/loopforge-shifts/index.html');
+        await shot.locator('#checkpoint').selectOption(checkpoint);
+        await shot.waitForFunction(exit=>exit?window.floorFrame?.scene.world.stage==='departure':window.floorFrame?.scene.world.pressure==='clash',i<2);
+        await shot.evaluate(label=>{
+          const box=document.createElement('div');box.textContent=label+' · tick '+window.floorFrame.tick;
+          Object.assign(box.style,{position:'fixed',bottom:'0',left:'0',background:'#102523',color:'white',padding:'6px 8px',font:'13px system-ui',zIndex:9999});document.body.append(box);
+        },process.env.GITHUB_SHA.slice(0,8)+' · 320 × 844 · standalone · 1× · seed early / 3241 · '+checkpoint);
+        await shot.locator('#play').click();await shot.locator('#room').scrollIntoViewIfNeeded();
+        await shot.waitForFunction(([k,a,t])=>window.floorFrame.scene.events.some(e=>e.kind===k&&e.actor===a&&e.text.includes(t)),[kind,actor,word],{timeout:35000});
+        await shot.waitForTimeout(1450);
+        const take=shot.video();await clip.close();const input=await take.path(),name='take-'+i+'.mp4';
+        execFileSync('ffmpeg',['-hide_banner','-loglevel','error','-y','-sseof','-6','-i',input,'-an','-r','12','-c:v','libx264','-crf','29','-pix_fmt','yuv420p',path.join(dir,name)]);
+        await fs.unlink(input);list.push("file '"+name+"'");
       }
       await fs.writeFile(path.join(dir,'cuts.txt'),list.join('\n'));
       const film=path.join(dir,'dialogue-at-1x.mp4');

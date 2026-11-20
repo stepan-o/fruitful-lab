@@ -53,9 +53,12 @@ async function main(){
   assert(p.events.find(e=>e.kind==='queue.advanced').seq>resolved.seq);
  }
  assert(jail.run.marks.some(e=>e.kind==='handoff.finished'&&e.seq<jail.events.find(e=>e.kind==='case.resolved').seq));
- const occupiedHold=restorePoint('Missing ID');
+ const occupiedHold=start('early');
+ admitCommand(occupiedHold,intent(occupiedHold,'hold-appointment','appoint','LIMEN','security'));
+ occupiedHold.nextIntake=occupiedHold.tick+6000;
+ until(occupiedHold,r=>r.case?.status==='open');
  // An Intake operation can become ready during precisely the same Security hold.
- occupiedHold.pieces=[];occupiedHold.nextIntake=occupiedHold.tick;
+ occupiedHold.nextIntake=occupiedHold.tick;
  until(occupiedHold,r=>r.marks.some(e=>e.tick>r.case.opened&&e.kind==='handoff.finished'));
  assert.equal(occupiedHold.case.status,'open');
  assert(jail.events.some(e=>e.kind==='report.received'&&e.actor==='LIMEN'));

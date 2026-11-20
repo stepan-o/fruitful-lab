@@ -36,6 +36,9 @@ verify('H2',!knows(s,'bob','desk.lead')&&s.world.props['bob:id'].location.agent=
 const late=restorePoint('G5 · late cutoff');close(late);
 verify('H1',spent(late,'K10')&&knows(late,'bob','ed.invitation')&&late.world.props['bob:id'].location.agent==='ed');
 
+nextMorning(late);order(late,'appoint','LIMEN');until(late,r=>r.dialogue.phase==='work');
+assert.equal(late.world.props['bob:id'].location.agent,'bob','ed keeps the next-morning appointment');
+
 nextMorning(s);verify('3P',morningBids(s).STILETTO===scenes['3P'][0][1]);
 order(s,'appoint','LIMEN');until(s,r=>r.dialogue.phase==='work');
 verify('3A',!!words(s,scenes['3A'][0][1]));

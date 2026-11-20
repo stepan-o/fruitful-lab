@@ -79,6 +79,9 @@ function release(s:Run,id:string,reason:string){
   if(id==='ben'&&s.lead==='STILETTO'&&s.dialogue.posts.kit)support.ben=meters(129.6,142.8);
   if(id==='kit'&&s.backing==='STILETTO')support.kit=meters(119,142.1);
   if(id==='ben'&&s.backing==='STILETTO')support.ben=meters(122,142.5);
+  const supportFace:Record<string,string>={ed:'tray',gus:'rack',mae:'tray',lou:'rack',
+    kit:s.backing==='STILETTO'?'tray':'drive',ben:support.ben[0]>126000?'drive':'tray'};
+  s.dialogue.faces[id]=n>=0?stations[n]:supportFace[id];
   const post=n>=0?controls[n]:support[id];s.dialogue.posts[id]=post;go(s,id,post);
   if(reason==='Credential verified')observe(s,id,'saw.checked.card',pos(s,id),true);
   if(reason==='Daily pass')observe(s,id,'saw.pass',pos(s,id));
@@ -113,7 +116,7 @@ function check(s:Run){
   if(s.case?.status==='open'){if(s.tick>=s.case.deadline)resolveCase(s,false);return;}
   if(s.pressure==='clash'||s.pressure==='refusal'||s.pressure==='demand')return;
   if(!s.called){
-    if(!s.queue.length||s.tick<s.checking||s.dialogue.exchanges.some(x=>x.window&&x.room==='security'&&x.lines.some(l=>l.who===s.queue[0])))return;
+    if(!s.queue.length||s.tick<s.checking)return;
     s.called=s.queue[0];const a=s.world.agents[s.called];
     s.tasks[a.id].duty='approaching';go(s,a.id,desk);s.checking=0;
     const e=mark(s,'queue.called','security','desk.register',desk,s.lead,a.id,'Next for inspection');

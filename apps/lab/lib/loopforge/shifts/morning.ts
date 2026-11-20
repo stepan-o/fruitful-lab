@@ -41,12 +41,13 @@ function pendingMessenger(s:Run){
 }
 export function startWalk(s:Run){
   const d=s.dialogue;
-  const messenger=pendingMessenger(s);
-  const pair=messenger?['bob',messenger]:knows(s,'bob','sam.reports.pickup')||knows(s,'bob','lou.reports.edges')?['bob','ed']:knows(s,'jo','hand.return')?['jo','ben']:knows(s,'jo','desk.released')?['jo','max']:['bob','sam'];
+  const meeting=knows(s,'bob','missing.original')&&['sam.reports.pickup','lou.reports.edges','ed.invitation'].some(k=>knows(s,'bob',k));
+  const messenger=meeting?undefined:pendingMessenger(s);
+  const pair=messenger?['bob',messenger]:meeting?['bob','ed']:knows(s,'jo','hand.return')?['jo','ben']:knows(s,'jo','desk.released')?['jo','max']:['bob','sam'];
   for(const id of workers){
     const i=d.order.indexOf(id),p=i>=0?queueAt(i):id==='ed'?meters(122.45,130.25):meters(131.6,130.2);
-    const meeting=knows(s,'bob','sam.reports.pickup')||knows(s,'bob','lou.reports.edges');
-    const landing:Point=meeting&&id==='ed'?[queueAt(d.order.indexOf('bob'))[0]-1650,queueAt(d.order.indexOf('bob'))[1]-650]:[p[0]+(i<0?0:((i%2)*2-1)*350),p[1]-650];
+    const invitation=meeting&&knows(s,'bob','ed.invitation');
+    const landing:Point=invitation&&id==='ed'?meters(122.45,129.6):invitation&&id==='bob'?meters(122.45,128.55):meeting&&id==='ed'?[queueAt(d.order.indexOf('bob'))[0]-1650,queueAt(d.order.indexOf('bob'))[1]-650]:[p[0]+(i<0?0:((i%2)*2-1)*350),p[1]-650];
     const a=s.world.agents[id];a.position=[landing[0],landing[1]-5700];a.room='security';
     Object.assign(s.tasks[id],{duty:'walking',path:[],destination:a.position,walked:0,moving:false});
     go(s,id,landing);
@@ -71,6 +72,8 @@ export function advanceMorning(s:Run){
   const d=s.dialogue;
   if(['offered','recognized'].includes(d.transfer)||s.tick<d.ready||d.exchanges.some(x=>!x.window)||['work','departure','home'].includes(d.phase))return;
   if(d.phase==='walk'){
+    if(d.cue===0&&knows(s,'bob','missing.original')&&knows(s,'bob','ed.invitation')&&
+      ['ed','bob'].some(id=>dist(pos(s,id),s.tasks[id].destination)>100))return;
     if(d.cue++===0){
       const messenger=pendingMessenger(s);
       if(messenger&&dist(pos(s,'bob'),pos(s,messenger))<3000){
@@ -92,7 +95,6 @@ export function advanceMorning(s:Run){
       else if(knows(s,'jo','double.knock')&&knows(s,'LIMEN','expedited.before.demand'))schedule(s,'N1',lines('N1','max',1,2).concat(lines('N1','jo',2,3)),'security');
       else if(knows(s,'jo','desk.released'))cast(s,'3A');
       else if(knows(s,'bob','missing.original')&&!knows(s,'bob','sam.missed.pickup'))cast(s,'2A');
-      else if(knows(s,'jo','double.knock'))schedule(s,'N1',[phrase('jo',scripts.N1[1][1],'max'),phrase('max',scripts.N1[2][1],'jo')],'security');
       return;
     }
     if(d.cue===2){
@@ -114,7 +116,6 @@ export function advanceMorning(s:Run){
       else if(knows(s,'jo','hand.return')&&workers.filter(id=>sees(s,'LIMEN',pos(s,id),id)).length>=3)schedule(s,'4B',lines('4B','crew',4),'security');
       else if(knows(s,'jo','double.knock')&&knows(s,'LIMEN','expedited.before.demand'))schedule(s,'N1',lines('N1','crew',4,6),'security');
       else if(knows(s,'LIMEN','two.hands.one.card'))schedule(s,'3B',lines('3B','crew',4),'security');
-      else if(knows(s,'jo','double.knock'))schedule(s,'N1',lines('N1','crew',4,6),'security');
       const item=s.lead==='LIMEN'?lines('2C','crew',0,2):lines('S1','gus');
       const existing=d.exchanges.at(-1);
       schedule(s,'posting',item,'security');

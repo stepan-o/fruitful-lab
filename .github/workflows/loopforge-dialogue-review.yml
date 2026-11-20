@@ -4,7 +4,11 @@ on:
     branches: [codex/accepted-shifts-dialogue]
     paths:
       - 'apps/lab/lib/loopforge/shifts/**'
-      - 'apps/lab/public/loopforge-shifts/**'
+      - 'apps/lab/public/loopforge-shifts/*.js'
+      - 'apps/lab/public/loopforge-shifts/*.css'
+      - 'apps/lab/public/loopforge-shifts/index.html'
+      - 'apps/lab/lib/loopforge/encounters/**'
+      - 'apps/lab/scripts/shifts/portable.py'
       - 'apps/lab/scripts/shifts/dialogue-review.cjs'
       - '.github/workflows/loopforge-dialogue-review.yml'
 permissions:

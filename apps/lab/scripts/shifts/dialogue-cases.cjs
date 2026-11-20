@@ -30,7 +30,7 @@ function place(s,id,i,slot){
   s.world.agents[id].position=p;s.tasks[id].destination=p;s.tasks[id].path=[];
   s.tasks[id].duty=slot==='departure'?'departing':slot==='security'?'waiting':'working';
   if(slot==='security')s.queue.push(id);
-  if(slot==='conveyor')s.dialogue.posts[id]=p;
+  if(slot==='conveyor'){s.dialogue.posts[id]=p;s.dialogue.faces[id]='tray';}
 }
 function talk(s,n){while(n--){s.tick++;updateSpeech(s);cardContact(s);}}
 function witness(s,id,key){remember(s,id,key,'controlled firsthand receipt',true);}
@@ -74,7 +74,9 @@ test('G1 · second distinct authorized crossing opens a single crowd opportunity
 });
 test('G2 · actual positions and assignments govern staffed neighbors',()=>{
   const s=pairRoom('conveyor',['ed','sam']);assert(partners(s,'conveyor','ed','sam'));s.tasks.ed.duty='cleared';
-  assert(!partners(s,'conveyor','ed','sam'));s.tasks.ed.duty='working';s.world.agents.ed.position=meters(135,143);
+  assert(!partners(s,'conveyor','ed','sam'));s.tasks.ed.duty='working';
+  s.dialogue.faces.ed='forge';assert(!partners(s,'conveyor','ed','sam'));s.dialogue.faces.ed='tray';
+  s.world.agents.ed.position=meters(135,143);
   assert(!occupied(s,'ed'));assert(!partners(s,'conveyor','ed','sam'));
   const a=start('early'),b=start('late');for(const r of [a,b]){command(r,'appoint','STILETTO','security');advance(r,q=>q.dialogue.passages.length===10);}
   assert.notDeepEqual(a.dialogue.passages,b.dialogue.passages);for(const r of [a,b]){advance(r,q=>occupied(q,'ed')&&occupied(q,'gus'));assert(!r.case);}

@@ -1,0 +1,39 @@
+{
+  "origin": "http://localhost:3191",
+  "size": {
+    "width": 1000,
+    "height": 800
+  },
+  "comparison": {
+    "acted": 2,
+    "watched": 1,
+    "tick": 8074
+  },
+  "errors": [],
+  "clips": [
+    {
+      "name": "opening",
+      "title": "Day-1-blackout-to-walk-in",
+      "at": 189.137,
+      "length": 13.163999999999987
+    },
+    {
+      "name": "opening",
+      "title": "Forge-clear",
+      "at": 325.851,
+      "length": 7
+    },
+    {
+      "name": "opening",
+      "title": "bell",
+      "at": 365.433,
+      "length": 4
+    },
+    {
+      "name": "watch",
+      "title": "bell",
+      "at": 39.551,
+      "length": 4
+    }
+  ]
+}

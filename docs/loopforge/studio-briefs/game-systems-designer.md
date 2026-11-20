@@ -41,9 +41,15 @@ Read *Designing Games* in depth for the relevant decisions and provide verified 
 
 ## Current handoff
 
-**18 November 2026 · active owner commission, not an approved systems design.** Study and pre-synthesize; interview the owner one question at a time with suggested answers; propose a plan; implement the approved design study as a new tab immediately after Supervisor × room; deliver it for manual review.
+**20 November 2026 · SYSTEMS accepts the corrected Days 2–4 writing package for ENGINE implementation.** WRITER applied all eight owner-approved corrections at `91067933` on PR #169. The subsequent handoff commit is `d829b0ef`. Source review verified the five documents against the downloadable ZIP, all 37 scene and alternate IDs, all 60 chat entries and G1–G11. The table read’s spoken lines and approved response banks match the earlier reviewed revision.
 
-The target is an initial concept and concrete Days 2–4 draft, not a complete Act 1 implementation. ENGINE is finishing Day 1 independently. BDI must become a real decision/execution loop, but do not claim the future design is already integrated into the game.
+[Corrected table read](https://github.com/stepan-o/fruitful-lab/blob/9106793390eae36254145457aa26aa1b0793910d/docs/loopforge/DAYS_2_4_TABLE_READ.md) · [Five-document download](https://github.com/stepan-o/fruitful-lab/raw/9106793390eae36254145457aa26aa1b0793910d/apps/lab/public/loopforge-design/dialogue-engine-review.zip) · [WRITER handoff](https://github.com/stepan-o/fruitful-lab/blob/d829b0efa9549dcd118bb066baaceff7704731f8/docs/loopforge/studio-briefs/writer.md)
+
+ENGINE should apply the approved specification at `1eb05b0b` to that writing revision. Begin with G5, where hearing “ed’s desk” changes bob’s exit partner, and 4D/W1, where witnessing yesterday’s handoff changes whether ben follows jo. E2 replaces V06 with kit’s report to mae at an occupied working face. In Q1 the elbow demonstration spends one Conveyor slot at the stopped control. LIMEN can resume individual checks after the clash; staffing and time left determine rack output.
+
+[Read the ENGINE behavioral specification and regression cases](/loopforge-design/studio/days-2-4-dialogue-validation.html) · [Download the specification](/loopforge-design/studio/days-2-4-dialogue-validation.md)
+
+The specification records the original verdict on `09c63edf` and the nine existing kernel replays at `73658a93`. The new acceptance covers the corrected writing. ENGINE’s integrated replays and the owner’s normal-speed review of the playable result are next.
 
 ## Delivery and continuity
 

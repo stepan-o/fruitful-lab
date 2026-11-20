@@ -4,15 +4,15 @@
 
 ## Table read
 
-*Read only the words after the names. NEW marks proposed speech. The unmarked lines come from the approved reading and banks. Play the small voices to the person beside you. At the grate, three readers will need to come in together.*
+*Read only the words after the names. NEW marks proposed speech. The owner supplied the pitches. The other unmarked lines come from the approved reading and banks. Play the small voices to the person beside you. At the grate, three readers will need to come in together.*
 
 ### 2P · Before the second shift
 
-*Pre-shift, with the Producer. The two pitches are NEW. The crew is still outside.*
+*Pre-shift, with the Producer. The crew is still outside.*
 
-**LIMEN** All eight accounted for, Producer — I’d keep my gate and both my clerks.
+**LIMEN** We have to stick to the Protocol. No need to change anything.
 
-**STILETTO** Give me the gate — it took him three people to count to eight.
+**STILETTO** Give me the gate, send LIMEN to conveyor. It took him two helpers to count to eight.
 
 *The Producer accepts STILETTO’s pitch. STILETTO takes Security alone. LIMEN takes all ten on Conveyor. One intervention remains. Only then does the crew start its walk in.*
 
@@ -148,7 +148,7 @@ This is one playable reading for wording review. The selected crowd pair, occupi
 
 | Beat | What each person knows and wants | What they do with it · what a missed cue changes |
 | --- | --- | --- |
-| 2P · the bids | LIMEN heard ed account for the eight workers who went to Conveyor at yesterday’s bell. He wants the Producer to retain the two clerks who made the count. STILETTO saw both clerks at his gate and had to come for her crew. She hears him claim the eight now and counts him in with his clerks. She wants all ten workers on LIMEN’s line early. Each needs the Producer to award both rooms. | The Producer hears both whole proposals, picks STILETTO before arrival and retains one in-shift intervention. The workers are outside. No worker learns a post from the bid. |
+| 2P · the bids | LIMEN ran yesterday’s gate with ed and gus. He trusts the Protocol and wants the same people in the same posts. STILETTO ran Conveyor with eight workers and saw the other two helping LIMEN when she came to the gate. She wants the Producer to give her the gate so she can send all ten through to him. She can make this bid from her own shift. | The Producer hears both whole proposals, picks STILETTO before arrival and retains one in-shift intervention. The workers are outside. No worker learns a post from the bid. |
 | 2A · bob and sam | bob feels the empty pocket and remembers sam kneeling by him after the strike. sam remembers watching the blade for a second swing. Both can reach the grate. | bob asks the person who helped him. sam gives the limit of their sight and looks down with him. bob hears a meaningful answer, so the wish for company can be satisfied even though the search stays open. lou is close enough to hear bob’s question on this walk. If it is masked for lou, suppress their later card question unless they acquire another local reason. An unheard answer supplies bob with no witness result. |
 | 2A · max to gus | max heard yesterday’s NEXT and remembers waking to it. gus is the one who called and is walking alongside. max wants him to know how far that voice carried. | Play this one passing remark to gus. He may recognize the tease. A changed appointment alone cannot replace this pair. Without the memory or the partner, draw another eligible pair from the ten or let the walk go quiet. No card lead passes between them. |
 | 2B · LIMEN and the chorus | LIMEN sees the familiar crew bunch at the grate and wants their attention. ed can see the desk he used and offers to open it. bob risks asking the man who struck him for recognition. lou remembers leaving without a goodbye and wants ben’s experience. | Freeze the eligible workers on “Loopforge.” Draw up to three distinct hearers, then one eligible line per worker from the shared sixteen. Start all on the same beat. Here LIMEN hears ed and bob. ben hears lou and shakes their head within lou’s sight. A masked aside earns no answer from ben. A missed headshake leaves lou without ben’s answer. Nobody else gets the contents of the private exchange from the chorus. |
@@ -214,7 +214,7 @@ Reset the daily wish for company, conversation budgets and in-shift intervention
 
 In a speech-only read at 160 words per minute, the bench exchange took about eight seconds, the rack exchange twelve and the walk-out seven. The rack also needs time for gus’s silent NEXT. Start it while the next piece is still up the line. If that piece arrives sooner, let the load cut them off where it lands.
 
-Both pre-shift pitches and five lines on the floor are new for wording review. The new business with the pen, jo’s suspended hand and gus’s silent NEXT is proposed staging. At normal pace, let the little finger open on its second try. The distinction to listen for is whether jo moves on “I see it” or on “Belt, all clear.” To check the card thread, mask the pocket for gus while leaving sam’s bench hearing intact. sam still has a find to report, but lou cannot give bob the K12 news. Move only lou out of earshot at the exit and the audience can retain both workroom clues while bob retains neither. Owner wording review and SYSTEMS validation precede ENGINE integration.
+The owner supplied both Day 2 pitches. Five floor lines carry the NEW mark for wording review. The new business with the pen, jo’s suspended hand and gus’s silent NEXT is proposed staging. At normal pace, let the little finger open on its second try. The distinction to listen for is whether jo moves on “I see it” or on “Belt, all clear.” To check the card thread, mask the pocket for gus while leaving sam’s bench hearing intact. sam still has a find to report, but lou cannot give bob the K12 news. Move only lou out of earshot at the exit and the audience can retain both workroom clues while bob retains neither. Owner wording review and SYSTEMS validation precede ENGINE integration.
 
 The rack reading uses Tynan Sylvester’s account of how rules delimit the stories that can emerge in play, *Designing Games*, chapter 4, “Emergent Story,” printed pp. 90–91 (PDF pages 98–99, 1-based). The lip of the stack determines whether gus has anything he can identify to lou. The words alone cannot guarantee tomorrow’s question. The occluded-pocket reading above tests that limit.
 

@@ -8,11 +8,11 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 2P · Before the second shift
 
-*Pre-shift, with the Producer. The two pitches are NEW. The crew is still outside.*
+*Pre-shift, with the Producer. The crew is still outside.*
 
-**LIMEN** All eight accounted for, Producer — I’d keep my gate and both my clerks.
+**LIMEN** We have to stick to the Protocol. No need to change anything.
 
-**STILETTO** Give me the gate — it took him three people to count to eight.
+**STILETTO** Give me the gate, send LIMEN to conveyor. It took him two helpers to count to eight.
 
 *The Producer accepts LIMEN’s pitch. LIMEN takes Security with ed and gus. STILETTO takes the other eight on Conveyor. One intervention remains. Only then does the crew start its walk in.*
 

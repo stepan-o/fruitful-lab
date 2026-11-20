@@ -1,0 +1,95 @@
+{
+  "build": "1963a6232e0ccb78bf90369c417062d9013d02ff",
+  "landing": "https://fruitful-hepumbsgm-stepan-oskins-projects.vercel.app/stepanoskin/loopforge",
+  "desktop": {
+    "origin": "https://fruitful-hepumbsgm-stepan-oskins-projects.vercel.app",
+    "size": {
+      "width": 1000,
+      "height": 800
+    },
+    "comparison": {
+      "acted": 2,
+      "watched": 1,
+      "tick": 8080
+    },
+    "errors": [],
+    "clips": [
+      {
+        "name": "opening",
+        "title": "Day-1-blackout-to-walk-in",
+        "at": 199.481,
+        "length": 15.274000000000001
+      },
+      {
+        "name": "opening",
+        "title": "Forge-clear",
+        "at": 339.725,
+        "length": 7
+      },
+      {
+        "name": "opening",
+        "title": "bell",
+        "at": 377.972,
+        "length": 4
+      },
+      {
+        "name": "watch",
+        "title": "bell",
+        "at": 75.476,
+        "length": 4
+      }
+    ]
+  },
+  "touch": {
+    "origin": "https://fruitful-hepumbsgm-stepan-oskins-projects.vercel.app",
+    "size": {
+      "width": 320,
+      "height": 844
+    },
+    "comparison": {
+      "pass": 14,
+      "detention": 0,
+      "recovery": 10,
+      "moved": 17
+    },
+    "errors": [],
+    "clips": [
+      {
+        "name": "opening",
+        "title": "Day-1-blackout-to-walk-in",
+        "at": 195.717,
+        "length": 16.26399999999998
+      },
+      {
+        "name": "staffing",
+        "title": "kit-Forge-to-Belt",
+        "at": 46.584,
+        "length": 9.309999999999995
+      },
+      {
+        "name": "opening",
+        "title": "bell",
+        "at": 368.719,
+        "length": 4
+      },
+      {
+        "name": "staffing",
+        "title": "bell",
+        "at": 112.509,
+        "length": 4
+      },
+      {
+        "name": "detention",
+        "title": "bell",
+        "at": 115.931,
+        "length": 4
+      },
+      {
+        "name": "recovery",
+        "title": "bell",
+        "at": 116.735,
+        "length": 4
+      }
+    ]
+  }
+}

@@ -25,6 +25,7 @@ jobs:
           node-version: '22'
       - name: Prepare recording and portable build
         run: |
+          if ! command -v ffmpeg >/dev/null; then sudo apt-get -qq update && sudo apt-get -qq install ffmpeg; fi
           npm install --prefix "$RUNNER_TEMP/recording" playwright@1.56.1
           "$RUNNER_TEMP/recording/node_modules/.bin/playwright" install --with-deps chromium
           python3 apps/lab/scripts/shifts/portable.py "$RUNNER_TEMP/player"

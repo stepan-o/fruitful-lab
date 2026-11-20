@@ -69,6 +69,8 @@ export function production(s:Run){
         heard(s,phrase(id,response[1],'LIMEN'),'conveyor','received all-clear');
       }
     }
+    // A grip demonstration occupies the free hands until the advice is over.
+    if(i===2&&s.dialogue.exchanges.some(x=>x.topic==='V12'))continue;
     const ticks=s.pace==='pushed'?26:s.pace==='rushed'?36:s.pace==='slow'?63:48;
     const phase=operationPhase({id:key,ticks,perform:[],effects:[{fact:p.id+'.stage',value:i+1}]},
       {station:stations[i],from:i,to:i+1,workpiece:p.id,operator:{agent:id,position:controls[i],within:350}});

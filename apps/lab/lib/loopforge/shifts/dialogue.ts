@@ -41,6 +41,7 @@ export function heard(s:Run,l:Line,room:Room,topic:string){
     dist(a,pos(s,id))<=(l.quiet?3000:l.who===l.who.toUpperCase()?10500:5200)));
   s.heard[e.seq]=listeners;
   for(const id of listeners){
+    if(l.fact==='search'&&workers.includes(id)&&!['ed','gus','bob'].includes(id)&&(l.to===id||knows(s,id,'saw.clerk.ed')||knows(s,id,'saw.clerk.gus')))remember(s,id,'inquire.card','heard bob asking#'+e.seq);
     if(l.fact)remember(s,id,l.fact,l.who+'#'+e.seq+(l.source?' ← '+l.source:''),gesture);
     if(id===l.to&&id==='bob'&&workers.includes(l.who))s.dialogue.replied=true;
   }
@@ -127,7 +128,7 @@ export function available(s:Run,key:string,slot:Slot){
     case 'V08':return s.completed.length===3&&s.pieces.some(p=>p.stage===3);
     case 'V09':return s.pace==='all-clear'&&!!s.announced;
     case 'V10':return !missing&&b('bob','saw.grin');
-    case 'V12':return safe&&b('kit','prior.cramp')&&s.pace==='all-clear'&&!s.world.held['station:belt'];
+    case 'V12':return safe&&b('kit','prior.cramp')&&s.pace==='all-clear'&&!s.world.held['belt'];
     case 'V13':return b('sam','saw.solo');
     case 'V14':return s.pieces.some(p=>p.status==='rack');
     case 'V15':return safe;
@@ -193,7 +194,7 @@ function choose(s:Run,w:Window){
   const top=Math.max(...bids.map(b=>b.rank)),winner=draw(s,bids.filter(b=>b.rank===top));
   const {key,pair,rows}=winner;
   const origin=origins[key],chain=origin?source(s,origin[0],origin[1]==='back.'?'back.'+s.day:origin[1]):undefined;
-  const cast=rows.map(([who,words],i)=>phrase(who,words,pair.find(id=>id!==who)!,factMap[key]?.[i],chain));
+  const cast=rows.map(([who,words],i)=>phrase(who,words,pair.find(id=>id!==who)!,factMap[key]?.[i],chain,key==='K04'&&who==='ed'));
   if(key==='K08')cast[0].words=scripts['2G'][0][1];
   if(w.slot==='departure'&&pair[0]==='bob'){
     const target=pos(s,pair[1]),here=pos(s,'bob');
@@ -220,10 +221,14 @@ export function updateSpeech(s:Run){
       heard(s,phrase('STILETTO',scripts['2F'][2][1],'sam'),'conveyor','raised tray lip');
       mark(s,'chat.interrupted','conveyor','actor.sam',pos(s,'sam'),'STILETTO','sam','Catch the raised lip');s.chat='interrupted';cancel(s,x,w);continue;
     }
+    if(x.topic==='check.'+s.called&&['approach','demand','refusal','clash'].includes(s.pressure))continue;
     if(s.tick<x.due)continue;
     const l=x.lines[x.next];
     if(!l){cancel(s,x,w);continue;}
     if(x.topic==='4A'&&x.next===2&&knows(s,'jo','hand.return'))observe(s,'jo','demonstrated.open.palm',pos(s,'jo'),true);
+    if(x.topic==='3A'&&x.next===2&&sees(s,'jo',pos(s,'max'),'max')){
+      observe(s,'max','two.hands.one.card',pos(s,'max'));
+    }
     const recipients=heard(s,l,x.room,x.topic);
     if(x.topic==='clerks'&&l.who==='mae'&&recipients.includes('sam'))x.lines.push(phrase('sam',scripts['2C'].at(-1)![1],'mae'));
     if(w&&!recipients.includes(l.to)){cancel(s,x,w);continue;}

@@ -169,7 +169,16 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
       const act=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='gesture.seen'&&['hand.return','demonstrated.open.palm'].includes(e.text)&&tick-e.tick<55);
       const reaction=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='gesture.seen'&&/^\p{Extended_Pictographic}/u.test(e.text)&&tick-e.tick<38);
       if(reaction)tag(a.id+' '+reaction.text,x,top-6);
-      if(act){ctx.fillStyle='#f3ebcf';ctx.fillRect(x+scale*.18,y-scale*.52,scale*.22,scale*.14);}
+      if(act){
+        const hand=x+scale*.22,level=y-scale*.56,reach=Math.min(1,(tick-act.tick)/12);
+        ctx.fillStyle='#cb9c75';ctx.fillRect(hand,level,scale*.32,3);
+        if(act.text==='hand.return'){
+          const edge=hand+(1-reach)*scale*.42;
+          ctx.fillStyle='#263534';ctx.fillRect(edge-1,level-4,10,7);
+          ctx.fillStyle='#f5dfae';ctx.fillRect(edge,level-3,8,5);
+          ctx.fillStyle='#5a6359';ctx.fillRect(edge+1,level-2,2,3);
+        }
+      }
       const contact=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='worker.approaches'&&tick-e.tick<115);
       if(contact)tag(a.id+' → '+contact.subject,x,y+13);
       const choice=recentChoices.get(a.id);
@@ -181,6 +190,11 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   layers.sort((a,b)=>a.y-b.y).forEach(l=>l.draw());
   if(!sec)for(let i=0;i<4;i++){const [x,y]=xy(119.7+i*4,147.5);tag(stations[i],x,Math.min(h-4,y+18));}
   const occupied:{x:number;y:number;w:number;h:number}[]=[];
+  const contact=scene.events.filter(e=>e.kind==='gesture.seen'&&e.text==='hand.return'&&tick-e.tick<55).at(-1);
+  if(contact&&sec){
+    const [x,y]=xy(contact.at[0]/1000,contact.at[1]/1000);
+    occupied.push({x:x-30,y:y-46,w:60,h:57});
+  }
   for(const ev of view.speeches){
     const [ax,ay]=anchors.get(ev.speaker)??xy(ev.at[0]/1000,ev.at[1]/1000);
     if(ax<0||ax>w||ay<0||ay>h)continue;

@@ -15,6 +15,13 @@ export function workmates(s:Run){
       if(audible(s.world.agents.jo,s.world.agents.max))remember(s,'jo','double.knock','Forge stroke#'+last.seq,true);
     }
   }
+  if(last?.tick===s.tick&&last.kind==='rack.arrival'&&s.lead==='LIMEN'&&s.completed.length-d.teamAtBell===4&&occupied(s,'bob')){
+    const receipt=heard(s,phrase('STILETTO',scripts['2F'][5][1],'bob'),'conveyor','fourth carrier racked');
+    if(receipt.includes('bob'))d.intent.bob='report next unfinished piece';
+  }
+  if(d.intent.bob==='report next unfinished piece'&&s.pieces.some(p=>p.status!=='rack')&&occupied(s,'bob')){
+    heard(s,phrase('bob',scripts['2F'][6][1],'STILETTO'),'conveyor','unfinished piece');delete d.intent.bob;
+  }
   if(s.lead==='STILETTO'){
     if(d.errand==='none'&&d.completed.includes('K04')&&!d.exchanges.some(x=>x.topic==='K04')&&
       occupied(s,'ed')&&occupied(s,'gus')&&s.pieces.some(p=>p.status==='rack')){

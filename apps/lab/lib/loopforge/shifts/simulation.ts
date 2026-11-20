@@ -5,7 +5,7 @@ import {advanceMorning,morningBids,queueAt,queueOrder,seedHistory,startWalk} fro
 import {available,cardContact,crossed,draw,heard,knows,lineTime,lines,observe,occupied,openWindow,phrase,pos,schedule,scripts,sees,updateSpeech,workers} from './dialogue';
 import inheritance from './inheritance.json';
 import {ENCOUNTER_VERSION,type World,type Agent,type Point} from '../encounters/contract';
-import {propCustodian} from '../encounters/props';
+import {applyPropTransfers,propCustodian} from '../encounters/props';
 import {audible,roomAt} from '../intro/floor';
 import {type Run,type Command,type Task,type Lead,type Room,Hz,shiftTicks,stations,candidates,stationOwners,otherLead,timeInShift} from './contract';
 import {desk,returnSpot,controls,supervisorPost,workPost,queueSpots,standby,meters,move,go,dist} from './navigation';
@@ -57,8 +57,18 @@ function begin(s:Run,lead:Lead){
   startWalk(s);d.teamAtBell=s.completed.length;
   mark(s,'bid.accepted','security','desk.register',desk,lead,otherLead(lead),lead+' at Security · '+otherLead(lead)+' at Conveyor');
 }
+function deskHand(s:Run,id:string,returning:boolean){
+  const key=id+':id',prop=s.world.props?.[key],from=returning?'LIMEN':id,to=returning?id:'LIMEN';
+  if(!prop||propCustodian(s.world,key)!==from)return false;
+  const next=applyPropTransfers(s.world,[{prop:key,from:prop.location,to:{kind:'hand',agent:to,socket:'left'},observedBy:[id,'LIMEN']}]);
+  if(!next)return false;
+  s.world.props=next;
+  mark(s,returning?'card.handed.back':'card.presented','security','desk.register',pos(s,id),from,to,key);
+  return true;
+}
 function release(s:Run,id:string,reason:string){
   const i=s.queue.indexOf(id);if(i<0)return;
+  if(propCustodian(s.world,id+':id')==='LIMEN'&&!deskHand(s,id,true))return;
   s.queue.splice(i,1);
   const t=s.tasks[id];t.duty='cleared';
   const n=t.station;
@@ -115,6 +125,7 @@ function check(s:Run){
   if(!s.checking){
     if(s.quick){s.checking=s.tick+12;return;}
     const missing=propCustodian(s.world,a.id+':id')!==a.id&&!(s.pass?.valid&&s.pass.holder===a.id);
+    if(!missing&&propCustodian(s.world,a.id+':id')===a.id&&!deskHand(s,a.id,false))return;
     const key=checkReading(s,a.id,missing);
     const cast=scripts[key].slice(0,missing?scripts[key].findIndex(row=>row[1]==='No ID. Hold both desks.')+1:undefined).map(([speaker,text])=>{
       const who=workers.includes(speaker)&&speaker!=='ed'&&speaker!=='gus'?a.id:speaker;
@@ -128,7 +139,7 @@ function check(s:Run){
     return;
   }
   if(s.tick<s.checking)return;
-  if(!s.quick&&propCustodian(s.world,a.id+':id')!==a.id&&!(s.pass?.valid&&s.pass.holder===a.id)){
+  if(!s.quick&&propCustodian(s.world,a.id+':id')!==a.id&&propCustodian(s.world,a.id+':id')!=='LIMEN'&&!(s.pass?.valid&&s.pass.holder===a.id)){
     const id=eventId(s,'missing-'+a.id);
     s.case={id,subject:a.id,opened:s.tick,deadline:s.tick+deskWindowTicks,status:'open'};
     mark(s,'desk.signal','security','desk.register',desk,'LIMEN',a.id,'Missing original ID');
@@ -139,9 +150,10 @@ function check(s:Run){
 
 function settle(s:Run,yielded:boolean){
   s.pressure='settled';
+  if(s.called)s.dialogue.exchanges=s.dialogue.exchanges.filter(x=>x.topic!=='check.'+s.called);
   if(yielded){
     s.concessions++;s.quick=true;
-    if(s.called==='jo'){
+    if(s.called==='jo'&&deskHand(s,'jo',true)){
       const key=s.concessions===2?'desk.released':'hand.return';
       const target=meters(126.1,130.2);
       observe(s,'jo',key,target,true);
@@ -211,6 +223,7 @@ function pressure(s:Run){
     mark(s,'clash.resolved','security','desk.register',desk,'LIMEN','STILETTO','Crew decisions committed');settle(s,false);
     const waiting=s.queue.indexOf('kit');
     if(waiting>0&&s.tasks.kit.choice==='stay'){s.queue.splice(waiting,1);s.queue.unshift('kit');}
+    if(s.called&&propCustodian(s.world,s.called+':id')==='LIMEN')deskHand(s,s.called,true);
     s.called='';s.dialogue.checkTopic='';s.checking=s.tick+12;
   }
 }
@@ -218,10 +231,11 @@ function finish(s:Run){
   const d=s.dialogue;d.bellReached=true;d.phase='departure';d.exitAt=s.tick;
   d.exchanges=[];d.windows.forEach(w=>w.closed=true);
   s.coverage=['','','',''];
-  if(s.lead==='LIMEN')remember(s,'STILETTO','gate.shift.2','completed gate shift '+s.day,true);
+  if(s.lead==='LIMEN')remember(s,'STILETTO','gate.shift.'+s.day,'completed gate shift '+s.day,true);
   if(occupied(s,'mae'))remember(s,'mae','tray.set','set down at bell',true);
   if(occupied(s,'lou')&&!s.marks.some(e=>e.day===s.day&&e.kind==='handoff.started'&&e.anchor==='control.forge'))remember(s,'lou','idle.press','at rack for shift',true);
 
+  if(s.called&&propCustodian(s.world,s.called+':id')==='LIMEN')deskHand(s,s.called,true);
   if(s.case?.status==='open')resolveCase(s,false);
   if(s.pass?.valid){s.pass.valid=false;mark(s,'pass.expired','security','desk.register',desk,'LIMEN',s.pass.holder,'Pass expired at the bell');}
   for(const id of workers)if(s.tasks[id].duty==='detained'){s.tasks[id].duty='standing';mark(s,'custody.release','security','security.custody',desk,'LIMEN',id,'Released at shift end');}
@@ -315,7 +329,7 @@ export function admitCommand(s:Run,cmd:Command){
         else resolveCase(s,true);break;
       case 'accelerate':
         if(cmd.room!=='security'||cmd.target!=='LIMEN'||s.lead!=='LIMEN'||s.quick||!s.queue.length||cmd.incident!==eventId(s,'checks')||s.pressure==='clash'||s.case?.status==='open')reason='Individual checks unavailable';
-        else{s.quick=true;s.loyalty--;s.confidence--;s.authority--;if(s.pressure==='approach')settle(s,false);schedule(s,'expedite',lines('P2','crew'),'security');}break;
+        else{s.quick=true;remember(s,'LIMEN','expedited.before.demand','Producer order#'+s.tick,true);s.loyalty--;s.confidence--;s.authority--;if(s.pressure==='approach')settle(s,false);schedule(s,'expedite',lines('P2','crew'),'security');}break;
       case 'slow':case 'rush':
         if(cmd.room!=='conveyor'||cmd.target!=='STILETTO'||s.lead!=='LIMEN'||cmd.incident!==eventId(s,'pace'))reason='Pace order unavailable';
         else{s.pace=cmd.action==='slow'?'slow':'pushed';say(s,'STILETTO',cmd.action==='slow'?'Ease off. Let it settle.':'Push that line.','conveyor');}break;
@@ -324,7 +338,7 @@ export function admitCommand(s:Run,cmd:Command){
         else{
           s.backing=cmd.target as Lead;
           const ev=mark(s,'endorsement.public','security','desk.register',desk,'Producer',cmd.target,scripts[cmd.target==='LIMEN'?'E1':'E2'][0][1]);
-          const heard=Object.values(s.world.agents).filter(a=>s.tasks[a.id].duty!=='detained'&&audible({position:desk},a,true));
+          const heard=Object.values(s.world.agents).filter(a=>s.tasks[a.id].duty!=='detained'&&!s.dialogue.masked.includes(a.id)&&audible({position:desk},a,true));
           s.heard[ev.seq]=heard.map(a=>a.id);for(const a of heard)remember(s,a.id,'back.'+s.day,'Producer#'+ev.seq);
         }break;
       default:reason='Unknown command';

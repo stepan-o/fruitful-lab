@@ -139,7 +139,7 @@ function render(){
 }
 worker.onerror=e=>reportError(e.message);
 worker.onmessage=e=>{const m=e.data;serial=serial.then(async()=>{
-  if(m.local==='inspection'){el('traceOut').textContent=m.rows.map((v:{actor:string;intent:string;why:string;evidence:string[]})=>v.actor+' · '+v.intent+'\n'+v.why+'\n'+v.evidence.join(' · ')).join('\n')||'No recorded decision for this worker yet.';return;}
+  if(m.local==='inspection'){const choices=m.rows.map((v:{actor:string;intent:string;why:string;evidence:string[]})=>v.actor+' · '+v.intent+'\n'+v.why+'\n'+v.evidence.join(' · ')).join('\n');el('traceOut').textContent=[m.evidence.join('\n'),choices,m.receipts.join('\n')].filter(Boolean).join('\n\n')||'No observations yet.';return;}
   if(m.local==='saved'){button('load-state').disabled=false;txt('status','Saved at tick '+m.tick);return;}
   if(m.local==='transport'){playing=m.playing;render();return;}
   switch(m.msg_type){

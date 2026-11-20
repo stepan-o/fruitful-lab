@@ -39,7 +39,14 @@ self.onmessage=e=>{const msg=e.data;queue(async()=>{
   if(msg.local==='play'&&subscribed){playing=!!msg.on&&run.phase==='shift';lastTime=performance.now();debt=0;status();return;}
   if(msg.local==='morning'&&subscribed&&nextMorning(run)){playing=false;await snapshot();status();return;}
   if(msg.local==='inspect'&&subscribed){
-    self.postMessage({local:'inspection',rows:run.thoughts.filter(t=>t.actor===msg.actor).slice(-8),beliefs:run.world.agents[msg.actor]?.beliefs,exposure:run.injuryExposure});return;
+    const actor=msg.actor;
+    if(!Object.hasOwn(run.world.agents,actor))return;
+    const beliefs=run.world.agents[actor].beliefs;
+    const evidence=Object.entries(beliefs).filter(([key,b])=>b.value&&['desk.lead','anonymous.find','boot.lead','ed.invitation','hand.return','jo.reported.return','recognized.original','kit.reported.order','ben.reported.bob','jo.crossed.'+run.day].includes(key))
+      .map(([key,b])=>key+' · '+b.mode+' · '+b.source);
+    const receipts=run.marks.filter(e=>['speech.delivered','gesture.seen'].includes(e.kind)&&run.heard[e.seq]?.includes(actor)).slice(-6)
+      .map(e=>'Day '+e.day+' · '+e.tick+' · '+e.actor+' · '+e.text);
+    self.postMessage({local:'inspection',rows:run.thoughts.filter(t=>t.actor===actor).slice(-6),evidence,receipts});return;
   }
   if(!validEnvelope(msg))return;
   if(msg.msg_type==='VIEWER_HELLO'){

@@ -13,8 +13,10 @@ export function seedHistory(s:Run){
 }
 export function morningBids(s:Run){
   const key=knows(s,'LIMEN','saw.bruise')&&knows(s,'LIMEN','mae.injury.report')?'A1':knows(s,'LIMEN','slow.and.steady')?'Q1':
-    knows(s,'LIMEN','reckless')?'4P':knows(s,'STILETTO','gate.shift.2')?'3P':'2P';
-  return Object.fromEntries(['LIMEN','STILETTO'].map(id=>[id,scripts[key].filter(x=>x[0]===id).map(x=>x[1]).join(' ')]));
+    knows(s,'LIMEN','reckless')?'4P':Object.keys(s.world.agents.STILETTO.beliefs).filter(k=>k.startsWith('gate.shift.')&&knows(s,'STILETTO',k)).length>=2?'3P':'2P';
+  const bids=key==='Q1'?scripts.Q1.slice(0,2):key==='A1'?scripts.A1.slice(1):scripts[key];
+  const calm=knows(s,'LIMEN','expedited.before.demand')&&key==='3P';
+  return Object.fromEntries(['LIMEN','STILETTO'].map(id=>[id,calm&&id==='LIMEN'?scripts.N1[0][1]:bids.filter(x=>x[0]===id).map(x=>x[1]).join(' ')]));
 }
 export function queueOrder(s:Run){
   // Workers keep prior jobs. Past experience changes where they choose to stand.
@@ -44,7 +46,7 @@ export function startWalk(s:Run){
   for(const id of workers){
     const i=d.order.indexOf(id),p=i>=0?queueAt(i):id==='ed'?meters(122.45,130.25):meters(131.6,130.2);
     const meeting=knows(s,'bob','sam.reports.pickup')||knows(s,'bob','lou.reports.edges');
-    const landing:Point=(meeting&&id==='ed'||messenger===id)?[queueAt(d.order.indexOf('bob'))[0]-1650,queueAt(d.order.indexOf('bob'))[1]-650]:[p[0]+(i<0?0:((i%2)*2-1)*350),p[1]-650];
+    const landing:Point=meeting&&id==='ed'?[queueAt(d.order.indexOf('bob'))[0]-1650,queueAt(d.order.indexOf('bob'))[1]-650]:[p[0]+(i<0?0:((i%2)*2-1)*350),p[1]-650];
     const a=s.world.agents[id];a.position=[landing[0],landing[1]-5700];a.room='security';
     Object.assign(s.tasks[id],{duty:'walking',path:[],destination:a.position,walked:0,moving:false});
     go(s,id,landing);
@@ -55,7 +57,7 @@ export function startWalk(s:Run){
 function chorus(s:Run){
   const valid=manuscript.welcome.filter(([who,to],i)=>knows(s,who,'welcome.'+s.day)&&dist(pos(s,who),pos(s,to))<10500&&
     [knows(s,'ed','kept.book'),knows(s,'ed','two.pens'),knows(s,'gus','called.queue'),knows(s,'gus','called.queue'),
-      knows(s,'max','imitation')&&knows(s,'jo','heard.line.0'),knows(s,'jo','six.years'),knows(s,'max','imitation'),knows(s,'max','imitation'),
+      knows(s,'max','imitation')&&knows(s,'jo','max.imitated'),knows(s,'jo','six.years'),knows(s,'max','imitation'),knows(s,'max','imitation'),
       knows(s,'lou','exit.ben'),knows(s,'lou','exit.ben'),true,dist(pos(s,'sam'),pos(s,'gus'))<550,
       knows(s,'mae','tray.hand'),knows(s,'kit','drive.hand'),knows(s,'bob','struck'),knows(s,'bob','sam.helped')][i]);
   const candidates=[...new Set(valid.map(row=>row[0]))],sample=[];
@@ -87,13 +89,14 @@ export function advanceMorning(s:Run){
       }
       if(knows(s,'jo','hand.return'))cast(s,'4A');
       else if(knows(s,'kit','saw.cramp'))schedule(s,'Q1',[phrase('kit',scripts.Q1[2][1],'jo'),phrase('jo',scripts.Q1[3][1],'kit')],'security');
+      else if(knows(s,'jo','double.knock')&&knows(s,'LIMEN','expedited.before.demand'))schedule(s,'N1',lines('N1','max',1,2).concat(lines('N1','jo',2,3)),'security');
       else if(knows(s,'jo','desk.released'))cast(s,'3A');
       else if(knows(s,'bob','missing.original')&&!knows(s,'bob','sam.missed.pickup'))cast(s,'2A');
       else if(knows(s,'jo','double.knock'))schedule(s,'N1',[phrase('jo',scripts.N1[1][1],'max'),phrase('max',scripts.N1[2][1],'jo')],'security');
       return;
     }
     if(d.cue===2){
-      const ok=manuscript.crowd.filter(([a,b],i)=>dist(pos(s,a),pos(s,b))<5000&&(knows(s,a,'rumor.'+i)||i===9&&knows(s,a,'heard.line.7')||i===4&&knows(s,a,'heard.call')));
+      const ok=manuscript.crowd.filter(([a,b],i)=>dist(pos(s,a),pos(s,b))<5000&&(knows(s,a,'rumor.'+i)||i===9&&knows(s,a,'heard.brain.threat')||i===4&&knows(s,a,'heard.call')));
       if(ok.length){const [a,b,t]=draw(s,ok);heard(s,phrase(a,t,b),'security','passing aside');d.ready=s.tick+lineTime(t);}
       return;
     }
@@ -108,8 +111,9 @@ export function advanceMorning(s:Run){
   if(d.phase==='posting'){
     if(d.cue++===0){
       if(knows(s,'kit','saw.cramp'))schedule(s,'Q1',lines('Q1','crew',5,7),'security');
-      else if(knows(s,'jo','hand.return'))schedule(s,'4B',lines('4B','crew',4),'security');
-      else if(knows(s,'jo','desk.released'))schedule(s,'3B',lines('3B','crew',4),'security');
+      else if(knows(s,'jo','hand.return')&&workers.filter(id=>sees(s,'LIMEN',pos(s,id),id)).length>=3)schedule(s,'4B',lines('4B','crew',4),'security');
+      else if(knows(s,'jo','double.knock')&&knows(s,'LIMEN','expedited.before.demand'))schedule(s,'N1',lines('N1','crew',4,6),'security');
+      else if(knows(s,'LIMEN','two.hands.one.card'))schedule(s,'3B',lines('3B','crew',4),'security');
       else if(knows(s,'jo','double.knock'))schedule(s,'N1',lines('N1','crew',4,6),'security');
       const item=s.lead==='LIMEN'?lines('2C','crew',0,2):lines('S1','gus');
       const existing=d.exchanges.at(-1);

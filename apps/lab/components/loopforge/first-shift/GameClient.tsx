@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import FirstShift from "./FirstShift";
 import ProducerConsole from "./ProducerConsole";
 import LeadershipCall from "./LeadershipCall";
 import {endCampaign,freshCampaign,loadCampaign,saveCampaign,type Campaign} from "../../../lib/loopforge/shifts/campaign-save";
@@ -16,7 +17,9 @@ import { ConsoleBeacon, ConsoleSignals } from "./ConsoleSignals";
 import { Art, Control, Kicker, materialStyle, type Media } from "./ConsoleParts";
 import s from "./themes.module.css";
 
-function GameSession({ media }: { media: Media }) {
+type Props={media:Media;legacyReview?:boolean};
+function GameSession({media,legacyReview=false}:Props) {
+  const [legacyStarted,startLegacy]=useState(false);
   const [run,setRun]=useState<Campaign|null>(null), [menu, setMenu] = useState(true), [settings, setSettings] = useState(false);
   const theme = useConsoleTheme()!;
   const start = useRef<HTMLButtonElement>(null);
@@ -25,8 +28,9 @@ function GameSession({ media }: { media: Media }) {
   useEffect(() => { if (settings) dialog.current?.showModal(); else dialog.current?.close(); }, [settings]);
   useEffect(() => { if (menu) start.current?.focus(); }, [menu]);
   function closeSettings() { setSettings(false); settingsButton.current?.focus(); }
-  useEffect(()=>{setRun(loadCampaign());},[]);
+  useEffect(()=>{if(!legacyReview)setRun(loadCampaign());},[legacyReview]);
   function enter() {
+    if(legacyReview){startLegacy(true);setMenu(false);return;}
     const current=run??freshCampaign();saveCampaign(current);setRun(current);setMenu(false);
   }
   function phase(next:Campaign["phase"]) {
@@ -49,14 +53,15 @@ function GameSession({ media }: { media: Media }) {
         <Art media={media} id="logo" className={s.menuLogo} sizes="320px" priority />
         <h1>First shift</h1>
         <p className={s.menuMotto}>Truth stays clean.<br />Story gets messy.</p>
-        <button ref={start} className={s.startControl} disabled={theme.loading} onClick={enter}>{run ? "Resume shift" : "Enter factory"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
+        <button ref={start} className={s.startControl} disabled={theme.loading} onClick={enter}>{run||legacyStarted ? "Resume shift" : legacyReview?"Start shift":"Enter factory"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
         <button ref={settingsButton} className={s.menuSetting} onClick={() => setSettings(true)}>Settings <span>Graphics / presentation</span></button>
         <Link href="/stepanoskin/loopforge" prefetch={false}>← Back to Loopforge</Link>
-        <small className={s.sessionNote}>{run ? "Your shift is paused. Resume to continue." : "Days 1–2 · Week one"}</small>
-        <small className={s.sessionNote}>Progress is saved in this tab.</small>
+        <small className={s.sessionNote}>{run||legacyStarted ? "Your shift is paused. Resume to continue." : legacyReview?"First-turn review":"Days 1–2 · Week one"}</small>
+        <small className={s.sessionNote}>{legacyReview?"Progress lasts while this page stays open.":"Progress is saved in this tab."}</small>
         {theme.error && <p role="alert">{theme.message}</p>}
       </section>
     </main>}
+    {legacyReview&&legacyStarted&&<div hidden={menu} inert={menu}><FirstShift media={media} suspended={menu} onOpenMenu={()=>setMenu(true)}/></div>}
     {!menu&&run&&<>
       <div className={floorStyle.toolbar}><span>{run.phase==="intro"?"DAY 1 · FIRST SHIFT":run.phase==="console"?"DAY 2 · LEADERSHIP CALLING":"DAY 2 · PRODUCER CONSOLE"}</span><button onClick={()=>setMenu(true)}>Main menu</button></div>
       {run.phase==="intro"&&<IntroPlayer campaign={{seconds:run.seconds,onProgress:seconds=>{
@@ -80,6 +85,6 @@ function GameSession({ media }: { media: Media }) {
     </dialog>
   </div>;
 }
-export default function GameClient({ media }: { media: Media }) {
-  return <ThemeProvider><ConsoleSignals><GameSession media={media} /></ConsoleSignals></ThemeProvider>;
+export default function GameClient(props:Props) {
+  return <ThemeProvider><ConsoleSignals><GameSession {...props} /></ConsoleSignals></ThemeProvider>;
 }

@@ -160,7 +160,7 @@ it("does not surface an older load failure after a newer console is fitted", asy
 });
 it("keeps an uncommitted dispatch choice through theme changes and a menu round-trip", async () => {
   jest.mocked(useFirstTurnRun).mockReturnValue({ view: { ...project(initialState(7)), phase: "allocation", produced: 11, floor:{...initialState(7).floor,stage:"day"} }, pending: false, error: "", send, restart, recover: jest.fn(), download: jest.fn() });
-  render(<GameClient media={firstShiftMedia()} />);
+  render(<GameClient legacyReview media={firstShiftMedia()} />);
   await waitFor(() => expect(screen.getByRole("button", { name: /Start shift/ })).toBeEnabled());
   fireEvent.click(screen.getByRole("button", { name: /Start shift/ }));
   fireEvent.click(screen.getByRole("button", { name: "Split output" }));
@@ -198,7 +198,7 @@ it("opens an explicit console link ahead of a stored preference without starting
 
 it("shares saved graphics between menu and shift settings without restarting the run", async () => {
   jest.mocked(useFirstTurnRun).mockReturnValue({ view: { ...project(initialState(7)), phase: "allocation" }, pending: false, error: "", send, restart, recover: jest.fn(), download: jest.fn() });
-  render(<GameClient media={firstShiftMedia()} />);
+  render(<GameClient legacyReview media={firstShiftMedia()} />);
   await waitFor(() => expect(screen.getByRole("button", { name: /Start shift/ })).toBeEnabled());
   fireEvent.click(screen.getByRole("button", { name: /Settings Graphics/ }));
   fireEvent.change(screen.getByLabelText("Quality"), { target: { value: "performance" } });

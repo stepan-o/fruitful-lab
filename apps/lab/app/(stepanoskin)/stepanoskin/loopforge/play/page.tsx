@@ -2,10 +2,11 @@ import GameClient from "@/components/loopforge/first-shift/GameClient";
 import { firstShiftMedia } from "@/lib/loopforge/first-shift/media";
 export const viewport = { themeColor: "#070b0b", colorScheme: "dark" };
 export const metadata = {
-  title: "The first shift · Loopforge",
+  title: "The first two shifts · Loopforge",
   description:
-    "Choose your adviser. Release the line. Live with the first consequences.",
+    "Enter the factory, appoint the supervisors and work the line through the Day 2 bell.",
 };
-export default function Page() {
-  return <GameClient media={firstShiftMedia()} />;
+export default async function Page({searchParams}:{searchParams:Promise<{review?:string}>}) {
+  const {review}=await searchParams;
+  return <GameClient media={firstShiftMedia()} legacyReview={review==="first-turn"} />;
 }

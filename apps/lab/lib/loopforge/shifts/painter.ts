@@ -4,7 +4,7 @@ import geometry from '../intro/geometry.json';
 import {approachZone,type Room,stations} from './contract';
 import atlas from '../../../public/loopforge-intro/sprites.json';
 import floorPack from '../../../public/loopforge-design/floor-correction/v1/manifest.json';
-import {drawRoomMaterial} from '../room-material';
+import {drawQueueRail,drawRoomMaterial} from '../room-material';
 import introSprites from './intro-sprites.json';
 
 type Images = Record<string,CanvasImageSource>;
@@ -16,6 +16,7 @@ export function loadArt(root='..'): Promise<Images> {
   if (!loading) {
     const images: Images = {};
     const sources = introSprites.map(name => [name, root+'/loopforge-intro/' + name + '.webp']);
+    if(root==='')sources.push(['queueRail','/loopforge-intro/sec-rails-depth.png']);
     for (const {material, room} of Object.values(floorPack.rooms)) {
       for (const {file} of [material, room]) sources.push([file, root+floorRoot.slice(2) + file]);
     }
@@ -91,10 +92,7 @@ function floorBackdrop(room: Room, w: number, h: number, view: ReturnType<typeof
 // as Day One. The visible walls have gaps at the actual staff portals.
 function approachFloor(ctx:CanvasRenderingContext2D,w:number,h:number,camera:ReturnType<typeof floorView>,images:Images){
   const {scale,xy}=camera;
-  const tile=images['tile-security'],tw=4*scale,th=tw*.67,[ox,oy]=xy(0,0);
-  for(let x=((ox%tw)+tw)%tw-tw;x<w;x+=tw)
-    for(let y=((oy%th)+th)%th-th;y<h;y+=th)
-      ctx.drawImage(tile,Math.floor(x),Math.floor(y),Math.ceil(tw)+1,Math.ceil(th)+1);
+  drawRoomMaterial(ctx,w,h,'security',xy,images,false);
   const rect=(x:number,y:number,dx:number,dy:number,color:string)=>{
     const [px,py]=xy(x,y);ctx.fillStyle=color;ctx.fillRect(px,py,dx*scale,dy*scale*.67);
   };
@@ -149,7 +147,13 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   const anchors=new Map<string,number[]>();
   if(sec){
     const [x0,y0]=xy(123.25,122.8),[x1,y1]=xy(130.25,127.2);
-    ctx.strokeStyle='#729193';ctx.lineWidth=2;for(const x of [x0,x1]){ctx.beginPath();ctx.moveTo(x,y0);ctx.lineTo(x,y1);ctx.stroke();}
+    if(images.queueRail){
+      for(const {rect} of geometry.fixtures.filter(f=>f.kind==='rail')){
+        layers.push({y:rect.y+rect.h,draw:()=>drawQueueRail(ctx,images.queueRail,xy,rect,scale)});
+      }
+    }else{
+      ctx.strokeStyle='#729193';ctx.lineWidth=2;for(const x of [x0,x1]){ctx.beginPath();ctx.moveTo(x,y0);ctx.lineTo(x,y1);ctx.stroke();}
+    }
     for(const [cx,cy] of [registerDesk,[131.6,131.9]]){
       const [x,y]=xy(cx,cy);layers.push({y:cy-.7,draw:()=>sprite('desk-back',0,x,y)},{y:cy,draw:()=>sprite('desk-front',0,x,y)});
     }

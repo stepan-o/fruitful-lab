@@ -23,3 +23,12 @@ export function drawRoomMaterial(ctx:CanvasRenderingContext2D,w:number,h:number,
       draw(material.file,ox+col*dx,oy+row*dy,dx,dy);
   if(detail)draw(lighting.file,lighting.originM[0],lighting.originM[1],lighting.extentM[0],lighting.extentM[1]);
 }
+
+// S1/S2 share the S5 export's [10,326] south ground pivot at 64 px/m.
+// Foreshorten its ground run while keeping the upright above the north post.
+export function drawQueueRail(ctx:CanvasRenderingContext2D,image:CanvasImageSource,xy:Projection,
+  rect:{x:number;y:number;w:number;h:number},scale:number){
+  const [x,north]=xy(rect.x+rect.w/2,rect.y),[,south]=xy(rect.x+rect.w/2,rect.y+rect.h);
+  const k=scale/64,top=north-(326-rect.h*64)*k;
+  ctx.drawImage(image,Math.round(x-10*k),Math.round(top),20*k,south-top+4*k);
+}

@@ -1,4 +1,4 @@
-import {drawRoomMaterial} from '../../../lib/loopforge/room-material';
+import {drawQueueRail,drawRoomMaterial} from '../../../lib/loopforge/room-material';
 import type {Skin as FloorSkin} from '../../../lib/loopforge/shifts/skin';
 import floor from '../../../lib/loopforge/intro/geometry.json';
 import type {Actor,Frame,Utterance} from '../../../lib/loopforge/intro/protocol';
@@ -77,7 +77,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
   const entries:{depth:number;draw:()=>void}[]=[];
   const queue=(depth:number,draw:()=>void)=>entries.push({depth,draw});
   for(const f of [...floor.fixtures,...floor.forgeHall.installations]){
-    if(['intake','wash','belt','forge'].includes(f.id)||!iso&&['checks','register'].includes(f.id))continue;
+    if(['intake','wash','belt','forge'].includes(f.id)||!iso&&['checks','register','west-rail','east-rail','output'].includes(f.id))continue;
     queue(f.rect.y+f.rect.h,()=>block(f.rect,.55,'#354044','#899186'));
   }
   for(const [i,station] of floor.stations.entries()){
@@ -96,6 +96,9 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
     });
   }
   if(!iso){
+    for(const rail of floor.fixtures.filter(f=>f.kind==='rail')){
+      queue(rail.rect.y+rail.rect.h,()=>drawQueueRail(ctx,bank.images.queueRail,project,rail.rect,s));
+    }
     for(const desk of floor.fixtures.filter(f=>f.kind==='desk')){
       const {x,y,w,h}=desk.rect,[px,py]=project(x+w/2,y+h);
       queue(y-.9,()=>sprite('desk-back',0,px,py));queue(y+h+.03,()=>sprite('desk-front',0,px,py));

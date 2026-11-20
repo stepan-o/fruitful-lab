@@ -64,7 +64,7 @@ export default function ShiftFloor({run,onFinish,suspended}:{run:Campaign;onFini
     const speeches=floor.dialogue.filter(e=>e.room===room||room==='security'&&floor.scene.world.stage==='walk');
     const last=speeches.at(-1);
     view.speeches=last?speeches.filter(e=>e.tick===last.tick).map(e=>({seq:e.seq,tick:e.tick,speaker:e.actor,text:e.text,at:e.at,asset:'fl-bubble',nameplate:'fl-bubble-nameplate'})):[];
-    paint(ctx,w,h,floor.scene,room,floor.tick,assets[0],assets[1],view,{...floor,focusStation});
+    paint(ctx,w,h,floor.scene,room,floor.tick,assets[0],assets[1],view,{...floor,focusStation:window.matchMedia('(max-width:800px)').matches?focusStation:undefined});
   },[floor,assets,room,viewSize,suspended,focusStation]);
   if(!floor)return <p role="status">{notice||'Connecting to the factory…'}</p>;
   const w=floor.scene.world, manual=floor.manual,selected=floor.workers.find(a=>a.id===worker&&a.available);

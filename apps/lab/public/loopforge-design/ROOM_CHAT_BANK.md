@@ -1,6 +1,6 @@
 # Room and walk-out chat bank
 
-**WRITER · Days 2–4 · For SYSTEMS review**
+**WRITER · Days 2–4 · Owner-approved SYSTEMS corrections · 20 November 2026**
 
 Each entry is one conversation between two people. Read only the named lines. Play an emoji as a silent reaction over its speaker. The opening note gives each person a reason to speak now. The note after the last line says what the listener can take away. A work call, an obstruction or the bell can cut the exchange at any word.
 
@@ -202,7 +202,7 @@ The first two banks belong to Security and Conveyor. The walk-out bank begins on
 
 **jo** He turned it over for me.
 
-**If heard.** max gains jo’s account of the release. Only jo witnessed the gesture at the desk.
+**If heard.** Of these two speakers, jo saw LIMEN return the card. max learned about it from jo. In 3D ben and kit also saw the handoff. bob heard the orders from the tail with his view of the hands blocked.
 
 ### V04 · Two sounds
 
@@ -228,7 +228,7 @@ The first two banks belong to Security and Conveyor. The walk-out bank begins on
 
 **jo** Takes its time drying its hair.
 
-**If heard.** jo learns the sound comes from the draining tray when bob points it out. The next movement still needs the room leader’s clearance.
+**If heard.** jo learns the sound comes from the draining tray when bob points it out. The whole exchange spends one Conveyor slot. On STILETTO’s line jo can take the safely washed, ready piece at a staffed Belt. On LIMEN’s line jo must also hear his all-clear. An urgent safety warning remains available after both chat slots are spent.
 
 ### V06 · An empty post
 
@@ -304,7 +304,7 @@ The first two banks belong to Security and Conveyor. The walk-out bank begins on
 
 ### V12 · One hand free
 
-*The neighboring worker has been rubbing a wrist since yesterday’s all-clears. kit remembers leaning on the rail between calls.*
+*At neighboring drive and Belt positions, kit has seen jo rubbing a wrist after yesterday’s all-clears. While the control is safely stationary, kit has a free hand to demonstrate. This elective advice uses a Conveyor slot.*
 
 **kit** Put your elbow here while you wait.
 
@@ -354,7 +354,7 @@ The first two banks belong to Security and Conveyor. The walk-out bank begins on
 
 ### W01 · The hard part
 
-*Outside after a stalled shift, max stops at the sill to shake a sore foot. lou has seen them stand over an idle press.*
+*Only if the press stood idle the whole shift and lou witnessed the wait. Outside, max stops at the sill to shake a sore foot. lou has seen them stand over an idle press.*
 
 **max** I could do that shift sitting down.
 
@@ -574,7 +574,7 @@ The first two banks belong to Security and Conveyor. The walk-out bank begins on
 
 ### K07 · An honest miss
 
-*Either room or exit. A neighbor asks gus because he was nearby. His view was blocked and he wants to stop a bad account spreading.*
+*Either room or exit. A neighbor knows gus was near the original pickup on Day One. gus remembers his own blocked view that day. Today’s tray hiding ed’s pocket cannot supply that memory.*
 
 **kit** Did you see who got bob’s card?
 
@@ -612,7 +612,7 @@ The first two banks belong to Security and Conveyor. The walk-out bank begins on
 
 **ed** Catch me before I open up. I’ll show you what I found.
 
-**If heard.** bob gains an invitation to catch ed before checks. An invitation has no effect on physical custody.
+**If heard.** bob gains a future meeting before checks. ed has promised a showing. bob still lacks the original.
 
 ### K11 · Passed down
 
@@ -660,7 +660,7 @@ The first two banks belong to Security and Conveyor. The walk-out bank begins on
 
 *ed lets bob read the photograph. bob takes his own card when ed lets go.*
 
-**If heard.** ed’s admission can reach bob before any transfer. bob stops searching only after he recognizes and receives his original. A call before release leaves it with ed.
+**If heard.** ed acknowledges bob’s request. He has yet to identify a card or say who picked it up. K04 supplies an explicit pickup admission. Seeing the face gives bob recognition. An interruption here leaves the card with ed. Only ed’s release and bob’s receipt of his original end the search.
 
 ### K15 · A lead from the other pocket
 

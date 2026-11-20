@@ -1,8 +1,8 @@
 # The good side of the rail
 
-**Loopforge · Three mornings · WRITER review draft · 19 November 2026**
+**Loopforge · Three mornings · Corrected table read · 20 November 2026**
 
-Read the three shifts straight through. Lowercase names belong on the bubbles. Italics are business for the actors. An emoji flashes over the named worker. Play the face and read only the words. The short marks in the headings also appear in the [BDI companion](DAYS_2_4_BDI.md). Pickups after the third bell give the cast another way through the same rooms. The owner approved 2A with its ten crowd lines and 2B with its sixteen greeting replies on 19 November. The adviser is appointed before the workers arrive. Review resumes at the two desks in 2C. The [ID-check bank](#id-checks-at-security) serves every shift with LIMEN at Security. The [worker chat bank](ROOM_CHAT_BANK.md) has separate draws for the queue, neighboring posts and the walk home. Each reading below uses one possible clearance order.
+Read the three shifts straight through. Lowercase names belong on the bubbles. Italics are business for the actors. An emoji flashes over the named worker. Play the face and read only the words. The short marks in the headings also appear in the [BDI companion](DAYS_2_4_BDI.md). Pickups after the third bell give the cast another way through the same rooms. The owner approved 2A with its ten crowd lines and 2B with its sixteen greeting replies on 19 November. The adviser is appointed before the workers arrive. The stage directions include the owner-approved SYSTEMS corrections. The [ID-check bank](#id-checks-at-security) serves every shift with LIMEN at Security. The [worker chat bank](ROOM_CHAT_BANK.md) has separate draws for the queue, neighboring posts and the walk home. Each reading below uses one possible clearance order.
 
 ## Day 2 · The photograph
 
@@ -50,7 +50,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **LIMEN** You and you, you get to help me with ID checks again.
 
-*ed opens the register. gus takes the other desk. [One line from each clerk, one from the crowd.](#the-two-desks)*
+*ed opens the register and enters one loose card found on the floor. He leaves the owner’s space blank. gus takes the other desk. [One line from each clerk, one from the crowd.](#the-two-desks)*
 
 **ed** Very sound, sir. Shall I just change the date on yesterday’s page?
 
@@ -64,7 +64,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 2D · A pass
 
-*Three draws from [LIMEN’s ID checks](#id-checks-at-security). sam has the card out at ed’s desk.*
+*Three draws from [LIMEN’s ID checks](#id-checks-at-security). sam has the card out at ed’s desk. ed keeps his voice down over the book. sam hears him. Farther back, bob can see the pen but can’t make out the words.*
 
 **LIMEN** Intake, sam?
 
@@ -86,7 +86,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **LIMEN** That’s you. Through.
 
-*max takes the card and clears the gate, second after sam. bob has jo at his shoulder while gus waits for max to pass.*
+*max takes the card and clears the gate, second after sam. bob has jo at his shoulder in the remaining queue. gus is turning back from the open boom.*
 
 **bob** When mine hit the floor, could you see past sam?
 
@@ -104,13 +104,13 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **LIMEN** No ID. Hold both desks.
 
-*gus keeps jo back. The Producer issues bob a daily pass. LIMEN reads its date.*
+*jo hears “Hold both desks.” gus keeps them back. The Producer issues bob a daily pass. LIMEN reads its date.*
 
 **LIMEN** Good until the bell. Through you go.
 
 **bob** *(to LIMEN)* I look better on this one.
 
-*There’s no photograph. bob pockets the slip and goes to Wash. Now gus calls jo.*
+*There’s no photograph. bob pockets the slip and crosses the gate. He looks back. jo is getting their card out. gus calls jo forward as bob turns for Wash.*
 
 ### 2E · The empty belt
 
@@ -120,7 +120,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **bob** jo was getting a card out when I left.
 
-*She goes back through the concourse. At Security, jo still has the card out. LIMEN is turning it to the light.*
+*If bob missed the glance, skip his answer. STILETTO can go and see what is holding up the empty Belt. She goes back through the concourse. At Security, jo still has the card out. LIMEN is turning it to the light.*
 
 **STILETTO** There. That hand. I need it on a clamp.
 
@@ -152,7 +152,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 2G · Clocking out
 
-*At the bell mae cuts the feed. kit stops the drive. bob unfolds the pass and looks at the date. ben has drawn level with him on the way out.*
+*At the bell mae cuts the feed. kit stops the drive. bob unfolds the pass and looks at the date. ben and ed draw level with him on either side on the way out. bob turns to ben.*
 
 **bob** ben. You were at the back. Did a card come past your feet?
 
@@ -232,7 +232,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **STILETTO** Look where I have to stand to get one belt operator. Who’s running my floor?
 
-*LIMEN looks down. Both her feet are planted on his side of the sill. He holds jo’s card a moment longer, then turns it face down in their palm.*
+*LIMEN looks down. Both her feet are planted on his side of the sill. He holds jo’s card a moment longer, then turns it face down in their palm. ben and kit see his fingers open. From the tail bob hears both orders over kit’s shoulder. The hands are hidden from him.*
 
 **LIMEN** Put them away. Go on.
 
@@ -248,7 +248,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **jo** Takes its time drying its hair.
 
-*The brain comes up to max wet and square. While the press opens, max leans towards jo.*
+*The spray has stopped and the washed piece sits square. At the staffed Belt, jo takes it on STILETTO’s pace. The brain comes up to max wet and square. While the press opens, max leans towards jo.*
 
 **max** There you are. Was it the photograph again?
 
@@ -294,7 +294,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **jo** He had to let go of me to do it.
 
-*ben slips in behind jo. bob hangs back by the rail. At the front mae and sam go on talking with their hands about the angle of a tray.*
+*ben slips in behind jo in either reading, after hearing the same account and watching the same demonstration. bob hangs back by the rail. At the front mae and sam go on talking with their hands about the angle of a tray.*
 
 ### 4B · Good morning
 
@@ -338,7 +338,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 4D · Two bosses
 
-*jo is at the desk, card in hand. The passage past it is open. No missing-ID case is under inspection.*
+*It is late in the shift. jo is at the desk, card in hand. The passage past it is open. No missing-ID case is under inspection.*
 
 **STILETTO** I’ll have the rest now.
 
@@ -356,7 +356,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 *jo goes through on the free side. ben watches their shoulders clear the rail before following. STILETTO turns for Conveyor with the two she has. kit can see LIMEN looking straight at him. He puts his card on the desk and stays. bob keeps both boots where they are.*
 
-*kit taps his own chest, remembering what he told bob in the queue. Both stay.*
+*kit taps his own chest, remembering what he told bob in the queue. Both stay. With STILETTO gone, LIMEN slides kit’s card toward the open register and resumes the individual check.*
 
 ### 4E · The other room
 
@@ -368,11 +368,11 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **mae** 😑 Then this one can sit.
 
-*She eases the waiting tray back onto its supports. jo leaves the drive off. No washed brain reaches the Forge. max takes their foot off the treadle.*
+*She eases the waiting tray back onto its supports. jo leaves the drive off. Wash is still empty when the last chance to get this piece through Belt and Forge passes. max takes their foot off the unused treadle.*
 
 ### 4F · Bell
 
-*At the bell gus stands aside at Security. kit picks up his card. bob goes out with him. In Conveyor sam and mae lower the next tray onto the bench. The rack has exactly what was on it this morning. max and lou leave side by side.*
+*The bell catches LIMEN still comparing kit’s card. gus stands aside. kit picks up his card. bob goes out with him. In Conveyor sam and mae lower the next tray onto the bench. The rack has exactly what was on it this morning. max and lou leave side by side. Use this exit only if the press stood idle all shift. An authorized washer arriving in time can get a piece to Forge. Play the resulting count and draw a fitting exit.*
 
 **max** I could do that shift sitting down.
 
@@ -654,6 +654,8 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **C31 · One loose entry**
 
+*ed has already entered the found card without an owner. He speaks to sam over the book. In the matched readings bob is too far back to catch the words.*
+
 **LIMEN** Intake, sam?
 
 **sam** Intake.
@@ -907,7 +909,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### S2 · All clear
 
-*LIMEN puts himself where the operator can hear him at each successive handoff. The next operator waits. Let the washed carrier sit for a breath within jo’s reach.*
+*LIMEN puts himself where the operator can hear him at each successive handoff. The next operator waits. Let the washed carrier sit for a breath within jo’s reach. jo answers LIMEN as they engage Belt on the actual all-clear.*
 
 **LIMEN** Intake, all clear.
 
@@ -923,7 +925,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **LIMEN** Forge, all clear.
 
-*max presses. A cortex lands. jo flexes the hand that had to hover over the switch.*
+*max presses. A cortex lands. jo flexes the hand that had to hover over the switch. The last words are to their own fingers as the pressure comes off.*
 
 **jo** Still got cramp in them.
 
@@ -939,7 +941,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **LIMEN** Intake, all clear.
 
-*sam seats the tray. If lou overheard bob asking sam about his card on the walk in, play the rack exchange too. Later, ed comes down to the rack for the empty trays. As he bends to lift them, two cards show above his pocket. gus sees them from the other end of the rack. ed takes the empty tray stack back to sam.*
+*sam seats the tray. At the rack lou has a question of their own if they heard bob asking about the card on the walk in. This later exchange can play whether sam heard ed’s answer or missed it. Later, ed comes down to the rack for the empty trays. On this draw his pocket clears the stack as he bends to lift it. Two card edges show. gus sees them from the other end of the rack. ed takes the empty tray stack back to sam.*
 
 **lou** You two had the desks. Did any loose cards come your way?
 
@@ -949,7 +951,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### R3 · What got as far as bob
 
-*If nobody has already told bob on the previous walk-out, on a later walk in sam falls in beside bob before they reach the desks. Use this approach when they have the tray-bench exchange behind them. The usual welcome and its replies follow.*
+*On a later walk in, sam can fall in beside bob if ed’s pickup admission reached sam at the bench. lou can approach independently with what gus told them at the rack. When both have news, use the one with a reason to catch bob and a place beside him. Give bob fresh news once. If sam told him on the walk home, open with bob’s follow-up to ed in R4 when ed is within reach. The usual welcome and its replies follow.*
 
 **sam** ed picked up a card. Told me himself.
 
@@ -957,7 +959,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **sam** Didn’t get that far. Tray was up.
 
-*Or, if the Intake call cut ed off before he answered and lou has found bob on the walk:*
+*On a walk where lou reaches bob with gus’s account and he hasn’t heard it yet:*
 
 **lou** gus saw two cards in ed’s pocket.
 
@@ -965,7 +967,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **lou** Two edges, bob. That’s all he saw.
 
-*On that run bob catches gus on the way out. This uses the single departure conversation for that shift.*
+*After lou’s report, bob catches gus on the way out and spends the single departure conversation. If lou told bob on yesterday’s walk-out, use the same follow-up to gus on this morning’s walk instead, when he comes within reach.*
 
 **bob** gus, did ed actually show them to you?
 
@@ -981,13 +983,13 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **bob** gus saw two cards in your pocket. Can I see the other one?
 
-*In either reading, ed gets both cards out. bob puts a finger on his photograph.*
+*In either reading, ed stops walking and keeps one hand on his pocket.*
 
 **ed** I’d have given it back if you’d asked.
 
 **bob** I’m asking, ed.
 
-*ed lets go. bob takes his card.*
+*ed shows both faces. bob recognizes his photograph and puts a finger on it. ed lets go of that card and bob takes it. The other stays with ed.*
 
 **bob** 😮‍💨
 
@@ -1017,13 +1019,13 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### H1 · A whole reply
 
-*Replay 2F from the question. This time the tray runs level long enough for the next two words to land. The pace and the jobs are the same.*
+*Replay 2F from the question. Use the same raised lip, same pace and same jobs. This time STILETTO’s call comes just after the two desk words land. sam seats the tray and bob washes it in both readings.*
 
 **sam** Somebody found one. ed’s desk.
 
 **STILETTO** sam. Catch that lip.
 
-*At departure, use this instead of bob’s question to ben in 2G. bob comes level with ed outside the lobby.*
+*At departure, use this instead of bob’s question to ben in 2G. ed and ben are both level with bob outside the lobby. This time bob turns to ed.*
 
 **bob** ed. That loose card at your desk. Has it got my ugly picture?
 
@@ -1033,7 +1035,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### H2 · A torn reply
 
-*Use the interruption in 2F exactly as printed. At the same departure opportunity ed and ben are both reachable. bob catches ben instead. Read their two lines in 2G. His next lead is a boot he can ask gus about.*
+*Use the interruption in 2F exactly as printed. At the same departure opportunity ed and ben are both reachable. bob catches ben instead. Read their two lines in 2G. His next lead is a boot he can ask gus about. At both bells, and after both walks, ed holds his own card and bob’s.*
 
 ### N1 · A morning without yesterday’s concession
 
@@ -1059,7 +1061,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### W1 · Take away one witness
 
-*Same 4D. Change ben’s yesterday. They had already reached relief when LIMEN gave in. They still heard jo’s account this morning. Today jo takes the same step through the same gap. ben puts a foot out and brings it back.*
+*Replay 4D from the same two orders. Change one thing in 3D: at the instant LIMEN let go, a shoulder hid the handoff from ben. They heard jo’s account and saw the demonstration in 4A just as before. Today they see the same shoulders clear the same rail. ben puts a foot out and brings it back.*
 
 **ben** *(to LIMEN)* I’ll take my turn here.
 
@@ -1083,7 +1085,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **kit** You heard that one, sir?
 
-*LIMEN looks straight at kit. kit takes his card back and goes with jo. ben follows jo. bob stays behind the line. At Conveyor, mae leans in as kit comes up beside her.*
+*LIMEN looks straight at kit. kit takes his card back and goes with jo. ben follows jo. bob stays behind the line. At the stopped tray bench STILETTO points kit to the free working side opposite mae. ben waits on relief. kit takes the weight on his side. mae leans in. Use their exchange in the second Conveyor slot, in place of ben’s exchange with mae in 4E.*
 
 **kit** Producer sent us with her. I heard it myself.
 
@@ -1113,7 +1115,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **jo** Could use some of that at the drive.
 
-*STILETTO clears the crew in motion. At the belt, kit demonstrates letting the elbow rest at the side. jo tries it while waiting.*
+*STILETTO clears the crew in motion. At adjacent Belt and drive positions the switch is stationary and the handoff has yet to be called. kit uses a free arm to show jo where to rest an elbow. jo tries it with their free hand clear of the switch. This is the V12 workmate conversation in one available Conveyor slot.*
 
 **LIMEN** Belt, all clear.
 

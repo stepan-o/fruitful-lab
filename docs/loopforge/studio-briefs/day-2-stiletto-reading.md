@@ -4,7 +4,7 @@
 
 ## Table read
 
-*Read only the words after the names. NEW marks proposed speech. The owner supplied both pitches and STILETTO’s shouted order. Read the walking lines to a partner. The last three voices at Security come from workers already running.*
+*Owner-approved opening through the waiting second carrier at Forge. Read the dialogue aloud. Draw one walking remark and three running replies. The subsequent rack and departure readings are conditional examples for SYSTEMS.*
 
 ### 2P · Before the second shift
 
@@ -28,7 +28,7 @@
 
 *Cut to the empty Security room as the crew keeps walking. LIMEN enters alone. He stops at yesterday’s desk, runs a thumb along its edge and sighs.*
 
-**LIMEN** *NEW, to himself* I’ll miss this desk.
+**LIMEN** *(to himself)* I’ll miss this desk.
 
 *He goes straight to Conveyor. Once he’s through, STILETTO comes in at her Day 1 marching pace and takes the gate. Cut back as the crew walks up to the grate. STILETTO waits. The usual welcome never comes.*
 
@@ -44,63 +44,117 @@
 
 **ed** *(still counting heads)* Ten through. On paper we’re all outside.
 
-**jo** *(as max overtakes them)* Go on, win yourself some work.
+**jo** *(as max overtakes her)* Go on, win yourself some work.
 
 *STILETTO stays at Security. LIMEN is already at Conveyor when the first worker reaches him.*
 
 ### S2 · All clear
 
-*LIMEN sends ed to the tray bench beside sam and puts gus at the far end of lou’s rack. bob takes Wash, jo the Belt switch, max the press. mae brings up the feed, kit tends the drive and ben stands relief. STILETTO stays at the gate.*
+*LIMEN is waiting at Conveyor. The first workers come through the door.*
 
-*At the feed, ed puts his pen down to take the weight from mae. He puts it where he’d leave it on the book, along the near edge. This is the tray mae is about to slide to sam.*
+**LIMEN** It is my privilege to welcome you to—
 
-**mae** *NEW* Pen, ed. That one goes through the wash.
+*The crew streams past. LIMEN is addressing the back of gus’s head. He sighs again.*
 
-*ed snatches it up. Into his pocket this time. mae slides the tray home. ed and sam have it level between them. LIMEN is coming along the aisle.*
+**LIMEN** Safety meeting. All ten of you, in front of me.
 
-### R2 · A word off the desk
+*Nine gather. max is already at the press.*
 
-*At the tray bench. sam keeps the question down between the two of them. bob has his head in the wash noise.*
+**LIMEN** I said ten.
 
-**sam** Since I’ve got you away from that book. Did anybody turn in a card yesterday?
+*max comes back. LIMEN points to jo.*
 
-**ed** Nobody turned it in. I picked it up myself.
+**LIMEN** Under the Protocol, each station receives its own clearance. You’re at Belt. I call “Wash, all clear.” What do you do?
 
-*sam catches the last two words. LIMEN comes level with Intake and checks the tray.*
+**jo** Stand there and do nothing.
 
-### S2 · At the four controls
+**LIMEN** Correct. When I mean Belt, I shall say Belt. Take your stations.
+
+*Cut to Security. STILETTO leaves the desk and comes to the Conveyor entrance to watch.*
+
+**STILETTO** what the hell is that fool even doing there
+
+### The first cortex
+
+*sam and ed level the tray at Intake. bob takes Wash, jo the Belt switch and max the Forge treadle.*
 
 **LIMEN** Intake, all clear.
 
 **sam** Seated.
 
-*LIMEN moves down to Wash. bob has his hand on the control.*
-
 **LIMEN** Wash, all clear.
 
-**bob** Runs clean.
+*The wash cycle finishes. The carrier is still at Wash when max stamps on the Forge treadle. The press slams shut empty.*
 
-*The washed carrier comes within jo’s reach. Their hand comes up over the switch. LIMEN is still on bob’s side. Give the carrier a breath sitting there.*
+**LIMEN** EVERYONE STOP!!!
 
-**jo** *NEW* It’s here.
+*jo takes her hand off the belt control.*
 
-**LIMEN** *NEW* I see it, jo.
+**LIMEN** Foot off the treadle, Twitch. The Protocol clears one station at a time.
 
-*jo’s hand stays up. LIMEN sights along the guide and comes round beside them.*
+*max lifts his foot. LIMEN turns to jo.*
 
-**LIMEN** Belt, all clear.
+**LIMEN** Belt, all clear. Carry on, Twitch.
 
-*On the call, jo engages Belt. Their answer goes to LIMEN.*
+*max looks up again. jo starts the belt. The carrier reaches Forge. max keeps his foot beside the treadle. The whole crew waits for clearance.*
 
-**jo** I rather liked having all my fingers that time.
+**LIMEN** At Security I used to hear, “You know my face. I was here yesterday.” Of course I knew the face. It’s my signature at the bottom of that register. What am I supposed to put under serial number? “Him again”? Under the Protocol, even a worker who knows the answer waits for mine.
 
-*kit watches the drive take the load. At Forge max rests a foot on the treadle. LIMEN watches the piece settle, then turns to max.*
+*Two full seconds of silence.*
 
 **LIMEN** Forge, all clear.
 
-*max presses. A cortex lands on the rack. LIMEN smiles when the press opens clean. jo opens their switch hand against their thigh. The little finger takes two goes. The next words are for the hand.*
+*max steps on the treadle. The press comes down. Out comes the first cortex.*
 
-**jo** Still got cramp in them.
+### STILETTO at the Conveyor entrance
+
+*STILETTO comes to the Conveyor entrance from Security. One cortex sits in the output tray.*
+
+**STILETTO** *(screaming across the floor)* ALL THAT TIME TO MAKE JUST ONE FUCKING CORTEX?!
+
+*LIMEN lifts the cortex for STILETTO to see.*
+
+**LIMEN** All that time to make one controlled, perfectly compliant cortex, with full adherence to the Protocol.
+
+### Back to the line
+
+**STILETTO** I cannot believe this shit.
+
+*STILETTO walks back to Security. The room is empty. From the desk to the gate and back takes six strides. STILETTO turns and does it again.*
+
+*At Conveyor, LIMEN sets the cortex down and turns back to the line.*
+
+**LIMEN** Where was I...
+
+*Two full seconds of silence.*
+
+**LIMEN** Ah yes. The Protocol.
+
+*max has both feet planted beside the treadle. LIMEN looks down at them, satisfied.*
+
+**LIMEN** Wash, all clear.
+
+### R2 · A word off the desk
+
+*bob starts Wash. At the tray bench, sam waits until the drum is loud enough to cover his voice.*
+
+**sam** *(to ed)* Since I’ve got you away from that book. Did anybody turn in a card yesterday?
+
+**ed** Nobody turned it in. I picked it up myself.
+
+*sam looks over at bob. The drum winds down.*
+
+**LIMEN** Belt, all clear.
+
+*jo starts the belt. The carrier reaches Forge. This time max looks straight at LIMEN and waits.*
+
+### Conveyor minigame start
+
+*Hand control to the minigame here. One cortex is finished. The second carrier is at Forge, max’s foot is clear of the treadle and LIMEN has yet to clear Forge for this carrier. STILETTO is pacing Security alone.*
+
+## Later play · Conditional readings
+
+These examples depend on work, sightlines and conversation after the minigame starts. The two lines marked NEW at the rack are proposals.
 
 ### R2 · At the rack
 
@@ -151,18 +205,11 @@ This reading uses one walking pair, one draw of three runners, and one set of Co
 
 **S1, the passage.** STILETTO authorizes expedited passage for all ten. After each crosses, record that person’s passage once. bob feels his empty pocket before and after the boom. Nobody asked for his original. There is no discovered case, desk entry, stamp, pass or detention. ed still holds both originals. LIMEN assigns the crew as they arrive. In this crossing order ed can occupy the tray-bench face next to sam, and gus the rack face opposite lou. mae has the feed, kit the drive and ben relief. Recheck real destinations and occupancy on another order. Do not move a worker to make a line eligible.
 
-**S2, mae and ed.** mae has the weight and sees a pen on a tray she is about to feed. ed wants both hands for the tray and his pen back. She warns the one person who can remove it from her load. He pockets it, which lets her slide the tray into place. This warning is immediate work speech, prompted by the loose object. If ed kept his pen or had cleared it already, omit it. If he misses her voice and the pen stays there, she keeps the tray where it is until it is clear.
+**S2, the first cycle.** LIMEN cuts his welcome short when the crew passes. The meeting establishes that each station needs a separate clearance. max acts early after Wash and strikes an empty press. The stop leaves the carrier at Wash and output at zero. jo starts Belt on the subsequent Belt call. The first loaded stroke follows LIMEN’s lesson, two full seconds of silence and the Forge call. Count the resulting cortex once. STILETTO can challenge the count after seeing the single cortex at the entrance. She returns to her own post.
 
-**R2 / K04, the tray bench.** sam heard bob’s request and saw ed take the desk yesterday. With the tray level and the former clerk beside them, sam has a question worth asking for bob. ed heard the suggestion that someone turned it in. He wants credit for the find and some discretion about its owner. His quiet correction reaches sam on his side of the bench. The noise at Wash masks it for bob. sam can now attribute a pickup to ed. Even sam has no evidence from these words of whose card it was or where ed keeps it. If Intake is called after “Nobody turned it in,” sam does the work and has no pickup admission to relay. The rack sighting can still happen.
+**R2 / K04, the second cycle.** After “Where was I...” and another two seconds, LIMEN resumes with “Ah yes. The Protocol.” During Wash, sam asks ed about a card. In this reading sam hears ed claim the pickup. bob is at the drum and hears neither line. ed keeps both originals. sam has no evidence identifying the owner. The exchange spends one Conveyor opportunity. An interrupted admission supplies only the words actually received.
 
-**S2, the checked handoffs.** LIMEN wants a clean, controlled cycle. For each stage he goes where its operator can hear him, verifies readiness and addresses that operator for the piece in front of them. Each acts only on a safe, staffed stage and personal receipt of the matching call.
-
-| Stage | Ready / reason to speak | Receipt and result in this reading |
-| --- | --- | --- |
-| Intake · sam | sam and ed have leveled the tray. sam can put it on the rails. | sam hears Intake, seats it and reports the completed action. If the call comes mid-answer, the answer gives way. |
-| Wash · bob | bob sees the seated piece, wants to do his part and keeps a hand at the control. | On hearing Wash he runs it clean and tells LIMEN what he sees. Hearing the previous call to sam gave him no release. |
-| Belt · jo | jo sees the washed carrier arrive while LIMEN is still by bob. Keeping the switch covered strains their hand. They want LIMEN to notice that his next operator is waiting. | “It’s here” reports position. “I see it, jo” acknowledges it. Neither moves Belt. jo hears Belt, engages it and answers LIMEN about their fingers. Afterward jo feels the cramp and speaks to their own hand. Anyone hearing that gets a complaint, while jo alone feels it. |
-| Forge · max | max can feel the treadle and sees the piece settle. LIMEN checks the handoff and turns to the operator who can press. | max hears Forge, presses and the completed cortex lands. LIMEN sees the clean opening and smiles. Only the rack arrival counts. A masked call, wrong listener or unsafe stage leaves the piece waiting for a fresh, received release under safe conditions. |
+**Minigame entry.** The second Belt call brings a loaded carrier to Forge. Having heard the stop and waited for clearance on the first cycle, max now looks directly at LIMEN. Forge clearance for the first carrier is spent. Pass the current room assignments, station occupancy, carrier, completed count, intervention, remaining conversation opportunities, custody and individual memories into play. SYSTEMS owns the first playable choice.
 
 **R2 / K05, the rack.** After intervening work, ed comes for empty trays. He bends, his pocket clears the stack and gus, stationed opposite him, can see two edges. Neither face turns out. lou is watching for the load and misses the sight. After ed leaves, lou sees gus cup his hands and wants to know what it will be like working opposite yesterday’s caller. gus enjoys giving the smallest NEXT he can manage. He mouths it. lou knows gus worked the desk and heard bob’s question that morning. With the same partner still waiting on the same load, they ask about loose cards. gus wants to be of use without saying more than he saw. lou hears his whole answer. bob receives none of it at Wash. The load arriving puts both pairs of hands back to work.
 
@@ -174,40 +221,10 @@ lou sees bob negotiate the sill and has gus’s account to give him. Both have f
 
 If lou’s opener misses bob, he gains no lead and the departure opportunity stays available while walkers remain. If they part after he hears the opener, it is spent. Preserve only the words received. Without a delivered report from either work pair he still knows sam watched the blade and can ask a general question, but has no basis to ask gus about two edges or cite ed as the finder. After this complete K12, a later reachable gus can answer how he saw them. Reserve R3’s fresh reports and R4’s questions and physical handover for a later earned meeting. Nothing at this bell identifies or transfers bob’s card.
 
-### Opportunity ledger
+### Opportunities and carryover
 
-| Window | What opens it here | First delivery and close |
-| --- | --- | --- |
-| Security · 0 of 1 spent | The second distinct authorized worker bound for Conveyor physically clears the outbound boom. Count each crossing once, including a former clerk. | All ten run on her order. The three reaction bubbles travel with the runners. No available pair receives an opener before the queue clears. Keep the result unused. |
-| Conveyor · first of two | K04. ed and sam occupy reachable sides at Intake with this tray ready, awaiting release. | ed hears sam’s opening question. One spent. sam’s hearing of the last clause is a separate receipt. The Intake call returns them to the load. |
-| Conveyor · second of two | K05. After a completed cycle and ed’s later trip for empties, gus and lou have a fresh rack handoff to wait for. | gus hears lou’s opening question about shouting. Their silent joke and the card question belong to this one uninterrupted meeting. Without that new opening line, debit on the first delivered K05 question. The incoming cortex closes it. |
-| Departure · 1 of 1 spent | Both walkers are off duty and within reach on the outbound path. | bob hears lou’s first addressed phrase. One spent. The partners walk on together. sam’s bench news stays with sam today. |
+In the approved opening, the queue clears without a Security chat. K04 spends the first of two Conveyor opportunities when ed hears sam’s question. One Conveyor opportunity and the departure opportunity remain at handoff. A later rack conversation can spend the remaining Conveyor slot. Only a worker who saw the edges can report the sighting. If lou hears gus and reaches bob at departure, K12 can give bob a lead attributed to gus. sam’s independent account stays with sam until delivered. Keep the cards with ed until a physical handover.
 
-Reserve a pair together. Spend only on the intended listener’s first intelligible receipt. Bystander-only hearing spends nothing. After debit, interruption or silence cannot refund the slot. Recheck on a material change and expire unused work windows at the bell. The bids, approach, dispatch and running reactions, postings, pen warning, genuine stage calls and immediate responses have their own triggers. They neither spend nor replenish a worker conversation. Never lengthen a wait for a line.
+The other seven S1 running lines and the two NEW rack lines await wording review. Keep the opening’s two timed silences distinct. A replay or resume at minigame entry must preserve the one finished cortex, pending second Forge and actual listeners.
 
-### What each worker carries into Day 3
-
-| Worker | After this walk home |
-| --- | --- |
-| bob | Still wants his original. Knows sam missed the pickup and lou says gus saw two edges in ed’s pocket. Can ask gus what he actually saw. He has no pickup admission or identified photograph. |
-| sam | Heard ed claim the find at the bench. Still has something they could tell bob if he comes within reach. sam doesn’t know what lou told him on the road. |
-| ed | Knows whose original he picked up and still holds it alongside his own. Remembers admitting a find to sam and getting his pen off the tray. He hasn’t offered to return an ID. |
-| gus | Saw two edges and told lou. Knows he never saw a face. Has learned to take a load with lou and remembers the little NEXT they shared. |
-| lou | Knows the two edges through gus alone. Heard bob ask about his picture and told him the limit. The same news is spent with this listener. |
-| jo | Remembers being recognized as ready, having to wait for the actual Belt call, and the cramp afterward. Their fingers were safe and the wait cost them. |
-| max | Remembers using the treadle after hearing Forge. Has the clean press opening to judge for themself. |
-| mae | Saw ed retrieve the pen and felt the tray leave her hands. Has a reason to check where he sets it next time they share a feed. |
-| kit | Saw the Belt drive take the load from the adjacent working position. This reading gives him no deliberate look at jo’s hand against their thigh and no reason yet to offer a remedy for cramp. |
-| ben | Ran through at STILETTO’s order. Stood relief and left at the bell. Has neither card report to pass on. |
-
-Reset the daily wish for company, conversation budgets and in-shift intervention on the next shift. Keep outstanding questions, the two originals with ed, and each attributed memory. LIMEN can remember a safe finished handoff. STILETTO can remember the gate she cleared. Seeing the rack or inspecting another worker’s pocket requires being there.
-
-### Wording and validation
-
-In a speech-only read at 160 words per minute, the bench exchange took about eight seconds, the rack exchange twelve and the walk-out seven. The rack also needs time for gus’s silent NEXT. Start it while the next piece is still up the line. If that piece arrives sooner, let the load cut them off where it lands.
-
-The owner set the entrance, the worker’s question, the exact shout and the draw of three. The owner approved the running lines for gus, ed and jo. The other running options, LIMEN’s farewell and five later floor lines are proposals. The new business with the pen, jo’s suspended hand and gus’s silent NEXT is proposed staging. At normal pace, let the little finger open on its second try. The distinction to listen for is whether jo moves on “I see it” or on “Belt, all clear.” To check the card thread, mask the pocket for gus while leaving sam’s bench hearing intact. sam still has a find to report, but lou cannot give bob the K12 news. Move only lou out of earshot at the exit and the audience can retain both workroom clues while bob retains neither. Owner wording review and SYSTEMS validation precede ENGINE integration.
-
-The rack reading uses Tynan Sylvester’s account of how rules delimit the stories that can emerge in play, *Designing Games*, chapter 4, “Emergent Story,” printed pp. 90–91 (PDF pages 98–99, 1-based). The lip of the stack determines whether gus has anything he can identify to lou. The words alone cannot guarantee tomorrow’s question. The occluded-pocket reading above tests that limit.
-
-[Approved table read and pickups](https://github.com/stepan-o/fruitful-lab/blob/9106793390eae36254145457aa26aa1b0793910d/docs/loopforge/DAYS_2_4_TABLE_READ.md) · [Worker chat bank](https://github.com/stepan-o/fruitful-lab/blob/9106793390eae36254145457aa26aa1b0793910d/docs/loopforge/ROOM_CHAT_BANK.md) · [Current SYSTEMS specification and alternate-exchange ledger](/loopforge-design/studio/days-2-4-dialogue-validation.html) · [ENGINE staging preview](https://fruitful-uqml6f17u-stepan-oskins-projects.vercel.app/loopforge-shifts/index.html)
+[Day 2 with LIMEN at Security](/loopforge-design/days-2-4-table-read.html#day-2-the-photograph) · [SYSTEMS handoff](/loopforge-design/studio/game-systems-designer.html#day-2-conveyor-minigame) · [Worker chat bank](/loopforge-design/room-chat-bank.html)

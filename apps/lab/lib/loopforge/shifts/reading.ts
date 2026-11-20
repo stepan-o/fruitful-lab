@@ -1,4 +1,4 @@
-import type {Mark, Room} from './contract';
+import {approachZone, type Mark, type Room} from './contract';
 import type {Frame} from './wire';
 
 export type Bubble = {
@@ -33,11 +33,12 @@ export class DialogueReading {
   }
   receive(frame: Frame, room: Room, restart = false) {
     const {events, world} = frame.scene;
+    const visible = (e:Mark) => e.room===room || (room==='security' && world.stage==='walk' && approachZone(e.room));
     const speaks = (e: Mark) => e.kind === 'speech.delivered' || e.kind === 'endorsement.public';
     if (restart) {
       this.beats = [];
       this.cursor = events.at(-1)?.seq ?? 0;
-      const latest = events.findLast(e => e.room === room && speaks(e));
+      const latest = events.findLast(e => visible(e) && speaks(e));
       if (!latest || (frame.tick - latest.tick) * 50 >= readingTime(latest.text)) return;
       // On arrival in a room or checkpoint, start with the current utterance only.
       this.cursor = events.find(e => e.tick === latest.tick)!.seq - 1;
@@ -45,7 +46,7 @@ export class DialogueReading {
     for (const event of events) {
       if (event.seq <= this.cursor) continue;
       this.cursor = event.seq;
-      if (event.day !== world.day || event.room !== room) continue;
+      if (event.day !== world.day || !visible(event)) continue;
       if (event.kind === 'chat.interrupted') {
         for (const beat of this.beats.slice().reverse()) {
           const cut = beat.lines.findLast(line => line.speaker === event.subject);

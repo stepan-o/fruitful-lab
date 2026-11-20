@@ -9,5 +9,8 @@
   "char-max-walk-S",
   "bob-security",
   "bob-forge",
-  "boom"
+  "boom",
+  "char-bob-walk-N",
+  "char-max-walk-N",
+  "tile-security"
 ]

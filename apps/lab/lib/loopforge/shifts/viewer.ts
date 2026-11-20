@@ -89,7 +89,7 @@ function render(){
   if(!frame)return;
   el<HTMLSelectElement>('checkpoint').disabled=false;
   button('restore').disabled=false;
-  const {scene,tick}=frame,w=scene.world,live=w.phase==='shift',sec=room==='security';
+  const {scene,tick}=frame,w=scene.world,live=w.phase==='shift',sec=room==='security',walking=live&&w.stage==='walk';
   hidden('brief',w.phase!=='briefing');hidden('floor',w.phase==='briefing');
   txt('clock','Day '+w.day+' · '+(w.phase==='briefing'?'Morning':Math.floor((tick-w.start)/20)+' s'));
   view=select(frame,room,opened,previewLead);
@@ -115,7 +115,7 @@ function render(){
     decorate('assignment','co-bid-committed');
     txt('assignment','Security · '+bid.security+'   /   Conveyor · '+bid.conveyor);
   }
-  txt('policy',sec?(w.status==='open'?'Line held':w.quick?'Fast clearance':'Individual checks'):w.pace);
+  txt('policy',sec?(walking?'Crew arriving':w.status==='open'?'Line held':w.quick?'Fast clearance':'Individual checks'):w.pace);
   txt('mandate',w.spent?'Intervention spent':'Intervention ready');
   const open=live&&w.status==='open',hasCase=sec&&!!w.caseId, panel=view.panel;
   hidden('signal',!hasCase);hidden('decision',!panel);
@@ -150,7 +150,13 @@ function render(){
   hidden('staff',sec);
   if(lastRoom!==signature){const boxes=w.coverage.map((id,i)=>{const span=document.createElement('span'),b=document.createElement('b');b.textContent=names[i];span.append(b,id||'Uncovered');return span;});el('staff').replaceChildren(...boxes);lastRoom=signature;}
   const recent=scene.events.filter(e=>e.kind==='queue.advanced'&&tick-e.tick<80).at(-1);
-  txt('cue',sec?(open?'LINE HELD · tap the desk signal':recent?recent.actor+' steps forward':w.called?'At the desk · '+w.called:'Security checkpoint'):('Rack · '+w.shiftOutput+' this shift'));
+  const crewRoom=scene.agents.find(a=>a.id==='bob')?.room;
+  const location=crewRoom==='outside'?'Staff entrance':crewRoom==='lobby'?'Lobby':crewRoom==='dispatch'?'Dispatch':'Security approach';
+  const entryCamera=cameras.find(b=>b.dataset.room==='security')!;
+  const label=entryCamera.lastChild!;
+  const cameraName=walking?'Arrival':'Security';
+  if(label.nodeType===Node.TEXT_NODE&&label.textContent!==cameraName)label.textContent=cameraName;
+  txt('cue',sec?(walking?location:open?'LINE HELD · tap the desk signal':recent?recent.actor+' steps forward':w.called?'At the desk · '+w.called:'Security checkpoint'):('Rack · '+w.shiftOutput+' this shift'));
   const orders=view.choices.filter(c=>c.action!=='appoint'&&c.action!=='issue-pass');
   hidden('order-panel',!orders.length);decorate('order-panel',orders[0]?.asset);
   txt('order-title',w.pressure==='clash'&&sec?'Conflicting orders':sec?'Security checks':'Conveyor pace');

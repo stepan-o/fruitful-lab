@@ -1,7 +1,7 @@
 import {checkReading} from './inspections';
 import {workmates} from './workmates';
 import {freshDialogue} from './dialogue-state';
-import {advanceMorning,morningBids,queueAt,queueOrder,seedHistory,startWalk} from './morning';
+import {advanceMorning,morningBids,queueAt,queueOrder,seedHistory,startWalk,walkEntrance} from './morning';
 import {available,cardContact,crossed,draw,heard,knows,lineTime,lines,observe,occupied,openWindow,phrase,pos,schedule,scripts,sees,updateSpeech,workers} from './dialogue';
 import inheritance from './inheritance.json';
 import {ENCOUNTER_VERSION,type World,type Agent,type Point} from '../encounters/contract';
@@ -141,7 +141,8 @@ function check(s:Run){
     if(knows(s,'LIMEN','reckless'))s.checking+=s.pressure==='settled'&&a.id==='kit'?520:170;
     return;
   }
-  if(s.tick<s.checking)return;
+  // Keep the contested check open while STILETTO walks up to the desk.
+  if(s.pressure==='approach'||s.tick<s.checking)return;
   if(!s.quick&&propCustodian(s.world,a.id+':id')!==a.id&&propCustodian(s.world,a.id+':id')!=='LIMEN'&&!(s.pass?.valid&&s.pass.holder===a.id)){
     const id=eventId(s,'missing-'+a.id);
     s.case={id,subject:a.id,opened:s.tick,deadline:s.tick+deskWindowTicks,status:'open'};
@@ -264,7 +265,7 @@ export function step(s:Run){
   if(s.phase!=='shift')return;
   s.tick++;
   s.world.tick=s.tick;
-  move(s);
+  if(!walkEntrance(s))move(s);
   const d=s.dialogue;
   if(d.phase==='departure'){
     const exitOrder=['bob','ed','ben','jo','max','lou','kit','sam','mae','gus'];

@@ -18,6 +18,8 @@ Choose a bid and commit both jobs. Watch Security as the crew walks to the grate
 
 Use **Play 1×** after loading a checkpoint. **Save this moment** and **Return to saved moment** preserve the active phrase, listener receipts, reservations and seeded draw. **Actor and event inspection** shows the selected worker’s evidence, decisions and recent received words. The review controls drive the same simulation as a fresh appointment.
 
+To see the entrance, start at **Morning bids**, choose either supervisor and commit the assignments. The Arrival camera follows all ten workers from the yard through the staff door, Lobby and Dispatch. Bob asks sam about his card while they are walking. LIMEN gives the welcome at Security.
+
 At 1×, a short line stays visible for at least 3.2 seconds. Longer lines allow one second to locate the speaker plus 0.4 seconds per word. Simultaneous greeting replies appear in three separate named bubbles for their combined reading time. When new speech arrives early in the room you are watching, playback waits before carrying the action further. Pause holds the text. Switching rooms starts with the current local exchange.
 
 Tynan Sylvester discusses easing time pressure when players struggle to process simultaneous demands in *Designing Games*, “Decisions,” “Avoiding Overflow,” p. 144 (PDF page 152). Here the owner’s play observation applies to reading the evidence behind a decision. The interval is a setting for play review. The cutoff and who heard the clue still resolve on the original simulation ticks.

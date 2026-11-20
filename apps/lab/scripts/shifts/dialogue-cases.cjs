@@ -37,6 +37,45 @@ function witness(s,id,key){remember(s,id,key,'controlled firsthand receipt',true
 function slotEvents(s,slot){return s.dialogue.windows.filter(w=>w.slot===slot&&w.spent);}
 const clone=structuredClone;
 const spent=s=>s.marks.filter(e=>e.kind==='slot.spent').map(e=>e.text);
+test('Every morning the crew walks in through the staff entrance before the desk opens',()=>{
+  for(const lead of ['LIMEN','STILETTO']){
+    const s=start();
+    for(let day=2;day<=4;day++){
+      command(s,'appoint',lead,'security');
+      const zones=Object.fromEntries(workers.map(id=>[id,[s.world.agents[id].room]]));
+      assert(workers.every(id=>zones[id][0]==='outside'));
+      const previous=Object.fromEntries(workers.map(id=>[id,s.world.agents[id].position]));
+      let saved;
+      let opening;
+      until(s,r=>{
+        for(const id of workers){
+          const agent=r.world.agents[id];
+          assert(Math.hypot(agent.position[0]-previous[id][0],agent.position[1]-previous[id][1])<200);
+          previous[id]=agent.position;
+          if(zones[id].at(-1)!==agent.room)zones[id].push(agent.room);
+        }
+        if(!saved && day===2 && r.world.agents.bob.room==='lobby')saved=structuredClone(r);
+        if(!opening){
+          const e=r.marks.findLast(e=>e.day===day&&e.kind==='speech.delivered');
+          if(e){
+            assert(r.tasks[e.actor].moving && r.dialogue.arrival);
+            assert(r.heard[e.seq].includes(e.subject));
+            opening=e;
+          }
+        }
+        return r.dialogue.phase==='welcome';
+      });
+      assert(opening);
+      if(saved){
+        until(saved,r=>r.dialogue.phase==='welcome');
+        assert.deepEqual(project(s),project(saved));
+      }
+      for(const route of Object.values(zones))assert.deepEqual(route,['outside','lobby','dispatch','security']);
+      if(day===4)break;
+      until(s,r=>r.phase==='close');nextMorning(s);
+    }
+  }
+});
 test('G5 · same raised lip, two reachable partners',()=>{
   const early=restorePoint('G5 · early cutoff'),late=restorePoint('G5 · late cutoff');
   const same=clone(late);same.dialogue.cutoff-=2;assert.deepEqual(same,early);

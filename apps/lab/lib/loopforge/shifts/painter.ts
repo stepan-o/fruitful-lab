@@ -1,7 +1,7 @@
 import type {Scene} from './wire';
 import type {ArtView,Skin} from './skin';
 import geometry from '../intro/geometry.json';
-import {type Room,stations} from './contract';
+import {approachZone,type Room,stations} from './contract';
 import atlas from '../../../public/loopforge-intro/sprites.json';
 import floorPack from '../../../public/loopforge-design/floor-correction/v1/manifest.json';
 import introSprites from './intro-sprites.json';
@@ -36,9 +36,16 @@ export function drawBidPortrait(canvas:HTMLCanvasElement,lead:'LIMEN'|'STILETTO'
   ctx.drawImage(images[key],x,y,36,35,0,0,36,35);
 }
 export const registerDesk=[123.6,132] as const;
-export function floorView(w:number,h:number,room:Room,approach=false){
-  const sec=room==='security',scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
-  const center=sec?127.15:127.4,cy=sec?(approach?125.1:129):144.35;
+export function floorView(w:number,h:number,room:Room,approach=false,crew:Scene['agents']=[]){
+  const sec=room==='security';
+  let scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
+  let center=sec?127.15:127.4,cy=sec?(approach?125.1:129):144.35;
+  if(sec&&crew.length){
+    const xs=crew.map(a=>a.x/1000),ys=crew.map(a=>a.y/1000);
+    const left=Math.min(...xs),right=Math.max(...xs),front=Math.min(...ys),back=Math.max(...ys);
+    center=(left+right)/2;cy=(front+back)/2-.65;
+    scale=Math.min(48,w/Math.max(13,right-left+4),h/(.67*(back-front+7)));
+  }
   const xy=(x:number,y:number)=>[w/2+(x-center)*scale,h*.58+(y-cy)*scale*.67];
   return {sec,scale,xy};
 }
@@ -55,9 +62,9 @@ function floorBackdrop(room: Room, w: number, h: number, view: ReturnType<typeof
   const cached = backdrops.get(room);
   if (cached?.key === key) return cached.canvas;
 
-  const canvas = document.createElement('canvas');
-  canvas.width = w;
-  canvas.height = h;
+  const canvas = cached?.canvas ?? document.createElement('canvas');
+  if(canvas.width!==w)canvas.width=w;
+  if(canvas.height!==h)canvas.height=h;
   const base = canvas.getContext('2d')!;
   base.imageSmoothingEnabled = false;
   base.globalCompositeOperation = 'source-over';
@@ -79,11 +86,47 @@ function floorBackdrop(room: Room, w: number, h: number, view: ReturnType<typeof
   backdrops.set(room, {key, canvas});
   return canvas;
 }
+// The opening camera follows the moving group across the same north-up floor
+// as Day One. The visible walls have gaps at the actual staff portals.
+function approachFloor(ctx:CanvasRenderingContext2D,w:number,h:number,camera:ReturnType<typeof floorView>,images:Images){
+  const {scale,xy}=camera;
+  const tile=images['tile-security'],tw=4*scale,th=tw*.67,[ox,oy]=xy(0,0);
+  for(let x=((ox%tw)+tw)%tw-tw;x<w;x+=tw)
+    for(let y=((oy%th)+th)%th-th;y<h;y+=th)
+      ctx.drawImage(tile,Math.floor(x),Math.floor(y),Math.ceil(tw)+1,Math.ceil(th)+1);
+  const rect=(x:number,y:number,dx:number,dy:number,color:string)=>{
+    const [px,py]=xy(x,y);ctx.fillStyle=color;ctx.fillRect(px,py,dx*scale,dy*scale*.67);
+  };
+  const entrance=geometry.portals.find(p=>p.id==='staff-entrance')!;
+  const [west,east]=entrance.span;
+  const [,threshold]=xy(...west as [number,number]);
+  ctx.fillStyle='#17202788';ctx.fillRect(0,threshold,w,Math.max(0,h-threshold));
+  const security=geometry.zones.find(z=>z.id==='security')!;
+  if(xy(security.rect.x,0)[0]<w){
+    ctx.save();ctx.beginPath();
+    security.polygon.forEach(([x,y],i)=>{const [px,py]=xy(x,y);if(i)ctx.lineTo(px,py);else ctx.moveTo(px,py);});
+    ctx.closePath();ctx.clip();ctx.drawImage(floorBackdrop('security',w,h,camera,images),0,0);ctx.restore();
+  }
+  for(const r of geometry.walls){
+    rect(r.x,r.y-.24,Math.max(r.w,.17),Math.max(r.h,.17)+.30,'#283333');
+    rect(r.x,r.y-.30,Math.max(r.w,.17),Math.max(r.h,.17),'#8c8e80');
+  }
+  for(const key of ['L2','L3','D1','D2','D3'] as const)for(const r of geometry.roomObjects[key]){
+    rect(r.x,r.y-.55,r.w,r.h+.55,'#344043');rect(r.x,r.y-.55,r.w,r.h,'#777d72');
+  }
+  rect(west[0],west[1]-.15,east[0]-west[0],.3,'#b6aa88');
+  for(const [x,y] of entrance.span){
+    rect(x-.22,y-.48,.44,.76,'#424e4c');rect(x-.22,y-.53,.44,.24,'#dfcba1');
+  }
+}
 export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView){
-  const camera = floorView(w,h,room,scene.world.stage==='walk'||scene.world.stage==='welcome');
+  const tracking=room==='security'&&scene.world.stage==='walk';
+  const crew=tracking?scene.agents.filter(a=>a.duty==='walking'):[];
+  const camera = floorView(w,h,room,tracking||scene.world.stage==='welcome',crew);
   const {sec,scale,xy} = camera;
   ctx.imageSmoothingEnabled=false;
-  ctx.drawImage(floorBackdrop(room, w, h, camera, images), 0, 0);
+  if(tracking)approachFloor(ctx,w,h,camera,images);
+  else ctx.drawImage(floorBackdrop(room, w, h, camera, images), 0, 0);
   const sprites=atlas.sheets as Record<string,number[]>;
   function sprite(key:string,n:number,x:number,y:number,k=scale/64){
     const im=images[key];if(!im)return;
@@ -155,9 +198,10 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   const recentChoices=new Map(scene.events.filter(e=>e.kind==='worker.choice'&&tick-e.tick<90).map(e=>[e.actor,e.text]));
   const returned=view.returnedOriginal.at(-1);
   for(const a of scene.agents){
-    if(a.room!==room||a.duty==='detained')continue;
+    if((a.room!==room&&!(tracking&&approachZone(a.room)))||a.duty==='detained')continue;
     const [x,y]=xy(a.x/1000,a.y/1000);if(x< -12||x>w+12||y<0||y>h+20)continue;
-    const sup=a.id===a.id.toUpperCase(),key=sup?'char-'+a.id.toLowerCase()+'-check':a.id==='max'?'char-max-walk-S':a.moving?'char-bob-walk-S':sec?'bob-security':'bob-forge';
+    const direction=tracking&&a.facing==='N'?'N':'S';
+    const sup=a.id===a.id.toUpperCase(),key=sup?'char-'+a.id.toLowerCase()+'-check':a.id==='max'?'char-max-walk-'+direction:a.moving?'char-bob-walk-'+direction:sec?'bob-security':'bob-forge';
     const k=scale/64,top=y-sprites[key][4]*k;
     anchors.set(a.id,[x,top]);
     layers.push({y:a.y/1000,draw:()=>{

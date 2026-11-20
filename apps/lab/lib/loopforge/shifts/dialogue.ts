@@ -243,7 +243,8 @@ export function updateSpeech(s:Run){
         d.cutoff=s.tick+lineTime(l.words)+(s.pace==='slow'?2:-1);
       }
     }
-    x.next++;x.due=s.tick+lineTime(l.words);
+    x.next++;x.due=s.tick+(d.phase==='walk' ? Math.max(64,20+8*l.words.trim().split(/\s+/).length) : lineTime(l.words));
+    if(d.phase==='walk' && x.next===x.lines.length)d.ready=x.due;
     if(x.next===x.lines.length){
       if(!w)d.completed.push(x.topic);
       if(x.topic==='K14'||x.topic==='K15'){d.transfer='offered';d.transferAt=x.due;}
@@ -259,6 +260,8 @@ function cancel(s:Run,x:Exchange,w?:Window){
 export function cardContact(s:Run){
   const d=s.dialogue;
   if(!['offered','recognized'].includes(d.transfer)||s.tick<d.transferAt)return;
+  // They can talk while walking. The photograph and the handoff need a stop.
+  if(d.phase==='walk'&&(d.arrival||['bob','ed'].some(id=>dist(pos(s,id),s.tasks[id].destination)>120)))return;
   if(dist(pos(s,'bob'),pos(s,'ed'))>2200||propCustodian(s.world,'bob:id')!=='ed'){d.transfer='idle';return;}
   if(d.transfer==='offered'){
     if(!sees(s,'bob',pos(s,'ed'),'ed')){d.transfer='idle';return;}

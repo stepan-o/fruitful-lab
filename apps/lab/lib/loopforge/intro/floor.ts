@@ -39,7 +39,7 @@ export function gateLength(t:number,enabled:boolean) {
   const fraction=t<opened?(t-start)/(opened-start):t<release?1:(closed-t)/(closed-release);
   return geom.gate.length*Math.cos(fraction*Math.PI/2);
 }
-export type Route={cursor:number;elapsed:number;walked:number;facing:string;moving:boolean};
+export type Route={trackId?:string;cursor:number;elapsed:number;walked:number;facing:string;moving:boolean};
 const tracks:Record<string,{t:number;p:number[]}[]>=score.tracks;
 export function startRoutes():Record<string,Route>{
   return Object.fromEntries(Object.keys(tracks).sort().map(id=>[id,{cursor:0,elapsed:0,walked:0,facing:'S',moving:false}]));
@@ -54,7 +54,7 @@ export function moveCast(world:World,routes:Record<string,Route>,gate:number) {
   const pending=new Map<string,{to:Point;cursor:number}>();
   const gateBox=rectBounds({x:geom.gate.hinge[0],y:geom.gate.hinge[1],w:gate,h:0});
   for(const [id,r] of Object.entries(routes)){
-    const actor=world.agents[id],keys=tracks[id],t=worldAt(r.elapsed+1);
+    const actor=world.agents[id],keys=tracks[r.trackId??id],t=worldAt(r.elapsed+1);
     let cursor=r.cursor;
     while(cursor+1<keys.length&&keys[cursor+1].t<=t)cursor++;
     const a=keys[cursor],b=keys[cursor+1];

@@ -19,7 +19,14 @@ async function main(){
     await page.addInitScript(()=>{
       window.addEventListener('loopforge:frame',e=>{window.floorFrame=e.detail;});
     });
-    await page.goto(surface==='portable'?pathToFileURL(process.env.OFFLINE_PLAYER).href:
+    let offline;
+    if(surface==='portable'){
+      const zip=path.resolve('apps/lab/public/loopforge-shifts/review/dialogue/Loopforge-Days-2-4-review.zip');
+      execFileSync('unzip',['-oq',zip,'-d',dir]);
+      offline=path.join(dir,'Loopforge-Days-2-4.html');
+      assert((await fs.readFile(offline)).equals(await fs.readFile(process.env.OFFLINE_PLAYER)));
+    }
+    await page.goto(surface==='portable'?pathToFileURL(offline).href:
       'http://127.0.0.1:4173/'+(surface==='embedded'?'loopforge-design/index.html#2d-shifts':'loopforge-shifts/index.html'));
     const f=surface==='embedded'?await (await page.waitForSelector('#shifts-player')).contentFrame():page.mainFrame();
     await f.waitForFunction(()=>!!window.floorFrame);
@@ -35,7 +42,7 @@ async function main(){
     };
     const photograph=async name=>{
       const picture=await page.screenshot({type:'jpeg',quality:60,path:path.join(dir,name+'.jpg')});
-      if(surface==='standalone'&&width===320&&name==='return')console.log('FRAME_'+name+' '+picture.toString('base64'));
+      if(surface==='standalone'&&width===320&&['entrance','lobby','return'].includes(name))console.log('FRAME_'+name+' '+picture.toString('base64'));
     };
     const play=async()=>{await f.locator('#play').click();await f.locator('#room').scrollIntoViewIfNeeded();};
     const pause=async()=>{if(await f.locator('#play').innerText()==='Pause')await f.locator('#play').click();};
@@ -58,11 +65,18 @@ async function main(){
     };
     await f.locator('[data-bid="LIMEN"]').click();await f.locator('#commit').click();
     await event('speech.delivered','bob','sam','picked me up');await f.locator('#room').scrollIntoViewIfNeeded();await stamp('Morning approach');
+    const crewRooms=()=>f.evaluate(()=>window.floorFrame.scene.agents.filter(a=>a.duty==='walking').map(a=>a.room));
+    assert.deepEqual(await crewRooms(),Array(10).fill('outside'));
+    await photograph('entrance');
     const opening = await f.locator('#speech-text').textContent();
     assert(opening.startsWith('bob · When you picked me up'), opening);
     const started = performance.now();
     await f.waitForFunction(() => document.querySelector('#speech-text').textContent.startsWith('sam · No.'));
     assert(performance.now() - started >= 4300, 'bob’s opening changed before it could be read');
+    for(const zone of ['lobby','dispatch','security']){
+      await f.waitForFunction(room=>window.floorFrame.scene.agents.some(a=>a.duty==='walking'&&a.room===room),zone,{timeout:45000});
+      if(zone==='lobby')await photograph('lobby');
+    }
     await event('speech.delivered','LIMEN','crew','privilege');
     await f.waitForFunction(()=>document.querySelector('#welcome-voice').currentTime>0.1,{},{timeout:6000});
     receipts.push({greetingAudio:await f.locator('#welcome-voice').evaluate(a=>({time:a.currentTime,rate:a.playbackRate}))});
@@ -107,6 +121,7 @@ async function main(){
     if(surface==='standalone'&&width===320){
       const list=[];
       const readings=[
+        ['Morning bids','speech.delivered','sam','No.'],
         ['G5 · exit after early cutoff','speech.delivered','ben','boot'],
         ['G5 · exit after late cutoff','speech.delivered','ed','show you'],
         ['4D · firsthand return','worker.choice','ben','go'],
@@ -118,21 +133,26 @@ async function main(){
         const shot=await clip.newPage();
         await shot.addInitScript(()=>window.addEventListener('loopforge:frame',e=>window.floorFrame=e.detail));
         await shot.goto('http://127.0.0.1:4173/loopforge-shifts/index.html');
-        await shot.locator('#checkpoint').selectOption(checkpoint);
-        await shot.waitForFunction(exit=>exit?window.floorFrame?.scene.world.stage==='departure':window.floorFrame?.scene.world.pressure==='clash',i<2);
+        const entrance=checkpoint==='Morning bids',exit=checkpoint.startsWith('G5'),follows=checkpoint.startsWith('4D');
+        if(entrance){
+          await shot.locator('[data-bid="LIMEN"]').click();
+        }else{
+          await shot.locator('#checkpoint').selectOption(checkpoint);
+          await shot.waitForFunction(exit=>exit?window.floorFrame?.scene.world.stage==='departure':window.floorFrame?.scene.world.pressure==='clash',exit);
+        }
         await shot.evaluate(label=>{
           const box=document.createElement('div');box.textContent=label+' · tick '+window.floorFrame.tick;
           Object.assign(box.style,{position:'fixed',bottom:'0',left:'0',background:'#102523',color:'white',padding:'6px 8px',font:'13px system-ui',zIndex:9999});document.body.append(box);
         },process.env.GITHUB_SHA.slice(0,8)+' · 320 × 844 · standalone · 1× · seed early / 3241 · '+checkpoint);
         const started = performance.now();
-        await shot.locator('#play').click();await shot.locator('#room').scrollIntoViewIfNeeded();
+        await shot.locator(entrance?'#commit':'#play').click();await shot.locator('#room').scrollIntoViewIfNeeded();
         await shot.waitForFunction(([k,a,t])=>window.floorFrame.scene.events.some(e=>e.kind===k&&e.actor===a&&e.text.includes(t)),[kind,actor,word],{timeout:35000});
-        if(i===2){
+        if(follows){
           await shot.waitForTimeout(1000);
           await shot.locator('[data-room="conveyor"]').click();
           await shot.locator('#room').scrollIntoViewIfNeeded();
         }
-        const reply=i<2?word:i===2?'bob was still':'take my turn here';
+        const reply=entrance||exit?word:follows?'bob was still':'take my turn here';
         await shot.waitForFunction(t=>document.querySelector('#speech-text').textContent.includes(t),reply);
         const words=await shot.locator('#speech-text').textContent();
         await shot.waitForFunction(t=>document.querySelector('#speech-text').textContent!==t,words);
@@ -147,7 +167,7 @@ async function main(){
       const bytes=(await fs.readFile(film)).toString('base64');
       for(let i=0;i<bytes.length;i+=6000)console.log('PLAYBACK_'+i+' '+bytes.slice(i,i+6000));
       console.log('PLAYBACK_SIZE '+bytes.length);
-      for(let i=0;i<4;i++)await fs.unlink(path.join(dir,'take-'+i+'.mp4'));
+      for(let i=0;i<readings.length;i++)await fs.unlink(path.join(dir,'take-'+i+'.mp4'));
       await fs.unlink(path.join(dir,'cuts.txt'));
     }
   }finally{await browser.close();}

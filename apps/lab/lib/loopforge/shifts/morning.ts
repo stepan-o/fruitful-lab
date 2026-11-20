@@ -1,4 +1,5 @@
 import type {Run,Point} from './contract';
+import {mm,moveCast,roomAt,score,type Route} from '../intro/floor';
 import manuscript from './manuscript.json';
 import {desk,dist,go,meters,queueSpots,supervisorPost,workPost} from './navigation';
 import {draw,heard,knows,lineTime,lines,observe,phrase,pos,schedule,scripts,sees,workers} from './dialogue';
@@ -43,17 +44,46 @@ export function startWalk(s:Run){
   const d=s.dialogue;
   const meeting=knows(s,'bob','missing.original')&&['sam.reports.pickup','lou.reports.edges','ed.invitation'].some(k=>knows(s,'bob',k));
   const messenger=meeting?undefined:pendingMessenger(s);
-  const pair=messenger?['bob',messenger]:meeting?['bob','ed']:knows(s,'jo','hand.return')?['jo','ben']:knows(s,'jo','desk.released')?['jo','max']:['bob','sam'];
+  const pair=messenger?['bob',messenger]:meeting?['bob','ed']:knows(s,'jo','hand.return')?['jo','ben']:
+    knows(s,'kit','saw.cramp')?['kit','jo']:knows(s,'jo','desk.released')||knows(s,'jo','double.knock')?['jo','max']:['bob','sam'];
+  // The day's conversation partners take adjacent Day One walking lanes.
+  const slots = new Map(workers.map(id => [id,id]));
+  for (const [id,slot] of [[pair[0],'bob'],[pair[1],'sam']]) {
+    const previous = slots.get(id)!;
+    const displaced = workers.find(other => slots.get(other)===slot)!;
+    slots.set(displaced,previous);slots.set(id,slot);
+  }
+  const tracks:Record<string,{p:number[]}[]> = score.tracks;
+  const arrival:Record<string,Route> = {};
   for(const id of workers){
     const i=d.order.indexOf(id),p=i>=0?queueAt(i):id==='ed'?meters(122.45,130.25):meters(131.6,130.2);
     const invitation=meeting&&knows(s,'bob','ed.invitation');
     const landing:Point=invitation&&id==='ed'?meters(122.45,129.6):invitation&&id==='bob'?meters(122.45,128.55):meeting&&id==='ed'?[queueAt(d.order.indexOf('bob'))[0]-1650,queueAt(d.order.indexOf('bob'))[1]-650]:[p[0]+(i<0?0:((i%2)*2-1)*350),p[1]-650];
-    const a=s.world.agents[id];a.position=[landing[0],landing[1]-5700];a.room='security';
-    Object.assign(s.tasks[id],{duty:'walking',path:[],destination:a.position,walked:0,moving:false});
-    go(s,id,landing);
+    const slot=slots.get(id)!;
+    const a=s.world.agents[id];a.position=mm(tracks[slot][0].p);a.room=roomAt(a.position);
+    arrival[id]={trackId:slot,cursor:0,elapsed:0,walked:0,facing:'N',moving:false};
+    Object.assign(s.tasks[id],{duty:'walking',path:[],destination:landing,walked:0,moving:false,facing:'N'});
   }
+  d.arrival=arrival;
   d.intent[pair[0]]=pair[1];thought(s,pair[0],'approach '+pair[1],'walk together to the grate',[...Object.keys(s.world.agents[pair[0]].beliefs).filter(k=>!k.startsWith('heard.line')).slice(-4)]);
   go(s,'LIMEN',supervisorPost);
+}
+export function walkEntrance(s:Run){
+  const arrival=s.dialogue.arrival;
+  if(!arrival)return false;
+  // Use the intro's swept, collision-checked steps. Once inside, workers walk at
+  // the shift pace along the same lanes. No elapsed route time is skipped.
+  moveCast(s.world,arrival,0);
+  if(workers.every(id=>s.world.agents[id].room!=='outside'))moveCast(s.world,arrival,0);
+  for(const id of workers){
+    const lane=arrival[id],task=s.tasks[id];
+    task.walked=lane.walked;task.moving=lane.moving;task.facing=lane.facing;
+  }
+  if(workers.every(id=>s.world.agents[id].room==='security')){
+    delete s.dialogue.arrival;
+    for(const id of workers)go(s,id,s.tasks[id].destination);
+  }
+  return true;
 }
 function chorus(s:Run){
   const valid=manuscript.welcome.filter(([who,to],i)=>knows(s,who,'welcome.'+s.day)&&dist(pos(s,who),pos(s,to))<10500&&
@@ -72,9 +102,10 @@ export function advanceMorning(s:Run){
   const d=s.dialogue;
   if(['offered','recognized'].includes(d.transfer)||s.tick<d.ready||d.exchanges.some(x=>!x.window)||['work','departure','home'].includes(d.phase))return;
   if(d.phase==='walk'){
-    if(d.cue===0&&knows(s,'bob','missing.original')&&knows(s,'bob','ed.invitation')&&
-      ['ed','bob'].some(id=>dist(pos(s,id),s.tasks[id].destination)>100))return;
-    if(d.cue++===0){
+    if(s.tick-s.start<16)return;
+    if(d.cue===1 && s.world.agents.bob.room==='outside')return;
+    if(d.cue===0){
+      d.cue=1;
       const messenger=pendingMessenger(s);
       if(messenger&&dist(pos(s,'bob'),pos(s,messenger))<3000){
         const sam=messenger==='sam',fact=sam?'ed.admits.pickup':'gus.reports.edges';
@@ -97,11 +128,19 @@ export function advanceMorning(s:Run){
       else if(knows(s,'bob','missing.original')&&!knows(s,'bob','sam.missed.pickup'))cast(s,'2A');
       return;
     }
-    if(d.cue===2){
+    if(d.cue===1){
+      d.cue=2;
       const ok=manuscript.crowd.filter(([a,b],i)=>dist(pos(s,a),pos(s,b))<5000&&(knows(s,a,'rumor.'+i)||i===9&&knows(s,a,'heard.brain.threat')||i===4&&knows(s,a,'heard.call')));
       if(ok.length){const [a,b,t]=draw(s,ok);heard(s,phrase(a,t,b),'security','passing aside');d.ready=s.tick+lineTime(t);}
       return;
     }
+    if(d.arrival)return;
+    // A crowded rail can stop the last worker just short of their chosen spot.
+    const gathering=workers.filter(id=>dist(pos(s,id),s.tasks[id].destination)>120);
+    if(gathering.some(id=>dist(pos(s,id),s.tasks[id].destination)>3000) ||
+       (gathering.length && workers.some(id=>s.tasks[id].moving)))return;
+    if(knows(s,'max','two.hands.one.card')&&sees(s,'LIMEN',pos(s,'max'),'max'))
+      observe(s,'max','two.hands.one.card',pos(s,'max'));
     if(!workers.some(id=>dist(pos(s,id),desk)<3200&&sees(s,'LIMEN',pos(s,id),id)))return;
     d.phase='welcome';d.cue=0;
   }

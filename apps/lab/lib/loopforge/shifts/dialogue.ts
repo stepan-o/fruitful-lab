@@ -1,3 +1,4 @@
+import {readingTime} from './reading';
 import manuscript from './manuscript.json';
 import {audible,geom} from '../intro/floor';
 import {segmentBoxDistanceSquared,simultaneousDistanceSquared} from '../encounters/arrival-navigation';
@@ -65,7 +66,9 @@ export function partners(s:Run,slot:Slot,a:string,b:string){
   const d=dist(pos(s,a),pos(s,b));
   if(slot==='security')return s.queue.includes(a)&&s.queue.includes(b)&&a!==s.called&&b!==s.called&&d<=2800;
   if(slot==='departure')return [a,b].every(id=>s.tasks[id].duty==='departing'&&pos(s,id)[1]<129500)&&d<=2800;
-  return occupied(s,a)&&occupied(s,b)&&d<=4400;
+  const edges:Record<string,string[]>={intake:['tray','wash'],wash:['intake','belt'],belt:['wash','drive','forge'],
+    forge:['belt','drive','rack'],tray:['tray','intake'],drive:['drive','belt','forge'],rack:['rack','forge']};
+  return occupied(s,a)&&occupied(s,b)&&d<=4400&&!!edges[s.dialogue.faces[a]]?.includes(s.dialogue.faces[b]);
 }
 export function openWindow(s:Run,slot:Slot,id:string){
   const windows=s.dialogue.windows;
@@ -195,7 +198,7 @@ function choose(s:Run,w:Window){
   const {key,pair,rows}=winner;
   const origin=origins[key],chain=origin?source(s,origin[0],origin[1]==='back.'?'back.'+s.day:origin[1]):undefined;
   const cast=rows.map(([who,words],i)=>phrase(who,words,pair.find(id=>id!==who)!,factMap[key]?.[i],chain,key==='K04'&&who==='ed'));
-  if(key==='K08')cast[0].words=scripts['2G'][0][1];
+  if(key==='K08'&&knows(s,'bob','anonymous.find'))cast[0].words=scripts['2G'][0][1];
   if(w.slot==='departure'&&pair[0]==='bob'){
     const target=pos(s,pair[1]),here=pos(s,'bob');
     const side=here[0]<target[0]?-1:1;
@@ -235,9 +238,14 @@ export function updateSpeech(s:Run){
     if(w&&!w.spent){w.spent=true;s.dialogue.completed.push(x.topic);mark(s,'slot.spent',x.room,'actor.'+l.who,pos(s,l.who),l.who,l.to,x.topic);}
     if(x.topic==='K03'){
       s.chat=x.next===0?'question':'reply';
-      if(x.next===1)d.cutoff=s.tick+lineTime(l.words)+(s.pace==='slow'?2:-1);
+      if(x.next===1&&occupied(s,'sam')&&s.pieces.some(p=>p.status!=='rack')&&sees(s,'STILETTO',pos(s,'sam'),'sam')){
+        const lip=mark(s,'tray.lip.raised','conveyor','control.intake',pos(s,'sam'),'sam','feed tray','A tray lip catches at the feed');
+        remember(s,'STILETTO','raised.lip.'+s.day,'saw feed tray#'+lip.seq,true);
+        d.cutoff=s.tick+lineTime(l.words)+(s.pace==='slow'?2:-1);
+      }
     }
-    x.next++;x.due=s.tick+lineTime(l.words);
+    x.next++;x.due=s.tick+(d.phase==='walk'||x.topic==='posting' ? Math.ceil(readingTime(l.words)/50) : lineTime(l.words));
+    if(d.phase==='walk' && x.next===x.lines.length)d.ready=x.due;
     if(x.next===x.lines.length){
       if(!w)d.completed.push(x.topic);
       if(x.topic==='K14'||x.topic==='K15'){d.transfer='offered';d.transferAt=x.due;}
@@ -253,6 +261,8 @@ function cancel(s:Run,x:Exchange,w?:Window){
 export function cardContact(s:Run){
   const d=s.dialogue;
   if(!['offered','recognized'].includes(d.transfer)||s.tick<d.transferAt)return;
+  // They can talk while walking. The photograph and the handoff need a stop.
+  if(d.phase==='walk'&&(d.arrival||['bob','ed'].some(id=>dist(pos(s,id),s.tasks[id].destination)>120)))return;
   if(dist(pos(s,'bob'),pos(s,'ed'))>2200||propCustodian(s.world,'bob:id')!=='ed'){d.transfer='idle';return;}
   if(d.transfer==='offered'){
     if(!sees(s,'bob',pos(s,'ed'),'ed')){d.transfer='idle';return;}

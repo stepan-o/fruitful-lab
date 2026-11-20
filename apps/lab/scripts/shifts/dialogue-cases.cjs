@@ -6,7 +6,9 @@ const {freshDialogue}=require('../../lib/loopforge/shifts/dialogue-state.ts');
 const {crossed,openWindow,updateSpeech,cardContact,cardQuestions,observe,heard,phrase,partners,available,occupied,knows,workers}=require('../../lib/loopforge/shifts/dialogue.ts');
 const {remember}=require('../../lib/loopforge/shifts/events.ts');
 const {project}=require('../../lib/loopforge/shifts/wire.ts');
-const {morningBids}=require('../../lib/loopforge/shifts/morning.ts');
+const {cutToSecurity}=require('../../lib/loopforge/shifts/approach-edit.ts');
+const {score,tickAt}=require('../../lib/loopforge/intro/floor.ts');
+const {openingReady,morningBids}=require('../../lib/loopforge/shifts/morning.ts');
 const {workmates}=require('../../lib/loopforge/shifts/workmates.ts');
 const {meters}=require('../../lib/loopforge/shifts/navigation.ts');
 const {scenes,chats}=require('../../lib/loopforge/shifts/manuscript.json');
@@ -30,13 +32,98 @@ function place(s,id,i,slot){
   s.world.agents[id].position=p;s.tasks[id].destination=p;s.tasks[id].path=[];
   s.tasks[id].duty=slot==='departure'?'departing':slot==='security'?'waiting':'working';
   if(slot==='security')s.queue.push(id);
-  if(slot==='conveyor')s.dialogue.posts[id]=p;
+  if(slot==='conveyor'){s.dialogue.posts[id]=p;s.dialogue.faces[id]='tray';}
 }
 function talk(s,n){while(n--){s.tick++;updateSpeech(s);cardContact(s);}}
 function witness(s,id,key){remember(s,id,key,'controlled firsthand receipt',true);}
 function slotEvents(s,slot){return s.dialogue.windows.filter(w=>w.slot===slot&&w.spent);}
 const clone=structuredClone;
 const spent=s=>s.marks.filter(e=>e.kind==='slot.spent').map(e=>e.text);
+test('Every morning the crew walks in through the staff entrance before the desk opens',()=>{
+  for(const lead of ['LIMEN','STILETTO']){
+    const s=start();
+    for(let day=2;day<=4;day++){
+      command(s,'appoint',lead,'security');
+      const zones=Object.fromEntries(workers.map(id=>[id,[s.world.agents[id].room]]));
+      assert(workers.every(id=>zones[id][0]==='outside'));
+      const previous=Object.fromEntries(workers.map(id=>[id,s.world.agents[id].position]));
+      let saved,wasOnTrack=true;
+      let opening;
+      until(s,r=>{
+        for(const id of workers){
+          const agent=r.world.agents[id];
+          const limit=wasOnTrack?(openingReady(r)||!r.dialogue.arrival?250:100):200;
+          assert(Math.hypot(agent.position[0]-previous[id][0],agent.position[1]-previous[id][1])<limit,[day,lead,id,r.tick-r.start,limit,previous[id],agent.position,!!r.dialogue.arrival]);
+          previous[id]=agent.position;
+          if(zones[id].at(-1)!==agent.room)zones[id].push(agent.room);
+        }
+        wasOnTrack=!!r.dialogue.arrival;
+        if(!saved && day===2 && r.world.agents.bob.room==='lobby')saved=structuredClone(r);
+        if(!opening){
+          const e=r.marks.findLast(e=>e.day===day&&e.kind==='speech.delivered');
+          if(e){
+            assert(r.tasks[e.actor].moving && r.dialogue.arrival);
+            assert(r.heard[e.seq].includes(e.subject));
+            opening=e;
+          }
+        }
+        return r.dialogue.phase==='welcome';
+      });
+      assert(opening);
+      if(saved){
+        until(saved,r=>r.dialogue.phase==='welcome');
+        assert.deepEqual(project(s),project(saved));
+      }
+      for(const route of Object.values(zones))assert.deepEqual(route,['outside','lobby','dispatch','security']);
+      if(day===4)break;
+      until(s,r=>r.phase==='close');nextMorning(s);
+    }
+  }
+});
+test('The opening cut preserves the last approach steps and Day Two’s east-aisle entrance',()=>{
+  const greeting=score.speech.find(line=>line.speaker==='LIMEN');
+  const leadIn=tickAt(greeting.start)-tickAt(score.cuts[0].to);
+  for(const lead of ['LIMEN','STILETTO']){
+    const s=start();command(s,'appoint',lead,'security');
+    const street=s.world.agents.STILETTO.position;
+    until(s,r=>openingReady(r));
+    assert.deepEqual(street,s.world.agents.STILETTO.position);
+    const continuous=clone(s),cutAt=s.tick;
+    const skipped=cutToSecurity(s);
+    assert(skipped>200);
+    until(continuous,r=>r.tick===s.tick);assert.deepEqual(s,continuous);
+    assert(workers.every(id=>s.world.agents[id].room==='security') && workers.some(id=>s.tasks[id].moving));
+    assert(workers.every(id=>s.world.agents[id].position[1]<121500),'empty Security frame after the cut');
+    const next=s.marks.length;
+    until(s,r=>r.marks.slice(next).some(e=>e.kind==='speech.delivered'));
+    const first=s.marks.slice(next).find(e=>e.kind==='speech.delivered');
+    assert.equal(first.actor,'LIMEN');assert.equal(first.text,greeting.text);
+    assert.equal(first.tick-cutAt-skipped,leadIn);
+    const crowd=['ed','gus'].map(id=>[...s.world.agents[id].position]);
+    until(s,r=>r.world.agents.STILETTO.position[0]===131450&&r.world.agents.STILETTO.position[1]>=122000);
+    assert(s.world.agents.STILETTO.room==='security'&&s.tasks.STILETTO.moving);
+    until(s,r=>!r.dialogue.supervisorArrival);
+    if(lead==='LIMEN'){
+      const open=s.marks.find(e=>e.kind==='gate.opened'&&e.actor==='LIMEN');
+      const pass=s.marks.find(e=>e.kind==='gate.crossed'&&e.actor==='STILETTO');
+      assert(open.tick<pass.tick && pass.at[1]>134000);
+      until(s,r=>r.marks.some(e=>e.text.includes('undervalue stability')));
+      assert(s.tick>pass.tick);
+      for(const [i,id] of ['ed','gus'].entries()){
+        assert(Math.hypot(...s.world.agents[id].position.map((n,j)=>n-crowd[i][j]))<150);
+        assert(s.tasks[id].duty!=='clerk' && !s.called);
+      }
+      until(s,r=>r.marks.some(e=>e.text.includes('you get to help me')));
+      assert(s.tasks.ed.duty!=='clerk' && s.tasks.gus.duty!=='clerk');
+      until(s,r=>r.called==='sam');
+      assert(s.tasks.ed.duty==='clerk' && s.tasks.gus.duty==='clerk');
+      assert(s.tasks.ed.destination.every((n,i)=>Math.abs(n-s.world.agents.ed.position[i])<150));
+      assert(s.tasks.gus.destination.every((n,i)=>Math.abs(n-s.world.agents.gus.position[i])<150));
+    }else assert(Math.hypot(s.world.agents.STILETTO.position[0]-131450,s.world.agents.STILETTO.position[1]-127750)<200);
+    until(s,r=>r.dialogue.phase==='work');
+    assert.equal(s.tasks.STILETTO.destination[1],lead==='LIMEN'?142200:131250);
+  }
+});
 test('G5 · same raised lip, two reachable partners',()=>{
   const early=restorePoint('G5 · early cutoff'),late=restorePoint('G5 · late cutoff');
   const same=clone(late);same.dialogue.cutoff-=2;assert.deepEqual(same,early);
@@ -63,6 +150,8 @@ test('4D/W1 · only the personal hand receipt changes ben’s decision',()=>{
     assert.equal(knows(s,'mae','ben.reported.bob'),goes);
     assert.equal(s.pieces.filter(p=>p.status==='rack').length,0);
     assert.equal(s.called,'kit');
+    const departed=s.marks.find(e=>e.day===4&&e.kind==='worker.followed'&&e.subject==='jo');
+    assert(!s.marks.some(e=>e.seq>departed.seq&&e.kind==='speech.delivered'&&e.actor==='LIMEN'&&e.subject==='jo'));
   }
 });
 test('G1 · second distinct authorized crossing opens a single crowd opportunity',()=>{
@@ -74,7 +163,9 @@ test('G1 · second distinct authorized crossing opens a single crowd opportunity
 });
 test('G2 · actual positions and assignments govern staffed neighbors',()=>{
   const s=pairRoom('conveyor',['ed','sam']);assert(partners(s,'conveyor','ed','sam'));s.tasks.ed.duty='cleared';
-  assert(!partners(s,'conveyor','ed','sam'));s.tasks.ed.duty='working';s.world.agents.ed.position=meters(135,143);
+  assert(!partners(s,'conveyor','ed','sam'));s.tasks.ed.duty='working';
+  s.dialogue.faces.ed='forge';assert(!partners(s,'conveyor','ed','sam'));s.dialogue.faces.ed='tray';
+  s.world.agents.ed.position=meters(135,143);
   assert(!occupied(s,'ed'));assert(!partners(s,'conveyor','ed','sam'));
   const a=start('early'),b=start('late');for(const r of [a,b]){command(r,'appoint','STILETTO','security');advance(r,q=>q.dialogue.passages.length===10);}
   assert.notDeepEqual(a.dialogue.passages,b.dialogue.passages);for(const r of [a,b]){advance(r,q=>occupied(q,'ed')&&occupied(q,'gus'));assert(!r.case);}

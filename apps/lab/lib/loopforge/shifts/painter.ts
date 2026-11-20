@@ -1,7 +1,7 @@
 import type {Scene} from './wire';
 import type {ArtView,Skin} from './skin';
 import geometry from '../intro/geometry.json';
-import {type Room,stations} from './contract';
+import {approachZone,type Room,stations} from './contract';
 import atlas from '../../../public/loopforge-intro/sprites.json';
 import floorPack from '../../../public/loopforge-design/floor-correction/v1/manifest.json';
 import introSprites from './intro-sprites.json';
@@ -36,9 +36,24 @@ export function drawBidPortrait(canvas:HTMLCanvasElement,lead:'LIMEN'|'STILETTO'
   ctx.drawImage(images[key],x,y,36,35,0,0,36,35);
 }
 export const registerDesk=[123.6,132] as const;
-export function floorView(w:number,h:number,room:Room,approach=false){
-  const sec=room==='security',scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
-  const center=sec?127.15:127.4,cy=sec?(approach?125.1:129):144.35;
+export function floorView(w:number,h:number,room:Room,approach=false,crew:Scene['agents']=[]){
+  const sec=room==='security';
+  let scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
+  let center=sec?127.15:127.4,cy=sec?(approach?127.2:129):144.35;
+  if(sec&&approach&&!crew.length){
+    // Hold the north edge at the entry to the rail. The incoming crew crosses
+    // this edge and the south edge includes LIMEN's boom on both screen sizes.
+    scale=Math.min(scale,h/(.67*15.1));
+    cy=121.5+.58*h/(scale*.67);
+  }
+  if(sec&&crew.length){
+    const xs=crew.map(a=>a.x/1000),ys=crew.map(a=>a.y/1000);
+    const left=Math.min(...xs),right=Math.max(...xs),front=Math.min(...ys),back=Math.max(...ys);
+    center=(left+right)/2;cy=(front+back)/2-.65;
+    scale=Math.min(48,w/Math.max(13,right-left+4),h/(.67*(back-front+7)));
+    // Begin on the empty staff door, then follow once the crew catches up.
+    cy=Math.min(cy,140.65-.42*h/(scale*.67));
+  }
   const xy=(x:number,y:number)=>[w/2+(x-center)*scale,h*.58+(y-cy)*scale*.67];
   return {sec,scale,xy};
 }
@@ -55,9 +70,9 @@ function floorBackdrop(room: Room, w: number, h: number, view: ReturnType<typeof
   const cached = backdrops.get(room);
   if (cached?.key === key) return cached.canvas;
 
-  const canvas = document.createElement('canvas');
-  canvas.width = w;
-  canvas.height = h;
+  const canvas = cached?.canvas ?? document.createElement('canvas');
+  if(canvas.width!==w)canvas.width=w;
+  if(canvas.height!==h)canvas.height=h;
   const base = canvas.getContext('2d')!;
   base.imageSmoothingEnabled = false;
   base.globalCompositeOperation = 'source-over';
@@ -79,11 +94,50 @@ function floorBackdrop(room: Room, w: number, h: number, view: ReturnType<typeof
   backdrops.set(room, {key, canvas});
   return canvas;
 }
+// The opening camera follows the moving group across the same north-up floor
+// as Day One. The visible walls have gaps at the actual staff portals.
+function approachFloor(ctx:CanvasRenderingContext2D,w:number,h:number,camera:ReturnType<typeof floorView>,images:Images){
+  const {scale,xy}=camera;
+  const tile=images['tile-security'],tw=4*scale,th=tw*.67,[ox,oy]=xy(0,0);
+  for(let x=((ox%tw)+tw)%tw-tw;x<w;x+=tw)
+    for(let y=((oy%th)+th)%th-th;y<h;y+=th)
+      ctx.drawImage(tile,Math.floor(x),Math.floor(y),Math.ceil(tw)+1,Math.ceil(th)+1);
+  const rect=(x:number,y:number,dx:number,dy:number,color:string)=>{
+    const [px,py]=xy(x,y);ctx.fillStyle=color;ctx.fillRect(px,py,dx*scale,dy*scale*.67);
+  };
+  const entrance=geometry.portals.find(p=>p.id==='staff-entrance')!;
+  const [west,east]=entrance.span;
+  const [,threshold]=xy(...west as [number,number]);
+  ctx.fillStyle='#17202788';ctx.fillRect(0,threshold,w,Math.max(0,h-threshold));
+  const security=geometry.zones.find(z=>z.id==='security')!;
+  if(xy(security.rect.x,0)[0]<w){
+    ctx.save();ctx.beginPath();
+    security.polygon.forEach(([x,y],i)=>{const [px,py]=xy(x,y);if(i)ctx.lineTo(px,py);else ctx.moveTo(px,py);});
+    ctx.closePath();ctx.clip();ctx.drawImage(floorBackdrop('security',w,h,camera,images),0,0);ctx.restore();
+  }
+  for(const r of geometry.walls){
+    rect(r.x,r.y-.24,Math.max(r.w,.17),Math.max(r.h,.17)+.30,'#283333');
+    rect(r.x,r.y-.30,Math.max(r.w,.17),Math.max(r.h,.17),'#8c8e80');
+  }
+  for(const key of ['L2','L3','D1','D2','D3'] as const)for(const r of geometry.roomObjects[key]){
+    rect(r.x,r.y-.55,r.w,r.h+.55,'#344043');rect(r.x,r.y-.55,r.w,r.h,'#777d72');
+  }
+  rect(west[0],west[1]-.15,east[0]-west[0],.3,'#b6aa88');
+  for(const [x,y] of entrance.span){
+    rect(x-.22,y-.48,.44,.76,'#424e4c');rect(x-.22,y-.53,.44,.24,'#dfcba1');
+  }
+}
 export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView){
-  const camera = floorView(w,h,room,scene.world.stage==='walk'||scene.world.stage==='welcome');
+  const tracking=room==='security'&&scene.world.stage==='walk';
+  const crew=tracking?scene.agents.filter(a=>a.duty==='walking'):[];
+  const approachingDesk=crew.length>0&&crew.every(a=>a.room==='security');
+  // Use the same desk frame across the splice and greeting. Include LIMEN and
+  // the east aisle where STILETTO comes alongside the queue.
+  const camera = floorView(w,h,room,tracking||['welcome','posting','queue'].includes(scene.world.stage),approachingDesk?[]:crew);
   const {sec,scale,xy} = camera;
   ctx.imageSmoothingEnabled=false;
-  ctx.drawImage(floorBackdrop(room, w, h, camera, images), 0, 0);
+  if(tracking&&!approachingDesk)approachFloor(ctx,w,h,camera,images);
+  else ctx.drawImage(floorBackdrop(room, w, h, camera, images), 0, 0);
   const sprites=atlas.sheets as Record<string,number[]>;
   function sprite(key:string,n:number,x:number,y:number,k=scale/64){
     const im=images[key];if(!im)return;
@@ -103,7 +157,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
       const [x,y]=xy(cx,cy);layers.push({y:cy-.7,draw:()=>sprite('desk-back',0,x,y)},{y:cy,draw:()=>sprite('desk-front',0,x,y)});
     }
     const [gx,gy]=xy(124.9,134);
-    layers.push({y:134,draw:()=>{sprite('boom',view.gate==='fl-gate-held'?0:24,gx,gy);if(view.gate)skin.world(ctx,view.gate,gx,gy,scale);}});
+    layers.push({y:134,draw:()=>{sprite('boom',scene.world.passageGateMm===undefined?(view.gate==='fl-gate-released'?0:24):Math.round(24*scene.world.passageGateMm/(geometry.gate.length*1000)),gx,gy);if(view.gate)skin.world(ctx,view.gate,gx,gy,scale);}});
   }else{
     const [x,y]=xy(118,145),[x2]=xy(135.5,145);
     ctx.fillStyle='#292f2d';ctx.fillRect(x,y,x2-x,scale*1.6);
@@ -155,14 +209,18 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   const recentChoices=new Map(scene.events.filter(e=>e.kind==='worker.choice'&&tick-e.tick<90).map(e=>[e.actor,e.text]));
   const returned=view.returnedOriginal.at(-1);
   for(const a of scene.agents){
-    if(a.room!==room||a.duty==='detained')continue;
-    const [x,y]=xy(a.x/1000,a.y/1000);if(x< -12||x>w+12||y<0||y>h+20)continue;
-    const sup=a.id===a.id.toUpperCase(),key=sup?'char-'+a.id.toLowerCase()+'-check':a.id==='max'?'char-max-walk-S':a.moving?'char-bob-walk-S':sec?'bob-security':'bob-forge';
+    if(a.id==='STILETTO' && a.duty==='outside')continue;
+    if((a.room!==room&&!(tracking&&approachZone(a.room)))||a.duty==='detained')continue;
+    const [x,y]=xy(a.x/1000,a.y/1000);
+    const direction=tracking&&a.facing==='N'?'N':'S';
+    const sup=a.id===a.id.toUpperCase(),key=sup?'char-'+a.id.toLowerCase()+'-check':a.id==='max'?'char-max-walk-'+direction:a.moving?'char-bob-walk-'+direction:sec?'bob-security':'bob-forge';
     const k=scale/64,top=y-sprites[key][4]*k;
+    if(x< -scale||x>w+scale||y<0||top>h)continue;
     anchors.set(a.id,[x,top]);
     layers.push({y:a.y/1000,draw:()=>{
       ctx.fillStyle='#07141466';ctx.beginPath();ctx.ellipse(x,y,scale*.38,scale*.14,0,0,Math.PI*2);ctx.fill();
-      sprite(key,!sup&&a.moving?Math.floor(a.walked/105)%8:0,x,y,k);
+      const march=a.id==='STILETTO'&&a.moving?Math.abs(Math.sin(Math.PI*a.walked/620))*scale*.045:0;
+      sprite(key,!sup&&a.moving?Math.floor(a.walked/105)%8:0,x,y-march,k);
       if(a.id==='bob' && scene.world.pass?.day===scene.world.day)
         skin.world(ctx,scene.world.pass.valid?'sec-pass-issued-world':'sec-pass-expired-world',x+scale*.23,y-scale*.5,scale);
       if(a.id==='bob' && returned && tick-returned.tick<58)skin.world(ctx,'sec-id-bob-world',x+scale*.23,y-scale*.5,scale);
@@ -183,45 +241,56 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
       if(contact)tag(a.id+' → '+contact.subject,x,y+13);
       const choice=recentChoices.get(a.id);
       if(choice) tag(a.id+' · '+(choice==='go'?'goes':'stays'),x,y+12);
-      else if(!contact&&(a.id==='bob'||a.id==='LIMEN'||a.id==='STILETTO'||a.id===scene.world.called||(!sec&&scene.world.coverage.includes(a.id))))
+      else if(!contact&&((sec&&['welcome','posting','queue'].includes(scene.world.stage)&&['ed','gus'].includes(a.id))||a.id==='bob'||a.id==='LIMEN'||a.id==='STILETTO'||a.id===scene.world.called||(!sec&&scene.world.coverage.includes(a.id))))
         tag(a.id,x,y+12,sup?'#ffd395':'#e8f1eb');
     }});
   }
   layers.sort((a,b)=>a.y-b.y).forEach(l=>l.draw());
   if(!sec)for(let i=0;i<4;i++){const [x,y]=xy(119.7+i*4,147.5);tag(stations[i],x,Math.min(h-4,y+18));}
-  const occupied:{x:number;y:number;w:number;h:number}[]=[];
-  const contact=scene.events.filter(e=>e.kind==='gesture.seen'&&e.text==='hand.return'&&tick-e.tick<55).at(-1);
-  if(contact&&sec){
-    const [x,y]=xy(contact.at[0]/1000,contact.at[1]/1000);
-    occupied.push({x:x-30,y:y-46,w:60,h:57});
-  }
-  for(const ev of view.speeches){
-    const [ax,ay]=anchors.get(ev.speaker)??xy(ev.at[0]/1000,ev.at[1]/1000);
-    if(ax<0||ax>w||ay<0||ay>h)continue;
-    const bodyFont=w<580?'600 14px sans-serif':'600 16px sans-serif';
-    ctx.font=bodyFont;
-    const limit=Math.min(230,w*.74),lines:string[]=[];
-    let line='';
-    for(const word of ev.text.split(' ')){
-      const next=line?line+' '+word:word;
-      if(line&&ctx.measureText(next).width>limit){lines.push(line);line=word;}else line=next;
+  // Simultaneous voices share the reading interval. Stack their plates in event
+  // order and paint all tails first so none can strike through another line.
+  const group = view.speeches.length > 1;
+  const bodyFont = w < 580 ? '600 15px sans-serif' : '600 17px sans-serif';
+  const lineHeight = w < 580 ? 19 : 21;
+  const limit = Math.min(310, w - 42);
+  let stackTop = 5;
+  const hand = sec && scene.events.findLast(e => e.kind === 'gesture.seen' &&
+    e.text === 'hand.return' && tick - e.tick < 55);
+  const bubbles = view.speeches.map(ev => {
+    const [speakerX, speakerY] = anchors.get(ev.speaker) ?? xy(ev.at[0]/1000, ev.at[1]/1000);
+    const ax = Math.max(2, Math.min(w-2, speakerX)), ay = Math.max(2, Math.min(h-2, speakerY));
+    ctx.font = bodyFont;
+    const lines: string[] = [];
+    let line = '';
+    for (const word of ev.text.split(/\s+/)) {
+      const next = line ? line + ' ' + word : word;
+      if (line && ctx.measureText(next).width > limit) {lines.push(line); line = word;}
+      else line = next;
     }
     lines.push(line);
-    const bw=Math.max(70,...lines.map(l=>ctx.measureText(l).width+24)),bh=26+lines.length*17;
-    const x=Math.max(3,Math.min(w-bw-3,ax-bw/2));
-    const aim=Math.max(3,Math.min(h-bh-18,ay-bh-10));
-    const collides=(y:number)=>occupied.some(r=>x<r.x+r.w+2&&x+bw+2>r.x&&y<r.y+r.h+2&&y+bh+2>r.y);
-    const candidates=[aim,...occupied.flatMap(r=>[r.y-bh-4,r.y+r.h+4])].filter(y=>y>=3&&y+bh<=h-4&&!collides(y));
-    const y=candidates.sort((a,b)=>Math.abs(a-aim)-Math.abs(b-aim))[0]??aim;
-    occupied.push({x,y,w:bw,h:bh});
-    const tail=Math.max(x+8,Math.min(x+bw-14,ax));
+    const bw = Math.max(84, ...lines.map(l => ctx.measureText(l).width + 24));
+    const bh = 26 + lines.length * lineHeight;
+    const x = Math.max(3, Math.min(w-bw-3, group ? (w-bw)/2 : ax-bw/2));
+    let y = group ? stackTop : Math.max(3, Math.min(h-bh-4, ay-bh-12));
+    if (group) stackTop += bh + 5;
+    if (hand && !group) {
+      const [hx, hy] = xy(hand.at[0]/1000, hand.at[1]/1000);
+      if (x < hx+30 && x+bw > hx-30 && y < hy+11 && y+bh > hy-46)
+        y = hy-50-bh >= 3 ? hy-50-bh : Math.min(h-bh-4, hy+15);
+    }
+    return {ev, ax, ay, x, y, bw, bh, lines};
+  });
+  for (const {ax, ay, x, y, bw, bh} of bubbles) {
+    const tail = Math.max(x+8, Math.min(x+bw-14, ax));
     ctx.strokeStyle='#d7c7a8';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(tail,y+bh-2);ctx.lineTo(ax,ay);ctx.stroke();
     skin.draw(ctx,ax<tail?'fl-tail-left':'fl-tail-right',tail-5,y+bh-3);
+  }
+  for (const {ev, x, y, bw, bh, lines} of bubbles) {
     skin.draw(ctx,ev.asset,x,y,{width:bw,height:bh});
     ctx.textAlign='left';ctx.font='bold 12px monospace';
     skin.draw(ctx,ev.nameplate,x+7,y+3,{width:ctx.measureText(ev.speaker).width+13,height:17});
     ctx.fillStyle='#fff1d3';ctx.fillText(ev.speaker,x+13,y+16);
     ctx.fillStyle='#182626';ctx.font=bodyFont;
-    lines.forEach((l,i)=>ctx.fillText(l,x+9,y+34+i*17));
+    lines.forEach((line,i)=>ctx.fillText(line,x+10,y+36+i*lineHeight));
   }
 }

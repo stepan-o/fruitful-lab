@@ -209,6 +209,7 @@ shifts_player = '/loopforge-shifts/index.html'
 shifts_intro = heading('Days 2–4', '2D Shifts', 'Commit a morning bid, inspect the signal on LIMEN’s desk, or follow the work on Conveyor.')
 shifts_links = (
     f'<p><a href="{shifts_player}" target="_top">Open the player full screen ↗</a> · '
+    '<a href="/loopforge-shifts/review/dialogue/index.html">Dialogue comparisons and offline player</a> · '
     '<a href="/loopforge-shifts/review/floors/index.html">Floor comparison · 1×</a> · '
     '<a href="/loopforge-shifts/review/shifts-art-1x.mp4">Art comparison · 1×</a> · '
     '<a href="/loopforge-shifts/ENGINE-HANDOFF.md">ENGINE handoff</a> · '

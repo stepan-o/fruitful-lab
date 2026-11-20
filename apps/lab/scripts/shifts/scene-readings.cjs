@@ -36,6 +36,9 @@ verify('H2',!knows(s,'bob','desk.lead')&&s.world.props['bob:id'].location.agent=
 const late=restorePoint('G5 · late cutoff');close(late);
 verify('H1',spent(late,'K10')&&knows(late,'bob','ed.invitation')&&late.world.props['bob:id'].location.agent==='ed');
 
+nextMorning(late);order(late,'appoint','LIMEN');until(late,r=>r.dialogue.phase==='work');
+assert.equal(late.world.props['bob:id'].location.agent,'bob','ed keeps the next-morning appointment');
+
 nextMorning(s);verify('3P',morningBids(s).STILETTO===scenes['3P'][0][1]);
 order(s,'appoint','LIMEN');until(s,r=>r.dialogue.phase==='work');
 verify('3A',!!words(s,scenes['3A'][0][1]));
@@ -78,7 +81,9 @@ const missed=clone(swapped);missed.dialogue.masked.push('bob');close(missed);
 nextMorning(missed);order(missed,'appoint','STILETTO');until(missed,r=>r.dialogue.phase==='work');
 verify('R3',!!words(missed,scenes.R3[0][1])&&knows(missed,'bob','sam.reports.pickup'));
 close(swapped);nextMorning(swapped);order(swapped,'appoint','STILETTO');close(swapped);
-verify('R4',today(swapped,'photo.recognized')[0].tick<today(swapped,'credential.returned')[0].tick&&swapped.world.props['bob:id'].location.agent==='bob');
 verify('Q1',spent(swapped,'V12')&&spent(swapped,'W03')&&knows(swapped,'jo','elbow.helped'));
+assert(knows(swapped,'bob','sam.reports.pickup') && swapped.world.props['bob:id'].location.agent==='ed');
+nextMorning(swapped);order(swapped,'appoint','STILETTO');until(swapped,r=>r.dialogue.phase==='work');
+verify('R4',today(swapped,'photo.recognized')[0].tick<today(swapped,'credential.returned')[0].tick&&swapped.world.props['bob:id'].location.agent==='bob');
 assert.deepEqual([...checked].sort(),Object.keys(scenes).filter(k=>!/^([CM])\d\d$/.test(k)).sort());
 console.log(checked.size+' conditional scene readings passed: '+[...checked].join(', '));

@@ -14,13 +14,26 @@ async function main(){
   try{
     const context=await browser.newContext({viewport,hasTouch:width===320,offline:surface==='portable',
       recordVideo:{dir,size:viewport}});
-    const started=Date.now(),segments=[];
     const page=await context.newPage(),errors=[],receipts=[];
     page.on('pageerror',e=>errors.push(e.message));
     await page.addInitScript(()=>{
-      window.addEventListener('loopforge:frame',e=>{window.floorFrame=e.detail;});
+      window.addEventListener('loopforge:frame',e=>{
+        const prior=window.floorFrame,frame=e.detail;
+        if(prior?.scene.world.stage==='walk' && frame.scene.world.stage==='walk' && frame.tick>prior.tick+1){
+          window.arrivalCut={from:prior.tick,to:frame.tick,before:prior.scene.agents.find(a=>a.id==='bob').room,
+            after:frame.scene.agents.find(a=>a.id==='bob').room,front:Math.max(...frame.scene.agents.filter(a=>a.duty==='walking').map(a=>a.y))};
+        }
+        window.floorFrame=frame;
+      });
     });
-    await page.goto(surface==='portable'?pathToFileURL(process.env.OFFLINE_PLAYER).href:
+    let offline;
+    if(surface==='portable'){
+      const zip=path.resolve('apps/lab/public/loopforge-shifts/review/dialogue/Loopforge-Days-2-4-review.zip');
+      execFileSync('unzip',['-oq',zip,'-d',dir]);
+      offline=path.join(dir,'Loopforge-Days-2-4.html');
+      assert((await fs.readFile(offline)).equals(await fs.readFile(process.env.OFFLINE_PLAYER)));
+    }
+    await page.goto(surface==='portable'?pathToFileURL(offline).href:
       'http://127.0.0.1:4173/'+(surface==='embedded'?'loopforge-design/index.html#2d-shifts':'loopforge-shifts/index.html'));
     const f=surface==='embedded'?await (await page.waitForSelector('#shifts-player')).contentFrame():page.mainFrame();
     await f.waitForFunction(()=>!!window.floorFrame);
@@ -36,7 +49,7 @@ async function main(){
     };
     const photograph=async name=>{
       const picture=await page.screenshot({type:'jpeg',quality:60,path:path.join(dir,name+'.jpg')});
-      if(surface==='standalone'&&width===320&&name==='return')console.log('FRAME_'+name+' '+picture.toString('base64'));
+      if(surface==='standalone'&&width===320&&['security-approach','open-boom','return'].includes(name))console.log('FRAME_'+name+' '+picture.toString('base64'));
     };
     const play=async()=>{await f.locator('#play').click();await f.locator('#room').scrollIntoViewIfNeeded();};
     const pause=async()=>{if(await f.locator('#play').innerText()==='Pause')await f.locator('#play').click();};
@@ -59,7 +72,38 @@ async function main(){
     };
     await f.locator('[data-bid="LIMEN"]').click();await f.locator('#commit').click();
     await event('speech.delivered','bob','sam','picked me up');await f.locator('#room').scrollIntoViewIfNeeded();await stamp('Morning approach');
-    await event('speech.delivered','LIMEN','crew','privilege');await page.waitForTimeout(2200);await pause();
+    const crewRooms=()=>f.evaluate(()=>window.floorFrame.scene.agents.filter(a=>a.duty==='walking').map(a=>a.room));
+    const entering=await crewRooms();assert.equal(entering.length,10);assert(entering.includes('outside')&&entering.includes('lobby'));
+    await photograph('entrance');
+    const opening = await f.locator('#speech-text').textContent();
+    assert(opening.startsWith('bob · When you picked me up'), opening);
+    const started = performance.now();
+    await f.waitForFunction(() => document.querySelector('#speech-text').textContent.startsWith('sam · No.'));
+    assert(performance.now() - started >= 4300, 'bob’s opening changed before it could be read');
+    await f.waitForFunction(()=>!!window.arrivalCut,null,{timeout:25000});
+    const cut=await f.evaluate(()=>window.arrivalCut);
+    assert.equal(cut.before,'lobby');assert.equal(cut.after,'security');assert(cut.front<121500,'crew enters the Security shot from beyond the top edge');
+    await photograph('security-approach');
+    await event('speech.delivered','LIMEN','crew','privilege');
+    const greeting=await f.evaluate(()=>window.floorFrame.scene.events.find(e=>e.kind==='speech.delivered'&&e.actor==='LIMEN'));
+    assert.equal(greeting.tick-cut.to,76);
+    receipts.push({cut,greetingTick:greeting.tick});
+    await f.waitForFunction(()=>document.querySelector('#welcome-voice').currentTime>0.1,{},{timeout:6000});
+    receipts.push({greetingAudio:await f.locator('#welcome-voice').evaluate(a=>({time:a.currentTime,rate:a.playbackRate}))});
+    await f.waitForFunction(() => document.querySelector('#speech-text').textContent.split(' · ').length === 4);
+    const chorus=await f.locator('#speech-text').textContent();
+    await pause();await page.waitForTimeout(750);assert.equal(await f.locator('#speech-text').textContent(),chorus);
+    await photograph('greeting-replies');await play();
+    const longest=Math.max(...chorus.split(/(?:^| )\w+ · /).filter(Boolean).map(line=>Math.max(3200,1000+400*line.trim().split(/\s+/).length)));
+    await f.waitForFunction(t=>document.querySelector('#speech-text').textContent!==t,chorus,{timeout:longest+1400});
+    await f.waitForFunction(()=>{const {world,agents}=window.floorFrame.scene;return world.passageGateMm<1000&&agents.some(a=>a.id==='STILETTO'&&a.moving&&a.y<134000);});
+    await photograph('open-boom');
+    await event('gate.crossed','STILETTO','LIMEN','Passed');
+    await event('speech.delivered','LIMEN','crew','undervalue stability');
+    assert(await f.evaluate(()=>window.floorFrame.scene.agents.filter(a=>['ed','gus'].includes(a.id)).every(a=>a.y<128000&&a.duty==='walking')));
+    await event('speech.delivered','LIMEN','crew','you get to help me');
+    await event('card.presented','sam','LIMEN','sam:id');
+    await photograph('first-id');await pause();
     const layout=await f.evaluate(()=>({width:innerWidth,actual:document.documentElement.scrollWidth,
       overflow:[...document.querySelectorAll('body *')].filter(el=>el.getBoundingClientRect().right>innerWidth+1).slice(0,6).map(el=>[el.tagName,el.id,el.clientWidth])}));
     assert(layout.actual<=layout.width+1,JSON.stringify(layout));
@@ -73,14 +117,14 @@ async function main(){
       await event('chat.interrupted','STILETTO','sam');await pause();
       await load('G5 · exit after '+cutoff+' cutoff');await play();
       await event('speech.delivered',cutoff==='late'?'ed':'ben','bob',cutoff==='late'?'show you':'boot');
-      await page.waitForTimeout(1200);segments.push([Math.max(0,(Date.now()-started)/1000-4),4]);await pause();await inspect('bob',cutoff==='late'?'desk.lead':'boot.lead');
+      await page.waitForTimeout(1200);await pause();await inspect('bob',cutoff==='late'?'desk.lead':'boot.lead');
     }
     await load('3D · hands at the desk');await play();await event('check.return','LIMEN','jo');
     await photograph('return');await pause();
     for(const [name,act] of [['4D · firsthand return','go'],['W1 · reported return','stay']]){
       await load(name);await play();await event('worker.choice','ben','','');await page.waitForTimeout(700);
       assert(await f.evaluate(t=>window.floorFrame.scene.events.some(e=>e.kind==='worker.choice'&&e.actor==='ben'&&e.text===t),act));
-      await photograph('rail-'+act);segments.push([Math.max(0,(Date.now()-started)/1000-3.6),3.6]);
+      await photograph('rail-'+act);
       await f.locator('[data-room="conveyor"]').click();
       if(act==='go')await event('speech.delivered','ben','mae','bob was still');
       else await page.waitForTimeout(6500);
@@ -90,13 +134,50 @@ async function main(){
     await photograph('late-check');await pause();
     assert.deepEqual(errors,[]);
     await fs.writeFile(path.join(dir,'capture.json'),JSON.stringify({build:process.env.GITHUB_SHA,seed:'early / 3241',viewport,surface,speed:1,receipts,errors},null,2));
-    const video=page.video();await context.close();
-    if(surface==='standalone'&&width===320&&segments.length===4){
-      const input=await video.path(),list=[];
-      for(const [i,[offset,length]] of segments.entries()){
-        const name='take-'+i+'.mp4';
-        execFileSync('ffmpeg',['-hide_banner','-loglevel','error','-y','-ss',offset.toFixed(2),'-i',input,'-t',String(length),'-an','-r','12','-c:v','libx264','-crf','30','-pix_fmt','yuv420p',path.join(dir,name)]);
-        list.push("file '"+name+"'");
+    await context.close();
+    if(surface==='standalone'&&width===320){
+      const list=[];
+      const readings=[
+        ['Morning bids','card.presented','sam','sam:id'],
+        ['G5 · exit after early cutoff','speech.delivered','ben','boot'],
+        ['G5 · exit after late cutoff','speech.delivered','ed','show you'],
+        ['4D · firsthand return','worker.choice','ben','go'],
+        ['W1 · reported return','worker.choice','ben','stay']
+      ];
+      // Keep the full reading interval from Play through the reply or the crossing.
+      for(const [i,[checkpoint,kind,actor,word]] of readings.entries()){
+        const clip=await browser.newContext({viewport,recordVideo:{dir,size:viewport}});
+        const shot=await clip.newPage();
+        await shot.addInitScript(()=>window.addEventListener('loopforge:frame',e=>window.floorFrame=e.detail));
+        await shot.goto('http://127.0.0.1:4173/loopforge-shifts/index.html');
+        const entrance=checkpoint==='Morning bids',exit=checkpoint.startsWith('G5'),follows=checkpoint.startsWith('4D');
+        if(entrance){
+          await shot.locator('[data-bid="LIMEN"]').click();
+        }else{
+          await shot.locator('#checkpoint').selectOption(checkpoint);
+          await shot.waitForFunction(exit=>exit?window.floorFrame?.scene.world.stage==='departure':window.floorFrame?.scene.world.pressure==='clash',exit);
+        }
+        await shot.evaluate(label=>{
+          const box=document.createElement('div');box.textContent=label+' · tick '+window.floorFrame.tick;
+          Object.assign(box.style,{position:'fixed',bottom:'0',left:'0',background:'#102523',color:'white',padding:'6px 8px',font:'13px system-ui',zIndex:9999});document.body.append(box);
+        },process.env.GITHUB_SHA.slice(0,8)+' · 320 × 844 · standalone · 1× · seed early / 3241 · '+checkpoint);
+        const started = performance.now();
+        await shot.locator(entrance?'#commit':'#play').click();await shot.locator('#room').scrollIntoViewIfNeeded();
+        await shot.waitForFunction(([k,a,t])=>window.floorFrame.scene.events.some(e=>e.kind===k&&e.actor===a&&e.text.includes(t)),[kind,actor,word],{timeout:entrance?80000:35000});
+        if(follows){
+          await shot.waitForTimeout(1000);
+          await shot.locator('[data-room="conveyor"]').click();
+          await shot.locator('#room').scrollIntoViewIfNeeded();
+        }
+        if(entrance)await shot.waitForFunction(()=>window.floorFrame.scene.events.some(e=>e.kind==='speech.delivered'&&e.tick>=window.floorFrame.scene.events.findLast(e=>e.kind==='card.presented').tick));
+        const reply=exit?word:follows?'bob was still':'take my turn here';
+        if(!entrance)await shot.waitForFunction(t=>document.querySelector('#speech-text').textContent.includes(t),reply);
+        const words=await shot.locator('#speech-text').textContent();
+        await shot.waitForFunction(t=>document.querySelector('#speech-text').textContent!==t,words);
+        const seconds=(performance.now()-started)/1000;
+        const take=shot.video();await clip.close();const input=await take.path(),name='take-'+i+'.mp4';
+        execFileSync('ffmpeg',['-hide_banner','-loglevel','error','-y','-sseof','-'+seconds.toFixed(3),'-i',input,'-an','-r','12','-c:v','libx264','-crf','29','-pix_fmt','yuv420p',path.join(dir,name)]);
+        await fs.unlink(input);list.push("file '"+name+"'");
       }
       await fs.writeFile(path.join(dir,'cuts.txt'),list.join('\n'));
       const film=path.join(dir,'dialogue-at-1x.mp4');
@@ -104,7 +185,7 @@ async function main(){
       const bytes=(await fs.readFile(film)).toString('base64');
       for(let i=0;i<bytes.length;i+=6000)console.log('PLAYBACK_'+i+' '+bytes.slice(i,i+6000));
       console.log('PLAYBACK_SIZE '+bytes.length);
-      for(let i=0;i<4;i++)await fs.unlink(path.join(dir,'take-'+i+'.mp4'));
+      for(let i=0;i<readings.length;i++)await fs.unlink(path.join(dir,'take-'+i+'.mp4'));
       await fs.unlink(path.join(dir,'cuts.txt'));
     }
   }finally{await browser.close();}

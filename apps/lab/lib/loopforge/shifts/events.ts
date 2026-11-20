@@ -1,7 +1,9 @@
-import {audible} from '../intro/floor';
+import {roomAt,audible} from '../intro/floor';
 import {type Point, type Room, type Run} from './contract';
+import {approachZone} from './contract';
 export function mark(s:Run,kind:string,room:Room,anchor:string,at:Point,actor:string,subject:string,text:string,audience:string[]=[]){
-  const item={seq:(s.marks.at(-1)?.seq??0)+1,tick:s.tick,day:s.day,kind,room,anchor,at:[...at] as Point,actor,subject,text,audience};
+  const location=s.dialogue.phase==='walk' && room==='security' ? roomAt(at) : room;
+  const item={seq:(s.marks.at(-1)?.seq??0)+1,tick:s.tick,day:s.day,kind,room:approachZone(location)?location:room,anchor,at:[...at] as Point,actor,subject,text,audience};
   s.marks.push(item);return item;
 }
 export function remember(s:Run,id:string,key:string,source:string,observed=false){

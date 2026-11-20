@@ -1,7 +1,7 @@
 import {checkReading} from './inspections';
 import {workmates} from './workmates';
 import {freshDialogue} from './dialogue-state';
-import {advanceMorning,morningBids,queueAt,queueOrder,seedHistory,startWalk} from './morning';
+import {advanceMorning,morningBids,queueAt,queueOrder,seedHistory,startWalk,walkEntrance,walkSupervisor} from './morning';
 import {available,cardContact,crossed,draw,heard,knows,lineTime,lines,observe,occupied,openWindow,phrase,pos,schedule,scripts,sees,updateSpeech,workers} from './dialogue';
 import inheritance from './inheritance.json';
 import {ENCOUNTER_VERSION,type World,type Agent,type Point} from '../encounters/contract';
@@ -79,6 +79,9 @@ function release(s:Run,id:string,reason:string){
   if(id==='ben'&&s.lead==='STILETTO'&&s.dialogue.posts.kit)support.ben=meters(129.6,142.8);
   if(id==='kit'&&s.backing==='STILETTO')support.kit=meters(119,142.1);
   if(id==='ben'&&s.backing==='STILETTO')support.ben=meters(122,142.5);
+  const supportFace:Record<string,string>={ed:'tray',gus:'rack',mae:'tray',lou:'rack',
+    kit:s.backing==='STILETTO'?'tray':'drive',ben:support.ben[0]>126000?'drive':'tray'};
+  s.dialogue.faces[id]=n>=0?stations[n]:supportFace[id];
   const post=n>=0?controls[n]:support[id];s.dialogue.posts[id]=post;go(s,id,post);
   if(reason==='Credential verified')observe(s,id,'saw.checked.card',pos(s,id),true);
   if(reason==='Daily pass')observe(s,id,'saw.pass',pos(s,id));
@@ -88,7 +91,7 @@ function release(s:Run,id:string,reason:string){
 
   const following=reason==='Responded to STILETTO';
   mark(s,following?'worker.followed':'worker.cleared','security','desk.register',desk,following?'STILETTO':s.lead,id,reason);
-  if(s.called===id){s.called='';s.checking=s.tick+(s.quick?15:45);s.dialogue.checkTopic='';}
+  if(s.called===id){s.dialogue.exchanges=s.dialogue.exchanges.filter(x=>x.topic!=='check.'+id);s.called='';s.checking=s.tick+(s.quick?15:45);s.dialogue.checkTopic='';}
   if(s.pressure!=='clash')s.queue.forEach((who,i)=>{if(who!==s.called)go(s,who,queueAt(who==='bob'&&knows(s,'LIMEN','against.protocol')?6:i));});
 }
 function resolveCase(s:Run,pass:boolean){
@@ -113,7 +116,7 @@ function check(s:Run){
   if(s.case?.status==='open'){if(s.tick>=s.case.deadline)resolveCase(s,false);return;}
   if(s.pressure==='clash'||s.pressure==='refusal'||s.pressure==='demand')return;
   if(!s.called){
-    if(!s.queue.length||s.tick<s.checking||s.dialogue.exchanges.some(x=>x.window&&x.room==='security'&&x.lines.some(l=>l.who===s.queue[0])))return;
+    if(!s.queue.length||s.tick<s.checking)return;
     s.called=s.queue[0];const a=s.world.agents[s.called];
     s.tasks[a.id].duty='approaching';go(s,a.id,desk);s.checking=0;
     const e=mark(s,'queue.called','security','desk.register',desk,s.lead,a.id,'Next for inspection');
@@ -138,7 +141,8 @@ function check(s:Run){
     if(knows(s,'LIMEN','reckless'))s.checking+=s.pressure==='settled'&&a.id==='kit'?520:170;
     return;
   }
-  if(s.tick<s.checking)return;
+  // Keep the contested check open while STILETTO walks up to the desk.
+  if(s.pressure==='approach'||s.tick<s.checking)return;
   if(!s.quick&&propCustodian(s.world,a.id+':id')!==a.id&&propCustodian(s.world,a.id+':id')!=='LIMEN'&&!(s.pass?.valid&&s.pass.holder===a.id)){
     const id=eventId(s,'missing-'+a.id);
     s.case={id,subject:a.id,opened:s.tick,deadline:s.tick+deskWindowTicks,status:'open'};
@@ -261,7 +265,10 @@ export function step(s:Run){
   if(s.phase!=='shift')return;
   s.tick++;
   s.world.tick=s.tick;
-  move(s);
+  if(!walkEntrance(s)){
+    move(s);
+    walkSupervisor(s);
+  }
   const d=s.dialogue;
   if(d.phase==='departure'){
     const exitOrder=['bob','ed','ben','jo','max','lou','kit','sam','mae','gus'];

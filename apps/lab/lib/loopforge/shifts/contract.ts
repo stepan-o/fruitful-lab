@@ -6,8 +6,10 @@ export type Phase = 'briefing' | 'shift' | 'close';
 export type Duty = 'waiting' | 'approaching' | 'cleared' | 'working' | 'detained' | 'clerk' | 'supervising' | 'standing' | 'seeking' | 'walking' | 'departing' | 'outside';
 export type Rule = 'appoint' | 'issue-pass' | 'accelerate' | 'slow' | 'rush' | 'endorse';
 export type Command = {id:string; day:number; action:Rule; room:Room; target:string; incident:string; tick:number};
-export type Mark = {seq:number; tick:number; day:number; kind:string; room:Room; anchor:string; at:Point; actor:string; subject:string; text:string; audience:string[]};
-export type Task = {duty:Duty; path:Point[]; destination:Point; walked:number; moving:boolean; station:number; choice:string};
+export type ApproachZone = 'outside' | 'lobby' | 'dispatch';
+export function approachZone(room:string):room is ApproachZone { return room==='outside'||room==='lobby'||room==='dispatch'; }
+export type Mark = {seq:number; tick:number; day:number; kind:string; room:Room | ApproachZone; anchor:string; at:Point; actor:string; subject:string; text:string; audience:string[]};
+export type Task = {duty:Duty; facing?:string; path:Point[]; destination:Point; walked:number; moving:boolean; station:number; choice:string};
 export type Piece = {id:string; stage:number; status:'process'|'travel'|'rack'; ready:number; at:Point};
 export type Pressure = 'quiet' | 'approach' | 'demand' | 'refusal' | 'clash' | 'settled';
 export type Case = {id:string;subject:string; opened:number; deadline:number; status:'open'|'pass'|'detention'};

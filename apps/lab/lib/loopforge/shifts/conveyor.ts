@@ -1,3 +1,5 @@
+import {heard,occupied,phrase,pos,scripts,sees} from './dialogue';
+import {remember} from './events';
 import {admit,advance} from '../encounters/kernel';
 import {operationPhase} from '../encounters/shared-actions';
 import type {Action,SpatialServices} from '../encounters/contract';
@@ -23,7 +25,15 @@ export function production(s:Run){
     const stage=Number(s.world.facts[p.id+'.stage']);
     if(stage>p.stage){
       p.stage=stage;p.status='travel';p.ready=s.tick+16;
-      const i=stage-1;mark(s,'handoff.finished','conveyor','control.'+stations[i],controls[i],s.coverage[i],p.id,stations[i]);
+      const i=stage-1;const e=mark(s,'handoff.finished','conveyor','control.'+stations[i],controls[i],s.coverage[i],p.id,stations[i]);
+      if(i===2&&s.pace==='all-clear'&&occupied(s,'jo')){
+        remember(s,'jo','stiff.hand','held Belt switch#'+e.seq,true);
+        if(occupied(s,'kit')&&sees(s,'kit',pos(s,'jo'),'jo'))remember(s,'kit','saw.cramp','saw jo flex#'+e.seq,true);
+        if(s.dialogue.completed.includes('V12'))remember(s,'jo','elbow.helped','used elbow at Belt#'+e.seq,true);
+      }
+      if(i===3&&s.pace==='all-clear'&&s.nextPiece===1)heard(s,phrase('jo',scripts.S2.at(-1)![1],'jo'),'conveyor','release');
+      if(i===3&&occupied(s,'jo'))remember(s,'jo','double.knock','heard press#'+e.seq,true);
+      if(i===0&&occupied(s,'mae'))remember(s,'sam','shared.tray','Intake#'+e.seq,true);
     }
     if(p.status==='travel'){
       const slot=geom.contact.outputSlots[s.completed.length%geom.contact.outputSlots.length];
@@ -54,6 +64,10 @@ export function production(s:Run){
       const ev=say(s,'LIMEN',['Intake, all clear.','Wash, all clear.','Belt, all clear.','Forge, all clear.'][i],'conveyor','clear.'+key,[id]);
       if(!s.heard[ev.seq].includes(id)){p.ready=s.tick+20;continue;}
       s.stageClear=key;
+      if(i<3&&id===stationOwners[i]){
+        const response=scripts.S2[i*2+1];
+        heard(s,phrase(id,response[1],'LIMEN'),'conveyor','received all-clear');
+      }
     }
     const ticks=s.pace==='pushed'?26:s.pace==='rushed'?36:s.pace==='slow'?63:48;
     const phase=operationPhase({id:key,ticks,perform:[],effects:[{fact:p.id+'.stage',value:i+1}]},
@@ -68,7 +82,7 @@ export function production(s:Run){
       mark(s,'handoff.started','conveyor','control.'+stations[i],controls[i],id,p.id,s.pace);
     }
   }
-  if(s.tick>=s.nextIntake&&s.dialogue.bell-s.tick>275&&s.coverage[0]&&!s.pieces.some(p=>p.status!=='rack')){
+  if(!['stopped','reporting'].includes(s.dialogue.injury)&&s.tick>=s.nextIntake&&s.dialogue.bell-s.tick>275&&s.coverage[0]&&!s.pieces.some(p=>p.status!=='rack')){
     const id='D'+s.day+'-C'+ ++s.nextPiece;
     s.world.facts[id+'.stage']=0;
     s.pieces.push({id,stage:0,status:'process',ready:s.tick,at:meters(geom.stations[0].x,geom.forgeHall.carrierY)});

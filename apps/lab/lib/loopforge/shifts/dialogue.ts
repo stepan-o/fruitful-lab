@@ -5,7 +5,7 @@ import {applyPropTransfers,propCustodian} from '../encounters/props';
 import type {Run,Point,Room} from './contract';
 import type {Exchange,Line,Slot,Window} from './dialogue-state';
 import {mark,remember,thought} from './events';
-import {desk,dist,meters,go} from './navigation';
+import {dist,meters,go} from './navigation';
 
 export const scripts:Record<string,string[][]>={...manuscript.scenes,...manuscript.chats};
 export const workers=['sam','max','bob','jo','mae','kit','ben','lou','ed','gus'];
@@ -44,10 +44,11 @@ export function heard(s:Run,l:Line,room:Room,topic:string){
     if(l.fact)remember(s,id,l.fact,l.who+'#'+e.seq+(l.source?' ← '+l.source:''),gesture);
     if(id===l.to&&id==='bob'&&workers.includes(l.who))s.dialogue.replied=true;
   }
+  if(l.fact==='ed.acknowledged'&&listeners.includes('bob'))s.dialogue.intent.ed='show the two originals';
   if(l.to&&listeners.includes(l.to))thought(s,l.to,'heard '+l.who,l.words,[topic+'#'+e.seq,...(l.source?[l.source]:[])]);
   return listeners;
 }
-export const phrase=(who:string,words:string,to:string,fact?:string,source?:string,quiet=false):Line=>({who,words,to,fact,source,quiet});
+export const phrase=(who:string,words:string,to:string,fact?:string,source?:string,quiet=false):Line=>({who,words,to,...(fact?{fact}:{}),...(source?{source}:{}),quiet});
 export const lineTime=(words:string)=>Math.max(26,Math.ceil(words.split(/\s+/).length*6.6)+9);
 export function lines(key:string,to:string,from=0,end=scripts[key].length):Line[]{
   return scripts[key].slice(from,end).map(([who,words])=>phrase(who,words,to));
@@ -101,14 +102,14 @@ export function available(s:Run,key:string,slot:Slot){
     case 'K02':return slot==='security'&&missing&&!!s.pass&&!s.pass.valid;
     case 'K03':return slot==='conveyor'&&missing&&b('sam','ed.logged.card')&&!b('bob','desk.lead');
     case 'K04':return slot==='conveyor'&&b('sam','search')&&b('ed','have.bobs.id');
-    case 'K05':return b('gus','two.edges')&&b('lou','search');
+    case 'K05':return slot==='conveyor'&&b('gus','two.edges.'+s.day)&&b('lou','search');
     case 'K06':return b('gus','desk.roles')&&b('mae','search');
     case 'K07':return b('gus','poor.pickup.view')&&b('kit','search');
-    case 'K08':return slot==='departure'&&missing&&b('ben','boot.lifted')&&!b('bob','desk.lead');
+    case 'K08':return !b('bob','boot.lead')&&slot==='departure'&&missing&&b('ben','boot.lifted')&&!b('bob','desk.lead');
     case 'K09':return missing&&b('bob','boot.lead');
     case 'K10':return slot==='departure'&&missing&&b('bob','desk.lead')&&!b('bob','ed.invitation');
-    case 'K11':return b('sam','ed.admits.pickup')&&!b('bob','sam.reports.pickup');
-    case 'K12':return b('lou','gus.reports.edges')&&!b('bob','lou.reports.edges');
+    case 'K11':return slot==='departure'&&b('sam','ed.admits.pickup')&&!b('bob','sam.reports.pickup');
+    case 'K12':return slot==='departure'&&b('lou','gus.reports.edges')&&!b('bob','lou.reports.edges');
     case 'K13':return b('bob','lou.reports.edges')&&b('gus','two.edges');
     case 'K14':return missing&&b('bob','sam.reports.pickup')&&b('ed','have.bobs.id');
     case 'K15':return missing&&b('bob','lou.reports.edges')&&b('ed','have.bobs.id');
@@ -119,14 +120,14 @@ export function available(s:Run,key:string,slot:Slot){
     case 'E2':return slot==='conveyor'&&s.backing==='STILETTO'&&b('kit','back.'+s.day)&&!s.coverage[1];
     case 'V01':return !!s.coverage[2]&&s.pieces.some(p=>p.stage>=2);
     case 'V02':return !s.coverage[1]&&b('mae','tray.hand');
-    case 'V03':return b('jo','hand.return')&&!!s.coverage[3];
+    case 'V03':return b('jo','hand.return')&&s.pieces.some(p=>p.stage===4);
     case 'V05':return s.pieces.some(p=>p.stage===2);
     case 'V06':return !s.coverage[1]&&b('ben','bob.by.kit')&&s.backing!=='STILETTO';
     case 'V07':return s.lead==='STILETTO'&&s.nextPiece>0;
     case 'V08':return s.completed.length===3&&s.pieces.some(p=>p.stage===3);
     case 'V09':return s.pace==='all-clear'&&!!s.announced;
     case 'V10':return !missing&&b('bob','saw.grin');
-    case 'V12':return safe&&b('kit','saw.cramp')&&s.pace==='all-clear'&&!s.world.held['station:belt'];
+    case 'V12':return safe&&b('kit','prior.cramp')&&s.pace==='all-clear'&&!s.world.held['station:belt'];
     case 'V13':return b('sam','saw.solo');
     case 'V14':return s.pieces.some(p=>p.status==='rack');
     case 'V15':return safe;
@@ -134,17 +135,45 @@ export function available(s:Run,key:string,slot:Slot){
     case 'W02':return b('mae','tray.set');
     case 'W03':return b('jo','elbow.helped');
     case 'W05':return !missing;
+    case 'Q01':return s.queue.indexOf('ben')>0&&b('lou','exit.ben');
+    case 'Q02':return b('mae','ink.mark')&&sees(s,'kit',pos(s,'mae'),'mae');
+    case 'Q04':return !!s.called&&!sees(s,'ben',pos(s,'gus'),'gus')&&b('jo','saw.checked.card');
+    case 'Q05':return b('max','heard.call')&&b('jo','heard.call')&&sees(s,'jo',pos(s,'max'),'max');
+    case 'Q08':return b('jo','lost.place')&&dist(pos(s,'sam'),pos(s,'jo'))<1550;
+    case 'Q09':return s.tasks.ed.duty==='clerk'&&!!s.called&&sees(s,'ben',pos(s,'ed'),'ed');
+    case 'Q11':return !!s.called&&b('ben','heard.call')&&b('lou','exit.ben');
+    case 'V04':return b('jo','double.knock')&&b('max','press.heel');
+    case 'V11':return b('ed','nested.rims')&&b('mae','tray.hand');
+    case 'W04':return s.lead==='LIMEN'&&b('ed','kept.book')&&b('gus','called.queue');
+    case 'W06':return b('lou','heard.bell.'+s.day)&&!b('max','heard.bell.'+s.day);
+    case 'W07':return b('gus','encore')&&b('max','imitation')&&!audible(s.world.agents.max,s.world.agents.LIMEN);
+    case 'W08':return b('jo','saw.tray.arms');
+    case 'W09':return b('ben','rack.clang')&&b('lou','saw.stopped.carrier');
+    case 'W10':return b('kit','saw.detention.release')&&b('bob','heard.double.knock')&&b('kit','cleared.tray');
+    case 'W11':return b('sam','shared.tray')&&b('mae','tray.hand');
+    case 'W12':return b('jo','gus.at.rack')&&s.lead==='STILETTO';
+    case 'W13':return s.tasks.sam.moving&&s.tasks.ben.moving&&b('ben','exit.lou');
     case 'Q03':return s.world.facts['injury.bob']==='limping';
     case 'Q06':return missing&&b('bob','struck');
     case 'Q07':return b('lou','saw.two');
     case 'Q10':return b('kit','saw.clerk.ed')&&b('mae','saw.clerk.gus');
     case 'Q12':return s.lead==='STILETTO'&&b('max','heard.squeak');
     case 'Q13':return true;
-    default:return b(scripts[key][0][0],'occasion.'+key);
+    default:return false;
   }
 }
 const preferred:Record<string,number>={K03:100,K08:90,K10:110,E2:135,V06:110,K04:95,K05:98,V12:120,
   K11:105,K12:105,K14:115,K15:115,K02:100,K01:95,Q06:75,V01:85,V02:65,V03:90,V05:80,W01:95,W03:105};
+// These three questions can be recast. The reply remains with its source.
+export function cardQuestions(s:Run,slot:Slot){
+  return workers.filter(id=>!['bob','ed','gus'].includes(id)&&knows(s,id,'search')&&(knows(s,id,'inquire.card')||id==='sam')).flatMap(id=>
+    [['ed','K04','saw.clerk.ed'],['gus','K06','saw.clerk.gus'],['bob','K16','saw.pass']].flatMap(([clerk,key,reason])=>{
+      if(!knows(s,id,reason)||!partners(s,slot,id,clerk)||s.dialogue.completed.includes(key)||
+         (clerk==='ed'&&!knows(s,'ed','have.bobs.id'))||(clerk==='bob'&&!s.pass?.valid))return [];
+      const rows=scripts[key].map(([who,t])=>[who===clerk?clerk:id,t]);
+      return [{key,rows,pair:[id,clerk],rank:30}];
+    }));
+}
 function choose(s:Run,w:Window){
   const keys=[...Object.keys(manuscript.chats),'E2'];
   const bids=keys.flatMap(key=>{
@@ -154,10 +183,12 @@ function choose(s:Run,w:Window){
     let rows=scripts[key];
     if(key==='E2')rows=rows.slice(-2);
     const pair=[...new Set(rows.map(r=>r[0]))];
+    if(w.id.startsWith('relief#')&&!pair.includes('mae'))return [];
     if(pair.length!==2||!partners(s,w.slot,pair[0],pair[1]))return [];
     const rank=(preferred[key]??35)+(pair.includes('bob')&&!s.dialogue.replied?5:0);
     return [{key,rows,pair,rank}];
   });
+  for(const candidate of cardQuestions(s,w.slot))if(!bids.some(x=>x.key===candidate.key&&x.pair[0]===candidate.pair[0]))bids.push(candidate);
   if(!bids.length)return;
   const top=Math.max(...bids.map(b=>b.rank)),winner=draw(s,bids.filter(b=>b.rank===top));
   const {key,pair,rows}=winner;
@@ -167,6 +198,11 @@ function choose(s:Run,w:Window){
   if(w.slot==='departure'&&pair[0]==='bob'){
     const target=pos(s,pair[1]),here=pos(s,'bob');
     const side=here[0]<target[0]?-1:1;
+    const companion=pair[1];
+    if(s.tasks[companion].duty==='departing'&&pos(s,companion)[1]<129500){
+      s.tasks[companion].path=[];s.tasks[companion].destination=pos(s,companion);
+      thought(s,companion,'listen to bob','walking together',[key]);
+    }
     go(s,'bob',[target[0]+side*1050,target[1]+250]);
     mark(s,'worker.approaches','security','actor.bob',here,'bob',pair[1],'bob turns to '+pair[1]);
   }
@@ -187,7 +223,9 @@ export function updateSpeech(s:Run){
     if(s.tick<x.due)continue;
     const l=x.lines[x.next];
     if(!l){cancel(s,x,w);continue;}
+    if(x.topic==='4A'&&x.next===2&&knows(s,'jo','hand.return'))observe(s,'jo','demonstrated.open.palm',pos(s,'jo'),true);
     const recipients=heard(s,l,x.room,x.topic);
+    if(x.topic==='clerks'&&l.who==='mae'&&recipients.includes('sam'))x.lines.push(phrase('sam',scripts['2C'].at(-1)![1],'mae'));
     if(w&&!recipients.includes(l.to)){cancel(s,x,w);continue;}
     if(w&&!w.spent){w.spent=true;s.dialogue.completed.push(x.topic);mark(s,'slot.spent',x.room,'actor.'+l.who,pos(s,l.who),l.who,l.to,x.topic);}
     if(x.topic==='K03'){
@@ -212,12 +250,17 @@ export function cardContact(s:Run){
   if(!['offered','recognized'].includes(d.transfer)||s.tick<d.transferAt)return;
   if(dist(pos(s,'bob'),pos(s,'ed'))>2200||propCustodian(s.world,'bob:id')!=='ed'){d.transfer='idle';return;}
   if(d.transfer==='offered'){
-    if(!sees(s,'bob',pos(s,'ed'),'ed'))return;
+    if(!sees(s,'bob',pos(s,'ed'),'ed')){d.transfer='idle';return;}
     const e=mark(s,'photo.recognized','security','actor.ed',pos(s,'ed'),'bob','ed','bob recognizes his photograph');
     remember(s,'bob','recognized.original','visible photograph#'+e.seq,true);d.transfer='recognized';d.transferAt=s.tick+32;return;
   }
   const props=applyPropTransfers(s.world,[{prop:'bob:id',from:{kind:'stowed',agent:'ed'},to:{kind:'hand',agent:'bob',socket:'right'},observedBy:['ed','bob']}]);
-  if(!props)return;
+  if(!props){
+    const ed=pos(s,'ed'),bob=pos(s,'bob');
+    if(dist(bob,ed)>1400)go(s,'bob',[ed[0]+(bob[0]>=ed[0]?1050:-1050),ed[1]]);
+    else d.transfer='idle';
+    return;
+  }
   s.world.props=props;d.transfer='received';
   const e=mark(s,'credential.returned','security','actor.ed',pos(s,'ed'),'ed','bob','Original returned to bob');
   remember(s,'bob','have.own.id','hand contact#'+e.seq,true);

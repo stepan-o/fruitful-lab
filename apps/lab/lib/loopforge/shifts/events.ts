@@ -9,7 +9,7 @@ export function remember(s:Run,id:string,key:string,source:string,observed=false
 }
 export function say(s:Run,speaker:string,text:string,room:Room,claim='',to?:string[],shout=false){
   const actor=s.world.agents[speaker];
-  const listeners=Object.values(s.world.agents).filter(a=>a.id!==speaker&&s.tasks[a.id].duty!=='detained'&&(!to||to.includes(a.id))&&audible(actor,a,shout));
+  const listeners=Object.values(s.world.agents).filter(a=>a.id!==speaker&&!s.dialogue.masked.includes(a.id)&&s.tasks[a.id].duty!=='detained'&&(!to||to.includes(a.id))&&audible(actor,a,shout));
   const ev=mark(s,'speech.delivered',room,'actor.'+speaker,actor.position,speaker,'',text,to??[]);
   s.heard[String(ev.seq)]=listeners.map(a=>a.id);
   if(claim) for(const a of listeners)remember(s,a.id,claim,speaker+'#'+ev.seq);

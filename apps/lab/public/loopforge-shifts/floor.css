@@ -61,3 +61,13 @@ nav button:has(.icon) {display:inline-flex;align-items:center;gap:5px}
 .commit:active::before {border-image-source:var(--pressed)}
 .bid:focus-visible::after,#signal:focus-visible::after {content:"";position:absolute;inset:-2px;pointer-events:none;border:solid transparent;border-width:10px 12px;border-image:var(--console-focus) 10 12;image-rendering:pixelated}
 #signal:focus-visible::after {border-width:9px;border-image:var(--desk-focus) 9}
+
+.review .tools label, .review select {min-width:0;max-width:100%}
+@media(max-width:360px){
+  main,.strip,.stage,.review,.tools,.end,.order-panel {min-width:0;max-width:100%;box-sizing:border-box}
+  .tools label {display:grid;width:100%}
+  nav {flex-wrap:wrap}
+  .buttons,.tools {flex-wrap:wrap}
+  #checkpoint,#traceOut {max-width:100%}
+  #traceOut {overflow-wrap:anywhere;white-space:pre-wrap}
+}

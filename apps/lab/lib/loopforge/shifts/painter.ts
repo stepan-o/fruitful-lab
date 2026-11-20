@@ -166,7 +166,9 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
       if(a.id==='bob' && scene.world.pass?.day===scene.world.day)
         skin.world(ctx,scene.world.pass.valid?'sec-pass-issued-world':'sec-pass-expired-world',x+scale*.23,y-scale*.5,scale);
       if(a.id==='bob' && returned && tick-returned.tick<58)skin.world(ctx,'sec-id-bob-world',x+scale*.23,y-scale*.5,scale);
-      const act=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='gesture.seen'&&e.text==='hand.return'&&tick-e.tick<55);
+      const act=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='gesture.seen'&&['hand.return','demonstrated.open.palm'].includes(e.text)&&tick-e.tick<55);
+      const reaction=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='gesture.seen'&&/^\p{Extended_Pictographic}/u.test(e.text)&&tick-e.tick<38);
+      if(reaction)tag(a.id+' '+reaction.text,x,top-6);
       if(act){ctx.fillStyle='#f3ebcf';ctx.fillRect(x+scale*.18,y-scale*.52,scale*.22,scale*.14);}
       const contact=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='worker.approaches'&&tick-e.tick<115);
       if(contact)tag(a.id+' → '+contact.subject,x,y+13);

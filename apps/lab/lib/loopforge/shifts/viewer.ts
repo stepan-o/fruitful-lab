@@ -81,9 +81,9 @@ function render(){
   decorate('decision',panel?.asset);decorate('pass','co-commit-ready');
   hidden('pass',!open);button('pass').disabled=!panel?.mayIssue;
   txt('pass',w.spent?'Intervention spent':'Issue daily pass');
-  txt('case-heading',open?'bob is missing his ID':w.status==='pass'?'Daily pass · bob':'Security custody · bob');
+  txt('case-heading',open?w.caseSubject+' is missing an ID':w.status==='pass'?'Daily pass · '+w.caseSubject:'Security custody · '+w.caseSubject);
   el('signal').setAttribute('aria-label',open?'Open desk signal':'Inspect Security report');
-  txt('case-detail',open?'The line is held. A pass admits bob through today’s bell.':w.report?.text??'');
+  txt('case-detail',open?'The line is held. A pass admits '+w.caseSubject+' through today’s bell.':w.report?.text??'');
   txt('deadline',open?Math.ceil((w.deadline-tick)/20)+' s until LIMEN closes the case':'');
   const pass=view.pass;
   const original=view.returnedOriginal.at(-1);
@@ -173,7 +173,7 @@ bind('signal',()=>{
 });
 bind('watch',closeReport);
 el('decision').addEventListener('keydown',e=>{if(e.key==='Escape')closeReport();});
-bind('pass',()=>action('issue-pass','bob'));
+bind('pass',()=>action('issue-pass',frame?.scene.world.caseSubject??'bob'));
 for(const [id,name,target] of orderButtons)bind(id,()=>action(name,target));
 bind('play',()=>worker.postMessage({local:'play',on:!playing}));
 bind('save-state',()=>worker.postMessage({local:'save-state'}));

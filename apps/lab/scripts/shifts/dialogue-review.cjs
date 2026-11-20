@@ -32,6 +32,10 @@ async function main(){
       },[process.env.GITHUB_SHA.slice(0,8),surface,width+' × '+viewport.height,'1×','seed early / 3241',name,'tick '+tick].join(' · '));
       receipts.push({name,tick});
     };
+    const photograph=async name=>{
+      const picture=await page.screenshot({type:'jpeg',quality:60,path:path.join(dir,name+'.jpg')});
+      if(surface==='standalone'&&width===320)console.log('FRAME_'+name+' '+picture.toString('base64'));
+    };
     const play=async()=>{await f.locator('#play').click();await f.locator('#room').scrollIntoViewIfNeeded();};
     const pause=async()=>{if(await f.locator('#play').innerText()==='Pause')await f.locator('#play').click();};
     const event=async(kind,actor,subject,text)=>f.waitForFunction(([k,a,b,t])=>window.floorFrame.scene.events.some(e=>
@@ -39,14 +43,16 @@ async function main(){
     const load=async name=>{
       await f.locator('#checkpoint').selectOption(name);
       await f.waitForFunction(()=>document.getElementById('play').textContent==='Play 1×');
-      await f.waitForFunction(n=>window.floorFrame.scene.world.day===(n.includes('return')?4:2)&&
-        (n.includes('exit')?window.floorFrame.scene.world.stage==='departure':n.includes('return')?window.floorFrame.scene.world.pressure==='clash':window.floorFrame.scene.world.chat==='reply'),name);
+      await f.waitForFunction(n=>window.floorFrame.scene.world.day===(n.startsWith('3D')?3:n.startsWith('4F')||n.includes('return')?4:2)&&
+        (n.startsWith('3D')?window.floorFrame.scene.world.pressure==='refusal':n.startsWith('4F')?window.floorFrame.scene.world.called==='kit':n.includes('exit')?window.floorFrame.scene.world.stage==='departure':n.includes('return')?window.floorFrame.scene.world.pressure==='clash':window.floorFrame.scene.world.chat==='reply'),name);
       await stamp(name);
     };
     await f.locator('[data-bid="LIMEN"]').click();await f.locator('#commit').click();
     await event('speech.delivered','bob','sam','picked me up');await f.locator('#room').scrollIntoViewIfNeeded();await stamp('Morning approach');
     await event('speech.delivered','LIMEN','crew','privilege');await page.waitForTimeout(2200);await pause();
-    assert(await f.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+    const layout=await f.evaluate(()=>({width:innerWidth,actual:document.documentElement.scrollWidth,
+      overflow:[...document.querySelectorAll('body *')].filter(el=>el.getBoundingClientRect().right>innerWidth+1).slice(0,6).map(el=>[el.tagName,el.id,el.clientWidth])}));
+    assert(layout.actual<=layout.width+1,JSON.stringify(layout));
     for(const cutoff of ['early','late']){
       const name='G5 · '+cutoff+' cutoff';await load(name);
       await f.locator('#save-state').click();await play();
@@ -59,14 +65,19 @@ async function main(){
       await event('speech.delivered',cutoff==='late'?'ed':'ben','bob',cutoff==='late'?'show you':'boot');
       await page.waitForTimeout(1200);await pause();
     }
+    await load('3D · hands at the desk');await play();await event('check.return','LIMEN','jo');
+    await photograph('return');await pause();
     for(const [name,act] of [['4D · firsthand return','go'],['W1 · reported return','stay']]){
       await load(name);await play();await event('worker.choice','ben','','');await page.waitForTimeout(700);
       assert(await f.evaluate(t=>window.floorFrame.scene.events.some(e=>e.kind==='worker.choice'&&e.actor==='ben'&&e.text===t),act));
+      await photograph('rail-'+act);
       await f.locator('[data-room="conveyor"]').click();
       if(act==='go')await event('speech.delivered','ben','mae','bob was still');
       else await page.waitForTimeout(6500);
       await pause();
     }
+    await load('4F · late check at bell');await play();await event('shift.closed','BELL');
+    await photograph('late-check');await pause();
     assert.deepEqual(errors,[]);
     await fs.writeFile(path.join(dir,'capture.json'),JSON.stringify({build:process.env.GITHUB_SHA,seed:'early / 3241',viewport,surface,speed:1,receipts,errors},null,2));
     await context.close();

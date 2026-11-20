@@ -8,14 +8,14 @@ export type Dialogue = {
   phase:'walk'|'welcome'|'posting'|'queue'|'work'|'departure'|'home';
   cue:number; ready:number; bell:number; bellReached:boolean; random:number; draws:number;
   exchanges:Exchange[]; windows:Window[]; passages:string[]; authorized:string[]; crossed:string[];
-  posts:Record<string,Point>; seenEvents:string[]; completed:string[]; replied:boolean;
+  posts:Record<string,Point>; releaseAt:Record<string,number>; exitLeg:Record<string,number>; completed:string[]; replied:boolean;
   intent:Record<string,string>; exitAt:number; cutoff:number; occluded:string[]; masked:string[];
-  transfer:'idle'|'offered'|'recognized'|'received'; transferAt:number; peerAt:number;
+  transfer:'idle'|'offered'|'recognized'|'received'; transferAt:number; errand:'none'|'rack'|'returning'|'reported'; injury:'none'|'stopped'|'reporting'|'heard';
   checkTopic:string; checked:string[]; lastPause:number; teamAtBell:number; order:string[];
 };
 export function freshDialogue(seed:number):Dialogue {
   return {phase:'walk',cue:0,ready:0,bell:0,bellReached:false,random:seed,draws:0,exchanges:[],windows:[],
-    passages:[],authorized:[],crossed:[],posts:{},seenEvents:[],completed:[],replied:false,intent:{},
-    exitAt:0,cutoff:-1,occluded:[],masked:[],transfer:'idle',transferAt:0,peerAt:0,checkTopic:'',checked:[],
+    passages:[],authorized:[],crossed:[],posts:{},releaseAt:{},exitLeg:{},completed:[],replied:false,intent:{},
+    exitAt:0,cutoff:-1,occluded:[],masked:[],transfer:'idle',transferAt:0,errand:'none',injury:'none',checkTopic:'',checked:[],
     lastPause:0,teamAtBell:0,order:[]};
 }

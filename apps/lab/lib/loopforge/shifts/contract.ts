@@ -10,11 +10,11 @@ export type Mark = {seq:number; tick:number; day:number; kind:string; room:Room;
 export type Task = {duty:Duty; path:Point[]; destination:Point; walked:number; moving:boolean; station:number; choice:string};
 export type Piece = {id:string; stage:number; status:'process'|'travel'|'rack'; ready:number; at:Point};
 export type Pressure = 'quiet' | 'approach' | 'demand' | 'refusal' | 'clash' | 'settled';
-export type Case = {id:string; opened:number; deadline:number; status:'open'|'pass'|'detention'};
+export type Case = {id:string;subject:string; opened:number; deadline:number; status:'open'|'pass'|'detention'};
 export type Thought = {tick:number; day:number; actor:string; intent:string; why:string; evidence:string[]};
 export type Run = {
   dialogue:import('./dialogue-state').Dialogue;
-  version:'shift-floor/1'; day:number; phase:Phase; tick:number; start:number; seed:'early'|'late';
+  nextQueue?:string[]; version:'shift-floor/1'; day:number; phase:Phase; tick:number; start:number; seed:'early'|'late';
   world:World; tasks:Record<string,Task>; rules:Record<string,Action>; lead:Lead; pace:'rushed'|'pushed'|'slow'|'all-clear';
   queue:string[]; called:string; checking:number; quick:boolean; case:Case|null; spent:Rule|null;
   pass:{holder:string;issuer:string;day:number;valid:boolean}|null; caseReleaseSeq:number;

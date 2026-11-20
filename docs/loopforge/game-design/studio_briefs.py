@@ -10,6 +10,7 @@ BASE = '/stepanoskin/loopforge/design/studio'
 PUBLIC = '/loopforge-design/studio'
 E = html.escape
 COMPANIONS = ['producer-reading', 'producer-playbook']
+SYSTEMS_REVIEW = 'days-2-4-dialogue-validation'
 
 
 def kickoff(role):
@@ -66,13 +67,15 @@ def build_studio(docs: Path, out: Path):
 <main class="studio-document-grid"><aside><details open><summary>On this page</summary>{contents}</details><p class="studio-source">Maintained source<br><code>docs/loopforge/studio-briefs/{md_name}.md</code></p><a href="{PUBLIC}/{md_name}.md" download>Download this brief</a></aside><article id="content" class="studio-article"><p class="studio-label">Loopforge · owner-directed Codex studio</p><h1>{E(title)}</h1>{extra}{content}</article></main><footer class="studio-footer"><a href="/stepanoskin/loopforge/design#studio">Back to the design board</a><p>Current instructions and historical evidence stay separate. PRODUCER maintains the briefs with specialist contributions; the owner directs and reviews the work.</p></footer>{script}</body></html>'''
         (target / f'{slug}.html').write_text(document)
 
-    for slug in ['general', 'dev-blog'] + [r['id'] for r in roles] + COMPANIONS:
+    for slug in ['general', 'dev-blog', SYSTEMS_REVIEW] + [r['id'] for r in roles] + COMPANIONS:
         text = (source / f'{slug}.md').read_text()
         (target / f'{slug}.md').write_text(text)
         title, content, toc = render(text, {})
         extra = ''
         if slug == 'general':
             extra = workflow + '<div class="studio-section-title"><h2>Dedicated specialists</h2></div>' + cards
+        elif slug == SYSTEMS_REVIEW:
+            extra = f'<p><a href="{BASE}/game-systems-designer">GAME SYSTEMS DESIGNER handoff</a></p>'
         elif slug not in ['dev-blog'] + COMPANIONS:
             role = next(r for r in roles if r['id'] == slug)
             prompt = kickoff(role)

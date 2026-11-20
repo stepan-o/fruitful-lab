@@ -41,9 +41,11 @@ Read *Designing Games* in depth for the relevant decisions and provide verified 
 
 ## Current handoff
 
-**18 November 2026 · active owner commission, not an approved systems design.** Study and pre-synthesize; interview the owner one question at a time with suggested answers; propose a plan; implement the approved design study as a new tab immediately after Supervisor × room; deliver it for manual review.
+**20 November 2026 · Days 2–4 dialogue review delivered to PRODUCER and ENGINE MASTER.** WRITER PR #169 was reviewed at `09c63edf` against the owner interview and plan at local SYSTEMS `16a54fc`. Verdict: revise the listed cues and implement the reviewed rules. The handoff covers all 37 scene and alternate IDs, G1–G11, both appointments, the four worker conversation opportunities, and the physical and private evidence carried into tomorrow.
 
-The target is an initial concept and concrete Days 2–4 draft, not a complete Act 1 implementation. ENGINE is finishing Day 1 independently. BDI must become a real decision/execution loop, but do not claim the future design is already integrated into the game.
+[Read the ENGINE behavioral specification and regression cases](/loopforge-design/studio/days-2-4-dialogue-validation.html) · [Download the specification](/loopforge-design/studio/days-2-4-dialogue-validation.md) · [Reviewed writing package](https://github.com/stepan-o/fruitful-lab/tree/09c63edf688c93374f4f5c9bb4f69164483cde98/docs/loopforge)
+
+Start with V03/4D/W1 and G5. Change only ben’s memory of seeing yesterday’s concession or only the cutoff before sam names ed’s desk. WRITER has exact cue corrections; ENGINE has the expected actions and receipts. Nine existing kernel replays passed at `73658a93`. Integration and owner review of the playable result remain ahead. The recommended reading lets ongoing checks and staffing determine how long the final stall lasts.
 
 ## Delivery and continuity
 

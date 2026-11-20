@@ -1,0 +1,305 @@
+{
+  "art": "raking-floor/1",
+  "geometry": "approved-factory/day-one-3",
+  "integration": "13dedce79122bd12d83cdbebb535a00c2483b331",
+  "captureRun": "https://github.com/stepan-o/fruitful-lab/actions/runs/44596096042",
+  "verificationBuild": "9a324804dbb9496dba9835d84c7300be2e91cf2e",
+  "verificationRun": "https://github.com/stepan-o/fruitful-lab/actions/runs/44596633632",
+  "baseline": "73658a934ccf9fab0bfe72657a266ad70d5bb299",
+  "viewerSha256": "c05fbf256087c34efebdc033c78b9d6aa4e23e9d92f1749b3f368c5b7cc11cd7",
+  "workerSha256": "c706abc57c12826e0a9474f5a8ebadc817bbcfc1432c284db240520766c72cdc",
+  "runs": [
+    {
+      "build": "before",
+      "viewport": {
+        "width": 1280,
+        "height": 860
+      },
+      "touch": false,
+      "version": "141.0.7390.37",
+      "hashes": [
+        "cd3d285ef8ca0d089470d6da0fe62af08068fa08cbd53b318cf41d5c27f47602",
+        "7b3b126e50589ae719e898f05e222c7ef09ac180d75b61d82e8d442779eb067a"
+      ],
+      "rasters": [],
+      "floorRequests": [],
+      "errors": []
+    },
+    {
+      "build": "after",
+      "viewport": {
+        "width": 1280,
+        "height": 860
+      },
+      "touch": false,
+      "version": "141.0.7390.37",
+      "hashes": [
+        "cd3d285ef8ca0d089470d6da0fe62af08068fa08cbd53b318cf41d5c27f47602",
+        "7b3b126e50589ae719e898f05e222c7ef09ac180d75b61d82e8d442779eb067a"
+      ],
+      "rasters": [
+        {
+          "size": [
+            872,
+            370
+          ],
+          "material": "security-material.webp",
+          "overlay": "security-room.webp",
+          "rect": [
+            -180,
+            -398,
+            1393,
+            882
+          ],
+          "joined": true,
+          "crisp": true,
+          "gaps": 0,
+          "overlayDraws": 1
+        },
+        {
+          "size": [
+            872,
+            370
+          ],
+          "material": "conveyor-material.webp",
+          "overlay": "conveyor-room.webp",
+          "rect": [
+            -340,
+            51,
+            1520,
+            617
+          ],
+          "joined": true,
+          "crisp": true,
+          "gaps": 0,
+          "overlayDraws": 1
+        },
+        {
+          "size": [
+            720,
+            370
+          ],
+          "material": "conveyor-material.webp",
+          "overlay": "conveyor-room.webp",
+          "rect": [
+            -281,
+            80,
+            1255,
+            509
+          ],
+          "joined": true,
+          "crisp": true,
+          "gaps": 0,
+          "overlayDraws": 1
+        },
+        {
+          "size": [
+            720,
+            370
+          ],
+          "material": "security-material.webp",
+          "overlay": "security-room.webp",
+          "rect": [
+            -256,
+            -398,
+            1393,
+            882
+          ],
+          "joined": true,
+          "crisp": true,
+          "gaps": 0,
+          "overlayDraws": 1
+        },
+        {
+          "size": [
+            872,
+            370
+          ],
+          "material": "conveyor-material.webp",
+          "overlay": "conveyor-room.webp",
+          "rect": [
+            -340,
+            51,
+            1520,
+            617
+          ],
+          "joined": true,
+          "crisp": true,
+          "gaps": 0,
+          "overlayDraws": 1
+        },
+        {
+          "size": [
+            872,
+            370
+          ],
+          "material": "security-material.webp",
+          "overlay": "security-room.webp",
+          "rect": [
+            -180,
+            -398,
+            1393,
+            882
+          ],
+          "joined": true,
+          "crisp": true,
+          "gaps": 0,
+          "overlayDraws": 1
+        }
+      ],
+      "floorRequests": [
+        "conveyor-material.webp",
+        "conveyor-room.webp",
+        "security-material.webp",
+        "security-room.webp"
+      ],
+      "errors": []
+    },
+    {
+      "build": "before",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "touch": true,
+      "version": "141.0.7390.37",
+      "hashes": [
+        "cd3d285ef8ca0d089470d6da0fe62af08068fa08cbd53b318cf41d5c27f47602",
+        "7b3b126e50589ae719e898f05e222c7ef09ac180d75b61d82e8d442779eb067a"
+      ],
+      "rasters": [],
+      "floorRequests": [],
+      "errors": []
+    },
+    {
+      "build": "after",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "touch": true,
+      "version": "141.0.7390.37",
+      "hashes": [
+        "cd3d285ef8ca0d089470d6da0fe62af08068fa08cbd53b318cf41d5c27f47602",
+        "7b3b126e50589ae719e898f05e222c7ef09ac180d75b61d82e8d442779eb067a"
+      ],
+      "rasters": [
+        {
+          "size": [
+            304,
+            266
+          ],
+          "material": "security-material.webp",
+          "overlay": "security-room.webp",
+          "rect": [
+            -225,
+            -221,
+            853,
+            541
+          ],
+          "joined": true,
+          "crisp": true,
+          "gaps": 0,
+          "overlayDraws": 1
+        },
+        {
+          "size": [
+            304,
+            266
+          ],
+          "material": "conveyor-material.webp",
+          "overlay": "conveyor-room.webp",
+          "rect": [
+            -119,
+            97,
+            530,
+            215
+          ],
+          "joined": true,
+          "crisp": true,
+          "gaps": 0,
+          "overlayDraws": 1
+        },
+        {
+          "size": [
+            374,
+            266
+          ],
+          "material": "conveyor-material.webp",
+          "overlay": "conveyor-room.webp",
+          "rect": [
+            -146,
+            84,
+            652,
+            265
+          ],
+          "joined": true,
+          "crisp": true,
+          "gaps": 0,
+          "overlayDraws": 1
+        },
+        {
+          "size": [
+            374,
+            266
+          ],
+          "material": "security-material.webp",
+          "overlay": "security-room.webp",
+          "rect": [
+            -256,
+            -286,
+            1002,
+            634
+          ],
+          "joined": true,
+          "crisp": true,
+          "gaps": 0,
+          "overlayDraws": 1
+        },
+        {
+          "size": [
+            304,
+            266
+          ],
+          "material": "conveyor-material.webp",
+          "overlay": "conveyor-room.webp",
+          "rect": [
+            -119,
+            97,
+            530,
+            215
+          ],
+          "joined": true,
+          "crisp": true,
+          "gaps": 0,
+          "overlayDraws": 1
+        },
+        {
+          "size": [
+            304,
+            266
+          ],
+          "material": "security-material.webp",
+          "overlay": "security-room.webp",
+          "rect": [
+            -225,
+            -221,
+            853,
+            541
+          ],
+          "joined": true,
+          "crisp": true,
+          "gaps": 0,
+          "overlayDraws": 1
+        }
+      ],
+      "floorRequests": [
+        "conveyor-material.webp",
+        "conveyor-room.webp",
+        "security-material.webp",
+        "security-room.webp"
+      ],
+      "errors": []
+    }
+  ]
+}

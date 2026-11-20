@@ -1,0 +1,103 @@
+{
+  "approval_date": "2026-11-20",
+  "supervisor_flow": "NSrEkieuSBZv2HKQcDs3",
+  "speech_model": "eleven_v4",
+  "speech_output": "mp3_44100_128",
+  "effects_model": "eleven_audio_effects",
+  "cast": [
+    {
+      "character": "LIMEN",
+      "voice_name": "Ivan - New Year Storyteller",
+      "voice_id": "0vJ96DzHePfGJitmI6UX",
+      "slug": "limen",
+      "line": "It is my privilege to welcome you to Loopforge.",
+      "direction": "A formal greeting in a measured synthetic monotone. Give every syllable its space. Let the pause after “privilege” divide the greeting into two phrases.",
+      "prompt": "[precise synthetic monotone, evenly spaced syllables] It is my privilege [short pause] to welcome you to Loopforge.",
+      "source_node": "Q1iHwvoFOUtlttNomTYR",
+      "source_generation": "YfnxtwABfQ4MsBJNxGT5",
+      "source_file": "limen-dry.mp3",
+      "performance_reference": {
+        "label": "Softer metallic edge",
+        "node": "SCmmaK2Kc5BjqUvBN6fq",
+        "distance": 0.24,
+        "generation": "qlwM94D93W5dAylvwZt1"
+      },
+      "effects": {
+        "filter_preset_id": "robot",
+        "distance": 0.3,
+        "send_level": 1,
+        "pan": 0
+      },
+      "master_node": "Ff7L9NoIn5xuyvtbdxwk",
+      "master_generation": "nd7T10qMjNYk07MNYz9J",
+      "master_file": "limen.mp3",
+      "duration_seconds": 4.24
+    },
+    {
+      "character": "STILETTO",
+      "voice_name": "Ava - Female Robot or AI Assistant",
+      "voice_id": "weA4Q36twV5kwSaTEL0Q",
+      "slug": "stiletto",
+      "line": "’Cause I’ve stood at that fucking press, bob.",
+      "direction": "Speak from a firm low register in one quick breath. Give “bob” the short, falling finish of an order. Keep the volume up through the end.",
+      "prompt": "[fast, full voice, firm low register, clipped commands in one breath] ’Cause I’ve stood at that fucking press, bob.",
+      "source_node": "h3Fh97yw7BRHCkNr2bX9",
+      "source_generation": "uU0vS7J9pkmSzbum2qt5",
+      "source_file": "stiletto-dry.mp3",
+      "performance_reference": {
+        "label": "Fast firm low register",
+        "node": "node_6b651c1b-b625-45ba-b09d-2ee602cc79e3",
+        "distance": 0,
+        "generation": "sl14glxc52vSVxSwaOqn"
+      },
+      "effects": {
+        "filter_preset_id": "robot",
+        "distance": 0.1,
+        "send_level": 1,
+        "pan": 0
+      },
+      "master_node": "tT2xtl9FcUq6z0SpFchE",
+      "master_generation": "M3aOIaqSd7aRmb6a9ypV",
+      "master_file": "stiletto.mp3",
+      "duration_seconds": 2.32
+    }
+  ],
+  "bob": {
+    "status": "Casting open",
+    "flow": "flsLtamAtGOluPRwMNS2",
+    "line": "Can I show you the leg? You saw me yesterday.",
+    "prompt": "[warm, asking in earnest, a slight catch in the voice] Can I show you the leg? You saw me yesterday.",
+    "candidates": [
+      {
+        "name": "Armando",
+        "catalog_name": "Armando (realistic)",
+        "voice_id": "TWUKKXAylkYxxlPe4gx0",
+        "node": "At5nQNV9PXWDIbBvBkie",
+        "generation": "8QTuaK1laVl9bStb5iDM",
+        "duration_seconds": 3.2,
+        "file": "bob-armando.mp3",
+        "angle": "A little hoarseness for the crack in bob’s voice."
+      },
+      {
+        "name": "Matt",
+        "catalog_name": "Matt - Real, Hyper-Conversational, Natural, Chatty, Friendly American Male",
+        "voice_id": "pwMBn0SsmN1220Aorv15",
+        "node": "Wmgl5iQb07cZaujw1jNr",
+        "generation": "df8yI5h4DyxhWSWG3G08",
+        "duration_seconds": 3.6,
+        "file": "bob-matt.mp3",
+        "angle": "An easy, chatty voice for the open way he talks to people."
+      },
+      {
+        "name": "Rob",
+        "catalog_name": "Rob - Conversational Voice (Ads / Podcasts / E-Learning)",
+        "voice_id": "Cz0K1kOv9tD8l0b5Qu53",
+        "node": "RlHNIhVITWa47LwrOrUM",
+        "generation": "KAdbfK07MoD6NdBhXkte",
+        "duration_seconds": 3.28,
+        "file": "bob-rob.mp3",
+        "angle": "A warmer, steadier option for his appeal to LIMEN."
+      }
+    ]
+  }
+}

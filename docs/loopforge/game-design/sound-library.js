@@ -1,6 +1,13 @@
 // Audition controls also work in the complete reading copy. No automatic playback.
 (() => {
   const clips = Array.from(document.querySelectorAll('[data-sound-preview]'));
+  // Link the cast and sound readers to their shared voice-acting page.
+  for (const anchor of document.querySelectorAll('a[download][href$="OPENING_CAST.md"], a[download][href$="SOUND_LIBRARY.md"]')) {
+    const link = document.createElement('a');
+    link.href = '/loopforge-design/voice-acting/index.html';
+    link.textContent = 'Voice acting · Recordings and process';
+    anchor.before(link, ' · ');
+  }
   function pauseAll() { clips.forEach(clip => clip.pause()); }
   for (const clip of clips) {
     clip.addEventListener('play', () => {

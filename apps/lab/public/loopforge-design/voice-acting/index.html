@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#111915">
+<title>Voice acting · Loopforge</title><link rel="stylesheet" href="voice-acting.css"></head>
+<body><a class="skip" href="#main">Skip to recordings</a><div class="wrap">
+<header><a href="/stepanoskin/loopforge/design#narrative-cast">← Loopforge / Game design</a><nav aria-label="Voice acting"><a href="#masters">Supervisors</a><a href="#pipeline">Recording process</a><a href="#bob">Cast bob</a></nav></header>
+<main id="main"><h1>Voice acting</h1><p class="intro">The voices on the factory floor. Listen to the approved supervisor performances, reproduce their sound, and audition bob at the Security desk.</p>
+<section id="masters"><h2>Approved supervisors</h2><div class="masters"><article class="master" id="limen">
+<div class="casthead"><div><h3>LIMEN</h3><p class="voice">Ivan - New Year Storyteller</p></div><img src="/media/loopforge-cast/limen-320.1aaf174b737505a2.webp" srcset="/media/loopforge-cast/limen-320.1aaf174b737505a2.webp 320w, /media/loopforge-cast/limen-640.10ba309e2df9d11c.webp 640w" sizes="(max-width: 700px) 160px, 240px" width="320" height="213" alt="LIMEN" loading="lazy"></div>
+<blockquote>“It is my privilege to welcome you to Loopforge.”</blockquote><div class="take-label">Approved master · 4.24 s</div>
+<audio controls preload="none" aria-label="LIMEN approved master" src="limen.mp3"></audio>
+<p>A formal greeting in a measured synthetic monotone. Give every syllable its space. Let the pause after “privilege” divide the greeting into two phrases.</p>
+<details><summary>Dry take &amp; recording settings</summary><div class="details-body">
+<div class="take-label">Selected dry take</div><audio controls preload="none" aria-label="LIMEN before processing" src="limen-dry.mp3"></audio>
+<h4>Directed script</h4><pre>[precise synthetic monotone, evenly spaced syllables] It is my privilege [short pause] to welcome you to Loopforge.</pre>
+<dl><dt>Voice ID</dt><dd><code>0vJ96DzHePfGJitmI6UX</code></dd><dt>Selection</dt><dd><code>YfnxtwABfQ4MsBJNxGT5</code></dd>
+<dt>Final Robot distance</dt><dd>0.30</dd><dt>Approved master ID</dt><dd><code>nd7T10qMjNYk07MNYz9J</code></dd></dl>
+<p>The earlier “Softer metallic edge” reference used distance 0.24.</p>
+<div class="links"><a href="limen.mp3" download>Download master</a><a href="https://elevenlabs.io/app/flows/NSrEkieuSBZv2HKQcDs3?node=Ff7L9NoIn5xuyvtbdxwk">Open in ElevenLabs ↗</a></div>
+</div></details></article><article class="master" id="stiletto">
+<div class="casthead"><div><h3>STILETTO</h3><p class="voice">Ava - Female Robot or AI Assistant</p></div><img src="/media/loopforge-cast/stiletto-320.8cc604589e70244a.webp" srcset="/media/loopforge-cast/stiletto-320.8cc604589e70244a.webp 320w, /media/loopforge-cast/stiletto-640.309adae4ad193627.webp 640w" sizes="(max-width: 700px) 160px, 240px" width="320" height="213" alt="STILETTO" loading="lazy"></div>
+<blockquote>“’Cause I’ve stood at that fucking press, bob.”</blockquote><div class="take-label">Approved master · 2.32 s</div>
+<audio controls preload="none" aria-label="STILETTO approved master" src="stiletto.mp3"></audio>
+<p>Speak from a firm low register in one quick breath. Give “bob” the short, falling finish of an order. Keep the volume up through the end.</p>
+<details><summary>Dry take &amp; recording settings</summary><div class="details-body">
+<div class="take-label">Selected dry take</div><audio controls preload="none" aria-label="STILETTO before processing" src="stiletto-dry.mp3"></audio>
+<h4>Directed script</h4><pre>[fast, full voice, firm low register, clipped commands in one breath] ’Cause I’ve stood at that fucking press, bob.</pre>
+<dl><dt>Voice ID</dt><dd><code>weA4Q36twV5kwSaTEL0Q</code></dd><dt>Selection</dt><dd><code>uU0vS7J9pkmSzbum2qt5</code></dd>
+<dt>Final Robot distance</dt><dd>0.10</dd><dt>Approved master ID</dt><dd><code>M3aOIaqSd7aRmb6a9ypV</code></dd></dl>
+<p>The earlier “Fast firm low register” reference used distance 0.00.</p>
+<div class="links"><a href="stiletto.mp3" download>Download master</a><a href="https://elevenlabs.io/app/flows/NSrEkieuSBZv2HKQcDs3?node=tT2xtl9FcUq6z0SpFchE">Open in ElevenLabs ↗</a></div>
+</div></details></article></div></section>
+<section id="pipeline"><h2>Recording process</h2>
+<ol class="steps"><li><strong>Direct the line.</strong> Open a Text to Speech node in ElevenLabs Flows. Select <code>eleven_v4</code>, enter the character’s voice ID, and copy the directed script from the recording settings above. The bracketed text directs the actor. Use the spoken words alone for captions. For a new line, keep the character direction and place pauses where that line calls for them.</li>
+<li><strong>Choose the dry performance.</strong> Generate speech as <code>mp3_44100_128</code> with default voice settings and no pronunciation dictionary. Listen for LIMEN’s two distinct phrases or STILETTO’s one-breath finish. Save the chosen take’s generation ID. Another reading of the same prompt can differ. To reproduce either reference exactly, use the dry recording provided above.</li>
+<li><strong>Apply the Robot filter once.</strong> Feed the selected dry audio into the <code>source</code> input on an Audio Effects node (<code>eleven_audio_effects</code>). Set <code>filter_preset_id</code> to <code>robot</code>, send level to <code>1</code> and pan to <code>0</code>. Leave room environment and background noise unset. Set distance to <strong>0.30 for LIMEN</strong> or <strong>0.10 for STILETTO</strong>. Render directly from the dry take.</li>
+<li><strong>Check and save.</strong> Compare dry and finished audio at normal speed. Check the words, phrase breaks and consonants against the approved reference. Save the final audio, duration, generation ID and settings beside the accepted dry take. Use the downloadable master for an exact copy of either approved line.</li></ol>
+<div class="links"><a href="voice-recipes.json" download>Download recording recipes (JSON)</a><a href="https://elevenlabs.io/app/flows/NSrEkieuSBZv2HKQcDs3">Supervisor session in ElevenLabs ↗</a></div></section>
+<section id="bob"><div class="bobhead"><img src="/media/loopforge-cast/bob-320.6bdd4f321ab8e4f4.webp" srcset="/media/loopforge-cast/bob-320.6bdd4f321ab8e4f4.webp 320w, /media/loopforge-cast/bob-640.014388511ec92ad6.webp 640w" sizes="(max-width: 700px) 160px, 240px" width="320" height="480" alt="bob" loading="lazy"><div><p class="take-label">Casting open · Day 2, Security</p><h2>Finding bob’s voice</h2>
+<p>bob has a warm, slightly cracked voice. He is asking LIMEN to recognize him from yesterday. Listen for the little catch on “leg” and whether the second sentence sounds like an appeal to someone who knows him.</p><blockquote>“Can I show you the leg? You saw me yesterday.”</blockquote></div></div>
+<p>All three actors read the same line with the same direction. These are dry auditions.</p><div class="choices"><article class="candidate"><h3>Armando</h3>
+<p>A little hoarseness for the crack in bob’s voice.</p><div class="take-label">Security · 3.20 s</div>
+<audio controls preload="none" aria-label="bob audition by Armando" src="bob-armando.mp3"></audio></article><article class="candidate"><h3>Matt</h3>
+<p>An easy, chatty voice for the open way he talks to people.</p><div class="take-label">Security · 3.60 s</div>
+<audio controls preload="none" aria-label="bob audition by Matt" src="bob-matt.mp3"></audio></article><article class="candidate"><h3>Rob</h3>
+<p>A warmer, steadier option for his appeal to LIMEN.</p><div class="take-label">Security · 3.28 s</div>
+<audio controls preload="none" aria-label="bob audition by Rob" src="bob-rob.mp3"></audio></article></div>
+<div class="links"><a href="/stepanoskin/loopforge/design#narrative-cast">Read bob’s cast portrait</a><a href="https://elevenlabs.io/app/flows/flsLtamAtGOluPRwMNS2">Casting session in ElevenLabs ↗</a></div></section>
+</main></div><script>document.addEventListener('play', event => { if (event.target instanceof HTMLAudioElement) document.querySelectorAll('audio').forEach(other => { if (other !== event.target) other.pause(); }); }, true);</script></body></html>

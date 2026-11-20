@@ -189,7 +189,7 @@ it("reopening leadership only presents the mandate and preserves confirmed state
   expect(send).not.toHaveBeenCalled();
 });
 it("preserves the acknowledgement gate through console changes and menu round-trips", async () => {
-  render(<GameClient media={media} />);
+  render(<GameClient legacyReview media={media} />);
   await waitFor(() => expect(screen.getByRole("button", { name: /Start shift/ })).toBeEnabled());
   fireEvent.click(screen.getByRole("button", { name: /Start shift/ }));
 

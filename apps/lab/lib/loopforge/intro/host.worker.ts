@@ -1,3 +1,4 @@
+import {departure} from './shift-handoff';
 import {envelope} from './protocol';
 import {Session} from './session';
 const port=self as unknown as {postMessage:(m:unknown)=>void;onmessage:((e:MessageEvent)=>void)|null};
@@ -10,6 +11,7 @@ function schedule(){
 }
 function enqueue(task:()=>Promise<void>){busy=busy.then(task).catch(e=>{session.playing=false;port.postMessage({local:'failure',message:String(e)});});}
 port.onmessage=({data})=>enqueue(async()=>{
+  if(data?.local==='departure'&&session.sim.finished){port.postMessage({local:'departure',source:departure(session.sim)});return;}
   if(data?.local==='applied'){session.applied(data.tick,data.hash);return;}
   if(data?.local==='restart-play'){
     await session.locate(0);

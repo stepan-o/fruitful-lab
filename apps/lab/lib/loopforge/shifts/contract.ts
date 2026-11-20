@@ -4,7 +4,7 @@ export type Room = 'security' | 'conveyor';
 export type Lead = 'LIMEN' | 'STILETTO';
 export type Phase = 'briefing' | 'shift' | 'close';
 export type Duty = 'waiting' | 'approaching' | 'cleared' | 'working' | 'detained' | 'clerk' | 'supervising' | 'standing' | 'seeking' | 'walking' | 'departing' | 'outside';
-export type Rule = 'appoint' | 'issue-pass' | 'accelerate' | 'slow' | 'rush' | 'endorse';
+export type Rule = 'appoint' | 'issue-pass' | 'accelerate' | 'slow' | 'rush' | 'endorse' | 'assign' | 'clear';
 export type Command = {id:string; day:number; action:Rule; room:Room; target:string; incident:string; tick:number};
 export type ApproachZone = 'outside' | 'lobby' | 'dispatch';
 export function approachZone(room:string):room is ApproachZone { return room==='outside'||room==='lobby'||room==='dispatch'; }
@@ -15,6 +15,7 @@ export type Pressure = 'quiet' | 'approach' | 'demand' | 'refusal' | 'clash' | '
 export type Case = {id:string;subject:string; opened:number; deadline:number; status:'open'|'pass'|'detention'};
 export type Thought = {tick:number; day:number; actor:string; intent:string; why:string; evidence:string[]};
 export type Run = {
+  line?:import('./station-line').Line;
   dialogue:import('./dialogue-state').Dialogue;
   nextQueue?:string[]; version:'shift-floor/1'; day:number; phase:Phase; tick:number; start:number; seed:'early'|'late';
   world:World; tasks:Record<string,Task>; rules:Record<string,Action>; lead:Lead; pace:'rushed'|'pushed'|'slow'|'all-clear';

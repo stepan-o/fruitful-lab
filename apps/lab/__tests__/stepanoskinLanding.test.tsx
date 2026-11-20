@@ -72,7 +72,7 @@ describe("Stepanoskin landing", () => {
         expect(screen.getByRole("link", { name: /all projects/i })).toHaveAttribute("href", "/stepanoskin");
         expect(screen.getByRole("link", { name: /The game/i })).toHaveAttribute("href", "/stepanoskin/loopforge/overview/the-factory");
         expect(screen.getByRole("link", { name: /The engine/i })).toHaveAttribute("href", "/stepanoskin/loopforge/architecture/the-thesis");
-        expect(screen.getByRole("link", { name: /Enter factory/i })).toHaveAttribute("href", "/stepanoskin/loopforge/play");
+        expect(screen.getByRole("link", { name: /Enter the factory/i })).toHaveAttribute("href", "/stepanoskin/loopforge/play");
         expect(screen.queryByRole("link", { name: /Game Monetization/i })).not.toBeInTheDocument();
     });
 

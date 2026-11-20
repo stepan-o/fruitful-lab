@@ -7,7 +7,7 @@ type Entry = {atlas:string; rect:number[]; size:number[]; pivot?:number[]; inset
 type Manifest = {groundPixelsPerMetre:number; atlases:Record<string,{file:string}>; assets:Record<string,Entry>};
 type Offline = {manifest:Manifest; images:Record<string,string>};
 declare global {interface Window {shiftArtOffline?:Offline}}
-const root = '../loopforge-design/days-2-4-art/v1/';
+
 
 export function select(frame:Frame, room:Room, openCase:string, previewLead:string) {
   const view = selectShiftArt(frame, {room, openCase, previewLead, bubbleTicks:57});
@@ -27,7 +27,7 @@ export function payload(frame:Frame, room:Room, openCase:string, action:Command[
   return payload;
 }
 
-export async function loadSkin() {
+export async function loadSkin(root='../loopforge-design/days-2-4-art/v1/') {
   const offline = window.shiftArtOffline;
   const manifest:Manifest = offline?.manifest ?? await fetch(root+'manifest.json').then(r => {
     if (!r.ok) throw Error('Art manifest '+r.status);

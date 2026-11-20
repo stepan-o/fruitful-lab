@@ -71,13 +71,23 @@ async function main(){
     const inspect=primary.button('Missing ID · inspect');
     await inspect.waitFor({timeout:160000});
     const saved=JSON.stringify(await primary.state());
-    console.log('Regular route reached Security');await inspect.click();await primary.button('Issue daily pass').click();
+    console.log('Regular route reached Security');const passAt=primary.seconds();
+    await inspect.click();await primary.button('Issue daily pass').click();
+    await primary.page.getByText('bob admitted on a daily pass.').waitFor();
+    primary.clip('issue-daily-pass',passAt-1.0,4);
     await primary.button('Conveyor').click();
     async function staff(s,variant){
       if(variant!=='pass')await s.button('Conveyor').click();
       if(variant==='pass')await sendTo(s,'bob','Wash');
       await sendTo(s,'jo','Belt');
-      if(variant==='recovery')await sendTo(s,'kit','Wash');
+      if(variant==='recovery'){
+        await s.button(/^kit\b/).click({timeout:85000});
+        const at=s.seconds();await s.button('Send kit to Wash').click();
+        const wash=s.page.getByRole('heading',{name:'Wash',exact:true}).locator('..');
+        await wash.locator('b').first().filter({hasText:/\bkit\b/}).waitFor();
+        await wash.scrollIntoViewIfNeeded();
+        s.clip('recover-Wash',at-1,s.seconds()-at+3);
+      }
       if(variant==='move'){
         await sendTo(s,'kit','Forge');
         await s.page.getByText('138 work units / tick',{exact:true}).waitFor();

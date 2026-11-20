@@ -31,13 +31,23 @@ jobs:
       - name: Locate the preview for this revision
         env:
           GH_TOKEN: ${{ github.token }}
+          REVIEW_MESSAGE: ${{ github.event.head_commit.message }}
         run: |
+          pinned=$(sed -nE 's|^Review-Preview: (https://fruitful-[a-z0-9]+-stepan-oskins-projects\.vercel\.app)$|\1|p' <<< "$REVIEW_MESSAGE")
+          if [ -n "$pinned" ]; then
+            if curl -fsSL --max-time 30 "$pinned/stepanoskin/loopforge" -o "$RUNNER_TEMP/landing.html" && grep -qi 'Enter the factory' "$RUNNER_TEMP/landing.html"; then
+              echo "PLAY_ORIGIN=$pinned" >> "$GITHUB_ENV"
+              exit 0
+            fi
+            echo "Hosted preview requires a session. Recording this revision on the runner."
+            exit 0
+          fi
           for attempt in $(seq 1 36); do
             deploy=$(gh api "repos/$GITHUB_REPOSITORY/deployments?sha=$GITHUB_SHA" --jq '.[0].id // empty')
             if [ -n "$deploy" ]; then
               url=$(gh api "repos/$GITHUB_REPOSITORY/deployments/$deploy/statuses" --jq '[.[] | select(.state=="success")][0].environment_url // empty')
               if [ -n "$url" ]; then
-                if curl -fsSL --max-time 15 "$url/stepanoskin/loopforge" | grep -q 'Enter the factory'; then
+                if curl -fsSL --max-time 15 "$url/stepanoskin/loopforge" -o "$RUNNER_TEMP/landing.html" && grep -qi 'Enter the factory' "$RUNNER_TEMP/landing.html"; then
                   echo "PLAY_ORIGIN=$url" >> "$GITHUB_ENV"
                 fi
                 break

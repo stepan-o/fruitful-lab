@@ -19,27 +19,29 @@ async function main(){
    page.on('pageerror',e=>errors.push(String(e)));
    page.setDefaultTimeout(30000);
    runs.push({ctx,page,name,start});
-   const button=name=>page.getByRole('button',{name});
+   const button=name=>page.getByRole('button',{name,exact:typeof name==='string'});
    const seconds=()=>(Date.now()-start)/1000;
    const state=()=>page.evaluate(key=>JSON.parse(sessionStorage.getItem(key)),store);
    const clip=(title,at,length)=>clips.push({name,title,at:Math.max(0,at),length});
    const fit=async()=>assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow');
+   console.log('Opening',name,origin,size);
    await page.goto(origin+'/stepanoskin/loopforge',{waitUntil:'domcontentloaded'});
    await page.locator('a[href="/stepanoskin/loopforge/play"]').click();
    if(!saved){
-     await button(/^Settings/).click();await page.getByLabel('Quality',{exact:true}).selectOption('performance');
+     await button(/^Settings/).click();await page.getByRole('combobox',{name:/^Quality/}).selectOption('performance');
      await button('Return to menu').click();
-     await button(/^Settings/).click();assert.equal(await page.getByLabel('Quality',{exact:true}).inputValue(),'performance');
+     await button(/^Settings/).click();assert.equal(await page.getByRole('combobox',{name:/^Quality/}).inputValue(),'performance');
      await button('Return to menu').click();await fit();
      await button(/^Enter factory/).click();await page.getByRole('heading',{name:'Day One'}).waitFor();
      await page.getByRole('button',{name:'Answer leadership'}).waitFor({timeout:300000});
-     const end=seconds();assert.equal((await state()).source.pieces.length,3);
+     const end=seconds();console.log('Day 1 departure',end);assert.equal((await state()).source.pieces.length,3);
      await button('Answer leadership').click();await page.getByText('Already on the rack').waitFor();
      await button('Receive the quota').click();await page.getByText(/Day 1 put 3 on the rack/).waitFor();await fit();
      await pause(1500);await button('Acknowledge quota').click();
      const chosen=swap?'STILETTO':'LIMEN';await button(new RegExp('^'+chosen)).click();
      assert.equal((await state()).progress.commands.length,0);await pause(1300);
      await button('Commit assignment').click();await page.getByText('CREW ARRIVAL',{exact:false}).first().waitFor();
+     console.log('Day 2 assignment committed',chosen);
      clip('Day-1-blackout-to-walk-in',end-4,seconds()-end+9);
    }else await button(/^Resume shift/).click();
    return {page,button,state,clip,seconds,fit};
@@ -50,7 +52,7 @@ async function main(){
    s.clip('bell',s.seconds()-2,4);await pause(2200);return Number(label.split(' ')[0]);
  }
  async function sendTo(s,who,station){
-   await s.button(new RegExp('^'+who+' ')).click({timeout:85000});
+   await s.button(new RegExp('^'+who+'\\b','i')).click({timeout:85000});
    await s.button('Send '+who+' to '+station).click();
  }
  try{
@@ -60,7 +62,7 @@ async function main(){
     await clear.waitFor({timeout:170000});
     await primary.page.waitForFunction(()=>Array.from(document.querySelectorAll('button')).some(b=>b.getAttribute('aria-label')==='Clear Forge'&&!b.disabled),{},{timeout:180000});
     const saved=JSON.stringify(await primary.state());
-    const at=primary.seconds();await clear.click();primary.clip('Forge-clear',at-2,7);
+    console.log('Second Forge wait',JSON.parse(saved).progress.tick);const at=primary.seconds();await clear.click();primary.clip('Forge-clear',at-2,7);
     const other=await session('watch',saved);
     const [acted,watched]=await Promise.all([result(primary),result(other)]);
     assert.equal(acted,2);assert.equal(watched,1);
@@ -69,8 +71,8 @@ async function main(){
     const inspect=primary.button('Missing ID · inspect');
     await inspect.waitFor({timeout:160000});
     const saved=JSON.stringify(await primary.state());
-    await inspect.click();await primary.button('Issue daily pass').click();
-    await primary.button('Conveyor',{exact:true}).click();
+    console.log('Regular route reached Security');await inspect.click();await primary.button('Issue daily pass').click();
+    await primary.button('Conveyor').click();
     async function staff(s,variant){
       if(variant!=='pass')await s.button('Conveyor').click();
       if(variant==='pass')await sendTo(s,'bob','Wash');
@@ -100,9 +102,15 @@ async function main(){
   assert.deepEqual(errors,[]);
   await fs.writeFile(path.join(directory,'measurements.json'),JSON.stringify({origin,size,comparison,errors,clips},null,2));
   console.log(JSON.stringify({origin,size,comparison}));
+ }catch(error){
+  for(const run of runs){
+    await run.page.screenshot({path:path.join(directory,run.name+'-last-frame.png')}).catch(()=>{});
+    console.error(run.name,(await run.page.locator('body').innerText().catch(()=>'' )).slice(-4000));
+  }
+  throw error;
  }finally{
   for(const run of runs){
-    const raw=await run.page.video().path();await run.ctx.close();
+    const video=run.page.video();await run.ctx.close();const raw=await video.path();
     for(const c of clips.filter(c=>c.name===run.name)){
       execFileSync('ffmpeg',['-loglevel','error','-y','-ss',String(c.at),'-i',raw,'-t',String(c.length),'-c:v','libx264','-pix_fmt','yuv420p','-movflags','+faststart',path.join(directory,run.name+'-'+c.title+'.mp4')]);
     }

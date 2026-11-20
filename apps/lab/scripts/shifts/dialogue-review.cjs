@@ -17,7 +17,14 @@ async function main(){
     const page=await context.newPage(),errors=[],receipts=[];
     page.on('pageerror',e=>errors.push(e.message));
     await page.addInitScript(()=>{
-      window.addEventListener('loopforge:frame',e=>{window.floorFrame=e.detail;});
+      window.addEventListener('loopforge:frame',e=>{
+        const prior=window.floorFrame,frame=e.detail;
+        if(prior?.scene.world.stage==='walk' && frame.scene.world.stage==='walk' && frame.tick>prior.tick+1){
+          window.arrivalCut={from:prior.tick,to:frame.tick,before:prior.scene.agents.find(a=>a.id==='bob').room,
+            after:frame.scene.agents.find(a=>a.id==='bob').room};
+        }
+        window.floorFrame=frame;
+      });
     });
     let offline;
     if(surface==='portable'){
@@ -42,7 +49,7 @@ async function main(){
     };
     const photograph=async name=>{
       const picture=await page.screenshot({type:'jpeg',quality:60,path:path.join(dir,name+'.jpg')});
-      if(surface==='standalone'&&width===320&&['entrance','lobby','return'].includes(name))console.log('FRAME_'+name+' '+picture.toString('base64'));
+      if(surface==='standalone'&&width===320&&['security-approach','east-aisle','return'].includes(name))console.log('FRAME_'+name+' '+picture.toString('base64'));
     };
     const play=async()=>{await f.locator('#play').click();await f.locator('#room').scrollIntoViewIfNeeded();};
     const pause=async()=>{if(await f.locator('#play').innerText()==='Pause')await f.locator('#play').click();};
@@ -73,12 +80,17 @@ async function main(){
     const started = performance.now();
     await f.waitForFunction(() => document.querySelector('#speech-text').textContent.startsWith('sam · No.'));
     assert(performance.now() - started >= 4300, 'bob’s opening changed before it could be read');
-    for(const zone of ['lobby','dispatch','security']){
-      await f.waitForFunction(room=>window.floorFrame.scene.agents.some(a=>a.duty==='walking'&&a.room===room),zone,{timeout:45000});
-      if(zone==='lobby')await photograph('lobby');
-    }
+    await f.waitForFunction(()=>!!window.arrivalCut,null,{timeout:25000});
+    const cut=await f.evaluate(()=>window.arrivalCut);
+    assert.equal(cut.before,'lobby');assert.equal(cut.after,'security');
+    await photograph('security-approach');
     await event('speech.delivered','LIMEN','crew','privilege');
+    const greeting=await f.evaluate(()=>window.floorFrame.scene.events.find(e=>e.kind==='speech.delivered'&&e.actor==='LIMEN'));
+    assert.equal(greeting.tick-cut.to,76);
+    receipts.push({cut,greetingTick:greeting.tick});
     await f.waitForFunction(()=>document.querySelector('#welcome-voice').currentTime>0.1,{},{timeout:6000});
+    const arrivalShot=f.waitForFunction(()=>window.floorFrame.scene.agents.some(a=>a.id==='STILETTO'&&a.x===131450&&a.y>=124000&&a.y<127750),null,{timeout:35000})
+      .then(()=>photograph('east-aisle'));
     receipts.push({greetingAudio:await f.locator('#welcome-voice').evaluate(a=>({time:a.currentTime,rate:a.playbackRate}))});
     await f.waitForFunction(() => document.querySelector('#speech-text').textContent.split(' · ').length === 4);
     const chorus = await f.locator('#speech-text').textContent();
@@ -86,6 +98,7 @@ async function main(){
     await photograph('greeting-replies');await play();
     await page.waitForTimeout(5700);
     assert.equal(await f.locator('#speech-text').textContent(),chorus);
+    await arrivalShot;
     await pause();
     const layout=await f.evaluate(()=>({width:innerWidth,actual:document.documentElement.scrollWidth,
       overflow:[...document.querySelectorAll('body *')].filter(el=>el.getBoundingClientRect().right>innerWidth+1).slice(0,6).map(el=>[el.tagName,el.id,el.clientWidth])}));
@@ -121,7 +134,7 @@ async function main(){
     if(surface==='standalone'&&width===320){
       const list=[];
       const readings=[
-        ['Morning bids','speech.delivered','sam','No.'],
+        ['Morning bids','speech.delivered','STILETTO','Going somewhere, gus?'],
         ['G5 · exit after early cutoff','speech.delivered','ben','boot'],
         ['G5 · exit after late cutoff','speech.delivered','ed','show you'],
         ['4D · firsthand return','worker.choice','ben','go'],
@@ -135,7 +148,7 @@ async function main(){
         await shot.goto('http://127.0.0.1:4173/loopforge-shifts/index.html');
         const entrance=checkpoint==='Morning bids',exit=checkpoint.startsWith('G5'),follows=checkpoint.startsWith('4D');
         if(entrance){
-          await shot.locator('[data-bid="LIMEN"]').click();
+          await shot.locator('[data-bid="STILETTO"]').click();
         }else{
           await shot.locator('#checkpoint').selectOption(checkpoint);
           await shot.waitForFunction(exit=>exit?window.floorFrame?.scene.world.stage==='departure':window.floorFrame?.scene.world.pressure==='clash',exit);
@@ -146,7 +159,7 @@ async function main(){
         },process.env.GITHUB_SHA.slice(0,8)+' · 320 × 844 · standalone · 1× · seed early / 3241 · '+checkpoint);
         const started = performance.now();
         await shot.locator(entrance?'#commit':'#play').click();await shot.locator('#room').scrollIntoViewIfNeeded();
-        await shot.waitForFunction(([k,a,t])=>window.floorFrame.scene.events.some(e=>e.kind===k&&e.actor===a&&e.text.includes(t)),[kind,actor,word],{timeout:35000});
+        await shot.waitForFunction(([k,a,t])=>window.floorFrame.scene.events.some(e=>e.kind===k&&e.actor===a&&e.text.includes(t)),[kind,actor,word],{timeout:entrance?80000:35000});
         if(follows){
           await shot.waitForTimeout(1000);
           await shot.locator('[data-room="conveyor"]').click();

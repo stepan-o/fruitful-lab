@@ -1,3 +1,4 @@
+import {cutToSecurity} from './approach-edit';
 import {channels,renderSpec,validEnvelope} from '../intro/protocol';
 import {restorePoint,names,type Checkpoint} from './replay';
 import {admitCommand,nextMorning,step} from './simulation';
@@ -6,15 +7,21 @@ import {full,diff,schema,engine,envelope,project,type Frame} from './wire';
 
 let run=restorePoint('Morning bids'),frame:Frame|undefined,checkpoint:Checkpoint='Morning bids';
 let saved:Run|undefined;
-let readingHold=false;
+let readingHold=false,readingActive=false;
+let cutTicks=0,savedCut=0;
 let sequence=0,playing=false,connected=false,subscribed=false,serial=Promise.resolve();
 const cache=new Map<Checkpoint,Run>();
 function post(type:string,payload:object){self.postMessage(envelope(type,++sequence,payload));}
 async function snapshot(){
+  self.postMessage({local:'edit-clock',cutTicks});
   const b=await full(run);frame={tick:b.tick,hash:b.step_hash,scene:b.state};post('FULL_SNAPSHOT',b);
 }
 async function tick(){
   if(!playing||readingHold||!subscribed||!frame||run.phase!=='shift')return;
+  if(!cutTicks&&!readingActive){
+    cutTicks=cutToSecurity(run);
+    if(cutTicks){await snapshot();return;}
+  }
   step(run);
   const data=await diff(frame,run);
   frame={tick:run.tick,hash:data.step_hash,scene:project(run)};post('FRAME_DIFF',data);
@@ -30,18 +37,18 @@ setInterval(()=>{
 },25);
 self.onmessage=e=>{const msg=e.data;queue(async()=>{
   if(msg.local==='reading-hold'&&subscribed){
-    readingHold=!!msg.on;lastTime=performance.now();debt=0;return;
+    readingActive=!!msg.active;readingHold=!!msg.on;lastTime=performance.now();debt=0;return;
   }
-  if(msg.local==='save-state'&&subscribed){saved=structuredClone(run);self.postMessage({local:'saved',tick:run.tick});return;}
-  if(msg.local==='load-state'&&saved&&subscribed){run=structuredClone(saved);self.postMessage({local:'reading-reset',saved:true});readingHold=false;playing=false;debt=0;await snapshot();status();return;}
+  if(msg.local==='save-state'&&subscribed){saved=structuredClone(run);savedCut=cutTicks;self.postMessage({local:'saved',tick:run.tick});return;}
+  if(msg.local==='load-state'&&saved&&subscribed){run=structuredClone(saved);cutTicks=savedCut;readingActive=false;self.postMessage({local:'reading-reset',saved:true});readingHold=false;playing=false;debt=0;await snapshot();status();return;}
   if(msg.local==='load'&&subscribed){
     if(!names.includes(msg.name))return;
     checkpoint=msg.name;
     if(!cache.has(checkpoint))cache.set(checkpoint,restorePoint(checkpoint));
-    run=structuredClone(cache.get(checkpoint)!);self.postMessage({local:'reading-reset'});readingHold=false;playing=false;debt=0;await snapshot();status();return;
+    run=structuredClone(cache.get(checkpoint)!);cutTicks=0;readingActive=false;self.postMessage({local:'reading-reset'});readingHold=false;playing=false;debt=0;await snapshot();status();return;
   }
   if(msg.local==='play'&&subscribed){playing=!!msg.on&&run.phase==='shift';lastTime=performance.now();debt=0;status();return;}
-  if(msg.local==='morning'&&subscribed&&nextMorning(run)){self.postMessage({local:'reading-reset'});readingHold=false;playing=false;await snapshot();status();return;}
+  if(msg.local==='morning'&&subscribed&&nextMorning(run)){cutTicks=0;readingActive=false;self.postMessage({local:'reading-reset'});readingHold=false;playing=false;await snapshot();status();return;}
   if(msg.local==='inspect'&&subscribed){
     const actor=msg.actor;
     if(!Object.hasOwn(run.world.agents,actor))return;

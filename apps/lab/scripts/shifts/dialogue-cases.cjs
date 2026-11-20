@@ -6,7 +6,9 @@ const {freshDialogue}=require('../../lib/loopforge/shifts/dialogue-state.ts');
 const {crossed,openWindow,updateSpeech,cardContact,cardQuestions,observe,heard,phrase,partners,available,occupied,knows,workers}=require('../../lib/loopforge/shifts/dialogue.ts');
 const {remember}=require('../../lib/loopforge/shifts/events.ts');
 const {project}=require('../../lib/loopforge/shifts/wire.ts');
-const {morningBids}=require('../../lib/loopforge/shifts/morning.ts');
+const {cutToSecurity}=require('../../lib/loopforge/shifts/approach-edit.ts');
+const {score,tickAt}=require('../../lib/loopforge/intro/floor.ts');
+const {openingReady,morningBids}=require('../../lib/loopforge/shifts/morning.ts');
 const {workmates}=require('../../lib/loopforge/shifts/workmates.ts');
 const {meters}=require('../../lib/loopforge/shifts/navigation.ts');
 const {scenes,chats}=require('../../lib/loopforge/shifts/manuscript.json');
@@ -45,15 +47,17 @@ test('Every morning the crew walks in through the staff entrance before the desk
       const zones=Object.fromEntries(workers.map(id=>[id,[s.world.agents[id].room]]));
       assert(workers.every(id=>zones[id][0]==='outside'));
       const previous=Object.fromEntries(workers.map(id=>[id,s.world.agents[id].position]));
-      let saved;
+      let saved,wasOnTrack=true;
       let opening;
       until(s,r=>{
         for(const id of workers){
           const agent=r.world.agents[id];
-          assert(Math.hypot(agent.position[0]-previous[id][0],agent.position[1]-previous[id][1])<200);
+          const limit=wasOnTrack?(openingReady(r)||!r.dialogue.arrival?250:100):200;
+          assert(Math.hypot(agent.position[0]-previous[id][0],agent.position[1]-previous[id][1])<limit,[day,lead,id,r.tick-r.start,limit,previous[id],agent.position,!!r.dialogue.arrival]);
           previous[id]=agent.position;
           if(zones[id].at(-1)!==agent.room)zones[id].push(agent.room);
         }
+        wasOnTrack=!!r.dialogue.arrival;
         if(!saved && day===2 && r.world.agents.bob.room==='lobby')saved=structuredClone(r);
         if(!opening){
           const e=r.marks.findLast(e=>e.day===day&&e.kind==='speech.delivered');
@@ -74,6 +78,32 @@ test('Every morning the crew walks in through the staff entrance before the desk
       if(day===4)break;
       until(s,r=>r.phase==='close');nextMorning(s);
     }
+  }
+});
+test('The opening cut preserves the last approach steps and Day Two’s east-aisle entrance',()=>{
+  const greeting=score.speech.find(line=>line.speaker==='LIMEN');
+  const leadIn=tickAt(greeting.start)-tickAt(score.cuts[0].to);
+  for(const lead of ['LIMEN','STILETTO']){
+    const s=start();command(s,'appoint',lead,'security');
+    const street=s.world.agents.STILETTO.position;
+    until(s,r=>openingReady(r));
+    assert.deepEqual(street,s.world.agents.STILETTO.position);
+    const continuous=clone(s),cutAt=s.tick;
+    const skipped=cutToSecurity(s);
+    assert(skipped>200);
+    until(continuous,r=>r.tick===s.tick);assert.deepEqual(s,continuous);
+    assert(workers.every(id=>s.world.agents[id].room==='security') && workers.some(id=>s.tasks[id].moving));
+    const next=s.marks.length;
+    until(s,r=>r.marks.slice(next).some(e=>e.kind==='speech.delivered'));
+    const first=s.marks.slice(next).find(e=>e.kind==='speech.delivered');
+    assert.equal(first.actor,'LIMEN');assert.equal(first.text,greeting.text);
+    assert.equal(first.tick-cutAt-skipped,leadIn);
+    until(s,r=>r.world.agents.STILETTO.position[0]===131450&&r.world.agents.STILETTO.position[1]>=122000);
+    assert(s.world.agents.STILETTO.room==='security'&&s.tasks.STILETTO.moving);
+    until(s,r=>!r.dialogue.supervisorArrival);
+    assert(Math.hypot(s.world.agents.STILETTO.position[0]-131450,s.world.agents.STILETTO.position[1]-127750)<100);
+    until(s,r=>r.dialogue.phase==='work');
+    assert.equal(s.tasks.STILETTO.destination[1],lead==='LIMEN'?142200:131250);
   }
 });
 test('G5 · same raised lip, two reachable partners',()=>{

@@ -50,7 +50,7 @@ function clear(a:Point,b:Point,r:ReturnType<typeof rectBounds>){
     Math.min(a[1],b[1])-radius>r.maxY||Math.max(a[1],b[1])+radius<r.minY||segmentBoxDistanceSquared(a,b,r)>=radius**2;
 }
 // Agents follow authored legs with local route clocks. A blocked step earns no travel.
-export function moveCast(world:World,routes:Record<string,Route>,gate:number) {
+export function moveCast(world:World,routes:Record<string,Route>,gate:number,standing:Point[] = []) {
   const pending=new Map<string,{to:Point;cursor:number}>();
   const gateBox=rectBounds({x:geom.gate.hinge[0],y:geom.gate.hinge[1],w:gate,h:0});
   for(const [id,r] of Object.entries(routes)){
@@ -63,6 +63,7 @@ export function moveCast(world:World,routes:Record<string,Route>,gate:number) {
     r.moving=false;
     if(world.facts['blocked.'+id]||distance(actor.position,to)>650)continue;
     if(distance(actor.position,to)>0&&(!clear(actor.position,to,gateBox)||!obstacles.every(rect=>clear(actor.position,to,rect))))continue;
+    if(standing.some(p=>simultaneousDistanceSquared(actor.position,to,p,p)<(NAVIGATION_ROOT_SEPARATION_MM-2)**2))continue;
     pending.set(id,{to,cursor});
   }
   // Removing a move can invalidate its follower. Resolve until the batch is safe.

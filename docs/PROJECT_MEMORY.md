@@ -4,7 +4,7 @@
 
 ## Loopforge shift entrance · 20 November 2026
 
-After the morning appointment on Days 2–4, all ten workers follow the Day 1 staff entrance tracks from the yard through the Lobby and Dispatch to Security. The Arrival camera follows their world positions. Walking speech records the speaker’s physical room and uses the usual hearing rules. The two desk cameras and saved shift checkpoints use the same simulation.
+After the morning appointment on Days 2–4, all ten workers follow the Day 1 staff entrance tracks from the yard through the Lobby and Dispatch to Security. The Arrival camera holds the yard and Lobby until the walking dialogue finishes, then cuts across Dispatch and keeps the final approach to LIMEN. The worker simulates the hidden travel and sends a fresh snapshot. Day 2 uses STILETTO’s Day 1 street entrance and approach along the east rail before she takes her assigned post. Walking speech records the speaker’s physical room and uses the usual hearing rules. The two desk cameras and saved shift checkpoints use the same simulation.
 
 ## Loopforge Day 1 factory floor — 17 November 2026
 

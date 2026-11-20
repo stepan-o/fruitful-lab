@@ -44,6 +44,7 @@ export function go(s:Run,id:string,to:Point){
 }
 export function move(s:Run){
   for(const [id,t] of Object.entries(s.tasks)){
+    if(id==='STILETTO'&&s.dialogue.supervisorArrival)continue;
     const a=s.world.agents[id];t.moving=false;
     if(!t.path.length&&dist(a.position,t.destination)>50&&s.tick%10===0)go(s,id,t.destination);
     if(!t.path.length)continue;

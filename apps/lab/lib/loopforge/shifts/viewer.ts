@@ -60,7 +60,8 @@ const reading = new DialogueReading();
 let savedReading: {room: Room; state: ReturnType<DialogueReading['save']>} | undefined;
 let resetReading: 'current' | 'saved' | undefined = 'current';
 let held: boolean | undefined, readingTimer: number | undefined, startedReading: number | undefined;
-let voiced = 0;
+let voiced = 0, cutTicks = 0;
+let readingActive = false;
 
 function accountReading() {
   if (startedReading !== undefined) reading.spend(performance.now() - startedReading);
@@ -69,9 +70,11 @@ function accountReading() {
 }
 
 function syncReading() {
-  if (held !== reading.waiting) {
+  const active=reading.lines.length>0;
+  if (held !== reading.waiting || readingActive!==active) {
+    readingActive=active;
     held = reading.waiting;
-    worker.postMessage({local:'reading-hold', on:held});
+    worker.postMessage({local:'reading-hold', on:held, active});
   }
   const welcome = reading.lines.find(line => line.speaker === 'LIMEN' &&
     line.text === 'It is my privilege to welcome you to Loopforge.');
@@ -91,7 +94,7 @@ function render(){
   button('restore').disabled=false;
   const {scene,tick}=frame,w=scene.world,live=w.phase==='shift',sec=room==='security',walking=live&&w.stage==='walk';
   hidden('brief',w.phase!=='briefing');hidden('floor',w.phase==='briefing');
-  txt('clock','Day '+w.day+' · '+(w.phase==='briefing'?'Morning':Math.floor((tick-w.start)/20)+' s'));
+  txt('clock','Day '+w.day+' · '+(w.phase==='briefing'?'Morning':Math.floor((tick-w.start-cutTicks)/20)+' s'));
   view=select(frame,room,opened,previewLead);
   view.speeches=reading.lines;
   cameras.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.room===room)));
@@ -189,6 +192,7 @@ function render(){
 worker.onerror=e=>reportError(e.message);
 worker.onmessage=e=>{const m=e.data;serial=serial.then(async()=>{
   if(m.local==='inspection'){const choices=m.rows.map((v:{actor:string;intent:string;why:string;evidence:string[]})=>v.actor+' · '+v.intent+'\n'+v.why+'\n'+v.evidence.join(' · ')).join('\n');el('traceOut').textContent=[m.evidence.join('\n'),choices,m.receipts.join('\n')].filter(Boolean).join('\n\n')||'No observations yet.';return;}
+  if(m.local==='edit-clock'){cutTicks=m.cutTicks;return;}
   if(m.local==='reading-reset'){resetReading=m.saved?'saved':'current';held=undefined;return;}
   if(m.local==='saved'){accountReading();savedReading={room,state:reading.save()};syncReading();button('load-state').disabled=false;txt('status','Saved at tick '+m.tick);return;}
   if(m.local==='transport'){accountReading();playing=m.playing;if(!playing)welcomeVoice.pause();syncReading();render();return;}

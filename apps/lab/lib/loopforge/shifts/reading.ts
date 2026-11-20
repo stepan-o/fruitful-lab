@@ -7,7 +7,7 @@ export type Bubble = {
 };
 type Beat = {lines: Bubble[]; remaining: number};
 
-function readingTime(text: string) {
+export function readingTime(text: string) {
   // Include time to locate the speaker before reading at about 150 words/minute.
   return Math.max(3200, 1000 + 400 * text.trim().split(/\s+/).length);
 }

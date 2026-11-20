@@ -1,7 +1,7 @@
 import {checkReading} from './inspections';
 import {workmates} from './workmates';
 import {freshDialogue} from './dialogue-state';
-import {advanceMorning,morningBids,queueAt,queueOrder,seedHistory,startWalk,walkEntrance} from './morning';
+import {advanceMorning,morningBids,queueAt,queueOrder,seedHistory,startWalk,walkEntrance,walkSupervisor} from './morning';
 import {available,cardContact,crossed,draw,heard,knows,lineTime,lines,observe,occupied,openWindow,phrase,pos,schedule,scripts,sees,updateSpeech,workers} from './dialogue';
 import inheritance from './inheritance.json';
 import {ENCOUNTER_VERSION,type World,type Agent,type Point} from '../encounters/contract';
@@ -265,7 +265,10 @@ export function step(s:Run){
   if(s.phase!=='shift')return;
   s.tick++;
   s.world.tick=s.tick;
-  if(!walkEntrance(s))move(s);
+  if(!walkEntrance(s)){
+    move(s);
+    walkSupervisor(s);
+  }
   const d=s.dialogue;
   if(d.phase==='departure'){
     const exitOrder=['bob','ed','ben','jo','max','lou','kit','sam','mae','gus'];

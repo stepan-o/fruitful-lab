@@ -39,7 +39,7 @@ export const registerDesk=[123.6,132] as const;
 export function floorView(w:number,h:number,room:Room,approach=false,crew:Scene['agents']=[]){
   const sec=room==='security';
   let scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
-  let center=sec?127.15:127.4,cy=sec?(approach?125.1:129):144.35;
+  let center=sec?127.15:127.4,cy=sec?(approach?127.2:129):144.35;
   if(sec&&crew.length){
     const xs=crew.map(a=>a.x/1000),ys=crew.map(a=>a.y/1000);
     const left=Math.min(...xs),right=Math.max(...xs),front=Math.min(...ys),back=Math.max(...ys);
@@ -122,10 +122,13 @@ function approachFloor(ctx:CanvasRenderingContext2D,w:number,h:number,camera:Ret
 export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView){
   const tracking=room==='security'&&scene.world.stage==='walk';
   const crew=tracking?scene.agents.filter(a=>a.duty==='walking'):[];
-  const camera = floorView(w,h,room,tracking||scene.world.stage==='welcome',crew);
+  const approachingDesk=crew.length>0&&crew.every(a=>a.room==='security');
+  // Use the same desk frame across the splice and greeting. Include LIMEN and
+  // the east aisle where STILETTO comes alongside the queue.
+  const camera = floorView(w,h,room,tracking||scene.world.stage==='welcome'||scene.world.stage==='posting',approachingDesk?[]:crew);
   const {sec,scale,xy} = camera;
   ctx.imageSmoothingEnabled=false;
-  if(tracking)approachFloor(ctx,w,h,camera,images);
+  if(tracking&&!approachingDesk)approachFloor(ctx,w,h,camera,images);
   else ctx.drawImage(floorBackdrop(room, w, h, camera, images), 0, 0);
   const sprites=atlas.sheets as Record<string,number[]>;
   function sprite(key:string,n:number,x:number,y:number,k=scale/64){
@@ -198,6 +201,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   const recentChoices=new Map(scene.events.filter(e=>e.kind==='worker.choice'&&tick-e.tick<90).map(e=>[e.actor,e.text]));
   const returned=view.returnedOriginal.at(-1);
   for(const a of scene.agents){
+    if(a.id==='STILETTO' && a.duty==='outside')continue;
     if((a.room!==room&&!(tracking&&approachZone(a.room)))||a.duty==='detained')continue;
     const [x,y]=xy(a.x/1000,a.y/1000);if(x< -12||x>w+12||y<0||y>h+20)continue;
     const direction=tracking&&a.facing==='N'?'N':'S';

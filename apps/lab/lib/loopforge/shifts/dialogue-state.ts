@@ -5,6 +5,8 @@ export type Window = {id:string;slot:Slot;spent:boolean;closed:boolean;pair:stri
 export type Line = {who:string;words:string;to:string;fact?:string;source?:string;quiet?:boolean};
 export type Exchange = {topic:string;lines:Line[];next:number;due:number;room:'security'|'conveyor';window:string};
 export type Dialogue = {
+  indoorAt?:number;
+  supervisorArrival?:import('../intro/floor').Route;
   arrival?:Record<string,import('../intro/floor').Route>;
   phase:'walk'|'welcome'|'posting'|'queue'|'work'|'departure'|'home';
   cue:number; ready:number; bell:number; bellReached:boolean; random:number; draws:number;

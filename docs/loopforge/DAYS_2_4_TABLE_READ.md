@@ -909,25 +909,25 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 *On “GO!!!” all ten break into a run straight to Conveyor. bob runs with his limp. Show three named bubbles over moving workers, drawn at random. One possible draw:*
 
-**sam** *NEW, to bob* Here, take my arm.
+**gus** *(to ed)* I can point and holler. Why didn’t I get the gate?
 
-**ed** *NEW* My pen!
+**ed** *(still counting heads)* Ten through. On paper we’re all outside.
 
-**jo** *NEW* I’m going!
+**jo** *(as max overtakes them)* Go on, win yourself some work.
 
-*ed catches his pen against his chest without breaking stride. STILETTO stays at Security. LIMEN is already at Conveyor when the first worker reaches him.*
+*STILETTO stays at Security. LIMEN is already at Conveyor when the first worker reaches him.*
 
-*Draw three different workers with a reason to speak. Use their own bubbles during the run. The ten proposed replies are below. The question and STILETTO’s answer precede the draw.*
+*Draw three different workers with a reason to speak. Use their own bubbles during the run. The owner approved the lines for gus, ed and jo. The other seven are proposals. The question and STILETTO’s answer precede the draw.*
 
-| Worker | Proposed response on the run | What prompts it |
+| Worker | Response on the run | What prompts it |
 | --- | --- | --- |
 | bob | This leg’s doing its best! | He feels the injured leg drag as he tries to keep pace. |
-| sam | Here, take my arm. | bob is limping within reach. |
-| ed | My pen! | The pen slips as he starts running. He catches it on the move. |
-| gus | I only asked. | He asked about LIMEN and heard the answer. |
+| sam | Wall side, bob. Let them bruise each other. | sam sees bob limping by the crowd and room for him along the wall. |
+| ed | Ten through. On paper we’re all outside. | He has counted the ten runners and seen both desks go unused. |
+| gus | I can point and holler. Why didn’t I get the gate? | Yesterday’s caller wants his post back. ed, who shared that duty, is running beside him. |
 | lou | There’s your answer, gus. | They heard gus ask and STILETTO shout back. |
 | ben | Coming through! | Another runner is just ahead. |
-| jo | I’m going! | They hear the order as they push off. |
+| jo | Go on, win yourself some work. | max overtakes jo on the way to the workstations. He can hear jo as he passes. |
 | max | She said now, gus. | gus is near enough to hear him. |
 | mae | Leave me some room! | Another runner crowds their stride. |
 | kit | Mind the hinge! | A neighbor is cutting close to the open boom. |

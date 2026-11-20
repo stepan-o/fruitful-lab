@@ -40,13 +40,13 @@
 
 *On “GO!!!” all ten break into a run straight to Conveyor. bob runs with his limp. Show three named bubbles over moving workers, drawn at random. One possible draw:*
 
-**sam** *NEW, to bob* Here, take my arm.
+**gus** *(to ed)* I can point and holler. Why didn’t I get the gate?
 
-**ed** *NEW* My pen!
+**ed** *(still counting heads)* Ten through. On paper we’re all outside.
 
-**jo** *NEW* I’m going!
+**jo** *(as max overtakes them)* Go on, win yourself some work.
 
-*ed catches his pen against his chest without breaking stride. STILETTO stays at Security. LIMEN is already at Conveyor when the first worker reaches him.*
+*STILETTO stays at Security. LIMEN is already at Conveyor when the first worker reaches him.*
 
 ### S2 · All clear
 
@@ -147,7 +147,7 @@ This reading uses one walking pair, one draw of three runners, and one set of Co
 
 ### From the gate to the rack · S1, S2 and R2
 
-**S1, the gate.** gus expected to find LIMEN at yesterday’s desk. He sees STILETTO there alone and asks where LIMEN is. STILETTO hears him. She wants all ten at Conveyor now. Her order authorizes the whole crew to pass. All ten run as soon as she finishes. Draw exactly three distinct workers from those with a response grounded in this run, using the shift seed. Give each one named bubble while moving. The draws may change between runs. The first question and the shout are separate from the three replies. The response bank lives in the [S1 table read](/loopforge-design/days-2-4-table-read.html#s1-stiletto-gets-the-gate).
+**S1, the gate.** gus expected to find LIMEN at yesterday’s desk. He sees STILETTO there alone and asks where LIMEN is. STILETTO hears him. She wants all ten at Conveyor now. Her order authorizes the whole crew to pass. All ten run as soon as she finishes. Draw exactly three distinct workers from those with a response grounded in this run, using the shift seed. Give each one named bubble while moving. In the approved draw gus complains to ed, the other former clerk. ed has counted all ten and can see the desks stand unused. jo sees max overtake them. Each line stands on its own if the other two speakers change. The first question and the shout are separate from the three replies. The response bank lives in the [S1 table read](/loopforge-design/days-2-4-table-read.html#s1-stiletto-gets-the-gate).
 
 **S1, the passage.** STILETTO authorizes expedited passage for all ten. After each crosses, record that person’s passage once. bob feels his empty pocket before and after the boom. Nobody asked for his original. There is no discovered case, desk entry, stamp, pass or detention. ed still holds both originals. LIMEN assigns the crew as they arrive. In this crossing order ed can occupy the tray-bench face next to sam, and gus the rack face opposite lou. mae has the feed, kit the drive and ben relief. Recheck real destinations and occupancy on another order. Do not move a worker to make a line eligible.
 
@@ -206,7 +206,7 @@ Reset the daily wish for company, conversation budgets and in-shift intervention
 
 In a speech-only read at 160 words per minute, the bench exchange took about eight seconds, the rack exchange twelve and the walk-out seven. The rack also needs time for gus’s silent NEXT. Start it while the next piece is still up the line. If that piece arrives sooner, let the load cut them off where it lands.
 
-The owner set the entrance, the worker’s question, the exact shout and the draw of three. LIMEN’s farewell, the proposed running replies and five later floor lines are for wording review. The new business with the pen, jo’s suspended hand and gus’s silent NEXT is proposed staging. At normal pace, let the little finger open on its second try. The distinction to listen for is whether jo moves on “I see it” or on “Belt, all clear.” To check the card thread, mask the pocket for gus while leaving sam’s bench hearing intact. sam still has a find to report, but lou cannot give bob the K12 news. Move only lou out of earshot at the exit and the audience can retain both workroom clues while bob retains neither. Owner wording review and SYSTEMS validation precede ENGINE integration.
+The owner set the entrance, the worker’s question, the exact shout and the draw of three. The owner approved the running lines for gus, ed and jo. The other running options, LIMEN’s farewell and five later floor lines are proposals. The new business with the pen, jo’s suspended hand and gus’s silent NEXT is proposed staging. At normal pace, let the little finger open on its second try. The distinction to listen for is whether jo moves on “I see it” or on “Belt, all clear.” To check the card thread, mask the pocket for gus while leaving sam’s bench hearing intact. sam still has a find to report, but lou cannot give bob the K12 news. Move only lou out of earshot at the exit and the audience can retain both workroom clues while bob retains neither. Owner wording review and SYSTEMS validation precede ENGINE integration.
 
 The rack reading uses Tynan Sylvester’s account of how rules delimit the stories that can emerge in play, *Designing Games*, chapter 4, “Emergent Story,” printed pp. 90–91 (PDF pages 98–99, 1-based). The lip of the stack determines whether gus has anything he can identify to lou. The words alone cannot guarantee tomorrow’s question. The occluded-pocket reading above tests that limit.
 

@@ -1,4 +1,42 @@
-# Days 2–4 dialogue · ENGINE handoff
+# First complete Day 1–2 playthrough · ENGINE handoff
+
+20 November 2026 · Built from master at `92ae04d4` · Owner review in [PR #177](https://github.com/stepan-o/fruitful-lab/pull/177).
+
+[Open the preview at the Loopforge landing](https://fruitful-hepumbsgm-stepan-oskins-projects.vercel.app/stepanoskin/loopforge) · [Approved Conveyor specification](https://github.com/stepan-o/fruitful-lab/blob/866687e46d43268acc036749908784c8c4fdfb5a/docs/loopforge/studio-briefs/day-2-conveyor-rules.md)
+
+## Play from the entrance
+
+1. Select **Enter the factory**, open **Settings**, change Quality and return to the menu. **Enter factory** starts the sprite intro. Follow the named speech bubbles through the third rack arrival and departure.
+2. At blackout the same run opens in the director’s chair. Answer **Leadership calling**, receive the quota and acknowledge it. The record shows **3 of 60 due Day 7**. The first-playtest quota is configured by `playtestQuota` in `shifts/playthrough.ts`. STILETTO’s personal shift goal is five.
+3. Read each pitch and both posted assignments. A pitch selects the proposed posting. **Commit assignment** starts the crew’s walk. The camera can switch between Security and Conveyor while the shared shift clock advances. Main menu pauses the shift. Resume restores this tab’s original departure, journal, camera and elapsed ticks.
+4. To play **LIMEN on Conveyor**, accept **STILETTO’s pitch**. After jo’s second Forge delivery, C1 is on the rack, max is waiting off the treadle and one intervention remains. Both cards are with ed, sam heard him and bob missed it. The earlier conversation slot is spent. Tap **Clear** at Forge. LIMEN calls max for C2. Watch max receive the call, make the stroke and send C2 to the rack. On another run, leave him waiting through the bell.
+5. To play **STILETTO on Conveyor**, accept **LIMEN’s pitch**. Inspect bob’s missing ID. Issue the daily pass or let the desk deadline expire. On Conveyor, select a worker portrait, compare Force, Precision and Timing with the station’s numeric bars, and send the worker to a post. Walking takes time. The pass spends the exceptional intervention. Portrait orders remain available.
+6. At the bell compare **new rack arrivals** with the cumulative week count. **Return to main menu → Enter factory** starts a fresh run for the other appointment.
+
+## Matched simulation measurements
+
+All pairs start at the same saved decision in an ordinary run. The real intro produces the departure supplied to the shift. The simulator runs at 20 ticks per second. The totals below include each physically racked carrier once.
+
+| Conveyor supervisor and policy | Day 2 arrivals | Week total / 60 | Observation |
+| --- | ---: | ---: | --- |
+| LIMEN · Clear Forge immediately and watch | 2 | 5 | At tick 8074 the bell is 39.35 s away. The call reaches max at +0.50 s, his stroke finishes at +2.50 s and C2 racks at +3.00 s. |
+| LIMEN · Watch the same wait through the bell | 1 | 4 | Only the opening C1 racks. The bell is tick 8861 in both runs. |
+| STILETTO · Pass, bob to Wash, jo to Belt | 14 | 17 | From the Security case, first rack +22.90 s, last +83.35 s. SYSTEMS projected 14. |
+| STILETTO · Detention, same worker orders when available | 0 | 3 | bob stays in custody. Wash cannot start another carrier. SYSTEMS projected zero. |
+| STILETTO · Detention, kit recovers Wash | 10 | 13 | The first recovered carrier racks +40.60 s after the case opens. |
+| STILETTO · Pass, move kit from Forge to Belt | 18 | 21 | Kit leaves Forge on tick 7887 and reaches Belt on 7932. Forge falls from 138 to 96 work units/tick and Belt rises from 88 to 148 after the 2.25 s walk. |
+
+The regular-route case opens at tick 7541 with 86.15 s to the bell at 9264. Both routes use #176’s provisional staffing rates and time budgets. The matched policy issues orders on the first eligible tick. Input timing in a browser can change its totals.
+
+## Reproduce the checks
+
+From `apps/lab`, run `node scripts/shifts/first-playthrough.cjs`. It exercises each policy, compares cold replay with the live record, retries a clearance and checks both authored silences, ID custody, hearing and the spent conversation opportunity. The browser recording script runs the entrance and Day 1 at 1×, then restores a copy of the same decision for the comparisons.
+
+For design comparison, the [standalone Day 1 player](/stepanoskin/loopforge/play/day-one), [Days 2–4 player and review checkpoints](/loopforge-shifts/index.html) and [earlier first-turn console](/stepanoskin/loopforge/play?review=first-turn) remain accessible. The cast still uses shared worker sprites for eight workers. The owner reviews the two games, pacing and first-playtest target before deciding whether to iterate or ship.
+
+---
+
+## Days 2–4 dialogue · ENGINE handoff
 
 20 November 2026 · Owner play review · [First implementation, merged in PR #172](https://github.com/stepan-o/fruitful-lab/pull/172)
 

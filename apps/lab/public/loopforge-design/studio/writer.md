@@ -31,9 +31,13 @@ Study applicable parts of *Designing Games* and cite the exact concept and verif
 
 ## Current handoff
 
-**18 November 2026 · owner-directed starting baseline.** The approved Day 1 rewrite is merged. LEVEL's corrected staging and the current script are the foundation for the 2D implementation. ENGINE is implementing that experience; this brief does not claim its completion.
+**20 November 2026 · Days 2–4 corrected writing package for PRODUCER and ENGINE MASTER.** The owner approved the SYSTEMS corrections to the draft reviewed at `09c63edf`. [Corrected WRITER package · 91067933](https://github.com/stepan-o/fruitful-lab/tree/9106793390eae36254145457aa26aa1b0793910d/docs/loopforge) · [Approved SYSTEMS specification · 1eb05b0b](https://github.com/stepan-o/fruitful-lab/blob/1eb05b0bc5b4980665ad4f55b9633dd8667ad110/docs/loopforge/studio-briefs/days-2-4-dialogue-validation.md)
 
-LIMEN and STILETTO walk slowly behind the departing workers and remain inside when the scene cuts. Keep the current ending and its timing. Later-day exchanges remain proposals unless separately approved. Do not import the older studio opening chronology as current canon.
+Read H1 beside H2. The same tray rises and both exit partners are within reach. Only sam’s last two words send bob to ed instead of ben. Then read 4D beside W1. Both versions of ben see jo cross the rail. Only the one who also saw LIMEN give jo their card back yesterday follows. The 37 marks, 60 chats and G1–G11 use the same witness, slot and custody rules throughout. [Table read](/loopforge-design/days-2-4-table-read.html) · [BDI companion](/loopforge-design/days-2-4-decisions.html) · [Five-document ENGINE download](/loopforge-design/dialogue-engine-review.zip)
+
+ENGINE can implement the approved conditions. LEVEL and ENGINE still need to establish the hand sightlines, audibility at the desks and working posts, and timing of the late check at normal speed. PRODUCER can review the resulting ben and bob choices against the paired readings. [Dialogue Engine](/stepanoskin/loopforge/design#dialogue-engine) · [Matched review cases](/loopforge-design/dialogue-engine-review.html)
+
+The approved Day One staging still ends with LIMEN and STILETTO walking slowly behind the departing workers. Both remain inside at the cut.
 
 ## Delivery and continuity
 

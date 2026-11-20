@@ -41,7 +41,9 @@ Read *Designing Games* in depth for the relevant decisions and provide verified 
 
 ## Current handoff
 
-**Owner correction · Day 2 swapped posts.** The private desk farewell plays while the workers are still walking in. STILETTO takes the gate after LIMEN leaves. Her reply to the crew sends all ten running directly to Conveyor with three randomly drawn worker reactions. Use the [revised S1 rules](/loopforge-design/studio/days-2-4-dialogue-validation.html) and [Day 2 table read](/loopforge-design/studio/day-2-stiletto-reading.html).
+### Day 2 Conveyor minigame
+
+Take over when jo’s second Belt delivery reaches Forge and max looks to LIMEN for clearance. One cortex is finished. STILETTO has returned to Security. The prompt includes both appointments, the player’s remaining intervention, who heard ed at Wash and the requested ENGINE acceptance cases. [Copy the full SYSTEMS DESIGNER handoff](/loopforge-design/studio/day-2-conveyor-minigame.html)
 
 **20 November 2026 · SYSTEMS accepts the corrected Days 2–4 writing package for ENGINE implementation.** WRITER applied all eight owner-approved corrections at `91067933` on PR #169. The subsequent handoff commit is `d829b0ef`. Source review verified the five documents against the downloadable ZIP, all 37 scene and alternate IDs, all 60 chat entries and G1–G11. The table read’s spoken lines and approved response banks match the earlier reviewed revision.
 

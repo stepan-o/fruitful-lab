@@ -12,6 +12,7 @@ E = html.escape
 COMPANIONS = ['producer-reading', 'producer-playbook']
 ROLE_READINGS = {
     'days-2-4-dialogue-validation': ('game-systems-designer', 'GAME SYSTEMS DESIGNER'),
+    'day-2-conveyor-minigame': ('game-systems-designer', 'GAME SYSTEMS DESIGNER'),
     'day-2-stiletto-reading': ('writer', 'WRITER'),
 }
 

@@ -43,7 +43,11 @@ Read *Designing Games* in depth for the relevant decisions and provide verified 
 
 ### Day 2 Conveyor minigame
 
-Take over when jo’s second Belt delivery reaches Forge and max looks to LIMEN for clearance. One cortex is finished. STILETTO has returned to Security. The prompt includes both appointments, the player’s remaining intervention, who heard ed at Wash and the requested ENGINE acceptance cases. [Copy the full SYSTEMS DESIGNER handoff](/loopforge-design/studio/day-2-conveyor-minigame.html)
+**20 November 2026 · Owner review of the Day 2 Conveyor specification.** The morning appointment selects the minigame. LIMEN’s operators wait for the player to clear each station. Under STILETTO the player assigns workers by portrait and can move them during the shift. Both use the same four stations, concurrent carriers, shift bell and weekly rack count.
+
+[Read the design and ENGINE specification](/loopforge-design/studio/day-2-conveyor-rules.html) · [Compare the worker bars and station needs](/loopforge-design/studio/day-2-conveyor-rules.html#portrait-bars-and-station-needs) · [Review the three matched comparisons](/loopforge-design/studio/day-2-conveyor-rules.html#three-comparisons-for-engine)
+
+The owner approved the scope and control schemes. Cycle times, worker values, team limits and interruptions are proposed tuning. The specification includes the exact second-Forge save, lost calls, blocked receivers and kit’s reassignment between two working stations. ENGINE integration follows the owner’s review. [WRITER’s approved starting state](/loopforge-design/studio/day-2-conveyor-minigame.html) · [Current playable baseline](/loopforge-shifts/index.html)
 
 **20 November 2026 · SYSTEMS accepts the corrected Days 2–4 writing package for ENGINE implementation.** WRITER applied all eight owner-approved corrections at `91067933` on PR #169. The subsequent handoff commit is `d829b0ef`. Source review verified the five documents against the downloadable ZIP, all 37 scene and alternate IDs, all 60 chat entries and G1–G11. The table read’s spoken lines and approved response banks match the earlier reviewed revision.
 

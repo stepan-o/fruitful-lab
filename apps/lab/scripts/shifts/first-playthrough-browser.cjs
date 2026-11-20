@@ -53,6 +53,8 @@ async function main(){
  }
  async function sendTo(s,who,station){
    await s.button(new RegExp('^'+who+'\\b','i')).click({timeout:85000});
+   const inspect=s.button('Inspect '+station);
+   if(await inspect.isVisible())await inspect.click();
    await s.button('Send '+who+' to '+station).click();
  }
  try{
@@ -82,7 +84,7 @@ async function main(){
       await sendTo(s,'jo','Belt');
       if(variant==='recovery'){
         await s.button(/^kit\b/).click({timeout:85000});
-        const at=s.seconds();await s.button('Send kit to Wash').click();
+        const at=s.seconds();await sendTo(s,'kit','Wash');
         const wash=s.page.getByRole('heading',{name:'Wash',exact:true}).locator('..');
         await wash.locator('b').first().filter({hasText:/\bkit\b/}).waitFor();
         await wash.scrollIntoViewIfNeeded();
@@ -90,11 +92,11 @@ async function main(){
       }
       if(variant==='move'){
         await sendTo(s,'kit','Forge');
-        await s.page.getByText('138 work units / tick',{exact:true}).waitFor();
+        await s.page.locator('[data-work-rate="138"]').waitFor({state:'attached'});
         const at=s.seconds();
         await sendTo(s,'kit','Belt');
-        await s.page.getByText('148 work units / tick',{exact:true}).waitFor();
-        await s.page.getByText('96 work units / tick',{exact:true}).waitFor();s.clip('kit-Forge-to-Belt',at-2,s.seconds()-at+4);
+        await s.page.locator('[data-work-rate="148"]').waitFor({state:'attached'});
+        await s.page.locator('[data-work-rate="96"]').waitFor({state:'attached'});s.clip('kit-Forge-to-Belt',at-2,s.seconds()-at+4);
       }
       return result(s);
     }

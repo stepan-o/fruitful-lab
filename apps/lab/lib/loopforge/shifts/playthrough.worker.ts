@@ -13,7 +13,12 @@ self.onmessage=({data:m}:{data:Input})=>{
   try{
     if(m.type==='join'){run=resume(m.source,m.progress);last=performance.now();publish();return;}
     if(m.type==='suspend'){paused=m.on;debt=0;last=performance.now();return;}
-    if(!run||paused)return;
+    if(!run||paused){
+      self.postMessage({type:'notice',id:m.cmd.id,accepted:false,reason:paused
+        ? 'Shift paused. Resume play to issue an order.'
+        : 'The floor is still connecting. Try again when it opens.'});
+      return;
+    }
     const prior=run.history[m.cmd.id];
     if(!prior&&(m.cmd.tick>run.tick||run.tick-m.cmd.tick>15)){self.postMessage({type:'notice',reason:'The floor has changed. Try again.'});return;}
     const cmd={...m.cmd,tick:prior?.cmd.tick??run.tick};

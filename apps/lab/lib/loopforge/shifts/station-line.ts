@@ -8,7 +8,7 @@ export const ratings: Record<string,number[]> = {
   mae:[3,3,5], lou:[4,4,2], ben:[3,3,4], ed:[2,5,2], gus:[4,2,3],
 };
 export const needs = [[4,1,1],[1,1,4],[1,4,1],[2,1,3]];
-const units = [4000,5400,6400,4800], protocolTicks = [50,60,30,40];
+export const units = [4000,5400,6400,4800], protocolTicks = [50,60,30,40];
 export const titles = ['Intake','Wash','Belt','Forge'];
 type Job = {id:string; work:number; permit:string; done:boolean; due:number; holder:string; receiver:string};
 type Call = {id:string; i:number; carrier:string; who:string; due:number};

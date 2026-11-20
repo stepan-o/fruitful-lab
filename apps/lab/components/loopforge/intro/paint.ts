@@ -87,7 +87,8 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
       // Machine registration uses the native 64 px/m plate for its elevated face.
       const [,rootY]=project(131.7,144.4);
       const registeredY=rootY+(420-126)*s/64;
-      queue(144.38,()=>sprite('press-back',state.world.jammed?0:6,px,registeredY));
+      const pressing=actors.some(a=>/^cortex-\d+-forge$/.test(a.action));
+      queue(144.38,()=>sprite('press-back',state.world.jammed?0:pressing?3:6,px,registeredY));
       queue(144.48,()=>sprite('press-front',0,px,registeredY));
 
     }else queue(146.9,()=>{
@@ -106,10 +107,10 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
     for(const [i,station] of floor.stations.entries()){
       const [x,y]=project(station.x,station.y);
       const staffed=actors.some(a=>a.room==='conveyor'&&Math.hypot(a.x/1000-station.x,a.y/1000-station.y)<.85&&!a.moving&&a.agent_id!==a.agent_id.toUpperCase());
-      const working=actors.some(a=>a.action.endsWith('-'+['intake','wash','belt','forge'][i]));
-      queue(station.y+.01,()=>{
+      const occupied=state.items.some(item=>item.item_id.startsWith('cortex-')&&item.stage===i&&Math.abs(item.x/1000-station.x)<.5);
+      queue(i===3?144.49:146.91,()=>{
         bank.world(ctx,staffed?'fl-post-staffed':'fl-post-vacant',x+15*s/64,y-9*s/64,s);
-        if(working)bank.world(ctx,'fl-handoff-ready',x-23*s/64,y-12*s/64,s);
+        if(staffed&&!occupied)bank.world(ctx,'fl-handoff-ready',x-23*s/64,y-12*s/64,s);
       });
     }
     for(const [x,y] of floor.contact.outputSlots){

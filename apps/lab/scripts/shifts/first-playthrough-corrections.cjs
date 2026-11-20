@@ -5,20 +5,60 @@ const fs=require('node:fs/promises');
 const path=require('node:path');
 const {execFileSync}=require('node:child_process');
 
+// Capture the interaction itself. A long browser video can drift away from the
+// wall clock during the intro, especially on a loaded recording runner.
+async function recordAction(page, dir, name, act){
+  const frames=await fs.mkdtemp(path.join(dir,'.frames-'));
+  const captures=[];
+  let recording=true;
+  const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+  async function capture(){
+    const filename='frame-'+String(captures.length).padStart(4,'0')+'.jpg';
+    const bytes=await page.screenshot({type:'jpeg',quality:88,timeout:10000});
+    captures.push({filename,at:performance.now()});
+    await fs.writeFile(path.join(frames,filename),bytes);
+  }
+  try{
+    await capture();
+    const pump=(async()=>{
+      while(recording){await delay(65);if(recording)await capture();}
+    })();
+    try{
+      await delay(650);
+      await act();
+      await delay(1050);
+    }finally{
+      recording=false;
+      await pump;
+    }
+    await capture();
+    const timeline=['ffconcat version 1.0'];
+    for(let i=0;i<captures.length;i++){
+      const frame=captures[i],next=captures[i+1];
+      timeline.push("file '"+frame.filename+"'");
+      if(next)timeline.push('duration '+((next.at-frame.at)/1000).toFixed(4));
+    }
+    await fs.writeFile(path.join(frames,'timeline.txt'),timeline.join('\n')+'\n');
+    execFileSync('ffmpeg',['-loglevel','error','-y','-f','concat','-safe','0','-i',path.join(frames,'timeline.txt'),
+      '-vf','fps=25','-c:v','libx264','-preset','fast','-crf','22','-pix_fmt','yuv420p','-movflags','+faststart',path.join(dir,name+'.mp4')]);
+  }finally{
+    await fs.rm(frames,{recursive:true,force:true});
+  }
+}
+
 async function review(){
   const manual=process.argv[2]==='limen';
   const size=manual?{width:1280,height:820}:{width:320,height:720};
   const dir=path.resolve('shift-evidence',manual?'desktop':'phone');
   await fs.mkdir(dir,{recursive:true});
   const browser=await chromium.launch({args:['--no-sandbox']});
-  const context=await browser.newContext({viewport:size,hasTouch:!manual,recordVideo:{dir,size}});
-  const page=await context.newPage(),video=page.video(),start=Date.now();
-  const seconds=()=>(Date.now()-start)/1000;
+  const context=await browser.newContext({viewport:size,hasTouch:!manual});
+  const page=await context.newPage();
   const button=name=>page.getByRole('button',{name,exact:typeof name==='string'});
   const shot=name=>page.screenshot({path:path.join(dir,name+'.jpg'),quality:82});
   const save=()=>page.evaluate(()=>JSON.parse(sessionStorage.getItem('loopforge.playthrough.1')));
   const time=()=>page.getByText(/s to bell/).innerText();
-  const errors=[],clips=[],sizes=[];
+  const errors=[],sizes=[];
   page.on('pageerror',err=>errors.push(String(err)));
   try{
     await page.goto(process.env.PLAY_ORIGIN+'/stepanoskin/loopforge',{waitUntil:'domcontentloaded'});
@@ -44,10 +84,12 @@ async function review(){
       const clear=button('Clear Forge');
       await page.waitForFunction(()=>!!document.querySelector('button[aria-label="Clear Forge"]:enabled'),{},{timeout:210000});
       await button('Pause').click();assert.equal(await clear.isEnabled(),false);
-      await shot('clear-paused');const mark=seconds();
-      await button('Resume').click();await clear.click();
-      await page.getByText(/Rack \+2/).waitFor();
-      clips.push(['forge-clear',mark,seconds()-mark+1]);await shot('forge-arrival');
+      await shot('clear-paused');
+      await recordAction(page,dir,'forge-clear',async()=>{
+        await button('Resume').click();await clear.click();
+        await page.getByText(/Rack \+2/).waitFor();
+      });
+      await shot('forge-arrival');
     }else{
       await button('Missing ID · inspect').waitFor({timeout:160000});
       await button('Pause').click();await button('Missing ID · inspect').click();
@@ -68,9 +110,11 @@ async function review(){
         sizes.push({width,canvas:box,order});await shot('wash-paused-'+width);
       }
       await page.setViewportSize(size);await button('Inspect Wash').click();
-      const mark=seconds();await button('Resume').click();await send.click();
-      await page.getByText('bob · Wash',{exact:true}).waitFor();await shot('wash-staffed');
-      clips.push(['wash-order',mark,seconds()-mark+1]);
+      await recordAction(page,dir,'wash-order',async()=>{
+        await button('Resume').click();await send.click();
+        await page.getByText('bob · Wash',{exact:true}).waitFor();
+      });
+      await shot('wash-staffed');
       await button(/^jo\b/i).click();await button('Inspect Belt').click();await button('Send jo to Belt').click();
     }
     await page.getByRole('heading',{name:'Shift closed'}).waitFor({timeout:170000});
@@ -85,12 +129,7 @@ async function review(){
   }catch(e){console.error((await page.locator('body').innerText()).slice(-2800));await shot('last-frame');throw e;}
   finally{
     await context.close();
-    const raw=await video.path();
-    for(const [name,at,length] of clips){
-      execFileSync('ffmpeg',['-loglevel','error','-y','-ss',String(Math.max(0,at-.5)),'-i',raw,'-t',String(Math.max(4,length+1)),
-        '-c:v','libx264','-preset','fast','-crf','23','-pix_fmt','yuv420p','-movflags','+faststart',path.join(dir,name+'.mp4')]);
-    }
-    await fs.unlink(raw);await browser.close();
+    await browser.close();
   }
 }
 review().catch(e=>{console.error(e);process.exitCode=1;});

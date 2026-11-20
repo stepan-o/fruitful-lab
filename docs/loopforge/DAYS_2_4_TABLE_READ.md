@@ -2,9 +2,19 @@
 
 **Loopforge · Three mornings · WRITER review draft · 19 November 2026**
 
-Read the three shifts straight through. Lowercase names belong on the bubbles. Italics are business for the actors. An emoji flashes over the named worker. Play the face and read only the words. The short marks in the headings also appear in the [BDI companion](DAYS_2_4_BDI.md). Pickups after the third bell give the cast another way through the same rooms. The owner approved 2A with its ten crowd lines and 2B with its sixteen greeting replies on 19 November. Review resumes at 2C.
+Read the three shifts straight through. Lowercase names belong on the bubbles. Italics are business for the actors. An emoji flashes over the named worker. Play the face and read only the words. The short marks in the headings also appear in the [BDI companion](DAYS_2_4_BDI.md). Pickups after the third bell give the cast another way through the same rooms. The owner approved 2A with its ten crowd lines and 2B with its sixteen greeting replies on 19 November. The adviser is appointed before the workers arrive. Review resumes at the two desks in 2C. The [ID-check bank](#id-checks-at-security) serves every shift with LIMEN at Security.
 
 ## Day 2 · The photograph
+
+### 2P · Before the second shift
+
+*The crew is still outside. The supervisors give the Producer their bids.*
+
+**LIMEN** I’d keep yesterday’s posts. ed and gus with me at Security. STILETTO takes her eight.
+
+**STILETTO** Put me on the gate. He can have all ten on Conveyor. I’d like him to see a full crew before the bell for once.
+
+*The Producer takes LIMEN’s bid. One intervention remains for the shift.*
 
 ### 2A · On the way in
 
@@ -30,9 +40,9 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **bob** Morning, sir. Remember me?
 
-*ben shakes his head. LIMEN turns to the Producer.*
+*ben shakes his head. LIMEN turns to the two desks.*
 
-### 2C · The appointment
+### 2C · The two helpers
 
 **LIMEN** I think nowadays it has became increasingly common to undervalue stability.
 
@@ -50,37 +60,51 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **sam** 🤭
 
-**LIMEN** I’ll keep these two at Security. STILETTO can keep her eight.
-
-**STILETTO** Give me the gate. Put him on Conveyor with all ten. I can open a fucking door by myself.
-
-*The Producer appoints LIMEN. bob catches ed’s eye. Before he can get a word in, gus calls sam up. ed holds his hand out for sam’s card.*
+*bob catches ed’s eye. gus calls sam. ed holds out his hand for the first card.*
 
 ### 2D · A pass
 
-*sam shows an ID. ed taps an entry as he gives it back.*
+*Three draws from [LIMEN’s ID checks](#id-checks-at-security). sam has the card out at ed’s desk.*
+
+**LIMEN** Intake, sam?
+
+**sam** Intake.
 
 **ed** One loose card entered this morning. Found on the floor.
 
 **sam** You can enter mine as leaving.
 
-*sam takes it along to Intake. STILETTO meets them at the rails.*
+*LIMEN verifies the post. ed gives sam the checked card. At Conveyor STILETTO meets sam at the rails.*
 
 **STILETTO** Three yesterday. I want five. Seat that one. Have the next ready to lift.
 
-*At Security max clears and goes to the Forge. Called at last, bob gets his empty hand out.*
+*At the desk, max is looking down at the photo.*
+
+**LIMEN** Chin up a little.
+
+*max raises their chin. LIMEN looks from the photograph to max.*
+
+**LIMEN** That’s you. Through.
+
+*max takes the card and leaves for the Forge. gus calls bob.*
+
+**LIMEN** ID, please.
 
 **bob** Can I show you the leg? You saw me yesterday.
 
-**LIMEN** I recognize the leg. I need the photograph.
+**LIMEN** I recognize the leg. Have you got the card?
 
-**gus** Hold there, jo. Both desks.
+**bob** No, sir.
 
-*The Producer issues a pass. LIMEN reads its date before he hands it to bob. Only when bob is through does gus let jo step up.*
+**LIMEN** No ID. Hold both desks.
 
-**bob** *(to LIMEN, looking at the pass)* I look better on this one.
+*gus keeps jo back. The Producer issues bob a daily pass. LIMEN reads its date.*
 
-*There’s no photograph. gus looks at the slip, too late for a comeback. bob folds it and walks to Wash.*
+**LIMEN** Good until the bell. Through you go.
+
+**bob** *(to LIMEN)* I look better on this one.
+
+*There’s no photograph. bob pockets the slip and goes to Wash. Now gus calls jo.*
 
 ### 2E · The empty belt
 
@@ -132,6 +156,16 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ## Day 3 · The second side
 
+### 3P · Before the third shift
+
+*LIMEN has worked Security twice. STILETTO had to leave Conveyor for workers on both shifts in this reading.*
+
+**STILETTO** Give me the security gate. Put LIMEN on Conveyor with all ten workers. I can open a fucking door by myself.
+
+**LIMEN** Keep my clerks with me. Keep her crew with her. I should like to finish a check today.
+
+*The Producer keeps LIMEN at Security.*
+
 ### 3A · On the way in
 
 **jo** I had time to read the back of my card yesterday.
@@ -170,11 +204,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 3C · Places
 
-**STILETTO** Give me the gate. He can count all ten in at Conveyor.
-
-**LIMEN** Keep my clerks with me. Keep her crew with her. I should like to finish a check today.
-
-*The Producer keeps LIMEN at Security. sam and max clear early. mae brings a second tray up to sam. At the press max keeps their heel down this time. The first cradle sits at Wash. STILETTO goes to find the missing operators.*
+*At Security, one check per worker. sam and max get through early. mae brings a second tray up to sam. At the press max keeps their heel down this time. The first cradle sits at Wash. STILETTO goes to find the missing operators.*
 
 ### 3D · The second answer
 
@@ -220,6 +250,14 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ## Day 4 · Room to pass
 
+### 4P · Before the fourth shift
+
+**LIMEN** Leave the gate and both clerks to me. Let her take her eight. I’ll answer for whom I send.
+
+**STILETTO** I spent yesterday standing at his desk asking for jo. Give me the desk. He gets all ten.
+
+*The Producer takes LIMEN’s bid. The intervention is still available.*
+
 ### 4A · On the way in
 
 *ben digs out their card as they walk. jo cups a hand under it.*
@@ -258,11 +296,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### 4C · Places
 
-**LIMEN** Leave the gate and both clerks to me. Let her take her eight. I’ll answer for whom I send.
-
-**STILETTO** Give me the gate. Send him all ten. ed and gus know the way.
-
-*The Producer appoints LIMEN. The intervention is still available. sam, mae, max and lou clear. At Conveyor, sam seats the first brain. mae keeps pace with the tray. It comes to rest at an empty Wash. STILETTO gives the hall time to produce somebody. The water stays off. She goes herself.*
+*gus calls them up separately. sam, mae, max and lou clear. At Conveyor, sam seats the first brain. mae keeps pace with the tray. It comes to rest at an empty Wash. STILETTO gives the hall time to produce somebody. The water stays off. She goes herself.*
 
 ### 4D · Two bosses
 
@@ -309,6 +343,456 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 **lou** You did the hard part standing up.
 
 *max sits on the low sill to shake feeling back into one foot. lou stops and waits for them. Then the two catch up.*
+
+## ID checks at Security
+
+*At LIMEN’s desk, draw one whole exchange for the robot gus has called. One card, one person, one outcome. Read the names as cast in this sample. C01–C30 can be recast with a worker who has the same reason to speak. C31–C40 need the named worker and the history in the companion. All four M readings use the same missing-ID procedure.*
+
+*The quiet business in every ordinary check is the same. gus calls the worker. ed finds the roster entry. LIMEN compares the original, the person and today’s assignment. On a match he marks them clear. The ID goes back into the worker’s hand and they pass before gus admits anybody else. Play any business left unspoken under the lines. The final word or gesture belongs to this worker’s check.*
+
+### Quick clearances
+
+**C01 · First up**
+
+**LIMEN** Card, please.
+
+**ben** Here.
+
+**LIMEN** Thank you. Through you go.
+
+**C02 · Ready on the rail**
+
+**gus** You can put it down. He won’t bite it.
+
+**LIMEN** Face up, if you please.
+
+*mae lays it face up. LIMEN checks it, stamps the book and slides it back.*
+
+**C03 · A name to go with it**
+
+**LIMEN** And what do they call you?
+
+**kit** kit.
+
+**LIMEN** So it says. In you go, kit.
+
+**C04 · Just the one**
+
+**gus** Just the one at the desk.
+
+**lou** There’s only one of me.
+
+**LIMEN** And you’re cleared. Thank you, lou.
+
+**C05 · In a hurry**
+
+**LIMEN** Expecting something?
+
+**sam** My card.
+
+**LIMEN** Quite right. Here you are.
+
+*He returns it with the stamp still wet in the book.*
+
+**C06 · No conversation**
+
+*ben lays the card under the light and waits. LIMEN looks at ben, marks the entry and turns the card back round.*
+
+**LIMEN** That’ll do nicely.
+
+*ben pockets it and goes.*
+
+**C07 · A little louder**
+
+**LIMEN** Once more. I got the card but I missed the name.
+
+**mae** mae.
+
+**LIMEN** Got them both now. Clear.
+
+**C08 · The hand that brought it**
+
+**ed** Whose hand did that come out of?
+
+**jo** This one. Still here.
+
+*LIMEN finishes the check. ed puts the card straight into jo’s open palm.*
+
+**C09 · The stamp pad**
+
+**ed** That one didn’t take, sir.
+
+**LIMEN** The ink, he means. You’re fine.
+
+*ed inks the stamp. One clear mark. LIMEN hands kit the card and lets him pass.*
+
+**C10 · The chin**
+
+**LIMEN** Chin up a little.
+
+*max raises their chin. LIMEN looks from the photograph to max.*
+
+**LIMEN** That’s you. Through.
+
+### Cards and hands
+
+**C11 · The thumb**
+
+**LIMEN** I’ve got a lovely view of your thumb.
+
+**sam** Sorry.
+
+**LIMEN** There you are. Clear.
+
+**C12 · The other face**
+
+**LIMEN** Photograph towards me, please.
+
+*mae turns it over.*
+
+**LIMEN** Much obliged. Take it with you.
+
+**C13 · Upside down**
+
+**LIMEN** Stay as you are. It’s the card I’m turning.
+
+**kit** Everybody the right way up now?
+
+**LIMEN** Quite. Through you go.
+
+**C14 · Glare**
+
+**lou** It’s gone white.
+
+**LIMEN** Tilt it towards your coat.
+
+**lou** Oh. There I am.
+
+*LIMEN checks the face and returns the card. lou goes on.*
+
+**C15 · Dust in the folds**
+
+**LIMEN** A little grit on the name there.
+
+**bob** Want to borrow my sleeve?
+
+**LIMEN** I’d like you to use it.
+
+*bob wipes the card and shows it again. LIMEN reads it and waves him through.*
+
+**C16 · Two things in one pocket**
+
+**LIMEN** Do you want me to read this?
+
+**ben** No. Very much no. Here’s the card.
+
+*LIMEN lets ben take the slip back unread, checks the ID and opens the gate.*
+
+**C17 · Stuck lining**
+
+**mae** I’ve got it. My pocket’s got me.
+
+**gus** Take your time. He will.
+
+*mae frees the card. LIMEN compares the photograph and clears her.*
+
+**C18 · A bent corner**
+
+**ed** Wait. You’ve hooked the book.
+
+**sam** Lift your end.
+
+*ed lifts the page. sam takes back the card.*
+
+**LIMEN** A successful separation. Go ahead.
+
+**C19 · Two hands**
+
+**LIMEN** I’ll give it to the one I took it from.
+
+**jo** Over here, then.
+
+*The helping hand drops. LIMEN returns jo’s ID to jo and releases them.*
+
+**C20 · A clean patch**
+
+**kit** That mark’s on the card. Look at my face.
+
+**LIMEN** I am looking at your face. Give me a second face to compare it with.
+
+*kit rubs the mark away. LIMEN checks, stamps and passes him.*
+
+### What protocol is for
+
+**C21 · The line down the middle**
+
+**LIMEN** Time on the left. Name on the right. Do you know what that gives us?
+
+**max** A space down the middle?
+
+**ed** It gives us somewhere to put you. There.
+
+*LIMEN returns the checked ID. max leaves ed writing.*
+
+**C22 · A familiar face**
+
+**jo** You know me.
+
+**LIMEN** I do. It would be very rude to leave you out of the book.
+
+*jo offers the ID. ed enters the name. LIMEN checks it and sends jo on.*
+
+**C23 · The queue as witness**
+
+**sam** You’ve got a whole queue here knows who I am.
+
+**LIMEN** Or you could show me that card and let them get to work.
+
+*sam shows it. LIMEN checks it and clears the way.*
+
+**C24 · Asked twice**
+
+**mae** Why ask me if you can read it?
+
+**LIMEN** I like to see whether the two of you agree.
+
+**mae** What do we say?
+
+**LIMEN** mae. Through.
+
+**C25 · A minute well spent**
+
+**LIMEN** A minute spent here can save a great deal of trouble inside.
+
+**lou** Whose minute are we spending?
+
+*LIMEN finishes reading the card and gives it back.*
+
+**LIMEN** You may have the rest of yours.
+
+**C26 · The exception**
+
+**ben** Could we just do this one from memory?
+
+**LIMEN** Certainly. First remind me what your card looks like.
+
+*ben shows it. LIMEN verifies it and lets them pass.*
+
+**C27 · No trouble**
+
+**kit** Nothing ever happens here.
+
+**LIMEN** Thank you. ed, did you get that?
+
+**ed** I got his name, sir.
+
+*LIMEN stamps kit through. ed leaves the compliment out.*
+
+**C28 · Straight on the edge**
+
+**bob** Does it read better straight?
+
+**LIMEN** No. I like it straight.
+
+*He reads it, hands it back crooked and waves bob in. bob straightens it in his own hand.*
+
+**C29 · What the book says**
+
+**max** Suppose I walked straight past.
+
+**LIMEN** You’d be at work and I’d still be standing here waiting for you.
+
+**max** Wouldn’t wish that on you.
+
+*max gives him the card. LIMEN checks it and lets them through.*
+
+**C30 · A quiet sermon**
+
+**LIMEN** People think a rule is a thing somebody puts up on a wall. I’ve seen rules fall off walls. What keeps a rule up is—
+
+**ed** Found her, sir.
+
+**LIMEN** Good. Through you go, mae.
+
+### People LIMEN knows
+
+**C31 · One loose entry**
+
+**LIMEN** Intake, sam?
+
+**sam** Intake.
+
+**ed** One loose card entered this morning. Found on the floor.
+
+**sam** You can enter mine as leaving.
+
+*LIMEN verifies sam’s card and post. ed gives it back and sam goes to Intake.*
+
+**C32 · Relief**
+
+**LIMEN** Where do you work, ben?
+
+**ben** Wherever they’re short. Relief, if you want the word for it.
+
+**ed** Relief. I’ve got you.
+
+*LIMEN compares the entry and ID, then clears ben.*
+
+**C33 · The good ear**
+
+**gus** After you’re through, do me saying “next.”
+
+**max** I could do you waiting.
+
+**LIMEN** You’re clear, max.
+
+*max takes the card. gus waits until max is past the rail to call the next worker.*
+
+**C34 · What jo has learned**
+
+**jo** It says “show the front” on the back. Where do you want me to look?
+
+**LIMEN** And here you are showing me the correct side. Clear.
+
+*jo pockets the ID, with a look at ed. ed keeps writing.*
+
+**C35 · A tray waiting**
+
+**mae** There’s a tray waiting for me.
+
+**LIMEN** Then we know where the tray is. Let’s see about you.
+
+*mae hands him the card. He matches her to the tray assignment and returns it.*
+
+**LIMEN** Go and get it.
+
+**C36 · Writing hand**
+
+**ed** I was keeping that margin clean.
+
+**sam** Turn your book round. I’ll sign it with the other one.
+
+**LIMEN** One print will do. Clear.
+
+**C37 · A cleaner face**
+
+**LIMEN** Anything changed since this photograph, bob?
+
+**bob** I’ve had a wash.
+
+**LIMEN** I see that. Back to it.
+
+*He returns the original. bob heads for Wash.*
+
+**C38 · Both sides of the rail**
+
+**LIMEN** What comes to you at Output?
+
+**lou** Finished cortexes. Some days I’d settle for company.
+
+*LIMEN compares the ID and roster. He hands it back.*
+
+**LIMEN** I can spare you now.
+
+**C39 · The name at the gate**
+
+**gus** N—
+
+**kit** I’m still here.
+
+**LIMEN** Quite right. Your card, kit.
+
+*kit takes it and passes. gus gets his breath back.*
+
+**C40 · A good stamp**
+
+**LIMEN** Look at that, ed. You can read every letter.
+
+**ed** Fresh ink, sir.
+
+**jo** Can I go while it dries?
+
+**LIMEN** By all means.
+
+### A missing ID
+
+*Use these only after an actual ID request. A pass and detention are alternate endings of the same hold. The Producer can issue the daily pass while the case is open. With no pass by closure, LIMEN detains the worker until the bell. The next worker waits for the resolution. Recast either ending with any worker who lacks their original.*
+
+**M01 · An old acquaintance · pass**
+
+**LIMEN** ID, please.
+
+**bob** Can I show you the leg? You saw me yesterday.
+
+**LIMEN** I recognize the leg. Have you got the card?
+
+**bob** No, sir.
+
+**LIMEN** No ID. Hold both desks.
+
+*gus holds the queue. The Producer issues bob a daily pass. LIMEN checks its date.*
+
+**LIMEN** Good until the bell. Through you go.
+
+**bob** I look better on this one.
+
+*bob pockets the pass and goes. Only then does gus move the line.*
+
+**M02 · An empty holder · pass**
+
+**LIMEN** ID, please.
+
+**mae** I brought the damn holder. Where’s the card?
+
+*mae runs a finger along the empty sleeve.*
+
+**mae** I haven’t got it.
+
+**LIMEN** No ID. Hold both desks.
+
+*gus keeps the next worker back. The Producer issues mae a pass. LIMEN checks its date.*
+
+**LIMEN** Good until the bell. Through you go.
+
+**mae** At least I’ve got somewhere to put it.
+
+*She slips the pass into the holder and crosses. gus reopens the queue.*
+
+**M03 · The bell can reach Wash · detention**
+
+**LIMEN** ID, please.
+
+**bob** Still missing, sir.
+
+**LIMEN** No ID. Hold both desks.
+
+*gus holds. The check closes without a pass.*
+
+**LIMEN** You’ll stay here until the bell.
+
+**bob** I can hear it from Wash.
+
+**LIMEN** I’m sure you can.
+
+*Once bob is in Security custody, gus calls the next worker. At the bell bob goes home.*
+
+**M04 · Yesterday’s pass · detention**
+
+**kit** Same face as yesterday. Same slip, too.
+
+**LIMEN** Yesterday’s date. Have you got your ID?
+
+**kit** If I had, I’d have brought you that.
+
+**LIMEN** No ID. Hold both desks.
+
+*gus holds. The window for a fresh pass closes.*
+
+**LIMEN** You’ll stay here until the bell.
+
+**kit** I’ll want that slip back. It’s the only thing I haven’t lost.
+
+*LIMEN returns the expired slip. Once kit is in custody the queue resumes. At the bell he is released.*
 
 ## Crowd lines for 2A
 
@@ -375,11 +859,15 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### S1 · STILETTO gets the gate
 
-*Play 2C through both bids. Here the Producer appoints STILETTO. She holds the gate open. ed is still at the register.*
+*Use this if STILETTO won before shift start. Play the walk and LIMEN’s usual welcome. Then LIMEN goes ahead to Conveyor. At the gate ed has his pen out and gus makes for his old desk.*
 
-**STILETTO** You can shut the book, ed. I meant ten.
+**STILETTO** Going somewhere, gus?
 
-*ed shuts the book. gus leaves his desk and the two go through with the others. bob is carried along between sam and jo, his card still in ed’s pocket. LIMEN takes ed to the tray bench beside sam and puts gus at the rack with lou.*
+**gus** Thought you’d want a hand here.
+
+**STILETTO** I want both of yours on the rack. ed, take the pen with you. Through.
+
+*She waves all ten on. bob goes between sam and jo, unchecked. At Conveyor, LIMEN puts ed at the tray bench beside sam and gus at the rack with lou.*
 
 ### S2 · All clear
 
@@ -471,9 +959,9 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### P1 · The desk without a pass
 
-*Replace the pass in 2D when the Producer simply watches. gus holds both desks through the open check. The check runs out.*
+*In 2D, play through “No ID. Hold both desks.” If a pass never arrives, the check closes. gus keeps the queue held.*
 
-**LIMEN** You can wait here for the bell, bob.
+**LIMEN** You’ll stay here until the bell.
 
 **bob** I can hear it from Wash.
 
@@ -513,7 +1001,11 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### N1 · A morning without yesterday’s concession
 
-*After P2, replace 3A–3C. All eight had reached their posts without STILETTO leaving the line. jo catches up with max on the approach.*
+*Pre-shift after P2. All eight reached their posts yesterday without STILETTO leaving the line. LIMEN still has two completed shifts at Security.*
+
+**LIMEN** Keep me and the clerks here. Give her the eight again.
+
+*STILETTO makes her two-shift bid from 3P. The Producer accepts hers. On the walk in, jo catches up with max.*
 
 **jo** Your press makes a double knock. I can hear it at the belt.
 
@@ -527,11 +1019,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **gus** I’ve got the end, sir.
 
-**LIMEN** Keep me and the clerks here. Give her the eight again.
-
-**STILETTO** Swap us. I’ll get all ten down to his floor.
-
-*The Producer accepts the swap. Play S1–S2 at the stations. When the press falls, jo listens for max’s heel. They point as the second knock comes. max grins.*
+*Play S1–S2 at the stations. When the press falls, jo listens for max’s heel. They point as the second knock comes. max grins.*
 
 ### W1 · Take away one witness
 
@@ -569,7 +1057,13 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### Q1 · A quiet fourth shift
 
-*Take a history in which STILETTO handled the gate and the crew ran all-clears yesterday. On the approach, jo stretches three stiff fingers. kit walks beside them.*
+*Before the shift, after a day with STILETTO at the gate and LIMEN calling all-clears:*
+
+**LIMEN** Let me have all ten on Conveyor again. She got them to me together.
+
+**STILETTO** I’ll keep the gate. Let him wear out a switch with all ten.
+
+*The Producer accepts STILETTO’s bid. On the approach, jo stretches three stiff fingers. kit walks beside them.*
 
 **kit** Still got that claw?
 
@@ -583,11 +1077,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **jo** Could use some of that at the drive.
 
-**LIMEN** Let me have all ten on Conveyor again. She got them to me together.
-
-**STILETTO** I’ll keep the gate. Let him wear out a switch with all ten.
-
-*The Producer accepts STILETTO’s bid. She clears the crew in motion. At the belt, kit demonstrates letting the elbow rest at the side. jo tries it while waiting.*
+*STILETTO clears the crew in motion. At the belt, kit demonstrates letting the elbow rest at the side. jo tries it while waiting.*
 
 **LIMEN** Belt, all clear.
 
@@ -603,7 +1093,7 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **mae** A tray came up off the rail. sam tried to seat it. Look where the rim caught them.
 
-*sam shows the mark. At the next appointment, after the walk-in, LIMEN’s usual welcome and the simultaneous worker replies, LIMEN bids.*
+*sam shows the mark. At the next pre-shift appointment LIMEN bids from what he saw and heard.*
 
 **LIMEN** Give her the gate. Give me Conveyor with all ten.
 
@@ -611,4 +1101,4 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **STILETTO** You keep the clerks. Leave me my eight. Show me the rail that threw it.
 
-*If LIMEN gets Conveyor, play a checked handoff. If a worker later tells him they passed Security unchecked, he has a new question for STILETTO. At each bell the crew can still walk away.*
+*After the appointment, play the walk-in, LIMEN’s welcome and the crew’s simultaneous replies. If LIMEN gets Conveyor, play a checked handoff. If a worker later tells him they passed Security unchecked, he has a new question for STILETTO. At each bell the crew can still walk away.*

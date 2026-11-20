@@ -13,6 +13,10 @@
 5. To play **STILETTO on Conveyor**, accept **LIMEN’s pitch**. Inspect bob’s missing ID. Issue the daily pass or let the desk deadline expire. On Conveyor, select a worker portrait, compare Force, Precision and Timing with the station’s numeric bars, and send the worker to a post. Walking takes time. The pass spends the exceptional intervention. Portrait orders remain available.
 6. At the bell compare **new rack arrivals** with the cumulative week count. **Return to main menu → Enter factory** starts a fresh run for the other appointment.
 
+## Normal-speed gameplay evidence
+
+[Watch the clips and matched results](/loopforge-shifts/review/first-playthrough/index.html). The 1000 × 800 desktop recording and the 320 × 844 touch recording both start at the landing, change Quality and verify the saved preference, run the sprite intro at 1×, receive the quota, commit a bid and end at the bell. The desktop Clear and watch runs yielded 2 and 1 new arrivals. The touch runs yielded 14 with a pass, 0 with detention, 10 with Wash recovery and 18 after moving kit. Both returned to a fresh menu. [Browser checks and original recordings](https://github.com/stepan-o/fruitful-lab/actions/runs/44807380801)
+
 ## Matched simulation measurements
 
 All pairs start at the same saved decision in an ordinary run. The real intro produces the departure supplied to the shift. The simulator runs at 20 ticks per second. The totals below include each physically racked carrier once.

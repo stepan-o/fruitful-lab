@@ -1,0 +1,42 @@
+name: Attach approved review captures to PR 177
+on:
+  push:
+    branches: [codex/loopforge-first-playthrough]
+    paths: ['.github/workflows/loopforge-attach-177.yml']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  clips:
+    if: github.repository == 'stepan-o/fruitful-lab'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/loopforge-first-playthrough
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 44807380801
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/captures
+      - name: Bind the two successful recordings to the owner review page
+        env:
+          OUT: apps/lab/public/loopforge-shifts/review/first-playthrough
+        run: |
+          set -euo pipefail
+          mkdir -p "$OUT"
+          for route in limen stiletto; do
+            mkdir -p "$OUT/$route"
+            src="$RUNNER_TEMP/captures/loopforge-$route-1x/$route"
+            cp "$src/measurements.json" "$OUT/$route/"
+            cp "$src/"*.mp4 "$OUT/$route/"
+          done
+          test -s "$OUT/limen/opening-Forge-clear.mp4"
+          test -s "$OUT/stiletto/staffing-kit-Forge-to-Belt.mp4"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$OUT"
+          git rm -- .github/workflows/loopforge-attach-177.yml
+          git commit -m 'Attach 1× desktop and 320 px gameplay and its recorded measurements'
+          git push origin HEAD:refs/heads/codex/loopforge-first-playthrough

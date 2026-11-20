@@ -63,6 +63,8 @@ test('4D/W1 · only the personal hand receipt changes ben’s decision',()=>{
     assert.equal(knows(s,'mae','ben.reported.bob'),goes);
     assert.equal(s.pieces.filter(p=>p.status==='rack').length,0);
     assert.equal(s.called,'kit');
+    const departed=s.marks.find(e=>e.day===4&&e.kind==='worker.followed'&&e.subject==='jo');
+    assert(!s.marks.some(e=>e.seq>departed.seq&&e.kind==='speech.delivered'&&e.actor==='LIMEN'&&e.subject==='jo'));
   }
 });
 test('G1 · second distinct authorized crossing opens a single crowd opportunity',()=>{

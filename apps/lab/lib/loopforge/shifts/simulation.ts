@@ -91,7 +91,7 @@ function release(s:Run,id:string,reason:string){
 
   const following=reason==='Responded to STILETTO';
   mark(s,following?'worker.followed':'worker.cleared','security','desk.register',desk,following?'STILETTO':s.lead,id,reason);
-  if(s.called===id){s.called='';s.checking=s.tick+(s.quick?15:45);s.dialogue.checkTopic='';}
+  if(s.called===id){s.dialogue.exchanges=s.dialogue.exchanges.filter(x=>x.topic!=='check.'+id);s.called='';s.checking=s.tick+(s.quick?15:45);s.dialogue.checkTopic='';}
   if(s.pressure!=='clash')s.queue.forEach((who,i)=>{if(who!==s.called)go(s,who,queueAt(who==='bob'&&knows(s,'LIMEN','against.protocol')?6:i));});
 }
 function resolveCase(s:Run,pass:boolean){

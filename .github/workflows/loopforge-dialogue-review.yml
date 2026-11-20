@@ -31,8 +31,9 @@ jobs:
         run: |
           if ! command -v ffmpeg >/dev/null; then sudo apt-get -qq update && sudo apt-get -qq install ffmpeg; fi
           npm install --prefix "$RUNNER_TEMP/recording" playwright@1.56.1
-          "$RUNNER_TEMP/recording/node_modules/.bin/playwright" install --with-deps chromium
+          "$RUNNER_TEMP/recording/node_modules/.bin/playwright" install --only-shell chromium
           python3 apps/lab/scripts/shifts/portable.py "$RUNNER_TEMP/player"
+          NODE_PATH="$RUNNER_TEMP/recording/node_modules" node -e "require('playwright').chromium.launch().then(b=>b.close())" || "$RUNNER_TEMP/recording/node_modules/.bin/playwright" install-deps chromium
           echo "NODE_PATH=$RUNNER_TEMP/recording/node_modules" >> "$GITHUB_ENV"
           echo "OFFLINE_PLAYER=$RUNNER_TEMP/player/Loopforge-Days-2-4.html" >> "$GITHUB_ENV"
       - name: Play both comparisons with captions

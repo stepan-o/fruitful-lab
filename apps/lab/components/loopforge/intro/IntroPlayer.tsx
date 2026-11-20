@@ -13,7 +13,7 @@ export default function IntroPlayer({campaign}:{campaign?:Playthrough}){
   campaignRef.current=campaign;
   const canvas=useRef<HTMLCanvasElement>(null),slider=useRef<HTMLInputElement>(null),clock=useRef<HTMLOutputElement>(null),controls=useRef<Controls|null>(null);
   const [ready,setReady]=useState(false),[playing,setPlaying]=useState(false),[skin,setSkin]=useState<Skin>('sprites');
-  const [metrics,setMetrics]=useState('');
+  const [metrics,setMetrics]=useState(''),[racked,setRacked]=useState(0);
   const [beat,setBeat]=useState('The morning walk'),[speech,setSpeech]=useState(''),[failure,setFailure]=useState(''),[trace,setTrace]=useState<string[]>([]);
   useEffect(()=>{
     const surface=canvas.current!,ctx=surface.getContext('2d',{alpha:false});
@@ -90,6 +90,7 @@ export default function IntroPlayer({campaign}:{campaign?:Playthrough}){
           if(session!=='live'||(recovering&&m.msg_type==='FRAME_DIFF'))return;
           try{
             const next=reconstruct(frame,m);previous=m.msg_type==='FRAME_DIFF'?frame:null;frame=next;received=performance.now();recovering=false;
+            if(campaignRef.current)setRacked(frame.state.items.filter(i=>i.stage===4&&i.y===147000).length);
             if(!previous){cam.scale=0;setReady(!!bank);worker.postMessage({local:'applied',tick:frame.tick,hash:frame.hash});if(began&&campaignRef.current&&desiredHint==='PAUSE'&&!running&&!finished)command('PLAY');startStory();}
             const lines=frame.state.events.map(e=>e.speaker+' · '+e.text).join('\n');
             if(lines!==lastSpeech){lastSpeech=lines;setSpeech(lines);}
@@ -113,7 +114,7 @@ export default function IntroPlayer({campaign}:{campaign?:Playthrough}){
   return <main className={styles.page}>
     <header>{!campaign&&<a href="/stepanoskin/loopforge/design#day-one-intro">← Game design</a>}<span>LOOPFORGE</span></header>
     <section className={styles.console} aria-label="Day One live player">
-      <div className={styles.title}><div><small>FACTORY FLOOR</small><h1>Day One</h1></div><p>{beat}</p></div>
+      <div className={styles.title}><div><small>FACTORY FLOOR</small><h1>Day One</h1></div><p>{beat}{campaign&&<> · Rack {racked}</>}</p></div>
       <canvas ref={canvas} className={styles.surface} aria-label="Live factory floor with character names and speech bubbles"/>
       <span className={styles.sr} aria-live="polite">{speech}</span>
       {failure&&<p role="alert">{failure}</p>}

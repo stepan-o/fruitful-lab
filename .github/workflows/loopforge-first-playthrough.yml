@@ -1,0 +1,69 @@
+name: Record the first two shifts
+on:
+  push:
+    branches: [codex/loopforge-first-playthrough]
+    paths:
+      - 'apps/lab/lib/loopforge/**'
+      - 'apps/lab/components/loopforge/**'
+      - 'apps/lab/scripts/shifts/first-playthrough*'
+      - '.github/workflows/loopforge-first-playthrough.yml'
+permissions:
+  contents: read
+  deployments: read
+jobs:
+  screen:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        conveyor: [limen, stiletto]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install review browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/review" playwright@1.56.1
+          "$RUNNER_TEMP/review/node_modules/.bin/playwright" install chromium
+          if ! command -v ffmpeg; then sudo apt-get update -qq && sudo apt-get install -y ffmpeg; fi
+      - name: Locate the preview for this revision
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for attempt in $(seq 1 36); do
+            deploy=$(gh api "repos/$GITHUB_REPOSITORY/deployments?sha=$GITHUB_SHA" --jq '.[0].id // empty')
+            if [ -n "$deploy" ]; then
+              url=$(gh api "repos/$GITHUB_REPOSITORY/deployments/$deploy/statuses" --jq '[.[] | select(.state=="success")][0].environment_url // empty')
+              if [ -n "$url" ]; then
+                if curl -fsSL --max-time 15 "$url/stepanoskin/loopforge" | grep -q 'Enter the factory'; then
+                  echo "PLAY_ORIGIN=$url" >> "$GITHUB_ENV"
+                fi
+                break
+              fi
+            fi
+            sleep 10
+          done
+      - name: Serve this revision if the preview requires a Vercel session
+        if: env.PLAY_ORIGIN == ''
+        working-directory: apps/lab
+        env:
+          API_BASE_URL: http://localhost:8000
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+          npm run start -- --port 3191 > "$RUNNER_TEMP/loopforge.log" 2>&1 &
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://localhost:3191/stepanoskin/loopforge >/dev/null; then break; fi
+            sleep 1
+          done
+          echo 'PLAY_ORIGIN=http://localhost:3191' >> "$GITHUB_ENV"
+      - name: Play from the entrance through the bell at 1×
+        run: NODE_PATH="$RUNNER_TEMP/review/node_modules" node apps/lab/scripts/shifts/first-playthrough-browser.cjs "${{ matrix.conveyor }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: loopforge-${{ matrix.conveyor }}-1x
+          path: shift-evidence/
+          retention-days: 30

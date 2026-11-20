@@ -127,8 +127,8 @@ function approachFloor(ctx:CanvasRenderingContext2D,w:number,h:number,camera:Ret
     rect(x-.22,y-.48,.44,.76,'#424e4c');rect(x-.22,y-.53,.44,.24,'#dfcba1');
   }
 }
-export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView){
-  const tracking=room==='security'&&scene.world.stage==='walk';
+export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView,operation?:{stroke:number;deskCut:boolean}){
+  const tracking=room==='security'&&scene.world.stage==='walk'&&!operation?.deskCut;
   const crew=tracking?scene.agents.filter(a=>a.duty==='walking'):[];
   const approachingDesk=crew.length>0&&crew.every(a=>a.room==='security');
   // Use the same desk frame across the splice and greeting. Include LIMEN and
@@ -168,8 +168,13 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
         // operator at the approved Forge control belongs between their depths.
         const [px,root]=xy(132,geometry.stations[i].y);
         const registered=root+(420-126)*scale/64;
-        layers.push({y:144.38,draw:()=>sprite('press-back',6,px,registered)},
+        layers.push({y:144.38,draw:()=>sprite('press-back',operation?6-Math.round(6*Math.sin(Math.PI*operation.stroke)):6,px,registered)},
           {y:144.48,draw:()=>sprite('press-front',0,px,registered)});
+        if(operation)layers.push({y:144.47,draw:()=>{
+          const [tx,ty]=xy(131.92,144.48);
+          ctx.strokeStyle='#e1b975';ctx.lineWidth=Math.max(2,scale*.075);
+          ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(tx+scale*.38,ty-(operation.stroke?0:scale*.14));ctx.stroke();
+        }});
         continue;
       }
       layers.push({y:146,draw:()=>{

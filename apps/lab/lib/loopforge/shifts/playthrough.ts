@@ -40,10 +40,13 @@ export function publicFloor(s:Run){
       dest&&available?(t.duty==='working'?dest:'Walking to '+dest):available?'Available':s.dialogue.passages.includes(id)?'Approaching Conveyor':'At Security';
     return {id,available,label};
   });
+  const job=l.cells[3],empty=s.marks.findLast(m=>m.kind==='forge.empty');
+  const stroke=empty&&s.tick-empty.tick<12?(s.tick-empty.tick)/12:
+    job&&!job.done&&job.work?Math.min(1,job.work/(manual?40:4800)):0;
   const dialogue=s.marks.filter(m=>m.day===s.day&&m.kind==='speech.delivered'&&
     s.tick-m.tick<Math.ceil(readingTime(m.text)/50)).slice(-8);
   const silence=s.marks.findLast(m=>m.kind==='protocol.silence');
-  return {tick:s.tick,scene,machines,workers,dialogue:dialogue.filter(e=>!silence||e.tick>silence.tick),
+  return {tick:s.tick,scene,machines,workers,stroke,deskCut:manual&&l.opening===1&&s.tick<s.dialogue.ready,dialogue:dialogue.filter(e=>!silence||e.tick>silence.tick),
     bell:s.dialogue.bell,manual,opening:manual&&!l.handoff,handoff:l.handoff,shot:l.shot,shotSeq:l.shotSeq,
     inspecting:l.inspecting>s.tick,closed:s.phase==='close',dayCount:s.completed.length-s.dialogue.teamAtBell};
 }

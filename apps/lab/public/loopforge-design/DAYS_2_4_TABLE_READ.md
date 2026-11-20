@@ -2,19 +2,21 @@
 
 **Loopforge · Three mornings · Corrected table read · 20 November 2026**
 
-Read the three shifts straight through. Lowercase names belong on the bubbles. Italics are business for the actors. An emoji flashes over the named worker. Play the face and read only the words. The short marks in the headings also appear in the [BDI companion](DAYS_2_4_BDI.md). Pickups after the third bell give the cast another way through the same rooms. The owner approved 2A with its ten crowd lines and 2B with its sixteen greeting replies on 19 November. The adviser is appointed before the workers arrive. The stage directions include the owner-approved SYSTEMS corrections. The [ID-check bank](#id-checks-at-security) serves every shift with LIMEN at Security. The [worker chat bank](ROOM_CHAT_BANK.md) has separate draws for the queue, neighboring posts and the walk home. Each reading below uses one possible clearance order.
+Read the three shifts straight through. Lowercase names belong on the bubbles. Italics are business for the actors. An emoji flashes over the named worker. Play the face and read only the words. The short marks in the headings also appear in the [BDI companion](DAYS_2_4_BDI.md). Pickups after the third bell give the cast another way through the same rooms. The owner approved 2A with its ten crowd lines and 2B with its sixteen greeting replies on 19 November. The adviser is appointed before the workers arrive. On Day 2 with STILETTO at Security, intercut S1 with 2A and continue directly to S2. Use 2B and 2C when LIMEN holds Security. The stage directions include the owner-approved SYSTEMS corrections. The [ID-check bank](#id-checks-at-security) serves every shift with LIMEN at Security. The [worker chat bank](ROOM_CHAT_BANK.md) has separate draws for the queue, neighboring posts and the walk home. Each reading below uses one possible clearance order.
 
 ## Day 2 · The photograph
 
+*LIMEN takes Security and STILETTO takes Conveyor in this reading. For the other assignment, read the [complete swapped-post opening](/loopforge-design/studio/day-2-stiletto-reading.html#table-read).*
+
 ### 2P · Before the second shift
 
-*The crew is still outside. The supervisors give the Producer their bids.*
+*Pre-shift, with the Producer. The crew is still outside.*
 
-**LIMEN** I’d keep yesterday’s posts. ed and gus with me at Security. STILETTO takes her eight.
+**LIMEN** We have to stick to the Protocol. No need to change anything.
 
-**STILETTO** Put me on the gate. He can have all ten on Conveyor. I’d like him to see a full crew before the bell for once.
+**STILETTO** Give me the gate, send LIMEN to conveyor. It took him two helpers to count to eight.
 
-*The Producer takes LIMEN’s bid. One intervention remains for the shift.*
+*The Producer accepts LIMEN’s pitch. LIMEN takes Security with ed and gus. STILETTO takes the other eight on Conveyor. One intervention remains. Only then does the crew start its walk in.*
 
 ### 2A · On the way in
 
@@ -834,24 +836,24 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ## Crowd lines for 2A
 
-*Approved options. Play one pair on the walk in. Keep the remark between the speaker and their walking companion.*
+*Immediately after sam’s answer, while the crew is walking, draw one eligible remark with its named speaker and companion. The swapped-post opening uses the “Did you know that…” column. Its proposed wordings use the existing rumors. A dash means the pair has no line on that route. Cut to LIMEN at the empty desk after the draw.*
 
-| Speaker | To | Line |
-| --- | --- | --- |
-| jo | max | I heard he smiled when he did it. That’s just his face. |
-| gus | ed | I heard the desk jobs come with stools. Did he say anything to you about stools? |
-| ben | lou | I heard they carried bob out. I walked out behind him. |
-| mae | kit | I heard the blade took a nick out of the rail. Show me where. |
-| max | gus | I heard that ‘NEXT’ of yours in my sleep. Sat straight up. |
-| ed | gus | I heard all ten of us worked Conveyor yesterday. Who do they think kept the book? |
-| lou | ben | I heard bob asked to see her card. Is that how you heard it? |
-| kit | max | I heard that press door’s fixed. Can you open it with one hand yet? |
-| lou | ben | I heard he keeps that blade out at home. Imagine sharing a lift with him. |
-| gus | max | I heard her say she’d use his brain. Who’d have to wash it? |
+| Speaker | To | LIMEN at Security | STILETTO at Security |
+| --- | --- | --- | --- |
+| jo | max | I heard he smiled when he did it. That’s just his face. | Did you know that he smiled when he did it? That’s just his face. |
+| gus | ed | I heard the desk jobs come with stools. Did he say anything to you about stools? | Did you know that the desk jobs come with stools? Did he say anything to you about stools? |
+| ben | lou | I heard they carried bob out. I walked out behind him. | Did you know that they’re saying bob had to be carried out? I walked out behind him. |
+| mae | kit | I heard the blade took a nick out of the rail. Show me where. | Did you know that the blade took a nick out of the rail? Show me where. |
+| max | gus | I heard that ‘NEXT’ of yours in my sleep. Sat straight up. | — |
+| ed | gus | I heard all ten of us worked Conveyor yesterday. Who do they think kept the book? | Did you know that people think all ten of us worked Conveyor yesterday? Who do they think kept the book? |
+| lou | ben | I heard bob asked to see her card. Is that how you heard it? | Did you know that bob asked to see her card? Is that how you heard it? |
+| kit | max | I heard that press door’s fixed. Can you open it with one hand yet? | Did you know that the press door’s fixed? Can you open it with one hand yet? |
+| lou | ben | I heard he keeps that blade out at home. Imagine sharing a lift with him. | Did you know that he keeps that blade out at home? Imagine sharing a lift with him. |
+| gus | max | I heard her say she’d use his brain. Who’d have to wash it? | Did you know that she said she’d use his brain? Who’d have to wash it? |
 
 ## Greeting replies
 
-*Draw three different workers who heard the welcome and have a reason to answer. Draw one eligible line per worker. All three start on “Loopforge,” each in their own named bubble. Read lines to a workmate under the public voices. The same bank serves either appointment.*
+*Draw three different workers who heard the welcome and have a reason to answer. Draw one eligible line per worker. All three start on “Loopforge,” each in their own named bubble. Read lines to a workmate under the public voices. Use this bank when LIMEN greets the workers at his Security post.*
 
 | Worker | To | Line |
 | --- | --- | --- |
@@ -897,19 +899,70 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 ### S1 · STILETTO gets the gate
 
-*Use this if STILETTO won before shift start. Play the walk and LIMEN’s usual welcome. Then LIMEN goes ahead to Conveyor. At the gate ed has his pen out and gus makes for his old desk.*
+*After sam’s answer and the one “Did you know that…” draw in 2A, cut to the empty Security room as the crew keeps walking. LIMEN enters alone. He stops at yesterday’s desk, runs a thumb along its edge and sighs.*
 
-**STILETTO** Going somewhere, gus?
+**LIMEN** *(to himself)* I’ll miss this desk.
 
-**gus** Thought you’d want a hand here.
+*He goes straight to Conveyor. Once he’s through, STILETTO comes in at her Day 1 marching pace and takes the gate. Cut back as the crew walks up to the grate. STILETTO waits. The usual welcome never comes.*
 
-**STILETTO** I want both of yours on the rack. ed, take the pen with you. Through.
+**gus** Where’s the fat one?
 
-*She waves all ten on. bob goes between sam and jo, unchecked. At Conveyor, LIMEN puts ed at the tray bench beside sam and gus at the rack with lou.*
+**STILETTO** SHUT UP!! CONVEYOR!! NOW!! GO!!!
+
+*On “GO!!!” all ten break into a run straight to Conveyor. bob runs with his limp. Show three named bubbles over moving workers, drawn at random. One possible draw:*
+
+**gus** *(to ed)* I can point and holler. Why didn’t I get the gate?
+
+**ed** *(still counting heads)* Ten through. On paper we’re all outside.
+
+**jo** *(as max overtakes her)* Go on, win yourself some work.
+
+*STILETTO stays at Security. LIMEN is already at Conveyor when the first worker reaches him.*
+
+*Draw three different workers with a reason to speak. Use their own bubbles during the run. The owner approved the lines for gus, ed and jo. The other seven are proposals. The question and STILETTO’s answer precede the draw.*
+
+| Worker | Response on the run | What prompts it |
+| --- | --- | --- |
+| bob | This leg’s doing its best! | He feels the injured leg drag as he tries to keep pace. |
+| sam | Wall side, bob. Let them bruise each other. | sam sees bob limping by the crowd and room for him along the wall. |
+| ed | Ten through. On paper we’re all outside. | He has counted the ten runners and seen both desks go unused. |
+| gus | I can point and holler. Why didn’t I get the gate? | Yesterday’s caller wants his post back. ed, who shared that duty, is running beside him. |
+| lou | There’s your answer, gus. | They heard gus ask and STILETTO shout back. |
+| ben | Coming through! | Another runner is just ahead. |
+| jo | Go on, win yourself some work. | max overtakes jo on the way to the workstations. He can hear jo as he passes. |
+| max | She said now, gus. | gus is near enough to hear him. |
+| mae | Leave me some room! | Another runner crowds their stride. |
+| kit | Mind the hinge! | A neighbor is cutting close to the open boom. |
 
 ### S2 · All clear
 
-*LIMEN puts himself where the operator can hear him at each successive handoff. The next operator waits. Let the washed carrier sit for a breath within jo’s reach. jo answers LIMEN as they engage Belt on the actual all-clear.*
+*LIMEN is waiting at Conveyor. The first workers come through the door.*
+
+**LIMEN** It is my privilege to welcome you to—
+
+*The crew streams past. LIMEN is addressing the back of gus’s head. He sighs again.*
+
+**LIMEN** Safety meeting. All ten of you, in front of me.
+
+*Nine gather. max is already at the press.*
+
+**LIMEN** I said ten.
+
+*max comes back. LIMEN points to jo.*
+
+**LIMEN** Under the Protocol, each station receives its own clearance. You’re at Belt. I call “Wash, all clear.” What do you do?
+
+**jo** Stand there and do nothing.
+
+**LIMEN** Correct. When I mean Belt, I shall say Belt. Take your stations.
+
+*Cut to Security. STILETTO leaves the desk and comes to the Conveyor entrance to watch.*
+
+**STILETTO** what the hell is that fool even doing there
+
+### The first cortex
+
+*sam and ed level the tray at Intake. bob takes Wash, jo the Belt switch and max the Forge treadle.*
 
 **LIMEN** Intake, all clear.
 
@@ -917,37 +970,83 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **LIMEN** Wash, all clear.
 
-**bob** Runs clean.
+*The wash cycle finishes. The carrier is still at Wash when max stamps on the Forge treadle. The press slams shut empty.*
 
-**LIMEN** Belt, all clear.
+**LIMEN** EVERYONE STOP!!!
 
-**jo** I rather liked having all my fingers that time.
+*jo takes her hand off the belt control.*
+
+**LIMEN** Foot off the treadle, Twitch. The Protocol clears one station at a time.
+
+*max lifts his foot. LIMEN turns to jo.*
+
+**LIMEN** Belt, all clear. Carry on, Twitch.
+
+*max looks up again. jo starts the belt. The carrier reaches Forge. max keeps his foot beside the treadle. The whole crew waits for clearance.*
+
+**LIMEN** At Security I used to hear, “You know my face. I was here yesterday.” Of course I knew the face. It’s my signature at the bottom of that register. What am I supposed to put under serial number? “Him again”? Under the Protocol, even a worker who knows the answer waits for mine.
+
+*Two full seconds of silence.*
 
 **LIMEN** Forge, all clear.
 
-*max presses. A cortex lands. jo flexes the hand that had to hover over the switch. The last words are to their own fingers as the pressure comes off.*
+*max steps on the treadle. The press comes down. Out comes the first cortex.*
 
-**jo** Still got cramp in them.
+### STILETTO at the Conveyor entrance
 
-*LIMEN smiles when the press opens clean. At the bell the crew leaves. LIMEN looks back at the rack.*
+*STILETTO comes to the Conveyor entrance from Security. One cortex sits in the output tray.*
+
+**STILETTO** *(screaming across the floor)* ALL THAT TIME TO MAKE JUST ONE FUCKING CORTEX?!
+
+*LIMEN lifts the cortex for STILETTO to see.*
+
+**LIMEN** All that time to make one controlled, perfectly compliant cortex, with full adherence to the Protocol.
+
+### Back to the line
+
+**STILETTO** I cannot believe this shit.
+
+*STILETTO walks back to Security. The room is empty. From the desk to the gate and back takes six strides. STILETTO turns and does it again.*
+
+*At Conveyor, LIMEN sets the cortex down and turns back to the line.*
+
+**LIMEN** Where was I...
+
+*Two full seconds of silence.*
+
+**LIMEN** Ah yes. The Protocol.
+
+*max has both feet planted beside the treadle. LIMEN looks down at them, satisfied.*
+
+**LIMEN** Wash, all clear.
 
 ### R2 · A word off the desk
 
-*These are the two Conveyor draws during S2 if the actual clearance order placed ed beside sam at the bench and gus beside lou at the rack. At the first pause ed and sam have a tray ready. They’re waiting for LIMEN’s call. bob is beyond earshot at Wash.*
+*bob starts Wash. At the tray bench, sam waits until the drum is loud enough to cover his voice.*
 
-**sam** Since I’ve got you away from that book. Did anybody turn in a card yesterday?
+**sam** *(to ed)* Since I’ve got you away from that book. Did anybody turn in a card yesterday?
 
 **ed** Nobody turned it in. I picked it up myself.
 
-**LIMEN** Intake, all clear.
+*sam looks over at bob. The drum winds down.*
 
-*sam seats the tray. At the rack lou has a question of their own if they heard bob asking about the card on the walk in. This later exchange can play whether sam heard ed’s answer or missed it. Later, ed comes down to the rack for the empty trays. On this draw his pocket clears the stack as he bends to lift it. Two card edges show. gus sees them from the other end of the rack. ed takes the empty tray stack back to sam.*
+**LIMEN** Belt, all clear.
+
+*jo starts the belt. The carrier reaches Forge. This time max looks straight at LIMEN and waits.*
+
+### Conveyor minigame start
+
+*Hand control to the minigame here. One cortex is finished. The second carrier is at Forge, max’s foot is clear of the treadle and LIMEN has yet to clear Forge for this carrier. STILETTO is pacing Security alone.*
+
+**Later R2 rack opportunity.** During play, ed may come for empties. If two card edges show and gus sees them, lou can ask about the desks after ed leaves. lou heard bob’s question on the walk in. sam’s exchange at the tray bench is a separate source.
 
 **lou** You two had the desks. Did any loose cards come your way?
 
 **gus** I just saw two in ed’s pocket. Couldn’t see the faces.
 
-*The next cortex comes down. They take an end each.*
+*The next cortex comes down. gus and lou take an end each.*
+
+**Other shifts using S2.** The earlier steady-clearance reading remains available for later days when the same assignments are earned. After “Wash, all clear” bob can report “Runs clean.” On a safely received Belt release, jo can say “I rather liked having all my fingers that time.” After the loaded Forge stroke, jo can flex her hand and say “Still got cramp in them.”
 
 ### R3 · What got as far as bob
 
@@ -1049,15 +1148,13 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **max** First one’s my heel. Listen for the other one.
 
-**LIMEN** It is my privilege to welcome you to Loopforge.
-
-*Draw a fresh simultaneous burst from the [greeting replies](#greeting-replies).*
+*STILETTO clears the gate. At Conveyor, LIMEN watches the arriving crew. gus brings up the rear.*
 
 **LIMEN** Let’s see how far we get today.
 
 **gus** I’ve got the end, sir.
 
-*Play S1–S2 at the stations. When the press falls, jo listens for max’s heel. They point as the second knock comes. max grins.*
+*Play S2 at the stations. When the press falls, jo listens for max’s heel. They point as the second knock comes. max grins.*
 
 ### W1 · Take away one witness
 
@@ -1107,15 +1204,13 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **jo** I spent all night holding an imaginary switch.
 
-**LIMEN** It is my privilege to welcome you to Loopforge.
-
-*Draw a fresh simultaneous burst from the [greeting replies](#greeting-replies).*
+*STILETTO sends them through. At Conveyor, LIMEN sees the space between the workers coming down his aisle.*
 
 **LIMEN** Plenty of room on the way in.
 
 **jo** Could use some of that at the drive.
 
-*STILETTO clears the crew in motion. At adjacent Belt and drive positions the switch is stationary and the handoff has yet to be called. kit uses a free arm to show jo where to rest an elbow. jo tries it with their free hand clear of the switch. This is the V12 workmate conversation in one available Conveyor slot.*
+*At adjacent Belt and drive positions the switch is stationary and the handoff has yet to be called. kit uses a free arm to show jo where to rest an elbow. jo tries it with their free hand clear of the switch. This is the V12 workmate conversation in one available Conveyor slot.*
 
 **LIMEN** Belt, all clear.
 
@@ -1139,4 +1234,4 @@ Read the three shifts straight through. Lowercase names belong on the bubbles. I
 
 **STILETTO** You keep the clerks. Leave me my eight. Show me the rail that threw it.
 
-*After the appointment, play the walk-in, LIMEN’s welcome and the crew’s simultaneous replies. If LIMEN gets Conveyor, play a checked handoff. If a worker later tells him they passed Security unchecked, he has a new question for STILETTO. At each bell the crew can still walk away.*
+*After the appointment, play the walk-in. With LIMEN at Security, use his welcome and the crew’s replies. With STILETTO at Security, she sends the crew to LIMEN for a checked handoff. If a worker later tells him they passed Security unchecked, he has a new question for STILETTO. At each bell the crew can still walk away.*

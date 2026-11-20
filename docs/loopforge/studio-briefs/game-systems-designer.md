@@ -41,6 +41,10 @@ Read *Designing Games* in depth for the relevant decisions and provide verified 
 
 ## Current handoff
 
+### Day 2 Conveyor minigame
+
+Take over when jo’s second Belt delivery reaches Forge and max looks to LIMEN for clearance. One cortex is finished. STILETTO has returned to Security. The prompt includes both appointments, the player’s remaining intervention, who heard ed at Wash and the requested ENGINE acceptance cases. [Copy the full SYSTEMS DESIGNER handoff](/loopforge-design/studio/day-2-conveyor-minigame.html)
+
 **20 November 2026 · SYSTEMS accepts the corrected Days 2–4 writing package for ENGINE implementation.** WRITER applied all eight owner-approved corrections at `91067933` on PR #169. The subsequent handoff commit is `d829b0ef`. Source review verified the five documents against the downloadable ZIP, all 37 scene and alternate IDs, all 60 chat entries and G1–G11. The table read’s spoken lines and approved response banks match the earlier reviewed revision.
 
 [Corrected table read](https://github.com/stepan-o/fruitful-lab/blob/9106793390eae36254145457aa26aa1b0793910d/docs/loopforge/DAYS_2_4_TABLE_READ.md) · [Five-document download](https://github.com/stepan-o/fruitful-lab/raw/9106793390eae36254145457aa26aa1b0793910d/apps/lab/public/loopforge-design/dialogue-engine-review.zip) · [WRITER handoff](https://github.com/stepan-o/fruitful-lab/blob/d829b0efa9549dcd118bb066baaceff7704731f8/docs/loopforge/studio-briefs/writer.md)

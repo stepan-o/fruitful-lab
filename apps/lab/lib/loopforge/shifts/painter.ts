@@ -40,11 +40,19 @@ export function floorView(w:number,h:number,room:Room,approach=false,crew:Scene[
   const sec=room==='security';
   let scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
   let center=sec?127.15:127.4,cy=sec?(approach?127.2:129):144.35;
+  if(sec&&approach&&!crew.length){
+    // Hold the north edge at the entry to the rail. The incoming crew crosses
+    // this edge and the south edge includes LIMEN's boom on both screen sizes.
+    scale=Math.min(scale,h/(.67*15.1));
+    cy=121.5+.58*h/(scale*.67);
+  }
   if(sec&&crew.length){
     const xs=crew.map(a=>a.x/1000),ys=crew.map(a=>a.y/1000);
     const left=Math.min(...xs),right=Math.max(...xs),front=Math.min(...ys),back=Math.max(...ys);
     center=(left+right)/2;cy=(front+back)/2-.65;
     scale=Math.min(48,w/Math.max(13,right-left+4),h/(.67*(back-front+7)));
+    // Begin on the empty staff door, then follow once the crew catches up.
+    cy=Math.min(cy,140.65-.42*h/(scale*.67));
   }
   const xy=(x:number,y:number)=>[w/2+(x-center)*scale,h*.58+(y-cy)*scale*.67];
   return {sec,scale,xy};
@@ -125,7 +133,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   const approachingDesk=crew.length>0&&crew.every(a=>a.room==='security');
   // Use the same desk frame across the splice and greeting. Include LIMEN and
   // the east aisle where STILETTO comes alongside the queue.
-  const camera = floorView(w,h,room,tracking||scene.world.stage==='welcome'||scene.world.stage==='posting',approachingDesk?[]:crew);
+  const camera = floorView(w,h,room,tracking||['welcome','posting','queue'].includes(scene.world.stage),approachingDesk?[]:crew);
   const {sec,scale,xy} = camera;
   ctx.imageSmoothingEnabled=false;
   if(tracking&&!approachingDesk)approachFloor(ctx,w,h,camera,images);
@@ -149,7 +157,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
       const [x,y]=xy(cx,cy);layers.push({y:cy-.7,draw:()=>sprite('desk-back',0,x,y)},{y:cy,draw:()=>sprite('desk-front',0,x,y)});
     }
     const [gx,gy]=xy(124.9,134);
-    layers.push({y:134,draw:()=>{sprite('boom',view.gate==='fl-gate-held'?0:24,gx,gy);if(view.gate)skin.world(ctx,view.gate,gx,gy,scale);}});
+    layers.push({y:134,draw:()=>{sprite('boom',scene.world.passageGateMm===undefined?(view.gate==='fl-gate-released'?0:24):Math.round(24*scene.world.passageGateMm/(geometry.gate.length*1000)),gx,gy);if(view.gate)skin.world(ctx,view.gate,gx,gy,scale);}});
   }else{
     const [x,y]=xy(118,145),[x2]=xy(135.5,145);
     ctx.fillStyle='#292f2d';ctx.fillRect(x,y,x2-x,scale*1.6);
@@ -203,14 +211,16 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   for(const a of scene.agents){
     if(a.id==='STILETTO' && a.duty==='outside')continue;
     if((a.room!==room&&!(tracking&&approachZone(a.room)))||a.duty==='detained')continue;
-    const [x,y]=xy(a.x/1000,a.y/1000);if(x< -12||x>w+12||y<0||y>h+20)continue;
+    const [x,y]=xy(a.x/1000,a.y/1000);
     const direction=tracking&&a.facing==='N'?'N':'S';
     const sup=a.id===a.id.toUpperCase(),key=sup?'char-'+a.id.toLowerCase()+'-check':a.id==='max'?'char-max-walk-'+direction:a.moving?'char-bob-walk-'+direction:sec?'bob-security':'bob-forge';
     const k=scale/64,top=y-sprites[key][4]*k;
+    if(x< -scale||x>w+scale||y<0||top>h)continue;
     anchors.set(a.id,[x,top]);
     layers.push({y:a.y/1000,draw:()=>{
       ctx.fillStyle='#07141466';ctx.beginPath();ctx.ellipse(x,y,scale*.38,scale*.14,0,0,Math.PI*2);ctx.fill();
-      sprite(key,!sup&&a.moving?Math.floor(a.walked/105)%8:0,x,y,k);
+      const march=a.id==='STILETTO'&&a.moving?Math.abs(Math.sin(Math.PI*a.walked/620))*scale*.045:0;
+      sprite(key,!sup&&a.moving?Math.floor(a.walked/105)%8:0,x,y-march,k);
       if(a.id==='bob' && scene.world.pass?.day===scene.world.day)
         skin.world(ctx,scene.world.pass.valid?'sec-pass-issued-world':'sec-pass-expired-world',x+scale*.23,y-scale*.5,scale);
       if(a.id==='bob' && returned && tick-returned.tick<58)skin.world(ctx,'sec-id-bob-world',x+scale*.23,y-scale*.5,scale);
@@ -231,7 +241,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
       if(contact)tag(a.id+' → '+contact.subject,x,y+13);
       const choice=recentChoices.get(a.id);
       if(choice) tag(a.id+' · '+(choice==='go'?'goes':'stays'),x,y+12);
-      else if(!contact&&(a.id==='bob'||a.id==='LIMEN'||a.id==='STILETTO'||a.id===scene.world.called||(!sec&&scene.world.coverage.includes(a.id))))
+      else if(!contact&&((sec&&['welcome','posting','queue'].includes(scene.world.stage)&&['ed','gus'].includes(a.id))||a.id==='bob'||a.id==='LIMEN'||a.id==='STILETTO'||a.id===scene.world.called||(!sec&&scene.world.coverage.includes(a.id))))
         tag(a.id,x,y+12,sup?'#ffd395':'#e8f1eb');
     }});
   }

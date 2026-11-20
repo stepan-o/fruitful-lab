@@ -93,15 +93,33 @@ test('The opening cut preserves the last approach steps and Day Two’s east-ais
     assert(skipped>200);
     until(continuous,r=>r.tick===s.tick);assert.deepEqual(s,continuous);
     assert(workers.every(id=>s.world.agents[id].room==='security') && workers.some(id=>s.tasks[id].moving));
+    assert(workers.every(id=>s.world.agents[id].position[1]<121500),'empty Security frame after the cut');
     const next=s.marks.length;
     until(s,r=>r.marks.slice(next).some(e=>e.kind==='speech.delivered'));
     const first=s.marks.slice(next).find(e=>e.kind==='speech.delivered');
     assert.equal(first.actor,'LIMEN');assert.equal(first.text,greeting.text);
     assert.equal(first.tick-cutAt-skipped,leadIn);
+    const crowd=['ed','gus'].map(id=>[...s.world.agents[id].position]);
     until(s,r=>r.world.agents.STILETTO.position[0]===131450&&r.world.agents.STILETTO.position[1]>=122000);
     assert(s.world.agents.STILETTO.room==='security'&&s.tasks.STILETTO.moving);
     until(s,r=>!r.dialogue.supervisorArrival);
-    assert(Math.hypot(s.world.agents.STILETTO.position[0]-131450,s.world.agents.STILETTO.position[1]-127750)<100);
+    if(lead==='LIMEN'){
+      const open=s.marks.find(e=>e.kind==='gate.opened'&&e.actor==='LIMEN');
+      const pass=s.marks.find(e=>e.kind==='gate.crossed'&&e.actor==='STILETTO');
+      assert(open.tick<pass.tick && pass.at[1]>134000);
+      until(s,r=>r.marks.some(e=>e.text.includes('undervalue stability')));
+      assert(s.tick>pass.tick);
+      for(const [i,id] of ['ed','gus'].entries()){
+        assert(Math.hypot(...s.world.agents[id].position.map((n,j)=>n-crowd[i][j]))<150);
+        assert(s.tasks[id].duty!=='clerk' && !s.called);
+      }
+      until(s,r=>r.marks.some(e=>e.text.includes('you get to help me')));
+      assert(s.tasks.ed.duty!=='clerk' && s.tasks.gus.duty!=='clerk');
+      until(s,r=>r.called==='sam');
+      assert(s.tasks.ed.duty==='clerk' && s.tasks.gus.duty==='clerk');
+      assert(s.tasks.ed.destination.every((n,i)=>Math.abs(n-s.world.agents.ed.position[i])<150));
+      assert(s.tasks.gus.destination.every((n,i)=>Math.abs(n-s.world.agents.gus.position[i])<150));
+    }else assert(Math.hypot(s.world.agents.STILETTO.position[0]-131450,s.world.agents.STILETTO.position[1]-127750)<200);
     until(s,r=>r.dialogue.phase==='work');
     assert.equal(s.tasks.STILETTO.destination[1],lead==='LIMEN'?142200:131250);
   }

@@ -1,3 +1,4 @@
+import {readingTime} from './reading';
 import manuscript from './manuscript.json';
 import {audible,geom} from '../intro/floor';
 import {segmentBoxDistanceSquared,simultaneousDistanceSquared} from '../encounters/arrival-navigation';
@@ -243,7 +244,7 @@ export function updateSpeech(s:Run){
         d.cutoff=s.tick+lineTime(l.words)+(s.pace==='slow'?2:-1);
       }
     }
-    x.next++;x.due=s.tick+(d.phase==='walk' ? Math.max(64,20+8*l.words.trim().split(/\s+/).length) : lineTime(l.words));
+    x.next++;x.due=s.tick+(d.phase==='walk'||x.topic==='posting' ? Math.ceil(readingTime(l.words)/50) : lineTime(l.words));
     if(d.phase==='walk' && x.next===x.lines.length)d.ready=x.due;
     if(x.next===x.lines.length){
       if(!w)d.completed.push(x.topic);

@@ -63,7 +63,7 @@ export class DialogueReading {
       if (world.stage === 'posting' && last?.lines[0].tick === line.tick &&
           last.lines.every(other => other.speaker !== line.speaker)) {
         last.lines.push(line);
-        last.remaining += readingTime(line.text);
+        last.remaining = Math.max(last.remaining, readingTime(line.text));
       } else {
         this.beats.push({lines: [line], remaining: readingTime(line.text)});
       }

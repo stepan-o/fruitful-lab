@@ -1,5 +1,5 @@
 import type {Run,Point} from './contract';
-import {mm,moveCast,roomAt,score,tickAt,worldAt,type Route} from '../intro/floor';
+import {geom,mm,moveCast,roomAt,score,tickAt,worldAt,type Route} from '../intro/floor';
 import {readingTime} from './reading';
 import {Hz} from './contract';
 import manuscript from './manuscript.json';
@@ -57,14 +57,17 @@ export function startWalk(s:Run){
   }
   const tracks:Record<string,{p:number[]}[]> = score.tracks;
   const arrival:Record<string,Route> = {};
+  if(s.day===2)d.gathering={};
   for(const id of workers){
-    const i=d.order.indexOf(id),p=i>=0?queueAt(i):id==='ed'?meters(122.45,130.25):meters(131.6,130.2);
+    const i=d.order.indexOf(id),p=i>=0?queueAt(i):id==='ed'?meters(124.65,127.5):meters(129.35,126.8);
     const invitation=meeting&&knows(s,'bob','ed.invitation');
     const landing:Point=invitation&&id==='ed'?meters(122.45,129.6):invitation&&id==='bob'?meters(122.45,128.55):meeting&&id==='ed'?[queueAt(d.order.indexOf('bob'))[0]-1650,queueAt(d.order.indexOf('bob'))[1]-650]:[p[0]+(i<0?0:((i%2)*2-1)*350),p[1]-650];
+    if(d.gathering)d.gathering[id]=landing;
+    const approach:Point=d.gathering?[landing[0],landing[1]-7000]:landing;
     const slot=slots.get(id)!;
     const a=s.world.agents[id];a.position=mm(tracks[slot][0].p);a.room=roomAt(a.position);
     arrival[id]={trackId:slot,cursor:0,elapsed:0,walked:0,facing:'N',moving:false};
-    Object.assign(s.tasks[id],{duty:'walking',path:[],destination:landing,walked:0,moving:false,facing:'N'});
+    Object.assign(s.tasks[id],{duty:'walking',path:[],destination:approach,walked:0,moving:false,facing:'N'});
   }
   if(s.day===2){
     const a=s.world.agents.STILETTO;
@@ -112,24 +115,41 @@ export function walkEntrance(s:Run){
   }
   return true;
 }
-// Day One's first call marks the end of her approach along the east rail.
-// At that point today's assignment determines where she goes next.
 const eastRailTime=score.speech.find(line=>line.speaker==='STILETTO')!.start;
-const eastRail=mm(score.tracks.STILETTO.find(key=>Math.abs(key.t-eastRailTime)<.001)!.p);
+const gateY=mm(geom.gate.hinge)[1];
+const swingTicks=Math.round((score.gate.openings[0][1]-score.gate.openings[0][0])*Hz);
+export function passageGate(s:Run){
+  const pass=s.dialogue.gatePass;
+  const fraction=!pass?0:pass.cleared===undefined?Math.min(1,(s.tick-pass.opened)/swingTicks):
+    Math.max(0,1-(s.tick-pass.cleared)/swingTicks);
+  return Math.round(geom.gate.length*1000*Math.cos(fraction*Math.PI/2));
+}
 export function walkSupervisor(s:Run){
-  const route=s.dialogue.supervisorArrival;
+  const d=s.dialogue,route=d.supervisorArrival;
   if(!route)return;
   const others=Object.values(s.world.agents).filter(a=>a.id!=='STILETTO').map(a=>a.position);
-  const cast={STILETTO:route};
-  moveCast(s.world,cast,0,others);
-  // Keep the approach clock through Dispatch. She takes the last east-aisle
-  // leg at Day One's normal stride, in view of the waiting crew.
-  if(worldAt(route.elapsed)<eastRailTime && s.world.agents.STILETTO.position[0]<eastRail[0])moveCast(s.world,cast,0,others);
-  const task=s.tasks.STILETTO;
-  task.walked=route.walked;task.moving=route.moving;task.facing=route.facing;
-  if(worldAt(route.elapsed)>=eastRailTime){
-    delete s.dialogue.supervisorArrival;
-    go(s,'STILETTO',task.destination);
+  const crossing=s.lead==='LIMEN';
+  // Keep the Day One waypoints. On the way to Conveyor she marches through
+  // the east aisle and the open boom in one continuous move.
+  const task=s.tasks.STILETTO,cast={STILETTO:route};
+  // Her entrance cue is at the head of the east aisle, out of the gate shot.
+  if(crossing && !d.gatePass && pos(s,'STILETTO')[1]>=119000 && pos(s,'STILETTO')[0]===131450 &&
+     (d.phase!=='posting'||s.tick<d.ready)){task.moving=false;return;}
+  for(let stride=0;stride<2;stride++){
+    moveCast(s.world,cast,crossing?passageGate(s)/1000:0,others);
+    task.walked=route.walked;task.moving=route.moving;task.facing=route.facing;
+    if(worldAt(route.elapsed)<eastRailTime)continue;
+    if(!crossing){
+      delete d.supervisorArrival;go(s,'STILETTO',task.destination);break;
+    }
+    if(!d.gatePass){
+      d.gatePass={opened:s.tick};
+      mark(s,'gate.opened','security','gate.outbound',pos(s,'LIMEN'),'LIMEN','STILETTO','Raised the boom for STILETTO');
+    }
+    if(pos(s,'STILETTO')[1]<gateY+1100)continue;
+    d.gatePass.cleared=s.tick;
+    mark(s,'gate.crossed','security','gate.outbound',pos(s,'STILETTO'),'STILETTO','LIMEN','Passed the Security gate');
+    delete d.supervisorArrival;go(s,'STILETTO',workPost);break;
   }
 }
 function chorus(s:Run){
@@ -143,13 +163,14 @@ function chorus(s:Run){
     const id=draw(s,candidates);candidates.splice(candidates.indexOf(id),1);sample.push(draw(s,valid.filter(r=>r[0]===id)));
   }
   for(const [who,to,words] of sample)heard(s,phrase(who,words,to),'security','welcome reply');
-  return Math.max(30,...sample.map(row=>lineTime(row[2])));
+  return Math.ceil(Math.max(1500,...sample.map(row=>readingTime(row[2])))*Hz/1000);
 }
 export function advanceMorning(s:Run){
   const d=s.dialogue;
   if(['offered','recognized'].includes(d.transfer)||s.tick<d.ready||d.exchanges.some(x=>!x.window)||['work','departure','home'].includes(d.phase))return;
   if(d.phase==='walk'){
-    if(s.tick-s.start<16)return;
+    if(d.cue===0 && d.arrival && Object.entries(d.arrival).some(([id,lane])=>
+      (lane.trackId==='bob'||lane.trackId==='sam') && pos(s,id)[1]>140700))return;
     if(d.cue===1 && s.world.agents.bob.room==='outside')return;
     if(d.cue===0){
       d.cue=1;
@@ -182,6 +203,12 @@ export function advanceMorning(s:Run){
       return;
     }
     if(d.arrival)return;
+    if(d.gathering){
+      if(workers.some(id=>dist(pos(s,id),s.tasks[id].destination)>100))return;
+      for(const id of workers)go(s,id,d.gathering[id]);
+      delete d.gathering;
+      return;
+    }
     // A crowded rail can stop the last worker just short of their chosen spot.
     const gathering=workers.filter(id=>dist(pos(s,id),s.tasks[id].destination)>120);
     if(gathering.some(id=>dist(pos(s,id),s.tasks[id].destination)>3000) ||
@@ -193,11 +220,11 @@ export function advanceMorning(s:Run){
   }
   if(d.phase==='welcome'){
     if(d.cue++===0){const words=scripts['2B'][0][1];heard(s,phrase('LIMEN',words,'crew','welcome.'+s.day),'security','arrivals');
-      d.ready=s.tick+lineTime(words);return;}
+      d.ready=s.tick+Math.ceil(readingTime(words)*Hz/1000);return;}
     d.ready=s.tick+chorus(s);d.phase='posting';d.cue=0;return;
   }
   if(d.phase==='posting'){
-    if(s.lead==='STILETTO' && d.cue===0 && d.supervisorArrival)return;
+    if(d.cue===0 && d.supervisorArrival)return;
     if(d.cue++===0){
       if(knows(s,'kit','saw.cramp'))schedule(s,'Q1',lines('Q1','crew',5,7),'security');
       else if(knows(s,'jo','hand.return')&&workers.filter(id=>sees(s,'LIMEN',pos(s,id),id)).length>=3)schedule(s,'4B',lines('4B','crew',4),'security');

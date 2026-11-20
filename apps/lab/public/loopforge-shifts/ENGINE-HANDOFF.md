@@ -18,15 +18,15 @@ Choose a bid and commit both jobs. Watch Security as the crew walks to the grate
 
 Use **Play 1×** after loading a checkpoint. **Save this moment** and **Return to saved moment** preserve the active phrase, listener receipts, reservations and seeded draw. **Actor and event inspection** shows the selected worker’s evidence, decisions and recent received words. The review controls drive the same simulation as a fresh appointment.
 
-To see the entrance, start at **Morning bids**, choose either supervisor and commit the assignments. Bob and sam talk on their way through the staff door. The camera holds each walking line, cuts across Dispatch, and shows the crew’s last 3.8 seconds of approach before LIMEN speaks. On Day 2, STILETTO follows from the yard and walks up the east side of the queue. Give her Security to see her catch gus at the gate. The playback clock omits the corridor while the simulation advances everyone along the route. A saved moment preserves both clocks.
+Start at **Morning bids**, choose **LIMEN · Keep the posts** and commit. The staff door is in frame before the crew enters. Bob and sam talk while walking. The cut reveals the last 3.8 seconds of the crew walking into the Security shot. After the greeting and three replies, STILETTO marches up the east aisle. LIMEN opens the boom for her, watches her pass, speaks about stability and calls ed and gus out of the crowd. They walk to their desks before the first ID check. The simulation advances the omitted corridor travel and a saved moment preserves both clocks.
 
-At 1×, a short line stays visible for at least 3.2 seconds. Longer lines allow one second to locate the speaker plus 0.4 seconds per word. Simultaneous greeting replies appear in three separate named bubbles for their combined reading time. When new speech arrives early in the room you are watching, playback waits before carrying the action further. Pause holds the text. Switching rooms starts with the current local exchange.
+At 1× a short line stays visible for at least 3.2 seconds. Longer lines allow one second to locate the speaker plus 0.4 seconds per word. The three simultaneous greeting replies clear together after the longest reply’s reading time. Pause holds the text.
 
 Tynan Sylvester discusses easing time pressure when players struggle to process simultaneous demands in *Designing Games*, “Decisions,” “Avoiding Overflow,” p. 144 (PDF page 152). Here the owner’s play observation applies to reading the evidence behind a decision. The interval is a setting for play review. The cutoff and who heard the clue still resolve on the original simulation ticks.
 
 ## Kernel and evidence
 
-The measured p95 for simulation plus public hash was 1.12 ms across 650 ticks. The TypeScript worker advances at 20 Hz. It owns shift commands, positions, individual receipts, gate crossing, staffing, output, physical custody and overnight state. The viewer renders hashed `shift_floor_1` snapshots and differences. The portable HTML embeds that worker, the viewer, art and manifests. A later Rust port must reproduce admission, snapshots and replay fixtures before replacing the reference implementation.
+The measured p95 for simulation plus public hash was 1.68 ms across 650 ticks. The TypeScript worker advances at 20 Hz. It owns shift commands, positions, individual receipts, gate crossing, staffing, output, physical custody and overnight state. The viewer renders hashed `shift_floor_1` snapshots and differences. The portable HTML embeds that worker, the viewer, art and manifests. A later Rust port must reproduce admission, snapshots and replay fixtures before replacing the reference implementation.
 
 The manuscript compiler reads the approved table read and chat bank. It preserves 60 exchanges, 40 valid and four missing-card readings, ten paired approach asides and the welcome and posting alternatives. The scene test checks all 37 IDs. The worked run may legitimately lose a slot to another pair. For 3C, 3F and 4F the suite checks the applicable card, tray or idle-press condition separately from whether its conversation wins.
 
@@ -70,16 +70,16 @@ Speech uses the last delivered words per speaker, a named plate and a tail. Inte
 
 ## Matched runs
 
-Times are seconds after the morning appointment. Counts are new physical arrivals at the rack that shift. Three Day One cortexes are already there.
+Times below are seconds after restoring the listed checkpoint. Counts are new physical arrivals at the rack that shift. Three Day One cortexes are already there.
 
 | Checkpoint | Player decision | What changes |
 | --- | --- | --- |
-| Day 2 · Missing ID | Immediate daily pass | At 10.40 s LIMEN resolves the case. At 10.85 s jo takes the first physical step to the desk. Seven cortexes reach the rack. |
-| Same inspection | Watch Conveyor | sam finishes the first Intake handoff at 10.60 s while Security holds. LIMEN closes the case at 24.40 s. jo steps forward at 24.85 s. Wash stays uncovered and zero new cortexes reach the rack. LIMEN’s report identifies bob’s detention. |
-| Day 2 · Morning bids | Appoint LIMEN / appoint STILETTO | LIMEN at Security discovers the missing original. With no intervention, the rushed Conveyor finishes zero. STILETTO at Security expedites clearance. LIMEN’s all-clear Conveyor finishes three. |
-| Day 2 · Conveyor chat | Keep STILETTO’s pace | sam’s first words reach bob at 35.95 s. STILETTO interrupts at 37.35 s. The first cortex finishes its Belt handoff at 38.35 s and Forge handoff at 40.95 s. Five reach the rack by the bell. |
-| Identical crew and posts | Slow the line | At 38.95 s bob hears “ed logged a loose card. Ask at his desk.” He retrieves his original from ed at 50.45 s. The same Belt and Forge handoffs finish at 39.70 and 43.65 s. Three reach the rack. |
-| Day 4 · Conflicting orders | Crew decides / back LIMEN / back STILETTO | Unaided, jo goes to work and bob, kit and ben stay. With public backing for LIMEN all four stay. With public backing for STILETTO, jo, kit and ben go while bob stays. mae is outside the endorsement’s audible range. Each run finishes one cortex. |
+| Day 2 · Missing ID | Immediate daily pass | LIMEN resolves the case. At 2.30 s jo steps forward. Six cortexes reach the rack. |
+| Same inspection | Watch Conveyor | LIMEN closes the case at 14 s. jo steps forward at 14.45 s. Wash stays uncovered and zero new cortexes reach the rack. |
+| Day 2 · Morning bids | Appoint LIMEN / appoint STILETTO | With LIMEN at Security, bob’s missing original holds the line. With STILETTO at Security, expedited clearance lets Conveyor finish five. |
+| Day 2 · Conveyor chat | Keep STILETTO’s pace | At 1.80 s bob hears “Somebody found one.” STILETTO interrupts at 3.20 s. Five cortexes reach the rack. |
+| Identical crew and posts | Slow the line | At 3.25 s bob hears “ed’s desk.” Three cortexes reach the rack. |
+| Day 4 · Conflicting orders | Crew decides / back LIMEN / back STILETTO | ben’s choice depends on firsthand evidence and public backing. Inspect ben’s record after jo crosses. |
 
 A pass lasts through the bell and leaves the original with ed. Another confirmed failure next morning permits renewal using that day’s intervention. Reviewing an open desk signal and exchanging camera views are free. The two Security desks share the held line. A demand for quicker processing cannot release it. The next worker’s movement supplies the release cue.
 

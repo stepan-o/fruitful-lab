@@ -21,7 +21,7 @@ async function main(){
         const prior=window.floorFrame,frame=e.detail;
         if(prior?.scene.world.stage==='walk' && frame.scene.world.stage==='walk' && frame.tick>prior.tick+1){
           window.arrivalCut={from:prior.tick,to:frame.tick,before:prior.scene.agents.find(a=>a.id==='bob').room,
-            after:frame.scene.agents.find(a=>a.id==='bob').room};
+            after:frame.scene.agents.find(a=>a.id==='bob').room,front:Math.max(...frame.scene.agents.filter(a=>a.duty==='walking').map(a=>a.y))};
         }
         window.floorFrame=frame;
       });
@@ -49,7 +49,7 @@ async function main(){
     };
     const photograph=async name=>{
       const picture=await page.screenshot({type:'jpeg',quality:60,path:path.join(dir,name+'.jpg')});
-      if(surface==='standalone'&&width===320&&['security-approach','east-aisle','return'].includes(name))console.log('FRAME_'+name+' '+picture.toString('base64'));
+      if(surface==='standalone'&&width===320&&['security-approach','open-boom','return'].includes(name))console.log('FRAME_'+name+' '+picture.toString('base64'));
     };
     const play=async()=>{await f.locator('#play').click();await f.locator('#room').scrollIntoViewIfNeeded();};
     const pause=async()=>{if(await f.locator('#play').innerText()==='Pause')await f.locator('#play').click();};
@@ -73,7 +73,7 @@ async function main(){
     await f.locator('[data-bid="LIMEN"]').click();await f.locator('#commit').click();
     await event('speech.delivered','bob','sam','picked me up');await f.locator('#room').scrollIntoViewIfNeeded();await stamp('Morning approach');
     const crewRooms=()=>f.evaluate(()=>window.floorFrame.scene.agents.filter(a=>a.duty==='walking').map(a=>a.room));
-    assert.deepEqual(await crewRooms(),Array(10).fill('outside'));
+    const entering=await crewRooms();assert.equal(entering.length,10);assert(entering.includes('outside')&&entering.includes('lobby'));
     await photograph('entrance');
     const opening = await f.locator('#speech-text').textContent();
     assert(opening.startsWith('bob · When you picked me up'), opening);
@@ -82,24 +82,28 @@ async function main(){
     assert(performance.now() - started >= 4300, 'bob’s opening changed before it could be read');
     await f.waitForFunction(()=>!!window.arrivalCut,null,{timeout:25000});
     const cut=await f.evaluate(()=>window.arrivalCut);
-    assert.equal(cut.before,'lobby');assert.equal(cut.after,'security');
+    assert.equal(cut.before,'lobby');assert.equal(cut.after,'security');assert(cut.front<121500,'crew enters the Security shot from beyond the top edge');
     await photograph('security-approach');
     await event('speech.delivered','LIMEN','crew','privilege');
     const greeting=await f.evaluate(()=>window.floorFrame.scene.events.find(e=>e.kind==='speech.delivered'&&e.actor==='LIMEN'));
     assert.equal(greeting.tick-cut.to,76);
     receipts.push({cut,greetingTick:greeting.tick});
     await f.waitForFunction(()=>document.querySelector('#welcome-voice').currentTime>0.1,{},{timeout:6000});
-    const arrivalShot=f.waitForFunction(()=>window.floorFrame.scene.agents.some(a=>a.id==='STILETTO'&&a.x===131450&&a.y>=124000&&a.y<127750),null,{timeout:35000})
-      .then(()=>photograph('east-aisle'));
     receipts.push({greetingAudio:await f.locator('#welcome-voice').evaluate(a=>({time:a.currentTime,rate:a.playbackRate}))});
     await f.waitForFunction(() => document.querySelector('#speech-text').textContent.split(' · ').length === 4);
-    const chorus = await f.locator('#speech-text').textContent();
+    const chorus=await f.locator('#speech-text').textContent();
     await pause();await page.waitForTimeout(750);assert.equal(await f.locator('#speech-text').textContent(),chorus);
     await photograph('greeting-replies');await play();
-    await page.waitForTimeout(5700);
-    assert.equal(await f.locator('#speech-text').textContent(),chorus);
-    await arrivalShot;
-    await pause();
+    const longest=Math.max(...chorus.split(/(?:^| )\w+ · /).filter(Boolean).map(line=>Math.max(3200,1000+400*line.trim().split(/\s+/).length)));
+    await f.waitForFunction(t=>document.querySelector('#speech-text').textContent!==t,chorus,{timeout:longest+1400});
+    await f.waitForFunction(()=>{const {world,agents}=window.floorFrame.scene;return world.passageGateMm<1000&&agents.some(a=>a.id==='STILETTO'&&a.moving&&a.y<134000);});
+    await photograph('open-boom');
+    await event('gate.crossed','STILETTO','LIMEN','Passed');
+    await event('speech.delivered','LIMEN','crew','undervalue stability');
+    assert(await f.evaluate(()=>window.floorFrame.scene.agents.filter(a=>['ed','gus'].includes(a.id)).every(a=>a.y<128000&&a.duty==='walking')));
+    await event('speech.delivered','LIMEN','crew','you get to help me');
+    await event('card.presented','sam','LIMEN','sam:id');
+    await photograph('first-id');await pause();
     const layout=await f.evaluate(()=>({width:innerWidth,actual:document.documentElement.scrollWidth,
       overflow:[...document.querySelectorAll('body *')].filter(el=>el.getBoundingClientRect().right>innerWidth+1).slice(0,6).map(el=>[el.tagName,el.id,el.clientWidth])}));
     assert(layout.actual<=layout.width+1,JSON.stringify(layout));
@@ -134,7 +138,7 @@ async function main(){
     if(surface==='standalone'&&width===320){
       const list=[];
       const readings=[
-        ['Morning bids','speech.delivered','STILETTO','Going somewhere, gus?'],
+        ['Morning bids','card.presented','sam','sam:id'],
         ['G5 · exit after early cutoff','speech.delivered','ben','boot'],
         ['G5 · exit after late cutoff','speech.delivered','ed','show you'],
         ['4D · firsthand return','worker.choice','ben','go'],
@@ -148,7 +152,7 @@ async function main(){
         await shot.goto('http://127.0.0.1:4173/loopforge-shifts/index.html');
         const entrance=checkpoint==='Morning bids',exit=checkpoint.startsWith('G5'),follows=checkpoint.startsWith('4D');
         if(entrance){
-          await shot.locator('[data-bid="STILETTO"]').click();
+          await shot.locator('[data-bid="LIMEN"]').click();
         }else{
           await shot.locator('#checkpoint').selectOption(checkpoint);
           await shot.waitForFunction(exit=>exit?window.floorFrame?.scene.world.stage==='departure':window.floorFrame?.scene.world.pressure==='clash',exit);
@@ -165,8 +169,9 @@ async function main(){
           await shot.locator('[data-room="conveyor"]').click();
           await shot.locator('#room').scrollIntoViewIfNeeded();
         }
-        const reply=entrance||exit?word:follows?'bob was still':'take my turn here';
-        await shot.waitForFunction(t=>document.querySelector('#speech-text').textContent.includes(t),reply);
+        if(entrance)await shot.waitForFunction(()=>window.floorFrame.scene.events.some(e=>e.kind==='speech.delivered'&&e.tick>=window.floorFrame.scene.events.findLast(e=>e.kind==='card.presented').tick));
+        const reply=exit?word:follows?'bob was still':'take my turn here';
+        if(!entrance)await shot.waitForFunction(t=>document.querySelector('#speech-text').textContent.includes(t),reply);
         const words=await shot.locator('#speech-text').textContent();
         await shot.waitForFunction(t=>document.querySelector('#speech-text').textContent!==t,words);
         const seconds=(performance.now()-started)/1000;

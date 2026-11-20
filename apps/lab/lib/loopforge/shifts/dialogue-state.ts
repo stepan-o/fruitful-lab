@@ -6,6 +6,8 @@ export type Line = {who:string;words:string;to:string;fact?:string;source?:strin
 export type Exchange = {topic:string;lines:Line[];next:number;due:number;room:'security'|'conveyor';window:string};
 export type Dialogue = {
   indoorAt?:number;
+  gathering?:Record<string,Point>;
+  gatePass?:{opened:number;cleared?:number};
   supervisorArrival?:import('../intro/floor').Route;
   arrival?:Record<string,import('../intro/floor').Route>;
   phase:'walk'|'welcome'|'posting'|'queue'|'work'|'departure'|'home';

@@ -48,7 +48,8 @@ export function move(s:Run){
     const a=s.world.agents[id];t.moving=false;
     if(!t.path.length&&dist(a.position,t.destination)>50&&s.tick%10===0)go(s,id,t.destination);
     if(!t.path.length)continue;
-    const next=t.path[0],d=dist(a.position,next),stride=id==='bob'?115:id==='STILETTO'?205:155,
+    const next=t.path[0],d=dist(a.position,next),stride=s.day===2&&s.dialogue.phase==='walk'&&!s.dialogue.gathering&&a.character==='worker'?(id==='bob'?95:105):
+      id==='bob'?115:id==='STILETTO'?205:155,
       speed=a.room==='conveyor'&&a.character==='worker'&&s.pace!=='all-clear'?Math.round(stride*(s.pace==='pushed'?1.22:s.pace==='rushed'?1.12:.95)):stride;
     const p:Point=d<=speed?next:[a.position[0]+Math.round((next[0]-a.position[0])*speed/d),a.position[1]+Math.round((next[1]-a.position[1])*speed/d)];
     const others=Object.values(s.world.agents).filter(o=>o!==a&&s.tasks[o.id].duty!=='detained').map(o=>o.position);

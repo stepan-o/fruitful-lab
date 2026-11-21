@@ -62,9 +62,9 @@ Track samples, source recordings, model outputs, human edits and derivatives thr
 
 ## Current handoff
 
-**20 November 2026 commissioning baseline:** this role, study and production notes are the delivery. No music generated, no credits spent, no account changed, no soundtrack audition or runtime performance pass claimed. Owner reports ElevenLabs Free; account balance and entitlements are not verified. Budget is unset. The Music engine proposal tab and actual input stubs are the next director's assignment, not shipped features.
+**21 November 2026 · Proposal v1 for owner review.** Open the [Music engine proposal and silent fixture](/stepanoskin/loopforge/design#music-engine). The owner chose a shared fast grid with a half-time Conveyor, a descending minor motif that hangs on its off-note, and bass shaped by observable work under either supervisor. The first tempo to audition is 170/85. MusicInputs v1, the manual panel, the listening brief and the proposed clearance register are available in the tab. [Download proposal](/loopforge-design/MUSIC_ENGINE.md) · [Input example](/loopforge-design/music-inputs.v1.json).
 
-The source inspection baseline is Fruitful Lab master `bc7d42b8` (PR #179). Recheck current master before work. There are menu effects, an older first-shift sound implementation and the current shift welcome voice; the inspected sound-library document marks the soundtrack unsourced. Their presence does not establish a shared adaptive music system. The study identifies reusable code and missing connections.
+The review begins on the diagram of the shared beat. Try the waiting carrier, a confirmed movement, duplicate delivery, speech and pause. These are manual fixtures. A music host, cleared exports and a live KVP adapter remain future ENGINE work. The connected workspace lists instrumental Music v2.5. Account balance, eligible exports and commercial game classification remain unverified. Current spend and generated minutes are zero. Owner review of the proposal comes before commissioning the audition or authorizing any budget.
 
 ## Required reading and delivery
 

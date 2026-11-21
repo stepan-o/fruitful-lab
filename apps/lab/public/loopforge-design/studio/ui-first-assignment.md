@@ -49,7 +49,7 @@ Desktop and phone should be visibly designed, not merely labelled as future supp
 - A source/application ledger: reference, location or timestamp, principle used, Loopforge decision, limits and review method. Include verified book citations and commercial-use/provenance notes for assets proposed for the product.
 - A practical handoff: what can be reused, what requires ART, what changes the presentation only, what needs ENGINE or SYSTEMS agreement, remaining owner decisions and the proposed next implementation slice. Do not assign implementation ownership without the owner.
 
-Publish a clear entry from the game-design page to this package and cross-link relevant existing UI studies. Choose the exact placement in the approved plan, considering the in-progress Music engine tab. Preserve old links and label superseded proposals as historical. Optimize review images for actual display sizes with on-demand close-ups; do not load full-resolution masters into every page.
+Publish a clear entry from the game-design page to this package and cross-link relevant existing UI studies. Choose the exact placement in the approved plan, alongside the [Music engine tab](/stepanoskin/loopforge/design#music-engine). Preserve old links and label superseded proposals as historical. Optimize review images for actual display sizes with on-demand close-ups; do not load full-resolution masters into every page.
 
 ## Verify and ask for owner review
 

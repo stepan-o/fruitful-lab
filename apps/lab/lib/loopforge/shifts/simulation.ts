@@ -1,3 +1,4 @@
+import {held,newTutorial,lessonOrder,movePairs,runTutorial,waitingBay} from './stiletto-tutorial';
 import {stationTick,lineCommand,newLine} from './station-line';
 import {swapOpening} from './swap-opening';
 import {checkReading} from './inspections';
@@ -52,6 +53,7 @@ function position(s:Run,id:string,at:Point,duty:Task['duty'],station=-1){
   s.tasks[id]={duty,station,destination:at,path:[],walked:0,moving:false,choice:''};
 }
 function begin(s:Run,lead:Lead){
+  if(s.guided&&lead==='LIMEN')s.tutorial=newTutorial();
   s.phase='shift';s.start=s.tick;s.lead=lead;s.pace=lead==='LIMEN'?'rushed':'all-clear';
   s.quick=lead==='STILETTO';s.spent=null;s.called='';s.case=null;s.checking=s.tick+14;s.caseReleaseSeq=0;
   s.pressure='quiet';s.pressureAt=0;s.backing=null;s.chat='idle';s.nextPiece=0;s.chatAt=0;
@@ -90,7 +92,9 @@ function release(s:Run,id:string,reason:string){
   const supportFace:Record<string,string>={ed:'tray',gus:'rack',mae:'tray',lou:'rack',
     kit:s.backing==='STILETTO'?'tray':'drive',ben:support.ben[0]>126000?'drive':'tray'};
   s.dialogue.faces[id]=n>=0?stations[n]:supportFace[id];
-  const post=n>=0?(t.station<0?meters(controls[n][0]/1000,143.45):controls[n]):support[id];s.dialogue.posts[id]=post;go(s,id,post);
+  const post=n>=0?(t.station<0?meters(controls[n][0]/1000,143.45):controls[n]):support[id];const target=s.tutorial?waitingBay(s,id):post;
+  if(s.tutorial)t.station=-1;
+  s.dialogue.posts[id]=target;go(s,id,target);
   if(reason==='Credential verified')observe(s,id,'saw.checked.card',pos(s,id),true);
   if(reason==='Daily pass')observe(s,id,'saw.pass',pos(s,id));
   if(reason!=='Responded to STILETTO')s.dialogue.authorized.push(id);
@@ -270,7 +274,7 @@ export function nextMorning(s:Run){
   s.day++;s.phase='briefing';s.start=s.tick;s.spent=null;s.case=null;return true;
 }
 export function step(s:Run){
-  if(s.phase!=='shift')return;
+  if(s.phase!=='shift'||held(s))return;
   s.tick++;
   s.world.tick=s.tick;
   if(!walkEntrance(s)){
@@ -318,7 +322,9 @@ export function step(s:Run){
 
   if(s.line){
     if(s.lead==='STILETTO')swapOpening(s);
+    else if(s.tutorial){runTutorial(s,()=>check(s),(id,why)=>release(s,id,why));movePairs(s);}
     else {pressure(s);check(s);}
+    if(held(s))return;
     stationTick(s);
     if(s.lead==='STILETTO'&&!s.line.handoff)return;
   }else{pressure(s);check(s);s.world.tick=s.tick-1;production(s);}
@@ -343,14 +349,17 @@ export function admitCommand(s:Run,cmd:Command){
   else if(cmd.action==='appoint'){
     if(s.phase!=='briefing'||!['LIMEN','STILETTO'].includes(cmd.target)||cmd.room!=='security'||cmd.incident!=='morning')reason='Bid closed';
     else begin(s,cmd.target as Lead);
-  }else if(s.line&&(cmd.action==='clear'||cmd.action==='assign'))reason=lineCommand(s,cmd);
-  else if(s.line&&cmd.action!=='issue-pass')reason='Unavailable mandate';
+  }else if(s.tutorial&&cmd.action==='post')reason=lessonOrder(s,cmd);
+  else if(s.tutorial&&held(s))reason='Complete the crew assignment first';
+  else if(s.tutorial&&cmd.action==='assign'&&s.tutorial.stage!=='live')reason='Wait for the next staffing order';
+  else if(s.line&&(cmd.action==='clear'||cmd.action==='assign'))reason=lineCommand(s,cmd);
+  else if(s.line&&cmd.action!=='issue-pass'&&cmd.action!=='reject-pass')reason='Unavailable mandate';
   else if(s.phase!=='shift'||s.spent)reason=s.spent?'Intervention spent':'Shift closed';
   else{
     switch(cmd.action){
-      case 'issue-pass':
+      case 'reject-pass':case 'issue-pass':
         if(cmd.room!=='security'||cmd.target!==s.case?.subject||s.case?.status!=='open'||cmd.incident!==s.case.id)reason='Case closed';
-        else resolveCase(s,true);break;
+        else resolveCase(s,cmd.action==='issue-pass');break;
       case 'accelerate':
         if(cmd.room!=='security'||cmd.target!=='LIMEN'||s.lead!=='LIMEN'||s.quick||!s.queue.length||cmd.incident!==eventId(s,'checks')||s.pressure==='clash'||s.case?.status==='open')reason='Individual checks unavailable';
         else{s.quick=true;remember(s,'LIMEN','expedited.before.demand','Producer order#'+s.tick,true);s.loyalty--;s.confidence--;s.authority--;if(s.pressure==='approach')settle(s,false);schedule(s,'expedite',lines('P2','crew'),'security');}break;

@@ -203,7 +203,7 @@ export function advanceMorning(s:Run){
     }
     if(d.cue===1){
       d.cue=2;
-      if(s.line&&s.lead==='STILETTO'){
+      if(s.line&&(s.guided||s.lead==='STILETTO')){
         heard(s,phrase('lou','Did you know that he keeps that blade out at home? Imagine sharing a lift with him.','ben'),'security','passing aside');
         d.ready=s.tick+75;return;
       }
@@ -242,6 +242,8 @@ export function advanceMorning(s:Run){
       else if(knows(s,'jo','double.knock')&&knows(s,'LIMEN','expedited.before.demand'))schedule(s,'N1',lines('N1','crew',4,6),'security');
       else if(knows(s,'LIMEN','two.hands.one.card'))schedule(s,'3B',lines('3B','crew',4),'security');
       const item=s.lead==='LIMEN'?lines('2C','crew',0,2):lines('S1','gus');
+      if(s.guided&&s.lead==='LIMEN')item.push(phrase('LIMEN','Loudspeaker, the book. Ledger, the queue.','crew'),
+        phrase('ed','I was Ledger yesterday, sir.','LIMEN'),phrase('LIMEN','Then you know where the book is.','ed'));
       const existing=d.exchanges.at(-1);
       schedule(s,'posting',item,'security');
       if(existing)d.exchanges.at(-1)!.due+=existing.lines.reduce((n,l)=>n+lineTime(l.words),0);
@@ -270,6 +272,6 @@ export function advanceMorning(s:Run){
       })()];
       schedule(s,'clerks',rows.map(([a,b,t])=>phrase(a,t,b)),'security');
     }
-    d.phase='work';s.checking=s.tick+38;d.bell=s.tick+2400;
+    d.phase='work';s.checking=s.tick+38;d.bell=s.tick+(s.tutorial?4800:2400);
   }
 }

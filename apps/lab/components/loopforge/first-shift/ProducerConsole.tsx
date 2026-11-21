@@ -69,11 +69,11 @@ function ProducerLight({ skin, active, effects }: {skin:ProducerSkinId;active:bo
 }
 
 export default function ProducerConsole({media,view,skin,incoming,busy,effects,active,ticking,
-  onLeadership,onAdviser,onPrimary,onRoom,onInspect,onFeedback,onNavigate,onSpeed,speed,primaryLabel,
+  onLeadership,onAdviser,onPrimary,onRoom,onInspect,onFeedback,onNavigate,onSpeed,speed,primaryLabel,factoryTime,
 }:{media:Media;view:PlayerView;skin:ProducerSkinId;incoming:boolean;busy:boolean;effects:boolean;active:boolean;ticking:boolean;
   onLeadership:()=>void;onAdviser:()=>void;onPrimary:()=>void;onRoom:(id:RoomId)=>void;onInspect:(id:string)=>void;
   onFeedback:(id:FeedbackId)=>void;
-  onNavigate:(id:"development"|"records")=>void;onSpeed:()=>void;speed:number;primaryLabel:string;}) {
+  onNavigate:(id:"development"|"records")=>void;onSpeed:()=>void;speed:number;primaryLabel:string;factoryTime?:string;}) {
   const [selected,setSelected]=useState<string>("conveyor");
   const [layout,setLayout]=useState<ConsoleLayout>("wall");
   const surface=useRef<HTMLElement>(null);
@@ -139,7 +139,7 @@ export default function ProducerConsole({media,view,skin,incoming,busy,effects,a
       </button>
       <ProducerLight skin={skin} effects={effects} active={active}/>
     </div>
-    <footer className={s.bottomRail}><span>{time(view.shiftTick)} <small>{incoming?"INCOMING CALL":ticking?"LINE RUNNING":view.phase==='decision'?"DECISION PENDING":"LINE HELD"}</small></span>
+    <footer className={s.bottomRail}><span>{factoryTime??time(view.shiftTick)} <small>{incoming?"INCOMING CALL":ticking?"LINE RUNNING":view.phase==='decision'?"DECISION PENDING":"LINE HELD"}</small></span>
       <nav aria-label="Director console"><button disabled={incoming} onClick={()=>onNavigate("development")}>Development</button><button disabled={incoming} onClick={()=>onNavigate("records")}>Records</button>{view.phase==='running'&&<button onClick={onSpeed} aria-label={`Playback speed ${speed} times`}>{speed}×</button>}</nav>
     </footer>
   </section>;

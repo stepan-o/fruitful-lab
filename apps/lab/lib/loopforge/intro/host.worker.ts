@@ -11,6 +11,17 @@ function schedule(){
 }
 function enqueue(task:()=>Promise<void>){busy=busy.then(task).catch(e=>{session.playing=false;port.postMessage({local:'failure',message:String(e)});});}
 port.onmessage=({data})=>enqueue(async()=>{
+  if(data?.local==='campaign'){session.configure(data.confirmed);return;}
+  if(data?.local==='station'){
+    if(session.confirm(data.index)){offset=session.sim.seconds;anchor=performance.now();schedule();}
+    return;
+  }
+  if(data?.local==='skip'){
+    clearTimeout(timer);session.playing=false;
+    if(!session.guided)session.configure(0);
+    while(!session.sim.finished)session.sim.step();
+    port.postMessage({local:'departure',source:departure(session.sim)});return;
+  }
   if(data?.local==='departure'&&session.sim.finished){port.postMessage({local:'departure',source:departure(session.sim)});return;}
   if(data?.local==='applied'){session.applied(data.tick,data.hash);return;}
   if(data?.local==='restart-play'){

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import {clockText,dayOneMinute,openingMinute} from "../../../lib/loopforge/shifts/factory-clock";
 import FirstShift from "./FirstShift";
 import ProducerConsole from "./ProducerConsole";
 import LeadershipCall from "./LeadershipCall";
@@ -21,6 +22,45 @@ type Props={media:Media;legacyReview?:boolean};
 function GameSession({media,legacyReview=false}:Props) {
   const [legacyStarted,startLegacy]=useState(false);
   const [run,setRun]=useState<Campaign|null>(null), [menu, setMenu] = useState(true), [settings, setSettings] = useState(false);
+  const [dev,setDev]=useState(false),[starting,setStarting]=useState(false),[error,setError]=useState("");
+  const [clock,setClock]=useState(clockText(openingMinute));
+  const shell=useRef<HTMLDivElement>(null);
+  function present(full:boolean){
+    const root=shell.current;
+    if(!root)return;
+    // Keep the viewport composition on devices that reserve full screen for video.
+    if(full&&document.fullscreenEnabled&&!document.fullscreenElement)
+      void root.requestFullscreen().catch(()=>{});
+    if(!full&&document.fullscreenElement===root)void document.exitFullscreen().catch(()=>{});
+  }
+  const skipWorker=useRef<Worker|null>(null);
+  useEffect(()=>{setDev(localStorage.getItem("loopforge.display")==="dev");return ()=>skipWorker.current?.terminate();},[]);
+  useEffect(()=>{
+    if(!run||menu||!["console","call"].includes(run.phase))return;
+    setClock(clockText(openingMinute+(run.morningSeconds??0)/60));
+    const timer=window.setInterval(()=>{
+      if(document.hidden)return;
+      run.morningSeconds=(run.morningSeconds??0)+1;saveCampaign(run);
+      setClock(clockText(openingMinute+run.morningSeconds/60));
+    },1000);
+    return ()=>window.clearInterval(timer);
+  },[run,menu]);
+  function secondDay(){
+    if(skipWorker.current)return;
+    present(!dev);setStarting(true);setError("");
+    const next=freshCampaign();
+    const w=new Worker(new URL("../../../lib/loopforge/intro/host.worker.ts",import.meta.url),{type:"module"});
+    skipWorker.current=w;
+    function stop(){w.terminate();skipWorker.current=null;setStarting(false);}
+    w.onerror=()=>{stop();setError("The shift could not start. Try again.");};
+    w.onmessage=({data})=>{
+      if(data.local==="failure"){stop();setError(data.message);return;}
+      if(data.local!=="departure")return;
+      next.source=data.source;next.phase="console";next.progress.tick=data.source.tick;
+      saveCampaign(next);setRun(next);setMenu(false);stop();
+    };
+    w.postMessage({local:"skip"});
+  }
   const theme = useConsoleTheme()!;
   const start = useRef<HTMLButtonElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
@@ -31,7 +71,7 @@ function GameSession({media,legacyReview=false}:Props) {
   useEffect(()=>{if(!legacyReview)setRun(loadCampaign());},[legacyReview]);
   function enter() {
     if(legacyReview){startLegacy(true);setMenu(false);return;}
-    const current=run??freshCampaign();saveCampaign(current);setRun(current);setMenu(false);
+    present(!dev);const current=run??freshCampaign();saveCampaign(current);setRun(current);setMenu(false);
   }
   function phase(next:Campaign["phase"]) {
     if(!run)return;const updated={...run,phase:next};saveCampaign(updated);setRun(updated);
@@ -43,7 +83,7 @@ function GameSession({media,legacyReview=false}:Props) {
     quota:run?.quota??0,committed:run?.source?.pieces.length??0,produced:0,retained:0,losses:0,
     people:[],events:[],adviser:null,assignments:null,briefing:null,pending:null,
   };
-  return <div className={s.game} style={{ ...materialStyle(media), ...theme.style }} data-theme={theme.recipe.shell}>
+  return <div ref={shell} className={s.game} style={{ ...materialStyle(media), ...theme.style }} data-theme={theme.recipe.shell} data-display={legacyReview?"legacy":dev?"dev":"normal"}>
     {menu && <main className={s.menu} aria-label="Loopforge start menu">
       <ConsoleBeacon active={!settings} />
       <div className={s.menuScene}><Art media={media} id="lobby-room" sizes="100vw" priority /></div>
@@ -53,7 +93,12 @@ function GameSession({media,legacyReview=false}:Props) {
         <Art media={media} id="logo" className={s.menuLogo} sizes="320px" priority />
         <h1>First shift</h1>
         <p className={s.menuMotto}>Truth stays clean.<br />Story gets messy.</p>
-        <button ref={start} className={s.startControl} disabled={theme.loading} onClick={enter}>{run||legacyStarted ? "Resume shift" : legacyReview?"Start shift":"Enter factory"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
+        <button ref={start} className={s.startControl} disabled={theme.loading||starting} onClick={enter}>{run||legacyStarted ? "Resume shift" : legacyReview?"Start shift":"Enter factory"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
+        {!legacyReview&&<>
+          <button className={s.dayTwo} disabled={starting||theme.loading} onClick={secondDay}>{starting?"Opening console…":"2nd day"}</button>
+          <label className={s.displaySwitch}><span>Full screen</span><input type="checkbox" role="switch" aria-label="Dev mode" checked={dev} onChange={e=>{present(!e.target.checked);setDev(e.target.checked);localStorage.setItem("loopforge.display",e.target.checked?"dev":"normal");}}/><span>Dev mode</span></label>
+          {error&&<p role="alert">{error}</p>}
+        </>}
         <button ref={settingsButton} className={s.menuSetting} onClick={() => setSettings(true)}>Settings <span>Graphics / presentation</span></button>
         <Link href="/stepanoskin/loopforge" prefetch={false}>← Back to Loopforge</Link>
         <small className={s.sessionNote}>{run||legacyStarted ? "Your shift is paused. Resume to continue." : legacyReview?"First-turn review":"Days 1–2 · Week one"}</small>
@@ -63,17 +108,18 @@ function GameSession({media,legacyReview=false}:Props) {
     </main>}
     {legacyReview&&legacyStarted&&<div hidden={menu} inert={menu}><FirstShift media={media} suspended={menu} onOpenMenu={()=>setMenu(true)}/></div>}
     {!menu&&run&&<>
-      <div className={floorStyle.toolbar}><span>{run.phase==="intro"?"DAY 1 · FIRST SHIFT":run.phase==="console"?"DAY 2 · LEADERSHIP CALLING":"DAY 2 · PRODUCER CONSOLE"}</span><button onClick={()=>setMenu(true)}>Main menu</button></div>
-      {run.phase==="intro"&&<IntroPlayer campaign={{seconds:run.seconds,onProgress:seconds=>{
-        if(Math.floor(seconds*4)!==Math.floor(run.seconds*4)){run.seconds=seconds;saveCampaign(run);}
+      <div className={floorStyle.toolbar}><span>{run.phase==="intro"?"DAY 1 · FIRST SHIFT":run.phase==="console"?"DAY 2 · LEADERSHIP CALLING":"DAY 2 · PRODUCER CONSOLE"}</span><time className={floorStyle.clock} aria-label="Factory time">{clock}</time><button onClick={()=>setMenu(true)}>Main menu</button></div>
+      {run.phase==="intro"&&<IntroPlayer campaign={{seconds:run.seconds,confirmed:run.confirmed??0,onProgress:(seconds,confirmed)=>{
+        const confirmedChanged=run.confirmed!==confirmed;run.confirmed=confirmed;setClock(clockText(dayOneMinute(seconds)));
+        if(confirmedChanged||Math.floor(seconds*4)!==Math.floor(run.seconds*4)){run.seconds=seconds;saveCampaign(run);}
       },onDeparture:source=>{
-        run.source=source;run.progress={tick:source.tick,commands:[]};phase("console");
+        run.source=source;run.progress={tick:source.tick,commands:[],guided:true};phase("console");
       }}}/>}
-      {run.phase==="console"&&<ProducerConsole media={media} skin={theme.recipe.console} view={view} incoming busy={false} effects active ticking={false}
+      {run.phase==="console"&&<ProducerConsole media={media} skin={theme.recipe.console} view={view} factoryTime={clock} incoming busy={false} effects active ticking={false}
         primaryLabel="Awaiting leadership" speed={1} onLeadership={()=>phase("call")}
         onAdviser={()=>{}} onPrimary={()=>{}} onRoom={()=>{}} onInspect={()=>{}} onFeedback={()=>{}} onNavigate={()=>{}} onSpeed={()=>{}}/>}
       {run.phase==="call"&&<LeadershipCall rack media={media} view={view} onClose={()=>phase("console")} onContinue={()=>phase("floor")}/>}
-      {run.phase==="floor"&&<ShiftFloor run={run} suspended={menu} onFinish={finish}/>}
+      {run.phase==="floor"&&<ShiftFloor onClock={setClock} run={run} suspended={menu} onFinish={finish}/>}
     </>}
     <dialog ref={dialog} className={s.menuDialog} onClose={closeSettings} aria-labelledby="menu-settings-title"
       onClick={e => { if (e.target === dialog.current) closeSettings(); }}>

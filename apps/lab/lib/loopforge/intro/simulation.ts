@@ -11,8 +11,10 @@ export const authored:Policies={
   select:(c,w,policy)=>c.filter(p=>policy.score(p,w)>=0).sort((a,b)=>policy.score(b,w)-policy.score(a,w)||a.action.id.localeCompare(b.action.id))[0]
 };
 const space:SpatialServices={connected:()=>true,canTraverse:()=>false,canHear:(a,b,_w,channel)=>audible(a,b,channel==='shout')};
-const library=opportunities();
-const registry:Registry=Object.fromEntries(library.map(p=>[p.action.id,p.action]));
+import {playableTracks} from './playable-score';
+const archive=opportunities(), playable=opportunities(true);
+function actions(plans:Opportunity[]):Registry{return Object.fromEntries(plans.map(p=>[p.action.id,p.action]));}
+const archiveActions=actions(archive),playableActions=actions(playable);
 const initialAgents=()=>Object.fromEntries(Object.entries(score.tracks).sort(([a],[b])=>a.localeCompare(b)).map(([id,keys])=>{
   const position=mm(keys[0].p);
   return [id,{id,name:id,character:id==='LIMEN'?'limen':id==='STILETTO'?'stiletto':'worker',room:roomAt(position),position,yaw:0,beliefs:{},memory:[],stress:0,trust:50}];
@@ -29,7 +31,10 @@ export class Intro {
   private attempts=new Map<string,number>();
   deliberations=0;
   private intentions=new Map<string,Opportunity>();
-  constructor(readonly policy:Policies=authored,readonly timedDeliberation?:(run:()=>void)=>void){
+  private library:Opportunity[];
+  private registry:Registry;
+  constructor(readonly policy:Policies=authored,readonly timedDeliberation?:(run:()=>void)=>void,readonly guided=false){
+    this.library=guided?playable:archive;this.registry=guided?playableActions:archiveActions;
     for(const piece of this.pieces)this.world.facts[piece.id+'.socket']=0;
     this.deliberate();
   }
@@ -51,7 +56,7 @@ export class Intro {
     else this.choose();
   }
   private choose(){
-    const w=this.world;
+    const w=this.world,library=this.library;
     while(this.cursor<library.length&&library[this.cursor].opens<=w.tick)this.waiting.push(library[this.cursor++]);
     if(!this.waiting.length)return;
     this.deliberations++;
@@ -76,7 +81,7 @@ export class Intro {
       const tries=this.attempts.get(p.action.id)??0;
       const id=p.action.id+(tries?'#'+tries:'');
       this.attempts.set(p.action.id,tries+1);
-      this.world=admit(this.world,{id,initiator:p.actor,action:p.action.id},registry,space);
+      this.world=admit(this.world,{id,initiator:p.actor,action:p.action.id},this.registry,space);
       const accepted=this.world.active.some(a=>a.intent.id===id);
       this.note(p,accepted?'Intention admitted':this.world.events.at(-1)?.detail??'Rejected');
       if(accepted){this.intentions.set(id,p);this.waiting=this.waiting.filter(o=>o!==p);}
@@ -85,9 +90,9 @@ export class Intro {
   step(){
     if(this.world.tick>=lastTick)return;
     this.gate=gateLength(worldAt(this.world.tick+1),this.world.facts['gate.staffed']===true);
-    moveCast(this.world,this.routes,this.gate);
+    moveCast(this.world,this.routes,this.gate,[],this.guided?playableTracks:undefined);
     const begin=this.world.events.length;
-    this.world=advance(this.world,registry,space);
+    this.world=advance(this.world,this.registry,space);
     for(const event of this.world.events.slice(begin)){
       const p=this.intentions.get(event.action);
       if(!p||!['cancelled','completed'].includes(event.kind))continue;

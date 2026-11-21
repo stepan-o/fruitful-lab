@@ -1,3 +1,4 @@
+import {held} from './stiletto-tutorial';
 import {publicFloor,resume,type Progress} from './playthrough';
 import {admitCommand,step,type Inheritance} from './simulation';
 import {cutToSecurity} from './approach-edit';
@@ -28,10 +29,10 @@ self.onmessage=({data:m}:{data:Input})=>{
   }catch(e){fail(e);}
 };
 setInterval(()=>{
-  const now=performance.now();debt=run?.phase==='shift'&&!paused?Math.min(250,debt+now-last):0;last=now;
+  const now=performance.now();debt=run?.phase==='shift'&&!paused&&!held(run)?Math.min(250,debt+now-last):0;last=now;
   try{
     if(!run||debt<50)return;
-    while(debt>=50&&run.phase==='shift'){
+    while(debt>=50&&run.phase==='shift'&&!held(run)){
       debt-=50;
       if(!cut&&run.lead==='LIMEN'&&cutToSecurity(run))cut=true;
       else step(run);

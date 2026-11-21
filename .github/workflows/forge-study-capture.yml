@@ -1,0 +1,24 @@
+name: Capture Forge study evidence
+on:
+  push:
+    branches: [codex/ui-forge-study]
+    paths: ['.github/workflows/forge-study-capture.yml']
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --prefix "$RUNNER_TEMP/forge-review" playwright@1.56.1 typescript@5.9.3
+      - run: "$RUNNER_TEMP/forge-review/node_modules/.bin/playwright install chromium"
+      - run: NODE_PATH="$RUNNER_TEMP/forge-review/node_modules" node docs/loopforge/game-design/forge-study/capture.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-ui-evidence
+          path: ui-capture/

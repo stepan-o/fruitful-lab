@@ -14,22 +14,22 @@
       "frames": 8991219,
       "durationSeconds": 187.3170625,
       "blocks": [
-        "Call and home answer",
-        "Open ending",
-        "Approach and return",
+        "Statement, repeat, stretch, landing",
+        "Higher turn and landing",
+        "Early return before the drums",
         "Rim, rolls and toms",
-        "Hook returns",
-        "Two endings",
-        "Bass and reed exchange",
-        "Return"
+        "Statement after the break",
+        "Higher turn",
+        "Bass states the theme",
+        "Landing into the loop"
       ],
-      "sha256": "aa6c4772bd7d51a85c101f0257ce0a09d92223ea349f3545ae2cfbaea783bc91",
-      "masterSha256": "c97115abf4f6a12177137d6edef7ac4196ef102e5e6871ffe9d2c261a9e084ed",
+      "sha256": "6f4396606aeea0def6d6f900e7e7f2a06cf0da99f690c0408beb90e5503e24a3",
+      "masterSha256": "ce08924eea2ad7d298cde0479c0612996b3f1ec3f59878ceeb419faac5791b9f",
       "meter": {
-        "lufs": -16.95,
-        "dBTP": -4.68
+        "lufs": -16.96,
+        "dBTP": -5.4
       },
-      "studyId": "LF-MUS-LONG-04-MENU"
+      "studyId": "LF-MUS-LONG-05-MENU"
     },
     {
       "theme": "options",

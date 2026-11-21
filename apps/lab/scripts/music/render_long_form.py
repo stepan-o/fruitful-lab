@@ -10,8 +10,8 @@ TEMPO = 164
 OUT = kit.PUBLIC / 'long-form'
 # Each block is 16 bars. The duration of each bar always follows the common fast grid.
 FORM = {
-    'menu': ('Call and home answer', 'Open ending', 'Approach and return', 'Rim, rolls and toms',
-             'Hook returns', 'Two endings', 'Bass and reed exchange', 'Return'),
+    'menu': ('Statement, repeat, stretch, landing', 'Higher turn and landing', 'Early return before the drums', 'Rim, rolls and toms',
+             'Statement after the break', 'Higher turn', 'Bass states the theme', 'Landing into the loop'),
     'options': ('Hands on hats', 'Rim conversation', 'Hats and rests',
                 'Low tom answer', 'Broken two-step', 'Pass it back'),
     'conveyor': ('Open weight', 'Long answer', 'Low current',
@@ -121,83 +121,94 @@ def menu_drum_feature(pos, hit):
                     pan=-.22 + .04 * i)
 
 
-# Eight calls give the theme a roughly sixteen-bar breathing cycle. The two
-# related answers both turn the suspended C-sharp back towards D. Times near
-# the end of a bar are pickups into the next. Each note has its own accent.
-MENU_CALL_BARS = (0, 12, 28, 44, 64, 80, 100, 116)
-ANSWER_PICKUP = ((3.5, 61, .40, .29), (4, 62, 1.25, .44),
-                 (5.5, 65, .85, .39), (6.5, 64, 1.15, .33))
-REPLIES = {
-    'home': ANSWER_PICKUP + ((8, 62, 2.20, .44),),
-    'open': ANSWER_PICKUP + ((8, 69, 1.55, .43), (10, 67, .65, .34),
-                             (11, 65, .80, .36), (12, 64, 1.75, .41)),
+# Each four-bar phrase owns the foreground melody and the harmony below it.
+# Entries give the local beat, MIDI pitch, sounding length and velocity.
+OPENING = tuple(zip(CALL, DESCENT, LENGTHS, (.50, .48, .46, .44, .50), strict=True))
+MENU_PHRASES = {
+    'theme': (
+        ('Dm6/9', OPENING),
+        ('Dm6/9', ((2, 64, .90, .34),)),
+        ('Dm(add9)', ((0, 61, 2.50, .40),)),
+        ('Dm(add9)', ()),
+    ),
+    'stretch': (
+        ('Dm9', ((0, 69, 1.35, .47), (1.5, 67, .75, .39), (2.5, 65, 1.15, .42))),
+        ('Dm9', ((0, 64, 1.65, .41), (2.5, 65, .70, .35), (3.5, 67, .40, .39))),
+        ('Gm9', ((0, 69, 2.45, .46), (3, 67, .85, .36))),
+        ('Gm9', ((0, 65, 1.35, .41), (2, 64, 1.15, .34))),
+    ),
+    'lift': (
+        ('Dm9', ((0, 69, 1.35, .47), (1.5, 67, .75, .39), (2.5, 65, 1.15, .42))),
+        ('Dm9', ((0, 64, 1.65, .41), (2.5, 65, .70, .35), (3.5, 69, .40, .39))),
+        ('Bbmaj9', ((0, 72, 2.35, .46), (3, 70, .75, .37))),
+        ('Bbmaj9', ((0, 69, 1.40, .42), (2, 65, 1.25, .35))),
+    ),
+    'cadence': (
+        ('Gm9', ((0, 69, 1.55, .44), (2, 67, 1.45, .39))),
+        ('Gm9', ((0, 65, 2.70, .43),)),
+        ('A7b9', ((0, 64, 2.85, .43),)),
+        ('Dm6/9', ((0, 61, 2.75, .48),)),
+    ),
 }
-MENU_ANSWERS = {
-    3: 'home', 8: 'open', 16: 'home', 22: 'open',
-    32: 'open', 39: 'home', 68: 'home', 74: 'open',
-    85: 'open', 91: 'home', 105: 'home', 110: 'open', 120: 'home',
-}
-
-# Bass root and the upper voices of each keys voicing, one chord per two bars.
 MENU_VOICINGS = {
-    'Dm9': (38, (53, 57, 60, 64)), 'Dm6/9': (38, (53, 57, 59, 64)),
-    'C/D': (38, (52, 55, 60, 64)), 'G13': (43, (53, 57, 59, 64)),
-    'Gm9': (43, (53, 57, 58, 62)), 'Bbmaj9': (34, (53, 57, 60, 62)),
-    'A7b9': (33, (52, 55, 58, 61)),
+    'Dm6/9': (38, (53, 57, 59, 64)), 'Dm(add9)': (38, (53, 57, 64)),
+    'Dm9': (38, (53, 57, 60, 64)), 'Gm9': (43, (53, 57, 58, 62)),
+    'Bbmaj9': (34, (53, 57, 60, 62)), 'A7b9': (33, (52, 55, 58, 61)),
 }
-MENU_CHANGES = (
-    ('Dm9', 'Dm6/9', 'C/D', 'Dm6/9', 'Dm9', 'G13', 'Gm9', 'Dm6/9'),
-    ('Dm9', 'C/D', 'Dm6/9', 'G13', 'Gm9', 'Bbmaj9', 'Gm9', 'A7b9'),
-    ('Dm9', 'Dm6/9', 'Gm9', 'Bbmaj9', 'G13', 'Gm9', 'Dm6/9', 'A7b9'),
-    (),  # Solo drums.
-    ('Dm9', 'Dm6/9', 'C/D', 'Dm6/9', 'Dm9', 'C/D', 'Gm9', 'Dm6/9'),
-    ('Dm9', 'G13', 'Gm9', 'Bbmaj9', 'Dm6/9', 'G13', 'Gm9', 'A7b9'),
-    ('Dm9', 'Dm6/9', 'Dm9', 'C/D', 'Gm9', 'Bbmaj9', 'Gm9', 'A7b9'),
-    ('Dm9', 'Dm6/9', 'C/D', 'Gm9', 'Dm9', 'G13', 'Dm6/9', 'A7b9'),
+# The cadence always leads directly to the opening. Ahead of the drum solo,
+# shorten the development so the pitched theme can return before the handoff.
+MENU_FORM = (
+    ('theme', 'theme', 'stretch', 'cadence'),
+    ('theme', 'theme', 'lift', 'cadence'),
+    ('theme', 'theme', 'cadence', 'theme'),
+    (),  # Existing sixteen-bar percussion solo.
+    ('theme', 'theme', 'stretch', 'cadence'),
+    ('theme', 'theme', 'lift', 'cadence'),
+    ('theme', 'theme', 'stretch', 'cadence'),
+    ('theme', 'theme', 'lift', 'cadence'),
 )
 
 
 def menu(bar, hit):
     block, pos = divmod(bar, 16)
-    if 96 <= bar < 100:
-        # Four bars of answering bass. The rhythmic echo opens out after the E.
-        solo = (
-            ((45, 43, 40), (0, .5, 1.5), (.43, .77, 2.1)),
-            ((38, 41, 45), (0, 1.5, 2.5), (.9, .65, 1.0)),
-            ((43, 40, 37), (.5, 2, 3), (.85, .7, .8)),
-            ((38, 45, 40, 37), (0, 1.5, 2.5, 3.5), (.9, .65, .65, .4)),
-        )[pos]
-        line(hit, *solo, .60, 'bass')
-        return
-
-    menu_groove(bar, hit, solo=block == 3)
     if block == 3:
+        menu_groove(bar, hit, solo=True)
         menu_drum_feature(pos, hit)
         return
 
-    if bar in MENU_CALL_BARS:
-        line(hit, DESCENT, CALL, LENGTHS, .50, 'signal')
-    if bar in MENU_ANSWERS:
-        for at, note, duration, level in REPLIES[MENU_ANSWERS[bar]]:
-            hit(at, 'reply', level, note, duration, .09)
+    phrase_index, measure = divmod(pos, 4)
+    name = MENU_FORM[block][phrase_index]
+    phrase = MENU_PHRASES[name]
+    harmony, melody = phrase[measure]
+    root, chord = MENU_VOICINGS[harmony]
+    if 96 <= bar < 100:
+        # The first statement after the cadence is played by the bass alone.
+        for at, note, duration, gain in melody:
+            hit(at, 'bass', gain * 1.22, note - 24, duration)
+        if measure == 3:
+            hit(0, 'bass', .47, root, 1.35)
+            hit(2.5, 'bass', .39, root + 7, .53)
+        return
+
+    menu_groove(bar, hit)
     if bar == 64:
         hit(0, 'bell', .38, pan=.24)
+    voice = 'reply' if name in ('stretch', 'lift') else 'signal'
+    for at, note, duration, gain in melody:
+        hit(at, voice, gain, note, duration, .06 if voice == 'reply' else -.03)
+    landing = name == 'cadence' and measure == 3
+    hit(0 if landing else .125, 'bass', .60, root, 1.70 if landing else 1.06)
+    hit(2.5, 'bass', .47, root + (7 if measure == 2 else 0), .54)
+    if measure == 3 and not landing:
+        hit(3.50, 'bass', .40, root + 5, .44)
 
-    pair_start = bar - pos % 2
-    harmony = 'Dm6/9' if pair_start in MENU_CALL_BARS else MENU_CHANGES[block][pos // 2]
-    root, chord = MENU_VOICINGS[harmony]
-    hit(.125, 'bass', .60, root, 1.06 if pos % 2 == 0 else .67)
-    hit(2.5, 'bass', .47, root + (7 if pos % 4 == 2 else 0), .54)
-    if pos % 4 == 3:
-        hit(3.50, 'bass', .40, root + (7 if pos % 8 == 3 else 5), .44)
-
-    # A single attack can carry across the barline. Two quieter beat-three
-    # entries in each 16 bars leave room around the previous phrase's ending.
-    if pos % 2 == 0:
-        at = 2 if pos in (6, 12) else 0
-        duration = (4.5 if at else 6.25) if block != 4 else 3.75
+    if measure % 2 == 0 or harmony != phrase[measure - 1][0]:
+        next_harmony = phrase[(measure + 1) % 4][0]
+        duration = 6.25 if measure < 3 and next_harmony == harmony else 3.65
+        if landing:
+            duration = 2.75  # Release the keys with the lead before the new downbeat.
         for i, note in enumerate(chord):
-            hit(at, 'reedkeys', .145 if block != 4 else .125, note, duration, (i - 1.5) * .17)
+            hit(0, 'reedkeys', .135 if block != 4 else .115, note, duration, (i - (len(chord) - 1) / 2) * .17)
 
 
 def options(bar, hit):
@@ -308,5 +319,5 @@ if __name__ == '__main__':
               'tracks':[render(name, args.masters) for name in FORM]}
     for track in record['tracks']:
         if track['theme'] == 'menu':
-            track['studyId'] = 'LF-MUS-LONG-04-MENU'
+            track['studyId'] = 'LF-MUS-LONG-05-MENU'
     manifest.write_text(json.dumps(record, indent=2) + '\n')

@@ -2,9 +2,13 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 21 November 2026 · Letting the Menu phrase finish
+
+The owner could hear the hook and its answers fighting for the same moment. This pass opens with the same four-bar phrase twice. Its variation takes the first three notes more slowly, arches upward and then stretches the original fall into a held C♯ over D. The lead rests before the next statement. The drummer keeps the earlier sixteen-bar feature. [Hear the opening through bar 17](/stepanoskin/loopforge/design#music-long-menu).
+
 ## 21 November 2026 · Two endings and a drum turnaround
 
-The owner found that four returns in three minutes left the Menu theme too far away. The next study brings it back after twelve bars. One reply grows out of the held C♯ and takes a different ending the next time around. In the break, the drummer drops the running hi-hat and plays across the rim, snare and toms. Two short runs mark the halfway point and the return to the tune. [Play the current Menu](/stepanoskin/loopforge/design#music-long-menu).
+The owner found that four returns in three minutes left the Menu theme too far away. The next study brings it back after twelve bars. One reply grows out of the held C♯ and takes a different ending the next time around. In the break, the drummer drops the running hi-hat and plays across the rim, snare and toms. Two short runs mark the halfway point and the return to the tune. [Dated fourth study](https://raw.githubusercontent.com/stepan-o/fruitful-lab/bf5d30f6d33ab69b12744ee4ee2c1fcefbd2536e/apps/lab/public/loopforge-design/music-audition/long-form/menu.mp3).
 
 ## 21 November 2026 · Giving the Menu a second melody
 

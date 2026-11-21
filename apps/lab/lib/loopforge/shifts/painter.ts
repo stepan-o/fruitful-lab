@@ -4,7 +4,7 @@ import geometry from '../intro/geometry.json';
 import {approachZone,type Room} from './contract';
 import atlas from '../../../public/loopforge-intro/sprites.json';
 import floorPack from '../../../public/loopforge-design/floor-correction/v1/manifest.json';
-import {drawFactory,easeCamera,factoryProjection,shotScale} from '../factory-scene';
+import {drawFactory,drawFactorySprite,easeCamera,factoryProjection,shotScale} from '../factory-scene';
 import introSprites from './intro-sprites.json';
 
 type Images = Record<string,CanvasImageSource>;
@@ -75,11 +75,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   const sec=camera.sec;
   ctx.imageSmoothingEnabled=false;
   const sprites=atlas.sheets as Record<string,number[]>;
-  function sprite(key:string,n:number,x:number,y:number,k=scale/64){
-    const im=images[key];if(!im)return;
-    const [sw,sh,cols,px,py]=sprites[key];
-    ctx.drawImage(im,n%cols*sw,Math.floor(n/cols)*sh,sw,sh,Math.round(x-px*k),Math.round(y-py*k),Math.round(sw*k),Math.round(sh*k));
-  }
+  const sprite=(key:string,n:number,x:number,y:number,k=scale/64)=>drawFactorySprite(ctx,images,sprites,key,n,x,y,k);
   function tag(text:string,x:number,y:number,ink='#e8e1c9',bg='#17292a'){
     ctx.font='bold 11px monospace';const tw=ctx.measureText(text).width+8;const left=Math.max(1,Math.min(w-tw-1,x-tw/2));
     ctx.fillStyle=bg;ctx.fillRect(left,y-11,tw,14);ctx.fillStyle=ink;ctx.textAlign='left';ctx.fillText(text,left+4,y);

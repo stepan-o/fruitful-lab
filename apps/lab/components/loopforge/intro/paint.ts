@@ -1,4 +1,4 @@
-import {cutOpacity,drawFactory,easeCamera,factoryProjection,roomCut,shotScale} from '../../../lib/loopforge/factory-scene';
+import {cutOpacity,drawFactory,drawFactorySprite,easeCamera,factoryProjection,roomCut,shotScale} from '../../../lib/loopforge/factory-scene';
 import type {Skin as FloorSkin} from '../../../lib/loopforge/shifts/skin';
 import floor from '../../../lib/loopforge/intro/geometry.json';
 import {tutorialOrders} from '../../../lib/loopforge/intro/playable-score';
@@ -54,11 +54,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
   }
   cam.time=t;
   const s=cam.scale,project=factoryProjection(w,h,cam.x,cam.y,s,iso);
-  function sprite(name:string,index:number,px:number,py:number,k=s/64){
-    const im=bank.images[name],cell=bank.art.sheets[name];if(!im||!cell)return;
-    const [width,height,cols,ox,oy]=cell;
-    ctx.drawImage(im,(index%cols)*width,Math.floor(index/cols)*height,width,height,Math.round(px-ox*k),Math.round(py-oy*k),width*k,height*k);
-  }
+  const sprite=(key:string,n:number,x:number,y:number,k=s/64)=>drawFactorySprite(ctx,bank.images,bank.art.sheets,key,n,x,y,k);
   const entries:{depth:number;draw:()=>void}[]=[];
   const queue=(depth:number,draw:()=>void)=>entries.push({depth,draw});
   const pressing=actors.some(a=>/^cortex-\d+-forge$/.test(a.action));

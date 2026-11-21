@@ -2,7 +2,12 @@
 import {freshCampaign} from '@/lib/loopforge/shifts/campaign-save';
 import {PlaybackTape} from '@/lib/loopforge/shifts/playback';
 import {factoryProjection,cutOpacity,roomCut} from '@/lib/loopforge/factory-scene';
-import {floorView} from '@/lib/loopforge/shifts/painter';
+import {paint as paintDayOne} from '@/components/loopforge/intro/paint';
+import atlas from '../public/loopforge-intro/sprites.json';
+import {materialFiles} from '@/lib/loopforge/room-material';
+import type {Scene} from '@/lib/loopforge/shifts/wire';
+import type {ArtView} from '@/lib/loopforge/shifts/skin';
+import {floorView,paint as paintDayTwo} from '@/lib/loopforge/shifts/painter';
 import {type Command} from '@/lib/loopforge/shifts/contract';
 
 test('rewind crosses the overnight handoff and restores the recorded call topic',()=>{
@@ -53,4 +58,31 @@ test.each([[390,844],[1280,800]])('both days project fixed landmarks identically
     }
   }
   expect(cutOpacity(-roomCut.out)).toBe(0);expect(cutOpacity(0)).toBe(1);expect(cutOpacity(roomCut.into)).toBe(0);
+});
+
+test.each(['security','conveyor'] as const)('both episode painters draw the same %s scenery at a matched shot',room=>{
+  const w=960,h=580,camera=floorView(w,h,room),calls:unknown[][]=[];
+  let polygon:unknown[][]=[];
+  const assets=[...Object.keys(atlas.sheets),...materialFiles,'queueRail'];
+  const images=Object.fromEntries(assets.map(name=>[name,{name} as unknown as CanvasImageSource]));
+  const ctx=new Proxy({} as CanvasRenderingContext2D,{
+    get(target,key){
+      if(key==='drawImage')return (image:{name:string},...rect:number[])=>calls.push([image.name,...rect]);
+      if(key==='beginPath')return ()=>{polygon=[];};
+      if(key==='moveTo'||key==='lineTo')return (...coords:number[])=>polygon.push([key,...coords]);
+      if(key==='fill')return ()=>calls.push(['fill',target.fillStyle,...polygon]);
+      if(key==='fillRect')return (...coords:number[])=>calls.push([key,...coords]);
+      return Reflect.get(target,key)??(()=>{});
+    },
+  });
+  const skin={draw:jest.fn(),decorate:jest.fn(),world:jest.fn()};
+  const dayOne={tick:0,hash:'',state:{world:{jammed:false,layout:'factory',gate_mm:0,outputs:0},agents:[],events:[],items:[]}};
+  paintDayOne(ctx,w,h,dayOne,48,{art:atlas,images,world:skin.world},'sprites',{...camera,time:48},0,undefined,1,true);
+  const first=calls.splice(0);
+  const scene={world:{stage:'work',passageGateMm:0},agents:[],items:[],events:[]} as unknown as Scene;
+  const view={gate:null,posts:[],handoffs:[],speeches:[],returnedOriginal:[],rack:{items:[]}} as unknown as ArtView;
+  paintDayTwo(ctx,w,h,scene,room,0,images,skin,view,{stroke:0,deskCut:false,camera:{...camera,last:0},paused:true});
+  expect(calls).toEqual(first);
+  expect(calls.some(([name])=>name==='desk-front')).toBe(true);
+  expect(calls.some(([name])=>name==='press-back')).toBe(true);
 });

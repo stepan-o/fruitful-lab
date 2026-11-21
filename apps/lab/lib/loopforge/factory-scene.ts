@@ -26,6 +26,13 @@ export function easeCamera(camera:{x:number;y:number;scale:number},x:number,y:nu
   camera.x+=(x-camera.x)*blend;camera.y+=(y-camera.y)*blend;camera.scale+=(scale-camera.scale)*blend;
 }
 
+export function drawFactorySprite(ctx:CanvasRenderingContext2D,images:Record<string,CanvasImageSource>,
+  sheets:Record<string,number[]>,name:string,index:number,x:number,y:number,k:number){
+  const image=images[name],cell=sheets[name];if(!image||!cell)return;
+  const [w,h,cols,pivotX,pivotY]=cell;
+  ctx.drawImage(image,index%cols*w,Math.floor(index/cols)*h,w,h,Math.round(x-pivotX*k),Math.round(y-pivotY*k),w*k,h*k);
+}
+
 // All fixed geometry and registration points are painted here in factory metres.
 // Moving workers and work signals join the same depth queue in each episode.
 export function drawFactory(ctx:CanvasRenderingContext2D,w:number,h:number,project:Project,s:number,

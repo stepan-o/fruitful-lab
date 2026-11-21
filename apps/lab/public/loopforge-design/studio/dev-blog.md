@@ -2,6 +2,16 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 21 November 2026 · The held line goes to UI
+
+The owner selected E’s matte, backlit checkpoint, then approved E1. Its cyan blade sits on LIMEN’s right wrist and angles back along the staff side. His square jaw and ed’s swept profile distinguish the two at a glance. The [approved portrait](/loopforge-design/missing-id-bob/v1/index.html#held-proofs) brings the closed gate above bob’s open palm. [UI DESIGNER takes the case](https://github.com/stepan-o/fruitful-lab/blob/codex/art-missing-id-bob/docs/loopforge/production/missing-id-bob/held-line-r1/UI-DESIGNER.md) from the marked desk through inspection, choice and return.
+
+## 21 November 2026 · An empty place on the counter
+
+In the first Missing ID painting, bob had an empty hand but Security could have been any factory desk. The owner called out the room, the missing staff and the absence of a stopped entrance line. The next composition put ed over the register and gave gus a raised palm at a barred lane, with jo first behind the stripe. The owner preferred that closer setup to a wider figure study.
+
+LIMEN’s own Security Operations painting supplied his weight, dull steel and right-forearm blade. In the [revised event plates](/loopforge-design/missing-id-bob/v1/index.html) the barrel of his cuff turns back to the staff side. The portrait stacks the waiting line above the counter because a crop of the landscape would take jo and gus out of the frame. Both revised compositions await owner art review.
+
 ## 21 November 2026 · Between the call and the stroke
 
 Five ticks after the Producer clears Forge, max is still waiting beside the loaded press. At tick ten he receives LIMEN’s call. The first [Forge UI study](/loopforge-design/forge-study/index.html) holds the camera across that interval and pairs the same views on desktop and phone. Start with the three clean stills, then compare the replay and annotations. The owner chose crew behavior as the signal to follow. The visual reading of the proposed poses is awaiting owner review.

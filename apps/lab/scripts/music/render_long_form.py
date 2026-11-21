@@ -10,26 +10,13 @@ TEMPO = 164
 OUT = kit.PUBLIC / 'long-form'
 # Each block is 16 bars. The duration of each bar always follows the common fast grid.
 FORM = {
-    'menu': ('First contact', 'The reply', 'Chord turn', 'Kit in the clear',
-             'Quiet double', 'Full break', 'Bass in the clear', 'Return'),
+    'menu': ('Switch on', 'Short reply', 'Pedal and turnaround', 'Sixteen bars for the hands',
+             'Lean reprise', 'Full pocket', 'Bass call and answer', 'Return'),
     'options': ('Hands on hats', 'Rim conversation', 'Hats and rests',
                 'Low tom answer', 'Broken two-step', 'Pass it back'),
     'conveyor': ('Open weight', 'Long answer', 'Low current',
                  'Displaced accent', 'Upper echo', 'Return to weight'),
 }
-CHORD = {
-    'Dm9': (53, 60, 64, 69), 'Dm6/9': (53, 59, 64, 69),
-    'Gm9': (53, 58, 62, 69), 'Bbmaj9': (53, 57, 60, 62),
-    'Em7b5': (55, 58, 62, 64), 'A7b9': (55, 58, 61, 64),
-    'Fmaj9': (53, 57, 64, 67), 'G13': (53, 59, 64, 69),
-}
-BASS_ROOT = {'Dm9': 38, 'Dm6/9': 38, 'Gm9': 31, 'Bbmaj9': 34,
-             'Em7b5': 40, 'A7b9': 33, 'Fmaj9': 41, 'G13': 31}
-HOME = ('Dm9', 'Dm6/9', 'Gm9', 'Dm9')
-AWAY = ('Bbmaj9', 'Gm9', 'Em7b5', 'A7b9')
-LIGHT = ('Fmaj9', 'G13', 'Bbmaj9', 'A7b9')
-
-
 def place(bar, events):
     def hit(at, voice, level, note=0, dur=0., pan=0.):
         events.append(Hit(bar * 4 + at, voice, note, dur, level, pan))
@@ -66,45 +53,93 @@ def breakbeat(hit, bar, style, energy=1):
             hit(3.78, 'ghost', .155 * energy, pan=.16)
 
 
+# Rooted pedal chords. A moving inner voice supplies colour in a short stab.
+MENU_CHORDS = ((53, 57, 64), (53, 59, 64), (55, 60, 65), (55, 61, 64))
+CALL = (0, .25, .50, .75, 1)
+LENGTHS = (.21, .21, .21, .21, 2.05)
+
+
+def menu_groove(bar, hit, solo=False):
+    # The same foot pattern grounds both the syncopated bass and the hands.
+    hit(0, 'foot', .84)
+    hit(2.5, 'foot', .62)
+    for beat in (1, 3):
+        hit(beat, 'snare', .66 if beat == 3 else .59, (bar + int(beat)) % 4, pan=.06)
+    for i in range(8):
+        if solo and i in (3, 7):  # Leave these positions for the soloist's right hand.
+            continue
+        hit(i * .5, 'hat', (.135, .054, .085, .074)[i % 4], (i + bar) % 4, pan=-.24)
+    if not solo and bar % 4 in (1, 3):
+        hit(1.76, 'ghost', .17, bar % 4, pan=-.12)
+    if not solo and bar % 8 == 7:
+        hit(3.50, 'open', .15, pan=.23)
+        hit(3.76, 'ghost', .23, 2, pan=.1)
+
+
+def menu_drum_feature(pos, hit):
+    # Four four-bar sentences. Within each, a call, two answers and a turnaround.
+    section, measure = divmod(pos, 4)
+    strokes = (
+        ((.25, .5, .75), (1.5, 1.75, 2.25, 2.75), (.5, .75, 1.5), (2.75, 3.25, 3.5, 3.75)),
+        ((.25, .5, .75), (1.5, 1.75, 1.875, 2.25), (.75, 1.5, 2.25, 2.75), (2.25, 2.75, 3.5, 3.625, 3.75)),
+        ((.25, .5, .75), (.5, 1.5, 2.25), (.75, 1.25, 2.75, 3.5), (1.75, 2.25, 2.75, 3.25, 3.75)),
+        ((.25, .5, .75), (.75, 1.5, 1.75, 2.75), (.5, 1.75, 2.25, 3.5), (2, 2.25, 2.5, 2.75, 3.5, 3.75)),
+    )[section][measure]
+    hands = (('rim', 'rim', 'tom', 'ghost'), ('ghost', 'snare', 'ghost', 'rim'),
+             ('tom', 'tom', 'rim', 'open'), ('rim', 'ghost', 'tom', 'snare'))[section]
+    for i, at in enumerate(strokes):
+        voice = hands[(i + measure) % 4]
+        note = (79, 74, 70, 65, 61, 57)[i] if voice in ('tom', 'rim') else (0 if voice == 'open' else i % 4)
+        gain = (.42, .23, .34, .27, .37, .46)[i]
+        hit(at, voice, gain, note, pan=(-.23, .18, -.08, .23)[i % 4])
+    if measure == 0:
+        # The bass drum supplies the first attack of the familiar five-hit rhythm.
+        hit(1, 'tom', .43, 61, pan=.16)
+
+
 def menu(bar, hit):
     block, pos = divmod(bar, 16)
-    form = (HOME, HOME, AWAY, HOME, LIGHT, AWAY, AWAY, HOME)[block]
-    harmony = form[pos // 4]
-    if block != 6:  # Bass-only passage leaves the drummer out.
-        style = ('roll', 'roll', 'skip', 'hands', 'light', 'skip', 'light', 'roll')[block]
-        breakbeat(hit, bar, style, (.92, .98, 1.02, .86, .67, 1.06, 0, .93)[block])
+    cell = pos % 8
+    bass_only = block == 6 and pos < 4
+    if not bass_only:
+        menu_groove(bar, hit, solo=block == 3)
     if block == 3:
-        if pos % 4 in (0, 2):
-            line(hit, (81, 76, 72, 65), (.52, .79, 1.53, 2.78), (0.,)*4,
-                 .24 if pos < 8 else .18, 'rim' if pos < 8 else 'tom')
+        menu_drum_feature(pos, hit)
         return
-    root = BASS_ROOT[harmony]
-    if block == 6:
-        figure = (root, root + 7, root + 10, root + 7) if pos % 4 == 0 else (root, root + 3)
-        if pos % 4 == 3:
-            line(hit, (33, 36, 37), (.5, 2.27, 3.5), (.95, .5, .45), .48, 'bass')
+
+    # State the hook every eight bars. The four-bar bass feature plays it two octaves down.
+    if cell == 0:
+        if bass_only:
+            line(hit, tuple(n - 24 for n in DESCENT), CALL, LENGTHS, .66, 'bass')
         else:
-            line(hit, figure, (0, 1.78, 2.54, 3.53)[:len(figure)],
-                 (1.17, .50, .61, .34)[:len(figure)], .55, 'bass')
+            line(hit, DESCENT, CALL, LENGTHS, .53, 'signal')
+    elif cell == 4 and block in (1, 2, 4, 5, 6, 7):
+        # The reply borrows the final two notes and leaves the next call clear.
+        answer = (61, 64, 67, 69) if block in (1, 5, 7) else (61, 64, 67)
+        n = len(answer)
+        line(hit, answer, (.5, 1.25, 2.5, 3.25)[:n], (.38, .27, .47, .48)[:n], .31, 'signal')
+
+    if bass_only:
+        if pos:
+            line(hit, (38, 45, (41, 40, 37)[pos - 1]), (0, 2.5, 3.25), (.85, .37, .42), .58, 'bass')
         return
-    hit(0, 'bass', .48, root, 2.12 if block == 4 else 1.38)
-    if pos % 4 != 2:
-        hit(2.54, 'bass', .39, root + (7 if pos % 2 else 0), .81)
-    if pos % 2 == 0:
-        for i, note in enumerate(CHORD[harmony]):
-            hit((1.5 if pos % 4 == 0 else .75) + .018 * i, 'tine',
-                .145 if block != 4 else .105, note, 3.44, (i - 1.5) * .22)
-    # Give the opening a recognisable, rhythmically independent answer.
-    if pos == 0 and block in (0, 7):
-        line(hit, DESCENT, (0, .25, .50, .75, 1), (.31, .27, .27, .27, 3.2), .43)
-    elif block in (1, 2, 4, 5, 7) and pos in (2, 10):
-        notes = (64, 69, 72, 71) if block in (1, 7) else (62, 65, 69, 67)
-        line(hit, notes, (.77, 1.53, 2.78, 3.5), (.56, .92, .48, 1.55),
-             .23 if block == 4 else .33)
-    elif block in (1, 4, 5) and pos in (5, 13):
-        line(hit, (69, 67, 64), (.52, 2, 3.27), (.93, .72, 1.5), .25)
-    elif pos == 14 and block in (0, 2, 7):
-        line(hit, (64, 61), (1.78, 2.52), (.45, 1.55), .255)
+
+    # D remains underneath the hook. A-G-D and the occasional A turnaround
+    # put some answering motion in the bass without moving the kick.
+    root = 38
+    if block in (2, 5, 7) and cell in (5, 6, 7):
+        root = (43, 38, 33)[cell - 5]
+    hit(.125, 'bass', .60, root, 1.06 if cell % 2 == 0 else .67)
+    hit(2.5, 'bass', .47, root + (7 if cell in (2, 6) else 0), .54)
+    if cell in (3, 7):
+        hit(3.50, 'bass', .42, root + (7 if cell == 3 else 5), .44)
+    chord = MENU_CHORDS[(cell // 2 + (1 if block in (2, 5) else 0)) % 4]
+    stabs = (.75, 2.75) if cell in (1, 5) else (1.5,) if cell % 2 == 0 else (2.75,)
+    if block == 4 and cell % 2:
+        return
+    for at in stabs:
+        for i, note in enumerate(chord):
+            hit(at, 'chop', .21 if cell % 2 else .16, note, .44 if at == .75 else .29, (i - 1) * .16)
 
 
 def options(bar, hit):
@@ -199,10 +234,21 @@ def render(name, masters):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--masters', required=True, type=Path)
+    parser.add_argument('--menu-only', action='store_true',
+                        help='Replace the Menu recording and retain the other measured exports.')
     args = parser.parse_args()
     args.masters.mkdir(parents=True, exist_ok=True)
     OUT.mkdir(parents=True, exist_ok=True)
-    record = {'version':'long-form-01', 'tempo':TEMPO, 'sampleRate':SR, 'meter':'4/4',
+    manifest = OUT / 'session.json'
+    if args.menu_only:
+        record = json.loads(manifest.read_text())
+        record['tracks'] = [render('menu', args.masters) if track['theme'] == 'menu' else track
+                            for track in record['tracks']]
+    else:
+        record = {'version':'long-form-01', 'tempo':TEMPO, 'sampleRate':SR, 'meter':'4/4',
               'providerRequests':0, 'costUSD':0, 'source':'original local synthesis',
               'tracks':[render(name, args.masters) for name in FORM]}
-    (OUT / 'session.json').write_text(json.dumps(record, indent=2) + '\n')
+    for track in record['tracks']:
+        if track['theme'] == 'menu':
+            track['studyId'] = 'LF-MUS-LONG-02-MENU'
+    manifest.write_text(json.dumps(record, indent=2) + '\n')

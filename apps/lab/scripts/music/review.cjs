@@ -65,6 +65,11 @@ async function check(browser, width, height) {
     assert.equal(await media.evaluate(a => a.loop), false);
     await deck.locator('input').check();
   }
+  await menu.getByRole('button', {name:/Drum feature/}).click();
+  await page.waitForFunction(() => {
+    const a = document.querySelector('#music-long-menu audio');
+    return !a.paused && a.currentTime >= 192 * 60 / 164 - .01 && a.currentTime < 73;
+  });
   await menu.getByRole('button', {name:/Bass only/}).click();
   await page.waitForFunction(() => {
     const a = document.querySelector('#music-long-menu audio');

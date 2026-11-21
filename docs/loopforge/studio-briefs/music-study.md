@@ -8,9 +8,11 @@ The owner selected 164 BPM for Menu and Options and an 82 BPM half-time feel for
 
 | Theme | Length | What changes over a complete cycle |
 | --- | --- | --- |
-| [Main menu](/stepanoskin/loopforge/design#music-long-menu) | 128 bars · 3:07 | Bars 1–16 establish the suspended descent. Bars 17–32 introduce a rising answer. Bars 33–48 change the harmonic route through B-flat, G minor, E half-diminished and A dominant. Bars 49–64 expose the kit. Bars 65–96 breathe, then regain weight. Bars 97–112 leave the bass alone. Bars 113–128 bring the opening back. |
+| [Main menu](/stepanoskin/loopforge/design#music-long-menu) | 128 bars · 3:07 | A dry lead states A–G–F–E–C♯ every eight pitched bars. Short chord stabs move against low D and the kick anchors beat one and the “and” of three. Bars 49–64 put the hook in the kit through four phrases of rims, snare doubles, toms and traded fills. The lead returns at bar 65. At bar 97 bass takes a four-bar solo before the band answers. |
 | [Options](/stepanoskin/loopforge/design#music-long-options) | 96 bars · 2:20 | One hand figure passes through hats, rim and low tom. Ghosts drop out during the quieter third group. The fifth group displaces the kicks, and the last divides one phrase across the kit before the hats take over again. |
 | [Conveyor](/stepanoskin/loopforge/design#music-long-conveyor) | 96 bars · 2:20 | Sustained and clipped bass phrases trade places under the half-time snare. A thin passage opens a gap, a displaced accent moves the kick response, and a high reply gives the returning sub weight. All sections represent steady work. |
+
+**Menu listening verdict, 21 November.** The owner found the first long Menu too dreamy and melancholic. Some kick placements felt off, the tune disappeared in the variations and the break repeated without enough active drumming. The revised Menu replaces the first in the same player. Its sound and arrangement await the next listening verdict.
 
 First listen across a whole cycle. On a second pass, choose the first passage you would shorten, develop or remove. Leave an accepted candidate repeating during an ordinary longer session and record the first recurring gesture that interrupts the task. Hour-scale endurance, commercial instrumentation and in-game speech are open. The repeat control is an audition aid. The existing fixture and matched-picture scene continue to test events independently.
 

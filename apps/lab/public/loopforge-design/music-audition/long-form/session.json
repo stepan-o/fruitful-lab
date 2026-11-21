@@ -14,21 +14,22 @@
       "frames": 8991219,
       "durationSeconds": 187.3170625,
       "blocks": [
-        "First contact",
-        "The reply",
-        "Chord turn",
-        "Kit in the clear",
-        "Quiet double",
-        "Full break",
-        "Bass in the clear",
+        "Switch on",
+        "Short reply",
+        "Pedal and turnaround",
+        "Sixteen bars for the hands",
+        "Lean reprise",
+        "Full pocket",
+        "Bass call and answer",
         "Return"
       ],
-      "sha256": "f01f9ca6a565203868c5860c10432ecd7cfc117576384d4d35e65b4a9c8d1ce2",
-      "masterSha256": "b9811263e63af0aae569a7a7e78d6d8ceb0022ac26b801ecf8ff38e26914bbd4",
+      "sha256": "0c6754a4c2c422d22128ff44d80346e579c0769419f41993d2234d3176f4adee",
+      "masterSha256": "4dcc2d0b6694a97439326c4303e441d700fe6dc3c244f399c52bc0d93d4ae2e5",
       "meter": {
-        "lufs": -16.97,
-        "dBTP": -3.82
-      }
+        "lufs": -16.95,
+        "dBTP": -4.94
+      },
+      "studyId": "LF-MUS-LONG-02-MENU"
     },
     {
       "theme": "options",

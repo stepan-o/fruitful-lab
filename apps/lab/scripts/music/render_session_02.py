@@ -132,6 +132,23 @@ def perform(events, bpm, *, bars=BARS, ending_fade=True):
 
     @lru_cache(maxsize=256)
     def instrument(name, note, length):
+        if name == 'foot':
+            # A shorter tail leaves space for the second bass attack.
+            full = drums['kick'][0]
+            t = kit.time_axis(.155)
+            beater = .12 * np.sin(kit.TAU * 990 * t) * np.exp(-t / .007)
+            return kit.soften(full[:len(t)] * np.exp(-t / .16) + beater, .0007, .016)
+        if name in ('signal', 'chop'):
+            # Dry pulse lead and damped chord chops sit on the direct bus.
+            t = kit.time_axis(length * beat)
+            phase = kit.TAU * kit.frequency(note) * t
+            if name == 'signal':
+                wave = np.sin(phase) + .42 * np.sin(2 * phase) + .24 * np.sin(3 * phase)
+                envelope = .39 + .55 * np.exp(-t / .11)
+            else:
+                wave = np.sin(phase + .9 * np.exp(-t / .045) * np.sin(3 * phase))
+                envelope = np.exp(-t / .055)
+            return kit.soften(wave * envelope, .002, min(.038, t[-1] / 3))
         if name in drums:
             return drums[name][note]
         if name == 'rim':

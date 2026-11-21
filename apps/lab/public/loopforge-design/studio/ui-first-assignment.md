@@ -54,6 +54,8 @@ Source application: Sylvester, *Designing Games*, chapter 9, “Visual Hierarchy
 
 **Art delivery · E1 approved · 21 November 2026.** UI DESIGNER can assemble the dedicated event-screen study. [Read the return handoff](https://github.com/stepan-o/fruitful-lab/blob/codex/art-missing-id-bob/docs/loopforge/production/missing-id-bob/held-line-r1/UI-DESIGNER.md), [open the approved landscape and portrait](/loopforge-design/missing-id-bob/v1/index.html#held-line), and [check the placement and device proofs](/loopforge-design/missing-id-bob/v1/index.html#held-proofs). Show the desk marker, opening without spending, issuing the day pass when available, and returning to the same Security view. The owner reviews the assembled interface next.
 
+**UI delivery.** The owner-approved E1 illustrations are assembled in the [Security event-screen study](/loopforge-design/security-event/index.html). Use the desk marker to open the decision, return to the same camera or inspect the pass outcome. The review navigation includes the expired incident.
+
 ## Paired review matrix
 
 Use this as the starting matrix, then agree a bounded selection with the owner. Show the same game state and player job in desktop and phone compositions. A static sequence can explain interaction without becoming a clickable prototype.

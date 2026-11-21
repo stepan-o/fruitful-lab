@@ -22,3 +22,9 @@ The ordinary board publisher includes the same panel through forge_study_entry.p
 The hosted recorder (capture.cjs) restores a seeded Day 2 through the normal Resume shift button on the canonical player in a fresh browser context, then selects Forge on phone and issues Clear. The [capture run](https://github.com/stepan-o/fruitful-lab/actions/runs/44873804988) retains the full source JPEGs and measured station labels. The public package contains review-sized WebP copies at their original pixel dimensions. The measurement precedes each screenshot, so its tick can differ from the visual frame. The exact-tick painter replay below each hosted example is a separate evidence source.
 
 Use check-review.cjs with a review URL and a Playwright installation to test real keyboard activation, the paired static plates, all media and narrow-screen layout. Acceptance of the underlying experience belongs to the owner.
+
+## Missing ID at Security
+
+[Review the assembled event](/loopforge-design/security-event/index.html). The controls move between static study frames. The case screen uses ART’s owner-approved E1 landscape and native portrait. State and floor imagery come from the Day 2 regular appointment on the same simulation baseline as the Forge study. The open case is tick 7541. Issuing the pass leads to bob’s recorded crossing and jo’s call at tick 7586. In the independent no-action run the case closes at tick 7821. The review’s expiry frame represents that run without making the reader wait on a timer. Closing the case returns to the same desk. The player build and its clock are separate from this static study.
+
+To refresh the three floor compositions and their public state record, run capture-security.cjs with the same lab, art and canvas dependencies as replay.cjs. Its second argument is apps/lab/public/loopforge-design/security-event. Keep the clean E1 paintings at the paths in the ART handoff.

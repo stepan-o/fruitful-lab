@@ -10,13 +10,15 @@ TEMPO = 164
 OUT = kit.PUBLIC / 'long-form'
 # Each block is 16 bars. The duration of each bar always follows the common fast grid.
 FORM = {
-    'menu': ('Switch on', 'Short reply', 'Pedal and turnaround', 'Sixteen bars for the hands',
-             'Lean reprise', 'Full pocket', 'Bass call and answer', 'Return'),
+    'menu': ('Call and first answer', 'Answers in conversation', 'Call and chord turn', 'Sixteen bars for the hands',
+             'Hook returns', 'Upper and lower replies', 'Bass and reed exchange', 'Return'),
     'options': ('Hands on hats', 'Rim conversation', 'Hats and rests',
                 'Low tom answer', 'Broken two-step', 'Pass it back'),
     'conveyor': ('Open weight', 'Long answer', 'Low current',
                  'Displaced accent', 'Upper echo', 'Return to weight'),
 }
+
+
 def place(bar, events):
     def hit(at, voice, level, note=0, dur=0., pan=0.):
         events.append(Hit(bar * 4 + at, voice, note, dur, level, pan))
@@ -53,8 +55,6 @@ def breakbeat(hit, bar, style, energy=1):
             hit(3.78, 'ghost', .155 * energy, pan=.16)
 
 
-# Rooted pedal chords. A moving inner voice supplies colour in a short stab.
-MENU_CHORDS = ((53, 57, 64), (53, 59, 64), (55, 60, 65), (55, 61, 64))
 CALL = (0, .25, .50, .75, 1)
 LENGTHS = (.21, .21, .21, .21, 2.05)
 
@@ -97,49 +97,90 @@ def menu_drum_feature(pos, hit):
         hit(1, 'tom', .43, 61, pan=.16)
 
 
+# The complete opening marks large arrivals. Its answers start from the held C-sharp
+# or the E above it. Each row is (beat within the phrase, MIDI note, length in beats).
+MENU_CALL_BARS = (0, 32, 64, 112)
+REPLIES = {
+    'lift': ((.5, 61, .65), (1.5, 64, .85), (2.75, 65, .4), (3.5, 69, 1.6),
+             (5.5, 67, .7), (6.5, 64, 1.7), (9, 62, 1.35)),
+    'turn': ((0, 64, 1.45), (2, 67, .55), (2.75, 69, .75), (4, 72, 1.7),
+             (6, 71, .55), (6.75, 69, .8), (8.5, 65, 1.2), (10, 64, 1.4)),
+    'thread': ((1, 69, 1.6), (3.25, 67, .5), (4, 64, 1.8), (6.5, 67, .8),
+               (8, 70, 1.65), (10.25, 69, .45), (11, 65, .75), (12, 64, 1.8)),
+    'low': ((0, 57, 1.8), (2.5, 60, .75), (3.5, 62, 1.65), (5.75, 64, .65),
+            (7, 67, 1.25), (9, 65, .65), (10, 62, 1.25)),
+}
+# The second statement of a reply can close on another scale degree, giving the
+# next phrase a different point of departure. Placement is authored in zero-based bars.
+MENU_ANSWERS = {
+    4: ('lift', 62), 11: ('turn', 64),
+    16: ('low', 64), 21: ('thread', 62), 27: ('lift', 69),
+    36: ('turn', 67), 42: ('thread', 61),
+    68: ('low', 62), 75: ('lift', 65),
+    80: ('turn', 69), 85: ('thread', 67), 91: ('low', 61),
+    100: ('lift', 62), 105: ('thread', 64),
+    116: ('turn', 65), 123: ('low', 61),
+}
+# Bass root and the upper voices of each keys voicing, one chord per two bars.
+MENU_VOICINGS = {
+    'Dm9': (38, (53, 57, 60, 64)), 'Dm6/9': (38, (53, 57, 59, 64)),
+    'C/D': (38, (52, 55, 60, 64)), 'G13': (43, (53, 57, 59, 64)),
+    'Gm9': (43, (53, 57, 58, 62)), 'Bbmaj9': (34, (53, 57, 60, 62)),
+    'A7b9': (33, (52, 55, 58, 61)),
+}
+MENU_CHANGES = (
+    ('Dm9', 'Dm6/9', 'C/D', 'Dm6/9', 'Dm9', 'G13', 'Gm9', 'Dm6/9'),
+    ('Dm9', 'C/D', 'Dm6/9', 'G13', 'Gm9', 'Bbmaj9', 'Gm9', 'A7b9'),
+    ('Dm9', 'Dm6/9', 'Gm9', 'Bbmaj9', 'G13', 'Gm9', 'Dm6/9', 'A7b9'),
+    (),  # Solo drums.
+    ('Dm9', 'Dm6/9', 'C/D', 'Dm6/9', 'Dm9', 'C/D', 'Gm9', 'Dm6/9'),
+    ('Dm9', 'G13', 'Gm9', 'Bbmaj9', 'Dm6/9', 'G13', 'Gm9', 'A7b9'),
+    ('Dm9', 'Dm6/9', 'Dm9', 'C/D', 'Gm9', 'Bbmaj9', 'Gm9', 'A7b9'),
+    ('Dm9', 'Dm6/9', 'C/D', 'Gm9', 'Dm9', 'G13', 'Dm6/9', 'A7b9'),
+)
+
+
 def menu(bar, hit):
     block, pos = divmod(bar, 16)
-    cell = pos % 8
-    bass_only = block == 6 and pos < 4
-    if not bass_only:
-        menu_groove(bar, hit, solo=block == 3)
+    if 96 <= bar < 100:
+        # Four bars of answering bass. The rhythmic echo opens out after the E.
+        solo = (
+            ((45, 43, 40), (0, .5, 1.5), (.43, .77, 2.1)),
+            ((38, 41, 45), (0, 1.5, 2.5), (.9, .65, 1.0)),
+            ((43, 40, 37), (.5, 2, 3), (.85, .7, .8)),
+            ((38, 45, 40, 37), (0, 1.5, 2.5, 3.5), (.9, .65, .65, .4)),
+        )[pos]
+        line(hit, *solo, .60, 'bass')
+        return
+
+    menu_groove(bar, hit, solo=block == 3)
     if block == 3:
         menu_drum_feature(pos, hit)
         return
 
-    # State the hook every eight bars. The four-bar bass feature plays it two octaves down.
-    if cell == 0:
-        if bass_only:
-            line(hit, tuple(n - 24 for n in DESCENT), CALL, LENGTHS, .66, 'bass')
-        else:
-            line(hit, DESCENT, CALL, LENGTHS, .53, 'signal')
-    elif cell == 4 and block in (1, 2, 4, 5, 6, 7):
-        # The reply borrows the final two notes and leaves the next call clear.
-        answer = (61, 64, 67, 69) if block in (1, 5, 7) else (61, 64, 67)
-        n = len(answer)
-        line(hit, answer, (.5, 1.25, 2.5, 3.25)[:n], (.38, .27, .47, .48)[:n], .31, 'signal')
+    if bar in MENU_CALL_BARS:
+        line(hit, DESCENT, CALL, LENGTHS, .50, 'signal')
+    if bar in MENU_ANSWERS:
+        name, landing = MENU_ANSWERS[bar]
+        melody = REPLIES[name]
+        for i, (at, note, duration) in enumerate(melody):
+            last = i == len(melody) - 1
+            level = .40 if i in (0, 3) or last else .34
+            hit(at, 'reply', level, landing if last else note, duration, .09)
 
-    if bass_only:
-        if pos:
-            line(hit, (38, 45, (41, 40, 37)[pos - 1]), (0, 2.5, 3.25), (.85, .37, .42), .58, 'bass')
-        return
+    root, chord = MENU_VOICINGS[MENU_CHANGES[block][pos // 2]]
+    hit(.125, 'bass', .60, root, 1.06 if pos % 2 == 0 else .67)
+    hit(2.5, 'bass', .47, root + (7 if pos % 4 == 2 else 0), .54)
+    if pos % 4 == 3:
+        hit(3.50, 'bass', .40, root + (7 if pos % 8 == 3 else 5), .44)
 
-    # D remains underneath the hook. A-G-D and the occasional A turnaround
-    # put some answering motion in the bass without moving the kick.
-    root = 38
-    if block in (2, 5, 7) and cell in (5, 6, 7):
-        root = (43, 38, 33)[cell - 5]
-    hit(.125, 'bass', .60, root, 1.06 if cell % 2 == 0 else .67)
-    hit(2.5, 'bass', .47, root + (7 if cell in (2, 6) else 0), .54)
-    if cell in (3, 7):
-        hit(3.50, 'bass', .42, root + (7 if cell == 3 else 5), .44)
-    chord = MENU_CHORDS[(cell // 2 + (1 if block in (2, 5) else 0)) % 4]
-    stabs = (.75, 2.75) if cell in (1, 5) else (1.5,) if cell % 2 == 0 else (2.75,)
-    if block == 4 and cell % 2:
-        return
-    for at in stabs:
+    # A single attack can carry across the barline. Two quieter beat-three
+    # entries in each 16 bars leave room around the previous phrase's ending.
+    if pos % 2 == 0:
+        at = 2 if pos in (6, 12) else 0
+        duration = (4.5 if at else 6.25) if block != 4 else 3.75
         for i, note in enumerate(chord):
-            hit(at, 'chop', .21 if cell % 2 else .16, note, .44 if at == .75 else .29, (i - 1) * .16)
+            hit(at, 'reedkeys', .145 if block != 4 else .125, note, duration, (i - 1.5) * .17)
 
 
 def options(bar, hit):
@@ -250,5 +291,5 @@ if __name__ == '__main__':
               'tracks':[render(name, args.masters) for name in FORM]}
     for track in record['tracks']:
         if track['theme'] == 'menu':
-            track['studyId'] = 'LF-MUS-LONG-02-MENU'
+            track['studyId'] = 'LF-MUS-LONG-03-MENU'
     manifest.write_text(json.dumps(record, indent=2) + '\n')

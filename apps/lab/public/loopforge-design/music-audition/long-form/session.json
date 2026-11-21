@@ -14,22 +14,22 @@
       "frames": 8991219,
       "durationSeconds": 187.3170625,
       "blocks": [
-        "Switch on",
-        "Short reply",
-        "Pedal and turnaround",
+        "Call and first answer",
+        "Answers in conversation",
+        "Call and chord turn",
         "Sixteen bars for the hands",
-        "Lean reprise",
-        "Full pocket",
-        "Bass call and answer",
+        "Hook returns",
+        "Upper and lower replies",
+        "Bass and reed exchange",
         "Return"
       ],
-      "sha256": "0c6754a4c2c422d22128ff44d80346e579c0769419f41993d2234d3176f4adee",
-      "masterSha256": "4dcc2d0b6694a97439326c4303e441d700fe6dc3c244f399c52bc0d93d4ae2e5",
+      "sha256": "0dd36e7ad8cc1948ba2a1acfb9a18bad474bb3f799268d72d78b80b95ce59151",
+      "masterSha256": "d9bfe0b0d7c7f92c15fff4718930e9cc130d1af0ff30cd44d8a0557ec297271d",
       "meter": {
-        "lufs": -16.95,
-        "dBTP": -4.94
+        "lufs": -16.96,
+        "dBTP": -5.22
       },
-      "studyId": "LF-MUS-LONG-02-MENU"
+      "studyId": "LF-MUS-LONG-03-MENU"
     },
     {
       "theme": "options",

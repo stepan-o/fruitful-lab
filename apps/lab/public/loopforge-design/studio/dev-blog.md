@@ -2,6 +2,10 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 21 November 2026 · Giving the Menu a second melody
+
+The second Menu brought the drummer forward, but the owner found the returning lead too insistent and the chords too abrupt. The new opening lets the held C♯ start a second melody. The reply climbs, doubles back and later enters from a lower register while the keys ring through changes of harmony. The complete lead statement next appears at bar 33. [Hear the Menu](/stepanoskin/loopforge/design#music-long-menu).
+
 ## 21 November 2026 · Putting the Menu hook in the drummer’s hands
 
 The owner heard a wistful Menu and lost the theme on the way to an empty drum break. Its replacement gives the kick two dependable footholds per bar. A short pulse lead plays the descent, and the drummer takes its five attacks through rims, rolls and toms before handing it back. The owner can hear that exchange from bar 49. [Play the revised Menu](/stepanoskin/loopforge/design#music-long-menu).

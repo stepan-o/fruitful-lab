@@ -24,6 +24,15 @@ function GameSession({media,legacyReview=false}:Props) {
   const [run,setRun]=useState<Campaign|null>(null), [menu, setMenu] = useState(true), [settings, setSettings] = useState(false);
   const [dev,setDev]=useState(false),[starting,setStarting]=useState(false),[error,setError]=useState("");
   const [clock,setClock]=useState(clockText(openingMinute));
+  const shell=useRef<HTMLDivElement>(null);
+  function present(full:boolean){
+    const root=shell.current;
+    if(!root)return;
+    // Keep the viewport composition on devices that reserve full screen for video.
+    if(full&&document.fullscreenEnabled&&!document.fullscreenElement)
+      void root.requestFullscreen().catch(()=>{});
+    if(!full&&document.fullscreenElement===root)void document.exitFullscreen().catch(()=>{});
+  }
   const skipWorker=useRef<Worker|null>(null);
   useEffect(()=>{setDev(localStorage.getItem("loopforge.display")==="dev");return ()=>skipWorker.current?.terminate();},[]);
   useEffect(()=>{
@@ -38,7 +47,7 @@ function GameSession({media,legacyReview=false}:Props) {
   },[run,menu]);
   function secondDay(){
     if(skipWorker.current)return;
-    setStarting(true);setError("");
+    present(!dev);setStarting(true);setError("");
     const next=freshCampaign();
     const w=new Worker(new URL("../../../lib/loopforge/intro/host.worker.ts",import.meta.url),{type:"module"});
     skipWorker.current=w;
@@ -62,7 +71,7 @@ function GameSession({media,legacyReview=false}:Props) {
   useEffect(()=>{if(!legacyReview)setRun(loadCampaign());},[legacyReview]);
   function enter() {
     if(legacyReview){startLegacy(true);setMenu(false);return;}
-    const current=run??freshCampaign();saveCampaign(current);setRun(current);setMenu(false);
+    present(!dev);const current=run??freshCampaign();saveCampaign(current);setRun(current);setMenu(false);
   }
   function phase(next:Campaign["phase"]) {
     if(!run)return;const updated={...run,phase:next};saveCampaign(updated);setRun(updated);
@@ -74,7 +83,7 @@ function GameSession({media,legacyReview=false}:Props) {
     quota:run?.quota??0,committed:run?.source?.pieces.length??0,produced:0,retained:0,losses:0,
     people:[],events:[],adviser:null,assignments:null,briefing:null,pending:null,
   };
-  return <div className={s.game} style={{ ...materialStyle(media), ...theme.style }} data-theme={theme.recipe.shell} data-display={legacyReview?"legacy":dev?"dev":"normal"}>
+  return <div ref={shell} className={s.game} style={{ ...materialStyle(media), ...theme.style }} data-theme={theme.recipe.shell} data-display={legacyReview?"legacy":dev?"dev":"normal"}>
     {menu && <main className={s.menu} aria-label="Loopforge start menu">
       <ConsoleBeacon active={!settings} />
       <div className={s.menuScene}><Art media={media} id="lobby-room" sizes="100vw" priority /></div>
@@ -87,7 +96,7 @@ function GameSession({media,legacyReview=false}:Props) {
         <button ref={start} className={s.startControl} disabled={theme.loading||starting} onClick={enter}>{run||legacyStarted ? "Resume shift" : legacyReview?"Start shift":"Enter factory"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
         {!legacyReview&&<>
           <button className={s.dayTwo} disabled={starting||theme.loading} onClick={secondDay}>{starting?"Opening console…":"2nd day"}</button>
-          <label className={s.displaySwitch}><span>Full screen</span><input type="checkbox" role="switch" aria-label="Dev mode" checked={dev} onChange={e=>{setDev(e.target.checked);localStorage.setItem("loopforge.display",e.target.checked?"dev":"normal");}}/><span>Dev mode</span></label>
+          <label className={s.displaySwitch}><span>Full screen</span><input type="checkbox" role="switch" aria-label="Dev mode" checked={dev} onChange={e=>{present(!e.target.checked);setDev(e.target.checked);localStorage.setItem("loopforge.display",e.target.checked?"dev":"normal");}}/><span>Dev mode</span></label>
           {error&&<p role="alert">{error}</p>}
         </>}
         <button ref={settingsButton} className={s.menuSetting} onClick={() => setSettings(true)}>Settings <span>Graphics / presentation</span></button>

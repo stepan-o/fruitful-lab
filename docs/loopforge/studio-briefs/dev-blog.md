@@ -1,5 +1,10 @@
 # Studio journal
 
+## 20 November 2026 · ENGINE takes ownership of the Rust kernel
+
+The [ENGINE onboarding page](/stepanoskin/loopforge/design/studio/engine-master) records the owner’s standing decision. Every game feature runs through a shared Rust kernel with BDI character decisions and KVP-0001 at the viewer boundary. The ordinary Day 1–2 player uses the WebAssembly build of `apps/lab/engine`. Native tests exercise the played and skipped intro, custody, both Conveyor supervisors and the bell. ENGINE maintains the contract, regression evidence, migration inventory and onboarding page.
+
+
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
 ## 20 November 2026 · Giving a paused order an answer

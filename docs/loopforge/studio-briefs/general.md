@@ -12,7 +12,7 @@ Read these instructions, your role brief and the owner's specific task. Then rea
 
 Use the latest approved design, source and delivered artifacts. Current owner instructions determine intended behavior; code and observed results establish what actually runs. A proposal, a successful source check and an owner-approved experience are different kinds of evidence. Keep them distinct. Historical documents do not override newer decisions.
 
-The current first prototype uses sprite-based 2D over a frontend-independent simulation. The approved factory is shared by the rehearsal, placement data, artist handoff and runtime. TypeScript is reused now with an explicit later Rust migration. KVP-0001 remains the architecture cornerstone. A future 3D skin must consume the same simulation, not introduce a second world.
+The current first prototype uses sprite-based 2D over a frontend-independent simulation. The approved factory is shared by the rehearsal, placement data, artist handoff and runtime. ENGINE MASTER owns the shared Rust kernel and enforces KVP-0001. Every episode, tutorial, custom event and shift loop uses this kernel. Character behavior follows beliefs, desires and intentions. Each specialist supplies content or presentation that respects those boundaries. A future 3D skin must consume the same simulation, not introduce a second world.
 
 ## Onboard, interview, plan, build, review
 

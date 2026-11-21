@@ -4,17 +4,26 @@ Read the [shared Studio instructions](/stepanoskin/loopforge/design/studio) with
 
 ## Mandate
 
-Own authoritative simulation, action admission and execution, persistence/replay, KVP, runtime integration and measured performance. Deliver the live game the owner can review. Reuse the studio's useful mechanics after inspecting their contracts; do not infer completeness from old module names or passing isolated checks.
-
-One simulation must support interchangeable 2D and future 3D skins. The viewer renders state and submits legal intentions; camera, animation and asset playback cannot grant output, custody, knowledge, travel or authority.
+ENGINE MASTER owns the Loopforge kernel and guards [KVP-0001](https://github.com/stepan-o/loopforge/blob/master/docs/sim5/SOPs/KVP-0001.md). This standing owner decision applies to every commission. Budget engineering and verification time for the engine work each feature requires.
 
 ## Architecture requirements
 
-- Reuse TypeScript now, with an explicit later Rust migration. Keep stable identities, typed actions/events, deliberate arithmetic/order/RNG rules and language-neutral fixtures. Do not claim an implemented Rust core without one.
-- Preserve the KVP-0001 boundary and state the supported profile honestly: envelopes, version/schema, baseline/diffs, ordering, recovery, hashes, command admission and replay modes. A copied local snapshot is not full KVP compliance.
-- Connect agent perception and persistent intentions to real admission/execution. Reuse reservations, movement, hearing, prop custody and production guards where appropriate. Reconcile legacy spatial assumptions against the approved factory.
-- Use actor/resource-scoped concurrency. Preventing conflicting actions must not unnecessarily serialize all activity in the room.
-- Derive visual actions from authoritative progress. Keep fixed simulation steps separate from rendering; bound planning, serialization and asset work. Measure sustained responsiveness and memory on declared devices/workloads.
+- Implement game behavior in the shared Rust crate. The browser runs its WebAssembly build. The same native crate must reproduce the run from its initial conditions and accepted inputs. This includes scripted intros, tutorials, custom events, supervisor dialogue, generic shift loops and future episodes.
+- Write each character decision in terms of beliefs, desires and intentions. Record how the actor learned a fact, which goal the fact supports, the alternatives available and the intention admitted. Keep intentions until completion, interruption or a change in evidence. Recheck contact, custody, reservations, authority and hearing at the point where an action takes effect.
+- Put fixed ticks, clock holds, command admission, game consequences, persistence and replay under kernel authority. The viewer submits intentions over KVP and paints verified public state. Asset loading, camera easing, accessibility and input focus belong to the viewer. Use the approved room geometry for every skin and episode.
+- Treat the KVP-0001 semantics, canonicalization rules and compliance checklist as normative. Negotiate the schema and channels, verify the baseline and every adjacent diff, validate command identities and target ticks, and reconstruct replay from hash-verified artifacts. Keep private beliefs and presentation overlays outside the public state hash.
+- Review each change from the normal game entry. Exercise alternate actions, expiry, tutorial holds, save/resume and rewind across episode boundaries. Run the same protocol fixtures against native Rust and the shipped WebAssembly binary. Record divergences and measured performance on the delivery.
+- ENGINE owns compatibility with existing runs and the distinction between a shipped feature and a historical study. Record the scope and evidence for migrations in the current handoff. The owner reviews the playable result and decides when to merge.
+
+## Start an ENGINE assignment
+
+1. Read the [KVP contract](/loopforge-design/sources/kvp.md), its semantics, canonicalization rules and A–M checklist linked below. Record the current game branch and open PR in the handoff. Follow the landing page into the ordinary game menu to identify the player's actual route.
+2. Trace that route from `GameClient.tsx` through `lib/loopforge/engine/campaign.worker.ts`, then through `engine/src/session.rs` into `campaign.rs`. Read `world.rs` for physical state, `bdi.rs` for belief and intention admission, `intro.rs` for authored opportunity windows, `shift.rs` for the shift and `line.rs` for production. Browser components bind controls and draw the verified projection.
+3. For every authored beat, write down the actor, the local cue or attributed memory, the desire competing for attention, the persistent intention, the resource or person it needs, and the receipt that commits the outcome. Specify what happens when the cue is missed, the station is busy, the deadline expires or a player takes another action. A recorded conversation can supply words and opportunity windows. Custody, hearing, movement and rack arrivals require world evidence.
+4. Add or extend Rust admission rules and public projections. Keep stable actor, card, carrier, command and event identities. Route an intro shortcut through the same actions as the played intro. At an instructional hold, accept the required world command while factory time stands still. At a live incident, let the kernel deadline resolve the case when the player takes no action.
+5. Use the run journal for restore and branching. Verify the replayed state before exposing it. A seek across the intro, call or appointment must restore actors, posts, cards, cortexes, clock and tutorial holds together. A new action in the past invalidates the superseded future. Keep native and browser fixture hashes with the change.
+6. Before returning a build, run the crate tests, rebuild the shipped Wasm with the pinned toolchain, compare a native wire trace against that binary and exercise the ordinary game route at phone and desktop sizes. Include a normal run and a counterfactual that changes an actor's knowledge or an admitted input. Record the exact commands, failures, remaining coverage and playable link where the next ENGINE can find them.
+7. Maintain this page, its **Current handoff**, the downloadable starting prompt and the dated Studio journal whenever a delivery changes the architecture, known gaps or evidence. Update the editable sources under `docs/loopforge/studio-briefs`, regenerate the published pages with `python docs/loopforge/game-design/studio_briefs.py`, and verify that both copies and the in-page prompt agree. ENGINE owns the accuracy of this handoff between chats.
 
 ## Key references
 
@@ -32,6 +41,7 @@ One simulation must support interchangeable 2D and future 3D skins. The viewer r
 - [KVP-0001](https://github.com/stepan-o/loopforge/blob/master/docs/sim5/SOPs/KVP-0001.md)
 - [KVP semantics](https://github.com/stepan-o/loopforge/blob/master/docs/sim5/SOPs/KVP-0001%20%E2%80%94%20Semantics%20v0.1.md)
 - [KVP canonicalization and hashing](https://github.com/stepan-o/loopforge/blob/master/docs/sim5/SOPs/KVP-0001%20%E2%80%94%20Canonicalization%20%26%20Hashing.md)
+- [KVP compliance checklist](https://github.com/stepan-o/fruitful-lab/blob/master/docs/loopforge/studio/foundations/original-loopforge/docs/sim5/SOPs/KVP-0001%20v0.1%20Compliance%20Checklist.md)
 - [BDI and protocol review](https://github.com/stepan-o/fruitful-lab/blob/master/docs/loopforge/BDI_AND_PROTOCOL_REVIEW.md)
 - [Current encounter/action source](https://github.com/stepan-o/fruitful-lab/tree/master/apps/lab/lib/loopforge/encounters)
 - [Legacy kernel](https://github.com/stepan-o/loopforge/blob/master/backend/sim_sim/kernel/state.py)
@@ -40,6 +50,10 @@ One simulation must support interchangeable 2D and future 3D skins. The viewer r
 Use *Designing Games* when an engineering choice affects agency, feedback, learning or pacing. Cite its actual application; technical performance claims also require measurements, not a book citation.
 
 ## Current handoff
+
+**20 November 2026 · Rust kernel ownership.** The [campaign crate](https://github.com/stepan-o/fruitful-lab/tree/codex/loopforge-rust-authority/apps/lab/engine) owns the ordinary Day 1–2 run. Its [integration notes](https://github.com/stepan-o/fruitful-lab/blob/codex/loopforge-rust-authority/apps/lab/engine/README.md) describe the wire profile, playback, build and verification. The current mandate supersedes earlier implementation and migration advice below.
+
+### Prior playtest handoff
 
 **20 November 2026 · Day 1–2 review corrections.** [Play from the landing](https://fruitful-g2dln906r-stepan-oskins-projects.vercel.app/stepanoskin/loopforge) · [Correction PR #178](https://github.com/stepan-o/fruitful-lab/pull/178) · [Correction screenshots and 1× clips](/loopforge-shifts/review/corrections/index.html) · [ENGINE handoff and evidence](/loopforge-shifts/ENGINE-HANDOFF.md). The branch starts at the merge of #177, `4398dc6f`. The corrected runtime is `b3833627`.
 

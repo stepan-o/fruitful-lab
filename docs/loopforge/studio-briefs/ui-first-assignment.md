@@ -72,6 +72,10 @@ Include an ordinary state and the consequential edge states for the chosen inter
 
 Desktop and phone should be visibly designed, not merely labelled as future support. Include actual-size views and legible close-ups. Check the publication at 320, 390 and 768 CSS pixels and desktop; recommend orientation and control adaptations with reasons. Keep the approved factory geometry intact even when the camera crop changes.
 
+## Security composition correction
+
+The owner wants the full-screen illustration and the feel of the Producer's CCTV cameras. Open [CAM 02](/loopforge-design/security-event/index.html), inspect the bracket on bob, then return to the desk. Match the channel and the subject in both views. The [phone comparison](/loopforge-design/security-event/phones.html) opens the approved portrait at 390 and 320 pixels. Test the cost before issuing, keyboard focus on return and the separate expired case. Day 2 observations remain static review frames.
+
 ## Build the review package
 
 - An annotated current-state audit with a short priority list tied to player impact. Keep cosmetic preference separate from blocked understanding or action.

@@ -1,33 +1,50 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="dark">
 <title>Missing ID · bob | Loopforge Security</title>
 <link rel="stylesheet" href="event.css"><script defer src="event.js"></script>
 </head>
 <body>
 <main class="console" aria-label="Producer console, Security event study">
-<header class="mast"><span class="wordmark">LOOPFORGE</span><span class="mast-room">SECURITY</span><span class="day">DAY 02</span></header>
 <section id="watch" aria-labelledby="room-title">
-<div class="cam-title"><div><p class="label">Security camera</p><h1 id="room-title" tabindex="-1">The checkpoint</h1></div><span id="inventory">1 intervention available</span></div>
-<div class="monitor">
-<picture id="floor-picture"><source media="(max-width: 680px)" srcset="held-phone.webp"><img id="floor" width="760" height="540" src="held-desktop.webp" alt="bob stands before LIMEN. jo waits behind them. Both desks are held."></picture>
-<div class="speech" id="floor-speech"><b>LIMEN</b><span>No ID. Hold both desks.</span></div>
-<a class="incident" id="marker" href="#case" aria-label="Inspect bob’s missing-ID case"><span class="sigil" aria-hidden="true">!</span><span>Missing ID <small>bob</small></span><span aria-hidden="true">›</span></a>
-</div>
-<p id="floor-receipt" class="receipt" hidden></p>
+  <div class="receiver">
+    <div class="glass">
+      <div class="scene">
+        <picture id="floor-picture"><source media="(max-aspect-ratio: 4/5)" srcset="held-phone.webp"><img id="floor" width="760" height="540" src="held-desktop.webp" alt="bob stands before LIMEN at the held checkpoint."></picture>
+        <div class="speech" id="floor-speech"><b>LIMEN</b><span>No ID. Hold both desks.</span></div>
+        <a class="target" id="marker" href="#case" aria-label="Inspect bob’s missing-ID case">
+          <span class="brackets" aria-hidden="true"></span>
+          <span class="tag"><small>bob</small><strong>Missing ID</strong><i aria-hidden="true">↗</i></span>
+        </a>
+      </div>
+      <div class="feed-finish" aria-hidden="true"></div>
+      <header class="feed-id"><span class="channel">CAM 02</span><h1 id="room-title" tabindex="-1">Security</h1></header>
+      <span class="shift">DAY 02</span>
+      <p id="floor-receipt" class="receipt" hidden></p>
+    </div>
+    <footer class="hardware-label"><span>Producer console</span><span class="inventory"><i aria-hidden="true"></i><span id="inventory">1 intervention available</span></span></footer>
+  </div>
 </section>
 <section id="inspection" aria-labelledby="event-title" hidden>
-<div class="case-layout">
-<figure class="painting">
-<picture><source media="(max-width: 680px)" srcset="../missing-id-bob/v1/held-line/portrait-390.315bdfac4c98.webp 390w, ../missing-id-bob/v1/held-line/portrait.8408167c7af0.webp 780w" sizes="100vw"><img width="1536" height="1024" src="../missing-id-bob/v1/held-line/landscape.62422325a46a.webp" alt="bob offers an empty palm across the Security desk. LIMEN faces him while the gate and the queue stand still."></picture>
-</figure>
-<div class="case-copy"><header><p class="label">Security incident</p><h1 id="event-title" tabindex="-1">Missing ID</h1><p class="subject">bob <span>at LIMEN’s desk</span></p></header>
-<div class="exchange" aria-label="Exchange at the desk"><p><b>LIMEN</b> I recognize the leg. Have you got the card?</p><p><b>bob</b> No, sir.</p><p><b>LIMEN</b> No ID. Hold both desks.</p></div>
-<div class="decision"><p class="label" id="action-label">Producer intervention</p><p id="effect">Admit bob until the bell. Uses today’s one intervention.</p><a id="issue" class="primary" aria-describedby="effect" href="#issued">Issue day pass <span aria-hidden="true">→</span></a><a class="back" id="return" href="#returned">← Return to Security</a></div>
-</div></div>
+  <picture class="painting">
+    <source media="(max-aspect-ratio: 4/5)" srcset="../missing-id-bob/v1/held-line/portrait-390.315bdfac4c98.webp 390w, ../missing-id-bob/v1/held-line/portrait.8408167c7af0.webp 780w" sizes="max(100vw, 67svh)">
+    <img width="1536" height="1024" src="../missing-id-bob/v1/held-line/landscape.62422325a46a.webp" alt="bob offers an empty palm across the Security desk. LIMEN faces him while the gate and the queue stand still.">
+  </picture>
+  <div class="soot" aria-hidden="true"></div>
+  <header class="case-header"><div class="source"><span class="channel">CAM 02</span><span>Security</span></div><a class="back" id="return" href="#returned"><span aria-hidden="true">↶</span> Return to Security</a></header>
+  <div class="caption">
+    <div class="story">
+      <p class="eyebrow"><i class="lock-icon" aria-hidden="true"></i>Checkpoint incident</p>
+      <h1 id="event-title" tabindex="-1">Missing ID</h1>
+      <details class="exchange"><summary><span class="waveform" aria-hidden="true">▂▅▃▆▂</span> Desk exchange</summary>
+        <div class="lines"><p><b>LIMEN</b> I recognize the leg. Have you got the card?</p><p><b>bob</b> No, sir.</p><p><b>LIMEN</b> No ID. Hold both desks.</p></div>
+      </details>
+    </div>
+    <div class="decision"><p id="effect">Admit bob until the bell. Uses today’s one intervention.</p><a id="issue" class="pass" href="#issued" aria-describedby="effect"><span class="pass-icon" aria-hidden="true"></span>Issue day pass <span class="arrow" aria-hidden="true">→</span></a></div>
+  </div>
 </section>
 </main>
-<aside class="review"><details><summary>Study views</summary><p>Static review of the Day 2 missing-ID case.</p><nav aria-label="Review frames"><a href="#watch">Floor marker</a><a href="#case">Open case</a><a href="#returned">Return without spending</a><a href="#issued">Pass issued</a><a href="#expired">Case expired while open</a></nav><p><a href="phones.html">390 and 320 px phone views</a> · <a href="../missing-id-bob/v1/index.html#held-proofs">E1 artwork and placement guides</a> · <a href="../forge-study/index.html">Forge study</a></p></details></aside>
-<noscript><p>Enable JavaScript to move between the event study’s static views.</p></noscript>
+<aside class="review"><details><summary>Study views</summary><nav aria-label="Review frames"><a href="#watch">Floor marker</a><a href="#case">Open case</a><a href="#returned">Return without spending</a><a href="#issued">Pass issued</a><a href="#expired">Case expired while open</a><a href="phones.html">Phone comparison</a><a href="../forge-study/index.html">Forge study</a></nav></details></aside>
+<noscript><p>Enable JavaScript to inspect the checkpoint.</p></noscript>
 </body></html>

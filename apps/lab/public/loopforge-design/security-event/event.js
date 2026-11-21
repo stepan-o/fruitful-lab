@@ -26,7 +26,18 @@ async function prepare() {
     byId('marker').hidden = !open;
     byId('return').href = open ? '#returned' : '#closed';
     byId('inventory').textContent = state.spent ? 'Intervention spent' : '1 intervention available';
-    byId('action-label').textContent = open ? 'Producer intervention' : 'Case closed';
+    const receiver = document.querySelector('.receiver');
+    receiver.dataset.state = views[name];
+    for (const [device, width, height] of [['desktop', 760, 540], ['phone', 390, 480]]) {
+      for (const actor of ['bob', 'LIMEN']) {
+        const [x, y] = state.cameras[device][actor];
+        const prefix = '--' + device + '-' + actor.toLowerCase();
+        receiver.style.setProperty(prefix + '-x', (100 * x / width) + '%');
+        receiver.style.setProperty(prefix + '-y', (100 * y / height) + '%');
+      }
+    }
+    document.querySelector('.exchange').open = false;
+    if (focus) document.querySelector('.review details').open = false;
     byId('effect').textContent = open ? 'Admit bob until the bell. Uses today’s one intervention.' : 'The decision window has closed. bob is held at Security until the bell.';
     const [speech,alt] = floorText[views[name]];
     byId('floor-speech').hidden = !speech;

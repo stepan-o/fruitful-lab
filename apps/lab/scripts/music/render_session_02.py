@@ -132,23 +132,35 @@ def perform(events, bpm, *, bars=BARS, ending_fade=True):
 
     @lru_cache(maxsize=256)
     def instrument(name, note, length):
+        if name == 'roll':
+            t = kit.time_axis(.066)
+            return kit.soften(drums['snare'][note][:len(t)] * np.exp(-t / .031), .0009, .009)
+        if name == 'stick':
+            # A low, damped sidestick gives the solo a clear attack without a metal tail.
+            t = kit.time_axis(.061)
+            return kit.soften(kit.rim(note - 5)[:len(t)] * np.exp(-t / .026), .0008, .008)
         if name == 'foot':
             # A shorter tail leaves space for the second bass attack.
             full = drums['kick'][0]
             t = kit.time_axis(.155)
             beater = .12 * np.sin(kit.TAU * 990 * t) * np.exp(-t / .007)
             return kit.soften(full[:len(t)] * np.exp(-t / .16) + beater, .0007, .016)
-        if name in ('signal', 'chop'):
-            # Dry pulse lead and damped chord chops sit on the direct bus.
+        if name in ('signal', 'reply', 'reedkeys'):
             t = kit.time_axis(length * beat)
             phase = kit.TAU * kit.frequency(note) * t
             if name == 'signal':
                 wave = np.sin(phase) + .42 * np.sin(2 * phase) + .24 * np.sin(3 * phase)
                 envelope = .39 + .55 * np.exp(-t / .11)
-            else:
-                wave = np.sin(phase + .9 * np.exp(-t / .045) * np.sin(3 * phase))
-                envelope = np.exp(-t / .055)
-            return kit.soften(wave * envelope, .002, min(.038, t[-1] / 3))
+                return kit.soften(wave * envelope, .002, min(.038, t[-1] / 3))
+            if name == 'reply':
+                # A close, round reed gives the counterline a different articulation.
+                wave = np.sin(phase + (.38 + .48 * np.exp(-t / .14)) * np.sin(2 * phase))
+                envelope = .43 + .44 * np.exp(-t / .24)
+                return kit.soften(wave * envelope, .014, min(.088, t[-1] / 4))
+            # Warm electric keys, held on the direct bus with no delay return.
+            wave = np.sin(phase + (.12 + .52 * np.exp(-t / .24)) * np.sin(2 * phase))
+            envelope = .48 * np.exp(-t / .68) + .39 * np.exp(-t / 2.1)
+            return kit.soften(wave * envelope, .012, min(.16, t[-1] / 4))
         if name in drums:
             return drums[name][note]
         if name == 'rim':

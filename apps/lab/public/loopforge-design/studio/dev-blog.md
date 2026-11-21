@@ -2,6 +2,26 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 21 November 2026 · Taking the Menu break into Options
+
+The owner approved the Main menu arrangement and wanted more of its drummer in Options. The first solo spent 2:20 passing the figure around the kit. The new 47-second cycle borrows the Menu’s opening stick-and-tom call, gives the snare a double-stroke answer, and pulls the kick back so the low tom can carry a phrase. The two-step comes home with a short run across the shells. [Hear the Options solo](/stepanoskin/loopforge/design#music-long-options).
+
+## 21 November 2026 · Moving the break forward
+
+The owner approved the Menu melody and heard too many repeats before the break. The current cut reaches the drums in 47 seconds. The solo uses short sidestick and snare strokes, toms and two quiet pedal marks. The band comes back with the full theme once, then passes its two-note tag between voices. In the last stretch, bass gets four bars alone before the keys and higher answer bring the loop home. [Play Menu 06](/stepanoskin/loopforge/design#music-long-menu).
+
+## 21 November 2026 · Letting the Menu phrase finish
+
+The owner could hear the hook and its answers fighting for the same moment. This pass opens with the same four-bar phrase twice. Its variation takes the first three notes more slowly, arches upward and then stretches the original fall into a held C♯ over D. The lead rests before the next statement. The drummer keeps the earlier sixteen-bar feature. [Hear the opening through bar 17](/stepanoskin/loopforge/design#music-long-menu).
+
+## 21 November 2026 · Two endings and a drum turnaround
+
+The owner found that four returns in three minutes left the Menu theme too far away. The next study brings it back after twelve bars. One reply grows out of the held C♯ and takes a different ending the next time around. In the break, the drummer drops the running hi-hat and plays across the rim, snare and toms. Two short runs mark the halfway point and the return to the tune. [Dated fourth study](https://raw.githubusercontent.com/stepan-o/fruitful-lab/bf5d30f6d33ab69b12744ee4ee2c1fcefbd2536e/apps/lab/public/loopforge-design/music-audition/long-form/menu.mp3).
+
+## 21 November 2026 · Giving the Menu a second melody
+
+The second Menu brought the drummer forward, but the owner found the returning lead too insistent and the chords too abrupt. The new opening lets the held C♯ start a second melody. The reply climbs, doubles back and later enters from a lower register while the keys ring through changes of harmony. In this third study the complete lead statement next appeared at bar 33. [Dated recording](https://raw.githubusercontent.com/stepan-o/fruitful-lab/00fde2c03b4e4b892994e61027547af9bf9221ce/apps/lab/public/loopforge-design/music-audition/long-form/menu.mp3).
+
 ## 21 November 2026 · Putting the Menu hook in the drummer’s hands
 
 The owner heard a wistful Menu and lost the theme on the way to an empty drum break. Its replacement gives the kick two dependable footholds per bar. A short pulse lead plays the descent, and the drummer takes its five attacks through rims, rolls and toms before handing it back. The owner can hear that exchange from bar 49. [Play the revised Menu](/stepanoskin/loopforge/design#music-long-menu).

@@ -10,47 +10,44 @@
     {
       "theme": "menu",
       "file": "menu.mp3",
-      "bars": 128,
-      "frames": 8991219,
-      "durationSeconds": 187.3170625,
+      "bars": 80,
+      "frames": 5619512,
+      "durationSeconds": 117.07316666666667,
       "blocks": [
-        "Switch on",
-        "Short reply",
-        "Pedal and turnaround",
-        "Sixteen bars for the hands",
-        "Lean reprise",
-        "Full pocket",
-        "Bass call and answer",
-        "Return"
+        "Statement, repeat, stretch, landing",
+        "Higher turn and landing",
+        "Dry drum feature",
+        "Theme return and exchange",
+        "Bass feature, rebuild and landing"
       ],
-      "sha256": "0c6754a4c2c422d22128ff44d80346e579c0769419f41993d2234d3176f4adee",
-      "masterSha256": "4dcc2d0b6694a97439326c4303e441d700fe6dc3c244f399c52bc0d93d4ae2e5",
+      "sha256": "84fc14665f980fbb060e77a5196267be87f69c9d5636ab3cfe8e2fbbef9dadc7",
+      "masterSha256": "06ad07da59412442de872e1077234d8fadd3656808de7a25d11a26107421d20c",
       "meter": {
-        "lufs": -16.95,
-        "dBTP": -4.94
+        "lufs": -16.96,
+        "dBTP": -5.2
       },
-      "studyId": "LF-MUS-LONG-02-MENU"
+      "studyId": "LF-MUS-LONG-06-MENU"
     },
     {
       "theme": "options",
       "file": "options.mp3",
-      "bars": 96,
-      "frames": 6743414,
-      "durationSeconds": 140.48779166666668,
+      "bars": 32,
+      "frames": 2247805,
+      "durationSeconds": 46.82927083333333,
       "blocks": [
-        "Hands on hats",
-        "Rim conversation",
-        "Hats and rests",
-        "Low tom answer",
-        "Broken two-step",
-        "Pass it back"
+        "Menu pocket",
+        "Snare doubles",
+        "Low tom in half-time",
+        "Trade and return"
       ],
-      "sha256": "05d10bbd8f0cfd7407190aed70fa2e7252c63ca791c4164c050eab7e253580d0",
-      "masterSha256": "16dcc25a8983cd5c3aac10ef27aec627b638d7ab784b3e683037691617d701fd",
+      "sha256": "ee9f68473b9f12ded28f8907f115ee02d873c6cd63448726626fa44923eb446d",
+      "masterSha256": "9a8aa275b0dff7274cc3234d0a8b594eb16d663645fde766196645c09164908a",
       "meter": {
-        "lufs": -16.93,
-        "dBTP": -3.89
-      }
+        "lufs": -16.91,
+        "dBTP": -3.31
+      },
+      "studyId": "LF-MUS-LONG-02-OPTIONS",
+      "blockBars": 8
     },
     {
       "theme": "conveyor",

@@ -71,6 +71,8 @@ The owner chose a worn, bolted console with bold graphics on the glass. Keep the
 
 **Security event direction, 21 November 2026.** The owner defined Security as a room for watching dialogue with occasional Producer interventions. Highlight significant events at the person, desk or gate where they happen. The player can expand a highlight into a dedicated event view or a compact modal. Reading an event and spending an intervention are separate actions. The first case is bob at LIMEN’s desk: watch the missing-ID exchange, inspect the case if desired, and issue the day pass when available. Return to the same camera and show the actual outcome on the floor. The choice of presentation for each event remains a design decision. See the [room reading](/stepanoskin/loopforge/design/studio/ui-reading#security-and-conveyor-as-player-views).
 
+The owner named the original *Frostpunk* as an event reference. The [missing-ID event study](/stepanoskin/loopforge/design/studio/ui-reading#frostpunk-and-the-missing-id-event) traces everyday remarks, city event markers, petitions and consequences. A dedicated composition featuring bob, LIMEN and the held queue is the designer’s recommendation for testing that sequence on desktop and phone.
+
 ## Delivery and continuity
 
 Publish the agreed audit and studies through the game-design page in a scoped PR and verified preview. Update this handoff with source/build, approved decisions, observed versus proposed changes, phone and desktop evidence, remaining questions and the next implementable task. Preserve historical studies and frozen retrospectives as dated references. Keep authored source and generated pages synchronized; save compact checkpoints so a replacement chat can resume without reading prior chats.

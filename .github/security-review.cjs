@@ -30,5 +30,7 @@ for(const [width,height] of [[1440,900],[768,900],[390,844],[320,693]]){
  assert(!await page.locator('#issue').isVisible());await page.locator('#return').click();await page.waitForFunction(()=>!document.querySelector('#watch').hidden);assert((await page.locator('#floor-receipt').textContent()).includes('held until the bell'));
  assert.equal(errors.length,0);await page.close();console.log(width,height,JSON.stringify(bounds));
 }
-await browser.close();
+const host = await browser.newPage({viewport:{width:1200,height:900}});
+ await host.route('https://study.local/**',async route=>{const file=path.join(root,new URL(route.request().url()).pathname);const mime={'.js':'text/javascript','.css':'text/css','.json':'application/json','.html':'text/html','.webp':'image/webp'};try{await route.fulfill({body:await fs.readFile(file),contentType:mime[path.extname(file)]})}catch{await route.fulfill({status:404})}});
+ await host.goto('https://study.local/loopforge-design/security-event/phones.html');await host.waitForLoadState('networkidle');const widths=await host.locator('iframe').evaluateAll(xs=>xs.map(i=>i.contentWindow.innerWidth));assert.deepEqual(widths,[390,320]);await host.screenshot({path:'screens/phones.jpg',fullPage:true});await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});

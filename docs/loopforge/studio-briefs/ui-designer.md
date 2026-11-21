@@ -59,7 +59,11 @@ Loopforge is intended to be a sellable product. Record sources, licenses, attrib
 
 Source baseline: Fruitful Lab master `d883422e` after Music Director PR #181. A brief live inspection confirmed the public landing, First shift menu and the alternate Day 2 entry into the six-camera Producer console awaiting leadership. This was not a complete playthrough or phone audit. The current game reuses older console artwork and controls; their historical origin does not make them absent from the live build. The publication was reconciled with master `0b50b2a8`, preserving the newly merged Music engine proposal from PR #183. Recheck the current deployment and recent work before auditing.
 
-First useful action: follow the [assignment and review matrix](/stepanoskin/loopforge/design/studio/ui-first-assignment), study the current player and references, then bring a concise pre-synthesis and the first unresolved design question to the owner. Existing mechanics, timing and layout remain the baseline while interface alternatives are explored.
+**Owner interview, 21 November 2026.** Start with the Day 2 Conveyor under LIMEN. At Forge, max waiting beside the press should draw the eye first. The player presses Clear at Forge, follows LIMEN’s call and sees max work the treadle once the call reaches him. Use this sequence on desktop and phone. The owner chose a wide CCTV shot with a player-controlled close-up. In the Forge close-up a small overview keeps Intake’s position and readiness visible. The player chooses when to pull back. See the [first-assignment interview](/stepanoskin/loopforge/design/studio/ui-first-assignment).
+
+The owner chose a worn, bolted console with bold graphics on the glass. Keep the Forge label and selection outline at the edges so max’s face, foot and treadle stay visible on desktop and phone.
+
+**Deciding review test.** With study annotations hidden, the owner should be able to read the exchange in three stills on either device. Max waits for clearance, LIMEN calls while the press stays raised, then max works the treadle after receiving the call. The owner approved the execution plan. The [Forge study](/loopforge-design/forge-study/index.html) opens on clean desktop and phone plates. Compare the three close-ups, then reveal the annotations and the [source-matched audit](/loopforge-design/forge-study/index.html#audit). Owner review of the exchange remains open.
 
 ## Delivery and continuity
 

@@ -1,7 +1,7 @@
 import {project} from './wire';
 import {type Command,type Run,stations} from './contract';
 import {admitCommand,start,step,type Inheritance} from './simulation';
-import {availableWorker,team,rate,ratings,titles} from './station-line';
+import {availableWorker,team,rate,ratings,titles,units} from './station-line';
 import {readingTime} from './reading';
 
 export const playtestQuota=60;
@@ -30,7 +30,8 @@ export function publicFloor(s:Run){
     if(manual&&l.call?.i===i)hold='LIMEN calling '+l.call.who;
     else if(manual&&l.inspecting>s.tick)hold='LIMEN inspecting';
     else if(waiting&&l.lastMiss===job!.id)hold='Call missed';
-    return {name,title:titles[i],crew,rate:rate(crew,i),carrier:job?.id??'',hold,
+    const speed=rate(crew,i);
+    return {name,title:titles[i],crew,rate:speed,cycleSeconds:speed?Math.ceil(units[i]/speed)/20:null,carrier:job?.id??'',hold,
       canClear:waiting&&!l.call&&!l.inspecting,caller:crew[0]??''};
   });
   const workers=Object.keys(ratings).map(id=>{

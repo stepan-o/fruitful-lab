@@ -4,6 +4,7 @@ import geometry from '../intro/geometry.json';
 import {approachZone,type Room,stations} from './contract';
 import atlas from '../../../public/loopforge-intro/sprites.json';
 import floorPack from '../../../public/loopforge-design/floor-correction/v1/manifest.json';
+import {drawQueueRail,drawRoomMaterial} from '../room-material';
 import introSprites from './intro-sprites.json';
 
 type Images = Record<string,CanvasImageSource>;
@@ -15,6 +16,7 @@ export function loadArt(root='..'): Promise<Images> {
   if (!loading) {
     const images: Images = {};
     const sources = introSprites.map(name => [name, root+'/loopforge-intro/' + name + '.webp']);
+    if(root==='')sources.push(['queueRail','/loopforge-intro/sec-rails-depth.png']);
     for (const {material, room} of Object.values(floorPack.rooms)) {
       for (const {file} of [material, room]) sources.push([file, root+floorRoot.slice(2) + file]);
     }
@@ -36,7 +38,7 @@ export function drawBidPortrait(canvas:HTMLCanvasElement,lead:'LIMEN'|'STILETTO'
   ctx.drawImage(images[key],x,y,36,35,0,0,36,35);
 }
 export const registerDesk=[123.6,132] as const;
-export function floorView(w:number,h:number,room:Room,approach=false,crew:Scene['agents']=[]){
+export function floorView(w:number,h:number,room:Room,approach=false,crew:Scene['agents']=[],focusX?:number){
   const sec=room==='security';
   let scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
   let center=sec?127.15:127.4,cy=sec?(approach?127.2:129):144.35;
@@ -53,6 +55,11 @@ export function floorView(w:number,h:number,room:Room,approach=false,crew:Scene[
     scale=Math.min(48,w/Math.max(13,right-left+4),h/(.67*(back-front+7)));
     // Begin on the empty staff door, then follow once the crew catches up.
     cy=Math.min(cy,140.65-.42*h/(scale*.67));
+  }
+  if(!sec&&focusX!==undefined&&w<=780){
+    center=focusX;
+    scale=Math.min(50,w/8.0,h/3.65);
+    cy=144.9;
   }
   const xy=(x:number,y:number)=>[w/2+(x-center)*scale,h*.58+(y-cy)*scale*.67];
   return {sec,scale,xy};
@@ -77,20 +84,7 @@ function floorBackdrop(room: Room, w: number, h: number, view: ReturnType<typeof
   base.imageSmoothingEnabled = false;
   base.globalCompositeOperation = 'source-over';
   base.globalAlpha = 1;
-  // The canvas bounds clip partial cells and the single room layer to the camera.
-  function draw(file: string, x: number, y: number, width: number, height: number) {
-    const [x0, y0] = xy(x, y).map(Math.round);
-    const [x1, y1] = xy(x + width, y + height).map(Math.round);
-    base.drawImage(images[file], x0, y0, x1 - x0, y1 - y0);
-  }
-  const tileW = right - left, tileH = bottom - top;
-  const cols = Math.ceil((w - left) / tileW), rows = Math.ceil((h - top) / tileH);
-  for (let row = Math.floor(-top / tileH); row < rows; row++) {
-    for (let col = Math.floor(-left / tileW); col < cols; col++) {
-      draw(material.file, ox + col * dx, oy + row * dy, dx, dy);
-    }
-  }
-  draw(detail.file, detail.originM[0], detail.originM[1], detail.extentM[0], detail.extentM[1]);
+  drawRoomMaterial(base,w,h,room,xy,images);
   backdrops.set(room, {key, canvas});
   return canvas;
 }
@@ -98,10 +92,7 @@ function floorBackdrop(room: Room, w: number, h: number, view: ReturnType<typeof
 // as Day One. The visible walls have gaps at the actual staff portals.
 function approachFloor(ctx:CanvasRenderingContext2D,w:number,h:number,camera:ReturnType<typeof floorView>,images:Images){
   const {scale,xy}=camera;
-  const tile=images['tile-security'],tw=4*scale,th=tw*.67,[ox,oy]=xy(0,0);
-  for(let x=((ox%tw)+tw)%tw-tw;x<w;x+=tw)
-    for(let y=((oy%th)+th)%th-th;y<h;y+=th)
-      ctx.drawImage(tile,Math.floor(x),Math.floor(y),Math.ceil(tw)+1,Math.ceil(th)+1);
+  drawRoomMaterial(ctx,w,h,'security',xy,images,false);
   const rect=(x:number,y:number,dx:number,dy:number,color:string)=>{
     const [px,py]=xy(x,y);ctx.fillStyle=color;ctx.fillRect(px,py,dx*scale,dy*scale*.67);
   };
@@ -127,13 +118,17 @@ function approachFloor(ctx:CanvasRenderingContext2D,w:number,h:number,camera:Ret
     rect(x-.22,y-.48,.44,.76,'#424e4c');rect(x-.22,y-.53,.44,.24,'#dfcba1');
   }
 }
-export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView,operation?:{stroke:number;deskCut:boolean}){
+export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView,operation?:{stroke:number;deskCut:boolean;focusStation?:number;opening?:boolean}){
   const tracking=room==='security'&&scene.world.stage==='walk'&&!operation?.deskCut;
   const crew=tracking?scene.agents.filter(a=>a.duty==='walking'):[];
   const approachingDesk=crew.length>0&&crew.every(a=>a.room==='security');
   // Use the same desk frame across the splice and greeting. Include LIMEN and
   // the east aisle where STILETTO comes alongside the queue.
-  const camera = floorView(w,h,room,tracking||['welcome','posting','queue'].includes(scene.world.stage),approachingDesk?[]:crew);
+  const latest=view.speeches.at(-1);
+  const focusX=operation?.focusStation===undefined?undefined:
+    operation.opening?(latest?latest.at[0]/1000:geometry.stations[3].x):
+    geometry.stations[operation.focusStation].x;
+  const camera = floorView(w,h,room,tracking||['welcome','posting','queue'].includes(scene.world.stage),approachingDesk?[]:crew,focusX);
   const {sec,scale,xy} = camera;
   ctx.imageSmoothingEnabled=false;
   if(tracking&&!approachingDesk)approachFloor(ctx,w,h,camera,images);
@@ -152,7 +147,13 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   const anchors=new Map<string,number[]>();
   if(sec){
     const [x0,y0]=xy(123.25,122.8),[x1,y1]=xy(130.25,127.2);
-    ctx.strokeStyle='#729193';ctx.lineWidth=2;for(const x of [x0,x1]){ctx.beginPath();ctx.moveTo(x,y0);ctx.lineTo(x,y1);ctx.stroke();}
+    if(images.queueRail){
+      for(const {rect} of geometry.fixtures.filter(f=>f.kind==='rail')){
+        layers.push({y:rect.y+rect.h,draw:()=>drawQueueRail(ctx,images.queueRail,xy,rect,scale)});
+      }
+    }else{
+      ctx.strokeStyle='#729193';ctx.lineWidth=2;for(const x of [x0,x1]){ctx.beginPath();ctx.moveTo(x,y0);ctx.lineTo(x,y1);ctx.stroke();}
+    }
     for(const [cx,cy] of [registerDesk,[131.6,131.9]]){
       const [x,y]=xy(cx,cy);layers.push({y:cy-.7,draw:()=>sprite('desk-back',0,x,y)},{y:cy,draw:()=>sprite('desk-front',0,x,y)});
     }
@@ -251,7 +252,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
     }});
   }
   layers.sort((a,b)=>a.y-b.y).forEach(l=>l.draw());
-  if(!sec)for(let i=0;i<4;i++){const [x,y]=xy(119.7+i*4,147.5);tag(stations[i],x,Math.min(h-4,y+18));}
+  if(!sec)for(let i=0;i<4;i++){const [x,y]=xy(119.7+i*4,147.5);if(x>=8&&x<=w-8)tag(stations[i],x,Math.min(h-4,y+18));}
   // Simultaneous voices share the reading interval. Stack their plates in event
   // order and paint all tails first so none can strike through another line.
   const group = view.speeches.length > 1;

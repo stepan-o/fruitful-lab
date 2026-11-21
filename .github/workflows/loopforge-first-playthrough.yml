@@ -1,7 +1,7 @@
 name: Record the first two shifts
 on:
   push:
-    branches: [codex/loopforge-first-playthrough]
+    branches: [codex/loopforge-first-playthrough, codex/loopforge-playthrough-corrections]
     paths:
       - 'apps/lab/lib/loopforge/**'
       - 'apps/lab/components/loopforge/**'
@@ -69,7 +69,11 @@ jobs:
             sleep 1
           done
           echo 'PLAY_ORIGIN=http://localhost:3191' >> "$GITHUB_ENV"
+      - name: Check corrected controls and record the focused station
+        if: github.ref_name == 'codex/loopforge-playthrough-corrections'
+        run: NODE_PATH="$RUNNER_TEMP/review/node_modules" node apps/lab/scripts/shifts/first-playthrough-corrections.cjs "${{ matrix.conveyor }}"
       - name: Play from the entrance through the bell at 1×
+        if: github.ref_name != 'codex/loopforge-playthrough-corrections'
         run: NODE_PATH="$RUNNER_TEMP/review/node_modules" node apps/lab/scripts/shifts/first-playthrough-browser.cjs "${{ matrix.conveyor }}"
       - uses: actions/upload-artifact@v4
         if: always()

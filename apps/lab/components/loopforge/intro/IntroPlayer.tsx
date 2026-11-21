@@ -2,6 +2,8 @@
 import {useEffect,useRef,useState} from 'react';
 import {engine,envelope,reconstruct,schema,subscription,validEnvelope,type Frame} from '../../../lib/loopforge/intro/protocol';
 import {paint,type Bank,type Camera,type Skin} from './paint';
+import {materialFiles,materialRoot} from '../../../lib/loopforge/room-material';
+import {loadSkin} from '../../../lib/loopforge/shifts/skin';
 import {Timing} from './metrics';
 import styles from './intro.module.css';
 const duration=190.60391778732966;
@@ -55,8 +57,12 @@ export default function IntroPlayer({campaign}:{campaign?:Playthrough}){
     async function load(){
       const res=await fetch('/loopforge-intro/sprites.json');if(!res.ok)throw Error('The sprite register could not be loaded.');
       const art:Bank['art']=await res.json(),images:Bank['images']={};
-      await Promise.all(Object.keys(art.sheets).map(async key=>{const img=new Image();img.src='/loopforge-intro/'+key+'.webp';await img.decode();images[key]=img;}));
-      if(!live)return;bank={art,images};setReady(!!frame);startStory();requestDraw();
+      const sources=Object.keys(art.sheets).filter(key=>!key.startsWith('tile-')).map(key=>[key,'/loopforge-intro/'+key+'.webp']);
+      sources.push(['queueRail','/loopforge-intro/sec-rails-depth.png']);
+      sources.push(...materialFiles.map(file=>[file,materialRoot+file]));
+      const [signals]=await Promise.all([loadSkin('/loopforge-design/days-2-4-art/v1/'),
+        Promise.all(sources.map(async ([key,url])=>{const img=new Image();img.src=url;await img.decode();images[key]=img;}))]);
+      if(!live)return;bank={art,images,world:signals.world};setReady(!!frame);startStory();requestDraw();
     }
     load().catch(e=>{if(live)setFailure(String(e));});
     worker.onerror=e=>{setFailure(e.message||'The simulation worker could not start.');setReady(false);};

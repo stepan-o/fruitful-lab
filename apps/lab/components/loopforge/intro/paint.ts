@@ -1,8 +1,10 @@
+import {drawQueueRail,drawRoomMaterial} from '../../../lib/loopforge/room-material';
+import type {Skin as FloorSkin} from '../../../lib/loopforge/shifts/skin';
 import floor from '../../../lib/loopforge/intro/geometry.json';
 import type {Actor,Frame,Utterance} from '../../../lib/loopforge/intro/protocol';
 
 export type Art={sheets:Record<string,number[]>;checkpoint:(string|number)[][];palm:number[]};
-export type Bank={art:Art;images:Record<string,CanvasImageSource>};
+export type Bank={art:Art;images:Record<string,CanvasImageSource>;world:FloorSkin['world']};
 type XY=[number,number];
 type Rect={x:number;y:number;w:number;h:number};
 export type Camera={x:number;y:number;scale:number;time:number};
@@ -54,11 +56,18 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
   }
   ctx.clearRect(0,0,w,h);
   ctx.imageSmoothingEnabled=false;ctx.fillStyle='#242b2c';ctx.fillRect(0,0,w,h);
-  const forge=actors.find(a=>a.agent_id==='bob')?.room==='conveyor'&&cam.y>138;
   if(!iso){
-    const tile=bank.images[forge?'tile-forge':'tile-security'];
-    const tw=4*s,th=tw*flatten,[ox,oy]=project(0,0);
-    if(tile)for(let xx=((ox%tw)+tw)%tw-tw;xx<w;xx+=tw)for(let yy=((oy%th)+th)%th-th;yy<h;yy+=th)ctx.drawImage(tile,Math.floor(xx),Math.floor(yy),Math.ceil(tw)+1,Math.ceil(th)+1);
+    // The approach crosses multiple rooms. Clip each fixed light layer to its
+    // approved polygon, including when both sides of the gate are in frame.
+    drawRoomMaterial(ctx,w,h,'security',project,bank.images,false);
+    for(const room of ['security','conveyor'] as const){
+      const zone=floor.zones.find(z=>z.id===room)!;
+      const corners=zone.polygon.map(([x,y])=>project(x,y));
+      if(corners.every(p=>p[0]<0)||corners.every(p=>p[0]>w)||corners.every(p=>p[1]<0)||corners.every(p=>p[1]>h))continue;
+      ctx.save();ctx.beginPath();
+      corners.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.clip();
+      drawRoomMaterial(ctx,w,h,room,project,bank.images);ctx.restore();
+    }
   }else for(const zone of floor.zones)polygon(zone.polygon.map(([x,y])=>project(x,y)),zone.id==='conveyor'?'#394046':'#34434a','#728182');
   for(const road of floor.aisles)footprint(road.rect,'rgba(224,197,144,.07)');
   for(const wall of floor.walls){
@@ -68,7 +77,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
   const entries:{depth:number;draw:()=>void}[]=[];
   const queue=(depth:number,draw:()=>void)=>entries.push({depth,draw});
   for(const f of [...floor.fixtures,...floor.forgeHall.installations]){
-    if(['intake','wash','belt','forge'].includes(f.id)||!iso&&f.id==='checks')continue;
+    if(['intake','wash','belt','forge'].includes(f.id)||!iso&&['checks','register','west-rail','east-rail','output'].includes(f.id))continue;
     queue(f.rect.y+f.rect.h,()=>block(f.rect,.55,'#354044','#899186'));
   }
   for(const [i,station] of floor.stations.entries()){
@@ -78,7 +87,8 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
       // Machine registration uses the native 64 px/m plate for its elevated face.
       const [,rootY]=project(131.7,144.4);
       const registeredY=rootY+(420-126)*s/64;
-      queue(144.38,()=>sprite('press-back',state.world.jammed?0:6,px,registeredY));
+      const pressing=actors.some(a=>/^cortex-\d+-forge$/.test(a.action));
+      queue(144.38,()=>sprite('press-back',state.world.jammed?0:pressing?3:6,px,registeredY));
       queue(144.48,()=>sprite('press-front',0,px,registeredY));
 
     }else queue(146.9,()=>{
@@ -87,8 +97,27 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
     });
   }
   if(!iso){
-    const [x,y]=project(131.6,131.9);
-    queue(130,()=>sprite('desk-back',0,x,y));queue(131.93,()=>sprite('desk-front',0,x,y));
+    for(const rail of floor.fixtures.filter(f=>f.kind==='rail')){
+      queue(rail.rect.y+rail.rect.h,()=>drawQueueRail(ctx,bank.images.queueRail,project,rail.rect,s));
+    }
+    for(const desk of floor.fixtures.filter(f=>f.kind==='desk')){
+      const {x,y,w,h}=desk.rect,[px,py]=project(x+w/2,y+h);
+      queue(y-.9,()=>sprite('desk-back',0,px,py));queue(y+h+.03,()=>sprite('desk-front',0,px,py));
+    }
+    for(const [i,station] of floor.stations.entries()){
+      const [x,y]=project(station.x,station.y);
+      const staffed=actors.some(a=>a.room==='conveyor'&&Math.hypot(a.x/1000-station.x,a.y/1000-station.y)<.85&&!a.moving&&a.agent_id!==a.agent_id.toUpperCase());
+      const occupied=state.items.some(item=>item.item_id.startsWith('cortex-')&&item.stage===i&&Math.abs(item.x/1000-station.x)<.5);
+      queue(i===3?144.49:146.91,()=>{
+        bank.world(ctx,staffed?'fl-post-staffed':'fl-post-vacant',x+15*s/64,y-9*s/64,s);
+        if(staffed&&!occupied)bank.world(ctx,'fl-handoff-ready',x-23*s/64,y-12*s/64,s);
+      });
+    }
+    for(const [x,y] of floor.contact.outputSlots){
+      const [px,py]=project(x,y,.72);
+      queue(y+.08,()=>bank.world(ctx,'fl-rack-cradle',px,py,s));
+      queue(y+.12,()=>bank.world(ctx,'fl-rack-lip',px,py,s));
+    }
     const [gx,gy]=project(...floor.gate.hinge as XY);
     queue(134,()=>sprite('boom',clamp(Math.round(24*state.world.gate_mm/(floor.gate.length*1000)),0,24),gx,gy));
   }
@@ -124,6 +153,8 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
         sprite(key,index,px,py);
         if(placeholder.has(id)){ctx.fillStyle=crewColors[id];ctx.fillRect(Math.round(px-s*.13),Math.round(py-s*.41),Math.max(2,Math.round(s*.18)),Math.max(2,Math.round(s*.07)));}
       }
+      if(!iso&&state.items.some(it=>it.item_id==='bob:id'&&it.holder===id))
+        bank.world(ctx,'sec-id-bob-world',px+14*s/64,py-44*s/64,s);
       const card=state.items.find(it=>it.item_id==='max:id'&&it.holder===id);
       if(card&&!iso){
         const registered=ck[3]===id;
@@ -135,6 +166,8 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
     if(item.holder)continue;
     const [px,py]=project(item.x/1000,item.y/1000,item.item_id.startsWith('cortex')?.72:0);
     queue(item.y/1000+.1,()=>{
+      if(!iso&&item.item_id==='bob:id'){bank.world(ctx,'sec-id-bob-world',px,py,s);return;}
+      if(!iso&&item.stage===4){bank.world(ctx,'fl-cortex-finished',px,py,s);return;}
       if(item.item_id.endsWith(':id')){sprite('credential',0,px,py);return;}
       ctx.fillStyle=item.stage===4?'#d8c19e':'#aa8980';ctx.fillRect(px-s*.21,py-s*.15,s*.42,s*.29);
       ctx.fillStyle='#604e53';ctx.fillRect(px-s*.12,py-s*.04,s*.24,s*.055);

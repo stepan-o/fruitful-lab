@@ -69,3 +69,35 @@ function regular(pass,policy){
 }
 assert.ok(regular(true,'matched')>0);assert.equal(regular(false,'matched'),0);
 regular(false,'recover');regular(true,'move');
+
+// Exercise the shipped worker message handler with the scheduler stopped.
+// Each candidate is already legal in its matched live checkpoint.
+const receipts=[];
+let heartbeat;
+global.self={postMessage:m=>receipts.push(m)};
+const realInterval=global.setInterval;
+try{
+  global.setInterval=fn=>{heartbeat=fn;};
+  require('../../lib/loopforge/shifts/playthrough.worker.ts');
+}finally{global.setInterval=realInterval;}
+function pausedOrder(s,cmd){
+  const post=data=>self.onmessage({data});
+  post({type:'join',source,progress:snapshot(s)});
+  post({type:'suspend',on:true});
+  receipts.length=0;
+  post({type:'command',cmd});
+  heartbeat();
+  assert.deepEqual(receipts,[{type:'notice',id:cmd.id,accepted:false,reason:'Shift paused. Resume play to issue an order.'}]);
+  post({type:'suspend',on:false});
+  assert.equal(receipts.length,1,'Resume must not execute a rejected order');
+  post({type:'command',cmd});
+  assert.deepEqual(receipts[1].cmd,cmd);
+  assert.equal(receipts[1].floor.tick,s.tick);
+}
+pausedOrder(base,intent(base,'paused-pass','issue-pass','bob','security'));
+pausedOrder(wait,{...intent(wait,'paused-clear','clear','forge','conveyor'),incident:'D2-C2/max'});
+const staffing=structuredClone(base);
+command(staffing,intent(staffing,'admit-bob','issue-pass','bob','security'));
+until(staffing,()=>availableWorker(staffing,'bob')&&staffing.dialogue.phase==='work');
+pausedOrder(staffing,{...intent(staffing,'paused-wash','assign','wash','conveyor'),incident:'bob'});
+console.log('Paused worker rejected all three orders and accepted each explicit retry.');

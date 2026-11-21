@@ -68,12 +68,12 @@ async function check(browser, width, height) {
   await menu.getByRole('button', {name:/Drum feature/}).click();
   await page.waitForFunction(() => {
     const a = document.querySelector('#music-long-menu audio');
-    return !a.paused && a.currentTime >= 192 * 60 / 164 - .01 && a.currentTime < 73;
+    return !a.paused && a.currentTime >= 128 * 60 / 164 - .01 && a.currentTime < 50;
   });
   await menu.getByRole('button', {name:/Bass only/}).click();
   await page.waitForFunction(() => {
     const a = document.querySelector('#music-long-menu audio');
-    return !a.paused && a.currentTime >= 140 && a.currentTime < 144;
+    return !a.paused && a.currentTime >= 256 * 60 / 164 - .01 && a.currentTime < 97;
   });
   await options.getByRole('button', {name:/Low tom/}).click();
   await page.waitForFunction(() => {

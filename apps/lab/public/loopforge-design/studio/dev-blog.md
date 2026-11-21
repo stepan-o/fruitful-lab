@@ -2,6 +2,10 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 21 November 2026 · Moving the break forward
+
+The owner approved the Menu melody and heard too many repeats before the break. The current cut reaches the drums in 47 seconds. The solo uses short sidestick and snare strokes, toms and two quiet pedal marks. The band comes back with the full theme once, then passes its two-note tag between voices. In the last stretch, bass gets four bars alone before the keys and higher answer bring the loop home. [Play Menu 06](/stepanoskin/loopforge/design#music-long-menu).
+
 ## 21 November 2026 · Letting the Menu phrase finish
 
 The owner could hear the hook and its answers fighting for the same moment. This pass opens with the same four-bar phrase twice. Its variation takes the first three notes more slowly, arches upward and then stretches the original fall into a held C♯ over D. The lead rests before the next statement. The drummer keeps the earlier sixteen-bar feature. [Hear the opening through bar 17](/stepanoskin/loopforge/design#music-long-menu).

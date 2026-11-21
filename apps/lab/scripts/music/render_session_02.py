@@ -133,14 +133,12 @@ def perform(events, bpm, *, bars=BARS, ending_fade=True):
     @lru_cache(maxsize=256)
     def instrument(name, note, length):
         if name == 'roll':
-            t = kit.time_axis(.089)
-            return kit.soften(drums['snare'][note][:len(t)] * np.exp(-t / .041), .0009, .012)
-        if name == 'bell':
-            t = kit.time_axis(.46)
-            modes = ((724, .53), (1129, .32), (1831, .22), (2612, .16), (4075, .10))
-            body = sum(g * np.sin(kit.TAU * hz * t) * np.exp(-t * (4 + hz / 850))
-                       for hz, g in modes)
-            return kit.soften(body, .0009, .03)
+            t = kit.time_axis(.066)
+            return kit.soften(drums['snare'][note][:len(t)] * np.exp(-t / .031), .0009, .009)
+        if name == 'stick':
+            # A low, damped sidestick gives the solo a clear attack without a metal tail.
+            t = kit.time_axis(.061)
+            return kit.soften(kit.rim(note - 5)[:len(t)] * np.exp(-t / .026), .0008, .008)
         if name == 'foot':
             # A shorter tail leaves space for the second bass attack.
             full = drums['kick'][0]

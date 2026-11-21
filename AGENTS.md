@@ -60,3 +60,7 @@ If old docs or prompts disagree with current code, verify the code and update th
 - Fruitful Lab Vercel must build from `apps/lab/`.
 - Before starting a local dev server from Codex, request network permission for the turn; local binding to `127.0.0.1` can fail with `listen EPERM` without it.
 - Never use `git add .` for this repo. Stage explicit files or app-scoped paths only, and keep each PR limited to its assigned app/docs scope unless a shared change is explicitly coordinated.
+
+## Loopforge runtime ownership
+
+For Loopforge game work, follow the maintained [ENGINE MASTER brief](docs/loopforge/studio-briefs/engine-master.md). ENGINE owns the Rust kernel under `apps/lab/engine`, BDI action admission, KVP-0001 and the public projection used by every game screen. Implement new episodes, authored scenes, tutorials, incidents and shift rules there. Run the native, Wasm and ordinary-entry checks and update the default Studio onboarding and its current handoff when the contract changes.

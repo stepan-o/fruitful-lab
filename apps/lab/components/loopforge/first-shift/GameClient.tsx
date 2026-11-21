@@ -1,16 +1,17 @@
 "use client";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import {clockText,dayOneMinute,openingMinute} from "../../../lib/loopforge/shifts/factory-clock";
+import {clockText,openingMinute} from "../../../lib/loopforge/shifts/factory-clock";
 import FirstShift from "./FirstShift";
 import ProducerConsole from "./ProducerConsole";
 import LeadershipCall from "./LeadershipCall";
-import {endCampaign,freshCampaign,loadCampaign,saveCampaign,type Campaign} from "../../../lib/loopforge/shifts/campaign-save";
+import type {Frame} from "../../../lib/loopforge/engine/wire";
+import {floorView} from "../../../lib/loopforge/engine/floor-view";
 import type {PlayerView} from "../../../lib/loopforge/first-shift/contract";
 import PlaybackBar from "./PlaybackBar";
-import {PlaybackTape,type Speed} from "../../../lib/loopforge/shifts/playback";
-const IntroPlayer=dynamic(()=>import("../intro/IntroPlayer"),{ssr:false});
+import {type Speed} from "../../../lib/loopforge/shifts/playback";
+const IntroPlayer=dynamic(()=>import("../intro/CampaignIntro"),{ssr:false});
 const ShiftFloor=dynamic(()=>import("./ShiftFloor"),{ssr:false});
 import ThemeProvider, { useConsoleTheme } from "./ThemeProvider";
 import ThemeSettings from "./ThemeSettings";
@@ -19,43 +20,44 @@ import { ConsoleBeacon, ConsoleSignals } from "./ConsoleSignals";
 import { Art, Control, Kicker, materialStyle, type Media } from "./ConsoleParts";
 import s from "./themes.module.css";
 
-type Props={media:Media;legacyReview?:boolean};
-function GameSession({media,legacyReview=false}:Props) {
+type Props={media:Media;legacyReview?:boolean;initialIntro?:boolean};
+function GameSession({media,legacyReview=false,initialIntro=false}:Props) {
   const [legacyStarted,startLegacy]=useState(false);
-  const [run,setRun]=useState<Campaign|null>(null), [menu, setMenu] = useState(true), [settings, setSettings] = useState(false);
-  const [dev,setDev]=useState(false),[starting,setStarting]=useState(false),[error,setError]=useState("");
-  const [clock,setClock]=useState(clockText(openingMinute));
-  const [paused,setPaused]=useState(false),[speed,setSpeed]=useState<Speed>(1);
-  const [revision,setRevision]=useState(0),[ahead,setAhead]=useState(0);
-  const tape=useRef<PlaybackTape|null>(null),savedAt=useRef(0);
-  const observe=useCallback((current:Campaign,presented?:number)=>{
-    if(tape.current?.id!==current.id){tape.current=new PlaybackTape(current.id);tape.current.load(current);}
-    tape.current.record(current,false,presented);
-    if(performance.now()-savedAt.current>1500){tape.current.save();savedAt.current=performance.now();}
-  },[]);
+  const [frame,setFrame]=useState<Frame|null>(null),[menu,setMenu]=useState(true),[settings,setSettings]=useState(false);
+  const [dev,setDev]=useState(false),[starting,setStarting]=useState(false),[error,setError]=useState('');
+  const [paused,setPaused]=useState(true),[speed,setSpeed]=useState<Speed>(1),[resumable,setResumable]=useState(false);
+  const worker=useRef<Worker|null>(null),runId=useRef('');
+  const w=frame?.state.world,clock=clockText(w?.minute??openingMinute);
+  const key=initialIntro?'loopforge.kernel.day-one.1':'loopforge.kernel.journal.1';
+  function send(type:string,data:object={}){worker.current?.postMessage({type,...data});}
+  function intent(data:object){setError('');send('intent',{intent:data});}
+  function startKernel(fresh=false){
+    if(worker.current&&!fresh)return;
+    worker.current?.terminate();setFrame(null);setError('');
+    let save=null,legacy=null;try{if(!fresh){save=JSON.parse(sessionStorage.getItem(key)??'null');if(!save)legacy=JSON.parse(sessionStorage.getItem('loopforge.playthrough.1')??'null');}}catch{setError('Saved run could not be read.');}
+    runId.current=save?.run_id??legacy?.id??crypto.randomUUID();
+    const engine=new Worker(new URL('../../../lib/loopforge/engine/campaign.worker.ts',import.meta.url),{type:'module'});
+    worker.current=engine;engine.onerror=e=>{setError(e.message||'Kernel unavailable');setStarting(false);};
+    engine.onmessage=({data:m})=>{
+      if(worker.current!==engine)return;
+      if(m.type==='view'){setFrame(m.frame);setPaused(m.paused);setSpeed(m.rate);setStarting(false);}
+      if(m.type==='save'){try{sessionStorage.setItem(key,JSON.stringify(m.journal));setResumable(true);}catch{setError('This tab could not save progress.');}}
+      if(m.type==='notice')setError(m.message);
+      if(m.type==='error'){setError(m.message);setStarting(false);}
+    };
+    send('boot',{run:runId.current,save,legacy});send('rate',{rate:speed});
+  }
+  function openMenu(){setMenu(true);send('pause');}
+  function play(){if(settings)closeSettings();if(menu)enter();else send('play');}
+  function seek(seconds:number){if(settings)closeSettings();setMenu(false);send('seek',{seconds});}
+  function finish(){worker.current?.terminate();worker.current=null;sessionStorage.removeItem(key);sessionStorage.removeItem("loopforge.playthrough.1");setResumable(false);setFrame(null);setMenu(true);setPaused(true);}
   useEffect(()=>{
-    const flush=()=>tape.current?.save();
-    window.addEventListener("pagehide",flush);
-    return ()=>{flush();window.removeEventListener("pagehide",flush);};
+    setDev(localStorage.getItem('loopforge.display')==='dev');setResumable(!!sessionStorage.getItem(key)||!!sessionStorage.getItem('loopforge.playthrough.1'));
+    const hidden=()=>send('visibility',{hidden:document.hidden});
+    if(initialIntro){startKernel(true);setMenu(false);send('play');}
+    document.addEventListener('visibilitychange',hidden);
+    return ()=>{worker.current?.terminate();document.removeEventListener('visibilitychange',hidden);};
   },[]);
-  function play(){
-    tape.current?.discardFuture();setPaused(false);
-    if(menu){if(settings)closeSettings();enter();}
-  }
-  function seek(delta:number){
-    if(!run)return;
-    observe(run);
-    const restored=tape.current!.seek(run,delta);
-    const next=restored.run;
-    let extra=restored.remaining;
-    if(next.phase==="console"||next.phase==="call"){
-      next.morningSeconds=(next.morningSeconds??0)+extra;extra=0;
-    }
-    if(settings)closeSettings();
-    setMenu(false);setPaused(true);setAhead(extra);setRevision(n=>n+1);
-    setClock(clockText(next.phase==="intro"?dayOneMinute(next.seconds):openingMinute+(next.morningSeconds??0)/60));
-    saveCampaign(next);setRun(next);observe(next);tape.current?.save();
-  }
   const shell=useRef<HTMLDivElement>(null);
   function present(full:boolean){
     const root=shell.current;
@@ -65,35 +67,7 @@ function GameSession({media,legacyReview=false}:Props) {
       void root.requestFullscreen().catch(()=>{});
     if(!full&&document.fullscreenElement===root)void document.exitFullscreen().catch(()=>{});
   }
-  const skipWorker=useRef<Worker|null>(null);
-  useEffect(()=>{setDev(localStorage.getItem("loopforge.display")==="dev");return ()=>skipWorker.current?.terminate();},[]);
-  useEffect(()=>{
-    if(!run||menu||!["console","call"].includes(run.phase))return;
-    setClock(clockText(openingMinute+(run.morningSeconds??0)/60));
-    if(paused)return;
-    const timer=window.setInterval(()=>{
-      if(document.hidden)return;
-      run.morningSeconds=(run.morningSeconds??0)+.25*speed;observe(run);saveCampaign(run);
-      setClock(clockText(openingMinute+run.morningSeconds/60));
-    },250);
-    return ()=>window.clearInterval(timer);
-  },[run,menu,paused,speed,observe]);
-  function secondDay(){
-    if(skipWorker.current)return;
-    present(!dev);setStarting(true);setError("");
-    const next=freshCampaign();
-    const w=new Worker(new URL("../../../lib/loopforge/intro/host.worker.ts",import.meta.url),{type:"module"});
-    skipWorker.current=w;
-    function stop(){w.terminate();skipWorker.current=null;setStarting(false);}
-    w.onerror=()=>{stop();setError("The shift could not start. Try again.");};
-    w.onmessage=({data})=>{
-      if(data.local==="failure"){stop();setError(data.message);return;}
-      if(data.local!=="departure")return;
-      next.source=data.source;next.phase="console";next.progress.tick=data.source.tick;
-      setPaused(false);setAhead(0);observe(next);saveCampaign(next);setRun(next);setMenu(false);stop();
-    };
-    w.postMessage({local:"skip"});
-  }
+  function secondDay(){present(!dev);setStarting(true);startKernel(true);intent({action:'skip'});send('play');setMenu(false);}
   const theme = useConsoleTheme()!;
   const start = useRef<HTMLButtonElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
@@ -101,24 +75,19 @@ function GameSession({media,legacyReview=false}:Props) {
   useEffect(() => { if (settings) dialog.current?.showModal(); else dialog.current?.close(); }, [settings]);
   useEffect(() => { if (menu) start.current?.focus(); }, [menu]);
   function closeSettings() { setSettings(false); settingsButton.current?.focus(); }
-  useEffect(()=>{if(!legacyReview){const current=loadCampaign();if(current){observe(current);setRun(current);}}},[legacyReview,observe]);
-  function enter() {
+  function enter(){
     if(legacyReview){startLegacy(true);setMenu(false);return;}
-    present(!dev);const current=run??freshCampaign();setPaused(false);setAhead(0);tape.current?.discardFuture();observe(current);saveCampaign(current);setRun(current);setMenu(false);
+    present(!dev);setStarting(!worker.current);startKernel();send('play');setMenu(false);
   }
-  function phase(next:Campaign["phase"]) {
-    if(!run)return;tape.current?.seal(run);const updated={...run,phase:next};setAhead(0);observe(updated);saveCampaign(updated);setRun(updated);
-  }
-  function finish(){if(run)sessionStorage.removeItem("loopforge.transport."+run.id);tape.current=null;endCampaign();setMenu(true);setRun(null);}
   const view:PlayerView={
-    tick:run?.source?.tick??0,day:2,shiftTick:0,phase:"choose",cash:0,condition:100,
-    workers:run?.source?.agents.filter(a=>a.character==="worker").length??0,
-    quota:run?.quota??0,committed:run?.source?.pieces.length??0,produced:0,retained:0,losses:0,
+    tick:w?.clock_tick??0,day:2,shiftTick:0,phase:"choose",cash:0,condition:100,
+    workers:frame?.state.agents.filter(a=>!["LIMEN","STILETTO"].includes(a.agent_id)).length??0,
+    quota:w?.quota??0,committed:w?.day_one_count??0,produced:0,retained:0,losses:0,
     people:[],events:[],adviser:null,assignments:null,briefing:null,pending:null,
   };
-  const toolbar=<PlaybackBar clock={clock} episode={menu?"LOOPFORGE":run?.phase==="intro"?"DAY 1":"DAY 2"}
-    paused={menu||paused} speed={speed} canSeek={!!run&&!starting} onPlay={play} onPause={()=>setPaused(true)}
-    onSpeed={setSpeed} onSeek={seek} onMenu={menu?undefined:()=>{if(run)tape.current?.seal(run);setMenu(true);}}/>;
+  const toolbar=<PlaybackBar clock={clock} episode={menu?"LOOPFORGE":w?.phase==="intro"?"DAY 1":"DAY 2"}
+    paused={menu||paused} speed={speed} canSeek={!!frame&&!starting} onPlay={play} onPause={()=>send("pause")}
+    onSpeed={rate=>{if(worker.current)send("rate",{rate});else setSpeed(rate);}} onSeek={seek} onMenu={menu?undefined:openMenu}/>;
   return <div ref={shell} className={s.game} style={{ ...materialStyle(media), ...theme.style }} data-theme={theme.recipe.shell} data-display={legacyReview?"legacy":dev?"dev":"normal"}>
     {!legacyReview&&!settings&&toolbar}
     {menu && <main className={s.menu} aria-label="Loopforge start menu">
@@ -130,34 +99,29 @@ function GameSession({media,legacyReview=false}:Props) {
         <Art media={media} id="logo" className={s.menuLogo} sizes="320px" priority />
         <h1>First shift</h1>
         <p className={s.menuMotto}>Truth stays clean.<br />Story gets messy.</p>
-        <button ref={start} className={s.startControl} disabled={theme.loading||starting} onClick={enter}>{run||legacyStarted ? "Resume shift" : legacyReview?"Start shift":"Enter factory"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
+        <button ref={start} className={s.startControl} disabled={starting||(legacyReview&&theme.loading)} onClick={enter}>{frame||resumable||legacyStarted ? "Resume shift" : legacyReview?"Start shift":"Enter factory"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
         {!legacyReview&&<>
-          <button className={s.dayTwo} disabled={starting||theme.loading} onClick={secondDay}>{starting?"Opening console…":"2nd day"}</button>
+          <button className={s.dayTwo} disabled={starting} onClick={secondDay}>{starting?"Opening console…":"2nd day"}</button>
           <label className={s.displaySwitch}><span>Full screen</span><input type="checkbox" role="switch" aria-label="Dev mode" checked={dev} onChange={e=>{present(!e.target.checked);setDev(e.target.checked);localStorage.setItem("loopforge.display",e.target.checked?"dev":"normal");}}/><span>Dev mode</span></label>
           {error&&<p role="alert">{error}</p>}
         </>}
         <button ref={settingsButton} className={s.menuSetting} onClick={() => setSettings(true)}>Settings <span>Graphics / presentation</span></button>
+        {initialIntro&&dev&&<Link href="/stepanoskin/loopforge/play/day-one?review=sprites">Archived sprite study</Link>}
         <Link href="/stepanoskin/loopforge" prefetch={false}>← Back to Loopforge</Link>
-        <small className={s.sessionNote}>{run||legacyStarted ? "Your shift is paused. Resume to continue." : legacyReview?"First-turn review":"Days 1–2 · Week one"}</small>
+        <small className={s.sessionNote}>{frame||resumable||legacyStarted ? "Your shift is paused. Resume to continue." : legacyReview?"Archived first-turn review":"Days 1–2 · Week one"}</small>
         <small className={s.sessionNote}>{legacyReview?"Progress lasts while this page stays open.":"Progress is saved in this tab."}</small>
         {theme.error && <p role="alert">{theme.message}</p>}
       </section>
     </main>}
     {legacyReview&&legacyStarted&&<div hidden={menu} inert={menu}><FirstShift media={media} suspended={menu} onOpenMenu={()=>setMenu(true)}/></div>}
-    {!menu&&run&&<>
-      {run.phase==="intro"&&<IntroPlayer key={revision} campaign={{paused,speed,ahead,seconds:run.seconds,confirmed:run.confirmed??0,onProgress:(seconds,confirmed)=>{
-        const persist=paused||run.confirmed!==confirmed||Math.floor(seconds*4)!==Math.floor(run.seconds*4);
-        run.seconds=seconds;run.confirmed=confirmed;
-        observe(run);setClock(clockText(dayOneMinute(seconds)));
-        if(persist)saveCampaign(run);
-      },onDeparture:source=>{
-        tape.current?.seal(run);run.source=source;run.progress={tick:source.tick,commands:[],guided:true};phase("console");
-      }}}/>}
-      {run.phase==="console"&&<div inert={paused}><ProducerConsole media={media} skin={theme.recipe.console} view={view} factoryTime={clock} incoming busy={false} effects active ticking={false}
-        primaryLabel="Awaiting leadership" speed={speed} onLeadership={()=>phase("call")}
+    {!menu&&error&&<p role="alert">{error}</p>}
+    {!menu&&frame&&w&&<>
+      {w.phase==="intro"&&<IntroPlayer frame={frame} paused={paused} intent={intent}/>}
+      {w.phase==="console"&&<div inert={paused}><ProducerConsole media={media} skin={theme.recipe.console} view={view} factoryTime={clock} incoming busy={false} effects active ticking={false}
+        primaryLabel="Awaiting leadership" speed={speed} onLeadership={()=>intent({action:"answer"})}
         onAdviser={()=>{}} onPrimary={()=>{}} onRoom={()=>{}} onInspect={()=>{}} onFeedback={()=>{}} onNavigate={()=>{}} onSpeed={()=>{}}/></div>}
-      {run.phase==="call"&&<div inert={paused}><LeadershipCall key={revision} rack paused={paused} speed={speed} topic={run.callTopic??0} onTopic={topic=>{const updated={...run,callTopic:topic};observe(updated);saveCampaign(updated);setRun(updated);}} media={media} view={view} onClose={()=>phase("console")} onContinue={()=>phase("floor")}/></div>}
-      {run.phase==="floor"&&<ShiftFloor key={revision} onClock={setClock} onProgress={observe} run={run} transport={{paused,speed}} ahead={ahead} onFinish={finish}/>}
+      {w.phase==="call"&&<div inert={paused}><LeadershipCall rack paused={paused} speed={speed} topic={w.topic} onTopic={topic=>intent({action:"topic",target:String(topic)})} media={media} view={view} onClose={()=>intent({action:"close"})} onContinue={()=>intent({action:"acknowledge"})}/></div>}
+      {w.phase==="floor"&&<ShiftFloor floor={floorView(frame.state)} quota={w.quota} dayOneCount={w.day_one_count} transport={{paused,speed}} onIntent={intent} onFinish={finish}/>}
     </>}
     <dialog ref={dialog} className={s.menuDialog} onClose={closeSettings} aria-labelledby="menu-settings-title"
       onClick={e => { if (e.target === dialog.current) closeSettings(); }}>

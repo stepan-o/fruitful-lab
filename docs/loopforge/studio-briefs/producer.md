@@ -67,7 +67,7 @@ Scene Direction, Animator, Sound, UI, QA/Critic or a 3D specialist can be introd
 
 KVP-0001 is the cornerstone: the kernel owns world state; viewers submit legal commands and consume versioned projections. Keep the player interface, narrative interpretation and artwork from becoming competing sources of truth. A future 3D renderer must observe the same agents, props and outcomes as the 2D skin. Reusing a protocol name does not establish full compliance; ENGINE must identify the supported profile and evidence.
 
-The current decision is **reuse TypeScript now, with an explicit later Rust migration**. Prefer portable types, explicit contracts and deterministic execution. Do not redirect a bounded art integration into a Rust rewrite. Old Python implementations, Rust reference types and 3D systems are candidate sources, not proof of a current Rust engine.
+ENGINE MASTER owns the shared Rust kernel and KVP-0001 boundary. Commission every new episode, tutorial, dialogue sequence and generic loop on that kernel. Ask for the actor’s BDI evidence and the native/Wasm comparison in the handoff. Follow the [current ENGINE brief](/stepanoskin/loopforge/design/studio/engine-master) for entry points, verification and migration status.
 
 BDI must affect behavior: attributed perception changes beliefs; competing desires support persistent intentions; legal actions can complete, fail or be reconsidered. A thought label over a fixed script is insufficient. Distinguish current bounded behaviors, replaceable stubs and future planning. Do not expose private knowledge through the public UI. Require representative changed decisions and outcomes, not an expansive Act 1 specification before the next useful days can run.
 

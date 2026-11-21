@@ -26,11 +26,15 @@ async function play(){
     await control('0.5× speed').click();await snap('menu-half-speed');
     await button(/^Enter factory/).click();
     await page.waitForFunction(()=>JSON.parse(sessionStorage.getItem('loopforge.playthrough.1'))?.seconds>.25);
-    await control('Pause').click();await forward();
+    await control('Pause').click();
+    await page.waitForTimeout(250);
+    const pausedClock=await clock.textContent();
+    await forward();
     await page.waitForFunction(()=>JSON.parse(sessionStorage.getItem('loopforge.playthrough.1')).seconds>=9.9);
     const after=(await read()).seconds;await page.waitForTimeout(600);
     assert.equal((await read()).seconds,after);
     await rewind();assert.ok((await read()).seconds<after-9);
+    await page.waitForFunction(expected=>document.querySelector('time[aria-label="Factory time"]').textContent===expected,pausedClock);
     await control('2× speed').click();await control('Play').click();
     if(regular){
       for(const [index,name] of ['Intake','Wash','Belt','Forge','Intake','Wash','Belt','Forge'].entries()){

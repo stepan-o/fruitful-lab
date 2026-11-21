@@ -146,8 +146,10 @@ function GameSession({media,legacyReview=false}:Props) {
     {legacyReview&&legacyStarted&&<div hidden={menu} inert={menu}><FirstShift media={media} suspended={menu} onOpenMenu={()=>setMenu(true)}/></div>}
     {!menu&&run&&<>
       {run.phase==="intro"&&<IntroPlayer key={revision} campaign={{paused,speed,ahead,seconds:run.seconds,confirmed:run.confirmed??0,onProgress:(seconds,confirmed)=>{
-        const confirmedChanged=run.confirmed!==confirmed;run.confirmed=confirmed;setClock(clockText(dayOneMinute(seconds)));
-        if(confirmedChanged||Math.floor(seconds*4)!==Math.floor(run.seconds*4)){run.seconds=seconds;observe(run);saveCampaign(run);}
+        const persist=paused||run.confirmed!==confirmed||Math.floor(seconds*4)!==Math.floor(run.seconds*4);
+        run.seconds=seconds;run.confirmed=confirmed;
+        observe(run);setClock(clockText(dayOneMinute(seconds)));
+        if(persist)saveCampaign(run);
       },onDeparture:source=>{
         tape.current?.seal(run);run.source=source;run.progress={tick:source.tick,commands:[],guided:true};phase("console");
       }}}/>}

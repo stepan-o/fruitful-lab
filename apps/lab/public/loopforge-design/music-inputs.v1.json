@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "source": "manual",
+  "operations": [
+    {"input":{"version":1,"source":"manual","sessionId":"fixture-1","seq":1,"observedBeat":0,"kind":"state","payload":{"surface":"play","room":"conveyor","pressure":null,"production":"unknown","speech":false,"paused":false}}},
+    {"advanceBeats":4},
+    {"input":{"version":1,"source":"manual","sessionId":"fixture-1","seq":2,"observedBeat":4,"kind":"state","payload":{"surface":"play","room":"conveyor","production":"waiting"}}},
+    {"input":{"version":1,"source":"manual","sessionId":"fixture-1","seq":3,"observedBeat":4,"kind":"state","payload":{"surface":"play","room":"conveyor","production":"running"}}},
+    {"input":{"version":1,"source":"manual","sessionId":"fixture-1","seq":4,"observedBeat":4,"kind":"cue","payload":{"id":"carrier-17","type":"carrier.moved","room":"conveyor","visibility":"public"}}},
+    {"input":{"version":1,"source":"manual","sessionId":"fixture-1","seq":5,"observedBeat":4,"kind":"cue","payload":{"id":"carrier-17","type":"carrier.moved","room":"conveyor","visibility":"public"}}},
+    {"advanceBeats":1}
+  ]
+}

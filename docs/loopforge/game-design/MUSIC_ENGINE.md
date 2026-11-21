@@ -1,0 +1,90 @@
+# Music engine
+
+## A theme the factory can take apart
+
+On first entry, after sound is enabled, a quick minor descent lands on an off-note. The drums carry on beneath it. The next screen can inherit the final two accents, the shape of the bass or just the spacing between hits. Reserve the whole descent for the opening and an occasional earned return.
+
+**Owner decisions · 21 November 2026.** Keep a common pulse. Reveal Conveyor’s half-time groove inside the fast break. Leave the opening dissonance hanging. Let visible work shape the bass under either supervisor. The initial tempo of 170 BPM, with a felt 85 on Conveyor, is an audition setting. A second shared grid around 164/82 is worth testing if the first crowds dialogue. A bridge to an independent 140 BPM Conveyor was considered in the interview. The shared-grid decision closes that route for this experiment.
+
+**Harmony to hear.** In a provisional D minor setting, try A–G–F–E landing on E-flat over a low D. Compare the same four-note descent ending on C-sharp over D. Both final notes stay put while the beat continues. Match register, level, duration and articulation. Pick the one that still sounds intentional through a phone speaker. A dry electric-key attack gives the upper notes definition. Keep wide ninths above the bass, move one inner voice at a time, and let a snare pickup answer a syncopated chord. In Options the kit can carry the descent from high rim to low tom.
+
+**Variation.** Write an eight-bar family with an opening statement, a syncopated answer, a sparser middle and a recognizable return. Pick compatible voicings and ghost notes from authored alternatives using a separate, repeatable music seed. Keep one fill slot per two bars, avoid consecutive identical fills when alternatives exist and reserve the middle register for voices. Silence can be one of the answers.
+
+## Where the theme goes
+
+| Surface | Arrangement | Entry or exit |
+| --- | --- | --- |
+| Landing → main menu | One descent into rolling DnB. Sub and open chords leave space around the contactor. | First sound gesture starts the session. Returning to the menu picks up the phrase. |
+| Settings / Options | Restrained drum solo. Hats keep time while rim accents, ghost notes and phrase endings change. | Remove pitched parts on the next bar. Restore the outgoing surface on close. |
+| Design board, reading pages and journal | If music is enabled, use sparse chord intervals and long spaces. | Static documents need an explicit resume policy. A fresh document opens quietly. |
+| Day 1 intro | Thread two notes between the walk-in and the room reveals. Leave the opening blackout and voices room to breathe. | Preserve the approved 190.604-second edit and the existing release from holds. |
+| Producer console / leadership call | One dry pulse underneath the quota. Give the caller the middle register and the appointment a short rest. | Duck as speech begins. A selection click can happen anywhere in a bar. |
+| Security | Dry rim pattern and short, separated answers around the desk. The gate and ID exchange stay audible. | Enter the room voicing on the next bar. An unseen check elsewhere is musically silent. |
+| Conveyor · either supervisor | Half-time snare and sustained sub over the same fast hats. A waiting carrier leaves a bass gap. On a confirmed movement the bass can answer. Successive visible movements can join into a riff. | Use the same rule under LIMEN and STILETTO. Give the mechanical contact and spoken call their own space. |
+| Pause, bell and results | On pause, thin to a short tail and hold position. The bell takes the foreground. Results recall two notes in an open voicing. | Resume from the held pulse. Only a confirmed public bell can schedule its phrase ending. |
+| Future rooms | Try pitched metal at a dedicated Forge, longer decays in Cortex and a call-and-response figure in Theatre. | Today Forge is also a station on Conveyor. Keep that station within the current room arrangement. Future room identities need play and listening review. |
+
+## What the references contribute
+
+Goldie’s long-form continuity suggests bringing back a figure after enough space to miss it. For Loopforge, listen for that return across a five-minute traversal. The early-network atmosphere of Hackers suggests bright signals over tactile drums. Trainspotting suggests leaving an insistent pulse underneath discomfort. Dead as Disco offers a useful motion test: watch a visible action at normal speed and judge whether its musical answer feels connected. The machine, character and command retain their own timing. These are applications of the supplied source study. There has been no fresh listening comparison to the reference masters or hands-on evaluation of Dead as Disco for this proposal. [Reference study and original sources](/stepanoskin/loopforge/design/studio/music-study)
+
+Tynan Sylvester, *Designing Games*, chapter 1, “Emotion Through Music,” printed pp. 24–25 / PDF pp. 32–33 in the owner’s copy. The score can carry a feeling while a short effect makes a particular action legible. Give the carrier movement its own sound, then allow the bass to answer later. Compare the same shot with effects only, music only and both. The player should locate the contact and understand the same outcome in each visual replay. Those pages support the listening test. The tempo and mix values are our experiments.
+
+## MusicInputs v1
+
+Music consumes a copy of what the player can observe. ENGINE owns the public projection, its visibility rules and a future adapter. KVP-0001 is the authority for simulation and replay. The music envelope is downstream of KVP and has no command channel. Send primitive values from TypeScript now or Rust later. Both the pixel-art and future 3D viewer can supply the same room focus. A station’s hidden work queue, BDI goal, next bid or off-camera jam cannot enter the envelope. Scope and redact upstream before serialization. [Kernel ↔ Viewer Protocol](https://github.com/stepan-o/loopforge/blob/master/docs/sim5/SOPs/KVP-0001.md)
+
+| Field | Contract and fallback |
+| --- | --- |
+| Envelope | version 1, source manual or live, sessionId, positive increasing seq, observedBeat, kind, payload. Bind one adapter and session when opening the consumer. The published fixture binds manual only. Reject other sources, sessions, versions, invalid ranges and malformed values. |
+| Observation time | observedBeat counts whole music beats since session start. The future adapter timestamps receipt on the local music clock and discards replay backlogs using ENGINE’s public cursor before stamping. Input cannot set the transport. |
+| State snapshot | Full replacement. surface = landing, menu, options, reading, intro, console, play or results. room = security, conveyor or null. Missing/unknown surface uses menu, absent room uses null, production uses unknown, pressure uses null, speech and pause default false. Other supplied invalid enum values are rejected. |
+| Observable pressure | Finite 0–1 or null. Later use only a pressure measure SYSTEMS and ENGINE approve for this view, such as a displayed backlog. Null returns toward baseline 0.35. Smooth half the distance per beat. Enter dense at 0.70 and exit at 0.50. |
+| Production, speech and pause | Production = unknown, idle, running, waiting or jammed. Unknown has neutral bass. Speech is a playing voice or presented line that needs space. Pause is the visible simulation transport state. User mute and device suspension belong to the local output. |
+| Confirmed cue | id, type (carrier.moved, line.jammed, shift.bell), room or null, visibility public. A floor cue is eligible only on the focused Conveyor. Bell is session-wide. No cue is the neutral default. |
+| Timing and order | State updates commit the latest room/surface request at the next bar. Within the settled room, production and speech affect the next response immediately. Schedule an eligible accent on the next beat. At most one pending cue. Bell outranks jam, which outranks movement. Drop additional equal/lower cues for that beat. |
+| Duplicate and stale handling | Reject seq at or below the last consumed sequence; a retransmission with a fresh sequence also keeps the original event ID. Reject future stamps or cues older than two beats. Keep IDs for the two-beat validity window; saturating the 64-ID window drops further cues. A new snapshot may supersede an older snapshot. |
+| Reset and lifecycle | Pause, mute, or a change of focus clears pending accents. Speech drops bass answers during the line. Resume accepts fresh events only. New run or seek binds a new session, clears IDs, sequences, smoothing and phrase history and requests a current public snapshot. A user mute survives reset. |
+
+The downloadable example is a manual session: open Conveyor, advance four beats, receive a waiting snapshot, then receive a running snapshot and confirmed motion at the same beat. A second delivery of that ID has a fresh sequence for testing de-duplication. [MusicInputs v1 example](/loopforge-design/music-inputs.v1.json)
+
+## The first listening session
+
+**Question.** Can you tap continuously from the menu through Options into Conveyor, recognize the room from its groove and hear the gap when a carrier waits? The panel above rehearses the input sequence silently. It cannot establish any of these listening judgments.
+
+1. Prepare two original, level-matched 24-second motif sketches differing only in the held landing. Hear both on headphones and phone. The owner chooses a landing or returns both.
+2. With the selected motif, edit one normal-speed traversal from menu to Options to Conveyor. Keep one hat pulse across both changes. Play a waiting and restarting carrier under LIMEN and the same observations under STILETTO. The bass should tell the same story in both. A longer running sequence should support linked answers.
+3. Repeat an eight-bar region at least eight times. Listen for seam clicks, phasing, a distracting repeated fill and a bass note that masks the first consonant in “Forge, all clear.” Try rapid room changes, mute, pause and an interrupted line. Compare speech alone with speech plus score.
+4. Accept only if the owner recognizes the same theme, can tap the transition, transcribes the line, identifies the restart from the picture with music muted, and hears one answer to a duplicated cue. A failed judgment returns that specific element for iteration. Record version, device, route, what was heard and the owner’s verdict.
+
+## Exports, playback and access
+
+**Prepare each export.** Keep an editable master and a runtime copy. Prefer original 48 kHz PCM masters when available. Record measured key and BPM, meter, bar count, sample-index loop start/end, downbeat offset, intro and release tail, compatible layers, integrated loudness, true peak, exact codec, hash and rights ID. At 170 BPM eight bars of 4/4 last about 11.294 seconds. Derive sample markers from the original grid, allow fractional samples at boundaries and validate repeated joins after decoding in each browser. Check mono and crossfades. Aim for ≤1 dB level difference between A/B renders and ≤−1 dBTP peak. If independent stems drift or bleed, use verified full mixes joined at authored boundaries.
+
+**Playback proposal.** ENGINE’s future session host owns one transport and separate music, speech and effects buses. Use an explicit gesture, persistent music mute/level and a silent fallback on decode failure. For a client-side overlay keep phase. A full reload, static reader or embedded document needs a handoff or explicit resume; only one host may sound. Hide/interruption suspends output, clears pending one-shots and resumes from fresh visible state. Start speech ducking immediately with a proposed 8 dB reduction over 50 ms, release over 350 ms and compare on phone. Preserve captions, visual evidence and the ability to play with music off. [Web Audio scheduling](https://web.dev/articles/audio-scheduling)
+
+**Performance targets for ENGINE to measure.** Schedule against the audio clock with a 100 ms lookahead checked about every 25 ms. Preload the current phrase and nearest transition after consent. Initial budget: ≤1 MiB compressed, ≤24 MiB decoded, three steady layers and four during a bridge, ≤1 bar overlap. Four eight-bar stereo float buffers at 48 kHz cost about 16.5 MiB before overhead. Verify actual memory, underruns, UI responsiveness, load failure and hidden/resume on a narrow phone during a five-minute run. Compare sound-on/off simulation traces on the same seed. The silent manual panel has no audio transport or performance measurements for that future host.
+
+## Budget and commercial clearance
+
+**Current authorization: US$0, zero generations.** Free is owner-reported. The connected ElevenLabs workflow catalog exposes Music v1, v2 and v2.5; v2.5 accepts instrumental requests and durations from 3 to 600 seconds. This was a read-only capability check. Balance, account entitlement, game-class eligibility, stem alignment and lossless export remain unverified. The published Music terms list 11 Free generation minutes, no downloads and no API access. Starter lists API access, and high-quality downloads begin at Pro. Check account, plan and model terms again at acquisition. [Music overview](https://elevenlabs.io/docs/eleven-creative/products/music) · [Music Terms §§1–4 and Exhibit A](https://elevenlabs.io/music-terms)
+
+**Proposed pilot cap, subject to separate owner approval.** Start with the two 24-second sketches. Allow two further renders up to 30 seconds for a prepared passage or retry. Four requests, 108 total generated seconds, at most one retry within that limit. Stop when the listening question is answerable, the provider estimate is unavailable, or any cap would be exceeded. At the published API rate of US$0.15/min, the duration-only estimate is US$0.27. Propose a US$1 all-in incremental ceiling only on an already eligible account with confirmed pricing and export rights. A required subscription, renewal, overage, minimum or tax that exceeds the cap requires a new decision before generation. An original, locally synthesized audition is the zero-provider-cost alternative. [API pricing](https://elevenlabs.io/pricing/api)
+
+**Prompt and export record.** Describe meter, instruments, articulation, voicings, dynamics and mood. Exclude artist, songwriter, track, album, publisher and label names and distinctive lyrics from provider input. Keep reference recordings out of uploads and product assets. For every request store the dated prompt revision, model, request ID, actual charge, rejects, source hashes and edit lineage. Keep account evidence private. Serve reviewed exports locally in a sold build. Store credentials only in a private production environment.
+
+| Register entry | Evidence needed before shipping | Current disposition |
+| --- | --- | --- |
+| Theme composition and master | Composer, authorship or agreement, date, composition and recording ownership, edits, hash. | Proposed original. No master exists. |
+| Drum hits, bass and samples | Source for every recording, commercial embedding, editing, redistribution, notices and derivative parent IDs. | Proposed synthesis or documented cleared originals. No break samples acquired. |
+| Provider render and edited loop | Plan and model at generation, dated terms, account holder and class, permitted game/platforms, credit obligations, parent render, reviewer and approval. | Uncommissioned. Confirm Indie Game thresholds for title and publisher, accounting period, attribution and game distribution. Refer unresolved classification or Studio Game use to provider/legal review. |
+| Reference and existing audio | Existing machine effects and welcome voice need their own record and any required notices. Reference masters have research-only status here. | PRODUCER reconciles existing inventory with ENGINE. No inherited asset gains clearance from this proposal. |
+| Dependencies and delivery | Inventory runtime library, codec/build packaging, versions, licenses, bundled media, notices, ongoing conditions and reviewer. | The panel uses browser primitives and original graphics. Future audio dependencies and codec choices remain open. |
+
+MUSIC DIRECTOR maintains the audio register. ENGINE maps approved hashes and notices to the exact distributed build. PRODUCER reconciles them with the whole-product inventory. Keep unknowns out of release until supported commercial modification, embedding and distribution permissions are recorded for each target platform. Internal masters remain separate from public game exports. Public sample-library distribution has separate restrictions. [Production and clearance workflow](/stepanoskin/loopforge/design/studio/music-production)
+
+## Handoff and review status
+
+**Exists now.** The prototype has a menu contactor/clang, an older first-shift effects path and a welcome voice in the shifts viewer. Its public floor projection exposes machine holds, delivered lines and the bell. The board includes the silent manual fixture, two diagrams and the downloadable contract example. Source inspection and review of a recorded Forge moment supplied the game baseline. [Playable prototype](/stepanoskin/loopforge/play) · [Recorded Forge clearance](/loopforge-shifts/review/first-playthrough/limen/opening-Forge-clear.mp4)
+
+**Next decisions.** Owner reviews this proposal and later decides whether to commission a listening experiment, with a separate spending decision if needed. Exact motif pitches, timbres, mix and assets need listening. ENGINE later reviews observation visibility with SYSTEMS, supplies a scoped event adapter and implements the transport, lifecycle and measured performance. All future live inputs and audible responses described here remain proposals. [Music Director handoff](/stepanoskin/loopforge/design/studio/music-director) · [ENGINE handoff](/stepanoskin/loopforge/design/studio/engine-master)

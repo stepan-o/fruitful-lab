@@ -1,10 +1,10 @@
 import type {Scene} from './wire';
 import type {ArtView,Skin} from './skin';
 import geometry from '../intro/geometry.json';
-import {approachZone,type Room,stations} from './contract';
+import {approachZone,type Room} from './contract';
 import atlas from '../../../public/loopforge-intro/sprites.json';
 import floorPack from '../../../public/loopforge-design/floor-correction/v1/manifest.json';
-import {drawQueueRail,drawRoomMaterial} from '../room-material';
+import {drawFactory,drawFactorySprite,easeCamera,factoryProjection,shotScale} from '../factory-scene';
 import introSprites from './intro-sprites.json';
 
 type Images = Record<string,CanvasImageSource>;
@@ -16,7 +16,7 @@ export function loadArt(root='..'): Promise<Images> {
   if (!loading) {
     const images: Images = {};
     const sources = introSprites.map(name => [name, root+'/loopforge-intro/' + name + '.webp']);
-    if(root==='')sources.push(['queueRail','/loopforge-intro/sec-rails-depth.png']);
+    sources.push(['queueRail',root+'/loopforge-intro/sec-rails-depth.png']);
     for (const {material, room} of Object.values(floorPack.rooms)) {
       for (const {file} of [material, room]) sources.push([file, root+floorRoot.slice(2) + file]);
     }
@@ -40,85 +40,20 @@ export function drawBidPortrait(canvas:HTMLCanvasElement,lead:'LIMEN'|'STILETTO'
 export const registerDesk=[123.6,132] as const;
 export function floorView(w:number,h:number,room:Room,approach=false,crew:Scene['agents']=[],focusX?:number){
   const sec=room==='security';
-  let scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
-  let center=sec?127.15:127.4,cy=sec?(approach?127.2:129):144.35;
-  if(sec&&approach&&!crew.length){
-    // Hold the north edge at the entry to the rail. The incoming crew crosses
-    // this edge and the south edge includes LIMEN's boom on both screen sizes.
-    scale=Math.min(scale,h/(.67*15.1));
-    cy=121.5+.58*h/(scale*.67);
-  }
+  let x=sec?127:127.4,y=sec?129:144.4;
+  let spanX=sec?9:18,spanY=sec?9:5;
   if(sec&&crew.length){
     const xs=crew.map(a=>a.x/1000),ys=crew.map(a=>a.y/1000);
-    const left=Math.min(...xs),right=Math.max(...xs),front=Math.min(...ys),back=Math.max(...ys);
-    center=(left+right)/2;cy=(front+back)/2-.65;
-    scale=Math.min(48,w/Math.max(13,right-left+4),h/(.67*(back-front+7)));
-    // Begin on the empty staff door, then follow once the crew catches up.
-    cy=Math.min(cy,140.65-.42*h/(scale*.67));
-  }
-  if(!sec&&focusX!==undefined&&w<=780){
-    center=focusX;
-    scale=Math.min(50,w/8.0,h/3.65);
-    cy=144.9;
-  }
-  const xy=(x:number,y:number)=>[w/2+(x-center)*scale,h*.58+(y-cy)*scale*.67];
-  return {sec,scale,xy};
+    x=(Math.min(...xs)+Math.max(...xs))/2;y=(Math.min(...ys)+Math.max(...ys))/2;
+    spanX=Math.max(5,Math.max(...xs)-Math.min(...xs)+2);
+    spanY=Math.max(5,Math.max(...ys)-Math.min(...ys)+2);
+  }else if(sec&&approach){y=128;spanY=12;}
+  if(!sec&&focusX!==undefined&&w<=780){x=focusX;spanX=4;spanY=3;}
+  const scale=shotScale(w,h,spanX,spanY);
+  return {sec,x,y,scale,xy:factoryProjection(w,h,x,y,scale)};
 }
-// Retain one raster per room. A resize or camera change replaces that room's raster.
-const backdrops = new Map<Room, {key: string; canvas: HTMLCanvasElement}>();
-function floorBackdrop(room: Room, w: number, h: number, view: ReturnType<typeof floorView>, images: Images) {
-  const {material, room: detail} = floorPack.rooms[room];
-  const {xy} = view;
-  const [ox, oy] = material.originM;
-  const [dx, dy] = material.extentM;
-  const [left, top] = xy(ox, oy);
-  const [right, bottom] = xy(ox + dx, oy + dy);
-  const key = [floorPack.version, w, h, left, top, right, bottom].join('|');
-  const cached = backdrops.get(room);
-  if (cached?.key === key) return cached.canvas;
-
-  const canvas = cached?.canvas ?? document.createElement('canvas');
-  if(canvas.width!==w)canvas.width=w;
-  if(canvas.height!==h)canvas.height=h;
-  const base = canvas.getContext('2d')!;
-  base.imageSmoothingEnabled = false;
-  base.globalCompositeOperation = 'source-over';
-  base.globalAlpha = 1;
-  drawRoomMaterial(base,w,h,room,xy,images);
-  backdrops.set(room, {key, canvas});
-  return canvas;
-}
-// The opening camera follows the moving group across the same north-up floor
-// as Day One. The visible walls have gaps at the actual staff portals.
-function approachFloor(ctx:CanvasRenderingContext2D,w:number,h:number,camera:ReturnType<typeof floorView>,images:Images){
-  const {scale,xy}=camera;
-  drawRoomMaterial(ctx,w,h,'security',xy,images,false);
-  const rect=(x:number,y:number,dx:number,dy:number,color:string)=>{
-    const [px,py]=xy(x,y);ctx.fillStyle=color;ctx.fillRect(px,py,dx*scale,dy*scale*.67);
-  };
-  const entrance=geometry.portals.find(p=>p.id==='staff-entrance')!;
-  const [west,east]=entrance.span;
-  const [,threshold]=xy(...west as [number,number]);
-  ctx.fillStyle='#17202788';ctx.fillRect(0,threshold,w,Math.max(0,h-threshold));
-  const security=geometry.zones.find(z=>z.id==='security')!;
-  if(xy(security.rect.x,0)[0]<w){
-    ctx.save();ctx.beginPath();
-    security.polygon.forEach(([x,y],i)=>{const [px,py]=xy(x,y);if(i)ctx.lineTo(px,py);else ctx.moveTo(px,py);});
-    ctx.closePath();ctx.clip();ctx.drawImage(floorBackdrop('security',w,h,camera,images),0,0);ctx.restore();
-  }
-  for(const r of geometry.walls){
-    rect(r.x,r.y-.24,Math.max(r.w,.17),Math.max(r.h,.17)+.30,'#283333');
-    rect(r.x,r.y-.30,Math.max(r.w,.17),Math.max(r.h,.17),'#8c8e80');
-  }
-  for(const key of ['L2','L3','D1','D2','D3'] as const)for(const r of geometry.roomObjects[key]){
-    rect(r.x,r.y-.55,r.w,r.h+.55,'#344043');rect(r.x,r.y-.55,r.w,r.h,'#777d72');
-  }
-  rect(west[0],west[1]-.15,east[0]-west[0],.3,'#b6aa88');
-  for(const [x,y] of entrance.span){
-    rect(x-.22,y-.48,.44,.76,'#424e4c');rect(x-.22,y-.53,.44,.24,'#dfcba1');
-  }
-}
-export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView,operation?:{stroke:number;deskCut:boolean;focusStation?:number;opening?:boolean}){
+export type ShiftCamera={x:number;y:number;scale:number;last:number};
+export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView,operation?:{stroke:number;deskCut:boolean;focusStation?:number;opening?:boolean;camera?:ShiftCamera;fade?:number;still?:boolean;paused?:boolean}){
   const tracking=room==='security'&&scene.world.stage==='walk'&&!operation?.deskCut;
   const crew=tracking?scene.agents.filter(a=>a.duty==='walking'):[];
   const approachingDesk=crew.length>0&&crew.every(a=>a.room==='security');
@@ -129,61 +64,38 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
     operation.opening?(latest?latest.at[0]/1000:geometry.stations[3].x):
     geometry.stations[operation.focusStation].x;
   const camera = floorView(w,h,room,tracking||['welcome','posting','queue'].includes(scene.world.stage),approachingDesk?[]:crew,focusX);
-  const {sec,scale,xy} = camera;
-  ctx.imageSmoothingEnabled=false;
-  if(tracking&&!approachingDesk)approachFloor(ctx,w,h,camera,images);
-  else ctx.drawImage(floorBackdrop(room, w, h, camera, images), 0, 0);
-  const sprites=atlas.sheets as Record<string,number[]>;
-  function sprite(key:string,n:number,x:number,y:number,k=scale/64){
-    const im=images[key];if(!im)return;
-    const [sw,sh,cols,px,py]=sprites[key];
-    ctx.drawImage(im,n%cols*sw,Math.floor(n/cols)*sh,sw,sh,Math.round(x-px*k),Math.round(y-py*k),Math.round(sw*k),Math.round(sh*k));
+  const moving=operation?.camera;
+  const now=performance.now();
+  if(moving){
+    const target=camera.scale*(operation?.still?1:1-.32*(operation?.fade??0));
+    if(!operation?.paused||!moving.scale)easeCamera(moving,camera.x,camera.y,target,Math.min(.2,(now-moving.last)/1000),operation?.still);
+    moving.last=now;
   }
+  const {scale,xy}=moving?{scale:moving.scale,xy:factoryProjection(w,h,moving.x,moving.y,moving.scale)}:camera;
+  const sec=camera.sec;
+  ctx.imageSmoothingEnabled=false;
+  const sprites=atlas.sheets as Record<string,number[]>;
+  const sprite=(key:string,n:number,x:number,y:number,k=scale/64)=>drawFactorySprite(ctx,images,sprites,key,n,x,y,k);
   function tag(text:string,x:number,y:number,ink='#e8e1c9',bg='#17292a'){
     ctx.font='bold 11px monospace';const tw=ctx.measureText(text).width+8;const left=Math.max(1,Math.min(w-tw-1,x-tw/2));
     ctx.fillStyle=bg;ctx.fillRect(left,y-11,tw,14);ctx.fillStyle=ink;ctx.textAlign='left';ctx.fillText(text,left+4,y);
   }
   const layers:{y:number;draw:()=>void}[]=[];
   const anchors=new Map<string,number[]>();
-  if(sec){
-    const [x0,y0]=xy(123.25,122.8),[x1,y1]=xy(130.25,127.2);
-    if(images.queueRail){
-      for(const {rect} of geometry.fixtures.filter(f=>f.kind==='rail')){
-        layers.push({y:rect.y+rect.h,draw:()=>drawQueueRail(ctx,images.queueRail,xy,rect,scale)});
-      }
-    }else{
-      ctx.strokeStyle='#729193';ctx.lineWidth=2;for(const x of [x0,x1]){ctx.beginPath();ctx.moveTo(x,y0);ctx.lineTo(x,y1);ctx.stroke();}
-    }
-    for(const [cx,cy] of [registerDesk,[131.6,131.9]]){
-      const [x,y]=xy(cx,cy);layers.push({y:cy-.7,draw:()=>sprite('desk-back',0,x,y)},{y:cy,draw:()=>sprite('desk-front',0,x,y)});
-    }
-    const [gx,gy]=xy(124.9,134);
-    layers.push({y:134,draw:()=>{sprite('boom',scene.world.passageGateMm===undefined?(view.gate==='fl-gate-released'?0:24):Math.round(24*scene.world.passageGateMm/(geometry.gate.length*1000)),gx,gy);if(view.gate)skin.world(ctx,view.gate,gx,gy,scale);}});
-  }else{
-    const [x,y]=xy(118,145),[x2]=xy(135.5,145);
-    ctx.fillStyle='#292f2d';ctx.fillRect(x,y,x2-x,scale*1.6);
-    for(let i=0;i<4;i++){
-      const [cx,yy]=xy(119.7+i*4,145.7),span=scale*2;
-      if(i===3){
-        // Day One's calibrated rear and grip share a registration point; the
-        // operator at the approved Forge control belongs between their depths.
-        const [px,root]=xy(132,geometry.stations[i].y);
-        const registered=root+(420-126)*scale/64;
-        layers.push({y:144.38,draw:()=>sprite('press-back',operation?6-Math.round(6*Math.sin(Math.PI*operation.stroke)):6,px,registered)},
-          {y:144.48,draw:()=>sprite('press-front',0,px,registered)});
-        if(operation)layers.push({y:144.47,draw:()=>{
-          const [tx,ty]=xy(131.92,144.48);
-          ctx.strokeStyle='#e1b975';ctx.lineWidth=Math.max(2,scale*.075);
-          ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(tx+scale*.38,ty-(operation.stroke?0:scale*.14));ctx.stroke();
-        }});
-        continue;
-      }
-      layers.push({y:146,draw:()=>{
-        ctx.fillStyle=['#716944','#3a6268','#53636a'][i];ctx.fillRect(cx-span*.65,yy,span*1.3,span*.53);
-        ctx.fillStyle='#25302d';ctx.fillRect(cx-span*.65,yy+span*.53,span*1.3,span*.18);
-
-      }});
-    }
+  const queue=(y:number,draw:()=>void)=>layers.push({y,draw});
+  const gateFrame=scene.world.passageGateMm===undefined?(view.gate==='fl-gate-released'?0:24):
+    Math.round(24*scene.world.passageGateMm/(geometry.gate.length*1000));
+  drawFactory(ctx,w,h,xy,scale,images,sprite,queue,operation?6-Math.round(6*Math.sin(Math.PI*operation.stroke)):6,gateFrame,(id,x,y)=>skin.world(ctx,id,x,y,scale));
+  if(sec&&view.gate){
+    const [gx,gy]=xy(geometry.gate.hinge[0],geometry.gate.hinge[1]);
+    queue(134.01,()=>skin.world(ctx,view.gate!,gx,gy,scale));
+  }
+  if(!sec){
+    if(operation)queue(144.47,()=>{
+      const [tx,ty]=xy(131.92,144.48);
+      ctx.strokeStyle='#e1b975';ctx.lineWidth=Math.max(2,scale*.075);
+      ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(tx+scale*.38,ty-(operation.stroke?0:scale*.14));ctx.stroke();
+    });
     for (const [i,post] of view.posts.entries()) {
       const station=geometry.stations[i], [x,y]=xy(station.x,station.y);
       const hand=view.handoffs[i];
@@ -195,11 +107,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
     for(const [sx,sy] of geometry.contact.outputSlots){
       const [x,ground]=xy(sx,sy),y=ground-.72*scale;
       const filled=view.rack.items.some((p:{at:number[]})=>p.at[0]===Math.round(sx*1000)&&p.at[1]===Math.round(sy*1000));
-      layers.push({y:sy,draw:()=>{
-        skin.world(ctx,'fl-rack-cradle',x,y,scale);
-        if(filled)skin.world(ctx,'fl-cortex-finished',x,y,scale);
-        skin.world(ctx,'fl-rack-lip',x,y,scale);
-      }});
+      if(filled)queue(sy+.1,()=>skin.world(ctx,'fl-cortex-finished',x,y,scale));
     }
     for(const item of scene.items){
       if(item.status==='rack')continue;
@@ -252,7 +160,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
     }});
   }
   layers.sort((a,b)=>a.y-b.y).forEach(l=>l.draw());
-  if(!sec)for(let i=0;i<4;i++){const [x,y]=xy(119.7+i*4,147.5);if(x>=8&&x<=w-8)tag(stations[i],x,Math.min(h-4,y+18));}
+
   // Simultaneous voices share the reading interval. Stack their plates in event
   // order and paint all tails first so none can strike through another line.
   const group = view.speeches.length > 1;
@@ -299,4 +207,5 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
     ctx.fillStyle='#182626';ctx.font=bodyFont;
     lines.forEach((line,i)=>ctx.fillText(line,x+10,y+36+i*lineHeight));
   }
+  return xy;
 }

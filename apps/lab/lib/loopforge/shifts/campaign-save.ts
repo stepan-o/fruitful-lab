@@ -2,7 +2,7 @@ import type {Inheritance} from './simulation';
 import {playtestQuota,type Progress} from './playthrough';
 export type Campaign={
   version:1; id:string; phase:'intro'|'console'|'call'|'floor'; quota:number;
-  seconds:number; confirmed?:number; morningSeconds?:number; source?:Inheritance; progress:Progress; room:'security'|'conveyor'; shotSeq:number;
+  seconds:number; confirmed?:number; morningSeconds?:number; callTopic?:number; source?:Inheritance; progress:Progress; room:'security'|'conveyor'; shotSeq:number;
 };
 const key='loopforge.playthrough.1';
 export function freshCampaign():Campaign{

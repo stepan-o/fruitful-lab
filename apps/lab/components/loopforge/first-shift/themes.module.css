@@ -111,3 +111,7 @@
 .displaySwitch{display:flex;align-items:center;gap:10px;min-height:44px;color:#d9ceae;font:13px monospace;cursor:pointer}
 .displaySwitch input{appearance:none;width:42px;height:23px;border:1px solid #a3987b;border-radius:16px;background:radial-gradient(circle at 11px center,#f4d4a0 7px,transparent 8px) #23312d;cursor:pointer}
 .displaySwitch input:checked{background:radial-gradient(circle at 30px center,#85ded5 7px,transparent 8px) #203331}
+
+.game{--playbar:52px}
+.game[data-display=normal] .menu{min-height:calc(100svh - var(--playbar));height:calc(100svh - var(--playbar))}
+@media(max-width:620px){.game{--playbar:84px}}

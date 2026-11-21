@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import {clockText,dayOneMinute,openingMinute} from "../../../lib/loopforge/shifts/factory-clock";
 import FirstShift from "./FirstShift";
@@ -8,7 +8,8 @@ import ProducerConsole from "./ProducerConsole";
 import LeadershipCall from "./LeadershipCall";
 import {endCampaign,freshCampaign,loadCampaign,saveCampaign,type Campaign} from "../../../lib/loopforge/shifts/campaign-save";
 import type {PlayerView} from "../../../lib/loopforge/first-shift/contract";
-import floorStyle from "./shift-floor.module.css";
+import PlaybackBar from "./PlaybackBar";
+import {PlaybackTape,type Speed} from "../../../lib/loopforge/shifts/playback";
 const IntroPlayer=dynamic(()=>import("../intro/IntroPlayer"),{ssr:false});
 const ShiftFloor=dynamic(()=>import("./ShiftFloor"),{ssr:false});
 import ThemeProvider, { useConsoleTheme } from "./ThemeProvider";
@@ -24,6 +25,37 @@ function GameSession({media,legacyReview=false}:Props) {
   const [run,setRun]=useState<Campaign|null>(null), [menu, setMenu] = useState(true), [settings, setSettings] = useState(false);
   const [dev,setDev]=useState(false),[starting,setStarting]=useState(false),[error,setError]=useState("");
   const [clock,setClock]=useState(clockText(openingMinute));
+  const [paused,setPaused]=useState(false),[speed,setSpeed]=useState<Speed>(1);
+  const [revision,setRevision]=useState(0),[ahead,setAhead]=useState(0);
+  const tape=useRef<PlaybackTape|null>(null),savedAt=useRef(0);
+  const observe=useCallback((current:Campaign,presented?:number)=>{
+    if(tape.current?.id!==current.id){tape.current=new PlaybackTape(current.id);tape.current.load(current);}
+    tape.current.record(current,false,presented);
+    if(performance.now()-savedAt.current>1500){tape.current.save();savedAt.current=performance.now();}
+  },[]);
+  useEffect(()=>{
+    const flush=()=>tape.current?.save();
+    window.addEventListener("pagehide",flush);
+    return ()=>{flush();window.removeEventListener("pagehide",flush);};
+  },[]);
+  function play(){
+    tape.current?.discardFuture();setPaused(false);
+    if(menu){if(settings)closeSettings();enter();}
+  }
+  function seek(delta:number){
+    if(!run)return;
+    observe(run);
+    const restored=tape.current!.seek(run,delta);
+    const next=restored.run;
+    let extra=restored.remaining;
+    if(next.phase==="console"||next.phase==="call"){
+      next.morningSeconds=(next.morningSeconds??0)+extra;extra=0;
+    }
+    if(settings)closeSettings();
+    setMenu(false);setPaused(true);setAhead(extra);setRevision(n=>n+1);
+    setClock(clockText(next.phase==="intro"?dayOneMinute(next.seconds):openingMinute+(next.morningSeconds??0)/60));
+    saveCampaign(next);setRun(next);observe(next);tape.current?.save();
+  }
   const shell=useRef<HTMLDivElement>(null);
   function present(full:boolean){
     const root=shell.current;
@@ -38,13 +70,14 @@ function GameSession({media,legacyReview=false}:Props) {
   useEffect(()=>{
     if(!run||menu||!["console","call"].includes(run.phase))return;
     setClock(clockText(openingMinute+(run.morningSeconds??0)/60));
+    if(paused)return;
     const timer=window.setInterval(()=>{
       if(document.hidden)return;
-      run.morningSeconds=(run.morningSeconds??0)+1;saveCampaign(run);
+      run.morningSeconds=(run.morningSeconds??0)+.25*speed;observe(run);saveCampaign(run);
       setClock(clockText(openingMinute+run.morningSeconds/60));
-    },1000);
+    },250);
     return ()=>window.clearInterval(timer);
-  },[run,menu]);
+  },[run,menu,paused,speed,observe]);
   function secondDay(){
     if(skipWorker.current)return;
     present(!dev);setStarting(true);setError("");
@@ -57,7 +90,7 @@ function GameSession({media,legacyReview=false}:Props) {
       if(data.local==="failure"){stop();setError(data.message);return;}
       if(data.local!=="departure")return;
       next.source=data.source;next.phase="console";next.progress.tick=data.source.tick;
-      saveCampaign(next);setRun(next);setMenu(false);stop();
+      setPaused(false);setAhead(0);observe(next);saveCampaign(next);setRun(next);setMenu(false);stop();
     };
     w.postMessage({local:"skip"});
   }
@@ -68,22 +101,26 @@ function GameSession({media,legacyReview=false}:Props) {
   useEffect(() => { if (settings) dialog.current?.showModal(); else dialog.current?.close(); }, [settings]);
   useEffect(() => { if (menu) start.current?.focus(); }, [menu]);
   function closeSettings() { setSettings(false); settingsButton.current?.focus(); }
-  useEffect(()=>{if(!legacyReview)setRun(loadCampaign());},[legacyReview]);
+  useEffect(()=>{if(!legacyReview){const current=loadCampaign();if(current){observe(current);setRun(current);}}},[legacyReview,observe]);
   function enter() {
     if(legacyReview){startLegacy(true);setMenu(false);return;}
-    present(!dev);const current=run??freshCampaign();saveCampaign(current);setRun(current);setMenu(false);
+    present(!dev);const current=run??freshCampaign();setPaused(false);setAhead(0);tape.current?.discardFuture();observe(current);saveCampaign(current);setRun(current);setMenu(false);
   }
   function phase(next:Campaign["phase"]) {
-    if(!run)return;const updated={...run,phase:next};saveCampaign(updated);setRun(updated);
+    if(!run)return;tape.current?.seal(run);const updated={...run,phase:next};setAhead(0);observe(updated);saveCampaign(updated);setRun(updated);
   }
-  function finish(){endCampaign();setMenu(true);setRun(null);}
+  function finish(){if(run)sessionStorage.removeItem("loopforge.transport."+run.id);tape.current=null;endCampaign();setMenu(true);setRun(null);}
   const view:PlayerView={
     tick:run?.source?.tick??0,day:2,shiftTick:0,phase:"choose",cash:0,condition:100,
     workers:run?.source?.agents.filter(a=>a.character==="worker").length??0,
     quota:run?.quota??0,committed:run?.source?.pieces.length??0,produced:0,retained:0,losses:0,
     people:[],events:[],adviser:null,assignments:null,briefing:null,pending:null,
   };
+  const toolbar=<PlaybackBar clock={clock} episode={menu?"LOOPFORGE":run?.phase==="intro"?"DAY 1":"DAY 2"}
+    paused={menu||paused} speed={speed} canSeek={!!run&&!starting} onPlay={play} onPause={()=>setPaused(true)}
+    onSpeed={setSpeed} onSeek={seek} onMenu={menu?undefined:()=>{if(run)tape.current?.seal(run);setMenu(true);}}/>;
   return <div ref={shell} className={s.game} style={{ ...materialStyle(media), ...theme.style }} data-theme={theme.recipe.shell} data-display={legacyReview?"legacy":dev?"dev":"normal"}>
+    {!legacyReview&&!settings&&toolbar}
     {menu && <main className={s.menu} aria-label="Loopforge start menu">
       <ConsoleBeacon active={!settings} />
       <div className={s.menuScene}><Art media={media} id="lobby-room" sizes="100vw" priority /></div>
@@ -108,21 +145,23 @@ function GameSession({media,legacyReview=false}:Props) {
     </main>}
     {legacyReview&&legacyStarted&&<div hidden={menu} inert={menu}><FirstShift media={media} suspended={menu} onOpenMenu={()=>setMenu(true)}/></div>}
     {!menu&&run&&<>
-      <div className={floorStyle.toolbar}><span>{run.phase==="intro"?"DAY 1 · FIRST SHIFT":run.phase==="console"?"DAY 2 · LEADERSHIP CALLING":"DAY 2 · PRODUCER CONSOLE"}</span><time className={floorStyle.clock} aria-label="Factory time">{clock}</time><button onClick={()=>setMenu(true)}>Main menu</button></div>
-      {run.phase==="intro"&&<IntroPlayer campaign={{seconds:run.seconds,confirmed:run.confirmed??0,onProgress:(seconds,confirmed)=>{
-        const confirmedChanged=run.confirmed!==confirmed;run.confirmed=confirmed;setClock(clockText(dayOneMinute(seconds)));
-        if(confirmedChanged||Math.floor(seconds*4)!==Math.floor(run.seconds*4)){run.seconds=seconds;saveCampaign(run);}
+      {run.phase==="intro"&&<IntroPlayer key={revision} campaign={{paused,speed,ahead,seconds:run.seconds,confirmed:run.confirmed??0,onProgress:(seconds,confirmed)=>{
+        const persist=paused||run.confirmed!==confirmed||Math.floor(seconds*4)!==Math.floor(run.seconds*4);
+        run.seconds=seconds;run.confirmed=confirmed;
+        observe(run);setClock(clockText(dayOneMinute(seconds)));
+        if(persist)saveCampaign(run);
       },onDeparture:source=>{
-        run.source=source;run.progress={tick:source.tick,commands:[],guided:true};phase("console");
+        tape.current?.seal(run);run.source=source;run.progress={tick:source.tick,commands:[],guided:true};phase("console");
       }}}/>}
-      {run.phase==="console"&&<ProducerConsole media={media} skin={theme.recipe.console} view={view} factoryTime={clock} incoming busy={false} effects active ticking={false}
-        primaryLabel="Awaiting leadership" speed={1} onLeadership={()=>phase("call")}
-        onAdviser={()=>{}} onPrimary={()=>{}} onRoom={()=>{}} onInspect={()=>{}} onFeedback={()=>{}} onNavigate={()=>{}} onSpeed={()=>{}}/>}
-      {run.phase==="call"&&<LeadershipCall rack media={media} view={view} onClose={()=>phase("console")} onContinue={()=>phase("floor")}/>}
-      {run.phase==="floor"&&<ShiftFloor onClock={setClock} run={run} suspended={menu} onFinish={finish}/>}
+      {run.phase==="console"&&<div inert={paused}><ProducerConsole media={media} skin={theme.recipe.console} view={view} factoryTime={clock} incoming busy={false} effects active ticking={false}
+        primaryLabel="Awaiting leadership" speed={speed} onLeadership={()=>phase("call")}
+        onAdviser={()=>{}} onPrimary={()=>{}} onRoom={()=>{}} onInspect={()=>{}} onFeedback={()=>{}} onNavigate={()=>{}} onSpeed={()=>{}}/></div>}
+      {run.phase==="call"&&<div inert={paused}><LeadershipCall key={revision} rack paused={paused} speed={speed} topic={run.callTopic??0} onTopic={topic=>{const updated={...run,callTopic:topic};observe(updated);saveCampaign(updated);setRun(updated);}} media={media} view={view} onClose={()=>phase("console")} onContinue={()=>phase("floor")}/></div>}
+      {run.phase==="floor"&&<ShiftFloor key={revision} onClock={setClock} onProgress={observe} run={run} transport={{paused,speed}} ahead={ahead} onFinish={finish}/>}
     </>}
     <dialog ref={dialog} className={s.menuDialog} onClose={closeSettings} aria-labelledby="menu-settings-title"
       onClick={e => { if (e.target === dialog.current) closeSettings(); }}>
+      {!legacyReview&&settings&&toolbar}
       <ConsoleBeacon active={settings} />
       <header><Kicker>Loopforge / Settings</Kicker><h2 id="menu-settings-title">Game settings.</h2></header>
       <button className={s.closeSettings} onClick={closeSettings} aria-label="Close settings">Close ×</button>

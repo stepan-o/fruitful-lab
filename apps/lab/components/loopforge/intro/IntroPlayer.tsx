@@ -9,8 +9,8 @@ import {Timing} from './metrics';
 import styles from './intro.module.css';
 const duration=190.60391778732966;
 const timestamp=(s:number)=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
-type Controls={confirm:(i:number)=>void;skip:()=>void;toggle:()=>void;seek:(s:number)=>void;skin:(s:Skin)=>void;inspect:()=>void;metrics:()=>string};
-type Playthrough={seconds:number; confirmed:number; onProgress:(seconds:number,confirmed:number)=>void; onDeparture:(source:import('../../../lib/loopforge/shifts/simulation').Inheritance)=>void};
+type Controls={transport:()=>void;confirm:(i:number)=>void;skip:()=>void;toggle:()=>void;seek:(s:number)=>void;skin:(s:Skin)=>void;inspect:()=>void;metrics:()=>string};
+type Playthrough={paused:boolean;speed:number;ahead:number;seconds:number; confirmed:number; onProgress:(seconds:number,confirmed:number)=>void; onDeparture:(source:import('../../../lib/loopforge/shifts/simulation').Inheritance)=>void};
 export default function IntroPlayer({campaign}:{campaign?:Playthrough}){
   const campaignRef=useRef(campaign);
   campaignRef.current=campaign;
@@ -29,7 +29,14 @@ export default function IntroPlayer({campaign}:{campaign?:Playthrough}){
     let received=0,elapsed=0,running=false,lastBeat='',lastSpeech='',width=0,height=0,lastDraw=0,needsDraw=true;
     let pendingOrder:number|null=null;
     let desiredHint='PAUSE', began=false, delivered=false, captureRequested=false;
-    function startStory(){if(!campaignRef.current||began||!bank||!frame)return;began=true;if(campaignRef.current.seconds>0)worker.postMessage({local:'locate',seconds:campaignRef.current.seconds});else command('PLAY');}
+    function syncTransport(){
+      const c=campaignRef.current;
+      if(c&&began)worker.postMessage({local:'transport',paused:c.paused||document.hidden,speed:c.speed});
+    }
+    function startStory(){
+      const c=campaignRef.current;if(!c||began||!bank||!frame)return;
+      began=true;worker.postMessage({local:'restore',seconds:c.seconds,ahead:c.ahead,paused:c.paused||document.hidden,speed:c.speed});
+    }
     let session='hello',finished=false,recovering=false;
     const cam:Camera={x:0,y:0,scale:0,time:-1};
     const send=(type:string,p:object)=>worker.postMessage(envelope(type,++seq,p));
@@ -108,7 +115,7 @@ export default function IntroPlayer({campaign}:{campaign?:Playthrough}){
           try{
             const next=reconstruct(frame,m);previous=m.msg_type==='FRAME_DIFF'?frame:null;frame=next;received=performance.now();recovering=false;
             if(campaignRef.current)setRacked(frame.state.items.filter(i=>i.stage===4&&i.y===147000).length);
-            if(!previous){if(!campaignRef.current)cam.scale=0;setReady(!!bank);worker.postMessage({local:'applied',tick:frame.tick,hash:frame.hash});if(began&&campaignRef.current&&desiredHint==='PAUSE'&&!running&&!finished)command('PLAY');startStory();}
+            if(!previous){if(!campaignRef.current)cam.scale=0;setReady(!!bank);worker.postMessage({local:'applied',tick:frame.tick,hash:frame.hash});startStory();}
             const lines=frame.state.events.map(e=>e.speaker+' · '+e.text).join('\n');
             if(lines!==lastSpeech){lastSpeech=lines;setSpeech(lines);}
             requestDraw();
@@ -120,15 +127,16 @@ export default function IntroPlayer({campaign}:{campaign?:Playthrough}){
         default:setFailure('Unsupported session message.');
       }
     };
-    controls.current={confirm(i){worker.postMessage({local:'station',index:i});},skip(){worker.postMessage({local:'skip'});},toggle(){if(finished){worker.postMessage({local:'restart-play'});return;}command(running?'PAUSE':'PLAY');},
+    controls.current={transport:syncTransport,confirm(i){worker.postMessage({local:'station',index:i});},skip(){worker.postMessage({local:'skip'});},toggle(){if(finished){worker.postMessage({local:'restart-play'});return;}command(running?'PAUSE':'PLAY');},
       seek(seconds){worker.postMessage({local:'locate',seconds});},
       metrics(){return JSON.stringify({viewport:[width,height],backingPixels:[surface.width,surface.height],coldMountToDrawMs:cold,frameIntervals:cadence.result(),drawSubmission:drawing.result(),inputToNextDraw:response.result(),workerTotalMs:{simulation:costs[0],deliberation:costs[1],projectionAndHash:costs[2]},images:Object.keys(bank?.images??{}).length,workers:1,heapEstimate:(performance as Performance&{memory?:{usedJSHeapSize:number}}).memory?.usedJSHeapSize},null,2);},
       skin(next){inputAt=performance.now();mode=next;cam.scale=0;requestDraw();},inspect(){worker.postMessage({local:'inspect'});}};
-    const hidden=()=>{if(document.hidden&&running)command('PAUSE');};document.addEventListener('visibilitychange',hidden);
+    const hidden=()=>{if(campaignRef.current)syncTransport();else if(document.hidden&&running)command('PAUSE');};document.addEventListener('visibilitychange',hidden);
     if(campaignRef.current)worker.postMessage({local:'campaign',confirmed:campaignRef.current.confirmed});
     send('VIEWER_HELLO',{viewer_name:'sprite-review',viewer_version:'1.0.0',supported_schema_versions:[schema],supports:{diff_stream:true,full_snapshot:true,replay_seek:false}});
     return ()=>{live=false;controls.current=null;surface.removeEventListener('pointerup',pressStation);resize.disconnect();cancelAnimationFrame(raf);worker.terminate();document.removeEventListener('visibilitychange',hidden);};
   },[]);
+  useEffect(()=>{controls.current?.transport();},[campaign?.paused,campaign?.speed]);
   return <main className={styles.page} data-story={campaign?"true":undefined}>
     <header>{!campaign&&<a href="/stepanoskin/loopforge/design#day-one-intro">← Game design</a>}<span>LOOPFORGE</span></header>
     <section className={styles.console} aria-label="Day One live player">
@@ -136,8 +144,8 @@ export default function IntroPlayer({campaign}:{campaign?:Playthrough}){
       <canvas ref={canvas} className={styles.surface} aria-label="Live factory floor with character names and speech bubbles"/>
       <span className={styles.sr} aria-live="polite">{speech}</span>
       {failure&&<p role="alert">{failure}</p>}
-      {campaign&&order!==null&&<div className={styles.order} key={order}><small>STILETTO · CORTEX {order<4?1:2} / 2 · CLOCK HELD</small><button autoFocus onClick={()=>controls.current?.confirm(order)}><b>{tutorialOrders[order].station}</b> · {tutorialOrders[order].text}</button></div>}
-      <div className={styles.controls}><button disabled={!ready||order!==null} onClick={()=>controls.current?.toggle()}>{playing?'Pause':ready?'Play':'Loading…'}</button>
+      {campaign&&order!==null&&<div className={styles.order} key={order}><small>STILETTO · CORTEX {order<4?1:2} / 2 · CLOCK HELD</small><button autoFocus disabled={campaign.paused} onClick={()=>controls.current?.confirm(order)}><b>{tutorialOrders[order].station}</b> · {tutorialOrders[order].text}</button></div>}
+      <div className={styles.controls}>{!campaign&&<button disabled={!ready||order!==null} onClick={()=>controls.current?.toggle()}>{playing?'Pause':ready?'Play':'Loading…'}</button>}
         {campaign&&<button disabled={!ready} onClick={()=>controls.current?.skip()}>Skip to Day 2</button>}
         {!campaign&&<><button disabled={!ready} onClick={()=>{if(slider.current)slider.current.value='0';controls.current?.seek(0);}}>Restart</button>
         <input ref={slider} aria-label="Scene time" type="range" min="0" max={duration} step=".05" defaultValue="0" onChange={e=>{if(clock.current)clock.current.value=timestamp(Number(e.target.value))+' / 3:10';}} onPointerUp={e=>controls.current?.seek(Number(e.currentTarget.value))} onKeyUp={e=>controls.current?.seek(Number(e.currentTarget.value))}/>

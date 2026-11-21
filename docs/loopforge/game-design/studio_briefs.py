@@ -42,7 +42,7 @@ def kickoff(role):
     music = ("Take B’s A–G–F–E–C♯ over low D is the approved direction. Preserve dated Take A. "
              "Start with Main menu curiosity, Options following the drummer’s hands and heavy, patient Conveyor. "
              "Read the dedicated room studies at https://www.fruitfulab.net/stepanoskin/loopforge/design#music-long-form "
-             "and the music study, production handoff and current ENGINE brief. The owner selected 164/82. The owner approved the Main menu 06 arrangement. Options 01 felt too long and repetitive. Review Options 02 across its 32-bar repeat, listening for the Menu breakbeat and how the hands change pattern. Ask one question at a time. "
+             "and the music study, production handoff and current ENGINE brief. The owner selected 164/82. The owner approved the Main menu 06 arrangement. The owner approved the 32-bar Options 02 drum solo. Review Conveyor 01 next, listening for weight during steady work. Ask one question at a time. "
              "Develop native phrase variations and responses to permitted observations for each theme. Keep fixtures separate. "
              "Use labelled local sketches for exploration. ElevenLabs is intended for production; the proposed one-attempt 118-second "
              "Menu pilot needs verified rights, export entitlement and separate all-in spending approval. ") if role['id'] == 'music-director' else ''

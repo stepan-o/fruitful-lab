@@ -2,6 +2,10 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 21 November 2026 · Between the call and the stroke
+
+Five ticks after the Producer clears Forge, max is still waiting beside the loaded press. At tick ten he receives LIMEN’s call. The first [Forge UI study](/loopforge-design/forge-study/index.html) holds the camera across that interval and pairs the same views on desktop and phone. Start with the three clean stills, then compare the replay and annotations. The owner chose crew behavior as the signal to follow. The visual reading of the proposed poses is awaiting owner review.
+
 ## 21 November 2026 · Two endings to one descent
 
 MUSIC DIRECTOR rendered the first 24-second sketches after the owner merged the design proposal. In one, the last note rubs against D from above; in the other it hangs just below. The menu break loses its pitched layers in Options, then its fast hats continue over the Conveyor snare. The held carrier leaves an audible gap in the bass. The two takes share one backing and gain setting.

@@ -1,6 +1,7 @@
 from day_one_gallery import build_gallery
 from studio_briefs import build_studio
 from music_engine import build_music
+from forge_study_entry import FORGE_PANEL
 from rehearsal_page import build_rehearsal
 from conveyor_proposal import render_conveyor, conveyor_markdown
 from core_loop_study import render_core_loop_study, core_loop_markdown
@@ -450,6 +451,7 @@ panels=[('player-desires','Player desires & scenarios',desires),('day-one-intro'
 studio_panel, studio_css = build_studio(ROOT.parent, OUT)
 panels.insert(0, ('studio', 'Studio briefs', studio_panel))
 panels.insert(1, ('music-engine', 'Music engine', build_music(ROOT, OUT)))
+panels.insert(2, ('forge-study', 'Forge UI study', FORGE_PANEL))
 head='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101412"><meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow"><title>Loopforge — Game design</title><link rel="stylesheet" href="styles.css"></head><body>'
 head=head.replace('href="styles.css"','href="styles.css?v='+hashlib.sha256((ROOT/'styles.css').read_bytes()).hexdigest()[:12]+'"')
 head=head.replace('</head>','<link rel="stylesheet" href="model-briefs.css?v='+hashlib.sha256((ROOT/'model-briefs.css').read_bytes()).hexdigest()[:12]+'"></head>')

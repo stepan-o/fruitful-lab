@@ -1,24 +1,43 @@
-name: Capture Forge study evidence
+name: Prepare Forge study evidence
 on:
   push:
     branches: [codex/ui-forge-study]
     paths: ['.github/workflows/forge-study-capture.yml']
 permissions:
+  actions: read
   contents: read
 jobs:
-  capture:
+  export:
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        device: [desktop, phone]
+        state: [wait, sent, after]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: npm install --prefix "$RUNNER_TEMP/forge-review" playwright@1.56.1 typescript@5.9.3
-      - run: "$RUNNER_TEMP/forge-review/node_modules/.bin/playwright install chromium"
-      - run: NODE_PATH="$RUNNER_TEMP/forge-review/node_modules" node docs/loopforge/game-design/forge-study/capture.cjs
-      - uses: actions/upload-artifact@v4
-        if: always()
+      - uses: actions/download-artifact@v4
         with:
           name: forge-ui-evidence
-          path: ui-capture/
+          run-id: 44873804988
+          github-token: ${{ github.token }}
+          path: captures
+      - name: Export the review-sized still and measured bounds
+        env:
+          DEVICE: ${{ matrix.device }}
+          STATE: ${{ matrix.state }}
+        run: |
+          python - <<'PY'
+          import base64, hashlib, io, json, os
+          from pathlib import Path
+          from PIL import Image
+          root=Path('captures')
+          device,state=os.environ['DEVICE'],os.environ['STATE']
+          jpg=next(root.rglob(f'{device}-{state}.jpg'))
+          buffer=io.BytesIO()
+          Image.open(jpg).save(buffer,format='WEBP',quality=78)
+          content=buffer.getvalue()
+          print('MEASURE='+json.dumps(json.loads(next(root.rglob(device+'.json')).read_text())))
+          print('SHA256='+hashlib.sha256(content).hexdigest())
+          for offset in range(0,len(content),1500):
+              print('IMAGEDATA='+base64.b64encode(content[offset:offset+1500]).decode())
+          PY

@@ -2,6 +2,12 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 21 November 2026 · A bass note waits for the carrier
+
+In the recorded Forge clearance, LIMEN speaks while the carrier is still at the station. The owner chose to let visible work shape the score. The proposed bass leaves room during the wait and can answer on the next beat after motion. A second delivery of the same event ID earns one receipt and the same single musical answer.
+
+The [Music engine tab](/stepanoskin/loopforge/design#music-engine) illustrates how fast hats persist into a half-time Conveyor. Its silent panel tests the observation contract without touching the game. The opening off-note stays unresolved. An audible experiment, owner listening verdict and ENGINE integration remain outstanding. [Versioned input example](/loopforge-design/music-inputs.v1.json) · [Music Director handoff](/stepanoskin/loopforge/design/studio/music-director).
+
 ## 20 November 2026 · Giving a paused order an answer
 
 Root paused the line, selected bob and sent him to Wash. The button accepted the click while the worker silently discarded the order. ENGINE made the pause visible on the controls and gave the worker a rejection receipt. The same interaction now lets the player inspect bob and Wash, resume and watch him walk to his post.

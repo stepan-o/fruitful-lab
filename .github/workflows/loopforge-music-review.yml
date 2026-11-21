@@ -1,0 +1,31 @@
+name: Review the Loopforge music proposal
+on:
+  pull_request:
+    paths:
+      - 'apps/lab/public/loopforge-design/music*'
+      - 'apps/lab/public/loopforge-design/MUSIC_ENGINE.md'
+      - 'apps/lab/scripts/music/**'
+      - '.github/workflows/loopforge-music-review.yml'
+permissions:
+  contents: read
+jobs:
+  audition:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install review browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/review" playwright@1.56.1
+          "$RUNNER_TEMP/review/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Exercise the published board at desktop and phone widths
+        run: NODE_PATH="$RUNNER_TEMP/review/node_modules" node apps/lab/scripts/music/review.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: music-proposal-review
+          path: music-review/
+          retention-days: 14

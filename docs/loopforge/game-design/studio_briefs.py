@@ -1,5 +1,6 @@
 """Publish the owner-directed studio's authored briefs and compact board entry."""
 import hashlib
+import argparse
 import html
 import json
 import re
@@ -12,6 +13,8 @@ PUBLIC = '/loopforge-design/studio'
 E = html.escape
 COMPANIONS = ['producer-reading', 'producer-playbook']
 ROLE_READINGS = {
+    'music-study': ('music-director', 'MUSIC DIRECTOR'),
+    'music-production': ('music-director', 'MUSIC DIRECTOR'),
     'days-2-4-dialogue-validation': ('game-systems-designer', 'GAME SYSTEMS DESIGNER'),
     'day-2-conveyor-rules': ('game-systems-designer', 'GAME SYSTEMS DESIGNER'),
     'day-2-conveyor-minigame': ('game-systems-designer', 'GAME SYSTEMS DESIGNER'),
@@ -114,5 +117,18 @@ def build_studio(docs: Path, out: Path):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--refresh-board', action='store_true',
+                        help='Refresh only the existing Studio panel; preserve every other board section.')
+    args = parser.parse_args()
     root = Path(__file__).resolve().parent
-    build_studio(root.parent, root.parents[2] / 'apps/lab/public/loopforge-design')
+    out = root.parents[2] / 'apps/lab/public/loopforge-design'
+    overview, _ = build_studio(root.parent, out)
+    if args.refresh_board:
+        board = out / 'index.html'
+        text = board.read_text()
+        pattern = r'(<section class="panel" id="studio"[^>]*>).*?(</section>)'
+        updated, count = re.subn(pattern, lambda m: m[1] + overview + m[2], text, flags=re.S)
+        if count != 1:
+            raise ValueError('Expected one existing Studio panel; run the full board generator instead.')
+        board.write_text(updated)

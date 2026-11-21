@@ -12,6 +12,10 @@ PRODUCER's onboarding package is `producer.md`, `producer-reading.md` and `produ
 
 Run `python docs/loopforge/game-design/build_board.py` from the repository root to regenerate the board and all brief pages. For a role-only update, `python docs/loopforge/game-design/studio_briefs.py` regenerates standalone pages and downloads; run the full board build as well when card metadata or the landing design changes. Commit intended source and generated outputs together.
 
+For a scoped role/card addition with no other board changes, `python docs/loopforge/game-design/studio_briefs.py --refresh-board` regenerates briefs and replaces only the existing Studio panel with the same generated overview used by the full build. It fails if that panel is absent or duplicated. Use the full generator when board structure, styles or other sections change.
+
+MUSIC DIRECTOR's package is `music-director.md`, `music-study.md` and `music-production.md`; the companions are role readings, not extra specialists. Its first commissioned publication is a future `#music-engine` tab immediately after Studio briefs. The onboarding package does not implement that tab or an audio runtime. The role owns music-side input stubs, audio clearance and budget; ENGINE supplies the later authoritative adapter.
+
 The generator uses the existing small narrative Markdown renderer. Links are explicit public paths or HTTPS references. Shared CSS/JS are served under `/loopforge-design/studio/`; the only new browser behavior copies a starting prompt and provides selection/download fallback.
 
 ## Add a role

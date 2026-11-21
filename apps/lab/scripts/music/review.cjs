@@ -35,10 +35,15 @@ async function check(browser, width, height) {
   });
   await page.goto(url);
   const nav = page.locator('.nav button');
-  assert.deepEqual(await nav.evaluateAll(list=>list.slice(0,3).map(el=>el.textContent)),
-    ['Studio briefs','Music engine','Player desires & scenarios']);
+  const order = await nav.evaluateAll(buttons => buttons.map(el => el.dataset.panel));
+  const dialogueIndex = order.indexOf('dialogue-engine');
+  assert(dialogueIndex >= 0);
+  assert.equal(order[dialogueIndex + 1], 'music-engine');
+  assert.equal(order[0], 'studio');
   assert(await page.locator('#studio').isVisible());
-  await nav.nth(1).click();
+  const musicTab = nav.filter({hasText: /^Music engine$/});
+  const desiresTab = nav.filter({hasText: /^Player desires & scenarios$/});
+  await musicTab.click();
   assert.equal(new URL(page.url()).hash,'#music-engine');
   const panel = page.locator('#music-engine');
   assert(await panel.isVisible());
@@ -50,6 +55,28 @@ async function check(browser, width, height) {
   await panel.locator('.ms-cover').screenshot({path:'music-review/'+width+'-motif.png'});
   await panel.locator('.ms-pulse').screenshot({path:'music-review/'+width+'-beat.png'});
   await panel.locator('.ms-routing').screenshot({path:'music-review/'+width+'-signal.png'});
+  await page.goto(url + '#music-long-form');
+  const menu = panel.locator('[data-theme-player="menu"]');
+  const options = panel.locator('[data-theme-player="options"]');
+  for (const deck of [menu, options, panel.locator('[data-theme-player="conveyor"]')]) {
+    const media = deck.locator('audio');
+    assert(await media.evaluate(a => a.paused && a.loop && a.preload === 'none'));
+    await deck.locator('input').uncheck();
+    assert.equal(await media.evaluate(a => a.loop), false);
+    await deck.locator('input').check();
+  }
+  await menu.getByRole('button', {name:/Bass only/}).click();
+  await page.waitForFunction(() => {
+    const a = document.querySelector('#music-long-menu audio');
+    return !a.paused && a.currentTime >= 140 && a.currentTime < 144;
+  });
+  await options.getByRole('button', {name:/Low tom/}).click();
+  await page.waitForFunction(() => {
+    const a = document.querySelector('#music-long-options audio');
+    return !a.paused && a.currentTime >= 70 && a.currentTime < 74;
+  });
+  assert(await menu.locator('audio').evaluate(a => a.paused));
+  await menu.screenshot({path:'music-review/'+width+'-long-menu.png'});
   const session = panel.locator('#music-listening');
   const grid = session.locator('[data-grid-player="grid"]');
   const speech = session.locator('[data-grid-player="speech"]');
@@ -76,7 +103,7 @@ async function check(browser, width, height) {
     const v = document.querySelector('[data-grid-player="speech"] video');
     return /speech-164\.(mp4|webm)$/.test(v.currentSrc) && !v.paused && v.currentTime >= 1.9 && v.currentTime < 4;
   });
-  await nav.nth(2).click();
+  await desiresTab.click();
   assert(await picture.evaluate(v => v.paused));
   await page.goto(url + '#music-listening');
   await page.reload();
@@ -94,8 +121,8 @@ async function check(browser, width, height) {
   await listening.locator('[data-ms-seek="0"]').click();
   await page.waitForFunction(()=>document.querySelector('[data-ms-listen-audio]').currentTime<2);
   await listening.screenshot({path:'music-review/'+width+'-listening.png'});
-  await nav.nth(2).click(); assert(await audio.evaluate(el=>el.paused));
-  await nav.nth(1).click();
+  await desiresTab.click(); assert(await audio.evaluate(el=>el.paused));
+  await musicTab.click();
   await field('position').selectOption('options');
   await has('pending','Settings / Options at next bar');
   await action('bar').click(); await has('phrase','Drums alone');
@@ -123,7 +150,7 @@ async function check(browser, width, height) {
     await detail.locator('summary').click();
   }
   await page.goto(url+'#music-engine'); await page.reload(); assert(await panel.isVisible());
-  await nav.nth(2).click(); assert(await page.locator('#player-desires').isVisible());
+  await desiresTab.click(); assert(await page.locator('#player-desires').isVisible());
   assert.equal(errors.length,0,errors.join('\n'));
   console.log(width+'×'+height+' passed navigation, layout, fixtures and deep link');
   await page.close();

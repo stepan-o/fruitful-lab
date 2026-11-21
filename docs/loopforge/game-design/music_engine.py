@@ -43,9 +43,12 @@ if __name__ == '__main__':
     # The full publisher builds the same native tab. This slim path avoids unrelated asset generation.
     page = page.replace(button, '')
     page = re.sub(r'<section class="panel" id="music-engine"[^>]*>.*?</section>', '', page, flags=re.S)
-    for anchor, insert in [('<button data-panel="player-desires" aria-current="false">', button),
-                           ('<section class="panel" id="player-desires"', panel)]:
-        if page.count(anchor) != 1:
-            raise ValueError('Expected one Player desires tab and panel in the board.')
-        page = page.replace(anchor, insert + anchor)
+    # Locate the next sibling of Dialogue in the native navigation and content order.
+    for pattern, addition in [
+        (r'(<button data-panel="dialogue-engine"[^>]*>[^<]*</button>)', button),
+        (r'(<section class="panel" id="dialogue-engine"[^>]*>.*?)(?=<section class="panel" id=")', panel),
+    ]:
+        page, count = re.subn(pattern, lambda match: match[1] + addition, page, flags=re.S)
+        if count != 1:
+            raise ValueError('Expected one Dialogue engine tab and panel in the board.')
     board.write_text(page)

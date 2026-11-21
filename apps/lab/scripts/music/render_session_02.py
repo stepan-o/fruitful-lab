@@ -123,7 +123,7 @@ def score():
     return hits
 
 
-def perform(events, bpm):
+def perform(events, bpm, *, bars=BARS, ending_fade=True):
     beat = 60 / bpm
     rng = np.random.default_rng(20261121)
     drums = {'kick': [kit.kick(rng)], 'snare': [kit.snare(rng) for _ in range(4)],
@@ -150,7 +150,7 @@ def perform(events, bpm):
             wavelet += colour ** 2 * (np.sin(5 * phase) + .5 * np.sin(7 * phase))
         return kit.soften(np.tanh(wavelet), .009, min(.085, len(t) / SR / 3))
 
-    length = round(BARS * 4 * beat * SR)
+    length = round(bars * 4 * beat * SR)
     texture = np.zeros((length, 2), dtype=np.float32)
     rhythm = np.zeros_like(texture)
     for e in events:
@@ -164,7 +164,8 @@ def perform(events, bpm):
     delay = round(.75 * beat * SR)
     rhythm += texture
     rhythm[delay:] += .16 * texture[:-delay, ::-1]
-    rhythm[-round(.15 * SR):] *= np.linspace(1, 0, round(.15 * SR))[:, None]
+    if ending_fade:
+        rhythm[-round(.15 * SR):] *= np.linspace(1, 0, round(.15 * SR))[:, None]
     return np.tanh(rhythm) * .82
 
 

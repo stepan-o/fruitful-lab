@@ -1,5 +1,9 @@
 # Music engine
 
+## Dedicated themes · accepted grid and open listening review
+
+The owner selected 164 BPM for Menu and Options and an 82 BPM half-time feel for Conveyor. Take B’s C-sharp over low D and the three room identities remain approved. The owner wants a complete musical return in each room. The [dedicated room studies](/stepanoskin/loopforge/design#music-long-form) give Menu 128 bars and Options and Conveyor 96 bars each. Each performance develops autonomously and repeats independently. Listen for the ascending answer, alternate chord movement, displaced beat and clean instrumental breaks. Ask one listening question at a time. Menu needs a full-cycle assessment of harmony, melodic reply, beat shifts, dynamics and exposed drums and bass. Options endurance, Conveyor weight, the staged wait/restart and matched-picture speech remain open. Record each verdict before the next question. ElevenLabs remains the intended production tool. Propose one 188-second Menu instrumental in Music v2.5, one attempt, after the review and separate all-in spending approval. The previous 45-second pilot is historical. Read the [provider brief and proposed budget](/stepanoskin/loopforge/design/studio/music-production#current-pilot-one-dedicated-main-menu-performance).
+
 ## Listening session 02 · the pulse across three themes
 
 The owner chose Take B and approved curiosity on Menu, the drummer’s hands on Options and patient weight on Conveyor. Two new 48-bar recordings compare the same performance at 170/85 and 164/82. The first twelve bars of Conveyor develop through ordinary work before the last four stage a wait and restart. A second pair of edits uses identical 1× Forge footage and the existing welcome voice. [Audition and review questions](/stepanoskin/loopforge/design#music-listening) · [Theme sheets and surface map](/stepanoskin/loopforge/design/studio/music-study#three-theme-design-sheets) · [Measured exports](/loopforge-design/music-audition/session-02/session.json).
@@ -62,7 +66,7 @@ The downloadable example is a manual session: open Conveyor, advance four beats,
 
 ## Listening verdicts and remaining tests
 
-The first session established the C♯ landing. In session 02 compare the two score-only grids, identify the return of the hand figure and transcribe the welcome at normal picture speed. Report the tempo, device, first bar that feels repetitive and any obscured word. The original Forge action runs for the same duration in both edits.
+Session 01 established the C♯ landing. Session 02 established the 164/82 grid. Hear the dedicated studies for repetition and return, then transcribe the welcome in the normal-speed speech edit. Record the device, first tiring bar and any obscured word. The original Forge action runs for the same duration in both edits.
 
 Once an ElevenLabs candidate is accepted, repeat a prepared eight-bar region eight times on desktop and phone. Check bleed and decoded joins, rapid room changes, interruption, resume and both supervisor routes under speech. Record the exact export and build. The current MP3s are through-composed review edits with an ending. Live long-running playback and gameplay integration still need separate review.
 
@@ -78,7 +82,7 @@ Once an ElevenLabs candidate is accepted, repeat a prepared eight-bar region eig
 
 **Current authorization: US$0, zero generations.** Free is owner-reported. The connected ElevenLabs workflow catalog exposes Music v1, v2 and v2.5; v2.5 accepts instrumental requests and durations from 3 to 600 seconds. This was a read-only capability check. Balance, account entitlement, game-class eligibility, stem alignment and lossless export remain unverified. The published Music terms list 11 Free generation minutes, no downloads and no API access. Starter lists API access, and high-quality downloads begin at Pro. Check account, plan and model terms again at acquisition. [Music overview](https://elevenlabs.io/docs/eleven-creative/products/music) · [Music Terms §§1–4 and Exhibit A](https://elevenlabs.io/music-terms)
 
-**Next production request.** One 45-second ElevenLabs Main menu instrumental at the selected tempo, one attempt. The actual account quote, export entitlement, classification and owner-approved all-in ceiling are pending. This supersedes the earlier four-request proposal. [Production plan and ledger](/stepanoskin/loopforge/design/studio/music-production).
+**Next production request.** ElevenLabs remains the intended production tool. Propose one 188-second Menu instrumental in Music v2.5, one attempt, after the review and separate all-in spending approval. The previous 45-second pilot is historical. See the [provider brief and proposed budget](/stepanoskin/loopforge/design/studio/music-production#current-pilot-one-dedicated-main-menu-performance).
 
 **Prompt and export record.** Describe meter, instruments, articulation, voicings, dynamics and mood. Exclude artist, songwriter, track, album, publisher and label names and distinctive lyrics from provider input. Keep reference recordings out of uploads and product assets. For every request store the dated prompt revision, model, request ID, actual charge, rejects, source hashes and edit lineage. Keep account evidence private. Serve reviewed exports locally in a sold build. Store credentials only in a private production environment.
 
@@ -96,4 +100,4 @@ MUSIC DIRECTOR maintains the audio register. ENGINE maps approved hashes and not
 
 **Exists now.** The prototype has a menu contactor/clang, an older first-shift effects path and a welcome voice in the shifts viewer. Its public floor projection exposes machine holds, delivered lines and the bell. The board includes a native A/B player with two recorded sketches, the silent manual fixture, diagrams and the downloadable contract example. Source inspection and review of a recorded Forge moment supplied the game baseline. [Playable prototype](/stepanoskin/loopforge/play) · [Recorded Forge clearance](/loopforge-shifts/review/first-playthrough/limen/opening-Forge-clear.mp4)
 
-**Next decisions.** Owner reviews the two tempos, phrase interest, wait/restart and speech. Then confirm the ElevenLabs pilot quote and obtain a separate spending decision. Studio review assets do not imply game integration or commercial release acceptance.
+**Next decisions.** Ask one listening question at a time. Menu needs a full-cycle assessment of harmony, melodic reply, beat shifts, dynamics and exposed drums and bass. Options endurance, Conveyor weight, the staged wait/restart and matched-picture speech remain open. Record each verdict before the next question. Review the eligible account and real quote before authorizing production.

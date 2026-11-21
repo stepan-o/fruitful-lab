@@ -2,9 +2,13 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 21 November 2026 · Staying in the room
+
+The owner chose 164/82, then pointed out what the short comparison could never demonstrate. Menu lasted only 23 seconds before the player heard Options. The new Menu cycle takes over three minutes to carry its falling phrase through an ascending reply, a harmonic turn, a drum break and a bass break. Options and Conveyor each have their own 96-bar development. The owner will judge each return and the first tiring phrase. The production handoff now proposes one long Menu attempt after listening and account approval. [Dedicated room studies](/stepanoskin/loopforge/design#music-long-form) · [Provider brief and proposed budget](/stepanoskin/loopforge/design/studio/music-production#current-pilot-one-dedicated-main-menu-performance).
+
 ## 21 November 2026 · From one held note to three playable phrases
 
-The owner chose C♯ and described three rooms by ear. The second local session keeps the same 48-bar performance on two tempo grids. The Menu moves one chord tone, Options passes the figure around the kit, and Conveyor leaves space for its sustained reply. Two edits place the same welcome over the same 1× Forge picture. Moving the musical pulse changes neither the picture nor the time of the line. The authoring record distinguishes the editorial placement from gameplay evidence. The owner’s tempo verdict and production timbre review are pending. [Listen](/stepanoskin/loopforge/design#music-listening) · [Session record](/loopforge-design/music-audition/session-02/session.json) · [Production and clearance](/stepanoskin/loopforge/design/studio/music-production).
+The owner chose C♯ and described three rooms by ear. The second local session keeps the same 48-bar performance on two tempo grids. The Menu moves one chord tone, Options passes the figure around the kit, and Conveyor leaves space for its sustained reply. Two edits place the same welcome over the same 1× Forge picture. Moving the musical pulse changes neither the picture nor the time of the line. The authoring record distinguishes the editorial placement from gameplay evidence. At publication the tempo and production timbre were open. The later dedicated-room entry records the tempo decision. [Listen](/stepanoskin/loopforge/design#music-listening) · [Session record](/loopforge-design/music-audition/session-02/session.json) · [Production and clearance](/stepanoskin/loopforge/design/studio/music-production).
 
 ## 21 November 2026 · Two endings to one descent
 

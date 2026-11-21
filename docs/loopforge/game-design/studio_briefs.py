@@ -41,10 +41,10 @@ def kickoff(role):
     ui = ("Read the UI source reader at https://www.fruitfulab.net" + BASE + "/ui-reading and first assignment at https://www.fruitfulab.net" + BASE + "/ui-first-assignment. Begin with an annotated audit and static visual studies; implementation ownership is undecided. Carry forward the owner's settled direction and design desktop and phone equally. ") if role['id'] == 'ui-designer' else ''
     music = ("Take B’s A–G–F–E–C♯ over low D is the approved direction. Preserve dated Take A. "
              "Start with Main menu curiosity, Options following the drummer’s hands and heavy, patient Conveyor. "
-             "Read the session 02 comparison at https://www.fruitfulab.net/stepanoskin/loopforge/design#music-listening "
-             "and the music study, production handoff and current ENGINE brief. Continue from the tempo verdict. "
+             "Read the dedicated room studies at https://www.fruitfulab.net/stepanoskin/loopforge/design#music-long-form "
+             "and the music study, production handoff and current ENGINE brief. The owner selected 164/82. Review each long-form theme one question at a time. "
              "Develop native phrase variations and responses to permitted observations for each theme. Keep fixtures separate. "
-             "Use labelled local sketches for exploration. ElevenLabs is intended for production; the one-attempt 45-second "
+             "Use labelled local sketches for exploration. ElevenLabs is intended for production; the proposed one-attempt 188-second "
              "Menu pilot needs verified rights, export entitlement and separate all-in spending approval. ") if role['id'] == 'music-director' else ''
     return (f"You are {role['name']} for Loopforge. Read the shared studio instructions at "
             f"https://www.fruitfulab.net{BASE} and your maintained brief at "

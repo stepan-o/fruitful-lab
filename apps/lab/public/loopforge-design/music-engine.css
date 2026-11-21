@@ -14,3 +14,9 @@
 #music-listening video{display:block;width:min(100%,620px);height:auto;max-height:65vh;background:#15211e;aspect-ratio:5/4}
 #music-listening button{min-height:44px}
 #music-listening [data-tempo][aria-pressed="true"]{border:2px solid var(--ms-mint);color:var(--ms-mint);font-weight:bold}
+
+#music-long-form .ms-listen-deck h4{font-size:clamp(1.6rem,3vw,2.2rem)}
+#music-long-form h4 small{font:500 .9rem system-ui,sans-serif;color:var(--ms-soft)}
+#music-long-form .ms-listen-deck>p{margin-top:.45rem}
+#music-long-form label{display:inline-flex;align-items:center;min-height:44px;gap:.35rem}
+#music-long-form input{accent-color:var(--ms-mint)}

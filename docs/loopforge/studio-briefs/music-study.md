@@ -2,9 +2,21 @@
 
 20 November 2026 · Commissioning study for [MUSIC DIRECTOR](/stepanoskin/loopforge/design/studio/music-director)
 
+## Dedicated room cycles · 21 November 2026
+
+The owner selected 164 BPM for Menu and Options and an 82 BPM half-time feel for Conveyor. Take B’s C-sharp over low D and the three room identities remain approved. A 16-bar excerpt at this tempo is 23.4 seconds. It can demonstrate continuity through a doorway. To judge native variation, the owner asked to stay in one room through its departure and return. The three local studies below use one pulse and distinct phrase development. Their own listening links support repeat and bar navigation.
+
+| Theme | Length | What changes over a complete cycle |
+| --- | --- | --- |
+| [Main menu](/stepanoskin/loopforge/design#music-long-menu) | 128 bars · 3:07 | Bars 1–16 establish the suspended descent. Bars 17–32 introduce a rising answer. Bars 33–48 change the harmonic route through B-flat, G minor, E half-diminished and A dominant. Bars 49–64 expose the kit. Bars 65–96 breathe, then regain weight. Bars 97–112 leave the bass alone. Bars 113–128 bring the opening back. |
+| [Options](/stepanoskin/loopforge/design#music-long-options) | 96 bars · 2:20 | One hand figure passes through hats, rim and low tom. Ghosts drop out during the quieter third group. The fifth group displaces the kicks, and the last divides one phrase across the kit before the hats take over again. |
+| [Conveyor](/stepanoskin/loopforge/design#music-long-conveyor) | 96 bars · 2:20 | Sustained and clipped bass phrases trade places under the half-time snare. A thin passage opens a gap, a displaced accent moves the kick response, and a high reply gives the returning sub weight. All sections represent steady work. |
+
+First listen across a whole cycle. On a second pass, choose the first passage you would shorten, develop or remove. Leave an accepted candidate repeating during an ordinary longer session and record the first recurring gesture that interrupts the task. Hour-scale endurance, commercial instrumentation and in-game speech are open. The repeat control is an audition aid. The existing fixture and matched-picture scene continue to test events independently.
+
 ## Three theme design sheets
 
-21 November 2026 · Direction approved, tempo and production sound open. The owner chose the descent A–G–F–E–C♯ against low D. Take A, ending on E♭, remains a dated alternative. The notation below counts four fast beats per bar on both grids. Score sections and timings describe the two recorded sketches. Instructions for longer sits, reversals and runtime behavior are design proposals. [Compare the two tempos](/stepanoskin/loopforge/design#music-listening).
+21 November 2026 · Direction and 164/82 approved. Production sound and long-form verdicts are open. The owner chose the descent A–G–F–E–C♯ against low D. Take A, ending on E♭, remains a dated alternative. The notation below counts four fast beats per bar on both grids. Score sections and timings describe the two recorded sketches. Instructions for longer sits, reversals and runtime behavior are design proposals. [Compare the two tempos](/stepanoskin/loopforge/design#music-listening).
 
 ### Main menu · curiosity with a pulse
 
@@ -55,7 +67,7 @@ The normal Day 2 line includes Intake, Wash, Belt, Forge and the rack. Stations 
 
 ## What to hear in session 02
 
-Listen through both doorways. Identify the hand figure in Options, then listen for a sustained answer after the clipped bass descent on Conveyor. Compare the fixed picture first with its original silence and then with both speech mixes. On a phone, try transcribing the line before opening the transcript. Record the chosen tempo, device, first tiring bar and any obscured word. The returned verdict sets the tempo for the one-render ElevenLabs proposal.
+The owner selected 164/82 after the short-grid comparison. Keep session 02 as evidence of the original doorway and staged wait/restart. Use the new dedicated recordings for extended musical development. The fixed-picture speech test remains open.
 
 Sylvester, *Designing Games*, chapter 1, “Emotion Through Music,” printed pp. 24–25 / PDF pp. 32–33, treats music as a source of feeling that can be evaluated separately from action. That led to the two score-only takes plus a fixed-picture speech comparison. In “Emotion Through Spectacle,” printed p. 25 / PDF p. 33, he describes the diminishing effect of repeating spectacle without earned context. That informed the single bass reply to resumed movement and a bell ending with room for the actual bell. Judge those decisions by ear in a repeated shift. Neither passage prescribes a tempo, a mix level or a technical event contract.
 
@@ -155,4 +167,4 @@ Preload the active arrangement and its imminent transition, not the whole catalo
 
 ## Current listening and production decision
 
-Compare 170/85 and 164/82 on the board. Give the owner’s preferred grid and the three sheets above to ElevenLabs production. The proposed first render is one 45-second Main menu instrumental after an account quote and separate all-in spending decision. The music adapter consumes permitted observations from ENGINE’s verified public projection. Game commands, fixed ticks, holds, visibility and branching belong to the Rust kernel. The panel is a manual fixture and the four media files are edits. [Current ENGINE assignment](https://github.com/stepan-o/fruitful-lab/blob/38728b026405806814064879821af8dc474c410b/docs/loopforge/studio-briefs/engine-master.md) · [Audition board](/stepanoskin/loopforge/design#music-listening) · [Production handoff](/stepanoskin/loopforge/design/studio/music-production).
+The owner selected 164 BPM for Menu and Options and an 82 BPM half-time feel for Conveyor. Take B’s C-sharp over low D and the three room identities remain approved. ElevenLabs remains the intended production tool. Propose one 188-second Menu instrumental in Music v2.5, one attempt, after the review and separate all-in spending approval. The previous 45-second pilot is historical. The music adapter is downstream of ENGINE’s verified KVP projection. The recordings have no game connection. See the [provider brief and proposed budget](/stepanoskin/loopforge/design/studio/music-production#current-pilot-one-dedicated-main-menu-performance).

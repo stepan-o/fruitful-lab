@@ -315,3 +315,28 @@
     });
   }
 })();
+
+// The dedicated studies use their own repeat controls. Only one board player can sound.
+for (const deck of document.querySelectorAll('[data-theme-player]')) {
+  const player = deck.querySelector('audio');
+  const repeat = deck.querySelector('input');
+  const status = deck.querySelector('[role="status"]');
+  let target = null;
+  function seek() {
+    if (target !== null && player.readyState >= 1) {
+      player.currentTime = target;
+      target = null;
+    }
+  }
+  repeat.addEventListener('change', () => { player.loop = repeat.checked; });
+  player.addEventListener('loadedmetadata', seek);
+  deck.addEventListener('click', event => {
+    const marker = event.target.closest('[data-beat]');
+    if (!marker) return;
+    target = Number(marker.dataset.beat) * 60 / 164;
+    seek();
+    player.play().catch(error => {
+      if (error.name !== 'AbortError') status.textContent = 'Use Play or open the MP3.';
+    });
+  });
+}

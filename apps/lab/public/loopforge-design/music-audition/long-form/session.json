@@ -1,0 +1,76 @@
+{
+  "version": "long-form-01",
+  "tempo": 164,
+  "sampleRate": 48000,
+  "meter": "4/4",
+  "providerRequests": 0,
+  "costUSD": 0,
+  "source": "original local synthesis",
+  "tracks": [
+    {
+      "theme": "menu",
+      "file": "menu.mp3",
+      "bars": 128,
+      "frames": 8991219,
+      "durationSeconds": 187.3170625,
+      "blocks": [
+        "First contact",
+        "The reply",
+        "Chord turn",
+        "Kit in the clear",
+        "Quiet double",
+        "Full break",
+        "Bass in the clear",
+        "Return"
+      ],
+      "sha256": "f01f9ca6a565203868c5860c10432ecd7cfc117576384d4d35e65b4a9c8d1ce2",
+      "masterSha256": "b9811263e63af0aae569a7a7e78d6d8ceb0022ac26b801ecf8ff38e26914bbd4",
+      "meter": {
+        "lufs": -16.97,
+        "dBTP": -3.82
+      }
+    },
+    {
+      "theme": "options",
+      "file": "options.mp3",
+      "bars": 96,
+      "frames": 6743414,
+      "durationSeconds": 140.48779166666668,
+      "blocks": [
+        "Hands on hats",
+        "Rim conversation",
+        "Hats and rests",
+        "Low tom answer",
+        "Broken two-step",
+        "Pass it back"
+      ],
+      "sha256": "05d10bbd8f0cfd7407190aed70fa2e7252c63ca791c4164c050eab7e253580d0",
+      "masterSha256": "16dcc25a8983cd5c3aac10ef27aec627b638d7ab784b3e683037691617d701fd",
+      "meter": {
+        "lufs": -16.93,
+        "dBTP": -3.89
+      }
+    },
+    {
+      "theme": "conveyor",
+      "file": "conveyor.mp3",
+      "bars": 96,
+      "frames": 6743414,
+      "durationSeconds": 140.48779166666668,
+      "blocks": [
+        "Open weight",
+        "Long answer",
+        "Low current",
+        "Displaced accent",
+        "Upper echo",
+        "Return to weight"
+      ],
+      "sha256": "438cc8403969308fc6f578b3fa60eef2b06bfda726b8bedb8f0134e8b61c2216",
+      "masterSha256": "b4451c1a95bec25ba50181bede15602c78977b121bafc95440c756be60d97d4c",
+      "meter": {
+        "lufs": -16.96,
+        "dBTP": -3.45
+      }
+    }
+  ]
+}

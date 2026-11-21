@@ -1,8 +1,6 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
-import {clockText,dayTwoMinute} from '../../../lib/loopforge/shifts/factory-clock';
 import {type Floor} from '../../../lib/loopforge/shifts/playthrough';
-import {type Campaign,saveCampaign} from '../../../lib/loopforge/shifts/campaign-save';
 import {ratings,needs} from '../../../lib/loopforge/shifts/station-line';
 import {type Command,type Lead,type Room} from '../../../lib/loopforge/shifts/contract';
 import {cutOpacity,roomCut} from '../../../lib/loopforge/factory-scene';
@@ -27,14 +25,14 @@ function Portrait({id,assets}:{id:string;assets:Art|null}){
   if(portrait)return <span className={css.portrait} aria-hidden="true" style={{backgroundImage:'url('+portrait.variants[0].src+')'}}/>;
   return <canvas ref={ref} width="36" height="35" aria-hidden="true"/>;
 }
-export default function ShiftFloor({run,onFinish,transport,ahead,onClock,onProgress}:{transport:Transport;ahead:number;onProgress:(run:Campaign,presented?:number)=>void;run:Campaign;onClock:(time:string)=>void;onFinish:()=>void}){
-  const [floor,setFloor]=useState<Floor|null>(null),[assets,setAssets]=useState<Art|null>(null);
-  const [room,setRoom]=useState<Room>(run.room),[bid,setBid]=useState<Lead|null>(null),[worker,setWorker]=useState('');
+export default function ShiftFloor({floor,quota,dayOneCount,onFinish,transport,onIntent}:{floor:Floor;quota:number;dayOneCount:number;transport:Transport;onFinish:()=>void;onIntent:(intent:object)=>void}){
+  const [assets,setAssets]=useState<Art|null>(null);
+  const [room,setRoom]=useState<Room>(floor.shot),[bid,setBid]=useState<Lead|null>(null),[worker,setWorker]=useState('');
   const [notice,setNotice]=useState(''),[caseOpen,setCaseOpen]=useState(false);
   const [destination,setDestination]=useState<number|null>(null);
   const [cutaway,setCutaway]=useState<Room|null>(null),[assignmentOpen,setAssignmentOpen]=useState(false);
   const ordersPaused=transport.paused;
-  const initial=useRef({transport,ahead});
+  const shot=useRef(floor.shotSeq);
   const camera=useRef({x:0,y:0,scale:0,last:0});
   const transition=useRef(0);
   const [fade,setFade]=useState(0);
@@ -56,34 +54,18 @@ export default function ShiftFloor({run,onFinish,transport,ahead,onClock,onProgr
   const focusStation=destination??(floor?.manual?Math.max(0,floor.machines.findIndex(m=>m.canClear)):0);
   const [viewSize,resize]=useState(0);
   const signal=useRef<HTMLButtonElement>(null);
-  const canvas=useRef<HTMLCanvasElement>(null),host=useRef<Worker|null>(null);
+  const canvas=useRef<HTMLCanvasElement>(null);
   useEffect(()=>{
     let live=true;
     art().then(bank=>{if(live)setAssets(bank);}).catch(e=>setNotice(String(e)));
-    const w=new Worker(new URL('../../../lib/loopforge/shifts/playthrough.worker.ts',import.meta.url),{type:'module'});host.current=w;
-    w.onerror=e=>setNotice(e.message||'The shift could not start.');
-    w.onmessage=({data:m})=>{
-      if(!live)return;
-      if(m.type!=='frame'){setNotice(m.reason);return;}
-      const f:Floor=m.floor;
-      if(m.cmd&&!run.progress.commands.some(c=>c.id===m.cmd.id))run.progress.commands.push(m.cmd);
-      run.progress.tick=f.tick;
-      if(run.shotSeq!==f.shotSeq){run.shotSeq=f.shotSeq;run.room=f.shot;
-        if(m.presented!==undefined){setRoom(f.shot);setFade(0);setCutaway(null);}else switchShot(f.shot);
-        setWorker('');setDestination(null);setAssignmentOpen(!!f.tutorial?.held);
-      }
-      const shiftLength=f.bell?(f.tutorial?4800:2400):0;
-      const start=f.scene.world.start;
-      onClock(clockText(dayTwoMinute(f.tick-start,shiftLength?f.bell-shiftLength-start:0,shiftLength,run.morningSeconds??0)));
-      onProgress(run,m.presented);saveCampaign(run);setFloor(f);
-    };
-    w.postMessage({type:'join',source:run.source,progress:run.progress,ahead:initial.current.ahead,...initial.current.transport});
-    return ()=>{live=false;w.terminate();host.current=null;};
-  },[run,onClock,onProgress]);
+    return ()=>{live=false;};
+  },[]);
   useEffect(()=>{
-    const sync=()=>host.current?.postMessage({type:'suspend',on:transport.paused||document.hidden,speed:transport.speed});
-    sync();document.addEventListener('visibilitychange',sync);return ()=>document.removeEventListener('visibilitychange',sync);
-  },[transport.paused,transport.speed]);
+    if(shot.current===floor.shotSeq)return;
+    shot.current=floor.shotSeq;
+    if(transport.paused){setRoom(floor.shot);setFade(0);setCutaway(null);}else switchShot(floor.shot);
+    setWorker('');setDestination(null);setAssignmentOpen(!!floor.tutorial?.held);
+  },[floor.shotSeq,floor.shot,floor.tutorial?.held,transport.paused]);
   useEffect(()=>{
     const c=canvas.current;if(!c)return;
     const observer=new ResizeObserver(()=>resize(n=>n+1));observer.observe(c);return ()=>observer.disconnect();
@@ -109,15 +91,15 @@ export default function ShiftFloor({run,onFinish,transport,ahead,onClock,onProgr
   },[floor,assets,room,viewSize,transport.paused,fade,focusStation,destination,caseOpen]);
   if(!floor)return <p role="status">{notice||'Connecting to the factory…'}</p>;
   const w=floor.scene.world, manual=floor.manual,selected=floor.workers.find(a=>a.id===worker&&a.available);
-  const changeRoom=(r:Room)=>{if(r!==room)switchShot(r);run.room=r;onProgress(run);saveCampaign(run);setNotice('');};
+  const changeRoom=(r:Room)=>{if(r!==room)switchShot(r);setNotice('');};
   function send(action:Command['action'],target:string,incident:string,at:Room){
     if(!floor||ordersPaused)return;
-    setNotice('');host.current?.postMessage({type:'command',cmd:{id:crypto.randomUUID(),day:2,tick:floor.tick,room:at,action,target,incident}});
+    setNotice('');onIntent({room:at,action,target,incident});
   }
   const clock=Math.max(0,(floor.bell-floor.tick)/20),total=w.completed.length;
   if(w.phase==='briefing')return <main className={css.brief}>
     <small>DAY 2 · MORNING APPOINTMENT</small><h1>Post the supervisors</h1>
-    <p>Week one · {total} / {run.quota} cortexes · Due Day 7</p>
+    <p>Week one · {total} / {quota} cortexes · Due Day 7</p>
     <div className={css.bids}>{(['LIMEN','STILETTO'] as const).map(id=><button key={id} aria-pressed={bid===id} onClick={()=>setBid(id)}>
       <Portrait id={id} assets={assets}/><strong>{id}</strong><q>{w.bids[id]}</q>
       <span>Security · {id}<br/>Conveyor · {id==='LIMEN'?'STILETTO':'LIMEN'}</span></button>)}</div>
@@ -126,15 +108,15 @@ export default function ShiftFloor({run,onFinish,transport,ahead,onClock,onProgr
   </main>;
   if(floor.closed)return <main className={css.brief}><small>DAY 2 · BELL</small><h1>Shift closed</h1>
     <p>{manual?'LIMEN':'STILETTO'} on Conveyor</p><h2>{floor.dayCount} new rack arrivals</h2>
-    <p>Week one · {total} / {run.quota} cortexes · Due Day 7</p>
-    <p>Day 1 contributed {run.source!.pieces.length}. {w.pass?'The daily pass has expired.':w.status==='detention'?'bob is released from custody.':''}</p>
+    <p>Week one · {total} / {quota} cortexes · Due Day 7</p>
+    <p>Day 1 contributed {dayOneCount}. {w.pass?'The daily pass has expired.':w.status==='detention'?'bob is released from custody.':''}</p>
     <button className={css.commit} onClick={onFinish}>Return to main menu</button></main>;
   const tutorial=floor.tutorial,lesson=tutorial?.held,controllable=!tutorial||tutorial.stage==='live';
   const showOrders=room==='conveyor'&&(lesson||controllable);
   const caseLive=w.status==='open';
   return <main className={css.floor} data-operators={room==="conveyor"&&w.stage==="work"}><header><div><small>DAY 2 · {w.stage==='work'?'SHIFT LIVE':'CREW ARRIVAL'}</small>
     <h1>{room==='security'?'Security':'Conveyor'} <span>/ {room==='security'?w.lead:manual?'LIMEN':'STILETTO'}</span></h1></div>
-    <div className={css.meter}>{floor.bell?<strong>{clock.toFixed(2)} s to bell</strong>:<strong>Walk-in</strong>}<span>Rack +{floor.dayCount} · Week {total}/{run.quota}</span></div></header>
+    <div className={css.meter}>{floor.bell?<strong>{clock.toFixed(2)} s to bell</strong>:<strong>Walk-in</strong>}<span>Rack +{floor.dayCount} · Week {total}/{quota}</span></div></header>
     <nav aria-label="Factory cameras">{(['security','conveyor'] as const).map(r=><button key={r} aria-pressed={room===r} disabled={!!lesson||!!cutaway} onClick={()=>changeRoom(r)}>{r==='security'?'Security':'Conveyor'}</button>)}
     </nav>
     {notice&&<p role="status" className={css.pauseNote}>{notice}</p>}

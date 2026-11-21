@@ -1,5 +1,13 @@
 # UI DESIGNER · first assignment
 
+## Current Day 2 design handoff
+
+UI DESIGNER owns the complete Day 2 interface design. The Operator starts at a physical desk with a ringing receiver and two powered room monitors. On entering either room, the factory floor extends to every edge of the screen. Camera identity, dialogue, event markers, station actions and the shift clock appear over the floor. The missing-ID event opens the approved full-screen E1 painting. This direction supersedes framed full-screen camera studies. Runtime implementation ownership remains open.
+
+[Start at the Operator’s console](/loopforge-design/day-two-ui/index.html) · [Compare all 59 desktop and phone pairs](/loopforge-design/day-two-ui/board.html) · [Two loaded Conveyor stations](/loopforge-design/day-two-ui/index.html#ready)
+
+Review both supervisor bids, the pass and custody outcomes, staffing and clearance orders, and the final shift register. The drawings use the guided gameplay replay. The artwork, overlay composition and navigation are submitted for owner review.
+
 21 November 2026 · Annotated audit and static visual studies
 
 Read the [shared instructions](/stepanoskin/loopforge/design/studio), [UI DESIGNER brief](/stepanoskin/loopforge/design/studio/ui-designer) and [source reader](/stepanoskin/loopforge/design/studio/ui-reading). This is the first commissioning handoff, not a record of completed UI redesign. Implementation ownership remains undecided.

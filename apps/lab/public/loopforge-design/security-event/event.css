@@ -21,23 +21,9 @@ a:focus-visible, summary:focus-visible { outline: 3px solid #fff8cd; outline-off
 h1:focus { outline: none; }
 .console { isolation: isolate; }
 #watch, #inspection { position: relative; min-height: 360px; height: 100vh; height: 100svh; }
-#watch {
-  --lip-x: clamp(11px, 3.8vmin, 44px);
-  --lip-top: clamp(14px, 4.4vmin, 48px);
-  --lip-bottom: clamp(36px, 6.2vmin, 68px);
-  padding: clamp(2px, .8vmin, 12px);
-  background: linear-gradient(#080907a1,#080907cf), url('/media/files/bb0e48018b460ef71392b8ac398384f161d7f5f26b7effe5f993b52f33d76691.webp') center / 22rem;
-}
-.receiver { position: relative; height: 100%; isolation: isolate; }
-.receiver::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 3;
-  border-image: url('/media/files/7bd157c212a8a82628eaeb3fb9f72381d305742f908ec88eb017bd836cad0ae2.webp') 18% 16% 24% 16% / var(--lip-top) var(--lip-x) var(--lip-bottom) stretch;
-}
-.glass {
-  position: absolute; inset: calc(var(--lip-top) - 5px) calc(var(--lip-x) - 5px) calc(var(--lip-bottom) - 5px);
-  overflow: hidden; isolation: isolate; container-type: size;
-  border-radius: 10px; background: #0a1918;
-}
+#watch { background: #0a1918; }
+.receiver, .glass { position: absolute; inset: 0; isolation: isolate; }
+.glass { overflow: hidden; container-type: size; }
 .scene {
   --ratio: calc(760 / 540);
   --bob-x: var(--desktop-bob-x,43.68%); --bob-y: var(--desktop-bob-y,65.74%);
@@ -52,7 +38,6 @@ h1:focus { outline: none; }
   position: absolute; inset: 0; pointer-events: none;
   background: repeating-linear-gradient(0deg,transparent 0px 3px,#07130f15 3px 4px),
     linear-gradient(#050c0d9c,transparent 19%,transparent 84%,#0209094a);
-  box-shadow: inset 0 0 0 2px #101510, inset 0 0 22px #0009;
 }
 .feed-id, .case-header, .source, .hardware-label, .inventory { display: flex; align-items: center; }
 .feed-id, .shift, .case-header { z-index: 2; }
@@ -65,8 +50,8 @@ h1:focus { outline: none; }
 .feed-id h1 { font-size: clamp(1.05rem, 1.7vw, 1.55rem); letter-spacing: .01em; }
 .shift { right: clamp(17px, 4vmin, 48px); padding: .4em 0; }
 .hardware-label {
-  position: absolute; z-index: 4; left: 18%; right: 18%; bottom: 0; height: calc(var(--lip-bottom) * .80);
-  justify-content: center; gap: clamp(.8rem, 3vw, 3rem);
+  position: absolute; z-index: 4; left: 4%; right: 4%; bottom: max(1.2rem, env(safe-area-inset-bottom)); pointer-events: none;
+  justify-content: space-between; gap: clamp(.8rem, 3vw, 3rem);
   color: #d6c8a9; font-size: clamp(.59rem, .88vw, .74rem); text-shadow: 0 1px 3px #000;
 }
 .inventory { gap: .55em; letter-spacing: .045em; text-transform: none; }
@@ -168,7 +153,6 @@ h1:focus { outline: none; }
   .soot { background: linear-gradient(0deg,#050b0df5,#091010d9 13%,#0a10108a 24%,transparent 39%),linear-gradient(180deg,#081010a6,transparent 12%); }
 }
 @media (max-width: 650px) {
-  #watch { --lip-x: 13px; --lip-top: 21px; --lip-bottom: 36px; }
   .channel,.source,.shift { font-size: .67rem; }
   .source,.feed-id { gap: .55rem; }
   .feed-id h1 { font-size: 1.05rem; }

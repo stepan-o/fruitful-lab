@@ -55,4 +55,9 @@ jobs:
             if curl -fsS http://127.0.0.1:3204/stepanoskin/loopforge/play -o /dev/null; then break; fi
             sleep 1
           done
-          NODE_PATH="$RUNNER_TEMP/browser/node_modules" node engine/browser-test.cjs
+          export NODE_PATH="$RUNNER_TEMP/browser/node_modules"
+          node engine/browser-test.cjs
+          node engine/episode-test.cjs
+      - name: Show game server diagnostics on failure
+        if: failure()
+        run: tail -120 "$RUNNER_TEMP/loopforge-next.log" || true

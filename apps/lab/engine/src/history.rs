@@ -92,7 +92,11 @@ impl History {
         if self.cursor >= LIMIT {
             return Err("Run limit reached");
         }
-        self.game.apply(&c)?;
+        // Commands occasionally affect more than one worker. Commit the entire
+        // transaction only after every reservation and receipt has been admitted.
+        let mut proposed = self.game.clone();
+        proposed.apply(&c)?;
+        self.game = proposed;
         self.head = self.cursor;
         self.keys.retain(|t, _| *t <= self.cursor);
         self.inputs.retain(|t, _| *t <= self.cursor);

@@ -1,7 +1,6 @@
 import {cutOpacity,drawFactory,drawFactorySprite,easeCamera,factoryProjection,roomCut,shotScale} from '../../../lib/loopforge/factory-scene';
 import type {Skin as FloorSkin} from '../../../lib/loopforge/shifts/skin';
 import floor from '../../../lib/loopforge/intro/geometry.json';
-import {tutorialOrders} from '../../../lib/loopforge/intro/playable-score';
 import type {Actor,Frame,Utterance} from '../../../lib/loopforge/intro/protocol';
 
 export type Art={sheets:Record<string,number[]>;checkpoint:(string|number)[][];palm:number[]};
@@ -131,7 +130,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
   if(cam.station&&order!==null){
     const [px,py]=cam.station;ctx.save();ctx.strokeStyle='#ffe3a1';ctx.lineWidth=3;
     ctx.beginPath();ctx.ellipse(px,py,27,13,0,0,2*Math.PI);ctx.stroke();ctx.textAlign='center';
-    ctx.font='bold 13px monospace';const title=tutorialOrders[order].station;
+    ctx.font='bold 13px monospace';const title=(floor.stations[order%4].name==='Main belt'?'Belt':floor.stations[order%4].name);
     const width=ctx.measureText(title).width+16;ctx.fillStyle='#1d2925';
     ctx.fillRect(px-width/2,py+16,width,19);ctx.fillStyle='#ffe3a1';ctx.fillText(title,px,py+30);ctx.restore();
   }

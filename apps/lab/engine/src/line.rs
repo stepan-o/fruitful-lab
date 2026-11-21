@@ -16,7 +16,7 @@ const RATINGS: [[i32; 3]; 10] = [
     [2, 5, 2],
     [4, 2, 3],
 ];
-const NEEDS: [[i32; 3]; 4] = [[4, 1, 1], [1, 1, 4], [1, 4, 1], [2, 1, 3]]; // station weights
+pub const NEEDS: [[i32; 3]; 4] = [[4, 1, 1], [1, 1, 4], [1, 4, 1], [2, 1, 3]]; // station weights
 pub const UNITS: [i32; 4] = [4000, 5400, 6400, 4800];
 pub const PROTOCOL: [i32; 4] = [50, 60, 30, 40];
 #[derive(Clone, Serialize, Deserialize)]
@@ -39,6 +39,12 @@ pub struct Line {
     pub next_inspection: i32,
     pub seed: u32,
     pub pending: Table<usize>,
+}
+pub fn ratings() -> Table<[i32; 3]> {
+    CREW.into_iter()
+        .zip(RATINGS)
+        .map(|(name, values)| (name.into(), values))
+        .collect()
 }
 pub fn members(w: &World, i: usize) -> Vec<String> {
     CREW.iter()
@@ -150,10 +156,11 @@ impl Line {
     }
     pub fn clear(
         &mut self,
-        w: &World,
+        w: &mut World,
         i: usize,
         incident: &str,
         t: i32,
+        extra: &str,
     ) -> Result<(), &'static str> {
         let team = members(w, i);
         let id = team.first().ok_or("No operator at the control")?;
@@ -166,6 +173,30 @@ impl Line {
         {
             return Err("This clearance has expired");
         }
+        let claim = format!("permit.{}.{}", load.id, i);
+        let foreman = w.actor("LIMEN");
+        foreman.believe("clearance requested", json!(true), "station control", t);
+        foreman.conclude("speech");
+        if !foreman.intend(
+            "speech",
+            &claim,
+            "authorize this carrier at this post",
+            70,
+            "clearance requested",
+            "station control",
+            t,
+        ) {
+            return Err("Supervisor is occupied");
+        }
+        w.say(
+            "LIMEN",
+            &format!("{}, all clear.{extra}", TITLES[i]),
+            Some(&[json!(id)]),
+            &claim,
+            t,
+            t + 32,
+            10500,
+        );
         self.call = Some((i, id.clone(), t + 10));
         Ok(())
     }
@@ -175,7 +206,7 @@ impl Line {
                 self.call = None;
                 if let Some(job) = self.cells[i].as_mut() {
                     if members(w, i).contains(who)
-                        && audible(w.agents["LIMEN"].p, w.agents[who].p, 10500)
+                        && w.knows(who, &format!("permit.{}.{}", job.id, i), "LIMEN")
                     {
                         job.permit = true;
                         w.actor(who).believe("clearance", json!(job.id), "LIMEN", t);

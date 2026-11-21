@@ -162,7 +162,17 @@ impl Intro {
             let p = &CAST.plans[i];
             w.actor(&p.actor).conclude(&p.lane);
             let phase = &p.phase;
-            if !guards(w, rows(&phase["completesWhen"]))
+            let process = &phase["process"];
+            let at_machine = process.is_null()
+                || (distance(
+                    w.agents[&p.actor].p,
+                    point(&process["operator"]["position"]),
+                ) <= n(&process["operator"]["within"])
+                    && w.facts
+                        .get(&format!("{}.socket", word(&process["workpiece"])))
+                        == Some(&process["from"]));
+            if !at_machine
+                || !guards(w, rows(&phase["completesWhen"]))
                 || !rows(&phase["transfers"])
                     .iter()
                     .all(|x| w.props.get(word(&x["prop"])) == Some(&x["from"]))

@@ -1,3 +1,4 @@
+import { decode } from "./validate";
 import { canonical, validEnvelope, type Envelope } from "../intro/protocol";
 
 export const schema = "loopforge_campaign_1";
@@ -54,6 +55,9 @@ export type PublicWorld = {
     deadline: number;
     waiting: string[];
     coverage: string[];
+    ratings: Record<string, number[]>;
+    needs: number[][];
+    bids: Record<string, string>;
     machines: (Floor["machines"][number] & { cycleMs: number | null })[];
     shot: "security" | "conveyor";
     shotSeq: number;
@@ -142,6 +146,7 @@ export async function read(before: Frame | null, e: Envelope): Promise<Frame> {
     ![state.agents, state.items, state.events].every(Array.isArray)
   )
     throw Error("Invalid state");
+  state = decode(state);
   if ((await sha(canonical(state))) !== p.step_hash)
     throw Error("Public state hash mismatch");
   return { tick, state, hash: p.step_hash as string };

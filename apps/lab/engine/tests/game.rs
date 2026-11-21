@@ -109,3 +109,17 @@ fn reject_and_expiry_have_custody_consequences() {
     run("LIMEN", "reject-pass");
     run("LIMEN", "timeout");
 }
+
+#[test]
+fn the_original_card_is_private_evidence() {
+    let mut game = start("STILETTO");
+    assert_eq!(game.world.agents["ed"].beliefs["bob:id"].source, "ed");
+    assert!(game.world.agents["LIMEN"].beliefs.get("bob:id").is_none());
+    let original = game.world.props["bob:id"].clone();
+    assert!(game
+        .apply(
+            &json!({"action":"issue-pass","target":"bob","room":"security","incident":"D2-bob-id"})
+        )
+        .is_err());
+    assert_eq!(game.world.props["bob:id"], original);
+}

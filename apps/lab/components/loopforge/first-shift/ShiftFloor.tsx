@@ -1,7 +1,6 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
-import {type Floor} from '../../../lib/loopforge/shifts/playthrough';
-import {ratings,needs} from '../../../lib/loopforge/shifts/station-line';
+import type {CampaignFloor as Floor} from '../../../lib/loopforge/engine/floor-view';
 import {type Command,type Lead,type Room} from '../../../lib/loopforge/shifts/contract';
 import {cutOpacity,roomCut} from '../../../lib/loopforge/factory-scene';
 import {type Transport} from '../../../lib/loopforge/shifts/playback';
@@ -137,14 +136,14 @@ export default function ShiftFloor({floor,quota,dayOneCount,onFinish,transport,o
     {room==='conveyor'&&w.stage==='work'&&(manual||lesson||showOrders&&assignmentOpen)&&<>
       {!manual&&<section className={css.crewSection}><h2>Assign the crew</h2><div className={css.crew}>{floor.workers.filter(a=>!lesson||tutorial.crew.includes(a.id)).map(a=><button key={a.id} disabled={!a.available} aria-pressed={worker===a.id} onClick={()=>setWorker(a.id)}>
         <Portrait id={a.id} assets={assets}/><b>{a.id}</b><small>{a.label}</small></button>)}</div>
-        {selected&&<div className={css.selection}><strong>{selected.id} · {selected.label}</strong><Bars values={ratings[selected.id]} label="Worker stats"/></div>}</section>}
+        {selected&&<div className={css.selection}><strong>{selected.id} · {selected.label}</strong><Bars values={floor.ratings[selected.id]} label="Worker stats"/></div>}</section>}
       <nav className={css.destinations} aria-label="Inspect a station">{floor.machines.map((m,i)=>
         <button key={m.name} aria-label={'Inspect '+m.title} aria-pressed={focusStation===i} onClick={()=>setDestination(i)}>
           {m.title}{manual&&m.canClear?' ●':''}</button>)}</nav>
       <div className={css.stations} data-lesson={!!lesson}>{floor.machines.map((m,i)=><section key={m.name} data-focused={focusStation===i}><h2>{m.title}</h2><b>{(lesson?tutorial.posts[i]:m.crew.join(' + '))||'Unstaffed'}</b>
         <p>{m.carrier?.replace('D2-','')||'Empty'} · {m.hold}</p>{manual?
         <button aria-label={'Clear '+m.title} disabled={!m.canClear||ordersPaused} onClick={()=>send('clear',m.name,m.carrier+'/'+m.caller,'conveyor')}>Clear</button>:
-        <>{!lesson&&<><Bars values={needs[i]} label="Station needs"/><small data-work-rate={m.rate}>{m.cycleSeconds===null?'No crew at post':m.cycleSeconds.toFixed(2)+' s per carrier'}</small></>}
+        <>{!lesson&&<><Bars values={floor.needs[i]} label="Station needs"/><small data-work-rate={m.rate}>{m.cycleSeconds===null?'No crew at post':m.cycleSeconds.toFixed(2)+' s per carrier'}</small></>}
           <button disabled={!selected||ordersPaused} onClick={()=>send(lesson?'post':'assign',m.name,worker,'conveyor')}>{selected?'Send '+worker+' to '+m.title:'Select a worker'}</button></>}</section>)}</div></>}
     </div>
   </main>;

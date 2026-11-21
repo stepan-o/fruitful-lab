@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import {clockText,openingMinute} from "../../../lib/loopforge/shifts/factory-clock";
-const FirstShift=dynamic(()=>import("./FirstShift"),{ssr:false});
+import FirstShift from "./FirstShift";
 import ProducerConsole from "./ProducerConsole";
 import LeadershipCall from "./LeadershipCall";
 import type {Frame} from "../../../lib/loopforge/engine/wire";
@@ -99,9 +99,9 @@ function GameSession({media,legacyReview=false,initialIntro=false}:Props) {
         <Art media={media} id="logo" className={s.menuLogo} sizes="320px" priority />
         <h1>First shift</h1>
         <p className={s.menuMotto}>Truth stays clean.<br />Story gets messy.</p>
-        <button ref={start} className={s.startControl} disabled={theme.loading||starting} onClick={enter}>{frame||resumable||legacyStarted ? "Resume shift" : legacyReview?"Start shift":"Enter factory"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
+        <button ref={start} className={s.startControl} disabled={starting||(legacyReview&&theme.loading)} onClick={enter}>{frame||resumable||legacyStarted ? "Resume shift" : legacyReview?"Start shift":"Enter factory"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
         {!legacyReview&&<>
-          <button className={s.dayTwo} disabled={starting||theme.loading} onClick={secondDay}>{starting?"Opening console…":"2nd day"}</button>
+          <button className={s.dayTwo} disabled={starting} onClick={secondDay}>{starting?"Opening console…":"2nd day"}</button>
           <label className={s.displaySwitch}><span>Full screen</span><input type="checkbox" role="switch" aria-label="Dev mode" checked={dev} onChange={e=>{present(!e.target.checked);setDev(e.target.checked);localStorage.setItem("loopforge.display",e.target.checked?"dev":"normal");}}/><span>Dev mode</span></label>
           {error&&<p role="alert">{error}</p>}
         </>}

@@ -3,7 +3,11 @@ import type { State } from "./wire";
 
 // Adapt names and units for the existing artist bindings. Every value that can
 // change an outcome arrives from the verified public projection.
-export function floorView(state: State): Floor {
+export type CampaignFloor = Floor & {
+  ratings: Record<string, number[]>;
+  needs: number[][];
+};
+export function floorView(state: State): CampaignFloor {
   const w = state.world,
     f = w.floor!;
   const phase = f.closed
@@ -39,11 +43,7 @@ export function floorView(state: State): Floor {
         : null,
     shiftOutput: f.dayCount,
     chat: "idle",
-    bids: {
-      LIMEN: "We have to stick to the Protocol. No need to change anything.",
-      STILETTO:
-        "Give me the gate, send LIMEN to conveyor. It took him two helpers to count to eight.",
-    },
+    bids: f.bids,
   };
   const scene = {
     world,
@@ -62,6 +62,8 @@ export function floorView(state: State): Floor {
     events: dialogue,
   };
   return {
+    ratings: f.ratings,
+    needs: f.needs,
     tick: w.clock_tick,
     scene: scene as Floor["scene"],
     tutorial: f.manual

@@ -199,7 +199,16 @@ impl Session {
         let kind = word(&e["msg_type"]);
         match (self.mode, kind) {
             ("hello", "VIEWER_HELLO") => {
-                if !rows(&p["supported_schema_versions"]).contains(&json!(SCHEMA)) {
+                if word(&p["viewer_name"]).is_empty()
+                    || word(&p["viewer_version"]).is_empty()
+                    || !p["supports"].is_object()
+                    || p["supports"]["diff_stream"] != true
+                    || p["supports"]["full_snapshot"] != true
+                    || rows(&p["supported_schema_versions"])
+                        .iter()
+                        .any(|v| !v.is_string())
+                    || !rows(&p["supported_schema_versions"]).contains(&json!(SCHEMA))
+                {
                     return Err("Unsupported schema");
                 }
                 self.mode = "subscribe";

@@ -285,7 +285,7 @@ impl Shift {
                 Ok(())
             }
             "clear" if self.manual() && self.lesson == "live" => {
-                self.line.clear(w, i, incident, self.t)
+                self.line.clear(w, i, incident, self.t, "")
             }
             "assign"
                 if !self.manual()
@@ -432,17 +432,17 @@ impl Shift {
                 return;
             };
             let id = format!("D2-C{}", if c < 22 { 1 } else { 2 });
+            let extra = if c == 16 { " Carry on, Twitch." } else { "" };
             if job.id != id
                 || crew.is_empty()
                 || self
                     .line
-                    .clear(w, i, &format!("{id}/{}", crew[0]), self.t)
+                    .clear(w, i, &format!("{id}/{}", crew[0]), self.t, extra)
                     .is_err()
             {
                 return;
             }
-            let extra = if c == 16 { " Carry on, Twitch." } else { "" };
-            self.say(w, "LIMEN", &format!("{}, all clear.{extra}", TITLES[i]));
+            self.due = self.t + 32;
         }
         for (who, text) in &SWAPPED[c] {
             self.say(w, who, text)

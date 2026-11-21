@@ -160,7 +160,7 @@ impl Game {
                     !s.entered.iter().any(|s| s == **id) && w.agents[**id].duty == "waiting"
                 })
                 .collect();
-            world["floor"] = json!({"stage":s.stage,"start":s.start,"lead":s.lead,"bell":s.bell,"lesson":s.lesson,"held":s.held(),"posts":s.posts,"crew":s.crew,"manual":manual,"closed":s.closed,"dayCount":w.rack.len()-s.initial,"status":s.case,"deadline":s.deadline,"waiting":waiting,"coverage":coverage,"machines":s.line.machines(w,s.t,manual,s.lesson=="live"),"shot":s.shot,"shotSeq":s.shot_seq,"opening":manual&&s.lesson!="live","stroke":s.line.cells[3].as_ref().map_or(0,|j|(1000*j.work/if manual{40}else{4800}).min(1000))});
+            world["floor"] = json!({"stage":s.stage,"start":s.start,"lead":s.lead,"bell":s.bell,"lesson":s.lesson,"held":s.held(),"posts":s.posts,"crew":s.crew,"manual":manual,"closed":s.closed,"dayCount":w.rack.len()-s.initial,"status":s.case,"deadline":s.deadline,"waiting":waiting,"coverage":coverage,"bids":{"LIMEN":"We have to stick to the Protocol. No need to change anything.","STILETTO":"Give me the gate, send LIMEN to conveyor. It took him two helpers to count to eight."},"ratings":crate::line::ratings(),"needs":crate::line::NEEDS,"machines":s.line.machines(w,s.t,manual,s.lesson=="live"),"shot":s.shot,"shotSeq":s.shot_seq,"opening":manual&&s.lesson!="live","stroke":s.line.cells[3].as_ref().map_or(0,|j|(1000*j.work/if manual{40}else{4800}).min(1000))});
         }
         let mut events = w.events.clone();
         if intro {

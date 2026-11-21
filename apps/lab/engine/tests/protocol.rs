@@ -144,3 +144,18 @@ fn evidence_and_priority_change_admission() {
     actor.believe("card", json!(true), "rumor", 8);
     assert_eq!(actor.consider("body", &opts).unwrap().plan, "watch");
 }
+
+#[test]
+fn one_day_orders_replace_the_superseded_future() {
+    let mut h = History::default();
+    h.input("skip", json!({"action":"skip"})).unwrap();
+    h.input("call", json!({"action":"answer"})).unwrap();
+    h.input("topic", json!({"action":"topic","target":"1"}))
+        .unwrap();
+    h.seek(2).unwrap();
+    h.input("leave", json!({"action":"close"})).unwrap();
+    assert_eq!(h.game.phase, "console");
+    assert_eq!(h.inputs.len(), 3);
+    assert_eq!(h.inputs[&3].id, "leave");
+    assert_eq!(h.past(3).unwrap().topic, 0);
+}

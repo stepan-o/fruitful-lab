@@ -16,6 +16,8 @@ For a scoped role/card addition with no other board changes, `python docs/loopfo
 
 MUSIC DIRECTOR's package is `music-director.md`, `music-study.md` and `music-production.md`; the companions are role readings, not extra specialists. Its first commissioned publication is a future `#music-engine` tab immediately after Studio briefs. The onboarding package does not implement that tab or an audio runtime. The role owns music-side input stubs, audio clearance and budget; ENGINE supplies the later authoritative adapter.
 
+UI DESIGNER's package is `ui-designer.md`, `ui-reading.md` and `ui-first-assignment.md`. The companions are registered in `ROLE_READINGS` and the route allowlist. Its first commission is an annotated interface audit and static visual studies, with desktop and phone designed equally; implementation ownership is explicitly undecided. The onboarding package adds the role and references, not a completed UI audit or runtime redesign.
+
 The generator uses the existing small narrative Markdown renderer. Links are explicit public paths or HTTPS references. Shared CSS/JS are served under `/loopforge-design/studio/`; the only new browser behavior copies a starting prompt and provides selection/download fallback.
 
 ## Add a role

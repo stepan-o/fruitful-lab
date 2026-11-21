@@ -13,6 +13,8 @@ PUBLIC = '/loopforge-design/studio'
 E = html.escape
 COMPANIONS = ['producer-reading', 'producer-playbook']
 ROLE_READINGS = {
+    'ui-reading': ('ui-designer', 'UI DESIGNER'),
+    'ui-first-assignment': ('ui-designer', 'UI DESIGNER'),
     'music-study': ('music-director', 'MUSIC DIRECTOR'),
     'music-production': ('music-director', 'MUSIC DIRECTOR'),
     'days-2-4-dialogue-validation': ('game-systems-designer', 'GAME SYSTEMS DESIGNER'),
@@ -36,10 +38,11 @@ def kickoff(role):
     producer = ("Read the source reader at https://www.fruitfulab.net" + BASE + "/producer-reading and coordination playbook at https://www.fruitfulab.net" + BASE + "/producer-playbook. "
                 "The owner opens specialist chats; you write their task prompts with role-brief links and maintain the briefs with craft contributions. "
                 "Check deliveries and advise on whether to continue, iterate or ship; the owner makes those decisions and validates the playable experience. Do not launch chats or restart the former autonomous studio. ") if role['id'] == 'producer' else ''
+    ui = ("Read the UI source reader at https://www.fruitfulab.net" + BASE + "/ui-reading and first assignment at https://www.fruitfulab.net" + BASE + "/ui-first-assignment. Begin with an annotated audit and static visual studies; implementation ownership is undecided. Carry forward the owner's settled direction and design desktop and phone equally. ") if role['id'] == 'ui-designer' else ''
     return (f"You are {role['name']} for Loopforge. Read the shared studio instructions at "
             f"https://www.fruitfulab.net{BASE} and your maintained brief at "
             f"https://www.fruitfulab.net{BASE}/{role['id']}. "
-            + producer +
+            + producer + ui +
             "Use the Current handoff and linked design pages to establish the latest approved baseline; verify it against current source and delivered artifacts. "
             "Read the applicable repository instructions. Preserve other specialists' work in an isolated branch/worktree. "
             "Follow Onboard (study and pre-synthesize) → Interview (one question at a time, with suggested answers) → Plan → Build → owner Review for new design; carry out already approved bounded corrections without reopening settled decisions. "

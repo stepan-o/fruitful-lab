@@ -12,7 +12,7 @@ Music is a system that interprets the game. It is not the simulation clock, an a
 
 ## The owner's musical direction
 
-- A rapid descending minor-scale opening lands on an off-note. Establish an original motif that can recur, fragment and develop. The precise key, dissonance and resolution remain listening decisions.
+- The approved motif is A–G–F–E–C♯ over low D. Keep its final note hanging. Take B sets the direction. Preserve the original E-flat Take A as a dated alternative.
 - Golden-era drum and bass and dubstep are the two families. Goldie's long-form sense of continuity is a listening reference. Hackers, Trainspotting and the dawn-of-internet feeling supply cultural direction: excitement, discovery, rough edges, collective energy and unease, before the always-connected pocket screen.
 - Every page and menu has an identity inside the same evolving theme. Options is a restrained DnB drum solo with an evolving pattern. Conveyor is dubstep. Each room should be recognizable through the music.
 - Jazz richness must come from musical relationships and the arrangement engine: voicing, syncopation, space, call and response, variation and return. It is not satisfied by adding a saxophone to unrelated loops.
@@ -20,20 +20,11 @@ Music is a system that interprets the game. It is not the simulation clock, an a
 
 Keep reference names in research and listening notes, separate from generation prompts. Follow the provider-specific input rules in the production companion. Do not import reference recordings, melodies, film dialogue or uncleared break samples into the product.
 
-## First assignment: publish the Music engine proposal
+## Current assignment · three themes into production
 
-Take in this brief and its study, familiarize yourself with the relevant current game, then interview the owner one question at a time with suggested answers. Present the publication plan for approval. Your first product is an initial **Music engine** design-board tab, immediately **after Studio briefs and before Player desires & scenarios**, at `/stepanoskin/loopforge/design#music-engine`. Keep Studio briefs the default agent landing. This position presents the new cross-game creative system near the top without displacing the existing game-design sequence.
+Start from the approved Main menu curiosity, Options drum solo moving between the drummer’s hands, and heavy, patient Conveyor. For each theme, write the native phrase variations that carry an idle listen and the separate responses to observable context. Describe emotional purpose, player activity, motif, phrase lengths, voicings, fills, rhythm, development, recovery, transitions, silence, speech and export assumptions. Map other current surfaces before commissioning more music. Keep dated alternatives and measured evidence. Develop a few useful audition questions before building a catalog.
 
-Publish the agreed proposal yourself in one scoped PR and verified preview. This commissioning brief is not that proposal and does not claim a running music engine. Do not start with a complete soundtrack catalog or paid generation. The tab should contain:
-
-1. The emotional thesis, original theme grammar and reference study, with sources and clear separation of owner requirements from recommendations.
-2. A page/menu/room arrangement map, including Options and Conveyor, shared motifs and proposed transition rules. Cover current surfaces; mark future rooms as future coverage.
-3. The music engine diagram, candidate tempo/harmony strategies, state priorities, variation limits and routes through silence, speech, pause and resume.
-4. A versioned input-contract proposal and manual fixture panel design. Distinguish stub values, game-provided observations and values the game cannot yet supply. A silent visual mock-up is acceptable for the first proposal; label it accurately.
-5. A small first audition plan with comparable clips and a transition test, a loop/export manifest, integration boundaries, performance criteria and unanswered creative questions.
-6. An ElevenLabs capability check, budget proposal and commercial-clearance register, plus explicit approval needed before spending or publishing generated audio.
-
-The owner approves the proposal and later listens in context. A diagram, downloaded file, waveform or passing build does not establish that the theme works.
+The owner approved a zero-cost session of two local 48-bar sketches on the 170/85 and 164/82 grids, plus matched-picture speech comparisons. Review the tempo by ear. ElevenLabs remains the intended production tool. Price the proposed one-attempt, 45-second Main menu pilot and obtain an explicit all-in ceiling and account authorization before a paid run. Check actual downloads, applicable rights and stems. Keep exploration, approved direction, production exports and integrated validation distinct in the role handoff and ledger.
 
 ## Start at the music boundary
 
@@ -41,7 +32,7 @@ Design a language-neutral `MusicInputs v1` contract. Suggested fields in the stu
 
 Specify neutral defaults, missing/unknown data, sequence and session identifiers, stale or duplicate event handling, range validation, pause/reset, bounded updates, and source labels. Separate persistent state (surface, audible room, energy) from discrete cues (a confirmed jam or shift boundary). Avoid delivering every simulation tick to the music engine. Smooth control changes, use hysteresis and musical entry points, and coalesce storms of repeated cues.
 
-The adapter may consume only appropriately scoped public state and confirmed events. A hidden worker intention must not leak through ominous music. The same adapter contract should work with pixel art and a later 3D skin, while preserving KVP-0001 and the TypeScript-now/later-Rust direction. Music may align a musical response to a beat; it must not move the actual gate, animation contact, dialogue deadline or simulation event to that beat.
+The adapter may consume only appropriately scoped public state and confirmed events. A hidden worker intention must not leak through ominous music. The same adapter contract should work with pixel art and a later 3D skin, while preserving KVP-0001 and the current Rust-native ENGINE direction. Music may align a musical response to a beat; it must not move the actual gate, animation contact, dialogue deadline or simulation event to that beat.
 
 ## Scope and collaborators
 
@@ -62,9 +53,9 @@ Track samples, source recordings, model outputs, human edits and derivatives thr
 
 ## Current handoff
 
-**21 November 2026 · Proposal merged in PR #183. First listening session ready for owner review.** Open the [Music engine proposal and silent fixture](/stepanoskin/loopforge/design#music-engine). The owner chose a shared fast grid with a half-time Conveyor, a descending minor motif that hangs on its off-note, and bass shaped by observable work under either supervisor. The first tempo to audition is 170/85. MusicInputs v1, the manual panel, the listening brief and the proposed clearance register are available in the tab. [Download proposal](/loopforge-design/MUSIC_ENGINE.md) · [Input example](/loopforge-design/music-inputs.v1.json).
+21 November 2026 · PR #185 merged the first listening session. Its approved C♯ landing leads this second session. The two 48-bar tempo studies and two 1× picture edits are available for owner review. The first sixteen bars are Menu, the next sixteen Options and the last sixteen Conveyor. The final wait and restart are staged. Choose a pulse by ear and record where the solo loses interest or a word becomes hard to hear. Accepted direction covers the motif and three emotional/arrangement choices. Production instrumentation, final tempo, loop and speech acceptance in play are open.
 
-[Audition the two original 24-second takes](/stepanoskin/loopforge/design#music-listening). A holds E-flat over D; B holds C-sharp. The same synthesized kit, harmony, timing and master gain run from Menu through Options to the half-time Conveyor. The next owner decision is the landing. Then prepare the selected matched-picture speech and seam tests. The interactive input monitor remains a silent manual fixture. No provider output, cost or change of account. A paid tool is an option for a later identified need. [Measurements](/loopforge-design/music-audition/session.json) · [Provenance](/loopforge-design/music-audition/provenance.md).
+Read the [listening comparison](/stepanoskin/loopforge/design#music-listening), [theme sheets and map](/stepanoskin/loopforge/design/studio/music-study#three-theme-design-sheets), [production and rights ledger](/stepanoskin/loopforge/design/studio/music-production) and [current Rust ENGINE handoff](https://github.com/stepan-o/fruitful-lab/blob/38728b026405806814064879821af8dc474c410b/docs/loopforge/studio-briefs/engine-master.md). The original [E-flat alternative](/loopforge-design/music-audition/landing-a.mp3) and [approved C♯ sketch](/loopforge-design/music-audition/landing-b.mp3) remain available. Continue from the owner’s listening verdict, then approve spending separately. No provider soundtrack has been made.
 
 ## Required reading and delivery
 

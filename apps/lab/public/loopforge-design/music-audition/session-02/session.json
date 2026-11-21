@@ -1,0 +1,64 @@
+{
+  "revision": "theme-study-02",
+  "bars": 48,
+  "meter": "4/4",
+  "sampleRate": 48000,
+  "scoreSha256": "a47dc34e7f1413db937800381ecc6a4eef8b98a81de499f79e39fc3aa2138d2c",
+  "source": "local synthesis",
+  "providerCalls": 0,
+  "costUSD": 0,
+  "fixtureBeats": {
+    "options": 64,
+    "conveyor": 128,
+    "wait": 176,
+    "movement": 185.5,
+    "bassAnswer": 186
+  },
+  "picture": {
+    "path": "loopforge-shifts/review/first-playthrough/limen/opening-Forge-clear.mp4",
+    "sha256": "0b98a9997644fd1a78273afc4604092f2ca2308ff5ed7d25676d658404d7bed7"
+  },
+  "voice": {
+    "path": "loopforge-shifts/limen-welcome.mp3",
+    "sha256": "e9e2985cfed85075ee6136518fe2089e5c25670c6793404772685c043983ec78",
+    "offsetSeconds": 1.25
+  },
+  "exports": [
+    {
+      "file": "grid-170.mp3",
+      "tempo": 170,
+      "sha256": "d021690209261a115e16bb6fe5006a3eaabbc0a35c64816b86e5f34cefe68708",
+      "rightsId": "LF-MUS-02-GRID-170",
+      "lufs": -17.42,
+      "dBTP": -3.82,
+      "frames": 3252706,
+      "masterSha256": "7b587e9e3e888a42ce2b3c18461fba6c94a52d6f106d8cb789789b6f7787288d"
+    },
+    {
+      "file": "speech-170.mp4",
+      "tempo": 170,
+      "sha256": "f246264429025caaeeb56a0e7a9db1ec62de158c619726f93cd3b3f611034767",
+      "rightsId": "LF-MUS-02-SPEECH-170",
+      "lufs": -18.83,
+      "dBTP": -5.39
+    },
+    {
+      "file": "grid-164.mp3",
+      "tempo": 164,
+      "sha256": "18adfddf3aad4b562251e24e74f7b39119bab882859570735194642ca54631a4",
+      "rightsId": "LF-MUS-02-GRID-164",
+      "lufs": -17.43,
+      "dBTP": -4.43,
+      "frames": 3371707,
+      "masterSha256": "5911924257e90896aa3b7780ecafb807af9d69262d39519dbd96ba22c2cdf439"
+    },
+    {
+      "file": "speech-164.mp4",
+      "tempo": 164,
+      "sha256": "c9648027b4ae037ac8f6c280f075393d36a4e3ef049847d8886560ab6c32670f",
+      "rightsId": "LF-MUS-02-SPEECH-164",
+      "lufs": -18.62,
+      "dBTP": -5.73
+    }
+  ]
+}

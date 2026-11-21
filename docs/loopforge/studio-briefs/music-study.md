@@ -2,9 +2,64 @@
 
 20 November 2026 · Commissioning study for [MUSIC DIRECTOR](/stepanoskin/loopforge/design/studio/music-director)
 
-**Status:** researched creative direction and source inspection, not a listening report or implemented music engine. The owner's requirements are fixed where identified below; the musical and technical choices are proposals for the director to test with the owner. No reference recording is copied or redistributed here.
+## Three theme design sheets
 
-## The musical thesis
+21 November 2026 · Direction approved, tempo and production sound open. The owner chose the descent A–G–F–E–C♯ against low D. Take A, ending on E♭, remains a dated alternative. The notation below counts four fast beats per bar on both grids. Score sections and timings describe the two recorded sketches. Instructions for longer sits, reversals and runtime behavior are design proposals. [Compare the two tempos](/stepanoskin/loopforge/design#music-listening).
+
+### Main menu · curiosity with a pulse
+
+**At the controls.** The player has time to read or can enter immediately. Open with the falling five-note figure, a low D and a break already in motion. The sound should suggest finding people awake on an unfamiliar network. Let a warm chord move underneath the held note. A snare pickup is the reply.
+
+**When the player stays.** Two eight-bar sentences share one kick and snare vocabulary. The first opens the harmony into a ninth over D. In the second, C moves down to B inside the chord while F, E and A hold. Delay the shorter E–C♯ answer until the second half of each sentence. For a longer sit, alternate an eight-bar low-register answer that omits the opening with an eight-bar restatement. Keep one conspicuous fill per four bars. A quiet fourth bar is a valid phrase ending.
+
+**When the player acts.** Play the complete opening once after sound is enabled. Pass the last snare pickup into Options. Closing Options admits chords at the current phrase position. Entering the factory gives the contactor and first addressed line a clear attack. An early click moves the player immediately. On mute, leave, or interrupted entry, discard a queued pickup. Resume softly from the current surface.
+
+**Production target.** Request a full mix first. Later prepare an entry, two eight-bar bodies with alternate turnarounds, a drums-only handoff and a tail if editing supports them. Check that the opening still reads on a phone and the second chord changes the feeling of C♯. Reserve midrange answers during speech. Actual loop boundaries and isolated drum exports await a master.
+
+### Options · follow the drummer’s hands
+
+**At the controls.** The solo gives idle listening some pleasure while slider labels remain easy to read. The menu’s short snare pickup opens the door. The high-to-low motion and the spacing before the last hit identify the motif without a pitched lead.
+
+**When the player stays.** Sixteen bars divide into four groups of four. Closed hats introduce the figure, rim carries the next pass, low tom takes the third, and the fourth divides one figure between the hands. The kick holds beats one and the offbeat after three. Ghost strokes, a late open hat and two short holes change the internal weight. For a longer solo, follow a busy group with a sparse group that leaves its final answer empty. Save a complete kit descent for the return.
+
+**When the player acts.** Enter on the common pulse and close on any beat. A settings click gets its ordinary UI feedback. Rapid changes leave the musical phrase intact. An audio-preview or spoken instruction takes the foreground. Pause holds the musical place and clears the pending fill. Reopen from the current kit position. The final tom can become the pickup to Conveyor in a review traversal.
+
+**Production target.** A self-contained drum performance, two contrasting eight-bar edits, a clean first hit and a short tail. The solo must sustain interest in its own right. Independently generated drums would need a timing and bleed check before sharing a downbeat with the menu. Until then join full mixes at an authored boundary.
+
+### Conveyor · heavy and patient
+
+**At the controls.** LIMEN’s clearance and STILETTO’s staffing give the player different jobs. Both rooms sound like the same machine. Place one deep snare on fast beat three. The bass spreads A–G–F–E across two bars and lets C♯ hang. Keep audible upper harmonics for small speakers.
+
+**When work is steady.** An eight-bar family alternates a clipped descent, held C♯, a low-D reply and a rim pickup. Across bars 33–44 the bass lengths and pickup change while the backbeat stands still. Subsequent families can move the answer an octave or leave a whole bar empty. Alternate sustained and articulated phrases before returning to the full contour. Reserve the sub register for one sounding bass line at a time.
+
+**When work changes.** Waiting withdraws the next bass answer. In the fixture the wait starts at bar 45, movement arrives halfway between beats two and three of bar 47, and the bass answers on beat three. Under either supervisor a confirmed movement may invite a reply. A click or assignment alone cannot do it. A confirmed jam may shorten one phrase to a rim choke. Repeated receipts share one accent. Visible sustained pressure may bring closer-spaced hats after a phrase boundary. Unknown pressure returns to the baseline. Let a voice hold the floor over a low pedal. Recover at the next available phrase, discarding missed cues. A public bell ends the phrase and gives the bell its own space.
+
+**Production target.** Two full eight-bar bodies, a wait body, a single restart pickup, a speech bed and an exit tail once the groove is accepted. Keep the original machine and speech buses separately controllable at integration. Test a held carrier, movement, repeated receipts, speech and a bell in both routes. The recordings demonstrate the staged wait, restart and speech arrangement. Jam, pressure, both live routes and long-form fatigue still need in-game review.
+
+## Other surfaces and related rooms
+
+Use these compact sheets to brief later auditions. Each row names its own phrase development and an observable reason to change it. Export plans start with full mixes. No independent layer or seamless loop has yet been validated. A route change within the same activity can reuse its family.
+
+| Surface and activity | Signature and native phrases | Observations, transition and recovery | Proposed export and listening check |
+| --- | --- | --- | --- |
+| Landing and entry · deciding to enter | An isolated upper E–C♯ and a delayed low D. Two four-bar statements exchange attack and resonance. | First sound gesture only. Leave space for the contactor. Hand the shared upbeat to Menu and avoid a second full opening. | Entry and short ring-out. Test a fast click and a long idle. |
+| Design, overview, engine notes, reading decks and journal · sustained reading | Two upper voices trade the final interval over 16 bars. Answer the second statement with an eight-bar rest. | Fresh documents open quietly. If the user enables the reading arrangement, section navigation keeps its place. Stop at media playback and let the reader resume. | Sparse body and tail. Read a full page, including narration or embedded audio. |
+| Day 1 arrival and scripted room reveals · following workers | Two-note calls exchange register over eight bars. A second family leaves the first half empty. | Preserve the authored walk, blackout and speech. Reveal the room after the visible cut. On skip or seek, enter the current scene once and clear old accents. | Arrival bed, sparse reply and tail. Check actual spoken overlaps at 1×. |
+| Producer console, call and appointment · hearing quota and choosing | Dry four-bar kick and rim question. Answer with its displaced last two hits, then an empty fourth bar. | Leave the caller alone at entry. A displayed quota can return the pulse. Assignment changes wait for public confirmation. Follow focus into Security or Conveyor. | Eight-bar console body and speech-safe edit. Repeat the quota by ear. |
+| Security and yard-to-desk arrival · watching procedure | Tight rim and muted-key call. Two four-bar questions exchange registers. On the return, omit the answer around the ID handoff. | A visible hold leaves room tone. A heard line takes priority. Resume from the current desk state, then carry rim into Conveyor’s half-time snare. | Two desk phrases, hold and exit. Check that a pass and a denial both leave the actor’s line readable. |
+| Pause, inspection, settings overlay · reading or interrupting a run | Keep the interrupted room’s last interval. For a long inspection, alternate four bars of pedal with four of rest if the session is still running. A true pause holds phrase position. | Immediate pause or mute, short tail, cancel queued accents. Resume against fresh public state. Previewing an asset silences the score. | Tail and re-entry for each accepted family. Exercise rapid reopen and pause during a line. |
+| Shift bell, results and debrief · reading the result | Bell rings first. A slow E–C♯ reply and an open D sonority leave room for mixed outcomes. Answer the second eight-bar phrase with silence. | One confirmed bell per shift. Results inherit the last interval. A new run clears phrase history. | Results body and tail. Read both a missed quota and a successful shift. |
+| Teaching, room and console studies, actor tests, performance and asset viewers · inspecting evidence | Reuse the corresponding Menu, Security or Conveyor family only for an explicitly requested sound review. Silent inspection is the default. | Focus selects one room. Reference audio, voiced scenes and performance baselines own playback while active. Leaving returns to the prior surface on user gesture where needed. | Reuse accepted bodies. Check speech-only and muted runs; independent review players remain isolated. |
+
+The normal Day 2 line includes Intake, Wash, Belt, Forge and the rack. Stations inherit Conveyor’s groove. A later dedicated Forge room could develop the contour in ringing metal. Cortex, Theatre, Logistics and other unbuilt room arrangements need a commission and a playable listening context before export. No new room or event is implied by these briefs.
+
+## What to hear in session 02
+
+Listen through both doorways. Identify the hand figure in Options, then listen for a sustained answer after the clipped bass descent on Conveyor. Compare the fixed picture first with its original silence and then with both speech mixes. On a phone, try transcribing the line before opening the transcript. Record the chosen tempo, device, first tiring bar and any obscured word. The returned verdict sets the tempo for the one-render ElevenLabs proposal.
+
+Sylvester, *Designing Games*, chapter 1, “Emotion Through Music,” printed pp. 24–25 / PDF pp. 32–33, treats music as a source of feeling that can be evaluated separately from action. That led to the two score-only takes plus a fixed-picture speech comparison. In “Emotion Through Spectacle,” printed p. 25 / PDF p. 33, he describes the diminishing effect of repeating spectacle without earned context. That informed the single bass reply to resumed movement and a bell ending with room for the actual bell. Judge those decisions by ear in a repeated shift. Neither passage prescribes a tempo, a mix level or a technical event contract.
+
+## Commissioning study · original musical thesis
 
 A factory keeps repeating, but the people inside it change what repetition means. Let Loopforge's theme do the same. A familiar descending fragment, a persistent pulse and a recognizable harmonic world survive each move from menu to room. What changes is weight, space, instrumentation and the way phrases answer one another. The machine can be exhilarating without declaring every productive act virtuous; a supervisor can be imposing without a villain chord deciding the player's judgment.
 
@@ -27,7 +82,7 @@ The relevant pages were read in the owner's local reference PDF. Future decision
 
 ## The opening and the theme's grammar
 
-**Owner requirement:** a rapid minor-scale descent lands on an off-note. Compose a new short seed; test a chromatic landing against an unresolved scale tension. Specify the interval, duration and resolution after listening. Do not replay the entire opening every time a menu changes. A cold start can introduce it; later returns can use its last two notes, rhythmic contour or harmonic implication.
+**Decision after session 01.** Keep A–G–F–E–C♯ over low D. A cold start introduces the full contour. Let later returns use its last two notes, the snare rhythm or a change of inner voice.
 
 **Proposed palette:** weighty but controlled sub, tactile chopped breaks, soft electric-key voicings, suspended pads, sparse metallic pitched accents and occasional breath-like texture. Humanized articulation and well-placed silence matter more than a large instrument list. First audition should be instrumental so speech remains readable; any vocal texture needs separate clearance and intelligibility review.
 
@@ -51,7 +106,7 @@ These are initial hypotheses, not approved tracks or a promise that every room a
 | Cortex / Theatre / other future rooms | Candidate motif transformations for reflection, ceremony or social performance. | Keep these as auditions to propose, not an obligation to generate a whole Act 1 soundtrack now. |
 | Pause / results | Thin the active arrangement or allow a measured tail. | Define music pause separately from sim pause; silence remains available. Results need not be automatic triumph. |
 
-## One clock or a deliberate bridge
+## Historical tempo proposals before listening session 01
 
 There is a real choice to audition. At 170 BPM, a half-time backbeat suggests 85 BPM; it does not become a 140 BPM dubstep groove. Candidate A keeps a shared 170/85 grid for easy interlocking. Candidate B gives Conveyor a 140/70 center and uses an authored breakdown/transition segment before the new downbeat. Candidate C uses a different shared tempo after listening. Do not stretch whole generated mixes invisibly and call them equivalent.
 
@@ -78,7 +133,7 @@ These names and ranges are suggestions for MUSIC DIRECTOR and ENGINE to reconcil
 
 The prototype harness should let the director traverse Menu → Options → Security → Conveyor, vary pressure, start speech, inject one jam twice, pause, mute and resume. Show the current phrase, pending transition and input source. A stub demo proves the music-side behavior only; a later game adapter must have its own evidence.
 
-## Current code: reuse selectively
+## Dated source inspection · 20 November
 
 Inspection baseline: master `bc7d42b8`, PR #179. These are source findings, not fresh audio auditions.
 
@@ -98,8 +153,6 @@ Use pre-generated, locally served and validated assets. No model request should 
 
 Preload the active arrangement and its imminent transition, not the whole catalog. Propose and measure caps for simultaneous layers, decoded buffers, transition overlap and initial download. Decoded float PCM costs roughly seconds × sample rate × channels × 4 bytes: four stereo 30-second layers at 48 kHz occupy about 46 MB before overhead. Compressed transfer size does not establish runtime memory. Test narrow/mobile contexts, long playback, rapid menu changes, mute/resume and sustained simulation load. Report laboratory conditions and listening evidence separately.
 
-## First useful experiment
+## Current listening and production decision
 
-After scope and budget approval, make a small coherent family: original theme seed, one main-menu passage, one Options break variation, one Conveyor passage and the required bridge. Prefer two meaningful alternatives to dozens of unconstrained generations. Include seam tests, repeated loops and a normal-speed continuous traversal. Full mix variants are acceptable if phase-compatible stems are unavailable; do not claim stem control that the exports cannot support.
-
-Record entry/exit bars, loop region and tail, verified tempo/key, compatible layers, loudness/peak checks, file hashes, model/request IDs, editing history, permissions and owner review. Separate generated output, prepared loop, integrated playback and accepted music. The first director's immediate deliverable remains the Music engine proposal tab; this experiment belongs to the subsequent approved build.
+Compare 170/85 and 164/82 on the board. Give the owner’s preferred grid and the three sheets above to ElevenLabs production. The proposed first render is one 45-second Main menu instrumental after an account quote and separate all-in spending decision. The music adapter consumes permitted observations from ENGINE’s verified public projection. Game commands, fixed ticks, holds, visibility and branching belong to the Rust kernel. The panel is a manual fixture and the four media files are edits. [Current ENGINE assignment](https://github.com/stepan-o/fruitful-lab/blob/38728b026405806814064879821af8dc474c410b/docs/loopforge/studio-briefs/engine-master.md) · [Audition board](/stepanoskin/loopforge/design#music-listening) · [Production handoff](/stepanoskin/loopforge/design/studio/music-production).

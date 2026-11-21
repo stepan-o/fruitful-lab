@@ -1,3 +1,7 @@
+## Loopforge · Music Director commissioning — 20 November 2026
+
+Studio briefs now includes MUSIC DIRECTOR with musical-direction and production/budget/rights companions at `/stepanoskin/loopforge/design/studio/music-director`, `/music-study` and `/music-production`. The authored package is `docs/loopforge/studio-briefs/music-*.md`; generated pages use the existing studio publisher. The first director is commissioned to interview, plan and publish a Music engine proposal immediately after Studio briefs, then develop music-side input stubs before ENGINE connects real observations. This package does not implement that tab, generate music or change runtime/layout/timing. ElevenLabs is owner-reported Free, budget unset, account entitlements unverified; paid work needs an explicit ceiling. MUSIC DIRECTOR owns audio commercial-use provenance and proposed music dependencies, coordinated with PRODUCER's whole-product clearance inventory. Owner listening and merge review remain required.
+
 ## Loopforge · Guided first two shifts
 
 The standard play route has a full-screen view, a Dev display switch, a 24-hour factory clock, and two equivalent entries to the Day 2 console. Day 1 runs two player-cleared carriers and a fully staffed demonstration. On Day 2, STILETTO teaches two-operator coverage and four single posts around a timed Security intervention. The saved command journal reconstructs tutorial postings and card outcomes. The alternate LIMEN Conveyor appointment retains its station clearances.

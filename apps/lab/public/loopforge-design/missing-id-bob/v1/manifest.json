@@ -1,0 +1,233 @@
+{
+  "schema": 1,
+  "title": "Missing ID · bob",
+  "state": "E1 approved for UI DESIGNER",
+  "commission": "9d098971c3a0bdcc0755f7f0a2c4319e07b65ec4",
+  "assets": {
+    "landscape": {
+      "file": "landscape.6891d15b3938.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 325356,
+      "sha256": "6891d15b39383bb54f0ec6a854fa595b45149318c20c94dc5c5d0a1e333031f6"
+    },
+    "portrait": {
+      "file": "portrait.5cb0b7508fa6.webp",
+      "width": 780,
+      "height": 1170,
+      "bytes": 214324,
+      "sha256": "5cb0b7508fa6cd05955b79e36699cc2892f1575802f1f1f2974fcb0df7b86d8c"
+    },
+    "phone-small": {
+      "file": "phone-small.c2a689821381.webp",
+      "width": 390,
+      "height": 585,
+      "bytes": 56694,
+      "sha256": "c2a68982138177f8169bf605d7883f94c17c3056cf7728bbac8cf93e4e923c00"
+    },
+    "landscape-guides": {
+      "file": "landscape-guides.5a993cdce6ed.webp",
+      "width": 960,
+      "height": 640,
+      "bytes": 151286,
+      "sha256": "5a993cdce6ed855fb9abaa5c90f24f49cdba58f6f24b7df006614f5eda5853bc"
+    },
+    "portrait-guides": {
+      "file": "portrait-guides.2e7f6485d4af.webp",
+      "width": 480,
+      "height": 720,
+      "bytes": 90798,
+      "sha256": "2e7f6485d4af43b2464ccc53a5f79c3a6168406b276da9f08763262a6189b170"
+    },
+    "desktop-1440": {
+      "file": "desktop-1440.589451f0665f.webp",
+      "width": 1440,
+      "height": 960,
+      "bytes": 288060,
+      "sha256": "589451f0665f3761c2c2df770685723543bdf43b860a06a2929f64b266f0e3b1"
+    },
+    "phone-390": {
+      "file": "phone-390.a36dc50e4016.webp",
+      "width": 390,
+      "height": 844,
+      "bytes": 54398,
+      "sha256": "a36dc50e40165fcc53685acd200e9a45be0f0cf687bfa28a950af6d4fb58fbce"
+    },
+    "phone-320": {
+      "file": "phone-320.81844bd3b31e.webp",
+      "width": 320,
+      "height": 693,
+      "bytes": 35824,
+      "sha256": "81844bd3b31e373d3a9c218ab878c3243e72121fbbe384ffeabbeae1fb845ee4"
+    }
+  },
+  "masters": {
+    "landscape": {
+      "url": "https://raw.githubusercontent.com/stepan-o/fruitful-lab/refs/heads/codex/art-missing-id-bob/docs/loopforge/production/missing-id-bob/masters/landscape.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 3010630,
+      "sha256": "960a36f477e90b934bc0b64baa8dbea3f94822fcdc5eb6d56052bbc7c99bbdca"
+    },
+    "portrait": {
+      "url": "https://raw.githubusercontent.com/stepan-o/fruitful-lab/refs/heads/codex/art-missing-id-bob/docs/loopforge/production/missing-id-bob/masters/portrait.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "bytes": 3036070,
+      "sha256": "b1b404f772efffbbfcc6c24e66147577087d4bf82d312a76019cbdb9b6fb32e1"
+    }
+  },
+  "coordinates": {
+    "units": "Master pixels, top-left origin. Rectangles use left, top, right, bottom. Full canvas preferred. max_trim_frame is the tightest permitted frame.",
+    "compositions": {
+      "landscape": {
+        "canvas": [
+          1536,
+          1024
+        ],
+        "eyes": [
+          [
+            875,
+            419
+          ],
+          [
+            1060,
+            328
+          ]
+        ],
+        "counter_edge": [
+          [
+            691,
+            874
+          ],
+          [
+            982,
+            581
+          ]
+        ],
+        "text_safe": [
+          68,
+          906,
+          1468,
+          993
+        ],
+        "max_trim_frame": [
+          32,
+          25,
+          1504,
+          1004
+        ],
+        "handoff": [
+          1060,
+          624,
+          1144,
+          694
+        ]
+      },
+      "portrait": {
+        "canvas": [
+          1024,
+          1536
+        ],
+        "eyes": [
+          [
+            347,
+            652
+          ],
+          [
+            588,
+            524
+          ]
+        ],
+        "counter_edge": [
+          [
+            101,
+            1291
+          ],
+          [
+            461,
+            817
+          ]
+        ],
+        "text_safe": [
+          54,
+          1325,
+          970,
+          1492
+        ],
+        "max_trim_frame": [
+          32,
+          36,
+          992,
+          1509
+        ],
+        "handoff": [
+          583,
+          921,
+          673,
+          1019
+        ]
+      }
+    }
+  },
+  "device_proofs": [
+    {
+      "viewport": [
+        1440,
+        960
+      ],
+      "devicePixelRatio": 1,
+      "method": "Raster placement proof, fit contain, centered at 1 CSS px per output pixel",
+      "selectedFile": "landscape.6891d15b3938.webp",
+      "artRect": [
+        0,
+        0,
+        1440,
+        960
+      ]
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "devicePixelRatio": 1,
+      "method": "Raster placement proof, fit contain, centered at 1 CSS px per output pixel",
+      "selectedFile": "phone-small.c2a689821381.webp",
+      "artRect": [
+        0,
+        129,
+        390,
+        585
+      ]
+    },
+    {
+      "viewport": [
+        320,
+        693
+      ],
+      "devicePixelRatio": 1,
+      "method": "Raster placement proof, fit contain, centered at 1 CSS px per output pixel",
+      "selectedFile": "phone-small.c2a689821381.webp",
+      "artRect": [
+        0,
+        106,
+        320,
+        480
+      ]
+    }
+  ],
+  "source_record": "https://github.com/stepan-o/fruitful-lab/blob/codex/art-missing-id-bob/docs/loopforge/production/missing-id-bob/README.md",
+  "current_review": {
+    "selection": "E1",
+    "status": "Owner-approved art",
+    "previous_export": "selection/E-63fc79af38c0.webp",
+    "manifest": "held-line/manifest.json",
+    "gallery": "index.html#held-line",
+    "handoff": "https://github.com/stepan-o/fruitful-lab/blob/codex/art-missing-id-bob/docs/loopforge/production/missing-id-bob/held-line-r1/UI-DESIGNER.md"
+  }
+}

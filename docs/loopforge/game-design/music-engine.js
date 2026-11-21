@@ -189,3 +189,63 @@
   setState({});
   draw();
 })();
+
+// One media element keeps the two comparison takes mutually exclusive.
+(() => {
+  'use strict';
+  const deck = document.querySelector('#music-listening');
+  if (!deck) return;
+  const audio = deck.querySelector('audio');
+  const status = deck.querySelector('[data-ms-listen-status]');
+  const takes = [...deck.querySelectorAll('[data-ms-take]')];
+  let selected = 'a';
+  let pendingSeek = null;
+  let request = 0;
+
+  function setPosition(seconds) {
+    pendingSeek = seconds;
+    if (audio.readyState >= 1) {
+      audio.currentTime = Math.min(seconds, audio.duration || 24);
+      pendingSeek = null;
+    }
+  }
+  function play() {
+    const ticket = ++request;
+    audio.play().catch(error => {
+      if (ticket === request && error.name !== 'AbortError')
+        status.textContent = 'Audio could not start. Use Play or open the listening copy below.';
+    });
+  }
+  function stop() { request++; audio.pause(); }
+
+  audio.addEventListener('loadedmetadata', () => {
+    if (pendingSeek !== null) setPosition(pendingSeek);
+  });
+  audio.addEventListener('error', () => {
+    status.textContent = 'Audio unavailable. Open a listening copy below to retry.';
+  });
+  deck.addEventListener('click', event => {
+    const button = event.target.closest('button');
+    if (!button) return;
+    if (button.hasAttribute('data-ms-seek')) {
+      setPosition(Number(button.dataset.msSeek) * 60 / 170);
+      play();
+      return;
+    }
+    const next = button.dataset.msTake;
+    if (!['a','b'].includes(next) || next === selected) return;
+    const resume = !audio.paused && !audio.ended;
+    const seconds = audio.ended ? 0 : pendingSeek ?? audio.currentTime;
+    stop();
+    selected = next;
+    pendingSeek = seconds;
+    audio.src = '/loopforge-design/music-audition/landing-' + next + '.mp3';
+    audio.load();
+    takes.forEach(take => take.setAttribute('aria-pressed', String(take.dataset.msTake === next)));
+    status.textContent = 'Take ' + next.toUpperCase() + ' selected at ' + seconds.toFixed(1) + ' s.';
+    if (resume) play();
+  });
+  document.addEventListener('design:panelchange', () => { if (deck.closest('.panel').hidden) stop(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
+  window.addEventListener('pagehide', stop);
+})();

@@ -1,0 +1,40 @@
+{
+  "revision": "landing-01",
+  "bpm": 170,
+  "sampleRateHz": 48000,
+  "stereoFrames": 1152000,
+  "bars": 17,
+  "generatedRequests": 0,
+  "providerCostUsd": 0,
+  "backingHash": "f6af7c4a452170e65eeefa134332b5c045eac88c1e1361a82d997b38f96442df",
+  "editPointsBeats": {
+    "menu": 0,
+    "options": 24,
+    "conveyor": 40,
+    "wait": 48,
+    "carrierMoved": 56.5,
+    "bassAnswer": 57
+  },
+  "takes": [
+    {
+      "id": "a",
+      "landing": "E-flat",
+      "file": "landing-a.mp3",
+      "masterSha256": "2160b0fdad245e0193316660e1bbad1667c73e00151d605c3d302da165055b6a",
+      "sha256": "5b23c2871d234a9b83fd9f7f921c7be865a7e162ae5fdecba50b82d1fa4ccbbf",
+      "integratedLufs": -13.86,
+      "truePeakDbtp": -2.12,
+      "rightsId": "LF-MUS-LANDING-01-A"
+    },
+    {
+      "id": "b",
+      "landing": "C-sharp",
+      "file": "landing-b.mp3",
+      "masterSha256": "fe14a6ee1c88d2747ff59d8a8fedb9fcd5b22a7eccc84500541838a7eb1240d9",
+      "sha256": "79c64561be3cfb3def2ec9e3847dcb832fd6d21f7de2d7448c0ac4ca668ec714",
+      "integratedLufs": -13.87,
+      "truePeakDbtp": -2.12,
+      "rightsId": "LF-MUS-LANDING-01-B"
+    }
+  ]
+}

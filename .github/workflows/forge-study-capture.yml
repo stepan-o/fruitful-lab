@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     strategy:
+      fail-fast: false
       matrix:
         device: [desktop, phone]
         state: [wait, sent, after]
@@ -29,13 +30,10 @@ jobs:
           python - <<'PY'
           import base64, hashlib, io, json, os
           from pathlib import Path
-          from PIL import Image
           root=Path('captures')
           device,state=os.environ['DEVICE'],os.environ['STATE']
           jpg=next(root.rglob(f'{device}-{state}.jpg'))
-          buffer=io.BytesIO()
-          Image.open(jpg).save(buffer,format='WEBP',quality=78)
-          content=buffer.getvalue()
+          content=jpg.read_bytes()
           print('MEASURE='+json.dumps(json.loads(next(root.rglob(device+'.json')).read_text())))
           print('SHA256='+hashlib.sha256(content).hexdigest())
           for offset in range(0,len(content),1500):

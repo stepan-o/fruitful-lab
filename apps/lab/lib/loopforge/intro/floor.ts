@@ -50,11 +50,11 @@ function clear(a:Point,b:Point,r:ReturnType<typeof rectBounds>){
     Math.min(a[1],b[1])-radius>r.maxY||Math.max(a[1],b[1])+radius<r.minY||segmentBoxDistanceSquared(a,b,r)>=radius**2;
 }
 // Agents follow authored legs with local route clocks. A blocked step earns no travel.
-export function moveCast(world:World,routes:Record<string,Route>,gate:number,standing:Point[] = []) {
+export function moveCast(world:World,routes:Record<string,Route>,gate:number,standing:Point[] = [], castTracks=tracks) {
   const pending=new Map<string,{to:Point;cursor:number}>();
   const gateBox=rectBounds({x:geom.gate.hinge[0],y:geom.gate.hinge[1],w:gate,h:0});
   for(const [id,r] of Object.entries(routes)){
-    const actor=world.agents[id],keys=tracks[r.trackId??id],t=worldAt(r.elapsed+1);
+    const actor=world.agents[id],keys=castTracks[r.trackId??id],t=worldAt(r.elapsed+1);
     let cursor=r.cursor;
     while(cursor+1<keys.length&&keys[cursor+1].t<=t)cursor++;
     const a=keys[cursor],b=keys[cursor+1];

@@ -1,3 +1,4 @@
+import {held,tutorialHint} from './stiletto-tutorial';
 import {project} from './wire';
 import {type Command,type Run,stations} from './contract';
 import {admitCommand,start,step,type Inheritance} from './simulation';
@@ -5,9 +6,10 @@ import {availableWorker,team,rate,ratings,titles,units} from './station-line';
 import {readingTime} from './reading';
 
 export const playtestQuota=60;
-export type Progress={tick:number;commands:Command[]};
+export type Progress={tick:number;commands:Command[];guided?:boolean};
 export function resume(source:Inheritance,progress:Progress){
   const s=start('early',source);
+  if(progress.guided)s.guided=true;
   for(const cmd of progress.commands){
     advanceTo(s,cmd.tick);
     if(!admitCommand(s,cmd).accepted)throw Error('Saved command rejected: '+cmd.id);
@@ -16,7 +18,7 @@ export function resume(source:Inheritance,progress:Progress){
 }
 function advanceTo(s:Run,tick:number){
   if(!Number.isSafeInteger(tick)||tick<s.tick||tick-s.tick>12000)throw Error('Invalid shift clock');
-  while(s.tick<tick){if(s.phase!=='shift')throw Error('Invalid saved phase');step(s);}
+  while(s.tick<tick){if(s.phase!=='shift'||held(s))throw Error('Invalid saved phase');step(s);}
 }
 export function publicFloor(s:Run){
   const l=s.line!,scene=project(s),manual=s.lead==='STILETTO',open=s.phase==='shift'&&s.dialogue.phase==='work';
@@ -47,7 +49,7 @@ export function publicFloor(s:Run){
   const dialogue=s.marks.filter(m=>m.day===s.day&&m.kind==='speech.delivered'&&
     s.tick-m.tick<Math.ceil(readingTime(m.text)/50)).slice(-8);
   const silence=s.marks.findLast(m=>m.kind==='protocol.silence');
-  return {tick:s.tick,scene,machines,workers,stroke,deskCut:manual&&l.opening===1&&s.tick<s.dialogue.ready,dialogue:dialogue.filter(e=>!silence||e.tick>silence.tick),
+  return {tick:s.tick,scene,tutorial:s.tutorial?{...s.tutorial,held:held(s),hint:tutorialHint(s.tutorial)}:null,machines,workers,stroke,deskCut:manual&&l.opening===1&&s.tick<s.dialogue.ready,dialogue:dialogue.filter(e=>!silence||e.tick>silence.tick),
     bell:s.dialogue.bell,manual,opening:manual&&!l.handoff,handoff:l.handoff,shot:l.shot,shotSeq:l.shotSeq,
     inspecting:l.inspecting>s.tick,closed:s.phase==='close',dayCount:s.completed.length-s.dialogue.teamAtBell};
 }

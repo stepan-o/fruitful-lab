@@ -1,13 +1,14 @@
 import {drawQueueRail,drawRoomMaterial} from '../../../lib/loopforge/room-material';
 import type {Skin as FloorSkin} from '../../../lib/loopforge/shifts/skin';
 import floor from '../../../lib/loopforge/intro/geometry.json';
+import {tutorialOrders} from '../../../lib/loopforge/intro/playable-score';
 import type {Actor,Frame,Utterance} from '../../../lib/loopforge/intro/protocol';
 
 export type Art={sheets:Record<string,number[]>;checkpoint:(string|number)[][];palm:number[]};
 export type Bank={art:Art;images:Record<string,CanvasImageSource>;world:FloorSkin['world']};
 type XY=[number,number];
 type Rect={x:number;y:number;w:number;h:number};
-export type Camera={x:number;y:number;scale:number;time:number};
+export type Camera={x:number;y:number;scale:number;time:number;station?:XY};
 export type Skin='sprites'|'model';
 const clamp=(n:number,min:number,max:number)=>Math.max(min,Math.min(max,n));
 const placeholder=new Set(['sam','jo','ed','gus','kit','lou','ben','mae']);
@@ -19,22 +20,31 @@ function focus(actors:Actor[],events:Utterance[],t:number):XY[]{
   if(t>=101.3&&t<=110.5)ids=['bob'];
   return actors.filter(a=>ids.includes(a.agent_id)).map(a=>[a.x/1000,a.y/1000]);
 }
-export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame,t:number,bank:Bank,skin:Skin,cam:Camera,dt:number,previous?:Frame,alpha=1){
+export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame,t:number,bank:Bank,skin:Skin,cam:Camera,dt:number,previous?:Frame,alpha=1,story=false,reducedMotion=false,order:number|null=null){
   const {state}=frame;
   const actors=state.agents.map((a,i)=>{
     const before=previous?.state.agents[i];
     return before&&before.agent_id===a.agent_id?{...a,x:before.x+(a.x-before.x)*alpha,y:before.y+(a.y-before.y)*alpha}:a;
   });
+  const station=order===null?undefined:floor.stations[order%4];
   const narrow=w<560,iso=skin==='model',flatten=iso?.58:.70;
-  const subjects=focus(actors,state.events,t);
+  // Compose the conversation around its participants, independent of the active bubble.
+  let subjects=focus(actors,story?[]:state.events,t);
+  if(story&&t>=76.6&&t<95.3)subjects=actors.filter(a=>a.agent_id==='LIMEN').map(a=>[a.x/1000,a.y/1000]);
+  if(story&&t>=165.4&&t<178.65)subjects=[[125,144],[130,140]];
+  if(story&&t>=110.5&&t<125.1)subjects=actors.filter(a=>['jo','bob'].includes(a.agent_id)).map(a=>[a.x/1000,a.y/1000]);
+  const transitions:[[number,string],...[number,string][]]=[[38.8,'Conveyor'],[76.6,'Security'],[95.3,'Conveyor'],[125.1,'Security'],[139.7,'Conveyor']];
+  const boundary=story?transitions.find(([at])=>t>=at-1.4&&t<at+1.75):undefined;
+  const fade=boundary?Math.max(0,Math.min(1,(t-boundary[0]+1.4)/1.12,(boundary[0]+1.75-t)/1.2)):0;
+  if(station)subjects.push([station.x,station.y]);
   const xs=subjects.map(p=>p[0]),ys=subjects.map(p=>p[1]);
   let x=(Math.min(...xs)+Math.max(...xs))/2,y=(Math.min(...ys)+Math.max(...ys))/2;
   if(!Number.isFinite(x)){x=126;y=132;}
   if(t>=101.3&&t<=110.5){x+=.36;y+=.45;}
   const close=t>=101.3&&t<=110.5||t>=130.7&&t<=138.05;
-  const scale=Math.min(close?(narrow?100:120):(narrow?62:77),(w-65)/Math.max(2,Math.max(...xs)-Math.min(...xs)+1.6),(h*.54)/Math.max(2,(Math.max(...ys)-Math.min(...ys))*flatten+2));
+  const scale=(story?(narrow?.81:.8)*(reducedMotion?1:1-.32*fade):1)*Math.min(close?(narrow?100:120):(narrow?62:77),(w-65)/Math.max(2,Math.max(...xs)-Math.min(...xs)+1.6),(h*.54)/Math.max(2,(Math.max(...ys)-Math.min(...ys))*flatten+2));
   const cut=Math.abs(cam.time-t)>.4||!cam.scale||t>=12.5&&cam.time<12.5||t>=178.65&&cam.time<178.65;
-  const blend=cut?1:1-Math.exp(-dt*6);
+  const blend=story?(!cam.scale||reducedMotion?1:1-Math.exp(-dt*1.55)):cut?1:1-Math.exp(-dt*6);
   cam.x+=(x-cam.x)*blend;cam.y+=(y-cam.y)*blend;cam.scale+=(scale-cam.scale)*blend;cam.time=t;
   const s=cam.scale;
   const project=(x:number,y:number,z=0):XY=>[w*.5+(x-cam.x+(iso?(y-cam.y)*.35:0))*s,h*(narrow?.64:.61)+(y-cam.y)*s*flatten-z*s];
@@ -174,7 +184,20 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
     });
   }
   entries.sort((a,b)=>a.depth-b.depth).forEach(e=>e.draw());
-  drawLabels(ctx,w,h,labels,state.events);
+  drawLabels(ctx,w,h,labels,story&&t>=165.4&&t<178.65?state.events.filter(e=>e.speaker!=='ed'):state.events);
+  cam.station=station?project(station.x,station.y):undefined;
+  if(cam.station&&order!==null){
+    const [px,py]=cam.station;ctx.save();ctx.strokeStyle='#ffe3a1';ctx.lineWidth=3;
+    ctx.beginPath();ctx.ellipse(px,py,27,13,0,0,2*Math.PI);ctx.stroke();ctx.textAlign='center';
+    ctx.font='bold 13px monospace';const title=tutorialOrders[order].station;
+    const width=ctx.measureText(title).width+16;ctx.fillStyle='#1d2925';
+    ctx.fillRect(px-width/2,py+16,width,19);ctx.fillStyle='#ffe3a1';ctx.fillText(title,px,py+30);ctx.restore();
+  }
+  const blackout=story?clamp((t-187.5)/2.8,0,1):0;
+  if(fade||blackout){
+    ctx.fillStyle='rgba(5,10,11,'+Math.max(blackout,fade*.84)+')';ctx.fillRect(0,0,w,h);
+    if(boundary){ctx.save();ctx.globalAlpha=fade;ctx.fillStyle='#f1e3c6';ctx.textAlign='center';ctx.font='600 '+(w<560?18:24)+'px Georgia';ctx.fillText('Meanwhile at '+boundary[1],w/2,h*.51);ctx.restore();}
+  }
 }
 type Label={id:string;x:number;y:number;top:number};
 function drawLabels(ctx:CanvasRenderingContext2D,w:number,h:number,labels:Label[],events:Utterance[]){

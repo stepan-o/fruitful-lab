@@ -135,7 +135,8 @@ export function stationTick(s:Run){
   for(const [id,dest] of Object.entries(l.pending))if(!contact(s,id)){
     walk(s,id,dest.i,dest.face);delete l.pending[id];crews.forEach((c,i)=>crews[i]=c.filter(w=>w!==id));
   }
-  if(!cells[0]&&crews[0].length)stage(s);
+  const paired=!!s.tutorial&&['demonstration','card','visit','two-cleared'].includes(s.tutorial.stage);
+  if(!cells[0]&&crews[0].length&&(!paired||s.tutorial!.stage==='demonstration'&&s.nextPiece===0))stage(s);
   for(let i=3;i>=0;i--){
     const job=cells[i];if(!job||job.due)continue;
     const crew=crews[i],goal=manual?protocolTicks[i]:units[i];
@@ -143,7 +144,7 @@ export function stationTick(s:Run){
       job.done=true;mark(s,'handoff.finished','conveyor','control.'+stations[i],controls[i],job.holder,job.id,stations[i]);
     }
     if(job.done){
-      if(i<3&&(cells[i+1]||i>0&&!crews[i+1].length))continue;
+      if(i<3&&(cells[i+1]||i>0&&!paired&&!crews[i+1].length))continue;
       // Keep the source face and, from Belt onwards, the receiving face until contact.
       job.receiver=i>0&&i<3?crews[i+1][0]:'';job.due=s.tick+10;
       s.pieces.find(p=>p.id===job.id)!.status='travel';continue;

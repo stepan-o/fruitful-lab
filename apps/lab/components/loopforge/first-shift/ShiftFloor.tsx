@@ -1,5 +1,6 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
+import {clockText,dayTwoMinute} from '../../../lib/loopforge/shifts/factory-clock';
 import {type Floor} from '../../../lib/loopforge/shifts/playthrough';
 import {type Campaign,saveCampaign} from '../../../lib/loopforge/shifts/campaign-save';
 import {ratings,needs} from '../../../lib/loopforge/shifts/station-line';
@@ -24,17 +25,19 @@ function Portrait({id,assets}:{id:string;assets:Art|null}){
   if(portrait)return <span className={css.portrait} aria-hidden="true" style={{backgroundImage:'url('+portrait.variants[0].src+')'}}/>;
   return <canvas ref={ref} width="36" height="35" aria-hidden="true"/>;
 }
-export default function ShiftFloor({run,onFinish,suspended}:{run:Campaign;onFinish:()=>void;suspended:boolean}){
+export default function ShiftFloor({run,onFinish,suspended,onClock}:{run:Campaign;onClock:(time:string)=>void;onFinish:()=>void;suspended:boolean}){
   const [floor,setFloor]=useState<Floor|null>(null),[assets,setAssets]=useState<Art|null>(null);
   const [room,setRoom]=useState<Room>(run.room),[bid,setBid]=useState<Lead|null>(null),[worker,setWorker]=useState('');
   const [notice,setNotice]=useState(''),[paused,setPaused]=useState(false),[caseOpen,setCaseOpen]=useState(false);
   const [destination,setDestination]=useState<number|null>(null);
+  const [cutaway,setCutaway]=useState<Room|null>(null),[assignmentOpen,setAssignmentOpen]=useState(false);
   const ordersPaused=paused||suspended;
   const focusStation=destination??(floor?.manual?Math.max(0,floor.machines.findIndex(m=>m.canClear)):0);
   const [viewSize,resize]=useState(0);
   const canvas=useRef<HTMLCanvasElement>(null),host=useRef<Worker|null>(null);
   useEffect(()=>{
-    let live=true;art().then(bank=>{if(live)setAssets(bank);}).catch(e=>setNotice(String(e)));
+    let live=true,midpoint:ReturnType<typeof setTimeout>,reveal:ReturnType<typeof setTimeout>;
+    art().then(bank=>{if(live)setAssets(bank);}).catch(e=>setNotice(String(e)));
     const w=new Worker(new URL('../../../lib/loopforge/shifts/playthrough.worker.ts',import.meta.url),{type:'module'});host.current=w;
     w.onerror=e=>setNotice(e.message||'The shift could not start.');
     w.onmessage=({data:m})=>{
@@ -42,12 +45,20 @@ export default function ShiftFloor({run,onFinish,suspended}:{run:Campaign;onFini
       const f:Floor=m.floor;
       if(m.cmd&&!run.progress.commands.some(c=>c.id===m.cmd.id))run.progress.commands.push(m.cmd);
       run.progress.tick=f.tick;
-      if(run.shotSeq!==f.shotSeq){run.shotSeq=f.shotSeq;run.room=f.shot;setRoom(f.shot);}
+      if(run.shotSeq!==f.shotSeq){run.shotSeq=f.shotSeq;run.room=f.shot;clearTimeout(midpoint);clearTimeout(reveal);
+        setCutaway(f.shot);
+        midpoint=setTimeout(()=>setRoom(f.shot),650);
+        reveal=setTimeout(()=>setCutaway(null),1800);
+        setWorker('');setDestination(null);setAssignmentOpen(!!f.tutorial?.held);
+      }
+      const shiftLength=f.bell?(f.tutorial?4800:2400):0;
+      const start=f.scene.world.start;
+      onClock(clockText(dayTwoMinute(f.tick-start,shiftLength?f.bell-shiftLength-start:0,shiftLength,run.morningSeconds??0)));
       saveCampaign(run);setFloor(f);
     };
     w.postMessage({type:'join',source:run.source,progress:run.progress});
-    return ()=>{live=false;w.terminate();host.current=null;};
-  },[run]);
+    return ()=>{live=false;clearTimeout(midpoint);clearTimeout(reveal);w.terminate();host.current=null;};
+  },[run,onClock]);
   useEffect(()=>{
     const sync=()=>host.current?.postMessage({type:'suspend',on:paused||suspended||document.hidden});
     sync();document.addEventListener('visibilitychange',sync);return ()=>document.removeEventListener('visibilitychange',sync);
@@ -64,8 +75,8 @@ export default function ShiftFloor({run,onFinish,suspended}:{run:Campaign;onFini
     const speeches=floor.dialogue.filter(e=>e.room===room||room==='security'&&floor.scene.world.stage==='walk');
     const last=speeches.at(-1);
     view.speeches=last?speeches.filter(e=>e.tick===last.tick).map(e=>({seq:e.seq,tick:e.tick,speaker:e.actor,text:e.text,at:e.at,asset:'fl-bubble',nameplate:'fl-bubble-nameplate'})):[];
-    paint(ctx,w,h,floor.scene,room,floor.tick,assets[0],assets[1],view,{...floor,focusStation:window.matchMedia('(max-width:800px)').matches?focusStation:undefined});
-  },[floor,assets,room,viewSize,suspended,focusStation]);
+    paint(ctx,w,h,floor.scene,room,floor.tick,assets[0],assets[1],view,{...floor,focusStation:window.matchMedia('(max-width:800px)').matches&&(!floor.tutorial||destination!==null)?focusStation:undefined});
+  },[floor,assets,room,viewSize,suspended,focusStation,destination]);
   if(!floor)return <p role="status">{notice||'Connecting to the factory…'}</p>;
   const w=floor.scene.world, manual=floor.manual,selected=floor.workers.find(a=>a.id===worker&&a.available);
   const changeRoom=(r:Room)=>{setRoom(r);run.room=r;saveCampaign(run);setNotice('');};
@@ -88,32 +99,41 @@ export default function ShiftFloor({run,onFinish,suspended}:{run:Campaign;onFini
     <p>Week one · {total} / {run.quota} cortexes · Due Day 7</p>
     <p>Day 1 contributed {run.source!.pieces.length}. {w.pass?'The daily pass has expired.':w.status==='detention'?'bob is released from custody.':''}</p>
     <button className={css.commit} onClick={onFinish}>Return to main menu</button></main>;
+  const tutorial=floor.tutorial,lesson=tutorial?.held,controllable=!tutorial||tutorial.stage==='live';
+  const showOrders=room==='conveyor'&&(lesson||controllable);
   const caseLive=w.status==='open';
-  return <main className={css.floor}><header><div><small>DAY 2 · {w.stage==='work'?'SHIFT LIVE':'CREW ARRIVAL'}</small>
+  return <main className={css.floor} data-operators={room==="conveyor"&&w.stage==="work"}><header><div><small>DAY 2 · {w.stage==='work'?'SHIFT LIVE':'CREW ARRIVAL'}</small>
     <h1>{room==='security'?'Security':'Conveyor'} <span>/ {room==='security'?w.lead:manual?'LIMEN':'STILETTO'}</span></h1></div>
     <div className={css.meter}>{floor.bell?<strong>{clock.toFixed(2)} s to bell</strong>:<strong>Walk-in</strong>}<span>Rack +{floor.dayCount} · Week {total}/{run.quota}</span></div></header>
-    <nav aria-label="Factory cameras">{(['security','conveyor'] as const).map(r=><button key={r} aria-pressed={room===r} onClick={()=>changeRoom(r)}>{r==='security'?'Security':'Conveyor'}</button>)}
+    <nav aria-label="Factory cameras">{(['security','conveyor'] as const).map(r=><button key={r} aria-pressed={room===r} disabled={!!lesson||!!cutaway} onClick={()=>changeRoom(r)}>{r==='security'?'Security':'Conveyor'}</button>)}
       <button onClick={()=>setPaused(p=>!p)}>{paused?'Resume':'Pause'}</button></nav>
     {paused&&<p role="status" className={css.pauseNote}>Shift paused. Resume play to issue an order.</p>}
     {notice&&<p role="status" className={css.pauseNote}>{notice}</p>}
+    <div className={css.picture}>
+    {cutaway&&<div className={css.cutaway} role="status">Meanwhile at {cutaway==='security'?'Security':'Conveyor'}</div>}
     <canvas className={css.stage} data-dialogue={w.stage!=='work'||room==='security'||floor.opening} ref={canvas} aria-label="Live factory floor with named workers and speech bubbles"/>
+    </div>
+    <div className={css.dock}>
     <div className={css.rail}><span>{w.spent?'Intervention spent':'1 intervention available'}</span>
-      {caseLive&&<button onClick={()=>{changeRoom('security');setCaseOpen(true);}}>Missing ID · inspect</button>}
-      {room==='conveyor'&&!manual&&<span>Goal · 5 this shift</span>}</div>
+      {caseLive&&<button onClick={()=>{changeRoom('security');setCaseOpen(true);}}>Missing ID · {Math.max(0,Math.ceil((w.deadline-floor.tick)/20))} s · Inspect</button>}
+      {w.status==='pass'&&<strong role="status">bob · Daily pass granted · Cleared for Conveyor</strong>}
+      {w.status==='detention'&&<strong role="status">bob · Detained until bell · Unavailable for Conveyor</strong>}
+      {showOrders&&!manual&&!lesson&&<button aria-expanded={assignmentOpen} onClick={()=>setAssignmentOpen(v=>!v)}>{assignmentOpen?'Close assignments':'Assign crew'}</button>}</div>
     {room==='security'&&caseOpen&&caseLive&&<section className={css.case}><h2>bob is missing his ID</h2><p>Both desks are held. {Math.ceil((w.deadline-floor.tick)/20)} s until detention.</p>
-      <button disabled={!!w.spent||ordersPaused} onClick={()=>send('issue-pass','bob',w.caseId,'security')}>Issue daily pass</button> <button onClick={()=>setCaseOpen(false)}>Keep watching</button></section>}
-    {room==='security'&&w.status!=='none'&&!caseLive&&<p>{w.status==='pass'?'bob admitted on a daily pass.':'bob in custody until the bell.'}</p>}
-    {room==='conveyor'&&w.stage==='work'&&<>
-      {!manual&&<section className={css.crewSection}><h2>Assign the crew</h2><div className={css.crew}>{floor.workers.map(a=><button key={a.id} disabled={!a.available} aria-pressed={worker===a.id} onClick={()=>setWorker(a.id)}>
+      <button disabled={!!w.spent||ordersPaused} onClick={()=>send('issue-pass','bob',w.caseId,'security')}>Issue daily pass</button> <button disabled={!!w.spent||ordersPaused} onClick={()=>send('reject-pass','bob',w.caseId,'security')}>Reject pass · detain bob</button> <button onClick={()=>setCaseOpen(false)}>Keep watching</button></section>}
+    {room==='conveyor'&&tutorial?.hint&&<aside className={css.instruction}><b>STILETTO</b> {tutorial.hint} {lesson?'· Clock held':'· Clock live'}</aside>}
+    {room==='conveyor'&&w.stage==='work'&&(manual||lesson||showOrders&&assignmentOpen)&&<>
+      {!manual&&<section className={css.crewSection}><h2>Assign the crew</h2><div className={css.crew}>{floor.workers.filter(a=>!lesson||tutorial.crew.includes(a.id)).map(a=><button key={a.id} disabled={!a.available} aria-pressed={worker===a.id} onClick={()=>setWorker(a.id)}>
         <Portrait id={a.id} assets={assets}/><b>{a.id}</b><small>{a.label}</small></button>)}</div>
         {selected&&<div className={css.selection}><strong>{selected.id} · {selected.label}</strong><Bars values={ratings[selected.id]} label="Worker stats"/></div>}</section>}
       <nav className={css.destinations} aria-label="Inspect a station">{floor.machines.map((m,i)=>
         <button key={m.name} aria-label={'Inspect '+m.title} aria-pressed={focusStation===i} onClick={()=>setDestination(i)}>
           {m.title}{manual&&m.canClear?' ●':''}</button>)}</nav>
-      <div className={css.stations}>{floor.machines.map((m,i)=><section key={m.name} data-focused={focusStation===i}><h2>{m.title}</h2><b>{m.crew.join(' + ')||'Unstaffed'}</b>
+      <div className={css.stations} data-lesson={!!lesson}>{floor.machines.map((m,i)=><section key={m.name} data-focused={focusStation===i}><h2>{m.title}</h2><b>{(lesson?tutorial.posts[i]:m.crew.join(' + '))||'Unstaffed'}</b>
         <p>{m.carrier?.replace('D2-','')||'Empty'} · {m.hold}</p>{manual?
         <button aria-label={'Clear '+m.title} disabled={!m.canClear||ordersPaused} onClick={()=>send('clear',m.name,m.carrier+'/'+m.caller,'conveyor')}>Clear</button>:
-        <><Bars values={needs[i]} label="Station needs"/><small data-work-rate={m.rate}>{m.cycleSeconds===null?'No crew at post':m.cycleSeconds.toFixed(2)+' s per carrier'}</small>
-          <button disabled={!selected||ordersPaused} onClick={()=>send('assign',m.name,worker,'conveyor')}>{selected?'Send '+worker+' to '+m.title:'Select a worker'}</button></>}</section>)}</div></>}
+        <>{!lesson&&<><Bars values={needs[i]} label="Station needs"/><small data-work-rate={m.rate}>{m.cycleSeconds===null?'No crew at post':m.cycleSeconds.toFixed(2)+' s per carrier'}</small></>}
+          <button disabled={!selected||ordersPaused} onClick={()=>send(lesson?'post':'assign',m.name,worker,'conveyor')}>{selected?'Send '+worker+' to '+m.title:'Select a worker'}</button></>}</section>)}</div></>}
+    </div>
   </main>;
 }

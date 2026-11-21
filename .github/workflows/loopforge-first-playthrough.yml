@@ -1,11 +1,12 @@
 name: Record the first two shifts
 on:
   push:
-    branches: [codex/loopforge-first-playthrough, codex/loopforge-playthrough-corrections]
+    branches: [codex/loopforge-first-playthrough, codex/loopforge-playthrough-corrections, codex/loopforge-owner-playtest-flow]
     paths:
       - 'apps/lab/lib/loopforge/**'
       - 'apps/lab/components/loopforge/**'
       - 'apps/lab/scripts/shifts/first-playthrough*'
+      - 'apps/lab/scripts/shifts/owner-playtest*'
       - '.github/workflows/loopforge-first-playthrough.yml'
 permissions:
   contents: read
@@ -72,8 +73,11 @@ jobs:
       - name: Check corrected controls and record the focused station
         if: github.ref_name == 'codex/loopforge-playthrough-corrections'
         run: NODE_PATH="$RUNNER_TEMP/review/node_modules" node apps/lab/scripts/shifts/first-playthrough-corrections.cjs "${{ matrix.conveyor }}"
+      - name: Play the owner tutorial through the bell
+        if: github.ref_name == 'codex/loopforge-owner-playtest-flow'
+        run: NODE_PATH="$RUNNER_TEMP/review/node_modules" node apps/lab/scripts/shifts/owner-playtest-browser.cjs "${{ matrix.conveyor }}"
       - name: Play from the entrance through the bell at 1×
-        if: github.ref_name != 'codex/loopforge-playthrough-corrections'
+        if: github.ref_name == 'codex/loopforge-first-playthrough'
         run: NODE_PATH="$RUNNER_TEMP/review/node_modules" node apps/lab/scripts/shifts/first-playthrough-browser.cjs "${{ matrix.conveyor }}"
       - uses: actions/upload-artifact@v4
         if: always()

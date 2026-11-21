@@ -104,3 +104,10 @@
   .menuMotto { margin-bottom:12px; }
   .startControl { min-height:75px; }
 }
+
+.game[data-display=normal]{position:fixed;inset:0;z-index:100;overflow:auto;overscroll-behavior:contain;background:#101918}
+.game[data-display=dev]{max-width:1280px;margin:auto}
+.dayTwo{width:100%;min-height:44px;background:#202b29;border:1px solid #8b846a;color:#efe1c6;cursor:pointer;font:600 16px/1.4 var(--font-console),sans-serif}
+.displaySwitch{display:flex;align-items:center;gap:10px;min-height:44px;color:#d9ceae;font:13px monospace;cursor:pointer}
+.displaySwitch input{appearance:none;width:42px;height:23px;border:1px solid #a3987b;border-radius:16px;background:radial-gradient(circle at 11px center,#f4d4a0 7px,transparent 8px) #23312d;cursor:pointer}
+.displaySwitch input:checked{background:radial-gradient(circle at 30px center,#85ded5 7px,transparent 8px) #203331}

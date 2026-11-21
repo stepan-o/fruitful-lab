@@ -1,3 +1,7 @@
+## Loopforge · Guided first two shifts
+
+The standard play route has a full-screen view, a Dev display switch, a 24-hour factory clock, and two equivalent entries to the Day 2 console. Day 1 runs two player-cleared carriers and a fully staffed demonstration. On Day 2, STILETTO teaches two-operator coverage and four single posts around a timed Security intervention. The saved command journal reconstructs tutorial postings and card outcomes. The alternate LIMEN Conveyor appointment retains its station clearances.
+
 ## Loopforge · First complete playthrough · 20 November 2026
 
 [PR #177](https://github.com/stepan-o/fruitful-lab/pull/177) connects the ordinary entrance to the sprite intro, the leadership call, both appointments and the Day 2 bell. The intro supplies the workers, physical cards, observations and three rack credits. The first-playtest quota is 60 rack arrivals by Day 7. The [ENGINE handoff](../apps/lab/public/loopforge-shifts/ENGINE-HANDOFF.md) records both controls and matched policy outcomes. Owner review is pending.

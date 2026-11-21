@@ -1,11 +1,24 @@
+import {tutorialOrders} from './playable-score';
 import {Intro} from './simulation';
 import {editTick,lastTick,score,worldAt} from './floor';
 import {projectIntro} from './projection';
 import {channels,digest,engine,envelope,operations,renderSpec,schema,validEnvelope,type Envelope,type Frame} from './protocol';
-export type HostMessage=Envelope|{local:'overlay';seconds:number;beat:string;finished:boolean;playing:boolean;costs:number[]}|{local:'trace';rows:Intro['trace']};
+export type HostMessage=Envelope|{local:'overlay';seconds:number;beat:string;finished:boolean;playing:boolean;costs:number[];order:number|null;confirmed:number}|{local:'trace';rows:Intro['trace']};
 export class Session {
   deliberationMs=0;
-  private fresh(){return new Intro(undefined,run=>{const start=performance.now();run();this.deliberationMs+=performance.now()-start;});}
+  guided=false;
+  confirmed=0;
+  get order(){return this.guided?tutorialOrders[this.confirmed]:undefined;}
+  get waiting(){return !!this.order&&this.sim.world.tick>=this.order.tick;}
+  confirm(index:number){
+    if(!this.waiting||index!==this.confirmed)return false;
+    this.confirmed++;this.playing=true;this.overlay();return true;
+  }
+  configure(confirmed:number){
+    this.guided=true;this.confirmed=Math.max(0,Math.min(tutorialOrders.length,Math.floor(confirmed)||0));
+    this.sim=this.fresh();
+  }
+  private fresh(){return new Intro(undefined,run=>{const start=performance.now();run();this.deliberationMs+=performance.now()-start;},this.guided);}
   sim=this.fresh();
   state:'hello'|'subscribe'|'live'='hello';
   playing=false;
@@ -31,7 +44,7 @@ export class Session {
     while(this.sim.world.tick<target){
       this.sim.step();
       const hints=this.hints.get(this.sim.world.tick)??[];
-      for(const hint of hints)this.playing=hint==='PLAY'&&!this.sim.finished;
+      for(const hint of hints)this.playing=hint==='PLAY'&&!this.sim.finished&&!this.waiting;
       this.hints.delete(this.sim.world.tick);
       if(hints.length&&!this.playing)break;
     }
@@ -39,21 +52,21 @@ export class Session {
   }
   overlay(){
     const beat=score.beats.filter(b=>b.at<=worldAt(this.sim.world.tick)).at(-1)??score.beats[0];
-    this.send({local:'overlay',seconds:this.sim.finished?score.duration:this.sim.seconds,beat:beat.name,finished:this.sim.finished,playing:this.playing,costs:[Math.max(0,this.simulationMs-this.deliberationMs),this.deliberationMs,this.serializeMs]});
+    this.send({local:'overlay',seconds:this.sim.finished?score.duration:this.sim.seconds,beat:beat.name,finished:this.sim.finished,playing:this.playing,order:this.waiting?this.confirmed:null,confirmed:this.confirmed,costs:[Math.max(0,this.simulationMs-this.deliberationMs),this.deliberationMs,this.serializeMs]});
   }
   async progress(seconds:number){
     if(this.state!=='live'||!this.playing||this.awaitingBaseline)return;
-    const target=editTick(Math.min(score.duration,seconds));
+    const target=Math.min(this.order?.tick??lastTick,editTick(Math.min(score.duration,seconds)));
     if(target-this.sim.world.tick>12){
       // Editorial cut / slow consumer. Run every hidden world tick, send one fresh baseline.
       this.advance(target);await this.record(true);
     }else while(this.playing&&this.sim.world.tick<target){this.advance(this.sim.world.tick+1);await this.record();}
-    if(this.sim.finished)this.playing=false;
+    if(this.sim.finished||this.waiting)this.playing=false;
     this.overlay();
   }
   async locate(seconds:number){
     if(this.state!=='live'||!Number.isFinite(seconds)||seconds<0||seconds>score.duration+.001)return;
-    const target=Math.min(lastTick,editTick(seconds));
+    const target=Math.min(this.order?.tick??lastTick,editTick(seconds));
     this.hints.clear();
     if(target<this.sim.world.tick)this.sim=this.fresh();
     this.advance(target);await this.record(true);this.overlay();
@@ -79,7 +92,7 @@ export class Session {
         // This is a host playback hint. Commands do not insert actions into past world ticks.
         const target=Number(p.tick_target);
         this.accepted.set(id,{tick:target,hint:hint!});
-        if(target===this.sim.world.tick)this.playing=hint==='PLAY'&&!this.sim.finished;
+        if(target===this.sim.world.tick)this.playing=hint==='PLAY'&&!this.sim.finished&&!this.waiting;
         else this.hints.set(target,[...(this.hints.get(target)??[]),hint!]);
         this.post('COMMAND_ACCEPTED',{client_cmd_id:id});this.overlay();return;}
       case 'DESYNC_REPORT':

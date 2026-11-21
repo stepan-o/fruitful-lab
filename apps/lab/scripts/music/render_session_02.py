@@ -186,6 +186,14 @@ def meter(path):
     return {'lufs': float(data['input_i']), 'dBTP': float(data['input_tp'])}
 
 
+def web_copy(picture, bed, voice, output):
+    # The lossless picture encode preserves every decoded source frame.
+    ffmpeg('-i', picture, '-i', bed, '-i', voice, '-filter_complex',
+           '[2:a]adelay=1250:all=1,volume=0.84[v];[1:a][v]amix=inputs=2:normalize=0:duration=first[a]',
+           '-map', '0:v:0', '-map', '[a]', '-c:v', 'libvpx-vp9', '-lossless', '1',
+           '-cpu-used', '4', '-threads', '2', '-c:a', 'libopus', '-b:a', '128k', output)
+
+
 def render(masters, assets):
     import hashlib
     masters.mkdir(parents=True, exist_ok=True)
@@ -232,6 +240,10 @@ def render(masters, assets):
             manifest['exports'].append({'file': file.name, 'tempo': bpm, 'sha256': kit.digest(file),
                 'rightsId': 'LF-MUS-02-' + file.stem.upper(), **meter(file)})
         manifest['exports'][-2].update({'frames': len(audio), 'masterSha256': kit.digest(master)})
+        web = video.with_suffix('.webm')
+        web_copy(assets / PICTURE, bed, assets / VOICE, web)
+        manifest.setdefault('alternateEncodings', []).append({
+            'file': web.name, 'sameEditAs': video.name, 'sha256': kit.digest(web), **meter(web)})
     for a, b in zip(manifest['exports'][:2], manifest['exports'][2:]):
         if abs(a['lufs'] - b['lufs']) > 1 or max(a['dBTP'], b['dBTP']) > -1:
             raise ValueError(f'Level comparison failed: {a}, {b}')

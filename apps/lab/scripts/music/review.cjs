@@ -7,7 +7,7 @@ const assets = path.resolve(__dirname, '../../public');
 const origin = 'https://loopforge.test';
 const url = origin + '/stepanoskin/loopforge/design';
 const mime = {'.html':'text/html', '.css':'text/css', '.js':'text/javascript', '.json':'application/json',
-  '.md':'text/plain', '.mp3':'audio/mpeg', '.mp4':'video/mp4', '.vtt':'text/vtt', '.svg':'image/svg+xml', '.webp':'image/webp', '.png':'image/png'};
+  '.md':'text/plain', '.mp3':'audio/mpeg', '.mp4':'video/mp4', '.webm':'video/webm', '.vtt':'text/vtt', '.svg':'image/svg+xml', '.webp':'image/webp', '.png':'image/png'};
 
 async function check(browser, width, height) {
   const page = await browser.newPage({viewport:{width, height}});
@@ -23,7 +23,7 @@ async function check(browser, width, height) {
       const body = await fs.readFile(filename);
       const contentType = mime[path.extname(filename)] || 'application/octet-stream';
       const range = /^bytes=(\d+)-(\d*)$/.exec(route.request().headers().range || '');
-      if (['audio/mpeg', 'video/mp4'].includes(contentType) && range) {
+      if (['audio/mpeg', 'video/mp4', 'video/webm'].includes(contentType) && range) {
         const start = Number(range[1]), end = range[2] ? Math.min(Number(range[2]),body.length-1) : body.length-1;
         await route.fulfill({status:206, contentType, body:body.subarray(start,end+1),
           headers:{'Accept-Ranges':'bytes','Content-Range': 'bytes '+start+'-'+end+'/'+body.length}});
@@ -74,7 +74,7 @@ async function check(browser, width, height) {
   await speech.locator('[data-tempo="164"]').click();
   await page.waitForFunction(() => {
     const v = document.querySelector('[data-grid-player="speech"] video');
-    return v.currentSrc.endsWith('speech-164.mp4') && !v.paused && v.currentTime >= 1.9 && v.currentTime < 4;
+    return /speech-164\.(mp4|webm)$/.test(v.currentSrc) && !v.paused && v.currentTime >= 1.9 && v.currentTime < 4;
   });
   await nav.nth(2).click();
   assert(await picture.evaluate(v => v.paused));

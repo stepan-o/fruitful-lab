@@ -60,5 +60,21 @@
       "lufs": -18.62,
       "dBTP": -5.73
     }
+  ],
+  "alternateEncodings": [
+    {
+      "file": "speech-170.webm",
+      "sameEditAs": "speech-170.mp4",
+      "sha256": "8019a54e7453d83208f1c1074a9ac123438e1989fe3998df1a29fe44a7c8550d",
+      "lufs": -18.75,
+      "dBTP": -5.48
+    },
+    {
+      "file": "speech-164.webm",
+      "sameEditAs": "speech-164.mp4",
+      "sha256": "95e3aaad5086f418ced04e58b5c3d87c3aa7350bc413d28085ff201760d29dbd",
+      "lufs": -18.5,
+      "dBTP": -5.71
+    }
   ]
 }

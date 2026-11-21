@@ -299,8 +299,15 @@
       const seconds = player.ended ? 0 : target ?? player.currentTime;
       target = seconds * (score ? tempo / next : 1);
       tempo = next;
-      player.src = '/loopforge-design/music-audition/session-02/' +
-        (score ? 'grid-' + tempo + '.mp3' : 'speech-' + tempo + '.mp4');
+      const directory = '/loopforge-design/music-audition/session-02/';
+      if (score) {
+        player.src = directory + 'grid-' + tempo + '.mp3';
+      } else {
+        for (const source of player.querySelectorAll('source')) {
+          const extension = source.type === 'video/webm' ? '.webm' : '.mp4';
+          source.src = directory + 'speech-' + tempo + extension;
+        }
+      }
       player.load();
       buttons.forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.tempo) === tempo)));
       status.textContent = tempo + ' / ' + tempo / 2 + (score ? ' · same bar.' : ' · same picture time.');

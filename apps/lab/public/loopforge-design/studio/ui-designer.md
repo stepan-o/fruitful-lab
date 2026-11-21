@@ -6,7 +6,7 @@ UI DESIGNER owns the complete Day 2 interface design. The Operator starts at a p
 
 [Start at the Operator’s console](/loopforge-design/day-two-ui/index.html) · [Compare all 59 desktop and phone pairs](/loopforge-design/day-two-ui/board.html) · [Two loaded Conveyor stations](/loopforge-design/day-two-ui/index.html#ready)
 
-Review both supervisor bids, the pass and custody outcomes, staffing and clearance orders, and the final shift register. The drawings use the guided gameplay replay. The artwork, overlay composition and navigation are submitted for owner review.
+Review both supervisor bids, the pass and custody outcomes, staffing and clearance orders, and the final shift register. The drawings use the guided gameplay replay. On 21 November 2026 the owner approved the complete desktop and phone sequence as the starting UI design for Day 2.
 
 Commissioned 21 November 2026 · Owner-directed Codex studio
 

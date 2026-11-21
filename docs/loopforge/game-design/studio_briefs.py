@@ -39,10 +39,17 @@ def kickoff(role):
                 "The owner opens specialist chats; you write their task prompts with role-brief links and maintain the briefs with craft contributions. "
                 "Check deliveries and advise on whether to continue, iterate or ship; the owner makes those decisions and validates the playable experience. Do not launch chats or restart the former autonomous studio. ") if role['id'] == 'producer' else ''
     ui = ("Read the UI source reader at https://www.fruitfulab.net" + BASE + "/ui-reading and first assignment at https://www.fruitfulab.net" + BASE + "/ui-first-assignment. Begin with an annotated audit and static visual studies; implementation ownership is undecided. Carry forward the owner's settled direction and design desktop and phone equally. ") if role['id'] == 'ui-designer' else ''
+    music = ("Take B’s A–G–F–E–C♯ over low D is the approved direction. Preserve dated Take A. "
+             "Start with Main menu curiosity, Options following the drummer’s hands and heavy, patient Conveyor. "
+             "Read the dedicated room studies at https://www.fruitfulab.net/stepanoskin/loopforge/design#music-long-form "
+             "and the music study, production handoff and current ENGINE brief. The owner selected 164/82. The owner approved the Main menu 06 arrangement. Options 01 felt too long and repetitive. Review Options 02 across its 32-bar repeat, listening for the Menu breakbeat and how the hands change pattern. Ask one question at a time. "
+             "Develop native phrase variations and responses to permitted observations for each theme. Keep fixtures separate. "
+             "Use labelled local sketches for exploration. ElevenLabs is intended for production; the proposed one-attempt 118-second "
+             "Menu pilot needs verified rights, export entitlement and separate all-in spending approval. ") if role['id'] == 'music-director' else ''
     return (f"You are {role['name']} for Loopforge. Read the shared studio instructions at "
             f"https://www.fruitfulab.net{BASE} and your maintained brief at "
             f"https://www.fruitfulab.net{BASE}/{role['id']}. "
-            + producer + ui +
+            + producer + ui + music +
             "Use the Current handoff and linked design pages to establish the latest approved baseline; verify it against current source and delivered artifacts. "
             "Read the applicable repository instructions. Preserve other specialists' work in an isolated branch/worktree. "
             "Follow Onboard (study and pre-synthesize) → Interview (one question at a time, with suggested answers) → Plan → Build → owner Review for new design; carry out already approved bounded corrections without reopening settled decisions. "

@@ -7,7 +7,7 @@ const assets = path.resolve(__dirname, '../../public');
 const origin = 'https://loopforge.test';
 const url = origin + '/stepanoskin/loopforge/design';
 const mime = {'.html':'text/html', '.css':'text/css', '.js':'text/javascript', '.json':'application/json',
-  '.md':'text/plain', '.mp3':'audio/mpeg', '.svg':'image/svg+xml', '.webp':'image/webp', '.png':'image/png'};
+  '.md':'text/plain', '.mp3':'audio/mpeg', '.mp4':'video/mp4', '.webm':'video/webm', '.vtt':'text/vtt', '.svg':'image/svg+xml', '.webp':'image/webp', '.png':'image/png'};
 
 async function check(browser, width, height) {
   const page = await browser.newPage({viewport:{width, height}});
@@ -23,7 +23,7 @@ async function check(browser, width, height) {
       const body = await fs.readFile(filename);
       const contentType = mime[path.extname(filename)] || 'application/octet-stream';
       const range = /^bytes=(\d+)-(\d*)$/.exec(route.request().headers().range || '');
-      if (contentType === 'audio/mpeg' && range) {
+      if (['audio/mpeg', 'video/mp4', 'video/webm'].includes(contentType) && range) {
         const start = Number(range[1]), end = range[2] ? Math.min(Number(range[2]),body.length-1) : body.length-1;
         await route.fulfill({status:206, contentType, body:body.subarray(start,end+1),
           headers:{'Accept-Ranges':'bytes','Content-Range': 'bytes '+start+'-'+end+'/'+body.length}});
@@ -35,10 +35,15 @@ async function check(browser, width, height) {
   });
   await page.goto(url);
   const nav = page.locator('.nav button');
-  assert.deepEqual(await nav.evaluateAll(list=>list.slice(0,3).map(el=>el.textContent)),
-    ['Studio briefs','Music engine','Player desires & scenarios']);
+  const order = await nav.evaluateAll(buttons => buttons.map(el => el.dataset.panel));
+  const dialogueIndex = order.indexOf('dialogue-engine');
+  assert(dialogueIndex >= 0);
+  assert.equal(order[dialogueIndex + 1], 'music-engine');
+  assert.equal(order[0], 'studio');
   assert(await page.locator('#studio').isVisible());
-  await nav.nth(1).click();
+  const musicTab = nav.filter({hasText: /^Music engine$/});
+  const desiresTab = nav.filter({hasText: /^Player desires & scenarios$/});
+  await musicTab.click();
   assert.equal(new URL(page.url()).hash,'#music-engine');
   const panel = page.locator('#music-engine');
   assert(await panel.isVisible());
@@ -50,19 +55,79 @@ async function check(browser, width, height) {
   await panel.locator('.ms-cover').screenshot({path:'music-review/'+width+'-motif.png'});
   await panel.locator('.ms-pulse').screenshot({path:'music-review/'+width+'-beat.png'});
   await panel.locator('.ms-routing').screenshot({path:'music-review/'+width+'-signal.png'});
-  const listening = panel.locator('#music-listening');
+  await page.goto(url + '#music-long-form');
+  const menu = panel.locator('[data-theme-player="menu"]');
+  const options = panel.locator('[data-theme-player="options"]');
+  for (const deck of [menu, options, panel.locator('[data-theme-player="conveyor"]')]) {
+    const media = deck.locator('audio');
+    assert(await media.evaluate(a => a.paused && a.loop && a.preload === 'none'));
+    await deck.locator('input').uncheck();
+    assert.equal(await media.evaluate(a => a.loop), false);
+    await deck.locator('input').check();
+  }
+  await menu.getByRole('button', {name:/Drum feature/}).click();
+  await page.waitForFunction(() => {
+    const a = document.querySelector('#music-long-menu audio');
+    return !a.paused && a.currentTime >= 128 * 60 / 164 - .01 && a.currentTime < 50;
+  });
+  await menu.getByRole('button', {name:/Bass only/}).click();
+  await page.waitForFunction(() => {
+    const a = document.querySelector('#music-long-menu audio');
+    return !a.paused && a.currentTime >= 256 * 60 / 164 - .01 && a.currentTime < 97;
+  });
+  await options.getByRole('button', {name:/Low tom/}).click();
+  await page.waitForFunction(() => {
+    const a = document.querySelector('#music-long-options audio');
+    return !a.paused && a.currentTime >= 64 * 60 / 164 - .01 && a.currentTime < 26;
+  });
+  assert(await menu.locator('audio').evaluate(a => a.paused));
+  await menu.screenshot({path:'music-review/'+width+'-long-menu.png'});
+  const session = panel.locator('#music-listening');
+  const grid = session.locator('[data-grid-player="grid"]');
+  const speech = session.locator('[data-grid-player="speech"]');
+  const score = grid.locator('audio');
+  const picture = speech.locator('video');
+  assert(await score.evaluate(a => a.paused && a.preload === 'none'));
+  await grid.locator('[data-bar="17"]').click();
+  await page.waitForFunction(() => {
+    const a = document.querySelector('[data-grid-player="grid"] audio');
+    return !a.paused && a.currentTime >= 64 * 60 / 170 && a.currentTime < 25;
+  });
+  await grid.locator('[data-tempo="164"]').click();
+  await page.waitForFunction(() => {
+    const a = document.querySelector('[data-grid-player="grid"] audio');
+    return a.currentSrc.endsWith('grid-164.mp3') && !a.paused && a.currentTime >= 64 * 60 / 164 && a.currentTime < 26;
+  });
+  await grid.locator('[data-bar="45"]').click();
+  assert(await score.evaluate(a => a.currentTime >= 176 * 60 / 164 - .01));
+  await picture.evaluate(v => v.play());
+  assert(await score.evaluate(a => a.paused));
+  await picture.evaluate(v => { v.currentTime = 2; });
+  await speech.locator('[data-tempo="164"]').click();
+  await page.waitForFunction(() => {
+    const v = document.querySelector('[data-grid-player="speech"] video');
+    return /speech-164\.(mp4|webm)$/.test(v.currentSrc) && !v.paused && v.currentTime >= 1.9 && v.currentTime < 4;
+  });
+  await desiresTab.click();
+  assert(await picture.evaluate(v => v.paused));
+  await page.goto(url + '#music-listening');
+  await page.reload();
+  assert(await session.isVisible());
+  assert(await fits(), 'Session 02 fits viewport');
+  await grid.screenshot({path:'music-review/'+width+'-tempo.png'});
+  const listening = panel.locator('#music-landing-01');
   const audio = listening.locator('audio');
   assert(await audio.evaluate(el=>el.paused));
   await listening.locator('[data-ms-seek="40"]').click();
   await page.waitForFunction(()=>{const a=document.querySelector('[data-ms-listen-audio]');return !a.paused && a.currentTime>=14 && a.currentTime<17;});
   const before = await audio.evaluate(el=>el.currentTime);
-  await listening.locator('[data-ms-take="b"]').click();
-  await page.waitForFunction(t=>{const a=document.querySelector('[data-ms-listen-audio]');return a.currentSrc.endsWith('landing-b.mp3') && !a.paused && a.currentTime>=t-.2 && a.currentTime<t+2;},before);
+  await listening.locator('[data-ms-take="a"]').click();
+  await page.waitForFunction(t=>{const a=document.querySelector('[data-ms-listen-audio]');return a.currentSrc.endsWith('landing-a.mp3') && !a.paused && a.currentTime>=t-.2 && a.currentTime<t+2;},before);
   await listening.locator('[data-ms-seek="0"]').click();
   await page.waitForFunction(()=>document.querySelector('[data-ms-listen-audio]').currentTime<2);
   await listening.screenshot({path:'music-review/'+width+'-listening.png'});
-  await nav.nth(2).click(); assert(await audio.evaluate(el=>el.paused));
-  await nav.nth(1).click();
+  await desiresTab.click(); assert(await audio.evaluate(el=>el.paused));
+  await musicTab.click();
   await field('position').selectOption('options');
   await has('pending','Settings / Options at next bar');
   await action('bar').click(); await has('phrase','Drums alone');
@@ -90,15 +155,15 @@ async function check(browser, width, height) {
     await detail.locator('summary').click();
   }
   await page.goto(url+'#music-engine'); await page.reload(); assert(await panel.isVisible());
-  await nav.nth(2).click(); assert(await page.locator('#player-desires').isVisible());
+  await desiresTab.click(); assert(await page.locator('#player-desires').isVisible());
   assert.equal(errors.length,0,errors.join('\n'));
   console.log(width+'×'+height+' passed navigation, layout, fixtures and deep link');
   await page.close();
 }
 (async () => {
   await fs.mkdir('music-review',{recursive:true});
-  const browser = await chromium.launch();
+  const browser = await chromium.launch(process.env.LOOPFORGE_CHROMIUM ? {executablePath:process.env.LOOPFORGE_CHROMIUM} : {});
   try {
-    for (const [width,height] of [[1440,900],[390,844]]) await check(browser,width,height);
+    for (const [width,height] of [[1440,900],[768,1024],[390,844],[320,700]]) await check(browser,width,height);
   } finally { await browser.close(); }
 })().catch(error=>{console.error(error);process.exitCode=1;});

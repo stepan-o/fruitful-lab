@@ -193,12 +193,12 @@
 // One media element keeps the two comparison takes mutually exclusive.
 (() => {
   'use strict';
-  const deck = document.querySelector('#music-listening');
+  const deck = document.querySelector('#music-landing-01');
   if (!deck) return;
   const audio = deck.querySelector('audio');
   const status = deck.querySelector('[data-ms-listen-status]');
   const takes = [...deck.querySelectorAll('[data-ms-take]')];
-  let selected = 'a';
+  let selected = 'b';
   let pendingSeek = null;
   let request = 0;
 
@@ -249,3 +249,94 @@
   document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
   window.addEventListener('pagehide', stop);
 })();
+// Score comparisons follow bar position. Picture comparisons follow elapsed seconds.
+(() => {
+  const panel = document.querySelector('#music-engine');
+  if (!panel) return;
+  const media = [...panel.querySelectorAll('audio, video')];
+  const stopAll = () => media.forEach(player => player.pause());
+  panel.addEventListener('play', event => {
+    if (media.includes(event.target)) media.forEach(other => {
+      if (other !== event.target) other.pause();
+    });
+  }, true);
+  document.addEventListener('design:panelchange', () => { if (panel.hidden) stopAll(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopAll(); });
+  window.addEventListener('pagehide', stopAll);
+
+  for (const deck of panel.querySelectorAll('[data-grid-player]')) {
+    const score = deck.dataset.gridPlayer === 'grid';
+    const player = deck.querySelector('audio, video');
+    const status = deck.querySelector('[role="status"]');
+    const buttons = [...deck.querySelectorAll('[data-tempo]')];
+    let tempo = 170;
+    let target = null;
+    const seek = seconds => {
+      target = seconds;
+      if (player.readyState >= 1 && Number.isFinite(player.duration)) {
+        player.currentTime = Math.min(target, player.duration);
+        target = null;
+      }
+    };
+    const play = () => player.play().catch(error => {
+      if (error.name !== 'AbortError') status.textContent = 'Use Play or open the direct listening copy.';
+    });
+    player.addEventListener('loadedmetadata', () => { if (target !== null) seek(target); });
+    player.addEventListener('error', () => { status.textContent = 'Media unavailable. Try the direct listening copy.'; });
+    deck.addEventListener('click', event => {
+      const button = event.target.closest('button');
+      if (!button) return;
+      if (button.hasAttribute('data-bar')) {
+        const bar = Number(button.dataset.bar);
+        seek((bar - 1) * 4 * 60 / tempo);
+        status.textContent = tempo + ' / ' + tempo / 2 + ' · bar ' + bar;
+        play();
+        return;
+      }
+      const next = Number(button.dataset.tempo);
+      if (![164, 170].includes(next) || tempo === next) return;
+      const playing = !player.paused && !player.ended;
+      const seconds = player.ended ? 0 : target ?? player.currentTime;
+      target = seconds * (score ? tempo / next : 1);
+      tempo = next;
+      const directory = '/loopforge-design/music-audition/session-02/';
+      if (score) {
+        player.src = directory + 'grid-' + tempo + '.mp3';
+      } else {
+        for (const source of player.querySelectorAll('source')) {
+          const extension = source.type === 'video/webm' ? '.webm' : '.mp4';
+          source.src = directory + 'speech-' + tempo + extension;
+        }
+      }
+      player.load();
+      buttons.forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.tempo) === tempo)));
+      status.textContent = tempo + ' / ' + tempo / 2 + (score ? ' · same bar.' : ' · same picture time.');
+      if (playing) play();
+    });
+  }
+})();
+
+// The dedicated studies use their own repeat controls. Only one board player can sound.
+for (const deck of document.querySelectorAll('[data-theme-player]')) {
+  const player = deck.querySelector('audio');
+  const repeat = deck.querySelector('input');
+  const status = deck.querySelector('[role="status"]');
+  let target = null;
+  function seek() {
+    if (target !== null && player.readyState >= 1) {
+      player.currentTime = target;
+      target = null;
+    }
+  }
+  repeat.addEventListener('change', () => { player.loop = repeat.checked; });
+  player.addEventListener('loadedmetadata', seek);
+  deck.addEventListener('click', event => {
+    const marker = event.target.closest('[data-beat]');
+    if (!marker) return;
+    target = Number(marker.dataset.beat) * 60 / 164;
+    seek();
+    player.play().catch(error => {
+      if (error.name !== 'AbortError') status.textContent = 'Use Play or open the MP3.';
+    });
+  });
+}

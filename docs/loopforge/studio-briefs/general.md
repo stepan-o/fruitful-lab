@@ -12,7 +12,7 @@ Read these instructions, your role brief and the owner's specific task. Then rea
 
 Use the latest approved design, source and delivered artifacts. Current owner instructions determine intended behavior; code and observed results establish what actually runs. A proposal, a successful source check and an owner-approved experience are different kinds of evidence. Keep them distinct. Historical documents do not override newer decisions.
 
-The current first prototype uses sprite-based 2D over a frontend-independent simulation. The approved factory is shared by the rehearsal, placement data, artist handoff and runtime. TypeScript is reused now with an explicit later Rust migration. KVP-0001 remains the architecture cornerstone. A future 3D skin must consume the same simulation, not introduce a second world.
+The current first prototype uses sprite-based 2D over a frontend-independent simulation. The approved factory is shared by the rehearsal, placement data, artist handoff and runtime. ENGINE owns the Rust-native simulation, the browser Wasm build and the verified public projection. Consult the current ENGINE handoff for the implementation status of each route. KVP-0001 remains the architecture cornerstone. A future 3D skin must consume the same simulation, not introduce a second world.
 
 ## Onboard, interview, plan, build, review
 
@@ -21,6 +21,10 @@ The current first prototype uses sprite-based 2D over a frontend-independent sim
 3. **Plan.** Present the concrete outcome, affected pages/assets/contracts, acceptance criteria and meaningful tradeoffs. Obtain approval of the proposed scope before implementing a new design. An already approved, bounded correction does not require repeating the whole interview.
 4. **Build and verify.** Finish the approved work. Inspect it in its intended context; repair observed problems. Coordinate interface changes without turning every action into another handoff. Do not describe unrun checks as passes.
 5. **Owner review.** Deliver a usable preview, relevant evidence and a concise account of remaining gaps. The owner reviews the experience manually. Do not merge without owner authorization.
+
+## Record what the owner has accepted
+
+**Exploration** records a question, alternatives, provenance and the conditions of comparison. **Approved direction** records the owner’s decision and its exact scope, with dated alternatives retained. **Production assets** identify the actual files, versions, tools, permitted uses and outstanding craft review. **Integrated validation** records the build, ordinary entry path, observed result and owner verdict. A single item can carry an approved direction while its production materials and in-context experience remain open. Update the handoff at each change of status and link the evidence that supports it.
 
 ## The shared reference book
 

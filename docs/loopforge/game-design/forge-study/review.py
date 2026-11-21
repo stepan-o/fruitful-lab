@@ -49,8 +49,8 @@ def update_existing_board():
     board=target.read_text()
     if 'id="forge-study"' in board:
         return
-    nav='<button data-panel="player-desires"'
-    section='<section class="panel" id="player-desires"'
+    nav='<button data-panel="supervisor-rooms"'
+    section='<section class="panel" id="supervisor-rooms"'
     assert board.count(nav)==board.count(section)==1
     board=board.replace(nav,f'<button data-panel="forge-study" aria-current="false">{PANEL}</button>'+nav)
     board=board.replace(section,f'<section class="panel" id="forge-study" aria-label="{PANEL}" hidden>{FORGE_PANEL}</section>'+section)

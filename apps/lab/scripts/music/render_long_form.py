@@ -8,12 +8,11 @@ from render_session_02 import DESCENT, SR, Hit, ffmpeg, kit, meter, perform, wav
 
 TEMPO = 164
 OUT = kit.PUBLIC / 'long-form'
-# Each block is 16 bars. The duration of each bar always follows the common fast grid.
+# Menu and Conveyor use sixteen-bar blocks. Options changes its groove every eight.
 FORM = {
     'menu': ('Statement, repeat, stretch, landing', 'Higher turn and landing', 'Dry drum feature',
              'Theme return and exchange', 'Bass feature, rebuild and landing'),
-    'options': ('Hands on hats', 'Rim conversation', 'Hats and rests',
-                'Low tom answer', 'Broken two-step', 'Pass it back'),
+    'options': ('Menu pocket', 'Snare doubles', 'Low tom in half-time', 'Trade and return'),
     'conveyor': ('Open weight', 'Long answer', 'Low current',
                  'Displaced accent', 'Upper echo', 'Return to weight'),
 }
@@ -28,31 +27,6 @@ def place(bar, events):
 def line(hit, notes, positions, durations, level, voice='lead'):
     for i, (note, at, dur) in enumerate(zip(notes, positions, durations, strict=True)):
         hit(at, voice, level * (1 - .04 * (i % 4)), note, dur, -.1 + .055 * i)
-
-
-def breakbeat(hit, bar, style, energy=1):
-    cell = bar % 4
-    kicks = {
-        'roll': ((0, 1.75, 2.5), (0, 2.54), (0, 1.51, 2.76), (0, 2.5)),
-        'skip': ((0, 2.28), (.25, 1.75, 2.5), (0, 2.52), (0, 1.76, 3.5)),
-        'light': ((0,), (0, 2.5), (0,), (0, 2.77)),
-        'hands': ((0, 2.5),) * 4,
-    }[style][cell]
-    for j, at in enumerate(kicks):
-        hit(at, 'kick', (.67 if j == 0 else .44) * energy)
-    for at in (1, 3):
-        hit(at + .016 + (cell % 2) * .012, 'snare', .49 * energy, bar % 4, pan=.06)
-    hat_offsets = (0, 1, 2, 3) if style == 'light' else range(8)
-    for j in hat_offsets:
-        at = j if style == 'light' else j * .5
-        hit(at + (.035 if at % 1 else 0), 'hat',
-            (.109 if at % 1 == 0 else .05 + .012 * cell) * energy, (bar + j) % 4, pan=-.28)
-    if cell in (1, 3) and style != 'light':
-        hit(1.77, 'ghost', .10 * energy, cell, pan=-.18)
-    if cell == 3 and style != 'light':
-        hit(3.54, 'open', .109 * energy, pan=.34)
-        if bar % 8 == 7:
-            hit(3.78, 'ghost', .155 * energy, pan=.16)
 
 
 CALL = (0, .25, .50, .75, 1)
@@ -248,30 +222,78 @@ def menu(bar, hit):
             hit(0, 'reedkeys', .135 if block != 4 else .115, note, duration, (i - (len(chord) - 1) / 2) * .17)
 
 
+# The first call quotes the approved Menu break. The following bars are written
+# as answers with rests between them. Each tuple is beat, voice, note and gain.
+OPTIONS_HANDS = (
+    # Bars 1–8. Closed sidestick into descending shells, grounded in the Menu two-step.
+    DRUM_SENTENCES[0],
+    ((.75, 'ghost', 1, .21), (1.5, 'stick', 70, .35), (3.5, 'tom', 60, .42)),
+    ((.25, 'stick', 77, .38), (.50, 'stick', 73, .29), (.75, 'tom', 66, .40)),
+    ((1.75, 'ghost', 2, .22), (2.75, 'tom', 61, .40)),
+    ((.5, 'stick', 74, .37), (1.75, 'stick', 70, .31), (2.25, 'ghost', 0, .20)),
+    ((.75, 'tom', 67, .39), (2, 'tom', 63, .42), (3.5, 'stick', 72, .36)),
+    ((.25, 'stick', 75, .35), (.75, 'tom', 66, .38), (1, 'tom', 61, .43)),
+    ((1.75, 'ghost', 1, .22), (2.75, 'stick', 71, .33), (3.75, 'ghost', 3, .25)),
+    # Bars 9–16. The stick takes the fourth beat as the other hand plays snare doubles.
+    ((.75, 'ghost', 0, .19), (.875, 'roll', 1, .27), (2.25, 'stick', 75, .37)),
+    ((.5, 'stick', 76, .37), (1.75, 'ghost', 2, .22), (3.5, 'snare', 1, .36)),
+    ((.75, 'ghost', 3, .22), (.875, 'roll', 0, .30), (2, 'tom', 62, .43)),
+    ((.5, 'tom', 66, .38), (2.75, 'ghost', 0, .23), (2.875, 'roll', 2, .29)),
+    ((.25, 'stick', 77, .38), (.50, 'roll', 1, .30), (.75, 'roll', 3, .35)),
+    ((1.5, 'stick', 74, .38), (2.25, 'snare', 1, .39), (3.5, 'tom', 61, .41)),
+    ((.5, 'tom', 65, .38), (1.75, 'ghost', 2, .23)),
+    ((.75, 'stick', 74, .36), (2, 'tom', 60, .41)),
+    # Bars 17–24. A half-time snare leaves room for the low tom to answer.
+    ((.25, 'tom', 70, .39), (.50, 'tom', 66, .35), (.75, 'tom', 62, .41), (1, 'tom', 58, .45)),
+    ((1.5, 'stick', 70, .30),),
+    ((.5, 'tom', 64, .42), (1.75, 'ghost', 0, .20), (3.5, 'tom', 58, .44)),
+    ((.75, 'stick', 74, .32), (2.75, 'tom', 61, .40)),
+    ((0, 'tom', 67, .42), (1.5, 'tom', 63, .38), (3, 'tom', 59, .43)),
+    ((1.75, 'ghost', 1, .22), (3.5, 'stick', 71, .32)),
+    ((.25, 'tom', 69, .38), (.75, 'tom', 64, .40), (1.5, 'tom', 60, .42)),
+    ((2.5, 'stick', 73, .34), (3.25, 'ghost', 0, .23), (3.75, 'roll', 2, .31)),
+    # Bars 25–32. Trade the opening figure between hands, then clear a beat at the join.
+    ((.25, 'stick', 77, .39), (.50, 'roll', 1, .31), (.75, 'tom', 66, .43), (1, 'tom', 61, .44)),
+    ((1.5, 'ghost', 2, .22), (1.75, 'stick', 72, .35), (3.5, 'tom', 60, .40)),
+    ((.5, 'stick', 75, .37), (1.75, 'snare', 3, .36), (2.75, 'tom', 64, .41)),
+    ((.75, 'ghost', 0, .23), (2.25, 'stick', 73, .36), (3.5, 'roll', 1, .30)),
+    ((.25, 'tom', 68, .42), (.50, 'stick', 73, .31), (.75, 'tom', 63, .41)),
+    ((.5, 'stick', 75, .35), (1.75, 'ghost', 1, .25), (2.75, 'tom', 61, .42)),
+    ((.75, 'tom', 65, .39), (1.5, 'stick', 72, .33)),
+    ((.5, 'tom', 59, .43),),
+)
+
+
 def options(bar, hit):
-    block, pos = divmod(bar, 16)
-    style = ('hands', 'hands', 'light', 'hands', 'skip', 'hands')[block]
-    level = (.85, .94, .62, .83, .97, .79)[block]
-    breakbeat(hit, bar, style, level)
-    # The second hand can rest for a whole bar, leaving the kick legible.
-    if pos % 4 == 3:
-        if pos in (7, 15) and block in (1, 3, 4):
-            line(hit, (75, 72, 68), (2.78, 3.27, 3.78), (0.,)*3, .19, 'tom')
-        return
-    if pos % 2 == 0:
-        pitches = (79, 76, 72, 67, 61)
-        offsets = ((.27, .53, .78, 1.27, 1.78), (.53, .79, 1.28, 2.04, 2.79),
-                   (.77, 1.28, 2.03, 2.78, 3.53))[pos // 4 % 3]
-        hands = (('hat',)*4 + ('rim',), ('rim',)*5, ('hat', 'rim', 'ghost'),
-                 ('tom',)*5, ('rim', 'ghost', 'tom', 'rim', 'tom'),
-                 ('hat', 'rim', 'rim', 'tom', 'tom'))[block]
-        for i, voice in enumerate(hands):
-            note = pitches[i] if voice in ('rim', 'tom') else (i + pos) % 4
-            hit(offsets[i], voice, (.21 - .014 * i) * level, note, pan=.31 - i * .13)
-    elif block != 2:
-        hit(2.78, 'ghost', .135, pos % 4, pan=-.12)
-        if block == 3 or (pos == 13 and block == 5):
-            hit(3.55, 'tom', .21, 61, pan=-.20)
+    section, pos = divmod(bar, 8)
+    if section in (0, 3):
+        menu_groove(bar, hit, solo=True)
+    elif section == 1:
+        hit(0, 'foot', .80)
+        hit(2.5 if pos % 2 == 0 else 1.75, 'foot', .52)
+        hit(1, 'snare', .55, pos % 4, pan=.06)
+        hit(3, 'stick', .50, 70, pan=-.08)
+    else:
+        hit(0, 'foot', .76)
+        if pos % 2:
+            hit(2.5, 'foot', .45)
+        hit(2, 'snare', .54, pos % 4, pan=.06)
+
+    for at, voice, note, gain in OPTIONS_HANDS[bar]:
+        pan = -.16 if voice == 'stick' else .12 if voice == 'tom' else .03
+        hit(at, voice, gain, note, pan=pan)
+    if bar in (1, 5, 10, 17, 21, 27):
+        hit(.5, 'hat', .085, bar % 4, pan=-.20)
+    if bar == 15:
+        # Beat four has a side-stick downstroke. Six alternating wire strokes
+        # answer it on the last three quarters of the beat.
+        for i, gain in enumerate((.22, .27, .33, .24, .31, .38)):
+            hit(3.25 + i / 8, 'roll', gain, i % 4, pan=(-.10, .09)[i % 2])
+    if bar == 30:
+        # The backbeat starts the sextuplet. Five more strokes walk down the kit.
+        for i, (voice, note, gain) in enumerate((('roll', 0, .29), ('tom', 70, .43),
+                ('roll', 2, .34), ('tom', 64, .46), ('tom', 59, .52)), start=1):
+            hit(3 + i / 6, voice, gain, note, pan=-.17 + .06 * i)
 
 
 def conveyor(bar, hit):
@@ -307,7 +329,8 @@ def conveyor(bar, hit):
 
 def render(name, masters):
     blocks = FORM[name]
-    bars = len(blocks) * 16
+    block_bars = 8 if name == 'options' else 16
+    bars = len(blocks) * block_bars
     events = []
     compose = {'menu': menu, 'options': options, 'conveyor': conveyor}[name]
     for bar in range(bars):
@@ -332,29 +355,34 @@ def render(name, masters):
     levels = meter(export)
     if levels['dBTP'] > -1:
         raise ValueError(f'{name} peak exceeds review target')
-    return {'theme':name, 'file':export.name, 'bars':bars, 'frames':frames,
-            'durationSeconds':frames / SR, 'blocks':list(blocks), 'sha256':kit.digest(export),
-            'masterSha256':kit.digest(master), 'meter':levels}
+    track = {'theme': name, 'file': export.name, 'bars': bars, 'frames': frames,
+             'durationSeconds': frames / SR, 'blocks': list(blocks), 'sha256': kit.digest(export),
+             'masterSha256': kit.digest(master), 'meter': levels}
+    if name == 'menu':
+        track['studyId'] = 'LF-MUS-LONG-06-MENU'
+    elif name == 'options':
+        track['studyId'] = 'LF-MUS-LONG-02-OPTIONS'
+        track['blockBars'] = block_bars
+    return track
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--masters', required=True, type=Path)
-    parser.add_argument('--menu-only', action='store_true',
-                        help='Replace the Menu recording and retain the other measured exports.')
+    scope = parser.add_mutually_exclusive_group()
+    scope.add_argument('--only', choices=FORM, help='Replace one theme and retain the other exports.')
+    scope.add_argument('--menu-only', action='store_const', dest='only', const='menu',
+                       help='Replace the Menu recording and retain the other measured exports.')
     args = parser.parse_args()
     args.masters.mkdir(parents=True, exist_ok=True)
     OUT.mkdir(parents=True, exist_ok=True)
     manifest = OUT / 'session.json'
-    if args.menu_only:
+    if args.only:
         record = json.loads(manifest.read_text())
-        record['tracks'] = [render('menu', args.masters) if track['theme'] == 'menu' else track
+        record['tracks'] = [render(args.only, args.masters) if track['theme'] == args.only else track
                             for track in record['tracks']]
     else:
         record = {'version':'long-form-01', 'tempo':TEMPO, 'sampleRate':SR, 'meter':'4/4',
               'providerRequests':0, 'costUSD':0, 'source':'original local synthesis',
               'tracks':[render(name, args.masters) for name in FORM]}
-    for track in record['tracks']:
-        if track['theme'] == 'menu':
-            track['studyId'] = 'LF-MUS-LONG-06-MENU'
     manifest.write_text(json.dumps(record, indent=2) + '\n')

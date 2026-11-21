@@ -31,23 +31,23 @@
     {
       "theme": "options",
       "file": "options.mp3",
-      "bars": 96,
-      "frames": 6743414,
-      "durationSeconds": 140.48779166666668,
+      "bars": 32,
+      "frames": 2247805,
+      "durationSeconds": 46.82927083333333,
       "blocks": [
-        "Hands on hats",
-        "Rim conversation",
-        "Hats and rests",
-        "Low tom answer",
-        "Broken two-step",
-        "Pass it back"
+        "Menu pocket",
+        "Snare doubles",
+        "Low tom in half-time",
+        "Trade and return"
       ],
-      "sha256": "05d10bbd8f0cfd7407190aed70fa2e7252c63ca791c4164c050eab7e253580d0",
-      "masterSha256": "16dcc25a8983cd5c3aac10ef27aec627b638d7ab784b3e683037691617d701fd",
+      "sha256": "ee9f68473b9f12ded28f8907f115ee02d873c6cd63448726626fa44923eb446d",
+      "masterSha256": "9a8aa275b0dff7274cc3234d0a8b594eb16d663645fde766196645c09164908a",
       "meter": {
-        "lufs": -16.93,
-        "dBTP": -3.89
-      }
+        "lufs": -16.91,
+        "dBTP": -3.31
+      },
+      "studyId": "LF-MUS-LONG-02-OPTIONS",
+      "blockBars": 8
     },
     {
       "theme": "conveyor",

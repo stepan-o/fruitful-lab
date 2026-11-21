@@ -78,7 +78,7 @@ async function check(browser, width, height) {
   await options.getByRole('button', {name:/Low tom/}).click();
   await page.waitForFunction(() => {
     const a = document.querySelector('#music-long-options audio');
-    return !a.paused && a.currentTime >= 70 && a.currentTime < 74;
+    return !a.paused && a.currentTime >= 64 * 60 / 164 - .01 && a.currentTime < 26;
   });
   assert(await menu.locator('audio').evaluate(a => a.paused));
   await menu.screenshot({path:'music-review/'+width+'-long-menu.png'});

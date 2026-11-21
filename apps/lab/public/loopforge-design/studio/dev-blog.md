@@ -2,11 +2,15 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 21 November 2026 · From one held note to three playable phrases
+
+The owner chose C♯ and described three rooms by ear. The second local session keeps the same 48-bar performance on two tempo grids. The Menu moves one chord tone, Options passes the figure around the kit, and Conveyor leaves space for its sustained reply. Two edits place the same welcome over the same 1× Forge picture. Moving the musical pulse changes neither the picture nor the time of the line. The authoring record distinguishes the editorial placement from gameplay evidence. The owner’s tempo verdict and production timbre review are pending. [Listen](/stepanoskin/loopforge/design#music-listening) · [Session record](/loopforge-design/music-audition/session-02/session.json) · [Production and clearance](/stepanoskin/loopforge/design/studio/music-production).
+
 ## 21 November 2026 · Two endings to one descent
 
 MUSIC DIRECTOR rendered the first 24-second sketches after the owner merged the design proposal. In one, the last note rubs against D from above; in the other it hangs just below. The menu break loses its pitched layers in Options, then its fast hats continue over the Conveyor snare. The held carrier leaves an audible gap in the bass. The two takes share one backing and gain setting.
 
-The [A/B player](/stepanoskin/loopforge/design#music-listening) keeps position when switching. All drums and pitched voices were synthesized from the original project source. The owner has yet to select the note. [Review masters and level measurements](/loopforge-design/music-audition/session.json) · [Audio provenance](/loopforge-design/music-audition/provenance.md).
+The [first-session A/B player](/stepanoskin/loopforge/design#music-landing-01) keeps position when switching. All drums and pitched voices were synthesized from the original project source. At the time of this session the owner had yet to select the note. Session 02 records the later C♯ decision. [Review masters and level measurements](/loopforge-design/music-audition/session.json) · [Audio provenance](/loopforge-design/music-audition/provenance.md).
 
 ## 21 November 2026 · A bass note waits for the carrier
 

@@ -1,8 +1,14 @@
 # Music engine
 
+## Listening session 02 · the pulse across three themes
+
+The owner chose Take B and approved curiosity on Menu, the drummer’s hands on Options and patient weight on Conveyor. Two new 48-bar recordings compare the same performance at 170/85 and 164/82. The first twelve bars of Conveyor develop through ordinary work before the last four stage a wait and restart. A second pair of edits uses identical 1× Forge footage and the existing welcome voice. [Audition and review questions](/stepanoskin/loopforge/design#music-listening) · [Theme sheets and surface map](/stepanoskin/loopforge/design/studio/music-study#three-theme-design-sheets) · [Measured exports](/loopforge-design/music-audition/session-02/session.json).
+
+**ENGINE boundary.** The standing ENGINE brief assigns public world state, commands, fixed ticks, replay and restore to Rust/KVP-0001. The browser consumes verified projections. The recording has authored cue times. The manual panel has no game adapter. In live play, subscribe to permitted public receipts, listening focus and actual speech presentation. Missing public pressure remains unknown. Clear queued music cues on seek or branch and resume from fresh public state. Never wait for a musical beat to run a game command. [Current ENGINE handoff](https://github.com/stepan-o/fruitful-lab/blob/38728b026405806814064879821af8dc474c410b/docs/loopforge/studio-briefs/engine-master.md).
+
 ## Listening session 01
 
-Two original **24-second listening edits** are ready for the owner. [Play the A/B](/stepanoskin/loopforge/design#music-listening) or open [Take A](/loopforge-design/music-audition/landing-a.mp3) and [Take B](/loopforge-design/music-audition/landing-b.mp3). The first four pitches, tempo, articulation, backing and master gain are identical. Take A holds E-flat above D. Take B holds C-sharp. Listen at the entrance and again over Conveyor near the end. Choose A, B or request a different landing.
+Two original 24-second listening edits share their backing and gain. The owner selected [Take B, C♯ over D](/loopforge-design/music-audition/landing-b.mp3). [Take A, E-flat over D](/loopforge-design/music-audition/landing-a.mp3) is the dated 21 November alternative. [First listening session](/stepanoskin/loopforge/design#music-landing-01).
 
 The 17-bar edit runs through six bars of menu, four of Options and seven of Conveyor. The hats hold their pulse across the doorway. At beat 48 the bass drops out for the waiting carrier. The fixture carrier moves at beat 56.5 and the bass replies at beat 57. These are authored observations in the recording. The separate manual input monitor stays silent. The native review player retains time on take changes and stops when you leave the panel. [Production evidence](/loopforge-design/music-audition/session.json) · [Asset lineage and release status](/loopforge-design/music-audition/provenance.md)
 
@@ -12,7 +18,7 @@ On first entry, after sound is enabled, a quick minor descent lands on an off-no
 
 **Owner decisions · 21 November 2026.** Keep a common pulse. Reveal Conveyor’s half-time groove inside the fast break. Leave the opening dissonance hanging. Let visible work shape the bass under either supervisor. The initial tempo of 170 BPM, with a felt 85 on Conveyor, is an audition setting. A second shared grid around 164/82 is worth testing if the first crowds dialogue. A bridge to an independent 140 BPM Conveyor was considered in the interview. The shared-grid decision closes that route for this experiment.
 
-**Harmony under review.** In a provisional D minor setting the two listening edits compare A–G–F–E landing on E-flat over a low D with the same four-note descent ending on C-sharp over D. Both final notes stay put while the beat continues. Match register, level, duration and articulation. Pick the one that still sounds intentional through a phone speaker. A dry electric-key attack gives the upper notes definition. Keep wide ninths above the bass, move one inner voice at a time, and let a snare pickup answer a syncopated chord. In Options the kit can carry the descent from high rim to low tom.
+**Approved contour.** A–G–F–E hangs on C♯ over D. The harmonic question has moved to the inner voices, the duration of the answer and its placement against the snare. This approval leaves production instrumentation open.
 
 **Variation.** Write an eight-bar family with an opening statement, a syncopated answer, a sparser middle and a recognizable return. Pick compatible voicings and ghost notes from authored alternatives using a separate, repeatable music seed. Keep one fill slot per two bars, avoid consecutive identical fills when alternatives exist and reserve the middle register for voices. Silence can be one of the answers.
 
@@ -38,7 +44,7 @@ Tynan Sylvester, *Designing Games*, chapter 1, “Emotion Through Music,” prin
 
 ## MusicInputs v1
 
-Music consumes a copy of what the player can observe. ENGINE owns the public projection, its visibility rules and a future adapter. KVP-0001 is the authority for simulation and replay. The music envelope is downstream of KVP and has no command channel. Send primitive values from TypeScript now or Rust later. Both the pixel-art and future 3D viewer can supply the same room focus. A station’s hidden work queue, BDI goal, next bid or off-camera jam cannot enter the envelope. Scope and redact upstream before serialization. [Kernel ↔ Viewer Protocol](https://github.com/stepan-o/loopforge/blob/master/docs/sim5/SOPs/KVP-0001.md)
+Music consumes a copy of what the player can observe. ENGINE owns the public projection, its visibility rules and a future adapter. KVP-0001 is the authority for simulation and replay. The music envelope is downstream of KVP and has no command channel. A future downstream adapter reads the verified public projection of the Rust kernel. Both the pixel-art and future 3D viewer can supply the same room focus. A station’s hidden work queue, BDI goal, next bid or off-camera jam cannot enter the envelope. Scope and redact upstream before serialization. [Kernel ↔ Viewer Protocol](https://github.com/stepan-o/loopforge/blob/master/docs/sim5/SOPs/KVP-0001.md)
 
 | Field | Contract and fallback |
 | --- | --- |
@@ -54,14 +60,11 @@ Music consumes a copy of what the player can observe. ENGINE owns the public pro
 
 The downloadable example is a manual session: open Conveyor, advance four beats, receive a waiting snapshot, then receive a running snapshot and confirmed motion at the same beat. A second delivery of that ID has a fresh sequence for testing de-duplication. [MusicInputs v1 example](/loopforge-design/music-inputs.v1.json)
 
-## The first listening session
+## Listening verdicts and remaining tests
 
-**Question.** Can you tap continuously from the menu through Options into Conveyor, recognize the room from its groove and hear the gap when a carrier waits? The manual fixture rehearses the input sequence silently. The two recordings above are available for the first owner listening judgment.
+The first session established the C♯ landing. In session 02 compare the two score-only grids, identify the return of the hand figure and transcribe the welcome at normal picture speed. Report the tempo, device, first bar that feels repetitive and any obscured word. The original Forge action runs for the same duration in both edits.
 
-1. Delivered: two original, level-matched 24-second motif sketches differing only in the held landing. Hear both on headphones and phone. The owner chooses a landing or returns both.
-2. With the selected motif, edit the first matched-picture normal-speed traversal from menu to Options to Conveyor. Keep one hat pulse across both changes. Play a waiting and restarting carrier under LIMEN and the same observations under STILETTO. The bass should tell the same story in both. A longer running sequence should support linked answers.
-3. Repeat an eight-bar region at least eight times. Listen for seam clicks, phasing, a distracting repeated fill and a bass note that masks the first consonant in “Forge, all clear.” Try rapid room changes, mute, pause and an interrupted line. Compare speech alone with speech plus score.
-4. Accept only if the owner recognizes the same theme, can tap the transition, transcribes the line, identifies the restart from the picture with music muted, and hears one answer to a duplicated cue. A failed judgment returns that specific element for iteration. Record version, device, route, what was heard and the owner’s verdict.
+Once an ElevenLabs candidate is accepted, repeat a prepared eight-bar region eight times on desktop and phone. Check bleed and decoded joins, rapid room changes, interruption, resume and both supervisor routes under speech. Record the exact export and build. The current MP3s are through-composed review edits with an ending. Live long-running playback and gameplay integration still need separate review.
 
 ## Exports, playback and access
 
@@ -75,7 +78,7 @@ The downloadable example is a manual session: open Conveyor, advance four beats,
 
 **Current authorization: US$0, zero generations.** Free is owner-reported. The connected ElevenLabs workflow catalog exposes Music v1, v2 and v2.5; v2.5 accepts instrumental requests and durations from 3 to 600 seconds. This was a read-only capability check. Balance, account entitlement, game-class eligibility, stem alignment and lossless export remain unverified. The published Music terms list 11 Free generation minutes, no downloads and no API access. Starter lists API access, and high-quality downloads begin at Pro. Check account, plan and model terms again at acquisition. [Music overview](https://elevenlabs.io/docs/eleven-creative/products/music) · [Music Terms §§1–4 and Exhibit A](https://elevenlabs.io/music-terms)
 
-**Proposed pilot cap, subject to separate owner approval.** Start with the two 24-second sketches. Allow two further renders up to 30 seconds for a prepared passage or retry. Four requests, 108 total generated seconds, at most one retry within that limit. Stop when the listening question is answerable, the provider estimate is unavailable, or any cap would be exceeded. At the published API rate of US$0.15/min, the duration-only estimate is US$0.27. Propose a US$1 all-in incremental ceiling only on an already eligible account with confirmed pricing and export rights. A required subscription, renewal, overage, minimum or tax that exceeds the cap requires a new decision before generation. An original, locally synthesized audition is the zero-provider-cost alternative. [API pricing](https://elevenlabs.io/pricing/api)
+**Next production request.** One 45-second ElevenLabs Main menu instrumental at the selected tempo, one attempt. The actual account quote, export entitlement, classification and owner-approved all-in ceiling are pending. This supersedes the earlier four-request proposal. [Production plan and ledger](/stepanoskin/loopforge/design/studio/music-production).
 
 **Prompt and export record.** Describe meter, instruments, articulation, voicings, dynamics and mood. Exclude artist, songwriter, track, album, publisher and label names and distinctive lyrics from provider input. Keep reference recordings out of uploads and product assets. For every request store the dated prompt revision, model, request ID, actual charge, rejects, source hashes and edit lineage. Keep account evidence private. Serve reviewed exports locally in a sold build. Store credentials only in a private production environment.
 
@@ -93,4 +96,4 @@ MUSIC DIRECTOR maintains the audio register. ENGINE maps approved hashes and not
 
 **Exists now.** The prototype has a menu contactor/clang, an older first-shift effects path and a welcome voice in the shifts viewer. Its public floor projection exposes machine holds, delivered lines and the bell. The board includes a native A/B player with two recorded sketches, the silent manual fixture, diagrams and the downloadable contract example. Source inspection and review of a recorded Forge moment supplied the game baseline. [Playable prototype](/stepanoskin/loopforge/play) · [Recorded Forge clearance](/loopforge-shifts/review/first-playthrough/limen/opening-Forge-clear.mp4)
 
-**Next decisions.** Owner approved the proposal and commissioned execution. First decision: select the E-flat or C-sharp landing, or return both. Timbral polish, integration, commercial release and any spending require separate decisions. ENGINE later reviews observation visibility with SYSTEMS, supplies a scoped event adapter and implements the transport, lifecycle and measured performance. All future live inputs and audible responses described here remain proposals. [Music Director handoff](/stepanoskin/loopforge/design/studio/music-director) · [ENGINE handoff](/stepanoskin/loopforge/design/studio/engine-master)
+**Next decisions.** Owner reviews the two tempos, phrase interest, wait/restart and speech. Then confirm the ElevenLabs pilot quote and obtain a separate spending decision. Studio review assets do not imply game integration or commercial release acceptance.

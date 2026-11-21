@@ -7,7 +7,7 @@ const assets = path.resolve(__dirname, '../../public');
 const origin = 'https://loopforge.test';
 const url = origin + '/stepanoskin/loopforge/design';
 const mime = {'.html':'text/html', '.css':'text/css', '.js':'text/javascript', '.json':'application/json',
-  '.md':'text/plain', '.svg':'image/svg+xml', '.webp':'image/webp', '.png':'image/png'};
+  '.md':'text/plain', '.mp3':'audio/mpeg', '.svg':'image/svg+xml', '.webp':'image/webp', '.png':'image/png'};
 
 async function check(browser, width, height) {
   const page = await browser.newPage({viewport:{width, height}});
@@ -20,7 +20,14 @@ async function check(browser, width, height) {
     if (name === '/stepanoskin/loopforge/design') name = '/loopforge-design/index.html';
     const filename = path.join(assets, name);
     try {
-      await route.fulfill({body:await fs.readFile(filename), contentType:mime[path.extname(filename)] || 'application/octet-stream'});
+      const body = await fs.readFile(filename);
+      const contentType = mime[path.extname(filename)] || 'application/octet-stream';
+      const range = /^bytes=(\d+)-(\d*)$/.exec(route.request().headers().range || '');
+      if (contentType === 'audio/mpeg' && range) {
+        const start = Number(range[1]), end = range[2] ? Math.min(Number(range[2]),body.length-1) : body.length-1;
+        await route.fulfill({status:206, contentType, body:body.subarray(start,end+1),
+          headers:{'Accept-Ranges':'bytes','Content-Range': 'bytes '+start+'-'+end+'/'+body.length}});
+      } else await route.fulfill({body,contentType});
     } catch (error) {
       if (error.code !== 'ENOENT' && error.code !== 'EISDIR') throw error;
       await route.fulfill({status:404,body:''});
@@ -43,6 +50,19 @@ async function check(browser, width, height) {
   await panel.locator('.ms-cover').screenshot({path:'music-review/'+width+'-motif.png'});
   await panel.locator('.ms-pulse').screenshot({path:'music-review/'+width+'-beat.png'});
   await panel.locator('.ms-routing').screenshot({path:'music-review/'+width+'-signal.png'});
+  const listening = panel.locator('#music-listening');
+  const audio = listening.locator('audio');
+  assert(await audio.evaluate(el=>el.paused));
+  await listening.locator('[data-ms-seek="40"]').click();
+  await page.waitForFunction(()=>{const a=document.querySelector('[data-ms-listen-audio]');return !a.paused && a.currentTime>=14 && a.currentTime<17;});
+  const before = await audio.evaluate(el=>el.currentTime);
+  await listening.locator('[data-ms-take="b"]').click();
+  await page.waitForFunction(t=>{const a=document.querySelector('[data-ms-listen-audio]');return a.currentSrc.endsWith('landing-b.mp3') && !a.paused && a.currentTime>=t-.2 && a.currentTime<t+2;},before);
+  await listening.locator('[data-ms-seek="0"]').click();
+  await page.waitForFunction(()=>document.querySelector('[data-ms-listen-audio]').currentTime<2);
+  await listening.screenshot({path:'music-review/'+width+'-listening.png'});
+  await nav.nth(2).click(); assert(await audio.evaluate(el=>el.paused));
+  await nav.nth(1).click();
   await field('position').selectOption('options');
   await has('pending','Settings / Options at next bar');
   await action('bar').click(); await has('phrase','Drums alone');

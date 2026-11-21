@@ -1,12 +1,18 @@
 # Music engine
 
+## Listening session 01
+
+Two original **24-second listening edits** are ready for the owner. [Play the A/B](/stepanoskin/loopforge/design#music-listening) or open [Take A](/loopforge-design/music-audition/landing-a.mp3) and [Take B](/loopforge-design/music-audition/landing-b.mp3). The first four pitches, tempo, articulation, backing and master gain are identical. Take A holds E-flat above D. Take B holds C-sharp. Listen at the entrance and again over Conveyor near the end. Choose A, B or request a different landing.
+
+The 17-bar edit runs through six bars of menu, four of Options and seven of Conveyor. The hats hold their pulse across the doorway. At beat 48 the bass drops out for the waiting carrier. The fixture carrier moves at beat 56.5 and the bass replies at beat 57. These are authored observations in the recording. The separate manual input monitor stays silent. The native review player retains time on take changes and stops when you leave the panel. [Production evidence](/loopforge-design/music-audition/session.json) · [Asset lineage and release status](/loopforge-design/music-audition/provenance.md)
+
 ## A theme the factory can take apart
 
 On first entry, after sound is enabled, a quick minor descent lands on an off-note. The drums carry on beneath it. The next screen can inherit the final two accents, the shape of the bass or just the spacing between hits. Reserve the whole descent for the opening and an occasional earned return.
 
 **Owner decisions · 21 November 2026.** Keep a common pulse. Reveal Conveyor’s half-time groove inside the fast break. Leave the opening dissonance hanging. Let visible work shape the bass under either supervisor. The initial tempo of 170 BPM, with a felt 85 on Conveyor, is an audition setting. A second shared grid around 164/82 is worth testing if the first crowds dialogue. A bridge to an independent 140 BPM Conveyor was considered in the interview. The shared-grid decision closes that route for this experiment.
 
-**Harmony to hear.** In a provisional D minor setting, try A–G–F–E landing on E-flat over a low D. Compare the same four-note descent ending on C-sharp over D. Both final notes stay put while the beat continues. Match register, level, duration and articulation. Pick the one that still sounds intentional through a phone speaker. A dry electric-key attack gives the upper notes definition. Keep wide ninths above the bass, move one inner voice at a time, and let a snare pickup answer a syncopated chord. In Options the kit can carry the descent from high rim to low tom.
+**Harmony under review.** In a provisional D minor setting the two listening edits compare A–G–F–E landing on E-flat over a low D with the same four-note descent ending on C-sharp over D. Both final notes stay put while the beat continues. Match register, level, duration and articulation. Pick the one that still sounds intentional through a phone speaker. A dry electric-key attack gives the upper notes definition. Keep wide ninths above the bass, move one inner voice at a time, and let a snare pickup answer a syncopated chord. In Options the kit can carry the descent from high rim to low tom.
 
 **Variation.** Write an eight-bar family with an opening statement, a syncopated answer, a sparser middle and a recognizable return. Pick compatible voicings and ghost notes from authored alternatives using a separate, repeatable music seed. Keep one fill slot per two bars, avoid consecutive identical fills when alternatives exist and reserve the middle register for voices. Silence can be one of the answers.
 
@@ -50,10 +56,10 @@ The downloadable example is a manual session: open Conveyor, advance four beats,
 
 ## The first listening session
 
-**Question.** Can you tap continuously from the menu through Options into Conveyor, recognize the room from its groove and hear the gap when a carrier waits? The panel above rehearses the input sequence silently. It cannot establish any of these listening judgments.
+**Question.** Can you tap continuously from the menu through Options into Conveyor, recognize the room from its groove and hear the gap when a carrier waits? The manual fixture rehearses the input sequence silently. The two recordings above are available for the first owner listening judgment.
 
-1. Prepare two original, level-matched 24-second motif sketches differing only in the held landing. Hear both on headphones and phone. The owner chooses a landing or returns both.
-2. With the selected motif, edit one normal-speed traversal from menu to Options to Conveyor. Keep one hat pulse across both changes. Play a waiting and restarting carrier under LIMEN and the same observations under STILETTO. The bass should tell the same story in both. A longer running sequence should support linked answers.
+1. Delivered: two original, level-matched 24-second motif sketches differing only in the held landing. Hear both on headphones and phone. The owner chooses a landing or returns both.
+2. With the selected motif, edit the first matched-picture normal-speed traversal from menu to Options to Conveyor. Keep one hat pulse across both changes. Play a waiting and restarting carrier under LIMEN and the same observations under STILETTO. The bass should tell the same story in both. A longer running sequence should support linked answers.
 3. Repeat an eight-bar region at least eight times. Listen for seam clicks, phasing, a distracting repeated fill and a bass note that masks the first consonant in “Forge, all clear.” Try rapid room changes, mute, pause and an interrupted line. Compare speech alone with speech plus score.
 4. Accept only if the owner recognizes the same theme, can tap the transition, transcribes the line, identifies the restart from the picture with music muted, and hears one answer to a duplicated cue. A failed judgment returns that specific element for iteration. Record version, device, route, what was heard and the owner’s verdict.
 
@@ -75,8 +81,8 @@ The downloadable example is a manual session: open Conveyor, advance four beats,
 
 | Register entry | Evidence needed before shipping | Current disposition |
 | --- | --- | --- |
-| Theme composition and master | Composer, authorship or agreement, date, composition and recording ownership, edits, hash. | Proposed original. No master exists. |
-| Drum hits, bass and samples | Source for every recording, commercial embedding, editing, redistribution, notices and derivative parent IDs. | Proposed synthesis or documented cleared originals. No break samples acquired. |
+| Theme composition and master | Composer, authorship or agreement, date, composition and recording ownership, edits, hash. | Both synthesized audition masters have recorded hashes. Commercial release review remains open. |
+| Drum hits, bass and samples | Source for every recording, commercial embedding, editing, redistribution, notices and derivative parent IDs. | This audition synthesizes every drum voice and bass note from project code. Future sample acquisitions need their own entry. |
 | Provider render and edited loop | Plan and model at generation, dated terms, account holder and class, permitted game/platforms, credit obligations, parent render, reviewer and approval. | Uncommissioned. Confirm Indie Game thresholds for title and publisher, accounting period, attribution and game distribution. Refer unresolved classification or Studio Game use to provider/legal review. |
 | Reference and existing audio | Existing machine effects and welcome voice need their own record and any required notices. Reference masters have research-only status here. | PRODUCER reconciles existing inventory with ENGINE. No inherited asset gains clearance from this proposal. |
 | Dependencies and delivery | Inventory runtime library, codec/build packaging, versions, licenses, bundled media, notices, ongoing conditions and reviewer. | The panel uses browser primitives and original graphics. Future audio dependencies and codec choices remain open. |
@@ -85,6 +91,6 @@ MUSIC DIRECTOR maintains the audio register. ENGINE maps approved hashes and not
 
 ## Handoff and review status
 
-**Exists now.** The prototype has a menu contactor/clang, an older first-shift effects path and a welcome voice in the shifts viewer. Its public floor projection exposes machine holds, delivered lines and the bell. The board includes the silent manual fixture, two diagrams and the downloadable contract example. Source inspection and review of a recorded Forge moment supplied the game baseline. [Playable prototype](/stepanoskin/loopforge/play) · [Recorded Forge clearance](/loopforge-shifts/review/first-playthrough/limen/opening-Forge-clear.mp4)
+**Exists now.** The prototype has a menu contactor/clang, an older first-shift effects path and a welcome voice in the shifts viewer. Its public floor projection exposes machine holds, delivered lines and the bell. The board includes a native A/B player with two recorded sketches, the silent manual fixture, diagrams and the downloadable contract example. Source inspection and review of a recorded Forge moment supplied the game baseline. [Playable prototype](/stepanoskin/loopforge/play) · [Recorded Forge clearance](/loopforge-shifts/review/first-playthrough/limen/opening-Forge-clear.mp4)
 
-**Next decisions.** Owner reviews this proposal and later decides whether to commission a listening experiment, with a separate spending decision if needed. Exact motif pitches, timbres, mix and assets need listening. ENGINE later reviews observation visibility with SYSTEMS, supplies a scoped event adapter and implements the transport, lifecycle and measured performance. All future live inputs and audible responses described here remain proposals. [Music Director handoff](/stepanoskin/loopforge/design/studio/music-director) · [ENGINE handoff](/stepanoskin/loopforge/design/studio/engine-master)
+**Next decisions.** Owner approved the proposal and commissioned execution. First decision: select the E-flat or C-sharp landing, or return both. Timbral polish, integration, commercial release and any spending require separate decisions. ENGINE later reviews observation visibility with SYSTEMS, supplies a scoped event adapter and implements the transport, lifecycle and measured performance. All future live inputs and audible responses described here remain proposals. [Music Director handoff](/stepanoskin/loopforge/design/studio/music-director) · [ENGINE handoff](/stepanoskin/loopforge/design/studio/engine-master)

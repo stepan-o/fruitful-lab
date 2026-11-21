@@ -2,6 +2,12 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 21 November 2026 · Two endings to one descent
+
+MUSIC DIRECTOR rendered the first 24-second sketches after the owner merged the design proposal. In one, the last note rubs against D from above; in the other it hangs just below. The menu break loses its pitched layers in Options, then its fast hats continue over the Conveyor snare. The held carrier leaves an audible gap in the bass. The two takes share one backing and gain setting.
+
+The [A/B player](/stepanoskin/loopforge/design#music-listening) keeps position when switching. All drums and pitched voices were synthesized from the original project source. The owner has yet to select the note. [Review masters and level measurements](/loopforge-design/music-audition/session.json) · [Audio provenance](/loopforge-design/music-audition/provenance.md).
+
 ## 21 November 2026 · A bass note waits for the carrier
 
 In the recorded Forge clearance, LIMEN speaks while the carrier is still at the station. The owner chose to let visible work shape the score. The proposed bass leaves room during the wait and can answer on the next beat after motion. A second delivery of the same event ID earns one receipt and the same single musical answer.

@@ -2,6 +2,10 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 21 November 2026 · Day 2 has a starting UI design
+
+The owner approved the [Day 2 desktop and phone storyboard](/loopforge-design/day-two-ui/board.html) as the starting UI design. The Operator answers Leadership at the physical desk. Security and Conveyor fill the screen with the factory floor, with speech beside the speaker and actions at the worker or station. Both supervisor assignments run through the bell in the [walkthrough](/loopforge-design/day-two-ui/index.html). Runtime integration remains a separate handoff.
+
 ## 21 November 2026 · Taking the Menu break into Options
 
 The owner approved the Main menu arrangement and wanted more of its drummer in Options. The first solo spent 2:20 passing the figure around the kit. The new 47-second cycle borrows the Menu’s opening stick-and-tom call, gives the snare a double-stroke answer, and pulls the kick back so the low tom can carry a phrase. The two-step comes home with a short run across the shells. [Hear the Options solo](/stepanoskin/loopforge/design#music-long-options).
@@ -33,6 +37,20 @@ The owner chose 164/82, then pointed out what the short comparison could never d
 ## 21 November 2026 · From one held note to three playable phrases
 
 The owner chose C♯ and described three rooms by ear. The second local session keeps the same 48-bar performance on two tempo grids. The Menu moves one chord tone, Options passes the figure around the kit, and Conveyor leaves space for its sustained reply. Two edits place the same welcome over the same 1× Forge picture. Moving the musical pulse changes neither the picture nor the time of the line. The authoring record distinguishes the editorial placement from gameplay evidence. At publication the tempo and production timbre were open. The later dedicated-room entry records the tempo decision. [Listen](/stepanoskin/loopforge/design#music-listening) · [Session record](/loopforge-design/music-audition/session-02/session.json) · [Production and clearance](/stepanoskin/loopforge/design/studio/music-production).
+
+## 21 November 2026 · The held line goes to UI
+
+The owner selected E’s matte, backlit checkpoint, then approved E1. Its cyan blade sits on LIMEN’s right wrist and angles back along the staff side. His square jaw and ed’s swept profile distinguish the two at a glance. The [approved portrait](/loopforge-design/missing-id-bob/v1/index.html#held-proofs) brings the closed gate above bob’s open palm. [UI DESIGNER takes the case](https://github.com/stepan-o/fruitful-lab/blob/codex/art-missing-id-bob/docs/loopforge/production/missing-id-bob/held-line-r1/UI-DESIGNER.md) from the marked desk through inspection, choice and return.
+
+## 21 November 2026 · An empty place on the counter
+
+In the first Missing ID painting, bob had an empty hand but Security could have been any factory desk. The owner called out the room, the missing staff and the absence of a stopped entrance line. The next composition put ed over the register and gave gus a raised palm at a barred lane, with jo first behind the stripe. The owner preferred that closer setup to a wider figure study.
+
+LIMEN’s own Security Operations painting supplied his weight, dull steel and right-forearm blade. In the [revised event plates](/loopforge-design/missing-id-bob/v1/index.html) the barrel of his cuff turns back to the staff side. The portrait stacks the waiting line above the counter because a crop of the landscape would take jo and gus out of the frame. Both revised compositions await owner art review.
+
+## 21 November 2026 · Between the call and the stroke
+
+Five ticks after the Producer clears Forge, max is still waiting beside the loaded press. At tick ten he receives LIMEN’s call. The first [Forge UI study](/loopforge-design/forge-study/index.html) holds the camera across that interval and pairs the same views on desktop and phone. Start with the three clean stills, then compare the replay and annotations. The owner chose crew behavior as the signal to follow. The visual reading of the proposed poses is awaiting owner review.
 
 ## 21 November 2026 · Two endings to one descent
 

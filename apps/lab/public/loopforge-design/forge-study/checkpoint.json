@@ -1,0 +1,356 @@
+[
+  {
+    "name": "wait",
+    "tick": 8074,
+    "stroke": 0,
+    "speech": "Belt, all clear.",
+    "callDue": null,
+    "rack": 4,
+    "secondsToBell": 39.35,
+    "machines": [
+      {
+        "name": "intake",
+        "crew": [
+          "sam"
+        ],
+        "carrier": "D2-C3",
+        "hold": "Waiting for clearance",
+        "canClear": true
+      },
+      {
+        "name": "wash",
+        "crew": [
+          "bob"
+        ],
+        "carrier": "",
+        "hold": "Waiting for carrier",
+        "canClear": false
+      },
+      {
+        "name": "belt",
+        "crew": [
+          "jo"
+        ],
+        "carrier": "",
+        "hold": "Waiting for carrier",
+        "canClear": false
+      },
+      {
+        "name": "forge",
+        "crew": [
+          "max"
+        ],
+        "carrier": "D2-C2",
+        "hold": "Waiting for clearance",
+        "canClear": true
+      }
+    ],
+    "crew": [
+      {
+        "id": "LIMEN",
+        "x": 126.3,
+        "y": 142.2
+      },
+      {
+        "id": "ben",
+        "x": 117.5,
+        "y": 142
+      },
+      {
+        "id": "bob",
+        "x": 123.7,
+        "y": 144.4
+      },
+      {
+        "id": "ed",
+        "x": 120.65,
+        "y": 143.9
+      },
+      {
+        "id": "gus",
+        "x": 134.95,
+        "y": 144
+      },
+      {
+        "id": "jo",
+        "x": 127.7,
+        "y": 144.4
+      },
+      {
+        "id": "kit",
+        "x": 128.8,
+        "y": 143.3
+      },
+      {
+        "id": "lou",
+        "x": 134,
+        "y": 143.1
+      },
+      {
+        "id": "mae",
+        "x": 118.6,
+        "y": 143.2
+      },
+      {
+        "id": "max",
+        "x": 131.7,
+        "y": 144.4
+      },
+      {
+        "id": "sam",
+        "x": 119.7,
+        "y": 144.4
+      }
+    ],
+    "recentEvents": [
+      {
+        "tick": 8074,
+        "kind": "control.ready",
+        "actor": "max",
+        "text": "Waiting for the Forge call"
+      }
+    ]
+  },
+  {
+    "name": "call",
+    "tick": 8079,
+    "stroke": 0,
+    "speech": "Forge, all clear. max.",
+    "callDue": 8084,
+    "rack": 4,
+    "secondsToBell": 39.1,
+    "machines": [
+      {
+        "name": "intake",
+        "crew": [
+          "sam"
+        ],
+        "carrier": "D2-C3",
+        "hold": "Waiting for clearance",
+        "canClear": false
+      },
+      {
+        "name": "wash",
+        "crew": [
+          "bob"
+        ],
+        "carrier": "",
+        "hold": "Waiting for carrier",
+        "canClear": false
+      },
+      {
+        "name": "belt",
+        "crew": [
+          "jo"
+        ],
+        "carrier": "",
+        "hold": "Waiting for carrier",
+        "canClear": false
+      },
+      {
+        "name": "forge",
+        "crew": [
+          "max"
+        ],
+        "carrier": "D2-C2",
+        "hold": "LIMEN calling max",
+        "canClear": false
+      }
+    ],
+    "crew": [
+      {
+        "id": "LIMEN",
+        "x": 126.3,
+        "y": 142.2
+      },
+      {
+        "id": "ben",
+        "x": 117.5,
+        "y": 142
+      },
+      {
+        "id": "bob",
+        "x": 123.7,
+        "y": 144.4
+      },
+      {
+        "id": "ed",
+        "x": 121.42,
+        "y": 143.795
+      },
+      {
+        "id": "gus",
+        "x": 134.95,
+        "y": 144
+      },
+      {
+        "id": "jo",
+        "x": 127.7,
+        "y": 144.4
+      },
+      {
+        "id": "kit",
+        "x": 128.8,
+        "y": 143.3
+      },
+      {
+        "id": "lou",
+        "x": 134,
+        "y": 143.1
+      },
+      {
+        "id": "mae",
+        "x": 118.6,
+        "y": 143.2
+      },
+      {
+        "id": "max",
+        "x": 131.7,
+        "y": 144.4
+      },
+      {
+        "id": "sam",
+        "x": 119.7,
+        "y": 144.4
+      }
+    ],
+    "recentEvents": [
+      {
+        "tick": 8074,
+        "kind": "control.ready",
+        "actor": "max",
+        "text": "Waiting for the Forge call"
+      },
+      {
+        "tick": 8074,
+        "kind": "speech.delivered",
+        "actor": "LIMEN",
+        "text": "Forge, all clear. max."
+      }
+    ]
+  },
+  {
+    "name": "stroke",
+    "tick": 8103,
+    "stroke": 0.5,
+    "speech": "Forge, all clear. max.",
+    "callDue": null,
+    "rack": 4,
+    "secondsToBell": 37.9,
+    "machines": [
+      {
+        "name": "intake",
+        "crew": [
+          "sam"
+        ],
+        "carrier": "D2-C3",
+        "hold": "Waiting for clearance",
+        "canClear": true
+      },
+      {
+        "name": "wash",
+        "crew": [
+          "bob"
+        ],
+        "carrier": "",
+        "hold": "Waiting for carrier",
+        "canClear": false
+      },
+      {
+        "name": "belt",
+        "crew": [
+          "jo"
+        ],
+        "carrier": "",
+        "hold": "Waiting for carrier",
+        "canClear": false
+      },
+      {
+        "name": "forge",
+        "crew": [
+          "max"
+        ],
+        "carrier": "D2-C2",
+        "hold": "Working",
+        "canClear": false
+      }
+    ],
+    "crew": [
+      {
+        "id": "LIMEN",
+        "x": 126.3,
+        "y": 142.2
+      },
+      {
+        "id": "ben",
+        "x": 117.5,
+        "y": 142
+      },
+      {
+        "id": "bob",
+        "x": 123.7,
+        "y": 144.4
+      },
+      {
+        "id": "ed",
+        "x": 125.116,
+        "y": 143.291
+      },
+      {
+        "id": "gus",
+        "x": 134.95,
+        "y": 144
+      },
+      {
+        "id": "jo",
+        "x": 127.7,
+        "y": 144.4
+      },
+      {
+        "id": "kit",
+        "x": 128.8,
+        "y": 143.3
+      },
+      {
+        "id": "lou",
+        "x": 134,
+        "y": 143.1
+      },
+      {
+        "id": "mae",
+        "x": 118.6,
+        "y": 143.2
+      },
+      {
+        "id": "max",
+        "x": 131.7,
+        "y": 144.4
+      },
+      {
+        "id": "sam",
+        "x": 119.7,
+        "y": 144.4
+      }
+    ],
+    "recentEvents": [
+      {
+        "tick": 8074,
+        "kind": "control.ready",
+        "actor": "max",
+        "text": "Waiting for the Forge call"
+      },
+      {
+        "tick": 8074,
+        "kind": "speech.delivered",
+        "actor": "LIMEN",
+        "text": "Forge, all clear. max."
+      },
+      {
+        "tick": 8084,
+        "kind": "clear.received",
+        "actor": "max",
+        "text": "ui-forge"
+      }
+    ]
+  }
+]

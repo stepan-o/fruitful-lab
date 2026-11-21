@@ -1,0 +1,82 @@
+{
+  "title": "Missing ID · bob — landscape selection",
+  "anchor_commit": "48755ed3cb99c62245e91cf7d9518bd92c0de8c6",
+  "status": "Owner selected E’s staging and finish and approved its E1 revision. Use ../held-line-r1/manifest.json for the screen study.",
+  "candidates": [
+    {
+      "id": "A",
+      "title": "Inspection light",
+      "description": "A cold shaft falls across both of bob’s open palms and the bare counter.",
+      "master": "A/master.png",
+      "original_pixel_dimensions": [
+        1536,
+        1024
+      ],
+      "master_sha256": "a0cbd3129e53affafeeefc09e7a336b439f0abb684ca5eae64c38544f219c631",
+      "generation_record": "A/generation.txt",
+      "generation_prompt": "A/prompt.txt",
+      "review_export": "A-d1f1fed94a4c.webp",
+      "export_sha256": "d1f1fed94a4c61bae25e01775203b7329ddca30c92661539861031c54defe408"
+    },
+    {
+      "id": "B",
+      "title": "Worn brass",
+      "description": "Warm edge light picks out the desk lip. bob raises one hand and waits for LIMEN’s answer.",
+      "master": "B/master.png",
+      "original_pixel_dimensions": [
+        1536,
+        1024
+      ],
+      "master_sha256": "1b5a73c5343d2920f96fc975dbe6d2277dadcccaa9be5570e3234e0ea1a13067",
+      "generation_record": "B/generation.txt",
+      "generation_prompt": "B/prompt.txt",
+      "review_export": "B-b6047ebf6767.webp",
+      "export_sha256": "b6047ebf67675b6b7e50d73b07a2da3609dce469052f4eefb86ec83117e52fe9"
+    },
+    {
+      "id": "C",
+      "title": "Ink and oxide",
+      "description": "Dense engraved lines and sparse cyan separate the cast. bob’s raised palm breaks the open space above the desk.",
+      "master": "C/master.png",
+      "original_pixel_dimensions": [
+        1536,
+        1024
+      ],
+      "master_sha256": "0e3fd03f70c020c43fd8e7abb230c1d28b38be5a28f4eba068c24630d0cf26c1",
+      "generation_record": "C/generation.txt",
+      "generation_prompt": "C/prompt.txt",
+      "review_export": "C-c8431691eec7.webp",
+      "export_sha256": "c8431691eec78832faa213327dd5907a3cfbb735094e2726dffea8e1122bfdc9"
+    },
+    {
+      "id": "D",
+      "title": "Shift change light",
+      "description": "Soft grey-green overhead light and broad matte brushwork give LIMEN’s listening pause more weight.",
+      "master": "D/master.png",
+      "original_pixel_dimensions": [
+        1536,
+        1024
+      ],
+      "master_sha256": "29d514f04e376d9e7f9f7d2a4726370e78de5c4f2361c37f17de334ea743d489",
+      "generation_record": "D/generation.txt",
+      "generation_prompt": "D/prompt.txt",
+      "review_export": "D-36a59adaf096.webp",
+      "export_sha256": "36a59adaf096754171531ab33becdeeade12fef8590a771087bd3e51bbc0d39f"
+    },
+    {
+      "id": "E",
+      "title": "The held line",
+      "description": "Doorway backlight separates jo and the waiting workers. gus’s raised palm explains the stopped entrance at a glance.",
+      "master": "E/master.png",
+      "original_pixel_dimensions": [
+        1536,
+        1024
+      ],
+      "master_sha256": "d94cb23b399a0ee75c887fb19abc24bc712e5d6eee2d256f3548db1bd7f2a2dc",
+      "generation_record": "E/generation.txt",
+      "generation_prompt": "E/prompt.txt",
+      "review_export": "E-63fc79af38c0.webp",
+      "export_sha256": "63fc79af38c04f3e9033c9d54bd83182ae1511f19da2283297fda4beab8dca2f"
+    }
+  ]
+}

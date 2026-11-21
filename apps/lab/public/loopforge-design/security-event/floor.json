@@ -1,0 +1,179 @@
+{
+  "held": {
+    "tick": 7541,
+    "caseStatus": "open",
+    "spent": null,
+    "pass": null,
+    "cameras": {
+      "desktop": {
+        "LIMEN": [
+          287,
+          389
+        ],
+        "bob": [
+          332,
+          355
+        ],
+        "ed": [
+          207,
+          355
+        ],
+        "gus": [
+          602,
+          353
+        ],
+        "jo": [
+          407,
+          280
+        ]
+      },
+      "phone": {
+        "LIMEN": [
+          132,
+          330
+        ],
+        "bob": [
+          162,
+          307
+        ],
+        "ed": [
+          77,
+          307
+        ],
+        "gus": [
+          347,
+          306
+        ],
+        "jo": [
+          214,
+          255
+        ]
+      }
+    },
+    "passages": [
+      "sam",
+      "max"
+    ],
+    "called": "bob"
+  },
+  "closed": {
+    "tick": 7821,
+    "caseStatus": "detention",
+    "spent": null,
+    "pass": null,
+    "cameras": {
+      "desktop": {
+        "LIMEN": [
+          287,
+          389
+        ],
+        "bob": [
+          332,
+          355
+        ],
+        "ed": [
+          207,
+          355
+        ],
+        "gus": [
+          602,
+          353
+        ],
+        "jo": [
+          407,
+          280
+        ]
+      },
+      "phone": {
+        "LIMEN": [
+          132,
+          330
+        ],
+        "bob": [
+          162,
+          307
+        ],
+        "ed": [
+          77,
+          307
+        ],
+        "gus": [
+          347,
+          306
+        ],
+        "jo": [
+          214,
+          255
+        ]
+      }
+    },
+    "passages": [
+      "sam",
+      "max"
+    ],
+    "called": ""
+  },
+  "issued": {
+    "tick": 7586,
+    "caseStatus": "pass",
+    "spent": "issue-pass",
+    "pass": {
+      "holder": "bob",
+      "issuer": "Producer",
+      "day": 2,
+      "valid": true
+    },
+    "cameras": {
+      "desktop": {
+        "LIMEN": [
+          287,
+          389
+        ],
+        "bob": [
+          328,
+          518
+        ],
+        "ed": [
+          207,
+          355
+        ],
+        "gus": [
+          602,
+          353
+        ],
+        "jo": [
+          343,
+          301
+        ]
+      },
+      "phone": {
+        "LIMEN": [
+          132,
+          330
+        ],
+        "bob": [
+          159,
+          418
+        ],
+        "ed": [
+          77,
+          307
+        ],
+        "gus": [
+          347,
+          306
+        ],
+        "jo": [
+          169,
+          270
+        ]
+      }
+    },
+    "passages": [
+      "sam",
+      "max",
+      "bob"
+    ],
+    "called": "jo"
+  }
+}

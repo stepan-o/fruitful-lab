@@ -5,7 +5,9 @@ import {type Floor} from '../../../lib/loopforge/shifts/playthrough';
 import {type Campaign,saveCampaign} from '../../../lib/loopforge/shifts/campaign-save';
 import {ratings,needs} from '../../../lib/loopforge/shifts/station-line';
 import {type Command,type Lead,type Room} from '../../../lib/loopforge/shifts/contract';
-import {floorView,loadArt,paint,drawBidPortrait} from '../../../lib/loopforge/shifts/painter';
+import {cutOpacity,roomCut} from '../../../lib/loopforge/factory-scene';
+import {type Transport} from '../../../lib/loopforge/shifts/playback';
+import {loadArt,paint,drawBidPortrait} from '../../../lib/loopforge/shifts/painter';
 import {loadSkin,select} from '../../../lib/loopforge/shifts/skin';
 import castArt from '../../../public/loopforge-design/sprite-briefs/reference/cast-art.843f7ebcb359c3ec.json';
 import css from './shift-floor.module.css';
@@ -25,70 +27,89 @@ function Portrait({id,assets}:{id:string;assets:Art|null}){
   if(portrait)return <span className={css.portrait} aria-hidden="true" style={{backgroundImage:'url('+portrait.variants[0].src+')'}}/>;
   return <canvas ref={ref} width="36" height="35" aria-hidden="true"/>;
 }
-export default function ShiftFloor({run,onFinish,suspended,onClock}:{run:Campaign;onClock:(time:string)=>void;onFinish:()=>void;suspended:boolean}){
+export default function ShiftFloor({run,onFinish,transport,ahead,onClock,onProgress}:{transport:Transport;ahead:number;onProgress:(run:Campaign,presented?:number)=>void;run:Campaign;onClock:(time:string)=>void;onFinish:()=>void}){
   const [floor,setFloor]=useState<Floor|null>(null),[assets,setAssets]=useState<Art|null>(null);
   const [room,setRoom]=useState<Room>(run.room),[bid,setBid]=useState<Lead|null>(null),[worker,setWorker]=useState('');
-  const [notice,setNotice]=useState(''),[paused,setPaused]=useState(false),[caseOpen,setCaseOpen]=useState(false);
+  const [notice,setNotice]=useState(''),[caseOpen,setCaseOpen]=useState(false);
   const [destination,setDestination]=useState<number|null>(null);
   const [cutaway,setCutaway]=useState<Room|null>(null),[assignmentOpen,setAssignmentOpen]=useState(false);
-  const ordersPaused=paused||suspended;
+  const ordersPaused=transport.paused;
+  const initial=useRef({transport,ahead});
+  const camera=useRef({x:0,y:0,scale:0,last:0});
+  const transition=useRef(0);
+  const [fade,setFade]=useState(0);
+  function switchShot(target:Room){transition.current=0;setFade(0);setCutaway(target);}
+  useEffect(()=>{
+    if(!cutaway||transport.paused)return;
+    let frame=0,last=performance.now();
+    function animate(now:number){
+      if(!document.hidden)transition.current+=Math.min(.15,(now-last)/1000)*transport.speed;
+      last=now;
+      const offset=transition.current-roomCut.out;
+      if(offset>=0)setRoom(cutaway!);
+      setFade(cutOpacity(offset));
+      if(offset<roomCut.into)frame=requestAnimationFrame(animate);
+      else setCutaway(null);
+    }
+    frame=requestAnimationFrame(animate);return ()=>cancelAnimationFrame(frame);
+  },[cutaway,transport.paused,transport.speed]);
   const focusStation=destination??(floor?.manual?Math.max(0,floor.machines.findIndex(m=>m.canClear)):0);
   const [viewSize,resize]=useState(0);
   const signal=useRef<HTMLButtonElement>(null);
   const canvas=useRef<HTMLCanvasElement>(null),host=useRef<Worker|null>(null);
   useEffect(()=>{
-    let live=true,midpoint:ReturnType<typeof setTimeout>,reveal:ReturnType<typeof setTimeout>;
+    let live=true;
     art().then(bank=>{if(live)setAssets(bank);}).catch(e=>setNotice(String(e)));
     const w=new Worker(new URL('../../../lib/loopforge/shifts/playthrough.worker.ts',import.meta.url),{type:'module'});host.current=w;
     w.onerror=e=>setNotice(e.message||'The shift could not start.');
     w.onmessage=({data:m})=>{
+      if(!live)return;
       if(m.type!=='frame'){setNotice(m.reason);return;}
       const f:Floor=m.floor;
       if(m.cmd&&!run.progress.commands.some(c=>c.id===m.cmd.id))run.progress.commands.push(m.cmd);
       run.progress.tick=f.tick;
-      if(run.shotSeq!==f.shotSeq){run.shotSeq=f.shotSeq;run.room=f.shot;clearTimeout(midpoint);clearTimeout(reveal);
-        setCutaway(f.shot);
-        midpoint=setTimeout(()=>setRoom(f.shot),650);
-        reveal=setTimeout(()=>setCutaway(null),1800);
+      if(run.shotSeq!==f.shotSeq){run.shotSeq=f.shotSeq;run.room=f.shot;
+        if(m.presented!==undefined){setRoom(f.shot);setFade(0);setCutaway(null);}else switchShot(f.shot);
         setWorker('');setDestination(null);setAssignmentOpen(!!f.tutorial?.held);
       }
       const shiftLength=f.bell?(f.tutorial?4800:2400):0;
       const start=f.scene.world.start;
       onClock(clockText(dayTwoMinute(f.tick-start,shiftLength?f.bell-shiftLength-start:0,shiftLength,run.morningSeconds??0)));
-      saveCampaign(run);setFloor(f);
+      onProgress(run,m.presented);saveCampaign(run);setFloor(f);
     };
-    w.postMessage({type:'join',source:run.source,progress:run.progress});
-    return ()=>{live=false;clearTimeout(midpoint);clearTimeout(reveal);w.terminate();host.current=null;};
-  },[run,onClock]);
+    w.postMessage({type:'join',source:run.source,progress:run.progress,ahead:initial.current.ahead,...initial.current.transport});
+    return ()=>{live=false;w.terminate();host.current=null;};
+  },[run,onClock,onProgress]);
   useEffect(()=>{
-    const sync=()=>host.current?.postMessage({type:'suspend',on:paused||suspended||document.hidden});
+    const sync=()=>host.current?.postMessage({type:'suspend',on:transport.paused||document.hidden,speed:transport.speed});
     sync();document.addEventListener('visibilitychange',sync);return ()=>document.removeEventListener('visibilitychange',sync);
-  },[paused,suspended]);
+  },[transport.paused,transport.speed]);
   useEffect(()=>{
     const c=canvas.current;if(!c)return;
     const observer=new ResizeObserver(()=>resize(n=>n+1));observer.observe(c);return ()=>observer.disconnect();
   },[floor?.scene.world.phase]);
   useEffect(()=>{
-    const c=canvas.current,ctx=c?.getContext('2d');if(!ctx||!c||!floor||!assets||suspended)return;
+    const c=canvas.current,ctx=c?.getContext('2d');if(!ctx||!c||!floor||!assets)return;
     const w=Math.round(c.clientWidth),h=Math.round(c.clientHeight);if(!w||!h)return;
     if(c.width!==w||c.height!==h){c.width=w;c.height=h;}
     const frame={tick:floor.tick,hash:'',scene:floor.scene},view=select(frame,room,'','');
     const speeches=floor.dialogue.filter(e=>e.room===room||room==='security'&&floor.scene.world.stage==='walk');
     const last=speeches.at(-1);
     view.speeches=last?speeches.filter(e=>e.tick===last.tick).map(e=>({seq:e.seq,tick:e.tick,speaker:e.actor,text:e.text,at:e.at,asset:'fl-bubble',nameplate:'fl-bubble-nameplate'})):[];
+    const xy=paint(ctx,w,h,floor.scene,room,floor.tick,assets[0],assets[1],view,{...floor,camera:camera.current,fade,paused:transport.paused,still:window.matchMedia("(prefers-reduced-motion: reduce)").matches,focusStation:window.matchMedia('(max-width:800px)').matches&&(!floor.tutorial||destination!==null)?focusStation:undefined});
     if(signal.current){
       const bob=floor.scene.agents.find(a=>a.id==='bob');
       if(bob){
-        const [x,y]=floorView(w,h,'security').xy(bob.x/1000,bob.y/1000);
+        const [x,y]=xy(bob.x/1000,bob.y/1000);
         signal.current.style.left=Math.max(68,Math.min(w-68,x))+'px';
         signal.current.style.top=Math.max(68,Math.min(h-48,y+8))+'px';
       }
     }
-    paint(ctx,w,h,floor.scene,room,floor.tick,assets[0],assets[1],view,{...floor,focusStation:window.matchMedia('(max-width:800px)').matches&&(!floor.tutorial||destination!==null)?focusStation:undefined});
-  },[floor,assets,room,viewSize,suspended,focusStation,destination,caseOpen]);
+
+  },[floor,assets,room,viewSize,transport.paused,fade,focusStation,destination,caseOpen]);
   if(!floor)return <p role="status">{notice||'Connecting to the factory…'}</p>;
   const w=floor.scene.world, manual=floor.manual,selected=floor.workers.find(a=>a.id===worker&&a.available);
-  const changeRoom=(r:Room)=>{setRoom(r);run.room=r;saveCampaign(run);setNotice('');};
+  const changeRoom=(r:Room)=>{if(r!==room)switchShot(r);run.room=r;onProgress(run);saveCampaign(run);setNotice('');};
   function send(action:Command['action'],target:string,incident:string,at:Room){
     if(!floor||ordersPaused)return;
     setNotice('');host.current?.postMessage({type:'command',cmd:{id:crypto.randomUUID(),day:2,tick:floor.tick,room:at,action,target,incident}});
@@ -115,11 +136,10 @@ export default function ShiftFloor({run,onFinish,suspended,onClock}:{run:Campaig
     <h1>{room==='security'?'Security':'Conveyor'} <span>/ {room==='security'?w.lead:manual?'LIMEN':'STILETTO'}</span></h1></div>
     <div className={css.meter}>{floor.bell?<strong>{clock.toFixed(2)} s to bell</strong>:<strong>Walk-in</strong>}<span>Rack +{floor.dayCount} · Week {total}/{run.quota}</span></div></header>
     <nav aria-label="Factory cameras">{(['security','conveyor'] as const).map(r=><button key={r} aria-pressed={room===r} disabled={!!lesson||!!cutaway} onClick={()=>changeRoom(r)}>{r==='security'?'Security':'Conveyor'}</button>)}
-      <button onClick={()=>setPaused(p=>!p)}>{paused?'Resume':'Pause'}</button></nav>
-    {paused&&<p role="status" className={css.pauseNote}>Shift paused. Resume play to issue an order.</p>}
+    </nav>
     {notice&&<p role="status" className={css.pauseNote}>{notice}</p>}
     <div className={css.picture}>
-    {cutaway&&<div className={css.cutaway} role="status">Meanwhile at {cutaway==='security'?'Security':'Conveyor'}</div>}
+    {cutaway&&<div className={css.cutaway} style={{opacity:fade}} role="status">Meanwhile at {cutaway==='security'?'Security':'Conveyor'}</div>}
     {room==='security'&&caseLive&&!caseOpen&&<button ref={signal} className={css.eventPin} aria-label="Inspect bob’s missing ID at the desk" onClick={()=>setCaseOpen(true)}>⚑ bob · ID hold <b>{Math.max(0,Math.ceil((w.deadline-floor.tick)/20))} s</b></button>}
     <canvas className={css.stage} data-dialogue={w.stage!=='work'||room==='security'||floor.opening} ref={canvas} aria-label="Live factory floor with named workers and speech bubbles"/>
     </div>

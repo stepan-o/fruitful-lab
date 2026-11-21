@@ -1,7 +1,7 @@
 name: Record the first two shifts
 on:
   push:
-    branches: [codex/loopforge-first-playthrough, codex/loopforge-playthrough-corrections, codex/loopforge-owner-playtest-flow]
+    branches: [codex/loopforge-first-playthrough, codex/loopforge-playthrough-corrections, codex/loopforge-owner-playtest-flow, codex/loopforge-playback-shared-floor]
     paths:
       - 'apps/lab/lib/loopforge/**'
       - 'apps/lab/components/loopforge/**'
@@ -30,6 +30,7 @@ jobs:
           "$RUNNER_TEMP/review/node_modules/.bin/playwright" install chromium
           if ! command -v ffmpeg; then sudo apt-get update -qq && sudo apt-get install -y ffmpeg; fi
       - name: Locate the preview for this revision
+        if: github.ref_name != 'codex/loopforge-playback-shared-floor'
         env:
           GH_TOKEN: ${{ github.token }}
           REVIEW_MESSAGE: ${{ github.event.head_commit.message }}
@@ -74,7 +75,7 @@ jobs:
         if: github.ref_name == 'codex/loopforge-playthrough-corrections'
         run: NODE_PATH="$RUNNER_TEMP/review/node_modules" node apps/lab/scripts/shifts/first-playthrough-corrections.cjs "${{ matrix.conveyor }}"
       - name: Play the owner tutorial through the bell
-        if: github.ref_name == 'codex/loopforge-owner-playtest-flow'
+        if: github.ref_name == 'codex/loopforge-owner-playtest-flow' || github.ref_name == 'codex/loopforge-playback-shared-floor'
         run: NODE_PATH="$RUNNER_TEMP/review/node_modules" node apps/lab/scripts/shifts/owner-playtest-browser.cjs "${{ matrix.conveyor }}"
       - name: Play from the entrance through the bell at 1×
         if: github.ref_name == 'codex/loopforge-first-playthrough'

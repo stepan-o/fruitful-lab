@@ -20,8 +20,19 @@ async function play(){
     await page.locator('a[href="/stepanoskin/loopforge/play"]').first().click();
     const dev=page.getByRole('switch',{name:'Dev mode'});
     await dev.check();await dev.uncheck();await snap('menu');
+    const transport=page.getByRole('group',{name:'Factory playback'});
+    const control=name=>transport.getByRole('button',{name,exact:true});
+    const forward=()=>control('Forward 10 seconds').click(),rewind=()=>control('Rewind 10 seconds').click();
+    await control('0.5× speed').click();await snap('menu-half-speed');
+    await button(/^Enter factory/).click();
+    await page.waitForFunction(()=>JSON.parse(sessionStorage.getItem('loopforge.playthrough.1'))?.seconds>.25);
+    await control('Pause').click();await forward();
+    await page.waitForFunction(()=>JSON.parse(sessionStorage.getItem('loopforge.playthrough.1')).seconds>=9.9);
+    const after=(await read()).seconds;await page.waitForTimeout(600);
+    assert.equal((await read()).seconds,after);
+    await rewind();assert.ok((await read()).seconds<after-9);
+    await control('2× speed').click();await control('Play').click();
     if(regular){
-      await button(/^Enter factory/).click();
       for(const [index,name] of ['Intake','Wash','Belt','Forge','Intake','Wash','Belt','Forge'].entries()){
         const order=button(new RegExp('^'+name+' ·'));
         await order.waitFor();
@@ -29,8 +40,10 @@ async function play(){
         await order.click();
       }
     }else{
-      await button(/^Enter factory/).click();await button('Skip to Day 2').click();
+      await button('Skip to Day 2').click();
       await button('Answer leadership').waitFor();const skipped=await read();
+      await rewind();await button('Skip to Day 2').waitFor();
+      await forward();await control('Play').click();await button('Answer leadership').waitFor();
       await button('Main menu').click();await button('2nd day').click();
       await button('Answer leadership').waitFor();assert.deepEqual((await read()).source,skipped.source);
     }
@@ -47,6 +60,9 @@ async function play(){
       await page.getByText(/Give each operator two stations/).waitFor();await snap('two-operators');
       await assign(['sam','sam','max','max']);
       await button(/^Missing ID/).click();await snap('missing-card');await button('Issue daily pass').click();
+      await page.getByText(/Daily pass granted/).waitFor();
+      await rewind();assert.ok(!(await read()).progress.commands.some(c=>c.action==='issue-pass'));
+      await forward();await control('Play').click();
       await page.getByText(/Daily pass granted/).waitFor();
       await page.getByText(/Assign a different operator/).waitFor();await assign(['sam','bob','jo','max']);
       await page.getByText(/More crew at the entrance/).waitFor();await snap('live-arrivals');

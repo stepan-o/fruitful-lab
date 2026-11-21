@@ -7,6 +7,6 @@
 :global([data-display=normal]) .page[data-story=true]{min-height:0;padding:0;background:#101918}
 :global([data-display=normal]) .page[data-story=true] header,:global([data-display=normal]) .page[data-story=true] .title,:global([data-display=normal]) .page[data-story=true] output{display:none}
 :global([data-display=normal]) .console{position:relative;max-width:none}
-:global([data-display=normal]) .surface{height:calc(100dvh - 52px);border:0}
+:global([data-display=normal]) .surface{height:calc(100dvh - var(--playbar,52px));border:0}
 :global([data-display=normal]) .controls{position:absolute;bottom:0;right:0;padding:6px 10px;background:#111d1df0;border:0}
 :global([data-display=normal]) .order{position:absolute;inset:auto 8px 59px;margin:0 auto;box-shadow:0 6px 25px #10191866}

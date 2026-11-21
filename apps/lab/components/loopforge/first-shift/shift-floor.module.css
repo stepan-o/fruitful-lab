@@ -77,3 +77,8 @@
 :global([data-display=normal]) .stations,:global([data-display=normal]) .crewSection{padding:0 8px}
 :global([data-display=normal]) .pauseNote{position:relative;z-index:2;margin-top:52px}
 @media(max-width:800px){:global([data-display=normal]) .floor>header{top:52px;left:6px;padding:2px 6px;gap:4px}:global([data-display=normal]) .meter{font-size:11px}.toolbar .clock{font-size:17px}.stations[data-lesson=true]{display:grid;grid-template-columns:1fr 1fr}.stations[data-lesson=true] section{display:grid;padding:4px}.stations[data-lesson=true] section p{display:none}.stations[data-lesson=true] section>b{grid-column:1/-1;text-align:left}}
+.floor .eventPin{position:absolute;z-index:1;left:50%;top:60%;transform:translateX(-50%);background:#e4bc80;color:#18201c;border:2px solid #2a3329;font-weight:700;white-space:nowrap;box-shadow:0 3px 12px #08121088}
+.eventPin b{font:700 13px monospace}
+.cutaway~.stage{animation:roomlens 1.8s ease-in-out}
+@keyframes roomlens{0%,100%{transform:scale(1)}38%,58%{transform:scale(.96)}}
+@media(prefers-reduced-motion:reduce){.cutaway~.stage{animation:none}}

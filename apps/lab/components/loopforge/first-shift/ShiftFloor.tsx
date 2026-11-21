@@ -5,7 +5,7 @@ import {type Floor} from '../../../lib/loopforge/shifts/playthrough';
 import {type Campaign,saveCampaign} from '../../../lib/loopforge/shifts/campaign-save';
 import {ratings,needs} from '../../../lib/loopforge/shifts/station-line';
 import {type Command,type Lead,type Room} from '../../../lib/loopforge/shifts/contract';
-import {loadArt,paint,drawBidPortrait} from '../../../lib/loopforge/shifts/painter';
+import {floorView,loadArt,paint,drawBidPortrait} from '../../../lib/loopforge/shifts/painter';
 import {loadSkin,select} from '../../../lib/loopforge/shifts/skin';
 import castArt from '../../../public/loopforge-design/sprite-briefs/reference/cast-art.843f7ebcb359c3ec.json';
 import css from './shift-floor.module.css';
@@ -34,6 +34,7 @@ export default function ShiftFloor({run,onFinish,suspended,onClock}:{run:Campaig
   const ordersPaused=paused||suspended;
   const focusStation=destination??(floor?.manual?Math.max(0,floor.machines.findIndex(m=>m.canClear)):0);
   const [viewSize,resize]=useState(0);
+  const signal=useRef<HTMLButtonElement>(null);
   const canvas=useRef<HTMLCanvasElement>(null),host=useRef<Worker|null>(null);
   useEffect(()=>{
     let live=true,midpoint:ReturnType<typeof setTimeout>,reveal:ReturnType<typeof setTimeout>;
@@ -75,8 +76,16 @@ export default function ShiftFloor({run,onFinish,suspended,onClock}:{run:Campaig
     const speeches=floor.dialogue.filter(e=>e.room===room||room==='security'&&floor.scene.world.stage==='walk');
     const last=speeches.at(-1);
     view.speeches=last?speeches.filter(e=>e.tick===last.tick).map(e=>({seq:e.seq,tick:e.tick,speaker:e.actor,text:e.text,at:e.at,asset:'fl-bubble',nameplate:'fl-bubble-nameplate'})):[];
+    if(signal.current){
+      const bob=floor.scene.agents.find(a=>a.id==='bob');
+      if(bob){
+        const [x,y]=floorView(w,h,'security').xy(bob.x/1000,bob.y/1000);
+        signal.current.style.left=Math.max(68,Math.min(w-68,x))+'px';
+        signal.current.style.top=Math.max(68,Math.min(h-48,y+8))+'px';
+      }
+    }
     paint(ctx,w,h,floor.scene,room,floor.tick,assets[0],assets[1],view,{...floor,focusStation:window.matchMedia('(max-width:800px)').matches&&(!floor.tutorial||destination!==null)?focusStation:undefined});
-  },[floor,assets,room,viewSize,suspended,focusStation,destination]);
+  },[floor,assets,room,viewSize,suspended,focusStation,destination,caseOpen]);
   if(!floor)return <p role="status">{notice||'Connecting to the factory…'}</p>;
   const w=floor.scene.world, manual=floor.manual,selected=floor.workers.find(a=>a.id===worker&&a.available);
   const changeRoom=(r:Room)=>{setRoom(r);run.room=r;saveCampaign(run);setNotice('');};
@@ -111,6 +120,7 @@ export default function ShiftFloor({run,onFinish,suspended,onClock}:{run:Campaig
     {notice&&<p role="status" className={css.pauseNote}>{notice}</p>}
     <div className={css.picture}>
     {cutaway&&<div className={css.cutaway} role="status">Meanwhile at {cutaway==='security'?'Security':'Conveyor'}</div>}
+    {room==='security'&&caseLive&&!caseOpen&&<button ref={signal} className={css.eventPin} aria-label="Inspect bob’s missing ID at the desk" onClick={()=>setCaseOpen(true)}>⚑ bob · ID hold <b>{Math.max(0,Math.ceil((w.deadline-floor.tick)/20))} s</b></button>}
     <canvas className={css.stage} data-dialogue={w.stage!=='work'||room==='security'||floor.opening} ref={canvas} aria-label="Live factory floor with named workers and speech bubbles"/>
     </div>
     <div className={css.dock}>

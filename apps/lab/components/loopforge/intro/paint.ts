@@ -32,8 +32,9 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
   let subjects=focus(actors,story?[]:state.events,t);
   if(story&&t>=76.6&&t<95.3)subjects=actors.filter(a=>a.agent_id==='LIMEN').map(a=>[a.x/1000,a.y/1000]);
   if(story&&t>=165.4&&t<178.65)subjects=[[125,144],[130,140]];
-  if(story&&t>=110.5&&t<125.1)subjects=actors.filter(a=>['jo','bob'].includes(a.agent_id)).map(a=>[a.x/1000,a.y/1000]);
-  const transitions:[[number,string],...[number,string][]]=[[38.8,'Conveyor'],[76.6,'Security'],[95.3,'Conveyor'],[125.1,'Security'],[139.7,'Conveyor']];
+  if(story&&t>=110.5&&t<130.3)subjects=actors.filter(a=>['jo','bob'].includes(a.agent_id)).map(a=>[a.x/1000,a.y/1000]);
+  if(story&&t>=130.3&&t<139.7)subjects=actors.filter(a=>['LIMEN','max','STILETTO'].includes(a.agent_id)).map(a=>[a.x/1000,a.y/1000]);
+  const transitions:[[number,string],...[number,string][]]=[[38.8,'Conveyor'],[76.6,'Security'],[95.3,'Conveyor'],[130.3,'Security'],[139.7,'Conveyor']];
   const boundary=story?transitions.find(([at])=>t>=at-1.4&&t<at+1.75):undefined;
   const fade=boundary?Math.max(0,Math.min(1,(t-boundary[0]+1.4)/1.12,(boundary[0]+1.75-t)/1.2)):0;
   if(station)subjects.push([station.x,station.y]);

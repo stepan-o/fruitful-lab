@@ -1,6 +1,6 @@
 # Dedicated room studies · 21 November 2026
 
-Three dated exploratory recordings at 164 BPM. Conveyor feels the same grid at 82 BPM. The owner approved the C-sharp landing, the tempo and each room’s musical purpose. Main menu 06 is approved for composition and arrangement. Options 02, Conveyor and production timbre await listening. All variation in these recordings is authored. There are no game inputs, speech overdubs, provider calls, charges or account changes.
+Three dated exploratory recordings at 164 BPM. Conveyor feels the same grid at 82 BPM. The owner approved the C-sharp landing, the tempo and each room’s musical purpose. Main menu 06 and Options 02 are approved for composition and arrangement. Conveyor and production timbre await listening. All variation in these recordings is authored. There are no game inputs, speech overdubs, provider calls, charges or account changes.
 
 | ID | Score and performance | Intended listen |
 | --- | --- | --- |

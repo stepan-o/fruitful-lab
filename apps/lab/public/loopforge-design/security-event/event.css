@@ -12,6 +12,8 @@
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
+html { scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
 body, figure, h1, p { margin: 0; }
 a { color: inherit; }
 summary { cursor: pointer; }
@@ -72,8 +74,8 @@ h1:focus { outline: none; }
 .receiver[data-state="issued"] .inventory i { background: #9d9380; box-shadow: none; }
 .target, .speech { position: absolute; z-index: 1; }
 .target {
-  left: var(--bob-x); top: var(--bob-y); transform: translate(-50%,-81%);
-  width: clamp(44px, 5.2cqw, 88px); height: clamp(44px, 6.5cqh, 82px); color: var(--lamp);
+  left: var(--bob-x); top: var(--bob-y); transform: translate(-50%,-97%);
+  width: clamp(44px, 5.2cqw, 88px); height: max(44px, 10%); color: var(--lamp);
 }
 .brackets {
   position: absolute; inset: 0; filter: drop-shadow(0 1px 2px #14231c);
@@ -121,7 +123,7 @@ h1:focus { outline: none; }
   justify-content: space-between; gap: .45rem; color: #f0ebd9; text-shadow: 0 1px 6px #020908;
 }
 .source { gap: .8rem; }
-.back { display: inline-flex; align-items: center; gap: .55em; min-height: 44px; padding: 0 .25em; text-decoration: none; font-size: .93rem; font-weight: 650; }
+.back { white-space: nowrap; display: inline-flex; align-items: center; gap: .55em; min-height: 44px; padding: 0 .25em; text-decoration: none; font-size: .93rem; font-weight: 650; }
 .back span { font-size: 1.35em; color: #ffdc9c; }
 .back:hover { text-decoration: underline; }
 .caption {
@@ -161,7 +163,8 @@ h1:focus { outline: none; }
   .speech {
     transform: translate(-10%,9px); text-align: left; border-right: 0; border-left: 2px solid #bdcfbb;
   }
-  .painting img { object-position: 52% center; }
+  .painting img { object-position: 18% center; }
+  .target { height: max(44px, 7.3%); }
   .soot { background: linear-gradient(0deg,#050b0df5,#091010d9 13%,#0a10108a 24%,transparent 39%),linear-gradient(180deg,#081010a6,transparent 12%); }
 }
 @media (max-width: 650px) {
@@ -169,7 +172,7 @@ h1:focus { outline: none; }
   .channel,.source,.shift { font-size: .67rem; }
   .source,.feed-id { gap: .55rem; }
   .feed-id h1 { font-size: 1.05rem; }
-  .hardware-label { left: 6%; right: 6%; gap: .9rem; font-size: .56rem; }
+  .hardware-label { left: 3%; right: 3%; gap: .65rem; font-size: .56rem; white-space: nowrap; }
   .tag { left: calc(100% + 9px); bottom: calc(100% + 7px); padding: 3px 8px; }
   .tag::before { width: 13px; }
   .case-header { padding: 0 5vw; top: max(7px,env(safe-area-inset-top)); }
@@ -184,7 +187,16 @@ h1:focus { outline: none; }
   .decision { padding-bottom: 0; }
   #effect { font-size: .87rem; margin: .15rem 0 .5rem; max-width: none; }
   .pass { min-height: 46px; font-size: 1rem; }
-  .speech { max-width: min(25cqw, 110px); font-size: .78rem; }
+  .speech { max-width: min(50cqw, 165px); width: max-content; font-size: .78rem; }
+}
+@media (max-width: 380px) {
+  .story { grid-template-columns: 1fr auto; }
+  .eyebrow { grid-area: 1/1; }
+  .exchange { grid-area: 1/2; }
+  .story h1 { grid-area: 2/1/3/-1; }
+  .source { gap: .36rem; }
+  .case-header { padding-inline: 4vw; }
+  .exchange summary { font-size: .72rem; }
 }
 @media (max-height: 480px) and (min-aspect-ratio: 1/1) {
   #watch,#inspection { min-height: 280px; }

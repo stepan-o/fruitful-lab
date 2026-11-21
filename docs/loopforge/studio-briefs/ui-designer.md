@@ -73,6 +73,8 @@ The owner chose a worn, bolted console with bold graphics on the glass. Keep the
 
 The owner named the original *Frostpunk* as an event reference. The [missing-ID event study](/stepanoskin/loopforge/design/studio/ui-reading#frostpunk-and-the-missing-id-event) traces everyday remarks, city event markers, petitions and consequences. A dedicated composition featuring bob, LIMEN and the held queue is the designer’s recommendation for testing that sequence on desktop and phone.
 
+**Illustrated event screens, owner direction · 21 November 2026.** An event opened from the floor may use a dedicated screen with commissioned concept art, following the weekly quota call. ART DIRECTOR owns the illustration. UI DESIGNER owns the screen composition and commissions needed artwork. The game supplies the incident, action availability and outcome. The first [art commission for bob at Security](/stepanoskin/loopforge/design/studio/ui-first-assignment#art-commission-for-bob-at-security) covers the missing-ID decision before a pass exists. Delivery of the art is pending.
+
 ## Delivery and continuity
 
 Publish the agreed audit and studies through the game-design page in a scoped PR and verified preview. Update this handoff with source/build, approved decisions, observed versus proposed changes, phone and desktop evidence, remaining questions and the next implementable task. Preserve historical studies and frozen retrospectives as dated references. Keep authored source and generated pages synchronized; save compact checkpoints so a replacement chat can resume without reading prior chats.

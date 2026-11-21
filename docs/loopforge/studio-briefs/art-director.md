@@ -37,6 +37,8 @@ The comparisons use matching desktop and 320 px camera frames. The live referenc
 
 The [Days 2–4 art pack](/stepanoskin/loopforge/design#days-2-4-art) supplies the credentials, signals, speech and Producer console already bound in [the shifts player](/loopforge-shifts/index.html). bob and max remain the worker benchmark. Other identities, directional motion, supervisor acting and physical detention staging remain separate work.
 
+**Incoming UI commission · 21 November 2026.** The owner authorized generated concept art for dedicated event screens. UI DESIGNER commissions the first [Security event illustration for bob’s missing ID](/stepanoskin/loopforge/design/studio/ui-first-assignment#art-commission-for-bob-at-security). The brief includes the exact script beat, cast and floor references, quota-call precedent, portrait framing and delivery contract.
+
 ## Delivery and continuity
 
 Deliver a reviewed, indexed art pack and coverage record with clear ENGINE bindings. Maintain the gallery as the visual handoff. Update this brief with the current style lock, accepted/rejected references, pending corrections, pack versions and review status. Add a visual case study after the correction is actually reviewed; preserve the difference between composite and game footage.

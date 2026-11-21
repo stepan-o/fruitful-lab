@@ -2,9 +2,13 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 21 November 2026 · Two endings and a drum turnaround
+
+The owner found that four returns in three minutes left the Menu theme too far away. The next study brings it back after twelve bars. One reply grows out of the held C♯ and takes a different ending the next time around. In the break, the drummer drops the running hi-hat and plays across the rim, snare and toms. Two short runs mark the halfway point and the return to the tune. [Play the current Menu](/stepanoskin/loopforge/design#music-long-menu).
+
 ## 21 November 2026 · Giving the Menu a second melody
 
-The second Menu brought the drummer forward, but the owner found the returning lead too insistent and the chords too abrupt. The new opening lets the held C♯ start a second melody. The reply climbs, doubles back and later enters from a lower register while the keys ring through changes of harmony. The complete lead statement next appears at bar 33. [Hear the Menu](/stepanoskin/loopforge/design#music-long-menu).
+The second Menu brought the drummer forward, but the owner found the returning lead too insistent and the chords too abrupt. The new opening lets the held C♯ start a second melody. The reply climbs, doubles back and later enters from a lower register while the keys ring through changes of harmony. In this third study the complete lead statement next appeared at bar 33. [Dated recording](https://raw.githubusercontent.com/stepan-o/fruitful-lab/00fde2c03b4e4b892994e61027547af9bf9221ce/apps/lab/public/loopforge-design/music-audition/long-form/menu.mp3).
 
 ## 21 November 2026 · Putting the Menu hook in the drummer’s hands
 

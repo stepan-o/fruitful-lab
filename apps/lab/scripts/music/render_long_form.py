@@ -10,8 +10,8 @@ TEMPO = 164
 OUT = kit.PUBLIC / 'long-form'
 # Each block is 16 bars. The duration of each bar always follows the common fast grid.
 FORM = {
-    'menu': ('Call and first answer', 'Answers in conversation', 'Call and chord turn', 'Sixteen bars for the hands',
-             'Hook returns', 'Upper and lower replies', 'Bass and reed exchange', 'Return'),
+    'menu': ('Call and home answer', 'Open ending', 'Approach and return', 'Rim, rolls and toms',
+             'Hook returns', 'Two endings', 'Bass and reed exchange', 'Return'),
     'options': ('Hands on hats', 'Rim conversation', 'Hats and rests',
                 'Low tom answer', 'Broken two-step', 'Pass it back'),
     'conveyor': ('Open weight', 'Long answer', 'Low current',
@@ -65,62 +65,79 @@ def menu_groove(bar, hit, solo=False):
     hit(2.5, 'foot', .62)
     for beat in (1, 3):
         hit(beat, 'snare', .66 if beat == 3 else .59, (bar + int(beat)) % 4, pan=.06)
+    if solo:
+        return  # The feature scores its own cymbal and pedal marks.
     for i in range(8):
-        if solo and i in (3, 7):  # Leave these positions for the soloist's right hand.
-            continue
         hit(i * .5, 'hat', (.135, .054, .085, .074)[i % 4], (i + bar) % 4, pan=-.24)
-    if not solo and bar % 4 in (1, 3):
+    if bar % 4 in (1, 3):
         hit(1.76, 'ghost', .17, bar % 4, pan=-.12)
-    if not solo and bar % 8 == 7:
+    if bar % 8 == 7:
         hit(3.50, 'open', .15, pan=.23)
         hit(3.76, 'ghost', .23, 2, pan=.1)
 
 
+# Each stroke is a hand assignment. Kick and backbeat continue underneath.
+# The empty space between figures is part of the break, especially before each run.
+DRUM_SENTENCES = (
+    ((.25, 'rim', 78, .47), (.5, 'rim', 74, .33), (.75, 'tom', 69, .50), (1, 'tom', 62, .52)),
+    ((1.5, 'tom', 65, .45), (2.25, 'rim', 75, .38), (3.5, 'tom', 59, .55)),
+    ((.5, 'rim', 77, .47), (1.75, 'ghost', 1, .28), (2.25, 'rim', 74, .45)),
+    ((.75, 'tom', 69, .45), (2, 'tom', 65, .50), (2.75, 'tom', 59, .55), (3.5, 'bell', 0, .34)),
+    ((0, 'rim', 76, .50), (.75, 'snare', 1, .32), (2.25, 'rim', 73, .48)),
+    ((.5, 'ghost', 2, .25), (1.75, 'snare', 3, .38), (2, 'rim', 76, .46), (3.5, 'tom', 63, .48)),
+    ((.25, 'rim', 77, .43), (.5, 'rim', 74, .34), (.75, 'tom', 68, .46), (1, 'tom', 61, .52)),
+    ((.5, 'rim', 76, .43), (1.5, 'tom', 64, .45)),  # Leave the last beat for the snare roll.
+    ((0, 'bell', 0, .33), (1.5, 'tom', 70, .51), (2.75, 'tom', 61, .58)),
+    ((.75, 'tom', 66, .46), (2, 'tom', 60, .57), (3.5, 'rim', 74, .36)),
+    ((.25, 'tom', 71, .52), (.5, 'tom', 68, .42), (.75, 'tom', 64, .46), (1, 'tom', 60, .56)),
+    ((.5, 'bell', 0, .30), (1.75, 'rim', 73, .42), (2.75, 'tom', 61, .55)),
+    ((.5, 'rim', 76, .46), (1.5, 'tom', 65, .49), (2.75, 'snare', 2, .44)),
+    ((.75, 'snare', 1, .40), (1.75, 'rim', 75, .41), (2, 'tom', 67, .47), (3.5, 'tom', 60, .53)),
+    ((.25, 'rim', 77, .46), (.5, 'rim', 73, .38), (.75, 'tom', 66, .49), (1, 'tom', 59, .57)),
+    ((.5, 'tom', 63, .50), (1.5, 'rim', 75, .45)),  # Leave two beats for the triplets.
+)
+
+
 def menu_drum_feature(pos, hit):
-    # Four four-bar sentences. Within each, a call, two answers and a turnaround.
-    section, measure = divmod(pos, 4)
-    strokes = (
-        ((.25, .5, .75), (1.5, 1.75, 2.25, 2.75), (.5, .75, 1.5), (2.75, 3.25, 3.5, 3.75)),
-        ((.25, .5, .75), (1.5, 1.75, 1.875, 2.25), (.75, 1.5, 2.25, 2.75), (2.25, 2.75, 3.5, 3.625, 3.75)),
-        ((.25, .5, .75), (.5, 1.5, 2.25), (.75, 1.25, 2.75, 3.5), (1.75, 2.25, 2.75, 3.25, 3.75)),
-        ((.25, .5, .75), (.75, 1.5, 1.75, 2.75), (.5, 1.75, 2.25, 3.5), (2, 2.25, 2.5, 2.75, 3.5, 3.75)),
-    )[section][measure]
-    hands = (('rim', 'rim', 'tom', 'ghost'), ('ghost', 'snare', 'ghost', 'rim'),
-             ('tom', 'tom', 'rim', 'open'), ('rim', 'ghost', 'tom', 'snare'))[section]
-    for i, at in enumerate(strokes):
-        voice = hands[(i + measure) % 4]
-        note = (79, 74, 70, 65, 61, 57)[i] if voice in ('tom', 'rim') else (0 if voice == 'open' else i % 4)
-        gain = (.42, .23, .34, .27, .37, .46)[i]
-        hit(at, voice, gain, note, pan=(-.23, .18, -.08, .23)[i % 4])
-    if measure == 0:
-        # The bass drum supplies the first attack of the familiar five-hit rhythm.
-        hit(1, 'tom', .43, 61, pan=.16)
+    for i, (at, voice, note, gain) in enumerate(DRUM_SENTENCES[pos]):
+        hit(at, voice, gain, note, pan=(-.15, .16, .04, .20)[i % 4])
+    if pos in (0, 2, 4, 6, 12, 14):
+        hit(2, 'hat', .095, 1, pan=-.21)  # A single closed pedal mark.
+    if pos == 7:
+        # Eight 32nds. The regular backbeat supplies stroke one. Alternate
+        # snare wires and rim, accenting the end of each double.
+        for i, gain in enumerate((.25, .34, .43, .28, .43, .50, .54), start=1):
+            voice = 'rim' if i in (3, 7) else 'roll'
+            hit(3 + i / 8, voice, gain, 73 if voice == 'rim' else i % 4,
+                pan=.15 if i % 2 else -.12)
+    elif pos == 15:
+        # Six strokes to a beat, across two beats. Beat four belongs to the
+        # backbeat. The final low tom launches the bell on the next downbeat.
+        drums = (('tom', 72), ('tom', 69), ('roll', 1), ('tom', 67), ('tom', 65), ('roll', 2),
+                 ('snare', 0), ('roll', 1), ('tom', 65), ('tom', 63), ('roll', 2), ('tom', 59))
+        for i, (voice, note) in enumerate(drums):
+            if i != 6:
+                hit(2 + i / 6, voice, (.51, .34, .42)[i % 3] + i * .009, note,
+                    pan=-.22 + .04 * i)
 
 
-# The complete opening marks large arrivals. Its answers start from the held C-sharp
-# or the E above it. Each row is (beat within the phrase, MIDI note, length in beats).
-MENU_CALL_BARS = (0, 32, 64, 112)
+# Eight calls give the theme a roughly sixteen-bar breathing cycle. The two
+# related answers both turn the suspended C-sharp back towards D. Times near
+# the end of a bar are pickups into the next. Each note has its own accent.
+MENU_CALL_BARS = (0, 12, 28, 44, 64, 80, 100, 116)
+ANSWER_PICKUP = ((3.5, 61, .40, .29), (4, 62, 1.25, .44),
+                 (5.5, 65, .85, .39), (6.5, 64, 1.15, .33))
 REPLIES = {
-    'lift': ((.5, 61, .65), (1.5, 64, .85), (2.75, 65, .4), (3.5, 69, 1.6),
-             (5.5, 67, .7), (6.5, 64, 1.7), (9, 62, 1.35)),
-    'turn': ((0, 64, 1.45), (2, 67, .55), (2.75, 69, .75), (4, 72, 1.7),
-             (6, 71, .55), (6.75, 69, .8), (8.5, 65, 1.2), (10, 64, 1.4)),
-    'thread': ((1, 69, 1.6), (3.25, 67, .5), (4, 64, 1.8), (6.5, 67, .8),
-               (8, 70, 1.65), (10.25, 69, .45), (11, 65, .75), (12, 64, 1.8)),
-    'low': ((0, 57, 1.8), (2.5, 60, .75), (3.5, 62, 1.65), (5.75, 64, .65),
-            (7, 67, 1.25), (9, 65, .65), (10, 62, 1.25)),
+    'home': ANSWER_PICKUP + ((8, 62, 2.20, .44),),
+    'open': ANSWER_PICKUP + ((8, 69, 1.55, .43), (10, 67, .65, .34),
+                             (11, 65, .80, .36), (12, 64, 1.75, .41)),
 }
-# The second statement of a reply can close on another scale degree, giving the
-# next phrase a different point of departure. Placement is authored in zero-based bars.
 MENU_ANSWERS = {
-    4: ('lift', 62), 11: ('turn', 64),
-    16: ('low', 64), 21: ('thread', 62), 27: ('lift', 69),
-    36: ('turn', 67), 42: ('thread', 61),
-    68: ('low', 62), 75: ('lift', 65),
-    80: ('turn', 69), 85: ('thread', 67), 91: ('low', 61),
-    100: ('lift', 62), 105: ('thread', 64),
-    116: ('turn', 65), 123: ('low', 61),
+    3: 'home', 8: 'open', 16: 'home', 22: 'open',
+    32: 'open', 39: 'home', 68: 'home', 74: 'open',
+    85: 'open', 91: 'home', 105: 'home', 110: 'open', 120: 'home',
 }
+
 # Bass root and the upper voices of each keys voicing, one chord per two bars.
 MENU_VOICINGS = {
     'Dm9': (38, (53, 57, 60, 64)), 'Dm6/9': (38, (53, 57, 59, 64)),
@@ -161,14 +178,14 @@ def menu(bar, hit):
     if bar in MENU_CALL_BARS:
         line(hit, DESCENT, CALL, LENGTHS, .50, 'signal')
     if bar in MENU_ANSWERS:
-        name, landing = MENU_ANSWERS[bar]
-        melody = REPLIES[name]
-        for i, (at, note, duration) in enumerate(melody):
-            last = i == len(melody) - 1
-            level = .40 if i in (0, 3) or last else .34
-            hit(at, 'reply', level, landing if last else note, duration, .09)
+        for at, note, duration, level in REPLIES[MENU_ANSWERS[bar]]:
+            hit(at, 'reply', level, note, duration, .09)
+    if bar == 64:
+        hit(0, 'bell', .38, pan=.24)
 
-    root, chord = MENU_VOICINGS[MENU_CHANGES[block][pos // 2]]
+    pair_start = bar - pos % 2
+    harmony = 'Dm6/9' if pair_start in MENU_CALL_BARS else MENU_CHANGES[block][pos // 2]
+    root, chord = MENU_VOICINGS[harmony]
     hit(.125, 'bass', .60, root, 1.06 if pos % 2 == 0 else .67)
     hit(2.5, 'bass', .47, root + (7 if pos % 4 == 2 else 0), .54)
     if pos % 4 == 3:
@@ -291,5 +308,5 @@ if __name__ == '__main__':
               'tracks':[render(name, args.masters) for name in FORM]}
     for track in record['tracks']:
         if track['theme'] == 'menu':
-            track['studyId'] = 'LF-MUS-LONG-03-MENU'
+            track['studyId'] = 'LF-MUS-LONG-04-MENU'
     manifest.write_text(json.dumps(record, indent=2) + '\n')

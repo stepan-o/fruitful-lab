@@ -132,6 +132,15 @@ def perform(events, bpm, *, bars=BARS, ending_fade=True):
 
     @lru_cache(maxsize=256)
     def instrument(name, note, length):
+        if name == 'roll':
+            t = kit.time_axis(.089)
+            return kit.soften(drums['snare'][note][:len(t)] * np.exp(-t / .041), .0009, .012)
+        if name == 'bell':
+            t = kit.time_axis(.46)
+            modes = ((724, .53), (1129, .32), (1831, .22), (2612, .16), (4075, .10))
+            body = sum(g * np.sin(kit.TAU * hz * t) * np.exp(-t * (4 + hz / 850))
+                       for hz, g in modes)
+            return kit.soften(body, .0009, .03)
         if name == 'foot':
             # A shorter tail leaves space for the second bass attack.
             full = drums['kick'][0]

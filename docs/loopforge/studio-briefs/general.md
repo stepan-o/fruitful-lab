@@ -12,7 +12,7 @@ Read these instructions, your role brief and the owner's specific task. Then rea
 
 Use the latest approved design, source and delivered artifacts. Current owner instructions determine intended behavior; code and observed results establish what actually runs. A proposal, a successful source check and an owner-approved experience are different kinds of evidence. Keep them distinct. Historical documents do not override newer decisions.
 
-The current first prototype uses sprite-based 2D over a frontend-independent simulation. The approved factory is shared by the rehearsal, placement data, artist handoff and runtime. ENGINE owns the Rust-native simulation, the browser Wasm build and the verified public projection. Consult the current ENGINE handoff for the implementation status of each route. KVP-0001 remains the architecture cornerstone. A future 3D skin must consume the same simulation, not introduce a second world.
+The current first prototype uses sprite-based 2D over a frontend-independent simulation. The approved factory is shared by the rehearsal, placement data, artist handoff and runtime. ENGINE MASTER owns the shared Rust kernel, browser Wasm build, BDI decisions and verified public projection, and guards KVP-0001. Every new episode, tutorial, custom event and shift loop belongs in that kernel. Consult the current ENGINE handoff for each route’s implementation status; standalone historical studies retain their earlier runtimes. Each specialist supplies content or presentation that respects those boundaries. A future 3D skin must consume the same simulation, not introduce a second world.
 
 ## Onboard, interview, plan, build, review
 

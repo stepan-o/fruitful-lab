@@ -1,18 +1,21 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { PlayerView } from "@/lib/loopforge/first-shift/contract";
 import { Art, Control, Kicker, type Media } from "./ConsoleParts";
 import c from "./leadership-call.module.css";
 
 /** The opening mandate is presentation, not a quota-setting command or invented weekly history. */
-export default function LeadershipCall({media,view,onContinue,onClose,effects=true,rack=false}: {media:Media;view:PlayerView;onContinue:()=>void;onClose:()=>void;effects?:boolean;rack?:boolean}) {
-  const [topic,setTopic]=useState(0), [leaving,setLeaving]=useState<"acknowledge"|"close"|null>(null);
+export default function LeadershipCall({media,view,onContinue,onClose,effects=true,rack=false,topic:controlledTopic,onTopic,paused=false,speed=1}: {media:Media;view:PlayerView;onContinue:()=>void;onClose:()=>void;effects?:boolean;rack?:boolean;topic?:number;onTopic?:(n:number)=>void;paused?:boolean;speed?:number}) {
+  const [localTopic,setLocalTopic]=useState(0), [leaving,setLeaving]=useState<"acknowledge"|"close"|null>(null);
+  const topic=controlledTopic??localTopic,setTopic=onTopic??setLocalTopic;
+  const callbacks=useRef({onContinue,onClose});
+  useEffect(()=>{callbacks.current={onContinue,onClose};},[onContinue,onClose]);
   useEffect(()=>{
-    if(!leaving) return;
+    if(!leaving||paused) return;
     const reduced=!effects || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const timer=window.setTimeout(leaving==="acknowledge"?onContinue:onClose,reduced ? 0 : 240);
+    const timer=window.setTimeout(()=>{if(leaving==="acknowledge")callbacks.current.onContinue();else callbacks.current.onClose();},reduced ? 0 : 240/speed);
     return ()=>window.clearTimeout(timer);
-  },[leaving,onContinue,onClose,effects]);
+  },[leaving,effects,paused,speed]);
   return <section className={c.scene} data-leaving={Boolean(leaving)} aria-label="Weekly leadership call">
     <div className={c.artwork} aria-hidden="true"><Art media={media} id="leadership-call" priority sizes="100vw" /></div>
     <div className={c.shade} aria-hidden="true" />

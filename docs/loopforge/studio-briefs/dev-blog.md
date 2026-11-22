@@ -2,6 +2,11 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 20 November 2026 · ENGINE takes ownership of the Rust kernel
+
+The [ENGINE onboarding page](/stepanoskin/loopforge/design/studio/engine-master) records the owner’s standing decision. Every game feature runs through a shared Rust kernel with BDI character decisions and KVP-0001 at the viewer boundary. The ordinary Day 1–2 player uses the WebAssembly build of `apps/lab/engine`. Native tests exercise the played and skipped intro, custody, both Conveyor supervisors and the bell. ENGINE maintains the contract, regression evidence, migration inventory and onboarding page.
+
+
 ## 21 November 2026 · Day 2 has a starting UI design
 
 The owner approved the [Day 2 desktop and phone storyboard](/loopforge-design/day-two-ui/board.html) as the starting UI design. The Operator answers Leadership at the physical desk. Security and Conveyor fill the screen with the factory floor, with speech beside the speaker and actions at the worker or station. Both supervisor assignments run through the bell in the [walkthrough](/loopforge-design/day-two-ui/index.html). Runtime integration remains a separate handoff.

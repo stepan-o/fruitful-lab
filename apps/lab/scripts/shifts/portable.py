@@ -37,6 +37,7 @@ def player():
     names = json.loads((APP / "lib/loopforge/shifts/intro-sprites.json").read_text())
     art = {name: "data:image/webp;base64," + encoded((PUBLIC / "loopforge-intro" / (name + ".webp")).read_bytes())
            for name in names}
+    art["queueRail"] = "data:image/png;base64," + encoded((PUBLIC / "loopforge-intro/sec-rails-depth.png").read_bytes())
     floors = PUBLIC / "loopforge-design/floor-correction/v1"
     for room in json.loads((floors / "manifest.json").read_bytes())["rooms"].values():
         for layer in (room["material"], room["room"]):

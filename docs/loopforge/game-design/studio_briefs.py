@@ -60,6 +60,8 @@ def kickoff(role):
             f"https://www.fruitfulab.net{BASE} and your maintained brief at "
             f"https://www.fruitfulab.net{BASE}/{role['id']}. "
             + architect + producer + ui + music +
+            ("Own the Rust-native Loopforge kernel and guard KVP-0001 as the normative contract. Implement every intro, tutorial, custom event and generic loop through the same engine. Ground each character intention in BDI and verify each delivery against native Rust and the browser WebAssembly build. Maintain the default ENGINE onboarding page, its current handoff, starting prompt and dated evidence as part of every architecture delivery. "
+             if role['id'] == 'engine-master' else '') +
             "Use the Current handoff and linked design pages to establish the latest approved baseline; verify it against current source and delivered artifacts. "
             "Read the applicable repository instructions. Preserve other specialists' work in an isolated branch/worktree. "
             "Follow Onboard (study and pre-synthesize) → Interview (one question at a time, with suggested answers) → Plan → Build → owner Review for new design; carry out already approved bounded corrections without reopening settled decisions. "

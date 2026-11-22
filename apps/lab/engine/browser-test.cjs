@@ -20,6 +20,10 @@ const assert = require("node:assert/strict");
     "/stepanoskin/loopforge/play";
   let page;
   const errors = [];
+  const diagnostics = [];
+  const diagnose = (message) => {
+    if (diagnostics.length < 20) diagnostics.push(message.slice(0, 1000));
+  };
   try {
     // Reproduce the pre-hydration state deterministically: controls rendered by
     // the server must not accept clicks until their client handlers are ready.
@@ -51,6 +55,12 @@ const assert = require("node:assert/strict");
       viewport: { width: 390, height: 844 },
     });
     page.on("pageerror", (e) => errors.push(e.message));
+    page.on("console", (message) => {
+      if (message.type() === "error") diagnose(message.text());
+    });
+    page.on("requestfailed", (request) => diagnose(
+      `Request failed: ${new URL(request.url()).pathname} ${request.failure()?.errorText}`,
+    ));
     page.setDefaultTimeout(60000);
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 120000 });
     const b = (name) =>
@@ -102,6 +112,7 @@ const assert = require("node:assert/strict");
     );
   } catch (error) {
     console.error("Page errors:", errors);
+    console.error("Browser diagnostics:", diagnostics);
     if (page) {
       console.error(
         "Visible page:",

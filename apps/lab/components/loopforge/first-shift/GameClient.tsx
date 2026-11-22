@@ -22,6 +22,7 @@ import s from "./themes.module.css";
 
 type Props={media:Media;legacyReview?:boolean;initialIntro?:boolean};
 function GameSession({media,legacyReview=false,initialIntro=false}:Props) {
+  const [hydrated,setHydrated]=useState(false);
   const [legacyStarted,startLegacy]=useState(false);
   const [frame,setFrame]=useState<Frame|null>(null),[menu,setMenu]=useState(true),[settings,setSettings]=useState(false);
   const [dev,setDev]=useState(false),[starting,setStarting]=useState(false),[error,setError]=useState('');
@@ -52,6 +53,8 @@ function GameSession({media,legacyReview=false,initialIntro=false}:Props) {
   function seek(seconds:number){if(settings)closeSettings();setMenu(false);send('seek',{seconds});}
   function finish(){worker.current?.terminate();worker.current=null;sessionStorage.removeItem(key);sessionStorage.removeItem("loopforge.playthrough.1");setResumable(false);setFrame(null);setMenu(true);setPaused(true);}
   useEffect(()=>{
+    // The server-rendered menu must not accept clicks before its handlers exist.
+    setHydrated(true);
     setDev(localStorage.getItem('loopforge.display')==='dev');setResumable(!!sessionStorage.getItem(key)||!!sessionStorage.getItem('loopforge.playthrough.1'));
     const hidden=()=>send('visibility',{hidden:document.hidden});
     if(initialIntro){startKernel(true);setMenu(false);send('play');}
@@ -73,7 +76,7 @@ function GameSession({media,legacyReview=false,initialIntro=false}:Props) {
   const dialog = useRef<HTMLDialogElement>(null);
   const settingsButton = useRef<HTMLButtonElement>(null);
   useEffect(() => { if (settings) dialog.current?.showModal(); else dialog.current?.close(); }, [settings]);
-  useEffect(() => { if (menu) start.current?.focus(); }, [menu]);
+  useEffect(() => { if (menu&&hydrated) start.current?.focus(); }, [menu,hydrated]);
   function closeSettings() { setSettings(false); settingsButton.current?.focus(); }
   function enter(){
     if(legacyReview){startLegacy(true);setMenu(false);return;}
@@ -86,6 +89,7 @@ function GameSession({media,legacyReview=false,initialIntro=false}:Props) {
     people:[],events:[],adviser:null,assignments:null,briefing:null,pending:null,
   };
   const toolbar=<PlaybackBar clock={clock} episode={menu?"LOOPFORGE":w?.phase==="intro"?"DAY 1":"DAY 2"}
+    disabled={!hydrated}
     paused={menu||paused} speed={speed} canSeek={!!frame&&!starting} onPlay={play} onPause={()=>send("pause")}
     onSpeed={rate=>{if(worker.current)send("rate",{rate});else setSpeed(rate);}} onSeek={seek} onMenu={menu?undefined:openMenu}/>;
   return <div ref={shell} className={s.game} style={{ ...materialStyle(media), ...theme.style }} data-theme={theme.recipe.shell} data-display={legacyReview?"legacy":dev?"dev":"normal"}>
@@ -99,13 +103,13 @@ function GameSession({media,legacyReview=false,initialIntro=false}:Props) {
         <Art media={media} id="logo" className={s.menuLogo} sizes="320px" priority />
         <h1>First shift</h1>
         <p className={s.menuMotto}>Truth stays clean.<br />Story gets messy.</p>
-        <button ref={start} className={s.startControl} disabled={starting||(legacyReview&&theme.loading)} onClick={enter}>{frame||resumable||legacyStarted ? "Resume shift" : legacyReview?"Start shift":"Enter factory"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
+        <button ref={start} className={s.startControl} disabled={!hydrated||starting||(legacyReview&&theme.loading)} onClick={enter}>{frame||resumable||legacyStarted ? "Resume shift" : legacyReview?"Start shift":"Enter factory"}<span>01 / TAKE CHARGE OF THE FACTORY</span></button>
         {!legacyReview&&<>
-          <button className={s.dayTwo} disabled={starting} onClick={secondDay}>{starting?"Opening console…":"2nd day"}</button>
-          <label className={s.displaySwitch}><span>Full screen</span><input type="checkbox" role="switch" aria-label="Dev mode" checked={dev} onChange={e=>{present(!e.target.checked);setDev(e.target.checked);localStorage.setItem("loopforge.display",e.target.checked?"dev":"normal");}}/><span>Dev mode</span></label>
+          <button className={s.dayTwo} disabled={!hydrated||starting} onClick={secondDay}>{starting?"Opening console…":"2nd day"}</button>
+          <label className={s.displaySwitch}><span>Full screen</span><input type="checkbox" role="switch" aria-label="Dev mode" disabled={!hydrated} checked={dev} onChange={e=>{present(!e.target.checked);setDev(e.target.checked);localStorage.setItem("loopforge.display",e.target.checked?"dev":"normal");}}/><span>Dev mode</span></label>
           {error&&<p role="alert">{error}</p>}
         </>}
-        <button ref={settingsButton} className={s.menuSetting} onClick={() => setSettings(true)}>Settings <span>Graphics / presentation</span></button>
+        <button ref={settingsButton} className={s.menuSetting} disabled={!hydrated} onClick={() => setSettings(true)}>Settings <span>Graphics / presentation</span></button>
         {initialIntro&&dev&&<Link href="/stepanoskin/loopforge/play/day-one?review=sprites">Archived sprite study</Link>}
         <Link href="/stepanoskin/loopforge" prefetch={false}>← Back to Loopforge</Link>
         <small className={s.sessionNote}>{frame||resumable||legacyStarted ? "Your shift is paused. Resume to continue." : legacyReview?"Archived first-turn review":"Days 1–2 · Week one"}</small>

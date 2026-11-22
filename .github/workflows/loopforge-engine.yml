@@ -45,10 +45,11 @@ jobs:
         env:
           API_BASE_URL: http://localhost:8000
           NEXT_TELEMETRY_DISABLED: '1'
+          LOOPFORGE_URL: http://127.0.0.1:3204
         run: |
           npm install --prefix "$RUNNER_TEMP/browser" playwright@1.58.2
           "$RUNNER_TEMP/browser/node_modules/.bin/playwright" install --with-deps chromium
-          ./node_modules/.bin/next dev --webpack --port 3204 > "$RUNNER_TEMP/loopforge-next.log" 2>&1 &
+          ./node_modules/.bin/next dev --webpack --hostname 127.0.0.1 --port 3204 > "$RUNNER_TEMP/loopforge-next.log" 2>&1 &
           server=$!
           trap 'kill "$server" || true' EXIT
           for attempt in $(seq 1 60); do

@@ -15,18 +15,54 @@ const assert = require("node:assert/strict");
         ]
       : ["--no-sandbox"],
   });
+  const url =
+    (process.env.LOOPFORGE_URL || "http://127.0.0.1:3204") +
+    "/stepanoskin/loopforge/play";
+  let page;
+  const errors = [];
+  const diagnostics = [];
+  const diagnose = (message) => {
+    if (diagnostics.length < 20) diagnostics.push(message.slice(0, 1000));
+  };
   try {
-    const page = await browser.newPage({
-        viewport: { width: 390, height: 844 },
-      }),
-      errors = [];
+    // Reproduce the pre-hydration state deterministically: controls rendered by
+    // the server must not accept clicks until their client handlers are ready.
+    const staticPage = await browser.newPage({ javaScriptEnabled: false });
+    try {
+      await staticPage.goto(url, {
+        waitUntil: "domcontentloaded",
+        timeout: 120000,
+      });
+      const entry = staticPage.getByRole("button", { name: /^Enter factory/ });
+      await entry.waitFor();
+      const controls = staticPage.locator(
+        'main[aria-label="Loopforge start menu"] button, ' +
+        'main[aria-label="Loopforge start menu"] input, ' +
+        '[aria-label="Factory playback"] button',
+      );
+      assert.ok(await controls.count(), "Server-rendered menu is present");
+      assert.equal(
+        await controls.evaluateAll((elements) =>
+          elements.every((el) => el.disabled),
+        ),
+        true,
+        "Game controls must stay disabled before hydration",
+      );
+    } finally {
+      await staticPage.close();
+    }
+    page = await browser.newPage({
+      viewport: { width: 390, height: 844 },
+    });
     page.on("pageerror", (e) => errors.push(e.message));
+    page.on("console", (message) => {
+      if (message.type() === "error") diagnose(message.text());
+    });
+    page.on("requestfailed", (request) => diagnose(
+      `Request failed: ${new URL(request.url()).pathname} ${request.failure()?.errorText}`,
+    ));
     page.setDefaultTimeout(60000);
-    await page.goto(
-      (process.env.LOOPFORGE_URL || "http://127.0.0.1:3204") +
-        "/stepanoskin/loopforge/play",
-      { waitUntil: "domcontentloaded", timeout: 120000 },
-    );
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 120000 });
     const b = (name) =>
       page.getByRole("button", { name, exact: typeof name === "string" });
     const save = () =>
@@ -72,8 +108,18 @@ const assert = require("node:assert/strict");
       0,
     );
     console.log(
-      "Verified play, speed, seek, skip, call, reload and supervisor appointment on a phone viewport.",
+      "Verified disabled pre-hydration controls, then play, speed, seek, skip, call, reload and supervisor appointment on a phone viewport.",
     );
+  } catch (error) {
+    console.error("Page errors:", errors);
+    console.error("Browser diagnostics:", diagnostics);
+    if (page) {
+      console.error(
+        "Visible page:",
+        (await page.locator("body").innerText().catch(() => "Unavailable")).slice(0, 4000),
+      );
+    }
+    throw error;
   } finally {
     await browser.close();
   }

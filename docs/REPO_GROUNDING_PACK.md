@@ -1,3 +1,7 @@
+## Loopforge · First-click readiness — 22 November 2026
+
+After #180/#182 merged, the ordinary-entry browser check exposed a pre-hydration click race. GameClient now disables menu/playback controls until its client mount, then restores keyboard focus. `apps/lab/engine/browser-test.cjs` checks the server-only disabled state before the ordinary phone playthrough. The CI server binds to the same explicit loopback hostname used by the tests, preserving Next.js origin protection. Rust/Wasm, approved geometry, timing and mechanics are unchanged. Current handoff: `docs/loopforge/studio-briefs/engine-master.md`; delivery checks remain the evidence authority.
+
 ## Loopforge · Rust campaign reconciliation — 22 November 2026
 
 PR #180 includes #182’s shared Rust campaign kernel (`apps/lab/engine`) and checked-in browser Wasm. The ordinary game menu and Day One entry use that kernel for BDI decisions, fixed ticks, tutorial holds, custody, appointments, production and rewind; browser adapters verify public KVP frames. Historical standalone studies keep their earlier runtimes. The merge with current master preserves the engine, approved factory geometry, timing and mechanics from `7bd5ec8d`; later UI, music, voice and AI Lab publications remain present without being silently integrated as new gameplay. Current implementation and migration scope: `docs/loopforge/studio-briefs/engine-master.md` and `apps/lab/engine/README.md`. Owner playable acceptance remains separate from automated checks.

@@ -2,6 +2,10 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 22 November 2026 · ENGINE · Make the first click count
+
+The failing ordinary-entry check clicked an enabled menu button before its client handler existed. No worker started, and the start menu stayed visible. Waiting for the existing mount effect made the same play, skip, seek, reload and assignment sequence pass. The correction disables menu and playback controls until hydration and restores menu focus afterward. A browser regression checks the server-only state before exercising the real game. CI also uses one explicit loopback hostname for its server and browser so Next.js accepts its development connection. Simulation, assets, approved layout and timing are unchanged; this is startup reliability, not a new gameplay feature. Final verification belongs to [PR #196](https://github.com/stepan-o/fruitful-lab/pull/196) and the owner's playtest.
+
 ## 20 November 2026 · ENGINE takes ownership of the Rust kernel
 
 The [ENGINE onboarding page](/stepanoskin/loopforge/design/studio/engine-master) records the owner’s standing decision. Every game feature runs through a shared Rust kernel with BDI character decisions and KVP-0001 at the viewer boundary. The ordinary Day 1–2 player uses the WebAssembly build of `apps/lab/engine`. Native tests exercise the played and skipped intro, custody, both Conveyor supervisors and the bell. ENGINE maintains the contract, regression evidence, migration inventory and onboarding page.

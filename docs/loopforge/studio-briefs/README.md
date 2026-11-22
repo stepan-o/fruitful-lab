@@ -2,7 +2,7 @@
 
 This is the authored source for the owner-directed Codex studio. The older `docs/loopforge/studio/` directory remains an archive of the former autonomous studio; do not import its operating rules into these briefs.
 
-Public entry: `/stepanoskin/loopforge/design#studio`. General instructions: `/stepanoskin/loopforge/design/studio`. Each role has `/stepanoskin/loopforge/design/studio/<role-id>` and a downloadable Markdown copy. The plain design route now opens Studio briefs; explicit existing hashes keep their destinations.
+Public entry: `/stepanoskin/loopforge/design#studio`. General instructions: `/stepanoskin/loopforge/design/studio`. Each role has `/stepanoskin/loopforge/design/studio/<role-id>` and a downloadable Markdown copy. The plain design route opens the Loopforge AI Lab proposal, the first board tab. The explicit `#studio` link remains the agent onboarding entry; existing hashes keep their destinations.
 
 ## Maintain
 
@@ -28,4 +28,4 @@ PRODUCER proposes a focused role when an actual production gap calls for it. Aft
 
 ## Verify
 
-Check the default Studio tab, all old design hashes, direct role routes, shared instructions, journal, source downloads, copy/fallback, keyboard use and narrow viewports. Run relevant repository checks and verify the hosted preview. Role pages are readable without JavaScript. No existing game runtime, approved script, geometry, timing, media pack or frozen retrospective is changed by this feature.
+Check the default AI Lab tab, the explicit Studio briefs entry, all old design hashes, direct role routes, shared instructions, journal, source downloads, copy/fallback, keyboard use and narrow viewports. Run relevant repository checks and verify the hosted preview. Role pages are readable without JavaScript. No existing game runtime, approved script, geometry, timing, media pack or frozen retrospective is changed by this feature.

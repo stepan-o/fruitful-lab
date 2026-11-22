@@ -192,9 +192,35 @@
     if (doc) doc.querySelectorAll('a[href]').forEach(link => { link.target = '_top'; });
   });
 
+  const aiLabFrame = document.getElementById('ai-lab-frame');
+  let aiLabObserver;
+  function observeAiLab() {
+    aiLabObserver?.disconnect();
+    const body = aiLabFrame?.contentDocument?.body;
+    if (!body || document.getElementById('ai-lab').hidden) return;
+    aiLabObserver = new ResizeObserver(() => {
+      const height = Math.ceil(body.getBoundingClientRect().height);
+      if (height) aiLabFrame.style.height = height + 'px';
+    });
+    aiLabObserver.observe(body);
+  }
+  aiLabFrame?.addEventListener('load', () => {
+    // Keep the proposal's internal view switches local; other links leave the board.
+    aiLabFrame.contentDocument?.querySelectorAll('a[href]').forEach(link => {
+      if (!link.getAttribute('href').startsWith('#')) link.target = '_top';
+    });
+    observeAiLab();
+  });
+
   function openPanel(id,updateHash=true){
     const panel=document.getElementById(id);if(!panel||!panel.classList.contains('panel'))return;
     document.querySelectorAll('.panel').forEach(el=>el.hidden=el.id!==id);
+    if (id === 'ai-lab' && aiLabFrame) {
+      if (!aiLabFrame.hasAttribute('src')) aiLabFrame.src = aiLabFrame.dataset.src;
+      else observeAiLab();
+    } else {
+      aiLabObserver?.disconnect();
+    }
     if (id === '2d-shifts' && shiftsFrame) {
       if (!shiftsFrame.hasAttribute('src')) shiftsFrame.src = shiftsFrame.dataset.src;
     } else if (shiftsFrame?.hasAttribute('src')) {
@@ -237,7 +263,7 @@
     if(b.dataset.adviser)renderAdviser(b.dataset.adviser);
   });
   function openFromHash() {
-    const target = document.getElementById(location.hash.slice(1) || 'studio');
+    const target = document.getElementById(location.hash.slice(1) || 'ai-lab');
     const panel = target?.closest('.panel');
     if (!panel) return;
     const revealTarget = panel.hidden && target !== panel;

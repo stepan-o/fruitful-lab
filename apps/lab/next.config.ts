@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/stepanoskin/loopforge/design", destination: "/loopforge-design/index.html" },
       { source: "/stepanoskin/loopforge/design/studio", destination: "/loopforge-design/studio/index.html" },
-      { source: "/stepanoskin/loopforge/design/studio/:brief(producer|producer-reading|producer-playbook|writer|level-designer|art-director|2d-artist|engine-master|game-systems-designer|dev-blog)", destination: "/loopforge-design/studio/:brief.html" },
+      { source: "/stepanoskin/loopforge/design/studio/:brief(producer|producer-reading|producer-playbook|ai-architect|ai-lab|ai-lab-notes|writer|level-designer|art-director|2d-artist|ui-designer|ui-reading|ui-first-assignment|music-director|music-study|music-production|engine-master|game-systems-designer|dev-blog)", destination: "/loopforge-design/studio/:brief.html" },
     ];
   },
   async headers() {

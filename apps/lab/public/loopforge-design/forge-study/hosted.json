@@ -1,0 +1,87 @@
+{
+  "publicRoute": "https://www.fruitfulab.net/stepanoskin/loopforge/play",
+  "sourceTree": "e13d276fc010a46cda7a2bbb88f9cf522ad633ba",
+  "captureRun": "https://github.com/stepan-o/fruitful-lab/actions/runs/44873804988",
+  "desktop": [
+    {
+      "key": "wait",
+      "width": 1280,
+      "height": 820,
+      "bounds": {
+        "x": 10,
+        "y": 52,
+        "width": 1260,
+        "height": 535.234375
+      },
+      "tick": 8077,
+      "station": "Forge\nmax\n\nC2 · Waiting for clearance\n\nClear"
+    },
+    {
+      "key": "sent",
+      "width": 1280,
+      "height": 820,
+      "bounds": {
+        "x": 10,
+        "y": 52,
+        "width": 1260,
+        "height": 535.234375
+      },
+      "tick": 8078,
+      "station": "Forge\nmax\n\nC2 · Waiting for clearance\n\nClear"
+    },
+    {
+      "key": "after",
+      "width": 1280,
+      "height": 820,
+      "bounds": {
+        "x": 10,
+        "y": 52,
+        "width": 1260,
+        "height": 535.234375
+      },
+      "tick": 8095,
+      "station": "Forge\nmax\n\nC2 · Working\n\nClear"
+    }
+  ],
+  "phone": [
+    {
+      "key": "wait",
+      "width": 390,
+      "height": 844,
+      "bounds": {
+        "x": 10,
+        "y": 52,
+        "width": 370,
+        "height": 609.828125
+      },
+      "tick": 8079,
+      "station": "Forge\nmax\n\nC2 · Waiting for clearance\n\nClear"
+    },
+    {
+      "key": "sent",
+      "width": 390,
+      "height": 844,
+      "bounds": {
+        "x": 10,
+        "y": 52,
+        "width": 370,
+        "height": 609.828125
+      },
+      "tick": 8080,
+      "station": "Forge\nmax\n\nC2 · Waiting for clearance\n\nClear"
+    },
+    {
+      "key": "after",
+      "width": 390,
+      "height": 844,
+      "bounds": {
+        "x": 10,
+        "y": 52,
+        "width": 370,
+        "height": 609.828125
+      },
+      "tick": 8097,
+      "station": "Forge\nmax\n\nC2 · Working\n\nClear"
+    }
+  ]
+}

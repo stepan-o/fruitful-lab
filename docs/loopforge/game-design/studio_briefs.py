@@ -1,5 +1,6 @@
 """Publish the owner-directed studio's authored briefs and compact board entry."""
 import hashlib
+import argparse
 import html
 import json
 import re
@@ -12,6 +13,11 @@ PUBLIC = '/loopforge-design/studio'
 E = html.escape
 COMPANIONS = ['producer-reading', 'producer-playbook']
 ROLE_READINGS = {
+    'ai-lab-notes': ('ai-architect', 'AI ARCHITECT'),
+    'ui-reading': ('ui-designer', 'UI DESIGNER'),
+    'ui-first-assignment': ('ui-designer', 'UI DESIGNER'),
+    'music-study': ('music-director', 'MUSIC DIRECTOR'),
+    'music-production': ('music-director', 'MUSIC DIRECTOR'),
     'days-2-4-dialogue-validation': ('game-systems-designer', 'GAME SYSTEMS DESIGNER'),
     'day-2-conveyor-rules': ('game-systems-designer', 'GAME SYSTEMS DESIGNER'),
     'day-2-conveyor-minigame': ('game-systems-designer', 'GAME SYSTEMS DESIGNER'),
@@ -30,13 +36,30 @@ def conveyor_rating(match):
 
 
 def kickoff(role):
+    architect = ("Begin with an interview, one question at a time with suggested answers and a recommendation. "
+                 "Ask what the owner most wants to improve over current Codex work. "
+                 "Cover both studio AI architecture and local AI applications for dialogue and BDI; "
+                 "use the approved machine specification in your brief and verify actual capacity before choosing models. "
+                 "Subscription Codex is primary; alternatives require explicit owner selection. "
+                 "Assess Langfuse and evaluations without assuming subscription clients expose API-level telemetry. "
+                 "Preserve KVP-0001, Rust-native simulation direction, typed proposal admission and recorded-input replay; "
+                 "ENGINE owns runtime implementation. Keep SECURITY's brief and operational handoff private, outside the public repository and site. "
+                 "Present the architecture for owner approval and private security review before installation or integration. ") if role['id'] == 'ai-architect' else ''
     producer = ("Read the source reader at https://www.fruitfulab.net" + BASE + "/producer-reading and coordination playbook at https://www.fruitfulab.net" + BASE + "/producer-playbook. "
                 "The owner opens specialist chats; you write their task prompts with role-brief links and maintain the briefs with craft contributions. "
                 "Check deliveries and advise on whether to continue, iterate or ship; the owner makes those decisions and validates the playable experience. Do not launch chats or restart the former autonomous studio. ") if role['id'] == 'producer' else ''
+    ui = ("Read the UI source reader at https://www.fruitfulab.net" + BASE + "/ui-reading and first assignment at https://www.fruitfulab.net" + BASE + "/ui-first-assignment. Begin with an annotated audit and static visual studies; implementation ownership is undecided. Carry forward the owner's settled direction and design desktop and phone equally. ") if role['id'] == 'ui-designer' else ''
+    music = ("Take B’s A–G–F–E–C♯ over low D is the approved direction. Preserve dated Take A. "
+             "Start with Main menu curiosity, Options following the drummer’s hands and heavy, patient Conveyor. "
+             "Read the dedicated room studies at https://www.fruitfulab.net/stepanoskin/loopforge/design#music-long-form "
+             "and the music study, production handoff and current ENGINE brief. The owner selected 164/82. The owner approved the Main menu 06 arrangement. The owner approved the 32-bar Options 02 drum solo. Review Conveyor 01 next, listening for weight during steady work. Ask one question at a time. "
+             "Develop native phrase variations and responses to permitted observations for each theme. Keep fixtures separate. "
+             "Use labelled local sketches for exploration. ElevenLabs is intended for production; the proposed one-attempt 118-second "
+             "Menu pilot needs verified rights, export entitlement and separate all-in spending approval. ") if role['id'] == 'music-director' else ''
     return (f"You are {role['name']} for Loopforge. Read the shared studio instructions at "
             f"https://www.fruitfulab.net{BASE} and your maintained brief at "
             f"https://www.fruitfulab.net{BASE}/{role['id']}. "
-            + producer +
+            + architect + producer + ui + music +
             ("Own the Rust-native Loopforge kernel and guard KVP-0001 as the normative contract. Implement every intro, tutorial, custom event and generic loop through the same engine. Ground each character intention in BDI and verify each delivery against native Rust and the browser WebAssembly build. Maintain the default ENGINE onboarding page, its current handoff, starting prompt and dated evidence as part of every architecture delivery. "
              if role['id'] == 'engine-master' else '') +
             "Use the Current handoff and linked design pages to establish the latest approved baseline; verify it against current source and delivered artifacts. "
@@ -116,5 +139,18 @@ def build_studio(docs: Path, out: Path):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--refresh-board', action='store_true',
+                        help='Refresh only the existing Studio panel; preserve every other board section.')
+    args = parser.parse_args()
     root = Path(__file__).resolve().parent
-    build_studio(root.parent, root.parents[2] / 'apps/lab/public/loopforge-design')
+    out = root.parents[2] / 'apps/lab/public/loopforge-design'
+    overview, _ = build_studio(root.parent, out)
+    if args.refresh_board:
+        board = out / 'index.html'
+        text = board.read_text()
+        pattern = r'(<section class="panel" id="studio"[^>]*>).*?(</section>)'
+        updated, count = re.subn(pattern, lambda m: m[1] + overview + m[2], text, flags=re.S)
+        if count != 1:
+            raise ValueError('Expected one existing Studio panel; run the full board generator instead.')
+        board.write_text(updated)

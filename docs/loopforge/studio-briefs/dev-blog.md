@@ -1,11 +1,73 @@
 # Studio journal
 
+Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
+
 ## 20 November 2026 · ENGINE takes ownership of the Rust kernel
 
 The [ENGINE onboarding page](/stepanoskin/loopforge/design/studio/engine-master) records the owner’s standing decision. Every game feature runs through a shared Rust kernel with BDI character decisions and KVP-0001 at the viewer boundary. The ordinary Day 1–2 player uses the WebAssembly build of `apps/lab/engine`. Native tests exercise the played and skipped intro, custody, both Conveyor supervisors and the bell. ENGINE maintains the contract, regression evidence, migration inventory and onboarding page.
 
 
-Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
+## 21 November 2026 · Day 2 has a starting UI design
+
+The owner approved the [Day 2 desktop and phone storyboard](/loopforge-design/day-two-ui/board.html) as the starting UI design. The Operator answers Leadership at the physical desk. Security and Conveyor fill the screen with the factory floor, with speech beside the speaker and actions at the worker or station. Both supervisor assignments run through the bell in the [walkthrough](/loopforge-design/day-two-ui/index.html). Runtime integration remains a separate handoff.
+
+## 21 November 2026 · Taking the Menu break into Options
+
+The owner approved the Main menu arrangement and wanted more of its drummer in Options. The first solo spent 2:20 passing the figure around the kit. The new 47-second cycle borrows the Menu’s opening stick-and-tom call, gives the snare a double-stroke answer, and pulls the kick back so the low tom can carry a phrase. The two-step comes home with a short run across the shells. [Hear the Options solo](/stepanoskin/loopforge/design#music-long-options).
+
+## 21 November 2026 · Moving the break forward
+
+The owner approved the Menu melody and heard too many repeats before the break. The current cut reaches the drums in 47 seconds. The solo uses short sidestick and snare strokes, toms and two quiet pedal marks. The band comes back with the full theme once, then passes its two-note tag between voices. In the last stretch, bass gets four bars alone before the keys and higher answer bring the loop home. [Play Menu 06](/stepanoskin/loopforge/design#music-long-menu).
+
+## 21 November 2026 · Letting the Menu phrase finish
+
+The owner could hear the hook and its answers fighting for the same moment. This pass opens with the same four-bar phrase twice. Its variation takes the first three notes more slowly, arches upward and then stretches the original fall into a held C♯ over D. The lead rests before the next statement. The drummer keeps the earlier sixteen-bar feature. [Hear the opening through bar 17](/stepanoskin/loopforge/design#music-long-menu).
+
+## 21 November 2026 · Two endings and a drum turnaround
+
+The owner found that four returns in three minutes left the Menu theme too far away. The next study brings it back after twelve bars. One reply grows out of the held C♯ and takes a different ending the next time around. In the break, the drummer drops the running hi-hat and plays across the rim, snare and toms. Two short runs mark the halfway point and the return to the tune. [Dated fourth study](https://raw.githubusercontent.com/stepan-o/fruitful-lab/bf5d30f6d33ab69b12744ee4ee2c1fcefbd2536e/apps/lab/public/loopforge-design/music-audition/long-form/menu.mp3).
+
+## 21 November 2026 · Giving the Menu a second melody
+
+The second Menu brought the drummer forward, but the owner found the returning lead too insistent and the chords too abrupt. The new opening lets the held C♯ start a second melody. The reply climbs, doubles back and later enters from a lower register while the keys ring through changes of harmony. In this third study the complete lead statement next appeared at bar 33. [Dated recording](https://raw.githubusercontent.com/stepan-o/fruitful-lab/00fde2c03b4e4b892994e61027547af9bf9221ce/apps/lab/public/loopforge-design/music-audition/long-form/menu.mp3).
+
+## 21 November 2026 · Putting the Menu hook in the drummer’s hands
+
+The owner heard a wistful Menu and lost the theme on the way to an empty drum break. Its replacement gives the kick two dependable footholds per bar. A short pulse lead plays the descent, and the drummer takes its five attacks through rims, rolls and toms before handing it back. The owner can hear that exchange from bar 49. [Play the revised Menu](/stepanoskin/loopforge/design#music-long-menu).
+
+## 21 November 2026 · Staying in the room
+
+The owner chose 164/82, then pointed out what the short comparison could never demonstrate. Menu lasted only 23 seconds before the player heard Options. The new Menu cycle takes over three minutes to carry its falling phrase through an ascending reply, a harmonic turn, a drum break and a bass break. Options and Conveyor each have their own 96-bar development. The owner will judge each return and the first tiring phrase. The production handoff now proposes one long Menu attempt after listening and account approval. [Dedicated room studies](/stepanoskin/loopforge/design#music-long-form) · [Provider brief and proposed budget](/stepanoskin/loopforge/design/studio/music-production#current-pilot-one-dedicated-main-menu-performance).
+
+## 21 November 2026 · From one held note to three playable phrases
+
+The owner chose C♯ and described three rooms by ear. The second local session keeps the same 48-bar performance on two tempo grids. The Menu moves one chord tone, Options passes the figure around the kit, and Conveyor leaves space for its sustained reply. Two edits place the same welcome over the same 1× Forge picture. Moving the musical pulse changes neither the picture nor the time of the line. The authoring record distinguishes the editorial placement from gameplay evidence. At publication the tempo and production timbre were open. The later dedicated-room entry records the tempo decision. [Listen](/stepanoskin/loopforge/design#music-listening) · [Session record](/loopforge-design/music-audition/session-02/session.json) · [Production and clearance](/stepanoskin/loopforge/design/studio/music-production).
+
+## 21 November 2026 · The held line goes to UI
+
+The owner selected E’s matte, backlit checkpoint, then approved E1. Its cyan blade sits on LIMEN’s right wrist and angles back along the staff side. His square jaw and ed’s swept profile distinguish the two at a glance. The [approved portrait](/loopforge-design/missing-id-bob/v1/index.html#held-proofs) brings the closed gate above bob’s open palm. [UI DESIGNER takes the case](https://github.com/stepan-o/fruitful-lab/blob/codex/art-missing-id-bob/docs/loopforge/production/missing-id-bob/held-line-r1/UI-DESIGNER.md) from the marked desk through inspection, choice and return.
+
+## 21 November 2026 · An empty place on the counter
+
+In the first Missing ID painting, bob had an empty hand but Security could have been any factory desk. The owner called out the room, the missing staff and the absence of a stopped entrance line. The next composition put ed over the register and gave gus a raised palm at a barred lane, with jo first behind the stripe. The owner preferred that closer setup to a wider figure study.
+
+LIMEN’s own Security Operations painting supplied his weight, dull steel and right-forearm blade. In the [revised event plates](/loopforge-design/missing-id-bob/v1/index.html) the barrel of his cuff turns back to the staff side. The portrait stacks the waiting line above the counter because a crop of the landscape would take jo and gus out of the frame. Both revised compositions await owner art review.
+
+## 21 November 2026 · Between the call and the stroke
+
+Five ticks after the Producer clears Forge, max is still waiting beside the loaded press. At tick ten he receives LIMEN’s call. The first [Forge UI study](/loopforge-design/forge-study/index.html) holds the camera across that interval and pairs the same views on desktop and phone. Start with the three clean stills, then compare the replay and annotations. The owner chose crew behavior as the signal to follow. The visual reading of the proposed poses is awaiting owner review.
+
+## 21 November 2026 · Two endings to one descent
+
+MUSIC DIRECTOR rendered the first 24-second sketches after the owner merged the design proposal. In one, the last note rubs against D from above; in the other it hangs just below. The menu break loses its pitched layers in Options, then its fast hats continue over the Conveyor snare. The held carrier leaves an audible gap in the bass. The two takes share one backing and gain setting.
+
+The [first-session A/B player](/stepanoskin/loopforge/design#music-landing-01) keeps position when switching. All drums and pitched voices were synthesized from the original project source. At the time of this session the owner had yet to select the note. Session 02 records the later C♯ decision. [Review masters and level measurements](/loopforge-design/music-audition/session.json) · [Audio provenance](/loopforge-design/music-audition/provenance.md).
+
+## 21 November 2026 · A bass note waits for the carrier
+
+In the recorded Forge clearance, LIMEN speaks while the carrier is still at the station. The owner chose to let visible work shape the score. The proposed bass leaves room during the wait and can answer on the next beat after motion. A second delivery of the same event ID earns one receipt and the same single musical answer.
+
+The [Music engine tab](/stepanoskin/loopforge/design#music-engine) illustrates how fast hats persist into a half-time Conveyor. Its silent panel tests the observation contract without touching the game. The opening off-note stays unresolved. An audible experiment, owner listening verdict and ENGINE integration remain outstanding. [Versioned input example](/loopforge-design/music-inputs.v1.json) · [Music Director handoff](/stepanoskin/loopforge/design/studio/music-director).
 
 ## 20 November 2026 · Giving a paused order an answer
 

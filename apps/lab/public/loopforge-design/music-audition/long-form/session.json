@@ -1,0 +1,74 @@
+{
+  "version": "long-form-01",
+  "tempo": 164,
+  "sampleRate": 48000,
+  "meter": "4/4",
+  "providerRequests": 0,
+  "costUSD": 0,
+  "source": "original local synthesis",
+  "tracks": [
+    {
+      "theme": "menu",
+      "file": "menu.mp3",
+      "bars": 80,
+      "frames": 5619512,
+      "durationSeconds": 117.07316666666667,
+      "blocks": [
+        "Statement, repeat, stretch, landing",
+        "Higher turn and landing",
+        "Dry drum feature",
+        "Theme return and exchange",
+        "Bass feature, rebuild and landing"
+      ],
+      "sha256": "84fc14665f980fbb060e77a5196267be87f69c9d5636ab3cfe8e2fbbef9dadc7",
+      "masterSha256": "06ad07da59412442de872e1077234d8fadd3656808de7a25d11a26107421d20c",
+      "meter": {
+        "lufs": -16.96,
+        "dBTP": -5.2
+      },
+      "studyId": "LF-MUS-LONG-06-MENU"
+    },
+    {
+      "theme": "options",
+      "file": "options.mp3",
+      "bars": 32,
+      "frames": 2247805,
+      "durationSeconds": 46.82927083333333,
+      "blocks": [
+        "Menu pocket",
+        "Snare doubles",
+        "Low tom in half-time",
+        "Trade and return"
+      ],
+      "sha256": "ee9f68473b9f12ded28f8907f115ee02d873c6cd63448726626fa44923eb446d",
+      "masterSha256": "9a8aa275b0dff7274cc3234d0a8b594eb16d663645fde766196645c09164908a",
+      "meter": {
+        "lufs": -16.91,
+        "dBTP": -3.31
+      },
+      "studyId": "LF-MUS-LONG-02-OPTIONS",
+      "blockBars": 8
+    },
+    {
+      "theme": "conveyor",
+      "file": "conveyor.mp3",
+      "bars": 96,
+      "frames": 6743414,
+      "durationSeconds": 140.48779166666668,
+      "blocks": [
+        "Open weight",
+        "Long answer",
+        "Low current",
+        "Displaced accent",
+        "Upper echo",
+        "Return to weight"
+      ],
+      "sha256": "438cc8403969308fc6f578b3fa60eef2b06bfda726b8bedb8f0134e8b61c2216",
+      "masterSha256": "b4451c1a95bec25ba50181bede15602c78977b121bafc95440c756be60d97d4c",
+      "meter": {
+        "lufs": -16.96,
+        "dBTP": -3.45
+      }
+    }
+  ]
+}

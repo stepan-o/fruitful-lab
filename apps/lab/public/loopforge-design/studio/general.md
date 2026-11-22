@@ -1,6 +1,6 @@
 # How we build Loopforge
 
-Maintained instructions · 19 November 2026 · Owner-directed Codex studio
+Maintained instructions · 22 November 2026 · Owner-directed Codex studio
 
 The owner opens and commissions dedicated specialist chats in Codex, sets priorities, resolves creative decisions and validates the playable result. [PRODUCER](/stepanoskin/loopforge/design/studio/producer) writes task prompts with the standard and role-specific instructions, maintains the briefs with specialist contributions, coordinates production and checks deliveries. PRODUCER recommends whether to continue, iterate or ship; the owner makes that call. The design pages are our shared knowledge base and handoffs. A chat is a working session; its durable result belongs in the project.
 
@@ -12,7 +12,7 @@ Read these instructions, your role brief and the owner's specific task. Then rea
 
 Use the latest approved design, source and delivered artifacts. Current owner instructions determine intended behavior; code and observed results establish what actually runs. A proposal, a successful source check and an owner-approved experience are different kinds of evidence. Keep them distinct. Historical documents do not override newer decisions.
 
-The current first prototype uses sprite-based 2D over a frontend-independent simulation. The approved factory is shared by the rehearsal, placement data, artist handoff and runtime. ENGINE MASTER owns the shared Rust kernel and enforces KVP-0001. Every episode, tutorial, custom event and shift loop uses this kernel. Character behavior follows beliefs, desires and intentions. Each specialist supplies content or presentation that respects those boundaries. A future 3D skin must consume the same simulation, not introduce a second world.
+The current first prototype uses sprite-based 2D over a frontend-independent simulation. The approved factory is shared by the rehearsal, placement data, artist handoff and runtime. ENGINE MASTER owns the shared Rust kernel, browser Wasm build, BDI decisions and verified public projection, and guards KVP-0001. Every new episode, tutorial, custom event and shift loop belongs in that kernel. Consult the current ENGINE handoff for each route’s implementation status; standalone historical studies retain their earlier runtimes. Each specialist supplies content or presentation that respects those boundaries. A future 3D skin must consume the same simulation, not introduce a second world.
 
 ## Onboard, interview, plan, build, review
 
@@ -21,6 +21,10 @@ The current first prototype uses sprite-based 2D over a frontend-independent sim
 3. **Plan.** Present the concrete outcome, affected pages/assets/contracts, acceptance criteria and meaningful tradeoffs. Obtain approval of the proposed scope before implementing a new design. An already approved, bounded correction does not require repeating the whole interview.
 4. **Build and verify.** Finish the approved work. Inspect it in its intended context; repair observed problems. Coordinate interface changes without turning every action into another handoff. Do not describe unrun checks as passes.
 5. **Owner review.** Deliver a usable preview, relevant evidence and a concise account of remaining gaps. The owner reviews the experience manually. Do not merge without owner authorization.
+
+## Record what the owner has accepted
+
+**Exploration** records a question, alternatives, provenance and the conditions of comparison. **Approved direction** records the owner’s decision and its exact scope, with dated alternatives retained. **Production assets** identify the actual files, versions, tools, permitted uses and outstanding craft review. **Integrated validation** records the build, ordinary entry path, observed result and owner verdict. A single item can carry an approved direction while its production materials and in-context experience remain open. Update the handoff at each change of status and link the evidence that supports it.
 
 ## The shared reference book
 
@@ -43,6 +47,10 @@ Briefs live under `docs/loopforge/studio-briefs/`. PRODUCER maintains the set an
 Record the date, approved baseline and source/build identifiers, what changed, review status, remaining gaps, next useful action and links to evidence. If another role depends on a changed contract, update the shared design reference and identify the affected role. Propose changes to another specialist's mandate; do not silently overwrite it.
 
 Keep the active brief short and usable. Move superseded detail into dated records and label it historical. Save a small checkpoint during long work so a replacement chat can resume from files. Avoid repeated dumps of entire books, generated HTML, archives or chat histories.
+
+## Public briefs and private operating records
+
+The studio website, this repository and generated downloads are public-facing handoffs. Publish only content intended for that audience. SECURITY's brief and operational records stay in an owner-approved private location outside this repository and its publication pipeline. Other roles, including AI ARCHITECT, publish their mandate, approved hardware specifications and sanitized findings; private access, credentials, network details and security diagnostics do not belong in public briefs, PR text or export bundles. Keep the public summary and private operational handoff distinct.
 
 ## Show what was actually achieved
 

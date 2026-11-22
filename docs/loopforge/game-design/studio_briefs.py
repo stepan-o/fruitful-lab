@@ -35,6 +35,15 @@ def conveyor_rating(match):
 
 
 def kickoff(role):
+    architect = ("Begin with an interview, one question at a time with suggested answers and a recommendation. "
+                 "Ask what the owner most wants to improve over current Codex work. "
+                 "Cover both studio AI architecture and local AI applications for dialogue and BDI; "
+                 "use the approved machine specification in your brief and verify actual capacity before choosing models. "
+                 "Subscription Codex is primary; alternatives require explicit owner selection. "
+                 "Assess Langfuse and evaluations without assuming subscription clients expose API-level telemetry. "
+                 "Preserve KVP-0001, Rust-native simulation direction, typed proposal admission and recorded-input replay; "
+                 "ENGINE owns runtime implementation. Keep SECURITY's brief and operational handoff private, outside the public repository and site. "
+                 "Present the architecture for owner approval and private security review before installation or integration. ") if role['id'] == 'ai-architect' else ''
     producer = ("Read the source reader at https://www.fruitfulab.net" + BASE + "/producer-reading and coordination playbook at https://www.fruitfulab.net" + BASE + "/producer-playbook. "
                 "The owner opens specialist chats; you write their task prompts with role-brief links and maintain the briefs with craft contributions. "
                 "Check deliveries and advise on whether to continue, iterate or ship; the owner makes those decisions and validates the playable experience. Do not launch chats or restart the former autonomous studio. ") if role['id'] == 'producer' else ''
@@ -49,7 +58,7 @@ def kickoff(role):
     return (f"You are {role['name']} for Loopforge. Read the shared studio instructions at "
             f"https://www.fruitfulab.net{BASE} and your maintained brief at "
             f"https://www.fruitfulab.net{BASE}/{role['id']}. "
-            + producer + ui + music +
+            + architect + producer + ui + music +
             "Use the Current handoff and linked design pages to establish the latest approved baseline; verify it against current source and delivered artifacts. "
             "Read the applicable repository instructions. Preserve other specialists' work in an isolated branch/worktree. "
             "Follow Onboard (study and pre-synthesize) → Interview (one question at a time, with suggested answers) → Plan → Build → owner Review for new design; carry out already approved bounded corrections without reopening settled decisions. "

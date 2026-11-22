@@ -22,6 +22,8 @@ The generator uses the existing small narrative Markdown renderer. Links are exp
 
 ## Add a role
 
+AI ARCHITECT's public package is `ai-architect.md`, covering studio providers/execution/observability/evaluations and local dialogue/BDI architecture. Its first assignment starts with an interview, followed by an owner-approved plan and private SECURITY review. The owner-approved machine specification is public capacity-planning context, not a benchmark. SECURITY has no public role entry, route, brief or generated download; keep its operational records outside this public repository. Other briefs may include sanitized requirements and findings only.
+
 PRODUCER proposes a focused role when an actual production gap calls for it. After owner commissioning, add its Markdown brief and a `roles.json` entry, then add its ID to the exact studio rewrite allowlist in `apps/lab/next.config.ts`. Regenerate and verify its page, references, downloads and prompt. Give the owner the task-specific prompt to open the chat. Do not add roles as an autonomous organization chart.
 
 ## Verify

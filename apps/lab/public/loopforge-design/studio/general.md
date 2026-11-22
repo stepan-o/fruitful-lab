@@ -1,6 +1,6 @@
 # How we build Loopforge
 
-Maintained instructions · 19 November 2026 · Owner-directed Codex studio
+Maintained instructions · 22 November 2026 · Owner-directed Codex studio
 
 The owner opens and commissions dedicated specialist chats in Codex, sets priorities, resolves creative decisions and validates the playable result. [PRODUCER](/stepanoskin/loopforge/design/studio/producer) writes task prompts with the standard and role-specific instructions, maintains the briefs with specialist contributions, coordinates production and checks deliveries. PRODUCER recommends whether to continue, iterate or ship; the owner makes that call. The design pages are our shared knowledge base and handoffs. A chat is a working session; its durable result belongs in the project.
 
@@ -47,6 +47,10 @@ Briefs live under `docs/loopforge/studio-briefs/`. PRODUCER maintains the set an
 Record the date, approved baseline and source/build identifiers, what changed, review status, remaining gaps, next useful action and links to evidence. If another role depends on a changed contract, update the shared design reference and identify the affected role. Propose changes to another specialist's mandate; do not silently overwrite it.
 
 Keep the active brief short and usable. Move superseded detail into dated records and label it historical. Save a small checkpoint during long work so a replacement chat can resume from files. Avoid repeated dumps of entire books, generated HTML, archives or chat histories.
+
+## Public briefs and private operating records
+
+The studio website, this repository and generated downloads are public-facing handoffs. Publish only content intended for that audience. SECURITY's brief and operational records stay in an owner-approved private location outside this repository and its publication pipeline. Other roles, including AI ARCHITECT, publish their mandate, approved hardware specifications and sanitized findings; private access, credentials, network details and security diagnostics do not belong in public briefs, PR text or export bundles. Keep the public summary and private operational handoff distinct.
 
 ## Show what was actually achieved
 

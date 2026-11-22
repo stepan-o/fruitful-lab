@@ -138,7 +138,7 @@ footer { padding-block: 10px; }
   .admission { gap: 16px; }
   .branches { padding-left: 15px; border-left: 1px solid #718c96; margin-left: 18px; }
   .branches::before { display: none; }
-  .branches::after { content: "↓"; top: 100%; left: -7px; translate: none; line-height: 16px; }
+  .branches::after { content: "↓"; top: 100%; left: -7px; right: auto; translate: none; line-height: 16px; }
   .trace-map { gap: 14px; }
   .sources { padding-left: 15px; border-left: 2px dotted #719685; margin-left: 12px; }
   .sources::after, .trace-sink::before { display: none; }
@@ -148,7 +148,7 @@ footer { padding-block: 10px; }
   .notes dl, .pair { grid-template-columns: 1fr; gap: 3px; }
   .notes dd, .pair > div + div { margin-bottom: 7px; }
   .pair { gap: 10px; }
-  .choice label { width: 100%; }
+  .choice label { width: 100%; margin-right: 0; }
   .outcome { gap: 13px; align-items: start; }
   .outcome img { width: 60px; height: 90px; }
   .outcome h3 { font-size: 1.85rem; }

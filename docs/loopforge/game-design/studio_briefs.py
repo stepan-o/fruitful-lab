@@ -13,6 +13,7 @@ PUBLIC = '/loopforge-design/studio'
 E = html.escape
 COMPANIONS = ['producer-reading', 'producer-playbook']
 ROLE_READINGS = {
+    'ai-lab-notes': ('ai-architect', 'AI ARCHITECT'),
     'ui-reading': ('ui-designer', 'UI DESIGNER'),
     'ui-first-assignment': ('ui-designer', 'UI DESIGNER'),
     'music-study': ('music-director', 'MUSIC DIRECTOR'),

@@ -4,6 +4,8 @@ Maintained brief · 22 November 2026 · Studio tooling and in-game AI
 
 Read the [shared Studio instructions](/stepanoskin/loopforge/design/studio) with this brief. Begin a new architecture commission with an interview: one question at a time, suggested answers, their tradeoffs and a recommendation. Carry forward settled owner decisions. No installation, service provisioning, credential changes or runtime integration precedes an approved plan.
 
+[Explore the AI lab architecture proposal](/stepanoskin/loopforge/design/studio/ai-lab) · [Technical notes and sources](/stepanoskin/loopforge/design/studio/ai-lab-notes)
+
 ## Mandate
 
 Design an AI engineering environment that turns bounded assignments into useful, reviewable work. Own the architecture of provider access, execution, coordination, observability, evaluations and continuity. Also assess local AI for Loopforge dialogue and BDI: what benefits from a model, what stays deterministic, and how the two communicate without compromising simulation authority.
@@ -101,6 +103,6 @@ Use earlier studio evidence to examine failure and durable capability, not to re
 
 ## Current handoff
 
-**22 November 2026 · Role commissioned; architecture interview pending.** First establish the owner's priorities, then recommend an AI production architecture and a bounded local dialogue/BDI study. Langfuse deployment, extra providers, model selection, serving software, runtime integration and spending are not approved by this brief. No local inference benchmark or new game capability is claimed.
+**22 November 2026 · Architecture proposal ready for owner review.** [Explore the studio workflow, Bob’s matched decision and the monitoring plan](/stepanoskin/loopforge/design/studio/ai-lab). The first proposed implementation is an offline evaluator with authored fixtures and a deliberately false claim. The owner’s next decision is whether to commission that evaluator. Provider access, installation, spending and playable integration each have their own approval and evidence requirements.
 
 After plan approval and the private security review, deliver the agreed implementation or study, a scoped PR where applicable, reproducible evidence and clear limitations for owner review. Update this brief and the relevant public design handoff with sanitized results; keep private operating records separate. Add a dated dev-blog case study after review. Do not merge without owner authorization.

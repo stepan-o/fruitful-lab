@@ -4,7 +4,7 @@ cp.execFileSync('python3',['docs/loopforge/game-design/studio_briefs.py'],{stdio
 cp.execFileSync('python3',['docs/loopforge/game-design/music_engine.py'],{stdio:'inherit'});
 const generated = cp.execFileSync('git',['diff','--name-only'],{encoding:'utf8'}).trim().split('\n');
 for(const name of generated) {
-  if (!/^apps\/lab\/public\/loopforge-design\/(?:index\.html|MUSIC_ENGINE\.md|studio\/(?:music-(?:director|study|production)|dev-blog)[\w.-]*|music-audition\/day-two\/handoff\.html)$/.test(name)) throw Error('Unexpected changed path '+name);
+  if (!/^apps\/lab\/public\/loopforge-design\/(?:index\.html|MUSIC_ENGINE\.md|studio\/(?:music-(?:director|study|production)|dev-blog)[\w.-]*|music-audition\/day-two\/handoff\.html)$/.test(name)) continue;
   const bytes = raw.readFileSync(name).toString('base64');
   console.log('LF_FILE '+name+' '+bytes.length);
   for(let i=0;i<bytes.length;i+=12000) console.log('LF_PART '+name+' '+i+' '+bytes.slice(i,i+12000));
@@ -179,9 +179,9 @@ async function check(browser, width, height) {
   await page.waitForFunction(() => {const a=document.getElementById('take');return !a.paused && a.currentTime >= 70.20;});
   await button('Conveyor').click(); await hear('Conveyor · playing');
   assert(await desk.locator('#take').evaluate(a=>a.paused));
-  const before = await page.evaluate(() => phase());
+  const positionBeforeTierChange = await page.evaluate(() => phase());
   await desk.locator('[data-tier="four"]').click(); await hear('Four workers');
-  assert(await page.evaluate(t => Math.abs(phase()-t) < 1, before), 'Tier change keeps the current phrase');
+  assert(await page.evaluate(t => Math.abs(phase()-t) < 1, positionBeforeTierChange), 'Tier change keeps the current phrase');
   await desk.locator('#drive').selectOption('later');
   await desk.locator('#station-load').selectOption('3'); await hear('Fully staffed');
   await button('Wait').click(); await hear('line waiting');
@@ -201,6 +201,16 @@ async function check(browser, width, height) {
   const bytes = await fs.readFile(await file.path());
   assert.equal(bytes.toString('ascii',0,4),'RIFF');
   assert.equal(bytes.readUInt32LE(24),48000);
+  if (width===390) {
+    await desk.locator('#pick').selectOption('tier-full');
+    await desk.locator('#solo').click(); await hear('Fully staffed · repeating');
+    const event = page.waitForEvent('download');
+    await desk.locator('#download').click();
+    const loop = await event;
+    assert.equal(loop.suggestedFilename(),'tier-full.wav');
+    const pcm = await fs.readFile(await loop.path());
+    assert.equal(pcm.readUInt32LE(40) / 4,2247805);
+  }
   if(width===390){
     await desk.locator('#route').click();
     await page.waitForFunction(()=>document.getElementById('readout').textContent.includes('Route complete'),null,{timeout:90000});

@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Marigold Visual Research Dossier</title>
+    <style>
+      :root {
+        --ink: #24221d;
+        --muted: #6f6a5e;
+        --soft: #f8f5ee;
+        --paper: #ffffff;
+        --line: #e7dfcf;
+        --sage: #687a58;
+        --moss: #3d4c35;
+        --plum: #653f55;
+        --rose: #a45663;
+        --gold: #be842b;
+        --marigold: #dc8a26;
+        --blue: #486b77;
+        --shadow: 0 18px 40px rgba(36, 34, 29, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--soft);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+      a { color: var(--plum); }
+      .page { max-width: 1180px; margin: 0 auto; padding: 40px 20px 72px; }
+      .hero, .card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: 0 10px 28px rgba(36, 34, 29, 0.055);
+      }
+      .hero { border-radius: 18px; box-shadow: var(--shadow); padding: clamp(24px, 4vw, 48px); }
+      .card { padding: 20px; }
+      .card.accent { border-top: 5px solid var(--plum); }
+      .card.gold { border-top: 5px solid var(--gold); }
+      .card.marigold { border-top: 5px solid var(--marigold); }
+      .card.sage { border-top: 5px solid var(--sage); }
+      .card.blue { border-top: 5px solid var(--blue); }
+      .eyebrow {
+        color: var(--sage);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      h1, h2, h3 { margin: 0; line-height: 1.12; }
+      h1 {
+        max-width: 900px;
+        margin-top: 12px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2.25rem, 6vw, 5rem);
+        font-weight: 500;
+      }
+      h2 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.75rem, 3vw, 2.7rem);
+        font-weight: 500;
+      }
+      h3 { font-size: 1rem; }
+      .lede, .section-note, .card p, .card ul, .card ol, td { color: var(--muted); }
+      .hero-grid, .grid { display: grid; gap: 16px; }
+      .hero-grid { grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr); margin-top: 28px; gap: 24px; }
+      .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .section { margin-top: 36px; }
+      .section-head { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 16px; }
+      .section-note { max-width: 720px; margin: 8px 0 0; }
+      .meta-list { display: grid; gap: 12px; margin: 0; }
+      .label { color: var(--muted); font-size: 0.73rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+      .value { font-weight: 700; }
+      .badge-row, .source-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+      .badge, .source-pill, .source-list a {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 10px;
+        background: #fbfaf7;
+        color: var(--ink);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .badge.high { border-color: rgba(104, 122, 88, 0.35); color: var(--moss); }
+      .badge.medium { border-color: rgba(190, 132, 43, 0.4); color: #815516; }
+      .badge.no { border-color: rgba(164, 86, 99, 0.35); color: var(--plum); }
+      .lane-card { display: grid; gap: 14px; }
+      .lane-meta { display: grid; gap: 8px; }
+      .library-note {
+        border-left: 4px solid var(--blue);
+        background: #f4f8f9;
+        padding: 12px 14px;
+        color: var(--muted);
+      }
+      .table-card { overflow-x: auto; padding: 0; }
+      table { width: 100%; border-collapse: collapse; min-width: 780px; }
+      th, td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+      th { color: var(--ink); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; background: #fbfaf7; }
+      .outline-grid, .cluster { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .outline-card, .cluster-card, .cluster-center { border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: #fbfaf7; }
+      .cluster-center { background: #fff6e9; border-color: rgba(220, 138, 38, 0.35); }
+      .keyword { color: var(--plum); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
+      .quote { color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: 1.08rem; }
+      .footer-note { margin-top: 42px; color: var(--muted); text-align: center; }
+      ul, ol { padding-left: 1.2rem; }
+      li { margin: 0.4rem 0; }
+
+      @media (max-width: 760px) {
+        .hero-grid, .grid.two, .grid.three, .outline-grid, .cluster { grid-template-columns: 1fr; }
+        .section-head { display: block; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div class="eyebrow">Bloom Whispers Research Dossier</div>
+        <h1>Marigold</h1>
+        <p class="lede">A source-backed B1 research board for marigold as ritual gold: cempasúchil, calendula, grief, sun, Día de Muertos, wedding garlands, design history, and product intent.</p>
+        <div class="hero-grid">
+          <article class="card marigold">
+            <h2>Bloom Reveal</h2>
+            <p>Marigold is not one fixed meaning. In Mexico, cempasúchil is a gold path for memory and return; in European flower language, marigold can carry grief; in South Asian garlands, it can welcome prosperity, devotion, and celebration. The flower's magic is where the gold is placed: altar, grave, wedding garland, temple doorway, wallpaper, or book of flower language.</p>
+            <div class="source-list">
+              <a href="https://www.inah.gob.mx/index.php/foto-del-dia/cempasuchil-y-mariposas-simbolos-del-regreso-de-las-almas">INAH</a>
+              <a href="https://www.revista-asyd.org/index.php/asyd/article/download/1339/716">ASyD PDF</a>
+              <a href="https://www.gutenberg.org/cache/epub/71779/pg71779-images.html">Dumont ebook</a>
+              <a href="https://discovery.ucl.ac.uk/id/eprint/10203572/1/1-s2.0-S2225411024000920-main.pdf">UCL/JTCM PDF</a>
+            </div>
+          </article>
+          <aside class="card">
+            <div class="meta-list">
+              <div><div class="label">Status</div><div class="value">B1 visual dossier, from-scratch Marigold pass</div></div>
+              <div><div class="label">Date</div><div class="value">2026-06-08</div></div>
+              <div><div class="label">Source Dossier</div><div class="value"><a href="marigold-research-dossier-2026-06-08.md">Open markdown dossier</a></div></div>
+              <div><div class="label">Best Use</div><div class="value">Pillar article plus cempasúchil, calendula, and William Morris satellites</div></div>
+            </div>
+          </aside>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Pinterest Demand</div>
+            <h2>Pinterest Demand Scan: Marigold</h2>
+            <p class="section-note">Parsed directly from the Bloom Whispers Pinterest Demand dashboard JSON before the deep research pass. Source file: /private/tmp/bloom-whispers-pinterest-cluster-decision-board-v1.html. Record matched by slug: marigold.</p>
+          </div>
+        </div>
+        <div class="grid two">
+          <article class="card marigold">
+            <h3>Trend Pattern</h3>
+            <p><strong>Demand pattern:</strong> Evergreen robust. <strong>Average index:</strong> 66. <strong>Max index:</strong> 78. <strong>Bloom fit:</strong> 100. <strong>Commercial action:</strong> 81.</p>
+            <p><strong>Peak months:</strong> April 78, March 76, September 75, February 71.</p>
+            <div class="source-list"><a href="https://trends.pinterest.com/detail/?country=US&amp;terms=marigold&amp;dateRange=365D&amp;genderDetailsPage=&amp;aggregationLevel=2">Pinterest Trends source</a></div>
+            <div class="badge-row">
+              <span class="badge high">Evergreen robust</span>
+              <span class="badge high">A-Z complete</span>
+              <span class="badge medium">301 suggestions</span>
+              <span class="badge medium">Captured Jun 7, 2026</span>
+            </div>
+          </article>
+          <article class="card table-card">
+            <table>
+              <thead><tr><th>Month</th><th>Index</th><th>Month</th><th>Index</th></tr></thead>
+              <tbody>
+                <tr><td>Jan</td><td>62</td><td>Jul</td><td>65</td></tr>
+                <tr><td>Feb</td><td>71</td><td>Aug</td><td>67</td></tr>
+                <tr><td>Mar</td><td>76</td><td>Sep</td><td>75</td></tr>
+                <tr><td>Apr</td><td>78</td><td>Oct</td><td>66</td></tr>
+                <tr><td>May</td><td>70</td><td>Nov</td><td>49</td></tr>
+                <tr><td>Jun</td><td>64</td><td>Dec</td><td>49</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+        <div class="grid two section">
+          <article class="card gold">
+            <h3>Top 10 Bloom Whispers Keywords</h3>
+            <ol>
+              <li>marigold flower meaning - 229</li>
+              <li>marigold meaning - 208</li>
+              <li>marigold symbolism - 181</li>
+              <li>marigold spiritual meaning - 148</li>
+              <li>marigold decor wedding - 137</li>
+              <li>marigold wedding decoration - 137</li>
+              <li>marigold centerpiece wedding - 137</li>
+              <li>marigold wallpaper - 130</li>
+              <li>marigold umber wallpaper - 130</li>
+              <li>marigold bouquet aesthetic - 126</li>
+            </ol>
+          </article>
+          <article class="card blue">
+            <h3>Competition Keywords</h3>
+            <p>Average competition opportunity: 29. AI signal average: 0. Repetition average: 51. The opportunity is not a blank SERP; the win is richer source-backed meaning and better cultural separation.</p>
+            <div class="source-list">
+              <a href="https://www.pinterest.com/search/pins/?q=marigold%20flower%20meaning">flower meaning</a>
+              <a href="https://www.pinterest.com/search/pins/?q=marigold%20symbolism">symbolism</a>
+              <a href="https://www.pinterest.com/search/pins/?q=marigold%20decor%20wedding">decor wedding</a>
+              <a href="https://www.pinterest.com/search/pins/?q=marigold%20wallpaper">wallpaper</a>
+              <a href="https://www.pinterest.com/search/pins/?q=marigold%20aesthetic%20flower">aesthetic flower</a>
+            </div>
+          </article>
+        </div>
+        <div class="grid two section">
+          <article class="card lane-card">
+            <h3>Meaning &amp; Symbolism Lane</h3>
+            <p>marigold flower meaning, marigold meaning, marigold symbolism, marigold spiritual meaning, marigold meaning flower, marigold name meaning.</p>
+            <p><strong>Research implication:</strong> the pillar must answer the broad meaning query fast, then split cempasúchil, calendula, wedding, grief, and design meanings clearly.</p>
+          </article>
+          <article class="card lane-card">
+            <h3>Occasions &amp; Seasons Lane</h3>
+            <p>marigold decor wedding, marigold wedding decor, marigold wedding decoration, marigold centerpiece wedding, marigold bouquet aesthetic, marigold wedding, marigold wedding theme, marigold yellow wedding, marigold bouquet wedding, marigold wedding bouquet, marigold wedding flowers, marigold bridesmaid dresses, marigold centerpiece, marigold arrangements, marigold vase arrangement, marigold flower arrangements, marigold birth flower tattoo, marigold bouquet, marigold birth flower, marigold flower bouquet, marigold zinnia bouquet, marigold and zinnia bouquet.</p>
+          </article>
+          <article class="card lane-card">
+            <h3>Digital + Affiliate Lane</h3>
+            <p>marigold wallpaper, marigold umber wallpaper, marigold flower wallpaper, marigold quilt pattern, marigold knitting pattern, marigold embroidery patterns, marigold stained glass pattern, marigold embroidery design, marigold ring, marigold dress, marigold jewelry, marigold earrings, marigold necklace, marigold urli candle, marigold yellow dress, marigold jewelry for haldi, marigold quinceanera dresses, marigold crochet, marigold background, marigold embroidery, marigold kids craft.</p>
+          </article>
+          <article class="card lane-card">
+            <h3>Uses, Benefits, Magic, Recipes</h3>
+            <p>marigold oil, marigold witchcraft, marigold uses witchcraft, marigold uses, marigold magic, marigold recipes, marigold benefits, marigold uses herbs, marigold jelly recipe, marigold tea benefits, marigold effect teachers, marigold magical properties.</p>
+            <p><strong>Safety:</strong> answer as history, symbolism, and careful plant identification. No supplement, dosing, medical product, or unsafe foraging angle.</p>
+          </article>
+          <article class="card lane-card">
+            <h3>Tattoo &amp; Art Lane</h3>
+            <p>marigold oil pastel, marigold vine tattoo, marigold garden design, marigold art, marigold design, marigold sketch, marigold tattoo, marigold nail art, marigold painting, marigold leg tattoo, marigold watercolor, marigold knee tattoo, marigold nail design, marigold name tattoo, marigold neck tattoo, marigold easy drawing, marigold illustration, marigold japanese art, marigold spine tattoo, marigold tattoo ideas, marigold cosmos tattoo, marigold flower tattoo, marigold tattoo design, marigold tattoo flower, marigold tattoo sleeve, marigold drawing simple, marigold flower drawing, marigold leaves drawing.</p>
+          </article>
+          <article class="card lane-card">
+            <h3>Decor, Arrangements, Gardening Flags</h3>
+            <p><strong>Decor:</strong> marigold aesthetic, marigold flower aesthetic, marigold vase, marigold decor, marigold wreath, marigold garland, marigold mala decor, marigold urli decor, marigold haldi decor, marigold table decor, marigold hanging decor, marigold entrance decor, marigold mandap decoration.</p>
+            <p><strong>Gardening-heavy flag:</strong> false. Gardening terms exist, including marigold seeds, plant care, companion planting, and planters, but they are lower-priority satellites.</p>
+          </article>
+        </div>
+        <div class="grid two section">
+          <article class="card sage">
+            <h3>Commercial / Product Signals</h3>
+            <p>Dashboard product angles: wallpaper packs, printable art, phone backgrounds, visual prompt packs, wedding flower affiliate links, bouquet inspiration, vase/arrangement products, marigold themed gift guides, and seasonal affiliate roundups.</p>
+            <div class="badge-row"><span class="badge">Prints</span><span class="badge">Wallpaper</span><span class="badge">Embroidery</span><span class="badge">Jewelry</span><span class="badge">Wedding garlands</span><span class="badge">Books</span></div>
+          </article>
+          <article class="card accent">
+            <h3>Podcast / Episode Signals</h3>
+            <p>Dashboard guest angles: floriography or folklore expert on symbolism, plus florist, wedding designer, or event stylist on seasonal use. Solo episode is strong because the research has fields, paths, altar candles, garlands, temple offerings, Shakespeare, and William Morris blocks.</p>
+            <div class="badge-row"><span class="badge high">Podcast-worthy</span><span class="badge">Folklore expert</span><span class="badge">Wedding stylist</span><span class="badge">Solo audio scene</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Curation</div>
+            <h2>Strong Findings</h2>
+            <p class="section-note">Use these as the first-pass curation board before approving the article outline or choosing satellites.</p>
+          </div>
+        </div>
+        <div class="grid three">
+          <article class="card accent">
+            <h3>Not One Marigold</h3>
+            <p>The article needs an early identity box: cempasúchil / *Tagetes erecta* is not the same as pot marigold / calendula. Many grief, food, and Shakespeare claims belong to calendula, while Día de Muertos belongs to cempasúchil.</p>
+            <div class="source-list"><a href="https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:252092-1">Kew Tagetes</a><a href="https://www.shakespeare.org.uk/explore-shakespeare/blogs/marigold-on-death-beds-blowing-the-marigold-in-shakespeare-and-victorian-england/">SBT</a></div>
+          </article>
+          <article class="card marigold">
+            <h3>Color, Scent, Return</h3>
+            <p>INAH and ASyD support cempasúchil as a sensory flower of return: petals mark paths, aroma guides arrival, and altars/graveyards create a welcome for the dead.</p>
+            <div class="source-list"><a href="https://www.inah.gob.mx/index.php/foto-del-dia/cempasuchil-y-mariposas-simbolos-del-regreso-de-las-almas">INAH</a><a href="https://www.revista-asyd.org/index.php/asyd/article/download/1339/716">ASyD PDF</a></div>
+          </article>
+          <article class="card gold">
+            <h3>The Timing Matters</h3>
+            <p>The strongest academic twist is that cempasúchil meaning is cultivated. ASyD shows the modern late-October flowering/use as a syncretic adaptation of planting, harvest, calendar, and ritual practice.</p>
+            <div class="source-list"><a href="https://www.revista-asyd.org/index.php/asyd/article/download/1339/716">ASyD PDF</a></div>
+          </article>
+          <article class="card blue">
+            <h3>Solar Warmth Detail</h3>
+            <p>CONABIO/EncicloVida records a Malinalco-linked belief around Tonalxochitl: yellow flowers could hold the warmth of solar rays. This is a gold nugget for the Bloom Reveal.</p>
+            <div class="source-list"><a href="https://enciclovida.mx/especies/180679.pdf">CONABIO PDF</a></div>
+          </article>
+          <article class="card sage">
+            <h3>Grief Is Real, But Separate</h3>
+            <p>Older flower-language and Shakespeare material supports marigold as grief, distress, tombs, deathbeds, and sun-following. The caveat: this layer is mainly calendula/pot marigold, not Mexican cempasúchil.</p>
+            <div class="source-list"><a href="https://www.gutenberg.org/cache/epub/71779/pg71779-images.html">Dumont</a><a href="https://www.shakespeare.org.uk/explore-shakespeare/blogs/marigold-on-death-beds-blowing-the-marigold-in-shakespeare-and-victorian-england/">SBT</a></div>
+          </article>
+          <article class="card accent">
+            <h3>Keep The Design Angle</h3>
+            <p>William Morris's "Marigold" is a strong art/product bridge. Museum sources support a section on wallpaper, textile, pattern, and product intent without turning it into symbolism proof.</p>
+            <div class="source-list"><a href="https://www.clevelandart.org/art/1937.699">Cleveland Museum</a><a href="https://www.metmuseum.org/art/collection/search/384018">The Met</a></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Research Lanes</div>
+            <h2>11-Lane Research Map</h2>
+            <p class="section-note">Each lane shows the research yield, source contributions, caveats, content use, and paid/library need.</p>
+          </div>
+        </div>
+        <div class="grid two">
+          <article class="card lane-card marigold">
+            <div class="eyebrow">Lane 1</div>
+            <h3>Botany / Science</h3>
+            <p>*Tagetes erecta* is the cempasúchil anchor; Kew gives Mexico to Guatemala as native range. CONABIO adds Mexican morphology/distribution and cultural-use notes. UCL/JTCM connects the species to ritual, historical medicine, modern lutein/carotenoid research, and global industrial use.</p>
+            <p><strong>Use:</strong> early "which marigold?" box, name map, African marigold caveat, science sidebar.</p>
+            <p><strong>Caveat:</strong> calendula/pot marigold is separate; do not transfer claims between genera.</p>
+            <div class="source-list"><a href="https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:252092-1">Kew</a><a href="https://enciclovida.mx/especies/180679.pdf">CONABIO</a><a href="https://discovery.ucl.ac.uk/id/eprint/10203572/1/1-s2.0-S2225411024000920-main.pdf">UCL/JTCM</a></div>
+            <div class="library-note"><strong>Library/database note:</strong> free/open databases are enough for the pillar; Kaplan/Neher ethnobotany papers are library-worthy for a deeper science-history layer.</div>
+          </article>
+
+          <article class="card lane-card accent">
+            <div class="eyebrow">Lane 2</div>
+            <h3>Folklore / Tradition</h3>
+            <p>INAH supports petals as paths and aroma as guidance for ánimas. CONABIO adds the solar warmth detail. ASyD complicates the tradition with cultivation timing and syncretism. UCL brings Florentine Codex ceremonial objects and Tlaloc/ritual-medical context.</p>
+            <p><strong>Use:</strong> Bloom Reveal, Día de Muertos section, podcast scene.</p>
+            <p><strong>Caveat:</strong> avoid "unchanged ancient Aztec tradition"; ASyD says the story is more syncretic.</p>
+            <div class="source-list"><a href="https://www.inah.gob.mx/index.php/foto-del-dia/cempasuchil-y-mariposas-simbolos-del-regreso-de-las-almas">INAH</a><a href="https://enciclovida.mx/especies/180679.pdf">CONABIO</a><a href="https://www.revista-asyd.org/index.php/asyd/article/download/1339/716">ASyD</a><a href="https://discovery.ucl.ac.uk/id/eprint/10203572/1/1-s2.0-S2225411024000920-main.pdf">UCL</a></div>
+            <div class="library-note"><strong>Library/database note:</strong> add Arqueología Mexicana or regional ethnographies only if Susy wants a deeper Mexico-first essay.</div>
+          </article>
+
+          <article class="card lane-card gold">
+            <div class="eyebrow">Lane 3</div>
+            <h3>Symbolism / Flower Meaning</h3>
+            <p>Best meaning framework: marigold is gold with a threshold. Mexico gives return, sun, memory, scent, life/death cycle. Europe/calendula gives grief, distress, remembrance, and sun-following. South Asian contexts give auspicious garlands and celebration.</p>
+            <p><strong>Use:</strong> meaning table by culture/context, not one universal definition.</p>
+            <p><strong>Caveat:</strong> do not apply Victorian grief claims to cempasúchil without explaining the plant difference.</p>
+            <div class="source-list"><a href="https://www.inah.gob.mx/index.php/foto-del-dia/cempasuchil-y-mariposas-simbolos-del-regreso-de-las-almas">INAH</a><a href="https://www.gutenberg.org/cache/epub/71779/pg71779-images.html">Dumont</a><a href="https://www.shakespeare.org.uk/explore-shakespeare/blogs/marigold-on-death-beds-blowing-the-marigold-in-shakespeare-and-victorian-england/">SBT</a><a href="https://discovery.ucl.ac.uk/id/eprint/10203572/1/1-s2.0-S2225411024000920-main.pdf">UCL</a></div>
+            <div class="library-note"><strong>Library/database note:</strong> public-domain floriography is enough for pillar; deeper flower-dictionary work is optional.</div>
+          </article>
+
+          <article class="card lane-card sage">
+            <div class="eyebrow">Lane 4</div>
+            <h3>Culture / Sociology</h3>
+            <p>ASyD is the key source: it studies communities, direct observations, ethnohistorical sources, planting methods, planting times, and cultural motives. Meaning is not only in the flower; it is in cultivation, timing, altar practice, graveyard visits, copal, food, prayer, and emotion.</p>
+            <p><strong>Use:</strong> "The Meaning Is Also in the Planting" section.</p>
+            <p><strong>Caveat:</strong> regional variation matters; do not write one flat national practice.</p>
+            <div class="source-list"><a href="https://www.revista-asyd.org/index.php/asyd/article/download/1339/716">ASyD PDF</a><a href="https://enciclovida.mx/especies/180679.pdf">CONABIO</a><a href="https://discovery.ucl.ac.uk/id/eprint/10203572/1/1-s2.0-S2225411024000920-main.pdf">UCL</a></div>
+            <div class="library-note"><strong>Library/database note:</strong> open academic PDF is strong. Books could deepen tone, but not required for B1.</div>
+          </article>
+
+          <article class="card lane-card blue">
+            <div class="eyebrow">Lane 5</div>
+            <h3>Around The World / Multilingual</h3>
+            <p>UCL gives the global frame: India/Ganesh Chaturthi and weddings, Nepal/Tihar, China/Qingming, Thailand/Buddhist ceremonies, plus modern global cultivation. Nepal Tourism Board supports the Tihar festival context.</p>
+            <p><strong>Use:</strong> compact around-world comparison, future satellite.</p>
+            <p><strong>Caveat:</strong> add country-specific sources before expanding India/Nepal/China/Thailand into their own articles.</p>
+            <div class="source-list"><a href="https://discovery.ucl.ac.uk/id/eprint/10203572/1/1-s2.0-S2225411024000920-main.pdf">UCL/JTCM</a><a href="https://ntb.gov.np/tihar">Nepal Tourism Board</a><a href="https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:252092-1">Kew</a></div>
+            <div class="library-note"><strong>Library/database note:</strong> language priority was flower-led: Spanish/Mexico first, then global uses from UCL, then Portuguese/Brazil check.</div>
+          </article>
+
+          <article class="card lane-card marigold">
+            <div class="eyebrow">Lane 6</div>
+            <h3>Mexico / Latin America</h3>
+            <p>This is the richest lane. INAH gives name, sun, paths, aroma, butterflies, life/death. CONABIO gives Mexican distribution and Tonalxochitl. ASyD gives communities, planting timing, syncretism, and Mitla life/death/sun interpretation. UNICACH is a promising food thesis record, not proof yet.</p>
+            <p><strong>Use:</strong> main emotional center of the article.</p>
+            <p><strong>Caveat:</strong> recipe and medicinal claims need more direct source reads.</p>
+            <div class="source-list"><a href="https://www.inah.gob.mx/index.php/foto-del-dia/cempasuchil-y-mariposas-simbolos-del-regreso-de-las-almas">INAH</a><a href="https://enciclovida.mx/especies/180679.pdf">CONABIO</a><a href="https://www.revista-asyd.org/index.php/asyd/article/download/1339/716">ASyD</a><a href="https://repositorio.unicach.mx/handle/20.500.12753/4635">UNICACH record</a></div>
+            <div class="library-note"><strong>Library/database note:</strong> Mexico national-library/hemeroteca search was attempted and low-yield; institutional sources from INAH, CONABIO, Chapingo/ASyD, and university repositories were stronger.</div>
+          </article>
+
+          <article class="card lane-card">
+            <div class="eyebrow">Lane 7</div>
+            <h3>Brazil / Portuguese-Language</h3>
+            <p>Portuguese search surfaced `cravo-de-defunto`, but the best results were agricultural/scientific rather than symbolic. SciELO/USP material may support companion planting and biological-control intent; BDTD surfaced a medicinal thesis that should stay out of consumer claims.</p>
+            <p><strong>Use:</strong> name map and future gardening satellite only.</p>
+            <p><strong>Caveat:</strong> no strong Brazilian folklore claim was verified in this pass.</p>
+            <div class="source-list"><a href="https://repositorio.usp.br/item/001756165">USP record</a><a href="https://bdtd.ibict.br/vufind/">BDTD/IBICT</a></div>
+            <div class="library-note"><strong>Library/database note:</strong> Brazil national/library layer was checked and low-yield for culture; no paid source recommended.</div>
+          </article>
+
+          <article class="card lane-card sage">
+            <div class="eyebrow">Lane 8</div>
+            <h3>Occasions / Customs</h3>
+            <p>Strong occasions: Día de Muertos altars/graveyards/paths; Indian weddings and garlands; Nepal/Tihar festival context; China/Qingming and Thailand Buddhist ceremonies via UCL; modern wedding/decor product intent.</p>
+            <p><strong>Use:</strong> "When are marigolds appropriate?" section and wedding satellite.</p>
+            <p><strong>Caveat:</strong> commercial wedding pages are product-intent proof, not cultural authority.</p>
+            <div class="source-list"><a href="https://www.inah.gob.mx/index.php/foto-del-dia/cempasuchil-y-mariposas-simbolos-del-regreso-de-las-almas">INAH</a><a href="https://www.revista-asyd.org/index.php/asyd/article/download/1339/716">ASyD</a><a href="https://discovery.ucl.ac.uk/id/eprint/10203572/1/1-s2.0-S2225411024000920-main.pdf">UCL</a><a href="https://ntb.gov.np/tihar">Nepal Tourism</a></div>
+            <div class="library-note"><strong>Library/database note:</strong> no paid source needed for overview; add stronger South Asian sources before a dedicated wedding post.</div>
+          </article>
+
+          <article class="card lane-card accent">
+            <div class="eyebrow">Lane 9</div>
+            <h3>Herbalism / Ethnobotany / Food</h3>
+            <p>UCL is the key safety-aware source because it distinguishes historical/traditional use from modern biomedical/lutein framing. UNICACH food thesis is promising but only the record/abstract was read. Shakespeare/Gerard/Culpeper material is calendula, not cempasúchil.</p>
+            <p><strong>Use:</strong> careful "uses/recipes/benefits" section with safety box.</p>
+            <p><strong>Caveat:</strong> no dosing, supplements, medical claims, or recipe instructions yet.</p>
+            <div class="source-list"><a href="https://discovery.ucl.ac.uk/id/eprint/10203572/1/1-s2.0-S2225411024000920-main.pdf">UCL/JTCM</a><a href="https://repositorio.unicach.mx/handle/20.500.12753/4635">UNICACH record</a><a href="https://www.shakespeare.org.uk/explore-shakespeare/blogs/marigold-on-death-beds-blowing-the-marigold-in-shakespeare-and-victorian-england/">SBT</a></div>
+            <div class="library-note"><strong>Library/database note:</strong> source-needed before recipe satellite; full UNICACH thesis or equivalent culinary source should be opened first.</div>
+          </article>
+
+          <article class="card lane-card blue">
+            <div class="eyebrow">Lane 10</div>
+            <h3>Art / Design / Literature</h3>
+            <p>William Morris's "Marigold" is museum-backed and Pinterest-friendly. Cleveland Museum: textile/wallpaper/linoleum, "ordered freedom," rational growth. The Met: 1875 block-printed wallpaper by Morris &amp; Co. Shakespeare layer adds sun-following and grave imagery.</p>
+            <p><strong>Use:</strong> art section plus William Morris satellite.</p>
+            <p><strong>Caveat:</strong> this is design/literature context, not cempasúchil symbolism proof.</p>
+            <div class="source-list"><a href="https://www.clevelandart.org/art/1937.699">Cleveland Museum</a><a href="https://www.metmuseum.org/art/collection/search/384018">The Met</a><a href="https://www.shakespeare.org.uk/explore-shakespeare/blogs/marigold-on-death-beds-blowing-the-marigold-in-shakespeare-and-victorian-england/">SBT</a></div>
+            <div class="library-note"><strong>Library/database note:</strong> museum/public-domain layer is strong enough. No paid source needed.</div>
+          </article>
+
+          <article class="card lane-card gold">
+            <div class="eyebrow">Lane 11</div>
+            <h3>Commercial / Product Intent</h3>
+            <p>Strong product lanes: cempasúchil prints, altar decor, paper/faux garlands, wedding garlands, mandap/haldi decor, centerpieces, William Morris wallpaper/art prints, seeds, potted plants, and books. Avoid supplements and medicinal products.</p>
+            <p><strong>Use:</strong> tasteful product boxes tied to meaning: remembrance, design, weddings, gardening, books.</p>
+            <p><strong>Caveat:</strong> commercial pages are product signals; refresh before affiliate publishing.</p>
+            <div class="source-list"><a href="https://www.etsy.com/market/marigold_wall_prints">Etsy market</a><a href="https://artelexia.com/products/marigold-cempasuchil-garland-yellow">Artelexia</a><a href="https://www.metmuseum.org/art/collection/search/384018">The Met</a></div>
+            <div class="library-note"><strong>Library/database note:</strong> current product scan performed; no paid research needed.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Fact Check</div>
+            <h2>Claim Matrix</h2>
+          </div>
+        </div>
+        <article class="card table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Claim</th>
+                <th>Source Support</th>
+                <th>Confidence</th>
+                <th>Content Use</th>
+                <th>Caveat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>*Tagetes erecta* is native to Mexico to Guatemala.</td><td>Kew POWO</td><td><span class="badge high">High</span></td><td>Botany/name map</td><td>"African marigold" is a common name, not origin proof.</td></tr>
+              <tr><td>Cempasúchil is interpreted as "twenty flowers" or "many flowers."</td><td>INAH, CONABIO, ASyD</td><td><span class="badge high">High</span></td><td>Opening/name box</td><td>Spellings vary.</td></tr>
+              <tr><td>Cempasúchil petals and scent guide the returning dead in Día de Muertos tradition.</td><td>INAH, ASyD</td><td><span class="badge high">High</span></td><td>Bloom Reveal/main section</td><td>Frame as tradition/belief.</td></tr>
+              <tr><td>Modern Day of the Dead cempasúchil use is syncretic and tied to cultivation timing.</td><td>ASyD PDF</td><td><span class="badge high">High</span></td><td>Research callout</td><td>Do not overstate unchanged continuity.</td></tr>
+              <tr><td>Marigold can mean grief in older European flower language.</td><td>Dumont, Shakespeare Birthplace Trust</td><td><span class="badge high">High</span></td><td>Floriography section</td><td>Likely calendula/pot marigold.</td></tr>
+              <tr><td>William Morris's "Marigold" is an 1875 wallpaper/textile design with strong decor intent.</td><td>Cleveland Museum, The Met</td><td><span class="badge high">High</span></td><td>Art/product section</td><td>Design history, not cempasúchil meaning.</td></tr>
+              <tr><td>India/Nepal/China/Thailand have important marigold ritual/festival uses.</td><td>UCL/JTCM, Nepal Tourism Board for Tihar context</td><td><span class="badge medium">Medium-High</span></td><td>Around-world section</td><td>Add country-specific sources for satellites.</td></tr>
+              <tr><td>Cempasúchil recipes are ready for a detailed recipe post.</td><td>UNICACH record only</td><td><span class="badge no">Source-needed</span></td><td>Defer</td><td>Open full thesis/PDF and safety sources first.</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">SEO / AIO</div>
+            <h2>Complete Article Blueprint</h2>
+            <p class="section-note">Approval-stage outline, not a draft. Structure is built for snippets, AI answers, Pinterest support, and source-backed human curation.</p>
+          </div>
+        </div>
+        <div class="grid two">
+          <article class="card accent">
+            <h3>H1</h3>
+            <p><strong>Marigold Meaning: Cempasúchil, Flower Symbolism, Uses, and Ritual Gold</strong></p>
+            <div class="source-list"><span class="source-pill">meaning intent</span><span class="source-pill">cempasúchil</span><span class="source-pill">uses</span><span class="source-pill">symbolism</span></div>
+          </article>
+          <article class="card gold">
+            <h3>Quick Answer / TLDR Box</h3>
+            <p>Marigold can mean several flowers, especially Mexican cempasúchil (*Tagetes erecta*) and pot marigold/calendula (*Calendula officinalis*). Cempasúchil is tied to Día de Muertos, where color and aroma mark the path for loved ones returning to the altar. Older European marigold language can mean grief, while South Asian garlands often signal auspiciousness, devotion, and celebration.</p>
+          </article>
+        </div>
+        <article class="card sage section">
+          <div class="eyebrow">Structure Confirmation</div>
+          <h2>SEO / AI-Search Principles Used</h2>
+          <p>The blueprint uses a direct answer near the top, extractable takeaways, intent-based H2s, conversational FAQs, source-backed callouts, safety boxes, and Pinterest satellite mapping. The article answers broad "marigold meaning" while protecting factual nuance around cempasúchil vs calendula.</p>
+          <div class="badge-row">
+            <span class="badge high">Quick answer</span>
+            <span class="badge high">Key takeaways</span>
+            <span class="badge high">Intent headings</span>
+            <span class="badge high">FAQ targets</span>
+            <span class="badge high">Source callouts</span>
+            <span class="badge high">Pinterest satellites</span>
+          </div>
+        </article>
+        <div class="grid two section">
+          <article class="card">
+            <h3>Key Takeaways</h3>
+            <ul>
+              <li>Marigold meaning changes by plant and culture.</li>
+              <li>Cempasúchil is the Mexico/Día de Muertos center: sun, scent, paths, altars, return.</li>
+              <li>Academic research complicates simple "ancient unchanged custom" explanations.</li>
+              <li>European/pot marigold adds grief, sun-following, graves, and remembrance.</li>
+              <li>Art/product intent is strong: garlands, wallpaper, art prints, seeds, and altar decor.</li>
+              <li>Recipes, benefits, and herbal claims need safety and source caveats.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Source-Backed Callout Boxes</h3>
+            <ul>
+              <li>Which marigold? *Tagetes* vs calendula.</li>
+              <li>Bloom Reveal: ritual gold changes meaning by placement.</li>
+              <li>Research note: ASyD on syncretic cultivation timing.</li>
+              <li>Safety note: historical uses are not medical advice.</li>
+              <li>Design note: William Morris's 1875 "Marigold."</li>
+            </ul>
+          </article>
+        </div>
+        <article class="card section">
+          <h3>Full H2 / H3 Structure</h3>
+          <div class="outline-grid">
+            <div class="outline-card"><div class="keyword">Opening</div><p>Intro, TLDR box, key takeaways, promise of one new cultural/detail-rich insight.</p></div>
+            <div class="outline-card"><div class="keyword">H2</div><p>First, Which Marigold Do You Mean? Cempasúchil, calendula, French marigold, African marigold.</p></div>
+            <div class="outline-card"><div class="keyword">H2</div><p>Cempasúchil Meaning in Mexico: name, petals, scent, paths, altars, graves, butterflies.</p></div>
+            <div class="outline-card"><div class="keyword">H2</div><p>The Bloom Reveal: Marigold Is Ritual Gold. Include solar warmth and ASyD syncretism.</p></div>
+            <div class="outline-card"><div class="keyword">H2</div><p>Marigold Symbolism by Culture and Occasion: Mexico, India, Nepal, China, Thailand, Europe.</p></div>
+            <div class="outline-card"><div class="keyword">H2</div><p>Marigold in Literature and Art: Shakespeare, floriography, William Morris wallpaper.</p></div>
+            <div class="outline-card"><div class="keyword">H2</div><p>Uses, Recipes, and Benefits: What to Treat Carefully. Historical context plus safety box.</p></div>
+            <div class="outline-card"><div class="keyword">H2</div><p>Decor, Gifts, and Product Ideas: cempasúchil art, garlands, wedding decor, wallpaper, seeds, books.</p></div>
+          </div>
+        </article>
+        <article class="card section">
+          <div class="eyebrow">FAQ Targets</div>
+          <h2>Questions To Capture</h2>
+          <div class="badge-row">
+            <span class="badge">What does marigold symbolize?</span>
+            <span class="badge">What does cempasúchil mean?</span>
+            <span class="badge">Why marigolds for Día de Muertos?</span>
+            <span class="badge">Are marigolds used in weddings?</span>
+            <span class="badge">Is calendula the same?</span>
+            <span class="badge">Can you eat marigolds?</span>
+            <span class="badge">Marigold spiritual meaning?</span>
+            <span class="badge">French vs African marigold?</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Article Material</div>
+            <h2>Quotes For The Article</h2>
+            <p class="section-note">Five short quote candidates that teach, warn, clarify, charm, or preserve a memorable source-backed fact.</p>
+          </div>
+        </div>
+        <article class="card table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Quote Candidate</th>
+                <th>Referenced Paper / Source</th>
+                <th>Why It Is Useful</th>
+                <th>Best Article Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="quote">"veinte flores"</td><td><a href="https://www.inah.gob.mx/index.php/foto-del-dia/cempasuchil-y-mariposas-simbolos-del-regreso-de-las-almas">INAH</a>; also CONABIO</td><td>Teaches the name origin immediately.</td><td>Name map / opening box</td></tr>
+              <tr><td class="quote">"vida y muerte forman parte de un mismo ciclo"</td><td><a href="https://www.inah.gob.mx/index.php/foto-del-dia/cempasuchil-y-mariposas-simbolos-del-regreso-de-las-almas">INAH</a></td><td>Strong cultural meaning; not empty inspiration.</td><td>Bloom Reveal / Día de Muertos</td></tr>
+              <tr><td class="quote">"Alone, the Marigold expresses grief"</td><td><a href="https://www.gutenberg.org/cache/epub/71779/pg71779-images.html">Henrietta Dumont ebook</a></td><td>Makes the grief layer concrete and source-backed.</td><td>Floriography section</td></tr>
+              <tr><td class="quote">"goes to bed wi'th' sun"</td><td><a href="https://www.shakespeare.org.uk/explore-shakespeare/blogs/marigold-on-death-beds-blowing-the-marigold-in-shakespeare-and-victorian-england/">Shakespeare Birthplace Trust</a></td><td>Beautiful sun-following/literary detail.</td><td>Shakespeare / literature</td></tr>
+              <tr><td class="quote">"ordered freedom"</td><td><a href="https://www.clevelandart.org/art/1937.699">Cleveland Museum of Art</a></td><td>Explains why Morris's marigold works as design.</td><td>William Morris section</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Sources</div>
+            <h2>Source Summary</h2>
+            <p class="section-note">The full ledger lives in the source dossier. These are the sources most responsible for the curation.</p>
+          </div>
+        </div>
+        <article class="card table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Contribution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><a href="https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:252092-1">Kew POWO, *Tagetes erecta*</a></td><td>Botanical database</td><td>Page read</td><td>Accepted name, range, useful-plant flags.</td></tr>
+              <tr><td><a href="https://enciclovida.mx/especies/180679.pdf">CONABIO/EncicloVida cempasúchil PDF</a></td><td>PDF/database summary</td><td>PDF read</td><td>Name, distribution, morphology, sun warmth/Tonalxochitl detail.</td></tr>
+              <tr><td><a href="https://discovery.ucl.ac.uk/id/eprint/10203572/1/1-s2.0-S2225411024000920-main.pdf">UCL/JTCM *Tagetes erecta* PDF</a></td><td>Academic review paper</td><td>PDF read</td><td>Historical medicine, ritual, Florentine Codex, global uses, lutein context.</td></tr>
+              <tr><td><a href="https://www.revista-asyd.org/index.php/asyd/article/download/1339/716">ASyD "flor de muerto" PDF</a></td><td>Academic paper/essay</td><td>PDF read</td><td>Ethnoagronomy, cultivation timing, communities, syncretism.</td></tr>
+              <tr><td><a href="https://www.inah.gob.mx/index.php/foto-del-dia/cempasuchil-y-mariposas-simbolos-del-regreso-de-las-almas">INAH cempasúchil/mariposas</a></td><td>Mexican institutional article</td><td>Page read</td><td>Petal paths, aroma guidance, sun, butterflies, life/death cycle.</td></tr>
+              <tr><td><a href="https://repositorio.unicach.mx/handle/20.500.12753/4635">UNICACH gastronomy thesis record</a></td><td>University repository</td><td>Record/abstract read</td><td>Promising food source; needs full PDF before recipe claims.</td></tr>
+              <tr><td><a href="https://www.gutenberg.org/cache/epub/71779/pg71779-images.html">Dumont, *Language of Flowers*</a></td><td>Public-domain ebook</td><td>Ebook read</td><td>Marigold grief/distress floriography.</td></tr>
+              <tr><td><a href="https://www.shakespeare.org.uk/explore-shakespeare/blogs/marigold-on-death-beds-blowing-the-marigold-in-shakespeare-and-victorian-england/">Shakespeare Birthplace Trust</a></td><td>Literary/museum article</td><td>Page read</td><td>Calendula, Shakespeare, sun-following, graves, deathbeds, Victorian grief.</td></tr>
+              <tr><td><a href="https://www.clevelandart.org/art/1937.699">Cleveland Museum, Morris "Marigold"</a></td><td>Museum object record</td><td>Page read</td><td>Textile/wallpaper/linoleum, ordered freedom, rational growth.</td></tr>
+              <tr><td><a href="https://www.metmuseum.org/art/collection/search/384018">The Met, Morris "Marigold"</a></td><td>Museum object record</td><td>Page read</td><td>1875 wallpaper, Morris &amp; Co., Jeffrey &amp; Co., block-printed design.</td></tr>
+              <tr><td>Bloom Whispers Pinterest Demand Dashboard</td><td>Local dashboard JSON</td><td>HTML read / embedded JSON parsed</td><td>Monthly Trends index, top 10 keywords, full keyword bank, competition URLs, product/wedding/podcast/gardening flags.</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="grid two">
+          <article class="card gold">
+            <div class="eyebrow">Paid Sources</div>
+            <h2>Recommendation</h2>
+            <p>Do not buy anything yet. The free/open stack is strong enough for the pillar. Worthy follow-ups only if needed: Kaplan 1960 and Neher 1968 ethnobotany papers, Arqueología Mexicana Día de Muertos/cempasúchil issues, and the full UNICACH gastronomy thesis before recipe content.</p>
+            <div class="badge-row">
+              <span class="badge high">Free stack strong</span>
+              <span class="badge medium">Library first</span>
+              <span class="badge medium">UNICACH for recipes</span>
+              <span class="badge medium">Kaplan/Neher optional</span>
+            </div>
+          </article>
+          <article class="card sage">
+            <div class="eyebrow">Commercial Intent</div>
+            <h2>Product Angles</h2>
+            <p>Dashboard-backed product lanes: wallpaper packs, printable art, phone backgrounds, embroidery/quilt/crochet patterns, jewelry, wedding garlands, table/vase decor, urli/haldi/mandap decor, seeds, potted plants, and books. Avoid supplements and medicinal products.</p>
+            <div class="badge-row">
+              <span class="badge">Art prints</span>
+              <span class="badge">Garlands</span>
+              <span class="badge">Wedding decor</span>
+              <span class="badge">Wallpaper</span>
+              <span class="badge">Seeds</span>
+              <span class="badge">Books</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Content System</div>
+            <h2>Pinterest Keyword Satellite Cluster</h2>
+            <p class="section-note">Cluster built from the parsed Marigold Pinterest Demand Dashboard. Demand is evergreen robust, with top intent around meaning/symbolism, wedding/decor, wallpaper/digital products, uses/benefits, magical properties, and tattoo/art.</p>
+          </div>
+        </div>
+        <div class="cluster">
+          <div class="cluster-center">
+            <div class="keyword">Core Pillar</div>
+            <h3>Marigold Meaning</h3>
+            <p>Primary article: meaning/symbolism first, cempasúchil, calendula, ritual gold, uses with safety, art/design, FAQ, and product paths.</p>
+          </div>
+          <div class="cluster-card"><div class="keyword">Meaning</div><h3>What Does Marigold Mean?</h3><p>Keywords: marigold flower meaning, marigold meaning, marigold symbolism, marigold spiritual meaning. Sources: INAH, UCL, Dumont, SBT.</p></div>
+          <div class="cluster-card"><div class="keyword">Cempasúchil</div><h3>Why Marigolds Guide the Dead Home</h3><p>Keywords: cempasúchil meaning, marigold day of the dead, day of the dead marigold. Sources: INAH, CONABIO, ASyD.</p></div>
+          <div class="cluster-card"><div class="keyword">Occasions</div><h3>Marigold Wedding Meaning and Garland Ideas</h3><p>Keywords: marigold decor wedding, marigold wedding decoration, marigold centerpiece wedding, marigold bouquet aesthetic. Add stronger South Asian sources before full satellite.</p></div>
+          <div class="cluster-card"><div class="keyword">Design</div><h3>William Morris Marigold Wallpaper</h3><p>Keywords: marigold wallpaper, marigold umber wallpaper, marigold flower wallpaper. Sources: Cleveland Museum, The Met.</p></div>
+          <div class="cluster-card"><div class="keyword">Uses / Safety</div><h3>Marigold Uses and Benefits: What Needs Care</h3><p>Keywords: marigold oil, marigold uses, marigold benefits, marigold tea benefits. Source: UCL/JTCM; no supplement advice.</p></div>
+          <div class="cluster-card"><div class="keyword">Recipes</div><h3>Calendula vs Marigold</h3><p>Keywords: marigold recipes, marigold jelly recipe, calendula vs marigold. Status: source-needed before detailed recipe content.</p></div>
+          <div class="cluster-card"><div class="keyword">Magic / Tattoo</div><h3>Marigold Magical Properties and Tattoo Meaning</h3><p>Keywords: marigold magical properties, marigold witchcraft, marigold tattoo, marigold flower tattoo. Keep as folklore/symbolism with caveats.</p></div>
+          <div class="cluster-card"><div class="keyword">Gardening</div><h3>Do Marigolds Help in the Garden?</h3><p>Keywords: marigold companion planting, marigold seeds, plant care. Lower-priority; gardening-heavy flag is false.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="grid two">
+          <article class="card accent">
+            <div class="eyebrow">Bloom Whispers Podcast</div>
+            <h2>Bloom Whispers Podcast Potential</h2>
+            <h3>Marigold: The Flower That Makes a Path Home</h3>
+            <p><strong>Yes, podcast-expandable.</strong> Marigold has sensory and story power: a late-October field, cut flowers, petals on a path, copal smoke, candlelight, graveyard quiet, wedding garlands, temple offerings, Shakespeare's sun, and Morris wallpaper blocks.</p>
+            <ol>
+              <li>Open with a quiet field and orange petals.</li>
+              <li>Clarify which marigold we mean.</li>
+              <li>Move through cempasúchil: name, sun, scent, return.</li>
+              <li>Introduce the research twist: cultivation timing and syncretism.</li>
+              <li>Echo outward to weddings, Tihar, Qingming, Shakespeare, and Morris.</li>
+              <li>Close on ritual gold: meaning activated by placement.</li>
+            </ol>
+          </article>
+          <article class="card">
+            <div class="eyebrow">Approval</div>
+            <h2>Human Checklist</h2>
+            <ul>
+              <li>Approve the "ritual gold" main angle.</li>
+              <li>Approve cempasúchil/Mexico as the emotional center.</li>
+              <li>Approve or adjust the H1 and quick answer.</li>
+              <li>Decide whether William Morris stays in the pillar or becomes a satellite.</li>
+              <li>Keep recipes/benefits as caveated overview only unless more sources are opened.</li>
+              <li>Choose first satellites: cempasúchil, calendula vs marigold, William Morris.</li>
+              <li>Decide whether to pursue Kaplan/Neher, Arqueología Mexicana, or UNICACH full thesis.</li>
+              <li>Approve podcast potential before scripting.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <p class="footer-note">Visual layer created from the lane-based source dossier. Keep the markdown dossier as the research record.</p>
+    </main>
+  </body>
+</html>

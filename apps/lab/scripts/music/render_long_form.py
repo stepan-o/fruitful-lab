@@ -363,6 +363,8 @@ def render(name, masters):
     elif name == 'options':
         track['studyId'] = 'LF-MUS-LONG-02-OPTIONS'
         track['blockBars'] = block_bars
+    if name == 'conveyor':
+        track.update(studyId='LF-MUS-LONG-01-CONVEYOR', currentRoom='security', reassigned='2026-11-22')
     return track
 
 

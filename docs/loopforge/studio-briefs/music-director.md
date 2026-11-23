@@ -20,11 +20,9 @@ Music is a system that interprets the game. It is not the simulation clock, an a
 
 Keep reference names in research and listening notes, separate from generation prompts. Follow the provider-specific input rules in the production companion. Do not import reference recordings, melodies, film dialogue or uncleared break samples into the product.
 
-## Current assignment · three themes into production
+## Day Two music · 23 November 2026
 
-Start from the approved Main menu curiosity, Options drum solo moving between the drummer’s hands, and heavy, patient Conveyor. For each theme, write the native phrase variations that carry an idle listen and the separate responses to observable context. Describe emotional purpose, player activity, motif, phrase lengths, voicings, fills, rhythm, development, recovery, transitions, silence, speech and export assumptions. Map other current surfaces before commissioning more music. Keep dated alternatives and measured evidence. Develop a few useful audition questions before building a catalog.
-
-The owner selected 164 BPM for Menu and Options and an 82 BPM half-time feel for Conveyor. Take B’s C-sharp over low D and the three room identities remain approved. Ask one listening question at a time. The owner approved Main menu 06 as the arrangement and composition reference. The first Options solo felt too long and repeated the same section too often. The owner requested more drum-pattern variation closer to the approved Menu break. The owner approved Options 02, the 32-bar drum solo. Review the weight of Conveyor 01 during steady work next. The staged wait/restart and matched-picture speech follow. Record each verdict before the next question. ElevenLabs remains the intended production tool. Propose one 118-second Menu instrumental in Music v2.5, one attempt, after the review and separate all-in spending approval. The previous 45-second pilot is historical.
+Main menu 06 and Options 02 are the approved composition and arrangement references. The owner reassigned the 96-bar Conveyor 01 to Security, selected bass first for Day Two Conveyor and approved the 64-bar build. The new two-pass take is ready for listening. The [listening desk](/loopforge-design/music-audition/day-two/index.html) has independent cuts and an interruptible route. The [ENGINE cue map](/loopforge-design/music-audition/day-two/handoff.html) records the scene timings, work windows, tails and public observations.
 
 ## Start at the music boundary
 
@@ -53,9 +51,9 @@ Track samples, source recordings, model outputs, human edits and derivatives thr
 
 ## Current handoff
 
-21 November 2026 · The short traversal and speech cuts merged in PR #187. The owner selected 164 BPM for Menu and Options and an 82 BPM half-time feel for Conveyor. Take B’s C-sharp over low D and the three room identities remain approved. The owner asked for dedicated arrangements that can hold attention over long sessions. Hear the [dedicated room studies](/stepanoskin/loopforge/design#music-long-form) and consult the [provider brief and proposed budget](/stepanoskin/loopforge/design/studio/music-production#current-pilot-one-dedicated-main-menu-performance).
+23 November 2026 · From merged master e0327811. The [listening desk](/loopforge-design/music-audition/day-two/index.html) carries two Conveyor passes, five context beds, eight track cuts, four room bridges and seven scene or work cues. Security uses LF-MUS-LONG-01-CONVEYOR. The [ENGINE cue map](/loopforge-design/music-audition/day-two/handoff.html) records gameplay timing and the KVP boundary. The ledger distinguishes approved build direction from listening and release clearance.
 
-Ask one listening question at a time. The owner approved Main menu 06 as the arrangement and composition reference. The first Options solo felt too long and repeated the same section too often. The owner requested more drum-pattern variation closer to the approved Menu break. The owner approved Options 02, the 32-bar drum solo. Review the weight of Conveyor 01 during steady work next. The staged wait/restart and matched-picture speech follow. Record each verdict before the next question. ElevenLabs remains the intended production tool. Propose one 118-second Menu instrumental in Music v2.5, one attempt, after the review and separate all-in spending approval. The previous 45-second pilot is historical. Published local MP3s are composition studies. ENGINE integration and saleable production assets remain separate later reviews.
+Review the uninterrupted Conveyor exchange first. Then take interrupted room transitions and matched speech one question at a time. The previous Menu provider pilot is an unfunded proposal. This pass cost US$0.
 
 ## Required reading and delivery
 

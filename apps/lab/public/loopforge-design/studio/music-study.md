@@ -2,6 +2,10 @@
 
 20 November 2026 · Commissioning study for [MUSIC DIRECTOR](/stepanoskin/loopforge/design/studio/music-director)
 
+## Day Two music · 23 November 2026
+
+Main menu 06 and Options 02 are the approved composition and arrangement references. The owner reassigned the 96-bar Conveyor 01 to Security, selected bass first for Day Two Conveyor and approved the 64-bar build. The new two-pass take is ready for listening. The [listening desk](/loopforge-design/music-audition/day-two/index.html) has independent cuts and an interruptible route. The [ENGINE cue map](/loopforge-design/music-audition/day-two/handoff.html) records the scene timings, work windows, tails and public observations.
+
 ## Dedicated room cycles · 21 November 2026
 
 The owner selected 164 BPM for Menu and Options and an 82 BPM half-time feel for Conveyor. Take B’s C-sharp over low D and the three room identities remain approved. A 16-bar excerpt at this tempo is 23.4 seconds. It can demonstrate continuity through a doorway. To judge native variation, the owner asked to stay in one room through its departure and return. The three local studies below use one pulse and distinct phrase development. Their own listening links support repeat and bar navigation.
@@ -10,7 +14,7 @@ The owner selected 164 BPM for Menu and Options and an 82 BPM half-time feel for
 | --- | --- | --- |
 | [Main menu](/stepanoskin/loopforge/design#music-long-menu) | 80 bars · 1:57 | The approved two statements, variation, C♯ landing and restart make up the opening 32 bars. Solo drums take bars 33–48. Only two quiet closed-pedal strokes remain among the snare and tom figures. The full band plays the four-bar theme once at 49. Lead and reed trade the E–C♯ tag from 53, a short climb moves through B-flat, and a lower turn sets up the new four-bar bass solo at 65. Keys return over a thinner groove at 69, the lead gives a higher answer at 73 and the approved cadence wraps the music back to bar 1. |
 | [Options](/stepanoskin/loopforge/design#music-long-options) | 32 bars · 0:47 | The Menu sidestick and tom call opens an eight-bar two-step. Quiet snare doubles answer a moving kick at bar 9. Half-time leaves room for a low tom melody at 17. The two-step comes back at 25, with a six-stroke answer at 31 and a short last bar to breathe. |
-| [Conveyor](/stepanoskin/loopforge/design#music-long-conveyor) | 96 bars · 2:20 | Sustained and clipped bass phrases trade places under the half-time snare. A thin passage opens a gap, a displaced accent moves the kick response, and a high reply gives the returning sub weight. All sections represent steady work. |
+| [Conveyor 01, now Security](/stepanoskin/loopforge/design#music-long-security) | 96 bars · 2:20 | Sustained and clipped bass phrases trade places under the half-time snare. A thin passage opens a gap, a displaced accent moves the kick response, and a high reply gives the returning sub weight. All sections represent steady work. |
 
 **Menu listening verdict, 21 November.** The owner found the first long Menu too dreamy and melancholic. Some kick placements felt off, the tune disappeared in the variations and the break repeated without enough active drumming. The second draft brought a steadier kick and an active drum feature. The owner heard improvement in Menu 02 but found the hook too frequent, the replies rare and rudimentary, and the chords choppy and offbeat. The owner found Menu 03 too far in the other direction. The theme nearly disappeared, the answers sounded awkward and the drum break needed greater contrast, a quieter hi-hat and two rapid runs. Menu 04 brought the hook back sooner, but the owner heard its return collide with the answers. The owner approved the melodic sequence and character of Menu 05. The requested changes concern duration, the return after the break, variation in the second section and cymbal clarity. Menu 06 moves the drum break to bar 33 (0:46.83), brings back the theme once at bar 49 (1:10.24), then develops its two-note tag and gives the bass a new solo phrase. The owner approved Menu 06 as the arrangement and composition reference.
 
@@ -19,6 +23,8 @@ The owner selected 164 BPM for Menu and Options and an 82 BPM half-time feel for
 First listen across a whole cycle. On a second pass, choose the first passage you would shorten, develop or remove. Leave an accepted candidate repeating during an ordinary longer session and record the first recurring gesture that interrupts the task. Hour-scale endurance, commercial instrumentation and in-game speech are open. The repeat control is an audition aid. The existing fixture and matched-picture scene continue to test events independently.
 
 ## Three theme design sheets
+
+Historical room labels from November 21 follow.
 
 21 November 2026 · Direction and 164/82 approved. Main menu 06 and Options 02 are approved composition and arrangement references. Conveyor’s weight and production sound await listening. The owner chose the descent A–G–F–E–C♯ against low D. Take A, ending on E♭, remains a dated alternative. The notation below counts four fast beats per bar on both grids. Score sections and timings describe the two recorded sketches. Instructions for longer sits, reversals and runtime behavior are design proposals. [Compare the two tempos](/stepanoskin/loopforge/design#music-listening).
 
@@ -169,6 +175,6 @@ Use pre-generated, locally served and validated assets. No model request should 
 
 Preload the active arrangement and its imminent transition, not the whole catalog. Propose and measure caps for simultaneous layers, decoded buffers, transition overlap and initial download. Decoded float PCM costs roughly seconds × sample rate × channels × 4 bytes: four stereo 30-second layers at 48 kHz occupy about 46 MB before overhead. Compressed transfer size does not establish runtime memory. Test narrow/mobile contexts, long playback, rapid menu changes, mute/resume and sustained simulation load. Report laboratory conditions and listening evidence separately.
 
-## Current listening and production decision
+## November 21 listening and production decision
 
 The owner selected 164 BPM for Menu and Options and an 82 BPM half-time feel for Conveyor. Take B’s C-sharp over low D and the three room identities remain approved. ElevenLabs remains the intended production tool. Propose one 118-second Menu instrumental in Music v2.5, one attempt, after the review and separate all-in spending approval. The previous 45-second pilot is historical. The music adapter is downstream of ENGINE’s verified KVP projection. The recordings have no game connection. See the [provider brief and proposed budget](/stepanoskin/loopforge/design/studio/music-production#current-pilot-one-dedicated-main-menu-performance).

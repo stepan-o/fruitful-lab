@@ -68,7 +68,10 @@
       "meter": {
         "lufs": -16.96,
         "dBTP": -3.45
-      }
+      },
+      "studyId": "LF-MUS-LONG-01-CONVEYOR",
+      "currentRoom": "security",
+      "reassigned": "2026-11-22"
     }
   ]
 }

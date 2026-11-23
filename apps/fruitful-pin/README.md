@@ -17,17 +17,20 @@ Local builds use `next build --webpack` because Codex sandbox testing on 2026-05
 From `apps/fruitful-pin`:
 
 ```bash
-npm ci
-npm run dev:local
-npm test
-npm run build
+npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm ci
+npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm run dev:local
+npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm test
+npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm run build
 ```
 
-From the repo root, the easiest local preview command is:
+From the repo root, the easiest local setup and preview commands are:
 
 ```bash
+make fruitful-pin-install
 make fruitful-pin-dev
 ```
+
+The local preview URL is `http://127.0.0.1:4173/`. Stop the local server with `Control+C` in the terminal window running `make fruitful-pin-dev`.
 
 Root validation commands:
 
@@ -36,6 +39,8 @@ make fruitful-pin-test
 make fruitful-pin-build
 make fruitful-pin-ci
 ```
+
+The test suite now includes non-visual safety checks for the canonical domain, public navigation, blog post URL shape, sitemap/robots output, article-template content requirements, and accidental visitor-facing implementation-status language.
 
 ## Deployment Direction
 

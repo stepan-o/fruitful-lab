@@ -3,6 +3,7 @@ export const CANONICAL_URL = "https://fruitfulab.com";
 export const SITE_DESCRIPTION =
   "Product discovery, search, content, email, data, testing, and AI-supported growth systems for specialty product brands.";
 export const BOOKING_URL = process.env.NEXT_PUBLIC_TIDYCAL_URL ?? "https://tidycal.com/susycid";
+export const CLICKUP_FORM_URL = process.env.NEXT_PUBLIC_CLICKUP_FORM_URL ?? "";
 export const CONTACT_EMAIL = "hello@fruitfulab.com";
 
 export const PRIMARY_NAV = [

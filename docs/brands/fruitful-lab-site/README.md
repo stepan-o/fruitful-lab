@@ -37,6 +37,16 @@ Domain
 
 The current foundation does not change DNS, WordPress, A2, Cloudflare, or any live production setting.
 
+## Temporary Lead Capture
+
+Because Fruitful Lab may stay low-traffic while the offer matures, the simplest contact stack is:
+
+- ClickUp Form for structured intake, configured with `NEXT_PUBLIC_CLICKUP_FORM_URL`.
+- TidyCal link for direct fit calls, configured with `NEXT_PUBLIC_TIDYCAL_URL`.
+- `hello@fruitfulab.com` as the fallback email path.
+
+Do not add a custom ClickUp API integration until the site needs tighter routing, automation, or analytics. ClickUp Forms are enough for the first launch window.
+
 ## Initial Site Scope
 
 - Homepage
@@ -56,14 +66,15 @@ Case studies and tools/experiments are intentionally out of the first skeleton. 
 
 Fruitful Lab can share family resemblance with Fruitful Pin, but it should use its own palette and movement. Fruitful Pin can stay more pink/yellow and Pinterest-specific. Fruitful Lab should feel like the broader, systems-minded parent brand.
 
-The current positioning spine lives in `docs/brands/fruitful-lab-site/positioning-spine-2026-05-21.md`. The working core idea is: good products should not be hard to discover. This is positioning territory only, not a locked offer. Current language should favor broader search/discovery over Pinterest-specific positioning for Fruitful Lab.
+The current positioning spine lives in `docs/brands/fruitful-lab-site/positioning-spine-2026-05-21.md`. The pre-final launch audit lives in `docs/brands/fruitful-lab-site/pre-final-launch-audit-2026-05-27.md`, and the current launch checkpoint lives in `docs/brands/fruitful-lab-site/launch-checkpoint-2026-05-30.md`. The working core idea is: good products should not be hard to discover. This is positioning territory only, not a locked offer. Current language should favor broader search/discovery over Pinterest-specific positioning for Fruitful Lab.
 
 Current visual pass:
 
+- Design-system foundation: `docs/brands/fruitful-lab-site/design-system.md` documents the shared `--fl-*` CSS tokens and `fl-*` primitives now used as the starting point for future page work.
 - Use a mostly white and ghost-white base rather than the cream/beige Fruitful Pin direction.
 - Current palette: Ghost White `#EDEDF4`, Soft Periwinkle `#9984D4`, Blazing Flame `#FF4A1C`, Mint Leaf `#21D19F`, and Prussian Blue `#101935`.
 - Keep a non-pink gradient as an ecosystem cue across the brand family, but make it warmer and more editorial than cold SaaS blue/purple.
-- Use Alatsi as the primary heading/accent font and Raleway for readable body copy.
+- Use Comfortaa 700 as the primary heading/accent font and Raleway for readable body copy.
 - Favor flowing, guided sections over repeated stacked rectangles: waves, organic shapes, offset content, and open white space should lead the visual system.
 - Current reference direction: Commence Studio is the structural skeleton and MVR Digital is the pulse. Fruitful Lab should keep its own palette, typography, and product-discovery positioning.
 - Borrowable Commence-style patterns: pill navigation, richer service navigation later, full-width moving trust/positioning rail, serious diagnostic offer framing, featured case-study style modules, metrics/signals, and a clear process section.
@@ -77,15 +88,17 @@ Current visual pass:
 - Susy confirmed on 2026-05-22 that this Commence-inspired structure is the better working direction. Preserve the logic: make each section's job obvious, reduce cards-for-cards' sake, keep placeholders legible, and let future copy/images replace clear slots rather than guessing what a block is meant to be.
 - The Services page should use the same logic: service-lab categories, engagement path, formula/testing language, and clear CTA path. Current service-lab categories are Search ecosystem, Paid media, SEO + content, Lifecycle + funnels, Data + testing, and AI creative systems.
 - The How We Work page is the process page. Use Commence's process page as a structure reference, translated into Fruitful Lab's brand: fit, diagnose, build, test; diagnostic as the lab bench; practical outputs; and a clear fit-call CTA.
-- Keep the moving ribbon limited to the homepage unless Susy asks for it elsewhere; it became distracting on the Services page.
+- Moving ribbons should be used sparingly. On Services, Susy asked for a restrained Commence-style outline logo rail below the hero, using mock brand names only until real proof exists.
 - Services and process hero visuals should include realistic product imagery so product-brand visitors can picture their own brand inside the service, supported by lab/formula overlays rather than only abstract diagrams.
 - The 9G StandOut Plan page can be used as a broad inspiration point for bolder contrast, clearer paid-strategy entry flow, and more direct problem language. Do not copy its exact layout, icon style, pink palette, or contractor-specific language.
 - Leave visible space for founder presence, future photography, diagrams, and system graphics.
 - Blog archive should follow the same discovery pattern as Fruitful Pin: featured article, article list, search, about block, lead magnet/list-building block, popular reads, and resource links.
+- Contact should be an intake-and-fit page, not a generic contact page: Commence-inspired two-column hero, optional direct TidyCal/email paths, six-step fallback intake form, "what happens after you submit" timeline, and FAQ. The low-maintenance launch path is ClickUp Forms via `NEXT_PUBLIC_CLICKUP_FORM_URL`; when that value is absent, the local fallback form opens an email draft to `hello@fruitfulab.com` instead of pretending to submit to a CRM.
 
 Current services model:
 
 1. Fit Call
-2. Growth Systems Diagnostic as the lead product
-3. Implementation Sprint for the first useful build
-4. Scale Partnership for larger projects or ongoing systems work
+2. Diagnose with a Growth Formula Diagnostic as the lead product
+3. Formulate the search/content/lifecycle/data/creative mix
+4. Build the first useful system
+5. Compound through signal reviews, testing, and ongoing improvement

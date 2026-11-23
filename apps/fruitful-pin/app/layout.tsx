@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="font-body">
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

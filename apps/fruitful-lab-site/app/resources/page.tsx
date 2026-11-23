@@ -1,40 +1,67 @@
 import Link from "next/link";
-import { PageHeader } from "@/components/PageHeader";
-import { Section, SectionInner } from "@/components/Section";
-import { RESOURCE_ITEMS } from "@/lib/content";
+import { ResourcesFinalCta } from "./ResourcesFinalCta";
 
-export const metadata = { title: "Resources" };
+export const metadata = {
+  title: "Resources",
+  description: "Coming-soon Fruitful Lab guides, templates, worksheets, and field notes for product discovery systems.",
+  alternates: {
+    canonical: "/resources/",
+  },
+};
+
+const PREVIEW_ITEMS = ["Product discovery checklists", "Search + content maps", "Data-to-decision worksheets"] as const;
 
 export default function ResourcesPage() {
   return (
-    <div>
-      <PageHeader
-        eyebrow="Resources"
-        title="Guides, templates, and practical assets for clearer product discovery."
-        description="This page can become the home for lead magnets, worksheets, search/content maps, reporting prompts, AI workflow maps, and future client-facing tools."
-      />
-      <Section>
-        <SectionInner>
-          <div className="grid gap-5 md:grid-cols-3">
-            {RESOURCE_ITEMS.map((item) => (
-              <article key={item.title} className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
-                <p className="text-sm font-black text-[var(--cobalt)]">{item.type}</p>
-                <h2 className="mt-3 text-xl font-semibold text-[var(--heading)]">{item.title}</h2>
-                <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{item.description}</p>
-              </article>
-            ))}
-          </div>
-          <div className="mt-10 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
-            <h2 className="text-2xl font-semibold text-[var(--heading)]">Need the system built with you?</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--muted)]">
-              Resources can support the thinking. Services are for turning that thinking into a search path, content ecosystem, funnel, reporting rhythm, campaign, email path, or workflow.
+    <div className="cfs-page resources-soon-page">
+      <section className="cfs-hero resources-soon-hero">
+        <div className="cfs-shell resources-soon-grid">
+          <div className="cfs-hero-copy">
+            <p className="cfs-kicker">Resources</p>
+            <h1>
+              Practical growth resources are <span>coming soon.</span>
+            </h1>
+            <p>
+              We are keeping this page light for launch. This will become the home for Fruitful Lab guides, templates,
+              worksheets, and useful field notes once the first resource library is ready.
             </p>
-            <Link className="btn btn-primary mt-5 min-h-11 px-5 py-2 text-sm" href="/services">
-              Explore services
-            </Link>
+            <div className="cfs-actions">
+              <Link className="cfs-button cfs-button-primary" href="/contact/">
+                Book a fit call →
+              </Link>
+              <Link className="cfs-button cfs-button-secondary" href="/blog/">
+                Read the blog →
+              </Link>
+            </div>
           </div>
-        </SectionInner>
-      </Section>
+
+          <aside className="resources-soon-card" aria-label="Upcoming resource types">
+            <p>Resource bench</p>
+            <h2>Useful assets, not busywork.</h2>
+            <ul>
+              {PREVIEW_ITEMS.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <span>Coming soon</span>
+          </aside>
+        </div>
+      </section>
+
+      <section className="resources-soon-note" aria-label="Resources launch note">
+        <div className="cfs-shell resources-soon-note-grid">
+          <div>
+            <p className="cfs-kicker">For V1</p>
+            <h2>Simple on purpose.</h2>
+          </div>
+          <p>
+            Until the actual resources exist, this page should not pretend to be a library. It gives visitors a clear
+            signal that resources are planned, then routes them to the blog or a fit call.
+          </p>
+        </div>
+      </section>
+
+      <ResourcesFinalCta />
     </div>
   );
 }

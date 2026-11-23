@@ -221,6 +221,126 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "search-is-not-one-channel-anymore",
+    title: "Search Is Not One Channel Anymore",
+    category: "Search Ecosystem",
+    date: "May 2026",
+    excerpt:
+      "Product discovery now happens across Google, Pinterest-style discovery, AI answers, marketplaces, social search, and saved recommendations. The strategy has to connect those behaviors instead of treating search like one box.",
+    keyTakeaways: [
+      "Search behavior is spreading across several discovery environments.",
+      "Product pages and content need to answer more than one kind of intent.",
+      "The best search system connects discovery, education, trust, and action.",
+    ],
+    sections: [
+      {
+        heading: "Discovery is more fragmented",
+        body:
+          "Customers do not only search in one place. They compare, save, ask, browse, and return through several surfaces before they feel ready to buy. That means product discovery needs a broader map.",
+      },
+      {
+        heading: "The content has to carry the context",
+        body:
+          "A strong product path answers what the product is, who it is for, when it matters, how it compares, and what step makes sense next.",
+      },
+      {
+        heading: "Build the signal loop",
+        body:
+          "The goal is not to chase every channel. The goal is to understand where people look, what they need to trust, and which pieces make the next decision clearer.",
+      },
+    ],
+  },
+  {
+    slug: "what-a-growth-formula-diagnostic-can-show",
+    title: "What a Growth Formula Diagnostic Can Show",
+    category: "Data + Testing",
+    date: "May 2026",
+    excerpt:
+      "A useful diagnostic does not hand the brand a pile of tactics. It shows which part of the discovery system is weak, which first build is worth shipping, and what signal should guide the next move.",
+    keyTakeaways: [
+      "Diagnostics are most useful when they lead to a decision.",
+      "The first build should match the current bottleneck.",
+      "A clear signal plan keeps the system from getting busier without getting better.",
+    ],
+    sections: [
+      {
+        heading: "Look for the constraint",
+        body:
+          "The highest-leverage move might be search visibility, offer clarity, content structure, email follow-up, reporting, or the workflow behind production. The diagnostic is where those pieces get compared.",
+      },
+      {
+        heading: "Turn the map into a build",
+        body:
+          "A good map should lead to a practical next asset: a page, sequence, report, campaign, content path, or workflow that can actually ship.",
+      },
+      {
+        heading: "Decide how the work will be judged",
+        body:
+          "Before expanding the system, define the signal that would make the next decision clearer. That is what turns strategy into a working formula.",
+      },
+    ],
+  },
+  {
+    slug: "where-ai-belongs-in-the-marketing-workbench",
+    title: "Where AI Belongs in the Marketing Workbench",
+    category: "AI Workflows",
+    date: "May 2026",
+    excerpt:
+      "AI is strongest when it sits inside a workflow with source material, review points, and a clear job. It should make the work calmer, not flatten the brand into generic output.",
+    keyTakeaways: [
+      "AI needs source material and rules to protect voice.",
+      "The workflow should define what the human still decides.",
+      "Useful AI systems reduce friction instead of creating more content to manage.",
+    ],
+    sections: [
+      {
+        heading: "Start with the job",
+        body:
+          "Research, repurposing, QA, reporting notes, and first-pass outlines can all benefit from AI support, but only when the job is clear.",
+      },
+      {
+        heading: "Keep judgment in the loop",
+        body:
+          "The brand still needs human taste, context, and decision-making. The workflow should make that judgment easier to apply.",
+      },
+      {
+        heading: "Make the system reusable",
+        body:
+          "A useful AI workflow can be repeated and improved. It has inputs, rules, examples, review steps, and a definition of done.",
+      },
+    ],
+  },
+  {
+    slug: "email-paths-are-part-of-product-discovery",
+    title: "Email Paths Are Part of Product Discovery",
+    category: "Lifecycle",
+    date: "May 2026",
+    excerpt:
+      "Follow-up is part of the product path. Email gives interested people a calm way back to the offer, the use case, and the next decision when they are not ready on the first visit.",
+    keyTakeaways: [
+      "Lifecycle paths keep discovery from going cold after the first click.",
+      "Useful email systems connect back to product questions, objections, and use cases.",
+      "The best follow-up path helps people decide without forcing urgency too early.",
+    ],
+    sections: [
+      {
+        heading: "Treat follow-up as product discovery",
+        body:
+          "A person may understand the product in pieces: one article, one search, one product page, one saved resource, then a later email. The follow-up path should make that return easier.",
+      },
+      {
+        heading: "Answer the next question",
+        body:
+          "Good lifecycle content does not only announce offers. It answers what the product does, when it matters, who it is for, what makes it trustworthy, and what step is reasonable now.",
+      },
+      {
+        heading: "Keep the sequence useful",
+        body:
+          "A lighter sequence with clear jobs can often do more than a complicated automation. The goal is to keep the path warm, helpful, and connected to real decisions.",
+      },
+    ],
+  },
 ];
 
 export function getPostBySlug(slug: string) {

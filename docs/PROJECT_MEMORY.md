@@ -65,11 +65,22 @@ Current foundation:
 
 - static-first Next.js App Router app,
 - `output: "export"` for Cloudflare Pages compatibility,
-- public route placeholders for `/`, `/services`, `/blog`, `/case-studies`, `/about`, `/contact`, `/privacy`, and `/terms`,
+- first-pass public routes for `/`, `/pinterest-services`, `/resources`, `/pinterest-fit-check`, `/blog`, root-level blog posts, `/case-studies`, `/about`, `/contact`, `/privacy`, `/privacy-policy`, `/terms`, and legacy `/services`,
 - brand/site constants in `apps/fruitful-pin/lib/site.ts`,
-- placeholder content boundary in `apps/fruitful-pin/lib/content.ts`,
+- content boundary in `apps/fruitful-pin/lib/content.ts`,
 - WordPress connection placeholder in `apps/fruitful-pin/lib/wordpress.ts`,
 - local tests in `apps/fruitful-pin/__tests__/`.
+
+First-pass checkpoint memory:
+
+- Fruitful Pin should feel airy, breezy, editorial, warm, and Pinterest-specific rather than corporate, generic, or boxy.
+- Primary CTAs use solid `#950952` pink. Gradients are for text highlights and occasional intentional accents, not CTA buttons.
+- Top navigation should stay intentionally lean: Home, Blog, Services, Resources, and About. Case Studies, Contact, Privacy, and Terms can live in the footer and contextual page CTAs.
+- Resources is a soft-conversion hub. It features the native Pinterest Fit Check and keeps guide/resource/blog paths underneath.
+- Pinterest Fit Check is the Fruitful Pin-native diagnostic tool at `/pinterest-fit-check`; it lives inside `apps/fruitful-pin` rather than importing from `apps/lab`.
+- Blog templates should support a sidebar, featured images, table of contents, key takeaways, pin graphic slots, pull quotes, comparison tables, FAQs, and reader navigation.
+- Contact is the fit-call page: embedded TidyCal first, then the general inquiry form/email option. Do not wire new email automation, CRM, or form backend integrations without explicit approval.
+- Case studies/proof is currently a first-pass holding structure until Susy is ready to build real visual case studies and proof packets.
 
 Use `npm run build` from `apps/fruitful-pin/` or `make fruitful-pin-build` from the repo root to verify the static export. Cloudflare Pages should use `apps/fruitful-pin` as the root, `npm run build` as the build command, and `out` as the build output directory. If later WordPress preview, SSR, or dynamic route needs exceed static export, switch this app to the Cloudflare Workers/OpenNext path in a dedicated PR.
 

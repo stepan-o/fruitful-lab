@@ -4,6 +4,9 @@ import Link from "next/link";
 export const metadata = {
   title: "How We Work",
   description: "The Fruitful Lab process for diagnosing, formulating, building, and testing product discovery systems.",
+  alternates: {
+    canonical: "/how-we-work/",
+  },
 };
 
 const PROCESS_STEPS = [
@@ -70,7 +73,7 @@ export default function HowWeWorkPage() {
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:py-24">
           <div>
             <p className="eyebrow">How we work</p>
-            <h1 className="mt-5 max-w-4xl text-5xl font-normal leading-[0.95] text-[var(--heading)] sm:text-6xl lg:text-7xl">
+            <h1 className="fl-title-hero mt-5">
               A lab process for turning scattered marketing into a <span className="gradient-text">testable formula.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">

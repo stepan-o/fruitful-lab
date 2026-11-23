@@ -40,6 +40,10 @@ describe("Fruitful Lab customer site config", () => {
       "/blog/which-growth-system-to-build-first",
       "/blog/ai-workflows-that-keep-your-brand-human",
       "/blog/content-needs-a-conversion-path",
+      "/blog/search-is-not-one-channel-anymore",
+      "/blog/what-a-growth-formula-diagnostic-can-show",
+      "/blog/where-ai-belongs-in-the-marketing-workbench",
+      "/blog/email-paths-are-part-of-product-discovery",
     ]);
   });
 });

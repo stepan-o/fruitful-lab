@@ -22,7 +22,7 @@ Keep reference names in research and listening notes, separate from generation p
 
 ## Day Two music · 23 November 2026
 
-Main menu 06 and Options 02 are the approved composition and arrangement references. The owner reassigned the 96-bar Conveyor 01 to Security, selected bass first for Day Two Conveyor and approved the 64-bar build. The new two-pass take is ready for listening. The [listening desk](/loopforge-design/music-audition/day-two/index.html) has independent cuts and an interruptible route. The [ENGINE cue map](/loopforge-design/music-audition/day-two/handoff.html) records the scene timings, work windows, tails and public observations.
+Main menu 06 and Options 02 are the approved composition and arrangement references. The owner reassigned the 96-bar Conveyor 01 to Security, selected bass first for Day Two Conveyor and approved the 64-bar build. The owner accepted the opening of that first take and requested a low bass theme for two workers, four workers and a fully staffed line. Audition 02 keeps the recorded opening and gives each intensity its own 32-bar loop. Day One follows staffing. Day Two+ follows publicly visible production activity. The [listening desk](/loopforge-design/music-audition/day-two/index.html) has independent cuts and an interruptible route. The [ENGINE cue map](/loopforge-design/music-audition/day-two/handoff.html) records the scene timings, work windows, tails and public observations.
 
 ## Start at the music boundary
 
@@ -51,9 +51,9 @@ Track samples, source recordings, model outputs, human edits and derivatives thr
 
 ## Current handoff
 
-23 November 2026 · From merged master e0327811. The [listening desk](/loopforge-design/music-audition/day-two/index.html) carries two Conveyor passes, five context beds, eight track cuts, four room bridges and seven scene or work cues. Security uses LF-MUS-LONG-01-CONVEYOR. The [ENGINE cue map](/loopforge-design/music-audition/day-two/handoff.html) records gameplay timing and the KVP boundary. The ledger distinguishes approved build direction from listening and release clearance.
+23 November 2026 · From merged master e0327811. The [listening desk](/loopforge-design/music-audition/day-two/index.html) carries the accepted opening and three Conveyor intensities, five context beds, eight track cuts, four room bridges and seven scene or work cues. Security uses LF-MUS-LONG-01-CONVEYOR. The [ENGINE cue map](/loopforge-design/music-audition/day-two/handoff.html) records gameplay timing and the KVP boundary. The ledger distinguishes approved build direction from listening and release clearance.
 
-Review the uninterrupted Conveyor exchange first. Then take interrupted room transitions and matched speech one question at a time. The previous Menu provider pilot is an unfunded proposal. This pass cost US$0.
+Review the hook under two, four and full staffing first. Then take interrupted room transitions and matched speech one question at a time. The previous Menu provider pilot is an unfunded proposal. This pass cost US$0.
 
 ## Required reading and delivery
 

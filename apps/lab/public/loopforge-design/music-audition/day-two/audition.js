@@ -180,7 +180,10 @@ async function arrange(next, {cut=null, keep=false, speech=talking, wait=waiting
     origin = now + length - offset;
     sound(bed,bedBytes,now+length,offset,talking ? .49 : 1,talking && bedId !== 'speech' ? 1150 : 0);
     const message = [rooms[next], talking ? 'speech arrangement' : waiting ? 'line waiting' : 'playing'];
-    if (next === 'conveyor') message.push(tiers[tier]);
+    if (next === 'conveyor') {
+      const activityText = stations + (stations === 1 ? ' station working' : ' stations working');
+      message.push(drive === 'one' ? tiers[tier] : tiers[tier] + ' mix · ' + activityText);
+    }
     if (cutId) message.push(manifest.cues[cutId].label);
     say(message.join(' · '));
   } catch (error) { warn(error,version); }

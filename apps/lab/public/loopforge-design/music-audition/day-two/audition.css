@@ -5,3 +5,8 @@
 #line-controls [hidden]{display:none}
 #line-controls select{max-width:100%;margin:.35rem 0}
 #line-controls .group{margin-top:.6rem}
+#line-controls{min-inline-size:0;max-width:100%}
+@media(max-width:480px){
+  #line-controls label{display:block}
+  #line-controls select{display:block;width:100%;min-width:0;white-space:normal}
+}

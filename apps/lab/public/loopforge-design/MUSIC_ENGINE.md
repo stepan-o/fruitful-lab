@@ -2,7 +2,7 @@
 
 ## Day Two music · 23 November 2026
 
-Main menu 06 and Options 02 are the approved composition and arrangement references. The owner reassigned the 96-bar Conveyor 01 to Security, selected bass first for Day Two Conveyor and approved the 64-bar build. The new two-pass take is ready for listening. The [listening desk](/loopforge-design/music-audition/day-two/index.html) has independent cuts and an interruptible route. The [ENGINE cue map](/loopforge-design/music-audition/day-two/handoff.html) records the scene timings, work windows, tails and public observations.
+Main menu 06 and Options 02 are the approved composition and arrangement references. The owner reassigned the 96-bar Conveyor 01 to Security, selected bass first for Day Two Conveyor and approved the 64-bar build. The owner accepted the opening of that first take and requested a low bass theme for two workers, four workers and a fully staffed line. Audition 02 keeps the recorded opening and gives each intensity its own 32-bar loop. Day One follows staffing. Day Two+ follows publicly visible production activity. The [listening desk](/loopforge-design/music-audition/day-two/index.html) has independent cuts and an interruptible route. The [ENGINE cue map](/loopforge-design/music-audition/day-two/handoff.html) records the scene timings, work windows, tails and public observations.
 
 ## November 21 archive · dedicated themes and original room labels
 
@@ -40,7 +40,7 @@ On first entry, after sound is enabled, a quick minor descent lands on an off-no
 | Day 1 intro | Thread two notes between the walk-in and the room reveals. Leave the opening blackout and voices room to breathe. | Preserve the approved 190.604-second edit and the existing release from holds. |
 | Producer console / leadership call | One dry pulse underneath the quota. Give the caller the middle register and the appointment a short rest. | Duck as speech begins. A selection click can happen anywhere in a bar. |
 | Security | Original 96-bar Conveyor 01. The gate, ID and speech keep the foreground. | Use the Security head on refocus. Play the appointment once on posting. |
-| Conveyor · either supervisor | Two bass-led 64-bar passes, 16-bar wait and speech arrangements, and one pickup. | Take the public bell at any point. The shift owns its deadline. |
+| Conveyor · either supervisor | Three phase-aligned 32-bar bass loops, 16-bar waiting and speech arrangements, and a restart pickup. | Take the public bell at any point. The shift owns its deadline. |
 | Pause, bell and results | On pause, thin to a short tail and hold position. The bell takes the foreground. Results recall two notes in an open voicing. | Resume from the held pulse. Only a confirmed public bell can schedule its phrase ending. |
 | Future rooms | Try pitched metal at a dedicated Forge, longer decays in Cortex and a call-and-response figure in Theatre. | Today Forge is also a station on Conveyor. Keep that station within the current room arrangement. Future room identities need play and listening review. |
 
@@ -104,4 +104,4 @@ MUSIC DIRECTOR maintains the audio register. ENGINE maps approved hashes and not
 
 **Exists now.** The prototype has a menu contactor/clang, an older first-shift effects path and a welcome voice in the shifts viewer. Its public floor projection exposes machine holds, delivered lines and the bell. The board includes a native A/B player with two recorded sketches, the silent manual fixture, diagrams and the downloadable contract example. Source inspection and review of a recorded Forge moment supplied the game baseline. [Playable prototype](/stepanoskin/loopforge/play) · [Recorded Forge clearance](/loopforge-shifts/review/first-playthrough/limen/opening-Forge-clear.mp4)
 
-**Current owner listen.** Open the [listening desk](/loopforge-design/music-audition/day-two/index.html) and hear the first 64 bars uninterrupted. Record the verdict before the transition and speech reviews.
+**Current owner listen.** Open the [listening desk](/loopforge-design/music-audition/day-two/index.html) and switch between the three staffing levels during the same phrase. Record the bass verdict before the transition and speech reviews.

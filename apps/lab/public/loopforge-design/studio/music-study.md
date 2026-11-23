@@ -4,7 +4,7 @@
 
 ## Day Two music · 23 November 2026
 
-Main menu 06 and Options 02 are the approved composition and arrangement references. The owner reassigned the 96-bar Conveyor 01 to Security, selected bass first for Day Two Conveyor and approved the 64-bar build. The new two-pass take is ready for listening. The [listening desk](/loopforge-design/music-audition/day-two/index.html) has independent cuts and an interruptible route. The [ENGINE cue map](/loopforge-design/music-audition/day-two/handoff.html) records the scene timings, work windows, tails and public observations.
+Main menu 06 and Options 02 are the approved composition and arrangement references. The owner reassigned the 96-bar Conveyor 01 to Security, selected bass first for Day Two Conveyor and approved the 64-bar build. The owner accepted the opening of that first take and requested a low bass theme for two workers, four workers and a fully staffed line. Audition 02 keeps the recorded opening and gives each intensity its own 32-bar loop. Day One follows staffing. Day Two+ follows publicly visible production activity. The [listening desk](/loopforge-design/music-audition/day-two/index.html) has independent cuts and an interruptible route. The [ENGINE cue map](/loopforge-design/music-audition/day-two/handoff.html) records the scene timings, work windows, tails and public observations.
 
 ## Dedicated room cycles · 21 November 2026
 

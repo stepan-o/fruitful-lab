@@ -1,14 +1,3 @@
-const cp = require('node:child_process');
-const raw = require('node:fs');
-cp.execFileSync('python3',['docs/loopforge/game-design/studio_briefs.py'],{stdio:'inherit'});
-cp.execFileSync('python3',['docs/loopforge/game-design/music_engine.py'],{stdio:'inherit'});
-const generated = cp.execFileSync('git',['diff','--name-only'],{encoding:'utf8'}).trim().split('\n');
-for(const name of generated) {
-  if (!/^apps\/lab\/public\/loopforge-design\/(?:index\.html|MUSIC_ENGINE\.md|studio\/(?:music-(?:director|study|production)|dev-blog)[\w.-]*|music-audition\/day-two\/handoff\.html)$/.test(name)) continue;
-  const bytes = raw.readFileSync(name).toString('base64');
-  console.log('LF_FILE '+name+' '+bytes.length);
-  for(let i=0;i<bytes.length;i+=12000) console.log('LF_PART '+name+' '+i+' '+bytes.slice(i,i+12000));
-}
 // Exercise the committed board under its canonical URL, entirely from checked-out assets.
 const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
@@ -223,6 +212,19 @@ async function check(browser, width, height) {
   await page.close();
 }
 (async () => {
+  const root = path.join(assets,'loopforge-design/music-audition/day-two');
+  const sheet = JSON.parse(await fs.readFile(path.join(root,'cues.json'),'utf8'));
+  const line = sheet.tracks.conveyor;
+  const recording = await fs.readFile(path.join(root,line.file));
+  const digest = require('node:crypto').createHash('sha256').update(recording).digest('hex');
+  assert.equal(digest,line.sha256);
+  let cursor = line.openingFrames[1];
+  for (const key of ['two','four','full']) {
+    const [start,end] = line.layers[key].frames;
+    assert.equal(start,cursor);
+    assert.equal(end-start,Math.round(32*4*60/164*sheet.sampleRate));
+    cursor=end;
+  }
   await fs.mkdir('music-review',{recursive:true});
   const browser = await chromium.launch(process.env.LOOPFORGE_CHROMIUM ? {executablePath:process.env.LOOPFORGE_CHROMIUM} : {});
   try {

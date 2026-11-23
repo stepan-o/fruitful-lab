@@ -1,3 +1,7 @@
+## Loopforge · Public SECURITY role brief — 23 November 2026
+
+The Studio briefs panel now includes the owner-requested public SECURITY mandate, operating guide and current handoff at `/stepanoskin/loopforge/design/studio/security`. Maintain `docs/loopforge/studio-briefs/security.md` for public milestones and acceptance criteria. Operational evidence remains private.
+
 ## Loopforge · First-click readiness — 22 November 2026
 
 After #180/#182 merged, the ordinary-entry browser check exposed a pre-hydration click race. GameClient now disables menu/playback controls until its client mount, then restores keyboard focus. `apps/lab/engine/browser-test.cjs` checks the server-only disabled state before the ordinary phone playthrough. The CI server binds to the same explicit loopback hostname used by the tests, preserving Next.js origin protection. Rust/Wasm, approved geometry, timing and mechanics are unchanged. Current handoff: `docs/loopforge/studio-briefs/engine-master.md`; delivery checks remain the evidence authority.

@@ -68,7 +68,7 @@ class FedoraBaselineTests(unittest.TestCase):
     @unittest.skipUnless(shutil.which("firewall-offline-cmd"), "firewalld offline validator unavailable")
     def test_native_firewalld_accepts_config(self):
         self.write_files()
-        (baseline.FIREWALL / "firewalld.conf").write_text("FirewallBackend=nftables\n")
+        (baseline.FIREWALL / "firewalld.conf").write_text("DefaultZone=public\nFirewallBackend=nftables\n")
         cmd = ["firewall-offline-cmd", "--system-config", str(baseline.FIREWALL), "--check-config"]
         result = subprocess.run(cmd, check=True, capture_output=True, text=True)
         self.assertNotIn("ERROR", result.stderr)

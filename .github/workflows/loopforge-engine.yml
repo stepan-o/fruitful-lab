@@ -62,3 +62,45 @@ jobs:
       - name: Show game server diagnostics on failure
         if: failure()
         run: tail -120 "$RUNNER_TEMP/loopforge-next.log" || true
+
+  day-two-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {route: pass, width: 1366}
+          - {route: custody, width: 320}
+          - {route: clear, width: 1366}
+          - {route: clear, width: 390}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Record the live campaign
+        working-directory: apps/lab
+        env:
+          API_BASE_URL: http://localhost:8000
+          NEXT_TELEMETRY_DISABLED: '1'
+          DAY_TWO_ROUTE: ${{ matrix.route }}
+          DAY_TWO_WIDTH: ${{ matrix.width }}
+        run: |
+          npm ci
+          npm install --prefix "$RUNNER_TEMP/browser" playwright@1.58.2
+          "$RUNNER_TEMP/browser/node_modules/.bin/playwright" install --with-deps chromium
+          ./node_modules/.bin/next dev --webpack --hostname 127.0.0.1 --port 3204 > "$RUNNER_TEMP/day-two-next.log" 2>&1 &
+          server=$!
+          trap 'kill "$server" || true' EXIT
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3204/stepanoskin/loopforge/play -o /dev/null; then break; fi
+            sleep 1
+          done
+          NODE_PATH="$RUNNER_TEMP/browser/node_modules" node engine/day-two-review.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: day-two-${{ matrix.route }}-${{ matrix.width }}
+          path: ${{ runner.temp }}/day-two-evidence
+          retention-days: 30

@@ -36,6 +36,11 @@ def conveyor_rating(match):
 
 
 def kickoff(role):
+    if role['id'] == 'security':
+        return ("You are SECURITY for Loopforge. Read the shared instructions at https://www.fruitfulab.net/stepanoskin/loopforge/design/studio and your public role brief at https://www.fruitfulab.net/stepanoskin/loopforge/design/studio/security. "
+                "Confirm which machine your tools control. Resume from the current handoff and the owner's private evidence. Ask one question at a time when a decision is needed and present changes for owner approval before implementation. "
+                "Verify one bounded job, its publishing permissions and its stop procedure. Publish standard security practices or facts trivially observable to an unauthenticated outsider. Keep access-granting material and private operational evidence in the private record. Maintain the public milestone and next check with PRODUCER. The owner controls production merges, releases and spending."
+                "\n\nMy task for this chat: [replace this line with the specific outcome and acceptance criteria].")
     architect = ("Begin with an interview, one question at a time with suggested answers and a recommendation. "
                  "Ask what the owner most wants to improve over current Codex work. "
                  "Cover both studio AI architecture and local AI applications for dialogue and BDI; "
@@ -43,12 +48,12 @@ def kickoff(role):
                  "Subscription Codex is primary; alternatives require explicit owner selection. "
                  "Assess Langfuse and evaluations without assuming subscription clients expose API-level telemetry. "
                  "Preserve KVP-0001, Rust-native simulation direction, typed proposal admission and recorded-input replay; "
-                 "ENGINE owns runtime implementation. Keep SECURITY's brief and operational handoff private, outside the public repository and site. "
+                 "ENGINE owns runtime implementation. Use SECURITY's public role brief for acceptance criteria. Keep the operational handoff private. "
                  "Present the architecture for owner approval and private security review before installation or integration. ") if role['id'] == 'ai-architect' else ''
     producer = ("Read the source reader at https://www.fruitfulab.net" + BASE + "/producer-reading and coordination playbook at https://www.fruitfulab.net" + BASE + "/producer-playbook. "
                 "The owner opens specialist chats; you write their task prompts with role-brief links and maintain the briefs with craft contributions. "
                 "Check deliveries and advise on whether to continue, iterate or ship; the owner makes those decisions and validates the playable experience. Do not launch chats or restart the former autonomous studio. ") if role['id'] == 'producer' else ''
-    ui = ("Read the UI source reader at https://www.fruitfulab.net" + BASE + "/ui-reading and first assignment at https://www.fruitfulab.net" + BASE + "/ui-first-assignment. Begin with an annotated audit and static visual studies; implementation ownership is undecided. Carry forward the owner's settled direction and design desktop and phone equally. ") if role['id'] == 'ui-designer' else ''
+    ui = ("Read the UI source reader at https://www.fruitfulab.net" + BASE + "/ui-reading and first assignment at https://www.fruitfulab.net" + BASE + "/ui-first-assignment. Begin with an annotated audit and static visual studies; ENGINE implements the approved Day 2 design in the live campaign. Carry forward the owner's settled direction and design desktop and phone equally. ") if role['id'] == 'ui-designer' else ''
     music = ("Read the Day Two listening desk at https://www.fruitfulab.net/loopforge-design/music-audition/day-two/index.html "
              "and its ENGINE cue map. Take B, Main menu 06 and Options 02 are approved. The owner reassigned original Conveyor 01 to Security. "
              "The owner accepted the Conveyor opening. Audition the two-worker, four-worker and fully staffed arrangements, then transitions and speech, "
@@ -58,7 +63,7 @@ def kickoff(role):
             f"https://www.fruitfulab.net{BASE} and your maintained brief at "
             f"https://www.fruitfulab.net{BASE}/{role['id']}. "
             + architect + producer + ui + music +
-            ("Own the Rust-native Loopforge kernel and guard KVP-0001 as the normative contract. Implement every intro, tutorial, custom event and generic loop through the same engine. Ground each character intention in BDI and verify each delivery against native Rust and the browser WebAssembly build. Maintain the default ENGINE onboarding page, its current handoff, starting prompt and dated evidence as part of every architecture delivery. "
+            ("Own the Rust-native Loopforge kernel and guard KVP-0001 as the normative contract. Implement every intro, tutorial, custom event and generic loop through the same engine. Ground each character intention in BDI and verify each delivery against native Rust and the browser WebAssembly build. For Day 2 use the approved walkthrough at https://www.fruitfulab.net/loopforge-design/day-two-ui/index.html, its paired board and the E1 placement handoff in your brief. Render verified campaign frames on desktop and phone. The captured TypeScript runs are historical review references. Maintain the ENGINE onboarding page, its current handoff, starting prompt and dated evidence. "
              if role['id'] == 'engine-master' else '') +
             "Use the Current handoff and linked design pages to establish the latest approved baseline; verify it against current source and delivered artifacts. "
             "Read the applicable repository instructions. Preserve other specialists' work in an isolated branch/worktree. "
@@ -72,6 +77,7 @@ def build_studio(docs: Path, out: Path):
     source = docs / 'studio-briefs'
     target = out / 'studio'
     target.mkdir(exist_ok=True)
+    (target / 'fedora-setup.py').write_bytes((docs / 'security' / 'fedora-setup.py').read_bytes())
     roles = json.loads((source / 'roles.json').read_text())
     for name in ('studio.css', 'studio.js'):
         (target / name).write_bytes((Path(__file__).parent / name).read_bytes())

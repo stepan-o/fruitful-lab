@@ -108,9 +108,9 @@ async function consume(records: Envelope[]) {
     }
   }
 }
-async function input(kind: string, payload: object) {
+async function input(kind: string, payload: object, id = crypto.randomUUID()) {
   await wire("INPUT_COMMAND", {
-    client_cmd_id: crypto.randomUUID(),
+    client_cmd_id: id,
     tick_target: (frame?.tick ?? 0) + 1,
     cmd: { type: kind, payload },
   });
@@ -203,9 +203,16 @@ self.onmessage = ({ data: m }) =>
       }
       case "intent": {
         if (replay) await live();
-        await input("WORLD_NUDGE", m.intent);
+        try {
+          await input("WORLD_NUDGE", m.intent, m.id);
+        } catch (e) {
+          if (!(e instanceof Rejected)) throw e;
+          postMessage({ type: "receipt", id: m.id, rejection: e.message });
+          break;
+        }
         head = frame!.tick;
         show();
+        postMessage({ type: "receipt", id: m.id });
         save();
         break;
       }

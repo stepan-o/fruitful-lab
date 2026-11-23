@@ -286,7 +286,32 @@ impl Line {
         }
     }
     pub fn machines(&self, w: &World, t: i32, manual: bool, live: bool) -> Vec<Value> {
-        (0..4).map(|i|{let crew=members(w,i);let speed=rate(&crew,i);let job=self.cells[i].as_ref();let ready=live&&manual&&!crew.is_empty()&&job.is_some_and(|j|!j.permit&&j.travel==0)&&self.call.is_none()&&self.inspect<=t;
- json!({"name":STATIONS[i],"title":TITLES[i],"crew":crew,"rate":speed,"cycleMs":if speed>0{Some((UNITS[i]+speed-1)/speed*50)}else{None},"carrier":job.map_or("",|j|j.id.as_str()),"hold":if crew.is_empty(){"Needs worker"}else if ready{"Waiting for clearance"}else if job.is_some_and(|j|j.travel>0){"Travelling"}else if job.is_some(){"Working"}else{"Waiting for carrier"},"canClear":ready,"caller":crew.first().map(String::as_str).unwrap_or("")})}).collect()
+        (0..4)
+            .map(|i| {
+                let crew = members(w, i);
+                let speed = rate(&crew, i);
+                let job = self.cells[i].as_ref();
+                let waiting = live
+                    && manual
+                    && !crew.is_empty()
+                    && job.is_some_and(|j| !j.permit && j.travel == 0);
+                let ready = waiting && self.call.is_none() && self.inspect <= t;
+                let hold = match (&self.call, job) {
+                    (Some((at, who, _)), _) if *at == i => format!("LIMEN calling {who}"),
+                    _ if waiting && self.inspect > t => "LIMEN inspecting".into(),
+                    _ if waiting => "Waiting for clearance".into(),
+                    _ if crew.is_empty() => "Needs worker".into(),
+                    (_, Some(j)) if j.travel > 0 => {
+                        format!("Travelling to {}", TITLES.get(i + 1).unwrap_or(&"rack"))
+                    }
+                    (_, Some(_)) => "Working".into(),
+                    _ => "Waiting for carrier".into(),
+                };
+                json!({"name":STATIONS[i],"title":TITLES[i],"crew":crew,"rate":speed,
+                "cycleMs":if speed>0{Some((UNITS[i]+speed-1)/speed*50)}else{None},
+                "carrier":job.map_or("",|j|j.id.as_str()),"hold":hold,"canClear":ready,
+                "caller":crew.first().map(String::as_str).unwrap_or("")})
+            })
+            .collect()
     }
 }

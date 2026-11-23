@@ -50,7 +50,7 @@ Keep the active brief short and usable. Move superseded detail into dated record
 
 ## Public briefs and private operating records
 
-The studio website, this repository and generated downloads are public-facing handoffs. Publish only content intended for that audience. SECURITY's brief and operational records stay in an owner-approved private location outside this repository and its publication pipeline. Other roles, including AI ARCHITECT, publish their mandate, approved hardware specifications and sanitized findings; private access, credentials, network details and security diagnostics do not belong in public briefs, PR text or export bundles. Keep the public summary and private operational handoff distinct.
+The studio website, this repository and generated downloads are public-facing handoffs. Publish only content intended for that audience. The [SECURITY role brief](/stepanoskin/loopforge/design/studio/security) publishes its mandate, acceptance criteria and owner-cleared milestones. Standard security practices or facts trivially observable from the public system can be published. Its operational record stays in an owner-approved private location. Other roles, including AI ARCHITECT, publish their mandate, approved hardware specifications and sanitized findings; private access, credentials, network details and security diagnostics do not belong in public briefs, PR text or export bundles. Keep the public summary and private operational handoff distinct.
 
 ## Show what was actually achieved
 

@@ -115,3 +115,8 @@
 .game{--playbar:52px}
 .game[data-display=normal] .menu{min-height:calc(100svh - var(--playbar));height:calc(100svh - var(--playbar))}
 @media(max-width:620px){.game{--playbar:84px}}
+
+.game[data-day-two=true]{position:relative;isolation:isolate;height:100svh;min-height:0;overflow:hidden}
+.game[data-day-two=true][data-display=normal]{position:fixed}
+.game[data-day-two=true] [aria-label="Factory playback"]{position:absolute;inset:auto 0 0;background:#0a1513ec;border:0;border-top:1px solid #abbd9e50}
+.commandError{position:absolute;top:12%;left:50%;transform:translateX(-50%);z-index:12;background:#411e1c;color:#fff0d0;border-left:3px solid #ffc086;padding:10px 16px}

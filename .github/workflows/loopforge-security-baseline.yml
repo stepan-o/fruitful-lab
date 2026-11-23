@@ -1,0 +1,29 @@
+name: Loopforge Fedora baseline
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/loopforge-security-baseline.yml'
+      - 'docs/loopforge/security/**'
+      - 'docs/loopforge/studio-briefs/security.md'
+      - 'docs/loopforge/game-design/studio_briefs.py'
+      - 'apps/lab/public/loopforge-design/studio/security*'
+      - 'apps/lab/public/loopforge-design/studio/fedora-setup.py'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    container: registry.fedoraproject.org/fedora:latest
+    timeout-minutes: 10
+    steps:
+      - name: Install offline validation tools
+        run: dnf -y install git python3 firewalld
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Exercise the setup with synthetic data
+        run: python3 -I docs/loopforge/security/test_fedora_setup.py -v
+      - name: Verify published copies match the studio generator
+        run: |
+          python3 docs/loopforge/game-design/studio_briefs.py --refresh-board
+          git -c safe.directory="$GITHUB_WORKSPACE" diff --exit-code -- apps/lab/public/loopforge-design/studio/security.html apps/lab/public/loopforge-design/studio/security.md apps/lab/public/loopforge-design/studio/security-start.txt apps/lab/public/loopforge-design/studio/fedora-setup.py apps/lab/public/loopforge-design/index.html

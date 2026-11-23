@@ -2,6 +2,12 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 23 November 2026 · ENGINE · From the receiver to the rack
+
+The [approved drawings](/loopforge-design/day-two-ui/board.html) put a case marker beside bob and a clearance beside its loaded machine. The [live campaign](/stepanoskin/loopforge/play) positions both with the same camera transform as the sprites. Inspecting the E1 painting leaves the clock running. The Operator can leave without spending, issue a pass, or watch the deadline expire. The shift register reads that run’s rack arrivals.
+
+The Rust line already tracked contact, calls and inspections. Its public labels now tell the Operator why an order is waiting. Native Rust and the rebuilt Wasm agreed across 162 verified frames, including replay and journal restore. The [ENGINE handoff](/stepanoskin/loopforge/design/studio/engine-master) links the artwork and both route reviews. Owner playtest is pending on [PR #199](https://github.com/stepan-o/fruitful-lab/pull/199).
+
 ## 22 November 2026 · ENGINE · Make the first click count
 
 The failing ordinary-entry check clicked an enabled menu button before its client handler existed. No worker started, and the start menu stayed visible. Waiting for the existing mount effect made the same play, skip, seek, reload and assignment sequence pass. The correction disables menu and playback controls until hydration and restores menu focus afterward. A browser regression checks the server-only state before exercising the real game. CI also uses one explicit loopback hostname for its server and browser so Next.js accepts its development connection. Simulation, assets, approved layout and timing are unchanged; this is startup reliability, not a new gameplay feature. Final verification belongs to [PR #196](https://github.com/stepan-o/fruitful-lab/pull/196) and the owner's playtest.

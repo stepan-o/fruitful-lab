@@ -2,7 +2,7 @@
 
 ## Current Day 2 design handoff
 
-UI DESIGNER owns the complete Day 2 interface design. The Operator starts at a physical desk with a ringing receiver and two powered room monitors. On entering either room, the factory floor extends to every edge of the screen. Camera identity, dialogue, event markers, station actions and the shift clock appear over the floor. The missing-ID event opens the approved full-screen E1 painting. This direction supersedes framed full-screen camera studies. Runtime implementation ownership remains open.
+UI DESIGNER owns the complete Day 2 interface design. The Operator starts at a physical desk with a ringing receiver and two powered room monitors. On entering either room, the factory floor extends to every edge of the screen. Camera identity, dialogue, event markers, station actions and the shift clock appear over the floor. The missing-ID event opens the approved full-screen E1 painting. This direction supersedes framed full-screen camera studies. ENGINE owns implementation on the [live campaign route](/stepanoskin/loopforge/play). The [ENGINE handoff](/stepanoskin/loopforge/design/studio/engine-master) tracks the playable review.
 
 [Start at the Operator’s console](/loopforge-design/day-two-ui/index.html) · [Compare all 59 desktop and phone pairs](/loopforge-design/day-two-ui/board.html) · [Two loaded Conveyor stations](/loopforge-design/day-two-ui/index.html#ready)
 
@@ -10,7 +10,7 @@ Review both supervisor bids, the pass and custody outcomes, staffing and clearan
 
 21 November 2026 · Annotated audit and static visual studies
 
-Read the [shared instructions](/stepanoskin/loopforge/design/studio), [UI DESIGNER brief](/stepanoskin/loopforge/design/studio/ui-designer) and [source reader](/stepanoskin/loopforge/design/studio/ui-reading). This is the first commissioning handoff, not a record of completed UI redesign. Implementation ownership remains undecided.
+Read the [shared instructions](/stepanoskin/loopforge/design/studio), [UI DESIGNER brief](/stepanoskin/loopforge/design/studio/ui-designer) and [source reader](/stepanoskin/loopforge/design/studio/ui-reading). This is the first commissioning handoff, not a record of completed UI redesign. At the time of this original commission, implementation ownership was undecided.
 
 ## The outcome
 
@@ -44,7 +44,7 @@ Present the proposed screen/state set, visual approaches, published location, as
 1. **Capture the baseline.** Inspect the integrated Day 2 LIMEN route at desktop and phone sizes. Record build, route, viewport and inputs. Annotate the current room and command feedback at the moments of waiting, calling and working. If a beat cannot be reached, identify the missing evidence. Link the [accepted Conveyor rules](/stepanoskin/loopforge/design/studio/day-2-conveyor-rules) for intended behavior and the [earlier interface study](/stepanoskin/loopforge/design#interface-hierarchy) for design precedent.
 2. **Compose four matched views per device.** Start with a wide shot of Forge and Intake ready together. The three close-ups hold the same framing as max waits at the loaded press, LIMEN calls after Clear with the press still raised, and max works the treadle once the call reaches him. Use the existing room, actors and approved wording. Design the bolted bezel, edge graphics, station control, camera overview and return affordance around that action. Keep station selection and issuing Clear visibly distinct.
 3. **Review the clean frames first.** Show the desktop and phone sequences at their intended size. Ask the owner to identify what max is waiting for, who clears him and what starts the press. Check whether Intake’s readiness and the way back to the wide view remain legible. Use a separate annotated reading to identify room cues, console controls, speech placement and the action that changes each state. Include a small missed-call inset showing the press still raised and the load still waiting. Check the review page at 320, 390 and 768 CSS pixels and desktop.
-4. **Publish for review.** Link the audit and static studies from the game-design page and UI DESIGNER brief. Include source/build references, proposed assets and any ENGINE or ART dependencies. Deliver the scoped PR and its preview. Runtime implementation ownership remains open.
+4. **Publish for review.** Link the audit and static studies from the game-design page and UI DESIGNER brief. Include source/build references, proposed assets and any ENGINE or ART dependencies. Deliver the scoped PR and its preview. The owner subsequently assigned Day 2 runtime implementation to ENGINE.
 
 Source application: Sylvester, *Designing Games*, chapter 9, “Visual Hierarchy,” printed pp. 227–229 (PDF pp. 235–237), supports varying the prominence of a cue with its importance to the player. Keep the workers and press legible ahead of decorative bezel detail. Use the [source reader](/stepanoskin/loopforge/design/studio/ui-reading) to trace Loopforge and Marvel Rivals precedents. Any specific visual reference used in the published study should have a credited screen or timestamp.
 

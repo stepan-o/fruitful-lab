@@ -2,7 +2,7 @@
 
 ## Current Day 2 design handoff
 
-UI DESIGNER owns the complete Day 2 interface design. The Operator starts at a physical desk with a ringing receiver and two powered room monitors. On entering either room, the factory floor extends to every edge of the screen. Camera identity, dialogue, event markers, station actions and the shift clock appear over the floor. The missing-ID event opens the approved full-screen E1 painting. This direction supersedes framed full-screen camera studies. Runtime implementation ownership remains open.
+UI DESIGNER owns the complete Day 2 interface design. The Operator starts at a physical desk with a ringing receiver and two powered room monitors. On entering either room, the factory floor extends to every edge of the screen. Camera identity, dialogue, event markers, station actions and the shift clock appear over the floor. The missing-ID event opens the approved full-screen E1 painting. This direction supersedes framed full-screen camera studies. ENGINE owns implementation on the [live campaign route](/stepanoskin/loopforge/play). The [ENGINE handoff](/stepanoskin/loopforge/design/studio/engine-master) tracks the playable review.
 
 [Start at the Operator’s console](/loopforge-design/day-two-ui/index.html) · [Compare all 59 desktop and phone pairs](/loopforge-design/day-two-ui/board.html) · [Two loaded Conveyor stations](/loopforge-design/day-two-ui/index.html#ready)
 
@@ -10,7 +10,7 @@ Review both supervisor bids, the pass and custody outcomes, staffing and clearan
 
 Commissioned 21 November 2026 · Owner-directed Codex studio
 
-Read the [shared studio instructions](/stepanoskin/loopforge/design/studio), [UI source reader](/stepanoskin/loopforge/design/studio/ui-reading) and [first assignment](/stepanoskin/loopforge/design/studio/ui-first-assignment). The owner opens the chat and reviews its delivery. Follow Onboard → Interview → approved Plan → Build → owner Review. This role begins with an audit and visual proposals; runtime implementation ownership will be decided later.
+Read the [shared studio instructions](/stepanoskin/loopforge/design/studio), [UI source reader](/stepanoskin/loopforge/design/studio/ui-reading) and [first assignment](/stepanoskin/loopforge/design/studio/ui-first-assignment). The owner opens the chat and reviews its delivery. Follow Onboard → Interview → approved Plan → Build → owner Review. This role begins with an audit and visual proposals; ENGINE now owns the Day 2 implementation.
 
 ## Mandate
 

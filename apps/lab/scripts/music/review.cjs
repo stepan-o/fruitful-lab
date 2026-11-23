@@ -39,8 +39,8 @@ async function check(browser, width, height) {
   const dialogueIndex = order.indexOf('dialogue-engine');
   assert(dialogueIndex >= 0);
   assert.equal(order[dialogueIndex + 1], 'music-engine');
-  assert.equal(order[0], 'studio');
-  assert(await page.locator('#studio').isVisible());
+  assert(order.includes('studio'));
+  assert(await page.locator('#' + order[0]).isVisible());
   const musicTab = nav.filter({hasText: /^Music engine$/});
   const desiresTab = nav.filter({hasText: /^Player desires & scenarios$/});
   await musicTab.click();
@@ -58,7 +58,7 @@ async function check(browser, width, height) {
   await page.goto(url + '#music-long-form');
   const menu = panel.locator('[data-theme-player="menu"]');
   const options = panel.locator('[data-theme-player="options"]');
-  for (const deck of [menu, options, panel.locator('[data-theme-player="conveyor"]')]) {
+  for (const deck of [menu, options, panel.locator('[data-theme-player="security"]'), panel.locator('[data-theme-player="day-two"]')]) {
     const media = deck.locator('audio');
     assert(await media.evaluate(a => a.paused && a.loop && a.preload === 'none'));
     await deck.locator('input').uncheck();
@@ -156,11 +156,75 @@ async function check(browser, width, height) {
   }
   await page.goto(url+'#music-engine'); await page.reload(); assert(await panel.isVisible());
   await desiresTab.click(); assert(await page.locator('#player-desires').isVisible());
+  await page.goto(origin + '/loopforge-design/music-audition/day-two/index.html');
+  const desk = page.locator('main');
+  await desk.locator('#rooms button').first().waitFor();
+  assert(await desk.evaluate(el => el.scrollWidth <= innerWidth + 1), 'Listening desk fits viewport');
+  await page.screenshot({path:'music-review/'+width+'-day-two.png',fullPage:true});
+  const button = name => page.getByRole('button', {name, exact:true});
+  const hear = value => page.waitForFunction(text => document.getElementById('readout').textContent.includes(text), value);
+  assert.equal(await desk.locator('#pick option').count(), 31);
+  await desk.locator('[data-bar="48"]').click();
+  await page.waitForFunction(() => {const a=document.getElementById('take');return !a.paused && a.currentTime >= 70.20;});
+  await button('Conveyor').click(); await hear('Conveyor · playing');
+  assert(await desk.locator('#take').evaluate(a=>a.paused));
+  const positionBeforeTierChange = await page.evaluate(() => phase());
+  await desk.locator('[data-tier="four"]').click(); await hear('Four workers');
+  assert(await page.evaluate(t => Math.abs(phase()-t) < 1, positionBeforeTierChange), 'Tier change keeps the current phrase');
+  await desk.locator('#drive').selectOption('later');
+  await desk.locator('#station-load').selectOption('3'); await hear('Fully staffed');
+  await button('Wait').click(); await hear('line waiting');
+  await desk.locator('#station-load').selectOption('1'); await hear('line waiting');
+  await button('Resume work').click(); await hear('pickup'); await hear('Two workers');
+  await button('Speech').click(); await hear('speech arrangement');
+  await button('Pause').click(); await hear('paused');
+  await button('Resume').click(); await hear('speech arrangement');
+  await button('Security').click(); await button('Conveyor').click(); await hear('Conveyor · playing');
+  await button('Shift bell').click(); await hear('Results · playing');
+  await desk.locator('#pick').selectOption('factory-open');
+  await desk.locator('#solo').click(); await hear('Factory door · one shot');
+  const exported = page.waitForEvent('download');
+  await desk.locator('#download').click();
+  const file = await exported;
+  assert.equal(file.suggestedFilename(), 'factory-open.wav');
+  const bytes = await fs.readFile(await file.path());
+  assert.equal(bytes.toString('ascii',0,4),'RIFF');
+  assert.equal(bytes.readUInt32LE(24),48000);
+  if (width===390) {
+    await desk.locator('#pick').selectOption('tier-full');
+    await desk.locator('#solo').click(); await hear('Fully staffed · repeating');
+    const event = page.waitForEvent('download');
+    await desk.locator('#download').click();
+    const loop = await event;
+    assert.equal(loop.suggestedFilename(),'tier-full.wav');
+    const pcm = await fs.readFile(await loop.path());
+    assert.equal(pcm.readUInt32LE(40) / 4,2247805);
+  }
+  if(width===390){
+    await desk.locator('#route').click();
+    await page.waitForFunction(()=>document.getElementById('readout').textContent.includes('Route complete'),null,{timeout:90000});
+  }
+  await desk.locator('#route').click(); await hear('Menu · playing');
+  await button('Security').click(); await hear('Security · playing');
+  await button('Stop').click(); await hear('Stopped');
   assert.equal(errors.length,0,errors.join('\n'));
   console.log(width+'×'+height+' passed navigation, layout, fixtures and deep link');
   await page.close();
 }
 (async () => {
+  const root = path.join(assets,'loopforge-design/music-audition/day-two');
+  const sheet = JSON.parse(await fs.readFile(path.join(root,'cues.json'),'utf8'));
+  const line = sheet.tracks.conveyor;
+  const recording = await fs.readFile(path.join(root,line.file));
+  const digest = require('node:crypto').createHash('sha256').update(recording).digest('hex');
+  assert.equal(digest,line.sha256);
+  let cursor = line.openingFrames[1];
+  for (const key of ['two','four','full']) {
+    const [start,end] = line.layers[key].frames;
+    assert.equal(start,cursor);
+    assert.equal(end-start,Math.round(32*4*60/164*sheet.sampleRate));
+    cursor=end;
+  }
   await fs.mkdir('music-review',{recursive:true});
   const browser = await chromium.launch(process.env.LOOPFORGE_CHROMIUM ? {executablePath:process.env.LOOPFORGE_CHROMIUM} : {});
   try {

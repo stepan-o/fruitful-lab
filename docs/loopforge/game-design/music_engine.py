@@ -12,6 +12,14 @@ def build_music(root, out):
     for name in ('MUSIC_ENGINE.md', 'music-inputs.v1.json', 'music-engine.css', 'music-engine.js'):
         shutil.copyfile(root / name, out / name)
 
+    day_two = out / 'music-audition/day-two'
+    day_two.mkdir(parents=True, exist_ok=True)
+    title, body, _ = render((root / 'DAY_TWO_MUSIC_HANDOFF.md').read_text(), {})
+    (day_two / 'handoff.html').write_text(
+        '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+        f'<title>{html.escape(title)}</title><link rel="stylesheet" href="audition.css"><main class="handoff">'
+        f'<nav><a href="index.html">← Listening desk</a></nav><h1>{html.escape(title)}</h1>{body}</main></html>')
+
     def url(name):
         digest = hashlib.sha256((root / name).read_bytes()).hexdigest()[:12]
         return f'/loopforge-design/{name}?v={digest}'

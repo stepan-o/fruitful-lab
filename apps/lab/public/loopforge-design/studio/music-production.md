@@ -2,7 +2,22 @@
 
 20 November 2026 · Companion to [MUSIC DIRECTOR](/stepanoskin/loopforge/design/studio/music-director)
 
+## Day Two ledger · 23 November 2026
+
+| Asset | Lineage and decision | Status |
+| --- | --- | --- |
+| LF-MUS-LONG-06-MENU / LF-MUS-LONG-02-OPTIONS | Approved composition and arrangement references. | Original recordings and historical approvals retained. |
+| LF-MUS-LONG-01-CONVEYOR → Security | Owner reassignment. Original SHA-256 begins 438cc8403969. | Same recording and original path. |
+| LF-MUS-D2-CONVEYOR-01 | Bass-first direction and build approved. Menu phrases and Options hands played through the original synthesis. | Owner accepted the 16-bar opening and requested replacement of the later melodic climb. The original file remains archived. |
+| LF-MUS-CONVEYOR-LINE-02 | Uses those first 16 decoded bars and three newly synthesized 32-bar bass arrangements. The render manifest gives the opening parent, hashes, levels and frame ranges. | Owner review open on the three intensities. Local synthesis, no new provider output or spend. |
+| Day Two cue reel | Five looping beds, eight track heads/tails, four directional bridges and seven scene/work cuts. Each segment has its source IDs and frame range. | Local review copies. Final in-game and commercial sign-off open. |
+| LIMEN welcome | Existing published voice on a separate speech path. | Retains its own voice provenance. |
+
+The [listening desk](/loopforge-design/music-audition/day-two/index.html) links the manifest with hashes, loudness, true peaks and frame addresses. New provider calls, credits and USD spending are zero. ElevenLabs remains the intended production option. A future paid batch requires separate approval.
+
 ## Current pilot · one dedicated Main menu performance
+
+The following is the dated, unfunded November 21 proposal.
 
 **Owner verdict, 21 November 2026.** Carry 164 BPM into Menu and Options, with an 82 BPM half-time feel on Conveyor. The short traversal established tempo and continuity. The owner wants enough native melody, harmony, beat and dynamic variation to listen to one room for hours. The proposed 45-second take has been superseded. The [dedicated local studies](/stepanoskin/loopforge/design#music-long-form) let the owner review form before committing to provider sound. The first Menu was too dreamy and melancholic. Some kicks felt off, the tune got lost and the break felt empty and repetitive. The owner heard improvement in Menu 02 but found the hook too frequent, the replies rare and rudimentary, and the chords choppy and offbeat. The owner found Menu 03 too far in the other direction. The theme nearly disappeared, the answers sounded awkward and the drum break needed greater contrast, a quieter hi-hat and two rapid runs. Menu 04 brought the hook back sooner, but the owner heard its return collide with the answers. The owner approved the melodic sequence and character of Menu 05. The requested changes concern duration, the return after the break, variation in the second section and cymbal clarity. Menu 06 moves the drum break to bar 33 (0:46.83), brings back the theme once at bar 49 (1:10.24), then develops its two-note tag and gives the bass a new solo phrase. The owner approved Menu 06 as the arrangement and composition reference. Options 01 ran too long and repeated a section too often. The owner asked for more drum-pattern variation in the style of the Menu break. The owner approved Options 02, the 32-bar drum solo. Review the weight of Conveyor 01 during steady work next. The staged wait/restart and matched-picture speech follow.
 

@@ -17,6 +17,18 @@ const art=require('../public/loopforge-intro/sprites.json'),bank={art,images:{}}
 const system={model:os.cpus()[0].model,node:process.version,os:os.release(),memory:os.totalmem(),workerSha256:crypto.createHash('sha256').update(fs.readFileSync(workerPath)).digest('hex')};
 (async()=>{
   await Promise.all(Object.keys(art.sheets).map(async key=>{bank.images[key]=await loadImage(path.join(app,'public/loopforge-intro',key+'.webp'));}));
+  bank.images.queueRail=await loadImage(path.join(app,'public/loopforge-intro/sec-rails-depth.png'));
+  const {materialFiles,materialRoot}=require('../lib/loopforge/room-material.ts');
+  for(const file of materialFiles)bank.images[file]=await loadImage(path.join(app,'public',materialRoot,file));
+  const dir=path.join(app,'public/loopforge-design/days-2-4-art/v1');
+  const manifest=require(path.join(dir,'manifest.json'));
+  const {drawAsset}=await import(path.join(dir,'binding/shift-art.mjs'));
+  const atlas={};
+  for(const {file} of Object.values(manifest.atlases))atlas[file]=await loadImage(path.join(dir,file));
+  bank.world=(ctx,id,x,y,metre)=>{
+    const scale=metre/manifest.groundPixelsPerMetre,[px,py]=manifest.assets[id].pivot;
+    drawAsset(ctx,manifest,atlas,id,Math.round(x-px*scale),Math.round(y-py*scale),{scale});
+  };
   const shim="const {parentPort,workerData}=require('node:worker_threads');global.self=global;global.postMessage=m=>parentPort.postMessage(m);require(workerData);parentPort.on('message',data=>self.onmessage({data}));";
   const worker=new Worker(shim,{eval:true,workerData:workerPath});
   let seq=0,frame=null,previous=null,received=0,seconds=0,costs=[],playing=false,done=false,error=null;

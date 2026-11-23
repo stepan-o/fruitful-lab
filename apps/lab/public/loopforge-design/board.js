@@ -150,16 +150,16 @@
     history.replaceState(null, '', '#' + link.id);
   });
 
-  // Register the production handoff after the floor-scale guide in the existing tab system.
-  const scaleTab = document.querySelector('.nav [data-panel="floor-scale"]');
-  const scalePanel = document.getElementById('floor-scale');
-  if (scaleTab && scalePanel && !document.getElementById('sprite-briefs')) {
+  // Register the production handoff after the playable shifts in the existing tab system.
+  const shiftsTab = document.querySelector('.nav [data-panel="2d-shifts"]');
+  const shiftsPanel = document.getElementById('2d-shifts');
+  if (shiftsTab && shiftsPanel && !document.getElementById('sprite-briefs')) {
     const tab = document.createElement('button');
     tab.type = 'button';
     tab.dataset.panel = 'sprite-briefs';
     tab.textContent = '2D asset briefs';
     tab.setAttribute('aria-current', 'false');
-    scaleTab.after(tab);
+    shiftsTab.after(tab);
 
     const section = document.createElement('section');
     section.id = 'sprite-briefs';
@@ -171,7 +171,7 @@
       <iframe id="sprite-briefs-frame" title="2D artist briefs and ENGINE handoff"
         style="display:block;width:100%;min-width:0;height:1000px;border:0"
         data-src="/loopforge-design/sprite-briefs.html"></iframe>`;
-    scalePanel.after(section);
+    shiftsPanel.after(section);
   }
   const spriteFrame = document.getElementById('sprite-briefs-frame');
   let spriteObserver;
@@ -186,9 +186,48 @@
     spriteObserver.observe(root);
   });
 
+  const shiftsFrame = document.getElementById('shifts-player');
+  shiftsFrame?.addEventListener('load', () => {
+    const doc = shiftsFrame.contentDocument;
+    if (doc) doc.querySelectorAll('a[href]').forEach(link => { link.target = '_top'; });
+  });
+
+  const aiLabFrame = document.getElementById('ai-lab-frame');
+  let aiLabObserver;
+  function observeAiLab() {
+    aiLabObserver?.disconnect();
+    const body = aiLabFrame?.contentDocument?.body;
+    if (!body || document.getElementById('ai-lab').hidden) return;
+    aiLabObserver = new ResizeObserver(() => {
+      const height = Math.ceil(body.getBoundingClientRect().height);
+      if (height) aiLabFrame.style.height = height + 'px';
+    });
+    aiLabObserver.observe(body);
+  }
+  aiLabFrame?.addEventListener('load', () => {
+    // Keep the proposal's internal view switches local; other links leave the board.
+    aiLabFrame.contentDocument?.querySelectorAll('a[href]').forEach(link => {
+      if (!link.getAttribute('href').startsWith('#')) link.target = '_top';
+    });
+    observeAiLab();
+  });
+
   function openPanel(id,updateHash=true){
     const panel=document.getElementById(id);if(!panel||!panel.classList.contains('panel'))return;
     document.querySelectorAll('.panel').forEach(el=>el.hidden=el.id!==id);
+    if (id === 'ai-lab' && aiLabFrame) {
+      if (!aiLabFrame.hasAttribute('src')) aiLabFrame.src = aiLabFrame.dataset.src;
+      else observeAiLab();
+    } else {
+      aiLabObserver?.disconnect();
+    }
+    if (id === '2d-shifts' && shiftsFrame) {
+      if (!shiftsFrame.hasAttribute('src')) shiftsFrame.src = shiftsFrame.dataset.src;
+    } else if (shiftsFrame?.hasAttribute('src')) {
+      // Keep the current checkpoint while the player reads another board tab.
+      const playButton = shiftsFrame.contentDocument?.getElementById('play');
+      if (playButton?.textContent === 'Pause') playButton.click();
+    }
     if (id === 'floor-layout') {
       const selected = floorViews.find(view => !updateHash && '#' + view.id === location.hash);
       showFloorView(selected || floorViews[0]);
@@ -224,7 +263,7 @@
     if(b.dataset.adviser)renderAdviser(b.dataset.adviser);
   });
   function openFromHash() {
-    const target = document.getElementById(location.hash.slice(1) || 'studio');
+    const target = document.getElementById(location.hash.slice(1) || 'ai-lab');
     const panel = target?.closest('.panel');
     if (!panel) return;
     const revealTarget = panel.hidden && target !== panel;

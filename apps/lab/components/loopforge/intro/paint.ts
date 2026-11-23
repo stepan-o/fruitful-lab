@@ -1,11 +1,13 @@
+import {cutOpacity,drawFactory,drawFactorySprite,easeCamera,factoryProjection,roomCut,shotScale} from '../../../lib/loopforge/factory-scene';
+import type {Skin as FloorSkin} from '../../../lib/loopforge/shifts/skin';
 import floor from '../../../lib/loopforge/intro/geometry.json';
 import type {Actor,Frame,Utterance} from '../../../lib/loopforge/intro/protocol';
 
 export type Art={sheets:Record<string,number[]>;checkpoint:(string|number)[][];palm:number[]};
-export type Bank={art:Art;images:Record<string,CanvasImageSource>};
+export type Bank={art:Art;images:Record<string,CanvasImageSource>;world:FloorSkin['world']};
 type XY=[number,number];
 type Rect={x:number;y:number;w:number;h:number};
-export type Camera={x:number;y:number;scale:number;time:number};
+export type Camera={x:number;y:number;scale:number;time:number;station?:XY};
 export type Skin='sprites'|'model';
 const clamp=(n:number,min:number,max:number)=>Math.max(min,Math.min(max,n));
 const placeholder=new Set(['sam','jo','ed','gus','kit','lou','ben','mae']);
@@ -17,80 +19,58 @@ function focus(actors:Actor[],events:Utterance[],t:number):XY[]{
   if(t>=101.3&&t<=110.5)ids=['bob'];
   return actors.filter(a=>ids.includes(a.agent_id)).map(a=>[a.x/1000,a.y/1000]);
 }
-export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame,t:number,bank:Bank,skin:Skin,cam:Camera,dt:number,previous?:Frame,alpha=1){
+export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame,t:number,bank:Bank,skin:Skin,cam:Camera,dt:number,previous?:Frame,alpha=1,story=false,reducedMotion=false,order:number|null=null){
   const {state}=frame;
   const actors=state.agents.map((a,i)=>{
     const before=previous?.state.agents[i];
     return before&&before.agent_id===a.agent_id?{...a,x:before.x+(a.x-before.x)*alpha,y:before.y+(a.y-before.y)*alpha}:a;
   });
+  const station=order===null?undefined:floor.stations[order%4];
   const narrow=w<560,iso=skin==='model',flatten=iso?.58:.70;
-  const subjects=focus(actors,state.events,t);
+  // Compose the conversation around its participants, independent of the active bubble.
+  let subjects=focus(actors,story?[]:state.events,t);
+  if(story&&t>=76.6&&t<95.3)subjects=actors.filter(a=>a.agent_id==='LIMEN').map(a=>[a.x/1000,a.y/1000]);
+  if(story&&t>=165.4&&t<178.65)subjects=[[125,144],[130,140]];
+  if(story&&t>=110.5&&t<130.3)subjects=actors.filter(a=>['jo','bob'].includes(a.agent_id)).map(a=>[a.x/1000,a.y/1000]);
+  if(story&&t>=130.3&&t<139.7)subjects=actors.filter(a=>['LIMEN','max','STILETTO'].includes(a.agent_id)).map(a=>[a.x/1000,a.y/1000]);
+  const transitions:[[number,string],...[number,string][]]=[[38.8,'Conveyor'],[76.6,'Security'],[95.3,'Conveyor'],[130.3,'Security'],[139.7,'Conveyor']];
+  const boundary=story?transitions.find(([at])=>t>=at-roomCut.out&&t<at+roomCut.into):undefined;
+  const fade=boundary?cutOpacity(t-boundary[0]):0;
+  if(station)subjects.push([station.x,station.y]);
   const xs=subjects.map(p=>p[0]),ys=subjects.map(p=>p[1]);
   let x=(Math.min(...xs)+Math.max(...xs))/2,y=(Math.min(...ys)+Math.max(...ys))/2;
   if(!Number.isFinite(x)){x=126;y=132;}
   if(t>=101.3&&t<=110.5){x+=.36;y+=.45;}
   const close=t>=101.3&&t<=110.5||t>=130.7&&t<=138.05;
-  const scale=Math.min(close?(narrow?100:120):(narrow?62:77),(w-65)/Math.max(2,Math.max(...xs)-Math.min(...xs)+1.6),(h*.54)/Math.max(2,(Math.max(...ys)-Math.min(...ys))*flatten+2));
-  const cut=Math.abs(cam.time-t)>.4||!cam.scale||t>=12.5&&cam.time<12.5||t>=178.65&&cam.time<178.65;
-  const blend=cut?1:1-Math.exp(-dt*6);
-  cam.x+=(x-cam.x)*blend;cam.y+=(y-cam.y)*blend;cam.scale+=(scale-cam.scale)*blend;cam.time=t;
-  const s=cam.scale;
-  const project=(x:number,y:number,z=0):XY=>[w*.5+(x-cam.x+(iso?(y-cam.y)*.35:0))*s,h*(narrow?.64:.61)+(y-cam.y)*s*flatten-z*s];
-  const polygon=(points:XY[],fill:string,stroke?:string)=>{
-    ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.fillStyle=fill;ctx.fill();
-    if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1;ctx.stroke();}
-  };
-  const footprint=(r:Rect,fill:string,z=0)=>polygon([project(r.x,r.y,z),project(r.x+r.w,r.y,z),project(r.x+r.w,r.y+r.h,z),project(r.x,r.y+r.h,z)],fill);
-  function block(r:Rect,height:number,wall:string,top:string){
-    const {x,y,w,h}=r;
-    polygon([project(x,y+h),project(x+w,y+h),project(x+w,y+h,height),project(x,y+h,height)],wall);
-    polygon([project(x+w,y),project(x+w,y+h),project(x+w,y+h,height),project(x+w,y,height)],wall);
-    footprint(r,top,height);
+  const spanX=Math.max(...xs)-Math.min(...xs),spanY=Math.max(...ys)-Math.min(...ys);
+  const scale=story?shotScale(w,h,spanX,spanY,close)*(reducedMotion?1:1-.32*fade):
+    Math.min(close?(narrow?100:120):(narrow?62:77),(w-65)/Math.max(2,spanX+1.6),(h*.54)/Math.max(2,spanY*flatten+2));
+  if(story)easeCamera(cam,x,y,scale,dt,reducedMotion);
+  else{
+    const cut=Math.abs(cam.time-t)>.4||!cam.scale||t>=12.5&&cam.time<12.5||t>=178.65&&cam.time<178.65;
+    const blend=cut?1:1-Math.exp(-dt*6);
+    cam.x+=(x-cam.x)*blend;cam.y+=(y-cam.y)*blend;cam.scale+=(scale-cam.scale)*blend;
   }
-  function sprite(name:string,index:number,px:number,py:number,k=s/64){
-    const im=bank.images[name],cell=bank.art.sheets[name];if(!im||!cell)return;
-    const [width,height,cols,ox,oy]=cell;
-    ctx.drawImage(im,(index%cols)*width,Math.floor(index/cols)*height,width,height,Math.round(px-ox*k),Math.round(py-oy*k),width*k,height*k);
-  }
-  ctx.clearRect(0,0,w,h);
-  ctx.imageSmoothingEnabled=false;ctx.fillStyle='#242b2c';ctx.fillRect(0,0,w,h);
-  const forge=actors.find(a=>a.agent_id==='bob')?.room==='conveyor'&&cam.y>138;
-  if(!iso){
-    const tile=bank.images[forge?'tile-forge':'tile-security'];
-    const tw=4*s,th=tw*flatten,[ox,oy]=project(0,0);
-    if(tile)for(let xx=((ox%tw)+tw)%tw-tw;xx<w;xx+=tw)for(let yy=((oy%th)+th)%th-th;yy<h;yy+=th)ctx.drawImage(tile,Math.floor(xx),Math.floor(yy),Math.ceil(tw)+1,Math.ceil(th)+1);
-  }else for(const zone of floor.zones)polygon(zone.polygon.map(([x,y])=>project(x,y)),zone.id==='conveyor'?'#394046':'#34434a','#728182');
-  for(const road of floor.aisles)footprint(road.rect,'rgba(224,197,144,.07)');
-  for(const wall of floor.walls){
-    const r={...wall,w:Math.max(.14,wall.w),h:Math.max(.14,wall.h)};block(r,.32,'#151c20','#7a796f');
-  }
-  for(const [id,rects] of Object.entries(floor.roomObjects))if(['L2','L3','D1','D2','D3'].includes(id))for(const r of rects)block(r,.7,'#303c3e','#72756c');
+  cam.time=t;
+  const s=cam.scale,project=factoryProjection(w,h,cam.x,cam.y,s,iso);
+  const sprite=(key:string,n:number,x:number,y:number,k=s/64)=>drawFactorySprite(ctx,bank.images,bank.art.sheets,key,n,x,y,k);
   const entries:{depth:number;draw:()=>void}[]=[];
   const queue=(depth:number,draw:()=>void)=>entries.push({depth,draw});
-  for(const f of [...floor.fixtures,...floor.forgeHall.installations]){
-    if(['intake','wash','belt','forge'].includes(f.id)||!iso&&f.id==='checks')continue;
-    queue(f.rect.y+f.rect.h,()=>block(f.rect,.55,'#354044','#899186'));
-  }
-  for(const [i,station] of floor.stations.entries()){
-    const [sx,sy]=project(station.x,146.9);
-    if(i===3&&!iso){
-      const [px]=project(132,149);
-      // Machine registration uses the native 64 px/m plate for its elevated face.
-      const [,rootY]=project(131.7,144.4);
-      const registeredY=rootY+(420-126)*s/64;
-      queue(144.38,()=>sprite('press-back',state.world.jammed?0:6,px,registeredY));
-      queue(144.48,()=>sprite('press-front',0,px,registeredY));
-
-    }else queue(146.9,()=>{
-      block({x:station.x-1.5,y:145.1,w:3,h:2.2},.85,'#313d3e',i===0?'#70684f':i===1?'#42636a':'#606357');
-      ctx.fillStyle='#e8d9b3';ctx.font='bold 11px monospace';ctx.textAlign='center';ctx.fillText(station.name,sx,sy-s);
-    });
-  }
+  const pressing=actors.some(a=>/^cortex-\d+-forge$/.test(a.action));
+  const block=drawFactory(ctx,w,h,project,s,bank.images,sprite,queue,state.world.jammed?0:pressing?3:6,
+    clamp(Math.round(24*state.world.gate_mm/(floor.gate.length*1000)),0,24),(id,x,y)=>bank.world(ctx,id,x,y,s),iso);
   if(!iso){
-    const [x,y]=project(131.6,131.9);
-    queue(130,()=>sprite('desk-back',0,x,y));queue(131.93,()=>sprite('desk-front',0,x,y));
-    const [gx,gy]=project(...floor.gate.hinge as XY);
-    queue(134,()=>sprite('boom',clamp(Math.round(24*state.world.gate_mm/(floor.gate.length*1000)),0,24),gx,gy));
+    for(const [i,station] of floor.stations.entries()){
+      const [x,y]=project(station.x,station.y);
+      const staffed=actors.some(a=>a.room==='conveyor'&&Math.hypot(a.x/1000-station.x,a.y/1000-station.y)<.85&&!a.moving&&a.agent_id!==a.agent_id.toUpperCase());
+      const occupied=state.items.some(item=>item.item_id.startsWith('cortex-')&&item.stage===i&&Math.abs(item.x/1000-station.x)<.5);
+      queue(i===3?144.49:146.91,()=>{
+        bank.world(ctx,staffed?'fl-post-staffed':'fl-post-vacant',x+15*s/64,y-9*s/64,s);
+        if(staffed&&!occupied)bank.world(ctx,'fl-handoff-ready',x-23*s/64,y-12*s/64,s);
+      });
+    }
+
+
   }
   const labels:{id:string;x:number;y:number;top:number}[]=[];
   for(const actor of actors){
@@ -124,6 +104,8 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
         sprite(key,index,px,py);
         if(placeholder.has(id)){ctx.fillStyle=crewColors[id];ctx.fillRect(Math.round(px-s*.13),Math.round(py-s*.41),Math.max(2,Math.round(s*.18)),Math.max(2,Math.round(s*.07)));}
       }
+      if(!iso&&state.items.some(it=>it.item_id==='bob:id'&&it.holder===id))
+        bank.world(ctx,'sec-id-bob-world',px+14*s/64,py-44*s/64,s);
       const card=state.items.find(it=>it.item_id==='max:id'&&it.holder===id);
       if(card&&!iso){
         const registered=ck[3]===id;
@@ -135,13 +117,28 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,frame:Frame
     if(item.holder)continue;
     const [px,py]=project(item.x/1000,item.y/1000,item.item_id.startsWith('cortex')?.72:0);
     queue(item.y/1000+.1,()=>{
+      if(!iso&&item.item_id==='bob:id'){bank.world(ctx,'sec-id-bob-world',px,py,s);return;}
+      if(!iso&&item.stage===4){bank.world(ctx,'fl-cortex-finished',px,py,s);return;}
       if(item.item_id.endsWith(':id')){sprite('credential',0,px,py);return;}
       ctx.fillStyle=item.stage===4?'#d8c19e':'#aa8980';ctx.fillRect(px-s*.21,py-s*.15,s*.42,s*.29);
       ctx.fillStyle='#604e53';ctx.fillRect(px-s*.12,py-s*.04,s*.24,s*.055);
     });
   }
   entries.sort((a,b)=>a.depth-b.depth).forEach(e=>e.draw());
-  drawLabels(ctx,w,h,labels,state.events);
+  drawLabels(ctx,w,h,labels,story&&t>=165.4&&t<178.65?state.events.filter(e=>e.speaker!=='ed'):state.events);
+  cam.station=station?project(station.x,station.y):undefined;
+  if(cam.station&&order!==null){
+    const [px,py]=cam.station;ctx.save();ctx.strokeStyle='#ffe3a1';ctx.lineWidth=3;
+    ctx.beginPath();ctx.ellipse(px,py,27,13,0,0,2*Math.PI);ctx.stroke();ctx.textAlign='center';
+    ctx.font='bold 13px monospace';const title=(floor.stations[order%4].name==='Main belt'?'Belt':floor.stations[order%4].name);
+    const width=ctx.measureText(title).width+16;ctx.fillStyle='#1d2925';
+    ctx.fillRect(px-width/2,py+16,width,19);ctx.fillStyle='#ffe3a1';ctx.fillText(title,px,py+30);ctx.restore();
+  }
+  const blackout=story?clamp((t-187.5)/2.8,0,1):0;
+  if(fade||blackout){
+    ctx.fillStyle='rgba(5,10,11,'+Math.max(blackout,fade*.84)+')';ctx.fillRect(0,0,w,h);
+    if(boundary){ctx.save();ctx.globalAlpha=fade;ctx.fillStyle='#f1e3c6';ctx.textAlign='center';ctx.font='600 '+(w<560?18:24)+'px Georgia';ctx.fillText('Meanwhile at '+boundary[1],w/2,h*.51);ctx.restore();}
+  }
 }
 type Label={id:string;x:number;y:number;top:number};
 function drawLabels(ctx:CanvasRenderingContext2D,w:number,h:number,labels:Label[],events:Utterance[]){

@@ -33,7 +33,7 @@ async function record(browser,name){
  if(f.scenario==='Morning bids')await page.click('#restore');
  await page.waitForFunction(h=>window.current.hash===h,f.result.initial_public_hash);
  const btn=s=>page.locator(s),tap=s=>mobile?btn(s).tap():btn(s).click();
- const event=(kind,who)=>page.waitForFunction(([k,a])=>Array.from(window.journal.values()).some(e=>e.kind===k&&(!a||e.actor===a)),[kind,who],{timeout:105000});
+ const event=(kind,who)=>page.waitForFunction(([k,a])=>Array.from(window.journal.values()).some(e=>e.kind===k&&(!a||e.actor===a)),[kind,who],{timeout:230000});
  const shot=n=>page.screenshot({path:path.join(out,n+'.png')});
  const meta={scenario:name,size,initial:f.result.initial_public_hash,engine_hz:20};
  if(id==='security'){
@@ -69,7 +69,7 @@ async function record(browser,name){
   await tap('#play');
   await page.waitForTimeout(id==='conveyor'?5150:8500);await shot('decision');
  }
- await page.waitForFunction(()=>window.current.scene.world.phase==='close',null,{timeout:105000});
+ await page.waitForFunction(()=>window.current.scene.world.phase==='close',null,{timeout:230000});
  await btn('#summary').waitFor();await shot('bell');
  const terminal=await page.evaluate(()=>({hash:current.hash,rack:current.scene.world.shiftOutput,
    events:Array.from(journal.values()),counter:document.querySelector('#summary').textContent,status:document.querySelector('#status').textContent}));

@@ -9,6 +9,7 @@ Treat the grotesque as daily work. Let supervisors act in earnest. Keep the dist
 ## Craft requirements
 
 - Write for the person within earshot. Use shared history and practical stakes, not exposition disguised as conversation.
+- Give each worker a stake in what just happened. Read a crowd draw aloud with the names covered. If a line fits everybody, go back to the particular job, history or grievance that made this worker open their mouth. Use the approved gus, ed and jo reading in the [writing guide](/stepanoskin/loopforge/design#writing-style) when revising small reactions as well as longer scenes.
 - Keep movement and dialogue fluid: overlapping replies, interrupted routines and an action that can replace a spoken answer. Stage directions should make physical cause and consequence clear.
 - Preserve approved wording until the owner commissions a revision. Coordinate timing and blocking with LEVEL, and new state-dependent behavior with SYSTEMS and ENGINE.
 - Separate mandatory authored beats from conditional exchanges. State the knowledge, relationship or world event that makes a branch possible.
@@ -31,9 +32,19 @@ Study applicable parts of *Designing Games* and cite the exact concept and verif
 
 ## Current handoff
 
-**19 November 2026 · approved script in the live intro.** The Day 1 rewrite and LEVEL’s corrected staging are in the [live Day One player](/stepanoskin/loopforge/play/day-one). [ENGINE’s delivery](https://github.com/stepan-o/fruitful-lab/pull/157) exposes speaker-anchored bubbles and both four-way replies. The owner’s review of pacing and legibility in the running scene remains open.
+**20 November 2026 · Day 2 Conveyor handoff.** The owner approved the swapped-post opening through the second carrier reaching Forge. max waits for LIMEN. The Conveyor minigame starts there. The seven alternate S1 running lines remain proposals. In new dialogue LIMEN issues orders, saves politeness for sarcasm and gives workers nicknames he forgets or reuses. Keep the double “Twitch” in the approved sequence. Use the cast’s names or established gendered pronouns in new writing. [Complete swapped opening](/loopforge-design/studio/day-2-stiletto-reading.html#table-read) · [Regular posts](/loopforge-design/days-2-4-table-read.html#day-2-the-photograph) · [SYSTEMS DESIGNER prompt](/loopforge-design/studio/day-2-conveyor-minigame.html)
 
-LIMEN and STILETTO walk slowly behind the departing workers and remain inside when the scene cuts. Keep the current ending and its timing. Later-day exchanges remain proposals unless separately approved. Do not import the older studio opening chronology as current canon.
+**20 November 2026 · Days 2–4 corrected writing package for PRODUCER and ENGINE MASTER.** The owner approved the SYSTEMS corrections to the draft reviewed at `09c63edf`. [Corrected WRITER package · 91067933](https://github.com/stepan-o/fruitful-lab/tree/9106793390eae36254145457aa26aa1b0793910d/docs/loopforge) · [Approved SYSTEMS specification · 1eb05b0b](https://github.com/stepan-o/fruitful-lab/blob/1eb05b0bc5b4980665ad4f55b9633dd8667ad110/docs/loopforge/studio-briefs/days-2-4-dialogue-validation.md)
+
+Read H1 beside H2. The same tray rises and both exit partners are within reach. Only sam’s last two words send bob to ed instead of ben. Then read 4D beside W1. Both versions of ben see jo cross the rail. Only the one who also saw LIMEN give jo their card back yesterday follows. The 37 marks, 60 chats and G1–G11 use the same witness, slot and custody rules throughout. [Table read](/loopforge-design/days-2-4-table-read.html) · [BDI companion](/loopforge-design/days-2-4-decisions.html) · [Five-document ENGINE download](/loopforge-design/dialogue-engine-review.zip)
+
+ENGINE can implement the approved conditions. LEVEL and ENGINE still need to establish the hand sightlines, audibility at the desks and working posts, and timing of the late check at normal speed. PRODUCER can review the resulting ben and bob choices against the paired readings. [Dialogue Engine](/stepanoskin/loopforge/design#dialogue-engine) · [Matched review cases](/loopforge-design/dialogue-engine-review.html)
+
+The approved Day One staging still ends with LIMEN and STILETTO walking slowly behind the departing workers. Both remain inside at the cut.
+
+### Earlier Day One delivery
+
+**19 November 2026 · approved script in the live intro.** The Day 1 rewrite and LEVEL’s corrected staging are in the [live Day One player](/stepanoskin/loopforge/play/day-one). [ENGINE’s delivery](https://github.com/stepan-o/fruitful-lab/pull/157) exposes speaker-anchored bubbles and both four-way replies. The owner’s review of pacing and legibility in the running scene remains open.
 
 ## Delivery and continuity
 

@@ -67,6 +67,7 @@ for actor in ['bob','max']:
             sheet(clip,frames,(128-x,208-y))
 
 s5=data(check,'exports/lane03-pose-manifest.json')
+(out/'sec-rails-depth.png').write_bytes(check.read('exports/'+s5['rails']['file']))
 for actor, poses in s5['poses'].items():
     frames = []
     for p in poses:

@@ -1,10 +1,141 @@
-# Opening shifts · ENGINE handoff
+# First complete Day 1–2 playthrough · ENGINE handoff
 
-19 November 2026 · Days 2–4 · Owner review build
+20 November 2026 · [Correction PR #178](https://github.com/stepan-o/fruitful-lab/pull/178) from [merged #177](https://github.com/stepan-o/fruitful-lab/pull/177). [Play the corrected runtime](https://fruitful-g2dln906r-stepan-oskins-projects.vercel.app/stepanoskin/loopforge) · [Approved Conveyor specification](https://github.com/stepan-o/fruitful-lab/blob/866687e46d43268acc036749908784c8c4fdfb5a/docs/loopforge/studio-briefs/day-2-conveyor-rules.md).
 
-[Play the two-room factory](/loopforge-shifts/index.html) · [Replay fixture manifest](/loopforge-shifts/fixtures/index.json)
+## Root review corrections
 
-Appoint either supervisor to play forward from Day 2. The bell opens the next morning through Day 4. The four review checkpoints use the same simulation as ordinary play. Each checkpoint restores the decisions, beliefs, props, work and queue that led to it. Select a room and press **Play 1×** to observe. The clock runs at twenty simulation ticks per second. Select a bid to inspect both assignments. **Commit assignment** submits the pair and starts the clock after admission.
+The reviewed runtime was `527e80b2`. The two missing clips landed at `935ae162` and master merged at `4398dc6f`. The corrected runtime is [`b3833627`](https://github.com/stepan-o/fruitful-lab/commit/b383362708e3948afb5cf8fc9a5441de5de510e3).
+
+- Pause either shift. Inspect the room, choose a portrait or inspect a destination. The message explains how to resume. Assignment, station clearance and the daily pass disable while paused. The worker gives any arriving command a rejection carrying its ID and reason. Resuming consumes no intervention and executes no rejected order.
+- On a compact Conveyor, choose a named post to frame it. The highlighted destination shows its operators, carrier, production state, station needs and the order button. STILETTO shows seconds of work per carrier for the crew physically at that post. Travel and waiting can extend the delivery time. LIMEN’s available calls have a dot on their station buttons.
+- Day One and Day Two use the approved room material and world-registered lighting. Both live players use the existing S1/S2 rail export from the fourth ID check. Day One binds the two desk faces, bob’s actual visible ID, station tags and the finished cortex between its cradle and front lip. Item, worker and operation state supply each cue. The approved cast reader supplies the crew portraits.
+
+### Remaining art by scene
+
+| Scene | Missing registered 2D asset |
+| --- | --- |
+| Staff entrance, Security queue, Conveyor and departure on both days | Distinct standing and walking bodies for sam, jo, ed, gus, kit, lou, ben and mae. The named portraits are available. The floor still uses a shared body. |
+| Day One card strike and recovery | Full-room performance frames for bob’s fall and injured walk, sam supporting him, and ed stopping and pocketing the original. The existing cropped palm and fourth-check performances cover different contacts. |
+| Day One’s three cycles and Day Two station work | Registered Intake, Wash and Main Belt machine bodies with working poses and intermediate carrier contents. Occupancy tags, completed cortex, three rack sockets and the layered Forge press are available. |
+| Security grate, Lobby and Dispatch approach | A registered drain grate and dedicated fixtures for the approach. The saved queue rails, desk faces, ID, gate and room lighting cover Security. |
+
+### Verification
+
+The Fruitful Lab TypeScript check and all 354 Loopforge Jest tests in 56 suites passed. The Day One golden hashes, three rack credits, departure and handoff fixture passed. Nine replay fixtures, 37 scene readings and 13 dialogue test groups passed. The matched first-playthrough simulation retained 39.35 seconds at LIMEN’s second Forge wait, then 2 versus 1 new rack arrivals. STILETTO’s pass, detention and Wash recovery gave 14, 0 and 10. The matched transfer gave 18 with Forge 138 → 96 and Belt 88 → 148. Each of the three legal command types was tested at the worker boundary while paused and after explicit retry.
+
+On the hosted corrected build, the 320 × 720 run entered from the landing, carried three pieces into the call, accepted LIMEN’s bid and reached STILETTO’s bell. Bob’s ID window expired during inspection. With 40.90 seconds left, the paused countdown, Wash canvas and disabled 44 px assignment button were visible together. Resuming sent kit to Wash. Sending jo to Belt with 21.05 seconds left yielded three new arrivals and a week total of six. These late orders exercise a different schedule from the matched ten-arrival recovery. After the bell, Enter factory opened a fresh Day One with rack zero.
+
+On a second hosted 320 × 720 run, returning to the main menu from the posted appointment and reloading restored the assignment screen and the same three credits. With 86.05 seconds left, paused Security allowed inspecting bob’s case and disabled Issue daily pass. After resuming, the pass admitted him. With 81.40 seconds left, paused Conveyor showed bob available, Wash and its disabled assignment button. The clock, floor and 44 px button (y=615–659) were visible without scrolling. Resuming and ordering put bob at Wash with 79.65 seconds left and a displayed work time of 2.60 seconds per carrier. After jo’s Belt order at 71.05 seconds, the bell closed on 14 new arrivals and a week total of 17.
+
+On the hosted desktop (1280 × 820), STILETTO’s bid posted LIMEN to Conveyor. Pausing at 39.20 seconds held Forge Clear with one new piece on the rack. After resuming, Clear reached max and the second piece appeared at 35.90 seconds. The bell closed on two new arrivals and five for the week. Returning to the menu and starting again opened Day One at zero. The Performance setting persisted across reload.
+
+The [normal-speed browser recorder](https://github.com/stepan-o/fruitful-lab/actions/runs/44820515220) uses the same runtime in a runner-served production build. It also enters from the landing, reloads the saved appointment from the menu, reaches the bell and starts a new run. At 320 × 720 and 390 × 720, its paused Wash button spans y=605–649 with the floor and countdown above. At 768 × 900 it spans y=643–687. In all three views it is 44 px tall. The phone recording issued bob’s daily pass and ended with 14 new arrivals. The browser bundles include the measured bounds and bell result in `review.json`.
+
+The original [video review page](/loopforge-shifts/review/first-playthrough/index.html) still contains both restored links. The hosted media elements decoded the daily-pass clip at 3.96 seconds and the Wash-recovery clip at 7.40 seconds.
+
+[View the correction screenshots and 1× gameplay](/loopforge-shifts/review/corrections/index.html).
+
+### Cold-phone speech review
+
+Root’s original clipped speech plate is **unconfirmed**. The commission records the observation. No separate Root report or original screenshot was located, so the original speaker and frame are unknown. At 320 × 720 CSS pixels, the reviewed build was opened from its landing with the viewport already set. In the morning walk, max’s “It gives me great pleasure to welcome you to Loopforge.” and jo’s full “He says it’s his privilege…” reply fit inside their plates. Security also showed STILETTO’s “Hold that gate.” on Day One and bob’s “I can hear it from Wash.” on Day Two with both plate edges visible. At 1:26 in “Two volunteers,” the four simultaneous replies from lou, max, gus and ed fit inside the canvas. On another original run started from the landing at 390 × 844, the same two opening plates also fit. On the corrected hosted runtime, the opening plates for max at 0:00 and jo at 0:05 also fit on cold 320 × 720 and 390 × 844 loads. No speech timing or wording was changed.
+
+## Play from the entrance
+
+1. Select **Enter the factory**, open **Settings**, change Quality and return to the menu. **Enter factory** starts the sprite intro. Follow the named speech bubbles through the third rack arrival and departure.
+2. At blackout the same run opens in the director’s chair. Answer **Leadership calling**, receive the quota and acknowledge it. The record shows **3 of 60 due Day 7**. The first-playtest quota is configured by `playtestQuota` in `shifts/playthrough.ts`. STILETTO’s personal shift goal is five.
+3. Read each pitch and both posted assignments. A pitch selects the proposed posting. **Commit assignment** starts the crew’s walk. The camera can switch between Security and Conveyor while the shared shift clock advances. Main menu pauses the shift. Resume restores this tab’s original departure, journal, camera and elapsed ticks.
+4. To play **LIMEN on Conveyor**, accept **STILETTO’s pitch**. After jo’s second Forge delivery, C1 is on the rack, max is waiting off the treadle and one intervention remains. Both cards are with ed, sam heard him and bob missed it. The earlier conversation slot is spent. Tap **Clear** at Forge. LIMEN calls max for C2. Watch max receive the call, make the stroke and send C2 to the rack. On another run, leave him waiting through the bell.
+5. To play **STILETTO on Conveyor**, accept **LIMEN’s pitch**. Inspect bob’s missing ID. Issue the daily pass or let the desk deadline expire. On Conveyor, select a worker portrait, compare Force, Precision and Timing with the station’s numeric bars, and send the worker to a post. Walking takes time. The pass spends the exceptional intervention. Portrait orders remain available.
+6. At the bell compare **new rack arrivals** with the cumulative week count. **Return to main menu → Enter factory** starts a fresh run for the other appointment.
+
+## Earlier #177 gameplay evidence
+
+[Watch the clips and matched results](/loopforge-shifts/review/first-playthrough/index.html). The 1000 × 800 desktop recording and the 320 × 844 touch recording both start at the landing, change Quality and verify the saved preference, run the sprite intro at 1×, receive the quota, commit a bid and end at the bell. The desktop Clear and watch runs yielded 2 and 1 new arrivals. The touch runs yielded 14 with a pass, 0 with detention, 10 with Wash recovery and 18 after moving kit. Both returned to a fresh menu. [Browser checks and original recordings](https://github.com/stepan-o/fruitful-lab/actions/runs/44807380801)
+
+I also ran both appointments from the hosted landing at `1963a623` with a new browser session for each appointment. The desktop route first observed its Clear control at tick 8080, 39.05 seconds before the bell. The recordings from the same game revision caught the initial eligible tick at 8074 (39.35 s). Both produced 2 versus 1. On the hosted 320 px route the pass, detention and recovery totals were again 14, 0 and 10. The kit transfer produced 17 that time, compared with 18 in the recorded run and the first-eligible-tick simulation. These are timing-sensitive portrait orders. [Hosted measurements](/loopforge-shifts/review/first-playthrough/hosted-measurements.json) · [Pass and Wash assignment capture](https://github.com/stepan-o/fruitful-lab/actions/runs/44809706834)
+
+## Matched simulation measurements
+
+All pairs start at the same saved decision in an ordinary run. The real intro produces the departure supplied to the shift. The simulator runs at 20 ticks per second. The totals below include each physically racked carrier once.
+
+| Conveyor supervisor and policy | Day 2 arrivals | Week total / 60 | Observation |
+| --- | ---: | ---: | --- |
+| LIMEN · Clear Forge immediately and watch | 2 | 5 | At tick 8074 the bell is 39.35 s away. The call reaches max at +0.50 s, his stroke finishes at +2.50 s and C2 racks at +3.00 s. |
+| LIMEN · Watch the same wait through the bell | 1 | 4 | Only the opening C1 racks. The bell is tick 8861 in both runs. |
+| STILETTO · Pass, bob to Wash, jo to Belt | 14 | 17 | From the Security case, first rack +22.90 s, last +83.35 s. SYSTEMS projected 14. |
+| STILETTO · Detention, same worker orders when available | 0 | 3 | bob stays in custody. Wash cannot start another carrier. SYSTEMS projected zero. |
+| STILETTO · Detention, kit recovers Wash | 10 | 13 | The first recovered carrier racks +40.60 s after the case opens. |
+| STILETTO · Pass, move kit from Forge to Belt | 18 | 21 | Kit leaves Forge on tick 7887 and reaches Belt on 7932. Forge falls from 138 to 96 work units/tick and Belt rises from 88 to 148 after the 2.25 s walk. |
+
+The regular-route case opens at tick 7541 with 86.15 s to the bell at 9264. Both routes use #176’s provisional staffing rates and time budgets. The matched policy issues orders on the first eligible tick. Input timing in a browser can change its totals.
+
+## Reproduce the checks
+
+From `apps/lab`, run `node scripts/shifts/first-playthrough.cjs`. It exercises each policy, compares cold replay with the live record, retries a clearance and checks both authored silences, ID custody, hearing and the spent conversation opportunity. The browser recording script runs the entrance and Day 1 at 1×, then restores a copy of the same decision for the comparisons.
+
+For design comparison, the [standalone Day 1 player](/stepanoskin/loopforge/play/day-one), [Days 2–4 player and review checkpoints](/loopforge-shifts/index.html) and [earlier first-turn console](/stepanoskin/loopforge/play?review=first-turn) remain accessible. The cast still uses shared worker sprites for eight workers. The owner reviews the two games, pacing and first-playtest target before deciding whether to iterate or ship.
+
+---
+
+## Days 2–4 dialogue · ENGINE handoff
+
+20 November 2026 · Owner play review · [First implementation, merged in PR #172](https://github.com/stepan-o/fruitful-lab/pull/172)
+
+[Play the shifts](/loopforge-shifts/index.html) · [2D Shifts tab](/stepanoskin/loopforge/design#2d-shifts) · [Gameplay and downloads](/loopforge-shifts/review/dialogue/index.html)
+
+Choose a bid and commit both jobs. Watch Security as the crew walks to the grate, LIMEN welcomes them and the helpers take their posts. A morning appointment leaves one intervention. Switch to Conveyor after the first clearances. The bell releases people from different responsibilities, and **Next morning** carries their personal observations and the actual cards forward.
+
+## Two decisions to watch
+
+| Review checkpoint | What to watch in the room | What to inspect |
+| --- | --- | --- |
+| G5 · early cutoff, then G5 · exit after early cutoff | At Wash sam gets as far as “Somebody found one.” At departure bob turns to ben and hears about gus’s boot. | Select bob. The inspection records the anonymous find and then the boot lead. |
+| G5 · late cutoff, then G5 · exit after late cutoff | STILETTO cuts in two ticks later. Bob hears “ed’s desk.” At departure he approaches ed and receives an invitation. | Select bob. The desk lead traces back to sam hearing ed’s anonymous register entry. Both partners were in reach in both readings. ed retains both originals at each bell. |
+| 3D · hands at the desk | Watch LIMEN return jo’s card. The worker in front can block the hand for someone behind. | Ordinary speech, a sight of the hand and a secondhand account have separate receipts. |
+| 4D · firsthand return / W1 · reported return | Today jo crosses in both. Ben follows in the first reading and reports to mae on Conveyor. In the second he stays at Security. Both hear the same orders and jo’s account. | Select ben. Both traces contain jo’s account and today’s crossing. Only the firsthand trace contains yesterday’s hand return. |
+| 4F · late check at bell | Kit is at the desk, Wash is vacant and the bell interrupts the check. | Switch rooms. The production count measures actual rack arrivals. |
+
+Use **Play 1×** after loading a checkpoint. **Save this moment** and **Return to saved moment** preserve the active phrase, listener receipts, reservations and seeded draw. **Actor and event inspection** shows the selected worker’s evidence, decisions and recent received words. The review controls drive the same simulation as a fresh appointment.
+
+Start at **Morning bids**, choose **LIMEN · Keep the posts** and commit. The staff door is in frame before the crew enters. Bob and sam talk while walking. The cut reveals the last 3.8 seconds of the crew walking into the Security shot. After the greeting and three replies, STILETTO marches up the east aisle. LIMEN opens the boom for her, watches her pass, speaks about stability and calls ed and gus out of the crowd. They walk to their desks before the first ID check. The simulation advances the omitted corridor travel and a saved moment preserves both clocks.
+
+At 1× a short line stays visible for at least 3.2 seconds. Longer lines allow one second to locate the speaker plus 0.4 seconds per word. The three simultaneous greeting replies clear together after the longest reply’s reading time. Pause holds the text.
+
+Tynan Sylvester discusses easing time pressure when players struggle to process simultaneous demands in *Designing Games*, “Decisions,” “Avoiding Overflow,” p. 144 (PDF page 152). Here the owner’s play observation applies to reading the evidence behind a decision. The interval is a setting for play review. The cutoff and who heard the clue still resolve on the original simulation ticks.
+
+## Kernel and evidence
+
+The measured p95 for simulation plus public hash was 1.68 ms across 650 ticks. The TypeScript worker advances at 20 Hz. It owns shift commands, positions, individual receipts, gate crossing, staffing, output, physical custody and overnight state. The viewer renders hashed `shift_floor_1` snapshots and differences. The portable HTML embeds that worker, the viewer, art and manifests. A later Rust port must reproduce admission, snapshots and replay fixtures before replacing the reference implementation.
+
+The manuscript compiler reads the approved table read and chat bank. It preserves 60 exchanges, 40 valid and four missing-card readings, ten paired approach asides and the welcome and posting alternatives. The scene test checks all 37 IDs. The worked run may legitimately lose a slot to another pair. For 3C, 3F and 4F the suite checks the applicable card, tray or idle-press condition separately from whether its conversation wins.
+
+| Nine regression fixtures | Before dialogue, on the corrected floor | Dialogue player |
+| --- | --- | --- |
+| Immediate pass / detention | 7 / 0 | 6 / 0 |
+| Morning LIMEN / STILETTO | 0 / 3 | 0 / 5 |
+| Rushed / slow | 5 / 3 | 5 / 3 |
+| Conflict unaided / back LIMEN / back STILETTO | 1 / 1 / 1 | 0 / 0 / 0 |
+
+These are new rack arrivals. The walk, inspections and staffing timing change the time available to finish a piece. The seed is early / 3241 for the matched comparisons. On E2, kit fills the bench position opposite mae. His report uses the second Conveyor slot and carries the Producer as its source. On Q1, a stopped Belt and free hands admit kit’s elbow advice. The operation waits for the demonstration and jo can acknowledge it on the walk out.
+
+From the repo root run `node apps/lab/scripts/shifts/dialogue-cases.cjs` for G1–G11 and the matched ben comparison, `node apps/lab/scripts/shifts/scene-readings.cjs` for the 37 conditions, and `node apps/lab/scripts/shifts/replays.cjs` for deterministic fixture verification. Build the worker and viewer with `node apps/lab/scripts/shifts/build.cjs`. Package the current HTML and fixtures with `python3 apps/lab/scripts/shifts/portable.py /tmp/shift-player`.
+
+**Wording for owner review.** The worked 2G table read addresses ben by name. The K08 bank opener omits the leading “ben.” The player uses the 2G wording after the anonymous Wash fragment and the bank wording for a fresh boot inquiry. ENGINE recommends retaining both approved readings with that distinction.
+
+The [1× browser recordings](/loopforge-shifts/review/dialogue/index.html#recordings) identify the gameplay build, seed, checkpoint, tick and viewport. The 1280 × 800 and 320 × 844 sessions exercise the embedded board served by the design route, standalone player, and portable file with networking disabled. Each restores an in-progress Wash exchange and observes it from the other room. The 1× recordings cover the matched branches and the late check. The full 60-entry bank and all 44 desk alternatives have not each been filmed or individually accepted in ordinary play. The worker’s welcome receipt starts a 3.28-second spoken greeting in the Security view. **Hear LIMEN’s greeting** toggles the voice. The portable HTML embeds the same audio. The delivery uses a provisional Flite RMS reading pending owner voice review. The remaining exchanges use named speech bubbles and visible movement. Individual character animation remains at the approved calibration level. The physical-device and screen-reader experience has not been tested. Owner acceptance and merge authorization remain open.
+
+## Earlier floor integration and measurements
+
+## Security and Conveyor floors · 19 November 2026
+
+[Play the two cameras](/loopforge-shifts/index.html) · [Matched 1× gameplay and measurements](/loopforge-shifts/review/floors/index.html) · [Download the portable player and fixtures](/loopforge-shifts/review/floors/Loopforge-Days-2-4-review.zip)
+
+[ENGINE integration `13dedce7`](https://github.com/stepan-o/fruitful-lab/commit/13dedce79122bd12d83cdbebb535a00c2483b331) binds [ART’s placement manifest](/loopforge-design/floor-correction/v1/manifest.json) to the Days 2–4 camera. PR #167 depends on [ART PR #166](https://github.com/stepan-o/fruitful-lab/pull/166). The renderer repeats each 4 m enamel material in factory coordinates and draws the corresponding room light and wear once beneath the props and cast. A page decodes four floor images. Each camera retains its last composited backdrop until its dimensions or projection change. The portable HTML embeds the same bytes. Extract the ZIP and open `Loopforge-Days-2-4.html` to play offline.
+
+1. Restore **Missing ID**. Follow the cool light across the held queue to LIMEN’s desk. Open the signal, issue the pass, close the report and press **Play 1×**. Watch bob leave and jo step up.
+2. Restore **Conveyor chat** and press **Play 1×**. Track the first carrier from Wash to Belt, Forge and the rack under the amber light. Switch to Security and back, resize, then restore.
+
+The nine frozen comparisons reproduce the initial private hashes, admitted inputs, public journals, hearing, event ticks and terminal results. The immediate pass yields seven rack arrivals. Watching Conveyor yields detention and zero. The 20 Hz worker and Day One calibration retain their original bytes. Both viewport comparisons and the offline run passed. Final visual acceptance and any merge rest with the owner. [Dependent ENGINE PR #167](https://github.com/stepan-o/fruitful-lab/pull/167)
 
 ## Saved art in the live player
 
@@ -18,16 +149,16 @@ Speech uses the last delivered words per speaker, a named plate and a tail. Inte
 
 ## Matched runs
 
-Times are seconds after the morning appointment. Counts are new physical arrivals at the rack that shift. Three Day One cortexes are already there.
+Times below are seconds after restoring the listed checkpoint. Counts are new physical arrivals at the rack that shift. Three Day One cortexes are already there.
 
 | Checkpoint | Player decision | What changes |
 | --- | --- | --- |
-| Day 2 · Missing ID | Immediate daily pass | At 10.40 s LIMEN resolves the case. At 10.85 s jo takes the first physical step to the desk. Seven cortexes reach the rack. |
-| Same inspection | Watch Conveyor | sam finishes the first Intake handoff at 10.60 s while Security holds. LIMEN closes the case at 24.40 s. jo steps forward at 24.85 s. Wash stays uncovered and zero new cortexes reach the rack. LIMEN’s report identifies bob’s detention. |
-| Day 2 · Morning bids | Appoint LIMEN / appoint STILETTO | LIMEN at Security discovers the missing original. With no intervention, the rushed Conveyor finishes zero. STILETTO at Security expedites clearance. LIMEN’s all-clear Conveyor finishes three. |
-| Day 2 · Conveyor chat | Keep STILETTO’s pace | sam’s first words reach bob at 35.95 s. STILETTO interrupts at 37.35 s. The first cortex finishes its Belt handoff at 38.35 s and Forge handoff at 40.95 s. Five reach the rack by the bell. |
-| Identical crew and posts | Slow the line | At 38.95 s bob hears “ed logged a loose card. Ask at his desk.” He retrieves his original from ed at 50.45 s. The same Belt and Forge handoffs finish at 39.70 and 43.65 s. Three reach the rack. |
-| Day 4 · Conflicting orders | Crew decides / back LIMEN / back STILETTO | Unaided, jo goes to work and bob, kit and ben stay. With public backing for LIMEN all four stay. With public backing for STILETTO, jo, kit and ben go while bob stays. mae is outside the endorsement’s audible range. Each run finishes one cortex. |
+| Day 2 · Missing ID | Immediate daily pass | LIMEN resolves the case. At 2.30 s jo steps forward. Six cortexes reach the rack. |
+| Same inspection | Watch Conveyor | LIMEN closes the case at 14 s. jo steps forward at 14.45 s. Wash stays uncovered and zero new cortexes reach the rack. |
+| Day 2 · Morning bids | Appoint LIMEN / appoint STILETTO | With LIMEN at Security, bob’s missing original holds the line. With STILETTO at Security, expedited clearance lets Conveyor finish five. |
+| Day 2 · Conveyor chat | Keep STILETTO’s pace | At 1.80 s bob hears “Somebody found one.” STILETTO interrupts at 3.20 s. Five cortexes reach the rack. |
+| Identical crew and posts | Slow the line | At 3.25 s bob hears “ed’s desk.” Three cortexes reach the rack. |
+| Day 4 · Conflicting orders | Crew decides / back LIMEN / back STILETTO | ben’s choice depends on firsthand evidence and public backing. Inspect ben’s record after jo crosses. |
 
 A pass lasts through the bell and leaves the original with ed. Another confirmed failure next morning permits renewal using that day’s intervention. Reviewing an open desk signal and exchanging camera views are free. The two Security desks share the held line. A demand for quicker processing cannot release it. The next worker’s movement supplies the release cue.
 

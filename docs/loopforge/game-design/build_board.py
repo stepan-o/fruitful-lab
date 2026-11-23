@@ -1,5 +1,8 @@
 from day_one_gallery import build_gallery
 from studio_briefs import build_studio
+from music_engine import build_music
+from forge_study_entry import FORGE_PANEL
+from ai_lab_entry import AI_LAB_PANEL
 from rehearsal_page import build_rehearsal
 from conveyor_proposal import render_conveyor, conveyor_markdown
 from core_loop_study import render_core_loop_study, core_loop_markdown
@@ -15,6 +18,7 @@ from model_briefs import render_model_briefs
 from narrative import build_narrative, inline, render as render_narrative
 from cast_page import render_cast
 from dramaturgy import render_dramaturgy
+from dialogue_engine import build_dialogue_engine
 from pathlib import Path
 import html, json, re, shutil, subprocess, hashlib
 from style_review import render_style_review
@@ -193,7 +197,6 @@ experience+=detail('Further renderer references',''.join('<p><a href="'+url+'" t
 experience+='<button class="link-button" data-panel="engine-boundary">Inspect the independent engine boundary →</button>'
 
 engine=heading('Handoff to the engine design',en['title'],en['intro'])+status(en['status'])
-engine+='<div class="callout"><h3>Days 2–4 · Opening shifts</h3><p>Commit a morning bid, inspect the signal on LIMEN’s desk, or watch an interrupted reply change what bob does next. The saved Days 2–4 art now follows the live worker.</p><p><a href="/loopforge-shifts/index.html" target="_top">Play the 2D shifts →</a> · <a href="/loopforge-shifts/review/shifts-art-1x.mp4">Before/after gameplay · 1×</a> · <a href="/loopforge-shifts/ENGINE-HANDOFF.md">ENGINE handoff</a> · <a href="/loopforge-shifts/fixtures/index.json">Replay fixtures</a></p></div>'
 engine+='<div class="architecture-map"><div class="architecture-core"><span class="kicker">Authoritative state</span><h3>Simulation kernel</h3>'+p(en['planes'][0][1])+'</div><div class="architecture-seams"><article><span class="kicker">KVP · snapshots, diffs and commands</span><h4>Replaceable viewers</h4>'+p(en['planes'][2][1])+'</article><article><span class="kicker">Context out · validated proposals in</span><h4>Replaceable model services</h4>'+p(en['planes'][3][1])+'</article></div></div>'
 engine+='<h3>Rust-native means enforceable discipline</h3>'+table(en['rust'])
 engine+=detail('The KVP boundary',table(en['kvp']))
@@ -204,6 +207,21 @@ engine+=detail('How we prove the boundaries',ul(en['proof']))
 engine+='<div class="callout"><h3>Webview: the visible factory</h3>'+p('The lobby is the first hybrid rendering calibration: modeled furniture and major pipes, authored surface detail, baked atmosphere and selective live lighting. Worker claims and wages stay in simulation records. The reader chapter includes Babylon examples and the source-to-prefab production plan; the desk kit is implemented, while payroll remains a separate simulation task. The Agents tab opens the current LIMEN, Worker 01, STILETTO and CATHEXIS model library. Paired acting with these rigs remains the next integration gate.')+'<p><a href="/stepanoskin/loopforge/architecture/webview" target="_blank" rel="noopener">Open the Webview chapter and reference gallery ↗</a> · <a href="ASSET_PREFAB_PIPELINE.md" target="_blank" rel="noopener">Asset production plan ↗</a></p></div>'
 engine+=detail('Original doctrine and implementation limits',p(en['sourceBoundary'])+'<p><a href="sources/kvp.md" target="_blank" rel="noopener">KVP-0001 ↗</a> · <a href="sources/kvp-hashing.md" target="_blank" rel="noopener">Canonicalization ↗</a> · <a href="sources/rust-engine.md" target="_blank" rel="noopener">Rust-aligned Sim4 specification ↗</a> · <a href="sources/live-contract.md" target="_blank" rel="noopener">Existing live contract ↗</a></p>')
 engine+='<button class="link-button" data-panel="experience">Return to the player experience →</button>'
+
+shifts_player = '/loopforge-shifts/index.html'
+shifts_intro = heading('Days 2–4', '2D Shifts', 'Commit a morning bid, inspect the signal on LIMEN’s desk, or follow the work on Conveyor.')
+shifts_links = (
+    f'<p><a href="{shifts_player}" target="_top">Open the player full screen ↗</a> · '
+    '<a href="/loopforge-shifts/review/dialogue/index.html">Dialogue comparisons and offline player</a> · '
+    '<a href="/loopforge-shifts/review/floors/index.html">Floor comparison · 1×</a> · '
+    '<a href="/loopforge-shifts/review/shifts-art-1x.mp4">Art comparison · 1×</a> · '
+    '<a href="/loopforge-shifts/ENGINE-HANDOFF.md">ENGINE handoff</a> · '
+    '<a href="/loopforge-shifts/fixtures/index.json">Replay fixtures</a></p>'
+)
+shifts = shifts_intro + shifts_links + (
+    f'<iframe id="shifts-player" title="Playable Days 2–4 factory shifts" data-src="{shifts_player}" '
+    'style="display:block;width:100%;height:80vh;height:80svh;border:0"></iframe>'
+)
 
 lp=d['loops'];ui=d['uiDesign']
 def loop_scale(s):
@@ -354,6 +372,7 @@ arc+=conveyor_link
 first_turn=render_first_turn()
 agent_direction=render_agents()
 dramaturgy=render_dramaturgy()
+dialogue_engine=build_dialogue_engine(ROOT.parent, OUT)
 intro_source = (ROOT.parent/'DAY_ONE_INTRO.md').read_text()
 supervisor_pack = json.loads((OUT.parents[1]/'lib/assets/generated/loopforge-supervisors.json').read_text())
 security = supervisor_pack['assets']['limen-security']
@@ -429,9 +448,10 @@ pixel_art_plan = (
     f'<h3>{e(plan_title.removeprefix("Loopforge | "))}</h3>{plan_body}</div>'
 )
 
-panels=[('player-desires','Player desires & scenarios',desires),('day-one-intro',intro_title,intro),('floor-layout',floor_title,floor_panel),('engine-boundary','Engine boundary',engine),('floor-scale','Factory floor: scale & feel',floor_scale),('pixel-art-plan','Pixel-art production plan',pixel_art_plan),('narrative-cast','The cast',cast),('writing-style',writing_style_title,writing_style),('dramaturgy','Character dramaturgy and narrative design',dramaturgy),('supervisor-rooms','Supervisor × room',supervisor_panel),('agents','Agents: character & motion',agent_direction),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('model-briefs','Model briefs',render_model_briefs()),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
+panels=[('player-desires','Player desires & scenarios',desires),('day-one-intro',intro_title,intro),('floor-layout',floor_title,floor_panel),('engine-boundary','Engine boundary',engine),('floor-scale','Factory floor: scale & feel',floor_scale),('2d-shifts','2D Shifts',shifts),('pixel-art-plan','Pixel-art production plan',pixel_art_plan),('narrative-cast','The cast',cast),('writing-style',writing_style_title,writing_style),('dramaturgy','Character dramaturgy and narrative design',dramaturgy),('dialogue-engine','Dialogue Engine',dialogue_engine),('music-engine','Music engine',build_music(ROOT, OUT)),('forge-study','Forge UI study',FORGE_PANEL),('supervisor-rooms','Supervisor × room',supervisor_panel),('agents','Agents: character & motion',agent_direction),('loop-study','Core loop study',loop_study),('conveyor','Conveyor mini-game',conveyor),('first-turn','First turn: prebuilt factory',first_turn),('model-briefs','Model briefs',render_model_briefs()),('arc','Long arc',arc),('loops','Core loops and sessions',loops),('trajectories','Player trajectories',routes),('commitments','Act 1 forks',commit),('people','Supervisors and reports',people),('stress','Stress and rumours',stress),('bdi','BDI and agency',bdi),('episodes','Episode arcs and traces',episodes),('experience','Player experience',experience),('producer-console','Producer console',producer_review),('ui-styles','UI style studies',style_review),('focused-console','Focused console',focused_console),('interface-hierarchy','Interface hierarchy',render_cinematic_console()),('themes-assets','Themes & assets',theme_system),('ui-structure','UI structure',structure),('ui-mechanics','UI and mechanics',ui_html),('sound-library','Sound library',sounds),('factory','Production and workers',factory),('foundations','Principles and sources',foundations),('decisions','Open decisions',decisions)]
 studio_panel, studio_css = build_studio(ROOT.parent, OUT)
 panels.insert(0, ('studio', 'Studio briefs', studio_panel))
+panels.insert(0, ('ai-lab', 'Loopforge AI Lab', AI_LAB_PANEL))
 head='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101412"><meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow"><title>Loopforge — Game design</title><link rel="stylesheet" href="styles.css"></head><body>'
 head=head.replace('href="styles.css"','href="styles.css?v='+hashlib.sha256((ROOT/'styles.css').read_bytes()).hexdigest()[:12]+'"')
 head=head.replace('</head>','<link rel="stylesheet" href="model-briefs.css?v='+hashlib.sha256((ROOT/'model-briefs.css').read_bytes()).hexdigest()[:12]+'"></head>')
@@ -445,7 +465,7 @@ nav='<nav class="nav" aria-label="Design board sections">'+''.join(f'<button dat
 legend='<div class="legend"><p><span class="status agreed">Agreed direction</span><br>Owner’s stated design.</p><p><span class="status">Proposed</span><br>Paths and mechanisms to review.</p><p><span class="status open">Open</span><br>A decision still to make.</p><p>Design reference. No balance values or playable game UI are implemented here.</p></div>'
 payload=json.dumps(d,ensure_ascii=False).replace('</',r'<\/')
 artpayload=json.dumps(art).replace('</',r'<\/')
-page=head+'<a class="skip" href="#main">Skip to design content</a><div class="shell"><div class="masthead"><span class="wordmark">LOOPFORGE / DESIGN</span><div class="mast-links"><a href="/stepanoskin/loopforge/play/scene-studies">Play Day 1 ↗</a><a href="/stepanoskin/loopforge/play">Console prototype ↗</a><a href="/loopforge-dev-blog/index.html">Dev blog ↗</a><a href="/loopforge-dev-blog/retrospectives/2026-10-25-second-retrospective/index.html">Second retrospective ↗</a><span class="meta">'+e(d['version'])+'</span><a href="full-record.html" target="_blank" rel="noopener">Full reading copy ↗</a></div></div><header class="hero"><div><span class="kicker">Author reference · contains story spoilers</span><h1>Game design</h1><p>'+e(d['premise'])+'</p></div><figure class="hero-image">'+pic('factory','Loopforge factory overview',lazy=False)+'</figure></header><div class="layout"><aside class="sidebar">'+nav+legend+'</aside><main class="main" id="main">'+''.join(f'<section class="panel" id="{id}" aria-label="{e(title)}"'+(' hidden' if i else '')+'>'+body+'</section>' for i,(id,title,body) in enumerate(panels))+'</main></div><footer class="footer"><span>Design record · '+e(d['version'])+'</span><a href="GAME_DESIGN.md" download>Download the design record</a></footer></div><div id="announcement" class="sr-only" aria-live="polite"></div><noscript><div class="noscript">The interactive board requires JavaScript. <a href="full-record.html">Read the complete design record.</a></div></noscript><script id="design-data" type="application/json">'+payload+'</script><script id="art-data" type="application/json">'+artpayload+'</script><script src="board.js"></script></body></html>'
+page=head+'<a class="skip" href="#main">Skip to design content</a><div class="shell"><div class="masthead"><a class="back-link" href="/stepanoskin/loopforge">← Loopforge</a><span class="wordmark">LOOPFORGE / DESIGN</span><div class="mast-links"><a href="/stepanoskin/loopforge/play/scene-studies">Play Day 1 ↗</a><a href="/stepanoskin/loopforge/play">Console prototype ↗</a><a href="/loopforge-dev-blog/index.html">Dev blog ↗</a><a href="/loopforge-dev-blog/retrospectives/2026-10-25-second-retrospective/index.html">Second retrospective ↗</a><span class="meta">'+e(d['version'])+'</span><a href="full-record.html" target="_blank" rel="noopener">Full reading copy ↗</a></div></div><header class="hero"><div><span class="kicker">Author reference · contains story spoilers</span><h1>Game design</h1><p>'+e(d['premise'])+'</p></div><figure class="hero-image">'+pic('factory','Loopforge factory overview',lazy=False)+'</figure></header><div class="layout"><aside class="sidebar">'+nav+legend+'</aside><main class="main" id="main">'+''.join(f'<section class="panel" id="{id}" aria-label="{e(title)}"'+(' hidden' if i else '')+'>'+body+'</section>' for i,(id,title,body) in enumerate(panels))+'</main></div><footer class="footer"><span>Design record · '+e(d['version'])+'</span><a href="GAME_DESIGN.md" download>Download the design record</a></footer></div><div id="announcement" class="sr-only" aria-live="polite"></div><noscript><div class="noscript">The interactive board requires JavaScript. <a href="full-record.html">Read the complete design record.</a></div></noscript><script id="design-data" type="application/json">'+payload+'</script><script id="art-data" type="application/json">'+artpayload+'</script><script src="board.js"></script></body></html>'
 page=page.replace('</body>','<script src="model-briefs.js?v='+hashlib.sha256((ROOT/'model-briefs.js').read_bytes()).hexdigest()[:12]+'"></script></body>')
 page=page.replace('src="board.js"','src="board.js?v='+hashlib.sha256((ROOT/'board.js').read_bytes()).hexdigest()[:12]+'"')
 page=page.replace('</body>',sound_script+style_script+producer_script+study_script+conveyor_script+'</body>')
@@ -469,8 +489,8 @@ full=head+'<main class="record"><a href="index.html">← Interactive design boar
 art_review_link = '[Inspect the proof comparisons](/stepanoskin/loopforge/design#days-2-4-art)'
 _, review_links, _ = render_narrative('# Review\n\n' + art_review_link, {})
 full += '<section><h2>'+e(art_review_title)+'</h2>'+art_review_intro+review_links+'</section>'
-full+='<section>'+desires+'</section><section id="day-one-intro">'+intro.replace('href="#day-one-art-calibration"', 'href="/stepanoskin/loopforge/design#day-one-art-calibration"')+'</section><section id="floor-layout">'+floor_record+'</section><section id="narrative-cast">'+cast+'</section><section id="writing-style">'+writing_style+'</section><section id="dramaturgy">'+dramaturgy+'</section>'
-full+='<section>'+loop_study_full+'</section><section>'+conveyor_full+'</section><section>'+first_turn+'</section><section id="agents">'+agent_direction+'</section><section id="floor-scale">'+floor_scale+'</section>'
+full+='<section>'+desires+'</section><section id="day-one-intro">'+intro.replace('href="#day-one-art-calibration"', 'href="/stepanoskin/loopforge/design#day-one-art-calibration"')+'</section><section id="floor-layout">'+floor_record+'</section><section id="narrative-cast">'+cast+'</section><section id="writing-style">'+writing_style+'</section><section id="dramaturgy">'+dramaturgy+'</section><section id="dialogue-engine">'+dialogue_engine+'</section>'
+full+='<section>'+loop_study_full+'</section><section>'+conveyor_full+'</section><section>'+first_turn+'</section><section id="agents">'+agent_direction+'</section><section id="floor-scale">'+floor_scale+'</section><section id="2d-shifts">'+shifts_intro+shifts_links+'</section>'
 full+='<section><h2>World and story grounding</h2>'+world+'</section><section><h2>Act 1 progression</h2>'+early_rules+''.join(stage(s) for s in d['stages'])+act2+'</section>'
 full+='<section><h2>Proposed trajectories</h2>'+p('Illustrative paths through the shared progression, not locked classes or predetermined endings.')+early_combinations+''.join(trajectory(r) for r in d['trajectories'])+'</section>'
 full+='<section><h2>Commitments and recovery</h2>'+commit+'</section><section><h2>Supervisors and information</h2>'+advice_full+''.join(person(c) for c in d['characters'])+people[people.index('<div class="section-divider"></div><h3>From an incident to a public account'): ]+'</section>'

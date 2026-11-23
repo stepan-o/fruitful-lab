@@ -1,0 +1,64 @@
+name: Loopforge Rust engine
+on:
+  pull_request:
+    paths:
+      - 'apps/lab/engine/**'
+      - 'apps/lab/public/loopforge-engine/**'
+      - 'apps/lab/lib/loopforge/**'
+      - 'apps/lab/components/loopforge/**'
+      - 'docs/loopforge/studio-briefs/**'
+      - 'docs/loopforge/game-design/studio_briefs.py'
+      - '.github/workflows/loopforge-engine.yml'
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install locked dependencies
+        working-directory: apps/lab
+        run: npm ci
+      - name: Install pinned Rust compiler and target
+        working-directory: apps/lab/engine
+        run: rustup show active-toolchain
+      - name: Native BDI, campaign, custody and KVP checks
+        working-directory: apps/lab/engine
+        run: |
+          cargo fmt --check
+          cargo test --locked --release
+          cargo build --locked --release --bin loopforge
+          bash build.sh
+          git diff --exit-code -- ../public/loopforge-engine/kernel.wasm
+          node parity.cjs
+          node socket-test.cjs
+      - name: Check published ENGINE onboarding
+        run: |
+          python docs/loopforge/game-design/studio_briefs.py
+          git diff --exit-code -- apps/lab/public/loopforge-design/studio
+      - name: Exercise ordinary game entry
+        working-directory: apps/lab
+        env:
+          API_BASE_URL: http://localhost:8000
+          NEXT_TELEMETRY_DISABLED: '1'
+          LOOPFORGE_URL: http://127.0.0.1:3204
+        run: |
+          npm install --prefix "$RUNNER_TEMP/browser" playwright@1.58.2
+          "$RUNNER_TEMP/browser/node_modules/.bin/playwright" install --with-deps chromium
+          ./node_modules/.bin/next dev --webpack --hostname 127.0.0.1 --port 3204 > "$RUNNER_TEMP/loopforge-next.log" 2>&1 &
+          server=$!
+          trap 'kill "$server" || true' EXIT
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3204/stepanoskin/loopforge/play -o /dev/null; then break; fi
+            sleep 1
+          done
+          export NODE_PATH="$RUNNER_TEMP/browser/node_modules"
+          node engine/browser-test.cjs
+          node engine/episode-test.cjs
+      - name: Show game server diagnostics on failure
+        if: failure()
+        run: tail -120 "$RUNNER_TEMP/loopforge-next.log" || true

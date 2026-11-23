@@ -1,0 +1,593 @@
+{
+  "version": "conveyor-line-audition-2",
+  "sampleRate": 48000,
+  "tempo": 164,
+  "feltTempo": 82,
+  "tracks": {
+    "menu": {
+      "id": "LF-MUS-LONG-06-MENU",
+      "file": "../long-form/menu.mp3",
+      "bars": 80,
+      "sha256": "84fc14665f980fbb060e77a5196267be87f69c9d5636ab3cfe8e2fbbef9dadc7",
+      "loopFrames": [
+        0,
+        5619512
+      ],
+      "originalTheme": "menu"
+    },
+    "options": {
+      "id": "LF-MUS-LONG-02-OPTIONS",
+      "file": "../long-form/options.mp3",
+      "bars": 32,
+      "sha256": "ee9f68473b9f12ded28f8907f115ee02d873c6cd63448726626fa44923eb446d",
+      "loopFrames": [
+        0,
+        2247805
+      ],
+      "originalTheme": "options"
+    },
+    "security": {
+      "id": "LF-MUS-LONG-01-CONVEYOR",
+      "file": "../long-form/conveyor.mp3",
+      "bars": 96,
+      "sha256": "438cc8403969308fc6f578b3fa60eef2b06bfda726b8bedb8f0134e8b61c2216",
+      "loopFrames": [
+        0,
+        6743414
+      ],
+      "originalTheme": "conveyor"
+    },
+    "conveyor": {
+      "id": "LF-MUS-CONVEYOR-LINE-02",
+      "file": "conveyor-line-02.mp3",
+      "bars": 112,
+      "loopFrames": [
+        1123902,
+        3371707
+      ],
+      "openingFrames": [
+        0,
+        1123902
+      ],
+      "openingParent": "LF-MUS-D2-CONVEYOR-01",
+      "openingParentSha256": "7bdbfabdbfd07a4b0b67dbacc4fac8ff8575d923b8ef2da56be46b53c33c3603",
+      "layers": {
+        "two": {
+          "frames": [
+            1123902,
+            3371707
+          ],
+          "bars": 32,
+          "lufs": -17,
+          "dBTP": -5.12
+        },
+        "four": {
+          "frames": [
+            3371707,
+            5619512
+          ],
+          "bars": 32,
+          "lufs": -17.01,
+          "dBTP": -5.79
+        },
+        "full": {
+          "frames": [
+            5619512,
+            7867317
+          ],
+          "bars": 32,
+          "lufs": -17,
+          "dBTP": -5.91
+        }
+      },
+      "sha256": "b3b464171b821adc3b933b2c55ed4b044c407167105e2b845f11fc376367293d",
+      "masterSha256": "01562e2052f669fe87d0f61c0f1c6eac65fb1f428cb14deb6d80d57d7e032fc4",
+      "lufs": -16.86,
+      "dBTP": -3.52
+    }
+  },
+  "reel": {
+    "file": "cue-reel.mp3",
+    "frames": 5974243,
+    "sha256": "58325e9b6bd359dc5ebf27c65fda64c21367d344533ba9c598efac6daf8f6944",
+    "masterSha256": "041981648fee9d7b176611db918967e87efbadb39624455beba64bed028673cf",
+    "lufs": -20.95,
+    "dBTP": -3.45
+  },
+  "cues": {
+    "day-one": {
+      "label": "Day One · walk and floor",
+      "kind": "loop",
+      "frames": [
+        0,
+        1123902
+      ],
+      "tailFrames": 0,
+      "sources": [
+        "original-score"
+      ]
+    },
+    "console": {
+      "label": "Console · leadership",
+      "kind": "loop",
+      "frames": [
+        1129902,
+        1691853
+      ],
+      "tailFrames": 0,
+      "sources": [
+        "original-score"
+      ]
+    },
+    "speech": {
+      "label": "Speech · low arrangement",
+      "kind": "loop",
+      "frames": [
+        1697853,
+        2821755
+      ],
+      "tailFrames": 0,
+      "sources": [
+        "original-score"
+      ]
+    },
+    "waiting": {
+      "label": "Waiting · stopped line",
+      "kind": "loop",
+      "frames": [
+        2827755,
+        3951657
+      ],
+      "tailFrames": 0,
+      "sources": [
+        "original-score"
+      ]
+    },
+    "results": {
+      "label": "Results · suspended cadence",
+      "kind": "loop",
+      "frames": [
+        3957657,
+        4519608
+      ],
+      "tailFrames": 0,
+      "sources": [
+        "original-score"
+      ]
+    },
+    "menu-in": {
+      "label": "Menu · track entry",
+      "kind": "entry",
+      "frames": [
+        4525608,
+        4595852
+      ],
+      "tailFrames": 1200,
+      "sources": [
+        "LF-MUS-LONG-06-MENU"
+      ]
+    },
+    "menu-out": {
+      "label": "Menu · track exit",
+      "kind": "exit",
+      "frames": [
+        4601852,
+        4672096
+      ],
+      "tailFrames": 15840,
+      "sources": [
+        "LF-MUS-LONG-06-MENU"
+      ]
+    },
+    "options-in": {
+      "label": "Options · track entry",
+      "kind": "entry",
+      "frames": [
+        4678096,
+        4748340
+      ],
+      "tailFrames": 1200,
+      "sources": [
+        "LF-MUS-LONG-02-OPTIONS"
+      ]
+    },
+    "options-out": {
+      "label": "Options · track exit",
+      "kind": "exit",
+      "frames": [
+        4754340,
+        4824584
+      ],
+      "tailFrames": 15840,
+      "sources": [
+        "LF-MUS-LONG-02-OPTIONS"
+      ]
+    },
+    "security-in": {
+      "label": "Security · track entry",
+      "kind": "entry",
+      "frames": [
+        4830584,
+        4900828
+      ],
+      "tailFrames": 1200,
+      "sources": [
+        "LF-MUS-LONG-01-CONVEYOR"
+      ]
+    },
+    "security-out": {
+      "label": "Security · track exit",
+      "kind": "exit",
+      "frames": [
+        4906828,
+        4977071
+      ],
+      "tailFrames": 15840,
+      "sources": [
+        "LF-MUS-LONG-01-CONVEYOR"
+      ]
+    },
+    "conveyor-in": {
+      "label": "Conveyor · track entry",
+      "kind": "entry",
+      "frames": [
+        4983071,
+        5053315
+      ],
+      "tailFrames": 1200,
+      "sources": [
+        "LF-MUS-D2-CONVEYOR-01"
+      ]
+    },
+    "conveyor-out": {
+      "label": "Conveyor · track exit",
+      "kind": "exit",
+      "frames": [
+        5059315,
+        5129559
+      ],
+      "tailFrames": 15840,
+      "sources": [
+        "LF-MUS-D2-CONVEYOR-01"
+      ]
+    },
+    "menu-options": {
+      "label": "Menu → Options",
+      "kind": "bridge",
+      "frames": [
+        5135559,
+        5205803
+      ],
+      "tailFrames": 1680,
+      "sources": [
+        "LF-MUS-LONG-06-MENU",
+        "LF-MUS-LONG-02-OPTIONS"
+      ]
+    },
+    "options-menu": {
+      "label": "Options → Menu",
+      "kind": "bridge",
+      "frames": [
+        5211803,
+        5282047
+      ],
+      "tailFrames": 1680,
+      "sources": [
+        "LF-MUS-LONG-02-OPTIONS",
+        "LF-MUS-LONG-06-MENU"
+      ]
+    },
+    "security-conveyor": {
+      "label": "Security → Conveyor",
+      "kind": "bridge",
+      "frames": [
+        5288047,
+        5358291
+      ],
+      "tailFrames": 1680,
+      "sources": [
+        "LF-MUS-LONG-01-CONVEYOR",
+        "LF-MUS-D2-CONVEYOR-01"
+      ]
+    },
+    "conveyor-security": {
+      "label": "Conveyor → Security",
+      "kind": "bridge",
+      "frames": [
+        5364291,
+        5434535
+      ],
+      "tailFrames": 1680,
+      "sources": [
+        "LF-MUS-D2-CONVEYOR-01",
+        "LF-MUS-LONG-01-CONVEYOR"
+      ]
+    },
+    "factory-open": {
+      "label": "Factory door",
+      "kind": "scene",
+      "frames": [
+        5440535,
+        5510779
+      ],
+      "tailFrames": 7200,
+      "sources": [
+        "original-score"
+      ]
+    },
+    "gate": {
+      "label": "Gate and fallen card",
+      "kind": "scene",
+      "frames": [
+        5516779,
+        5587023
+      ],
+      "tailFrames": 7200,
+      "sources": [
+        "original-score"
+      ]
+    },
+    "floor": {
+      "label": "First brain · line reveal",
+      "kind": "scene",
+      "frames": [
+        5593023,
+        5663267
+      ],
+      "tailFrames": 7200,
+      "sources": [
+        "original-score"
+      ]
+    },
+    "depart": {
+      "label": "Day One · leave the floor",
+      "kind": "scene",
+      "frames": [
+        5669267,
+        5739511
+      ],
+      "tailFrames": 7200,
+      "sources": [
+        "original-score"
+      ]
+    },
+    "appointment": {
+      "label": "Day Two · appointment posted",
+      "kind": "scene",
+      "frames": [
+        5745511,
+        5815755
+      ],
+      "tailFrames": 7200,
+      "sources": [
+        "original-score"
+      ]
+    },
+    "restart": {
+      "label": "Work resumes · pickup",
+      "kind": "event",
+      "frames": [
+        5821755,
+        5891999
+      ],
+      "tailFrames": 7200,
+      "sources": [
+        "original-score"
+      ]
+    },
+    "bell-release": {
+      "label": "Shift bell · musical release",
+      "kind": "scene",
+      "frames": [
+        5897999,
+        5968243
+      ],
+      "tailFrames": 7200,
+      "sources": [
+        "original-score"
+      ]
+    }
+  },
+  "providerCalls": 0,
+  "spendUSD": 0,
+  "clearance": "local composition review",
+  "arrangement": {
+    "baseline": "e03278114a6c6f59cb8ec1662019c3d6328970e3",
+    "form": [
+      [
+        "Opening from the first recording",
+        1,
+        16
+      ],
+      [
+        "Two workers · exposed bass",
+        17,
+        48
+      ],
+      [
+        "Four workers · gated bass",
+        49,
+        80
+      ],
+      [
+        "Fully staffed · driven bass and low octave",
+        81,
+        112
+      ]
+    ],
+    "inputContract": {
+      "version": 1,
+      "source": "MusicInputs v1 public snapshot plus optional coarse lineIntensity. Standalone review supplies manual observations. ENGINE owns the projection.",
+      "state": [
+        "surface",
+        "room",
+        "speech",
+        "production",
+        "paused",
+        "lineIntensity (optional two | four | full)"
+      ],
+      "cue": [
+        "shift.bell"
+      ],
+      "reset": [
+        "new run",
+        "seek",
+        "branch",
+        "restore"
+      ],
+      "unused": [
+        "pressure",
+        "worker identity",
+        "supervisor identity",
+        "per-station timing"
+      ],
+      "defaultProduction": "unknown",
+      "oneShotPolicy": "Cancel on interruption. Suppress duplicate receipts. Subtract elapsed release time on resume. Never backfill missed cues."
+    },
+    "route": [
+      [
+        "Menu",
+        "menu",
+        "menu-in",
+        "menu-out",
+        "Sound gesture or return to menu"
+      ],
+      [
+        "Options",
+        "options",
+        "menu-options",
+        "options-menu",
+        "Open settings, then restore outgoing phrase"
+      ],
+      [
+        "Enter factory",
+        "day-one",
+        "factory-open",
+        null,
+        "Once per narrated entry. Skip cancels its tail"
+      ],
+      [
+        "Day One gate and card",
+        "day-one",
+        "gate",
+        null,
+        "One gate cue; keep the strike and overlapping speech clear"
+      ],
+      [
+        "First brain",
+        "day-one",
+        "floor",
+        null,
+        "First line reveal only. Remain on the bed for later camera cuts"
+      ],
+      [
+        "End of Day One",
+        "day-one",
+        null,
+        "depart",
+        "Departure, register and yard. Skip bypasses the release"
+      ],
+      [
+        "Day One crew on the line",
+        "conveyor",
+        null,
+        null,
+        "Once assigned: two workers, four workers, full crew. Track intensity follows the public scene state."
+      ],
+      [
+        "Day Two console and call",
+        "console",
+        null,
+        null,
+        "Open on the public console, thin immediately under presented speech"
+      ],
+      [
+        "Appointment",
+        "security",
+        "appointment",
+        null,
+        "Once when assignment is shown; never replay on refocus"
+      ],
+      [
+        "Day Two Security",
+        "security",
+        "security-in",
+        "security-out",
+        "Point to the unchanged original Conveyor recording"
+      ],
+      [
+        "Day Two Conveyor",
+        "conveyor",
+        "conveyor-in",
+        "conveyor-out",
+        "Observe active production on the focused floor. Select a phase-aligned intensity and cancel musical transitions on interruption."
+      ],
+      [
+        "Wait and restart",
+        "waiting",
+        null,
+        "restart",
+        "Use observable work on the focused floor; unknown keeps the ordinary groove"
+      ],
+      [
+        "Bell and results",
+        "results",
+        "bell-release",
+        null,
+        "One confirmed bell, leave first beat free. Return to menu at any time"
+      ]
+    ],
+    "dayOneEditedSeconds": {
+      "The morning walk": 0,
+      "At the gate": 16.3,
+      "The fallen card": 25,
+      "The first brain": 40.1,
+      "Two volunteers": 76.6,
+      "The second brain": 95.3,
+      "The fourth check": 125.1,
+      "The crew fills in": 138.3,
+      "Run it": 151,
+      "End of shift": 165.4,
+      "The register": 171.041,
+      "Outside": 178.654,
+      "End of edit": 190.604
+    },
+    "workWindow": {
+      "hz": 20,
+      "LIMEN": 2400,
+      "STILETTO": 4800
+    },
+    "interrupt": {
+      "releaseMs": 45,
+      "stopByMs": 50,
+      "speechGain": 0.49,
+      "speechLowpassHz": 1150,
+      "resume": "Use held musical position. Clear old one-shots.",
+      "tail": "tailFrames is included in the addressed interval. Bed and room loops repeat their complete frame range. One-shots play once."
+    },
+    "lineIntensity": {
+      "default": "two",
+      "dayOne": "Public crew stages: two, four, fully staffed. Gate volunteers are off the line. A restored snapshot picks the current stage directly.",
+      "dayTwoPlus": "Proposed for ENGINE: count public stations whose hold is Working. 0–1 → two, 2 → four, 3–4 → full. While public production is waiting use the waiting bed. Missing activity keeps the last known tier within this visit, or two on first entry.",
+      "delivery": "One optional derived value on the existing ordered state. Do not send worker identities, station rows, queue events or new commands.",
+      "switch": "All tiers have identical 32-bar length. Keep elapsed work-loop time modulo that length across tier changes. Pause holds phase. Speech or wait replaces the arrangement while preserving its tier."
+    }
+  },
+  "archivedTracks": {
+    "LF-MUS-D2-CONVEYOR-01": {
+      "id": "LF-MUS-D2-CONVEYOR-01",
+      "file": "conveyor-day-two.mp3",
+      "bars": 128,
+      "arcBars": 64,
+      "loopFrames": [
+        0,
+        8991219
+      ],
+      "sha256": "7bdbfabdbfd07a4b0b67dbacc4fac8ff8575d923b8ef2da56be46b53c33c3603",
+      "masterSha256": "7a65933199fc8f5357dc372a86318e27828f9cb5eeb4c6814231c1ed86940697",
+      "lufs": -16.96,
+      "dBTP": -4.27,
+      "decision": "Opening accepted. Later melodic development superseded by the three low arrangements."
+    }
+  }
+}

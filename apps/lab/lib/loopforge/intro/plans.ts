@@ -7,7 +7,8 @@ const rooms=['outside','lobby','dispatch','security','conveyor'] as const;
 export const hand=(agent:string):PropLocation=>({kind:'hand',agent,socket:'right'});
 const stowed=(agent:string):PropLocation=>({kind:'stowed',agent});
 const ground=(p:number[]):PropLocation=>({kind:'floor',position:mm(p),yaw:0});
-export function opportunities():Opportunity[]{
+import {playableSpeech,secondStarts,secondEnds} from "./playable-score";
+export function opportunities(playable=false):Opportunity[]{
   const result:Opportunity[]=[];
   function plan(id:string,actor:string,goal:string,start:number,end:number,phase:Partial<Phase>,options:Partial<Opportunity>={},action:Partial<Action>={}){
     const definition:Action={id,room:'security',additionalRooms:[...rooms],participants:[actor],resources:[],requires:[],reason:goal,
@@ -33,9 +34,9 @@ export function opportunities():Opportunity[]{
     }
   });
   plan('gate-post','LIMEN','Let the supervisor through',score.gate.openings[0][0]-.05,score.gate.openings[0][0],{effects:[{fact:'gate.staffed',value:true}]},{perceive:w=>distance(w.agents.LIMEN.position,mm(geom.contact.patrolPost))<450});
-  const starts=[[51,61.85,68.6,75.15],[101.5,115.95,121.8,126.9],[153.1,155.6,158.2,160.7]];
-  const ends=[[55.1,64.65,70.1,76.65],[105.9,117.95,123.1,128.05],[154.8,157.8,160.3,163.1]];
-  const operators=[['bob','bob','bob','bob'],['sam','bob','bob','bob'],['sam','bob','jo','max']];
+  const starts=[[51,61.85,68.6,75.15],playable?secondStarts:[101.5,115.95,121.8,126.9],[153.1,155.6,158.2,160.7]];
+  const ends=[[55.1,64.65,70.1,76.65],playable?secondEnds:[105.9,117.95,123.1,128.05],[154.8,157.8,160.3,163.1]];
+  const operators=[['bob','bob','bob','bob'],playable?['bob','bob','jo','jo']:['sam','bob','bob','bob'],['sam','bob','jo','max']];
   const stations=['intake','wash','belt','forge'] as const;
   starts.forEach((times,batch)=>times.forEach((start,index)=>{
     const piece='cortex-'+(batch+1),agent=operators[batch][index],station=geom.stations[index];
@@ -62,7 +63,7 @@ export function opportunities():Opportunity[]{
     ['inspect-photo','LIMEN',131.1,tray,hand('LIMEN')],['return-photo','LIMEN',137.8,hand('LIMEN'),tray],
     ['recover-photo','max',138.05,tray,stowed('max')]];
   for(const [id,actor,t,from,to] of photoSteps)plan(id,actor,'Verify the fourth credential',t,t+.1,{transfers:[{prop:'max:id',from,to,observedBy:[actor]}]});
-  for(const [i,line] of score.speech.entries()){
+  for(const [i,line] of (playable?playableSpeech:score.speech).entries()){
     if(line.speaker==='BELL')continue;
     const to=line.aside==='to ben'?['ben']:Object.keys(score.tracks).filter(id=>id!==line.speaker);
     plan('speech-'+i,line.speaker,'Speak during the exchange',line.start,line.start+.05,{say:[{

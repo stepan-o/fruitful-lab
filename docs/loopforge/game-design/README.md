@@ -1,5 +1,8 @@
 ## Standing Loopforge design reference
 
+22 November navigation: **Loopforge AI Lab** (`#ai-lab`) is the first tab and the plain-route default. It embeds the existing interactive architecture proposal; `#studio` remains the specialist onboarding entry. `ai_lab_entry.py` supplies the panel to the full generator. For changes confined to this entry and its board controller, run `python docs/loopforge/game-design/ai_lab_entry.py`; it refreshes only that panel, tab order/default and versioned controller, preserving the other authored sections.
+
+
 Use Tynan Sylvester, *Designing Games: A Guide to Engineering Experiences* (O’Reilly, 2013), as a standing reference for Loopforge game and level design. The project reference copy is `Designing Games - Tynan Sylvester 2013.pdf`. Chapter 1 connects the action on screen to the experience it produces. In chapters 11–12, iteration and observation give the designer a way to test that connection. Apply this when blocking a scene, sizing a room, choosing a signature object or explaining a process through its physical layout.
 
 For the first floor, frame the wait from inside the queue and let a first-time player trace a stalled batch before showing the route overlay. Record where their attention goes in the opening and which material handoff they lose. Use those observations to revise the camera or the floor before commissioning final meshes.

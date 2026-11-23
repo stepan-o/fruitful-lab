@@ -26,12 +26,11 @@ async function main(){
     assert.equal(await page.locator('#mandate').innerText(),'Intervention ready');
     await page.tap('#pass');
     await page.waitForFunction(()=>window.scene.scene.events.some(e=>e.kind==='queue.advanced'&&e.actor==='jo'));
-    await page.selectOption('#checkpoint','Conveyor chat');
-    await page.tap('#slow');
+    await page.selectOption('#checkpoint','G5 · exit after late cutoff');
     await page.tap('#play');
-    await page.waitForFunction(()=>window.scene.scene.events.some(e=>e.kind==='credential.returned'&&e.subject==='bob'));
+    await page.waitForFunction(()=>window.scene.scene.events.some(e=>e.kind==='speech.delivered'&&e.actor==='ed'&&e.subject==='bob'&&e.text.includes('show you')));
     assert.deepEqual(network,[]);assert.deepEqual(errors,[]);
-    console.log('Offline file passed at 320 px. jo advanced and ed returned the original to bob. External requests: 0.');
+    console.log('Offline file passed at 320 px. jo advanced and ed invited bob to see the original. External requests: 0.');
   }finally{await browser.close();}
 }
 main().catch(err=>{console.error(err);process.exitCode=1;});

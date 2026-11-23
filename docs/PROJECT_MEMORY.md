@@ -1,6 +1,38 @@
+## Loopforge · First-click readiness — 22 November 2026
+
+After #180/#182 merged, the ordinary-entry browser check exposed a pre-hydration click race. GameClient now disables menu/playback controls until its client mount, then restores keyboard focus. `apps/lab/engine/browser-test.cjs` checks the server-only disabled state before the ordinary phone playthrough. The CI server binds to the same explicit loopback hostname used by the tests, preserving Next.js origin protection. Rust/Wasm, approved geometry, timing and mechanics are unchanged. Current handoff: `docs/loopforge/studio-briefs/engine-master.md`; delivery checks remain the evidence authority.
+
+## Loopforge · Rust campaign reconciliation — 22 November 2026
+
+PR #180 includes #182’s shared Rust campaign kernel (`apps/lab/engine`) and checked-in browser Wasm. The ordinary game menu and Day One entry use that kernel for BDI decisions, fixed ticks, tutorial holds, custody, appointments, production and rewind; browser adapters verify public KVP frames. Historical standalone studies keep their earlier runtimes. The merge with current master preserves the engine, approved factory geometry, timing and mechanics from `7bd5ec8d`; later UI, music, voice and AI Lab publications remain present without being silently integrated as new gameplay. Current implementation and migration scope: `docs/loopforge/studio-briefs/engine-master.md` and `apps/lab/engine/README.md`. Owner playable acceptance remains separate from automated checks.
+
+## Loopforge · AI Architect commissioning — 22 November 2026
+
+Studio briefs adds AI ARCHITECT at `/stepanoskin/loopforge/design/studio/ai-architect`, with a downloadable brief and interview-first kickoff prompt. The role covers studio provider/client architecture, execution, observability/evaluations and local AI for dialogue and BDI, preserving KVP-0001 and ENGINE's simulation authority. The owner-approved laptop specification supports future capacity planning; no model benchmark, infrastructure installation or runtime integration is claimed. SECURITY's brief and operational handoff remain private outside this public repository/publication pipeline. Authored source: `docs/loopforge/studio-briefs/ai-architect.md`. The role now links to its interactive architecture proposal at `/stepanoskin/loopforge/design/studio/ai-lab` and dated technical notes at `/stepanoskin/loopforge/design/studio/ai-lab-notes`. The worked examples illustrate proposed behavior for owner review. Loopforge AI Lab is the first game-design tab (`#ai-lab`) and the default for the plain design route; `#studio` still opens the specialist briefs. The tab embeds the same standalone proposal, preserving one content source.
+
+## Loopforge · UI Designer commissioning — 21 November 2026
+
+Studio briefs adds UI DESIGNER at `/stepanoskin/loopforge/design/studio/ui-designer`, with `/ui-reading` and `/ui-first-assignment` companions. Authored sources live in `docs/loopforge/studio-briefs/ui-*.md` and use the existing studio publisher. The owner approved an interface audit plus static visual studies, led by identity/immersion with equal desktop and phone attention; implementation ownership remains undecided. The HUD is the Producer console with CCTV-style room views; pins/popups belong to the console or observed room and may open dedicated interfaces. Marvel Rivals is the primary UI reference. Navigation/composition/interactions may be reconsidered while preserving approved mechanics, factory layout and timing. The package connects verified Designing Games Interface passages, current code and dated earlier UI studies, with explicit evidence limits. It does not implement or accept a UI redesign. Owner review and merge authority remain unchanged.
+
+## Loopforge · Music Director commissioning — 20 November 2026
+
+Studio briefs now includes MUSIC DIRECTOR with musical-direction and production/budget/rights companions at `/stepanoskin/loopforge/design/studio/music-director`, `/music-study` and `/music-production`. The authored package is `docs/loopforge/studio-briefs/music-*.md`; generated pages use the existing studio publisher. The first director is commissioned to interview, plan and publish a Music engine proposal immediately after Studio briefs, then develop music-side input stubs before ENGINE connects real observations. This package does not implement that tab, generate music or change runtime/layout/timing. ElevenLabs is owner-reported Free, budget unset, account entitlements unverified; paid work needs an explicit ceiling. MUSIC DIRECTOR owns audio commercial-use provenance and proposed music dependencies, coordinated with PRODUCER's whole-product clearance inventory. Owner listening and merge review remain required.
+
+## Loopforge · Guided first two shifts
+
+The standard play route has a full-screen view, a Dev display switch, a 24-hour factory clock, and two equivalent entries to the Day 2 console. Day 1 runs two player-cleared carriers and a fully staffed demonstration. On Day 2, STILETTO teaches two-operator coverage and four single posts around a timed Security intervention. The saved command journal reconstructs tutorial postings and card outcomes. The alternate LIMEN Conveyor appointment retains its station clearances.
+
+## Loopforge · First complete playthrough · 20 November 2026
+
+[PR #177](https://github.com/stepan-o/fruitful-lab/pull/177) connects the ordinary entrance to the sprite intro, the leadership call, both appointments and the Day 2 bell. The intro supplies the workers, physical cards, observations and three rack credits. The first-playtest quota is 60 rack arrivals by Day 7. The [ENGINE handoff](../apps/lab/public/loopforge-shifts/ENGINE-HANDOFF.md) records both controls and matched policy outcomes. Owner review is pending.
+
 ## Loopforge PRODUCER onboarding — 19 November 2026
 
 `/stepanoskin/loopforge/design/studio/producer` adds the owner-facing production role, with linked `/producer-reading` and `/producer-playbook` companions under the same Studio route. Authored sources are `docs/loopforge/studio-briefs/producer*.md`; the existing generator publishes their HTML and Markdown. PRODUCER prepares task prompts with shared/role instructions, maintains briefs with craft contributions, coordinates delivery and advises on next steps. The owner opens chats, decides whether to continue/iterate/ship and validates the playable experience. Onboard (study and pre-synthesis) → interview → approved plan → build → owner review remains the workflow. The package grounds production in verified Designing Games passages, current vision and KVP/TypeScript-to-Rust boundaries, original Loopforge doctrines and frozen Munder retrospectives. Historical rules do not reactivate the closed autonomous studio. This documentation change does not implement or accept ENGINE's in-flight Days 2–4 art integration.
+
+## Loopforge shift entrance · 20 November 2026
+
+After the morning appointment on Days 2–4, all ten workers follow the Day 1 staff entrance tracks from the yard through the Lobby and Dispatch to Security. The Arrival camera holds the yard and Lobby until the walking dialogue finishes, then cuts across Dispatch and keeps the final approach to LIMEN. The worker simulates the hidden travel and sends a fresh snapshot. Day 2 uses STILETTO’s Day 1 street entrance and approach along the east rail before she takes her assigned post. Walking speech records the speaker’s physical room and uses the usual hearing rules. The two desk cameras and saved shift checkpoints use the same simulation.
 
 ## Loopforge Day 1 factory floor — 17 November 2026
 
@@ -592,7 +624,7 @@ Current foundation:
 
 - static-first Next.js App Router app,
 - `output: "export"` for Cloudflare Pages compatibility,
-- first-pass public routes for `/`, `/services`, `/blog`, `/blog/[slug]`, `/resources`, `/about`, `/contact`, `/privacy`, and `/terms`,
+- first-pass public routes for `/`, `/services`, `/how-we-work`, `/blog`, `/blog/[slug]`, `/resources`, `/about`, `/contact`, `/privacy`, and `/terms`,
 - brand/site constants in `apps/fruitful-lab-site/lib/site.ts`,
 - content boundary in `apps/fruitful-lab-site/lib/content.ts`,
 - WordPress connection placeholder in `apps/fruitful-lab-site/lib/wordpress.ts`,
@@ -604,13 +636,49 @@ Brand and offer direction memory:
 - Fruitful Lab is the bigger umbrella brand where Susi and Esteban can combine AI marketing, funnels, paid media, email, content systems, and workflow expertise.
 - Fruitful Lab is the parent-company style home for Fruitful Pin, Bloom Whispers, Bricoli Studio, and future brands.
 - Fruitful Pin and Fruitful Lab can share a family resemblance, but Fruitful Lab should lean more navy/gold and less pink while Fruitful Pin stays more pink/yellow and Pinterest-specific.
-- Initial site scope includes Home, About, Services, Blog, Resources, Contact, Privacy, and Terms.
+- Initial site scope includes Home, About, Services, How We Work, Blog, Resources, Contact, Privacy, and Terms.
 - Case studies and tools/experiments are intentionally out of the first skeleton.
 - Contact path uses `hello@fruitfulab.com` and a TidyCal booking destination. `NEXT_PUBLIC_TIDYCAL_URL` can override the default fallback.
 - Phase-one CMS direction is WordPress as headless CMS/editor on the existing prepaid hosting model, following the Fruitful Pin approach.
 - Cloudflare/static-first is the preferred public frontend hosting direction when launch work begins.
 
 Use `npm run build` from `apps/fruitful-lab-site/` to verify the static export. Cloudflare Pages should use `apps/fruitful-lab-site` as the root, `npm run build` as the build command, and `out` as the build output directory. Do not point `fruitfulab.com` at this app until preview, content, analytics, redirects, and launch checks are explicitly approved.
+
+## Bloom Whispers Editorial Framework
+
+Bloom Whispers is a separate editorial and ritual brand under `apps/bloom-whispers/` with brand documentation in `docs/brands/bloom-whispers/`.
+
+Current editorial memory:
+
+- The Bloom Whispers Editorial Orchestrator is documented in `docs/brands/bloom-whispers/agents/orchestrator-agent.md`. It is the preferred user-facing coordination layer for multi-stage Bloom Whispers content work.
+- Fundamental workflow objective: preserve Bloom Whispers' quality promise while reducing Susy's manual routing between separate researcher, writer, editor, creative, and publisher tasks. The orchestrator should keep deep research, source discipline, Bloom Whispers originality, SEO/Pinterest usefulness, safety boundaries, and human approval gates intact while making the current article state and next action obvious.
+- Fundamental reader-arrival principle: research is used to make the article richer and to support the source list, not to make the opening feel academic. Every Bloom Whispers article must give a general English-speaking reader a familiar, sensory, plain-English doorway before introducing dense cultural terms, source names, botanical Latin, or institutional proof. If Susy cannot get past the opening, the draft is not approved no matter how high a prior score was.
+- Every orchestrated article package should have `docs/brands/bloom-whispers/content-pipeline/<topic-slug>/pipeline-status.md`, using `docs/brands/bloom-whispers/content-pipeline/_templates/pipeline-status-template.md` as the durable state manifest.
+- Bloom Whispers media production is a staged workflow: Media Strategy proposes five concrete Pinterest/article concepts by category, Susy selects, Creative Director creates prototype/creative direction, Production Agent creates ChatGPT-ready prompts plus Canva edit notes, and Publisher implements only approved assets or placeholders. Susy prefers generating text-included image drafts in ChatGPT and refining or rebuilding the text/layout in Canva; Codex image generation is not the default unless explicitly requested.
+- The first orchestration pilot is Marigold, with status tracked in `docs/brands/bloom-whispers/content-pipeline/marigold/pipeline-status.md`; current state is live publish authorized / production deployment in progress as of 2026-08-13. The prior V3 editor verdict is superseded because Susy rejected the first-screen reading experience after the 9.1 score; V4 fixed reader arrival, V5 over-tightened and introduced confusing thesis language, and V6 restores V4 as the base with Susy's clearer line: "Marigold meaning changes by where the flower is placed." Susy approved V6 on 2026-08-12, while noting the writing style can still improve as a future polish/watch point. Media direction lives at `docs/brands/bloom-whispers/content-pipeline/marigold/media-ideas-v1.md`; selected concepts are recorded in `docs/brands/bloom-whispers/content-pipeline/marigold/media-selection-decision-v1.md`; prompt/Canva handoff is `docs/brands/bloom-whispers/content-pipeline/marigold/media/production-prompts-v1.md`; first generated PNG QA lives at `docs/brands/bloom-whispers/content-pipeline/marigold/media/asset-review-v1.md`; approved launch media handoff lives at `docs/brands/bloom-whispers/content-pipeline/marigold/media/selected-media-handoff-v1.md`; Publisher Brief Only lives at `docs/brands/bloom-whispers/content-pipeline/marigold/publisher-brief-v1.md`; Site Implementation lives at `docs/brands/bloom-whispers/content-pipeline/marigold/site-implementation-v1.md`. The article is implemented in `apps/bloom-whispers/lib/journalPosts.ts` with canonical clean route `/marigold-meaning/`, internal route `/journal/marigold-meaning/`, five selected assets staged in `apps/bloom-whispers/public/assets/marigold/`, FAQ/schema support, visible safety notes, and source list. A real sub-agent rerun was completed on 2026-08-12 with Writer, Editor/Critic, Media/Creative, Publisher readiness, Production, Publisher Brief, and Publisher QA outputs recorded in the Marigold pipeline. Future quote graphics should feel like wisdom/inspiration/motivation or a useful reminder, not merely cute or decorative.
+- The lane-based research workflow is documented in `docs/brands/bloom-whispers/content-research-workflow-2026-06-06.md`.
+- The post-research Writer Agent framework is documented in `docs/brands/bloom-whispers/agents/writer-agent.md`.
+- The first pilot topic is Queen Anne's lace, with source dossier `docs/brands/bloom-whispers/queen-annes-lace-research-dossier-2026-06-06.md` and visual dossier `docs/brands/bloom-whispers/queen-annes-lace-visual-dossier-2026-06-06.html`.
+- The Bloom Whispers Pinterest-to-Metricool scheduling workflow is documented in `docs/brands/bloom-whispers/pinterest-metricool-workflow-notes-2026-07-17.md`; use it before preparing or uploading Bloom Metricool CSVs.
+
+Writing direction approved on 2026-06-07:
+
+- Bloom Whispers articles must be accurate, reader-first, expressive, and original. Factual completeness alone is not enough.
+- Use familiar language, short paragraphs, strong verbs, clear headings, and task-focused organization.
+- Add a sensory intro / story lead, central curiosity object, and story ladder before flattening into SEO sections. The first 100 to 150 words should follow the reader-arrival ramp: common/familiar anchor, sensory curiosity, plain-English promise, then unfamiliar proper nouns or source-backed details later.
+- Curiosity-led copy must create immediate tension, specificity, or a clear reader payoff. Do not treat a number, a vague "surprising things" construction, or ornate internal-brand phrasing as a hook. Public H1s, H2s, Quick Meaning boxes, and first-screen callouts should be plain, useful, and click-worthy before they become poetic.
+- Every article should create Bloom Whispers original value: Bloom Wisdom, original quote options for Pinterest/social, synthesized plain-language definitions, and safe ways to bring the flower's meaning into the reader's life.
+- Original Bloom Whispers lines may be poetic, inspirational, beautiful, funny, witty, strange, or Pinterest-friendly, but must be clearly distinct from source-backed historical, botanical, cultural, medical, or safety claims.
+- Safety boundaries remain strict around foraging, ingestion, recipes, dosage, medicinal advice, and plant identification unless explicitly approved and source-supported.
+
+Working research anchors for the writing framework:
+
+- Nielsen Norman Group on web reading and scannability.
+- Digital.gov on plain-language web writing.
+- Purdue OWL on leads and inverted pyramid structure.
+- Green and Brock on narrative transportation.
+- Berger and Milkman on emotional activation and online sharing.
+- Google Search Central on people-first helpful content.
 
 ## Frontend Layers
 

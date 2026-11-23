@@ -19,11 +19,12 @@ function visible(a:Point,b:Point, bodies:Point[]) {
   return obstacles.every(r=>r.maxX<x1||r.minX>x2||r.maxY<y1||r.minY>y2||segmentBoxDistanceSquared(a,b,r)>=399**2)
     && bodies.every(p=>simultaneousDistanceSquared(a,b,p,p)>=800**2);
 }
-function route(a:Point,b:Point,bodies:Point[]):Point[] {
+function route(a:Point,b:Point,bodies:Point[],corners=false):Point[] {
   if(visible(a,b,bodies)) return [b];
-  const nodes=[a,b,...steps,meters(129.5,129),meters(125,128.5),meters(128.7,132),meters(126,141.4),meters(131,142.8)];
+  const nodes=[a,b,...(a[1]<122800 ? [meters(122,121.5),meters(125.4,120.8),meters(128.7,121.4),meters(131.7,120.8)] : []),...steps,meters(129.5,129),meters(125,128.5),meters(128.7,132),meters(126,141.4),meters(131,142.8)];
   for(const p of bodies) if(dist(a,p)+dist(b,p)<dist(a,b)+5000){
     for(const [dx,dy] of [[950,0],[-950,0],[0,950],[0,-950]])nodes.push([p[0]+dx,p[1]+dy]);
+    if(corners)for(const dx of [-690,690])for(const dy of [-690,690])nodes.push([p[0]+dx,p[1]+dy]);
   }
   const cost=nodes.map(()=>Infinity), prior=nodes.map(()=>-1),used=new Set<number>();cost[0]=0;
   while(used.size<nodes.length){
@@ -43,16 +44,26 @@ export function go(s:Run,id:string,to:Point){
 }
 export function move(s:Run){
   for(const [id,t] of Object.entries(s.tasks)){
+    if(id==='STILETTO'&&s.dialogue.supervisorArrival)continue;
     const a=s.world.agents[id];t.moving=false;
     if(!t.path.length&&dist(a.position,t.destination)>50&&s.tick%10===0)go(s,id,t.destination);
     if(!t.path.length)continue;
-    const next=t.path[0],d=dist(a.position,next),stride=id==='bob'?115:id==='STILETTO'?205:155,
+    const next=t.path[0],d=dist(a.position,next),stride=s.day===2&&s.dialogue.phase==='walk'&&!s.dialogue.gathering&&a.character==='worker'?(id==='bob'?95:105):
+      id==='bob'?115:id==='STILETTO'?205:155,
       speed=a.room==='conveyor'&&a.character==='worker'&&s.pace!=='all-clear'?Math.round(stride*(s.pace==='pushed'?1.22:s.pace==='rushed'?1.12:.95)):stride;
     const p:Point=d<=speed?next:[a.position[0]+Math.round((next[0]-a.position[0])*speed/d),a.position[1]+Math.round((next[1]-a.position[1])*speed/d)];
     const others=Object.values(s.world.agents).filter(o=>o!==a&&s.tasks[o.id].duty!=='detained').map(o=>o.position);
     if(!visible(a.position,p,others)){
-      if(s.tick%8===0)t.path=route(a.position,t.destination,others);
+      if(s.tick%8===0){
+        t.path=route(a.position,t.destination,others);
+        if(!t.path.length && ['walk','queue'].includes(s.dialogue.phase))
+          t.path=route(a.position,t.destination,others,true);
+      }
       continue;
+    }
+    if(s.dialogue.phase==='walk'&&d>0){
+      const dx=p[0]-a.position[0],dy=p[1]-a.position[1];
+      t.facing=Math.abs(dx)>Math.abs(dy)?(dx>0?'E':'W'):(dy>0?'S':'N');
     }
     a.position=p;a.room=roomAt(p);t.moving=d>0;t.walked+=Math.round(Math.min(d,speed));
     if(d<=speed)t.path.shift();

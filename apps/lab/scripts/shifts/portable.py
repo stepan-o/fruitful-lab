@@ -1,5 +1,6 @@
 """Build a single-file local player and the matching review fixtures."""
 import base64
+import hashlib
 import json
 import re
 import sys
@@ -29,26 +30,27 @@ def script(data):
 
 def player():
     text = (FLOOR / "index.html").read_text()
+    text = replace_once(text, 'src="limen-welcome.mp3"', 'src="data:audio/mpeg;base64,' + encoded((FLOOR / "limen-welcome.mp3").read_bytes()) + '"')
     css = (FLOOR / "floor.css").read_text()
     kernel = (FLOOR / "kernel.js").read_bytes()
     viewer = (FLOOR / "viewer.js").read_text()
-    # Embed only the shipped sprites that the floor actually requests.
-    paint = (APP / "lib/loopforge/shifts/painter.ts").read_text()
-    names = re.findall(r"'([^']+)'", paint.split("export const assets=[", 1)[1].split("] as const", 1)[0])
-    if not names:
-        raise ValueError("No reviewed sprite bank")
-    art = {name: "data:image/webp;base64," + encoded((PUBLIC / "loopforge-intro" / (name + ".webp")).read_bytes()) for name in names}
+    names = json.loads((APP / "lib/loopforge/shifts/intro-sprites.json").read_text())
+    art = {name: "data:image/webp;base64," + encoded((PUBLIC / "loopforge-intro" / (name + ".webp")).read_bytes())
+           for name in names}
+    art["queueRail"] = "data:image/png;base64," + encoded((PUBLIC / "loopforge-intro/sec-rails-depth.png").read_bytes())
+    floors = PUBLIC / "loopforge-design/floor-correction/v1"
+    for room in json.loads((floors / "manifest.json").read_bytes())["rooms"].values():
+        for layer in (room["material"], room["room"]):
+            data = (floors / layer["file"]).read_bytes()
+            if hashlib.sha256(data).hexdigest() != layer["sha256"]:
+                raise ValueError(f"Floor export disagrees with manifest: {layer['file']}")
+            art[layer["file"]] = "data:image/webp;base64," + encoded(data)
 
     text = replace_once(text, '<link rel="stylesheet" href="floor.css">', "<style>" + css + "</style>")
     text = replace_once(text, '<script defer src="viewer.js"></script>', '')
     text = replace_once(text, 'href="/stepanoskin/loopforge/design#engine-boundary"', 'href="https://www.fruitfulab.net/stepanoskin/loopforge/design#engine-boundary"')
-    # The embedded distribution changes the two asset locators. The simulation
-    # and the viewer's transport, hashing and input behavior use the shipped JS.
+    # Image lookup is shared with the hosted viewer. Only the worker URL needs replacing.
     viewer = replace_once(viewer, 'new Worker("kernel.js")', 'new Worker(window.floorKernel)')
-    expression = re.compile(r'"\.\./loopforge-intro/"\+([a-zA-Z_$][\w$]*)\+"\.webp"')
-    viewer, n = expression.subn(lambda m: "window.floorImages[" + m[1] + "]", viewer)
-    if n != 1:
-        raise ValueError("Unexpected sprite URL in viewer bundle")
     pack = PUBLIC / "loopforge-design/days-2-4-art/v1"
     manifest = json.loads((pack / "manifest.json").read_bytes())
     images = {a["file"]: "data:image/png;base64," + encoded((pack / a["file"]).read_bytes())

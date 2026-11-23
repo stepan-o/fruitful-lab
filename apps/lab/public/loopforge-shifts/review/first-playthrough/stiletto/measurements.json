@@ -1,0 +1,52 @@
+{
+  "origin": "http://localhost:3191",
+  "size": {
+    "width": 320,
+    "height": 844
+  },
+  "comparison": {
+    "pass": 14,
+    "detention": 0,
+    "recovery": 10,
+    "moved": 18
+  },
+  "errors": [],
+  "clips": [
+    {
+      "name": "opening",
+      "title": "Day-1-blackout-to-walk-in",
+      "at": 188.353,
+      "length": 13.126999999999981
+    },
+    {
+      "name": "staffing",
+      "title": "kit-Forge-to-Belt",
+      "at": 18.304,
+      "length": 6.372
+    },
+    {
+      "name": "opening",
+      "title": "bell",
+      "at": 357.392,
+      "length": 4
+    },
+    {
+      "name": "recovery",
+      "title": "bell",
+      "at": 86.772,
+      "length": 4
+    },
+    {
+      "name": "staffing",
+      "title": "bell",
+      "at": 86.799,
+      "length": 4
+    },
+    {
+      "name": "detention",
+      "title": "bell",
+      "at": 86.862,
+      "length": 4
+    }
+  ]
+}

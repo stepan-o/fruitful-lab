@@ -39,7 +39,7 @@ export function gateLength(t:number,enabled:boolean) {
   const fraction=t<opened?(t-start)/(opened-start):t<release?1:(closed-t)/(closed-release);
   return geom.gate.length*Math.cos(fraction*Math.PI/2);
 }
-export type Route={cursor:number;elapsed:number;walked:number;facing:string;moving:boolean};
+export type Route={trackId?:string;cursor:number;elapsed:number;walked:number;facing:string;moving:boolean};
 const tracks:Record<string,{t:number;p:number[]}[]>=score.tracks;
 export function startRoutes():Record<string,Route>{
   return Object.fromEntries(Object.keys(tracks).sort().map(id=>[id,{cursor:0,elapsed:0,walked:0,facing:'S',moving:false}]));
@@ -50,11 +50,11 @@ function clear(a:Point,b:Point,r:ReturnType<typeof rectBounds>){
     Math.min(a[1],b[1])-radius>r.maxY||Math.max(a[1],b[1])+radius<r.minY||segmentBoxDistanceSquared(a,b,r)>=radius**2;
 }
 // Agents follow authored legs with local route clocks. A blocked step earns no travel.
-export function moveCast(world:World,routes:Record<string,Route>,gate:number) {
+export function moveCast(world:World,routes:Record<string,Route>,gate:number,standing:Point[] = [], castTracks=tracks) {
   const pending=new Map<string,{to:Point;cursor:number}>();
   const gateBox=rectBounds({x:geom.gate.hinge[0],y:geom.gate.hinge[1],w:gate,h:0});
   for(const [id,r] of Object.entries(routes)){
-    const actor=world.agents[id],keys=tracks[id],t=worldAt(r.elapsed+1);
+    const actor=world.agents[id],keys=castTracks[r.trackId??id],t=worldAt(r.elapsed+1);
     let cursor=r.cursor;
     while(cursor+1<keys.length&&keys[cursor+1].t<=t)cursor++;
     const a=keys[cursor],b=keys[cursor+1];
@@ -63,6 +63,7 @@ export function moveCast(world:World,routes:Record<string,Route>,gate:number) {
     r.moving=false;
     if(world.facts['blocked.'+id]||distance(actor.position,to)>650)continue;
     if(distance(actor.position,to)>0&&(!clear(actor.position,to,gateBox)||!obstacles.every(rect=>clear(actor.position,to,rect))))continue;
+    if(standing.some(p=>simultaneousDistanceSquared(actor.position,to,p,p)<(NAVIGATION_ROOT_SEPARATION_MM-2)**2))continue;
     pending.set(id,{to,cursor});
   }
   // Removing a move can invalidate its follower. Resolve until the batch is safe.

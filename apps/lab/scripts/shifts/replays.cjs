@@ -52,12 +52,24 @@ async function main(){
   const resolved=p.events.find(e=>e.kind==='case.resolved');
   assert(p.events.find(e=>e.kind==='queue.advanced').seq>resolved.seq);
  }
- assert(jail.events.some(e=>e.kind==='handoff.finished'&&e.seq<jail.events.find(e=>e.kind==='case.resolved').seq));
+ assert(jail.run.marks.some(e=>e.kind==='handoff.finished'&&e.seq<jail.events.find(e=>e.kind==='case.resolved').seq));
+ const occupiedHold=start('early');
+ admitCommand(occupiedHold,intent(occupiedHold,'hold-appointment','appoint','LIMEN','security'));
+ occupiedHold.nextIntake=occupiedHold.tick+6000;
+ until(occupiedHold,r=>r.case?.status==='open');
+ // An Intake operation can become ready during precisely the same Security hold.
+ occupiedHold.nextIntake=occupiedHold.tick;
+ until(occupiedHold,r=>r.marks.some(e=>e.tick>r.case.opened&&e.kind==='handoff.finished'));
+ assert.equal(occupiedHold.case.status,'open');
  assert(jail.events.some(e=>e.kind==='report.received'&&e.actor==='LIMEN'));
  assert(!jail.events.some(e=>e.kind==='station.coverage'&&e.actor==='bob'));
  assert(jail.events.some(e=>e.kind==='custody.release'));assert(pass.events.some(e=>e.kind==='pass.expired'));
  const repeat=structuredClone(pass.run);nextMorning(repeat);
+ repeat.nextQueue=['sam','max','bob','jo','kit','mae','lou','ben'];
  assert(admitCommand(repeat,intent(repeat,'d3-bid','appoint','LIMEN','security')).accepted);
+ // Check renewal on a route with no earlier expedition or peer demand.
+
+
  until(repeat,r=>r.case?.status==='open');
  const renewal=intent(repeat,'renew','issue-pass','bob','security');
  assert(admitCommand(repeat,renewal).accepted);assert(admitCommand(repeat,renewal).accepted);
@@ -72,9 +84,9 @@ async function main(){
  const skip=outcomes['morning-stiletto'];assert(!skip.events.some(e=>e.kind==='desk.signal'));
  assert(skip.events.some(e=>e.kind==='handoff.wait'));
  const rushed=outcomes['chat-rushed'],slow=outcomes['chat-slow'];
- assert(rushed.events.some(e=>e.kind==='chat.interrupted'));assert(!rushed.run.world.agents.bob.beliefs['ask.ed']);
- assert(slow.run.world.agents.bob.beliefs['ask.ed']);assert(slow.events.some(e=>e.kind==='worker.departed'&&e.actor==='bob'));
- assert(slow.events.some(e=>e.kind==='credential.returned'));
+ assert(rushed.events.some(e=>e.kind==='chat.interrupted'));assert(!rushed.run.world.agents.bob.beliefs['desk.lead']);
+ assert(slow.run.world.agents.bob.beliefs['desk.lead']);
+ for(const sample of [rushed,slow])assert.equal(sample.run.world.props['bob:id'].location.agent,'ed');
  const cl=outcomes['clash-stiletto'].run,endorse=cl.marks.find(e=>e.kind==='endorsement.public');
  assert(!cl.heard[endorse.seq].includes('mae'));assert(!cl.world.agents.mae.beliefs['back.4']);
  assert(cl.marks.some(e=>e.kind==='worker.choice'&&e.text==='stay'));assert(cl.marks.some(e=>e.kind==='worker.choice'&&e.text==='go'));

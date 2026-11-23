@@ -1,14 +1,33 @@
 import type {Scene} from './wire';
 import type {ArtView,Skin} from './skin';
 import geometry from '../intro/geometry.json';
-import {type Room,stations} from './contract';
+import {approachZone,type Room} from './contract';
 import atlas from '../../../public/loopforge-intro/sprites.json';
+import floorPack from '../../../public/loopforge-design/floor-correction/v1/manifest.json';
+import {drawFactory,drawFactorySprite,easeCamera,factoryProjection,shotScale} from '../factory-scene';
+import introSprites from './intro-sprites.json';
+
 type Images = Record<string,CanvasImageSource>;
-export const assets=['tile-security','tile-forge','desk-back','desk-front','press-back','press-front','char-limen-check','char-stiletto-check','char-bob-walk-S','char-max-walk-S','bob-security','bob-forge','boom'] as const;
-export async function loadArt():Promise<Images>{
-  const images:Images={}; await Promise.all(assets.map(async name=>{
-    const im=new Image();im.src='../loopforge-intro/'+name+'.webp';await im.decode();images[name]=im;
-  }));return images;
+declare global { interface Window { floorImages?: Record<string,string> } }
+const floorRoot = '../loopforge-design/floor-correction/v1/';
+let loading: Promise<Images> | undefined;
+
+export function loadArt(root='..'): Promise<Images> {
+  if (!loading) {
+    const images: Images = {};
+    const sources = introSprites.map(name => [name, root+'/loopforge-intro/' + name + '.webp']);
+    sources.push(['queueRail',root+'/loopforge-intro/sec-rails-depth.png']);
+    for (const {material, room} of Object.values(floorPack.rooms)) {
+      for (const {file} of [material, room]) sources.push([file, root+floorRoot.slice(2) + file]);
+    }
+    loading = Promise.all(sources.map(async ([name, url]) => {
+      const image = new Image();
+      image.src = window.floorImages?.[name] ?? url;
+      await image.decode();
+      images[name] = image;
+    })).then(() => images);
+  }
+  return loading;
 }
 export function drawBidPortrait(canvas:HTMLCanvasElement,lead:'LIMEN'|'STILETTO',images:Images){
   const key=lead==='LIMEN'?'char-limen-check':'char-stiletto-check';
@@ -19,71 +38,64 @@ export function drawBidPortrait(canvas:HTMLCanvasElement,lead:'LIMEN'|'STILETTO'
   ctx.drawImage(images[key],x,y,36,35,0,0,36,35);
 }
 export const registerDesk=[123.6,132] as const;
-export function floorView(w:number,h:number,room:Room){
-  const sec=room==='security',scale=Math.min(sec?50:43,w/(sec?11.4:21.8),h/(sec?8.5:6.8));
-  const center=sec?127.15:127.4,cy=sec?129:144.35;
-  const xy=(x:number,y:number)=>[w/2+(x-center)*scale,h*.58+(y-cy)*scale*.67];
-  return {sec,scale,xy};
+export function floorView(w:number,h:number,room:Room,approach=false,crew:Scene['agents']=[],focusX?:number){
+  const sec=room==='security';
+  let x=sec?127:127.4,y=sec?129:144.4;
+  let spanX=sec?9:18,spanY=sec?9:5;
+  if(sec&&crew.length){
+    const xs=crew.map(a=>a.x/1000),ys=crew.map(a=>a.y/1000);
+    x=(Math.min(...xs)+Math.max(...xs))/2;y=(Math.min(...ys)+Math.max(...ys))/2;
+    spanX=Math.max(5,Math.max(...xs)-Math.min(...xs)+2);
+    spanY=Math.max(5,Math.max(...ys)-Math.min(...ys)+2);
+  }else if(sec&&approach){y=128;spanY=12;}
+  if(!sec&&focusX!==undefined&&w<=780){x=focusX;spanX=4;spanY=3;}
+  const scale=shotScale(w,h,spanX,spanY);
+  return {sec,x,y,scale,xy:factoryProjection(w,h,x,y,scale)};
 }
-// A room change or resize invalidates the tile layer. Verified worker ticks do not.
-let backdrop:{tile:CanvasImageSource; w:number; h:number; canvas:HTMLCanvasElement}|undefined;
-function floorTiles(ctx:CanvasRenderingContext2D,w:number,h:number,tile:CanvasImageSource,scale:number,sec:boolean) {
-  if (!backdrop || backdrop.tile!==tile || backdrop.w!==w || backdrop.h!==h) {
-    const canvas=document.createElement('canvas');
-    canvas.width=w;canvas.height=h;
-    const base=canvas.getContext('2d')!;
-    base.imageSmoothingEnabled=false;
-    base.fillStyle=sec?'#213d42':'#493522';base.fillRect(0,0,w,h);
-    const tw=Math.round(4*scale),th=Math.round(tw*.67);
-    for(let x=0;x<w;x+=tw)for(let y=0;y<h;y+=th)base.drawImage(tile,x,y,tw,th);
-    backdrop={tile,w,h,canvas};
+export type ShiftCamera={x:number;y:number;scale:number;last:number};
+export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView,operation?:{stroke:number;deskCut:boolean;focusStation?:number;opening?:boolean;camera?:ShiftCamera;fade?:number;still?:boolean;paused?:boolean}){
+  const tracking=room==='security'&&scene.world.stage==='walk'&&!operation?.deskCut;
+  const crew=tracking?scene.agents.filter(a=>a.duty==='walking'):[];
+  const approachingDesk=crew.length>0&&crew.every(a=>a.room==='security');
+  // Use the same desk frame across the splice and greeting. Include LIMEN and
+  // the east aisle where STILETTO comes alongside the queue.
+  const latest=view.speeches.at(-1);
+  const focusX=operation?.focusStation===undefined?undefined:
+    operation.opening?(latest?latest.at[0]/1000:geometry.stations[3].x):
+    geometry.stations[operation.focusStation].x;
+  const camera = floorView(w,h,room,tracking||['welcome','posting','queue'].includes(scene.world.stage),approachingDesk?[]:crew,focusX);
+  const moving=operation?.camera;
+  const now=performance.now();
+  if(moving){
+    const target=camera.scale*(operation?.still?1:1-.32*(operation?.fade??0));
+    if(!operation?.paused||!moving.scale)easeCamera(moving,camera.x,camera.y,target,Math.min(.2,(now-moving.last)/1000),operation?.still);
+    moving.last=now;
   }
-  ctx.drawImage(backdrop.canvas,0,0);
-}
-export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene,room:Room,tick:number,images:Images,skin:Skin,view:ArtView){
-  const {sec,scale,xy}=floorView(w,h,room);
+  const {scale,xy}=moving?{scale:moving.scale,xy:factoryProjection(w,h,moving.x,moving.y,moving.scale)}:camera;
+  const sec=camera.sec;
   ctx.imageSmoothingEnabled=false;
-  floorTiles(ctx,w,h,images[sec?'tile-security':'tile-forge'],scale,sec);
   const sprites=atlas.sheets as Record<string,number[]>;
-  function sprite(key:string,n:number,x:number,y:number,k=scale/64){
-    const im=images[key];if(!im)return;
-    const [sw,sh,cols,px,py]=sprites[key];
-    ctx.drawImage(im,n%cols*sw,Math.floor(n/cols)*sh,sw,sh,Math.round(x-px*k),Math.round(y-py*k),Math.round(sw*k),Math.round(sh*k));
-  }
+  const sprite=(key:string,n:number,x:number,y:number,k=scale/64)=>drawFactorySprite(ctx,images,sprites,key,n,x,y,k);
   function tag(text:string,x:number,y:number,ink='#e8e1c9',bg='#17292a'){
     ctx.font='bold 11px monospace';const tw=ctx.measureText(text).width+8;const left=Math.max(1,Math.min(w-tw-1,x-tw/2));
     ctx.fillStyle=bg;ctx.fillRect(left,y-11,tw,14);ctx.fillStyle=ink;ctx.textAlign='left';ctx.fillText(text,left+4,y);
   }
   const layers:{y:number;draw:()=>void}[]=[];
   const anchors=new Map<string,number[]>();
-  if(sec){
-    const [x0,y0]=xy(123.25,122.8),[x1,y1]=xy(130.25,127.2);
-    ctx.strokeStyle='#729193';ctx.lineWidth=2;for(const x of [x0,x1]){ctx.beginPath();ctx.moveTo(x,y0);ctx.lineTo(x,y1);ctx.stroke();}
-    for(const [cx,cy] of [registerDesk,[131.6,131.9]]){
-      const [x,y]=xy(cx,cy);layers.push({y:cy-.7,draw:()=>sprite('desk-back',0,x,y)},{y:cy,draw:()=>sprite('desk-front',0,x,y)});
-    }
-    const [gx,gy]=xy(124.9,134);
-    layers.push({y:134,draw:()=>{sprite('boom',view.gate==='fl-gate-held'?0:24,gx,gy);if(view.gate)skin.world(ctx,view.gate,gx,gy,scale);}});
-  }else{
-    const [x,y]=xy(118,145),[x2]=xy(135.5,145);
-    ctx.fillStyle='#292f2d';ctx.fillRect(x,y,x2-x,scale*1.6);
-    for(let i=0;i<4;i++){
-      const [cx,yy]=xy(119.7+i*4,145.7),span=scale*2;
-      if(i===3){
-        // Day One's calibrated rear and grip share a registration point; the
-        // operator at the approved Forge control belongs between their depths.
-        const [px,root]=xy(132,geometry.stations[i].y);
-        const registered=root+(420-126)*scale/64;
-        layers.push({y:144.38,draw:()=>sprite('press-back',6,px,registered)},
-          {y:144.48,draw:()=>sprite('press-front',0,px,registered)});
-        continue;
-      }
-      layers.push({y:146,draw:()=>{
-        ctx.fillStyle=['#716944','#3a6268','#53636a'][i];ctx.fillRect(cx-span*.65,yy,span*1.3,span*.53);
-        ctx.fillStyle='#25302d';ctx.fillRect(cx-span*.65,yy+span*.53,span*1.3,span*.18);
-
-      }});
-    }
+  const queue=(y:number,draw:()=>void)=>layers.push({y,draw});
+  const gateFrame=scene.world.passageGateMm===undefined?(view.gate==='fl-gate-released'?0:24):
+    Math.round(24*scene.world.passageGateMm/(geometry.gate.length*1000));
+  drawFactory(ctx,w,h,xy,scale,images,sprite,queue,operation?6-Math.round(6*Math.sin(Math.PI*operation.stroke)):6,gateFrame,(id,x,y)=>skin.world(ctx,id,x,y,scale));
+  if(sec&&view.gate){
+    const [gx,gy]=xy(geometry.gate.hinge[0],geometry.gate.hinge[1]);
+    queue(134.01,()=>skin.world(ctx,view.gate!,gx,gy,scale));
+  }
+  if(!sec){
+    if(operation)queue(144.47,()=>{
+      const [tx,ty]=xy(131.92,144.48);
+      ctx.strokeStyle='#e1b975';ctx.lineWidth=Math.max(2,scale*.075);
+      ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(tx+scale*.38,ty-(operation.stroke?0:scale*.14));ctx.stroke();
+    });
     for (const [i,post] of view.posts.entries()) {
       const station=geometry.stations[i], [x,y]=xy(station.x,station.y);
       const hand=view.handoffs[i];
@@ -95,11 +107,7 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
     for(const [sx,sy] of geometry.contact.outputSlots){
       const [x,ground]=xy(sx,sy),y=ground-.72*scale;
       const filled=view.rack.items.some((p:{at:number[]})=>p.at[0]===Math.round(sx*1000)&&p.at[1]===Math.round(sy*1000));
-      layers.push({y:sy,draw:()=>{
-        skin.world(ctx,'fl-rack-cradle',x,y,scale);
-        if(filled)skin.world(ctx,'fl-cortex-finished',x,y,scale);
-        skin.world(ctx,'fl-rack-lip',x,y,scale);
-      }});
+      if(filled)queue(sy+.1,()=>skin.world(ctx,'fl-cortex-finished',x,y,scale));
     }
     for(const item of scene.items){
       if(item.status==='rack')continue;
@@ -115,53 +123,89 @@ export function paint(ctx:CanvasRenderingContext2D,w:number,h:number,scene:Scene
   const recentChoices=new Map(scene.events.filter(e=>e.kind==='worker.choice'&&tick-e.tick<90).map(e=>[e.actor,e.text]));
   const returned=view.returnedOriginal.at(-1);
   for(const a of scene.agents){
-    if(a.room!==room||a.duty==='detained')continue;
-    const [x,y]=xy(a.x/1000,a.y/1000);if(x< -12||x>w+12||y<0||y>h+20)continue;
-    const sup=a.id===a.id.toUpperCase(),key=sup?'char-'+a.id.toLowerCase()+'-check':a.id==='max'?'char-max-walk-S':a.moving?'char-bob-walk-S':sec?'bob-security':'bob-forge';
+    if(a.id==='STILETTO' && a.duty==='outside')continue;
+    if((a.room!==room&&!(tracking&&approachZone(a.room)))||a.duty==='detained')continue;
+    const [x,y]=xy(a.x/1000,a.y/1000);
+    const direction=tracking&&a.facing==='N'?'N':'S';
+    const sup=a.id===a.id.toUpperCase(),key=sup?'char-'+a.id.toLowerCase()+'-check':a.id==='max'?'char-max-walk-'+direction:a.moving?'char-bob-walk-'+direction:sec?'bob-security':'bob-forge';
     const k=scale/64,top=y-sprites[key][4]*k;
+    if(x< -scale||x>w+scale||y<0||top>h)continue;
     anchors.set(a.id,[x,top]);
     layers.push({y:a.y/1000,draw:()=>{
       ctx.fillStyle='#07141466';ctx.beginPath();ctx.ellipse(x,y,scale*.38,scale*.14,0,0,Math.PI*2);ctx.fill();
-      sprite(key,!sup&&a.moving?Math.floor(a.walked/105)%8:0,x,y,k);
+      const march=a.id==='STILETTO'&&a.moving?Math.abs(Math.sin(Math.PI*a.walked/620))*scale*.045:0;
+      sprite(key,!sup&&a.moving?Math.floor(a.walked/105)%8:0,x,y-march,k);
       if(a.id==='bob' && scene.world.pass?.day===scene.world.day)
         skin.world(ctx,scene.world.pass.valid?'sec-pass-issued-world':'sec-pass-expired-world',x+scale*.23,y-scale*.5,scale);
       if(a.id==='bob' && returned && tick-returned.tick<58)skin.world(ctx,'sec-id-bob-world',x+scale*.23,y-scale*.5,scale);
+      const act=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='gesture.seen'&&['hand.return','demonstrated.open.palm'].includes(e.text)&&tick-e.tick<55);
+      const reaction=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='gesture.seen'&&/^\p{Extended_Pictographic}/u.test(e.text)&&tick-e.tick<38);
+      if(reaction)tag(a.id+' '+reaction.text,x,top-6);
+      if(act){
+        const hand=x+scale*.22,level=y-scale*.56,reach=Math.min(1,(tick-act.tick)/12);
+        ctx.fillStyle='#cb9c75';ctx.fillRect(hand,level,scale*.32,3);
+        if(act.text==='hand.return'){
+          const edge=hand+(1-reach)*scale*.42;
+          ctx.fillStyle='#263534';ctx.fillRect(edge-1,level-4,10,7);
+          ctx.fillStyle='#f5dfae';ctx.fillRect(edge,level-3,8,5);
+          ctx.fillStyle='#5a6359';ctx.fillRect(edge+1,level-2,2,3);
+        }
+      }
+      const contact=[...scene.events].reverse().find(e=>e.actor===a.id&&e.kind==='worker.approaches'&&tick-e.tick<115);
+      if(contact)tag(a.id+' → '+contact.subject,x,y+13);
       const choice=recentChoices.get(a.id);
       if(choice) tag(a.id+' · '+(choice==='go'?'goes':'stays'),x,y+12);
-      else if(a.id==='bob'||a.id==='LIMEN'||a.id==='STILETTO'||a.id===scene.world.called||(!sec&&scene.world.coverage.includes(a.id)))
+      else if(!contact&&((sec&&['welcome','posting','queue'].includes(scene.world.stage)&&['ed','gus'].includes(a.id))||a.id==='bob'||a.id==='LIMEN'||a.id==='STILETTO'||a.id===scene.world.called||(!sec&&scene.world.coverage.includes(a.id))))
         tag(a.id,x,y+12,sup?'#ffd395':'#e8f1eb');
     }});
   }
   layers.sort((a,b)=>a.y-b.y).forEach(l=>l.draw());
-  if(!sec)for(let i=0;i<4;i++){const [x,y]=xy(119.7+i*4,147.5);tag(stations[i],x,Math.min(h-4,y+18));}
-  const occupied:{x:number;y:number;w:number;h:number}[]=[];
-  for(const ev of view.speeches){
-    const [ax,ay]=anchors.get(ev.speaker)??xy(ev.at[0]/1000,ev.at[1]/1000);
-    if(ax<0||ax>w||ay<0||ay>h)continue;
-    const bodyFont=w<580?'600 14px sans-serif':'600 16px sans-serif';
-    ctx.font=bodyFont;
-    const limit=Math.min(230,w*.74),lines:string[]=[];
-    let line='';
-    for(const word of ev.text.split(' ')){
-      const next=line?line+' '+word:word;
-      if(line&&ctx.measureText(next).width>limit){lines.push(line);line=word;}else line=next;
+
+  // Simultaneous voices share the reading interval. Stack their plates in event
+  // order and paint all tails first so none can strike through another line.
+  const group = view.speeches.length > 1;
+  const bodyFont = w < 580 ? '600 15px sans-serif' : '600 17px sans-serif';
+  const lineHeight = w < 580 ? 19 : 21;
+  const limit = Math.min(310, w - 42);
+  let stackTop = 5;
+  const hand = sec && scene.events.findLast(e => e.kind === 'gesture.seen' &&
+    e.text === 'hand.return' && tick - e.tick < 55);
+  const bubbles = view.speeches.map(ev => {
+    const [speakerX, speakerY] = anchors.get(ev.speaker) ?? xy(ev.at[0]/1000, ev.at[1]/1000);
+    const ax = Math.max(2, Math.min(w-2, speakerX)), ay = Math.max(2, Math.min(h-2, speakerY));
+    ctx.font = bodyFont;
+    const lines: string[] = [];
+    let line = '';
+    for (const word of ev.text.split(/\s+/)) {
+      const next = line ? line + ' ' + word : word;
+      if (line && ctx.measureText(next).width > limit) {lines.push(line); line = word;}
+      else line = next;
     }
     lines.push(line);
-    const bw=Math.max(70,...lines.map(l=>ctx.measureText(l).width+24)),bh=26+lines.length*17;
-    const x=Math.max(3,Math.min(w-bw-3,ax-bw/2));
-    const aim=Math.max(3,Math.min(h-bh-18,ay-bh-10));
-    const collides=(y:number)=>occupied.some(r=>x<r.x+r.w+2&&x+bw+2>r.x&&y<r.y+r.h+2&&y+bh+2>r.y);
-    const candidates=[aim,...occupied.flatMap(r=>[r.y-bh-4,r.y+r.h+4])].filter(y=>y>=3&&y+bh<=h-4&&!collides(y));
-    const y=candidates.sort((a,b)=>Math.abs(a-aim)-Math.abs(b-aim))[0]??aim;
-    occupied.push({x,y,w:bw,h:bh});
-    const tail=Math.max(x+8,Math.min(x+bw-14,ax));
+    const bw = Math.max(84, ...lines.map(l => ctx.measureText(l).width + 24));
+    const bh = 26 + lines.length * lineHeight;
+    const x = Math.max(3, Math.min(w-bw-3, group ? (w-bw)/2 : ax-bw/2));
+    let y = group ? stackTop : Math.max(3, Math.min(h-bh-4, ay-bh-12));
+    if (group) stackTop += bh + 5;
+    if (hand && !group) {
+      const [hx, hy] = xy(hand.at[0]/1000, hand.at[1]/1000);
+      if (x < hx+30 && x+bw > hx-30 && y < hy+11 && y+bh > hy-46)
+        y = hy-50-bh >= 3 ? hy-50-bh : Math.min(h-bh-4, hy+15);
+    }
+    return {ev, ax, ay, x, y, bw, bh, lines};
+  });
+  for (const {ax, ay, x, y, bw, bh} of bubbles) {
+    const tail = Math.max(x+8, Math.min(x+bw-14, ax));
     ctx.strokeStyle='#d7c7a8';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(tail,y+bh-2);ctx.lineTo(ax,ay);ctx.stroke();
     skin.draw(ctx,ax<tail?'fl-tail-left':'fl-tail-right',tail-5,y+bh-3);
+  }
+  for (const {ev, x, y, bw, bh, lines} of bubbles) {
     skin.draw(ctx,ev.asset,x,y,{width:bw,height:bh});
     ctx.textAlign='left';ctx.font='bold 12px monospace';
     skin.draw(ctx,ev.nameplate,x+7,y+3,{width:ctx.measureText(ev.speaker).width+13,height:17});
     ctx.fillStyle='#fff1d3';ctx.fillText(ev.speaker,x+13,y+16);
     ctx.fillStyle='#182626';ctx.font=bodyFont;
-    lines.forEach((l,i)=>ctx.fillText(l,x+9,y+34+i*17));
+    lines.forEach((line,i)=>ctx.fillText(line,x+10,y+36+i*lineHeight));
   }
+  return xy;
 }

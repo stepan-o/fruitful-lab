@@ -1,3 +1,4 @@
+import {morningBids,passageGate} from './morning';
 import {canonical,envelope,order} from '../intro/protocol';
 import {geom} from '../intro/floor';
 import type {Point,Run,Mark} from './contract';
@@ -5,12 +6,14 @@ export {canonical,envelope};
 export const schema='shift_floor_1';
 export const engine='loopforge_shifts_ts';
 export function project(s:Run){
-  const world={day:s.day,phase:s.phase,start:s.start,lead:s.lead,pace:s.pace,spent:s.spent,quick:s.quick,called:s.called,
-    waiting:[...s.queue],status:s.case?.status??'none',caseId:s.case?.id??'',deadline:s.case?.deadline??0,
+  const door=s.day===2&&s.lead==='LIMEN'&&['walk','welcome','posting','queue'].includes(s.dialogue.phase);
+  const world={...(door?{passageGateMm:passageGate(s)}:{}),bids:morningBids(s),stage:s.dialogue.phase,day:s.day,phase:s.phase,start:s.start,lead:s.lead,pace:s.pace,spent:s.spent,quick:s.quick,called:s.called,
+    waiting:[...s.queue],status:s.case?.status??'none',caseId:s.case?.id??'',caseSubject:s.case?.subject??'',deadline:s.case?.deadline??0,
     report:s.marks.filter(e=>e.day===s.day&&e.kind==='report.received').at(-1)??null,
     pressure:s.pressure,backing:s.backing,coverage:[...s.coverage],completed:[...s.completed],pass:s.pass?{...s.pass}:null,
     shiftOutput:s.pieces.filter(p=>p.status==='rack').length, chat:s.chat};
   const agents=Object.values(s.world.agents).sort((a,b)=>order(a.id,b.id)).map(a=>({
+    ...(s.dialogue.phase==='walk'&&s.tasks[a.id]?.facing?{facing:s.tasks[a.id].facing}:{}),
     id:a.id,x:a.position[0],y:a.position[1],room:a.room,duty:s.tasks[a.id]?.duty??'standing',walked:s.tasks[a.id]?.walked??0,
     moving:s.tasks[a.id]?.moving??false,station:s.tasks[a.id]?.station??-1,injured:a.id==='bob'&&s.world.facts['injury.bob']==='limping'}));
   const items=s.pieces.map(p=>({id:p.id,at:[...p.at] as Point,stage:p.stage,status:p.status}));

@@ -134,7 +134,16 @@ impl Game {
         let tick = if intro { self.intro.t } else { s.t };
         let mut world = json!({"phase":self.phase,"minute":self.minutes(),"layout":GEOM["version"],"quota":60,"topic":self.topic,"clock_tick":tick,"day_one_count":if intro{w.rack.len()}else{s.initial},"rack":w.rack,"gate_mm":self.intro.gate,"jammed":w.facts["press.jammed"],"outputs":w.rack.len(),"edited_ms":edited(self.intro.t),"confirmed":self.intro.confirmed,"order":if intro&&self.intro.held(){CAST.orders.get(self.intro.confirmed).map(|o|json!({"station":o["station"],"text":o["text"]}))}else{None}});
         let injured = w.facts.get("injury.bob").is_some_and(|v| v == "limping");
-        let agents:Vec<_>=w.agents.iter().map(|(id,a)|json!({"agent_id":id,"x":a.p[0],"y":a.p[1],"room":a.room,"facing":a.facing,"moving":a.moving,"walked":a.walked,"injured":id=="bob"&&injured,"action":if intro{self.intro.active.iter().find(|(i,_)|CAST.plans[*i].actor==*id&&CAST.plans[*i].lane=="body").map(|(i,_)|CAST.plans[*i].id.as_str()).unwrap_or(if a.moving{"walk"}else{"idle"})}else{a.duty.as_str()},"duty":a.duty,"station":a.post,"available":s.entered.contains(id)&&a.room=="conveyor","label":if a.post>=0{TITLES[a.post as usize]}else{a.duty.as_str()}})).collect();
+        let agents:Vec<_>=w.agents.iter().map(|(id,a)|{
+            let label = if self.phase == "floor" && s.line.pending.contains_key(id) {
+                format!("Finishing contact → {}", TITLES[s.line.pending[id]])
+            } else if a.post >= 0 && self.phase == "floor" && a.duty == "cleared" {
+                format!("Walking to {}", TITLES[a.post as usize])
+            } else if a.post >= 0 {
+                TITLES[a.post as usize].to_owned()
+            } else { a.duty.clone() };
+            json!({"agent_id":id,"x":a.p[0],"y":a.p[1],"room":a.room,"facing":a.facing,"moving":a.moving,"walked":a.walked,"injured":id=="bob"&&injured,"action":if intro{self.intro.active.iter().find(|(i,_)|CAST.plans[*i].actor==*id&&CAST.plans[*i].lane=="body").map(|(i,_)|CAST.plans[*i].id.as_str()).unwrap_or(if a.moving{"walk"}else{"idle"})}else{a.duty.as_str()},"duty":a.duty,"station":a.post,"available":s.entered.contains(id)&&a.room=="conveyor","label":label})
+        }).collect();
         let mut items = self.intro.items(w);
         if !intro {
             items.retain(|i| i["stage"] == 4);

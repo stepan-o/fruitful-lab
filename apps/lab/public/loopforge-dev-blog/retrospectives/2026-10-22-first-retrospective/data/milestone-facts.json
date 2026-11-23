@@ -1,0 +1,21 @@
+{
+  "cutoff": "2026-10-22T23:45:25.166141+00:00",
+  "candidate": "Local milestone/archive committed; supported GitHub connector transfer underway; no PR/deploy reported at cutoff",
+  "game": "dropped unfinished",
+  "rootValidationReceiptAt": "2026-10-22T23:24:26.423413+00:00",
+  "rootReportedTests": {
+    "suites": 112,
+    "tests": 600,
+    "snapshots": 1,
+    "result": "pass",
+    "assetChecks": "pass",
+    "assetPipelineTest": "pass"
+  },
+  "projectCopiedFiles": 260,
+  "projectCopiedBytes": 146312109,
+  "initialStudioArchiveFiles": 123,
+  "initialStudioArchiveBytes": 27783795,
+  "localIntermediateFiles": 561,
+  "localIntermediateBytes": 2103136537,
+  "limits": "Root-reported actual execution and copy results; Producer checked supplied manifest arithmetic. No repeated game test or new creative acceptance."
+}

@@ -1,0 +1,272 @@
+{
+  "version": "sam-holder/H2-proposal-1",
+  "units": "metres",
+  "tolerance": 1e-06,
+  "strictVolumeInset": 1e-07,
+  "boxes": [
+    {
+      "name": "bottom_stop",
+      "lo": [
+        -0.1,
+        -0.14500000000000002,
+        -0.0115
+      ],
+      "hi": [
+        0.1,
+        -0.14,
+        0.0115
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 0,
+      "indexCount": 36
+    },
+    {
+      "name": "lower_back",
+      "lo": [
+        -0.1,
+        -0.14,
+        -0.0115
+      ],
+      "hi": [
+        0.1,
+        -0.055,
+        -0.0065
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 36,
+      "indexCount": 36
+    },
+    {
+      "name": "lower_front",
+      "lo": [
+        -0.1,
+        -0.14,
+        0.0065
+      ],
+      "hi": [
+        0.1,
+        -0.055,
+        0.0115
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 72,
+      "indexCount": 36
+    },
+    {
+      "name": "lower_left",
+      "lo": [
+        -0.1,
+        -0.14,
+        -0.0065
+      ],
+      "hi": [
+        -0.095,
+        -0.055,
+        0.0065
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 108,
+      "indexCount": 36
+    },
+    {
+      "name": "lower_right",
+      "lo": [
+        0.095,
+        -0.14,
+        -0.0065
+      ],
+      "hi": [
+        0.1,
+        -0.055,
+        0.0065
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 144,
+      "indexCount": 36
+    },
+    {
+      "name": "back_shoulder",
+      "lo": [
+        -0.1,
+        -0.055,
+        -0.030000000000000002
+      ],
+      "hi": [
+        0.1,
+        -0.05,
+        -0.0065
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 180,
+      "indexCount": 36
+    },
+    {
+      "name": "front_shoulder",
+      "lo": [
+        -0.1,
+        -0.055,
+        0.0065
+      ],
+      "hi": [
+        0.1,
+        -0.05,
+        0.04
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 216,
+      "indexCount": 36
+    },
+    {
+      "name": "left_shoulder",
+      "lo": [
+        -0.1,
+        -0.055,
+        -0.0065
+      ],
+      "hi": [
+        -0.095,
+        -0.05,
+        0.0065
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 252,
+      "indexCount": 36
+    },
+    {
+      "name": "right_shoulder",
+      "lo": [
+        0.095,
+        -0.055,
+        -0.0065
+      ],
+      "hi": [
+        0.1,
+        -0.05,
+        0.0065
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 288,
+      "indexCount": 36
+    },
+    {
+      "name": "well_back",
+      "lo": [
+        -0.1,
+        -0.05,
+        -0.030000000000000002
+      ],
+      "hi": [
+        0.1,
+        0,
+        -0.025
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 324,
+      "indexCount": 36
+    },
+    {
+      "name": "well_front",
+      "lo": [
+        -0.1,
+        -0.05,
+        0.035
+      ],
+      "hi": [
+        0.1,
+        0,
+        0.04
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 360,
+      "indexCount": 36
+    },
+    {
+      "name": "well_left",
+      "lo": [
+        -0.1,
+        -0.05,
+        -0.025
+      ],
+      "hi": [
+        -0.095,
+        0,
+        0.035
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 396,
+      "indexCount": 36
+    },
+    {
+      "name": "well_right",
+      "lo": [
+        0.095,
+        -0.05,
+        -0.025
+      ],
+      "hi": [
+        0.1,
+        0,
+        0.035
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 432,
+      "indexCount": 36
+    },
+    {
+      "name": "external_mount_bridge",
+      "lo": [
+        -0.079,
+        -0.115,
+        -0.04
+      ],
+      "hi": [
+        0.079,
+        -0.085,
+        -0.0115
+      ],
+      "intendedBodyContact": null,
+      "firstIndex": 468,
+      "indexCount": 36
+    },
+    {
+      "name": "mount_pad_left",
+      "lo": [
+        -0.079,
+        -0.12,
+        -0.045
+      ],
+      "hi": [
+        -0.051000000000000004,
+        -0.08,
+        -0.04
+      ],
+      "intendedBodyContact": {
+        "face": "-Z",
+        "plane": -0.045,
+        "status": "proposed; support not measured"
+      },
+      "firstIndex": 504,
+      "indexCount": 36
+    },
+    {
+      "name": "mount_pad_right",
+      "lo": [
+        0.051000000000000004,
+        -0.12,
+        -0.045
+      ],
+      "hi": [
+        0.079,
+        -0.08,
+        -0.04
+      ],
+      "intendedBodyContact": {
+        "face": "-Z",
+        "plane": -0.045,
+        "status": "proposed; support not measured"
+      },
+      "firstIndex": 540,
+      "indexCount": 36
+    }
+  ]
+}

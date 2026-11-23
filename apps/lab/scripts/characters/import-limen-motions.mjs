@@ -1,0 +1,30 @@
+/** Convert the audited source review GLB into one embedded, deduplicated motion bank. */
+import {readFile,writeFile,mkdtemp} from 'node:fs/promises';
+import path from 'node:path';
+import {tmpdir} from 'node:os';
+import assert from 'node:assert/strict';
+import {NodeIO} from '@gltf-transform/core';
+import {dedup,prune,resample,weld,tangents} from '@gltf-transform/functions';
+import {generateTangents} from 'mikktspace';
+import {validateBytes} from 'gltf-validator';
+import sharp from 'sharp';
+import {buildPack,digest} from '../assets.mjs';
+const [source,textureDir]=process.argv.slice(2);
+if(!source||!textureDir)throw Error('Usage: import-limen-motions.mjs audited-review.glb extracted-fbx-directory');
+const bytes=await readFile(source),io=new NodeIO(),doc=await io.readBinary(bytes),root=doc.getRoot();
+assert.equal(root.listSkins()[0].listJoints().length,80);assert.equal(root.listAnimations().length,17);
+const material=root.listMaterials()[0],prefix=path.join(textureDir,'Meshy_AI_LIMEN_security_chief_biped_texture_0');
+const base=await sharp(prefix+'.png').removeAlpha().jpeg({quality:88,mozjpeg:true}).toBuffer();
+material.getBaseColorTexture().setImage(base).setMimeType('image/jpeg');
+const normal=doc.createTexture('Normal').setImage(await sharp(prefix+'_normal.png').resize(2048,2048).removeAlpha().jpeg({quality:95,chromaSubsampling:'4:4:4'}).toBuffer()).setMimeType('image/jpeg');material.setNormalTexture(normal);
+const channel=async name=>sharp(prefix+'_'+name+'.png').resize(1024,1024).greyscale().raw().toBuffer();
+const [roughness,metallic]=await Promise.all([channel('roughness'),channel('metallic')]);
+const rgb=Buffer.alloc(1024*1024*3);for(let i=0;i<roughness.length;i++){rgb[i*3]=255;rgb[i*3+1]=roughness[i];rgb[i*3+2]=metallic[i];}
+material.setMetallicRoughnessTexture(doc.createTexture('Metallic roughness').setImage(await sharp(rgb,{raw:{width:1024,height:1024,channels:3}}).jpeg({quality:95,chromaSubsampling:'4:4:4'}).toBuffer()).setMimeType('image/jpeg')).setMetallicFactor(1).setRoughnessFactor(1);
+await doc.transform(resample({tolerance:1e-6}),tangents({generateTangents}),weld(),dedup(),prune());
+const out=await io.writeBinary(doc),validation=await validateBytes(out,{maxIssues:20});assert.equal(validation.issues.numErrors,0);assert.equal(validation.issues.numWarnings,0,JSON.stringify(validation.issues));
+assert.ok(out.length<11000000,`Bank exceeds 11 MB: ${out.length}`);
+const dir=await mkdtemp(path.join(tmpdir(),'limen-motions-'));await writeFile(path.join(dir,'motions.glb'),out);
+await writeFile(path.join(dir,'catalog.json'),JSON.stringify({pack:'loopforge-limen-motions',assets:{motions:{kind:'model',source:path.join(dir,'motions.glb'),maxBytes:11000000}}}));
+console.log(await buildPack(path.join(dir,'catalog.json')));
+console.log(JSON.stringify({inputSHA256:digest(bytes),bytes:out.length,sha256:digest(out),triangles:root.listMeshes().flatMap(m=>m.listPrimitives()).reduce((n,p)=>n+p.getIndices().getCount()/3,0),joints:80,clips:root.listAnimations().map(a=>a.getName()),validation:validation.issues},null,2));

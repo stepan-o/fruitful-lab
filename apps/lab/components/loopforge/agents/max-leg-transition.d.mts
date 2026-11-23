@@ -1,0 +1,10 @@
+import type {MotionCue} from '@/lib/loopforge/encounters/contract';
+import type {TransformNode} from '@babylonjs/core/Meshes/transformNode';
+import type {Quaternion,Vector3} from '@babylonjs/core/Maths/math.vector';
+export type LocalPose={p:number[];q:number[];s:number[]};
+export type HierarchyNode={name:string;parent:number};
+export type LegResult={pose:LocalPose[];sides:unknown[];applied:boolean};
+export function solveLegBlend(input:{hierarchy:HierarchyNode[];previous:LocalPose[];destination:LocalPose[];blended:LocalPose[];weight:number}):LegResult;
+export function createMaxLegTransition(channels:{target:TransformNode;path:string;rest:Quaternion|Vector3}[],root:TransformNode):{apply(cue:MotionCue,previousCue:MotionCue|undefined,old:(Quaternion|Vector3)[],next:(Quaternion|Vector3)[],weight:number):LegResult|{applied:false}};
+export const CLIPS:Set<string>;
+export const LEGS:string[];

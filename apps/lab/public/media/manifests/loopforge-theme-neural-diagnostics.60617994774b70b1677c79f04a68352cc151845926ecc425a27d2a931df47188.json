@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-theme-neural-diagnostics",
+  "assets": {
+    "button-hover": {
+      "kind": "image",
+      "width": 1459,
+      "height": 290,
+      "variants": [
+        {
+          "src": "/media/files/daed52f921fde5283723cf31f201b878be6faa4ebec9b13aae583d4d4aa8aaf9.webp",
+          "mime": "image/webp",
+          "bytes": 19306,
+          "sha256": "daed52f921fde5283723cf31f201b878be6faa4ebec9b13aae583d4d4aa8aaf9",
+          "width": 480,
+          "height": 95
+        },
+        {
+          "src": "/media/files/4ff12417cc8b0cdc470447c285a7d0072b88395e059a2a80507650db326c3add.webp",
+          "mime": "image/webp",
+          "bytes": 40264,
+          "sha256": "4ff12417cc8b0cdc470447c285a7d0072b88395e059a2a80507650db326c3add",
+          "width": 720,
+          "height": 143
+        }
+      ]
+    },
+    "button-pressed": {
+      "kind": "image",
+      "width": 1459,
+      "height": 288,
+      "variants": [
+        {
+          "src": "/media/files/a3937b7eb12cbb1ca1878bfe1827d9c11ffff90bedf6f8c296d5ac1395f22a2c.webp",
+          "mime": "image/webp",
+          "bytes": 18762,
+          "sha256": "a3937b7eb12cbb1ca1878bfe1827d9c11ffff90bedf6f8c296d5ac1395f22a2c",
+          "width": 480,
+          "height": 95
+        },
+        {
+          "src": "/media/files/2840f17caa29dfd331824edf9c819bb76c2bdab68cc60eaa80beea4829bb8f21.webp",
+          "mime": "image/webp",
+          "bytes": 38556,
+          "sha256": "2840f17caa29dfd331824edf9c819bb76c2bdab68cc60eaa80beea4829bb8f21",
+          "width": 720,
+          "height": 142
+        }
+      ]
+    },
+    "button-rest": {
+      "kind": "image",
+      "width": 1459,
+      "height": 298,
+      "variants": [
+        {
+          "src": "/media/files/c2d7085d1b887dbc529901fb8be0de53ea1d18428aa09a9eea91136f14d2bc96.webp",
+          "mime": "image/webp",
+          "bytes": 19956,
+          "sha256": "c2d7085d1b887dbc529901fb8be0de53ea1d18428aa09a9eea91136f14d2bc96",
+          "width": 480,
+          "height": 98
+        },
+        {
+          "src": "/media/files/dfa49df08edc9773cd4d35930e19906d70e5df893c0186f965b8aa47d992d344.webp",
+          "mime": "image/webp",
+          "bytes": 41478,
+          "sha256": "dfa49df08edc9773cd4d35930e19906d70e5df893c0186f965b8aa47d992d344",
+          "width": 720,
+          "height": 147
+        }
+      ]
+    },
+    "monitor-frame": {
+      "kind": "image",
+      "width": 1566,
+      "height": 969,
+      "variants": [
+        {
+          "src": "/media/files/6c03df263ff3729f121d7617b56eae722719eefa28d393713c16f5278a01939a.webp",
+          "mime": "image/webp",
+          "bytes": 42136,
+          "sha256": "6c03df263ff3729f121d7617b56eae722719eefa28d393713c16f5278a01939a",
+          "width": 480,
+          "height": 297
+        },
+        {
+          "src": "/media/files/eba6120f26a8c8abcc1e9d76e2963651a055ee72f9e330210195bf54746755e5.webp",
+          "mime": "image/webp",
+          "bytes": 147306,
+          "sha256": "eba6120f26a8c8abcc1e9d76e2963651a055ee72f9e330210195bf54746755e5",
+          "width": 960,
+          "height": 594
+        }
+      ]
+    },
+    "supervisor-socket": {
+      "kind": "image",
+      "width": 1167,
+      "height": 1238,
+      "variants": [
+        {
+          "src": "/media/files/0ed29473f334c336330ea33e43f2cf3af49075d6a2385b59eec7a43d0c0b20e4.webp",
+          "mime": "image/webp",
+          "bytes": 28578,
+          "sha256": "0ed29473f334c336330ea33e43f2cf3af49075d6a2385b59eec7a43d0c0b20e4",
+          "width": 240,
+          "height": 255
+        },
+        {
+          "src": "/media/files/5ce1837a1b25c3a1ac56ec5f263d68fdbd4f44b519d92f4d64af71e8b163afe6.webp",
+          "mime": "image/webp",
+          "bytes": 96092,
+          "sha256": "5ce1837a1b25c3a1ac56ec5f263d68fdbd4f44b519d92f4d64af71e8b163afe6",
+          "width": 480,
+          "height": 509
+        }
+      ]
+    }
+  }
+}

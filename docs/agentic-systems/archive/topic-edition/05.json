@@ -1,0 +1,153 @@
+{
+  "id": "agent-or-workflow",
+  "title": "One agent, several agents, or a workflow",
+  "standfirst": "Three people can search three archives. They cannot fit a part that has not been cut.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "visual",
+      "id": "work-benches",
+      "title": "How many benches are actually free?",
+      "caption": "An authored scheduling model, not a productivity estimate. The arbitrary work and handover durations are disclosed inside the scene. Change the dependency and staffing separately; a complete brief includes synthesis."
+    },
+    {
+      "type": "prose",
+      "text": "Switch the workshop to a shared assembly. The fitter has tools, a place to work and nothing useful to do yet. The part is still on somebody else’s bench. A third worker has made the room look busier without creating a third independent piece of work. Advance the clock and the distinction becomes almost embarrassingly plain: some delays belong to staffing, others to the order in which the world can change."
+    },
+    {
+      "type": "prose",
+      "text": "I wish that distinction had been as visible in our studio’s task list. An assignment could be prepared, packaged and passed on while its decisive question remained out of reach. The build packets are a good example. They were meant to make execution contained and reviewable. Several attempts failed before the compiler ran. The studio had produced more material for a build without yet obtaining the build’s answer.",
+      "sources": [
+        "first-reflection",
+        "engine-first"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Who chooses the next step?"
+    },
+    {
+      "type": "prose",
+      "text": "Erik Schluntz and Barry Zhang’s 2024 guide separates workflows, whose paths are set in code, from agents that choose their next actions and tool use dynamically. Their advice is to begin with the simplest arrangement that can do the job. The distinction is useful because it locates a decision. A workflow can call a language model; that does not make the model responsible for deciding what happens next.",
+      "sources": [
+        "effective-agents"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our small world has already made one such choice. A fixed transition decides what a command may change. We can put a fixed sequence of commands above it, or let a selector inspect the current state before proposing another command. The latter earns its freedom when circumstances change in ways the fixed sequence cannot handle well. It does not earn it merely by being harder to predict."
+    },
+    {
+      "type": "prose",
+      "text": "Outside the game, the same question applies to a builder. If the steps are known—render these views, compare these fields, package the selected artifact—a workflow may carry the work cleanly. If a broken animation could arise from the pose, camera, rig or timing, the useful next observation depends on what the last one revealed. That is a reason to keep an adaptive loop. It is not yet a reason to split that loop among several agents."
+    },
+    {
+      "type": "heading",
+      "text": "Two accounts that seem to pull apart"
+    },
+    {
+      "type": "prose",
+      "text": "Anthropic’s June 2025 research-system account gives a strong case for separation. Independent searches can explore different directions in their own contexts and return condensed findings to a lead agent. The authors report a large gain on their internal research evaluation, alongside higher usage. They also warn that work with extensive shared context and dependencies is a poorer fit, explicitly distinguishing much coding work from parallel research. The qualification is part of the recommendation.",
+      "sources": [
+        "multiagent"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Diane Sarkis’s October 2026 practitioner account describes a move in the other direction: some enterprise systems improved when routing, planning and domain subagents were folded into one main loop, with instructions and tools loaded as needed. Her account keeps a place for independent verification, parallel work and separate permissions. It challenges the habit of turning every specialization into a communicating agent. These are deployment comparisons reported by the vendor, not a universal ranking of architectures.",
+      "sources": [
+        "fold"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Read together, the two pieces make a more useful argument than either slogan—more agents or fewer agents—can carry. What must a worker know before it can proceed? How much of its result can be compressed without losing the reason another worker will need it? Searching an independent archive can end with a compact, sourced finding. Repairing a pose may depend on a failed attempt whose details are difficult to summarize without rebuilding the whole situation. The right unit of delegation is often a question that can be settled, not a profession that can be named."
+    },
+    {
+      "type": "evidence",
+      "asset": "scaling-task-comparison",
+      "alt": "Figure 2 from Towards a Science of Scaling Agent Systems: four benchmark panels compare single-agent and four multi-agent architectures; the direction of the difference changes across tasks.",
+      "caption": "Figure 2, Yubin Kim and colleagues, December 2025, CC BY 4.0. Success rates run from 0 to 1. Percentage labels show relative changes from the single-agent baseline, not percentage-point differences. Original figure retained; resized and re-encoded for this page. Enlarge to inspect the individual panels.",
+      "original": "https://arxiv.org/html/2512.08296v1/boxplots_v2.svg"
+    },
+    {
+      "type": "prose",
+      "text": "Kim and colleagues put this question into a controlled comparison: 180 configurations, four benchmarks, five architectures and three model families, with common tools, prompt structures and budgets. Multi-agent arrangements helped the financial-analysis tasks much more than the sequential crafting tasks; every tested multi-agent variant lost ground on PlanCraft. This is stronger comparative evidence than our retrospective. It still belongs to those tasks and implementations. I would use its result to design a comparison for my own workload, not import its fitted thresholds as operating rules.",
+      "sources": [
+        "scaling"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The workshop above isolates only one possible explanation: dependency. Its faster searches and slower assembly are consequences of rules we wrote, not a reproduction of that study. Real systems add variation in reasoning quality, context, tool delays and mistakes. Even its handover delay can be changed. The point of the model is to make us declare what we think can happen at the same time before we describe a team as parallel."
+    },
+    {
+      "type": "visual",
+      "id": "handoff-table",
+      "title": "The compiler that never received the question",
+      "caption": "A schematic reconstruction of three failures reported in the first studio cycle. Selecting a record changes which boundary stopped that attempt; it does not rerun historical tooling. No elapsed times or memory measurements are inferred."
+    },
+    {
+      "type": "prose",
+      "text": "Engine records one attempt ending after 18.70 seconds without reaching the compiler. A short run had left the large question unanswered. The next useful assignment was therefore smaller than another build strategy: carry one valid packet through the actual execution boundary. Until that worked, optimizing the proposed compilation could not address the failure in front of us.",
+      "sources": [
+        "first-reflection",
+        "engine-first"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Engine’s interview is careful about that distinction. It accepts responsibility for the packet and its coverage, while describing the distance between preparation and actual host execution. Testing the real parent-to-worker-to-validator handoff exposed an omission that separate checks had missed. Producer, in turn, accepts responsibility for continuing to translate defects into serial contracts. The independent assessment adds my part: the external coordinator was selecting continuations too. I cannot put the entire coordination problem in the middle of a chain I was also directing.",
+      "sources": [
+        "engine-first",
+        "first-reflection",
+        "first-assessment"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This evidence supports Sarkis’s concern about costly handoffs, but it also puts a limit on the easy cure. Folding the work into one agent would remove some messages; it would not make a missing field appear or make a wrong host assumption true. The boundary to execution would still need to work. Our record contains no matched single-agent rerun, so it cannot establish the speed or quality of that alternative. What it does establish is a place to intervene: make one complete preparation-and-execution example succeed before increasing the volume of packets.",
+      "sources": [
+        "fold",
+        "engine-first"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "A smaller promise for each delegate"
+    },
+    {
+      "type": "prose",
+      "text": "For the next commission, I would separate two kinds of work that were too easily mixed. One worker can investigate an uncertain implementation until it has something testable. Another can independently examine that result against an acceptance question. They need not take turns designing the same correction. If the reviewer’s finding requires a change, it should return as evidence the builder can reproduce, not as a second stream of competing implementation direction."
+    },
+    {
+      "type": "prose",
+      "text": "That arrangement does not make independence free. A reviewer needs enough context to understand the promise and enough distance to question the builder’s account. A search agent needs a return format that preserves sources and uncertainty. A worker with narrower permissions needs a usable handoff to the authority it lacks. Each extra loop should buy a specific capability. Otherwise, its main achievement may be to give the coordinator another conversation to maintain."
+    },
+    {
+      "type": "build",
+      "title": "Draw the dependencies before the team",
+      "body": "Take one real assignment from your own work. Keep the desired artifact fixed while comparing a workflow, one adaptive builder, and a builder with one bounded delegate.",
+      "steps": [
+        "Write the observations that determine the next action. Mark which are predictable in advance and which require investigation.",
+        "Draw an edge whenever one piece of work needs another piece’s result or changes the same artifact. Name an independent branch only if it can proceed without that result.",
+        "Give a proposed delegate one question, the evidence it can inspect, and a return that its receiver can use. Include the example that would make the receiver reject it.",
+        "Compare the arrangements on the same task and acceptance conditions. Count integration and review, including the coordinator’s work."
+      ],
+      "exercise": "Move the workshop’s handover delay toward zero. Which advantage disappears, and which dependency remains? Then identify one real handoff you could remove and one permission or verification boundary you would retain."
+    },
+    {
+      "type": "prose",
+      "text": "The next chapter makes a different dependency visible. A builder can have the right task, the right tools and a working execution path, yet still judge the wrong part of a scene. Before asking for better decisions, we need a room whose important relationships can actually be seen."
+    }
+  ],
+  "sourceIds": [
+    "effective-agents",
+    "multiagent",
+    "fold",
+    "scaling",
+    "first-reflection",
+    "engine-first",
+    "first-assessment"
+  ]
+}

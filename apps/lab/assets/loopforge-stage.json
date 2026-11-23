@@ -1,0 +1,36 @@
+{
+  "pack": "loopforge-stage",
+  "assets": {
+    "specimens": {
+      "kind": "image",
+      "source": "assets/loopforge-stage/specimens.webp",
+      "widths": [
+        768,
+        1536
+      ],
+      "quality": 86,
+      "alphaQuality": 100,
+      "maxBytes": 500000
+    },
+    "lattice": {
+      "kind": "image",
+      "source": "assets/loopforge-stage/lattice.webp",
+      "widths": [
+        768,
+        1536
+      ],
+      "quality": 84,
+      "maxBytes": 500000
+    },
+    "beacon": {
+      "kind": "image",
+      "source": "assets/loopforge-stage/beacon.webp",
+      "widths": [
+        160,
+        320
+      ],
+      "quality": 86,
+      "maxBytes": 90000
+    }
+  }
+}

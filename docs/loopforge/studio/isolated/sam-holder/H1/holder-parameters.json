@@ -1,0 +1,19 @@
+{
+  "version": "sam-credential-holder/H1",
+  "status": "unplaced-proposal",
+  "units": "metres",
+  "cavityWidth": 0.190,
+  "cavityDepthUpAxis": 0.140,
+  "cavityNormalGap": 0.013,
+  "wallThickness": 0.005,
+  "cardDimensions": [0.180, 0.130, 0.003],
+  "withdrawnBottomAboveMouth": 0.010,
+  "material": {
+    "name": "proposed-dark-blue-painted-metal",
+    "referenceSRGB": "#335E8A",
+    "metallicFactor": 0.55,
+    "roughnessFactor": 0.75,
+    "alphaMode": "OPAQUE",
+    "approvedForSam": false
+  }
+}

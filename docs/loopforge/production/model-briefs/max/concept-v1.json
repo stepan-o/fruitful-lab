@@ -1,0 +1,14 @@
+{
+  "id": "max",
+  "refs": [
+    "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/loopforge-supervisors/thrum-theatre.webp"
+  ],
+  "prompt": "Use case: stylized-concept. Create max, one isolated full-body worker character for Loopforge, drawn from the expressive LAUGHING WORKER AUDIENCE in the reference, especially the seated worker at the LOWER RIGHT. Do NOT copy the central boombox-headed supervisor THRUM, his cape, chest light, or equipment. Keep the audience's rounded mechanical cheekbones and clearly articulated wide lower jaw: a broad slatted mechanical grin that could move for speech, two small oblong cyan lenses within the skull rather than huge protruding goggles. Give max a broad round head and one noticeably oversized circular receiver housing on their LEFT side, like an old telephone earcup, with a much smaller ordinary bearing on the other side. This is a coherent piece of industrial hardware, no antenna. Compact narrow torso, long expressive forearms, bent-knee loose stance, shoulder line tilted as if about to tell a story. Empty five-finger hands held slightly away from body in a relaxed open pose, not a fixed thumbs-up. Mid-height ordinary adult factory worker, not a goon. Chipped rich medium cobalt blue enamel on round helmet casing, shoulders and rectangular chest panel, black mechanisms, dull brass receiver rim, broad simple readable paint blocks. Cream band on the large receiver makes its shape clear. Normal practical flat blue boots. Three-quarter front full-body view with all feet in frame, dark smoky studio background in the reference's painterly industrial style. No room, no music notes, props, cape, glowing chest, words or extra figures. Keep max visibly different from a tall pointed skeletal enforcer: round-headed, narrow-bodied, asymmetrical ear and broad mobile jaw.",
+  "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-3137d189-386b-4250-aea4-950588a945fb.png",
+  "status": "superseded-unapproved",
+  "version": 1,
+  "workspace_image": "output/opening-cast/max/max-concept-v1.png",
+  "sha256": "3975f01f0573eb974a65c77385ef6e7d0d677e7ae54a11b740c12712d680a270",
+  "date": "2026-10-21",
+  "tool": "image_gen"
+}

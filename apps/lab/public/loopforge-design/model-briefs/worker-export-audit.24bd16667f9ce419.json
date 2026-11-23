@@ -1,0 +1,755 @@
+{
+  "revision": "worker-01-motion-bank-2026-10-13",
+  "triangles": 25893,
+  "skinJoints": 24,
+  "weightedJoints": 22,
+  "sourceRig": "Meshy FBX biped (27 nodes / 24 skin joints). Does not match the earlier 23-joint GLB hierarchy.",
+  "auditMethod": "60 Hz source evaluation; triangle intersection tests at closest-leg, closest-arm and closest-hand/head poses. Targeted checks, not full-cycle collision certification.",
+  "missing": [
+    "afraid_recoil",
+    "work_cradle"
+  ],
+  "clips": [
+    {
+      "id": "idle",
+      "label": "Idle",
+      "actor": "Worker",
+      "loop": true,
+      "duration": 4,
+      "note": "New export. Staggered stance with torso turns and weight shifts; review foot planting before using as the default idle. No contacts found at the three sampled closest poses.",
+      "sourceFile": "Animation_idle_withSkin.fbx",
+      "downloadFile": "Loopforge Worker 01 - idle.fbx",
+      "sourceSha256": "42121a1375d9db29f102cf42d0c91d3f8bce8346d497e5246fa808ac50f6b4a8",
+      "sourceClip": "Armature|Armature|Idle|baselayer",
+      "rootRangeMetres": [
+        0.053308394,
+        0.027070770000000133,
+        0.022583463230000003
+      ],
+      "netTravelMetres": [
+        6.966589999999988e-06,
+        2.7499999999403e-06,
+        -7.085800000000697e-06
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 1.2,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 1.13333333,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 1.6,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "walking_2_inplace",
+      "label": "Walk 2",
+      "actor": "Worker",
+      "loop": true,
+      "duration": 1.2,
+      "note": "Replacement walk candidate. The worker shins still intersect near 0.97 s; needs clearance adjustment.",
+      "sourceFile": "Animation_walking_2_inplace_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Walking_2.zip",
+      "sourceSha256": "3467563e12a1b50a33c31b3ac59edfb3bb37b98079980990518559ab7d12f2f7",
+      "sourceClip": "Armature|Armature|walking_2_inplace|baselayer",
+      "rootRangeMetres": [
+        0.06494364970000001,
+        0.06261093399999995,
+        0.04363319245
+      ],
+      "netTravelMetres": [
+        4.350999999961497e-08,
+        1.4999999975451317e-07,
+        -2.634000000004827e-07
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.966666667,
+          "intersections": 1641
+        },
+        {
+          "label": "hands / head",
+          "time": 0.6,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0.866666667,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "run_fast_10_inplace",
+      "label": "Run Fast 10",
+      "actor": "Worker",
+      "loop": true,
+      "duration": 0.8,
+      "note": "Run is present. Legs cross/intersect near 0.78 s; review at quarter speed.",
+      "sourceFile": "Animation_run_fast_10_inplace_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Run_Fast_10.zip",
+      "sourceSha256": "db60597c39d1d494956e1ff2f106711f99e8ac8a08e2bf83b49fef2eccf62be2",
+      "sourceClip": "Armature|Armature|run_fast_10_inplace|baselayer",
+      "rootRangeMetres": [
+        0.05364925261,
+        0.10411369000000015,
+        0.0278712949
+      ],
+      "netTravelMetres": [
+        -1.1281000000004475e-07,
+        3.1000000011438544e-07,
+        1.0729999999842602e-08
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.783333333,
+          "intersections": 1481
+        },
+        {
+          "label": "hands / head",
+          "time": 0.5,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0.783333333,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Confused_Scratch",
+      "label": "Confused Scratch",
+      "actor": "Worker",
+      "loop": false,
+      "duration": 11.5,
+      "note": "The requested puzzled idle is present. Check boot clearance near 0.20 s; keep the deliberate hand-to-head gesture.",
+      "sourceFile": "Animation_Confused_Scratch_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Confused_Scratch.zip",
+      "sourceSha256": "6737651104181d8ffd773f60fbd716b2ac1491c8d1b630d710fd1af4352534ae",
+      "sourceClip": "Armature|Armature|Confused_Scratch|baselayer",
+      "rootRangeMetres": [
+        0.376622124,
+        0.030579450000000064,
+        0.1829477613
+      ],
+      "netTravelMetres": [
+        -0.03964447441,
+        0.0019226900000002267,
+        0.16326614399999997
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.2,
+          "intersections": 662
+        },
+        {
+          "label": "hands / head",
+          "time": 8.13333333,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 3.96666667,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "injured_walk",
+      "label": "Injured Walk",
+      "actor": "Worker",
+      "loop": true,
+      "duration": 8.66666667,
+      "note": "New export. Limp is present; leg meshes intersect near 6.83 s. Keep the damaged gait, adjust clearance.",
+      "sourceFile": "Animation_injured_walk_withSkin.fbx",
+      "downloadFile": "Loopforge Worker 01 - injured_walk.fbx",
+      "sourceSha256": "6ce99fda2952a0698a8204d0c1149ff23464a6d02a6afdad3721ef0d09cb354b",
+      "sourceClip": "Armature|Armature|Injured_Walk_inplace|baselayer",
+      "rootRangeMetres": [
+        0.10627316,
+        0.0347478499999998,
+        0.0380883897
+      ],
+      "netTravelMetres": [
+        2.231180700000001e-05,
+        0.00018553999999992854,
+        0.00012433647999999901
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 6.83333333,
+          "intersections": 924
+        },
+        {
+          "label": "hands / head",
+          "time": 8.4,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 5.56666667,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Hot_Walk",
+      "label": "Hot Walk",
+      "actor": "Cathexis",
+      "loop": true,
+      "duration": 5.76666667,
+      "note": "Owner confirms Hot Walk in Meshy and selects it as Cathexis\u2019s default walk. The hip-led crossover and attitude are intentional. This worker is only a motion stand-in; retarget and check actual mesh clearance on Cathexis.",
+      "sourceFile": "Animation_Confident_Walk_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Hot_walk.zip",
+      "sourceSha256": "420ab45096d9f04af5bbe9914482c17371bc3ec695bb34038c9d2c749e3fe42e",
+      "sourceClip": "Armature|Armature|Confident_Walk|baselayer",
+      "rootRangeMetres": [
+        0.1349907823,
+        0.05991981000000002,
+        0.03737885621
+      ],
+      "netTravelMetres": [
+        0.00334327102,
+        -0.0007022800000000551,
+        0.00010165210000000202
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.416666667,
+          "intersections": 1778
+        },
+        {
+          "label": "hands / head",
+          "time": 4.4,
+          "intersections": 419
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 5.6,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Alert",
+      "label": "Alert",
+      "actor": "Worker",
+      "loop": true,
+      "duration": 4,
+      "note": "Attentive stance. No contacts found at the three sampled closest poses.",
+      "sourceFile": "Animation_Alert_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Alert.zip",
+      "sourceSha256": "2724cb12e0088b28d59ac0ca710632a392e599fa52e717318eefba628f863b5a",
+      "sourceClip": "Armature|Armature|Alert|baselayer",
+      "rootRangeMetres": [
+        0.07535847368000001,
+        0.04713523700000011,
+        0.027098892900000005
+      ],
+      "netTravelMetres": [
+        0.0,
+        0.0,
+        1.4300000003575342e-08
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 2.38333333,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 2.56666667,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Agree_Gesture",
+      "label": "Agree Gesture",
+      "actor": "Worker",
+      "loop": false,
+      "duration": 13,
+      "note": "Long acknowledgement, not a tiny nod. Forearms intersect near 10.17 s; trim and adjust contact before gameplay.",
+      "sourceFile": "Animation_Agree_Gesture_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Agree_gesture.zip",
+      "sourceSha256": "1ec89fe84330776aeb619a146842da914b38f25cf096eaba31e704e7218cfd19",
+      "sourceClip": "Armature|Armature|Agree_Gesture|baselayer",
+      "rootRangeMetres": [
+        0.249684715,
+        0.05333831999999994,
+        0.31887224700000005
+      ],
+      "netTravelMetres": [
+        -0.001312262980000001,
+        0.006326520000000002,
+        0.2774097273
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 7.46666667,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 6.23333333,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 10.1666667,
+          "intersections": 257
+        }
+      ]
+    },
+    {
+      "id": "Angry_Stomp",
+      "label": "Angry Stomp",
+      "actor": "Worker",
+      "loop": false,
+      "duration": 8,
+      "note": "Expressive reaction. Check legs near 0.45 s and arm crossing near 5.27 s.",
+      "sourceFile": "Animation_Angry_Stomp_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Angry_stomp.zip",
+      "sourceSha256": "d457aca73c3aed5642d1c3fa0b2eabba115feaaf3ae97cc6f25249ef68769cfb",
+      "sourceClip": "Armature|Armature|Angry_Stomp|baselayer",
+      "rootRangeMetres": [
+        0.321278505,
+        0.09411773999999995,
+        0.09740125303
+      ],
+      "netTravelMetres": [
+        0.000378336311,
+        0.00033287000000004063,
+        0.07873153930000001
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.45,
+          "intersections": 1059
+        },
+        {
+          "label": "hands / head",
+          "time": 0.8,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 5.26666667,
+          "intersections": 204
+        }
+      ]
+    },
+    {
+      "id": "Catching_Breath",
+      "label": "Catching Breath",
+      "actor": "Worker",
+      "loop": false,
+      "duration": 7,
+      "note": "Includes a running approach before the recovery pose; about 6.24 m of pelvis travel. Select/author the recovery portion for a stationary overheating idle.",
+      "sourceFile": "Animation_Catching_Breath_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Catching_breath.zip",
+      "sourceSha256": "c5fc07cc67ecaf34223ff8ffd17181bf87139138a499b80eae052626d2e3a463",
+      "sourceClip": "Armature|Armature|Catching_Breath|baselayer",
+      "rootRangeMetres": [
+        0.15859907639999998,
+        0.18381118899999993,
+        6.3752274385700005
+      ],
+      "netTravelMetres": [
+        0.00181061685,
+        -0.03264022999999994,
+        6.2437003765
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 1.93333333,
+          "intersections": 1265
+        },
+        {
+          "label": "hands / head",
+          "time": 2.4,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0.2,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Discuss_While_Moving",
+      "label": "Discuss While Moving",
+      "actor": "Worker",
+      "loop": true,
+      "duration": 8.03333333,
+      "note": "Gesture with real travel (about 1.75 m net). Check legs near 4.15 s; placement and interruption need authored transitions.",
+      "sourceFile": "Animation_Discuss_While_Moving_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Discuss_while_moving.zip",
+      "sourceSha256": "dafb7476c053bcecf5040fc8b79e037798084aa57472fc61c8bdc8e689bc8ba4",
+      "sourceClip": "Armature|Armature|Discuss_While_Moving|baselayer",
+      "rootRangeMetres": [
+        0.1432006551,
+        0.04084914999999989,
+        1.7723649902000003
+      ],
+      "netTravelMetres": [
+        -0.005262622800000005,
+        -0.0007106800000000746,
+        1.74828644822
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 4.15,
+          "intersections": 1497
+        },
+        {
+          "label": "hands / head",
+          "time": 1.63333333,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 8.03333333,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Listening_Gesture",
+      "label": "Listening Gesture",
+      "actor": "Worker",
+      "loop": false,
+      "duration": 9.33333333,
+      "note": "Attentive gesture; boot clearance needs adjustment near the end.",
+      "sourceFile": "Animation_Listening_Gesture_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Listening_Gesture.zip",
+      "sourceSha256": "f51ec8a95a9f139169b47980e0057c3da65ab4d31b1ad31b51aeb95e4be52e07",
+      "sourceClip": "Armature|Armature|Listening_Gesture|baselayer",
+      "rootRangeMetres": [
+        0.17886371610000001,
+        0.020175100000000112,
+        0.1951351782
+      ],
+      "netTravelMetres": [
+        0.00024493455999999997,
+        0.001316300000000048,
+        0.00048546790000000145
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 9.33333333,
+          "intersections": 1538
+        },
+        {
+          "label": "hands / head",
+          "time": 3.3,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 4.73333333,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Victory_Cheer",
+      "label": "Victory Cheer",
+      "actor": "Worker",
+      "loop": false,
+      "duration": 9.33333333,
+      "note": "Celebration with close feet near 1.27 s. Review overhead clearance in the room.",
+      "sourceFile": "Animation_Victory_Cheer_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Victory_cheer.zip",
+      "sourceSha256": "bef4b8c7b50dd7c909098caa8bd09e1e952720318689853bc24bd55cb946eb67",
+      "sourceClip": "Armature|Armature|Victory_Cheer|baselayer",
+      "rootRangeMetres": [
+        0.2235721067,
+        0.25626289999999985,
+        0.275273709
+      ],
+      "netTravelMetres": [
+        0.00039589410000000214,
+        0.005604169999999797,
+        0.00152526379
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 1.26666667,
+          "intersections": 1110
+        },
+        {
+          "label": "hands / head",
+          "time": 3.05,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 9.33333333,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Electrocution_Reaction",
+      "label": "Electrocution Reaction",
+      "actor": "Worker",
+      "loop": false,
+      "duration": 4.66666667,
+      "note": "Shock reaction. No contacts found at the sampled closest poses; keep action timing tied to a confirmed incident.",
+      "sourceFile": "Animation_Electrocution_Reaction_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Electrocution_rxn.zip",
+      "sourceSha256": "58ad5b5df6f704a459f5014fc067c4b262f82ee4ddf97600713d34a12f151d19",
+      "sourceClip": "Armature|Armature|Electrocution_Reaction|baselayer",
+      "rootRangeMetres": [
+        0.08593025806,
+        0.07133734999999986,
+        0.298428669
+      ],
+      "netTravelMetres": [
+        0.011904416100000002,
+        -0.0005079699999999132,
+        -0.0825507307
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 4.46666667,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Electrocuted_Fall",
+      "label": "Electrocuted Fall",
+      "actor": "Worker",
+      "loop": false,
+      "duration": 6.33333333,
+      "note": "One-shot collapse with vertical and forward travel. Check legs near 4.33 s and author ground contact; do not loop in gameplay.",
+      "sourceFile": "Animation_Electrocuted_Fall_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Electrocuted_fall.zip",
+      "sourceSha256": "e0ea4388f38ba9095efd7666f41f61eec20a325829ada29c48094447bde16cc9",
+      "sourceClip": "Armature|Armature|Electrocuted_Fall|baselayer",
+      "rootRangeMetres": [
+        0.6099944972,
+        1.05224907,
+        1.562127414
+      ],
+      "netTravelMetres": [
+        -0.5932825187,
+        -1.04951569,
+        1.2572362981
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 4.33333333,
+          "intersections": 738
+        },
+        {
+          "label": "hands / head",
+          "time": 4.96666667,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 2.36666667,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Push_Forward_and_Stop",
+      "label": "Push Forward and Stop",
+      "actor": "Worker",
+      "loop": false,
+      "duration": 2.6,
+      "note": "Stepping two-handed push. Needs an actual prop/contact target and leg clearance near 0.87 s.",
+      "sourceFile": "Animation_Push_Forward_and_Stop_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Push_forward.zip",
+      "sourceSha256": "131a2e7e4e1ce67412e95b339a49d0534b8167dce233cbd13041af772a2f7672",
+      "sourceClip": "Armature|Armature|Push_Forward_and_Stop|baselayer",
+      "rootRangeMetres": [
+        0.1616874195,
+        0.2806533010000001,
+        0.935277835
+      ],
+      "netTravelMetres": [
+        0.13582373350000002,
+        0.21384894899999995,
+        0.7898452469999999
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.866666667,
+          "intersections": 500
+        },
+        {
+          "label": "hands / head",
+          "time": 0.866666667,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Idle_Turn_Left",
+      "label": "Idle Turn Left",
+      "actor": "Worker",
+      "loop": false,
+      "duration": 0.933333333,
+      "note": "Pivot transition. Inspect boot overlap near 0.53 s; reconcile heading with the agent path.",
+      "sourceFile": "Animation_Idle_Turn_Left_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Idle_turn_left.zip",
+      "sourceSha256": "a5149c1d23b1fa8191ab4c5e5ef3423397b728e8147354f41ee0891be7ce4307",
+      "sourceClip": "Armature|Armature|Idle_Turn_Left|baselayer",
+      "rootRangeMetres": [
+        0.11699716018999999,
+        0.011853710000000017,
+        0.1707348105
+      ],
+      "netTravelMetres": [
+        0.06888214469,
+        -0.0008949200000001323,
+        -0.0779882955
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.533333333,
+          "intersections": 282
+        },
+        {
+          "label": "hands / head",
+          "time": 0.633333333,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Idle_Turn_Right",
+      "label": "Idle Turn Right",
+      "actor": "Worker",
+      "loop": false,
+      "duration": 1.1,
+      "note": "Pivot transition. Inspect boot overlap near 0.63 s; reconcile heading with the agent path.",
+      "sourceFile": "Animation_Idle_Turn_Right_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_bipedIdle_turn_right.zip",
+      "sourceSha256": "106854a870b545692104f588664d3f655feb070cfc38a3017c2cdd87d72dbcda",
+      "sourceClip": "Armature|Armature|Idle_Turn_Right|baselayer",
+      "rootRangeMetres": [
+        0.0767944217,
+        0.007859039999999817,
+        0.0671016395
+      ],
+      "netTravelMetres": [
+        -0.01047469438,
+        0.0007138899999998838,
+        -0.0018880844000000035
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 0.633333333,
+          "intersections": 905
+        },
+        {
+          "label": "hands / head",
+          "time": 0.466666667,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 0.733333333,
+          "intersections": 0
+        }
+      ]
+    },
+    {
+      "id": "Carry_Heavy_Object_Walk_inplace",
+      "label": "Carry Heavy Walk",
+      "actor": "Worker",
+      "loop": true,
+      "duration": 6.5,
+      "note": "Cradled carry pose; no contacts found at the three sampled closest poses. This is not the missing precision work/cradle interaction.",
+      "sourceFile": "Animation_Carry_Heavy_Object_Walk_inplace_withSkin.fbx",
+      "downloadFile": "Meshy_AI_Loopforge_Worker_01_R_biped_Carry_heavy_walk.zip",
+      "sourceSha256": "daaea79bfac1e0024cf81eb454d715888df433de538598474aa137a30f3855f6",
+      "sourceClip": "Armature|Armature|Carry_Heavy_Object_Walk_inplace|baselayer",
+      "rootRangeMetres": [
+        0.44997385,
+        0.04571372600000012,
+        0.1503456212
+      ],
+      "netTravelMetres": [
+        -0.00016412969999999964,
+        -0.007534259999999904,
+        0.002829508800000005
+      ],
+      "markers": [
+        {
+          "label": "leftLeg / rightLeg",
+          "time": 4.9,
+          "intersections": 0
+        },
+        {
+          "label": "hands / head",
+          "time": 4.46666667,
+          "intersections": 0
+        },
+        {
+          "label": "leftArm / rightArm",
+          "time": 2.06666667,
+          "intersections": 0
+        }
+      ]
+    }
+  ]
+}

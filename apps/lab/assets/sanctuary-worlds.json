@@ -1,0 +1,49 @@
+{
+  "pack": "sanctuary-worlds",
+  "assets": {
+    "witcher-world": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-worlds/witcher-world.jpg",
+      "widths": [
+        400,
+        800,
+        1440
+      ],
+      "quality": 81,
+      "maxBytes": 240000
+    },
+    "rdr-world": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-worlds/rdr-world.jpg",
+      "widths": [
+        400,
+        800,
+        1440
+      ],
+      "quality": 81,
+      "maxBytes": 240000
+    },
+    "rimworld-colony": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-worlds/rimworld-colony.jpg",
+      "widths": [
+        400,
+        800,
+        1440
+      ],
+      "quality": 84,
+      "maxBytes": 240000
+    },
+    "loopforge-rivalry": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-worlds/loopforge-rivalry.webp",
+      "widths": [
+        400,
+        800,
+        1440
+      ],
+      "quality": 82,
+      "maxBytes": 300000
+    }
+  }
+}

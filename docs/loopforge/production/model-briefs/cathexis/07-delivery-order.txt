@@ -1,0 +1,13 @@
+CURRENT ACCEPTED BODY: Cathexis_Body_v2_50k, 51,034 triangles. Rear skirt and appearance accepted on 14 October. Do not regenerate it. Start 03-rig-tests.txt with a matching normal-map export and neutral rig plus Hot Walk/expressive sway. Only the final body version belongs in the public viewer.
+
+CATHEXIS — delivery order and remaining gates
+1. Preserve the accepted v2 A-pose. Keep the original mechanical face intact under Grace; no facial-insert cutout.
+2. Stage 2 is CLOSED: the owner has abandoned its remaining face-generation work. Existing Grace plus the original body face are sufficient. The app supplies full Grace, a clipped half and exposed mechanism. Do not wait for additional masks, expression inserts, facial bones or blendshapes.
+3. Rig the accepted v2 BODY ONLY with its mechanical face rigidly following the head: first Hot Walk and expressive sway, then the two remaining tests in 03-rig-tests. Keep Grace out of the skinned export; report the head joint so our app can fit it. Inspect skirt/hair/arm/heel clearance, then test the moving head with existing full/half Grace locally. Report actual finger bones; wrist-only articulation is acceptable for these first tests.
+4. After approval, audition the 28 priority motions, then useful candidates from the broader 161-entry name/category inventory. These are not 161 validated CATHEXIS clips. Use only Hot Walk for travel; no running or alert fallback. An expressive catalog name is not proof of the intended performance.
+5. Select grime treatment A/B/C before material variants. They are comparison inputs, not three new bodies. Keep the same mesh, UVs and rig; brewery residue can be authored after the material direction is chosen. Dirt can accompany anger without forcing it in every scene.
+6. Download original full sources privately, plus neutral and animated textured GLB/FBX. Preserve per-clip names/IDs and actual embedded inventories. All Animations may omit later jobs: verify local files, export missing clips separately.
+
+Custom/offline gaps: sticky-finger disgust, protecting the skirt from grime, optional removal/reseating of the same Grace mask, precise conveyor/vat/loom contacts, Hot Walk starts/stops and paired worker responses. Expression-mask exchange is abandoned; physical mask handling does not block the motion bank. Do not substitute arbitrary gestures or claim these are finished by catalog retargeting.
+
+The v2 body appearance and simplified face-system scope are accepted. Static full/half/exposed previews exist. Moving mask/costume clearance, rigging and gameplay integration remain unvalidated; facial articulation is outside the current scope. A/B/C material selection can wait until the rig tests.

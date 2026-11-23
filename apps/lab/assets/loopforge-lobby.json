@@ -1,0 +1,43 @@
+{
+  "pack": "loopforge-lobby",
+  "assets": {
+    "paperwork-wall": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-lobby/paperwork-wall.png",
+      "widths": [
+        768,
+        1536
+      ],
+      "quality": 88,
+      "maxBytes": 900000
+    },
+    "floor-emblem": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-lobby/floor-emblem.png",
+      "widths": [
+        768,
+        1536
+      ],
+      "quality": 88,
+      "maxBytes": 700000
+    },
+    "enamel": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-lobby/enamel.png",
+      "widths": [
+        1024
+      ],
+      "quality": 88,
+      "maxBytes": 700000
+    },
+    "stone-floor": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-lobby/stone-floor.png",
+      "widths": [
+        1024
+      ],
+      "quality": 80,
+      "maxBytes": 500000
+    }
+  }
+}

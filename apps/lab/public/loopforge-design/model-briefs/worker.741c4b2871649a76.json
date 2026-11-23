@@ -1,0 +1,542 @@
+{
+  "id": "worker",
+  "name": "Worker 01",
+  "subtitle": "Factory worker · body + motion bank",
+  "revision": "Rebuild brief v9 · Alert-referenced free arm",
+  "status": "Cleanup implemented · visual review",
+  "summary": "Round cyan optics and worn industrial anatomy. Nineteen corrected motions sit beside untouched sources, with ten rigid finger hinges and three hand studies. The approved right-hand scratch stays exact; its free arm follows Alert’s posture and the lowered right-arm swing. Inspect the hands/head close-up and full gesture. Revised free arm awaits owner review.",
+  "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",
+  "viewer": "/stepanoskin/loopforge/play/asset-review/worker",
+  "viewerLabel": "Compare corrected and original motions",
+  "record": "/loopforge-design/narrative-cast.html#worker",
+  "parts": [
+    "25,893-triangle accepted body",
+    "24-joint source / 34-joint corrected skin",
+    "19 source + 19 corrected motions; 3 hand studies"
+  ],
+  "remaining": [
+    "Owner visual approval of corrected motion",
+    "Afraid recoil and precise work/cradle interaction",
+    "Prop contacts, transitions and crowd/device measurements"
+  ],
+  "images": [
+    {
+      "label": "Front · proportion authority",
+      "role": "Body input — views of one model",
+      "sourceName": "worker-01-front.png",
+      "sourceSha256": "733d9166885871504784915d2598f0ece0564c107d6014322711e152c039dc6e",
+      "input": {
+        "src": "/media/loopforge-model-briefs/worker-01-front.02c6c68fda86b0c0.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 346629,
+        "sha256": "02c6c68fda86b0c0c47fe4094f084ad9b537e9191ac25c8fc4f65c140630a851"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/worker-01-front-360.ca4047f417fd30bb.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 21062,
+          "sha256": "ca4047f417fd30bb154f91838c0e69bb0f5e48dcfcb922a1f48cd2fb7bb39c30"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/worker-01-front-720.e342e3de8209d6a8.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 71616,
+          "sha256": "e342e3de8209d6a8a6189f9be098e5ff0aafc2c4dabc475d27fd6296cd8142e3"
+        }
+      ],
+      "archivePath": "images/worker-01-front.02c6c68fda86b0c0.jpg"
+    },
+    {
+      "label": "Back · rear construction",
+      "role": "Body input — views of one model",
+      "sourceName": "worker-01-back.png",
+      "sourceSha256": "14f5e668c2d05e6e4ea3578b559c16ce78b3d71e56663ebda9c3a4d5338d1337",
+      "input": {
+        "src": "/media/loopforge-model-briefs/worker-01-back.c97d065cd1642436.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 329693,
+        "sha256": "c97d065cd16424369c75cde61570dd65af1ec00e91c9e2a71ab71ba03dca00ea"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/worker-01-back-360.97e4cc46e1f6da9f.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 21180,
+          "sha256": "97e4cc46e1f6da9f15c9f983895922764980e6c0eb6100923aef672f3de049ba"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/worker-01-back-720.d73ae80b3fbe87b6.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 65260,
+          "sha256": "d73ae80b3fbe87b68c9b0b964e1bbf678b04cee90bc65fa6c32db556685cdc9d"
+        }
+      ],
+      "archivePath": "images/worker-01-back.c97d065cd1642436.jpg"
+    },
+    {
+      "label": "Left profile · depth",
+      "role": "Body input — views of one model",
+      "sourceName": "worker-01-left.png",
+      "sourceSha256": "0267f79a2aae22654cc053b85bb59fe3a7de09aba7118f3c4a5d961e444e974a",
+      "input": {
+        "src": "/media/loopforge-model-briefs/worker-01-left.9e94fa650cdd2d38.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 220989,
+        "sha256": "9e94fa650cdd2d387be0962f0c8e6c07ac24be797ff7aa401c70ad371109d626"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/worker-01-left-360.a5241495b17420c2.webp",
+          "width": 360,
+          "height": 540,
+          "bytes": 10702,
+          "sha256": "a5241495b17420c2ddd9009efdc2a8dabdb1810ee0a7b70bd2d864a02d3cebdf"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/worker-01-left-720.ef5817b15398d7dd.webp",
+          "width": 720,
+          "height": 1080,
+          "bytes": 37372,
+          "sha256": "ef5817b15398d7dddeec5f792e45c048a2bcbc4ac535a88421027ab1ec7d77eb"
+        }
+      ],
+      "archivePath": "images/worker-01-left.9e94fa650cdd2d38.jpg"
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Body",
+      "file": "worker/01-body.txt",
+      "text": "Create a new project: Loopforge Worker 01.\n\nThe three attached images show ONE character, not three alternatives. Use worker-01-front.02c6c68fda86b0c0.jpg as the authoritative design and A-pose. worker-01-back.c97d065cd1642436.jpg specifies the rear construction; worker-01-left.9e94fa650cdd2d38.jpg supports body depth. Keep the front pose/proportions if minor generated-view discrepancies occur. Do not combine these into a collage or generate extra characters.\n\nMake a textured humanoid factory-worker robot faithful to this design: ordinary adult proportions, paired round cyan optics, a narrow grille mouth, fitted worn dark petrol-grey steel panels, restrained brass bearings, ribbed waist, coherent pelvis, tapered limbs, exposed mechanical hinges, five separate fingers including a thumb on each hand, and sturdy split-toe feet. Both hands are empty. No weapon, tool, carried object, backpack, base, floor or background geometry. No writing or supervisor insignia. Preserve mechanical form rather than smoothing it into a toy.\n\nMaintain a symmetrical A-pose with arms separated from the body and a gap between the legs. Keep shoulder, elbow, wrist, hip, knee and ankle joints clear enough to articulate. Preserve face, hand, foot and silhouette geometry; fine scratches, rivets and shallow grooves belong primarily in textures/normal maps.\n\nGenerate the body and textures, then create a separate remeshed candidate targeting about 25,000 triangles. Retain the detailed source separately. Do not sacrifice the hands or face just to hit the count. Use a compact PBR material set with base colour, normal, roughness and metalness where supported. Keep eye emission separate if supported; no baked cyan halo or dramatic studio shadows. Target 2K textures for the first review; retain better source maps separately if available.\n\nShow the result from front, back and side before rigging. Report the actual triangle count and any unsupported requests. Stop after the model/remesh stage so I can inspect it.\n",
+      "url": "/loopforge-design/model-briefs/worker-01-body.418ec4d37bcb2dc2.txt"
+    },
+    {
+      "title": "Rig and motion",
+      "file": "worker/02-rig-and-motion.txt",
+      "text": "Use the accepted Worker 01 delivery mesh and textures throughout. Rig a humanoid biped with Mixamo export naming; keep a neutral rigged A-pose. Report actual hierarchy and finger support. The accepted FBX bank has 24 skin joints, while an earlier GLB had 23: do not mix their raw animation tracks without retargeting. The vendor source has rigid fingers. Our offline derivative now adds ten rigid digit hinges (34 joints total) plus corrected motions. Preserve the vendor export as source and rerun offline fitting/cleanup after regeneration; do not claim the new Meshy export already includes those fixes. Broader rigid armor weighting remains scene-dependent.\n\nApply these catalog motions to the SAME body. Keep IDs in filenames and original embedded clip names. Export mesh, skin, materials and motion in GLB and FBX; export each clip independently if All Animations omits later additions.\n- 0 Idle\n- 2 Alert\n- 25 Agree_Gesture\n- 26 Angry_Stomp\n- 31 Catching_Breath\n- 36 Confused_Scratch (idle_scratch)\n- 37 Discuss_While_Moving\n- 47 Listening_Gesture\n- 59 Victory_Cheer\n- 106 Confident_Walk / owner UI name Hot Walk — CATHEXIS reference, not worker default\n- 172 Electrocution_Reaction\n- 181 Electrocuted_Fall\n- 260 Push_Forward_and_Stop\n- 576 Idle_Turn_Left\n- 586 Idle_Turn_Right\n- 611 Carry_Heavy_Walk\n- 637 Injured_Walk_inplace\n- 657 run_fast_10_inplace\n- 692 walking_2_inplace\n\n613 Casual_Walk_inplace was rejected for leg crossing. 692 is a replacement candidate, NOT certified collision-free: the original downloaded worker intersects its shins. Our corrected derivative is separate and has passed the recorded 120 Hz mesh checks. Keep source and corrected versions separate. Preserve intended Hot Walk crossover for CATHEXIS, but correct actual surface penetration on her own model.\n\nDo not trust labels such as in-place without inspecting root travel. Catching Breath includes a running approach, Discuss While Moving travels, and fall clips finish displaced. Catalog names are source identity, not guaranteed gameplay meaning.\n\nStill missing: afraid_recoil and exact work_cradle. Do not substitute a carry walk for machine work. If custom motion is unavailable in the current Agent UI, report that and preserve the successful exports for offline authoring.\n\nReport each filename, hash if available, triangle/joint counts, embedded clips/durations and root translation/rotation. A working browser preview is not proof of a complete downloaded asset.\n\nOffline acting requirements (after source export): Confused Scratch must place the palm and fingers against the scalp, with a natural wrist and relaxed free arm. Injured Walk braces the right thigh with the right palm. Agree Gesture presents opposed palms for clapping. Angry Stomp folds the arms at different heights/depths and uncrosses them without cutting through one another. Resting hands face inward with relaxed fingers and forearm/wrist rotation. Electrocuted Fall must keep both complete hands above the fixed scene floor. These are locally authored corrections, not Meshy catalog guarantees; preserve the source for comparison.\n\nScratch correction starts from the original reaching-arm motion. Fit an actual central palm surface, accounting for its tilt relative to the wrist bone; do not use fingertip-only contact. Solve shoulder and elbow together with a stable source bend plane and a maximum 130-degree elbow flexion. Align the wrist as part of the complete palm pose, keep its bend below 55 degrees, and keep the free wrist within the measured Alert reference range (26.58 degrees). Use Alert’s left-arm posture, blending to a bind-frame mirror of the lowered right-arm swing during recoil and release. Keep the original torso/clavicle animation and relaxed finger hinges; do not pin the wrist to a fixed hip-relative target. The right-hand scratch has owner approval: preserve its exact baked channels when changing the free arm. Use two small scalp-scratching beats and a continuous puzzled palm rest. Check actual palm-to-head surface distance throughout each hold (within 15 mm), not merely absence of intersections. These replace the previous exact-source-elbow requirement, which forced a bad wrist fit. Fall left-arm correction must preserve source elbow and wrist alignment, lifting the whole arm to clear the floor instead of forcing the palm down. Review every contact from front, profile and three-quarter views plus entry/release. These constraints are checked locally after Meshy export.\n",
+      "url": "/loopforge-design/model-briefs/worker-02-rig-and-motion.513e291c9d9d6456.txt"
+    },
+    {
+      "title": "Afraid",
+      "file": "worker/03-afraid.txt",
+      "text": "CUSTOM / OFFLINE CONTACT BRIEF — not supplied in the current bank.\n\nAn industrial robot notices a threat in front, recoils without stepping, lowers its torso, raises both forearms to shield its face and holds a fearful guarded pose briefly. Its head makes a small wary look, then it cautiously lowers its hands to the opening neutral stance. Feet planted, no root travel. Fear and submission, not combat. No prop.\n",
+      "url": "/loopforge-design/model-briefs/worker-03-afraid.045045d169198b1e.txt"
+    },
+    {
+      "title": "Work cradle",
+      "file": "worker/04-work-cradle.txt",
+      "text": "CUSTOM / OFFLINE CONTACT BRIEF — not supplied in the current bank.\n\nA factory robot works standing at a fixed waist-high fixture. Feet stay planted. It leans forward, braces a small cradle with its left hand, reaches with its right hand to a latch, presses and turns it with brief effort, then releases both hands and returns to neutral. Clear anticipation, contact, effort and release. No lifting or root travel. Animate body only.\n",
+      "url": "/loopforge-design/model-briefs/worker-04-work-cradle.f60af4965fadc294.txt"
+    }
+  ],
+  "motionInventory": [
+    {
+      "label": "Idle",
+      "sourceClip": "Armature|Armature|Idle|baselayer",
+      "sourceFile": "Animation_idle_withSkin.fbx",
+      "sourceSha256": "42121a1375d9db29f102cf42d0c91d3f8bce8346d497e5246fa808ac50f6b4a8",
+      "duration": 4,
+      "note": "Original export observation: New export. Staggered stance with torso turns and weight shifts; review foot planting before using as the default idle. No contacts found at the three sampled closest poses. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Walk 2",
+      "sourceClip": "Armature|Armature|walking_2_inplace|baselayer",
+      "sourceFile": "Animation_walking_2_inplace_withSkin.fbx",
+      "sourceSha256": "3467563e12a1b50a33c31b3ac59edfb3bb37b98079980990518559ab7d12f2f7",
+      "duration": 1.2,
+      "note": "Original export observation: Replacement walk candidate. The worker shins still intersect near 0.97 s; needs clearance adjustment. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Run Fast 10",
+      "sourceClip": "Armature|Armature|run_fast_10_inplace|baselayer",
+      "sourceFile": "Animation_run_fast_10_inplace_withSkin.fbx",
+      "sourceSha256": "db60597c39d1d494956e1ff2f106711f99e8ac8a08e2bf83b49fef2eccf62be2",
+      "duration": 0.8,
+      "note": "Original export observation: Run is present. Legs cross/intersect near 0.78 s; review at quarter speed. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Confused Scratch",
+      "sourceClip": "Armature|Armature|Confused_Scratch|baselayer",
+      "sourceFile": "Animation_Confused_Scratch_withSkin.fbx",
+      "sourceSha256": "6737651104181d8ffd773f60fbd716b2ac1491c8d1b630d710fd1af4352534ae",
+      "duration": 11.5,
+      "note": "Original export observation: The requested puzzled idle is present. Check boot clearance near 0.20 s; keep the deliberate hand-to-head gesture. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Injured Walk",
+      "sourceClip": "Armature|Armature|Injured_Walk_inplace|baselayer",
+      "sourceFile": "Animation_injured_walk_withSkin.fbx",
+      "sourceSha256": "6ce99fda2952a0698a8204d0c1149ff23464a6d02a6afdad3721ef0d09cb354b",
+      "duration": 8.66666667,
+      "note": "Original export observation: New export. Limp is present; leg meshes intersect near 6.83 s. Keep the damaged gait, adjust clearance. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Hot Walk",
+      "sourceClip": "Armature|Armature|Confident_Walk|baselayer",
+      "sourceFile": "Animation_Confident_Walk_withSkin.fbx",
+      "sourceSha256": "420ab45096d9f04af5bbe9914482c17371bc3ec695bb34038c9d2c749e3fe42e",
+      "duration": 5.76666667,
+      "note": "Original export observation: Owner confirms Hot Walk in Meshy and selects it as Cathexis’s default walk. The hip-led crossover and attitude are intentional. This worker is only a motion stand-in; retarget and check actual mesh clearance on Cathexis. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Alert",
+      "sourceClip": "Armature|Armature|Alert|baselayer",
+      "sourceFile": "Animation_Alert_withSkin.fbx",
+      "sourceSha256": "2724cb12e0088b28d59ac0ca710632a392e599fa52e717318eefba628f863b5a",
+      "duration": 4,
+      "note": "Original export observation: Attentive stance. No contacts found at the three sampled closest poses. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Agree Gesture",
+      "sourceClip": "Armature|Armature|Agree_Gesture|baselayer",
+      "sourceFile": "Animation_Agree_Gesture_withSkin.fbx",
+      "sourceSha256": "1ec89fe84330776aeb619a146842da914b38f25cf096eaba31e704e7218cfd19",
+      "duration": 13,
+      "note": "Original export observation: Long acknowledgement, not a tiny nod. Forearms intersect near 10.17 s; trim and adjust contact before gameplay. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Angry Stomp",
+      "sourceClip": "Armature|Armature|Angry_Stomp|baselayer",
+      "sourceFile": "Animation_Angry_Stomp_withSkin.fbx",
+      "sourceSha256": "d457aca73c3aed5642d1c3fa0b2eabba115feaaf3ae97cc6f25249ef68769cfb",
+      "duration": 8,
+      "note": "Original export observation: Expressive reaction. Check legs near 0.45 s and arm crossing near 5.27 s. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Catching Breath",
+      "sourceClip": "Armature|Armature|Catching_Breath|baselayer",
+      "sourceFile": "Animation_Catching_Breath_withSkin.fbx",
+      "sourceSha256": "c5fc07cc67ecaf34223ff8ffd17181bf87139138a499b80eae052626d2e3a463",
+      "duration": 7,
+      "note": "Original export observation: Includes a running approach before the recovery pose; about 6.24 m of pelvis travel. Select/author the recovery portion for a stationary overheating idle. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Discuss While Moving",
+      "sourceClip": "Armature|Armature|Discuss_While_Moving|baselayer",
+      "sourceFile": "Animation_Discuss_While_Moving_withSkin.fbx",
+      "sourceSha256": "dafb7476c053bcecf5040fc8b79e037798084aa57472fc61c8bdc8e689bc8ba4",
+      "duration": 8.03333333,
+      "note": "Original export observation: Gesture with real travel (about 1.75 m net). Check legs near 4.15 s; placement and interruption need authored transitions. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Listening Gesture",
+      "sourceClip": "Armature|Armature|Listening_Gesture|baselayer",
+      "sourceFile": "Animation_Listening_Gesture_withSkin.fbx",
+      "sourceSha256": "f51ec8a95a9f139169b47980e0057c3da65ab4d31b1ad31b51aeb95e4be52e07",
+      "duration": 9.33333333,
+      "note": "Original export observation: Attentive gesture; boot clearance needs adjustment near the end. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Victory Cheer",
+      "sourceClip": "Armature|Armature|Victory_Cheer|baselayer",
+      "sourceFile": "Animation_Victory_Cheer_withSkin.fbx",
+      "sourceSha256": "bef4b8c7b50dd7c909098caa8bd09e1e952720318689853bc24bd55cb946eb67",
+      "duration": 9.33333333,
+      "note": "Original export observation: Celebration with close feet near 1.27 s. Review overhead clearance in the room. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Electrocution Reaction",
+      "sourceClip": "Armature|Armature|Electrocution_Reaction|baselayer",
+      "sourceFile": "Animation_Electrocution_Reaction_withSkin.fbx",
+      "sourceSha256": "58ad5b5df6f704a459f5014fc067c4b262f82ee4ddf97600713d34a12f151d19",
+      "duration": 4.66666667,
+      "note": "Original export observation: Shock reaction. No contacts found at the sampled closest poses; keep action timing tied to a confirmed incident. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Electrocuted Fall",
+      "sourceClip": "Armature|Armature|Electrocuted_Fall|baselayer",
+      "sourceFile": "Animation_Electrocuted_Fall_withSkin.fbx",
+      "sourceSha256": "e0ea4388f38ba9095efd7666f41f61eec20a325829ada29c48094447bde16cc9",
+      "duration": 6.33333333,
+      "note": "Original export observation: One-shot collapse with vertical and forward travel. Check legs near 4.33 s and author ground contact; do not loop in gameplay. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Push Forward and Stop",
+      "sourceClip": "Armature|Armature|Push_Forward_and_Stop|baselayer",
+      "sourceFile": "Animation_Push_Forward_and_Stop_withSkin.fbx",
+      "sourceSha256": "131a2e7e4e1ce67412e95b339a49d0534b8167dce233cbd13041af772a2f7672",
+      "duration": 2.6,
+      "note": "Original export observation: Stepping two-handed push. Needs an actual prop/contact target and leg clearance near 0.87 s. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Idle Turn Left",
+      "sourceClip": "Armature|Armature|Idle_Turn_Left|baselayer",
+      "sourceFile": "Animation_Idle_Turn_Left_withSkin.fbx",
+      "sourceSha256": "a5149c1d23b1fa8191ab4c5e5ef3423397b728e8147354f41ee0891be7ce4307",
+      "duration": 0.933333333,
+      "note": "Original export observation: Pivot transition. Inspect boot overlap near 0.53 s; reconcile heading with the agent path. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Idle Turn Right",
+      "sourceClip": "Armature|Armature|Idle_Turn_Right|baselayer",
+      "sourceFile": "Animation_Idle_Turn_Right_withSkin.fbx",
+      "sourceSha256": "106854a870b545692104f588664d3f655feb070cfc38a3017c2cdd87d72dbcda",
+      "duration": 1.1,
+      "note": "Original export observation: Pivot transition. Inspect boot overlap near 0.63 s; reconcile heading with the agent path. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    },
+    {
+      "label": "Carry Heavy Walk",
+      "sourceClip": "Armature|Armature|Carry_Heavy_Object_Walk_inplace|baselayer",
+      "sourceFile": "Animation_Carry_Heavy_Object_Walk_inplace_withSkin.fbx",
+      "sourceSha256": "daaea79bfac1e0024cf81eb454d715888df433de538598474aa137a30f3855f6",
+      "duration": 6.5,
+      "note": "Original export observation: Cradled carry pose; no contacts found at the three sampled closest poses. This is not the missing precision work/cradle interaction. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+    }
+  ],
+  "files": [
+    {
+      "name": "images/worker-01-front.02c6c68fda86b0c0.jpg",
+      "src": "/media/loopforge-model-briefs/worker-01-front.02c6c68fda86b0c0.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 346629,
+      "sha256": "02c6c68fda86b0c0c47fe4094f084ad9b537e9191ac25c8fc4f65c140630a851"
+    },
+    {
+      "name": "images/worker-01-back.c97d065cd1642436.jpg",
+      "src": "/media/loopforge-model-briefs/worker-01-back.c97d065cd1642436.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 329693,
+      "sha256": "c97d065cd16424369c75cde61570dd65af1ec00e91c9e2a71ab71ba03dca00ea"
+    },
+    {
+      "name": "images/worker-01-left.9e94fa650cdd2d38.jpg",
+      "src": "/media/loopforge-model-briefs/worker-01-left.9e94fa650cdd2d38.jpg",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 220989,
+      "sha256": "9e94fa650cdd2d387be0962f0c8e6c07ac24be797ff7aa401c70ad371109d626"
+    },
+    {
+      "name": "prompts/01-body.txt",
+      "src": "/loopforge-design/model-briefs/worker-01-body.418ec4d37bcb2dc2.txt",
+      "bytes": 2009,
+      "sha256": "418ec4d37bcb2dc222582f14391bdd384b543c2a4c7652101e659d35014e1c56"
+    },
+    {
+      "name": "prompts/02-rig-and-motion.txt",
+      "src": "/loopforge-design/model-briefs/worker-02-rig-and-motion.513e291c9d9d6456.txt",
+      "bytes": 4485,
+      "sha256": "513e291c9d9d64565d2422824b92ea74e131efd596cca5fc7634f8ae0de828db"
+    },
+    {
+      "name": "prompts/03-afraid.txt",
+      "src": "/loopforge-design/model-briefs/worker-03-afraid.045045d169198b1e.txt",
+      "bytes": 416,
+      "sha256": "045045d169198b1eea3d3f86b719a651b243984acfbfd62ad65cd3148df92528"
+    },
+    {
+      "name": "prompts/04-work-cradle.txt",
+      "src": "/loopforge-design/model-briefs/worker-04-work-cradle.f60af4965fadc294.txt",
+      "bytes": 435,
+      "sha256": "f60af4965fadc2944bc6c94e728a5f9fee21540cc60cd22d9313b9ab7cb67836"
+    },
+    {
+      "name": "README.md",
+      "src": "/loopforge-design/model-briefs/worker-README.9decda0c2ddaf9f5.md",
+      "bytes": 1860,
+      "sha256": "9decda0c2ddaf9f5e7762f84c789fd45a9746ab687e3b8ae72a7f0143fd22173"
+    },
+    {
+      "name": "export-audit.json",
+      "src": "/loopforge-design/model-briefs/worker-export-audit.24bd16667f9ce419.json",
+      "bytes": 22997,
+      "sha256": "24bd16667f9ce419cae2cfb11a3d19fa58aba4d2d02016cd82934b2c9fb654a4"
+    },
+    {
+      "name": "image-generation-prompts.json",
+      "src": "/loopforge-design/model-briefs/worker-image-generation-prompts.d80b7b628ee4c793.json",
+      "bytes": 9916,
+      "sha256": "d80b7b628ee4c7936e04aad2184d426be0aec9480000f5e746f1956274389876"
+    },
+    {
+      "name": "motion-cleanup.json",
+      "src": "/loopforge-design/model-briefs/worker-motion-cleanup.2892b21ec5206b3f.json",
+      "bytes": 42773,
+      "sha256": "2892b21ec5206b3f927925e59615a5ee4ffe6e4d3e6aa14d7d5bfeefdb2c72f4"
+    }
+  ],
+  "downloadBytes": 982202,
+  "packageManifest": {
+    "schemaVersion": 1,
+    "id": "worker",
+    "revision": "Rebuild brief v9 · Alert-referenced free arm",
+    "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",
+    "viewer": "https://www.fruitfulab.net/stepanoskin/loopforge/play/asset-review/worker",
+    "images": [
+      {
+        "label": "Front · proportion authority",
+        "role": "Body input — views of one model",
+        "sourceName": "worker-01-front.png",
+        "sourceSha256": "733d9166885871504784915d2598f0ece0564c107d6014322711e152c039dc6e",
+        "input": {
+          "src": "/media/loopforge-model-briefs/worker-01-front.02c6c68fda86b0c0.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 346629,
+          "sha256": "02c6c68fda86b0c0c47fe4094f084ad9b537e9191ac25c8fc4f65c140630a851"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/worker-01-front-360.ca4047f417fd30bb.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 21062,
+            "sha256": "ca4047f417fd30bb154f91838c0e69bb0f5e48dcfcb922a1f48cd2fb7bb39c30"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/worker-01-front-720.e342e3de8209d6a8.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 71616,
+            "sha256": "e342e3de8209d6a8a6189f9be098e5ff0aafc2c4dabc475d27fd6296cd8142e3"
+          }
+        ],
+        "archivePath": "images/worker-01-front.02c6c68fda86b0c0.jpg"
+      },
+      {
+        "label": "Back · rear construction",
+        "role": "Body input — views of one model",
+        "sourceName": "worker-01-back.png",
+        "sourceSha256": "14f5e668c2d05e6e4ea3578b559c16ce78b3d71e56663ebda9c3a4d5338d1337",
+        "input": {
+          "src": "/media/loopforge-model-briefs/worker-01-back.c97d065cd1642436.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 329693,
+          "sha256": "c97d065cd16424369c75cde61570dd65af1ec00e91c9e2a71ab71ba03dca00ea"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/worker-01-back-360.97e4cc46e1f6da9f.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 21180,
+            "sha256": "97e4cc46e1f6da9f15c9f983895922764980e6c0eb6100923aef672f3de049ba"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/worker-01-back-720.d73ae80b3fbe87b6.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 65260,
+            "sha256": "d73ae80b3fbe87b68c9b0b964e1bbf678b04cee90bc65fa6c32db556685cdc9d"
+          }
+        ],
+        "archivePath": "images/worker-01-back.c97d065cd1642436.jpg"
+      },
+      {
+        "label": "Left profile · depth",
+        "role": "Body input — views of one model",
+        "sourceName": "worker-01-left.png",
+        "sourceSha256": "0267f79a2aae22654cc053b85bb59fe3a7de09aba7118f3c4a5d961e444e974a",
+        "input": {
+          "src": "/media/loopforge-model-briefs/worker-01-left.9e94fa650cdd2d38.jpg",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 220989,
+          "sha256": "9e94fa650cdd2d387be0962f0c8e6c07ac24be797ff7aa401c70ad371109d626"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/worker-01-left-360.a5241495b17420c2.webp",
+            "width": 360,
+            "height": 540,
+            "bytes": 10702,
+            "sha256": "a5241495b17420c2ddd9009efdc2a8dabdb1810ee0a7b70bd2d864a02d3cebdf"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/worker-01-left-720.ef5817b15398d7dd.webp",
+            "width": 720,
+            "height": 1080,
+            "bytes": 37372,
+            "sha256": "ef5817b15398d7dddeec5f792e45c048a2bcbc4ac535a88421027ab1ec7d77eb"
+          }
+        ],
+        "archivePath": "images/worker-01-left.9e94fa650cdd2d38.jpg"
+      }
+    ],
+    "files": [
+      {
+        "name": "images/worker-01-front.02c6c68fda86b0c0.jpg",
+        "src": "/media/loopforge-model-briefs/worker-01-front.02c6c68fda86b0c0.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 346629,
+        "sha256": "02c6c68fda86b0c0c47fe4094f084ad9b537e9191ac25c8fc4f65c140630a851"
+      },
+      {
+        "name": "images/worker-01-back.c97d065cd1642436.jpg",
+        "src": "/media/loopforge-model-briefs/worker-01-back.c97d065cd1642436.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 329693,
+        "sha256": "c97d065cd16424369c75cde61570dd65af1ec00e91c9e2a71ab71ba03dca00ea"
+      },
+      {
+        "name": "images/worker-01-left.9e94fa650cdd2d38.jpg",
+        "src": "/media/loopforge-model-briefs/worker-01-left.9e94fa650cdd2d38.jpg",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 220989,
+        "sha256": "9e94fa650cdd2d387be0962f0c8e6c07ac24be797ff7aa401c70ad371109d626"
+      },
+      {
+        "name": "prompts/01-body.txt",
+        "src": "/loopforge-design/model-briefs/worker-01-body.418ec4d37bcb2dc2.txt",
+        "bytes": 2009,
+        "sha256": "418ec4d37bcb2dc222582f14391bdd384b543c2a4c7652101e659d35014e1c56"
+      },
+      {
+        "name": "prompts/02-rig-and-motion.txt",
+        "src": "/loopforge-design/model-briefs/worker-02-rig-and-motion.513e291c9d9d6456.txt",
+        "bytes": 4485,
+        "sha256": "513e291c9d9d64565d2422824b92ea74e131efd596cca5fc7634f8ae0de828db"
+      },
+      {
+        "name": "prompts/03-afraid.txt",
+        "src": "/loopforge-design/model-briefs/worker-03-afraid.045045d169198b1e.txt",
+        "bytes": 416,
+        "sha256": "045045d169198b1eea3d3f86b719a651b243984acfbfd62ad65cd3148df92528"
+      },
+      {
+        "name": "prompts/04-work-cradle.txt",
+        "src": "/loopforge-design/model-briefs/worker-04-work-cradle.f60af4965fadc294.txt",
+        "bytes": 435,
+        "sha256": "f60af4965fadc2944bc6c94e728a5f9fee21540cc60cd22d9313b9ab7cb67836"
+      },
+      {
+        "name": "README.md",
+        "src": "/loopforge-design/model-briefs/worker-README.9decda0c2ddaf9f5.md",
+        "bytes": 1860,
+        "sha256": "9decda0c2ddaf9f5e7762f84c789fd45a9746ab687e3b8ae72a7f0143fd22173"
+      },
+      {
+        "name": "export-audit.json",
+        "src": "/loopforge-design/model-briefs/worker-export-audit.24bd16667f9ce419.json",
+        "bytes": 22997,
+        "sha256": "24bd16667f9ce419cae2cfb11a3d19fa58aba4d2d02016cd82934b2c9fb654a4"
+      },
+      {
+        "name": "image-generation-prompts.json",
+        "src": "/loopforge-design/model-briefs/worker-image-generation-prompts.d80b7b628ee4c793.json",
+        "bytes": 9916,
+        "sha256": "d80b7b628ee4c7936e04aad2184d426be0aec9480000f5e746f1956274389876"
+      },
+      {
+        "name": "motion-cleanup.json",
+        "src": "/loopforge-design/model-briefs/worker-motion-cleanup.2892b21ec5206b3f.json",
+        "bytes": 42773,
+        "sha256": "2892b21ec5206b3f927925e59615a5ee4ffe6e4d3e6aa14d7d5bfeefdb2c72f4"
+      }
+    ]
+  }
+}

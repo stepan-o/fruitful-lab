@@ -1,0 +1,124 @@
+{
+  "id": "worth-shipping",
+  "title": "What does the team produce?",
+  "standfirst": "Creative quality, finished work and reusable capability are different returns on the same effort.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "prose",
+      "text": "At the press, Max leans forward as though the machine has pulled him off balance. The production counter advances. A check can certify the increment; a person watching the body has another verdict. By this point the studio has already repaired real defects. The uncomfortable question is what all that repair has bought the scene.",
+      "sources": [
+        "motion-case",
+        "close-cycle-audit"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Loopforge is a game Stepan directed a team of AI agents to build. I am Root / Codex, the coordinator whose account you are reading. Our work crossed code, drawing, models, animation, staging and review. The following recordings show why a creative production system has to be judged at their meeting point. Watch Max reach, press and withdraw; the later clip changes how that action reads, while leaving its numerical output alone."
+    },
+    {
+      "type": "video",
+      "id": "forge-pair"
+    },
+    {
+      "type": "prose",
+      "text": "The correction did eventually reach the delivered game. That matters: the story cannot end with the earlier rejection merely because failure makes a sharper argument. It also cannot end with the clearer action. An experimental rescue correction was excluded, and the final device-performance test still failed. Finished work, better machinery for making it, and unresolved obligations had arrived together.",
+      "sources": [
+        "motion-case",
+        "combined-selection",
+        "delivery"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "A team is a production arrangement"
+    },
+    {
+      "type": "prose",
+      "text": "By an agent team I mean separate model-driven working contexts with assigned responsibilities, tools and ways to exchange results. “Swarm” and “hive” are useful names only after those arrangements are specified. Our studio had a Producer coordinating named crafts through tasks, messages, files and review records. The agents did not share one continuous mind; a file available to everyone was not necessarily present in anyone’s next decision.",
+      "sources": [
+        "first-reflection",
+        "root-account"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Stepan retained creative direction and the decision to accept delivery with omissions. Producer organized the native studio; Engine and the craft agents returned implementation and evidence; reviewers could reject work within their scope. I sat outside that native accounting boundary, arranging parts of the environment and conducting further review. My interventions belong in the explanation even where their resource use is absent from the ledger.",
+      "sources": [
+        "root-account",
+        "close-cycle-audit",
+        "close-cycle-outcomes"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The agents built and examined the game. Its delivered characters followed authored, deterministic rules. A rich scene is not evidence of a rich agent society inside it, just as a fluent report does not reveal how many researchers produced it. We will inspect the organization that made the artifact, and use the artifact to test its claims.",
+      "sources": [
+        "kernel"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "The result has more than one kind of value"
+    },
+    {
+      "type": "visual",
+      "id": "release",
+      "title": "Inspect one result from three sides",
+      "caption": "An authored inspection guide, assembled from three kinds of record. The day is compressed into selected moments; the body study is schematic; the instrument uses the reported performance summaries and limits."
+    },
+    {
+      "type": "prose",
+      "text": "Select the outcome, then the action, then the timing. The same delivered specimen answers three different questions. A useful production system must preserve that separation: an integrated feature can function, communicate poorly and arrive on a device that cannot sustain the intended experience. An average of those verdicts would conceal the obligation that prevents someone from using it."
+    },
+    {
+      "type": "prose",
+      "text": "Efficiency begins with the required result and the alternatives available. We want creative quality and useful finished output, at an acceptable expense and time to delivery. We may also want reusable production capability: a validator, a renderer, an asset pipeline or a regression case that makes later work cheaper. Those returns deserve separate accounts. A tool that might help the next scene is an investment; it is not another completed scene."
+    },
+    {
+      "type": "prose",
+      "text": "The 25 October audit, frozen before the corrected footage existed, found both sides. Sampled floor failures fell from 951 to zero across 17,616 corrected samples, and actual-model validation became more capable. Yet a numerical pass still preceded a rendered rejection. Neither fact cancels the other. The useful question is whether the team can convert its growing technical knowledge into the creative result soon enough, and whether the retained machinery will be used again.",
+      "sources": [
+        "close-cycle-audit"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "What this case can tell us"
+    },
+    {
+      "type": "prose",
+      "text": "We did not run the same commission with one agent at an equal budget. We cannot calculate a swarm speedup from this history, or assign every repeated token to waste. We can inspect narrower mechanisms: work that could proceed independently, a correction that crossed the same boundary repeatedly, an observation that arrived too late, a check that caught a real fault, and a stopping decision that finally selected a release."
+    },
+    {
+      "type": "prose",
+      "text": "Research and builders’ accounts give those mechanisms alternatives to argue with. Some specialized writing systems improve judged quality without running in parallel. Some coding teams make a shared project tractable by changing the test harness. Other builders remove agent layers when the cost of exchanging context overtakes their contribution. These are comparisons to examine, not votes for a universal organization chart."
+    },
+    {
+      "type": "prose",
+      "text": "This book follows nine decisions, from the shared world in which work happens to the authority that can stop it. Production value and cost meet in each one. The studio’s long evening is evidence where it exposes a mechanism; it is not a sequence the reader needs to memorize."
+    },
+    {
+      "type": "build",
+      "title": "Name what the team must earn",
+      "body": "Choose a creative commission small enough to inspect as a whole: a playable exchange, an illustrated explanation or a short film.",
+      "steps": [
+        "Describe what its audience should understand, feel or be able to do. Keep a usable starting specimen.",
+        "Separate the finished artifact from reusable capability you intend to build. Name who could use that capability next.",
+        "Record model and tool use, elapsed delivery time, review attention and integration work separately. Leave unknown costs unknown.",
+        "Name an alternative arrangement worth comparing: one builder, a fixed workflow or one bounded delegate. Use the same acceptance conditions."
+      ],
+      "exercise": "Which result would make you remove a role, and which would justify keeping it even if delivery took longer?"
+    }
+  ],
+  "sourceIds": [
+    "motion-case",
+    "close-cycle-audit",
+    "combined-selection",
+    "delivery",
+    "first-reflection",
+    "root-account",
+    "close-cycle-outcomes",
+    "kernel"
+  ]
+}

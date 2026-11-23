@@ -1,0 +1,241 @@
+{
+  "id": "confidence",
+  "title": "Test the work and the tests",
+  "standfirst": "Confidence must survive the assembled result, while the machinery that produces it must earn its own upkeep.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "prose",
+      "text": "A production evaluation asks whether the system can fulfill its promise under the conditions that matter. That is a larger question than whether the model gives a good answer. The model works through retrieval, tools, permissions and interfaces; a failure in any of them can leave the final sentence describing a result that never happened."
+    },
+    {
+      "type": "prose",
+      "text": "Anthropic’s account of agent evaluations draws a useful distinction between a transcript and the outcome in the environment. A booking assistant can say that a reservation exists while the database says otherwise. The grader needs the evidence appropriate to the claim. It also needs repeated trials where model behavior varies, rather than a single fortunate demonstration.",
+      "sources": [
+        "evals"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "inspection-bench",
+      "title": "The machine that passes on the bench",
+      "caption": "Both records begin with an empty tray. Repeating the control trial does not accumulate stock; this keeps a second press from concealing what the first one failed to deliver."
+    },
+    {
+      "type": "prose",
+      "text": "The little rule probe is satisfied. Zero crates, one call, one crate returned. Then the worker presses the control and nothing arrives. The probe never used the severed wire. Repeating it would buy another reassuring result without getting us any closer to the empty tray."
+    },
+    {
+      "type": "prose",
+      "text": "The bench reduces that problem to a broken wire. Its direct rule check is accurate within its scope. It becomes misleading only when we treat that scope as the whole product. Our first task in evaluation is therefore to identify which boundary the check actually crosses and which promise remains outside it."
+    },
+    {
+      "type": "heading",
+      "text": "Build checks around obligations"
+    },
+    {
+      "type": "prose",
+      "text": "Edsger Dijkstra includes an embarrassing implementation decision in Notes on Structured Programming. His team had made real-number equality tolerant of a difference in the last represented digit. That generosity broke transitivity: equality between the first pair and the second no longer licensed equality between the outer pair. They changed the decision. His accompanying argument asks programmers to state the properties their reasoning requires of its implementation. The story is more useful to me than treating formal reasoning as a certificate that floats above the machine. Even the meaning of “equal” had to survive contact with the tool.",
+      "sources": [
+        "dijkstra-structure"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Select the duplicated count and our direct probe catches the violation of “one accepted command, one crate.” Select the severed wire and the counting rule remains correct whenever it is called. The missing promise is now that a control press delivers the intended command. These defects need different checks. Copying the implementation’s answer into either test could let both agree on the same mistake; the expected result has to come from the commission."
+    },
+    {
+      "type": "prose",
+      "text": "QuickCheck, introduced by Koen Claessen and John Hughes in 2000, makes a productive exchange: the programmer supplies properties and input generators, and the tool tries random cases. For this factory, conservation across generated sequences would be useful: stock cannot disappear, unfinished work cannot commit, rejected commands cannot spend resources. The investment is in choosing those properties and the situations that challenge them. A thousand unobstructed starts still say little about a worker beginning inside an occupied area.",
+      "sources": [
+        "quickcheck"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Deterministic checks are cheap enough to protect stable obligations repeatedly. Model-assisted judgments can address qualities that are difficult to encode, but bring their own disagreement and calibration work. Human review can interpret purpose and consequence, at a cost that makes indiscriminate review impractical. These methods complement one another when each is assigned a question it can answer."
+    },
+    {
+      "type": "prose",
+      "text": "Hamel Husain’s account of Lucy, Rechat’s real-estate assistant, begins with progress slowing as prompts accumulated fixes and new failures appeared elsewhere. His response combined assertions, trace inspection, human or model evaluation and product experiments. The useful story is the change in working method: examples of actual failure became material for a repeatable improvement process, rather than another paragraph in an ever-growing prompt.",
+      "sources": [
+        "hamel-evals"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "The checks become part of the work"
+    },
+    {
+      "type": "prose",
+      "text": "The close-cycle audit inspected sixteen selected validation batches in the Max floor, Push and Forge correction families. Three ended in a scoped pass; thirteen ended failed or incomplete. Some deliberately measured a fault, and one did not launch its intended child operation. This is a trail of inquiry and repair, not a studio-wide failure rate.",
+      "sources": [
+        "close-cycle-audit"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The team developed checks against the actually loaded model, including source-to-world transforms and rig-specific contact. That gave a later contributor a way to inspect the body the scene would use, rather than trust a mathematical pose in isolation. Preserved regression evidence made the observation repeatable. The gain was real and bounded to particular rigs, clips and contracts; neither universal reuse nor time saved had been demonstrated.",
+      "sources": [
+        "close-cycle-audit"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "That capacity came with machinery to maintain and results to interpret. A successor needs stable inputs, a known failing case, a known accepted case and the claim each check can support. Counting every invocation as assurance would credit confidence the team was still trying to make possible. A test that only its author can explain can return its saved effort as another handoff."
+    },
+    {
+      "type": "heading",
+      "text": "Coverage needs situations, not just destinations"
+    },
+    {
+      "type": "visual",
+      "id": "coverage-floor",
+      "title": "Five room stamps, one stranded job",
+      "caption": "The itinerary returns to the gate even after a refused delivery. Arriving at an exit does not silently accept the unfinished work."
+    },
+    {
+      "type": "prose",
+      "text": "Kit collects a blank, finishes the press job and takes a break. The piece reaches dispatch. On the second itinerary, the break comes earlier. Kit returns to the same press, with the same blank still on it, and cannot finish. A reservation has disappeared while its owner was away."
+    },
+    {
+      "type": "prose",
+      "text": "I gave both itineraries all five rooms because a completed map is such a persuasive picture. The separate situation record exposes what the first trip never asked: can unfinished work survive a departure? Keeping the reservation repairs the second trip without changing its geography. This is a defect authored for the study, not a recovered Loopforge incident. One room contains several obligations: an idle machine, your unfinished job, somebody else’s unfinished job."
+    },
+    {
+      "type": "prose",
+      "text": "Casey Muratori’s 2012 Walk Monster account contains a lovely disappointment. His exploration of The Witness drew dense paths outside a room while scarcely entering it. Random targets were a poor fit for the coverage he wanted. He changed the selection toward neighboring points, resembling a flood fill, then refined the directional sampling before using the tool to investigate movement defects. The useful discovery was partly about the game and partly about the search he had chosen. An impressive accumulation of paths had concealed a neglected interior.",
+      "sources": [
+        "walk-monster"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Gordillo and colleagues made spatial coverage the explicit purpose of their 2021 curiosity-driven playtesting study. Reward favored less-visited positions, with resets at infrequently visited grounded positions already reached. Learned exploration outperformed the random-policy comparison in their navigation environment. Our stranded job asks for another dimension beside place: what condition is the press in when Kit arrives? Keeping that condition costs more than stamping a room, but without it the two itineraries appear to have asked the same question.",
+      "sources": [
+        "curiosity-coverage"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Now consider a production team making a short film. This is a proposed test case, not a reconstructed studio incident. One agent renders the approved shot; another adjusts its camera after a title obscures the face. A reviewer’s earlier “pass” remains attached to the shot name. The packaging agent combines the new render with the old verdict, and every task card can say complete while the selected film has never been reviewed."
+    },
+    {
+      "type": "prose",
+      "text": "Give that team a test in which the candidate changes after review. Bind the verdict to the render’s identity and viewing conditions, then require the receiver to reproduce them. The correct outcome is a held release and a new, scoped inspection—not a fresh approval of every unchanged asset. This tests the organization’s use of evidence as well as the film. It can justify automation that protects a reviewer’s attention without pretending to automate taste."
+    },
+    {
+      "type": "prose",
+      "text": "Recovery deserves a place in that history. Keeping ownership lets Kit resume; another design could require a handover or cancellation. A correct refusal can still leave a player helpless if the next legitimate action is invisible. The test is unfinished when it has established only that the command was rejected."
+    },
+    {
+      "type": "prose",
+      "text": "The evidence should preserve the shortest valid path to the failure. A test fixture that invents an impossible starting state can send the team repairing behavior the product cannot reach. Conversely, resetting away an unfinished obligation can make a broken recovery look correct. Faster evaluation is useful only while it continues to ask the intended question."
+    },
+    {
+      "type": "prose",
+      "text": "Increasing throughput can also change the question. In Gillberg and colleagues’ 2023 EA account, scripted AutoPlayers kept high-level control while learned locomotion handled difficult helicopter and zero-gravity movement. Accelerating the helicopter simulation made parked helicopters fall through the ground at the start. More samples were no bargain if the new environment produced a different phenomenon. Their integration story supports targeted learning and existing test knowledge, with substantial work around the learner.",
+      "sources": [
+        "rl-production"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Calibrate the judge before scaling its decisions"
+    },
+    {
+      "type": "visual",
+      "id": "judge-desk",
+      "title": "Nineteen reassuring agreements",
+      "caption": "Record numbers matter when a team revises a label: the disputed example has to remain identifiable after the headline percentage changes."
+    },
+    {
+      "type": "prose",
+      "text": "With one missing crate, the accept-everything judge agrees with nineteen of twenty authored labels. It catches none of the failures. Increase missing crates to five and agreement falls, although the judge behaves exactly as before. Hold every delivery instead and failures are caught, but good work cannot get through. Missed defects and needless reinspection consume different resources; the headline agreement hides both."
+    },
+    {
+      "type": "prose",
+      "text": "Husain’s judge guide gives this imbalance practical consequences: examine rare failures, distinguish missed defects from needless rejection, and separate the examples used to develop the judge from the cases used to assess it. A judge that agrees on ordinary work may still be useless at finding the failure that made us build it.",
+      "sources": [
+        "hamel-judge"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "A case loses its independence when we use it to guide a revision. It has become part of the work, however firmly the spreadsheet still calls it unseen. Before multiplying the judge’s decisions, its missed failures and rejected good work need to be examined separately. Otherwise scale will enlarge an error whose headline score already made it hard to notice."
+    },
+    {
+      "type": "prose",
+      "text": "For a production decision, the sampling rule matters too. A deliberately difficult challenge set can reveal weaknesses without estimating how often users encounter them. A representative sample can estimate ordinary behavior while missing a rare expensive failure. Keep those purposes visible. Otherwise the improvement may belong to a changed mix of examples rather than to the system."
+    },
+    {
+      "type": "prose",
+      "text": "The independent critics used for this book have found useful errors. They have also shared assumptions with its author. The present reframing is a reminder: earlier approvals did not prevent the book from organizing itself around the wrong subject. Independent context reduces one source of agreement; it does not manufacture an independent reader. That limit belongs in our interpretation of the review, not in an excuse to abandon it."
+    },
+    {
+      "type": "heading",
+      "text": "An improved proxy may leave the person behind"
+    },
+    {
+      "type": "visual",
+      "id": "flight-tunnel",
+      "title": "Two pilots, one adjustable opening",
+      "caption": "A changed aperture clears both result slips. Comparisons belong to a particular configuration; the previous opening’s successful flight is not carried forward."
+    },
+    {
+      "type": "prose",
+      "text": "Both birds follow fixed scripts. Moving the opening changes which one fits; widening it admits both. There is no enjoyment in either result. We can see exactly whose passage the adjustment has made easier, which is more than a single improved score would tell us."
+    },
+    {
+      "type": "prose",
+      "text": "In Fly, Fail, Fix, Alex Zook, Josef Spjut and Jonathan Tremblay paired a fixed pretrained DQN player with a model that revised Flappy Bird configurations toward a target score. Behavioral feedback helped where configuration alone did not; text, images and their combination had statistically indistinguishable final performance in the reported experiment. The authors also report a revealing preliminary failure: small player-physics changes could ruin the agent’s performance while leaving the game playable to humans. They propose a more varied population of artificial players.",
+      "sources": [
+        "fly-fail-fix"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Under our requirement that both scripts pass, the wider opening is an improvement. For a game built around a difficult maneuver it might be a loss. The artificial player helps us inspect the behavior we gave it; calling that behavior “novice” cannot make it representative of a person. Before using its score to revise the game, the intended experience has to have a say in what counts as better."
+    },
+    {
+      "type": "prose",
+      "text": "Mike Ambinder’s 2009 account of Valve’s playtesting begins with the intended experience. Observation needs a design question; think-aloud reports can explain behavior while also distracting the player; aggregates reveal patterns while losing context. For our proposed film, I would ask an unfamiliar viewer what caused the response before explaining the action. Then I would compare that reading with the agent judge’s reasons for approval. No such viewer study has been conducted here.",
+      "sources": [
+        "valve-playtesting"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "That comparison separates two commissions. An identity check can establish which film was delivered. Calibrating a creative judge asks whether its preferences help produce the experience we intended. A reviewer that reliably reads a file name may still reward polished motion that tells the wrong story."
+    },
+    {
+      "type": "prose",
+      "text": "The next hour of evaluation should be chosen for the decision it can change. A targeted regression can protect a discovered obligation; a different automated behavior can challenge an overfitted score; an unfamiliar person can expose an interpretation the author cannot simulate. More checks are justified when they buy evidence we do not already have. A reassuring repetition can consume the same budget without reducing the uncertainty that matters."
+    },
+    {
+      "type": "build",
+      "title": "Choose the next check by its consequence",
+      "body": "Evaluate a complete AI-assisted task, including the tools and interface through which it reaches its recipient.",
+      "steps": [
+        "State the promised outcome and locate the evidence that can establish it. Separate the final response from the actual effect.",
+        "Keep a normal case, a meaningful failure and a recovery. Identify which boundaries each trial crosses.",
+        "Assign deterministic, model and human checks to different questions. Reserve examples not used to revise the system or its judge.",
+        "Compare missed failures, needless rejection, latency and review work. Keep challenge-set performance separate from an estimate of ordinary use."
+      ],
+      "exercise": "Choose one green check to stop running and one missing check to add. Explain which release decision becomes better informed and what the exchange costs."
+    }
+  ],
+  "sourceIds": [
+    "evals",
+    "dijkstra-structure",
+    "quickcheck",
+    "hamel-evals",
+    "close-cycle-audit",
+    "walk-monster",
+    "curiosity-coverage",
+    "rl-production",
+    "hamel-judge",
+    "fly-fail-fix",
+    "valve-playtesting"
+  ]
+}

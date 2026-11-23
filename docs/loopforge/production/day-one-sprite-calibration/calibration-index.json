@@ -1,0 +1,71 @@
+{
+  "release": "Day One calibration 1",
+  "ownerStyle": "B — Raking light",
+  "mode": "asset handoff for ENGINE MASTER",
+  "ownerAcceptance": "pending complete live 2D prototype",
+  "geometry": "approved-factory/day-one-3",
+  "editedDurationSeconds": 190.60391778732966,
+  "skinOnly": true,
+  "actorCanvas": [
+    256,
+    256
+  ],
+  "groundPivotPx": [
+    128,
+    208
+  ],
+  "pixelsPerGroundMetre": 64,
+  "lanes": [
+    {
+      "archive": "01-style-B.zip",
+      "combinedDirectory": "01-style",
+      "sha256": "4982f06004024fed4e5852d965cc3237bbc2ef7ea158c00b00e1c16bbb1141bf",
+      "bytes": 3651893,
+      "entryPoints": [
+        "style-lock.json"
+      ]
+    },
+    {
+      "archive": "02-morning-walk.zip",
+      "combinedDirectory": "02-morning-walk",
+      "sha256": "ae132e261f5cd753734d40aa2d5cc882d4b54d8eea9e2c3dc0ca24e8bdb81ed9",
+      "bytes": 5051363,
+      "entryPoints": [
+        "manifest.json",
+        "motion/reusable/char-max-jaw-imitation-N.json",
+        "motion/reusable/char-bob-walking-glance-N.json"
+      ]
+    },
+    {
+      "archive": "03-fourth-id-check.zip",
+      "combinedDirectory": "03-fourth-id-check",
+      "sha256": "d15eb9c8cf95c866fc67b7becf9a82c9d46410c8e57623f5a93fac355b9cc122",
+      "bytes": 8291366,
+      "entryPoints": [
+        "exports/lane03-pose-manifest.json"
+      ]
+    },
+    {
+      "archive": "04-jammed-press.zip",
+      "combinedDirectory": "04-jammed-press",
+      "sha256": "f8d44dd62ef181c49774f8a5ae0f922c09123843b205e34ec88f03d452d34eb2",
+      "bytes": 1524164,
+      "entryPoints": [
+        "palm-unjam-manifest.json",
+        "display-track.json"
+      ]
+    }
+  ],
+  "screening": {
+    "path": "Loopforge-Day-One-Screening.mp4",
+    "classification": "offline composited motion proofs",
+    "sha256": "a859804a8b80437b15f7d08cb2d5ad459c4c1e1b6dbf45aa1aaab09e7ce5ae8f",
+    "frames": 854,
+    "fps": 20,
+    "durationSeconds": 42.7
+  },
+  "sharedMax": {
+    "SEBodySHA256": "e0dc33b98a4076336a569e639776e1ec727804430cacd7879d1af5cadebd1796",
+    "SEHeadSHA256": "ab01d04412835e49c2aa15ab480eed8402b9e309472c46d5b38cfd5676675442"
+  }
+}

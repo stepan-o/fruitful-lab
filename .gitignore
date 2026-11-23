@@ -1,5 +1,5 @@
 # -------------------------
-# Node / Next.js (frontend)
+# Node / Next.js apps
 # -------------------------
 node_modules/
 **/.next/
@@ -16,12 +16,12 @@ pnpm-debug.log*
 # Vercel / deployment
 .vercel/
 
-# Frontend env files
-frontend/.env
-frontend/.env.local
-frontend/.env.development.local
-frontend/.env.test.local
-frontend/.env.production.local
+# App env files
+apps/*/.env
+apps/*/.env.local
+apps/*/.env.development.local
+apps/*/.env.test.local
+apps/*/.env.production.local
 
 # -------------------------
 # Python / FastAPI (backend)

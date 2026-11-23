@@ -1,0 +1,68 @@
+{
+  "schema": "loopforge/sam-holder-proposal-v1",
+  "version": "sam-credential-holder/H1",
+  "status": "UNPLACED_PROPOSAL_REQUIRES_ENDPOINT_FIT",
+  "runtimeCompatible": null,
+  "units": "metres unless explicitly labelled frozen bone-local units",
+  "bodyFrame": {
+    "origin": "Hips joint centre in frozen neutral pose after the real loader transforms; freeze this frame relative to Hips once calibrated",
+    "V": "normalize(Spine joint centre - Hips joint centre)",
+    "U": "normalize((RightShoulder - LeftShoulder) minus its projection onto V)",
+    "N": "approved anterior: project headfront - Head perpendicular to U and V, normalize, then confirm nose/chest-facing sign against actual mesh and approved Sam image; reject degeneracy or anatomical mismatch",
+    "sourceNodeIndices": {"Hips":23,"Spine":12,"LeftShoulder":7,"RightShoulder":11,"Head":2,"headfront":1,"RightHand":8,"RightForeArm":9,"RightUpLeg":22},
+    "numericBasis": null,
+    "measured": false,
+    "handedness": "Record determinant of [U,V,N]. Never infer anatomical right from world X or force a reflected frame into a quaternion. These anatomical axes are labels, not an assumed right-handed asset basis.",
+    "rigidFrame": "Do not recompute shoulder-based axes every animated frame. Fit once and transport with Hips."
+  },
+  "attachment": {
+    "bone": "Hips",
+    "sourceNode": 23,
+    "sourceSkinJointIndex": 0,
+    "frozenArmatureScale": [0.01,0.01,0.01],
+    "region": "right anterolateral waist armour, between torso and upper-leg articulation",
+    "mouthPositionUVNMetres": null,
+    "holderToHipsMatrix": null,
+    "holderToHipsQuaternion": null,
+    "approved": false,
+    "scaleRule": "Use complete actual-loader Hips world matrix, actor height/root conversions and determinant. Compute local attachment = inverse(hipsWorld) * desiredWorldMetreFrame. Preserve metre size without double unit conversion; Engine owns reflection/scale decomposition. Do not multiply frozen socket numbers by an assumed metre factor.",
+    "frameProposal": {"outwardW":"normalize(U + N)","upY":"V","tangentX":"normalize(V cross W)","orthogonality":"Reorthogonalize W = X cross V. [X,V,W] must have determinant +1. Local X is tangent, not anatomical-right U."}
+  },
+  "holderLocal": {
+    "origin": "mouth centre",
+    "axes": {"x":"tangent across card width","y":"torso up","z":"outward from backing"},
+    "boundsMetres": {"min":[-0.100,-0.145,-0.0115],"max":[0.100,0,0.0115]},
+    "cavityMetres": {"width":0.190,"usefulDepthAlongY":0.140,"normalGap":0.013},
+    "mouth": {"translation":[0,0,0],"quaternionXYZW":[0,0,0,1],"clearWidth":0.190,"clearNormalGap":0.013},
+    "storedCard": {"translation":[0,-0.075,0],"quaternionXYZW":[0,0,0,1],"dimensions":[0.180,0.130,0.003]},
+    "withdrawnCard": {"translation":[0,0.075,0],"quaternionXYZW":[0,0,0,1],"bottomAboveMouth":0.010},
+    "insertionDirection": [0,-1,0],
+    "withdrawalDirection": [0,1,0],
+    "straightTravel": 0.150,
+    "transformsStatus": "exact authored local geometry only; NOT measured on Sam"
+  },
+  "clearance": {
+    "designMarginOutsideHolderMetres": 0.010,
+    "storedCardCentreAboveRightThighSweepMinimum": 0.075,
+    "anchorRule": "Measure right-thigh swept surface and waist armour in fitted transfer poses; stored-card centre V must exceed maximum relevant thigh surface by >=0.075m; holder and complete hand/card/forearm envelope must also pass actual triangle contacts.",
+    "bodyEnvelope": "Complete hand + card + forearm swept geometry plus 0.010m proposed margin; exact bounds pending measured pose. No wrist-only reach claim.",
+    "cardOnlyStraightSweepHolderLocal": {"min":[-0.090,-0.140,-0.0015],"max":[0.090,0.140,0.0015]},
+    "intendedContacts": ["holder backing OUTER face z=-0.0115 to selected waist armour patch only, fitted without deep penetration", "stored card bottom edge y=-0.140 to bottom-stop inner top face only"],
+    "unintendedContactsForbidden": ["hand or forearm against shell/rails/body", "card against body", "holder front/rails/bottom against body", "any upper-leg or shoulder penetration"],
+    "risk": "13mm mouth is card-only. A preserved palm grip may require hand volume within the shell at the recessed endpoint. Stop as infeasible if exact grip cannot fit; do not alter grip, hide the card earlier, expand Sam, or call wrist reach clearance.",
+    "removalPath": "First withdraw 0.150m along +V with full hand/forearm outside armour; only then turn outward around the U+N envelope toward ID_Ready. Reverse for insertion after endpoint fit."
+  },
+  "preservedFrozenGrip": {
+    "worker": "sam",
+    "bone": "RightHand",
+    "positionFrozenBoneLocalUnits": [0,16.00075368241493,-10.217100596744089],
+    "rotationInFrozenDefaultRightCardPath": [0,0,0],
+    "samEdgeGripEntry": null,
+    "samPouchEntry": null,
+    "source": "pinned opening-worker-sockets.json and credential-props.ts; grips.json only defines ed",
+    "modified": false
+  },
+  "delivery": {"portrait":"sam-holder-H1.glb","floor":"sam-holder-H1.glb","console":"sam-holder-H1.glb","sharedRigidMesh":true,"triangles":60,"materials":1,"textures":0,"newAnimationChannels":0},
+  "custodyAndTiming": {"drawTransferSeconds":2.0,"stowTransferSeconds":1.6,"clipDurationSeconds":3.6,"runtimeChanged":false,"requirement":"Single existing card; existing exact hide/reveal times; physical concealment verified in matching views. Top/oblique visibility is unverified. Current stowed card remains hidden by runtime; this proposal does not add a duplicate visible card."},
+  "acceptance": {"primitiveMetrics":"checked separately","bodyFit":"NOT RUN","sourceEndpoint":"NOT RUN","actualLoaderEndpoint":"NOT RUN","approach":"NOT RUN","allDetailDense":"NOT RUN","visual":"NOT RUN","performance":"NOT RUN","ownerTaste":"NOT APPROVED"}
+}

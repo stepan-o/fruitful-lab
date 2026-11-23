@@ -1,0 +1,244 @@
+{
+  "id": "division-of-work",
+  "title": "Delegate where the work can separate",
+  "standfirst": "A third worker can shorten the day. A third handoff can lengthen it.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "visual",
+      "id": "work-benches",
+      "title": "How many benches are actually free?",
+      "caption": "An authored scheduling model, not a productivity estimate. The arbitrary work and handover durations are disclosed inside the scene. Change the dependency and staffing separately; a complete brief includes synthesis."
+    },
+    {
+      "type": "prose",
+      "text": "Switch the workshop to a shared assembly. The fitter has tools, a place to work and nothing useful to do yet. The part is still on somebody else’s bench. A third worker has made the room look busier without creating a third independent piece of work. Advance the clock and the distinction becomes almost embarrassingly plain: some delays belong to staffing, others to the order in which the world can change."
+    },
+    {
+      "type": "prose",
+      "text": "An organization chart gave me an easier kind of reassurance. Producer, engineer, artist: the names suggested that the work had found appropriate homes. The first studio retrospective instead kept returning to relationships. Could a hand, a card and a body occupy one usable pose? Could a prepared packet actually reach a compiler? Naming an owner for each component had not settled either question.",
+      "sources": [
+        "first-reflection",
+        "first-assessment"
+      ]
+    },
+    {
+      "type": "evidence",
+      "asset": "studio-roster",
+      "alt": "The published Munder studio interface shows nine named craft roles in a pixel-art office.",
+      "caption": "Published studio interface, 22 October 2026. Level Designer was present but received no production assignment in that cycle. Activity labels show organization, not the amount of independent work available.",
+      "original": "/loopforge-dev-blog/media/studio-classic.png"
+    },
+    {
+      "type": "heading",
+      "text": "What can happen at the same time?"
+    },
+    {
+      "type": "prose",
+      "text": "Anthropic’s June 2025 research-system account gives a strong case for separation. Independent searches can explore different directions in their own contexts and return condensed findings to a lead agent. The authors report a large gain on their internal research evaluation, alongside higher usage. They also warn that work with extensive shared context and dependencies is a poorer fit, explicitly distinguishing much coding work from parallel research. The qualification is part of the recommendation.",
+      "sources": [
+        "multiagent"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Diane Sarkis’s October 2026 practitioner account describes a move in the other direction: some enterprise systems improved when routing, planning and domain subagents were folded into one main loop, with instructions and tools loaded as needed. Her account keeps a place for independent verification, parallel work and separate permissions. It challenges the habit of turning every specialization into a communicating agent. These are deployment comparisons reported by the vendor, not a universal ranking of architectures.",
+      "sources": [
+        "fold"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The disagreement becomes useful when the workpiece is visible. An archive search can return a compact finding with sources. A pose correction may depend on failed attempts whose details are expensive to summarize without rebuilding the situation. Specialization pays when a worker can settle a question and return something its receiver can use. A professional title alone does not establish that boundary."
+    },
+    {
+      "type": "evidence",
+      "asset": "scaling-task-comparison",
+      "alt": "Figure 2 from Towards a Science of Scaling Agent Systems: four benchmark panels compare single-agent and four multi-agent architectures; the direction of the difference changes across tasks.",
+      "caption": "Figure 2, Yubin Kim and colleagues, December 2025, CC BY 4.0. Success rates run from 0 to 1. Percentage labels show relative changes from the single-agent baseline, not percentage-point differences. Original figure retained; resized and re-encoded for this page. Enlarge to inspect the individual panels.",
+      "original": "https://arxiv.org/html/2512.08296v1/boxplots_v2.svg"
+    },
+    {
+      "type": "prose",
+      "text": "Kim and colleagues put this question into a controlled comparison: 180 configurations, four benchmarks, five architectures and three model families, with common tools, prompt structures and budgets. Multi-agent arrangements helped the financial-analysis tasks much more than the sequential crafting tasks; every tested multi-agent variant lost ground on PlanCraft. This is stronger comparative evidence than our retrospective. It still belongs to those tasks and implementations. I would use its result to design a comparison for my own workload, not import its fitted thresholds as operating rules.",
+      "sources": [
+        "scaling"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our workshop isolates dependency, with authored durations and an adjustable handover delay. It cannot reproduce the study’s reasoning quality, tool behavior or errors. Reducing the delay reveals what the extra messages cost in this model; it cannot remove a physical dependency on a part that has not been cut. That is the distinction I want drawn before commissioning another worker."
+    },
+    {
+      "type": "prose",
+      "text": "Nor is apparent busyness a reliable measure of speed. METR’s 2025 randomized study found sixteen experienced developers taking 19% longer across 246 tasks with the evaluated AI tools, despite their expectation of a speedup. Its February 2026 follow-up describes selection effects and concurrent-agent timing problems that prevent a clean updated estimate. I would keep both results in view: the first challenges intuition on that workload; the second prevents freezing that result into a permanent rule.",
+      "sources": [
+        "metr",
+        "metr-update"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "A boundary can consume the whole attempt"
+    },
+    {
+      "type": "visual",
+      "id": "handoff-table",
+      "title": "The compiler that never received the question",
+      "caption": "A schematic reconstruction of three failures reported in the first studio cycle. Selecting a record changes which boundary stopped that attempt; it does not rerun historical tooling. No elapsed times or memory measurements are inferred."
+    },
+    {
+      "type": "prose",
+      "text": "Engine records one attempt ending after 18.70 seconds without reaching the compiler. A short run had left the large question unanswered. The next useful assignment was therefore smaller than another build strategy: carry one valid packet through the actual execution boundary. Until that worked, optimizing the proposed compilation could not address the failure in front of us.",
+      "sources": [
+        "first-reflection",
+        "engine-first"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Engine accepted responsibility for the packet and its coverage. Testing the actual parent-to-worker-to-validator path exposed an omission that separate checks had missed. Producer accepted responsibility for continuing to translate defects into serial contracts; the independent assessment also named the external coordinator’s choices. I was directing continuations too. The cost of the chain cannot be assigned entirely to the person in its middle.",
+      "sources": [
+        "engine-first",
+        "first-reflection",
+        "first-assessment"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This supports Sarkis’s concern about handoffs without establishing her architecture as our cure. One agent would remove messages, but a missing field or wrong host assumption could still stop execution. We have no matched single-agent rerun.",
+      "sources": [
+        "fold",
+        "engine-first"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "delegation-parnas",
+      "title": "At the cabinet’s output slot",
+      "caption": "An authored study of Parnas’s information-hiding argument. Storage rows and a tree are illustrative alternatives; the diagram is not a reproduction of his keyword-index implementation."
+    },
+    {
+      "type": "prose",
+      "text": "David Parnas’s 1972 example was a keyword index, an unglamorous program for rearranging and alphabetizing lines. One decomposition followed the processing sequence. Another hid decisions likely to change. The distinction matters because a module is an assignment of responsibility, not merely a box in a diagram. Its interface should let its neighbors proceed without knowing how a changeable detail is implemented.",
+      "sources": [
+        "parnas"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Parnas gives the team a better question than “how many roles?” Which decisions can change privately, and what must remain dependable for the receiver? In the first studio cycle, replacement card movements collided. An accurate wrist target had not made room for the hand, forearm and card around the body. The later holder effort encountered a mismatched test representation, then failed at the real endpoints. Further work still did not establish a usable pose; the owner stopped it.",
+      "sources": [
+        "first-reflection"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "grip-boundary",
+      "title": "At the receiving bench",
+      "caption": "A schematic reading of the earlier transfer-pose failure, before the holder was pursued. The geometry is invented for explanation, not reconstructed from a candidate or used as collision evidence. The published Producer account supplies the sequence of events."
+    },
+    {
+      "type": "prose",
+      "text": "The artist’s explanation deserves to remain beside that failure. Separating construction from fitting helped protect a shared machine. Removing the boundary might have introduced another cost; the record does not show that one person doing everything would have succeeded. What was missing was a joint acceptance example: a demonstrated grip that the receiver could reproduce. The protected construction detail was less important than the usable relationship the next worker needed.",
+      "sources": [
+        "first-reflection",
+        "parnas"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "How much freedom earns its upkeep?"
+    },
+    {
+      "type": "visual",
+      "id": "delegation-agency",
+      "title": "The destination survives the obstacle",
+      "caption": "The courier follows one of two authored paths. The example illustrates reaction in pursuit of a goal; it contains no learned policy, language model or general path planner."
+    },
+    {
+      "type": "prose",
+      "text": "The courier can choose an alternate route when a barrier appears. That modest behavior reaches back to Wooldridge and Jennings’s 1995 account of autonomy, social ability, reactivity and proactiveness; a language model was not part of the definition. Its discretion here concerns how to reach the commissioned destination. Resourceful routing cannot establish whether that destination is still worth reaching, and the courier has no authority to substitute another. A delegation brief needs to say which decisions travel with the work.",
+      "sources": [
+        "agency-1995"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Schluntz and Zhang’s 2024 engineering guide locates the same practical choice between a coded workflow and a model that chooses its next action dynamically. Rendering a known list of views can follow a workflow. Investigating a broken motion may require the next observation to depend on what the last one revealed. Adaptation earns its cost in the second case. Splitting that investigation among multiple agents is another decision, with another bill in context and coordination.",
+      "sources": [
+        "effective-agents"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "delegation-initiative",
+      "title": "A day, then an hour",
+      "caption": "A calendar study inspired by Horvitz’s discussion of LookOut. The wording and display are newly authored. A narrower highlight is a proposed interpretation, not an invitation or a recovered historical screen."
+    },
+    {
+      "type": "prose",
+      "text": "Eric Horvitz’s 1999 account of mixed initiative makes uncertainty part of interface design. His LookOut example helps with scheduling from messages. When a precise appointment cannot be inferred confidently, useful assistance can be less precise: bring the relevant calendar period into view and let the person refine it. The system considers the costs of acting, interrupting and being wrong; initiative is not a single switch between autonomy and permission.",
+      "sources": [
+        "horvitz"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The calendar’s broad highlight is useful work under uncertainty. It becomes narrower when evidence supports a time; no invitation is sent. At the disputed art handoff, that is the kind of progress I would have wanted: an inspectable candidate with the unresolved grip exposed. Stopping at every ambiguity would burden the owner; hiding it inside a finished-looking artifact would enlarge the eventual revision."
+    },
+    {
+      "type": "heading",
+      "text": "Who receives the remainder?"
+    },
+    {
+      "type": "visual",
+      "id": "delegation-automation",
+      "title": "Who restores the line?",
+      "caption": "Step through ordinary control, an exception, diagnosis and manual recovery. This authored model isolates a transfer of responsibility; it does not simulate operator skill or reproduce a particular plant."
+    },
+    {
+      "type": "prose",
+      "text": "Lisanne Bainbridge’s 1983 analysis moves the boundary into industrial control. Automation can take the routine work and leave an operator to handle the unusual, difficult cases. Yet routine work is also where skill is exercised. The person expected to recover the system may have had fewer opportunities to practise, and may be asked to understand it at precisely the moment its normal behavior has broken down.",
+      "sources": [
+        "bainbridge"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Bainbridge’s argument is an analogy here, not a diagnosis of human skill loss in our agent team. Its relevance is the remainder. Automating construction left Stepan with judgment; I helped determine when it arrived and how much work it could overturn. An early question about one grip would have been narrower than a late question about a complete sequence. More frequent approval is not a free answer either: the owner can become the queue through which every ordinary choice must pass."
+    },
+    {
+      "type": "prose",
+      "text": "For the next commission, I would give a builder room to investigate within a known contract and give a reviewer a result it can independently challenge. They need not take turns designing the same correction. Each extra loop should buy something named—parallel evidence, a permission boundary, a different check—large enough to justify the context and integration it demands. Otherwise I am mainly commissioning another conversation to maintain."
+    },
+    {
+      "type": "build",
+      "title": "Draw the dependencies before the team",
+      "body": "Take one real assignment from your own work. Keep the desired artifact fixed while comparing a workflow, one adaptive builder, and a builder with one bounded delegate.",
+      "steps": [
+        "Write the observations that determine the next action. Mark which are predictable in advance and which require investigation.",
+        "Draw an edge whenever one piece of work needs another piece’s result or changes the same artifact. Name an independent branch only if it can proceed without that result.",
+        "Give a proposed delegate one question, the evidence it can inspect, and a return that its receiver can use. Include the example that would make the receiver reject it.",
+        "Give the receiver a joint acceptance example: a usable grip, an executable packet or an answer with its sources. Specify what remains private and what the receiver must reproduce.",
+        "Compare the arrangements on the same task and acceptance conditions. Record elapsed time, overlapping agent work and human review separately; do not add concurrent durations and call the sum a speedup."
+      ],
+      "exercise": "Move the workshop’s handover delay toward zero. Which advantage disappears, and which dependency remains? Choose one real handoff to remove and one permission or independent-review boundary worth retaining. Name the benefit that pays for the retained boundary."
+    }
+  ],
+  "sourceIds": [
+    "first-reflection",
+    "first-assessment",
+    "multiagent",
+    "fold",
+    "scaling",
+    "metr",
+    "metr-update",
+    "engine-first",
+    "parnas",
+    "agency-1995",
+    "effective-agents",
+    "horvitz",
+    "bainbridge"
+  ]
+}

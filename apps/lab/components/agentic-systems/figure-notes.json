@@ -1,0 +1,202 @@
+{
+  "player": [
+    [
+      "Information value",
+      "An inspection earns its turn when the answer changes a later choice enough to repay the time spent obtaining it."
+    ],
+    [
+      "Control window",
+      "The mechanism accepts a press during a limited interval. A slower setting widens that opportunity while reducing the output of a successful run."
+    ]
+  ],
+  "small-world": [
+    [
+      "Simulation beat",
+      "Only Advance beat moves the cycle forward. Selecting a worker, walking or inspecting state does not consume a beat."
+    ],
+    [
+      "Request ID",
+      "The identifier belongs to an attempt, not an action type. A new move needs a new ID; repeating an ID asks for the existing outcome."
+    ]
+  ],
+  "commit-window": [
+    [
+      "Interrupted cycle",
+      "Discarding unfinished output does not release the operator’s reservation. That claim still needs an explicit disposition."
+    ]
+  ],
+  "custody-room": [
+    [
+      "Sequence marker",
+      "This is the event that last informed the selected observer. It may be older than the event now shown in the room."
+    ]
+  ],
+  "hearing-room": [
+    [
+      "Doorway",
+      "The doorway condition matters only across rooms. In the near position, both people stand on the same side."
+    ]
+  ],
+  "work-benches": [
+    [
+      "Synthesis",
+      "The model combines notes automatically. It does not check whether their claims agree or whether the resulting brief is good."
+    ]
+  ],
+  "handoff-table": [
+    [
+      "Process group",
+      "A group of related running processes. This validator needed its identifier before it would permit execution."
+    ]
+  ],
+  "delegation-parnas": [
+    [
+      "Caller’s contract",
+      "What another part can ask for and rely on receiving, even if the storage behind the door changes."
+    ]
+  ],
+  "delegation-automation": [
+    [
+      "Residual work",
+      "The exception and recovery still belong to someone after the routine cycle has been automated."
+    ]
+  ],
+  "delegation-agency": [
+    [
+      "Discretion",
+      "The courier may change its route here. It cannot change the destination or the commission."
+    ]
+  ],
+  "delegation-initiative": [
+    [
+      "Proposed interpretation",
+      "No confidence score is calculated here. The two prompts supply different amounts of information."
+    ]
+  ],
+  "grip-boundary": [
+    [
+      "Body envelope",
+      "The outlined space the torso occupies in this invented drawing. It exposes a relation that an isolated wrist point omits."
+    ]
+  ],
+  "inspection-rig": [
+    [
+      "Access path",
+      "The tested unit is the worker’s actual session: its permissions, display and recording path. Installing the same tool on the host does not transfer those conditions."
+    ]
+  ],
+  "sampling-desk": [
+    [
+      "Sampling interval",
+      "The load is fully concealed from 1.1 to 2.0 seconds in this drawing. A three-second cadence can miss that interval; shifting the sample times changes what enters the review."
+    ]
+  ],
+  "memory-desk": [
+    [
+      "Two-record brief",
+      "Two places are an authored attention limit, not a measured memory capacity. The reply can remain safely stored and still be absent from the decision."
+    ]
+  ],
+  "field-note": [
+    [
+      "Observation time",
+      "The second look establishes closed at 10:00. It does not reveal when the door closed during the intervening hour."
+    ]
+  ],
+  "composition-stage": [
+    [
+      "Visual hierarchy",
+      "Size, contrast and placement compete for attention. Increasing one element’s prominence can make a neighboring action harder to read."
+    ]
+  ],
+  "frame-allocation": [
+    [
+      "Reserved space",
+      "The crop stays centered at a fixed image scale. Reserving the rail keeps the picture window’s height constant; it does not shrink the scene to fit new words."
+    ]
+  ],
+  "contact-stage": [
+    [
+      "Anticipation",
+      "The hand briefly moves away from the control before reaching it. That preparation is shared by both versions; the comparison changes how the rest of the body participates."
+    ]
+  ],
+  "release-score": [
+    [
+      "Support interval",
+      "While contact is maintained, Sam’s hand follows Bob’s shoulder. After withdrawal, the hand no longer inherits Bob’s movement. This drawing models that target relationship, not a force that physically supports him."
+    ]
+  ],
+  "search-yard": [
+    [
+      "Cargo clearance",
+      "The centre of a route is not the whole vehicle. The check expands obstacles by the cargo footprint before testing the path between waypoints."
+    ]
+  ],
+  "candidate-archive": [
+    [
+      "What is retained",
+      "The archive keeps route definitions, not just their old scores. The same A, B and E geometry is checked again under the changed requirement."
+    ]
+  ],
+  "story-workshop": [
+    [
+      "Eligibility",
+      "A condition can make a scene available without forcing it to happen. Selection still determines which available scene enters this history."
+    ]
+  ],
+  "sentence-bench": [
+    [
+      "Claims and consequences",
+      "Wording can require a fact or commitment that the scene has not established. A character may be mistaken or unreliable, but that must be an intended part of the scene."
+    ]
+  ],
+  "inspection-bench": [
+    [
+      "Input adapter",
+      "The connection that translates a control action into a call to the rule. Calling the rule directly leaves that connection untested."
+    ]
+  ],
+  "judge-desk": [
+    [
+      "Base rate",
+      "The base rate is missing-crate deliveries divided by all deliveries: 1/20 or 5/20 here. It differs from the share of missing crates the judge catches."
+    ]
+  ],
+  "coverage-floor": [
+    [
+      "Room stamps",
+      "The stamps retain which rooms were visited. They discard the order of those visits and who still owns unfinished work."
+    ]
+  ],
+  "flight-tunnel": [
+    [
+      "Test population",
+      "Both pilots use the same body size and fixed paths. Neither steers in response to the gate, so admitting both does not establish how a player who reacts, hesitates or changes course would fare."
+    ]
+  ],
+  "stall-map": [
+    [
+      "Measurement window",
+      "Zero on the ruler is the beginning of measured time, after a 30-second warm-up. It is not the instant the page opened."
+    ]
+  ],
+  "resource-ledger": [
+    [
+      "Cache reads",
+      "Previously supplied input read from a prompt cache is a separate accounting category. Its token count is not interchangeable with newly supplied input or generated output for pricing."
+    ]
+  ],
+  "release-manifest": [
+    [
+      "Retained source",
+      "Keep the exact source version and exclusion record together. A later adopter needs to know which proposed change is absent from the selected runtime."
+    ]
+  ],
+  "commission-desk": [
+    [
+      "Stopping rule",
+      "Assign who evaluates the stopping evidence and what returns after a stop: the result, current build and disposition. A threshold without a receiver can leave work suspended."
+    ]
+  ]
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "file": "proof-sources/limen.png",
+    "origin": "Loopforge PR #155 / 03-fourth-id-check.zip / exports/actors/char-limen/neutral-00.png",
+    "sourceSha256": "370b70c89775486a27a0cc09dbad914f412c96e01109c26ba5fc5ad28a88c246"
+  },
+  {
+    "file": "proof-sources/stiletto.png",
+    "origin": "Loopforge PR #155 / 03-fourth-id-check.zip / exports/actors/char-stiletto/neutral-00.png",
+    "sourceSha256": "caf54db4e22c522484bb8e3b6b1e8de3fdf74c27cbc337afe786e5518dd00d67"
+  },
+  {
+    "file": "proof-sources/desk-desktop.png",
+    "origin": "apps/lab/assets/sources/loopforge-producer-runtime/foundry-desk.png",
+    "sourceSha256": "9e9076c7674f08abf625f6b755663a52df5de03016c095b03995b992ada4cd3b"
+  },
+  {
+    "file": "proof-sources/desk-phone.png",
+    "origin": "apps/lab/assets/sources/loopforge-producer-runtime/foundry-desk-mobile.png",
+    "sourceSha256": "f0371919de1f52a1d118647530c1f15818bae4d734aa883cdc0e828745efd9e0"
+  }
+]

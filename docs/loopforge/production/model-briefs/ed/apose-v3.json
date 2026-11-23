@@ -1,0 +1,8 @@
+{
+  "prompt": "Use case: identity-preserve. Turn the approved Loopforge ed concept in the input into ONE clean front-view full-body neutral A-pose model-generation reference. Preserve his exact identity and all design details: swept-back elongated sloped skull, narrow cyan eyes below heavy sloping brow, slightly open toothed mechanical jaw and long pointed chin, huge circular side receivers, forward neck, layered shoulders, narrow waist and long shins, blank square chest plaque, dark navy blue weathered metal and brass mechanisms. Change pose and viewing angle ONLY. Both arms lowered symmetrically 30 degrees away from torso, elbows very slightly bent, both hands empty and gently open with all fingers and thumbs visible and anatomically mirrored, palms inward and thumbs forward. Feet shoulder width apart, knees straight, both soles on same plane. Whole head and boots in frame with margin. He must not point; this is the rigging reference. Keep him a sinister officious worker from the reference, not a generic soldier or shiny android. Keep broad blue painted areas readable. Neutral charcoal studio backdrop, soft even neutral lighting, no orange dramatic tint. Detailed faithful industrial concept render. No text, weapons, props, extra views or objects.",
+  "source": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-ffaf6b1a-0297-4d2a-aa9d-df772f682000.png",
+  "date": "2026-10-21",
+  "status": "Derived A-pose from approved ed concept; same design, neutral pose",
+  "workspace_image": "output/opening-cast/ed/ed-apose-v3.png",
+  "sha256": "0feef9249dea82d9de381ef90f99fee78b7d1d220a144773395eeeb4d8d4d2d8"
+}

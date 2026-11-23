@@ -1,0 +1,15 @@
+import {readFile,writeFile,mkdir} from "node:fs/promises";
+import {createHash} from "node:crypto";
+import {fileURLToPath} from "node:url";
+import path from "node:path";
+import ts from "typescript";
+const app=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");
+const source=await readFile(path.join(app,"lib/agentic-systems/mini-world.ts"),"utf8");
+const hash=createHash("sha256").update(source).digest("hex");
+const js=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;
+const shell=await readFile(path.join(app,"assets/checkpoints/04.html"),"utf8");
+const output=path.join(app,"public/agentic-systems/checkpoints");
+await mkdir(output,{recursive:true});
+await writeFile(path.join(output,"04-smallest-world.html"),shell.replace("%%HASH%%",hash).replace("%%CORE%%",js));
+await writeFile(path.join(output,"04-mini-world.ts"),source);
+process.stdout.write("Checkpoint04 generated from "+hash+"\n");

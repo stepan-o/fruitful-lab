@@ -1,0 +1,73 @@
+{
+  "reviewed": "2026-10-07",
+  "assets": {
+    "witcher-world": {
+      "title": "The Witcher 3: Wild Hunt — official gallery screenshot",
+      "owner": "CD PROJEKT RED S.A.",
+      "source": "Publisher-supplied Steam store gallery",
+      "sourceUrl": "https://store.steampowered.com/app/292030/",
+      "assetUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/f7f564ecedd09b3e503b071a637aeefdedbeedd8/ss_f7f564ecedd09b3e503b071a637aeefdedbeedd8.1920x1080.jpg?t=1790845156",
+      "sourceDate": "Retrieved 7 October 2026; individual capture date and game build not supplied",
+      "sourceSha256": "05e2fed4f63c527cfbef1ff07b2fed1b010168e37388600333a27a681c00715d",
+      "reviewed": "2026-10-07",
+      "publication": "editorial",
+      "basis": "One official gallery image, used for specific criticism and comparison. CDPR’s fan guidelines condition permission on non-commercial use, unofficial identification and no incorporation into other products. This mixed analysis and author-project context relies on a bounded criticism/review assessment rather than claiming blanket fan-policy clearance.",
+      "purpose": "A monster encounter within a traversable landscape introduces the relation between placed encounters, authored quests and a world the player explores.",
+      "treatment": "Complete frame retained; no repainting, cropping, recoloring or removal of marks. Responsive WebP versions at 400, 800 and up to 1440 pixels. Analytical highlights, where present, are separate interface overlays. No game files, extracted models, music or downloadable art collection.",
+      "chapters": [
+        "making-worlds"
+      ]
+    },
+    "rdr-world": {
+      "title": "Red Dead Redemption 2 — official gallery screenshot",
+      "owner": "Rockstar Games / Take-Two Interactive",
+      "source": "Publisher-supplied Steam store gallery",
+      "sourceUrl": "https://store.steampowered.com/app/1174180/",
+      "assetUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/ss_66b553f4c209476d3e4ce25fa4714002cc914c4f.1920x1080.jpg?t=1759502961",
+      "sourceDate": "Retrieved 7 October 2026; individual capture date and game build not supplied",
+      "sourceSha256": "cf4bdfee3a9c961af4d943e50837b5cdceb3396ee3c78e9d3fe0071c45a2e927",
+      "reviewed": "2026-10-07",
+      "publication": "editorial",
+      "basis": "One official gallery image cited for criticism/review, not licensed promotional material for Loopforge. Rockstar’s 10 January 2025 policy excludes product promotion and digital publishing from its fan-use allowance. No bespoke permission was obtained. This edition relies on a context-dependent statutory assessment, not that policy.",
+      "purpose": "The moonlit waterway establishes travel and environmental staging outside a combat spectacle, beside the discussion of inhabiting Rockstar’s world between missions.",
+      "treatment": "Complete frame retained; no repainting, cropping, recoloring or removal of marks. Responsive WebP versions at 400, 800 and up to 1440 pixels. Analytical highlights, where present, are separate interface overlays. No game files, extracted models, music or downloadable art collection.",
+      "chapters": [
+        "making-worlds"
+      ]
+    },
+    "rimworld-colony": {
+      "title": "RimWorld — official colony and health-interface screenshot",
+      "owner": "Ludeon Studios Inc.",
+      "source": "Publisher-supplied Steam store gallery",
+      "sourceUrl": "https://store.steampowered.com/app/294100/",
+      "assetUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/294100/80e383ef19353058791efe17a6485849246c9c17/ss_80e383ef19353058791efe17a6485849246c9c17.1920x1080.jpg?t=1782756789",
+      "sourceDate": "Retrieved 7 October 2026; individual capture date and game build not supplied",
+      "sourceSha256": "dc230064ab79ceb0dcf9530d5475b536c6567b1d987f65239cc2fbf22b59772b",
+      "reviewed": "2026-10-07",
+      "publication": "editorial",
+      "basis": "One screenshot for criticism/review. Ludeon’s EULA recognizes applicable statutory fair-use/fair-dealing rights separately from its revocable User Content permission. We rely on the former editorial assessment, not a general licence to extract assets or use its marks to promote Loopforge.",
+      "purpose": "The health panel and colony alerts make interacting bodily conditions, events and management responsibilities inspectable; the comparison concerns simulation as a source of particular histories.",
+      "treatment": "Complete frame retained; no repainting, cropping, recoloring or removal of marks. Responsive WebP versions at 400, 800 and up to 1440 pixels. Analytical highlights, where present, are separate interface overlays. No game files, extracted models, music or downloadable art collection.",
+      "chapters": [
+        "making-worlds"
+      ]
+    },
+    "loopforge-rivalry": {
+      "title": "Loopforge — Rivet Witch and Stiletto at the conveyor",
+      "owner": "Stepan Oskin / Loopforge",
+      "source": "Owner-provided original Loopforge supervisor scene library",
+      "sourceUrl": "https://www.fruitfulab.net/stepanoskin/loopforge/overview/the-cast",
+      "sourceDate": "Existing original concept scene, inspected 7 October 2026",
+      "sourceSha256": "6e573c8cad9efafff0d7d6a08bb3dac9bf27175a4819b5329d61efe2b392bc40",
+      "reviewed": "2026-10-07",
+      "publication": "owner-authorized",
+      "basis": "The project owner explicitly authorized reuse and new derivative artwork for this chapter on 7 October 2026. This permission concerns Loopforge’s own assets, not any third-party game images discussed elsewhere. It is not a general asset licence to site visitors.",
+      "purpose": "Establish the author’s factory setting and opposing supervisor personalities before examining the simulation-to-narration architecture.",
+      "treatment": "Existing original concept painting, not a gameplay capture or a generated response to the selected policy. Complete composition preserved in optimized responsive WebP variants.",
+      "provenanceNote": "Read-only source: loopforge-presentations worktree at 54c234b, assets/loopforge-supervisors/argue-stiletto-rivet-witch-conveyor.webp. Concept art does not establish implemented refusal mechanics.",
+      "chapters": [
+        "making-worlds"
+      ]
+    }
+  }
+}

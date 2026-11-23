@@ -1,0 +1,3 @@
+Lobby entrance arch and crest — contact design targets, NOT measured or accepted
+
+Floor origin centered between jambs. Walk axis local Z through the opening; +Z faces the approaching cast. Clear width target 4.0 m, reflecting the current lobby/security portal span (122..126); clear height target 3.6 m remains a proposed fit, not a measured requirement. Jamb collision boxes only, with no invisible rectangle across the opening. Door hinge attachment locations on the inside jambs and blank sign seat must remain identifiable. Doors, lettering and fixtures are separate engine objects. Leave the whole central lane unobstructed.

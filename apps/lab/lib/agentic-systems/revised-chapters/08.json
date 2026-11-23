@@ -1,0 +1,178 @@
+{
+  "id": "responsive",
+  "title": "Shorten the consequential wait",
+  "standfirst": "Parallel effort, review delay and product responsiveness run on different clocks.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "prose",
+      "text": "A studio has two deadlines to meet. One belongs to the person waiting for the work; the other belongs to the person using it. Agents may finish a scene sooner and leave it slow to play. They may improve runtime performance while holding the release for another day. Efficient creative production has to name which wait it is reducing."
+    },
+    {
+      "type": "prose",
+      "text": "For the team, elapsed time to an accepted result differs from the sum of its workers’ effort. Independent branches can overlap; integration and judgment may remain serial. For the delivered product, latency and throughput describe another system. Keep those clocks separate so a better frame rate never becomes evidence that the studio worked faster."
+    },
+    {
+      "type": "heading",
+      "text": "The average is not the experience"
+    },
+    {
+      "type": "prose",
+      "text": "Dean and Barroso’s The Tail at Scale describes how occasional slow components can dominate a large service. When a request waits for many pieces, it inherits their slowest required completion. Higher utilization also makes tail latency harder to control. The paper concerns large online services, not language-model agents, but its question transfers directly: what must finish before this person can continue?",
+      "sources": [
+        "tail-at-scale"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Consider an authored example: a brief sends six independent investigations and waits for all six before drafting. Parallelism can shorten ordinary completion, yet one stalled investigation can hold the entire result. The design might use a deadline, return a clearly incomplete draft, or continue the missing work in the background. Each choice changes the product promise. Calling the arrangement “parallel” does not settle that promise."
+    },
+    {
+      "type": "prose",
+      "text": "The investigations are independent, but synthesis depends on their results. Required serial waits add to the path; independent branches run together, and an all-results join waits for the slowest. In the study below, move the clock past the deadline before changing the release rule. The partial brief names the missing investigation rather than silently presenting five findings as the complete six."
+    },
+    {
+      "type": "visual",
+      "id": "parallel-wait",
+      "title": "Five findings are ready. The brief is still waiting.",
+      "caption": "An authored timing model: six read-only investigations, fixed durations and one second of synthesis. The clock illustrates a dependency, not measured model performance. Releasing a partial brief changes its promise; canceling work is a separate decision."
+    },
+    {
+      "type": "prose",
+      "text": "Wilson Lin’s January 2026 Cursor account describes a useful reversal. A shared locking scheme left many agents waiting; separate planning and worker roles enabled larger runs, while an added integrator role later became a bottleneck and was removed. The article reports substantial coding progress and an in-place migration still awaiting review. These are builder observations, not a controlled staffing experiment.",
+      "sources": [
+        "cursor-scaling"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The example challenges a convenient response to our own delays: appointing another coordinator. A new role earns its place if it removes a consequential wait or supplies judgment that was missing. Otherwise it can become another desk every correction must visit. The relevant trace follows one usable contribution through the team, including the time it waits to be received."
+    },
+    {
+      "type": "heading",
+      "text": "The delivered work has its own clock"
+    },
+    {
+      "type": "visual",
+      "id": "performance-comparison",
+      "title": "An average can pass while the experience fails",
+      "caption": "Choose the delivered-day record, then switch between average rate and long pauses. Full and minimal results are shown together. The earlier opening is a different workload; these frame measurements do not estimate model latency."
+    },
+    {
+      "type": "prose",
+      "text": "Loopforge’s completed-day run illustrates the distinction at the consuming end of the system. Both full and minimal views cleared the minimum average frame rate, yet both failed the wider timing protocol. Hiding much of the scenery did not establish a cause or produce an accepted result. A faster-looking average could not justify discarding the scene’s visual work.",
+      "sources": [
+        "delivery"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This is why resource measurements need names. The minimal view hid already allocated meshes; it did not measure a smaller download or a lower memory footprint. Input response, frame cadence and loading are different obligations. In an AI service, cached input, faster generation and fewer tool calls are likewise different changes. Measure the path the claimed benefit actually travels."
+    },
+    {
+      "type": "heading",
+      "text": "Remove repeated work before removing value"
+    },
+    {
+      "type": "evidence",
+      "asset": "opening-performance",
+      "alt": "Retained browser screenshot of the earlier Loopforge opening performance test, showing the cast and the successful measured result.",
+      "caption": "21 October 2026, before-the-shift/5. The screenshot was retained with the optimized opening result. It documents that earlier specimen; the later Day 1 failure was not replaced by this pass.",
+      "original": "https://github.com/stepan-o/fruitful-lab/blob/35d114447749ed131c8016f8e0f9dff7d1c2e7d5/docs/loopforge/production/performance-results/2026-10-21-hd620-opening-optimized.png"
+    },
+    {
+      "type": "prose",
+      "text": "The earlier opening comparison gives us a more useful success. Its baseline already averaged 54.1 frames per second, but thirty-one long pauses failed the protocol. After a group of local repairs, the same scene and assets recorded four. The average moved only to 55.6. Looking solely at that average would make the work seem modest; it had changed that opening test’s verdict.",
+      "sources": [
+        "opening-performance-record"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The successful opening repair reused pose buffers and unchanged world structure, reduced repeated event scanning, reused a projection between simulation ticks, and deferred a closed panel’s content. The same visible scene remained. Several changes were tested together, so the result belongs to that bundle; it does not tell us the saving from each technique. Its importance is that useful richness survived while unnecessary surrounding work was reduced.",
+      "sources": [
+        "opening-performance-record"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Giesen’s 2013 occlusion-culling series contains a similar displacement of attention. Two of its largest improvements came from surrounding rendering code rather than the elaborate culling work at the center of the series. A three-line write-combining repair saved more than a longer succession of rasterizer changes. The surprise leads him to look for unexpectedly expensive work, not only the largest bar in a profile. Some invasive or low-return ideas remain unbuilt at the end.",
+      "sources": [
+        "giesen-performance"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Return to the six investigations. If each fetches the same source bundle, collect that common input once and let the workers search different questions within it. Reuse remains valid only while the source version and required freshness match. The optimization removes duplicated acquisition, not independent scrutiny. If a source changes during the run, the coordinator must decide whether the shared snapshot still answers the commission."
+    },
+    {
+      "type": "heading",
+      "text": "Find a consequential slow interval"
+    },
+    {
+      "type": "visual",
+      "id": "stall-map",
+      "title": "The passage that caught the pen",
+      "caption": "A blank interval means no frame exceeded 100 ms there. It does not mean the renderer was idle, nor that every shorter frame met the cadence target."
+    },
+    {
+      "type": "prose",
+      "text": "The stall map belongs to a separate, failed opening specimen, not the successful repair above. Fifteen of its twenty-eight long frames cluster in the passage. Enlarge the first minute: we have found a place to investigate, not a cause. For the research brief, the equivalent trace would identify which investigation waited and what it was waiting for, before we decide to replace its model.",
+      "sources": [
+        "opening-r12-record"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This is where I would stop asking an agent to “make it faster.” For the brief, ask whether the late investigation is repeating acquisition, waiting on a source or doing essential work. For the factory, capture the work around the passage before removing scenery. Keep the intended result fixed. Loopforge’s graphics reference slowed across one session, making some apparent differences unsafe to attribute to the settings; a repeated reference can be cheaper than commissioning the wrong repair.",
+      "sources": [
+        "graphics-comparison-record"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Leave room for recovery"
+    },
+    {
+      "type": "prose",
+      "text": "Fiedler’s Fix Your Timestep describes a runtime trap: a slow frame creates missed simulation work, and catching up can take so long that the system falls farther behind. Fixed steps, interpolation and headroom address that numerical problem. A studio’s review backlog has different mechanics, but deserves its own explicit capacity limit. The analogy is about protecting a queue; it does not make frame timings a measure of agent coordination.",
+      "sources": [
+        "timestep"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The deadline in our brief does not itself stop the sixth investigation. Leave cancellation off and its work continues after the partial result is released. Cancel it and we save that remaining effort, but lose the finding. Launching a duplicate attempt might reduce the wait while spending still more work. The right choice depends on whether a timely partial brief is useful and whether the missing question is permitted to remain open."
+    },
+    {
+      "type": "prose",
+      "text": "These are read-only investigations, so canceling one leaves missing evidence rather than an unfinished external mutation. A state-changing task would need a separate recovery contract. Bounded concurrency also leaves room for retries and urgent work; unused capacity can be a deliberate expense that protects responsiveness. Filling every worker slot is not the same objective as meeting the recipient’s deadline."
+    },
+    {
+      "type": "prose",
+      "text": "At release, both clocks remain visible. A team’s faster completion does not excuse a product that misses its performance obligation; a successful optimization does not explain every hour spent producing it. The chosen configuration and its failed limits must travel with the result, so the next owner knows which promise is still open."
+    },
+    {
+      "type": "build",
+      "title": "Follow one result across every wait",
+      "body": "Choose an interactive AI task or a repeated generation batch. Keep its quality obligations fixed while investigating delay.",
+      "steps": [
+        "Record the complete path: queue, model, tools, retries, review and presentation. Distinguish serial waits from overlapping work.",
+        "Measure a distribution and meaningful slow cases, not only an average. Record the workload and environment.",
+        "Try one reuse, deferral or concurrency change that preserves the required result. Compare against a repeated reference when drift is plausible.",
+        "Test timeout, cancellation and late completion. Record which obligations remain after the caller stops waiting."
+      ],
+      "exercise": "Protect one expensive quality requirement. Name the repeated or unnecessary work you would remove first, and the evidence that would make you reject the apparent saving."
+    }
+  ],
+  "sourceIds": [
+    "tail-at-scale",
+    "cursor-scaling",
+    "delivery",
+    "opening-performance-record",
+    "giesen-performance",
+    "opening-r12-record",
+    "graphics-comparison-record",
+    "timestep"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ben",
+  "body": {
+    "source": "output/opening-cast/ben/ben-body-v1.glb",
+    "sha256": "1b9c6a27f53f2f8fb5a8e9198d9244e078c35a9a4591ada1e4f9285f3829b8a9",
+    "bytes": 16250692,
+    "triangles": 24771,
+    "skins": 0,
+    "animations": 0
+  },
+  "status": "downloaded unrigged body; visual review pending",
+  "approvedReference": "ensemble-badass"
+}

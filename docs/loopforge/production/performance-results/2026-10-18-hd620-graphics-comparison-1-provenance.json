@@ -1,0 +1,27 @@
+{
+  "baseCommit": "638628443bad94ca34f167ddebc9ae6ce28d171e",
+  "sourceHashes": {
+    "apps/lab/__tests__/loopforge-themes.test.tsx": "e71ec24f0b8fa884c76c5748cd6f90d505b90118c477860ea1306d13e672635f",
+    "apps/lab/components/loopforge/agents/PerformanceAcceptance.tsx": "ddf20389351c095582df9157ba790fb605f16a1a3cdfa67b96914b655971b64e",
+    "apps/lab/components/loopforge/agents/ReviewCameraControls.tsx": "cd51561ba24665500816a9ceae38546d50707254aa7a548c08a06100af86a9e0",
+    "apps/lab/components/loopforge/agents/ReviewNavigation.tsx": "fb490bde84abf1c093ec6276bd1f40d5505784eebfdb69e0cc8a955ecadf5776",
+    "apps/lab/components/loopforge/agents/SceneStudies.tsx": "ba714b87b12ec9c318aef6fdc40ab6ac7a54de7fe630014d067864dece1b203d",
+    "apps/lab/components/loopforge/agents/limen-model.ts": "4109ae793db50c8f7a5a1edd44872252f6bb91d853e8b9b34adc5255c9b35394",
+    "apps/lab/components/loopforge/agents/performance-acceptance.module.css": "d30dd3c71a9dbdb63c40791b07ad6788efaa1d1dec0eba2b2e6269a88ce6021f",
+    "apps/lab/components/loopforge/agents/performance-run.ts": "3355ba378a60bc98665532ead47c26ab9e237d1a4f89d4755f362f99e3f09e73",
+    "apps/lab/components/loopforge/agents/worker-crowd.ts": "4577af408147709b1ece2981727cb2633a5062b429144eb5aec41f11be0e2321",
+    "apps/lab/components/loopforge/factory-study/scene.ts": "41be22846e14f416797cde5e372e13ef13e97c0c833f19aba95c3079911e9bb4",
+    "apps/lab/components/loopforge/first-shift/FirstShift.tsx": "0ac8470fdad5f4bfb010a6ae2af37b4d75793b7d00e48e08d4a2f18ff43d7ef8",
+    "apps/lab/components/loopforge/first-shift/GameClient.tsx": "a5b7fe0a727ee6f7e3271442ce511400da27c61fbe7d359995be9863604f9ea0",
+    "apps/lab/app/(stepanoskin)/stepanoskin/loopforge/play/performance-lab/page.tsx": "4d77961cf54d07d31d383b7468996421dacb01f66cc3828b88b9d192c746a533",
+    "apps/lab/components/loopforge/agents/PerformanceLab.tsx": "4fb26cf3a37eb56347c9cd18c2e983087f236ce937fbbfdd35ca5ecb3e144882",
+    "apps/lab/components/loopforge/agents/comparison-run.ts": "018d10368163a612ba85e18d6133bd4b2a21a1f39cc5b932a5cc13df200b36df",
+    "apps/lab/components/loopforge/graphics/GraphicsSettings.tsx": "135f76caf62f919306e9767b12699725583b34b400ece846a21890f125ecb9fa",
+    "apps/lab/components/loopforge/graphics/graphics-settings.module.css": "0951e8b0d02126845972e5719265d2c3e1dc6304f68eced1162f4d15564bea07",
+    "apps/lab/lib/loopforge/graphics/settings.test.ts": "8aa75aa7f8a3d105851f5c4bfca6020e69802be69f375614b930aa7928b7e041",
+    "apps/lab/lib/loopforge/graphics/settings.ts": "a505aa9a74b70df86a22eba1e4a6a78391365dd54b17027a7e06ae7ee73ec8b6",
+    "apps/lab/lib/loopforge/graphics/store.ts": "7e01933baaa087f813791f97f808d5feb399b9423b17ba10edbdc6268fe3fd71",
+    "apps/lab/lib/loopforge/performance/comparison.ts": "f28b1d518000ee3c7f5e9cabdc46ef448e81c5956f79cddb1c9c3a27c404e24c"
+  },
+  "excludedExperiment": "Existing uncommitted LIMEN yaw-only changes in limen-model.ts were included in the local browser build and remain excluded from this change."
+}

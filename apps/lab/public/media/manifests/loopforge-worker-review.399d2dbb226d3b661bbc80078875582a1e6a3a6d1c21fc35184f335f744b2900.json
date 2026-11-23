@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-worker-review",
+  "assets": {
+    "worker-01": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/299587fb5eefb1fa1dc725118d4edd17ae058ea4231610c19d079bde3c991933.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 7486164,
+          "sha256": "299587fb5eefb1fa1dc725118d4edd17ae058ea4231610c19d079bde3c991933"
+        }
+      ]
+    }
+  }
+}

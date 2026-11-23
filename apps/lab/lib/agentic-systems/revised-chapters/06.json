@@ -1,0 +1,245 @@
+{
+  "id": "generation",
+  "title": "Search beyond the first idea",
+  "standfirst": "More proposals earn their cost when they create worthwhile alternatives and a usable way to choose.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "prose",
+      "text": "A team can generate more candidates without giving its director more choice. Ten variations may preserve the same premise, the same missing consequence or the same awkward staging. A useful search changes what can be selected. Its architecture needs a generator, an evaluator, a selection rule and a way to retain consequential differences—not merely another worker to keep proposing."
+    },
+    {
+      "type": "visual",
+      "id": "search-yard",
+      "title": "The winner at the loading dock",
+      "caption": "Inspecting a proposal does not promote it: the paper cards track your inspection, while the result slip keeps the evaluator’s selection visible."
+    },
+    {
+      "type": "prose",
+      "text": "Start with proposal A and keep considering the next one. Under the distance-only rule, the selected route becomes shorter. At the seventh proposal, the score has fallen from twelve grid units to six. Try that winner. The cargo stops at the central rack. The chart we could have drawn from those scores would slope in the direction we wanted, all the way to a failed delivery."
+    },
+    {
+      "type": "prose",
+      "text": "I held the destinations and the loaded cart’s footprint fixed. The first ranking rule simply had no place for clearance. Requiring a clear delivery changes the winner; closing the door brings back a longer route that was available at the beginning. The seven authored proposals are enough to expose the omission. A larger batch would have let the same rule make its mistake more often."
+    },
+    {
+      "type": "heading",
+      "text": "Separate feasibility from preference"
+    },
+    {
+      "type": "prose",
+      "text": "The loading yard makes two decisions easy to confuse. First, can this route deliver the cargo under the required conditions? Then, among routes that can, which is preferable? A shorter collision is not a small improvement over a longer delivery. Hard constraints define admissible candidates; the objective ranks what remains. A production optimizer needs both, including the conditions that are expensive to evaluate."
+    },
+    {
+      "type": "prose",
+      "text": "Sutton’s 2019 Bitter Lesson asks us to take that larger scale seriously. General methods able to absorb more computation have repeatedly overtaken elaborate stores of human domain knowledge; search and learning are central to his account. A useful system should be able to gain from another thousand attempts. Our stranded cart identifies a responsibility that ambition leaves with the builder: what, exactly, is allowed to improve when those attempts are compared?",
+      "sources": [
+        "sutton"
+      ]
+    },
+    {
+      "type": "evidence",
+      "asset": "funsearch-overview",
+      "alt": "Published FunSearch Figure 1. A specification and sampled programs form a prompt; a pretrained language model proposes programs, evaluation filters them, and a programs database feeds later prompts.",
+      "caption": "Romera-Paredes and colleagues, Figure 1, published December 2023, CC BY 4.0. The retained program is both an output and material for another proposal. Original figure, resized and re-encoded; inspect for the individual paths.",
+      "original": "https://www.nature.com/articles/s41586-023-06924-6/figures/1"
+    },
+    {
+      "type": "prose",
+      "text": "FunSearch answers by generating something that can be executed. Romera-Paredes and colleagues search for programs that construct solutions, pairing a pretrained language model with an evaluator. A stable program skeleton leaves a critical decision function open to change. Cap sets and bin packing offer useful executable evaluations. Their results make the promise of search concrete within that setting, while leaving us to find an equally meaningful judgment for our own output.",
+      "sources": [
+        "funsearch"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The database supplies previously evaluated functions for the next prompt. The model proposes another function; the evaluator executes it; valid scored programs return to the population. Diverse islands help preserve different possibilities. Improvement accumulates in the programs and the prompting process while the language model remains pretrained. Our yard isolates evaluation and selection from this adaptive step: its seven authored routes never rewrite themselves.",
+      "sources": [
+        "funsearch"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "FunSearch also shows why the output representation matters. A program can be executed on cases beyond the prompt that produced it. In an optimization pipeline, we want a candidate whose behavior can be examined independently of the model’s explanation. A convincing account of an improvement is poor material for selection when the underlying proposal cannot be replayed.",
+      "sources": [
+        "funsearch"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "AlphaEvolve extends this program-search approach to larger code modifications and richer evaluation. It also keeps a population, can reject weak proposals before expensive tests, and can incorporate model-generated judgments for less tractable qualities. That broadens the machinery without turning every judgment into independent truth. The suitability of an objective remains part of the design.",
+      "sources": [
+        "alphaevolve"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "candidate-archive",
+      "title": "The route we almost threw away",
+      "caption": "A and B both remain feasible when the doorway closes. Their twelve-unit tie is settled alphabetically; retaining alternatives does not require pretending that every one is uniquely best."
+    },
+    {
+      "type": "prose",
+      "text": "Keeping E alone saves us from maintaining alternatives until the door closes. Then the drawer is empty of useful answers. A and B are worth retaining because they survive a change that defeats E, not because every earlier proposal deserves an archive. Our small desk makes that reason inspectable; AlphaEvolve’s evolving population has a much larger selection problem to manage."
+    },
+    {
+      "type": "prose",
+      "text": "Retaining alternatives has a carrying cost. Keep a baseline and candidates that differ in a consequential way: operating conditions, failure modes, latency or resource use. A catalogue of nearly identical winners adds little resilience. The archive’s purpose is to preserve options the current objective might undervalue, not to make every generation look productive."
+    },
+    {
+      "type": "heading",
+      "text": "Buy different possibilities"
+    },
+    {
+      "type": "prose",
+      "text": "Doshi and Hauser’s controlled short-story experiment found a useful tension: access to generated starting ideas improved judged creativity and enjoyment, especially for less creative writers, while the resulting stories became more similar to one another. This was human writing with AI ideas, not an autonomous team trial. It nevertheless separates two returns that a production dashboard can easily merge: a better individual candidate and a more varied field to choose from.",
+      "sources": [
+        "creative-diversity"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Wan and Kalman’s 2025 preprint tested a modified setup with plots generated through ten deliberately different personas. The authors report that the resulting human stories retained diversity comparable to the unaided condition. Persona-conditioned idea generation is not evidence of independent agent minds or a faster studio. It gives us a testable alternative to simply increasing the batch: vary the proposed treatment, then inspect whether the differences survive in the finished work.",
+      "sources": [
+        "persona-diversity"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "I would try three bounded commissions for a factory encounter: make authority legible through distance, through interrupted work, and through dialogue. Each contributor would receive the same cast, prior events, duration and audience question, then return one treatment with its new obligations marked. Separate workers could explore these directions at once. Whether that buys enough useful difference to repay three returns and a joint review is an experiment, not a result established by our studio. After selection, one owner would integrate the chosen treatment; continuing three parallel rewrites could undo the economy."
+    },
+    {
+      "type": "heading",
+      "text": "Keep the experiment honest"
+    },
+    {
+      "type": "prose",
+      "text": "Karpathy’s March 2026 autoresearch repository draws the experimental boundary particularly tightly. The agent changes a training file; a separate preparation file holds evaluation and constants. A trial gets five minutes of training, excluding startup and compilation, and is judged on validation bits per byte. The instructions prohibit changes to the evaluation harness, and the README limits comparisons across different hardware. The arrangement gives another attempt a stable question to answer. Its five minutes belong to that experiment, rather than a universal allowance for useful work.",
+      "sources": [
+        "autoresearch"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Candidate improvement and evaluator improvement deserve separate records. If a missing condition changes the judge, rerun the baseline and retained alternatives before enlarging search."
+    },
+    {
+      "type": "prose",
+      "text": "For a production experiment, pin the input slice, candidate, evaluator and environment together. A changed judge creates a new comparison; it does not retroactively improve the old winner. Cheap screening can reject malformed or obviously infeasible proposals before a costly integrated run. But the screen itself needs scrutiny: if it discards the only candidate that survives a rare condition, its speed has purchased the wrong economy."
+    },
+    {
+      "type": "prose",
+      "text": "There is no reason to force every judgment into one number. Some properties are executable constraints, some support a ranking, and some require a person to inspect an unresolved tradeoff. In Loopforge’s night-image review, continuity with the entrance depended on specific visible details. Naming the missing slogan and barrel gave generation actionable feedback without pretending to measure “the same place” on a universal scale.",
+      "sources": [
+        "visual-second"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Generative content inherits obligations"
+    },
+    {
+      "type": "prose",
+      "text": "Content generation exposes what an executable score can miss. A sentence may introduce a promise; an image may imply an object; a conversation may change what someone is entitled to know. The system must decide whether those implications are merely candidate wording or commitments that later work must honor."
+    },
+    {
+      "type": "visual",
+      "id": "story-workshop",
+      "title": "An hour before the gate closes",
+      "caption": "The exit requires the period to be spent, not the characters to agree. An unanswered request and an honoured one can therefore close the same scene."
+    },
+    {
+      "type": "prose",
+      "text": "Kit wants a rehearsal. Lou can ask, make space for it, and leave with an invitation to try again tomorrow. Or Lou can spend the hour making another crate. The exit is the same door. The person walking through it has a different reason to speak."
+    },
+    {
+      "type": "prose",
+      "text": "Choosing an activity changes the history that later contributors inherit. Rewording its ending should preserve that choice: a prettier sentence cannot quietly spend the same hour twice."
+    },
+    {
+      "type": "prose",
+      "text": "Emily Short’s storylet definition gives this small scene a useful shape: content, prerequisites and effects. The content can be prose, dialogue, animation or film; its size and selection method remain open. Her 2019 essay shows several narrative forms built from that structure. For Kit, its value is very specific. The request determines when the rehearsal belongs, and the spent period determines what the next scene must remember.",
+      "sources": [
+        "storylets"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Loopforge’s proposed cohort scene made this obligation visible before implementation. Its first treatment assumed the preferred activity benefited the character; the revision made it answerable to a request and competing uses of time. That proposal remained outside the delivered game. It is useful here as a design counterexample: many polished variants of the same imposed outcome would not have repaired the missing choice.",
+      "sources": [
+        "writer-second"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "sentence-bench",
+      "title": "What the last line smuggles in",
+      "caption": "If the booking is meant to be true, accepting that line creates work for a later scene: an appointment needs somewhere to happen, and some way to be missed."
+    },
+    {
+      "type": "prose",
+      "text": "At the sentence bench, I am tempted by the warm ending because it seems to complete the scene emotionally. Its booking is also unsupported. The first decision is to reject that commitment or commission the missing appointment. Only then can two feasible lines compete for tone. The most fluent candidate can make this order feel ungenerous, precisely when the system most needs it."
+    },
+    {
+      "type": "prose",
+      "text": "Façade joins reactive behavior and a drama manager to authored material. Mateas and Stern’s later authoring account shows the cost in a dispute over drinks: interruption points, topic recovery, repeated requests and physical staging had to be specified around the lines. They report substantial local responsiveness alongside less global agency than hoped, with joint dialogue behavior still costly to write. The architecture made that work possible without removing it.",
+      "sources": [
+        "facade",
+        "facade-authoring"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "A contribution therefore returns more than its best line. It returns the consequences another craft must implement. The receiving owner can accept that work, choose a smaller line that carries the feeling, or return the proposal. The generator cannot decide for everyone who inherits it."
+    },
+    {
+      "type": "heading",
+      "text": "Stop when another attempt buys too little"
+    },
+    {
+      "type": "prose",
+      "text": "Suppose the route archive already contains a feasible answer, and repeated new proposals merely shorten the same blocked path. Keep the feasible baseline and repair the objective before buying another batch. If the remaining plausible improvement cannot repay another integrated test and adoption, stop. These are decisions under uncertainty, not proofs that no better candidate exists."
+    },
+    {
+      "type": "prose",
+      "text": "I would keep the cost of proposing, testing and integrating separate. A cheap generator can overwhelm a scarce reviewer; a slow test can justify a better early filter; an excellent candidate can still be too disruptive to adopt. Stop rules should name these limits before the attractive next sample arrives. The best observed score is evidence about the candidates tried, not proof that the search has found an optimum."
+    },
+    {
+      "type": "build",
+      "title": "Make the next trial informative",
+      "body": "Begin with a bounded candidate family and an evaluator that can reject a tempting shortcut. The yard’s geometry and rankings are computed locally; no model account is needed.",
+      "steps": [
+        "Keep the world rules fixed. Write a candidate that passes, a shorter candidate that violates a requirement, and a valid alternative that survives a second operating condition.",
+        "Compute feasibility separately from the quantity being optimized. Preserve the exact candidate and evaluator version with each result.",
+        "Try a cheap rejection stage before a costly integrated trial. Confirm that the early stage does not discard the alternative needed for the second condition.",
+        "Retain the baseline and distinct useful alternatives. If a reviewer changes an acceptance condition, rerun that small collection before expanding generation."
+      ],
+      "exercise": "Only replace the fixed proposal list with model-generated route code after the evaluator is dependable. Keep execution isolated and set a trial budget. Before another batch, state which unresolved question it could answer and which result would make you stop."
+    },
+    {
+      "type": "build",
+      "title": "Audit the commitments in generated content",
+      "body": "Use a passage, recommendation or interface state as the candidate. Preserve a small authoritative record beside the alternatives.",
+      "steps": [
+        "Identify what the candidate may vary and which facts or commitments it must preserve.",
+        "Generate alternatives with those effects held fixed. Compare useful differences rather than counting variants.",
+        "Mark any sentence or visual cue that implies a new promise, capability or state change.",
+        "Decide whether to reject that implication or commission the downstream work needed to make it true."
+      ],
+      "exercise": "Take the most appealing candidate and remove its unsupported promise. Does the remaining improvement still justify the review and integration cost?"
+    }
+  ],
+  "sourceIds": [
+    "sutton",
+    "funsearch",
+    "alphaevolve",
+    "creative-diversity",
+    "persona-diversity",
+    "autoresearch",
+    "visual-second",
+    "storylets",
+    "writer-second",
+    "facade",
+    "facade-authoring"
+  ]
+}

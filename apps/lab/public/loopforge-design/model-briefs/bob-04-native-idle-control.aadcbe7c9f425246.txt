@@ -1,0 +1,18 @@
+BOB — NATIVE IDLE CONTROL
+Stage 4 · 21 October 2026
+
+PURPOSE
+Test whether bob's resting arm posture comes from a transfer/bind error or from the catalog motion on his own proportions. Apply Action 0 Idle to the existing approved body rig. Do not regenerate or remesh the character.
+
+REQUEST
+Catalog lookup confirmed Action 0: Idle.
+Existing rig: 01a15d65-b91e-7262-8e9d-15d3f7c902d6
+Animation task: 01a15f16-8225-736a-ab22-58d0e49a59ab
+Label: bob-native-idle-comparison-v1
+Cost: 3 Meshy credits. Cumulative opening-build ledger: 391 / 500.
+
+DELIVERY
+Source GLB downloaded: 17,286,064 bytes. Keep source and API responses private; never publish signed download URLs. No replacement of the existing animation bank.
+
+COMPARISON
+Compare target-rest matrices with mesh-world-adjusted inverse binds before measuring rotations. The corrected comparison found 0.0 degrees of basis rotation difference across the mapped joints. At the inspected one-second idle pose, native and transferred wrist-to-upper-arm offsets were close. A whole-clip contact and artistic review is still necessary; this trial does not approve arm posture or justify generating ten new idle clips. Fit posture against the actual body where needed.

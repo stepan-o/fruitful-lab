@@ -1,0 +1,8 @@
+.identity{display:inline-flex;align-items:center;gap:16px;min-height:44px;flex-shrink:0;color:#c7c1ab;text-decoration:none;font:10px/1.4 ui-monospace,monospace;letter-spacing:.16em}
+.mark{display:grid;place-items:center;flex-shrink:0;width:29px;height:29px;margin-inline:6px;border:1px solid #a5975266;transform:rotate(45deg)}
+.mark>span{transform:rotate(-45deg);font-size:9px;letter-spacing:.06em;color:#b7a16a}
+.name{white-space:nowrap}
+.arrow{color:#b7a16a;margin-right:5px}
+.identity:hover{color:#eee9dc}
+.identity:focus-visible{outline:2px solid #d8c185;outline-offset:5px}
+@media(max-width:480px){.identity{gap:10px}}

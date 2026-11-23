@@ -1,0 +1,2881 @@
+{
+  "version": "room-crowd-1",
+  "status": "FAIL",
+  "reason": null,
+  "checks": {
+    "complete": true,
+    "frameRate": false,
+    "frameP95": false,
+    "frameP99": false,
+    "everyAngle": false,
+    "stalls": false,
+    "switches": false,
+    "input": true,
+    "resources": true,
+    "context": true
+  },
+  "frames": {
+    "samples": 12453,
+    "elapsedMs": 600030.2000000477,
+    "fps": 20.753955384244012,
+    "p50Ms": 45.799999952316284,
+    "p95Ms": 66.10000014305115,
+    "p99Ms": 124.5,
+    "maxMs": 779.5999999046326,
+    "stallsOver100": 212
+  },
+  "phases": [
+    {
+      "index": 0,
+      "room": "security",
+      "angle": 0,
+      "samples": 487,
+      "elapsedMs": 20036.10000014305,
+      "fps": 24.306127439797315,
+      "p50Ms": 40.5,
+      "p95Ms": 48.89999985694885,
+      "p99Ms": 62.40000009536743,
+      "maxMs": 163.19999980926514,
+      "stallsOver100": 3
+    },
+    {
+      "index": 1,
+      "room": "security",
+      "angle": 1,
+      "samples": 459,
+      "elapsedMs": 19991.89999985695,
+      "fps": 22.959298516063225,
+      "p50Ms": 42.59999990463257,
+      "p95Ms": 54.5,
+      "p99Ms": 65.60000014305115,
+      "maxMs": 158.60000014305115,
+      "stallsOver100": 2
+    },
+    {
+      "index": 2,
+      "room": "security",
+      "angle": 2,
+      "samples": 451,
+      "elapsedMs": 19999,
+      "fps": 22.551127556377818,
+      "p50Ms": 41.799999952316284,
+      "p95Ms": 67.10000014305115,
+      "p99Ms": 107,
+      "maxMs": 225.29999995231628,
+      "stallsOver100": 7
+    },
+    {
+      "index": 3,
+      "room": "conveyor",
+      "angle": 0,
+      "samples": 409,
+      "elapsedMs": 20015.400000095367,
+      "fps": 20.43426561537872,
+      "p50Ms": 47.5,
+      "p95Ms": 70.90000009536743,
+      "p99Ms": 113,
+      "maxMs": 200.70000004768372,
+      "stallsOver100": 6
+    },
+    {
+      "index": 4,
+      "room": "conveyor",
+      "angle": 1,
+      "samples": 418,
+      "elapsedMs": 20006.299999952316,
+      "fps": 20.893418573199256,
+      "p50Ms": 47.5,
+      "p95Ms": 56.700000047683716,
+      "p99Ms": 65,
+      "maxMs": 171.09999990463257,
+      "stallsOver100": 2
+    },
+    {
+      "index": 5,
+      "room": "conveyor",
+      "angle": 2,
+      "samples": 410,
+      "elapsedMs": 20073.900000095367,
+      "fps": 20.424531356540193,
+      "p50Ms": 46.59999990463257,
+      "p95Ms": 79.10000014305115,
+      "p99Ms": 123.5,
+      "maxMs": 146.79999995231628,
+      "stallsOver100": 11
+    },
+    {
+      "index": 6,
+      "room": "security",
+      "angle": 0,
+      "samples": 363,
+      "elapsedMs": 19916.299999952316,
+      "fps": 18.226276969159386,
+      "p50Ms": 43.40000009536743,
+      "p95Ms": 103.5,
+      "p99Ms": 426.60000014305115,
+      "maxMs": 634.6000001430511,
+      "stallsOver100": 19
+    },
+    {
+      "index": 7,
+      "room": "security",
+      "angle": 1,
+      "samples": 412,
+      "elapsedMs": 19980.700000047684,
+      "fps": 20.619898201715493,
+      "p50Ms": 45.09999990463257,
+      "p95Ms": 81.20000004768372,
+      "p99Ms": 134.10000014305115,
+      "maxMs": 195.5,
+      "stallsOver100": 13
+    },
+    {
+      "index": 8,
+      "room": "security",
+      "angle": 2,
+      "samples": 305,
+      "elapsedMs": 20072.599999904633,
+      "fps": 15.194842720995242,
+      "p50Ms": 46,
+      "p95Ms": 178.20000004768372,
+      "p99Ms": 376.5,
+      "maxMs": 779.5999999046326,
+      "stallsOver100": 31
+    },
+    {
+      "index": 9,
+      "room": "conveyor",
+      "angle": 0,
+      "samples": 351,
+      "elapsedMs": 19983.799999952316,
+      "fps": 17.56422702393126,
+      "p50Ms": 48.700000047683716,
+      "p95Ms": 107,
+      "p99Ms": 181.09999990463257,
+      "maxMs": 450.09999990463257,
+      "stallsOver100": 21
+    },
+    {
+      "index": 10,
+      "room": "conveyor",
+      "angle": 1,
+      "samples": 405,
+      "elapsedMs": 19971.5,
+      "fps": 20.278897428836093,
+      "p50Ms": 48.299999952316284,
+      "p95Ms": 58.59999990463257,
+      "p99Ms": 93.79999995231628,
+      "maxMs": 181.10000014305115,
+      "stallsOver100": 3
+    },
+    {
+      "index": 11,
+      "room": "conveyor",
+      "angle": 2,
+      "samples": 416,
+      "elapsedMs": 19963.400000095367,
+      "fps": 20.838133784726686,
+      "p50Ms": 46.700000047683716,
+      "p95Ms": 65.79999995231628,
+      "p99Ms": 104.5,
+      "maxMs": 171.90000009536743,
+      "stallsOver100": 5
+    },
+    {
+      "index": 12,
+      "room": "security",
+      "angle": 0,
+      "samples": 433,
+      "elapsedMs": 20045.5,
+      "fps": 21.600858047940935,
+      "p50Ms": 44.40000009536743,
+      "p95Ms": 67.39999985694885,
+      "p99Ms": 97.20000004768372,
+      "maxMs": 161.10000014305115,
+      "stallsOver100": 4
+    },
+    {
+      "index": 13,
+      "room": "security",
+      "angle": 1,
+      "samples": 439,
+      "elapsedMs": 19954.299999952316,
+      "fps": 22.00027061841553,
+      "p50Ms": 45.299999952316284,
+      "p95Ms": 54.40000009536743,
+      "p99Ms": 70.20000004768372,
+      "maxMs": 163,
+      "stallsOver100": 1
+    },
+    {
+      "index": 14,
+      "room": "security",
+      "angle": 2,
+      "samples": 462,
+      "elapsedMs": 20012.700000047684,
+      "fps": 23.085340808531544,
+      "p50Ms": 42.700000047683716,
+      "p95Ms": 54.299999952316284,
+      "p99Ms": 74.70000004768372,
+      "maxMs": 184.09999990463257,
+      "stallsOver100": 2
+    },
+    {
+      "index": 15,
+      "room": "conveyor",
+      "angle": 0,
+      "samples": 420,
+      "elapsedMs": 19981.099999904633,
+      "fps": 21.019863771364168,
+      "p50Ms": 47.30000019073486,
+      "p95Ms": 58.5,
+      "p99Ms": 65.5,
+      "maxMs": 185.90000009536743,
+      "stallsOver100": 1
+    },
+    {
+      "index": 16,
+      "room": "conveyor",
+      "angle": 1,
+      "samples": 399,
+      "elapsedMs": 20032.900000095367,
+      "fps": 19.917236146444125,
+      "p50Ms": 49,
+      "p95Ms": 67.79999995231628,
+      "p99Ms": 90.80000019073486,
+      "maxMs": 168.10000014305115,
+      "stallsOver100": 2
+    },
+    {
+      "index": 17,
+      "room": "conveyor",
+      "angle": 2,
+      "samples": 400,
+      "elapsedMs": 19963.89999985695,
+      "fps": 20.03616527847095,
+      "p50Ms": 47.200000047683716,
+      "p95Ms": 69.09999990463257,
+      "p99Ms": 118.5,
+      "maxMs": 243.60000014305115,
+      "stallsOver100": 11
+    },
+    {
+      "index": 18,
+      "room": "security",
+      "angle": 0,
+      "samples": 456,
+      "elapsedMs": 20035,
+      "fps": 22.760169703019717,
+      "p50Ms": 43.60000014305115,
+      "p95Ms": 52.799999952316284,
+      "p99Ms": 58.09999990463257,
+      "maxMs": 156.69999980926514,
+      "stallsOver100": 1
+    },
+    {
+      "index": 19,
+      "room": "security",
+      "angle": 1,
+      "samples": 438,
+      "elapsedMs": 19994.5,
+      "fps": 21.906024156643078,
+      "p50Ms": 45.10000014305115,
+      "p95Ms": 56.80000019073486,
+      "p99Ms": 75.80000019073486,
+      "maxMs": 158.09999990463257,
+      "stallsOver100": 2
+    },
+    {
+      "index": 20,
+      "room": "security",
+      "angle": 2,
+      "samples": 460,
+      "elapsedMs": 20001.700000047684,
+      "fps": 22.99804516610605,
+      "p50Ms": 42.799999952316284,
+      "p95Ms": 53.59999990463257,
+      "p99Ms": 65.90000009536743,
+      "maxMs": 174.90000009536743,
+      "stallsOver100": 1
+    },
+    {
+      "index": 21,
+      "room": "conveyor",
+      "angle": 0,
+      "samples": 400,
+      "elapsedMs": 19989.10000014305,
+      "fps": 20.010905943596132,
+      "p50Ms": 48.09999990463257,
+      "p95Ms": 67.20000004768372,
+      "p99Ms": 113.80000019073486,
+      "maxMs": 219,
+      "stallsOver100": 7
+    },
+    {
+      "index": 22,
+      "room": "conveyor",
+      "angle": 1,
+      "samples": 404,
+      "elapsedMs": 20013.099999904633,
+      "fps": 20.18677766072848,
+      "p50Ms": 48.59999990463257,
+      "p95Ms": 61.80000019073486,
+      "p99Ms": 81.80000019073486,
+      "maxMs": 177.90000009536743,
+      "stallsOver100": 2
+    },
+    {
+      "index": 23,
+      "room": "conveyor",
+      "angle": 2,
+      "samples": 421,
+      "elapsedMs": 19982.700000047684,
+      "fps": 21.06822401372164,
+      "p50Ms": 47,
+      "p95Ms": 56.10000014305115,
+      "p99Ms": 66.60000014305115,
+      "maxMs": 168.89999985694885,
+      "stallsOver100": 2
+    },
+    {
+      "index": 24,
+      "room": "security",
+      "angle": 0,
+      "samples": 347,
+      "elapsedMs": 20016.89999985695,
+      "fps": 17.33535162799833,
+      "p50Ms": 45.39999985694885,
+      "p95Ms": 137.40000009536743,
+      "p99Ms": 274.5,
+      "maxMs": 377.2999999523163,
+      "stallsOver100": 29
+    },
+    {
+      "index": 25,
+      "room": "security",
+      "angle": 1,
+      "samples": 415,
+      "elapsedMs": 19989.900000095367,
+      "fps": 20.7604840443434,
+      "p50Ms": 45.90000009536743,
+      "p95Ms": 73.5,
+      "p99Ms": 116.69999980926514,
+      "maxMs": 231.70000004768372,
+      "stallsOver100": 6
+    },
+    {
+      "index": 26,
+      "room": "security",
+      "angle": 2,
+      "samples": 457,
+      "elapsedMs": 20004.700000047684,
+      "fps": 22.84463151154032,
+      "p50Ms": 42.90000009536743,
+      "p95Ms": 53.799999952316284,
+      "p99Ms": 73.29999995231628,
+      "maxMs": 164.70000004768372,
+      "stallsOver100": 3
+    },
+    {
+      "index": 27,
+      "room": "conveyor",
+      "angle": 0,
+      "samples": 415,
+      "elapsedMs": 20000.599999904633,
+      "fps": 20.74937751877338,
+      "p50Ms": 47.59999990463257,
+      "p95Ms": 60.5,
+      "p99Ms": 82.20000004768372,
+      "maxMs": 160.70000004768372,
+      "stallsOver100": 2
+    },
+    {
+      "index": 28,
+      "room": "conveyor",
+      "angle": 1,
+      "samples": 404,
+      "elapsedMs": 19984.799999952316,
+      "fps": 20.215363676442294,
+      "p50Ms": 49,
+      "p95Ms": 62.39999985694885,
+      "p99Ms": 75.20000004768372,
+      "maxMs": 106.20000004768372,
+      "stallsOver100": 1
+    },
+    {
+      "index": 29,
+      "room": "conveyor",
+      "angle": 2,
+      "samples": 397,
+      "elapsedMs": 20015.900000095367,
+      "fps": 19.834231785635843,
+      "p50Ms": 47.69999980926514,
+      "p95Ms": 76.10000014305115,
+      "p99Ms": 150.70000004768372,
+      "maxMs": 207.20000004768372,
+      "stallsOver100": 12
+    }
+  ],
+  "switchResponseMs": [
+    36.10000014305115,
+    28,
+    27,
+    42.40000009536743,
+    48.700000047683716,
+    122.60000014305115,
+    38.90000009536743,
+    90,
+    92.20000004768372,
+    76,
+    47.5,
+    56.90000009536743,
+    219.40000009536743,
+    56.200000047683716,
+    23.40000009536743,
+    52,
+    37.40000009536743,
+    51.10000014305115,
+    36.299999952316284,
+    30.799999952316284,
+    32.5,
+    64.10000014305115,
+    34.700000047683716,
+    17.40000009536743,
+    34.299999952316284,
+    40.299999952316284,
+    28.90000009536743,
+    29.5,
+    71.79999995231628
+  ],
+  "inputResponseMs": [
+    47.799999952316284,
+    43.59999990463257,
+    38.5
+  ],
+  "contextLosses": 0,
+  "resources": {
+    "baseline": {
+      "meshes": 263,
+      "materials": 40,
+      "textures": 82,
+      "skeletons": 26,
+      "geometries": 212,
+      "animationGroups": 50
+    },
+    "end": {
+      "meshes": 263,
+      "materials": 40,
+      "textures": 82,
+      "skeletons": 26,
+      "geometries": 212,
+      "animationGroups": 50
+    },
+    "growth": {
+      "meshes": 0,
+      "materials": 0,
+      "textures": 0,
+      "skeletons": 0,
+      "geometries": 0,
+      "animationGroups": 0
+    }
+  },
+  "protocol": {
+    "version": "room-crowd-1",
+    "workers": 24,
+    "supervisors": 2,
+    "width": 1280,
+    "height": 720,
+    "warmupMs": 30000,
+    "durationMs": 600000,
+    "segmentMs": 20000,
+    "minFps": 30,
+    "maxP95Ms": 33.333333333333336,
+    "maxP99Ms": 66.66666666666667,
+    "maxStalls100": 6,
+    "maxFrameMs": 500,
+    "maxResponseMs": 200
+  },
+  "createdAt": "2026-10-18T01:19:29.709Z",
+  "environment": {
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "cores": 4,
+    "deviceMemoryGiB": 8,
+    "devicePixelRatio": 1,
+    "viewport": [
+      1440,
+      1080
+    ],
+    "canvas": [
+      1280,
+      720
+    ],
+    "renderer": "ANGLE (Intel, Mesa Intel(R) HD Graphics 620 (KBL GT2), OpenGL 4.6)",
+    "reducedMotion": false
+  },
+  "loadMs": 8491.299999952316,
+  "assets": {
+    "worker": {
+      "src": "/media/files/f353652a8d3c12020cf3ad2ae10fada37b543f673ae66238e9374bdfa6f52da9.glb",
+      "sha256": "f353652a8d3c12020cf3ad2ae10fada37b543f673ae66238e9374bdfa6f52da9",
+      "bytes": 11830360,
+      "count": 24,
+      "trianglesPerWorker": 25893,
+      "jointsPerWorker": 34,
+      "motions": [
+        "walking_2_inplace",
+        "Confused_Scratch",
+        "Listening_Gesture",
+        "Carry_Heavy_Object_Walk_inplace",
+        "idle",
+        "Discuss_While_Moving"
+      ],
+      "independentSkeletons": 24,
+      "sharedGeometries": 1
+    },
+    "limen": {
+      "src": "/media/files/fcb4b356b7905de1bbd52a3f18e72d3de2cecbdef6b4c8cc009c578d2fbda0ee.glb",
+      "mime": "model/gltf-binary",
+      "bytes": 4318356,
+      "sha256": "fcb4b356b7905de1bbd52a3f18e72d3de2cecbdef6b4c8cc009c578d2fbda0ee"
+    },
+    "blade": {
+      "src": "/media/files/f520691b5fe2bb72c3d7864c556e87b35373a9ab4a1e8c7f176d4414ab7c2f3e.glb",
+      "mime": "model/gltf-binary",
+      "bytes": 1175636,
+      "sha256": "f520691b5fe2bb72c3d7864c556e87b35373a9ab4a1e8c7f176d4414ab7c2f3e"
+    },
+    "stiletto": {
+      "src": "/media/files/ad84c17431f6eea244b9a15f46296f0da63d7ae9726e2f7d2622f9d522b6f97b.glb",
+      "mime": "model/gltf-binary",
+      "bytes": 11661248,
+      "sha256": "ad84c17431f6eea244b9a15f46296f0da63d7ae9726e2f7d2622f9d522b6f97b"
+    }
+  },
+  "memory": [
+    {
+      "seconds": 0,
+      "heapBytes": 227899744,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 10.026700000047684,
+      "heapBytes": 227912284,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 20.03610000014305,
+      "heapBytes": 229302584,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 30.004200000047685,
+      "heapBytes": 229397200,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 40.028,
+      "heapBytes": 229305652,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 50.01990000009537,
+      "heapBytes": 228044408,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 60.027,
+      "heapBytes": 229311976,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 70.037,
+      "heapBytes": 230466484,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 80.04240000009537,
+      "heapBytes": 228828632,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 90.01020000004769,
+      "heapBytes": 230950772,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 100.04870000004769,
+      "heapBytes": 230823200,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 110.00240000009536,
+      "heapBytes": 228720640,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 120.12260000014305,
+      "heapBytes": 231227268,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 130.00020000004767,
+      "heapBytes": 230380144,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 140.03890000009537,
+      "heapBytes": 231270244,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 150.04,
+      "heapBytes": 230278868,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 160.01960000014304,
+      "heapBytes": 227586756,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 170.02460000014304,
+      "heapBytes": 227644100,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 180.09220000004768,
+      "heapBytes": 226617532,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 190.02629999995233,
+      "heapBytes": 226655512,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 200.076,
+      "heapBytes": 226773004,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 210.02679999995232,
+      "heapBytes": 226515028,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 220.0475,
+      "heapBytes": 229090796,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 230.03920000004769,
+      "heapBytes": 228203160,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 240.01090000009538,
+      "heapBytes": 225914248,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 250.02429999995232,
+      "heapBytes": 229171226,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 260.0564000000954,
+      "heapBytes": 227491310,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 270.02570000004766,
+      "heapBytes": 226548594,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 280.0107000000477,
+      "heapBytes": 226835194,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 290.03410000014304,
+      "heapBytes": 226138794,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 300.02340000009536,
+      "heapBytes": 227989546,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 310.02160000014305,
+      "heapBytes": 227519982,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 320.0045,
+      "heapBytes": 229083706,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 330.027600000143,
+      "heapBytes": 227666978,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 340.0374000000954,
+      "heapBytes": 232830377,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 350.02210000014304,
+      "heapBytes": 230292101,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 360.0012999999523,
+      "heapBytes": 229667013,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 370.0522999999523,
+      "heapBytes": 232334377,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 380.0362999999523,
+      "heapBytes": 228256941,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 390.02960000014303,
+      "heapBytes": 226925746,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 400.0307999999523,
+      "heapBytes": 227896830,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 410.00160000014307,
+      "heapBytes": 231500770,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 420.0325,
+      "heapBytes": 228436226,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 430.01979999995234,
+      "heapBytes": 231606222,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 440.02160000014305,
+      "heapBytes": 231965118,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 450.016,
+      "heapBytes": 230273666,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 460.0347000000477,
+      "heapBytes": 229611778,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 470.0345,
+      "heapBytes": 231238158,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 480.0174000000954,
+      "heapBytes": 226003446,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 490.0052000000477,
+      "heapBytes": 227040594,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 500.03429999995234,
+      "heapBytes": 231663758,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 510.01529999995233,
+      "heapBytes": 228955072,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 520.0242000000477,
+      "heapBytes": 226998456,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 530.041,
+      "heapBytes": 230040500,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 540.0289000000954,
+      "heapBytes": 227189192,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 550.026600000143,
+      "heapBytes": 228079348,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 560.0295,
+      "heapBytes": 228103300,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 570.018600000143,
+      "heapBytes": 227529052,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 580.0142999999523,
+      "heapBytes": 232235040,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 590.0024000000953,
+      "heapBytes": 227920175,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    },
+    {
+      "seconds": 600.0302000000477,
+      "heapBytes": 228002827,
+      "resources": {
+        "meshes": 263,
+        "materials": 40,
+        "textures": 82,
+        "skeletons": 26,
+        "geometries": 212,
+        "animationGroups": 50
+      }
+    }
+  ],
+  "longTasks": [
+    {
+      "startMs": 13558.299999952316,
+      "durationMs": 83
+    },
+    {
+      "startMs": 20275.60000014305,
+      "durationMs": 50
+    },
+    {
+      "startMs": 36344.799999952316,
+      "durationMs": 51
+    },
+    {
+      "startMs": 43681.200000047684,
+      "durationMs": 81
+    },
+    {
+      "startMs": 43995,
+      "durationMs": 56
+    },
+    {
+      "startMs": 44064.90000009537,
+      "durationMs": 81
+    },
+    {
+      "startMs": 44158.60000014305,
+      "durationMs": 70
+    },
+    {
+      "startMs": 44229.40000009537,
+      "durationMs": 53
+    },
+    {
+      "startMs": 44283.10000014305,
+      "durationMs": 85
+    },
+    {
+      "startMs": 44718.799999952316,
+      "durationMs": 64
+    },
+    {
+      "startMs": 44783.700000047684,
+      "durationMs": 51
+    },
+    {
+      "startMs": 45264.799999952316,
+      "durationMs": 203
+    },
+    {
+      "startMs": 45468.40000009537,
+      "durationMs": 85
+    },
+    {
+      "startMs": 45564.60000014305,
+      "durationMs": 55
+    },
+    {
+      "startMs": 46538.799999952316,
+      "durationMs": 53
+    },
+    {
+      "startMs": 49581.700000047684,
+      "durationMs": 59
+    },
+    {
+      "startMs": 58308.799999952316,
+      "durationMs": 53
+    },
+    {
+      "startMs": 59140.299999952316,
+      "durationMs": 59
+    },
+    {
+      "startMs": 59384.700000047684,
+      "durationMs": 74
+    },
+    {
+      "startMs": 60289.5,
+      "durationMs": 71
+    },
+    {
+      "startMs": 60838,
+      "durationMs": 52
+    },
+    {
+      "startMs": 71614.40000009537,
+      "durationMs": 65
+    },
+    {
+      "startMs": 71723.29999995232,
+      "durationMs": 64
+    },
+    {
+      "startMs": 71800.20000004768,
+      "durationMs": 57
+    },
+    {
+      "startMs": 73457.5,
+      "durationMs": 56
+    },
+    {
+      "startMs": 73643.79999995232,
+      "durationMs": 59
+    },
+    {
+      "startMs": 73759.40000009537,
+      "durationMs": 59
+    },
+    {
+      "startMs": 73951.60000014305,
+      "durationMs": 70
+    },
+    {
+      "startMs": 74480,
+      "durationMs": 63
+    },
+    {
+      "startMs": 74684.5,
+      "durationMs": 119
+    },
+    {
+      "startMs": 75352.29999995232,
+      "durationMs": 53
+    },
+    {
+      "startMs": 80563.79999995232,
+      "durationMs": 69
+    },
+    {
+      "startMs": 103042.79999995232,
+      "durationMs": 51
+    },
+    {
+      "startMs": 103642.29999995232,
+      "durationMs": 53
+    },
+    {
+      "startMs": 103839.70000004768,
+      "durationMs": 56
+    },
+    {
+      "startMs": 104039.29999995232,
+      "durationMs": 52
+    },
+    {
+      "startMs": 104096.20000004768,
+      "durationMs": 51
+    },
+    {
+      "startMs": 104466.79999995232,
+      "durationMs": 56
+    },
+    {
+      "startMs": 104823.29999995232,
+      "durationMs": 53
+    },
+    {
+      "startMs": 105728.79999995232,
+      "durationMs": 51
+    },
+    {
+      "startMs": 106363.90000009537,
+      "durationMs": 61
+    },
+    {
+      "startMs": 106658.70000004768,
+      "durationMs": 61
+    },
+    {
+      "startMs": 106720.70000004768,
+      "durationMs": 62
+    },
+    {
+      "startMs": 114999.79999995232,
+      "durationMs": 54
+    },
+    {
+      "startMs": 117661.40000009537,
+      "durationMs": 80
+    },
+    {
+      "startMs": 117800.70000004768,
+      "durationMs": 63
+    },
+    {
+      "startMs": 118076.40000009537,
+      "durationMs": 61
+    },
+    {
+      "startMs": 118230.79999995232,
+      "durationMs": 64
+    },
+    {
+      "startMs": 118299,
+      "durationMs": 121
+    },
+    {
+      "startMs": 118610,
+      "durationMs": 94
+    },
+    {
+      "startMs": 119079.40000009537,
+      "durationMs": 63
+    },
+    {
+      "startMs": 119158.20000004768,
+      "durationMs": 52
+    },
+    {
+      "startMs": 119241.60000014305,
+      "durationMs": 67
+    },
+    {
+      "startMs": 119335.79999995232,
+      "durationMs": 50
+    },
+    {
+      "startMs": 119467.79999995232,
+      "durationMs": 54
+    },
+    {
+      "startMs": 119927.5,
+      "durationMs": 83
+    },
+    {
+      "startMs": 120034.5,
+      "durationMs": 102
+    },
+    {
+      "startMs": 120173.20000004768,
+      "durationMs": 77
+    },
+    {
+      "startMs": 120276.79999995232,
+      "durationMs": 56
+    },
+    {
+      "startMs": 120333.29999995232,
+      "durationMs": 54
+    },
+    {
+      "startMs": 121134.70000004768,
+      "durationMs": 195
+    },
+    {
+      "startMs": 121333.60000014305,
+      "durationMs": 65
+    },
+    {
+      "startMs": 122093.70000004768,
+      "durationMs": 75
+    },
+    {
+      "startMs": 122351.79999995232,
+      "durationMs": 250
+    },
+    {
+      "startMs": 122605.5,
+      "durationMs": 52
+    },
+    {
+      "startMs": 122660.79999995232,
+      "durationMs": 79
+    },
+    {
+      "startMs": 122832.40000009537,
+      "durationMs": 182
+    },
+    {
+      "startMs": 123015,
+      "durationMs": 66
+    },
+    {
+      "startMs": 123656.40000009537,
+      "durationMs": 51
+    },
+    {
+      "startMs": 123710.10000014305,
+      "durationMs": 80
+    },
+    {
+      "startMs": 124097.90000009537,
+      "durationMs": 73
+    },
+    {
+      "startMs": 124197.5,
+      "durationMs": 88
+    },
+    {
+      "startMs": 124754.70000004768,
+      "durationMs": 77
+    },
+    {
+      "startMs": 124903.5,
+      "durationMs": 66
+    },
+    {
+      "startMs": 127164,
+      "durationMs": 107
+    },
+    {
+      "startMs": 127314.40000009537,
+      "durationMs": 75
+    },
+    {
+      "startMs": 127449.20000004768,
+      "durationMs": 63
+    },
+    {
+      "startMs": 127608,
+      "durationMs": 64
+    },
+    {
+      "startMs": 127693.60000014305,
+      "durationMs": 120
+    },
+    {
+      "startMs": 127904.5,
+      "durationMs": 62
+    },
+    {
+      "startMs": 127968.10000014305,
+      "durationMs": 126
+    },
+    {
+      "startMs": 128141.40000009537,
+      "durationMs": 96
+    },
+    {
+      "startMs": 128344.79999995232,
+      "durationMs": 601
+    },
+    {
+      "startMs": 129672.79999995232,
+      "durationMs": 64
+    },
+    {
+      "startMs": 130701.90000009537,
+      "durationMs": 71
+    },
+    {
+      "startMs": 130778.5,
+      "durationMs": 57
+    },
+    {
+      "startMs": 130931.10000014305,
+      "durationMs": 99
+    },
+    {
+      "startMs": 131098.10000014305,
+      "durationMs": 67
+    },
+    {
+      "startMs": 135172.70000004768,
+      "durationMs": 51
+    },
+    {
+      "startMs": 145949.29999995232,
+      "durationMs": 57
+    },
+    {
+      "startMs": 146018.29999995232,
+      "durationMs": 68
+    },
+    {
+      "startMs": 146138.79999995232,
+      "durationMs": 56
+    },
+    {
+      "startMs": 146243.29999995232,
+      "durationMs": 100
+    },
+    {
+      "startMs": 146393.40000009537,
+      "durationMs": 157
+    },
+    {
+      "startMs": 146578.60000014305,
+      "durationMs": 113
+    },
+    {
+      "startMs": 146888.79999995232,
+      "durationMs": 58
+    },
+    {
+      "startMs": 147126.20000004768,
+      "durationMs": 116
+    },
+    {
+      "startMs": 147286,
+      "durationMs": 62
+    },
+    {
+      "startMs": 147392.10000014305,
+      "durationMs": 61
+    },
+    {
+      "startMs": 147464.79999995232,
+      "durationMs": 93
+    },
+    {
+      "startMs": 147566,
+      "durationMs": 53
+    },
+    {
+      "startMs": 147631,
+      "durationMs": 67
+    },
+    {
+      "startMs": 147716.29999995232,
+      "durationMs": 61
+    },
+    {
+      "startMs": 147779.70000004768,
+      "durationMs": 115
+    },
+    {
+      "startMs": 147912.79999995232,
+      "durationMs": 54
+    },
+    {
+      "startMs": 149601.79999995232,
+      "durationMs": 57
+    },
+    {
+      "startMs": 154128.60000014305,
+      "durationMs": 58
+    },
+    {
+      "startMs": 154285.10000014305,
+      "durationMs": 55
+    },
+    {
+      "startMs": 154395.70000004768,
+      "durationMs": 51
+    },
+    {
+      "startMs": 154451.90000009537,
+      "durationMs": 58
+    },
+    {
+      "startMs": 154522.60000014305,
+      "durationMs": 61
+    },
+    {
+      "startMs": 154655.79999995232,
+      "durationMs": 73
+    },
+    {
+      "startMs": 154865.90000009537,
+      "durationMs": 55
+    },
+    {
+      "startMs": 155106.20000004768,
+      "durationMs": 60
+    },
+    {
+      "startMs": 156941.90000009537,
+      "durationMs": 82
+    },
+    {
+      "startMs": 157573.10000014305,
+      "durationMs": 52
+    },
+    {
+      "startMs": 157687.79999995232,
+      "durationMs": 66
+    },
+    {
+      "startMs": 163299.90000009537,
+      "durationMs": 67
+    },
+    {
+      "startMs": 163454.79999995232,
+      "durationMs": 73
+    },
+    {
+      "startMs": 163534,
+      "durationMs": 50
+    },
+    {
+      "startMs": 163623.70000004768,
+      "durationMs": 60
+    },
+    {
+      "startMs": 163717.60000014305,
+      "durationMs": 62
+    },
+    {
+      "startMs": 163948.10000014305,
+      "durationMs": 111
+    },
+    {
+      "startMs": 164241.90000009537,
+      "durationMs": 121
+    },
+    {
+      "startMs": 164376.79999995232,
+      "durationMs": 51
+    },
+    {
+      "startMs": 164451.60000014305,
+      "durationMs": 53
+    },
+    {
+      "startMs": 164829.40000009537,
+      "durationMs": 103
+    },
+    {
+      "startMs": 164993.60000014305,
+      "durationMs": 58
+    },
+    {
+      "startMs": 165711.79999995232,
+      "durationMs": 170
+    },
+    {
+      "startMs": 165885.60000014305,
+      "durationMs": 120
+    },
+    {
+      "startMs": 166006.5,
+      "durationMs": 297
+    },
+    {
+      "startMs": 166569.90000009537,
+      "durationMs": 236
+    },
+    {
+      "startMs": 167699.29999995232,
+      "durationMs": 52
+    },
+    {
+      "startMs": 167766.20000004768,
+      "durationMs": 62
+    },
+    {
+      "startMs": 167925.60000014305,
+      "durationMs": 84
+    },
+    {
+      "startMs": 168111.20000004768,
+      "durationMs": 72
+    },
+    {
+      "startMs": 168625.90000009537,
+      "durationMs": 53
+    },
+    {
+      "startMs": 168691.70000004768,
+      "durationMs": 60
+    },
+    {
+      "startMs": 169013.79999995232,
+      "durationMs": 53
+    },
+    {
+      "startMs": 169512.79999995232,
+      "durationMs": 62
+    },
+    {
+      "startMs": 170897.40000009537,
+      "durationMs": 79
+    },
+    {
+      "startMs": 171032,
+      "durationMs": 55
+    },
+    {
+      "startMs": 171715.79999995232,
+      "durationMs": 58
+    },
+    {
+      "startMs": 171825.10000014305,
+      "durationMs": 178
+    },
+    {
+      "startMs": 172115.70000004768,
+      "durationMs": 94
+    },
+    {
+      "startMs": 172214.90000009537,
+      "durationMs": 52
+    },
+    {
+      "startMs": 172543.20000004768,
+      "durationMs": 221
+    },
+    {
+      "startMs": 172854.60000014305,
+      "durationMs": 123
+    },
+    {
+      "startMs": 173122.79999995232,
+      "durationMs": 105
+    },
+    {
+      "startMs": 173231,
+      "durationMs": 53
+    },
+    {
+      "startMs": 173530.40000009537,
+      "durationMs": 65
+    },
+    {
+      "startMs": 173615.79999995232,
+      "durationMs": 62
+    },
+    {
+      "startMs": 173738.29999995232,
+      "durationMs": 51
+    },
+    {
+      "startMs": 173826.79999995232,
+      "durationMs": 123
+    },
+    {
+      "startMs": 173968.70000004768,
+      "durationMs": 58
+    },
+    {
+      "startMs": 174376.90000009537,
+      "durationMs": 61
+    },
+    {
+      "startMs": 174579.60000014305,
+      "durationMs": 172
+    },
+    {
+      "startMs": 174979.90000009537,
+      "durationMs": 98
+    },
+    {
+      "startMs": 175113.10000014305,
+      "durationMs": 76
+    },
+    {
+      "startMs": 175311.90000009537,
+      "durationMs": 67
+    },
+    {
+      "startMs": 175416.79999995232,
+      "durationMs": 73
+    },
+    {
+      "startMs": 176102.90000009537,
+      "durationMs": 57
+    },
+    {
+      "startMs": 176348.79999995232,
+      "durationMs": 55
+    },
+    {
+      "startMs": 176481.70000004768,
+      "durationMs": 75
+    },
+    {
+      "startMs": 176649.79999995232,
+      "durationMs": 55
+    },
+    {
+      "startMs": 176825.60000014305,
+      "durationMs": 55
+    },
+    {
+      "startMs": 176891.5,
+      "durationMs": 58
+    },
+    {
+      "startMs": 177276.40000009537,
+      "durationMs": 82
+    },
+    {
+      "startMs": 177447,
+      "durationMs": 66
+    },
+    {
+      "startMs": 177798.20000004768,
+      "durationMs": 180
+    },
+    {
+      "startMs": 177996.40000009537,
+      "durationMs": 349
+    },
+    {
+      "startMs": 178509.60000014305,
+      "durationMs": 69
+    },
+    {
+      "startMs": 178585.60000014305,
+      "durationMs": 56
+    },
+    {
+      "startMs": 179265,
+      "durationMs": 126
+    },
+    {
+      "startMs": 179392.10000014305,
+      "durationMs": 166
+    },
+    {
+      "startMs": 179559.20000004768,
+      "durationMs": 55
+    },
+    {
+      "startMs": 180027.10000014305,
+      "durationMs": 77
+    },
+    {
+      "startMs": 180218.79999995232,
+      "durationMs": 55
+    },
+    {
+      "startMs": 180327.90000009537,
+      "durationMs": 114
+    },
+    {
+      "startMs": 180495.90000009537,
+      "durationMs": 63
+    },
+    {
+      "startMs": 180666.40000009537,
+      "durationMs": 50
+    },
+    {
+      "startMs": 180999.70000004768,
+      "durationMs": 203
+    },
+    {
+      "startMs": 181205,
+      "durationMs": 74
+    },
+    {
+      "startMs": 181506.70000004768,
+      "durationMs": 101
+    },
+    {
+      "startMs": 181774.60000014305,
+      "durationMs": 71
+    },
+    {
+      "startMs": 182246.5,
+      "durationMs": 66
+    },
+    {
+      "startMs": 183615.40000009537,
+      "durationMs": 50
+    },
+    {
+      "startMs": 183671.29999995232,
+      "durationMs": 59
+    },
+    {
+      "startMs": 184890.10000014305,
+      "durationMs": 60
+    },
+    {
+      "startMs": 185047.5,
+      "durationMs": 114
+    },
+    {
+      "startMs": 185213.10000014305,
+      "durationMs": 319
+    },
+    {
+      "startMs": 185537.79999995232,
+      "durationMs": 55
+    },
+    {
+      "startMs": 185791.70000004768,
+      "durationMs": 90
+    },
+    {
+      "startMs": 186212.40000009537,
+      "durationMs": 88
+    },
+    {
+      "startMs": 186311.79999995232,
+      "durationMs": 61
+    },
+    {
+      "startMs": 186447.10000014305,
+      "durationMs": 81
+    },
+    {
+      "startMs": 186532.10000014305,
+      "durationMs": 104
+    },
+    {
+      "startMs": 186638.5,
+      "durationMs": 68
+    },
+    {
+      "startMs": 186789.5,
+      "durationMs": 78
+    },
+    {
+      "startMs": 187533.10000014305,
+      "durationMs": 64
+    },
+    {
+      "startMs": 188046.90000009537,
+      "durationMs": 60
+    },
+    {
+      "startMs": 188113.90000009537,
+      "durationMs": 55
+    },
+    {
+      "startMs": 189093.90000009537,
+      "durationMs": 102
+    },
+    {
+      "startMs": 189342.5,
+      "durationMs": 65
+    },
+    {
+      "startMs": 189440,
+      "durationMs": 56
+    },
+    {
+      "startMs": 189576.29999995232,
+      "durationMs": 61
+    },
+    {
+      "startMs": 189728.20000004768,
+      "durationMs": 59
+    },
+    {
+      "startMs": 189954.40000009537,
+      "durationMs": 77
+    },
+    {
+      "startMs": 190132.5,
+      "durationMs": 63
+    },
+    {
+      "startMs": 190494.29999995232,
+      "durationMs": 88
+    },
+    {
+      "startMs": 190727.70000004768,
+      "durationMs": 54
+    },
+    {
+      "startMs": 190803.5,
+      "durationMs": 57
+    },
+    {
+      "startMs": 190917.5,
+      "durationMs": 53
+    },
+    {
+      "startMs": 192346.70000004768,
+      "durationMs": 57
+    },
+    {
+      "startMs": 193675.40000009537,
+      "durationMs": 83
+    },
+    {
+      "startMs": 193770.10000014305,
+      "durationMs": 84
+    },
+    {
+      "startMs": 199286.20000004768,
+      "durationMs": 108
+    },
+    {
+      "startMs": 199441.10000014305,
+      "durationMs": 83
+    },
+    {
+      "startMs": 199601.10000014305,
+      "durationMs": 72
+    },
+    {
+      "startMs": 199712.5,
+      "durationMs": 90
+    },
+    {
+      "startMs": 199806.10000014305,
+      "durationMs": 50
+    },
+    {
+      "startMs": 200007.5,
+      "durationMs": 85
+    },
+    {
+      "startMs": 200113,
+      "durationMs": 147
+    },
+    {
+      "startMs": 200265.79999995232,
+      "durationMs": 65
+    },
+    {
+      "startMs": 200418.40000009537,
+      "durationMs": 52
+    },
+    {
+      "startMs": 200569.5,
+      "durationMs": 91
+    },
+    {
+      "startMs": 200663,
+      "durationMs": 71
+    },
+    {
+      "startMs": 200952.5,
+      "durationMs": 65
+    },
+    {
+      "startMs": 206263.79999995232,
+      "durationMs": 59
+    },
+    {
+      "startMs": 223688.20000004768,
+      "durationMs": 52
+    },
+    {
+      "startMs": 223744.79999995232,
+      "durationMs": 56
+    },
+    {
+      "startMs": 223883,
+      "durationMs": 54
+    },
+    {
+      "startMs": 223937.20000004768,
+      "durationMs": 91
+    },
+    {
+      "startMs": 224049.60000014305,
+      "durationMs": 83
+    },
+    {
+      "startMs": 227431.5,
+      "durationMs": 50
+    },
+    {
+      "startMs": 235879.40000009537,
+      "durationMs": 91
+    },
+    {
+      "startMs": 236277.40000009537,
+      "durationMs": 54
+    },
+    {
+      "startMs": 236336.79999995232,
+      "durationMs": 50
+    },
+    {
+      "startMs": 236628.79999995232,
+      "durationMs": 58
+    },
+    {
+      "startMs": 237604.60000014305,
+      "durationMs": 55
+    },
+    {
+      "startMs": 238078.79999995232,
+      "durationMs": 52
+    },
+    {
+      "startMs": 247860.40000009537,
+      "durationMs": 58
+    },
+    {
+      "startMs": 247948,
+      "durationMs": 64
+    },
+    {
+      "startMs": 248069.20000004768,
+      "durationMs": 50
+    },
+    {
+      "startMs": 248459,
+      "durationMs": 68
+    },
+    {
+      "startMs": 251114.79999995232,
+      "durationMs": 79
+    },
+    {
+      "startMs": 259012.60000014305,
+      "durationMs": 80
+    },
+    {
+      "startMs": 259305,
+      "durationMs": 63
+    },
+    {
+      "startMs": 259385.29999995232,
+      "durationMs": 56
+    },
+    {
+      "startMs": 259691,
+      "durationMs": 54
+    },
+    {
+      "startMs": 259854.20000004768,
+      "durationMs": 54
+    },
+    {
+      "startMs": 259910.40000009537,
+      "durationMs": 149
+    },
+    {
+      "startMs": 260059.90000009537,
+      "durationMs": 178
+    },
+    {
+      "startMs": 260396.90000009537,
+      "durationMs": 55
+    },
+    {
+      "startMs": 260456,
+      "durationMs": 54
+    },
+    {
+      "startMs": 260526.60000014305,
+      "durationMs": 50
+    },
+    {
+      "startMs": 260804.5,
+      "durationMs": 62
+    },
+    {
+      "startMs": 286334.2999999523,
+      "durationMs": 53
+    },
+    {
+      "startMs": 293400.7000000477,
+      "durationMs": 51
+    },
+    {
+      "startMs": 320534.5,
+      "durationMs": 57
+    },
+    {
+      "startMs": 321422.2000000477,
+      "durationMs": 50
+    },
+    {
+      "startMs": 322086.90000009537,
+      "durationMs": 53
+    },
+    {
+      "startMs": 322147,
+      "durationMs": 54
+    },
+    {
+      "startMs": 322717.5,
+      "durationMs": 50
+    },
+    {
+      "startMs": 331764.2999999523,
+      "durationMs": 63
+    },
+    {
+      "startMs": 332222.40000009537,
+      "durationMs": 60
+    },
+    {
+      "startMs": 332815.2999999523,
+      "durationMs": 50
+    },
+    {
+      "startMs": 335793.90000009537,
+      "durationMs": 50
+    },
+    {
+      "startMs": 343517.7999999523,
+      "durationMs": 92
+    },
+    {
+      "startMs": 343668.7000000477,
+      "durationMs": 60
+    },
+    {
+      "startMs": 343730.40000009537,
+      "durationMs": 77
+    },
+    {
+      "startMs": 343924,
+      "durationMs": 115
+    },
+    {
+      "startMs": 344050.7999999523,
+      "durationMs": 64
+    },
+    {
+      "startMs": 344119.90000009537,
+      "durationMs": 52
+    },
+    {
+      "startMs": 344219.90000009537,
+      "durationMs": 68
+    },
+    {
+      "startMs": 344334.40000009537,
+      "durationMs": 66
+    },
+    {
+      "startMs": 344405.90000009537,
+      "durationMs": 66
+    },
+    {
+      "startMs": 344473.90000009537,
+      "durationMs": 83
+    },
+    {
+      "startMs": 344557.10000014305,
+      "durationMs": 100
+    },
+    {
+      "startMs": 344660.7000000477,
+      "durationMs": 121
+    },
+    {
+      "startMs": 344895.5,
+      "durationMs": 82
+    },
+    {
+      "startMs": 345723.90000009537,
+      "durationMs": 61
+    },
+    {
+      "startMs": 345788.7000000477,
+      "durationMs": 60
+    },
+    {
+      "startMs": 346302.10000014305,
+      "durationMs": 50
+    },
+    {
+      "startMs": 351680.5,
+      "durationMs": 58
+    },
+    {
+      "startMs": 352084.90000009537,
+      "durationMs": 94
+    },
+    {
+      "startMs": 354216.7999999523,
+      "durationMs": 53
+    },
+    {
+      "startMs": 354956.7999999523,
+      "durationMs": 60
+    },
+    {
+      "startMs": 355650.10000014305,
+      "durationMs": 53
+    },
+    {
+      "startMs": 384226.10000014305,
+      "durationMs": 50
+    },
+    {
+      "startMs": 384712.40000009537,
+      "durationMs": 59
+    },
+    {
+      "startMs": 392332.40000009537,
+      "durationMs": 86
+    },
+    {
+      "startMs": 417208.5,
+      "durationMs": 53
+    },
+    {
+      "startMs": 417466.5,
+      "durationMs": 70
+    },
+    {
+      "startMs": 417537.7999999523,
+      "durationMs": 53
+    },
+    {
+      "startMs": 422643.7000000477,
+      "durationMs": 64
+    },
+    {
+      "startMs": 422922.7000000477,
+      "durationMs": 70
+    },
+    {
+      "startMs": 423034.40000009537,
+      "durationMs": 64
+    },
+    {
+      "startMs": 423130.2999999523,
+      "durationMs": 63
+    },
+    {
+      "startMs": 423194.7999999523,
+      "durationMs": 87
+    },
+    {
+      "startMs": 423351.7999999523,
+      "durationMs": 56
+    },
+    {
+      "startMs": 423420.40000009537,
+      "durationMs": 100
+    },
+    {
+      "startMs": 423528.5,
+      "durationMs": 53
+    },
+    {
+      "startMs": 423592.60000014305,
+      "durationMs": 61
+    },
+    {
+      "startMs": 423660.90000009537,
+      "durationMs": 65
+    },
+    {
+      "startMs": 423727.7999999523,
+      "durationMs": 54
+    },
+    {
+      "startMs": 423842,
+      "durationMs": 172
+    },
+    {
+      "startMs": 424020.40000009537,
+      "durationMs": 97
+    },
+    {
+      "startMs": 427227,
+      "durationMs": 79
+    },
+    {
+      "startMs": 429035.2999999523,
+      "durationMs": 55
+    },
+    {
+      "startMs": 430092.2000000477,
+      "durationMs": 52
+    },
+    {
+      "startMs": 439419.7999999523,
+      "durationMs": 50
+    },
+    {
+      "startMs": 442263,
+      "durationMs": 52
+    },
+    {
+      "startMs": 453494.7999999523,
+      "durationMs": 51
+    },
+    {
+      "startMs": 464897.5,
+      "durationMs": 51
+    },
+    {
+      "startMs": 484884.7000000477,
+      "durationMs": 51
+    },
+    {
+      "startMs": 485049.40000009537,
+      "durationMs": 72
+    },
+    {
+      "startMs": 485198.7999999523,
+      "durationMs": 54
+    },
+    {
+      "startMs": 485331.10000014305,
+      "durationMs": 70
+    },
+    {
+      "startMs": 486014.5,
+      "durationMs": 51
+    },
+    {
+      "startMs": 486304.10000014305,
+      "durationMs": 71
+    },
+    {
+      "startMs": 486469.7999999523,
+      "durationMs": 79
+    },
+    {
+      "startMs": 486551,
+      "durationMs": 58
+    },
+    {
+      "startMs": 486611.10000014305,
+      "durationMs": 102
+    },
+    {
+      "startMs": 486818.7000000477,
+      "durationMs": 57
+    },
+    {
+      "startMs": 486966.7999999523,
+      "durationMs": 52
+    },
+    {
+      "startMs": 487154.60000014305,
+      "durationMs": 120
+    },
+    {
+      "startMs": 487368.2000000477,
+      "durationMs": 168
+    },
+    {
+      "startMs": 487606.7000000477,
+      "durationMs": 95
+    },
+    {
+      "startMs": 487711.7999999523,
+      "durationMs": 372
+    },
+    {
+      "startMs": 488094.90000009537,
+      "durationMs": 117
+    },
+    {
+      "startMs": 488295.2000000477,
+      "durationMs": 136
+    },
+    {
+      "startMs": 488576.90000009537,
+      "durationMs": 165
+    },
+    {
+      "startMs": 488922.60000014305,
+      "durationMs": 56
+    },
+    {
+      "startMs": 489033.5,
+      "durationMs": 133
+    },
+    {
+      "startMs": 489192.40000009537,
+      "durationMs": 91
+    },
+    {
+      "startMs": 489309.7000000477,
+      "durationMs": 100
+    },
+    {
+      "startMs": 489416.40000009537,
+      "durationMs": 81
+    },
+    {
+      "startMs": 489556.90000009537,
+      "durationMs": 173
+    },
+    {
+      "startMs": 490032.7000000477,
+      "durationMs": 53
+    },
+    {
+      "startMs": 491262.40000009537,
+      "durationMs": 63
+    },
+    {
+      "startMs": 491659.7999999523,
+      "durationMs": 57
+    },
+    {
+      "startMs": 491728.2999999523,
+      "durationMs": 73
+    },
+    {
+      "startMs": 491939.2999999523,
+      "durationMs": 216
+    },
+    {
+      "startMs": 492368.90000009537,
+      "durationMs": 56
+    },
+    {
+      "startMs": 493062.10000014305,
+      "durationMs": 55
+    },
+    {
+      "startMs": 493120.90000009537,
+      "durationMs": 99
+    },
+    {
+      "startMs": 493287.2999999523,
+      "durationMs": 119
+    },
+    {
+      "startMs": 493684.90000009537,
+      "durationMs": 163
+    },
+    {
+      "startMs": 493860.5,
+      "durationMs": 70
+    },
+    {
+      "startMs": 493978.7000000477,
+      "durationMs": 53
+    },
+    {
+      "startMs": 494124.90000009537,
+      "durationMs": 118
+    },
+    {
+      "startMs": 494422.7000000477,
+      "durationMs": 84
+    },
+    {
+      "startMs": 494523.60000014305,
+      "durationMs": 84
+    },
+    {
+      "startMs": 494615.7999999523,
+      "durationMs": 53
+    },
+    {
+      "startMs": 494875,
+      "durationMs": 85
+    },
+    {
+      "startMs": 495158.60000014305,
+      "durationMs": 83
+    },
+    {
+      "startMs": 495246.7999999523,
+      "durationMs": 66
+    },
+    {
+      "startMs": 495508.10000014305,
+      "durationMs": 75
+    },
+    {
+      "startMs": 495600.90000009537,
+      "durationMs": 57
+    },
+    {
+      "startMs": 495658.7999999523,
+      "durationMs": 76
+    },
+    {
+      "startMs": 495834.7999999523,
+      "durationMs": 52
+    },
+    {
+      "startMs": 496583.40000009537,
+      "durationMs": 85
+    },
+    {
+      "startMs": 504427.90000009537,
+      "durationMs": 60
+    },
+    {
+      "startMs": 504639,
+      "durationMs": 215
+    },
+    {
+      "startMs": 504859.2999999523,
+      "durationMs": 59
+    },
+    {
+      "startMs": 505084.10000014305,
+      "durationMs": 109
+    },
+    {
+      "startMs": 518615.10000014305,
+      "durationMs": 83
+    },
+    {
+      "startMs": 519247.5,
+      "durationMs": 64
+    },
+    {
+      "startMs": 519315.10000014305,
+      "durationMs": 54
+    },
+    {
+      "startMs": 519372.90000009537,
+      "durationMs": 70
+    },
+    {
+      "startMs": 519459.7999999523,
+      "durationMs": 73
+    },
+    {
+      "startMs": 519640.90000009537,
+      "durationMs": 87
+    },
+    {
+      "startMs": 519820.10000014305,
+      "durationMs": 64
+    },
+    {
+      "startMs": 519964.40000009537,
+      "durationMs": 60
+    },
+    {
+      "startMs": 530346.7999999523,
+      "durationMs": 55
+    },
+    {
+      "startMs": 554882.600000143,
+      "durationMs": 51
+    },
+    {
+      "startMs": 555377.4000000954,
+      "durationMs": 67
+    },
+    {
+      "startMs": 555447.7000000477,
+      "durationMs": 52
+    },
+    {
+      "startMs": 576456.4000000954,
+      "durationMs": 76
+    },
+    {
+      "startMs": 579529.600000143,
+      "durationMs": 50
+    },
+    {
+      "startMs": 588154.100000143,
+      "durationMs": 74
+    },
+    {
+      "startMs": 588294.2000000477,
+      "durationMs": 52
+    },
+    {
+      "startMs": 588348.7999999523,
+      "durationMs": 50
+    },
+    {
+      "startMs": 588674.2000000477,
+      "durationMs": 138
+    },
+    {
+      "startMs": 588901,
+      "durationMs": 58
+    },
+    {
+      "startMs": 589010.7999999523,
+      "durationMs": 100
+    },
+    {
+      "startMs": 589122.2999999523,
+      "durationMs": 121
+    },
+    {
+      "startMs": 589486.100000143,
+      "durationMs": 70
+    },
+    {
+      "startMs": 589567.4000000954,
+      "durationMs": 65
+    },
+    {
+      "startMs": 589633.5,
+      "durationMs": 208
+    },
+    {
+      "startMs": 589897.7000000477,
+      "durationMs": 112
+    },
+    {
+      "startMs": 590127.100000143,
+      "durationMs": 53
+    },
+    {
+      "startMs": 590474.100000143,
+      "durationMs": 58
+    },
+    {
+      "startMs": 590883.2000000477,
+      "durationMs": 63
+    },
+    {
+      "startMs": 599883.100000143,
+      "durationMs": 71
+    }
+  ],
+  "limitations": [
+    "Draw-completion cadence is not a GPU timestamp or compositor presentation measurement.",
+    "Synthetic two-room workload, not crowd BDI, pathfinding, contacts or final room art.",
+    "Warm asset/renderer test; local asset preparation is not cold internet delivery.",
+    "Heap is an optional browser estimate, not GPU memory. Resource stability is not a full leak proof.",
+    "One selected camera; simultaneous three-feed and physical mobile tests remain separate gates."
+  ]
+}

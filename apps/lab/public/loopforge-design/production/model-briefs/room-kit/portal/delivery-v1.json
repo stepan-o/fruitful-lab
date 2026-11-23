@@ -1,0 +1,11 @@
+{
+  "revision": "room-kit/1",
+  "asset": "portal",
+  "src": "/media/files/4bd555f8184b3efdd2f4ccea26260843e14eb98615601228b32532efe43ef43d.glb",
+  "sha256": "4bd555f8184b3efdd2f4ccea26260843e14eb98615601228b32532efe43ef43d",
+  "bytes": 1115344,
+  "sourceSha256": "0e4cb2c294b2d0daa8100c92eedaf493511d758cbd714813e1e0d852774a4471",
+  "triangles": 9694,
+  "textureSize": 1024,
+  "status": "candidate; fit and visual review pending"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "max",
+  "refs": [
+    "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/rooms/05_loopforge_rooms_weaving_room_3.png"
+  ],
+  "prompt": "Use case: stylized-concept. Redesign mae, an adult precision-craft factory worker in Loopforge. Use the reference's weaving technicians for industrial material language and fine mechanisms. One isolated full-body worker, front three-quarter relaxed open A-pose, dark smoky charcoal background. The previous hooded figure with apron panels was rejected as too similar to supervisor RIVET WITCH. Change the whole silhouette decisively: absolutely NO hood, dress, skirt, apron, cloak, fabric, or hanging panels. A long NARROW EXPOSED MECHANICAL FACE with a projecting straight bridge/nose, a small sharp rectangular chin and two small horizontal cyan lenses. A slim flat swept-back steel crown casing is part of the skull, no helmet opening around the face. Ordinary short neck, gently sloping narrow shoulders, long slim upright torso; meticulous precise bearing, two compact fine five-finger mechanical hands, long straight forearms. Show TWO SEPARATE EXPOSED METAL THIGHS from waist to knee, narrow hip bearings, slender legs and practical flat shoes. Tailored-looking closely fitted faded cornflower-blue chest plates end at the waist, no breast shapes, no exaggerated hips. Blue panels on both thighs and shins. Modest old brass hinge bearings, oily dark steel gaps, worn blue enamel. Several broad simple blue shapes, not an all-brass ornate machine. Industrial adult proportions, restrained asymmetry only in wear, empty hands, complete feet. A neat highly skilled workshop technician rather than a priestess, witch or elegant supervisor. Painterly original Loopforge concept art with clear silhouette and legible face, no text, extra figures, glowing chest or props.",
+  "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-e6d3dddb-f86c-498c-ad69-747cf93033b6.png",
+  "status": "owner-approved-concept",
+  "version": 2,
+  "approval": "This one is ok, let it be max.",
+  "original_prompt_identity": "mae",
+  "identity_note": "User assigned this design to max. The prompt's original name is provenance only.",
+  "workspace_image": "output/opening-cast/max/max-concept-v2.png",
+  "sha256": "2db5b2d0b58be3e77cf2a7e1bdfa6d1ac9fb14d83b66a5af9310ec674fe253de",
+  "date": "2026-10-21",
+  "tool": "image_gen"
+}

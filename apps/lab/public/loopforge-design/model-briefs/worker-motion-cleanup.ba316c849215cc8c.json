@@ -1,0 +1,1440 @@
+{
+  "revision": "worker-cleanup-v2",
+  "sha256": "12f1714557a25ca9152e45d5d2d5b5385de3416bf5b703ebd84899342240a2a3",
+  "sampleRate": 120,
+  "method": "Exported skinned mesh checked at 120 Hz across legs, opposite forearms, hands/head, forearms/torso and hands/legs. Interior triangle crossings; not swept-volume, coplanar, prop-contact or transition certification.",
+  "clips": [
+    {
+      "id": "Agree_Gesture",
+      "samples": 1561,
+      "sourceContactFrames": 136,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 136,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Alert",
+      "samples": 481,
+      "sourceContactFrames": 0,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Angry_Stomp",
+      "samples": 961,
+      "sourceContactFrames": 413,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 179,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 211,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 23,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Carry_Heavy_Object_Walk_inplace",
+      "samples": 781,
+      "sourceContactFrames": 0,
+      "correctedContactFrames": 0,
+      "note": "Preserves the carry gesture with a relaxed holding curl. Actual prop grips still need alignment.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Catching_Breath",
+      "samples": 841,
+      "sourceContactFrames": 247,
+      "correctedContactFrames": 0,
+      "note": "Keeps the running approach and recovery. This is not yet a stationary overheating idle.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 247,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 4,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Hot_Walk",
+      "samples": 693,
+      "sourceContactFrames": 344,
+      "correctedContactFrames": 0,
+      "note": "Preserves the hip-led source reference. CATHEXIS has her own approved gait.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 279,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 78,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 22,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Confused_Scratch",
+      "samples": 1381,
+      "sourceContactFrames": 705,
+      "correctedContactFrames": 0,
+      "note": "Preserves the puzzled scratch; separates boots and clears the resting hand from the thigh.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 616,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 28,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 3,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 162,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Discuss_While_Moving",
+      "samples": 965,
+      "sourceContactFrames": 834,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 804,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 104,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 116,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Electrocuted_Fall",
+      "samples": 761,
+      "sourceContactFrames": 71,
+      "correctedContactFrames": 0,
+      "note": "Preserves collapse and source travel; one-shot. Floor/prop staging remains a scene integration check.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 52,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 28,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Electrocution_Reaction",
+      "samples": 561,
+      "sourceContactFrames": 0,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Idle_Turn_Left",
+      "samples": 113,
+      "sourceContactFrames": 102,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 102,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Idle_Turn_Right",
+      "samples": 133,
+      "sourceContactFrames": 133,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 133,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Listening_Gesture",
+      "samples": 1121,
+      "sourceContactFrames": 1121,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 1121,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 272,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Push_Forward_and_Stop",
+      "samples": 313,
+      "sourceContactFrames": 110,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 110,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "Victory_Cheer",
+      "samples": 1121,
+      "sourceContactFrames": 306,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 306,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "idle",
+      "samples": 481,
+      "sourceContactFrames": 255,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 255,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "injured_walk",
+      "samples": 1041,
+      "sourceContactFrames": 291,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 291,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "run_fast_10_inplace",
+      "samples": 97,
+      "sourceContactFrames": 23,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 23,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    },
+    {
+      "id": "walking_2_inplace",
+      "samples": 145,
+      "sourceContactFrames": 47,
+      "correctedContactFrames": 0,
+      "note": "Baked clearance correction with source timing and knee articulation retained; relaxed finger posture on the corrected rig.",
+      "regions": {
+        "legL/legR": {
+          "sourceFrames": 47,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/foreR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/head": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreL/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "foreR/torso": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handL/legR": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        },
+        "handR/legL": {
+          "sourceFrames": 0,
+          "correctedFrames": 0,
+          "maxCorrectedTriangles": 0
+        }
+      },
+      "remainingTimes": []
+    }
+  ],
+  "fingerStudies": {
+    "sampleRate": 60,
+    "samples": 363,
+    "interDigitContactFrames": 0
+  },
+  "authoring": {
+    "Agree_Gesture": {
+      "legs": {
+        "max": 0.0,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 5.799,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 0.0
+    },
+    "Alert": {
+      "legs": {
+        "max": 0.0,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 0.0,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 0.0
+    },
+    "Angry_Stomp": {
+      "legs": {
+        "max": 6.298,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 8.8,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 7.444
+    },
+    "Carry_Heavy_Object_Walk_inplace": {
+      "legs": {
+        "max": 0.0,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 0.0,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 0.0
+    },
+    "Catching_Breath": {
+      "legs": {
+        "max": 8.797,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 0.8,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 17.388
+    },
+    "Hot_Walk": {
+      "legs": {
+        "max": 9.3,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 5.3,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 24.497
+    },
+    "Confused_Scratch": {
+      "legs": {
+        "max": 3.3,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 3.3,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 4.64
+    },
+    "Discuss_While_Moving": {
+      "legs": {
+        "max": 8.799,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 6.3,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 16.89
+    },
+    "Electrocuted_Fall": {
+      "legs": {
+        "max": 14.3,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 4
+      },
+      "arms": {
+        "max": 7.299,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 37.359
+    },
+    "Electrocution_Reaction": {
+      "legs": {
+        "max": 0.0,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 0.0,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 0.0
+    },
+    "Idle_Turn_Left": {
+      "legs": {
+        "max": 3.3,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 0.0,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 3.203
+    },
+    "Idle_Turn_Right": {
+      "legs": {
+        "max": 4.8,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 0.0,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 3.5
+    },
+    "Listening_Gesture": {
+      "legs": {
+        "max": 5.3,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 1.3,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 11.397
+    },
+    "Push_Forward_and_Stop": {
+      "legs": {
+        "max": 10.299,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 0.0,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 13.116
+    },
+    "Victory_Cheer": {
+      "legs": {
+        "max": 5.8,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 0.0,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 7.493
+    },
+    "idle": {
+      "legs": {
+        "max": 0.0,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 3.3,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 0.0
+    },
+    "injured_walk": {
+      "legs": {
+        "max": 4.8,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 0.0,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 8.58
+    },
+    "run_fast_10_inplace": {
+      "legs": {
+        "max": 7.298,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 0.0,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 4.853
+    },
+    "walking_2_inplace": {
+      "legs": {
+        "max": 7.799,
+        "unit": "degrees",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "arms": {
+        "max": 0.0,
+        "unit": "cm",
+        "remainingFrames": 0,
+        "limitFrames": 0
+      },
+      "maxGroundAdjustmentMm": 10.531
+    }
+  }
+}

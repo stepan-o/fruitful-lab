@@ -1,0 +1,652 @@
+{
+  "phaseBindings": [
+    {
+      "turnId": "S01-T01",
+      "anchorPhaseOrGeneratedPrefix": "The morning walk",
+      "placement": "replace-speech",
+      "orderInPacket": 1
+    },
+    {
+      "turnId": "S01-T02",
+      "anchorPhaseOrGeneratedPrefix": "sam keeps walking",
+      "placement": "replace-speech",
+      "orderInPacket": 2
+    },
+    {
+      "turnId": "S01-T03",
+      "anchorPhaseOrGeneratedPrefix": "jo gives it a shift",
+      "placement": "replace-speech",
+      "orderInPacket": 3
+    },
+    {
+      "turnId": "S01-T04",
+      "anchorPhaseOrGeneratedPrefix": "Stop and wait",
+      "placement": "replace-speech",
+      "orderInPacket": 4
+    },
+    {
+      "turnId": "S01-T05",
+      "anchorPhaseOrGeneratedPrefix": "Welcome to Loopforge",
+      "placement": "replace-speech",
+      "orderInPacket": 5
+    },
+    {
+      "turnId": "S01-T06",
+      "anchorPhaseOrGeneratedPrefix": "lou under his breath",
+      "placement": "replace-speech",
+      "orderInPacket": 6
+    },
+    {
+      "turnId": "S01-T07",
+      "anchorPhaseOrGeneratedPrefix": "kit keeps his voice down",
+      "placement": "replace-speech",
+      "orderInPacket": 7
+    },
+    {
+      "turnId": "S01-T08",
+      "anchorPhaseOrGeneratedPrefix": "A card held ready",
+      "placement": "replace-speech",
+      "orderInPacket": 8
+    },
+    {
+      "turnId": "S01-T09",
+      "anchorPhaseOrGeneratedPrefix": "A card held ready",
+      "placement": "insert-after",
+      "orderInPacket": 9
+    },
+    {
+      "turnId": "S01-T10",
+      "anchorPhaseOrGeneratedPrefix": "bob steps into the opening",
+      "placement": "replace-speech",
+      "orderInPacket": 10
+    },
+    {
+      "turnId": "S01-T11",
+      "anchorPhaseOrGeneratedPrefix": "The cyan warning",
+      "placement": "replace-speech",
+      "orderInPacket": 11
+    },
+    {
+      "turnId": "S01-T12",
+      "anchorPhaseOrGeneratedPrefix": "Blade contact",
+      "placement": "attach-existing-event",
+      "orderInPacket": 12
+    },
+    {
+      "turnId": "S01-T13",
+      "anchorPhaseOrGeneratedPrefix": "sam runs to bob",
+      "placement": "insert-within-approach",
+      "orderInPacket": 13
+    },
+    {
+      "turnId": "S01-T14",
+      "anchorPhaseOrGeneratedPrefix": "ed collects bob’s card",
+      "placement": "attach-existing-event",
+      "orderInPacket": 14
+    },
+    {
+      "turnId": "S01-T15",
+      "anchorPhaseOrGeneratedPrefix": "sam releases the supporting hand",
+      "placement": "attach-existing-event",
+      "orderInPacket": 15
+    },
+    {
+      "turnId": "S02-T01",
+      "anchorPhaseOrGeneratedPrefix": "bob gets up as STILETTO arrives",
+      "placement": "replace-speech",
+      "orderInPacket": 16
+    },
+    {
+      "turnId": "S02-T02",
+      "anchorPhaseOrGeneratedPrefix": "LIMEN yields the threshold",
+      "placement": "insert-after",
+      "orderInPacket": 17
+    },
+    {
+      "turnId": "S02-T03",
+      "anchorPhaseOrGeneratedPrefix": "bob notices the exception",
+      "placement": "replace-speech",
+      "orderInPacket": 18
+    },
+    {
+      "turnId": "S02-T04",
+      "anchorPhaseOrGeneratedPrefix": "LIMEN hears enough",
+      "placement": "replace-speech",
+      "orderInPacket": 19
+    },
+    {
+      "turnId": "S02-T05",
+      "anchorPhaseOrGeneratedPrefix": "LIMEN hears enough",
+      "placement": "insert-after",
+      "orderInPacket": 20
+    },
+    {
+      "turnId": "S02-T06",
+      "anchorPhaseOrGeneratedPrefix": "bob finds a safer sentence",
+      "placement": "replace-speech",
+      "orderInPacket": 21
+    },
+    {
+      "turnId": "S02-T07",
+      "anchorPhaseOrGeneratedPrefix": "LIMEN accepts the compliment",
+      "placement": "replace-speech",
+      "orderInPacket": 22
+    },
+    {
+      "turnId": "S02-T08",
+      "anchorPhaseOrGeneratedPrefix": "bob names his station",
+      "placement": "replace-speech",
+      "orderInPacket": 23
+    },
+    {
+      "turnId": "S02-T09",
+      "anchorPhaseOrGeneratedPrefix": "bob is cleared for Conveyor",
+      "placement": "replace-speech",
+      "orderInPacket": 24
+    },
+    {
+      "turnId": "S03-T01",
+      "anchorPhaseOrGeneratedPrefix": "One worker for a whole line",
+      "placement": "insert-after",
+      "orderInPacket": 25
+    },
+    {
+      "turnId": "S03-T02",
+      "anchorPhaseOrGeneratedPrefix": "One worker for a whole line",
+      "placement": "replace-speech",
+      "orderInPacket": 26
+    },
+    {
+      "turnId": "S03-T03",
+      "anchorPhaseOrGeneratedPrefix": "bob offers to start",
+      "placement": "replace-speech",
+      "orderInPacket": 27
+    },
+    {
+      "turnId": "S03-T04",
+      "anchorPhaseOrGeneratedPrefix": "The intake instruction",
+      "placement": "insert-before",
+      "orderInPacket": 28
+    },
+    {
+      "turnId": "S03-T05",
+      "anchorPhaseOrGeneratedPrefix": "The intake instruction",
+      "placement": "replace-speech",
+      "orderInPacket": 29
+    },
+    {
+      "turnId": "S03-T06",
+      "anchorPhaseOrGeneratedPrefix": "The wash instruction",
+      "placement": "replace-speech",
+      "orderInPacket": 30
+    },
+    {
+      "turnId": "S03-T07",
+      "anchorPhaseOrGeneratedPrefix": "The belt instruction",
+      "placement": "replace-speech",
+      "orderInPacket": 31
+    },
+    {
+      "turnId": "S03-T08",
+      "anchorPhaseOrGeneratedPrefix": "The Forge instruction",
+      "placement": "insert-before",
+      "orderInPacket": 32
+    },
+    {
+      "turnId": "S03-T09",
+      "anchorPhaseOrGeneratedPrefix": "The Forge instruction",
+      "placement": "insert-before",
+      "orderInPacket": 33
+    },
+    {
+      "turnId": "S03-T10",
+      "anchorPhaseOrGeneratedPrefix": "The Forge instruction",
+      "placement": "replace-speech",
+      "orderInPacket": 34
+    },
+    {
+      "turnId": "S03-T11",
+      "anchorPhaseOrGeneratedPrefix": "bob compresses the first brain",
+      "placement": "insert-after",
+      "orderInPacket": 35
+    },
+    {
+      "turnId": "S03-T12",
+      "anchorPhaseOrGeneratedPrefix": "bob sees the empty stations",
+      "placement": "replace-speech",
+      "orderInPacket": 36
+    },
+    {
+      "turnId": "S03-T13",
+      "anchorPhaseOrGeneratedPrefix": "STILETTO points to the queue",
+      "placement": "replace-speech",
+      "orderInPacket": 37
+    },
+    {
+      "turnId": "S03-T14",
+      "anchorPhaseOrGeneratedPrefix": "STILETTO points to the queue",
+      "placement": "insert-after",
+      "orderInPacket": 38
+    },
+    {
+      "turnId": "S03-T15",
+      "anchorPhaseOrGeneratedPrefix": "STILETTO points to the queue",
+      "placement": "insert-after",
+      "orderInPacket": 39
+    },
+    {
+      "turnId": "S04-T01",
+      "anchorPhaseOrGeneratedPrefix": "sam comes when called",
+      "placement": "replace-speech",
+      "orderInPacket": 40
+    },
+    {
+      "turnId": "S04-T02",
+      "anchorPhaseOrGeneratedPrefix": "sam starts reporting",
+      "placement": "replace-speech",
+      "orderInPacket": 41
+    },
+    {
+      "turnId": "S04-T03",
+      "anchorPhaseOrGeneratedPrefix": "sam presents the card",
+      "placement": "attach-existing-event",
+      "orderInPacket": 42
+    },
+    {
+      "turnId": "S04-T04",
+      "anchorPhaseOrGeneratedPrefix": "sam’s card is checked",
+      "placement": "insert-after",
+      "orderInPacket": 43
+    },
+    {
+      "turnId": "S04-T05",
+      "anchorPhaseOrGeneratedPrefix": "LIMEN considers the queue",
+      "placement": "replace-speech",
+      "orderInPacket": 44
+    },
+    {
+      "turnId": "S04-T06",
+      "anchorPhaseOrGeneratedPrefix": "Who cares about this factory?",
+      "placement": "replace-speech",
+      "orderInPacket": 45
+    },
+    {
+      "turnId": "S04-T07",
+      "anchorPhaseOrGeneratedPrefix": "Who cares about this factory?",
+      "placement": "insert-after",
+      "orderInPacket": 46
+    },
+    {
+      "turnId": "S04-T08",
+      "anchorPhaseOrGeneratedPrefix": "Who cares about this factory?",
+      "placement": "insert-after",
+      "orderInPacket": 47
+    },
+    {
+      "turnId": "S04-T09",
+      "anchorPhaseOrGeneratedPrefix": "gus volunteers",
+      "placement": "replace-speech",
+      "orderInPacket": 48
+    },
+    {
+      "turnId": "S04-T10",
+      "anchorPhaseOrGeneratedPrefix": "ed volunteers",
+      "placement": "replace-speech",
+      "orderInPacket": 49
+    },
+    {
+      "turnId": "S04-T11",
+      "anchorPhaseOrGeneratedPrefix": "Two places at Security",
+      "placement": "replace-speech",
+      "orderInPacket": 50
+    },
+    {
+      "turnId": "S04-T12",
+      "anchorPhaseOrGeneratedPrefix": "gus reaches his control",
+      "placement": "insert-after",
+      "orderInPacket": 51
+    },
+    {
+      "turnId": "S04-T13",
+      "anchorPhaseOrGeneratedPrefix": "IDs and papers ready",
+      "placement": "replace-speech",
+      "orderInPacket": 52
+    },
+    {
+      "turnId": "S04-T14",
+      "anchorPhaseOrGeneratedPrefix": "ed repeats the order",
+      "placement": "replace-speech",
+      "orderInPacket": 53
+    },
+    {
+      "turnId": "S04-T15",
+      "anchorPhaseOrGeneratedPrefix": "gus likes the volume",
+      "placement": "replace-speech",
+      "orderInPacket": 54
+    },
+    {
+      "turnId": "S05-T01",
+      "anchorPhaseOrGeneratedPrefix": "sam reaches Conveyor",
+      "placement": "insert-after",
+      "orderInPacket": 55
+    },
+    {
+      "turnId": "S05-T02",
+      "anchorPhaseOrGeneratedPrefix": "sam reaches Conveyor",
+      "placement": "insert-after",
+      "orderInPacket": 56
+    },
+    {
+      "turnId": "S05-T03",
+      "anchorPhaseOrGeneratedPrefix": "bob and sam start the second workpiece",
+      "placement": "insert-before",
+      "orderInPacket": 57
+    },
+    {
+      "turnId": "S05-T04",
+      "anchorPhaseOrGeneratedPrefix": "bob and sam start the second workpiece",
+      "placement": "insert-before",
+      "orderInPacket": 58
+    },
+    {
+      "turnId": "S05-T05",
+      "anchorPhaseOrGeneratedPrefix": "The paired intake operates",
+      "placement": "insert-after",
+      "orderInPacket": 59
+    },
+    {
+      "turnId": "S05-T06",
+      "anchorPhaseOrGeneratedPrefix": "Third check name and assignment",
+      "placement": "replace-speech",
+      "orderInPacket": 60
+    },
+    {
+      "turnId": "S05-T07",
+      "anchorPhaseOrGeneratedPrefix": "jo gives the same answer",
+      "placement": "replace-speech",
+      "orderInPacket": 61
+    },
+    {
+      "turnId": "S05-T08",
+      "anchorPhaseOrGeneratedPrefix": "LIMEN starts doing it right",
+      "placement": "replace-speech",
+      "orderInPacket": 62
+    },
+    {
+      "turnId": "S05-T09",
+      "anchorPhaseOrGeneratedPrefix": "jo ID_Ready / 0",
+      "placement": "insert-after",
+      "orderInPacket": 63
+    },
+    {
+      "turnId": "S05-T10",
+      "anchorPhaseOrGeneratedPrefix": "jo joins bob and sam during cycle two",
+      "placement": "insert-after",
+      "orderInPacket": 64
+    },
+    {
+      "turnId": "S05-T11",
+      "anchorPhaseOrGeneratedPrefix": "jo joins bob and sam during cycle two",
+      "placement": "insert-after",
+      "orderInPacket": 65
+    },
+    {
+      "turnId": "S05-T12",
+      "anchorPhaseOrGeneratedPrefix": "jo joins bob and sam during cycle two",
+      "placement": "insert-after",
+      "orderInPacket": 66
+    },
+    {
+      "turnId": "S05-T13",
+      "anchorPhaseOrGeneratedPrefix": "jo joins bob and sam during cycle two",
+      "placement": "insert-after",
+      "orderInPacket": 67
+    },
+    {
+      "turnId": "S05-T14",
+      "anchorPhaseOrGeneratedPrefix": "jo waits for the staffed handover / 1",
+      "placement": "insert-before",
+      "orderInPacket": 68
+    },
+    {
+      "turnId": "S05-T15",
+      "anchorPhaseOrGeneratedPrefix": "The paired forge operates",
+      "placement": "insert-after",
+      "orderInPacket": 69
+    },
+    {
+      "turnId": "S06-P01",
+      "anchorPhaseOrGeneratedPrefix": "max Draw_ID / 0",
+      "placement": "insert-after",
+      "orderInPacket": 70
+    },
+    {
+      "turnId": "S06-P02",
+      "anchorPhaseOrGeneratedPrefix": "max Draw_ID / 0",
+      "placement": "insert-before",
+      "orderInPacket": 71
+    },
+    {
+      "turnId": "S06-T01",
+      "anchorPhaseOrGeneratedPrefix": "STILETTO demands the rest of the shift",
+      "placement": "insert-before",
+      "orderInPacket": 72
+    },
+    {
+      "turnId": "S06-T02",
+      "anchorPhaseOrGeneratedPrefix": "STILETTO demands the rest of the shift",
+      "placement": "replace-speech",
+      "orderInPacket": 73
+    },
+    {
+      "turnId": "S06-T03",
+      "anchorPhaseOrGeneratedPrefix": "max ID_Ready / 0",
+      "placement": "attach-existing-event",
+      "orderInPacket": 74
+    },
+    {
+      "turnId": "S07-T03",
+      "anchorPhaseOrGeneratedPrefix": "max takes a shift position",
+      "placement": "insert-after",
+      "orderInPacket": 75
+    },
+    {
+      "turnId": "S07-T04",
+      "anchorPhaseOrGeneratedPrefix": "max takes a shift position",
+      "placement": "insert-after",
+      "orderInPacket": 76
+    },
+    {
+      "turnId": "S07-T05",
+      "anchorPhaseOrGeneratedPrefix": "mae Draw_ID / 0",
+      "placement": "insert-before",
+      "orderInPacket": 77
+    },
+    {
+      "turnId": "S07-T06",
+      "anchorPhaseOrGeneratedPrefix": "mae takes a shift position",
+      "placement": "insert-after",
+      "orderInPacket": 78
+    },
+    {
+      "turnId": "S07-T07",
+      "anchorPhaseOrGeneratedPrefix": "mae takes a shift position",
+      "placement": "insert-after",
+      "orderInPacket": 79
+    },
+    {
+      "turnId": "S07-T08",
+      "anchorPhaseOrGeneratedPrefix": "mae takes a shift position",
+      "placement": "insert-after",
+      "orderInPacket": 80
+    },
+    {
+      "turnId": "S07-T09",
+      "anchorPhaseOrGeneratedPrefix": "kit Draw_ID / 0",
+      "placement": "insert-before",
+      "orderInPacket": 81
+    },
+    {
+      "turnId": "S07-T10",
+      "anchorPhaseOrGeneratedPrefix": "kit takes a shift position",
+      "placement": "insert-after",
+      "orderInPacket": 82
+    },
+    {
+      "turnId": "S07-T11",
+      "anchorPhaseOrGeneratedPrefix": "kit takes a shift position",
+      "placement": "insert-after",
+      "orderInPacket": 83
+    },
+    {
+      "turnId": "S07-T12",
+      "anchorPhaseOrGeneratedPrefix": "lou Draw_ID / 0",
+      "placement": "insert-before",
+      "orderInPacket": 84
+    },
+    {
+      "turnId": "S07-T13",
+      "anchorPhaseOrGeneratedPrefix": "lou takes a shift position",
+      "placement": "insert-after",
+      "orderInPacket": 85
+    },
+    {
+      "turnId": "S07-T14",
+      "anchorPhaseOrGeneratedPrefix": "ben Draw_ID / 0",
+      "placement": "insert-before",
+      "orderInPacket": 86
+    },
+    {
+      "turnId": "S07-T15",
+      "anchorPhaseOrGeneratedPrefix": "ben takes a shift position",
+      "placement": "insert-after",
+      "orderInPacket": 87
+    },
+    {
+      "turnId": "S07-T16",
+      "anchorPhaseOrGeneratedPrefix": "ben takes a shift position",
+      "placement": "insert-after",
+      "orderInPacket": 88
+    },
+    {
+      "turnId": "S07-T17",
+      "anchorPhaseOrGeneratedPrefix": "ben takes a shift position",
+      "placement": "insert-after",
+      "orderInPacket": 89
+    },
+    {
+      "turnId": "S08-T01",
+      "anchorPhaseOrGeneratedPrefix": "All four stations have their operators",
+      "placement": "insert-before",
+      "orderInPacket": 90
+    },
+    {
+      "turnId": "S08-T02",
+      "anchorPhaseOrGeneratedPrefix": "All four stations have their operators",
+      "placement": "insert-before",
+      "orderInPacket": 91
+    },
+    {
+      "turnId": "S08-T03",
+      "anchorPhaseOrGeneratedPrefix": "The staffed line starts its first batch",
+      "placement": "insert-before",
+      "orderInPacket": 92
+    },
+    {
+      "turnId": "S08-T04",
+      "anchorPhaseOrGeneratedPrefix": "The staffed belt operates",
+      "placement": "insert-after",
+      "orderInPacket": 93
+    },
+    {
+      "turnId": "S08-T05",
+      "anchorPhaseOrGeneratedPrefix": "The staffed forge operates",
+      "placement": "insert-before",
+      "orderInPacket": 94
+    },
+    {
+      "turnId": "S08-T06",
+      "anchorPhaseOrGeneratedPrefix": "The staffed forge operates",
+      "placement": "insert-before",
+      "orderInPacket": 95
+    },
+    {
+      "turnId": "S08-T07",
+      "anchorPhaseOrGeneratedPrefix": "The first operational output is ready",
+      "placement": "insert-after",
+      "orderInPacket": 96
+    },
+    {
+      "turnId": "S08-T08",
+      "anchorPhaseOrGeneratedPrefix": "The first operational output is ready",
+      "placement": "insert-after",
+      "orderInPacket": 97
+    },
+    {
+      "turnId": "S08-T09",
+      "anchorPhaseOrGeneratedPrefix": "The first operational output is ready",
+      "placement": "insert-after",
+      "orderInPacket": 98
+    },
+    {
+      "turnId": "S08-T10",
+      "anchorPhaseOrGeneratedPrefix": "The first operational output is ready",
+      "placement": "insert-after",
+      "orderInPacket": 99
+    },
+    {
+      "turnId": "S09-T01",
+      "anchorPhaseOrGeneratedPrefix": "The shift ends after the first operational output",
+      "placement": "insert-before",
+      "orderInPacket": 100
+    },
+    {
+      "turnId": "S09-T02",
+      "anchorPhaseOrGeneratedPrefix": "The shift ends after the first operational output",
+      "placement": "insert-after",
+      "orderInPacket": 101
+    },
+    {
+      "turnId": "S09-T03",
+      "anchorPhaseOrGeneratedPrefix": "The shift ends after the first operational output",
+      "placement": "insert-after",
+      "orderInPacket": 102
+    },
+    {
+      "turnId": "S09-T04",
+      "anchorPhaseOrGeneratedPrefix": "The shift ends after the first operational output",
+      "placement": "insert-after",
+      "orderInPacket": 103
+    },
+    {
+      "turnId": "S09-T05",
+      "anchorPhaseOrGeneratedPrefix": "The shift ends after the first operational output",
+      "placement": "insert-after",
+      "orderInPacket": 104
+    },
+    {
+      "turnId": "S09-T06",
+      "anchorPhaseOrGeneratedPrefix": "The shift ends after the first operational output",
+      "placement": "insert-after",
+      "orderInPacket": 105
+    },
+    {
+      "turnId": "S09-T07",
+      "anchorPhaseOrGeneratedPrefix": "bob leaves the work area",
+      "placement": "insert-during-route",
+      "orderInPacket": 106
+    },
+    {
+      "turnId": "S09-T08",
+      "anchorPhaseOrGeneratedPrefix": "sam leaves the work area",
+      "placement": "insert-during-route",
+      "orderInPacket": 107
+    },
+    {
+      "turnId": "S09-T09",
+      "anchorPhaseOrGeneratedPrefix": "The factory at night",
+      "placement": "attach-existing-event",
+      "orderInPacket": 108
+    }
+  ]
+}

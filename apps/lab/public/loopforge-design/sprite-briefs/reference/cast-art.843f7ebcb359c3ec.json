@@ -1,0 +1,577 @@
+{
+  "schemaVersion": 1,
+  "revision": 1,
+  "primaryModelReference": "ensemble-badass",
+  "portraits": [
+    {
+      "id": "bob",
+      "source": "output/opening-cast/bob/bob-front-v2.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/bob-320.6bdd4f321ab8e4f4.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 15200,
+          "sha256": "6bdd4f321ab8e4f4f56d030afafa2644fcc23e2b2e321400746492a93b154087"
+        },
+        {
+          "src": "/media/loopforge-cast/bob-640.014388511ec92ad6.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 45148,
+          "sha256": "014388511ec92ad64ba3f8a9f0ec9cc5dcbd1b49014b6fb06b196553f61aea28"
+        },
+        {
+          "src": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 135152,
+          "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 135152,
+        "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e"
+      },
+      "name": "bob",
+      "proseStatus": "approved",
+      "conceptStatus": "approved",
+      "identity": "Small narrow blue frame; flat small head beneath two oversized convex cyan fly-eye lenses, above and wider than the head; moderately large articulated hands, cream chest stripe. Do not return to a round ordinary head or huge mitten hands."
+    },
+    {
+      "id": "sam",
+      "source": "output/opening-cast/sam/sam-conveyor-v2.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/sam-320.6b3ff7fed23e6169.webp",
+          "width": 320,
+          "height": 213,
+          "bytes": 8208,
+          "sha256": "6b3ff7fed23e61691eff0d76e5e055f9175e33ee56231e437276e5265f7763ad"
+        },
+        {
+          "src": "/media/loopforge-cast/sam-640.f9732fc0fc445895.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 28164,
+          "sha256": "f9732fc0fc445895575a91f95ac2c50eb72d1cadb9211d224491add1bb7dad36"
+        },
+        {
+          "src": "/media/loopforge-cast/sam-1280.d7a6b3f29ae9aef1.webp",
+          "width": 1280,
+          "height": 853,
+          "bytes": 166702,
+          "sha256": "d7a6b3f29ae9aef11a132b9acdf61a1d985954b3ab3ff365028eda7257068d39"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/sam-1280.d7a6b3f29ae9aef1.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 166702,
+        "sha256": "d7a6b3f29ae9aef11a132b9acdf61a1d985954b3ab3ff365028eda7257068d39"
+      },
+      "name": "sam",
+      "proseStatus": "revised draft",
+      "conceptStatus": "approved",
+      "identity": "Great rounded humped shoulders with head carried low and forward, vertical mouth grille, squat sturdy legs, thick working arms. Blue worn enamel and dull brass. Preserve the industrial porter silhouette; do not straighten the hump into a generic humanoid."
+    },
+    {
+      "id": "ed",
+      "source": "output/opening-cast/ed/ed-approved-concept-v3.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/ed-320.2200cd9ab6cbb9af.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 15620,
+          "sha256": "2200cd9ab6cbb9afd0cc0c67c7a8de882eda5466b4c8e3f3e1ebb6b3d1495aa6"
+        },
+        {
+          "src": "/media/loopforge-cast/ed-640.3390b192e4b787d9.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 59706,
+          "sha256": "3390b192e4b787d9be008ee3f612592c7a67acbea04eaddb3037deb8159df26a"
+        },
+        {
+          "src": "/media/loopforge-cast/ed-1280.51ea5ec63125128f.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 242328,
+          "sha256": "51ea5ec63125128fec1973b1429d32fe43f80fcd3904b998fff0dea39fd603cd"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/ed-1280.51ea5ec63125128f.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 242328,
+        "sha256": "51ea5ec63125128fec1973b1429d32fe43f80fcd3904b998fff0dea39fd603cd"
+      },
+      "name": "ed",
+      "proseStatus": "revised draft",
+      "conceptStatus": "approved",
+      "identity": "Tall angular dark-blue goon, swept-back skull, narrow eyes, open toothed jaw, pointed chin, large round ear receiver and layered shoulder plates. Long expressive pointing index. The original LIMEN Security far-right assistant remains the source; not a generic smiling worker."
+    },
+    {
+      "id": "jo",
+      "source": "output/opening-cast/jo/jo-concept-v1.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/jo-320.e3e53f270c44e067.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 16324,
+          "sha256": "e3e53f270c44e0674febea224b2bdb820915b135bcb9c43476dea046fcc712f1"
+        },
+        {
+          "src": "/media/loopforge-cast/jo-640.fce2202b3af940c7.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 56776,
+          "sha256": "fce2202b3af940c7be1865d8ba322c209c5e573fe23e5028655fb7a4e5dfb046"
+        },
+        {
+          "src": "/media/loopforge-cast/jo-1280.d522f249ba45622a.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 231512,
+          "sha256": "d522f249ba45622a919ea46eaf8aff9f19bf57f353c05daa419eb90e19f2b707"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/jo-1280.d522f249ba45622a.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 231512,
+        "sha256": "d522f249ba45622a919ea46eaf8aff9f19bf57f353c05daa419eb90e19f2b707"
+      },
+      "name": "jo",
+      "proseStatus": "revised draft",
+      "conceptStatus": "approved",
+      "identity": "Low wide flat head with a projecting metal work cap, two small horizontal cyan eyes, worn blue work jacket and trousers, exposed mechanical knees and cuffs. Adult average factory hand; retain the cap and clothing silhouette."
+    },
+    {
+      "id": "gus",
+      "source": "output/opening-cast/gus/gus-front-v1.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/gus-320.a2a4498a01697f42.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 19152,
+          "sha256": "a2a4498a01697f42fd9cf842e853a6df2bd60ba5737438125efcef2a4b6cda08"
+        },
+        {
+          "src": "/media/loopforge-cast/gus-640.7315a5db20327d7f.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 67686,
+          "sha256": "7315a5db20327d7f7adf5a88a702da1da554870c6a6cdd0c8fc4f6c695b34574"
+        },
+        {
+          "src": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 240258,
+          "sha256": "30fc58bf00daccd537ce6bee2cd89c8f57b6ade9178170e8a835ada435acd3fb"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 240258,
+        "sha256": "30fc58bf00daccd537ce6bee2cd89c8f57b6ade9178170e8a835ada435acd3fb"
+      },
+      "name": "gus",
+      "proseStatus": "revised draft",
+      "conceptStatus": "approved",
+      "identity": "Massive square navy shoulders with pale yoke, small recessed skull, broad rectangular chest and heavy boots. Distinguish his squared upright mass from sam’s rounded hunched mass. Worker-scale security helper, never supervisor-scale."
+    },
+    {
+      "id": "max",
+      "source": "output/opening-cast/max/max-concept-v2.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/max-320.2b5a2619e08595eb.webp",
+          "width": 320,
+          "height": 213,
+          "bytes": 4524,
+          "sha256": "2b5a2619e08595eb891402388c8ef803409cebdebf8d26ddeb00c9ace58cce62"
+        },
+        {
+          "src": "/media/loopforge-cast/max-640.42bf446ed80f3e0e.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 16088,
+          "sha256": "42bf446ed80f3e0e4182461a6f4bc0898cb4617c76b41d8478cecebc6db53146"
+        },
+        {
+          "src": "/media/loopforge-cast/max-1280.670fd60bac802ebf.webp",
+          "width": 1280,
+          "height": 853,
+          "bytes": 95922,
+          "sha256": "670fd60bac802ebf050c7488649a02a17a21bac767a91238fe5d5d574741f1a1"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/max-1280.670fd60bac802ebf.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 95922,
+        "sha256": "670fd60bac802ebf050c7488649a02a17a21bac767a91238fe5d5d574741f1a1"
+      },
+      "name": "max",
+      "proseStatus": "revised draft",
+      "conceptStatus": "approved",
+      "identity": "Tall slender upright blue body, long narrow masklike exposed face with straight pale central nose ridge, small horizontal cyan optics, narrow shoulders, ordinary hands. Use the approved long-faced character reassigned from the mae proposal; discard the previous oversized unilateral ear design."
+    },
+    {
+      "id": "mae",
+      "source": "output/opening-cast/mae/mae-concept-v3.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/mae-320.7ff3071a9347923a.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 20864,
+          "sha256": "7ff3071a9347923a3b7ec5adcf91e71869a6793e52107f80e550411c6586a086"
+        },
+        {
+          "src": "/media/loopforge-cast/mae-640.729ddb380ada3ac3.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 79022,
+          "sha256": "729ddb380ada3ac391623cc01fb47242bf15dece65dfe502d9f86ea07d6011cd"
+        },
+        {
+          "src": "/media/loopforge-cast/mae-1280.e5a67ebc7fb7f9c5.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 286126,
+          "sha256": "e5a67ebc7fb7f9c594a6e913f7f30c8192b99194fe73aae4e3629990a197cb5b"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/mae-1280.e5a67ebc7fb7f9c5.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 286126,
+        "sha256": "e5a67ebc7fb7f9c594a6e913f7f30c8192b99194fe73aae4e3629990a197cb5b"
+      },
+      "name": "mae",
+      "proseStatus": "revised draft",
+      "conceptStatus": "approved",
+      "identity": "Short compact square blue craftswoman, broad blunt bob-shaped angular head casing, narrow rectangular cyan eyes in dark slot, short neck, small precise hands and exposed separated legs. No hood, skirt or dress. No baby proportions. Different from RIVET WITCH."
+    },
+    {
+      "id": "kit",
+      "source": "output/opening-cast/kit/kit-concept-v3.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/kit-320.8c1f5da4e3bdf503.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 23548,
+          "sha256": "8c1f5da4e3bdf503e3e62dea3e7cd93fd39a09456013be24fee48d30baf9a470"
+        },
+        {
+          "src": "/media/loopforge-cast/kit-640.9a7164a20a78c7ed.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 82386,
+          "sha256": "9a7164a20a78c7ed2743d2ff0a44b9f5145e1345209a63052de9c57da5d43ab2"
+        },
+        {
+          "src": "/media/loopforge-cast/kit-1280.455885256f5671bc.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 292732,
+          "sha256": "455885256f5671bca16db92898da10b42a8951fa12212547ca460cb4f0713451"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/kit-1280.455885256f5671bc.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 292732,
+        "sha256": "455885256f5671bca16db92898da10b42a8951fa12212547ca460cb4f0713451"
+      },
+      "name": "kit",
+      "proseStatus": "revised draft",
+      "conceptStatus": "approved",
+      "identity": "Adult wiry Popeye-like robot: tiny squinting skull with heavy jaw, short brass/steel pipe at mouth corner, lean ribbed torso, thin upper arms and enormous blue piston forearms tapering to ordinary hands. Pale forearm stripe, sturdy boots. Preserve pipe and forearm silhouette, not oversized hands or baby head."
+    },
+    {
+      "id": "lou",
+      "source": "output/opening-cast/lou/lou-conveyor-v1.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/lou-320.2500d298fcfcc187.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 13296,
+          "sha256": "2500d298fcfcc1870dfc6916a449722ff50b969c2e626f7abeb37ae317baeac4"
+        },
+        {
+          "src": "/media/loopforge-cast/lou-640.5537c37433c287e6.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 47782,
+          "sha256": "5537c37433c287e6b076bd66a21591e1bec05091e6de576ad398528e4f575bd8"
+        },
+        {
+          "src": "/media/loopforge-cast/lou-1280.0d77f26b20c9667e.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 207796,
+          "sha256": "0d77f26b20c9667eccc53437fd0131e7b4c1026c0b0a7c5e592020b26998ce30"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/lou-1280.0d77f26b20c9667e.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 207796,
+        "sha256": "0d77f26b20c9667eccc53437fd0131e7b4c1026c0b0a7c5e592020b26998ce30"
+      },
+      "name": "lou",
+      "proseStatus": "revised draft",
+      "conceptStatus": "approved",
+      "identity": "Exceptionally long curved neck and forward beaky skull with twin receiver housings; narrow exposed rib torso, very long thin arms and legs. Maintain a coherent biped and expressive neck without collapsing this into standard worker proportions."
+    },
+    {
+      "id": "ben",
+      "source": "output/opening-cast/ben/ben-conveyor-v1.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/ben-320.c5fc8e7521cf6b9b.webp",
+          "width": 320,
+          "height": 292,
+          "bytes": 11768,
+          "sha256": "c5fc8e7521cf6b9bea04f5d3c47aac58381521306d2770aefc4f7fb8c4654da8"
+        },
+        {
+          "src": "/media/loopforge-cast/ben-640.c59ba9c9b041f5ad.webp",
+          "width": 640,
+          "height": 585,
+          "bytes": 41944,
+          "sha256": "c59ba9c9b041f5adeac29dc379793868e4e337fa2b0db31e7b539889687b6bbd"
+        },
+        {
+          "src": "/media/loopforge-cast/ben-1280.fedd3740d78d1cfc.webp",
+          "width": 1280,
+          "height": 1170,
+          "bytes": 231342,
+          "sha256": "fedd3740d78d1cfc25700af965e4f404344058b37f56dd30d6fb72c0495fc1a7"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/ben-1280.fedd3740d78d1cfc.webp",
+        "width": 1280,
+        "height": 1170,
+        "bytes": 231342,
+        "sha256": "fedd3740d78d1cfc25700af965e4f404344058b37f56dd30d6fb72c0495fc1a7"
+      },
+      "name": "ben",
+      "proseStatus": "revised draft",
+      "conceptStatus": "approved",
+      "identity": "Short squat rounded barrel body and back, low broad oval hood, tiny square cyan eyes, circular shoulder joints, long thin forearms and short legs. Keep ben low and round; unlike gus’s square mass or sam’s raised hump."
+    },
+    {
+      "id": "limen",
+      "source": "apps/lab/public/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/limen-320.1aaf174b737505a2.webp",
+          "width": 320,
+          "height": 213,
+          "bytes": 13078,
+          "sha256": "1aaf174b737505a2dff78a3377cafc981fe20509d9dd950522639949b17171c9"
+        },
+        {
+          "src": "/media/loopforge-cast/limen-640.10ba309e2df9d11c.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 43938,
+          "sha256": "10ba309e2df9d11c231a99fdbcc9c51d2dc2ef659302c52f5a41c86fa1dd85c5"
+        },
+        {
+          "src": "/media/loopforge-cast/limen-1280.d7e1da56bf536e71.webp",
+          "width": 1280,
+          "height": 853,
+          "bytes": 222816,
+          "sha256": "d7e1da56bf536e7145915650624432c0708ef29db51d859332376db7fd7588d2"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/limen-1280.d7e1da56bf536e71.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 222816,
+        "sha256": "d7e1da56bf536e7145915650624432c0708ef29db51d859332376db7fd7588d2"
+      },
+      "name": "LIMEN",
+      "proseStatus": "revised draft",
+      "conceptStatus": "approved",
+      "identity": "Pale steel, deep teal optics, cyan forearm blade."
+    },
+    {
+      "id": "stiletto",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/stiletto_character_sheet_1.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/stiletto-320.8cc604589e70244a.webp",
+          "width": 320,
+          "height": 213,
+          "bytes": 11944,
+          "sha256": "8cc604589e70244ac5beb6d26a3fa76439e4f0ea992486a32f3da58cf1a9eed5"
+        },
+        {
+          "src": "/media/loopforge-cast/stiletto-640.309adae4ad193627.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 43510,
+          "sha256": "309adae4ad19362786485361f2d9881835dd5478f97efee90b04dea0f9b89e33"
+        },
+        {
+          "src": "/media/loopforge-cast/stiletto-1280.189604eaf0fbc0f9.webp",
+          "width": 1280,
+          "height": 853,
+          "bytes": 272368,
+          "sha256": "189604eaf0fbc0f9211662a176503b85f33b651818adddf37ebfb063dc2684de"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/stiletto-1280.189604eaf0fbc0f9.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 272368,
+        "sha256": "189604eaf0fbc0f9211662a176503b85f33b651818adddf37ebfb063dc2684de"
+      },
+      "name": "STILETTO",
+      "proseStatus": "revised draft",
+      "conceptStatus": "approved",
+      "identity": "Black chrome, red shoulders and T visor, two blade arms. Original sheet predates the approved red accents."
+    },
+    {
+      "id": "cathexis",
+      "source": "frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/cathexis_character_sheet_1.png",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/cathexis-320.a6d3f386a6267aab.webp",
+          "width": 320,
+          "height": 213,
+          "bytes": 14856,
+          "sha256": "a6d3f386a6267aab107dfdba41ce09fa935d0f389a43bf3cb64ac5068a86a693"
+        },
+        {
+          "src": "/media/loopforge-cast/cathexis-640.63905820a895d974.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 50618,
+          "sha256": "63905820a895d974703f2076684380418505179a1379c6290eb6dbd965fd4c73"
+        },
+        {
+          "src": "/media/loopforge-cast/cathexis-1280.4a089a776a6962c1.webp",
+          "width": 1280,
+          "height": 853,
+          "bytes": 268422,
+          "sha256": "4a089a776a6962c132da87e8b4548092acdb302906bed2592f89636b67133389"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/cathexis-1280.4a089a776a6962c1.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 268422,
+        "sha256": "4a089a776a6962c132da87e8b4548092acdb302906bed2592f89636b67133389"
+      },
+      "name": "CATHEXIS",
+      "proseStatus": "revised draft",
+      "conceptStatus": "approved",
+      "identity": "Ivory and brass, crown, Grace and underlying mechanical face, worn layered dress. Current body v2 and repaired rear skirt remain the geometry reference."
+    }
+  ],
+  "ensembles": [
+    {
+      "id": "ensemble-graduation",
+      "name": "Class photo",
+      "description": "Ten workers. Three supervisors. One photograph too many.",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/ensemble-graduation-480.9692f1dcd31d5a82.webp",
+          "width": 480,
+          "height": 270,
+          "bytes": 44076,
+          "sha256": "9692f1dcd31d5a828dedba990f8ff9f7d41d251f04c6fa4d7f92123b7c39c31f"
+        },
+        {
+          "src": "/media/loopforge-cast/ensemble-graduation-960.a9634d4e89affa6e.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 159728,
+          "sha256": "a9634d4e89affa6e02dc3f23dc36c893867ec849a93896098280503fffbc37d6"
+        },
+        {
+          "src": "/media/loopforge-cast/ensemble-graduation-1680.620b317e97dbe7eb.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 615128,
+          "sha256": "620b317e97dbe7eb13197f3a46ecbbceba06b20d1f52f7d8981a32c0fdd1459f"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/ensemble-graduation-1680.620b317e97dbe7eb.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 615128,
+        "sha256": "620b317e97dbe7eb13197f3a46ecbbceba06b20d1f52f7d8981a32c0fdd1459f"
+      },
+      "status": "owner-approved",
+      "source": "output/opening-cast/ensemble/graduation-v1.png"
+    },
+    {
+      "id": "ensemble-badass",
+      "name": "Bad company",
+      "description": "The approved lead reference for the cast’s model generation.",
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/ensemble-badass-480.c24ee15ee101a20b.webp",
+          "width": 480,
+          "height": 270,
+          "bytes": 47144,
+          "sha256": "c24ee15ee101a20b367f2c52841075c2a2c6d473f1a0cf05f3d6338e65faf906"
+        },
+        {
+          "src": "/media/loopforge-cast/ensemble-badass-960.1da0ea3d8836f91f.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 170784,
+          "sha256": "1da0ea3d8836f91fae4bfe89a26bf1bdfa84dd9761142187ca88d4ea59d4dd3b"
+        },
+        {
+          "src": "/media/loopforge-cast/ensemble-badass-1680.313c4e126f72dc37.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 660634,
+          "sha256": "313c4e126f72dc3791788586e6e6a7cc0071e7bcc79ad8b9492ee91bd03ea8b8"
+        }
+      ],
+      "input": {
+        "src": "/media/loopforge-cast/ensemble-badass-1680.313c4e126f72dc37.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 660634,
+        "sha256": "313c4e126f72dc3791788586e6e6a7cc0071e7bcc79ad8b9492ee91bd03ea8b8"
+      },
+      "status": "owner-approved",
+      "source": "output/opening-cast/ensemble/badass-v1.png"
+    }
+  ]
+}

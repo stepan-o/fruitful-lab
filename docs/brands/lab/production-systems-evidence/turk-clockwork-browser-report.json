@@ -1,0 +1,279 @@
+{
+  "viewports": [
+    {
+      "width": 1440,
+      "scroll": 1420,
+      "scenes": 8,
+      "duplicateIds": [],
+      "violations": []
+    },
+    {
+      "width": 768,
+      "scroll": 748,
+      "scenes": 8,
+      "duplicateIds": [],
+      "violations": []
+    },
+    {
+      "width": 390,
+      "scroll": 370,
+      "scenes": 8,
+      "duplicateIds": [],
+      "violations": []
+    },
+    {
+      "width": 320,
+      "scroll": 300,
+      "scenes": 8,
+      "duplicateIds": [],
+      "violations": []
+    }
+  ],
+  "motion": {
+    "initial": [
+      {
+        "scene": "conveyor",
+        "playing": "true"
+      },
+      {
+        "scene": "operator",
+        "playing": "false"
+      },
+      {
+        "scene": "cabinet",
+        "playing": "false"
+      },
+      {
+        "scene": "board",
+        "playing": "false"
+      },
+      {
+        "scene": "inspection",
+        "playing": "false"
+      },
+      {
+        "scene": "release",
+        "playing": "false"
+      },
+      {
+        "scene": "folio",
+        "playing": "false"
+      },
+      {
+        "scene": "rest",
+        "playing": "false"
+      }
+    ],
+    "advances": true,
+    "paused": true,
+    "persisted": "true",
+    "offscreen": "false",
+    "board": "true",
+    "reduced": {
+      "playing": false,
+      "animations": 0
+    }
+  },
+  "errors": [],
+  "timings": [
+    {
+      "kind": "cold",
+      "dom": 2031,
+      "lcp": 1996,
+      "cls": 0,
+      "htmlEncoded": 289782,
+      "resources": [
+        {
+          "name": "3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
+          "bytes": 43068,
+          "type": "link"
+        },
+        {
+          "name": "c825fd02acae0153-s.p.0js52-zd~6bs8.woff2",
+          "bytes": 43120,
+          "type": "link"
+        },
+        {
+          "name": "0vb44mhqbramc.css",
+          "bytes": 885,
+          "type": "link"
+        },
+        {
+          "name": "0ypl6f4z94y6q.css",
+          "bytes": 20343,
+          "type": "link"
+        },
+        {
+          "name": "0biiv-yzuisux.css",
+          "bytes": 6204,
+          "type": "link"
+        },
+        {
+          "name": "0t1et0tty8o9s.js",
+          "bytes": 2336,
+          "type": "link"
+        },
+        {
+          "name": "0l9eevv8an7~q.js",
+          "bytes": 8873,
+          "type": "script"
+        },
+        {
+          "name": "0wj8l4fwydekq.js",
+          "bytes": 70725,
+          "type": "script"
+        },
+        {
+          "name": "0o59ac8426icc.js",
+          "bytes": 37166,
+          "type": "script"
+        },
+        {
+          "name": "073081qv4uyn8.js",
+          "bytes": 9236,
+          "type": "script"
+        },
+        {
+          "name": "turbopack-0cz8ciz_9v4h8.js",
+          "bytes": 4161,
+          "type": "script"
+        },
+        {
+          "name": "04eklj-7j4aqp.js",
+          "bytes": 2876,
+          "type": "script"
+        },
+        {
+          "name": "0a0o4dde.oa2w.js",
+          "bytes": 12874,
+          "type": "script"
+        },
+        {
+          "name": "10yl9pl3.aqs9.js",
+          "bytes": 6987,
+          "type": "script"
+        },
+        {
+          "name": "favicon.ico?favicon.0x3dzn~oxb6tn.ico",
+          "bytes": 25931,
+          "type": "other"
+        },
+        {
+          "name": "stepanoskin?_rsc=15be1",
+          "bytes": 167,
+          "type": "fetch"
+        },
+        {
+          "name": "stepanoskin?_rsc=17xye",
+          "bytes": 843,
+          "type": "fetch"
+        }
+      ],
+      "svgPaths": 1274
+    },
+    {
+      "kind": "warm",
+      "dom": 536,
+      "lcp": 324,
+      "cls": 0,
+      "htmlEncoded": 289782,
+      "resources": [
+        {
+          "name": "3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
+          "bytes": 43068,
+          "type": "link"
+        },
+        {
+          "name": "c825fd02acae0153-s.p.0js52-zd~6bs8.woff2",
+          "bytes": 43120,
+          "type": "link"
+        },
+        {
+          "name": "0vb44mhqbramc.css",
+          "bytes": 885,
+          "type": "link"
+        },
+        {
+          "name": "0ypl6f4z94y6q.css",
+          "bytes": 20343,
+          "type": "link"
+        },
+        {
+          "name": "0biiv-yzuisux.css",
+          "bytes": 6204,
+          "type": "link"
+        },
+        {
+          "name": "0t1et0tty8o9s.js",
+          "bytes": 2336,
+          "type": "link"
+        },
+        {
+          "name": "0l9eevv8an7~q.js",
+          "bytes": 8873,
+          "type": "script"
+        },
+        {
+          "name": "0wj8l4fwydekq.js",
+          "bytes": 70725,
+          "type": "script"
+        },
+        {
+          "name": "0o59ac8426icc.js",
+          "bytes": 37166,
+          "type": "script"
+        },
+        {
+          "name": "073081qv4uyn8.js",
+          "bytes": 9236,
+          "type": "script"
+        },
+        {
+          "name": "turbopack-0cz8ciz_9v4h8.js",
+          "bytes": 4161,
+          "type": "script"
+        },
+        {
+          "name": "04eklj-7j4aqp.js",
+          "bytes": 2876,
+          "type": "script"
+        },
+        {
+          "name": "0a0o4dde.oa2w.js",
+          "bytes": 12874,
+          "type": "script"
+        },
+        {
+          "name": "10yl9pl3.aqs9.js",
+          "bytes": 6987,
+          "type": "script"
+        },
+        {
+          "name": "favicon.ico?favicon.0x3dzn~oxb6tn.ico",
+          "bytes": 25931,
+          "type": "other"
+        },
+        {
+          "name": "stepanoskin?_rsc=15be1",
+          "bytes": 167,
+          "type": "fetch"
+        },
+        {
+          "name": "stepanoskin?_rsc=17xye",
+          "bytes": 843,
+          "type": "fetch"
+        }
+      ],
+      "svgPaths": 1274
+    }
+  ],
+  "scenario": "Games selected",
+  "keyboardRadio": true,
+  "artCredits": true,
+  "touch": true,
+  "noJS": {
+    "scenes": 8,
+    "motionButtonVisible": false,
+    "h1": "Stepan Oskin\nData science,\nacross the full stack."
+  }
+}

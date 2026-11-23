@@ -1,0 +1,53 @@
+{
+  "id": "broadcast-desk",
+  "name": "Broadcast Desk",
+  "ref": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/sources/loopforge-camera/alternatives/broadcast-desk.png",
+  "material": "black ribbed analog broadcast equipment, narrow squared metal chassis, restrained worn ivory ceramic inserts",
+  "frame": {
+    "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-6c921d83-a0a5-4979-ac40-72a06b581aa2.png",
+    "prompt": "Use case: stylized-concept. Production raster UI asset for Loopforge: ONE EMPTY CAMERA MONITOR BEZEL. Reference image is the approved Broadcast Desk material study, style reference only. Generate a separate finished asset, not a style sheet. Match its black ribbed analog broadcast equipment, narrow squared metal chassis, restrained worn ivory ceramic inserts. Nearly front-on orthographic, level and symmetrical rectangular monitor frame, outer aspect ratio 16:10. Strong authentic factory materials, fine realistic edge wear, same soft upper-left key light as source. Outer frame fills canvas with a small transparent margin. A large empty rectangular opening occupies roughly 76% width and 70% height. Interior and exterior truly transparent. The physical frame has four continuous sides with mostly straight central lengths so it can be nine-sliced without stretching corner fittings. Keep decoration within the rim. No glass, screen contents, characters, text, lettering, symbols, sticky labels, status lamps or controls. No glowing lights. No copied study page elements. This is foreground chrome for a functional game camera; detailed but legible at small sizes.",
+    "source": "frame-master.png"
+  },
+  "controls": {
+    "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-be03a2a4-ce21-4592-b30e-80b84e0d8b2b.png",
+    "prompt": "Use case: stylized-concept. Loopforge production UI asset: exactly THREE vertically stacked wide rectangular control plates, the SAME button design in rest, hover, pressed states from top to bottom. The reference is the Broadcast Desk style study only. Each is a wide 5:1 rectangular mechanical push plate with black ribbed analog broadcast equipment, narrow squared metal chassis, restrained worn ivory ceramic inserts. Front-on orthographic viewpoint, consistent upper-left lighting, no perspective warping. Solid very dark charcoal centre large enough for a readable native text label later. Hardware and material are concentrated along the perimeter. A subtle amber edge contact is unlit on top, warm on middle hover, compressed/down on bottom press. The mechanical shape, placement, dimensions, corner fixtures and label-safe area must align exactly across states; no separate circular red knob. 3 equal-height rows, each plate centred and filling 88% canvas width, separated by generous transparent gutters. Transparent canvas outside each plate, opaque dark label face. No text, lettering, numbers, icons, captions, titles, swatches, arrow, symbols, people or other objects. High detail realistic painted industrial metal, no cartoon style. This is a three-state sprite sheet to slice into separate assets, not a design board.",
+    "source": "controls-master.png"
+  },
+  "reference": "assets/sources/loopforge-camera/alternatives/broadcast-desk.png",
+  "preparation": {
+    "script": "scripts/prepare-loopforge-themes.mjs",
+    "frameTrimThreshold": 12,
+    "controlCrops": [
+      {
+        "state": "rest",
+        "region": {
+          "left": 0,
+          "top": 0,
+          "width": 1240,
+          "height": 423
+        },
+        "trimThreshold": 12
+      },
+      {
+        "state": "hover",
+        "region": {
+          "left": 0,
+          "top": 423,
+          "width": 1240,
+          "height": 423
+        },
+        "trimThreshold": 12
+      },
+      {
+        "state": "pressed",
+        "region": {
+          "left": 0,
+          "top": 846,
+          "width": 1240,
+          "height": 423
+        },
+        "trimThreshold": 12
+      }
+    ]
+  }
+}

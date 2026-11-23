@@ -1,0 +1,424 @@
+{
+  "recordedAt": "2026-10-12T09:48:43.983Z",
+  "fixture": "loopforge-agent-test/1",
+  "config": {
+    "kind": "gate",
+    "supervisor": "limen",
+    "count": 24,
+    "strained": false
+  },
+  "mode": "hybrid",
+  "view": {
+    "version": "loopforge-agent-test/1",
+    "tick": 481,
+    "room": "security",
+    "actors": [
+      {
+        "id": "worker-001",
+        "appearance": "worker",
+        "position": [
+          125000,
+          0,
+          131500
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.016666666666666666
+      },
+      {
+        "id": "worker-002",
+        "appearance": "worker-ribbed",
+        "position": [
+          126000,
+          0,
+          131500
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.23333333333333334
+      },
+      {
+        "id": "worker-003",
+        "appearance": "worker-plated",
+        "position": [
+          126500,
+          0,
+          126650
+        ],
+        "yaw": 1571,
+        "clip": "present",
+        "phase": 0.9666666666666667
+      },
+      {
+        "id": "worker-004",
+        "appearance": "worker",
+        "position": [
+          126500,
+          0,
+          123900
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.6666666666666666
+      },
+      {
+        "id": "worker-005",
+        "appearance": "worker-ribbed",
+        "position": [
+          126500,
+          0,
+          123000
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.8833333333333333
+      },
+      {
+        "id": "worker-006",
+        "appearance": "worker-plated",
+        "position": [
+          126500,
+          0,
+          122100
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.1
+      },
+      {
+        "id": "worker-007",
+        "appearance": "worker",
+        "position": [
+          126500,
+          0,
+          121200
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.31666666666666665
+      },
+      {
+        "id": "worker-008",
+        "appearance": "worker-ribbed",
+        "position": [
+          126500,
+          0,
+          120300
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.5333333333333333
+      },
+      {
+        "id": "worker-009",
+        "appearance": "worker-plated",
+        "position": [
+          126500,
+          0,
+          119400
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.75
+      },
+      {
+        "id": "worker-010",
+        "appearance": "worker",
+        "position": [
+          126500,
+          0,
+          118500
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.9666666666666667
+      },
+      {
+        "id": "worker-011",
+        "appearance": "worker-ribbed",
+        "position": [
+          126500,
+          0,
+          117600
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.18333333333333332
+      },
+      {
+        "id": "worker-012",
+        "appearance": "worker-plated",
+        "position": [
+          126500,
+          0,
+          116700
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.4
+      },
+      {
+        "id": "worker-013",
+        "appearance": "worker",
+        "position": [
+          126500,
+          0,
+          115800
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.6166666666666667
+      },
+      {
+        "id": "worker-014",
+        "appearance": "worker-ribbed",
+        "position": [
+          126500,
+          0,
+          114900
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.8333333333333334
+      },
+      {
+        "id": "worker-015",
+        "appearance": "worker-plated",
+        "position": [
+          127900,
+          0,
+          124800
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.05
+      },
+      {
+        "id": "worker-016",
+        "appearance": "worker",
+        "position": [
+          127900,
+          0,
+          123900
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.26666666666666666
+      },
+      {
+        "id": "worker-017",
+        "appearance": "worker-ribbed",
+        "position": [
+          127900,
+          0,
+          123000
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.48333333333333334
+      },
+      {
+        "id": "worker-018",
+        "appearance": "worker-plated",
+        "position": [
+          127900,
+          0,
+          122100
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.7
+      },
+      {
+        "id": "worker-019",
+        "appearance": "worker",
+        "position": [
+          127900,
+          0,
+          121200
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.9166666666666666
+      },
+      {
+        "id": "worker-020",
+        "appearance": "worker-ribbed",
+        "position": [
+          127900,
+          0,
+          120300
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.13333333333333333
+      },
+      {
+        "id": "worker-021",
+        "appearance": "worker-plated",
+        "position": [
+          127900,
+          0,
+          119400
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.35
+      },
+      {
+        "id": "worker-022",
+        "appearance": "worker",
+        "position": [
+          127900,
+          0,
+          118500
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.5666666666666667
+      },
+      {
+        "id": "worker-023",
+        "appearance": "worker-ribbed",
+        "position": [
+          127900,
+          0,
+          117600
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0.7833333333333333
+      },
+      {
+        "id": "worker-024",
+        "appearance": "worker-plated",
+        "position": [
+          127900,
+          0,
+          116700
+        ],
+        "yaw": 0,
+        "clip": "wait",
+        "phase": 0
+      },
+      {
+        "id": "limen",
+        "appearance": "limen",
+        "position": [
+          125500,
+          0,
+          126650
+        ],
+        "yaw": -1571,
+        "clip": "inspect",
+        "phase": 0.9666666666666667
+      }
+    ],
+    "active": {
+      "id": "action-3",
+      "kind": "gate",
+      "worker": "worker-003",
+      "supervisor": "limen",
+      "start": 363,
+      "end": 543,
+      "resources": [
+        "worker-003",
+        "limen",
+        "gate-contact"
+      ],
+      "outcome": "pending"
+    },
+    "completed": 2,
+    "propOwner": "source-dock",
+    "propPosition": [
+      120000,
+      1040,
+      150100
+    ],
+    "gateOpen": false,
+    "phase": "LIMEN checks this worker’s credential.",
+    "finished": false
+  },
+  "report": {
+    "fps": 32,
+    "meshes": 247,
+    "active": 54,
+    "workers": 0,
+    "resolution": "862 × 624",
+    "renderer": "ANGLE (Intel, Mesa Intel(R) HD Graphics 620 (KBL GT2), OpenGL 4.6)",
+    "renderMs": 29,
+    "updateMs": 0,
+    "p50": 28,
+    "p95": 52,
+    "p99": 75,
+    "drawCalls": 169,
+    "triangles": 714444
+  },
+  "castReport": {
+    "mode": "hybrid",
+    "actors": 25,
+    "loadedBytes": 9114311,
+    "bakedBytes": 207360,
+    "loadMs": 3467.5,
+    "puppets": 2,
+    "crowdGroups": 3,
+    "contactErrorMm": 0
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 800,
+    "dpr": 1
+  },
+  "trace": [
+    {
+      "tick": 1,
+      "action": "action-1",
+      "observation": "The next worker reaches the clearance queue.",
+      "belief": "Unchecked clearance threatens orderly work.",
+      "desire": "Preserve clearance discipline.",
+      "intention": "Inspect, then release.",
+      "validation": "Actor and station slots acquired atomically.",
+      "outcome": "In progress."
+    },
+    {
+      "tick": 181,
+      "action": "action-1",
+      "observation": "The reserved action reaches its confirmed end.",
+      "belief": "The result is now observed.",
+      "desire": "Continue without inventing an outcome.",
+      "intention": "Admit the next task.",
+      "validation": "Fixed tick committed once; no animation callback.",
+      "outcome": "released"
+    },
+    {
+      "tick": 182,
+      "action": "action-2",
+      "observation": "The next worker reaches the clearance queue.",
+      "belief": "Unchecked clearance threatens orderly work.",
+      "desire": "Preserve clearance discipline.",
+      "intention": "Inspect, then release.",
+      "validation": "Actor and station slots acquired atomically.",
+      "outcome": "In progress."
+    },
+    {
+      "tick": 362,
+      "action": "action-2",
+      "observation": "The reserved action reaches its confirmed end.",
+      "belief": "The result is now observed.",
+      "desire": "Continue without inventing an outcome.",
+      "intention": "Admit the next task.",
+      "validation": "Fixed tick committed once; no animation callback.",
+      "outcome": "released"
+    },
+    {
+      "tick": 363,
+      "action": "action-3",
+      "observation": "The next worker reaches the clearance queue.",
+      "belief": "Unchecked clearance threatens orderly work.",
+      "desire": "Preserve clearance discipline.",
+      "intention": "Inspect, then release.",
+      "validation": "Actor and station slots acquired atomically.",
+      "outcome": "In progress."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "revision": "model-briefs-2026-10-16-worker-cleanup",
+  "date": "2026-10-16",
+  "models": [
+    {
+      "id": "limen",
+      "name": "LIMEN",
+      "subtitle": "Security chief · body + emitter",
+      "status": "Prototype available",
+      "downloadBytes": 776797,
+      "src": "/loopforge-design/model-briefs/limen.67f9323ef8b2b6ec.json"
+    },
+    {
+      "id": "worker",
+      "name": "Worker 01",
+      "subtitle": "Factory worker · body + motion bank",
+      "status": "Cleanup implemented · visual review",
+      "downloadBytes": 974824,
+      "src": "/loopforge-design/model-briefs/worker.2d4f15d02fd234c9.json"
+    },
+    {
+      "id": "stiletto",
+      "name": "STILETTO",
+      "subtitle": "Twin blades · interchangeable forearm modules",
+      "status": "Prototype acting accepted",
+      "downloadBytes": 1218629,
+      "src": "/loopforge-design/model-briefs/stiletto.fce66b6a9c0a346c.json"
+    },
+    {
+      "id": "cathexis",
+      "name": "CATHEXIS",
+      "subtitle": "Theatre diva · intact mechanism + Grace coverage",
+      "status": "Body accepted · two motion cleanup candidates",
+      "downloadBytes": 6631124,
+      "src": "/loopforge-design/model-briefs/cathexis.41564403698adf6c.json"
+    }
+  ]
+}

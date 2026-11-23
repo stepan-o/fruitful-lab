@@ -1,6 +1,9 @@
 # Makefile at repo root
 
 .PHONY: backend-test backend-run backend-ci \
+        lab-test lab-build lab-ci \
+        fruitful-pin-install fruitful-pin-dev fruitful-pin-test fruitful-pin-build fruitful-pin-ci \
+        fruitful-lab-site-install fruitful-lab-site-dev fruitful-lab-site-test fruitful-lab-site-build fruitful-lab-site-ci \
         frontend-test frontend-build frontend-ci \
         test all
 
@@ -12,16 +15,50 @@ backend-run:
 
 backend-ci: backend-test
 
-frontend-test:
-	cd frontend && npm test
+lab-test:
+	cd apps/lab && API_BASE_URL=http://localhost:8000 npm test
 
-frontend-build:
-	cd frontend && npm run build
+frontend-test: lab-test
 
-frontend-ci: frontend-test frontend-build
+lab-build:
+	cd apps/lab && API_BASE_URL=http://localhost:8000 npm run build
+
+frontend-build: lab-build
+
+lab-ci: lab-test lab-build
+
+frontend-ci: lab-ci
+
+fruitful-pin-install:
+	cd apps/fruitful-pin && npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm ci
+
+fruitful-pin-dev:
+	cd apps/fruitful-pin && npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm run dev:local
+
+fruitful-pin-test:
+	cd apps/fruitful-pin && npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm test
+
+fruitful-pin-build:
+	cd apps/fruitful-pin && npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm run build
+
+fruitful-pin-ci: fruitful-pin-test fruitful-pin-build
+
+fruitful-lab-site-install:
+	cd apps/fruitful-lab-site && npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm ci
+
+fruitful-lab-site-dev:
+	cd apps/fruitful-lab-site && npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm run dev:local
+
+fruitful-lab-site-test:
+	cd apps/fruitful-lab-site && npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm test
+
+fruitful-lab-site-build:
+	cd apps/fruitful-lab-site && npm_config_cache=/private/tmp/npm-cache npm_config_logs_dir=/private/tmp/npm-logs npm run build
+
+fruitful-lab-site-ci: fruitful-lab-site-test fruitful-lab-site-build
 
 # run both test suites
-test: backend-test frontend-test
+test: backend-test lab-test fruitful-pin-test fruitful-lab-site-test
 
 # full CI-ish run
-all: backend-ci frontend-ci
+all: backend-ci lab-ci fruitful-pin-ci fruitful-lab-site-ci

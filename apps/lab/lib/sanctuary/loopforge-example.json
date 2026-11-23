@@ -1,0 +1,118 @@
+{
+  "version": "lf-teaching-1",
+  "sourceCommit": "54c234b",
+  "sourceSha256": "21326b7ba41ff577d11b0cb2c75a3540648eb60369e52c7ce315407d4b7fc169",
+  "captured": "2026-10-07",
+  "seed": 42,
+  "priorPolicies": [
+    "balanced",
+    "balanced",
+    "balanced"
+  ],
+  "assignments": [
+    "limen",
+    "stiletto",
+    "cathexis",
+    "witch",
+    "thrum"
+  ],
+  "start": {
+    "shift": 3,
+    "total": 88,
+    "strain": 12
+  },
+  "results": {
+    "care": {
+      "id": "lf-teaching-1:42:4",
+      "shift": 4,
+      "doctrine": "care",
+      "strainBefore": 12,
+      "strainAfter": 0,
+      "delta": 21,
+      "total": 109,
+      "rooms": [
+        {
+          "room": 0,
+          "supervisor": "limen",
+          "expertise": 2,
+          "disturbance": -1,
+          "output": 4
+        },
+        {
+          "room": 1,
+          "supervisor": "stiletto",
+          "expertise": 2,
+          "disturbance": -1,
+          "output": 4
+        },
+        {
+          "room": 2,
+          "supervisor": "cathexis",
+          "expertise": 2,
+          "disturbance": -1,
+          "output": 4
+        },
+        {
+          "room": 3,
+          "supervisor": "witch",
+          "expertise": 2,
+          "disturbance": 0,
+          "output": 5
+        },
+        {
+          "room": 4,
+          "supervisor": "thrum",
+          "expertise": 2,
+          "disturbance": -1,
+          "output": 4
+        }
+      ]
+    },
+    "pressure": {
+      "id": "lf-teaching-1:42:4",
+      "shift": 4,
+      "doctrine": "pressure",
+      "strainBefore": 12,
+      "strainAfter": 30,
+      "delta": 36,
+      "total": 124,
+      "rooms": [
+        {
+          "room": 0,
+          "supervisor": "limen",
+          "expertise": 2,
+          "disturbance": -1,
+          "output": 7
+        },
+        {
+          "room": 1,
+          "supervisor": "stiletto",
+          "expertise": 2,
+          "disturbance": -1,
+          "output": 7
+        },
+        {
+          "room": 2,
+          "supervisor": "cathexis",
+          "expertise": 2,
+          "disturbance": -1,
+          "output": 7
+        },
+        {
+          "room": 3,
+          "supervisor": "witch",
+          "expertise": 2,
+          "disturbance": 0,
+          "output": 8
+        },
+        {
+          "room": 4,
+          "supervisor": "thrum",
+          "expertise": 2,
+          "disturbance": -1,
+          "output": 7
+        }
+      ]
+    }
+  }
+}

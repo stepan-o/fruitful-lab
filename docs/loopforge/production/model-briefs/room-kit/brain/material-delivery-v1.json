@@ -1,0 +1,18 @@
+{
+  "dirty": {
+    "src": "/media/files/c4f72c07b45cf005ee64dfb3c9f9e11ea42d06d2a7580793e94aa473e99c3a4f.webp",
+    "sha256": "c4f72c07b45cf005ee64dfb3c9f9e11ea42d06d2a7580793e94aa473e99c3a4f",
+    "bytes": 45904,
+    "textureSize": 512,
+    "sourceSha256": "81122652e7c1a2d99a7a8f47fd295ad6067393c672eb33916877a67a15680fdf",
+    "uvVerified": true
+  },
+  "pressed": {
+    "src": "/media/files/5d02224568368013b9db2a1baa068e4295c55fda7503ef7ea331bddc080141ac.webp",
+    "sha256": "5d02224568368013b9db2a1baa068e4295c55fda7503ef7ea331bddc080141ac",
+    "bytes": 47732,
+    "textureSize": 512,
+    "sourceSha256": "8230a0fe50e3e52ed9c3cebb32901155df67f44c36407cb36506a3988efcf5e6",
+    "uvVerified": true
+  }
+}

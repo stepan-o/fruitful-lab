@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-stage",
+  "assets": {
+    "lattice": {
+      "kind": "image",
+      "width": 1536,
+      "height": 1024,
+      "variants": [
+        {
+          "src": "/media/files/9532e2298c80e10ccffd5acc5c7f635101ba1407fd212ef4410cb0941349305d.webp",
+          "mime": "image/webp",
+          "bytes": 79580,
+          "sha256": "9532e2298c80e10ccffd5acc5c7f635101ba1407fd212ef4410cb0941349305d",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "src": "/media/files/2778747e7ecdb73ff8199ae4bab7dfafcfdc030f0b2ecdeda6181fc4dac7dcd3.webp",
+          "mime": "image/webp",
+          "bytes": 244532,
+          "sha256": "2778747e7ecdb73ff8199ae4bab7dfafcfdc030f0b2ecdeda6181fc4dac7dcd3",
+          "width": 1536,
+          "height": 1024
+        }
+      ]
+    },
+    "specimens": {
+      "kind": "image",
+      "width": 1536,
+      "height": 1024,
+      "variants": [
+        {
+          "src": "/media/files/4795e9031f28ad99b33c2d7eceb01044f490c22d262163a26579ac50427b832e.webp",
+          "mime": "image/webp",
+          "bytes": 118522,
+          "sha256": "4795e9031f28ad99b33c2d7eceb01044f490c22d262163a26579ac50427b832e",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "src": "/media/files/2a857e4e248c22e4ef612dbfc064e3bdc03c009ad98eec55c5e75373415543dd.webp",
+          "mime": "image/webp",
+          "bytes": 385078,
+          "sha256": "2a857e4e248c22e4ef612dbfc064e3bdc03c009ad98eec55c5e75373415543dd",
+          "width": 1536,
+          "height": 1024
+        }
+      ]
+    }
+  }
+}

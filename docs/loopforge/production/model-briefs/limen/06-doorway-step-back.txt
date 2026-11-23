@@ -1,0 +1,8 @@
+LIMEN — DOORWAY AVOIDANCE
+21 October 2026. Keep the accepted body, cyan blade and existing motion bank.
+
+Source: downloaded Meshy_AI_LIMEN_security_chief_biped_Step_Back.zip. Embedded Step_Back duration 0.833333 s; imported by matching source bone names, retaining the other 17 clips. Catalog ID was not supplied and must not be invented. Source archive SHA-256 f73c741193bf78f6695329bd28cd25d0157efeaf514f108ed6b2d399a6b91afe.
+
+After two completed worker ID checks, STILETTO marches through the main door and Security using the accepted Quick Walk. Fit LIMEN's Step_Back to clear her approaching torso and both blades, facing her. She does not slow or stop. Review the source's airborne/foot-contact timing; if a stronger hop is needed, tune or acquire it rather than claim this export already supplies the whole action. Turn back towards the workers and return to the threshold after she passes. The workers retreat on individual paths, with bob protecting his injured leg.
+
+Validate the complete contact envelope, planted feet, root motion and entry/exit blends in close-up and the held doorway composition. Do not change accepted supervisor appearance or replace the cyan blade with a baton. Store any correction as a separate derivative with source hash, constraints and review evidence.

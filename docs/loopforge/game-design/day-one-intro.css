@@ -1,0 +1,108 @@
+.day-one-script {
+  max-width: 48rem;
+}
+
+.day-one-script h3 {
+  margin: 2.5rem 0 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--serif);
+}
+
+.day-one-script figure {
+  margin: 0 0 1.5rem;
+}
+
+.day-one-script figure a {
+  display: block;
+  cursor: zoom-in;
+}
+
+.day-one-script img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.day-one-script figcaption {
+  margin-top: .5rem;
+  font-size: .875rem;
+  color: var(--muted);
+}
+
+.day-one-script p {
+  max-width: 68ch;
+  margin: .45rem 0;
+  line-height: 1.55;
+}
+
+.day-one-script p > strong:first-child {
+  color: var(--gold);
+}
+
+.day-one-script p:has(> em:only-child) {
+  margin: 1rem 0;
+  color: var(--muted);
+}
+
+.floor-views, .floor-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+  align-items: center;
+}
+
+.floor-views {
+  border-bottom: 1px solid var(--line);
+}
+
+.floor-views a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .35rem .25rem;
+  text-decoration: none;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+}
+
+.floor-views a[aria-current="true"] {
+  color: var(--gold);
+  border-bottom-color: currentColor;
+}
+
+.floor-tools {
+  margin: .75rem 0 1rem;
+  font-size: .875rem;
+}
+
+#floor-viewer iframe {
+  display: block;
+  width: 100%;
+  height: 75vh;
+  border: 0;
+}
+
+.scale-guide {
+  overflow-wrap: anywhere;
+}
+
+.scale-guide p {
+  margin-bottom: 1rem;
+}
+
+.scale-guide figure {
+  margin: 1rem 0 1.5rem;
+}
+
+.scale-guide summary {
+  min-height: 44px;
+  padding: .85rem 0;
+  cursor: pointer;
+  color: var(--gold);
+}
+
+.scale-guide details {
+  border-top: 1px solid var(--line);
+  margin-top: 2rem;
+}

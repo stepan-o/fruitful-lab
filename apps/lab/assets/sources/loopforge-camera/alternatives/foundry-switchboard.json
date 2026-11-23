@@ -1,0 +1,123 @@
+{
+  "id": "foundry-switchboard",
+  "title": "Foundry Switchboard",
+  "date": "2026-10-08",
+  "status": "alternative art-direction study; not implementation or owner acceptance",
+  "method": "Built-in image_gen imagegen, reference-guided generation followed by one targeted refinement. No external art imported.",
+  "asset": {
+    "path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/sources/loopforge-camera/alternatives/foundry-switchboard.png",
+    "selected_original": "/home/stpn/.codex/generated_images/01a11b91-5432-7f13-a70a-f0562ff2a628/exec-fb5fffd2-b0f6-444b-b424-3d4452a9a5e0.png",
+    "expected_dimensions": [
+      1536,
+      1024
+    ],
+    "aspect_ratio": "3:2",
+    "transparent_background": false,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "sha256": "355e4577407db783c4693c9c100ecbc94a32c351d53d544432829daa9e4bcbd4",
+    "bytes": 2610273
+  },
+  "generation": {
+    "use_case": "stylized-concept",
+    "prompt": "Use case: stylized-concept.\nAsset type: One professional art-direction style sheet for the Loopforge camera console, landscape 3:2, 1536 x 1024. This is a new alternative named FOUNDRY SWITCHBOARD. Compose a beautifully authored, readable board with a large hero hardware object, two supervisor token studies, four material studies, restrained color chips, one commit actuator, and four useful material icons.\n\nReference roles: image 1 is the original LIMEN identity authority: cracked mechanical skull, mechanical teeth/jaw, round side components, cyan eyes, worn dark armored plates. Image 2 is the original STILETTO identity authority: slim angular CLOSED metallic helmet, uninterrupted red horizontal visor that turns downward at the center into a T, no human face. Image 3 RIVET WITCH is only world material/finish reference, not an extra character. Image 4 factory is the shared realistic dystopian industrial world and wear reference, not content for the monitor. Image 5 previous style sheet shows the required asset categories only; intentionally do not duplicate its thin layered rectangular brass monitor or round porthole character housings.\n\nArt direction: Heavy early electrical plant controls translated into this exact Loopforge world. Cast black-green iron with deep rolled edges and purposeful structural ribs; chalky cream glazed porcelain insulation; restrained oxidized copper power contacts; heat-stained protective steel rails; black rubber hand grips; real cream adhesive paper tape. Weight, mass, ceramic contrast and honest assembly. Serious realistic detailed game concept painting, practically fabricated objects. No generic steampunk ornament, scrollwork, decorative gears, gold trim or cartoon rendering. Every screw fastens an assembly, every exposed contact terminates into insulation, every rail protects an edge; do not pepper surfaces with small devices.\n\nComposition: A warm-black charcoal workshop presentation surface with very subtle tooth, broad clean gutters and generous negative space. Fine restrained typographic title at top: FOUNDRY SWITCHBOARD. Hero monitor occupies the large upper-left area, about 56 percent width and 60 percent height. To its right, a restrained six-chip palette and four large material close-ups; below those a chunky blank commit actuator and four distinct same-family material icons. Across the bottom-left two individual supervisor token studies with spacious blank speech balloons physically attached to their frames. Crisp silhouette separation and exact common upper-left key light, soft physically coherent shadows cast lower-right. Quiet flat areas clearly reserved for native runtime words.\n\nHero: ONE nearly front-on OFF CCTV monitor with a deep monolithic black-green cast-iron housing. Broad rectangular empty dark smoked glass with a modest corner radius, a tiny soft upper-left reflection and nothing else. NO room imagery, no static, no scanlines, no letters, no LOCKED, no display glow. Unlike the baseline, silhouette has two thick curved protective side outriggers united by a squared steel bridge above the monitor, and deep cast mounting feet. Sparse porcelain terminal insulators and oxidized copper contact blades are visible below one side in a protected service niche; they have clear connection geometry and are unpowered. A black rubber graspable grip fits the protective bridge. The housing has functional cast ribs, a recessed rubber glass gasket, few large captive fasteners and restrained abrasive wear concentrated on touched edges. Broad clean bezel with one ragged cream adhesive label bearing exactly the black pen-written words LATTICE FORGE. The pen is slightly imperfect and the tape torn, but fully readable. Do not add any other monitor labels, light arrays or knobs.\n\nSupervisors: LIMEN and STILETTO bust tokens faithful to images 1 and 2, eye color precisely preserved. Their cradles are strong upright U-shaped cast iron mounts with two ivory porcelain side retaining pads, not circular portholes. The portraits retain the original realistic painterly metal texture and mechanical faces. Each token has one attached blank off-white paper speech balloon, a compact tail unambiguously leading to that token, straight mostly quiet writing area and slightly irregular edge. Enough untouched blank center for runtime native dialogue. No text inside either balloon. No comic outlines. Subtle small board-only captions LIMEN and STILETTO beneath their studies.\n\nControl study: One blank heavy commit actuator, a large squared black rubber push face seated in a thick cast-iron saddle with cream porcelain collar and a protective hinged steel bail behind it. Operational geometry and substantial depth, not a glowing red arcade button. Blank face, no word COMMIT, no caution labels, no indicator LEDs. Four separate small raised cast/copper icons in the same material family, cleanly recognizable with no numerical data: stacked industrial coins for funds; a compact mechanical robot head for workforce; three conveyor rollers under a belt with a small maintenance cog for conveyor condition; a strapped delivery crate for weekly delivery. Present them on a simple shared rail or separately, without extra card chrome.\n\nMaterial studies: cast black-green iron edge, cream glazed porcelain with restrained chips, oxidized copper contact, ribbed black rubber and a small accompanying torn blank paper strip. Large enough to see tactile differences. Palette chips show black-green iron, near-black rubber, cream porcelain, aged paper, oxidized copper, muted verdigris; cyan and red appear only as tiny character eye accents. Board-only labels may be CAST IRON, PORCELAIN, COPPER, RUBBER. No fake measurements, random serial numbers, tutorial paragraphs, decorative warning lights, gratuitous hoses or scratches in writing areas. No extra character or factory scene. Preserve the exact original character/factory art family with credible useful industrial detail, and make this board genuinely distinct from the provided baseline.",
+    "referenced_image_paths": [
+      "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/limen_character_sheet_1.png",
+      "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/stiletto_character_sheet_1.png",
+      "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/rivet_witch_character_sheet_1.png",
+      "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/loopforge/forge.webp",
+      "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/sources/loopforge-camera/style-sheet.png"
+    ],
+    "original_output": "/home/stpn/.codex/generated_images/01a11b91-5432-7f13-a70a-f0562ff2a628/exec-4f1c7b85-c89a-48c5-8380-0d5be33559fb.png"
+  },
+  "refinement": {
+    "use_case": "precise-object-edit",
+    "prompt": "Use case: precise-object-edit. Refine this FOUNDRY SWITCHBOARD Loopforge art-direction board without changing its composition, object silhouette, nearly front-on OFF monitor, empty black glass/reflection, correctly pen-written LATTICE FORGE label, supervisor identities, their blank speech balloons, U-shaped portrait mounts, blank rubber commit actuator, material icon functions, lighting or landscape 3:2 aspect. Preserve all functional hardware.\n\nOnly these surface/editorial corrections:\n1. Remove the invented top-right LOOPFORGE / INDUSTRIAL CONTROL SYSTEMS text and MATERIALS PEOPLE MACHINES OUTPUT list, leaving quiet charcoal background. Remove the bottom-right invented logo and BUILD RECYCLE REPEAT slogan completely, leaving the same quiet charcoal background. Do not invent new logos, words, measurements or serials.\n2. The palette should be precisely six coherent material chips across its same width: cast black-green iron, nearly black rubber, cream porcelain, aged paper, oxidized copper, muted dark verdigris. Remove the large bright cyan and red chips; cyan/red belong solely to the character eyes/visor.\n3. Porcelain material sample and hardware insulation should unmistakably be dense cream GLAZED PORCELAIN, with a soft glazed upper-left highlight, hairline craze and very sparse small chips at contact edges, not fractured stone, concrete, plaster or large structural cracks. Maintain subtle dirt only near handling/attachment points; broad ivory faces stay clean enough to show glaze.\n4. Cast iron wears by polished edge abrasion and sparse paint chips, not branching structural cracks. Copper sample should be a flat oxidized copper contact blade with one rounded pierced mounting end or screw hole, warm copper edges and localized muted verdigris, not a cracked stone block. Keep the material study lighting, crop sizes and captions.\nMaintain professional serious realistic Loopforge game concept-art quality and all other requested art. This is a targeted refinement, not a redesign.",
+    "referenced_image_paths": [
+      "/home/stpn/.codex/generated_images/01a11b91-5432-7f13-a70a-f0562ff2a628/exec-4f1c7b85-c89a-48c5-8380-0d5be33559fb.png"
+    ],
+    "original_output": "/home/stpn/.codex/generated_images/01a11b91-5432-7f13-a70a-f0562ff2a628/exec-fb5fffd2-b0f6-444b-b424-3d4452a9a5e0.png"
+  },
+  "reference_roles": [
+    "Original LIMEN identity authority",
+    "Original STILETTO identity authority",
+    "RIVET WITCH world materials only",
+    "Original factory art world/material family; no monitor contents",
+    "Baseline asset category reference; distinct hardware silhouette requested"
+  ],
+  "palette": [
+    {
+      "role": "Cast black-green iron",
+      "hex": "#111B17"
+    },
+    {
+      "role": "Black rubber",
+      "hex": "#111311"
+    },
+    {
+      "role": "Glazed cream porcelain",
+      "hex": "#DCD3B8"
+    },
+    {
+      "role": "Aged paper",
+      "hex": "#B5A78C"
+    },
+    {
+      "role": "Oxidized copper",
+      "hex": "#8C5B37"
+    },
+    {
+      "role": "Muted verdigris",
+      "hex": "#3C665D"
+    },
+    {
+      "role": "LIMEN eye accent only",
+      "hex": "#83DCE9"
+    },
+    {
+      "role": "STILETTO visor accent only",
+      "hex": "#FA421D"
+    }
+  ],
+  "palette_note": "Authored implementation starting points; not exact pixel samples.",
+  "font_suggestion": {
+    "board_headings": "DIN Condensed or an appropriately licensed narrow grotesk; moderately tracked all-caps.",
+    "native_runtime_dialogue": "IBM Plex Sans, sentence case; keep raster speech balloons blank.",
+    "runtime_values": "IBM Plex Mono or the existing project monospace.",
+    "bezel_label": "Actual rough black pen lettering, reserved for LATTICE FORGE."
+  },
+  "rationale": [
+    "Heavy protective outriggers, top rubber bridge grip and deep mounting feet make the monitor read as portable rugged plant equipment.",
+    "Cream porcelain and protected copper contacts provide a material hierarchy distinct from the baseline brass/rubber porthole design.",
+    "U-shaped ceramic-padded supervisor cradles replace circular token housings; LIMEN cyan skull and STILETTO red closed T visor remain legible.",
+    "Commit actuation uses a recessed blank black rubber square with ceramic collar and protective bail.",
+    "Funds, workforce, conveyor and delivery use matching raised physical materials and simple function-bearing symbols."
+  ],
+  "tradeoffs": [
+    "Thicker rails and ceramic hardware consume more perimeter area than the baseline; reduce detail density when translating to a six-camera runtime layout.",
+    "Generated metal wear retains some stylized branching scratches; use localized abrasion and protected clear writing surfaces in production assets.",
+    "Copper close-up remains a block-shaped specimen despite the refinement asking for a flat contact blade; hero contact geometry is the more useful manufacturing reference.",
+    "Balloon areas are blank but carry light paper grain; native text contrast and mobile readability must be tested during implementation.",
+    "This board deliberately shows an OFF screen, no room imagery, no static and no LOCKED text. It is a material-direction review artifact, not a functional console or engineering drawing."
+  ],
+  "validation": {
+    "inspected": true,
+    "characters": "LIMEN mechanical cracked skull/cyan eyes and STILETTO closed angular red T visor preserved.",
+    "monitor": "Nearly front-on empty dark glass with small upper-left reflections; tape reads LATTICE FORGE.",
+    "blank_areas": "Two quiet blank speech balloons and blank commit face.",
+    "lighting": "Common upper-left key and lower-right shadow logic.",
+    "remaining_concerns": "See tradeoffs; no runtime tests because this task is artwork only."
+  },
+  "review_derivative": {
+    "path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/sources/loopforge-camera/alternatives/foundry-switchboard.webp",
+    "bytes": 272882,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "format": "webp",
+    "quality": 88
+  }
+}

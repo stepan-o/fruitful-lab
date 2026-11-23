@@ -1,0 +1,11 @@
+{
+  "revision": "room-kit/1",
+  "asset": "desk",
+  "src": "/media/files/15415fb397a80b89b8b77436b9294f2bb37b16fd222ab8c626ebb45cc251a677.glb",
+  "sha256": "15415fb397a80b89b8b77436b9294f2bb37b16fd222ab8c626ebb45cc251a677",
+  "bytes": 971532,
+  "sourceSha256": "61ecacd082c83405e04fb000191eb4012929cb53527c982987758b3afee6ed11",
+  "triangles": 7485,
+  "textureSize": 1024,
+  "status": "candidate; fit and visual review pending"
+}

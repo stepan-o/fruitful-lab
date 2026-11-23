@@ -1,0 +1,111 @@
+[
+  {
+    "clip": "Running",
+    "parameters": {
+      "armOut": 0.25,
+      "forearmOut": 0.12
+    },
+    "maximumRotationChangeDegrees": {
+      "LeftArm": 13.373,
+      "RightArm": 13.944,
+      "LeftForeArm": 6.891,
+      "RightForeArm": 6.887
+    },
+    "changedNodes": [
+      "LeftArm",
+      "LeftForeArm",
+      "RightArm",
+      "RightForeArm"
+    ],
+    "unchanged": "all timing, translations, other joint rotations, source geometry and 55 cm blade mounts"
+  },
+  {
+    "clip": "Crouch_and_Step_Back",
+    "parameters": {
+      "armOut": 0.12,
+      "forearmOut": 0.12,
+      "sides": [
+        "Right"
+      ],
+      "window": [
+        0.9,
+        1.25,
+        1.6,
+        2.05
+      ]
+    },
+    "maximumRotationChangeDegrees": {
+      "RightArm": 6.881,
+      "RightForeArm": 6.892
+    },
+    "changedNodes": [
+      "RightArm",
+      "RightForeArm"
+    ],
+    "unchanged": "all timing, translations, other joint rotations, source geometry and 55 cm blade mounts"
+  },
+  {
+    "clip": "Shouting_Angrily",
+    "parameters": {
+      "armOut": 0.12,
+      "forearmOut": 0.12,
+      "sides": [
+        "Right"
+      ],
+      "window": [
+        1.35,
+        1.8,
+        2.3,
+        2.8
+      ]
+    },
+    "maximumRotationChangeDegrees": {
+      "RightArm": 6.892,
+      "RightForeArm": 6.891
+    },
+    "changedNodes": [
+      "RightArm",
+      "RightForeArm"
+    ],
+    "unchanged": "all timing, translations, other joint rotations, source geometry and 55 cm blade mounts"
+  },
+  {
+    "clip": "Kneel_on_One_Knee_and_Stand",
+    "parameters": {
+      "armOut": 0.18,
+      "forearmOut": 0.4,
+      "floor": true
+    },
+    "maximumRotationChangeDegrees": {
+      "LeftArm": 9.947,
+      "RightArm": 9.556,
+      "LeftForeArm": 21.189,
+      "RightForeArm": 16.713
+    },
+    "changedNodes": [
+      "LeftArm",
+      "LeftForeArm",
+      "RightArm",
+      "RightForeArm"
+    ],
+    "unchanged": "all timing, translations, other joint rotations, source geometry and 55 cm blade mounts"
+  },
+  {
+    "clip": "Electrocuted_Fall",
+    "parameters": {
+      "armOut": 0,
+      "forearmOut": 0,
+      "floor": true,
+      "smoothDeltaFrames": 3
+    },
+    "maximumRotationChangeDegrees": {
+      "RightForeArm": 82.402,
+      "LeftForeArm": 32.642
+    },
+    "changedNodes": [
+      "LeftForeArm",
+      "RightForeArm"
+    ],
+    "unchanged": "all timing, translations, other joint rotations, source geometry and 55 cm blade mounts"
+  }
+]

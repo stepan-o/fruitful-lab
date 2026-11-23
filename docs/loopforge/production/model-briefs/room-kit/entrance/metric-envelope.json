@@ -1,0 +1,37 @@
+{
+  "status": "proposed; unmeasured; scene fit unreviewed",
+  "units": "meters",
+  "axes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "origin": "floor center",
+  "outer_size_xyz": [
+    5.2,
+    4.8,
+    0.8
+  ],
+  "clear_opening_width_height": [
+    4.0,
+    3.6
+  ],
+  "anchors": {
+    "door_left_hinge": [
+      -2.0,
+      1.8,
+      0
+    ],
+    "door_right_hinge": [
+      2.0,
+      1.8,
+      0
+    ],
+    "sign_seat": [
+      0,
+      4.1,
+      0.41
+    ]
+  },
+  "measured_source_bounds": null,
+  "measured_delivery_bounds": null
+}

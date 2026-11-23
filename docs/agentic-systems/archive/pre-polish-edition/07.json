@@ -1,0 +1,197 @@
+{
+  "id": "confidence",
+  "title": "Buy confidence where failure matters",
+  "standfirst": "The green result had taken a shorter route than the player.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "visual",
+      "id": "inspection-bench",
+      "title": "The machine that passes on the bench",
+      "caption": "Both records begin with an empty tray. Repeating the control trial does not accumulate stock; this keeps a second press from concealing what the first one failed to deliver."
+    },
+    {
+      "type": "prose",
+      "text": "The little rule probe is satisfied. Zero crates, one call, one crate returned. Then the worker presses the control and nothing arrives. The probe never used the severed wire. Repeating it would buy another reassuring result without getting us any closer to the empty tray."
+    },
+    {
+      "type": "prose",
+      "text": "While building the story workshop, I made a less photogenic version of that mistake. The rules expected an action identifier; the screen’s availability explanation passed the whole action object instead. The rule tests and click handler used the intended identifiers. In the preview, the explanation and the actual choices could disagree. I corrected the argument at that boundary, then checked the repaired interaction. Testable rules helped isolate the problem; they had not made the caller correct."
+    },
+    {
+      "type": "prose",
+      "text": "The next useful check was therefore quite small: compare the displayed condition with what happens on activation. It crossed the boundary I had broken. An expensive rerun of everything already known about the story rules would have supplied less relevant evidence. I would retain that agreement as a regression obligation, without preserving the whole accidental layout as a sacred screenshot."
+    },
+    {
+      "type": "heading",
+      "text": "Make the assumption visible enough to break"
+    },
+    {
+      "type": "prose",
+      "text": "Edsger Dijkstra includes an embarrassing implementation decision in Notes on Structured Programming. His team had made real-number equality tolerant of a difference in the last represented digit. That generosity broke transitivity: equality between the first pair and the second no longer licensed equality between the outer pair. They changed the decision. His accompanying argument asks programmers to state the properties their reasoning requires of its implementation. The story is more useful to me than treating formal reasoning as a certificate that floats above the machine. Even the meaning of “equal” had to survive contact with the tool.",
+      "sources": [
+        "dijkstra-structure"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Select the duplicated count and our direct probe catches the violation of “one accepted command, one crate.” Select the severed wire and the counting rule remains correct whenever it is called. The missing promise is now that a control press delivers the intended command. These defects need different checks. Copying the implementation’s answer into either test could let both agree on the same mistake; the expected result has to come from the commission."
+    },
+    {
+      "type": "prose",
+      "text": "QuickCheck, introduced by Koen Claessen and John Hughes in 2000, makes a productive exchange: the programmer supplies properties and input generators, and the tool tries random cases. For this factory, conservation across generated sequences would be useful: stock cannot disappear, unfinished work cannot commit, rejected commands cannot spend resources. The investment is in choosing those properties and the situations that challenge them. A thousand unobstructed starts still say little about a worker beginning inside an occupied area.",
+      "sources": [
+        "quickcheck"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The story workshop is small enough to enumerate its reachable histories, which is stronger than trying a few familiar routes. The set is finite and named. It contains neither browser widths nor a player’s interpretation of Kit’s reply. I would spend on enumeration here because the model is small and a missing branch can strand the scene; I would not carry the word “exhaustive” beyond that set."
+    },
+    {
+      "type": "heading",
+      "text": "A return is not another arrival"
+    },
+    {
+      "type": "visual",
+      "id": "coverage-floor",
+      "title": "Five room stamps, one stranded job",
+      "caption": "The itinerary returns to the gate even after a refused delivery. Arriving at an exit does not silently accept the unfinished work."
+    },
+    {
+      "type": "prose",
+      "text": "Kit collects a blank, finishes the press job and takes a break. The piece reaches dispatch. On the second itinerary, the break comes earlier. Kit returns to the same press, with the same blank still on it, and cannot finish. A reservation has disappeared while its owner was away."
+    },
+    {
+      "type": "prose",
+      "text": "I gave both itineraries all five rooms because a completed map is such a persuasive picture. The separate situation record exposes what the first trip never asked: can unfinished work survive a departure? Keeping the reservation repairs the second trip without changing its geography. This is a defect authored for the study, not a recovered Loopforge incident. One room contains several obligations: an idle machine, your unfinished job, somebody else’s unfinished job."
+    },
+    {
+      "type": "prose",
+      "text": "Casey Muratori’s 2012 Walk Monster account contains a lovely disappointment. His exploration of The Witness drew dense paths outside a room while scarcely entering it. Random targets were a poor fit for the coverage he wanted. He changed the selection toward neighboring points, resembling a flood fill, then refined the directional sampling before using the tool to investigate movement defects. The useful discovery was partly about the game and partly about the search he had chosen. An impressive accumulation of paths had concealed a neglected interior.",
+      "sources": [
+        "walk-monster"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Gordillo and colleagues explicitly designed for spatial coverage in their 2021 curiosity-driven playtesting study. Reward favored less-visited positions, and learned exploration covered their navigation environment more effectively than the random-policy comparison. Resets favored infrequently visited, previously reached grounded positions. For our workshop, I would retain spatial coverage and add the job condition at each threshold. Our two itineraries show why that extra distinction earns its recording cost; they do not contradict a study expressly about navigation.",
+      "sources": [
+        "curiosity-coverage"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The studio supplied a concrete counterexample. Engine reports that Bob stood at the Belt during paired work, while the display counted only its assigned worker, Jo. Level exposed the disagreement; the correction separated assignment from physical occupancy. “Visit the Belt” could miss it. “Another person is here while the assignment remains unchanged” names the condition worth buying a test for. The account records a correction, not how often players would encounter it.",
+      "sources": [
+        "engine-occupancy"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Before commissioning a roaming tester, I would name a few situations that could strand a player, duplicate a consequence or make the screen lie about who can act. Keep the shortest valid history that reaches each one. A convenient checkpoint shortens investigation, but its history must remain possible. The failed blank stays on our press so a reset cannot erase the evidence or quietly credit a delivery."
+    },
+    {
+      "type": "prose",
+      "text": "Recovery deserves a place in that history. Keeping ownership lets Kit resume; another design could require a handover or cancellation. A correct refusal can still leave a player helpless if the next legitimate action is invisible. The test is unfinished when it has established only that the command was rejected."
+    },
+    {
+      "type": "prose",
+      "text": "Increasing throughput can also change the question. In Gillberg and colleagues’ 2023 EA account, scripted AutoPlayers kept high-level control while learned locomotion handled difficult helicopter and zero-gravity movement. Accelerating the helicopter simulation made parked helicopters fall through the ground at the start. More samples were no bargain if the new environment produced a different phenomenon. Their integration story supports targeted learning and existing test knowledge, with substantial work around the learner.",
+      "sources": [
+        "rl-production"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "An inexpensive verdict can be expensive to use"
+    },
+    {
+      "type": "visual",
+      "id": "judge-desk",
+      "title": "Nineteen reassuring agreements",
+      "caption": "Record numbers matter when a team revises a label: the disputed example has to remain identifiable after the headline percentage changes."
+    },
+    {
+      "type": "prose",
+      "text": "With one missing crate, the accept-everything judge agrees with nineteen of twenty authored labels. It catches none of the failures. Increase missing crates to five and agreement falls, although the judge behaves exactly as before. Hold every delivery instead and failures are caught, but good work cannot get through. Missed defects and needless reinspection consume different resources; the headline agreement hides both."
+    },
+    {
+      "type": "prose",
+      "text": "Hamel Husain’s Lucy/Rechat account separates inexpensive assertions, contextual human or model review, and product experiments. His later judge guide warns about rare labels and separates prompt examples, development cases and a final test set. My wrong-argument incident gives the trace-review advice a narrow practical foothold: the displayed condition and the click’s effect had to appear together. A grade on the final response alone would have omitted the broken boundary.",
+      "sources": [
+        "hamel-evals",
+        "hamel-judge"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Once a held-out case guides a revision, it belongs to development history. Calling it unseen again cannot restore its surprise. I would examine the judge’s error counts before paying to run it across a larger collection."
+    },
+    {
+      "type": "prose",
+      "text": "Fresh-context critics have found defects in this book’s prose and drawings. Their objections bought specific corrections. Their approval is not a calibrated estimate of how employers, builders or players will respond, and critics can share model habits with the author. I can preserve the objection and show the repair; I cannot turn that agreement into a reader study."
+    },
+    {
+      "type": "heading",
+      "text": "Whose passage are we improving?"
+    },
+    {
+      "type": "visual",
+      "id": "flight-tunnel",
+      "title": "Two pilots, one adjustable opening",
+      "caption": "A changed aperture clears both result slips. Comparisons belong to a particular configuration; the previous opening’s successful flight is not carried forward."
+    },
+    {
+      "type": "prose",
+      "text": "The lower pilot passes the lower opening; the upper pilot hits it. Raising the opening reverses the advantage. A wide opening admits both scripts. Neither bird learns or enjoys its success. The study makes the tested behavior as visible as the geometry being adjusted."
+    },
+    {
+      "type": "prose",
+      "text": "In Fly, Fail, Fix, Alex Zook, Josef Spjut and Jonathan Tremblay paired a fixed pretrained DQN player with a model that revised Flappy Bird configurations toward a target score. Behavioral feedback helped where configuration alone did not; text, images and their combination had statistically indistinguishable final performance in the reported experiment. The authors also report a revealing preliminary failure: small player-physics changes could ruin the agent’s performance while leaving the game playable to humans. They propose a more varied population of artificial players.",
+      "sources": [
+        "fly-fail-fix"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Widening our opening improves compatibility under the local requirement that both scripts pass. It might ruin a design that needs a difficult maneuver. Before optimizing against more automated play, I would settle which behavior the commission values. A script named “novice” is still a script; a real observation can suggest a probe, but its name cannot make it a representative person."
+    },
+    {
+      "type": "prose",
+      "text": "Mike Ambinder’s 2009 account of Valve’s playtesting begins with the intended experience. Observation needs a design question; think-aloud reports can explain behavior while also distracting the player; aggregates reveal patterns while losing context. For this factory, I would watch a new player attempt a delivery, especially after refusal, before explaining the reservation. Only afterward would I ask what they believed remained theirs. Teaching the answer first could buy a smoother session and conceal a weak design. No such player study has been conducted for this book.",
+      "sources": [
+        "valve-playtesting"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "As the author, I cannot unknow the solution. I can vary the route and inspect the stored state, but a player brings purposes and misunderstandings absent from my itineraries. Once the rules and recovery survive the targeted checks, another thousand scripted completions may be less valuable than that first unfamiliar person. The decision depends on what remains uncertain, not on which test is easiest to multiply."
+    },
+    {
+      "type": "build",
+      "title": "Keep the checks that could change your decision",
+      "body": "Take one factory obligation through a broken rule, a broken caller and an interrupted job. Give each trial a reason to exist.",
+      "steps": [
+        "State the required result before writing the check. Break the counting rule and then its input path; confirm that the direct probe and control trial distinguish them.",
+        "Keep normal completion and an interrupted route. Record room visits separately from conditions, and preserve the shortest valid history that reaches a failure.",
+        "Check the refusal and the next legitimate recovery. Retain the smallest regression case that protects the discovered obligation.",
+        "For a model judge, compare missed failures with rejected good work on examples untouched during revision. Decide which errors justify escalation to a person.",
+        "Try a second automated behavior before treating the first pilot’s improvement as a product improvement. Observe a person before teaching the solution."
+      ],
+      "exercise": "Choose the next hour of verification. Name the release or repair decision it could change, the failure it could miss, and what you would stop checking to make room. A green result that bypasses a meaningful part of the experience may be accurate but insufficient."
+    }
+  ],
+  "sourceIds": [
+    "dijkstra-structure",
+    "quickcheck",
+    "hamel-evals",
+    "hamel-judge",
+    "walk-monster",
+    "curiosity-coverage",
+    "engine-occupancy",
+    "rl-production",
+    "fly-fail-fix",
+    "valve-playtesting"
+  ]
+}

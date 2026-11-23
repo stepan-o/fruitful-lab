@@ -1,0 +1,26 @@
+{
+  "tool": "meshy_image_to_3d",
+  "task_id": "01a161be-fb4b-762a-914e-9ea4fe3a53d8",
+  "credits": 30,
+  "state": "SUCCEEDED",
+  "arguments": {
+    "file_path": "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/docs/loopforge/production/model-briefs/room-kit/carrier/reference-v1.png",
+    "ai_model": "meshy-7.1",
+    "model_type": "standard",
+    "geometry_resolution": "standard",
+    "should_remesh": true,
+    "target_polycount": 2000,
+    "topology": "triangle",
+    "should_texture": true,
+    "enable_pbr": true,
+    "texture_resolution": "2k",
+    "image_enhancement": false,
+    "target_formats": [
+      "glb"
+    ],
+    "multi_view_thumbnails": true,
+    "response_format": "json",
+    "texture_prompt": "Rough worn cast iron cradle shell, shallow empty well, dull brass edges and two opposed mounting seats. No brain, labels or moving clamp jaws. Broad readable materials, texture wear rather than geometric ornament."
+  },
+  "input_sha256": "d4182cbf668bad8a91aca10746881c1b277aa01495904bfa6c24db2d89e7e430"
+}

@@ -1,0 +1,423 @@
+{
+  "version": "1.0.0",
+  "lane": "console",
+  "pixelArt": "B / Raking light; straight RGBA sRGB palette; nearest-neighbor; highlights top left. All native exports contain graphics only.",
+  "palette": {
+    "ink": "#111a1b",
+    "shadow": "#152527",
+    "frame": "#26373a",
+    "steel": "#435657",
+    "edge": "#718080",
+    "mint": "#a6bcad",
+    "glass": "#21383a",
+    "deep": "#101d20",
+    "brass": "#8a6742",
+    "gold": "#c29458",
+    "lamp": "#f2cf83",
+    "warm": "#c1a981",
+    "paper": "#e2d2ac",
+    "ivory": "#f1e3c1",
+    "print": "#373a33",
+    "sage": "#81917a",
+    "night": "#23333d",
+    "slate": "#425463",
+    "blue": "#7f9a9e"
+  },
+  "rights": "Original project-authored hardware and icon drawings commissioned for Loopforge. Original Day One cast and Foundry plates are used solely as contextual proof material.",
+  "coordinates": "Rect = [x,y,width,height], native px, upper left origin. Insets = [left,top,right,bottom]. Nine-slice native borders at 1x minimum, plateau center may stretch. Render text separately in CSS px. Focus restores to the initiating control.",
+  "zOrder": [
+    "assembly backing",
+    "bid / docket",
+    "ticket / cast socket",
+    "runtime cast or values",
+    "focus ring"
+  ],
+  "assets": [
+    {
+      "id": "co-briefing-chassis",
+      "file": "exports/co-briefing-chassis.png",
+      "size": [
+        192,
+        116
+      ],
+      "master": "masters/co-briefing-chassis.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Recessed two-bid briefing board. Layout both candidates inside one assembly.",
+      "sha256": "28dad0ecc3f8b4ad01d2210c4f6ca9590e0d446d9acbb8d64f608db4913827a1",
+      "insets": [
+        10,
+        10,
+        11,
+        13
+      ],
+      "safeText": [
+        12,
+        12,
+        166,
+        89
+      ]
+    },
+    {
+      "id": "co-bid-idle",
+      "file": "exports/co-bid-idle.png",
+      "size": [
+        124,
+        77
+      ],
+      "master": "masters/co-bid-idle.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Whole bid idle; all rooms in this panel share one candidate selection.",
+      "sha256": "e037b57e4aeffaa304676d5233be231c10c505bd77b4e732c28b1e09bcbe3266",
+      "insets": [
+        17,
+        17,
+        13,
+        15
+      ],
+      "safeText": [
+        18,
+        10,
+        90,
+        56
+      ]
+    },
+    {
+      "id": "co-bid-selected",
+      "file": "exports/co-bid-selected.png",
+      "size": [
+        124,
+        77
+      ],
+      "master": "masters/co-bid-selected.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Whole bid selected; all rooms in this panel share one candidate selection.",
+      "sha256": "f4712bc109d6e1af096235710108d79d694e670ca87e9c9cffb197f674f514be",
+      "insets": [
+        17,
+        17,
+        13,
+        15
+      ],
+      "safeText": [
+        18,
+        10,
+        90,
+        56
+      ]
+    },
+    {
+      "id": "co-bid-committed",
+      "file": "exports/co-bid-committed.png",
+      "size": [
+        124,
+        77
+      ],
+      "master": "masters/co-bid-committed.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Whole bid committed; all rooms in this panel share one candidate selection.",
+      "sha256": "a8cffd5838832669d507e29bda602eb35137a8e94a9f9ecc002e84dc9e224a52",
+      "insets": [
+        17,
+        17,
+        13,
+        15
+      ],
+      "safeText": [
+        18,
+        10,
+        90,
+        56
+      ]
+    },
+    {
+      "id": "co-focus-ring",
+      "file": "exports/co-focus-ring.png",
+      "size": [
+        42,
+        24
+      ],
+      "master": "masters/co-focus-ring.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Keyboard focus overlay; place around the focused control above all control states.",
+      "sha256": "29fbd69973bfcc7da2ce08249a339305350b521e9ea20d694cc5bcdcd706d749",
+      "insets": [
+        12,
+        10,
+        12,
+        10
+      ]
+    },
+    {
+      "id": "co-supervisor-slot",
+      "file": "exports/co-supervisor-slot.png",
+      "size": [
+        52,
+        50
+      ],
+      "master": "masters/co-supervisor-slot.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Empty live cast token/portrait aperture; mask portrait within documented rect.",
+      "sha256": "a53c655247f9ec7421c3155c701364e2985e8def73675e89601180763ed1e859",
+      "insets": [
+        7,
+        7,
+        7,
+        8
+      ],
+      "portraitRect": [
+        8,
+        7,
+        36,
+        35
+      ]
+    },
+    {
+      "id": "co-room-security",
+      "file": "exports/co-room-security.png",
+      "size": [
+        32,
+        28
+      ],
+      "master": "masters/co-room-security.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Mount identifying security in the assignment panel.",
+      "sha256": "6d008c5dab4c46c3e6496a614cc98506a31c783643a52148e7ed278f51c50a94",
+      "pivot": [
+        16,
+        14
+      ]
+    },
+    {
+      "id": "co-room-conveyor",
+      "file": "exports/co-room-conveyor.png",
+      "size": [
+        32,
+        28
+      ],
+      "master": "masters/co-room-conveyor.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Mount identifying conveyor in the assignment panel.",
+      "sha256": "e529332ebae7e2986783d6679eba1be4813bdfaadba3531dfb49451ae0ca3257",
+      "pivot": [
+        16,
+        14
+      ]
+    },
+    {
+      "id": "co-commit-ready",
+      "file": "exports/co-commit-ready.png",
+      "size": [
+        100,
+        28
+      ],
+      "master": "masters/co-commit-ready.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Physical confirm key, ready. Commit both room assignments together.",
+      "sha256": "d44c146f3dd2749e26c2e040e4efb8e64dad3ae0b44d8a4c5de3eda79a43ac5c",
+      "insets": [
+        19,
+        8,
+        9,
+        8
+      ],
+      "safeText": [
+        21,
+        5,
+        69,
+        16
+      ]
+    },
+    {
+      "id": "co-commit-pressed",
+      "file": "exports/co-commit-pressed.png",
+      "size": [
+        100,
+        28
+      ],
+      "master": "masters/co-commit-pressed.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Physical confirm key, pressed. Commit both room assignments together.",
+      "sha256": "9a22f82547aacd6700bfff097b0b46e5bcf5273ea4d323a7dcd69cea64e2cc87",
+      "insets": [
+        19,
+        8,
+        9,
+        8
+      ],
+      "safeText": [
+        21,
+        5,
+        69,
+        16
+      ]
+    },
+    {
+      "id": "co-close-docket",
+      "file": "exports/co-close-docket.png",
+      "size": [
+        178,
+        98
+      ],
+      "master": "masters/co-close-docket.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Continuous shift ledger with punch margins and bottom pressure roller.",
+      "sha256": "672f82262d17862edf4bb0114a4929ff502cd79b16eae908a5d5e61dfebed906",
+      "insets": [
+        17,
+        20,
+        21,
+        24
+      ],
+      "safeText": [
+        20,
+        10,
+        133,
+        73
+      ]
+    },
+    {
+      "id": "co-output-ticket",
+      "file": "exports/co-output-ticket.png",
+      "size": [
+        98,
+        43
+      ],
+      "master": "masters/co-output-ticket.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Rack count/shift production instrument. Draw only actual completed and retained counts.",
+      "sha256": "adbc84342c62045c66ae3673b6801d65b71326f6df0408207190b66c0e4da63f",
+      "insets": [
+        24,
+        32,
+        11,
+        8
+      ],
+      "safeText": [
+        27,
+        7,
+        59,
+        24
+      ]
+    },
+    {
+      "id": "co-attendance-ticket",
+      "file": "exports/co-attendance-ticket.png",
+      "size": [
+        98,
+        43
+      ],
+      "master": "masters/co-attendance-ticket.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Worker availability report. Use confirmed public attendance evidence.",
+      "sha256": "a915549491f79a5ed3388107b99efbf46b1f1e76c121093705c6b52904a8a2ad",
+      "insets": [
+        24,
+        32,
+        11,
+        8
+      ],
+      "safeText": [
+        27,
+        7,
+        59,
+        24
+      ]
+    },
+    {
+      "id": "co-witness-slip",
+      "file": "exports/co-witness-slip.png",
+      "size": [
+        98,
+        43
+      ],
+      "master": "masters/co-witness-slip.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Public attributed account. Fill speaker, room and delivered words from public report.",
+      "sha256": "a3a5fea60ba6a7e38d98ef952d99563ee71be57cc62cf43171c3774ea830962d",
+      "insets": [
+        24,
+        32,
+        11,
+        8
+      ],
+      "safeText": [
+        27,
+        7,
+        59,
+        24
+      ]
+    },
+    {
+      "id": "co-overnight",
+      "file": "exports/co-overnight.png",
+      "size": [
+        118,
+        58
+      ],
+      "master": "masters/co-overnight.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Shift transition instrument: overnight. Keep dates, expiries and releases in live text.",
+      "sha256": "2df4d4c4401c5c2b78719ddcd6ab4937595c22f8c90031f575b4defa301a1901",
+      "insets": [
+        43,
+        45,
+        9,
+        9
+      ],
+      "safeText": [
+        46,
+        10,
+        60,
+        35
+      ]
+    },
+    {
+      "id": "co-next-shift",
+      "file": "exports/co-next-shift.png",
+      "size": [
+        118,
+        58
+      ],
+      "master": "masters/co-next-shift.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Shift transition instrument: next-shift. Keep dates, expiries and releases in live text.",
+      "sha256": "85f1a2bcad868ee84291e8b3e66f7e04ed370343ebbf2d768390ac87463036b1",
+      "insets": [
+        43,
+        45,
+        9,
+        9
+      ],
+      "safeText": [
+        46,
+        10,
+        60,
+        35
+      ]
+    },
+    {
+      "id": "co-review-instrument",
+      "file": "exports/co-review-instrument.png",
+      "size": [
+        139,
+        78
+      ],
+      "master": "masters/co-review-instrument.ora",
+      "source": "Original pixel drawing, console lane, 19 Nov 2026",
+      "purpose": "Private reviewer instrument. Show only on explicit inspection; display Review only in live type.",
+      "sha256": "4c164acfc83e0bd5de1addea8018539793ddd7c58f9c0617a187aa1fa4281108",
+      "insets": [
+        32,
+        14,
+        12,
+        20
+      ],
+      "safeText": [
+        13,
+        17,
+        110,
+        40
+      ]
+    }
+  ]
+}

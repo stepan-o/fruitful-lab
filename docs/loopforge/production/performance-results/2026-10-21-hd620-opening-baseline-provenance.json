@@ -1,0 +1,8 @@
+{
+  "result": "2026-10-21-hd620-opening-baseline.json",
+  "source": "Browser Save test result control, local production build on 127.0.0.1:3191",
+  "baseCommit": "1bedc7ce55e243d3f7b60b7ba7c792b685596fb0",
+  "workingTree": "Uncommitted opening-scene integration before reusable sampler buffers, structural world snapshots and closed author-panel deferral. Exact source snapshot was not separately archived. Asset hashes and frozen workload are in the result.",
+  "verdict": "FAIL: 31 stalls over 100 ms; allowed maximum 6. All other criteria passed.",
+  "scope": "This HD620 computer, warm repeated authored scene only; no physical-phone, internet-load, general-BDI or visual-quality certification."
+}

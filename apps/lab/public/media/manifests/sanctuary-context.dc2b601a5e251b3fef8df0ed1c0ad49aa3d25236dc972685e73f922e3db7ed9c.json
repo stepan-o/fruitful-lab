@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "pack": "sanctuary-context",
+  "assets": {
+    "netflix-wordmark": {
+      "kind": "image",
+      "width": 309,
+      "height": 83,
+      "variants": [
+        {
+          "src": "/media/files/23650a16a179547f827bc494a4ff4486564d91baa1fd7ccf10dbf9f7e0d35ea6.webp",
+          "mime": "image/webp",
+          "bytes": 1926,
+          "sha256": "23650a16a179547f827bc494a4ff4486564d91baa1fd7ccf10dbf9f7e0d35ea6",
+          "width": 154,
+          "height": 41
+        },
+        {
+          "src": "/media/files/aea36e4264e1ec9e207d1bddb7dc70b33dc2d6532449aec081dc086993d820fb.webp",
+          "mime": "image/webp",
+          "bytes": 3908,
+          "sha256": "aea36e4264e1ec9e207d1bddb7dc70b33dc2d6532449aec081dc086993d820fb",
+          "width": 309,
+          "height": 83
+        }
+      ]
+    }
+  }
+}

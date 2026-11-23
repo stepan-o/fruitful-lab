@@ -1,0 +1,1829 @@
+{
+  "sourceFiles": {
+    "simulation.ts": "c5dab58691656cf81b7bddeca10dddb3df9b77bb4846e06686216018f9c0d427",
+    "replay.ts": "daad3efc9dcb8c35f00bd1e452b3b27814cbc5c01f138e4d8f1421e6eb816477",
+    "conveyor.ts": "ef0b0308c68bc2b3a1dcd7ef0206b05c228f6e2db3a7c140f96928a535b34463",
+    "navigation.ts": "a808ba4f3be569ca4b2c831dc6e4fb5ec3b59a77a178f29c0b20ad5958002511",
+    "contract.ts": "ca6ca3ff9c76969a38b55caef77a4db0ff213ccb2dbd97e71ca0a8ecd143be2c",
+    "events.ts": "64aa57af469b541dba046fb15aa4a455b3fef56d5bf306f114ba58438b80eed7",
+    "wire.ts": "56c7872c62d5ed7974bc10143d995f3d051f69ac5351e7edc341d44a4bb431e0",
+    "inheritance.json": "76799e5d6c9e1bd50bad76d98f2a404894e1c9101af0fe582511560db84b7228"
+  },
+  "classification": "Read-only public scene observations from the TypeScript working source, plus a clearly tagged developer-only hearing record for the art review. The screenshots are authored illustrations of these observations.",
+  "samples": {
+    "desk-signal": {
+      "tick": 5671,
+      "day": 2,
+      "agents": {
+        "ben": {
+          "positionMm": [
+            127700,
+            123200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "bob": {
+          "positionMm": [
+            126200,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "ed": {
+          "positionMm": [
+            123700,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "gus": {
+          "positionMm": [
+            131600,
+            130200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "jo": {
+          "positionMm": [
+            127700,
+            126350
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "kit": {
+          "positionMm": [
+            126250,
+            123950
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "LIMEN": {
+          "positionMm": [
+            125300,
+            131250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "lou": {
+          "positionMm": [
+            126250,
+            125500
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "mae": {
+          "positionMm": [
+            127700,
+            124800
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "max": {
+          "positionMm": [
+            130659,
+            141716
+          ],
+          "room": "conveyor",
+          "moving": true
+        },
+        "sam": {
+          "positionMm": [
+            119700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "STILETTO": {
+          "positionMm": [
+            126300,
+            142200
+          ],
+          "room": "conveyor",
+          "moving": false
+        }
+      },
+      "coverage": [
+        "sam",
+        "",
+        "",
+        ""
+      ]
+    },
+    "desk-open": {
+      "tick": 5671,
+      "day": 2,
+      "agents": {
+        "ben": {
+          "positionMm": [
+            127700,
+            123200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "bob": {
+          "positionMm": [
+            126200,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "ed": {
+          "positionMm": [
+            123700,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "gus": {
+          "positionMm": [
+            131600,
+            130200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "jo": {
+          "positionMm": [
+            127700,
+            126350
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "kit": {
+          "positionMm": [
+            126250,
+            123950
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "LIMEN": {
+          "positionMm": [
+            125300,
+            131250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "lou": {
+          "positionMm": [
+            126250,
+            125500
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "mae": {
+          "positionMm": [
+            127700,
+            124800
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "max": {
+          "positionMm": [
+            130659,
+            141716
+          ],
+          "room": "conveyor",
+          "moving": true
+        },
+        "sam": {
+          "positionMm": [
+            119700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "STILETTO": {
+          "positionMm": [
+            126300,
+            142200
+          ],
+          "room": "conveyor",
+          "moving": false
+        }
+      },
+      "coverage": [
+        "sam",
+        "",
+        "",
+        ""
+      ]
+    },
+    "pass-issued": {
+      "tick": 5692,
+      "day": 2,
+      "agents": {
+        "ben": {
+          "positionMm": [
+            127700,
+            123200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "bob": {
+          "positionMm": [
+            126880,
+            132444
+          ],
+          "room": "security",
+          "moving": true
+        },
+        "ed": {
+          "positionMm": [
+            123700,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "gus": {
+          "positionMm": [
+            131600,
+            130200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "jo": {
+          "positionMm": [
+            126973,
+            128235
+          ],
+          "room": "security",
+          "moving": true
+        },
+        "kit": {
+          "positionMm": [
+            126250,
+            123950
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "LIMEN": {
+          "positionMm": [
+            125300,
+            131250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "lou": {
+          "positionMm": [
+            126250,
+            125500
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "mae": {
+          "positionMm": [
+            127700,
+            124800
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "max": {
+          "positionMm": [
+            131700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "sam": {
+          "positionMm": [
+            119700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "STILETTO": {
+          "positionMm": [
+            126300,
+            142200
+          ],
+          "room": "conveyor",
+          "moving": false
+        }
+      },
+      "coverage": [
+        "sam",
+        "bob",
+        "jo",
+        "max"
+      ],
+      "receipt": "bob cleared on a daily pass.",
+      "washFollowup": {
+        "tick": 6100,
+        "coverage": [
+          "sam",
+          "bob",
+          "jo",
+          "max"
+        ]
+      }
+    },
+    "custody": {
+      "tick": 5972,
+      "day": 2,
+      "agents": {
+        "ben": {
+          "positionMm": [
+            127700,
+            123200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "bob": {
+          "positionMm": [
+            126200,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "ed": {
+          "positionMm": [
+            123700,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "gus": {
+          "positionMm": [
+            131600,
+            130200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "jo": {
+          "positionMm": [
+            126973,
+            128235
+          ],
+          "room": "security",
+          "moving": true
+        },
+        "kit": {
+          "positionMm": [
+            126250,
+            123950
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "LIMEN": {
+          "positionMm": [
+            125300,
+            131250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "lou": {
+          "positionMm": [
+            126250,
+            125500
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "mae": {
+          "positionMm": [
+            127700,
+            124800
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "max": {
+          "positionMm": [
+            131700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "sam": {
+          "positionMm": [
+            119700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "STILETTO": {
+          "positionMm": [
+            126300,
+            142200
+          ],
+          "room": "conveyor",
+          "moving": false
+        }
+      },
+      "coverage": [
+        "sam",
+        "",
+        "jo",
+        "max"
+      ],
+      "receipt": "bob is in Security custody until the bell. Wash is down one operator.",
+      "washFollowup": {
+        "tick": 6100,
+        "coverage": [
+          "sam",
+          "",
+          "jo",
+          "max"
+        ]
+      }
+    },
+    "reply-delivered": {
+      "tick": 6242,
+      "day": 2,
+      "agents": {
+        "ben": {
+          "positionMm": [
+            140000,
+            142800
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "bob": {
+          "positionMm": [
+            123700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "ed": {
+          "positionMm": [
+            123700,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "gus": {
+          "positionMm": [
+            131600,
+            130200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "jo": {
+          "positionMm": [
+            127700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "kit": {
+          "positionMm": [
+            138000,
+            143200
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "LIMEN": {
+          "positionMm": [
+            125300,
+            131250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "lou": {
+          "positionMm": [
+            134000,
+            143000
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "mae": {
+          "positionMm": [
+            136000,
+            142700
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "max": {
+          "positionMm": [
+            131700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "sam": {
+          "positionMm": [
+            119700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "STILETTO": {
+          "positionMm": [
+            126300,
+            142200
+          ],
+          "room": "conveyor",
+          "moving": false
+        }
+      },
+      "coverage": [
+        "sam",
+        "bob",
+        "jo",
+        "max"
+      ],
+      "speech": [
+        {
+          "speaker": "STILETTO",
+          "line": "Ease off. Let it settle.",
+          "tick": 6142
+        },
+        {
+          "speaker": "sam",
+          "line": "Heard something this morning.",
+          "tick": 6182
+        },
+        {
+          "speaker": "sam",
+          "line": "ed logged a loose card. Ask at his desk.",
+          "tick": 6242
+        }
+      ]
+    },
+    "reply-cut": {
+      "tick": 6210,
+      "day": 2,
+      "agents": {
+        "ben": {
+          "positionMm": [
+            140000,
+            142800
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "bob": {
+          "positionMm": [
+            123700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "ed": {
+          "positionMm": [
+            123700,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "gus": {
+          "positionMm": [
+            131600,
+            130200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "jo": {
+          "positionMm": [
+            127700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "kit": {
+          "positionMm": [
+            138000,
+            143200
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "LIMEN": {
+          "positionMm": [
+            125300,
+            131250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "lou": {
+          "positionMm": [
+            134000,
+            143000
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "mae": {
+          "positionMm": [
+            136000,
+            142700
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "max": {
+          "positionMm": [
+            131700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "sam": {
+          "positionMm": [
+            119700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "STILETTO": {
+          "positionMm": [
+            126300,
+            142200
+          ],
+          "room": "conveyor",
+          "moving": false
+        }
+      },
+      "coverage": [
+        "sam",
+        "bob",
+        "jo",
+        "max"
+      ],
+      "speech": [
+        {
+          "speaker": "bob",
+          "line": "sam, seen my ID?",
+          "tick": 6142
+        },
+        {
+          "speaker": "sam",
+          "line": "Heard something this morning.",
+          "tick": 6182
+        },
+        {
+          "speaker": "STILETTO",
+          "line": "Hands on the line. Now.",
+          "tick": 6210
+        }
+      ]
+    },
+    "line-clear": {
+      "tick": 6124,
+      "day": 2,
+      "agents": {
+        "ben": {
+          "positionMm": [
+            140000,
+            142800
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "bob": {
+          "positionMm": [
+            123700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "ed": {
+          "positionMm": [
+            123700,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "gus": {
+          "positionMm": [
+            131600,
+            130200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "jo": {
+          "positionMm": [
+            127700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "kit": {
+          "positionMm": [
+            138000,
+            143200
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "LIMEN": {
+          "positionMm": [
+            126300,
+            142200
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "lou": {
+          "positionMm": [
+            134000,
+            143000
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "mae": {
+          "positionMm": [
+            136000,
+            142700
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "max": {
+          "positionMm": [
+            131700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "sam": {
+          "positionMm": [
+            119700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "STILETTO": {
+          "positionMm": [
+            125300,
+            131250
+          ],
+          "room": "security",
+          "moving": false
+        }
+      },
+      "coverage": [
+        "sam",
+        "bob",
+        "jo",
+        "max"
+      ],
+      "firstHandoff": "all-clear",
+      "firstActor": "jo",
+      "close": {
+        "tick": 7263,
+        "cumulative": 6,
+        "occupants": [
+          {
+            "id": "D2-C1",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C2",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C3",
+            "at": [
+              136150,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-1",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-2",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-3",
+            "at": [
+              136150,
+              147000
+            ]
+          }
+        ],
+        "new": [
+          {
+            "id": "D2-C1",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C2",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C3",
+            "at": [
+              136150,
+              147000
+            ]
+          }
+        ],
+        "coverage": [
+          "sam",
+          "bob",
+          "jo",
+          "max"
+        ]
+      }
+    },
+    "line-rushed": {
+      "tick": 6194,
+      "day": 2,
+      "agents": {
+        "ben": {
+          "positionMm": [
+            140000,
+            142800
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "bob": {
+          "positionMm": [
+            123700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "ed": {
+          "positionMm": [
+            123700,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "gus": {
+          "positionMm": [
+            131600,
+            130200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "jo": {
+          "positionMm": [
+            127700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "kit": {
+          "positionMm": [
+            138000,
+            143200
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "LIMEN": {
+          "positionMm": [
+            125300,
+            131250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "lou": {
+          "positionMm": [
+            134000,
+            143000
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "mae": {
+          "positionMm": [
+            136000,
+            142700
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "max": {
+          "positionMm": [
+            131700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "sam": {
+          "positionMm": [
+            119700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "STILETTO": {
+          "positionMm": [
+            126300,
+            142200
+          ],
+          "room": "conveyor",
+          "moving": false
+        }
+      },
+      "coverage": [
+        "sam",
+        "bob",
+        "jo",
+        "max"
+      ],
+      "firstHandoff": "rushed",
+      "firstActor": "jo",
+      "close": {
+        "tick": 7263,
+        "cumulative": 8,
+        "occupants": [
+          {
+            "id": "D2-C1",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C2",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C3",
+            "at": [
+              136150,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C4",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C5",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-1",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-2",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-3",
+            "at": [
+              136150,
+              147000
+            ]
+          }
+        ],
+        "new": [
+          {
+            "id": "D2-C1",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C2",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C3",
+            "at": [
+              136150,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C4",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C5",
+            "at": [
+              135600,
+              147000
+            ]
+          }
+        ],
+        "coverage": [
+          "sam",
+          "bob",
+          "jo",
+          "max"
+        ]
+      }
+    },
+    "crew-decides": {
+      "tick": 9649,
+      "day": 4,
+      "agents": {
+        "ben": {
+          "positionMm": [
+            126250,
+            123950
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "bob": {
+          "positionMm": [
+            127700,
+            123200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "ed": {
+          "positionMm": [
+            123700,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "gus": {
+          "positionMm": [
+            131600,
+            130200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "jo": {
+          "positionMm": [
+            126632,
+            134408
+          ],
+          "room": "security",
+          "moving": true
+        },
+        "kit": {
+          "positionMm": [
+            127700,
+            124800
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "LIMEN": {
+          "positionMm": [
+            125300,
+            131250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "lou": {
+          "positionMm": [
+            134000,
+            143000
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "mae": {
+          "positionMm": [
+            136000,
+            142700
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "max": {
+          "positionMm": [
+            131700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "sam": {
+          "positionMm": [
+            123700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "STILETTO": {
+          "positionMm": [
+            128966,
+            133765
+          ],
+          "room": "security",
+          "moving": true
+        }
+      },
+      "coverage": [
+        "",
+        "sam",
+        "",
+        "max"
+      ],
+      "restoredAt": 9467,
+      "callFeed": {
+        "tick": 9467,
+        "featured": {
+          "id": "mae",
+          "positionMm": [
+            136000,
+            142700
+          ],
+          "duty": "standing",
+          "room": "conveyor"
+        },
+        "pressOperator": "max",
+        "rack": [
+          {
+            "id": "D2-C1",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C2",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C3",
+            "at": [
+              136150,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C4",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C5",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C6",
+            "at": [
+              136150,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-1",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-2",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-3",
+            "at": [
+              136150,
+              147000
+            ]
+          }
+        ]
+      },
+      "reviewOnlyHearing": null,
+      "orders": [
+        {
+          "speaker": "LIMEN",
+          "line": "The crew stays here. Checks first.",
+          "tick": 7625
+        },
+        {
+          "speaker": "LIMEN",
+          "line": "The crew stays here. Checks first.",
+          "tick": 9425
+        },
+        {
+          "speaker": "STILETTO",
+          "line": "Crew. On the line. With me.",
+          "tick": 9467
+        }
+      ],
+      "publicBacking": null,
+      "decisions": [
+        {
+          "worker": "bob",
+          "action": "stay"
+        },
+        {
+          "worker": "jo",
+          "action": "go"
+        },
+        {
+          "worker": "kit",
+          "action": "stay"
+        },
+        {
+          "worker": "ben",
+          "action": "stay"
+        }
+      ]
+    },
+    "back-limen": {
+      "tick": 9649,
+      "day": 4,
+      "agents": {
+        "ben": {
+          "positionMm": [
+            126250,
+            123950
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "bob": {
+          "positionMm": [
+            127700,
+            123200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "ed": {
+          "positionMm": [
+            123700,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "gus": {
+          "positionMm": [
+            131600,
+            130200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "jo": {
+          "positionMm": [
+            126200,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "kit": {
+          "positionMm": [
+            127700,
+            124800
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "LIMEN": {
+          "positionMm": [
+            125300,
+            131250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "lou": {
+          "positionMm": [
+            134000,
+            143000
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "mae": {
+          "positionMm": [
+            136000,
+            142700
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "max": {
+          "positionMm": [
+            131700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "sam": {
+          "positionMm": [
+            123700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "STILETTO": {
+          "positionMm": [
+            128966,
+            133765
+          ],
+          "room": "security",
+          "moving": true
+        }
+      },
+      "coverage": [
+        "",
+        "sam",
+        "",
+        "max"
+      ],
+      "restoredAt": 9467,
+      "callFeed": {
+        "tick": 9467,
+        "featured": {
+          "id": "mae",
+          "positionMm": [
+            136000,
+            142700
+          ],
+          "duty": "standing",
+          "room": "conveyor"
+        },
+        "pressOperator": "max",
+        "rack": [
+          {
+            "id": "D2-C1",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C2",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C3",
+            "at": [
+              136150,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C4",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C5",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C6",
+            "at": [
+              136150,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-1",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-2",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-3",
+            "at": [
+              136150,
+              147000
+            ]
+          }
+        ]
+      },
+      "reviewOnlyHearing": {
+        "tick": 9467,
+        "eventSeq": 163,
+        "heard": [
+          "ben",
+          "bob",
+          "ed",
+          "gus",
+          "jo",
+          "kit",
+          "LIMEN",
+          "lou",
+          "max",
+          "sam",
+          "STILETTO"
+        ],
+        "outside": [
+          "mae"
+        ]
+      },
+      "orders": [
+        {
+          "speaker": "LIMEN",
+          "line": "The crew stays here. Checks first.",
+          "tick": 7625
+        },
+        {
+          "speaker": "LIMEN",
+          "line": "The crew stays here. Checks first.",
+          "tick": 9425
+        },
+        {
+          "speaker": "STILETTO",
+          "line": "Crew. On the line. With me.",
+          "tick": 9467
+        }
+      ],
+      "publicBacking": "Follow LIMEN.",
+      "decisions": [
+        {
+          "worker": "bob",
+          "action": "stay"
+        },
+        {
+          "worker": "jo",
+          "action": "stay"
+        },
+        {
+          "worker": "kit",
+          "action": "stay"
+        },
+        {
+          "worker": "ben",
+          "action": "stay"
+        }
+      ]
+    },
+    "back-stiletto": {
+      "tick": 9649,
+      "day": 4,
+      "agents": {
+        "ben": {
+          "positionMm": [
+            126516,
+            125000
+          ],
+          "room": "security",
+          "moving": true
+        },
+        "bob": {
+          "positionMm": [
+            127700,
+            123200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "ed": {
+          "positionMm": [
+            123700,
+            130250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "gus": {
+          "positionMm": [
+            131600,
+            130200
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "jo": {
+          "positionMm": [
+            126632,
+            134408
+          ],
+          "room": "security",
+          "moving": true
+        },
+        "kit": {
+          "positionMm": [
+            127580,
+            126660
+          ],
+          "room": "security",
+          "moving": true
+        },
+        "LIMEN": {
+          "positionMm": [
+            125300,
+            131250
+          ],
+          "room": "security",
+          "moving": false
+        },
+        "lou": {
+          "positionMm": [
+            134000,
+            143000
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "mae": {
+          "positionMm": [
+            136000,
+            142700
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "max": {
+          "positionMm": [
+            131700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "sam": {
+          "positionMm": [
+            123700,
+            144400
+          ],
+          "room": "conveyor",
+          "moving": false
+        },
+        "STILETTO": {
+          "positionMm": [
+            128966,
+            133765
+          ],
+          "room": "security",
+          "moving": true
+        }
+      },
+      "coverage": [
+        "",
+        "sam",
+        "",
+        "max"
+      ],
+      "restoredAt": 9467,
+      "callFeed": {
+        "tick": 9467,
+        "featured": {
+          "id": "mae",
+          "positionMm": [
+            136000,
+            142700
+          ],
+          "duty": "standing",
+          "room": "conveyor"
+        },
+        "pressOperator": "max",
+        "rack": [
+          {
+            "id": "D2-C1",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C2",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C3",
+            "at": [
+              136150,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C4",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C5",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "D2-C6",
+            "at": [
+              136150,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-1",
+            "at": [
+              135050,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-2",
+            "at": [
+              135600,
+              147000
+            ]
+          },
+          {
+            "id": "cortex-3",
+            "at": [
+              136150,
+              147000
+            ]
+          }
+        ]
+      },
+      "reviewOnlyHearing": {
+        "tick": 9467,
+        "eventSeq": 163,
+        "heard": [
+          "ben",
+          "bob",
+          "ed",
+          "gus",
+          "jo",
+          "kit",
+          "LIMEN",
+          "lou",
+          "max",
+          "sam",
+          "STILETTO"
+        ],
+        "outside": [
+          "mae"
+        ]
+      },
+      "orders": [
+        {
+          "speaker": "LIMEN",
+          "line": "The crew stays here. Checks first.",
+          "tick": 7625
+        },
+        {
+          "speaker": "LIMEN",
+          "line": "The crew stays here. Checks first.",
+          "tick": 9425
+        },
+        {
+          "speaker": "STILETTO",
+          "line": "Crew. On the line. With me.",
+          "tick": 9467
+        }
+      ],
+      "publicBacking": "Follow STILETTO.",
+      "decisions": [
+        {
+          "worker": "bob",
+          "action": "stay"
+        },
+        {
+          "worker": "jo",
+          "action": "go"
+        },
+        {
+          "worker": "kit",
+          "action": "go"
+        },
+        {
+          "worker": "ben",
+          "action": "go"
+        }
+      ]
+    }
+  }
+}

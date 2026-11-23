@@ -1,0 +1,20 @@
+--- a/apps/lab/components/loopforge/agents/SceneStudies.tsx
++++ b/apps/lab/components/loopforge/agents/SceneStudies.tsx
+@@ -136,7 +136,6 @@
+    const scene=r.floor.characterStage().scene;
+    await new Promise<void>((resolve,reject)=>{
+     let settled=false,observer:ReturnType<typeof scene.onAfterRenderObservable.addOnce>|null=null;
+-    let timeout:ReturnType<typeof setTimeout>|undefined;
+     const finish=(error?:unknown)=>{
+      if(settled)return;settled=true;
+      if(timeout!==undefined)clearTimeout(timeout);
+@@ -145,8 +144,8 @@
+      if(error!==undefined)reject(error);else resolve();
+     };
+     const cancel=()=>finish(new Error('Image request cancelled.'));
++    const timeout=setTimeout(()=>finish(new Error('Keep the scene visible and try saving again.')),5000);
+     captureCancellation.current=cancel;
+-    timeout=setTimeout(()=>finish(new Error('Keep the scene visible and try saving again.')),5000);
+     observer=scene.onAfterRenderObservable.addOnce(()=>{
+      if(!captureResults.isPending(request)||runtime.current!==r){finish(new Error('The scene changed. Please save again.'));return;}
+      try{

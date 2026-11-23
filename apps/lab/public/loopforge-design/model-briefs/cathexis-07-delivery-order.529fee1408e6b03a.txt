@@ -1,0 +1,11 @@
+CATHEXIS — delivery order and remaining gates
+1. Generate the clean body in A-pose, with permanent head/eyes and a separate facial-insert boundary. Inspect silhouette, two separated legs, costume, heels, hands and rear. Source body drawing's mechanical face is a placement guide, not fused immutable geometry.
+2. Generate Grace and the distorted mechanical insert separately. Fit head/eyes/insert/shell offline. Then make Fury, Distress and the half-shell. Finish the other porcelain expressions after the interface is sound.
+3. Rig the accepted body and run only the four initial tests in 03-rig-tests. Inspect skirt/hair/arm/heel clearance. Meshy may supply rigid hands rather than fingers; report actual bones. No claim of articulated fingers from a five-finger drawing.
+4. After approval, audition the 28 priority motions, then useful candidates from the broader 161-entry name/category inventory. These are not 161 validated CATHEXIS clips. Use only Hot Walk for travel; no running or alert fallback. An expressive catalog name is not proof of the intended performance.
+5. Select grime treatment A/B/C before material variants. They are comparison inputs, not three new bodies. Keep the same mesh, UVs and rig; brewery residue can be authored after the material direction is chosen. Dirt can accompany anger without forcing it in every scene.
+6. Download original full sources privately, plus neutral and animated textured GLB/FBX. Preserve per-clip names/IDs and actual embedded inventories. All Animations may omit later jobs: verify local files, export missing clips separately.
+
+Custom/offline gaps: sticky-finger disgust, protecting the skirt from grime, mask handling, precise conveyor/vat/loom contacts, Hot Walk starts/stops and paired worker responses. Do not substitute arbitrary gestures or claim these are finished by catalog retargeting.
+
+The kit is ready to START staged generation; no CATHEXIS model, actual shared mask fit, facial rig, motion clearance or gameplay integration is certified yet. A/B/C material selection can wait until the clean master is accepted.

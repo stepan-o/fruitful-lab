@@ -1,0 +1,42 @@
+.calibration {
+  margin: 0 0 3rem;
+  border-block: 1px solid var(--line);
+  padding: clamp(18px, 4vw, 40px) 0;
+  scroll-margin-top: 16px;
+}
+.calibration .calibration-head { margin-bottom: 1.3rem }
+.calibration time, .calibration small {
+  font: 600 .76rem/1.4 ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--gold);
+}
+.calibration h3 { font: 500 clamp(2rem, 5vw, 3.6rem)/1.06 var(--serif); margin: .5rem 0 .8rem }
+.calibration h4 { font: 500 clamp(1.5rem, 3vw, 2.25rem)/1.15 var(--serif); margin: 0 0 .5rem }
+.calibration p { max-width: 68ch; margin: 0 0 1rem; color: var(--muted) }
+.calibration strong { color: var(--text) }
+.calibration figure { margin: 0; min-width: 0; background: var(--deep); border: 1px solid var(--line) }
+.calibration video, .calibration img { display: block; width: 100%; height: auto; object-fit: contain; background: var(--deep) }
+.calibration img { image-rendering: pixelated }
+.calibration figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .25rem 1rem; padding: .65rem 1rem; line-height: 1.4; color: var(--muted); font: .87rem/1.45 var(--sans) }
+.calibration .calibration-reel { border-color: #736449 }
+.calibration .calibration-reel strong { color: var(--gold) }
+.calibration .calibration-note { margin-block: .85rem 0 }
+.calibration-scene, .calibration-files { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line) }
+.calibration-pair, .calibration-files ul { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .8rem }
+.calibration-pair { max-width: 660px }
+.calibration details { border: 0; padding: 0; margin-top: .5rem }
+.calibration summary { padding: .65rem .85rem; min-height: 44px; background: var(--soft); color: var(--cyan) }
+.calibration details[open] summary { margin: 0 }
+.calibration figure + figure { margin-top: 1rem }
+.calibration-pair figure + figure { margin: 0 }
+.calibration figcaption a, .calibration-files > a { display: inline-flex; align-items: center; min-height: 44px }
+.calibration-files ul { list-style: none; padding: 0; margin: .9rem 0 .45rem; gap: .45rem 1rem }
+.calibration-files li { margin: 0 }
+.calibration-files li a { padding: .7rem .8rem; background: var(--surface); display: flex; gap: .6rem; justify-content: space-between; align-items: center; min-height: 44px }
+.calibration :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px }
+@media (max-width: 520px) {
+  .calibration-files ul { grid-template-columns: 1fr }
+  .calibration-pair { gap: .45rem }
+  .calibration figcaption { padding: .55rem .6rem }
+}

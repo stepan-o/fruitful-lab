@@ -6,6 +6,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from db import Base, engine
 from routers.auth import router as auth_router
+from routers.accounts import router as accounts_router
+from routers.discovery import router as discovery_router
+from saved_city.api import router as saved_city_router
 from routers.stats import router as stats_router
 from routers.admin_pinterest_stats import router as admin_pinterest_stats_router
 
@@ -33,6 +36,9 @@ app.add_middleware(
 
 # Routers
 app.include_router(auth_router)
+app.include_router(accounts_router)
+app.include_router(discovery_router)
+app.include_router(saved_city_router)
 app.include_router(stats_router)
 app.include_router(admin_pinterest_stats_router)
 

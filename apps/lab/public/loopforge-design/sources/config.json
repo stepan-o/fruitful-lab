@@ -1,0 +1,367 @@
+{
+  "metadata": {
+    "config_name": "sim_sim_1_default",
+    "schema_version": "sim_sim_1",
+    "spec_ref": "docs/sim_sim/sim_sim_spec_v1.md"
+  },
+  "worker_equations": {
+    "alpha_h": 0.15,
+    "alpha_f": 0.2,
+    "alpha_k": 0.6,
+    "alpha_r": 0.3,
+    "alpha_p": 0.1,
+    "beta_l": 0.12,
+    "beta_p": 0.1,
+    "beta_s": 0.18,
+    "beta_f": 0.1,
+    "gamma_p": 0.08,
+    "gamma_i": 0.1,
+    "gamma_k": 0.35,
+    "gamma_s": 0.08
+  },
+  "formulas": {
+    "absenteeism": {
+      "base": 0.05,
+      "stress_coeff": 0.35,
+      "discipline_coeff": 0.25
+    },
+    "accident": {
+      "base": 0.02,
+      "low_discipline_coeff": 0.25,
+      "high_stress_coeff": 0.25,
+      "low_equipment_coeff": 0.3
+    },
+    "productivity": {
+      "base": 0.5,
+      "discipline_coeff": 0.7,
+      "stress_coeff": 0.3,
+      "refactor_base": 0.3,
+      "refactor_discipline_coeff": 0.9,
+      "refactor_stress_coeff": 0.6
+    }
+  },
+  "base_rate_wu_by_room": {
+    "1": 0.0,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 0.0
+  },
+  "room_capacities": {
+    "1": { "max_dumb": 0, "max_smart": 0, "max_total": 0, "no_workers": true },
+    "2": { "max_dumb": 10, "max_smart": 10, "max_total": 10 },
+    "3": { "max_dumb": 5, "max_smart": 5, "max_total": 5 },
+    "4": { "max_dumb": 1, "max_smart": 3, "max_total": 4 },
+    "5": { "max_dumb": 0, "max_smart": 3, "max_total": 3 },
+    "6": { "max_dumb": 0, "max_smart": 0, "max_total": 0, "no_workers": true }
+  },
+  "economy": {
+    "brains_per_wu": 4,
+    "wash_capacity_per_wu": 5,
+    "substrate_gal_per_wu": 3,
+    "ribbon_yards_per_wu": 2,
+    "sell_washed_dumb": 10,
+    "sell_washed_smart": 25,
+    "convert_cost": 5,
+    "upgrade_recipe": {
+      "substrate": 1,
+      "ribbon": 1,
+      "washed_dumb": 1,
+      "washed_smart": 1
+    }
+  },
+  "lookup_tables": {
+    "default_l": 0.4,
+    "default_i": 0.0,
+    "default_relief": 0.0,
+    "leadership_order": {
+      "L": { "1": 0.95, "2": 0.8, "3": 0.6, "4": 0.65, "5": 0.65 },
+      "S": { "1": 0.3, "2": 0.55, "3": 0.2, "4": 0.25, "5": 0.2 },
+      "C": { "1": 0.05, "2": 0.1, "3": 0.85, "4": 0.35, "5": 0.5 },
+      "W": { "1": 0.5, "2": 0.9, "3": 0.85, "4": 0.95, "5": 0.8 },
+      "T": { "1": 0.4, "2": 0.45, "3": 0.55, "4": 0.35, "5": 0.7 }
+    },
+    "indoctrination_pressure": {
+      "L": { "1": 0.35, "2": 0.1, "3": 0.05, "4": 0.05, "5": 0.05 },
+      "S": { "1": -0.05, "2": -0.2, "3": -0.1, "4": -0.1, "5": -0.1 },
+      "C": { "1": -0.3, "2": -0.25, "3": -0.35, "4": -0.1, "5": -0.05 },
+      "W": { "1": 0.05, "2": 0.1, "3": 0.05, "4": 0.15, "5": 0.1 },
+      "T": { "1": -0.05, "2": 0.0, "3": -0.05, "4": -0.15, "5": 0.05 }
+    },
+    "relief_baseline": {
+      "L": { "default": 0.0 },
+      "S": { "default": 0.0 },
+      "C": { "default": 0.0, "3": 0.05 },
+      "W": { "default": 0.05 },
+      "T": { "default": 0.2, "2": 0.4, "5": 0.4 }
+    },
+    "event_relief": {
+      "total_success": 0.1,
+      "accident_free": 0.05
+    }
+  },
+  "security": {
+    "thrum_failure_chance": 0.5,
+    "c_or_t_absent_bonus_base": 0.1,
+    "c_or_t_absent_bonus_scale": 0.2,
+    "thrum_failure_extra_absent_flat": 0.05,
+    "random_keep_bias_cathexis": 0.6,
+    "random_keep_bias_thrum_success": 0.75,
+    "stiletto_pull_order": [5, 4, 3],
+    "witch_pull_order": [3, 2],
+    "redistribution_bias": {
+      "L": "none",
+      "S": "fill_conveyor",
+      "W": "brewery_then_weaving_smart",
+      "C": "chaos",
+      "T": "chaos_with_failure"
+    }
+  },
+  "conflicts": {
+    "hostile_pairs": [
+      ["L", "S"],
+      ["L", "C"],
+      ["S", "C"]
+    ],
+    "discovered_discipline_delta": -0.05,
+    "discovered_loyalty_delta": -0.02,
+    "support_confidence_delta": 0.1,
+    "oppose_confidence_delta": -0.05,
+    "support_influence_delta": 0.1,
+    "oppose_influence_delta": -0.05,
+    "support_loyalty_delta": 0.03,
+    "oppose_loyalty_delta": -0.07,
+    "security_edge_priority": 100,
+    "edge_priority": {
+      "2-3": 30,
+      "2-4": 20,
+      "4-5": 10
+    },
+    "ideology_shift": 0.05
+  },
+  "confidence": {
+    "threshold_tension": 0.75,
+    "threshold_critical": 1.0,
+    "cooldown_days_on_critical": 2,
+    "base_drift_below_tension": -0.01,
+    "tension_multiplier": 1.5,
+    "native_bonus": 0.03,
+    "hated_penalty": -0.03,
+    "unassigned_penalty": -0.04,
+    "non_native_no_success_penalty": -0.02,
+    "suppress_confidence_penalty": -0.2,
+    "suppress_loyalty_penalty": -0.05,
+    "suppress_influence_penalty": -0.05,
+    "suppress_factory_stress_delta": 0.03,
+    "outcome_delta": {
+      "total_success": 0.08,
+      "small_success": 0.05,
+      "neutral": 0.02,
+      "small_fiasco": -0.05,
+      "total_fiasco": -0.08
+    },
+    "hated_rooms": {
+      "L": [],
+      "S": [3, 4, 5],
+      "C": [1, 2],
+      "W": [],
+      "T": [4]
+    },
+    "tension_passives": {
+      "L": { "discipline": 0.02, "stress": 0.01 },
+      "S": { "global_accident_bonus": 0.05 },
+      "C": { "alignment": -0.02 },
+      "W": { "equipment_damage_multiplier": 0.8 },
+      "T": { "stress": -0.02, "discipline": -0.01 }
+    }
+  },
+  "critical_events": {
+    "W": {
+      "name": "System Refactor",
+      "duration_days": 3,
+      "reset_confidence": 0.5,
+      "cooldown_days": 2,
+      "shutdown_except_brewery_today": true,
+      "brewery_multiplier_today": 6.0,
+      "set_equipment_to": 1.0,
+      "alignment_delta": -0.2,
+      "rigidity_delta": 0.35,
+      "radical_potential_delta": 0.3,
+      "innovation_pressure_delta": 0.25,
+      "cathexis_confidence_delta": 0.2,
+      "discipline_threshold_for_bonus_risk": 0.6,
+      "next_day_accident_bonus_if_low_discipline": 0.15
+    },
+    "T": {
+      "name": "Harmonic Dissolution",
+      "duration_days": 2,
+      "reset_confidence": 0.4,
+      "cooldown_days": 2,
+      "global_non_weaving_output_multiplier_today": 0.5,
+      "weaving_output_multiplier_today": 0.0,
+      "factory_stress_delta": -0.5,
+      "factory_discipline_delta": -0.4,
+      "invert_alignment_indoctrination": true,
+      "rigidity_delta": -0.4,
+      "radical_potential_delta": 0.2,
+      "innovation_pressure_delta": -0.25,
+      "cathexis_influence_delta": 0.2,
+      "limen_loyalty_delta": -0.15,
+      "global_accident_bonus": 0.05
+    },
+    "L": {
+      "name": "Security Lockdown",
+      "reset_confidence": 0.55,
+      "cooldown_days": 2,
+      "factory_output_multiplier_today": 0.0,
+      "discipline_delta": 0.15,
+      "stress_delta": 0.03
+    },
+    "S": {
+      "name": "Conveyor Overdrive",
+      "reset_confidence": 0.55,
+      "cooldown_days": 2,
+      "conveyor_multiplier": 3.0,
+      "casualties_min": 3,
+      "casualties_max": 6,
+      "conveyor_equipment_to": 0.0
+    },
+    "C": {
+      "name": "Theatre Revolution",
+      "reset_confidence": 0.55,
+      "cooldown_days": 2,
+      "set_all_alignment_to": 0.0
+    }
+  },
+  "outcome_tables": {
+    "L": {
+      "2": [
+        { "label": "small_success", "weight": 1, "sup_mult": 0.7, "fiasco_severity": 0.0, "no_accidents": true }
+      ],
+      "3": [
+        { "label": "small_fiasco", "weight": 1, "sup_mult": 1.0, "fiasco_severity": 0.5 },
+        { "label": "total_fiasco", "weight": 1, "sup_mult": 1.0, "fiasco_severity": 1.0, "equipment_damage_min": 0.1, "equipment_damage_max": 0.4 },
+        { "label": "small_success", "weight": 1, "sup_mult": 0.5, "fiasco_severity": 0.0 },
+        { "label": "total_success", "weight": 1, "sup_mult": 1.0, "fiasco_severity": 0.0 }
+      ],
+      "4": [
+        { "label": "small_fiasco", "weight": 1, "sup_mult": 0.5, "fiasco_severity": 0.5, "equipment_damage_min": 0.1, "equipment_damage_max": 0.3 },
+        { "label": "total_fiasco", "weight": 1, "sup_mult": 0.3, "fiasco_severity": 1.0, "casualties_min": 1, "casualties_max": 1, "equipment_damage_min": 0.1, "equipment_damage_max": 0.3 },
+        { "label": "small_success", "weight": 1, "sup_mult": 0.5, "fiasco_severity": 0.0 }
+      ],
+      "5": [
+        { "label": "small_fiasco", "weight": 1, "sup_mult": 0.5, "fiasco_severity": 0.5, "equipment_damage_min": 0.1, "equipment_damage_max": 0.3 },
+        { "label": "total_fiasco", "weight": 1, "sup_mult": 0.0, "fiasco_severity": 1.0, "equipment_damage_min": 0.3, "equipment_damage_max": 0.7 },
+        { "label": "small_success", "weight": 1, "sup_mult": 0.5, "fiasco_severity": 0.0 }
+      ]
+    },
+    "S": {
+      "2": [
+        { "label": "small_fiasco", "weight": 1, "sup_mult": 1.3, "fiasco_severity": 0.5, "casualties_min": 1, "casualties_max": 1, "equipment_damage_min": 0.1, "equipment_damage_max": 0.3 },
+        { "label": "total_fiasco", "weight": 1, "sup_mult": 1.3, "fiasco_severity": 1.0, "casualties_min": 1, "casualties_max": 3, "equipment_damage_min": 0.2, "equipment_damage_max": 0.4 },
+        { "label": "small_success", "weight": 1, "sup_mult": 1.5, "fiasco_severity": 0.0, "casualties_min": 0, "casualties_max": 1, "equipment_damage_min": 0.1, "equipment_damage_max": 0.1 },
+        { "label": "total_success", "weight": 1, "sup_mult": 2.0, "fiasco_severity": 0.0, "casualties_min": 0, "casualties_max": 0, "equipment_damage_min": 0.1, "equipment_damage_max": 0.1 }
+      ],
+      "4": [
+        { "label": "small_fiasco", "weight": 1, "sup_mult": 0.3, "fiasco_severity": 0.5, "equipment_damage_min": 0.1, "equipment_damage_max": 0.2 },
+        { "label": "total_fiasco", "weight": 1, "sup_mult": 0.0, "fiasco_severity": 1.0, "casualties_min": 1, "casualties_max": 1, "equipment_damage_min": 0.2, "equipment_damage_max": 0.5 },
+        { "label": "small_success", "weight": 1, "sup_mult": 0.5, "fiasco_severity": 0.0 }
+      ],
+      "5": [
+        { "label": "small_fiasco", "weight": 1, "sup_mult": 0.0, "fiasco_severity": 0.5, "equipment_damage_min": 0.1, "equipment_damage_max": 0.1 },
+        { "label": "total_fiasco", "weight": 1, "sup_mult": 0.0, "fiasco_severity": 1.0, "equipment_damage_min": 0.3, "equipment_damage_max": 0.7 },
+        { "label": "small_success", "weight": 1, "sup_mult": 0.5, "fiasco_severity": 0.0 }
+      ]
+    },
+    "C": {
+      "2": [
+        { "label": "small_fiasco", "weight": 1, "sup_mult": 1.0, "fiasco_severity": 0.5 },
+        { "label": "small_success", "weight": 1, "sup_mult": 0.5, "fiasco_severity": 0.0, "loyalty_delta": -0.02 }
+      ],
+      "3": [
+        { "label": "total_success", "weight": 1, "sup_mult": 2.0, "fiasco_severity": 0.0 }
+      ],
+      "4": [
+        { "label": "neutral", "weight": 1, "sup_mult": 0.7, "fiasco_severity": 0.0, "loyalty_delta": -0.02 }
+      ],
+      "5": [
+        { "label": "neutral", "weight": 1, "sup_mult": 1.0, "fiasco_severity": 0.0 }
+      ]
+    },
+    "W": {
+      "2": [
+        { "label": "small_success", "weight": 1, "sup_mult": 1.0, "fiasco_severity": 0.0, "repair_first": true }
+      ],
+      "3": [
+        { "label": "small_success", "weight": 1, "sup_mult": 0.3, "fiasco_severity": 0.0, "repair_first": true }
+      ],
+      "4": [
+        { "label": "small_success", "weight": 1, "sup_mult": 1.0, "fiasco_severity": 0.0, "repair_first": true },
+        { "label": "total_success", "weight": 1, "sup_mult": 3.0, "fiasco_severity": 0.0, "repair_first": true }
+      ],
+      "5": [
+        { "label": "small_success", "weight": 1, "sup_mult": 0.0, "fiasco_severity": 0.0, "repair_first": true, "weaving_boost_next_day": 2.0 }
+      ]
+    },
+    "T": {
+      "2": [
+        { "label": "small_success", "weight": 1, "sup_mult": 0.2, "fiasco_severity": 0.0, "factory_stress_delta": -0.1 }
+      ],
+      "4": [
+        { "label": "small_success", "weight": 1, "sup_mult": 0.0, "fiasco_severity": 0.0, "factory_discipline_delta": -0.5, "factory_stress_delta": -0.5 }
+      ],
+      "5": [
+        { "label": "small_success", "weight": 1, "sup_mult": 0.0, "fiasco_severity": 0.0, "repair_all_equipment": true, "weaving_boost_next_day": 2.0 }
+      ]
+    }
+  },
+  "initial_state": {
+    "cash": 50,
+    "worker_dumb": 7,
+    "worker_smart": 3,
+    "inventory": {
+      "raw_brains_dumb": 0,
+      "raw_brains_smart": 0,
+      "washed_dumb": 0,
+      "washed_smart": 0,
+      "substrate_gallons": 0,
+      "ribbon_yards": 0
+    },
+    "initial_equipment_condition": 1.0,
+    "initial_stress_min": 0.05,
+    "initial_stress_max": 0.15,
+    "initial_discipline": 0.55,
+    "initial_alignment": 0.55
+  },
+  "unlock_schedule": {
+    "rooms": {
+      "1": 0,
+      "2": 1,
+      "3": 2,
+      "4": 3,
+      "5": 4,
+      "6": -1
+    },
+    "supervisors": {
+      "L": 0,
+      "S": 1,
+      "C": 2,
+      "W": 3,
+      "T": 4
+    }
+  },
+  "hidden_accumulators": {
+    "rigidity_limen_security": 0.03,
+    "rigidity_discipline": 0.015,
+    "radical_from_low_alignment": 0.02,
+    "radical_from_casualties": 0.02,
+    "innovation_from_output": 0.01,
+    "innovation_from_upgrades": 0.04
+  },
+  "guardrails": {
+    "early_days_max_casualties": 1,
+    "early_days_casualty_cap_until_day": 2,
+    "prevent_critical_before_day": 5
+  }
+}

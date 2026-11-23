@@ -1,0 +1,472 @@
+{
+  "desktop": {
+    "animated": 32,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "nodes": 1050,
+    "poses": [
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.997713, 0.0675939, -0.0675939, 0.997713, 0, 0)"
+      },
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 326.861, 49.726)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 295.113)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.997713, 0.0675939, -0.0675939, 0.997713, 0, 0)"
+      },
+      {
+        "name": "profile-operator-rod",
+        "state": "running",
+        "transform": "matrix(0.0201308, 0.999789, -0.999789, 0.0201308, 337.439, 143.746)"
+      },
+      {
+        "name": "profile-operator-drive",
+        "state": "running",
+        "transform": "matrix(0.999768, -0.0215254, 0.0215254, 0.999768, 0, 0)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.997713, 0.0675939, -0.0675939, 0.997713, 0, 0)"
+      }
+    ],
+    "rect": {
+      "height": 454.140625,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "running": 32,
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "motionLater": {
+    "animated": 32,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "nodes": 1050,
+    "poses": [
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.970296, 0.241922, -0.241922, 0.970296, 0, 0)"
+      },
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 332.635, 55.5)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 295)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.970296, 0.241922, -0.241922, 0.970296, 0, 0)"
+      },
+      {
+        "name": "profile-operator-rod",
+        "state": "running",
+        "transform": "matrix(0.3514, 0.9362, -0.9362, 0.3514, 335.825, 146.813)"
+      },
+      {
+        "name": "profile-operator-drive",
+        "state": "running",
+        "transform": "matrix(0.988467, 0.151435, -0.151435, 0.988467, 0, 0)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.970296, 0.241922, -0.241922, 0.970296, 0, 0)"
+      }
+    ],
+    "rect": {
+      "height": 454.140625,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "running": 32,
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "paused": {
+    "animated": 32,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "nodes": 1050,
+    "poses": [
+      {
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(0.970296, 0.241922, -0.241922, 0.970296, 0, 0)"
+      },
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 332.635, 55.5)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 295)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(0.970296, 0.241922, -0.241922, 0.970296, 0, 0)"
+      },
+      {
+        "name": "profile-operator-rod",
+        "state": "paused",
+        "transform": "matrix(0.3514, 0.9362, -0.9362, 0.3514, 335.825, 146.813)"
+      },
+      {
+        "name": "profile-operator-drive",
+        "state": "paused",
+        "transform": "matrix(0.988467, 0.151435, -0.151435, 0.988467, 0, 0)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(0.970296, 0.241922, -0.241922, 0.970296, 0, 0)"
+      }
+    ],
+    "rect": {
+      "height": 454.140625,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "running": 0,
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "pausedAgain": {
+    "animated": 32,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "nodes": 1050,
+    "poses": [
+      {
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(0.970296, 0.241922, -0.241922, 0.970296, 0, 0)"
+      },
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 332.635, 55.5)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 295)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(0.970296, 0.241922, -0.241922, 0.970296, 0, 0)"
+      },
+      {
+        "name": "profile-operator-rod",
+        "state": "paused",
+        "transform": "matrix(0.3514, 0.9362, -0.9362, 0.3514, 335.825, 146.813)"
+      },
+      {
+        "name": "profile-operator-drive",
+        "state": "paused",
+        "transform": "matrix(0.988467, 0.151435, -0.151435, 0.988467, 0, 0)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(0.970296, 0.241922, -0.241922, 0.970296, 0, 0)"
+      }
+    ],
+    "rect": {
+      "height": 454.140625,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "running": 0,
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "pauseStable": true,
+  "phone390": {
+    "animated": 32,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "nodes": 1050,
+    "poses": [
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.977812, 0.209484, -0.209484, 0.977812, 0, 0)"
+      },
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 330.46, 39.2657)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 299.431, 288.013)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.977812, 0.209484, -0.209484, 0.977812, 0, 0)"
+      },
+      {
+        "name": "profile-operator-rod",
+        "state": "running",
+        "transform": "matrix(0.278677, 0.960368, -0.960368, 0.278677, 336.531, 145.626)"
+      },
+      {
+        "name": "profile-operator-drive",
+        "state": "running",
+        "transform": "matrix(0.996564, 0.0828239, -0.0828239, 0.996564, 0, 0)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.977812, 0.209484, -0.209484, 0.977812, 0, 0)"
+      }
+    ],
+    "rect": {
+      "height": 377.640625,
+      "width": 326,
+      "x": 32,
+      "y": 175.078125
+    },
+    "running": 32,
+    "scrollWidth": 370,
+    "width": 390
+  },
+  "phone320": {
+    "animated": 32,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "nodes": 1050,
+    "poses": [
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 326.861, 65.5)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "name": "profile-operator-rod",
+        "state": "running",
+        "transform": "matrix(-0.086, 0.9963, -0.9963, -0.086, 337.268, 144.141)"
+      },
+      {
+        "name": "profile-operator-drive",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      }
+    ],
+    "rect": {
+      "height": 308.578125,
+      "width": 256,
+      "x": 32,
+      "y": 212.671875
+    },
+    "running": 32,
+    "scrollWidth": 300,
+    "width": 320
+  },
+  "tablet768": {
+    "animated": 32,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "nodes": 1050,
+    "poses": [
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 332.635, 55.5)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 295)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "name": "profile-operator-rod",
+        "state": "running",
+        "transform": "matrix(-0.086, 0.9963, -0.9963, -0.086, 337.268, 144.141)"
+      },
+      {
+        "name": "profile-operator-drive",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      }
+    ],
+    "rect": {
+      "height": 321.046875,
+      "width": 265.59375,
+      "x": 38,
+      "y": 221.984375
+    },
+    "running": 32,
+    "scrollWidth": 748,
+    "width": 768
+  },
+  "errors": [],
+  "offscreen": {
+    "animated": 32,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "nodes": 1050,
+    "poses": [
+      {
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 326.861, 65.5)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "name": "profile-operator-rod",
+        "state": "paused",
+        "transform": "matrix(-0.086, 0.9963, -0.9963, -0.086, 337.268, 144.141)"
+      },
+      {
+        "name": "profile-operator-drive",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      }
+    ],
+    "rect": {
+      "height": 321.046875,
+      "width": 265.59375,
+      "x": 38,
+      "y": -4191.015625
+    },
+    "running": 0,
+    "scrollWidth": 748,
+    "width": 768
+  },
+  "resumed": {
+    "animated": 32,
+    "brokenUse": [],
+    "duplicateIds": [],
+    "nodes": 1050,
+    "poses": [
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.986374, 0.164518, -0.164518, 0.986374, 0, 0)"
+      },
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 328.229, 43.1303)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 297.646, 291.104)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.986374, 0.164518, -0.164518, 0.986374, 0, 0)"
+      },
+      {
+        "name": "profile-operator-rod",
+        "state": "running",
+        "transform": "matrix(0.189483, 0.981919, -0.981919, 0.189483, 337.081, 144.548)"
+      },
+      {
+        "name": "profile-operator-drive",
+        "state": "running",
+        "transform": "matrix(0.999749, 0.0224184, -0.0224184, 0.999749, 0, 0)"
+      },
+      {
+        "name": "profile-operator-lever",
+        "state": "running",
+        "transform": "matrix(0.986374, 0.164518, -0.164518, 0.986374, 0, 0)"
+      }
+    ],
+    "rect": {
+      "height": 446.671875,
+      "width": 415.71875,
+      "x": 58,
+      "y": 341.28125
+    },
+    "running": 32,
+    "scrollWidth": 1260,
+    "width": 1280
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "loopforge/studio-task-v1",
+  "id": "ASSIGN-BY-PRODUCER",
+  "title": "One concrete deliverable",
+  "ownerRole": "",
+  "receivingRole": "",
+  "goal": "What the player or reviewer should gain",
+  "status": "brief",
+  "inputs": {
+    "commit": "",
+    "uncommittedSnapshot": "",
+    "assetHashes": {},
+    "references": [],
+    "approvedDecisions": [],
+    "foundations": {
+      "roleMap": "",
+      "directSources": [],
+      "sourceHashesAndDates": {},
+      "approvedExemplars": [],
+      "legacyAuthorityLimits": []
+    }
+  },
+  "scope": {
+    "worktree": "",
+    "branch": "",
+    "allowedPaths": [],
+    "excludedPaths": []
+  },
+  "budget": {
+    "meshyCreditsReserved": 0,
+    "canonicalProjectCap": 1000,
+    "cumulativeTokenAllowance": "inherit studio default",
+    "handoffBeforeAllowanceFraction": 0.7
+  },
+  "model": {
+    "provider": "inherit current configuration",
+    "model": "record actual execution model",
+    "reason": "",
+    "reviewerModel": ""
+  },
+  "acceptance": {
+    "craft": [],
+    "visual": [],
+    "behavior": [],
+    "performance": []
+  },
+  "handoff": {
+    "summary": "",
+    "decisions": [],
+    "changedFiles": [],
+    "outputHashes": {},
+    "evidence": [],
+    "remainingDefects": [],
+    "unverified": [],
+    "nextAction": "",
+    "acceptedBy": null,
+    "foundationsUsed": [],
+    "durableLessons": [],
+    "ownMemoryEvidence": [],
+    "ownerTasteDecisionsPending": [],
+    "retrievalEvidence": {
+      "status": "not run",
+      "tool": "",
+      "query": "",
+      "source": ""
+    }
+  }
+}

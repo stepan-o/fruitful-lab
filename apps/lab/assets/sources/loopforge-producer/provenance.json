@@ -1,0 +1,45 @@
+{
+  "pack": "loopforge-producer-studies",
+  "records": [
+    {
+      "id": "foundry-desk",
+      "author": "Lead",
+      "mode": "Built-in imagegen",
+      "date": "2026-10-08",
+      "source": "foundry-desk.png",
+      "sha256": "a9fb8e5f9b7f82ba5bdb48879178f3d1c2254e7e3aa261c99068480ce9260eec",
+      "prompts": "foundry-desk-prompts.md",
+      "use": "Concept review only. Not a runtime atlas; generated room imagery and incidental lettering are placeholders."
+    },
+    {
+      "id": "broadcast-control",
+      "author": "producer_broadcast",
+      "mode": "Built-in imagegen",
+      "date": "2026-10-08",
+      "source": "broadcast-control.png",
+      "sha256": "bf3e95e5bed377a3bd62e709fe8aaddf06f7c067d8cc0f7ce79755e7a1b22737",
+      "prompts": "broadcast-control-prompts.md",
+      "use": "Concept review only. Not a runtime atlas; generated room imagery and incidental lettering are placeholders."
+    },
+    {
+      "id": "dispatch-office",
+      "author": "producer_dispatch",
+      "mode": "Built-in imagegen",
+      "date": "2026-10-08",
+      "source": "dispatch-office.png",
+      "sha256": "f56968faf1239554515e3aa8b595c7f383d43641597d1316f120b74f00d905cb",
+      "prompts": "dispatch-office-prompts.md",
+      "use": "Concept review only. Not a runtime atlas; generated room imagery and incidental lettering are placeholders."
+    },
+    {
+      "id": "obedience-organ",
+      "author": "producer_organ",
+      "mode": "Built-in imagegen",
+      "date": "2026-10-08",
+      "source": "obedience-organ.png",
+      "sha256": "d124d4e306146838a4b33af129a1bd9bb064491c5286e990100a280f2afc2218",
+      "prompts": "obedience-organ-prompts.md",
+      "use": "Concept review only. Not a runtime atlas; generated room imagery and incidental lettering are placeholders."
+    }
+  ]
+}

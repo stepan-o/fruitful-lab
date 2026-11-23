@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "revision": "model-briefs-2026-10-21-opening-cast",
+  "date": "2026-10-21",
+  "models": [
+    {
+      "id": "limen",
+      "name": "LIMEN",
+      "subtitle": "Security chief · body + emitter",
+      "status": "Prototype available",
+      "downloadBytes": 1699286,
+      "src": "/loopforge-design/model-briefs/limen.27f47a4626f3e921.json"
+    },
+    {
+      "id": "worker",
+      "name": "Worker 01",
+      "subtitle": "Factory worker · body + motion bank",
+      "status": "Cleanup implemented · visual review",
+      "downloadBytes": 982202,
+      "src": "/loopforge-design/model-briefs/worker.d07220d401aeb5d8.json"
+    },
+    {
+      "id": "stiletto",
+      "name": "STILETTO",
+      "subtitle": "Twin blades · interchangeable forearm modules",
+      "status": "Prototype acting accepted",
+      "downloadBytes": 1218629,
+      "src": "/loopforge-design/model-briefs/stiletto.fce66b6a9c0a346c.json"
+    },
+    {
+      "id": "cathexis",
+      "name": "CATHEXIS",
+      "subtitle": "Theatre diva · intact mechanism + Grace coverage",
+      "status": "Body accepted · two motion cleanup candidates",
+      "downloadBytes": 6631124,
+      "src": "/loopforge-design/model-briefs/cathexis.41564403698adf6c.json"
+    },
+    {
+      "id": "bob",
+      "name": "bob",
+      "subtitle": "Small frame · large hands",
+      "status": "Body candidate generated",
+      "downloadBytes": 2090316,
+      "src": "/loopforge-design/model-briefs/bob.1713bb7a06367352.json"
+    },
+    {
+      "id": "sam",
+      "name": "sam",
+      "subtitle": "Broad low head · square wrists",
+      "status": "Brief ready · body pending",
+      "downloadBytes": 8518,
+      "src": "/loopforge-design/model-briefs/sam.b7d70c8189022dbd.json"
+    },
+    {
+      "id": "ed",
+      "name": "ed",
+      "subtitle": "Upright · dark-blue plates",
+      "status": "Brief ready · body pending",
+      "downloadBytes": 8488,
+      "src": "/loopforge-design/model-briefs/ed.6891376d72ef6135.json"
+    },
+    {
+      "id": "jo",
+      "name": "jo",
+      "subtitle": "Wide eyes · low head",
+      "status": "Brief ready · body pending",
+      "downloadBytes": 8520,
+      "src": "/loopforge-design/model-briefs/jo.0c0321fe99733a68.json"
+    },
+    {
+      "id": "gus",
+      "name": "gus",
+      "subtitle": "Broad shoulders · recessed head",
+      "status": "Brief ready · body pending",
+      "downloadBytes": 8457,
+      "src": "/loopforge-design/model-briefs/gus.31f907e6a74cef2b.json"
+    },
+    {
+      "id": "max",
+      "name": "max",
+      "subtitle": "Tilted shoulder · large receiver",
+      "status": "Brief ready · body pending",
+      "downloadBytes": 8600,
+      "src": "/loopforge-design/model-briefs/max.a6d0672b3a7e99fe.json"
+    },
+    {
+      "id": "mae",
+      "name": "mae",
+      "subtitle": "Long head · neat elbows",
+      "status": "Brief ready · body pending",
+      "downloadBytes": 8509,
+      "src": "/loopforge-design/model-briefs/mae.3bc250abf3c471a2.json"
+    },
+    {
+      "id": "kit",
+      "name": "kit",
+      "subtitle": "Compact · broad feet",
+      "status": "Brief ready · body pending",
+      "downloadBytes": 8531,
+      "src": "/loopforge-design/model-briefs/kit.2f3fb58da02e698b.json"
+    },
+    {
+      "id": "lou",
+      "name": "lou",
+      "subtitle": "Long neck · twin receivers",
+      "status": "Brief ready · body pending",
+      "downloadBytes": 8575,
+      "src": "/loopforge-design/model-briefs/lou.c3598c96663e8e44.json"
+    },
+    {
+      "id": "ben",
+      "name": "ben",
+      "subtitle": "Short · broad flat back",
+      "status": "Brief ready · body pending",
+      "downloadBytes": 8527,
+      "src": "/loopforge-design/model-briefs/ben.536d1ca85d20a972.json"
+    }
+  ]
+}

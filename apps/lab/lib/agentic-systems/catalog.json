@@ -1,0 +1,65 @@
+[
+  {
+    "id": "worth-shipping",
+    "title": "What does the team produce?",
+    "concept": "Finished creative work and reusable capacity",
+    "number": 1,
+    "part": 1
+  },
+  {
+    "id": "small-world",
+    "title": "Share a dependable world",
+    "concept": "Shared commitments across separate contexts",
+    "number": 2,
+    "part": 2
+  },
+  {
+    "id": "division-of-work",
+    "title": "Earn the division of labor",
+    "concept": "Quality, independence and coordination overhead",
+    "number": 3,
+    "part": 3
+  },
+  {
+    "id": "correction",
+    "title": "Bring judgment closer",
+    "concept": "Latency of consequential feedback",
+    "number": 4,
+    "part": 4
+  },
+  {
+    "id": "readable-detail",
+    "title": "Protect the intended experience",
+    "concept": "Joint creative judgment at integration",
+    "number": 5,
+    "part": 5
+  },
+  {
+    "id": "generation",
+    "title": "Search beyond the first idea",
+    "concept": "Useful diversity and selective search",
+    "number": 6,
+    "part": 6
+  },
+  {
+    "id": "confidence",
+    "title": "Test the work and the tests",
+    "concept": "Confidence and the cost of its machinery",
+    "number": 7,
+    "part": 7
+  },
+  {
+    "id": "responsive",
+    "title": "Shorten the consequential wait",
+    "concept": "Delivery lead time and runtime obligations",
+    "number": 8,
+    "part": 8
+  },
+  {
+    "id": "handoff",
+    "title": "Decide when to stop",
+    "concept": "Marginal value, stopping and ownership",
+    "number": 9,
+    "part": 9
+  }
+]

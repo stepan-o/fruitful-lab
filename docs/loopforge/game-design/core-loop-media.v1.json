@@ -1,0 +1,193 @@
+{
+  "version": 1,
+  "reviewed": "2026-10-08",
+  "scope": "Editorial figures in the Loopforge design study only. Not Loopforge artwork, game UI assets, asset-generation references or evidence of endorsement.",
+  "transform": "Uncropped resize and WebP encoding only. No generative changes or removed notices. Original downloads kept outside the published repository.",
+  "figures": {
+    "factorio-compact": {
+      "game": "Factorio",
+      "credit": "© Wube Software. All rights reserved.",
+      "sourceUrl": "https://cdn.factorio.com/assets/img/screenshots/screenshot-5.jpg",
+      "sourcePage": "https://www.factorio.com/game/screenshots",
+      "basisUrl": "https://www.factorio.com/support/press-kit",
+      "publicationBasis": "Publisher expressly permits website use of its screenshots; game website credited and linked.",
+      "versionNote": "Official gallery still; version unspecified.",
+      "sourceSha256": "68cdd574a2fda0bfd6dd6b6f61f15985878e2211fd7dbca4869da5d3b562b8e3",
+      "sourceSize": [
+        1920,
+        1080
+      ],
+      "variants": [
+        {
+          "src": "/loopforge-design/references/factorio-compact-640.134490d1e9c3.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 58722,
+          "sha256": "134490d1e9c3fdba813e841d292933812fcdf5f837f0435101a587bd0e4ae42a"
+        },
+        {
+          "src": "/loopforge-design/references/factorio-compact-960.73a4e9b92c74.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 132140,
+          "sha256": "73a4e9b92c745b13b8d77bc9fb48d3a86045bea38f6e69f888aa21ccccf0851a"
+        },
+        {
+          "src": "/loopforge-design/references/factorio-compact-1600.47c793c728b7.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 474644,
+          "sha256": "47c793c728b7dc2815385d45a8c31751b8845f3f7382e18543c5178002a16deb"
+        }
+      ]
+    },
+    "factorio-network": {
+      "game": "Factorio",
+      "credit": "© Wube Software. All rights reserved.",
+      "sourceUrl": "https://cdn.factorio.com/assets/img/screenshots/screenshot-6.jpg",
+      "sourcePage": "https://www.factorio.com/game/screenshots",
+      "basisUrl": "https://www.factorio.com/support/press-kit",
+      "publicationBasis": "Publisher expressly permits website use of its screenshots; game website credited and linked.",
+      "versionNote": "Official gallery still; version unspecified.",
+      "sourceSha256": "f7b0de2ed21beb2a53d5a78477b22d220cf291bcf7a9f33ee0deb18023aebe94",
+      "sourceSize": [
+        1920,
+        1080
+      ],
+      "variants": [
+        {
+          "src": "/loopforge-design/references/factorio-network-640.ccc561177fe4.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 97718,
+          "sha256": "ccc561177fe48d788a50f855b76bae495ce360ab61219c0ad1ac29c98988f220"
+        },
+        {
+          "src": "/loopforge-design/references/factorio-network-960.bc852ca6eaaa.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 207596,
+          "sha256": "bc852ca6eaaa7f8f409214d2b6ead3bbcb754cd138176a56d4f8e67c498e573a"
+        },
+        {
+          "src": "/loopforge-design/references/factorio-network-1600.917551b8e7ef.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 626094,
+          "sha256": "917551b8e7efbea414e55e56509fe33736efc5c1d2207f1574dd5e3727f1723b"
+        }
+      ]
+    },
+    "spire-combat": {
+      "game": "Slay the Spire",
+      "credit": "© Mega Crit. All rights reserved.",
+      "sourceUrl": "https://www.megacrit.com/images/ss8.jpg",
+      "sourcePage": "https://www.megacrit.com/press-kits/slay-the-spire/",
+      "basisUrl": "https://www.megacrit.com/press-kits/slay-the-spire/",
+      "publicationBasis": "Selected official press-kit still, reproduced for commentary on its interface. Press distribution is the basis; no blanket asset or Creative Commons licence is claimed. The video content policy is not treated as permission for stills.",
+      "versionNote": "Archival press still dated 28 September 2017 within the image; not a current-version UI claim.",
+      "sourceSha256": "ddeac12e57e3410b12027e46a1d2be57cb694b636e393b562e1d1b33d10ab27d",
+      "sourceSize": [
+        1920,
+        1080
+      ],
+      "variants": [
+        {
+          "src": "/loopforge-design/references/spire-combat-640.1e11e36819d0.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 38666,
+          "sha256": "1e11e36819d06446b9f5e4fd5740f1d7ca590f1cf74842137b7c13eb030d7242"
+        },
+        {
+          "src": "/loopforge-design/references/spire-combat-960.42cd9f539a9b.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 70076,
+          "sha256": "42cd9f539a9be462c7f20bda5b2066f31c2bb9fdcec3126a8c41633bbd114665"
+        },
+        {
+          "src": "/loopforge-design/references/spire-combat-1600.d9e3659bc554.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 199378,
+          "sha256": "d9e3659bc5545da093be25339d20cb7d162b077e14d33a4fdb82c8290475da13"
+        }
+      ]
+    },
+    "suzerain-dialogue": {
+      "game": "Suzerain",
+      "credit": "© Torpor Games. All rights reserved.",
+      "sourceUrl": "https://images.squarespace-cdn.com/content/v1/5c425ce655b02c911da1176d/c9843ba3-902d-4f66-b296-7780d5b5da0d/SordlandDialogue_4K.jpg",
+      "sourcePage": "https://www.torporgames.com/presskit#SuzerainPC",
+      "basisUrl": "https://www.torporgames.com/presskit",
+      "publicationBasis": "Selected publisher-supplied press screenshot for criticism and comparison of the displayed interface. No blanket reuse or Creative Commons licence is claimed.",
+      "versionNote": "PC press gallery labelled version 3.1 on 8 October 2026; navigation link still says 2.0.",
+      "sourceSha256": "cb317b9531cf8fa917e69ad543bf5a5242fcea5a3ef2bbbeaf78e7a7b2ce495c",
+      "sourceSize": [
+        2500,
+        1406
+      ],
+      "variants": [
+        {
+          "src": "/loopforge-design/references/suzerain-dialogue-640.f10971429fff.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 36540,
+          "sha256": "f10971429fffe7fe14a3f55f583881546860cfa5ad477cf6f909878c8b13a8d7"
+        },
+        {
+          "src": "/loopforge-design/references/suzerain-dialogue-960.52064031c438.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 68654,
+          "sha256": "52064031c4382c561d81242203e540ec9add555be57fc5dfc6309e6131b9e651"
+        },
+        {
+          "src": "/loopforge-design/references/suzerain-dialogue-1600.2d35ae9bcbab.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 177354,
+          "sha256": "2d35ae9bcbab14fe2d2eec0cea16c5272980b77a57e62d8c94b9532b3ba35559"
+        }
+      ]
+    },
+    "suzerain-news": {
+      "game": "Suzerain",
+      "credit": "© Torpor Games. All rights reserved.",
+      "sourceUrl": "https://images.squarespace-cdn.com/content/v1/5c425ce655b02c911da1176d/0e494c6c-f7a9-4315-9053-f88372d0cfa3/SordlandNews_4K.jpg",
+      "sourcePage": "https://www.torporgames.com/presskit#SuzerainPC",
+      "basisUrl": "https://www.torporgames.com/presskit",
+      "publicationBasis": "Selected publisher-supplied press screenshot for criticism and comparison of the displayed interface. No blanket reuse or Creative Commons licence is claimed.",
+      "versionNote": "PC press gallery labelled version 3.1 on 8 October 2026; navigation link still says 2.0.",
+      "sourceSha256": "7a922eb60cc74fc295490adc087043a49bd67ec62307a848935c5e21c22bc41e",
+      "sourceSize": [
+        2500,
+        1406
+      ],
+      "variants": [
+        {
+          "src": "/loopforge-design/references/suzerain-news-640.726b3957608d.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 37194,
+          "sha256": "726b3957608dd97e6e6738a811be34a5947e499a312e0a88ef224fa20681bce0"
+        },
+        {
+          "src": "/loopforge-design/references/suzerain-news-960.35c575948e5c.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 66588,
+          "sha256": "35c575948e5cc06f6a06a7e1fbb22993ca543af2c9000778ef981f012967f357"
+        },
+        {
+          "src": "/loopforge-design/references/suzerain-news-1600.00a106025196.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 170178,
+          "sha256": "00a106025196305171debec52415df7281c8416a7e24dcf1a383bd3bdda447ce"
+        }
+      ]
+    }
+  }
+}

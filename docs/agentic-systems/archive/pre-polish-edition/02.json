@@ -1,0 +1,215 @@
+{
+  "id": "small-world",
+  "title": "A world small enough to trust",
+  "standfirst": "Two workers are enough to expose a bad promise. They are also enough to keep a secret.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "visual",
+      "id": "small-world",
+      "title": "A shift for two",
+      "caption": "A deliberately small reconstruction of selected Loopforge contracts. Each worker may make one piece. The card, single reservation and two-beat cycle are teaching rules; this is not a port of the full encounter. The downloadable version retains its original checkpoint identifier, 04."
+    },
+    {
+      "type": "prose",
+      "text": "Bob can get to the press first. Ed can follow. The interesting moment comes when Bob steps away: the empty tile makes the machine look available, but the reservation still belongs to him. Ed can arrive with the card and still be refused. Nothing mysterious has happened. We have given the world two separate facts—where a person stands and what they hold—and now a third, the promise that a resource remains theirs until they release it."
+    },
+    {
+      "type": "prose",
+      "text": "I chose two workers because one lets ownership hide inside presence. A second person forces a handover, a refusal and a shared resource. A third would enlarge the combinations without being necessary to expose those particular mistakes. The small cast is a production choice: enough friction to test the contract, little enough that we can still inspect the whole shift."
+    },
+    {
+      "type": "heading",
+      "text": "Let the selector be replaceable"
+    },
+    {
+      "type": "prose",
+      "text": "The delivered Loopforge kernel separates a proposed action from the authority to admit and execute it. Its checks concern the current room, participants, resources, conditions and routes. A machine cycle also requires its operator at the control. The code reserves the conveyor workpiece across setup and execution. That detail matters: choosing different people does not make a shared workpiece into two independent resources.",
+      "sources": [
+        "kernel"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This supports a distinction Jeff Orkin made in his F.E.A.R. account. Planning can choose and sequence actions while a small execution interface performs them. Loopforge’s delivered slice does not implement F.E.A.R.’s planner, and our miniature has none at all. What the implementations share is a useful separation between choosing an action and carrying out its consequences. A new selector can be introduced without granting it permission to bypass the world’s rules.",
+      "sources": [
+        "fear",
+        "kernel"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Here a button submits an intent to one transition function. The scene draws its receipt; it cannot award a workpiece merely because the press has descended. A future planner would gain a useful freedom within that boundary: it could search for a better sequence without acquiring the authority to invent stock or ignore an occupied control. Keeping that promise centralizes implementation and checks; the contract still needs maintenance as the world changes."
+    },
+    {
+      "type": "visual",
+      "id": "commit-window",
+      "title": "Between a promise and its delivery",
+      "caption": "Three sequences run through the same transition function as the playable floor. The control station is shown close up. Advancing a sequence changes simulation state; animation only helps the eye follow it."
+    },
+    {
+      "type": "prose",
+      "text": "Try the middle sequence. Bob has the card and the reservation when the cycle begins. After its first beat, he leaves the control. At the next beat, the world finds him absent and discards the unfinished cycle. The earlier acceptance was correct, and so is the later refusal. A request can become invalid while it is being carried out. Checking once is not a promise that the future will cooperate."
+    },
+    {
+      "type": "prose",
+      "text": "Passing the card also interrupts the cycle. Ed’s possession does not transfer Bob’s reservation or make Ed the operator. Our explicit handover asks them to finish or cancel, release, make room, pass the card and claim again. That ceremony is easy to inspect and rather demanding to play. A convenience is worth adding when it removes effort without concealing unfinished work. The distinction lets us simplify the interaction while keeping the obligation."
+    },
+    {
+      "type": "heading",
+      "text": "The expensive second click"
+    },
+    {
+      "type": "prose",
+      "text": "Repeat the last request ID in the inspector. The world returns the existing result; it does not act twice. A new movement click creates a new request and can take another step. This matters when an agent retries after an uncertain response. Without an identity for the request, a transport problem can become an extra delivery."
+    },
+    {
+      "type": "prose",
+      "text": "During construction, my first test driver reused IDs across separate action sequences. Five checks failed: supposedly new actions were being treated as retries. Rewriting the world would have removed the protection I wanted. I corrected the driver and kept the retry test. The small deterministic model made that investigation tractable; I could follow an ID and receipt instead of explaining a fresh generated answer."
+    },
+    {
+      "type": "build",
+      "title": "Keep a world you can take apart",
+      "body": "The checkpoint below runs offline as one saved HTML file. Its plain grid makes the same state transitions easy to inspect. The separate TypeScript source is the authority used by this chapter’s animated floor; the offline copy is generated from it.",
+      "links": [
+        {
+          "label": "Save the playable offline checkpoint",
+          "href": "/agentic-systems/checkpoints/04-smallest-world.html"
+        },
+        {
+          "label": "Read the complete transition source",
+          "href": "/agentic-systems/checkpoints/04-mini-world.ts"
+        },
+        {
+          "label": "Compare the delivered Loopforge kernel",
+          "href": "https://github.com/stepan-o/fruitful-lab/blob/35d114447749ed131c8016f8e0f9dff7d1c2e7d5/apps/lab/lib/loopforge/encounters/kernel.ts"
+        }
+      ],
+      "steps": [
+        "With Bob selected, move southeast three times. Claim the press, begin a cycle, and advance two beats.",
+        "Move Bob northeast to clear the control. With Ed selected, move southeast, northeast, southeast, southeast. Bob and Ed are now adjacent.",
+        "Select Bob, pass the card, then release the press. Select Ed, claim it, begin a cycle and advance two beats. Both workers should have a workpiece.",
+        "Reset and interrupt a cycle after its first beat. Keep the refused receipt beside the unchanged output count."
+      ],
+      "exercise": "Make leaving the control release an idle reservation automatically. Keep the active-cycle case separate. Which handover step does the convenience remove, and which new interruption must you now check?"
+    },
+    {
+      "type": "heading",
+      "text": "Pay for the ignorance the scene needs"
+    },
+    {
+      "type": "evidence",
+      "asset": "help-and-card",
+      "alt": "Retained R10 factory frame at 08:00:26: Sam attends to Bob on the left, while Ed holds a small pale card on the right.",
+      "caption": "R10 browser capture retained with the 25 October 2026 materials, factory time 08:00:26. The complete source frame includes the review controls; the book resizes and re-encodes it without cropping.",
+      "original": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-help-and-card.png"
+    },
+    {
+      "type": "prose",
+      "text": "Sam is occupied with Bob. Ed has found another use for the moment. The pale card is a small detail in the picture, but a large difference in the state of the day. Engine’s account identifies the separation worth keeping: Ed’s possession survives the ending without silently becoming Bob’s knowledge. A player can witness the theft while the person being robbed continues under a different understanding of the room.",
+      "sources": [
+        "engine-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "That separation makes one extra kind of state worth maintaining. If everyone inherits the transfer, the missing card is an inventory update with witnesses everywhere. If Bob retains his old account, a later identification request can acquire tension. The benefit comes from a specific difference between people. It does not require us to build a complete inner life for each worker."
+    },
+    {
+      "type": "visual",
+      "id": "custody-room",
+      "title": "One card, three accounts",
+      "caption": "A record can agree with the world by accident. Compare its source and sequence marker as well as its current value: those fields tell us how the character arrived at this account."
+    },
+    {
+      "type": "prose",
+      "text": "Rao and Georgeff’s BDI account distinguishes information about the environment, objectives and commitments to act. Its air-traffic example treats local sensing and a changing world as practical constraints; beliefs need not have a knowledge-like guarantee of truth. That gives us a useful conceptual separation without requiring the architecture wholesale.",
+      "sources": [
+        "bdi"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Loopforge implements a much smaller contract. A belief records a value, source, mode and tick. Hearing a claim writes a reported belief; an explicitly observed transfer can write an observed one. Physical custody lives elsewhere. These are useful distinctions even in a deterministic script. They do not make this runtime a general BDI planner, and Engine explicitly declined that description.",
+      "sources": [
+        "loopforge-knowledge",
+        "engine-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The additional fields create obligations of their own. A transfer must update custody once, update the right observers, and leave the others alone. A report must preserve who said it without silently making it true. I would take on that burden for the card scene because the difference can drive a later encounter. I would postpone memories that no action or piece of dialogue uses; an unused biography can still become another source of contradictions to repair."
+    },
+    {
+      "type": "prose",
+      "text": "For a future dialogue generator, the same boundary belongs in its input. Give a character its observations and attributed reports rather than the complete world record and an instruction to pretend ignorance. A generated sentence about the card must not move it. The current typed runtime provides places to enforce those rules; it does not demonstrate a reliable language-model character.",
+      "sources": [
+        "loopforge-knowledge"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Four failures worth keeping"
+    },
+    {
+      "type": "prose",
+      "text": "Writer’s hearing review initially found sixteen turns missing an addressed listener and treated all sixteen as failures. That diagnosis would have produced unnecessary audience edits. On checking later actions, Writer withdrew it: Jo received Gus’s actual call, and Bob’s delight did not require Lou’s count. Four nonreceipts could remain. The other twelve needed the people to be staged where the exchange could actually reach them.",
+      "sources": [
+        "writer-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Mae and Kit could not reach STILETTO from their posts. Director asked for an approach to the listener rather than a larger hearing radius; the R10 export recorded both reports arriving. The pinned staging regression checks the twelve selected repairs after admitted travel and preserves the four intended nonreceipts. That gives the work a stopping condition: the exchanges needed by later actions must arrive through plausible routes. Eliminating every remaining silence would spend more staging effort to undo part of the scene’s information design.",
+      "sources": [
+        "director-second",
+        "hearing-regression"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "hearing-room",
+      "title": "Bring the statement within reach",
+      "caption": "Begin across the doorway with a local voice. Try moving Bob closer before changing the voice. Then send the false floor claim: a successful receipt and a true statement are separate results."
+    },
+    {
+      "type": "prose",
+      "text": "Ed addresses Bob in every trial. Distance and the doorway determine whether the selected voice reaches him. Once it does, Bob can retain what Ed said—even when the card is visibly still with Ed in our review view. This example deliberately performs no credibility reasoning. Its “reported” label preserves the question for a system that might later compare testimony with observation."
+    },
+    {
+      "type": "prose",
+      "text": "Nels Anderson’s account of Mark of the Ninja describes visible noise travel and enemy awareness as tools for planning. The studio evidence supports a narrower version of that lesson: a named recipient alone did not provide an intelligible route from a cue to its response. But legibility does not mean universal awareness. A player should be able to understand why Bob missed something, then live with what he does not know.",
+      "sources": [
+        "ninja-feedback",
+        "writer-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This is where I would draw the next boundary of the factory. Keep one authoritative custody record, enough personal evidence for the encounter, and a visible rule for receiving a report. Add deliberation only when choosing among legitimate actions becomes part of the experience. More intelligence would then have a job to earn; until then, it would mostly enlarge the explanation required when something went wrong."
+    },
+    {
+      "type": "build",
+      "title": "Give one worker an incomplete view",
+      "body": "Extend the small factory above with the minimum personal record needed for one later encounter. Keep custody authoritative.",
+      "steps": [
+        "Attach a source, observation mode and sequence marker to each worker’s record of the card. Do not alias those records to the world object.",
+        "Commit a transfer for a selected set of observers. Verify that nonobservers retain their previous entries.",
+        "Add a report event with a reach check. Store the speaker’s claim separately from custody, including when the claim is false.",
+        "Write one later action that depends on the worker’s record. Keep a deliberate nonreceipt and show the resulting difference in behavior."
+      ],
+      "exercise": "Remove one field from a worker’s record. Find a later decision that becomes impossible or unjustified. If nothing changes, explain why the field deserves to remain. Then send the false floor claim and inspect what Bob can legitimately correct."
+    }
+  ],
+  "sourceIds": [
+    "kernel",
+    "fear",
+    "engine-second",
+    "bdi",
+    "loopforge-knowledge",
+    "writer-second",
+    "director-second",
+    "hearing-regression",
+    "ninja-feedback"
+  ]
+}

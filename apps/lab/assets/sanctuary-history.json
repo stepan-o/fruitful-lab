@@ -1,0 +1,27 @@
+{
+  "pack": "sanctuary-history",
+  "assets": {
+    "diablo-original-combat": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-history/diablo-original-combat.jpg",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "quality": 82,
+      "maxBytes": 190000
+    },
+    "diablo-three-items": {
+      "kind": "image",
+      "source": "assets/sources/sanctuary-history/diablo-three-items.jpg",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "quality": 82,
+      "maxBytes": 190000
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "revision": "room-kit/4",
+  "assets": {
+    "wash": {
+      "revision": "room-kit/1",
+      "asset": "brain-wash",
+      "src": "/media/files/8bed06015ef4a09622c19d6f121f42c82630a24c9059dda4f096313cc145e07d.glb",
+      "sha256": "8bed06015ef4a09622c19d6f121f42c82630a24c9059dda4f096313cc145e07d",
+      "bytes": 1163828,
+      "sourceSha256": "c8508b346d8a856ebd6cb9d3d1ef0f2d1cb99f5aa6bf33a457c5c67c6a127bd3",
+      "triangles": 10997,
+      "textureSize": 1024,
+      "status": "candidate; fit and visual review pending"
+    },
+    "brain": {
+      "revision": "room-kit/1",
+      "asset": "brain",
+      "src": "/media/files/8a34c53956db2b7e81d1145815e6ba5d1c9c7b9882b4383d12f959299f38b412.glb",
+      "sha256": "8a34c53956db2b7e81d1145815e6ba5d1c9c7b9882b4383d12f959299f38b412",
+      "bytes": 252892,
+      "sourceSha256": "1feb7f83e5aacf9d7094a3b6213ec2e2414febbc32377d2b2e21ba1977708d0d",
+      "triangles": 4185,
+      "textureSize": 512,
+      "status": "candidate; fit and visual review pending"
+    },
+    "forge": {
+      "revision": "room-kit/1",
+      "asset": "lattice-forge",
+      "src": "/media/files/9d291caa922450b9ec19617c495ef5a1bb9a44368335ae6b286d38620c31f0c4.glb",
+      "sha256": "9d291caa922450b9ec19617c495ef5a1bb9a44368335ae6b286d38620c31f0c4",
+      "bytes": 1437364,
+      "sourceSha256": "fdb9d0f9282864b71dea482cf3b45cf4304ba94c331b2d0ab4d57acebd753aea",
+      "triangles": 16092,
+      "textureSize": 1024,
+      "status": "candidate; fit and visual review pending"
+    },
+    "carrier": {
+      "revision": "room-kit/1",
+      "asset": "carrier",
+      "src": "/media/files/0f8be465c0bfe6737d857e72833b794a5b17109a965228c60215e2931fe58460.glb",
+      "sha256": "0f8be465c0bfe6737d857e72833b794a5b17109a965228c60215e2931fe58460",
+      "bytes": 323392,
+      "sourceSha256": "f0dfea2130d0cdfaacda556c5e8563141a0a265f78863115fabdfffd43d86a89",
+      "triangles": 2030,
+      "textureSize": 512,
+      "status": "candidate; fit and visual review pending"
+    },
+    "entrance": {
+      "revision": "room-kit/1",
+      "asset": "entrance",
+      "src": "/media/files/e0cd57b5418edfa2b47df40a99f96cd082ec11525fe2fed518c1b35e8169f9f1.glb",
+      "sha256": "e0cd57b5418edfa2b47df40a99f96cd082ec11525fe2fed518c1b35e8169f9f1",
+      "bytes": 1245276,
+      "sourceSha256": "a9e69be95f9b83c4660f5835f07105a3a44af2605cd8937c717c2127dc1ede05",
+      "triangles": 10128,
+      "textureSize": 1024,
+      "status": "candidate; fit and visual review pending"
+    },
+    "desk": {
+      "revision": "room-kit/1",
+      "asset": "desk",
+      "src": "/media/files/15415fb397a80b89b8b77436b9294f2bb37b16fd222ab8c626ebb45cc251a677.glb",
+      "sha256": "15415fb397a80b89b8b77436b9294f2bb37b16fd222ab8c626ebb45cc251a677",
+      "bytes": 971532,
+      "sourceSha256": "61ecacd082c83405e04fb000191eb4012929cb53527c982987758b3afee6ed11",
+      "triangles": 7485,
+      "textureSize": 1024,
+      "status": "candidate; fit and visual review pending"
+    },
+    "portal": {
+      "revision": "room-kit/1",
+      "asset": "portal",
+      "src": "/media/files/4bd555f8184b3efdd2f4ccea26260843e14eb98615601228b32532efe43ef43d.glb",
+      "sha256": "4bd555f8184b3efdd2f4ccea26260843e14eb98615601228b32532efe43ef43d",
+      "bytes": 1115344,
+      "sourceSha256": "0e4cb2c294b2d0daa8100c92eedaf493511d758cbd714813e1e0d852774a4471",
+      "triangles": 9694,
+      "textureSize": 1024,
+      "status": "candidate; fit and visual review pending"
+    },
+    "intake": {
+      "revision": "room-kit/1",
+      "asset": "intake",
+      "src": "/media/files/0f1e58b5a25d9b45dc9fe20cd76a903f8dc5c8beb6cabe35758f8f5562d090fa.glb",
+      "sha256": "0f1e58b5a25d9b45dc9fe20cd76a903f8dc5c8beb6cabe35758f8f5562d090fa",
+      "bytes": 1137916,
+      "sourceSha256": "9104f23a46159351b22481fe554942488cca8449c517be489c270f420963ecbb",
+      "triangles": 12041,
+      "textureSize": 1024,
+      "status": "candidate; fit and visual review pending"
+    },
+    "crate": {
+      "revision": "room-kit/1",
+      "asset": "crate",
+      "src": "/media/files/691529aa5ac3d3b39e6cff02084262a85ba632b5939a46c33a2be15aff5b73df.glb",
+      "sha256": "691529aa5ac3d3b39e6cff02084262a85ba632b5939a46c33a2be15aff5b73df",
+      "bytes": 174556,
+      "sourceSha256": "d9d286d0cdcd3eb4c09f45fc9116611186fa708ddd5acef91098bf67c3aeb731",
+      "triangles": 1979,
+      "textureSize": 512,
+      "status": "candidate; fit and visual review pending"
+    }
+  },
+  "brainStates": {
+    "dirty": {
+      "src": "/media/files/c4f72c07b45cf005ee64dfb3c9f9e11ea42d06d2a7580793e94aa473e99c3a4f.webp",
+      "sha256": "c4f72c07b45cf005ee64dfb3c9f9e11ea42d06d2a7580793e94aa473e99c3a4f",
+      "bytes": 45904,
+      "textureSize": 512,
+      "sourceSha256": "81122652e7c1a2d99a7a8f47fd295ad6067393c672eb33916877a67a15680fdf",
+      "uvVerified": true
+    },
+    "pressed": {
+      "src": "/media/files/5d02224568368013b9db2a1baa068e4295c55fda7503ef7ea331bddc080141ac.webp",
+      "sha256": "5d02224568368013b9db2a1baa068e4295c55fda7503ef7ea331bddc080141ac",
+      "bytes": 47732,
+      "textureSize": 512,
+      "sourceSha256": "8230a0fe50e3e52ed9c3cebb32901155df67f44c36407cb36506a3988efcf5e6",
+      "uvVerified": true
+    }
+  }
+}

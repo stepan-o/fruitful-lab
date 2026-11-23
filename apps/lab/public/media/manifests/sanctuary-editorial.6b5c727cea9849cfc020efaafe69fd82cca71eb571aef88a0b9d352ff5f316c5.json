@@ -1,0 +1,782 @@
+{
+  "schemaVersion": 1,
+  "pack": "sanctuary-editorial",
+  "assets": {
+    "d4-seasonal-tooltip": {
+      "kind": "image",
+      "width": 2553,
+      "height": 1434,
+      "variants": [
+        {
+          "src": "/media/files/c52d55a7dc418e739171271696baa5213e04175085cc53579c94ebaee0e8ce5f.webp",
+          "mime": "image/webp",
+          "bytes": 14152,
+          "sha256": "c52d55a7dc418e739171271696baa5213e04175085cc53579c94ebaee0e8ce5f",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/52d78feca07c76684a8601af7a6819f92c20c2052d0c4c336167441c1e93ea8b.webp",
+          "mime": "image/webp",
+          "bytes": 38140,
+          "sha256": "52d78feca07c76684a8601af7a6819f92c20c2052d0c4c336167441c1e93ea8b",
+          "width": 768,
+          "height": 431
+        },
+        {
+          "src": "/media/files/403799be64b2f6568392df01b5a5994f01b6790d153d56d2cccc352486cb6ec8.webp",
+          "mime": "image/webp",
+          "bytes": 115406,
+          "sha256": "403799be64b2f6568392df01b5a5994f01b6790d153d56d2cccc352486cb6ec8",
+          "width": 1536,
+          "height": 863
+        },
+        {
+          "src": "/media/files/0b701f8416b5cf2e90788e06be5b0fb5a122f9ba0ff538c05d7a3f5a679c158c.webp",
+          "mime": "image/webp",
+          "bytes": 289356,
+          "sha256": "0b701f8416b5cf2e90788e06be5b0fb5a122f9ba0ff538c05d7a3f5a679c158c",
+          "width": 2553,
+          "height": 1434
+        }
+      ]
+    },
+    "d4-campaign-state": {
+      "kind": "image",
+      "width": 2558,
+      "height": 1433,
+      "variants": [
+        {
+          "src": "/media/files/ee91c59de95b92a5477aca51d2337d4ea71329519f1a7c401c15f1dfd89d0c07.webp",
+          "mime": "image/webp",
+          "bytes": 14522,
+          "sha256": "ee91c59de95b92a5477aca51d2337d4ea71329519f1a7c401c15f1dfd89d0c07",
+          "width": 480,
+          "height": 269
+        },
+        {
+          "src": "/media/files/ae38ce139908212ef0d5c468f1422c33922c848c4099c6a3938a9c9ca4a49bc9.webp",
+          "mime": "image/webp",
+          "bytes": 42560,
+          "sha256": "ae38ce139908212ef0d5c468f1422c33922c848c4099c6a3938a9c9ca4a49bc9",
+          "width": 768,
+          "height": 430
+        },
+        {
+          "src": "/media/files/f3e861058bb81a0bac024d4caf8f29a42c3c82493a435d92b9dc999e2c31b271.webp",
+          "mime": "image/webp",
+          "bytes": 138940,
+          "sha256": "f3e861058bb81a0bac024d4caf8f29a42c3c82493a435d92b9dc999e2c31b271",
+          "width": 1536,
+          "height": 860
+        },
+        {
+          "src": "/media/files/55b4a37a4637c2ba40cb2f3783c3bd5b74c412a47a42a63f3bff1a80f963aed2.webp",
+          "mime": "image/webp",
+          "bytes": 354260,
+          "sha256": "55b4a37a4637c2ba40cb2f3783c3bd5b74c412a47a42a63f3bff1a80f963aed2",
+          "width": 2558,
+          "height": 1433
+        }
+      ]
+    },
+    "legacy-d2-combat": {
+      "kind": "image",
+      "width": 1250,
+      "height": 937,
+      "variants": [
+        {
+          "src": "/media/files/87910f6cd631bae9210d8b13c3b701f6e5a3c3a15d74b796dc28310b13892e1f.webp",
+          "mime": "image/webp",
+          "bytes": 31952,
+          "sha256": "87910f6cd631bae9210d8b13c3b701f6e5a3c3a15d74b796dc28310b13892e1f",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "src": "/media/files/78f0cb1629b0d478c2c39f975328d634bd39ad47d9c3742d8dd6f03edd8eb9e1.webp",
+          "mime": "image/webp",
+          "bytes": 94164,
+          "sha256": "78f0cb1629b0d478c2c39f975328d634bd39ad47d9c3742d8dd6f03edd8eb9e1",
+          "width": 768,
+          "height": 576
+        },
+        {
+          "src": "/media/files/2e0fd3d4bae41b0c77360e04107df369f66403099a4f55f34374ddab7d433d40.webp",
+          "mime": "image/webp",
+          "bytes": 172798,
+          "sha256": "2e0fd3d4bae41b0c77360e04107df369f66403099a4f55f34374ddab7d433d40",
+          "width": 1250,
+          "height": 937
+        }
+      ]
+    },
+    "legacy-d4-char-select": {
+      "kind": "image",
+      "width": 1400,
+      "height": 781,
+      "variants": [
+        {
+          "src": "/media/files/e0f977dc8c837522591117013177d894bfa39394dc43efd86727a9f6c6442eb4.webp",
+          "mime": "image/webp",
+          "bytes": 7710,
+          "sha256": "e0f977dc8c837522591117013177d894bfa39394dc43efd86727a9f6c6442eb4",
+          "width": 480,
+          "height": 268
+        },
+        {
+          "src": "/media/files/810ccb3df03bb325a39b50d564fca71bb31cb40fdbe3dcf4082b019cf6becb6e.webp",
+          "mime": "image/webp",
+          "bytes": 21132,
+          "sha256": "810ccb3df03bb325a39b50d564fca71bb31cb40fdbe3dcf4082b019cf6becb6e",
+          "width": 768,
+          "height": 428
+        },
+        {
+          "src": "/media/files/625ff13dcb4538e6bdc249ca6057a2d3fa504d7cd0aff63eb85ee8c54a7e72b9.webp",
+          "mime": "image/webp",
+          "bytes": 50650,
+          "sha256": "625ff13dcb4538e6bdc249ca6057a2d3fa504d7cd0aff63eb85ee8c54a7e72b9",
+          "width": 1400,
+          "height": 781
+        }
+      ]
+    },
+    "legacy-d4-corridor": {
+      "kind": "image",
+      "width": 1350,
+      "height": 759,
+      "variants": [
+        {
+          "src": "/media/files/00d5a19b938f2644db4156c09cf6e0f2e239b6b4c5a261464cc1b6225fd356c5.webp",
+          "mime": "image/webp",
+          "bytes": 10764,
+          "sha256": "00d5a19b938f2644db4156c09cf6e0f2e239b6b4c5a261464cc1b6225fd356c5",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/c7f0fcaa2fc61f3d64a8c315905a6a331732003a2154ec6cfa4ce747da80449a.webp",
+          "mime": "image/webp",
+          "bytes": 32580,
+          "sha256": "c7f0fcaa2fc61f3d64a8c315905a6a331732003a2154ec6cfa4ce747da80449a",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/media/files/fe670ec98a5c459c23ef56a3facb86e99debe8c2cc5d6e1ae59bd1e5fe7fa140.webp",
+          "mime": "image/webp",
+          "bytes": 75254,
+          "sha256": "fe670ec98a5c459c23ef56a3facb86e99debe8c2cc5d6e1ae59bd1e5fe7fa140",
+          "width": 1350,
+          "height": 759
+        }
+      ]
+    },
+    "legacy-d4-key": {
+      "kind": "image",
+      "width": 760,
+      "height": 435,
+      "variants": [
+        {
+          "src": "/media/files/5b71899f27e5899e764078ae1a19e0f25d073439c9366acb42f4b733a8e9fc26.webp",
+          "mime": "image/webp",
+          "bytes": 10566,
+          "sha256": "5b71899f27e5899e764078ae1a19e0f25d073439c9366acb42f4b733a8e9fc26",
+          "width": 480,
+          "height": 275
+        },
+        {
+          "src": "/media/files/fd3a5cbfc146085db173eb9cfa9fa03f7a5b764299bcb58557c9d73b7e41bd7e.webp",
+          "mime": "image/webp",
+          "bytes": 29526,
+          "sha256": "fd3a5cbfc146085db173eb9cfa9fa03f7a5b764299bcb58557c9d73b7e41bd7e",
+          "width": 760,
+          "height": 435
+        }
+      ]
+    },
+    "legacy-d4-platinum": {
+      "kind": "image",
+      "width": 1200,
+      "height": 670,
+      "variants": [
+        {
+          "src": "/media/files/920fc39a0ab7442a26ce718c76aa946ababa7dc60f864917e63663ba011001cb.webp",
+          "mime": "image/webp",
+          "bytes": 14422,
+          "sha256": "920fc39a0ab7442a26ce718c76aa946ababa7dc60f864917e63663ba011001cb",
+          "width": 480,
+          "height": 268
+        },
+        {
+          "src": "/media/files/f652fb23a788ff249d9d56958f247ee481ffd6060c7c0a5fd344395e98e64eaf.webp",
+          "mime": "image/webp",
+          "bytes": 40866,
+          "sha256": "f652fb23a788ff249d9d56958f247ee481ffd6060c7c0a5fd344395e98e64eaf",
+          "width": 768,
+          "height": 429
+        },
+        {
+          "src": "/media/files/62133b2719fb0663c7e365693c48a28b4516d44be7e502152db43280b386fe93.webp",
+          "mime": "image/webp",
+          "bytes": 78194,
+          "sha256": "62133b2719fb0663c7e365693c48a28b4516d44be7e502152db43280b386fe93",
+          "width": 1200,
+          "height": 670
+        }
+      ]
+    },
+    "legacy-d4-shop-grid": {
+      "kind": "image",
+      "width": 1250,
+      "height": 705,
+      "variants": [
+        {
+          "src": "/media/files/7ee65468cccacc97e74da3ef064bc2c474ea4fca24609b30828defe97c9111d5.webp",
+          "mime": "image/webp",
+          "bytes": 26914,
+          "sha256": "7ee65468cccacc97e74da3ef064bc2c474ea4fca24609b30828defe97c9111d5",
+          "width": 480,
+          "height": 271
+        },
+        {
+          "src": "/media/files/9bfca07692c33d5797b99eaafe1d404ea7ef52ba69e13e40490a3b74574ea5db.webp",
+          "mime": "image/webp",
+          "bytes": 69546,
+          "sha256": "9bfca07692c33d5797b99eaafe1d404ea7ef52ba69e13e40490a3b74574ea5db",
+          "width": 768,
+          "height": 433
+        },
+        {
+          "src": "/media/files/f8b6d1977082fc0e3e57daa2038b49f6ccf8aef5af9e2924a282aaec9e5a9c77.webp",
+          "mime": "image/webp",
+          "bytes": 141910,
+          "sha256": "f8b6d1977082fc0e3e57daa2038b49f6ccf8aef5af9e2924a282aaec9e5a9c77",
+          "width": 1250,
+          "height": 705
+        }
+      ]
+    },
+    "legacy-favor-tutorial": {
+      "kind": "image",
+      "width": 1400,
+      "height": 507,
+      "variants": [
+        {
+          "src": "/media/files/224cb364e34f3522ca4ec0d97514d7e27502e0971cc280f2bf651be3f48b91cc.webp",
+          "mime": "image/webp",
+          "bytes": 11214,
+          "sha256": "224cb364e34f3522ca4ec0d97514d7e27502e0971cc280f2bf651be3f48b91cc",
+          "width": 480,
+          "height": 174
+        },
+        {
+          "src": "/media/files/451dfae420cf6565eb7093ebb12707f8358d3fe8f35b2091a95e4550173fbf17.webp",
+          "mime": "image/webp",
+          "bytes": 32774,
+          "sha256": "451dfae420cf6565eb7093ebb12707f8358d3fe8f35b2091a95e4550173fbf17",
+          "width": 768,
+          "height": 278
+        },
+        {
+          "src": "/media/files/3c66cc8cd1e0b69468c03c2de34fea0ebb923372d2c7e6aee20e4735534d89c0.webp",
+          "mime": "image/webp",
+          "bytes": 82152,
+          "sha256": "3c66cc8cd1e0b69468c03c2de34fea0ebb923372d2c7e6aee20e4735534d89c0",
+          "width": 1400,
+          "height": 507
+        }
+      ]
+    },
+    "legacy-indika-points": {
+      "kind": "image",
+      "width": 1150,
+      "height": 647,
+      "variants": [
+        {
+          "src": "/media/files/ae47acdc348162a94cdb55212a47dfdd29f70545a95e3a95ba4eb0bd2e6bd39d.webp",
+          "mime": "image/webp",
+          "bytes": 3830,
+          "sha256": "ae47acdc348162a94cdb55212a47dfdd29f70545a95e3a95ba4eb0bd2e6bd39d",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/60aad2671bc49769c33acc247c2687a3e2a5ae3fe4ad8a9b791667992fa18346.webp",
+          "mime": "image/webp",
+          "bytes": 10434,
+          "sha256": "60aad2671bc49769c33acc247c2687a3e2a5ae3fe4ad8a9b791667992fa18346",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/media/files/ffb1b112fc0c8c689ae6e6673390854893baac1e12bc95d9aa0a9e00de0a3142.webp",
+          "mime": "image/webp",
+          "bytes": 19106,
+          "sha256": "ffb1b112fc0c8c689ae6e6673390854893baac1e12bc95d9aa0a9e00de0a3142",
+          "width": 1150,
+          "height": 647
+        }
+      ]
+    },
+    "legacy-indika-pray": {
+      "kind": "image",
+      "width": 1150,
+      "height": 647,
+      "variants": [
+        {
+          "src": "/media/files/01bb3a404bb98d86deab3f5ca94beadaebe0648db1fff2a6fd3d671ee561fe2a.webp",
+          "mime": "image/webp",
+          "bytes": 4828,
+          "sha256": "01bb3a404bb98d86deab3f5ca94beadaebe0648db1fff2a6fd3d671ee561fe2a",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/a7ccbc64b76d55497ebe23d33edf74027f9ddd8687562de3b8f0399e20e64204.webp",
+          "mime": "image/webp",
+          "bytes": 12368,
+          "sha256": "a7ccbc64b76d55497ebe23d33edf74027f9ddd8687562de3b8f0399e20e64204",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/media/files/fb4b809cea8ee7bc0bb38748d4eba5af3f542128b8748bb0819ffa97be2a0e69.webp",
+          "mime": "image/webp",
+          "bytes": 22992,
+          "sha256": "fb4b809cea8ee7bc0bb38748d4eba5af3f542128b8748bb0819ffa97be2a0e69",
+          "width": 1150,
+          "height": 647
+        }
+      ]
+    },
+    "legacy-season-rank": {
+      "kind": "image",
+      "width": 1250,
+      "height": 892,
+      "variants": [
+        {
+          "src": "/media/files/d0bee73336f561a30128da4bcf49abe90a55233c32811df893e3f0fadeeb6d18.webp",
+          "mime": "image/webp",
+          "bytes": 21138,
+          "sha256": "d0bee73336f561a30128da4bcf49abe90a55233c32811df893e3f0fadeeb6d18",
+          "width": 480,
+          "height": 343
+        },
+        {
+          "src": "/media/files/394e2ddb085f63a1befaacc1fce936aff17a185ffc1299d06e6bb98f94ef95ef.webp",
+          "mime": "image/webp",
+          "bytes": 57248,
+          "sha256": "394e2ddb085f63a1befaacc1fce936aff17a185ffc1299d06e6bb98f94ef95ef",
+          "width": 768,
+          "height": 548
+        },
+        {
+          "src": "/media/files/12744e2dc443361510fc80b3e1da23708c2336f12d1df949c80b9dc456a4f62c.webp",
+          "mime": "image/webp",
+          "bytes": 117154,
+          "sha256": "12744e2dc443361510fc80b3e1da23708c2336f12d1df949c80b9dc456a4f62c",
+          "width": 1250,
+          "height": 892
+        }
+      ]
+    },
+    "outer-wilds-signalscope-prototype": {
+      "kind": "image",
+      "width": 1100,
+      "height": 618,
+      "variants": [
+        {
+          "src": "/media/files/77e36b325770dfd37fb13d2b184b8972340c727c2b2aaf0723b25135c4dcf0b9.webp",
+          "mime": "image/webp",
+          "bytes": 10664,
+          "sha256": "77e36b325770dfd37fb13d2b184b8972340c727c2b2aaf0723b25135c4dcf0b9",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/25ed4a0365839ee24e0a6845adce9da8f7a7bcf5dff2762301f1286b64e8618d.webp",
+          "mime": "image/webp",
+          "bytes": 28026,
+          "sha256": "25ed4a0365839ee24e0a6845adce9da8f7a7bcf5dff2762301f1286b64e8618d",
+          "width": 768,
+          "height": 431
+        },
+        {
+          "src": "/media/files/a02ea3558c919c081471b0fe89b952e2e4db5cc08b1fdd7eabc0206ad2594095.webp",
+          "mime": "image/webp",
+          "bytes": 44064,
+          "sha256": "a02ea3558c919c081471b0fe89b952e2e4db5cc08b1fdd7eabc0206ad2594095",
+          "width": 1100,
+          "height": 618
+        }
+      ]
+    },
+    "drg-season-selection-proposal-2024": {
+      "kind": "image",
+      "width": 2560,
+      "height": 1440,
+      "variants": [
+        {
+          "src": "/media/files/a50551860531830507df8e117c55d87ff445d95c601a12130ce46018330c419f.webp",
+          "mime": "image/webp",
+          "bytes": 31626,
+          "sha256": "a50551860531830507df8e117c55d87ff445d95c601a12130ce46018330c419f",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/5b858267dbb05c327e1fd084ad997e25c4c2bd33d38359b1dd4735a3bf278969.webp",
+          "mime": "image/webp",
+          "bytes": 78872,
+          "sha256": "5b858267dbb05c327e1fd084ad997e25c4c2bd33d38359b1dd4735a3bf278969",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/media/files/fedbb2f57a0c9894f76cfed6a3a00de33d7ed7300731312483fced2499cb5a22.webp",
+          "mime": "image/webp",
+          "bytes": 230862,
+          "sha256": "fedbb2f57a0c9894f76cfed6a3a00de33d7ed7300731312483fced2499cb5a22",
+          "width": 1536,
+          "height": 864
+        },
+        {
+          "src": "/media/files/6de8dedae8f926c0339113acb804c426ce0a855b0e6f4b83fbce9cce1ee46718.webp",
+          "mime": "image/webp",
+          "bytes": 536962,
+          "sha256": "6de8dedae8f926c0339113acb804c426ce0a855b0e6f4b83fbce9cce1ee46718",
+          "width": 2560,
+          "height": 1440
+        }
+      ]
+    },
+    "halo-premium-pass-rewards-2022": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1920,
+      "variants": [
+        {
+          "src": "/media/files/ee7bcbc8ef669f5a01dd80653652e304f38bde25466bf3a240e441f1b1cb01e7.webp",
+          "mime": "image/webp",
+          "bytes": 53986,
+          "sha256": "ee7bcbc8ef669f5a01dd80653652e304f38bde25466bf3a240e441f1b1cb01e7",
+          "width": 480,
+          "height": 480
+        },
+        {
+          "src": "/media/files/152f0ec5342e7bcaefb9d174e8fde4c6842e6b5f28cb0dd363c657606cf75118.webp",
+          "mime": "image/webp",
+          "bytes": 142430,
+          "sha256": "152f0ec5342e7bcaefb9d174e8fde4c6842e6b5f28cb0dd363c657606cf75118",
+          "width": 768,
+          "height": 768
+        },
+        {
+          "src": "/media/files/5ad68b418bbca7c676b315d6c98f1f9a0fe67432ae7b18a8ac6a55590948210d.webp",
+          "mime": "image/webp",
+          "bytes": 392432,
+          "sha256": "5ad68b418bbca7c676b315d6c98f1f9a0fe67432ae7b18a8ac6a55590948210d",
+          "width": 1536,
+          "height": 1536
+        },
+        {
+          "src": "/media/files/47ce728beb365326313791695ea8f87912182d0d337fa8bc3e4adca759eb7c6c.webp",
+          "mime": "image/webp",
+          "bytes": 443310,
+          "sha256": "47ce728beb365326313791695ea8f87912182d0d337fa8bc3e4adca759eb7c6c",
+          "width": 1920,
+          "height": 1920
+        }
+      ]
+    },
+    "concord-shutdown-announcement-art": {
+      "kind": "image",
+      "width": 1088,
+      "height": 612,
+      "variants": [
+        {
+          "src": "/media/files/3842757b78d25e9afe2272edad58b660b3360fb05de5295666978b69e3274301.webp",
+          "mime": "image/webp",
+          "bytes": 14742,
+          "sha256": "3842757b78d25e9afe2272edad58b660b3360fb05de5295666978b69e3274301",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/5a5599e46769b7e9ea6489cbca72d376962cf1ea5ce17ec376e00168931ccf45.webp",
+          "mime": "image/webp",
+          "bytes": 40166,
+          "sha256": "5a5599e46769b7e9ea6489cbca72d376962cf1ea5ce17ec376e00168931ccf45",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/media/files/aa9c110414a9fc705a141dc3af1af351d394611bf08f585699e2ad405d32235a.webp",
+          "mime": "image/webp",
+          "bytes": 73754,
+          "sha256": "aa9c110414a9fc705a141dc3af1af351d394611bf08f585699e2ad405d32235a",
+          "width": 1088,
+          "height": 612
+        }
+      ]
+    },
+    "gauntlet-options-manual-p3-4": {
+      "kind": "image",
+      "width": 1964,
+      "height": 2560,
+      "variants": [
+        {
+          "src": "/media/files/10c89bd77890417df6fb58c52c443e7230fa6041e349595014ca69538abb3c60.webp",
+          "mime": "image/webp",
+          "bytes": 53688,
+          "sha256": "10c89bd77890417df6fb58c52c443e7230fa6041e349595014ca69538abb3c60",
+          "width": 480,
+          "height": 626
+        },
+        {
+          "src": "/media/files/a4d9fee5522022242b62c7f75fb9e892bf2795faa79f3d52868a3bf3bba194b1.webp",
+          "mime": "image/webp",
+          "bytes": 126826,
+          "sha256": "a4d9fee5522022242b62c7f75fb9e892bf2795faa79f3d52868a3bf3bba194b1",
+          "width": 768,
+          "height": 1001
+        },
+        {
+          "src": "/media/files/0756f11a921fa40a3fe341ab3e4ea72c31f541d51902d618218d803adae37929.webp",
+          "mime": "image/webp",
+          "bytes": 336626,
+          "sha256": "0756f11a921fa40a3fe341ab3e4ea72c31f541d51902d618218d803adae37929",
+          "width": 1536,
+          "height": 2002
+        },
+        {
+          "src": "/media/files/7d36beb8f0934fe9ec96757a53edb631f590ca150c195e31f1bd518256cf28a5.webp",
+          "mime": "image/webp",
+          "bytes": 452436,
+          "sha256": "7d36beb8f0934fe9ec96757a53edb631f590ca150c195e31f1bd518256cf28a5",
+          "width": 1964,
+          "height": 2560
+        }
+      ]
+    },
+    "legacy-d2-heroes": {
+      "kind": "image",
+      "width": 900,
+      "height": 675,
+      "variants": [
+        {
+          "src": "/media/files/b0b2bb0076db0d9ae07d0a78cd39eb696bb8253004a3adb5a713dc1b3d05428a.webp",
+          "mime": "image/webp",
+          "bytes": 12524,
+          "sha256": "b0b2bb0076db0d9ae07d0a78cd39eb696bb8253004a3adb5a713dc1b3d05428a",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "src": "/media/files/0389b7c886973d2990e65a44b5b5008ff619780f8b8bf8a8f562e7759c4bf564.webp",
+          "mime": "image/webp",
+          "bytes": 37464,
+          "sha256": "0389b7c886973d2990e65a44b5b5008ff619780f8b8bf8a8f562e7759c4bf564",
+          "width": 768,
+          "height": 576
+        },
+        {
+          "src": "/media/files/e12293c987d012791e1edbd06b0e809f7e30302a3705e22d1d92d22a243a7476.webp",
+          "mime": "image/webp",
+          "bytes": 49516,
+          "sha256": "e12293c987d012791e1edbd06b0e809f7e30302a3705e22d1d92d22a243a7476",
+          "width": 900,
+          "height": 675
+        }
+      ]
+    },
+    "legacy-d2-item": {
+      "kind": "image",
+      "width": 1093,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/media/files/b45c20cef7d0775f844c07b8d365cfe063f7d8dff4c3af01c8f1911c26674c1f.webp",
+          "mime": "image/webp",
+          "bytes": 40204,
+          "sha256": "b45c20cef7d0775f844c07b8d365cfe063f7d8dff4c3af01c8f1911c26674c1f",
+          "width": 480,
+          "height": 527
+        },
+        {
+          "src": "/media/files/5956626e90a9770a9769a8ea6dda24679cd33846d59f6735a0e9dc0dff73f047.webp",
+          "mime": "image/webp",
+          "bytes": 100724,
+          "sha256": "5956626e90a9770a9769a8ea6dda24679cd33846d59f6735a0e9dc0dff73f047",
+          "width": 768,
+          "height": 843
+        },
+        {
+          "src": "/media/files/38d019ac7eb7ef164bb639178ee52e80d862ceca48672cfb4ef57eeeab9c26a9.webp",
+          "mime": "image/webp",
+          "bytes": 150284,
+          "sha256": "38d019ac7eb7ef164bb639178ee52e80d862ceca48672cfb4ef57eeeab9c26a9",
+          "width": 1093,
+          "height": 1200
+        }
+      ]
+    },
+    "legacy-d4-confirm": {
+      "kind": "image",
+      "width": 1100,
+      "height": 791,
+      "variants": [
+        {
+          "src": "/media/files/b405b450079dc356ffefd87fdf561e07e45e37ef0f025d5ee604c66b3bede644.webp",
+          "mime": "image/webp",
+          "bytes": 18832,
+          "sha256": "b405b450079dc356ffefd87fdf561e07e45e37ef0f025d5ee604c66b3bede644",
+          "width": 480,
+          "height": 345
+        },
+        {
+          "src": "/media/files/485c90f9c508afdaf7e743c3de3925f381db70495732f2e0eb86c5ce9202b8ec.webp",
+          "mime": "image/webp",
+          "bytes": 53118,
+          "sha256": "485c90f9c508afdaf7e743c3de3925f381db70495732f2e0eb86c5ce9202b8ec",
+          "width": 768,
+          "height": 552
+        },
+        {
+          "src": "/media/files/e8529632b8346cf0e22c218f2be2cf0461c44cf43346ea0131d5e3aff5ec73d2.webp",
+          "mime": "image/webp",
+          "bytes": 90826,
+          "sha256": "e8529632b8346cf0e22c218f2be2cf0461c44cf43346ea0131d5e3aff5ec73d2",
+          "width": 1100,
+          "height": 791
+        }
+      ]
+    },
+    "legacy-poe-store": {
+      "kind": "image",
+      "width": 1000,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/media/files/e97526c715ff3caa0fea7524c910fa04f8132c6399b88e51809abb9e8f525a0d.webp",
+          "mime": "image/webp",
+          "bytes": 39744,
+          "sha256": "e97526c715ff3caa0fea7524c910fa04f8132c6399b88e51809abb9e8f525a0d",
+          "width": 480,
+          "height": 576
+        },
+        {
+          "src": "/media/files/b204c7d6fee34f5a62e03b380e13fa94f4ab861e73e233ebd843188621ecb9ca.webp",
+          "mime": "image/webp",
+          "bytes": 105622,
+          "sha256": "b204c7d6fee34f5a62e03b380e13fa94f4ab861e73e233ebd843188621ecb9ca",
+          "width": 768,
+          "height": 922
+        },
+        {
+          "src": "/media/files/841b5c86d7c55b25634b3124e16145b909b0a639f368e2177c3cfbda2d987064.webp",
+          "mime": "image/webp",
+          "bytes": 142274,
+          "sha256": "841b5c86d7c55b25634b3124e16145b909b0a639f368e2177c3cfbda2d987064",
+          "width": 1000,
+          "height": 1200
+        }
+      ]
+    },
+    "legacy-social": {
+      "kind": "image",
+      "width": 1400,
+      "height": 787,
+      "variants": [
+        {
+          "src": "/media/files/167eb88d6bc4eab19de6f7d77ff787bfde76bf1c6240dc5dd0af4a468f8cf09e.webp",
+          "mime": "image/webp",
+          "bytes": 9544,
+          "sha256": "167eb88d6bc4eab19de6f7d77ff787bfde76bf1c6240dc5dd0af4a468f8cf09e",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/68508e3657863961e0e44cdbc02b4a60c8688c72d0103e7648efe329470a831e.webp",
+          "mime": "image/webp",
+          "bytes": 26628,
+          "sha256": "68508e3657863961e0e44cdbc02b4a60c8688c72d0103e7648efe329470a831e",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/media/files/d8b7a8dcfd197490b55a7f769924e2e3533ce7294ceaf33102c094965c2ceea8.webp",
+          "mime": "image/webp",
+          "bytes": 68834,
+          "sha256": "d8b7a8dcfd197490b55a7f769924e2e3533ce7294ceaf33102c094965c2ceea8",
+          "width": 1400,
+          "height": 787
+        }
+      ]
+    },
+    "concord-gameplay-reveal-2024": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/afdd50ac2a1b5ab9b24a1152f2182fb9f03c2033800f3040cb2794f2a8f59426.webp",
+          "mime": "image/webp",
+          "bytes": 20374,
+          "sha256": "afdd50ac2a1b5ab9b24a1152f2182fb9f03c2033800f3040cb2794f2a8f59426",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/08cd37c11761130074bc5cf4927d89281eb0dfe5a4b2f7305e27f69fd1f4d937.webp",
+          "mime": "image/webp",
+          "bytes": 42938,
+          "sha256": "08cd37c11761130074bc5cf4927d89281eb0dfe5a4b2f7305e27f69fd1f4d937",
+          "width": 768,
+          "height": 432
+        },
+        {
+          "src": "/media/files/691b2eb933878b9be37eeff915d89a245e67d3d0d8b604a058980e05fb1ed927.webp",
+          "mime": "image/webp",
+          "bytes": 113300,
+          "sha256": "691b2eb933878b9be37eeff915d89a245e67d3d0d8b604a058980e05fb1ed927",
+          "width": 1600,
+          "height": 900
+        }
+      ]
+    },
+    "bg3-official-key-art": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/4ea1807852921f78bfe3e0a749b5f9575c7dc520bccc8574e84d3e9be95552dc.webp",
+          "mime": "image/webp",
+          "bytes": 31478,
+          "sha256": "4ea1807852921f78bfe3e0a749b5f9575c7dc520bccc8574e84d3e9be95552dc",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/77c75b0d43b845dc1f40f29fc1ab537dbc29c03ef88e77c72b57db1ef6461aa9.webp",
+          "mime": "image/webp",
+          "bytes": 99752,
+          "sha256": "77c75b0d43b845dc1f40f29fc1ab537dbc29c03ef88e77c72b57db1ef6461aa9",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/media/files/5de4174a26b452ca1fe740d772420f11b1676f4cad822540a3a11c30218bbcac.webp",
+          "mime": "image/webp",
+          "bytes": 307962,
+          "sha256": "5de4174a26b452ca1fe740d772420f11b1676f4cad822540a3a11c30218bbcac",
+          "width": 1920,
+          "height": 1080
+        }
+      ]
+    }
+  }
+}

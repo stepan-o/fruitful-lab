@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-theme-submarine-watch",
+  "assets": {
+    "button-hover": {
+      "kind": "image",
+      "width": 1486,
+      "height": 305,
+      "variants": [
+        {
+          "src": "/media/files/14479c2562b90d16fff93f3ef6283e9a204b6a1a7f4b14c45551babaf360915e.webp",
+          "mime": "image/webp",
+          "bytes": 17800,
+          "sha256": "14479c2562b90d16fff93f3ef6283e9a204b6a1a7f4b14c45551babaf360915e",
+          "width": 480,
+          "height": 99
+        },
+        {
+          "src": "/media/files/74374f24e3c47a223dd6889bd2bc63cfb3109b29e3f2c9cbcb480ac433a8df79.webp",
+          "mime": "image/webp",
+          "bytes": 34562,
+          "sha256": "74374f24e3c47a223dd6889bd2bc63cfb3109b29e3f2c9cbcb480ac433a8df79",
+          "width": 720,
+          "height": 148
+        }
+      ]
+    },
+    "button-pressed": {
+      "kind": "image",
+      "width": 1486,
+      "height": 302,
+      "variants": [
+        {
+          "src": "/media/files/0165cf53368cf3c9d9e63be2eee6e0f0bcdb95f5281889f172f7331cdcd17ed3.webp",
+          "mime": "image/webp",
+          "bytes": 15952,
+          "sha256": "0165cf53368cf3c9d9e63be2eee6e0f0bcdb95f5281889f172f7331cdcd17ed3",
+          "width": 480,
+          "height": 98
+        },
+        {
+          "src": "/media/files/214a245dcc9708c7bb2fb0bdf433939d08d6298529f346a28600fef61340ce9c.webp",
+          "mime": "image/webp",
+          "bytes": 31538,
+          "sha256": "214a245dcc9708c7bb2fb0bdf433939d08d6298529f346a28600fef61340ce9c",
+          "width": 720,
+          "height": 146
+        }
+      ]
+    },
+    "button-rest": {
+      "kind": "image",
+      "width": 1486,
+      "height": 306,
+      "variants": [
+        {
+          "src": "/media/files/3648f35119a311885c6608e03a970b35ac9eacde5324ea4f1f62c81562b91464.webp",
+          "mime": "image/webp",
+          "bytes": 16706,
+          "sha256": "3648f35119a311885c6608e03a970b35ac9eacde5324ea4f1f62c81562b91464",
+          "width": 480,
+          "height": 99
+        },
+        {
+          "src": "/media/files/9eb745170cf6b50f8cd0e089e971ab898ee301eddc59b1ebaed90935c8d321c6.webp",
+          "mime": "image/webp",
+          "bytes": 33278,
+          "sha256": "9eb745170cf6b50f8cd0e089e971ab898ee301eddc59b1ebaed90935c8d321c6",
+          "width": 720,
+          "height": 148
+        }
+      ]
+    },
+    "monitor-frame": {
+      "kind": "image",
+      "width": 1570,
+      "height": 955,
+      "variants": [
+        {
+          "src": "/media/files/6ad2529bf07942c91b68cdd525745c127c3195d6cd5cb26d858f375f0d0d3914.webp",
+          "mime": "image/webp",
+          "bytes": 39028,
+          "sha256": "6ad2529bf07942c91b68cdd525745c127c3195d6cd5cb26d858f375f0d0d3914",
+          "width": 480,
+          "height": 292
+        },
+        {
+          "src": "/media/files/320b468dc570280ec73ccfcb54c9a3ea3ba84209d33ed74aafe0a772cde0c6a7.webp",
+          "mime": "image/webp",
+          "bytes": 133806,
+          "sha256": "320b468dc570280ec73ccfcb54c9a3ea3ba84209d33ed74aafe0a772cde0c6a7",
+          "width": 960,
+          "height": 584
+        }
+      ]
+    }
+  }
+}

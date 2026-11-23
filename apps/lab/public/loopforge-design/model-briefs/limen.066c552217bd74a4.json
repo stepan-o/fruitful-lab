@@ -1,0 +1,270 @@
+{
+  "id": "limen",
+  "name": "LIMEN",
+  "subtitle": "Security chief · body + emitter",
+  "revision": "Concept sheet · 19 October 2026 / body v2 + emitter v1",
+  "status": "Prototype available",
+  "summary": "Pale steel armour, deep teal-cyan energy and a stern skull face. The accepted Set 1 body and smoky background are preserved. One worn protocol clipboard fills the middle equipment slot, matching the security-room paperwork and hardware.",
+  "provenance": "Current concept: owner-approved pale-steel revision of the original Set 1 sheet, with one horizontal protocol clipboard alpha-composited into the middle slot. Its worn steel and paper forms follow the security-room interaction art. Approved character pixels remain unchanged. Existing 3D prototype and rebuild stages are retained; the clipboard has no 3D model yet.",
+  "viewer": "/stepanoskin/loopforge/play/agent-test/limen",
+  "viewerLabel": "Inspect body, emitter and energy",
+  "record": "/loopforge-design/production/LIMEN_MESHY_REVIEW.md",
+  "parts": [
+    "Body v2: 42,354 triangles / 23-joint source rig",
+    "Separate emitter: 4,994-triangle runtime housing",
+    "Living cyan blade: procedural effect, not a Meshy model"
+  ],
+  "remaining": [
+    "Finger articulation and rigid armour weights",
+    "Worker/machine contact and blended-motion clearance",
+    "Crowd and physical-device performance"
+  ],
+  "images": [
+    {
+      "label": "LIMEN · pale steel / Set 1 revision",
+      "role": "Current concept sheet — approved body artwork with one horizontal protocol clipboard in the middle equipment slot. Prepare isolated body views before Meshy generation.",
+      "sourceName": "limen-character-sheet-protocol-v2.png",
+      "sourceSha256": "3c543c780503b0d20844e866a26d8885536bf4468c4b5f218b61e2817dd90edc",
+      "input": {
+        "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 626054,
+        "sha256": "b9ac5d62a5bebb4576f976ebcc0bbaa3f633ca31a84c8464024ac77943facebf"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2-360.bed8d640e2977d5b.webp",
+          "width": 360,
+          "height": 240,
+          "bytes": 23442,
+          "sha256": "bed8d640e2977d5b9ad0ff8c5a634ac5f725624191da30d609adf7d0aa0e1f11"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2-720.a426cbb598560982.webp",
+          "width": 720,
+          "height": 480,
+          "bytes": 79716,
+          "sha256": "a426cbb59856098251c14b628f74e56297bf907d9c3b3af3fd65e393c918f169"
+        }
+      ],
+      "archivePath": "images/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg"
+    },
+    {
+      "label": "Protocol clipboard · horizontal overlay",
+      "role": "Equipment concept — weathered steel clipboard and paper protocols, seen at a low oblique angle. Transparent cutout; no 3D model yet.",
+      "sourceName": "limen-protocol-clipboard-horizontal-v2.png",
+      "sourceSha256": "ae963c310b7fde955536c6f1b248a8169a63f924d7ca555488906488cab7acd3",
+      "input": {
+        "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+        "width": 1895,
+        "height": 621,
+        "bytes": 410092,
+        "sha256": "5fff7c61d56295bff8cea7ee3007b904c6a40c4ba25fceaba618a83eb7f8e9e0"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2-360.895b5e8658485e3e.webp",
+          "width": 360,
+          "height": 118,
+          "bytes": 16558,
+          "sha256": "895b5e8658485e3e96c65a80e52ab1744e6976c304af0e7a749f3f9bd6772c47"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2-720.4c95571a1fef1887.webp",
+          "width": 720,
+          "height": 236,
+          "bytes": 55366,
+          "sha256": "4c95571a1fef18873d20afa776ed58366171a005696d9d3ea218613eeaf40b2c"
+        }
+      ],
+      "archivePath": "images/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp"
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Body rebuild",
+      "file": "limen/01-body-rebuild.txt",
+      "text": "LIMEN — accepted v2 body rebuild specification, reconstructed 14 October 2026.\nThis is a reusable brief, not a transcript of the original Meshy task. The attached current Set 1 character concept sheet is identity reference, not a single-object A-pose upload. First prepare matching isolated front/back A-pose references; preserve the accepted model's proportions using the linked viewer. Do not generate directly from a multi-character collage.\n\nCreate LIMEN, Loopforge's security chief: broad heavy worn industrial armour, recognizable helmet and cyan optics, dark mechanical joints, legible chest insignia and robust planted feet. Preserve the original Set 1 skull face, armour anatomy and silhouette. Follow the owner-approved 19 October concept palette: pale steel armour (direction #AAB9BD), dark mechanical recesses, deeper saturated teal-cyan optics and energy. No machine gun. The horizontal protocol clipboard shown beside the body is a separate equipment concept: do not fuse it into the body. Neutral symmetric A-pose, hands clear of torso, two separated legs. Full humanoid body with useful hands. No blade or energy fused to the body, hand, leg or torso.\n\nKeep high-detail master separately. Produce a roughly 41–43k-triangle delivery candidate without losing helmet, joints, hands or silhouette. The accepted v2 had 42,354 triangles; a new generation need not reproduce its topology. Preserve available PBR texture maps; target 2K working maps and no baked glow halo. Do not claim maps, rigid weights or finger bones that are absent.\n\nExport unrigged neutral GLB and editable FBX. Inspect front/back/profile before rigging. Retain the exact accepted source if shape changes are unnecessary: animation cleanup alone is not a reason to regenerate the body.\n",
+      "url": "/loopforge-design/model-briefs/limen-01-body-rebuild.ef326d7b8007b4d7.txt"
+    },
+    {
+      "title": "Emitter rebuild",
+      "file": "limen/02-emitter-rebuild.txt",
+      "text": "LIMEN — separate rigid forearm emitter\nUse the accepted body and original cyan blade reference. Generate the physical emitter housing and forearm mounting collar as ONE rigid separate accessory, with its longitudinal axis and mounting end clearly identified. Do not generate a hand, arm, body, floor or background. The complete source blade may include energy geometry, but our runtime retains the housing and creates the energy procedurally; prefer the physical housing alone for this rebuild.\n\nPreserve dark worn metal, cyan-adjacent accents, engineered vents and attachment details. Target about 5,000 triangles for the delivery housing, keeping the high-resolution master separate. Export textured GLB and editable FBX with actual dimensions, axes and material inventory. No skeleton is required for a rigid attachment.\n\nMounting offsets, scale and handedness will be fitted to LIMEN's right forearm offline. Do not claim clearance from a standalone prop. We will validate walk, run, maintenance idle, blends and worker contacts after assembly.\n\nThe current 672-triangle core and braids, rapid energy flow, independent cyan/jade/blue/violet shifts, flicker/power-down/restart, reduced-effects mode and future sparks are authored in the renderer. Do not bake those effects into a heavy Meshy mesh.\n",
+      "url": "/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt"
+    },
+    {
+      "title": "Rig and delivery",
+      "file": "limen/03-rig-and-delivery.txt",
+      "text": "Rig the approved blade-free LIMEN body as a humanoid with Mixamo-compatible export naming. Preserve a neutral rigged A-pose and the same mesh/materials for each clip. Include walking and running takes with original names, durations and root travel documented. Export GLB with Rigged Character enabled, embedded textures, and every selected animation; export individual clips if the combined file omits any. Supply FBX for offline cleanup.\n\nThe accepted v2 source has 23 joints and no articulated fingers; do not assume a new rig shares those transforms. Report actual bones, skin weights, maps and embedded clips. Preserve original downloads and source hashes.\n\nThe 11-second emitter-adjustment idle is our offline-authored animation: planted stance, raise emitter, inspect, power down, opposite hand adjusts housing, two restart attempts, reignite, lower arm. It is not a Meshy catalog clip. Refit/rebake it for any changed skeleton or socket. Keep a separate authored derivative and compare against source. Avoid a global arm offset that breaks other motions.\n\nBefore adoption: validate neutral pose, walks/runs, full-cycle blade/body/floor clearance, material appearance, factory CCTV recognition and actual performance. The existing source-specific import recipe and socket calibration are not automatically valid for a regenerated model.\n",
+      "url": "/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt"
+    }
+  ],
+  "files": [
+    {
+      "name": "images/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+      "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 626054,
+      "sha256": "b9ac5d62a5bebb4576f976ebcc0bbaa3f633ca31a84c8464024ac77943facebf"
+    },
+    {
+      "name": "images/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+      "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+      "width": 1895,
+      "height": 621,
+      "bytes": 410092,
+      "sha256": "5fff7c61d56295bff8cea7ee3007b904c6a40c4ba25fceaba618a83eb7f8e9e0"
+    },
+    {
+      "name": "prompts/01-body-rebuild.txt",
+      "src": "/loopforge-design/model-briefs/limen-01-body-rebuild.ef326d7b8007b4d7.txt",
+      "bytes": 1773,
+      "sha256": "ef326d7b8007b4d7bd06e2da7d30534aaea8d0d7db2bd4d5aea06f5003288705"
+    },
+    {
+      "name": "prompts/02-emitter-rebuild.txt",
+      "src": "/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt",
+      "bytes": 1303,
+      "sha256": "a184fe1c2f5fab69558ec791dcbdae72c8385a3c8c89d58e5a3373f052c1489f"
+    },
+    {
+      "name": "prompts/03-rig-and-delivery.txt",
+      "src": "/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt",
+      "bytes": 1343,
+      "sha256": "782019332c10aa4c584406b903ec42c0f618e32b82122401d28971acad027016"
+    },
+    {
+      "name": "CONCEPT_REVISION_2026-10-19.json",
+      "src": "/loopforge-design/model-briefs/limen-CONCEPT_REVISION_2026-10-19.0135e48bcfab11f0.json",
+      "bytes": 11196,
+      "sha256": "0135e48bcfab11f08da57bf1ccfdd39d8abc7c22a9210fd1f2ecbe353e2af44d"
+    },
+    {
+      "name": "README.md",
+      "src": "/loopforge-design/model-briefs/limen-README.06f4f7b3a951db83.md",
+      "bytes": 2575,
+      "sha256": "06f4f7b3a951db83b97002ad5fb85cd15803d89c2201026e4685b1fbfbb1bba7"
+    }
+  ],
+  "downloadBytes": 1054336,
+  "packageManifest": {
+    "schemaVersion": 1,
+    "id": "limen",
+    "revision": "Concept sheet · 19 October 2026 / body v2 + emitter v1",
+    "provenance": "Current concept: owner-approved pale-steel revision of the original Set 1 sheet, with one horizontal protocol clipboard alpha-composited into the middle slot. Its worn steel and paper forms follow the security-room interaction art. Approved character pixels remain unchanged. Existing 3D prototype and rebuild stages are retained; the clipboard has no 3D model yet.",
+    "viewer": "https://www.fruitfulab.net/stepanoskin/loopforge/play/agent-test/limen",
+    "images": [
+      {
+        "label": "LIMEN · pale steel / Set 1 revision",
+        "role": "Current concept sheet — approved body artwork with one horizontal protocol clipboard in the middle equipment slot. Prepare isolated body views before Meshy generation.",
+        "sourceName": "limen-character-sheet-protocol-v2.png",
+        "sourceSha256": "3c543c780503b0d20844e866a26d8885536bf4468c4b5f218b61e2817dd90edc",
+        "input": {
+          "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 626054,
+          "sha256": "b9ac5d62a5bebb4576f976ebcc0bbaa3f633ca31a84c8464024ac77943facebf"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2-360.bed8d640e2977d5b.webp",
+            "width": 360,
+            "height": 240,
+            "bytes": 23442,
+            "sha256": "bed8d640e2977d5b9ad0ff8c5a634ac5f725624191da30d609adf7d0aa0e1f11"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2-720.a426cbb598560982.webp",
+            "width": 720,
+            "height": 480,
+            "bytes": 79716,
+            "sha256": "a426cbb59856098251c14b628f74e56297bf907d9c3b3af3fd65e393c918f169"
+          }
+        ],
+        "archivePath": "images/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg"
+      },
+      {
+        "label": "Protocol clipboard · horizontal overlay",
+        "role": "Equipment concept — weathered steel clipboard and paper protocols, seen at a low oblique angle. Transparent cutout; no 3D model yet.",
+        "sourceName": "limen-protocol-clipboard-horizontal-v2.png",
+        "sourceSha256": "ae963c310b7fde955536c6f1b248a8169a63f924d7ca555488906488cab7acd3",
+        "input": {
+          "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+          "width": 1895,
+          "height": 621,
+          "bytes": 410092,
+          "sha256": "5fff7c61d56295bff8cea7ee3007b904c6a40c4ba25fceaba618a83eb7f8e9e0"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2-360.895b5e8658485e3e.webp",
+            "width": 360,
+            "height": 118,
+            "bytes": 16558,
+            "sha256": "895b5e8658485e3e96c65a80e52ab1744e6976c304af0e7a749f3f9bd6772c47"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2-720.4c95571a1fef1887.webp",
+            "width": 720,
+            "height": 236,
+            "bytes": 55366,
+            "sha256": "4c95571a1fef18873d20afa776ed58366171a005696d9d3ea218613eeaf40b2c"
+          }
+        ],
+        "archivePath": "images/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp"
+      }
+    ],
+    "files": [
+      {
+        "name": "images/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+        "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 626054,
+        "sha256": "b9ac5d62a5bebb4576f976ebcc0bbaa3f633ca31a84c8464024ac77943facebf"
+      },
+      {
+        "name": "images/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+        "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+        "width": 1895,
+        "height": 621,
+        "bytes": 410092,
+        "sha256": "5fff7c61d56295bff8cea7ee3007b904c6a40c4ba25fceaba618a83eb7f8e9e0"
+      },
+      {
+        "name": "prompts/01-body-rebuild.txt",
+        "src": "/loopforge-design/model-briefs/limen-01-body-rebuild.ef326d7b8007b4d7.txt",
+        "bytes": 1773,
+        "sha256": "ef326d7b8007b4d7bd06e2da7d30534aaea8d0d7db2bd4d5aea06f5003288705"
+      },
+      {
+        "name": "prompts/02-emitter-rebuild.txt",
+        "src": "/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt",
+        "bytes": 1303,
+        "sha256": "a184fe1c2f5fab69558ec791dcbdae72c8385a3c8c89d58e5a3373f052c1489f"
+      },
+      {
+        "name": "prompts/03-rig-and-delivery.txt",
+        "src": "/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt",
+        "bytes": 1343,
+        "sha256": "782019332c10aa4c584406b903ec42c0f618e32b82122401d28971acad027016"
+      },
+      {
+        "name": "CONCEPT_REVISION_2026-10-19.json",
+        "src": "/loopforge-design/model-briefs/limen-CONCEPT_REVISION_2026-10-19.0135e48bcfab11f0.json",
+        "bytes": 11196,
+        "sha256": "0135e48bcfab11f08da57bf1ccfdd39d8abc7c22a9210fd1f2ecbe353e2af44d"
+      },
+      {
+        "name": "README.md",
+        "src": "/loopforge-design/model-briefs/limen-README.06f4f7b3a951db83.md",
+        "bytes": 2575,
+        "sha256": "06f4f7b3a951db83b97002ad5fb85cd15803d89c2201026e4685b1fbfbb1bba7"
+      }
+    ]
+  }
+}

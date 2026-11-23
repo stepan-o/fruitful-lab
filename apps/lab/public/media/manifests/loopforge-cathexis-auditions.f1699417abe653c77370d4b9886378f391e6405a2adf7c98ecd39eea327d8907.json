@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-cathexis-auditions",
+  "assets": {
+    "cathexis-auditions": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 13875328,
+          "sha256": "be77f243b1f794ef0d57a53920d6ae833d580f125f35210807f71fa36cf0ce1f"
+        }
+      ]
+    }
+  }
+}

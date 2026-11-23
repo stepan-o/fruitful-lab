@@ -1,0 +1,106 @@
+[
+  {
+    "id": "S1",
+    "claim": "Review basis and separate authorship",
+    "sources": [
+      "Producer reflection, PRODUCER-REFLECTION-V1",
+      "Complete craft interviews"
+    ]
+  },
+  {
+    "id": "S2",
+    "claim": "Inherited work, staffing, concurrency and 65-task coverage",
+    "sources": [
+      "History: Before the retained log; How we run Loopforge",
+      "Level Designer Q1\u2013Q5",
+      "Statistics: Coverage and outcomes"
+    ]
+  },
+  {
+    "id": "S3",
+    "claim": "Observed native model configuration and documented capacity",
+    "sources": [
+      "Statistics: Recorded runtime",
+      "Official model documentation: https://developers.openai.com/api/docs/models/gpt-6-astra"
+    ]
+  },
+  {
+    "id": "S4",
+    "claim": "Holder assignment split and unsuccessful physical endpoints",
+    "sources": [
+      "History: The holder detour and the build detour",
+      "Animator Q1\u2013Q3",
+      "3D Artist Q1\u2013Q3",
+      "Timeline E0283, E0329"
+    ]
+  },
+  {
+    "id": "S5",
+    "claim": "External coordinator selected continuations; human triggered stop",
+    "sources": [
+      "Timeline E0268, E0277, E0303, E0329, E0364, E0365"
+    ]
+  },
+  {
+    "id": "S6",
+    "claim": "Elapsed windows and scoped holder token lower bound",
+    "sources": [
+      "Statistics: Reported task allowances and checkpoints",
+      "History: What the effort figures can tell us",
+      "Timeline E0365"
+    ]
+  },
+  {
+    "id": "S7",
+    "claim": "Handoff defects were not compiler-memory results",
+    "sources": [
+      "Timeline E0331, E0349, E0360",
+      "Engine Master Q3\u2013Q6",
+      "History: The holder detour and the build detour"
+    ]
+  },
+  {
+    "id": "S8",
+    "claim": "Useful bounded outcomes remain distinct from complete experience",
+    "sources": [
+      "Scene Director Q1, Q3, Q6",
+      "Critic Q1, Q6",
+      "Writer Q1, Q3, Q5",
+      "Visual Artist Q1, Q3",
+      "Statistics: Coverage and outcomes"
+    ]
+  },
+  {
+    "id": "S9",
+    "claim": "Native totals, baseline exclusions, percentages and numerical coverage",
+    "sources": [
+      "Statistics: Native usage by retained ledger session"
+    ]
+  },
+  {
+    "id": "S10",
+    "claim": "Separate mixed-scope external coordinator window",
+    "sources": [
+      "Independent assessment: usage table and scope note"
+    ]
+  },
+  {
+    "id": "S11",
+    "claim": "Task allowances did not reliably yield timely checkpoints",
+    "sources": [
+      "Statistics: Reported task allowances and checkpoints",
+      "Systems Designer Q3\u2013Q4",
+      "History: A review build, then a failed performance test"
+    ]
+  },
+  {
+    "id": "S12",
+    "claim": "Review exposure and unresolved stale-geometry allegation",
+    "sources": [
+      "Timeline E0078, E0082",
+      "Critic Q2\u2013Q3",
+      "Writer Q2",
+      "History: Specialists arrive; the handoffs need repair"
+    ]
+  }
+]

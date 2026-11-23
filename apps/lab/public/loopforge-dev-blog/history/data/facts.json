@@ -1,0 +1,691 @@
+{
+  "facts": [
+    {
+      "id": "F01",
+      "title": "Inherited work came first",
+      "claim": "The studio began with approved art, lore, models and uncommitted game work already in progress. Optimizing or integrating these is not authorship of the original character designs.",
+      "tasks": [
+        "LST-1",
+        "LST-2"
+      ],
+      "artifactIds": [
+        "A0006"
+      ],
+      "relatedEvents": [
+        "E0001",
+        "E0002",
+        "E0020",
+        "E0023",
+        "E0024"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F02",
+      "title": "Two intake sessions ended at their caps",
+      "claim": "The harness reported an18,000-token temp at33,944 and a400,000-token temp at438,749. They were reaped; preserved work and existing intake were reused.",
+      "tasks": [
+        "LST-1"
+      ],
+      "artifactIds": [],
+      "relatedEvents": [
+        "E0001",
+        "E0020",
+        "E0023"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F03",
+      "title": "LIMEN delivery produced real optimized banks",
+      "claim": "Three delivered detail levels preserved the source rig and20clips; structural verification was distinct from visual acceptance.",
+      "tasks": [
+        "LST-2"
+      ],
+      "artifactIds": [
+        "A0241",
+        "A0242"
+      ],
+      "relatedEvents": [
+        "E0002",
+        "E0024"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F04",
+      "title": "Room production crossed a real access boundary",
+      "claim": "Producer briefs/references supported five room props; the external chat performed canonical budgeted Meshy submissions after native ledger writes were denied. Forge/carrier were separate root work. Project committed credits reached710of1000, not an account-balance allowance.",
+      "tasks": [
+        "LST-4"
+      ],
+      "artifactIds": [
+        "A0243",
+        "A0244"
+      ],
+      "relatedEvents": [
+        "E0004",
+        "E0026",
+        "E0027"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F05",
+      "title": "An early public review existed",
+      "claim": "The05:04 bridge report and saved verification identify a READY hosted review at commit2efa9252. It predates later private cuts and was not full scene/performance acceptance.",
+      "tasks": [
+        "LST-8"
+      ],
+      "artifactIds": [
+        "A0105"
+      ],
+      "relatedEvents": [
+        "E0008",
+        "E0028"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F06",
+      "title": "The old-machine acceptance failed",
+      "claim": "The first reported strict run returned48.5FPS,p95frame33.5ms and7stalls over100ms. Stable resources did not make it pass.",
+      "tasks": [
+        "LST-7"
+      ],
+      "artifactIds": [],
+      "relatedEvents": [
+        "E0007",
+        "E0036"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F07",
+      "title": "Animator onboarding checked existing evidence",
+      "claim": "The temp verified351 saved Sam/Bob paired samples and hashes; those were prior work, not a new render or new motion sweep.",
+      "tasks": [
+        "LST-10",
+        "LST-11"
+      ],
+      "artifactIds": [
+        "A0085"
+      ],
+      "relatedEvents": [
+        "E0040",
+        "E0044",
+        "E0046",
+        "E0053",
+        "E0054",
+        "E0056"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F08",
+      "title": "A reservation expired before useful validation",
+      "claim": "The initial LIMEN candidate had sparse clearance evidence. The12-minute validation window was nearly gone when authorization arrived; no dense run started then. Later3768of10000coverage was baseline-dominated, with candidate dense cases still unstarted.",
+      "tasks": [
+        "LST-12",
+        "LST-15",
+        "LST-19"
+      ],
+      "artifactIds": [],
+      "relatedEvents": [
+        "E0057",
+        "E0059",
+        "E0060",
+        "E0061",
+        "E0062",
+        "E0063",
+        "E0065",
+        "E0068",
+        "E0071",
+        "E0077",
+        "E0078",
+        "E0079",
+        "E0080",
+        "E0082",
+        "E0085",
+        "E0087",
+        "E0089",
+        "E0090",
+        "E0093",
+        "E0095",
+        "E0098",
+        "E0107",
+        "E0112",
+        "E0120",
+        "E0134",
+        "E0135"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F09",
+      "title": "Writer and Critic changed and checked actual text",
+      "claim": "Opening W1 retained37of39turns, proposed two replacements and corrected continuity. Critic accepted text craft but found a stale revision label; the narrow E1 recheck later passed.",
+      "tasks": [
+        "LST-13",
+        "LST-14",
+        "LST-23"
+      ],
+      "artifactIds": [
+        "A0245"
+      ],
+      "relatedEvents": [
+        "E0073",
+        "E0076",
+        "E0081",
+        "E0083",
+        "E0084",
+        "E0088",
+        "E0096",
+        "E0097",
+        "E0099",
+        "E0147",
+        "E0150",
+        "E0154"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F10",
+      "title": "Private integration preserved pending source",
+      "claim": "Canonical writes failed read-only. Engine delivered a private candidate and exact patch, then tests/build work proceeded in the writable checkout. A checkout from HEAD alone would omit pending work.",
+      "tasks": [
+        "LST-18",
+        "LST-22"
+      ],
+      "artifactIds": [
+        "A0202"
+      ],
+      "relatedEvents": [
+        "E0106",
+        "E0113",
+        "E0117",
+        "E0126",
+        "E0136",
+        "E0139",
+        "E0144",
+        "E0146",
+        "E0149",
+        "E0151",
+        "E0152",
+        "E0153",
+        "E0155",
+        "E0166",
+        "E0170",
+        "E0171",
+        "E0173"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F11",
+      "title": "Tests passed before a dependency-layout build failure",
+      "claim": "24focused tests, scoped lint and assets checks passed; Turbopack rejected the external node_modules symlink. A contained copy repaired layout, but the next build was deliberately interrupted after a token allowance overrun. It was neither compiler success nor compiler failure.",
+      "tasks": [
+        "LST-22"
+      ],
+      "artifactIds": [
+        "A0203",
+        "A0204"
+      ],
+      "relatedEvents": [
+        "E0144",
+        "E0146",
+        "E0149",
+        "E0151",
+        "E0152",
+        "E0153",
+        "E0155",
+        "E0166",
+        "E0170",
+        "E0171",
+        "E0173"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F12",
+      "title": "A real private build then served",
+      "claim": "The self-recording B2 bridge run completed a build and served the exact cut;262 source files stayed unchanged and dependency provenance was verified.",
+      "tasks": [
+        "LST-22"
+      ],
+      "artifactIds": [
+        "A0246",
+        "A0247"
+      ],
+      "relatedEvents": [
+        "E0144",
+        "E0146",
+        "E0149",
+        "E0151",
+        "E0152",
+        "E0153",
+        "E0155",
+        "E0166",
+        "E0170",
+        "E0171",
+        "E0173"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F13",
+      "title": "Later-day proposals were concrete and rejected in part",
+      "claim": "Systems wrote causal encounters; Writer delivered four exchanges and gated variants; Visual Artist produced four boards; Critic required revisions to all four boards. No owner implementation approval followed.",
+      "tasks": [
+        "LST-24",
+        "LST-25",
+        "LST-26",
+        "LST-27",
+        "LST-28",
+        "LST-29"
+      ],
+      "artifactIds": [
+        "A0248",
+        "A0249"
+      ],
+      "relatedEvents": [
+        "E0157",
+        "E0158",
+        "E0159",
+        "E0160",
+        "E0161",
+        "E0162",
+        "E0165",
+        "E0168",
+        "E0169",
+        "E0172",
+        "E0176",
+        "E0178",
+        "E0179",
+        "E0193",
+        "E0196",
+        "E0209",
+        "E0212",
+        "E0215",
+        "E0219",
+        "E0221",
+        "E0230",
+        "E0231",
+        "E0232"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F14",
+      "title": "Memory setup did not erase Markdown knowledge",
+      "claim": "uv and MemPalace installation/native first indexing were observed. Source-attributed retrieval remained unverified, recall was later saved Off for quiet heavy work, and enterprise library activation remained unapproved.",
+      "tasks": [
+        "LST-30",
+        "LST-32"
+      ],
+      "artifactIds": [
+        "A0179"
+      ],
+      "relatedEvents": [
+        "E0174",
+        "E0183",
+        "E0184",
+        "E0185",
+        "E0190",
+        "E0207"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F15",
+      "title": "The strike bubble was visibly repaired",
+      "claim": "Saved14.65s exports show the original bubble covering LIMEN head and the corrected right-side bubble exposing it. Director cleared the sampled overlay defect, not the whole scene or contact.",
+      "tasks": [
+        "LST-31",
+        "LST-33",
+        "LST-36"
+      ],
+      "artifactIds": [
+        "A0250"
+      ],
+      "relatedEvents": [
+        "E0189",
+        "E0192",
+        "E0195",
+        "E0198",
+        "E0201",
+        "E0202",
+        "E0204",
+        "E0206",
+        "E0208",
+        "E0211",
+        "E0213",
+        "E0222",
+        "E0223",
+        "E0228",
+        "E0229",
+        "E0236",
+        "E0237",
+        "E0240",
+        "E0242",
+        "E0246"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F16",
+      "title": "The animation menu was larger than the evidence",
+      "claim": "253offered clips across759detail records were retained;37were scene-used and216offered but scene-unused. Historical96reviewed/157gaps and ten preview samples are not whole-bank acceptance.",
+      "tasks": [
+        "LST-35",
+        "LST-50",
+        "LST-51"
+      ],
+      "artifactIds": [
+        "A0251"
+      ],
+      "relatedEvents": [
+        "E0203",
+        "E0210",
+        "E0214",
+        "E0339",
+        "E0347",
+        "E0353",
+        "E0354",
+        "E0359"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F17",
+      "title": "Sam was missing two real delivered clips",
+      "claim": "Actual three-bank inspection found no Draw_ID/Stow_ID and the runtime had no fallback. Browser Continue reproduced Missing performance: Draw_ID around85.05s, blocking downstream scene review.",
+      "tasks": [
+        "LST-37",
+        "LST-38"
+      ],
+      "artifactIds": [
+        "A0252",
+        "A0111"
+      ],
+      "relatedEvents": [
+        "E0216",
+        "E0218",
+        "E0220",
+        "E0224",
+        "E0225",
+        "E0233",
+        "E0234",
+        "E0235",
+        "E0239",
+        "E0241",
+        "E0243",
+        "E0245",
+        "E0247",
+        "E0248",
+        "E0250",
+        "E0252",
+        "E0255",
+        "E0262",
+        "E0265",
+        "E0268",
+        "E0269",
+        "E0272",
+        "E0275",
+        "E0277",
+        "E0278",
+        "E0279",
+        "E0280",
+        "E0281"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F18",
+      "title": "Zero process exit was not animation acceptance",
+      "claim": "The first Sam candidate failed434of1428self-crossing samples and335card/body samples. R1 failed810of2241self and121card/body samples; unchanged ID_Walk/Quiet_Wait regressions were clear. Failed candidates remained excluded.",
+      "tasks": [
+        "LST-38"
+      ],
+      "artifactIds": [
+        "A0253"
+      ],
+      "relatedEvents": [
+        "E0225",
+        "E0233",
+        "E0234",
+        "E0235",
+        "E0239",
+        "E0241",
+        "E0243",
+        "E0245",
+        "E0247",
+        "E0248",
+        "E0250",
+        "E0252",
+        "E0255",
+        "E0262",
+        "E0265",
+        "E0268",
+        "E0269",
+        "E0272",
+        "E0275",
+        "E0277",
+        "E0278",
+        "E0279",
+        "E0280",
+        "E0281"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F19",
+      "title": "Hidden dialogue required actual browser evidence",
+      "claim": "At10.70,11.50 and43.80, full selected lines existed under hidden offscreen anchors. Engine authored a named offscreen card and held-frame export handling. At cutoff both layers were applied, but no new browser-reviewed build existed.",
+      "tasks": [
+        "LST-39",
+        "LST-41",
+        "LST-42"
+      ],
+      "artifactIds": [
+        "A0254",
+        "A0198"
+      ],
+      "relatedEvents": [
+        "E0226",
+        "E0238",
+        "E0244",
+        "E0249",
+        "E0257",
+        "E0258",
+        "E0260",
+        "E0267",
+        "E0273",
+        "E0276",
+        "E0282",
+        "E0286",
+        "E0288",
+        "E0298"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F20",
+      "title": "Grounding measurements ruled out a blanket fix",
+      "claim": "Held fixtures had mixed-sign minima. The14.65strike sampled body minimum was6.56cm above the floor; complete sole/shadow/blade contact was not proved. Uniform lowering would worsen some holds.",
+      "tasks": [
+        "LST-40"
+      ],
+      "artifactIds": [
+        "A0255"
+      ],
+      "relatedEvents": [
+        "E0253",
+        "E0256",
+        "E0261",
+        "E0263",
+        "E0264",
+        "E0266",
+        "E0271"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F21",
+      "title": "Meshy native access was not inherited",
+      "claim": "Animator and3DArtist free native calls failed at the canonical ledger lock before API access. One host free call succeeded with ledger unchanged; native capability remained bridge-required.",
+      "tasks": [
+        "LST-44",
+        "LST-45",
+        "LST-48"
+      ],
+      "artifactIds": [
+        "A0143"
+      ],
+      "relatedEvents": [
+        "E0289",
+        "E0290",
+        "E0292",
+        "E0293",
+        "E0294",
+        "E0296",
+        "E0307",
+        "E0308",
+        "E0317"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F22",
+      "title": "Contained execution removed one uncertainty, then found code defects",
+      "claim": "A tiny systemd check verified limits and normal cleanup. B1 failed before compile on an ownedGroup contract mismatch; B2 needed historical-parent handling. The corrected run applied both patches, passed focused checks and stopped at prefer-const lint before any compiler attempt. Peak~640MiB was precompile only.",
+      "tasks": [
+        "LST-46"
+      ],
+      "artifactIds": [
+        "A0167",
+        "A0171"
+      ],
+      "relatedEvents": [
+        "E0299",
+        "E0301",
+        "E0302",
+        "E0304",
+        "E0305",
+        "E0306",
+        "E0309",
+        "E0312",
+        "E0315",
+        "E0316",
+        "E0319",
+        "E0320",
+        "E0322",
+        "E0324",
+        "E0328",
+        "E0330",
+        "E0331",
+        "E0332",
+        "E0345",
+        "E0349",
+        "E0350",
+        "E0351",
+        "E0356",
+        "E0358",
+        "E0360",
+        "E0362"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F23",
+      "title": "Holder work became overengineering",
+      "claim": "H1was unplaced; six endpoints failed after a shell-check correction. A later anchor diagnostic rejected two surfaces before contact. H2hardware/source were prepared but owner suspended its unstarted run. No accepted holder or Sam draw/stow resulted.",
+      "tasks": [
+        "LST-43",
+        "LST-47",
+        "LST-49"
+      ],
+      "artifactIds": [
+        "A0256",
+        "A0257"
+      ],
+      "relatedEvents": [
+        "E0283",
+        "E0285",
+        "E0295",
+        "E0311",
+        "E0314",
+        "E0321",
+        "E0323",
+        "E0325",
+        "E0326",
+        "E0327",
+        "E0329",
+        "E0333",
+        "E0335",
+        "E0336",
+        "E0337",
+        "E0340",
+        "E0342",
+        "E0343",
+        "E0344",
+        "E0346",
+        "E0348",
+        "E0352",
+        "E0357",
+        "E0361",
+        "E0363",
+        "E0364",
+        "E0365",
+        "E0366",
+        "E0367"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    },
+    {
+      "id": "F24",
+      "title": "Ten default previews did not close animation review",
+      "claim": "All ten default floor models/navigation were captured. Director flagged max arms-out; sam/ben motion and kit pipe visibility required more specific views. No rig diagnosis or253clip pass followed.",
+      "tasks": [
+        "LST-50",
+        "LST-51"
+      ],
+      "artifactIds": [
+        "A0258"
+      ],
+      "relatedEvents": [
+        "E0339",
+        "E0347",
+        "E0353",
+        "E0354",
+        "E0359"
+      ],
+      "claimBasis": "Linked exact artifacts plus corresponding retained messages; reports remain attributed where artifacts absent",
+      "acceptance": "Only the specifically stated gate; full opening unfinished"
+    }
+  ]
+}

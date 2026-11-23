@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "pack": "sanctuary-worlds",
+  "assets": {
+    "loopforge-rivalry": {
+      "kind": "image",
+      "width": 1536,
+      "height": 1024,
+      "variants": [
+        {
+          "src": "/media/files/543f2677e38252c85ca3eef2c4956cede7dc94336b8f5bb29575120c18df67b2.webp",
+          "mime": "image/webp",
+          "bytes": 40018,
+          "sha256": "543f2677e38252c85ca3eef2c4956cede7dc94336b8f5bb29575120c18df67b2",
+          "width": 400,
+          "height": 267
+        },
+        {
+          "src": "/media/files/f7f81cd9164d68d9820929d8127fe3ad256f760944aafc35482c64896ec7bc30.webp",
+          "mime": "image/webp",
+          "bytes": 127718,
+          "sha256": "f7f81cd9164d68d9820929d8127fe3ad256f760944aafc35482c64896ec7bc30",
+          "width": 800,
+          "height": 533
+        },
+        {
+          "src": "/media/files/8f7c9cf62ade797832c2fa266a78e480216f98c0b37aa4bd3df25c1b96368746.webp",
+          "mime": "image/webp",
+          "bytes": 288904,
+          "sha256": "8f7c9cf62ade797832c2fa266a78e480216f98c0b37aa4bd3df25c1b96368746",
+          "width": 1440,
+          "height": 960
+        }
+      ]
+    },
+    "rdr-world": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/481d5d8f3b50af82f38537961b178b5d7c445d58902ae51efec52643081c9c44.webp",
+          "mime": "image/webp",
+          "bytes": 5920,
+          "sha256": "481d5d8f3b50af82f38537961b178b5d7c445d58902ae51efec52643081c9c44",
+          "width": 400,
+          "height": 225
+        },
+        {
+          "src": "/media/files/64066dcb3a15ce1d8e9cb7682e44176fb179c20bfebb065ac29af03f57bc01cd.webp",
+          "mime": "image/webp",
+          "bytes": 16676,
+          "sha256": "64066dcb3a15ce1d8e9cb7682e44176fb179c20bfebb065ac29af03f57bc01cd",
+          "width": 800,
+          "height": 450
+        },
+        {
+          "src": "/media/files/d47440596db66d2c06c6951b4df39a86019347741c0f5f1c961390d33d173c4b.webp",
+          "mime": "image/webp",
+          "bytes": 39706,
+          "sha256": "d47440596db66d2c06c6951b4df39a86019347741c0f5f1c961390d33d173c4b",
+          "width": 1440,
+          "height": 810
+        }
+      ]
+    },
+    "rimworld-colony": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/8bbb05b48fb3c96689acd2295001d0edb086f768c163e06822e8b6f08e830154.webp",
+          "mime": "image/webp",
+          "bytes": 20340,
+          "sha256": "8bbb05b48fb3c96689acd2295001d0edb086f768c163e06822e8b6f08e830154",
+          "width": 400,
+          "height": 225
+        },
+        {
+          "src": "/media/files/10204721b30cac7d3ce00dd02f2740c2183c73407c9879d868d0bebbb8ef753c.webp",
+          "mime": "image/webp",
+          "bytes": 72726,
+          "sha256": "10204721b30cac7d3ce00dd02f2740c2183c73407c9879d868d0bebbb8ef753c",
+          "width": 800,
+          "height": 450
+        },
+        {
+          "src": "/media/files/6593c61bf85f6795c4aaff41ce9624c64e41832b71755b3a84a2d84b0343d52d.webp",
+          "mime": "image/webp",
+          "bytes": 207900,
+          "sha256": "6593c61bf85f6795c4aaff41ce9624c64e41832b71755b3a84a2d84b0343d52d",
+          "width": 1440,
+          "height": 810
+        }
+      ]
+    },
+    "witcher-world": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/e4dd37810123479739864ef0359b95a75d45814ea6b5cb0a5467e4ddc8c4d3c7.webp",
+          "mime": "image/webp",
+          "bytes": 17100,
+          "sha256": "e4dd37810123479739864ef0359b95a75d45814ea6b5cb0a5467e4ddc8c4d3c7",
+          "width": 400,
+          "height": 225
+        },
+        {
+          "src": "/media/files/6030ff6f421a2e9bde89a337c6873f380cbf2bc8345dc8353f016660a582e9a9.webp",
+          "mime": "image/webp",
+          "bytes": 57244,
+          "sha256": "6030ff6f421a2e9bde89a337c6873f380cbf2bc8345dc8353f016660a582e9a9",
+          "width": 800,
+          "height": 450
+        },
+        {
+          "src": "/media/files/e8edfce6079fa57991c1ac8362a899aa38cbd8a31b29fabc4585e324b7303628.webp",
+          "mime": "image/webp",
+          "bytes": 153518,
+          "sha256": "e8edfce6079fa57991c1ac8362a899aa38cbd8a31b29fabc4585e324b7303628",
+          "width": 1440,
+          "height": 810
+        }
+      ]
+    }
+  }
+}

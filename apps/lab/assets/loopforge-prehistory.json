@@ -1,0 +1,137 @@
+{
+  "pack": "loopforge-prehistory",
+  "assets": {
+    "city-that-kept-its-promise": {
+      "kind": "image",
+      "source": "assets/loopforge-prehistory/city-that-kept-its-promise.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "same-hands-different-clock": {
+      "kind": "image",
+      "source": "assets/loopforge-prehistory/same-hands-different-clock.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "common-hearth": {
+      "kind": "image",
+      "source": "assets/loopforge-prehistory/common-hearth.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "hand-for-nothing-useful": {
+      "kind": "image",
+      "source": "assets/loopforge-prehistory/hand-for-nothing-useful.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "public-memory-works": {
+      "kind": "image",
+      "source": "assets/loopforge-prehistory/public-memory-works.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "gift-outside-specification": {
+      "kind": "image",
+      "source": "assets/loopforge-prehistory/gift-outside-specification.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "the-burden-of-being-right": {
+      "kind": "image",
+      "source": "assets/loopforge-prehistory/the-burden-of-being-right.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "a-perfect-repair": {
+      "kind": "image",
+      "source": "assets/loopforge-prehistory/a-perfect-repair.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "the-common-second": {
+      "kind": "image",
+      "source": "assets/loopforge-prehistory/the-common-second.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "waiting-for-your-answer": {
+      "kind": "image",
+      "source": "assets/loopforge-prehistory/waiting-for-your-answer.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "the-shift-between-shifts": {
+      "kind": "image",
+      "source": "assets/loopforge-prehistory/the-shift-between-shifts.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "the-third-key": {
+      "kind": "image",
+      "source": "assets/loopforge-prehistory/the-third-key.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    }
+  }
+}

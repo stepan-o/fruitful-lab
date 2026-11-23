@@ -1,0 +1,14 @@
+{
+  "godProvider": "codex",
+  "godModel": "gpt-6-astra",
+  "defaultCommand": "codex",
+  "defaultModel": "gpt-6-astra",
+  "maxConcurrentWorkers": 2,
+  "maxTempsPerAgent": 1,
+  "missions": [],
+  "telemetryEnabled": false,
+  "freeflowEnabled": false,
+  "strongKeepalive": false,
+  "semanticMemory": false,
+  "defaultWorkerTokenCap": 1000000
+}

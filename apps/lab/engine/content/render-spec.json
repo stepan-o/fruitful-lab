@@ -1,0 +1,51 @@
+{
+  "coord_system": {
+    "units": "WORLD_UNITS",
+    "units_per_tile": 1000,
+    "axis": {
+      "x_positive": "EAST",
+      "y_positive": "SOUTH"
+    },
+    "origin": {
+      "x": 0,
+      "y": 0
+    },
+    "bounds": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 280000,
+      "max_y": 200000
+    }
+  },
+  "projection": {
+    "kind": "TOP_DOWN_2D"
+  },
+  "z_layer": {
+    "meaning": "DRAW_STACK_HINT",
+    "stable_across_run": true
+  },
+  "draw_order": {
+    "rooms": [
+      "ROOM_ID"
+    ],
+    "agents": [
+      "ROOM_ID",
+      "LOCAL_SORT_KEY",
+      "AGENT_ID"
+    ],
+    "items": [
+      "ROOM_ID",
+      "LOCAL_SORT_KEY",
+      "ITEM_ID"
+    ]
+  },
+  "local_sort_key": {
+    "source": "WORLD_Y",
+    "quantization": "Q1E3",
+    "direction": "ASC"
+  },
+  "asset_resolution": {
+    "policy": "MANIFEST_OR_PRIMITIVE_FALLBACK",
+    "missing_ref_behavior": "DRAW_PRIMITIVE"
+  }
+}

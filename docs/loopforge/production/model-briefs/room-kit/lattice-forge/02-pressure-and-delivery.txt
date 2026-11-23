@@ -1,0 +1,9 @@
+LOOPFORGE · LATTICE FORGE / PRESSURE AND DELIVERY · v1
+
+Use the current station reservation, operator apron, workpiece path and compressionPose contact calculation. The shell has no authority over processing. Separate vertical ram and platen: approach, contact, compress, brief hold, release, then output travel. The platen underside follows the measured workpiece top throughout compression. No intersection hidden by camera cuts. The moving head stays below the fixed pressure housing throughout its stroke.
+
+Place readable pressure gauges, guarded control and service hatch on the operator side. These are separate authored pieces with reachable handles and named interaction targets. A repair or jam must be possible later without regenerating the entire station. Preserve a clear view of bob and the brain. Do not put a foreground pipe across the tutorial shot.
+
+First effects: emissive pressure seam during the active hold and stable practical lamps; shared room lights, no new shadow light, no continuous fire or fluid simulation. Optional later pressure-release puffs use a bounded pool. Reduced effects retain compression and output readability.
+
+Record source/task and delivery hashes, actual triangle/material/texture counts, bounds and contact checks. Review close and room cameras, cast clearance, reduced graphics, and the existing HD620 acceptance protocol. A successful export is only a candidate, not completed art or performance acceptance.

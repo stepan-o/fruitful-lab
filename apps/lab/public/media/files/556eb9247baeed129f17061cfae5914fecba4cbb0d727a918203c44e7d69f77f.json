@@ -1,0 +1,59 @@
+{
+  "status": "review calibration; source files untouched",
+  "mounts": [
+    {
+      "side": "Left",
+      "parent": "LeftForeArm",
+      "matrix": [
+        0,
+        -28.904681075261283,
+        0,
+        0,
+        0,
+        0,
+        28.904681075261283,
+        0,
+        -28.904681075261283,
+        0,
+        0,
+        0,
+        0,
+        60.881353399992996,
+        0,
+        1
+      ],
+      "columnMajor": true,
+      "sourceMeshCoordinates": true,
+      "tipLengthMeters": 0.55,
+      "socketAlongForearmCm": 34,
+      "rollDegrees": 0
+    },
+    {
+      "side": "Right",
+      "parent": "RightForeArm",
+      "matrix": [
+        0,
+        -28.904681075261283,
+        0,
+        0,
+        0,
+        0,
+        -28.904681075261283,
+        0,
+        28.904681075261283,
+        0,
+        0,
+        0,
+        0,
+        60.881353399992996,
+        0,
+        1
+      ],
+      "columnMajor": true,
+      "sourceMeshCoordinates": true,
+      "tipLengthMeters": 0.55,
+      "socketAlongForearmCm": 34,
+      "rollDegrees": 0
+    }
+  ]
+}

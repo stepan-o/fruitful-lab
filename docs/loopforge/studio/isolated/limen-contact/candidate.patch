@@ -1,0 +1,76 @@
+--- a/apps/lab/components/loopforge/agents/limen-motion-model.ts
++++ b/apps/lab/components/loopforge/agents/limen-motion-model.ts
+@@ -13,6 +13,7 @@
+ import {type LimenPalette} from '@/lib/loopforge/agents/limen-palette';
+ import {createLimenBlade} from './limen-blade';
+ import {createPerformanceSampler} from './performance-sampler';
++import {createLimenContactPose} from './limen-contact-pose';
+ import type {ActorView} from '@/lib/loopforge/encounters/contract';
+ import type {LimenSurface} from './limen-model';
+ 
+@@ -38,6 +39,7 @@
+   signal.throwIfAborted();
+   if(body.skeletons[0]?.bones.length!==24||!limenMotions.every(m=>body.animationGroups.some(a=>a.name===m.id)))throw Error('The LIMEN source motion bank is incomplete.');
+   body.addAllToScene();body.rootNodes.forEach(n=>{n.parent=root;});body.animationGroups.forEach(a=>a.stop());
++  const contactPose=createLimenContactPose(body.animationGroups,body.transformNodes);
+   const forearm=body.transformNodes.find(n=>n.name==='RightForeArm');
+   if(!forearm)throw Error('The right forearm attachment is missing.');
+   const socket=new TransformNode('LIMEN candidate forearm emitter',scene);socket.parent=forearm;
+@@ -62,6 +64,7 @@
+   function sample(){
+    const a=body.animationGroups.find(a=>a.name===clip)!;
+    for(const {animation,target}of a.targetedAnimations){const v=animation.evaluate(a.from+(a.to-a.from)*phase);if(animation.targetProperty==='rotationQuaternion')target.rotationQuaternion=(v as Quaternion).clone();else if(animation.targetProperty==='position')target.position.copyFrom(v as Vector3);else if(animation.targetProperty==='scaling')target.scaling.copyFrom(v as Vector3);}
++   contactPose.sample({clip},phase*duration());
+    root.computeWorldMatrix(true);const quiet=reduced||reducedMotion.matches;energy?.sample(quiet?0:effectTime,quiet?0:Math.max(0,1-Math.abs(effectTime-pulseAt-.25)/.25),1,0);stage.refresh();
+   }
+   observer=scene.onBeforeRenderObservable.add(()=>{
+@@ -74,7 +77,7 @@
+   const performanceSampler=createPerformanceSampler(body.animationGroups,'','y-up');
+   return {
+    presentation:{root,bodyMeshes:body.meshes.filter(m=>m.getTotalVertices()>0)},
+-   perform(actor:ActorView){if(!actor.cue)return;playing=false;performanceSampler.sample(actor.cue,actor.seconds,actor.previous,actor.blend);const p=worldPoint(actor.position[0]/1000,actor.position[1]/1000);root.position.set(p[0],.015,p[2]);// Imported glTF faces -Z; encounter yaw zero faces the queue along +Z.
++   perform(actor:ActorView){if(!actor.cue)return;playing=false;performanceSampler.sample(actor.cue,actor.seconds,actor.previous,actor.blend);contactPose.sample(actor.cue,actor.seconds,actor.previous,actor.blend);const p=worldPoint(actor.position[0]/1000,actor.position[1]/1000);root.position.set(p[0],.015,p[2]);// Imported glTF faces -Z; encounter yaw zero faces the queue along +Z.
+     root.rotation.y=Math.PI+actor.yaw*Math.PI/180;root.computeWorldMatrix(true);energy?.sample(reducedMotion.matches?0:actor.seconds,actor.motion==='strike'?.8:0,1,0);stage.refresh();},
+    duration,clip(value:string){if(!limenMotion(value))throw Error('Unknown LIMEN motion');clip=value as LimenMotionId;phase=0;effectTime=0;pulseAt=-100;sample();onFrame(0);},
+    play(value:boolean){if(value&&phase>=1)phase=0;playing=value;last=performance.now();sample();},
+--- /dev/null
++++ b/apps/lab/components/loopforge/agents/limen-contact-pose.ts
+@@ -0,0 +1,38 @@
++import {Quaternion,Vector3} from '@babylonjs/core/Maths/math.vector';
++import type {AnimationGroup} from '@babylonjs/core/Animations/animationGroup';
++import type {TransformNode} from '@babylonjs/core/Meshes/transformNode';
++import type {ActorView,MotionCue} from '@/lib/loopforge/encounters/contract';
++
++/** Blade-aware wrist and recoil shoulder poses on the rebuilt 24-joint LIMEN.
++ * Evaluate both corrected source poses before the existing transition blend.
++ * No previous-frame state, attachment movement, rig edits or inverse kinematics.
++ * These three clips remain candidates pending actual-shot visual review.
++ */
++export function createLimenContactPose(groups:AnimationGroup[],nodes:TransformNode[]){
++ const targets=['RightHand','LeftArm'].map(name=>{
++  const node=nodes.find(n=>n.name===name);
++  if(!node?.rotationQuaternion)throw Error(`LIMEN contact joint missing: ${name}`);
++  return {name,node,rest:node.rotationQuaternion.clone(),next:Quaternion.Identity(),old:Quaternion.Identity()};
++ });
++ const bank=new Map(groups.map(group=>[group.name,{group,tracks:targets.map(t=>group.targetedAnimations.find(a=>a.target===t.node&&a.animation.targetProperty==='rotationQuaternion')?.animation)}]));
++ const wrist=Quaternion.RotationAxis(Vector3.Forward(),1.2),shoulder=Quaternion.RotationAxis(Vector3.Forward(),.5);
++ function evaluate(cue:MotionCue,seconds:number,index:number,out:Quaternion){
++  const entry=bank.get(cue.clip);
++  if(!entry)throw Error(`LIMEN contact clip missing: ${cue.clip}`);
++  const {group,tracks}=entry,track=tracks[index],fps=group.targetedAnimations[0].animation.framePerSecond,duration=(group.to-group.from)/fps;
++  const time=(cue.start??0)+seconds*(cue.rate??1),t=cue.loop&&duration>0?((time%duration)+duration)%duration:Math.max(0,Math.min(duration,time));
++  out.copyFrom(track?track.evaluate(group.from+t*fps)as Quaternion:targets[index].rest);
++  // Keep the emitting hand folded clear of the unmodified forearm current.
++  if(index===0&&(cue.clip==='Shouting_Angrily'||cue.clip==='Checkpoint_Strike'))out.multiplyToRef(wrist,out);
++  // Open the whole left arm during the recoil; elbow and wrist follow together.
++  if(index===1&&cue.clip==='Step_Back')out.multiplyToRef(shoulder,out);
++ }
++ return {sample(cue:MotionCue,seconds:number,previous?:ActorView['previous'],blend=1){
++  const weight=blend*blend*(3-2*blend),mix=!!previous&&weight<1;
++  targets.forEach((target,index)=>{
++   evaluate(cue,seconds,index,target.next);
++   if(mix){evaluate(previous!.cue,previous!.seconds,index,target.old);Quaternion.SlerpToRef(target.old,target.next,weight,target.node.rotationQuaternion!);}
++   else target.node.rotationQuaternion!.copyFrom(target.next);
++  });
++ }};
++}

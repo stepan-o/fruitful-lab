@@ -1,0 +1,23 @@
+.plate {
+  position: relative;
+  width: 100%;
+  isolation: isolate;
+}
+
+.plate > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.world {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.plate[data-ready="true"] > .world { opacity: 1; }
+.plate[data-ready="true"] .fallback { visibility: hidden; }

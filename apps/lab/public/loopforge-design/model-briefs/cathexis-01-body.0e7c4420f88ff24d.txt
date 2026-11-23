@@ -1,0 +1,25 @@
+For repair of the existing v1 body, use 08-rear-panel-repair.txt instead. The instructions below are for a full rebuild only.
+
+Create CATHEXIS for Loopforge from the THREE attached body reference images: 01-cathexis-body-front.260b685edbc8b769.jpg, 02-cathexis-rear-panel-repair.5385077857a25085.jpg and 03-cathexis-body-left.7876f6e8730e1f86.jpg.
+
+This task is the BODY ONLY. Do not install a porcelain face mask. Separate masks will follow as separate assets. Do not infer additional characters from any reference sheet.
+
+Identity: a theatrical robot diva who runs the Burn-in Theatre. Cracked ivory armor, black articulated mechanics, antique brass corset ribs, compact diadem/headset, amber eye emitters and hip canisters, a compact back reactor, grouped cable-hair and a distressed open-front layered skirt. Elegant, commanding and unmistakably mechanical. Preserve the approved body proportions and high-heeled mechanical feet. Do not turn her into a worker, a glossy generic android, a princess or a weapon-bearing fighter.
+
+The faceplate and mechanical expression insert are separate replaceable items. Keep the permanent compact skull, crown, hair, amber eye emitters and a shallow oval receiving seat. The mechanical face pictured in the body reference is an assembly placeholder: do NOT fuse its teeth, lips, brows or grin into the immutable skull. If object separation is supported, deliver it as a separately named placeholder; otherwise explain the limitation and preserve the neutral master for offline separation before the rig/motion bank. We will not stack a second face over fused facial geometry. No facial rig is claimed at this stage.
+
+She is physically delicate and made for performance and fine interaction, not coarse industrial labor. Keep fine hands, porcelain and elegant costume. Later oil/soot and brewery-residue appearances will reuse this EXACT model, UVs and rig. Do not create a heavier dirty-body replacement. Anger and distress will be expressed through fitted face variants and acting, independent of dirt or mask coverage.
+
+Generate the complete unrigged visual master first, in a clean symmetric A-pose. Hands clear of the torso, five separate mechanical fingers with a distinct thumb, legs and feet separated. The front view is the authority for proportions. Use the rear for reactor/hair construction and the profile for depth. Resolve minor view disagreements coherently rather than duplicating parts.
+
+Keep fabric clear of legs and hands. The skirt has the original layered side panels and an open front. Its central rear cloth must form a continuous section behind the legs, reaching the lower ankles without knee/shin intersections. Use the revised rear reference for this section only; preserve the original outer silhouette, side hems and crown. The original profile predates this rear infill and must not reintroduce the missing rear section. Hair is grouped into a few controllable locks/cable bundles, not thousands of separate strands. Do not bake background shadows, ambient glow, fog, transparent veils or magical energy into geometry. Surface cracks, weave and fine wear should primarily be texture detail.
+
+Where your tools support it, keep body, skirt panels and hair sections separable. Do not claim separate objects unless the exported file actually contains them. If segmentation is unsupported, say so and preserve the neutral master for our offline cleanup. Do not discard the costume just to make auto-rigging easier.
+
+Deliver:
+- Cathexis_Body_v1_master: full-detail unrigged source.
+- Cathexis_Body_v1_50k: a derivative around 40,000–55,000 triangles, preserving silhouette, fingers, face seating rim and costume. Report the actual count rather than claiming the target was exact.
+- Textured GLB and FBX, neutral A-pose, PBR base color, normal, roughness and metallic maps. 2K working textures are sufficient for the first trial; preserve higher-resolution source maps if available.
+- A brief report of material slots, separate objects, pose and any likely rigging problems.
+
+Stop before generating the large animation bank. We will inspect the body, fit a mask and test the rig first. Do not overwrite the master when remeshing.

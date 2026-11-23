@@ -1,0 +1,27 @@
+{
+  "backgrounds": [
+    "radial-gradient(at 50% 0px, rgba(57, 64, 58, 0.333), rgba(0, 0, 0, 0) 60%), linear-gradient(rgba(18, 25, 22, 0.933), rgba(11, 14, 12, 0.96)), url(\"http://127.0.0.1:3192/media/files/bb0e48018b460ef71392b8ac398384f161d7f5f26b7effe5f993b52f33d76691.webp\")",
+    "url(\"http://127.0.0.1:3192/media/files/e70ea0c4a033435f551fe0769a4e44d23d526b8e84f155051b189f5cc9afef08.webp\")",
+    "url(\"http://127.0.0.1:3192/media/files/453467772dcd563e8112591cf1c5f5f1105d639e3f75ad3b17da26fa00bdde98.webp\")",
+    "url(\"http://127.0.0.1:3192/media/files/55260c839aa3796d9c5db1e655e7e46c6c4c717752603fd874a2ea51a3a1c9e8.webp\")",
+    "url(\"http://127.0.0.1:3192/media/files/dfbc2581ab2703bdd7b0981f4b29609dc67d980ecd67b2ca52951911db0dfbae.webp\")",
+    "url(\"http://127.0.0.1:3192/media/files/d2b812ce43bbaf78cc05a8f4343e049a6ae1e09614f7eea77123d0f21b76f92f.webp\")",
+    "linear-gradient(rgba(16, 23, 19, 0.733), rgba(7, 11, 9, 0.867)), url(\"http://127.0.0.1:3192/media/files/2b1a3ed20b3b36510597f96497b5c119ae28bd6acfd3e572e79c477a52735878.webp\")"
+  ],
+  "dpr": 1,
+  "images": [
+    "http://127.0.0.1:3192/media/files/cc537e4e9f9242c79b5f21a99dd742595d1df5ecc13f344186ae540d71ab962b.webp",
+    "http://127.0.0.1:3192/media/files/476dc56b52e66d9a8e2dc342f58ad46930f1e895b9fdd366eb9d5060f8d720e7.webp",
+    "http://127.0.0.1:3192/media/files/6b7f6c25da814d566a09310d6628d0a2b7234cfa8199c1795be146254fd4a604.webp",
+    "http://127.0.0.1:3192/media/files/fbe93c3bcd8cf25f708ae58a58438aa35eb47edef7483c8346e88d163d885c7a.webp",
+    "http://127.0.0.1:3192/media/files/00b9a06b63a7799b921f74d35fe2080e4818536608f7b1086b5c0e82f094065d.webp",
+    "http://127.0.0.1:3192/media/files/17710217e74501f70a6f273fdf708d80ec3b8ce89e3e3786a856c783568604a2.webp",
+    "http://127.0.0.1:3192/media/files/bb3eef543fc10ea92d1e343f04932f81338bbbe17bbdb05040835aac6e49ae04.webp",
+    "http://127.0.0.1:3192/media/files/07a7a6f28b8aa1232a92fc9a20ab9306cf6af3f3cf4e447555b1818014c80719.webp",
+    "http://127.0.0.1:3192/media/files/8a41271075dc9847956aa2d7436166e72d6ffc2cb750dfc63f5fe08b66c97db6.webp"
+  ],
+  "viewport": [
+    390,
+    844
+  ]
+}

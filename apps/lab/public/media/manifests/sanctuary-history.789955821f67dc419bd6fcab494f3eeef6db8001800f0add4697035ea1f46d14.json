@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "pack": "sanctuary-history",
+  "assets": {
+    "diablo-original-combat": {
+      "kind": "image",
+      "width": 1444,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/0830d8f8563b3d2f6abea019a08d6d1ccea1c2c0bf0b707f3e6b2af6dd278b45.webp",
+          "mime": "image/webp",
+          "bytes": 28960,
+          "sha256": "0830d8f8563b3d2f6abea019a08d6d1ccea1c2c0bf0b707f3e6b2af6dd278b45",
+          "width": 400,
+          "height": 299
+        },
+        {
+          "src": "/media/files/19262bd6d97aa82975e2c90a00cd331667643f2c31b4abed39b0de0011c9983b.webp",
+          "mime": "image/webp",
+          "bytes": 100690,
+          "sha256": "19262bd6d97aa82975e2c90a00cd331667643f2c31b4abed39b0de0011c9983b",
+          "width": 800,
+          "height": 598
+        },
+        {
+          "src": "/media/files/61ec69b12c3c358e4e21eee11599797ac7c4b7c9356392aec38b0e988a398eb2.webp",
+          "mime": "image/webp",
+          "bytes": 176896,
+          "sha256": "61ec69b12c3c358e4e21eee11599797ac7c4b7c9356392aec38b0e988a398eb2",
+          "width": 1200,
+          "height": 898
+        }
+      ]
+    },
+    "diablo-three-items": {
+      "kind": "image",
+      "width": 1200,
+      "height": 675,
+      "variants": [
+        {
+          "src": "/media/files/ee090ed255298c9f9da4485b8094e955389c95ca1ae276f95ff3e59d1fd2101d.webp",
+          "mime": "image/webp",
+          "bytes": 17218,
+          "sha256": "ee090ed255298c9f9da4485b8094e955389c95ca1ae276f95ff3e59d1fd2101d",
+          "width": 400,
+          "height": 225
+        },
+        {
+          "src": "/media/files/cbf716ab236231e560082e90e4ac04ad5085d7a7603a32d5b6553a1469a644fa.webp",
+          "mime": "image/webp",
+          "bytes": 54866,
+          "sha256": "cbf716ab236231e560082e90e4ac04ad5085d7a7603a32d5b6553a1469a644fa",
+          "width": 800,
+          "height": 450
+        },
+        {
+          "src": "/media/files/9872080d55c71692290a29d29afb26886724c095bb1dab2c34e648e10c572296.webp",
+          "mime": "image/webp",
+          "bytes": 104284,
+          "sha256": "9872080d55c71692290a29d29afb26886724c095bb1dab2c34e648e10c572296",
+          "width": 1200,
+          "height": 675
+        }
+      ]
+    }
+  }
+}

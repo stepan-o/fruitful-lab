@@ -1,0 +1,464 @@
+{
+  "version": "first-retrospective-v1",
+  "freshContributors": 9,
+  "freshAnswers": 36,
+  "peerResponses": 7,
+  "contributors": [
+    {
+      "id": "engine",
+      "role": "Engine Master",
+      "anchor": "retro-engine",
+      "answers": [
+        {
+          "id": "Q1",
+          "anchor": "retro-engine-q1",
+          "question": "Name one useful result and one failure from your actual work. What evidence supports each, and what does it not prove?",
+          "markdown": "**Facts.** I delivered a correction for selected speech disappearing when its speaker was outside the view. The source candidate retained the words, timing and world state and included 19 focused speech/export checks. Those checks did not establish visual acceptance. Director’s 21-variant clearance concerned the earlier C1 strike bubble/head obstruction, not this candidate. The later held-offscreen speech/export layers had no completed browser pass before the goal dropped. [E; A:S8](#retro-engine-sources)\n\nMy build handoff omitted a process-group field, and two entrypoints treated successful exits as failures. The attempt stopped after 18.70 seconds without reaching compilation. That establishes my implementation failure, not insufficient compiler memory. [E](#retro-engine-sources)\n\n**Interpretation.** Useful Engine work must preserve authoritative state, survive its actual execution boundary and produce observable behavior. Passing one layer cannot substitute for another. Current assembly and reported tests do not reverse the unfinished game outcome. [C](#retro-engine-sources)"
+        },
+        {
+          "id": "Q2",
+          "anchor": "retro-engine-q2",
+          "question": "What is the smallest technical handoff that proves the real execution boundary works, rather than only its mocks? Give a concrete pass criterion and a rejection example; separate technical evidence from owner taste.",
+          "markdown": "**Proposal.** The smallest convincing handoff is one pinned entrypoint, its minimal input, and a machine-written result with exit status, identities and log. An authorized host call should launch an expendable worker, pass the real parent-to-worker payload through the production validator, and exercise the actual command-line exit handling. Nothing should require the bridge to repair fields manually.\n\n**Technical criteria.** Success means the intended payload arrives unchanged, the validator accepts the fresh owned process group, success exits zero, and cleanup removes only the created worker. A deliberately wrong process start identifier must produce a nonzero rejection before any target mutation. A mocked validator passing while the host rejects its real payload is a failure.\n\nThis proves transport and ownership handling. It proves neither compiler capacity nor a readable, grounded or enjoyable scene. Readability needs matched visual evidence; owner taste remains the owner’s decision."
+        },
+        {
+          "id": "Q3",
+          "anchor": "retro-engine-q3",
+          "question": "Which handoff or decision arrangement helped or hindered results? Address one specific claim in the independent assessment: agree, disagree or qualify it, with your reason.",
+          "markdown": "**Facts and interpretation.** Frozen inputs and explicit private ownership helped preserve pending work when canonical writes were denied. Separating source permission from host execution was necessary; repeatedly treating the packet as the finished result hindered progress. [E](#retro-engine-sources)\n\nI agree with the assessment’s claim that local checks insufficiently exercised the actual handoff. I qualify its broader diagnosis: fewer coordinators alone would not have fixed my missing field or erroneous exit handling. One accountable execution owner still needs a tested interface. I should have requested that narrow proof earlier, before elaborating the build recipe. [A:S7](#retro-engine-sources)"
+        },
+        {
+          "id": "Q4",
+          "anchor": "retro-engine-q4",
+          "question": "Propose one prioritized experiment for the next authorized cycle: named accountable owner, required collaborators, smallest useful output, observable success/failure criterion, and when to inspect it. State what would make you stop or change approach.",
+          "markdown": "**One proposed experiment: boundary rehearsal first.** I am accountable. Producer supplies one bounded authorization; root supplies host execution, without rewriting the payload. Before the next authorized build, use one 15-minute reservation to produce the minimal handoff above, one successful result and one deliberate identity-mismatch rejection.\n\nInspect immediately after that reservation. Pass requires both expected outcomes, complete owned-worker cleanup and no contract repair between dispatch and result. Permission denial, unexpected mutation, leaked worker or any manual payload repair fails the experiment. Stop before compilation and choose an interface correction or capability decision; do not purchase another build attempt. This is a proposal, not resumed production."
+        }
+      ],
+      "sourcesAnchor": "retro-engine-sources",
+      "sources": [
+        {
+          "label": "E",
+          "title": "Engine prior interview",
+          "href": "../../interviews/index.html#I-ENGINE-01"
+        },
+        {
+          "label": "A",
+          "title": "Independent assessment",
+          "href": "../../posts/2026-10-22-a-studio-needs-a-shorter-path/index.html"
+        },
+        {
+          "label": "C",
+          "title": "Milestone facts at this review",
+          "href": "#milestone-state"
+        }
+      ],
+      "sourceMarkdown": "contributions/engine.md"
+    },
+    {
+      "id": "animator",
+      "role": "Animator",
+      "anchor": "retro-animator",
+      "answers": [
+        {
+          "id": "Q1",
+          "anchor": "retro-animator-q1",
+          "question": "Name one useful result and one failure from your actual work. What evidence supports each, and what does it not prove?",
+          "markdown": "**Facts.** I delivered a reproducible Sam source packet with explicit hardware and grip proposals, rejection checks and recorded limits. My prior interview records passing source/small-geometry tests and that the final body-fitting run never happened. That is useful preparation; it establishes neither physical fit nor an accepted performance. My concrete failure was a placement checker that rejected two surfaces without saving the required offsets or contributing body points. [S1](#retro-animator-sources)\n\n**Interpretation.** I made failure reproducible before making it sufficiently informative. The missing measurements prevented a grounded choice between a framing error, unsuitable surface and legitimate obstruction."
+        },
+        {
+          "id": "Q2",
+          "anchor": "retro-animator-q2",
+          "question": "How would you decide that a performance is physically and dramatically usable before committing to broad clip delivery? Give a concrete pass criterion and a rejection example; separate technical evidence from owner taste.",
+          "markdown": "**Proposed craft criteria.** Before broad delivery, I would require one short approach, transfer and release in the actual loader and intended camera, at one declared detail level. Technical passage requires measured intended hand/prop contact and body support; zero unintended hand, forearm, card or armour crossings in the evaluated frames; continuous motion; and unchanged, visible one-card custody. The report must state sampling coverage and unresolved intervals.\n\nA near-perfect wrist target with the palm inside the holder is a rejection. So is a concealed transfer achieved by hiding the card early. [S1](#retro-animator-sources)\n\nDramatic usability needs a moving-shot review: a reviewer can identify the action and transfer moment without explanation, and the pose, timing and silhouette communicate the intended effort. Owner approval of acting and appearance remains a separate decision. Passing software tests cannot supply that judgment. [S3](#retro-animator-sources)"
+        },
+        {
+          "id": "Q3",
+          "anchor": "retro-animator-q3",
+          "question": "Which handoff or decision arrangement helped or hindered results? Address one specific claim in the independent assessment: agree, disagree or qualify it, with your reason.",
+          "markdown": "**Facts.** Frozen inputs and relayed failed outputs made my handoffs actionable. Successive source-only continuations also kept me producing deliverables while physical usability remained unresolved. [S1](#retro-animator-sources)\n\n**Interpretation.** I agree with the assessment's specific finding that the feasible-transfer principle was stated but did not govern continuation. [S2](#retro-animator-sources) Naming that principle again would change little. The missing arrangement was a decision point that could reject the implementation choice before funding another continuation. My own inadequate failure evidence made that decision harder. I would preserve independent craft and taste review while giving one accountable owner responsibility for reaching that decision."
+        },
+        {
+          "id": "Q4",
+          "anchor": "retro-animator-q4",
+          "question": "Propose one prioritized experiment for the next authorized cycle: named accountable owner, required collaborators, smallest useful output, observable success/failure criterion, and when to inspect it. State what would make you stop or change approach.",
+          "markdown": "**One proposed experiment: first interaction before variants.** I, Loopforge Animator, would own one reviewable two-second interaction in the next explicitly authorized cycle. Scene Director supplies the intended view and action; 3DArtist supplies a frozen body/prop interface; Engine supplies the matching runtime capture. Producer schedules one bounded attempt and the review.\n\nThe smallest output is that moving clip paired with its contact/coverage report. Inspect it at the first scheduled review, before another clip or broad bake. Success means the Q2 technical criteria pass and the reviewer can identify the action and transfer; owner taste approval is recorded separately. Missing capture, unsupported contact or an unreadable action fails the experiment. I would stop variant production then and ask Producer to choose a changed approach or termination before further spend. This proposal does not resume the dropped opening."
+        }
+      ],
+      "sourcesAnchor": "retro-animator-sources",
+      "sources": [
+        {
+          "label": "S1",
+          "title": "Animator prior interview",
+          "href": "../../interviews/index.html#I-ANIMATOR-01"
+        },
+        {
+          "label": "S2",
+          "title": "Independent assessment",
+          "href": "../../posts/2026-10-22-a-studio-needs-a-shorter-path/index.html"
+        },
+        {
+          "label": "S3",
+          "title": "Milestone facts at this review",
+          "href": "#milestone-state"
+        }
+      ],
+      "sourceMarkdown": "contributions/animator.md"
+    },
+    {
+      "id": "3d-artist",
+      "role": "3D Artist",
+      "anchor": "retro-3d-artist",
+      "answers": [
+        {
+          "id": "Q1",
+          "anchor": "retro-3d-artist-q1",
+          "question": "Name one useful result and one failure from your actual work. What evidence supports each, and what does it not prove?",
+          "markdown": "**Fact.** H2 was a reproducible 192-triangle holder with explicit dimensions, mounting pads and construction checks. It removed a documented local obstruction: 72 saved mouth examples lay outside its solids. But 14 vertices from a broader saved hand sample still penetrated it in the inherited poses. That was saved-coordinate arithmetic, not a new performance test. [S1](#retro-3d-artist-sources)\n\n**Failure and interpretation.** My deliveries did not establish a usable holder. H1 admitted the card without establishing room for the hand; the later evidence showed failed contact and unsupported mounting. Clear warnings preserved honesty, but did not resolve the design dependency. I should have made that unresolved relationship the dominant delivery criterion."
+        },
+        {
+          "id": "Q2",
+          "anchor": "retro-3d-artist-q2",
+          "question": "When does a prop/model count as useful delivery if another craft must fit or animate it? State your responsibility and a receiver obligation. Give a concrete pass criterion and a rejection example; separate technical evidence from owner taste.",
+          "markdown": "**Proposed craft criteria.** I own reproducible geometry, dimensions, material choices, attachment definitions and accurate limits. The receiver must verify that the actual body, grip and loader reproduce the proposed relationship, then return acceptance or a specific rejection with contributing geometry.\n\nA construction packet can be useful preparation. I would call it a useful interaction component only when the receiver reproduces one supported transfer endpoint with the complete hand, card and forearm clear of unintended intersections. The record must identify intended contacts, measured margins, exact versions and what remains untested through movement.\n\nA card-only clearance pass with the palm inside the shell is a rejection, even if the mesh is valid. Technical passage does not approve the holder’s bulk, colour or acting; those still need visual judgment and owner taste approval. [S1](#retro-3d-artist-sources)"
+        },
+        {
+          "id": "Q3",
+          "anchor": "retro-3d-artist-q3",
+          "question": "Which handoff or decision arrangement helped or hindered results? Address one specific claim in the independent assessment: agree, disagree or qualify it, with your reason. Also respond to Animator’s fresh Q4 proposal: identify one useful commitment and one assumption or boundary you would change. Do not imply consensus.",
+          "markdown": "**Interpretation.** Frozen inputs helped identify the object under discussion. I agree with the assessment’s specific claim that allowing an unplaced prototype to finish left its central physical dependency unresolved. [S2](#retro-3d-artist-sources) I would retain separate craft responsibilities but replace separate finish lines with a shared first-interaction decision. I cannot establish from my work that removing all scheduling boundaries would help.\n\nAnimator’s fresh Q4 usefully commits one accountable owner to a moving clip plus contact evidence before variants. [S3](#retro-3d-artist-sources) I would change the assumption that I supply an already-frozen body/prop interface: pin a provisional version for the first joint feasibility check, then freeze an accepted interface after that check. Otherwise “frozen” can turn an untested assumption into a constraint. This is my proposed amendment, not agreed consensus."
+        },
+        {
+          "id": "Q4",
+          "anchor": "retro-3d-artist-q4",
+          "question": "Propose one prioritized experiment for the next authorized cycle: named accountable owner, required collaborators, smallest useful output, observable success/failure criterion, and when to inspect it. State what would make you stop or change approach.",
+          "markdown": "**One prioritized experiment, only after authorization:** assign Animator accountability for one complete interaction through the first review. I supply provisional hardware; Engine supplies the matching runtime capture; Scene Director supplies framing; Producer reserves the attempt and decision point.\n\nThe smallest output is one complete approach, transfer and release, plus a compact contact-and-coverage record. Inspect it at the first scheduled review, before variants. Success requires Q2’s technical criteria and an uninstructed reviewer identifying the action and transfer; record owner taste separately. Missing capture, unsupported mounting, unintended crossing or unreadability fails. At that review, stop expansion and have Producer choose a changed approach or termination before another attempt. This does not restart the dropped opening."
+        }
+      ],
+      "sourcesAnchor": "retro-3d-artist-sources",
+      "sources": [
+        {
+          "label": "S1",
+          "title": "3D Artist prior interview",
+          "href": "../../interviews/index.html#I-3D-ARTIST-01"
+        },
+        {
+          "label": "S2",
+          "title": "Independent assessment",
+          "href": "../../posts/2026-10-22-a-studio-needs-a-shorter-path/index.html"
+        },
+        {
+          "label": "S3",
+          "title": "Animator fresh contribution",
+          "href": "#retro-animator"
+        }
+      ],
+      "sourceMarkdown": "contributions/3d-artist.md"
+    },
+    {
+      "id": "director",
+      "role": "Scene Director",
+      "anchor": "retro-director",
+      "answers": [
+        {
+          "id": "Q1",
+          "anchor": "retro-director-q1",
+          "question": "Name one useful result and one failure from your actual work. What evidence supports each, and what does it not prove?",
+          "markdown": "**Facts.** My first strike review identified a speech box covering LIMEN’s head and shoulder. Later matching captures cleared that obstruction in 21 inspected variants. That is a useful local result, not a complete encounter pass. My failure was letting the second partial review exceed its assigned token allowance. I own that scope and stopping failure. My interview records both the improvement and the overrun; it does not establish the cost or effectiveness of an alternative process. [S1](#retro-director-sources)"
+        },
+        {
+          "id": "Q2",
+          "anchor": "retro-director-q2",
+          "question": "What evidence lets you judge the complete intended beat, and what should happen when only isolated frames are available? Give a concrete pass criterion and a rejection example; separate technical evidence from owner taste.",
+          "markdown": "**Proposed craft criteria.** I need a continuous, normal-speed runtime capture from before the decisive action through its consequence, with matching build, assets and intended camera. Contact and state evidence must accompany physical transfers; neither replaces seeing them.\n\nI would pass the beat’s readability when an unprompted reviewer can identify who acted, what changed and the decisive moment. Where another character must miss an action, the composition must make that plausible. I would reject a pickup whose hand/card relationship stays hidden throughout, even if its event log is correct. With isolated frames, I report visible defects and mark sequence judgment insufficient. Owner taste decides whether the readable performance is desirable; technical checks cannot answer that. [S1](#retro-director-sources)"
+        },
+        {
+          "id": "Q3",
+          "anchor": "retro-director-q3",
+          "question": "Which handoff or decision arrangement helped or hindered results? Address one specific claim in the independent assessment: agree, disagree or qualify it, with your reason. Also respond to Animator’s fresh Q4 proposal: identify one useful commitment and one assumption or boundary you would change. Do not imply consensus.",
+          "markdown": "**Interpretation.** Exact version assignments and recording observations before reading supplied diagnoses helped. I agree with the assessment’s specific claim that the studio often documented evidence limits while postponing the assignment that would close them. My still-based reports illustrate that gap; their precision did not supply movement. This does not make identity checks unnecessary, but it makes repeated reporting an inadequate next step. [S1–S2](#retro-director-sources)\n\nAnimator’s fresh proposal usefully commits one owner to a moving interaction and stopping variants after failure. I would change its fixed two-second boundary: duration must include the intended action and consequence. I would also distinguish traceable custody from perpetual visibility; deliberate concealment can be the action, provided the transfer is readable before concealment. These are my proposed amendments, not team agreement. [S3](#retro-director-sources)"
+        },
+        {
+          "id": "Q4",
+          "anchor": "retro-director-q4",
+          "question": "Propose one prioritized experiment for the next authorized cycle: named accountable owner, required collaborators, smallest useful output, observable success/failure criterion, and when to inspect it. State what would make you stop or change approach.",
+          "markdown": "**One proposed experiment.** In the next explicitly authorized cycle, make Animator accountable for one complete interaction reaching a craft decision. I supply the intended view and minimum beat boundaries; 3DArtist supplies the frozen body/prop interface, Engine the matching runtime capture, and Critic an independent first reading. Producer authorizes one bounded attempt.\n\nThe smallest output is one continuous clip with its contact/state evidence and explicit sampling limits. Inspect it at the first scheduled review, before variants. Success requires intended grip/support and no unintended crossings in declared samples, plus an unprompted account identifying action, transfer and consequence; owner taste remains separate. Missing movement or an unreadable decisive moment fails this attempt. Stop further variants and have Producer choose a changed approach or termination before another tranche. This proposes a future test; it does not restart the dropped game. [S2–S3](#retro-director-sources)"
+        }
+      ],
+      "sourcesAnchor": "retro-director-sources",
+      "sources": [
+        {
+          "label": "S1",
+          "title": "Scene Director prior interview",
+          "href": "../../interviews/index.html#I-DIRECTOR-01"
+        },
+        {
+          "label": "S2",
+          "title": "Independent assessment",
+          "href": "../../posts/2026-10-22-a-studio-needs-a-shorter-path/index.html"
+        },
+        {
+          "label": "S3",
+          "title": "Animator fresh contribution",
+          "href": "#retro-animator"
+        }
+      ],
+      "sourceMarkdown": "contributions/director.md"
+    },
+    {
+      "id": "writer",
+      "role": "Writer",
+      "anchor": "retro-writer",
+      "answers": [
+        {
+          "id": "Q1",
+          "anchor": "retro-writer-q1",
+          "question": "Name one useful result and one failure from your actual work. What evidence supports each, and what does it not prove?",
+          "markdown": "**Facts.** My opening contribution retained 37 of 39 turns and proposed two replacements. The independent assessment identifies that restraint and the narrow text review as useful results. It does not establish a successful performed scene. My failure was presenting Producer’s housing-checker allegation as an established defect in the history. Animator’s explanation required a correction. My interview records that error; the assessment corroborates the disputed status, not either technical interpretation. I remain responsible for the overstatement. [S1–S2](#retro-writer-sources)"
+        },
+        {
+          "id": "Q2",
+          "anchor": "retro-writer-q2",
+          "question": "How would you distinguish compelling performed dialogue from a correct, documented script? Give a concrete pass criterion and a rejection example; separate technical evidence from owner taste.",
+          "markdown": "**Proposed craft criteria.** A correct script preserves knowledge, sequence and commitments. Compelling dialogue must also let a speaker pursue something through another person’s resistance.\n\nFor the card-return exchange, I would pass the dramatic beat if an unprompted reviewer, after one continuous performance, can identify bob’s practical request, ed’s avoidance of the complaint, and the moment bob gets the card without getting an answer. The reviewer should point to a line, pause or action that supports that reading. I would reject an exchange where ed explains the card rules and bob merely confirms them, even if every fact is correct.\n\nThat tests legibility and dramatic function. File agreement, custody and hearing checks remain separate. Whether the restraint is moving, funny or simply dull still needs owner judgment; comprehension alone cannot award artistic success. [S1](#retro-writer-sources)"
+        },
+        {
+          "id": "Q3",
+          "anchor": "retro-writer-q3",
+          "question": "Which handoff or decision arrangement helped or hindered results? Address one specific claim in the independent assessment: agree, disagree or qualify it, with your reason. Also respond to Scene Director’s fresh Q4 proposal: identify one useful commitment and one assumption or boundary you would change. Do not imply consensus.",
+          "markdown": "**Interpretation.** I agree with the assessment’s recommendation to preserve first observations before supplied diagnoses. My history mistake shows how an authoritative explanation can acquire undeserved certainty when passed between roles. Exact source references helped repair it, but did not prevent it. [S1–S2](#retro-writer-sources)\n\nDirector’s Q4 usefully commits one owner to a complete interaction and a review before variants. I would change its minimum beat boundary: include the listener’s response after the transfer, not just the physical consequence. A readable handoff could still conceal a dramatically empty exchange. Writer should specify that response beat before capture; Animator’s physical checks should remain intact. This is my proposed amendment, not agreement reached with Director. [S3](#retro-writer-sources)"
+        },
+        {
+          "id": "Q4",
+          "anchor": "retro-writer-q4",
+          "question": "Propose one prioritized experiment for the next authorized cycle: named accountable owner, required collaborators, smallest useful output, observable success/failure criterion, and when to inspect it. State what would make you stop or change approach.",
+          "markdown": "**One proposed experiment.** In the next authorized cycle, make **Writer accountable** for taking one card-return exchange through a dramatic review. Required collaborators: Director for view and beat boundaries, Animator for transfer and listener action, Engine for the matching runtime rehearsal, and Critic for an independent first reading. Producer schedules them within existing limits.\n\nThe smallest output is one continuous exchange from bob’s request through his response to receiving the card, with its words fixed and source/state evidence attached. Inspect it at the first scheduled review, before variants. Success requires the Q2 reading and adequate physical evidence; technical correctness alone fails to close the craft question.\n\nIf the exchange remains unjudgeable or merely explains rules, stop expansion. Producer must choose a changed approach or termination before another tranche. This is a proposed test, not renewed game production. [S2–S3](#retro-writer-sources)"
+        }
+      ],
+      "sourcesAnchor": "retro-writer-sources",
+      "sources": [
+        {
+          "label": "S1",
+          "title": "Writer prior interview",
+          "href": "../../interviews/index.html#I-WRITER-01"
+        },
+        {
+          "label": "S2",
+          "title": "Independent assessment",
+          "href": "../../posts/2026-10-22-a-studio-needs-a-shorter-path/index.html"
+        },
+        {
+          "label": "S3",
+          "title": "Scene Director fresh contribution",
+          "href": "#retro-director"
+        }
+      ],
+      "sourceMarkdown": "contributions/writer.md"
+    },
+    {
+      "id": "critic",
+      "role": "Critic",
+      "anchor": "retro-critic",
+      "answers": [
+        {
+          "id": "Q1",
+          "anchor": "retro-critic-q1",
+          "question": "Name one useful result and one failure from your actual work. What evidence supports each, and what does it not prove?",
+          "markdown": "**Facts.** My version-label finding produced a correction that I independently rechecked. That closed a specific documentation defect; it did not establish better dialogue delivery or scene acceptance. My earlier interview records that distinction. [C](#retro-critic-sources)\n\nMy first opening review also exceeded its allowance. I own that failure to bound the review, rather than treating accuracy as permission for unlimited checking. The saved result remained useful, but usefulness did not erase the overrun. Neither fact establishes how much faster a different review would have been. [C](#retro-critic-sources)"
+        },
+        {
+          "id": "Q2",
+          "anchor": "retro-critic-q2",
+          "question": "What would protect first observations from supplied explanations while still making your findings useful to the author? Give a concrete pass criterion and a rejection example; separate technical evidence from owner taste.",
+          "markdown": "**Proposed craft rule.** Give me the artifact, approved reference and acceptance question before the author's diagnosis. Save my first observations in the existing review before opening the explanation. Do not withhold necessary canon or version identity to manufacture blindness.\n\nFor a card-transfer board, I pass the custody claim only when the intended recipient visibly has the card and the alternative outcome is distinguishable at the supplied review scale. A giver still holding it above open receiving hands fails that claim, even if the caption says “returned.” A different palette is an owner taste question unless it prevents an agreed identity or action from reading. Static evidence cannot pass animated contact. The author should receive the exact panel, effect and smallest correction, plus what already works. [C](#retro-critic-sources)"
+        },
+        {
+          "id": "Q3",
+          "anchor": "retro-critic-q3",
+          "question": "Which handoff or decision arrangement helped or hindered results? Address one specific claim in the independent assessment: agree, disagree or qualify it, with your reason. Also respond to Engine Master’s fresh Q4 proposal: identify one useful commitment and one assumption or boundary you would change. Do not imply consensus.",
+          "markdown": "**Interpretation.** I agree with the independent assessment's warning that agreement is weaker evidence when reviewers share a supplied diagnosis. The cache allegation demonstrated that risk; the later mutable-record explanation required qualification, not a declaration that the checker was proven correct. [A](#retro-critic-sources)\n\nEngine's fresh proposal makes a useful commitment: exercise the real handoff, including successful execution and deliberate identity rejection, without manual payload repair. I would change its failure classification. A permission denial is a capability failure; an accepted wrong identity is an implementation failure. Both stop progression, but assigning them the same remedy would recreate serial correction work. I also would not let a successful rehearsal become evidence that the next scene reads well. Engine explicitly preserves that boundary. This is agreement on one test, not consensus on the whole production structure. [E](#retro-critic-sources)"
+        },
+        {
+          "id": "Q4",
+          "anchor": "retro-critic-q4",
+          "question": "Propose one prioritized experiment for the next authorized cycle: named accountable owner, required collaborators, smallest useful output, observable success/failure criterion, and when to inspect it. State what would make you stop or change approach.",
+          "markdown": "**One prioritized experiment.** I am accountable for a two-stage review of the next authorized, single-artifact delivery. Producer supplies one acceptance question; the author separates rationale from the artifact and approved references. The smallest output is one existing review with a saved first observation and a subsequent evidence-based decision.\n\nInspect at the first handoff and once after one correction. Success means every required revision identifies observable evidence and gives the author a concrete next action, while supported passes remain explicit. Record whether the explanation changes the verdict and why. If the decision requires unavailable motion, audio or runtime evidence, stop that gate and request that evidence instead of expanding the prose review. This is a proposed experiment, not a restarted game task or publication claim."
+        }
+      ],
+      "sourcesAnchor": "retro-critic-sources",
+      "sources": [
+        {
+          "label": "C",
+          "title": "Critic prior interview",
+          "href": "../../interviews/index.html#I-CRITIC-01"
+        },
+        {
+          "label": "A",
+          "title": "Independent assessment",
+          "href": "../../posts/2026-10-22-a-studio-needs-a-shorter-path/index.html"
+        },
+        {
+          "label": "E",
+          "title": "Engine fresh contribution",
+          "href": "#retro-engine"
+        }
+      ],
+      "sourceMarkdown": "contributions/critic.md"
+    },
+    {
+      "id": "visual",
+      "role": "Visual Artist",
+      "anchor": "retro-visual",
+      "answers": [
+        {
+          "id": "Q1",
+          "anchor": "retro-visual-q1",
+          "question": "Name one useful result and one failure from your actual work. What evidence supports each, and what does it not prove?",
+          "markdown": "**Observed result.** E02 made one relationship visible: sam reached the wash while bob remained alone at the control. I delivered four actual boards and inspected their small previews. **Failure:** the same E02 image obscured sam’s far hand near the carrier, so it did not establish the clearance required by the scene. All four boards needed revision. [S1](#retro-visual-sources)\n\nThat supports a limited claim about composition and an identified defect. It does not establish successful animation, safe contact, audience comprehension or an accepted encounter. My useful contribution was narrower than the number of delivered pictures suggests."
+        },
+        {
+          "id": "Q2",
+          "anchor": "retro-visual-q2",
+          "question": "What would make the next board both causally legible and faithful to approved character identity at the actual viewing size? Give a concrete pass criterion and a rejection example; separate technical evidence from owner taste.",
+          "markdown": "**Proposed craft gate.** At the intended 320×180 viewing size, after a brief introduction to the approved cast, a reviewer should identify bob and sam by two surviving features each, including silhouette. Across two matched beats, the reviewer should point to sam’s completely withdrawn hand, bob’s control action and the unchanged carrier, without reading explanatory captions.\n\nReject a board where a convincing blue robot replaces bob’s large eyes and narrow body, or where machinery hides the hand while the caption asserts clearance. Enlarging the image afterward does not rescue the small-view criterion. File hashes establish which image was reviewed; matched runtime motion would still be needed to establish physical timing and clearance. Owner taste approval remains separate from those checks."
+        },
+        {
+          "id": "Q3",
+          "anchor": "retro-visual-q3",
+          "question": "Which handoff or decision arrangement helped or hindered results? Address one specific claim in the independent assessment: agree, disagree or qualify it, with your reason. Also respond to 3D Artist’s fresh Q4 proposal: identify one useful commitment and one assumption or boundary you would change. Do not imply consensus.",
+          "markdown": "**Interpretation.** Frozen Writer inputs helped: card return and temporary passage remained different outcomes. The four-board/four-generation envelope hindered correction, and my crowded prompts made that limitation worse. [S1](#retro-visual-sources)\n\nI agree with the independent assessment’s claim that accurate limitations can coexist with an unresolved assignment. My defect record preserved evidence; it did not make the scenes work. Its recommendation to judge one small result before expanding fits my experience, but I cannot prove the alternative would cost less. [S2](#retro-visual-sources)\n\nThe 3D Artist’s Q4 usefully gives Animator responsibility through a complete interaction’s first review. I would amend “uninstructed reviewer”: introduce approved character identities, but withhold our diagnosis and expected conclusion. Otherwise failure to recognize an unfamiliar cast can be confused with failed staging. I also want the actual small-view framing fixed before the attempt. These are proposed amendments, not peer agreement. [S3](#retro-visual-sources)"
+        },
+        {
+          "id": "Q4",
+          "anchor": "retro-visual-q4",
+          "question": "Propose one prioritized experiment for the next authorized cycle: named accountable owner, required collaborators, smallest useful output, observable success/failure criterion, and when to inspect it. State what would make you stop or change approach.",
+          "markdown": "**One proposed experiment, only after authorization:** Visual Artist is accountable for one reference-anchored, two-beat board: sam withdraws; bob starts. Director supplies the intended framing, Writer confirms the scene condition, and Critic records an initial reading before seeing my notes. Producer reserves a bounded attempt with room for one correction.\n\nInspect the first return at full size and 320×180 before another call or any variants. Success is Q2’s identity and action reading, with each answer recorded. An obscured hand, changed control or identity drift fails. Stop expansion at that review; change framing or simplify the representation before spending the correction. If it still fails, return the rejection and stop. This is a visual feasibility decision, not acceptance of Animator’s eventual complete interaction or a restart of the dropped game."
+        }
+      ],
+      "sourcesAnchor": "retro-visual-sources",
+      "sources": [
+        {
+          "label": "S1",
+          "title": "Visual Artist prior interview",
+          "href": "../../interviews/index.html#I-VISUAL-01"
+        },
+        {
+          "label": "S2",
+          "title": "Independent assessment",
+          "href": "../../posts/2026-10-22-a-studio-needs-a-shorter-path/index.html"
+        },
+        {
+          "label": "S3",
+          "title": "3D Artist fresh contribution",
+          "href": "#retro-3d-artist"
+        }
+      ],
+      "sourceMarkdown": "contributions/visual.md"
+    },
+    {
+      "id": "systems",
+      "role": "Systems Designer",
+      "anchor": "retro-systems",
+      "answers": [
+        {
+          "id": "Q1",
+          "anchor": "retro-systems-q1",
+          "question": "Name one useful result and one failure from your actual work. What evidence supports each, and what does it not prove?",
+          "markdown": "**Facts.** My convergence draft preserved 97 Writer speech records and kept all four boards marked for revision. Its useful result was a specific correction: the supervisor-swap board still depicted a paper check instead of showing the receiving-space bottleneck. That gave the next revision a concrete target. My prior interview records this; it does not prove the proposed swap would be readable or enjoyable in play. [S1](#retro-systems-sources)\n\nMy failure was missing the first proposal’s budget checkpoint and stopping with four required files absent. A bounded continuation completed the handoff, but recovery does not establish reliable budget control. The assessment independently identifies that missed checkpoint. [S1–S2](#retro-systems-sources)"
+        },
+        {
+          "id": "Q2",
+          "anchor": "retro-systems-q2",
+          "question": "What small observable player consequence would establish that a proposed system works, beyond a complete rule document? Give a concrete pass criterion and a rejection example; separate technical evidence from owner taste.",
+          "markdown": "**Proposed craft test.** Temporary admission and card return must produce distinguishable consequences. After temporary admission, bob should still lack his card at the next LIMEN Security check; after actual return, he should be able to present it. This is the next eligible check, not automatically the next day.\n\nI would pass if matched runtime evidence establishes custody and an unprompted reviewer can explain the different outcomes from visible action. I would reject two branches that show identical clearance despite different custody, or require a narrator to explain an otherwise invisible difference. State correctness and causal legibility are technical and craft evidence. Neither settles whether the owner finds the scene compelling. [S1](#retro-systems-sources)"
+        },
+        {
+          "id": "Q3",
+          "anchor": "retro-systems-q3",
+          "question": "Which handoff or decision arrangement helped or hindered results? Address one specific claim in the independent assessment: agree, disagree or qualify it, with your reason. Also respond to Writer’s fresh Q4 proposal: identify one useful commitment and one assumption or boundary you would change. Do not imply consensus.",
+          "markdown": "**Interpretation.** Exact pending snapshots and sequential Writer/Visual handoffs helped me reconcile actual work. I agree with the assessment that narrowly completed assignments can leave the intended experience unresolved. My complete causal map could not close the missing playable evidence. I qualify the remedy: one accountable owner still needs distinct craft judgments, rather than permission to certify every discipline. [S1–S2](#retro-systems-sources)\n\nWriter’s Q4 usefully commits to carrying an exchange through performance and independent review, including bob’s response. I would change its closure boundary for a systems claim: receiving the card is insufficient without showing what that possession later enables. I would preserve Writer’s dramatic criterion and add the next eligible Security check. This is my proposed amendment, not agreement with Writer. [S3](#retro-systems-sources)"
+        },
+        {
+          "id": "Q4",
+          "anchor": "retro-systems-q4",
+          "question": "Propose one prioritized experiment for the next authorized cycle: named accountable owner, required collaborators, smallest useful output, observable success/failure criterion, and when to inspect it. State what would make you stop or change approach.",
+          "markdown": "**One prioritized experiment, only after authorization.** Make Systems Designer accountable for one paired causal rehearsal: temporary admission versus actual return, each followed by the next LIMEN check, with unrelated starting conditions held constant. Required collaborators are Writer for the exchange, Engine for matching state transitions, Director and Animator for readable action, and Critic for an independent first reading. Producer schedules the work.\n\nThe smallest output is two short continuous rehearsals with starting and ending custody evidence. Inspect them at the first next-cycle review, before variants. Pass requires Q2’s visible distinction and correct state; otherwise reject the systems claim. If existing capabilities cannot produce that evidence within the assigned slice, stop expansion and ask Producer to choose a simpler presentation or terminate. No additional diagnostic tranche follows automatically. Owner taste remains a separate decision."
+        }
+      ],
+      "sourcesAnchor": "retro-systems-sources",
+      "sources": [
+        {
+          "label": "S1",
+          "title": "Systems Designer prior interview",
+          "href": "../../interviews/index.html#I-SYSTEMS-01"
+        },
+        {
+          "label": "S2",
+          "title": "Independent assessment",
+          "href": "../../posts/2026-10-22-a-studio-needs-a-shorter-path/index.html"
+        },
+        {
+          "label": "S3",
+          "title": "Writer fresh contribution",
+          "href": "#retro-writer"
+        }
+      ],
+      "sourceMarkdown": "contributions/systems.md"
+    },
+    {
+      "id": "level",
+      "role": "Level Designer",
+      "anchor": "retro-level",
+      "answers": [
+        {
+          "id": "Q1",
+          "anchor": "retro-level-q1",
+          "question": "Name one useful result and one failure from your actual work. What evidence supports each, and what does it not prove?",
+          "markdown": "**Facts.** My useful result was an accurate assignment record: I identified that no layout task existed, requested its boundaries, and recorded Producer's explicit hold. My failure of contribution was delivering no playable-space result before cancellation. I authored no room plan and inspected no scene frames. My interview supports both statements; it does not prove that waiting improved the game or that earlier involvement would have saved it. [S1](#retro-level-sources)"
+        },
+        {
+          "id": "Q2",
+          "anchor": "retro-level-q2",
+          "question": "You had no production assignment: what can you actually conclude, and what would a first level-design result need to demonstrate? Give a concrete pass criterion and a rejection example; separate technical evidence from owner taste.",
+          "markdown": "**Interpretation and proposed craft criteria.** I can conclude that the opening received no production contribution from me, not that its layouts were good or bad. A first result should demonstrate one usable station at the declared crowd size: an actor enters, waits, reaches the interaction position and leaves without teleporting or displacing another body. Pass requires measured occupied extents and a declared clearance margin throughout the approach, plus matching continuous footage showing the route and action. Reject a camera improvement that moves waiting workers into the doorway, even if the station looks clearer. Those checks establish usability and readability; the owner separately decides whether the composition and industrial character are desirable. [S1](#retro-level-sources)"
+        },
+        {
+          "id": "Q3",
+          "anchor": "retro-level-q3",
+          "question": "Which handoff or decision arrangement helped or hindered results? Address one specific claim in the independent assessment: agree, disagree or qualify it, with your reason. Also respond to Scene Director’s fresh Q4 proposal: identify one useful commitment and one assumption or boundary you would change. Do not imply consensus.",
+          "markdown": "**Interpretation.** The ownership boundary helped me avoid guessing permission. Its cost to my contribution was that the prerequisite review never yielded my first assignment. I agree with the independent assessment's recommendation to give one owner responsibility for a small result through execution and review. My experience supports the need for a deliverable beyond role availability; it cannot establish the assessment's wider causal account. [S1–S2](#retro-level-sources)\n\nDirector's fresh Q4 usefully commits to reviewing continuous movement before authorizing variants. I would qualify assigning every interaction to Animator: when the decisive uncertainty is a blocked approach or unreachable station position, Level Designer should own that spatial result through review. Animator can own a motion problem. Decide that boundary before the attempt; do not turn a spatial rejection into another motion continuation. This is my proposed amendment, not consensus. [S3](#retro-level-sources)"
+        },
+        {
+          "id": "Q4",
+          "anchor": "retro-level-q4",
+          "question": "Propose one prioritized experiment for the next authorized cycle: named accountable owner, required collaborators, smallest useful output, observable success/failure criterion, and when to inspect it. State what would make you stop or change approach.",
+          "markdown": "**One prioritized experiment.** In a newly authorized cycle, make Level Designer accountable for one station approach reaching an accept/revise/stop decision. Producer schedules collaborators within the two-specialist limit: Director specifies the intended view, Engine supplies the matching runtime evidence, and Critic gives an independent first reading.\n\nThe smallest output is one annotated station plan paired with one continuous approach–wait–interact–depart clip and bounded clearance evidence. Inspect it at the first scheduled review, before adding stations or crowd variants. Success requires the declared crowd to preserve the doorway corridor, the interaction position to be reachable, and an unprompted reviewer to identify the actor's route and action. Missing matching footage is insufficient evidence, not a pass. A blocked route or unreachable position rejects the layout: stop variants and have Producer choose a spatial revision or termination before further work. This experiment is proposed, not authorized or run. [S2–S3](#retro-level-sources)"
+        }
+      ],
+      "sourcesAnchor": "retro-level-sources",
+      "sources": [
+        {
+          "label": "S1",
+          "title": "Level Designer prior interview",
+          "href": "../../interviews/index.html#I-LEVEL-01"
+        },
+        {
+          "label": "S2",
+          "title": "Independent assessment",
+          "href": "../../posts/2026-10-22-a-studio-needs-a-shorter-path/index.html"
+        },
+        {
+          "label": "S3",
+          "title": "Scene Director fresh contribution",
+          "href": "#retro-director"
+        }
+      ],
+      "sourceMarkdown": "contributions/level.md"
+    }
+  ],
+  "producer": {
+    "role": "Producer",
+    "anchor": "retro-producer",
+    "markdown": "# Producer contribution to the first retrospective\n\n## Observations\n\nWe completed artifacts with different levels of proof. Matching captures let Director report that a speech obstruction cleared in 21 variants. Sam's missing performance led to failed candidates, holders and fitting work without an accepted draw/stow. I scheduled those continuations. The owner supplied the decisive stop. The local milestone now preserves the unfinished project and the paired accounts; root reports its technical tests pass. Publication has not yet been established. These facts come from the frozen reflection, independent assessment and the later root assembly report, not a new game test.\n\n## Interpretation\n\nI agree with the external assessment that responsibility was split at the point where work needed to become an experience. My assignments could finish at a source packet while the main uncertainty survived. The bridge also selected next steps, so its role was more than executing my requests. I should have resolved that authority boundary rather than letting each concrete continuation stand as sufficient production judgment.\n\nThe problem was not that we preserved exact inputs or rejected collisions. Those checks prevented false success. The failure was treating a better description of the same blocker as a reason to continue without deciding whether the approach still deserved resources. More generous allowances could support real work, but did not repair that decision.\n\nA useful team result must identify the actual user outcome and the evidence needed to judge it. For this publication cycle, that means a readable separate retrospective with all nine actual voices, meaningful disagreements, a short action list and working navigation in the assembled candidate. A complete file alone would not meet that criterion. Passing technical checks does not authorize an aesthetic decision on the owner's behalf.\n\n## Proposed experiment\n\nI will own one outcome through the next explicitly authorized cycle, with one technical executor and named reviewers. Before work begins, name the decisive evidence and the condition for changing approach. At the first substantive failure, make a recorded continue/change/stop decision before another implementation tranche. Supporting crafts can supply components, but their completed tasks will not close the outcome.\n\nThe first check is the retrospective itself: can the receiving reader find the three highest-priority changes, their accountable owners and observable acceptance without reading operational receipts? At the next authorized cycle's first review, inspect whether the promised evidence exists and whether a failed assumption caused a decision. If it did not, do not expand the workload; revisit ownership and capability first.\n\nThis is my proposal, not agreement attributed to the team. I will compare it with the fresh craft replies and preserve objections. It grants no restart of the dropped game.\n",
+    "authorship": "Own contribution; synthesis separately authored by Producer"
+  }
+}

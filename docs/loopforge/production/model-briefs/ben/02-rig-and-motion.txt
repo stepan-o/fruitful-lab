@@ -1,0 +1,11 @@
+Rig the SAME textured ben delivery body as a biped. Preserve its proportions, materials and neutral pose; no mesh regeneration during motion work. Record the actual joint hierarchy, bind transforms, finger support and axis conventions. Export a neutral rigged GLB and FBX plus the included walk/run as separate sources.
+
+Acting direction: Choose the edge of the gathering. Loose hands near belt, quiet weight shifts. Turn sideways when STILETTO approaches and keep room for bob after the fall.
+
+First retarget the approved Worker 01 motion library locally, adapting contacts to ben's proportions. Reuse a motion only after checking its hand, foot and elbow behavior on THIS body. New catalog animations require a verified catalog ID and an entry in the credit ledger; archive each action independently even if a bundle is also produced. Never assume All Animations includes later jobs.
+
+Read 03-opening-performance.txt for choreography, transitions, retreat and contacts. Keep source and corrected files distinct. Animation names must preserve their catalog identity, with scene meaning recorded separately. Record file hashes, mesh/skin/texture presence, clip names/durations and root translation/yaw in export-audit.json. Record local fitting, motion retiming, constraints and visual checks in motion-cleanup.json. A still pose does not certify its entry, exit or blend.
+
+APPROVED PROPORTIONS — REVISION 2
+Short squat rounded barrel body and back, low broad oval hood, tiny square cyan eyes, circular shoulder joints, long thin forearms and short legs. Keep ben low and round; unlike gus’s square mass or sam’s raised hump.
+Fit joint/contact targets to this body, especially head reach, wrist orientation and leg clearance. The ensemble portrait is identity reference, not a clip. Preserve natural quiet posture and transitions; do not turn its poster pose into the default idle.

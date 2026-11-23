@@ -1,0 +1,220 @@
+{
+  "title": "Missing ID · bob / The held line",
+  "versions": {
+    "approved": "E1 · The held line",
+    "portrait": "Approved native E1 portrait companion",
+    "previous": "E · original landscape treatment"
+  },
+  "clean_masters": {
+    "E": {
+      "file": "../selection-01/E/master.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "d94cb23b399a0ee75c887fb19abc24bc712e5d6eee2d256f3548db1bd7f2a2dc"
+    },
+    "E1": {
+      "file": "master.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "433c330e99ee2f5c20300726c9e2b15b6619f017d8d0af315e586b0c12d1bad6"
+    },
+    "E1 portrait": {
+      "file": "portrait.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "6340f003e239131632f38682769157358c093cdae75b7fbcb16bc18d1fa68090"
+    }
+  },
+  "exports": {
+    "landscape": {
+      "file": "landscape.62422325a46a.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 208522,
+      "sha256": "62422325a46a926fbabdfd89d31c260181c70845b468dd9549f05ae0098bbf6b"
+    },
+    "portrait": {
+      "file": "portrait.8408167c7af0.webp",
+      "width": 780,
+      "height": 1170,
+      "bytes": 159108,
+      "sha256": "8408167c7af0a473ef5ace2d88d0a8dbded2381484c787ac269bc7dc36adf14d"
+    },
+    "portrait-390": {
+      "file": "portrait-390.315bdfac4c98.webp",
+      "width": 390,
+      "height": 585,
+      "bytes": 45400,
+      "sha256": "315bdfac4c987b18de9b3626c08a98a7edf3c19d44b396819aa0c35c8e75f313"
+    },
+    "desktop-1440": {
+      "file": "desktop-1440.16770b362a99.webp",
+      "width": 1440,
+      "height": 960,
+      "bytes": 169166,
+      "sha256": "16770b362a9936b5ded21b4be42bf566553ce2dd5ef8d78eceaf5e9ad29c6e92"
+    },
+    "phone-390": {
+      "file": "phone-390.eadab5e582da.webp",
+      "width": 390,
+      "height": 844,
+      "bytes": 40170,
+      "sha256": "eadab5e582dab618ca6d161028d432c3e0c40977fdd6f7f48b83077803c7cb45"
+    },
+    "phone-320": {
+      "file": "phone-320.762c6fa9e173.webp",
+      "width": 320,
+      "height": 693,
+      "bytes": 28472,
+      "sha256": "762c6fa9e173a3da264c48ca34c229eee931fccc7e1dc652aa273a802838d62c"
+    },
+    "landscape-guide": {
+      "file": "landscape-guide.d7857feee055.webp",
+      "width": 960,
+      "height": 640,
+      "bytes": 106194,
+      "sha256": "d7857feee055bb188308f86f689a937d6addef4e55a38c05b855e05d0d61dd54"
+    },
+    "portrait-guide": {
+      "file": "portrait-guide.c40297bae7da.webp",
+      "width": 480,
+      "height": 720,
+      "bytes": 72942,
+      "sha256": "c40297bae7da7b0e5645aa2e0c7b85e0282d52a55307541fe962b64063908106"
+    }
+  },
+  "guide_coordinates_native_px": {
+    "landscape": {
+      "eye_centers": [
+        [
+          799,
+          406
+        ],
+        [
+          1090,
+          253
+        ]
+      ],
+      "counter_edge": [
+        786,
+        680,
+        1535,
+        832
+      ],
+      "text_safe": [
+        190,
+        905,
+        1450,
+        977
+      ],
+      "crop_limits": [
+        0,
+        30,
+        1536,
+        997
+      ]
+    },
+    "portrait": {
+      "eye_centers": [
+        [
+          279,
+          701
+        ],
+        [
+          588,
+          525
+        ]
+      ],
+      "counter_edge": [
+        220,
+        1073,
+        1023,
+        1267
+      ],
+      "text_safe": [
+        110,
+        1376,
+        913,
+        1475
+      ],
+      "crop_limits": [
+        0,
+        30,
+        1024,
+        1508
+      ]
+    }
+  },
+  "raster_device_checks": [
+    {
+      "viewport": [
+        1440,
+        960
+      ],
+      "image_rect": [
+        0,
+        0,
+        1440,
+        960
+      ]
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "image_rect": [
+        0,
+        129,
+        390,
+        585
+      ]
+    },
+    {
+      "viewport": [
+        320,
+        693
+      ],
+      "image_rect": [
+        0,
+        106,
+        320,
+        480
+      ]
+    }
+  ],
+  "landscape_pixel_comparison": {
+    "different_rgb_pixels": 137662,
+    "total_pixels": 1572864,
+    "protected_pixels_outside_mask": 1422899,
+    "changed_pixels_outside_mask": 0,
+    "byte_identical_rgb_pixel_fraction": 0.912477
+  },
+  "public_export_dir": "apps/lab/public/loopforge-design/missing-id-bob/v1/held-line",
+  "checkpoints": [
+    {
+      "file": "construction.png",
+      "sha256": "8106565a21d2a54c87cd4859df2fbfeed7503deb650feb0faceaf24a9a9d180f",
+      "generation_id": "2351d98c-b666-4bb6-9b8a-093b99a59b57",
+      "prompt": "prompt.txt"
+    },
+    {
+      "file": "detail.png",
+      "sha256": "9a4ef6918b10e722da1853101a2ec0f832ac5053d6c102f48f6498ffc8686702",
+      "generation_id": "ebce5d36-efc9-4203-8bc7-9fc4b1b19117",
+      "prompt": "detail-prompt.txt"
+    },
+    {
+      "file": "portrait.png",
+      "sha256": "6340f003e239131632f38682769157358c093cdae75b7fbcb16bc18d1fa68090",
+      "generation_id": "1e50f360-b323-4380-822e-7b17be2d64f4",
+      "prompt": "portrait-prompt.txt"
+    }
+  ],
+  "approval": {
+    "date": "2026-11-21",
+    "by": "Owner",
+    "scope": "Event illustration for UI DESIGNER’s desktop and phone study",
+    "next_owner": "UI DESIGNER"
+  }
+}

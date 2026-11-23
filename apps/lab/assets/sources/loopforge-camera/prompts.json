@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-08",
+  "method": "Built-in imagegen",
+  "assets": [
+    {
+      "id": "style-sheet",
+      "prompt": "Use case: ui-mockup. Asset type: a polished ART DIRECTION AND MATERIAL STYLE SHEET for the Loopforge camera-console game interface. This is an authoring sheet, not a website mockup.\nInput references: image 1 original LIMEN character sheet establishes cracked blue-black enamel and heavy steel; image 2 STILETTO sheet establishes sharp dark metal with localized red emission; image 3 original factory scene establishes soot, brass, worn paper labels and dense industrial realism; image 4 original security room establishes working equipment; image 5 old chrome establishes restrained frame construction. Create an original coherent interface material language closely belonging to this factory.\nComposition: landscape 3:2 art director board on soot-black, with a large beautifully realized front-facing old industrial CCTV monitor upper left, its screen OFF showing only dark slightly convex glass and faint diagonal reflection; a ragged cream adhesive tape under it with precisely hand-written words \"LATTICE FORGE\". Around it compose clear isolated material studies: cracked green-black enamel, rubbed aged brass, rubber gasket, paper tape with dark pen pressure variations. At lower left two small mechanically credible supervisor portrait socket studies, using LIMEN and STILETTO identities from references, each with a restrained pale worn-paper speech balloon attached to the token, no text in balloons. Upper right a controlled row of 8 palette swatches; below it a detail study of recessed commit button and a row of four relief icon concepts (coin, robot head, conveyor gear, shipping crate). Small labels only: \"LOOPFORGE / CAMERA CONSOLE\", \"GLASS\", \"ENAMEL\", \"BRASS\", \"TAPE\", \"VOICE\", \"CONTROLS\". Sharp useful professional art production sheet; generous breathing space, no decorative paragraphs.\nStyle: serious, highly detailed mechanically credible dark industrial dystopia, dense etched/painterly realism exactly matching the original art. NOT cartoon, not clean sci-fi web dashboard. Palette near #0B1110 soot, #202B28 enamel, #50554D worn steel, #8C704B brass, #CFC3A0 tape, #ECE5D2 readable pale, #91DAD5 restrained cyan, #E3A04F amber, #F04437 saturated red. One shared soft top-left key light, warm low brass bounce, barely cyan reflected edges. Deep convincing materials, subdued polished reflections, localized grime and finger wear. Nearly front-on camera, coherent geometry, not exaggerated isometric. Detail around readable quiet working surfaces. No room interior in off-screen, no powered static, no fake gauges, no skull decoration on hardware, no futuristic holographic neon, no huge hazard stripes.",
+      "references": [
+        "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/limen_character_sheet_1.png",
+        "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/character_sheets/set_1/stiletto_character_sheet_1.png",
+        "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/loopforge/forge.webp",
+        "/home/stpn/.codex/worktrees/loopforge-presentations/fruitful-lab/apps/lab/assets/loopforge/security.webp",
+        "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/ui/chrome/hi-res/topstrip_plate.png"
+      ],
+      "original": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-ca0650c8-c409-4cea-8acf-159aa069e444.png"
+    }
+  ]
+}

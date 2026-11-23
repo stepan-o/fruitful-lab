@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark"><title>Conveyor · Day Two music audition</title><link href="audition.css" rel="stylesheet"></head>
+<body><main>
+<nav><a href="/stepanoskin/loopforge/design#music-engine">← Music engine</a><span>Loopforge / listening room</span></nav>
+<header><p class="eyebrow">CONVEYOR &nbsp; / &nbsp; COMPOSITION REVIEW 02</p><h1>Conveyor</h1><p class="lead">One bass line, from two workers to a full shift.</p></header>
+<section aria-labelledby="record"><div class="ruler"><p class="eyebrow">Uninterrupted listening take</p><span>164 / 82 BPM · 2:44</span></div>
+<h2 id="record">Hear the line fill up</h2><p>The first 23 seconds come from the opening you picked. Listen for the same five-note descent as the bass gains a rougher edge. At full staffing the drummer takes a bar before the line drops back in.</p>
+<audio id="take" aria-label="Conveyor opening and three staffing arrangements" controls preload="none" loop src="conveyor-line-02.mp3"></audio>
+<div class="phrases" aria-label="Jump to a passage"><button data-bar="0"><small>0:00</small>Original opening</button><button data-bar="16"><small>0:23</small>Two workers</button><button data-bar="48"><small>1:10</small>Four workers</button><button data-bar="80"><small>1:57</small>Fully staffed</button><button data-bar="110"><small>2:41</small>Drum turnover</button></div>
+<a class="file" href="conveyor-line-02.mp3" download>Download the listening take ↗</a></section>
+<section aria-labelledby="desk"><div class="ruler"><p class="eyebrow">Standalone demonstration</p><span>Manual inputs</span></div><h2 id="desk">Play the transitions</h2>
+<p>The route compresses two shifts for listening. Try a room switch during an entrance, hold the line mid-phrase or ring the bell during speech. The game runs separately.</p>
+<div class="transport"><button id="route" class="primary">▶ Play the route</button><button id="pause" disabled>Pause</button><button id="stop" disabled>Stop</button><label class="mute"><input type="checkbox" id="mute"> Mute music</label></div>
+<p id="readout" role="status" aria-live="polite">Ready.</p>
+<fieldset><legend>Change listening position</legend><div class="group" id="rooms"></div></fieldset>
+<fieldset id="line-controls"><legend>Conveyor intensity</legend><label for="drive">Listen by</label> <select id="drive"><option value="one">Day One · crew on the line</option><option value="later">Day Two+ · working stations</option></select>
+<div class="group" id="crew"><button data-tier="two">Two workers</button><button data-tier="four">Four workers</button><button data-tier="full">Fully staffed</button></div>
+<label id="load-label" hidden>Stations working <select id="station-load"><option>0</option><option selected>1</option><option>2</option><option>3</option><option>4</option></select><span class="note"> 0–1 uses the light mix, 2 the middle mix, and 3–4 the heaviest. Use Wait for a stopped line.</span></label>
+<p class="note">Switch during a phrase to compare the same beat. Each arrangement also loops on its own in the cue sheet.</p></fieldset>
+<fieldset><legend>Interrupt the passage</legend><div class="group"><button id="talk" aria-pressed="false">Speech</button><button id="wait" aria-pressed="false">Wait</button><button id="bell">Shift bell</button></div></fieldset>
+<p class="note">Speech plays LIMEN’s recorded welcome once. The speech arrangement holds until you release it. Wait and resumed work act on the focused Conveyor.</p></section>
+<section aria-labelledby="cuts"><div class="ruler"><p class="eyebrow">Cue sheet</p><span>Individual auditions</span></div><h2 id="cuts">Hear a single cut</h2>
+<p>Track entries and exits belong to the music. Scene cues mark something that happened on screen. A visit to Security can play its entry without repeating the appointment.</p>
+<div class="picker"><label for="pick">Recording or cut</label><select id="pick"></select><button id="solo" class="primary">▶ Play selection</button></div>
+<button id="download" disabled>Download selected audio</button><p class="note">Room tracks download as their original MP3. Cuts download as PCM WAV decoded from the review reel. Room recordings and beds repeat. Entries, exits, transitions and scene cues play once with their tails.</p></section>
+<footer><a href="handoff.html">Cue map and ENGINE handoff</a><a href="cues.json">Frame manifest</a><a href="../session-02/speech-164.mp4">Earlier Forge speech study</a><a href="/stepanoskin/loopforge/play">Actual game ↗</a></footer>
+</main><script defer src="audition.js"></script></body></html>

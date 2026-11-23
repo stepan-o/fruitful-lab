@@ -1,0 +1,37 @@
+.shift-art { padding-top: 0; border-top: 0 }
+.shift-art .calibration-head p:first-of-type {
+  margin-bottom: .5rem;
+  color: var(--gold);
+  font: 600 .77rem/1.5 ui-monospace, monospace;
+  letter-spacing: .055em;
+}
+.shift-art .calibration-head p:last-child a { display: inline-flex; align-items: center; min-height: 44px }
+.shift-art [hidden] { display: none !important }
+.shift-art-controls { display: flex; flex-wrap: wrap; align-items: end; gap: .8rem 1.2rem; margin-bottom: 1rem }
+.shift-art-controls label { display: grid; gap: .22rem; min-width: 0; max-width: 100%; color: var(--muted); font-size: .88rem }
+.shift-art-controls select, .shift-art-dialog button, .shift-art-retry {
+  font: 600 .95rem/1.35 var(--sans); background: var(--surface); color: var(--text);
+  border: 1px solid var(--line); border-radius: 3px; min-height: 44px; max-width: 100%; padding: .45rem .75rem;
+}
+.shift-art-dialog button, .shift-art-retry { cursor: pointer }
+.shift-art .shift-art-status { color: var(--muted); font-size: .84rem }
+.shift-art-shots { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; align-items: start }
+.shift-art-shots figure + figure { margin-top: 0 }
+.shift-art-shots figure > a { display: grid; justify-items: center; background: var(--deep); cursor: zoom-in }
+.shift-art-shots figure img { width: auto; max-width: 100%; height: auto }
+.shift-art-shots figcaption { display: grid; justify-content: start; gap: .35rem }
+.shift-art-dialog {
+  box-sizing: border-box; padding: 0; width: max-content; max-width: calc(100vw - 1rem);
+  max-height: calc(100dvh - 1rem); overflow: hidden; border: 1px solid var(--line);
+  background: var(--deep); color: var(--text);
+}
+.shift-art-dialog::backdrop { background: rgb(6 11 12 / .87) }
+.shift-art-dialog[open] { display: flex; flex-direction: column }
+.shift-art-dialog header { display: flex; gap: .7rem; align-items: center; justify-content: space-between; padding: .45rem .65rem }
+.shift-art-dialog h4 { font: 600 .96rem/1.35 var(--sans); margin: 0; overflow-wrap: anywhere }
+.shift-art-inspection { min-height: 0; overflow: auto; overscroll-behavior: contain }
+.shift-art .shift-art-inspection img { width: auto; max-width: none; height: auto; margin-inline: auto }
+@media (max-width: 700px) {
+  .shift-art-shots { grid-template-columns: minmax(0,1fr) }
+  .shift-art-controls { display: grid; grid-template-columns: minmax(0,1fr) }
+}

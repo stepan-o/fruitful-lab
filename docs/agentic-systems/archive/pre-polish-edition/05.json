@@ -1,0 +1,221 @@
+{
+  "id": "readable-detail",
+  "title": "Spend detail where it can be read",
+  "standfirst": "The face was already expressive. We had put the words over it.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "evidence",
+      "asset": "speech-before",
+      "alt": "Retained Loopforge rehearsal at 14.65 seconds: a pale speech balloon covers LIMEN’s head while two smaller workers stand nearby.",
+      "caption": "First-cycle browser export, 14.65 seconds. This is the retained pre-correction frame. The image records an obstruction; it does not establish the quality of the strike, grounding or contact.",
+      "original": "/loopforge-dev-blog/history/media/strike-before.png"
+    },
+    {
+      "type": "prose",
+      "text": "LIMEN is shouting, and the game has helpfully hidden the face doing the shouting. The balloon is easy to read. Its pale rectangle separates cleanly from the factory, its emphasis is unmissable, and its placement consumes the very part of the body that could help us read the anger. Two individually sensible intentions—show the performance, make the words legible—have arrived at the same patch of screen."
+    },
+    {
+      "type": "evidence",
+      "asset": "speech-after",
+      "alt": "The matching corrected rehearsal frame, with LIMEN’s speech balloon moved right and the head visible.",
+      "caption": "Corrected C1 browser export, retained in the first-cycle public archive. The pair uses the same recorded moment. These source pixels are resized for the page; the inspector and published original preserve closer inspection.",
+      "original": "/loopforge-dev-blog/history/media/strike-after.png"
+    },
+    {
+      "type": "prose",
+      "text": "Moving the balloon right exposed the head without replacing the character or rebuilding the room. That is an unusually direct return on a local correction. It did not settle the layout for every exchange. Visual later withdrew its preference for anchored balloons after wider samples showed dialogue, reactions and credential status changing the available picture height. The next repair concerned the allocation of space, not the quality of the hidden face.",
+      "sources": [
+        "speech-pair",
+        "visual-second"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "composition-stage",
+      "title": "A room, an exchange, a place for words",
+      "caption": "An authored staging study, not a Loopforge replay or a perception experiment. Framing, figure separation and text placement vary independently. Advance through instruction, reply and reaching the control; the bodies keep their positions while speaker and gesture change."
+    },
+    {
+      "type": "prose",
+      "text": "Begin with the whole room. The doorway and rear machinery explain where we are. Move to the exchange and the two bodies become easier to distinguish, but part of that geography disappears. Neither view wins every question. Now show the words inside the picture. A closer camera has enlarged the obstruction along with the speaker. Lighting cannot recover the body underneath an opaque card. Moving the words to the rail changes the allocation of space, while giving up the immediate connection of a balloon tail."
+    },
+    {
+      "type": "prose",
+      "text": "Director’s geography shot survived too long into exchanges that needed a recognizable recipient. Level’s aligned Conveyor controls and continuous aisle were useful, yet the tutorial still cropped Bob at the Wash and Forge. A wall move could have damaged a functioning route to compensate for an interface problem. I should have commissioned one ordinary-size exchange containing the camera, bodies and actual words together.",
+      "sources": [
+        "director-second",
+        "level-second"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "frame-allocation",
+      "title": "Where do the words get their space?",
+      "caption": "The same authored scene sits inside two layout rules. Toggle the instruction and compare what survives within each picture. No room geometry, actor position or camera choice changes between the examples."
+    },
+    {
+      "type": "prose",
+      "text": "The two layouts above spend the same total area differently. In the first, the words take their share only when they appear; the fixed-scale picture is cropped to fit what remains. In the second, the empty rail costs space from the beginning. This demonstration uses a simple crop, not Loopforge’s camera implementation. It makes the dependency visible: if a camera is composed for one picture area and the interface later supplies another, approval in silence cannot settle what happens during speech.",
+      "sources": [
+        "visual-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The reserved rail asks us to pay in picture area before the first line is spoken. In return, later dialogue does not renegotiate the shot. Anchored words preserve more of the silent view and a direct visual attachment to the speaker, but demand placement that survives the next body and status panel. The choice belongs to the intended scene. Neither a fixed rail nor a clever balloon is costless."
+    },
+    {
+      "type": "heading",
+      "text": "Repair the relationship that failed"
+    },
+    {
+      "type": "prose",
+      "text": "An interaction can disappoint because the command has no consequence, the consequence is hidden, its cause is ambiguous, or the next action is simply dull. These are different commissions. Lighting cannot create a missing consequence; another resource meter cannot make a dominated choice interesting. Before adding detail, I want the failure identified closely enough that the proposed craft can actually change it."
+    },
+    {
+      "type": "prose",
+      "text": "Don Norman’s signifiers distinguish what an environment permits from the clues by which somebody understands it. The studio’s usable-but-cropped control gives that distinction a concrete form. The simulation could accept the action while its presentation withheld the person performing it. The correction should preserve what already works and expose what the player needs to interpret.",
+      "sources": [
+        "norman-signifiers",
+        "level-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Jason Mitchell, Moby Francke and Dhabih Eng’s 2007 account of Team Fortress 2 makes visual recognition a joint art and engineering problem. Its classes were designed to remain distinguishable as silhouettes; clothing, proportions and equipment contribute to the outline. Restrained background detail and deliberate shading help those forms survive varied lighting. The paper connects its choices to the speed and distances at which players need to identify a threat. It does not present style as a decorative treatment applied after the game’s demands are settled.",
+      "sources": [
+        "tf2-rendering"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Inspect the silhouettes with interior detail removed. That test asks whether identity survives simplification; the studio pair asks whether identity survives the composition around it. Neither validates Valve’s particular lighting solution for this room.",
+      "sources": [
+        "tf2-rendering",
+        "speech-pair"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When the body asks for more work"
+    },
+    {
+      "type": "evidence",
+      "asset": "departure-arms",
+      "alt": "R10 end-of-shift capture. A blue worker in the foreground departs with both arms extended sideways; other workers remain around the security doorway.",
+      "caption": "Retained R10 frame at roughly 117 scene seconds. Animator tentatively identified the foreground worker as Max. The image supports a pose observation; it does not establish the animation bank’s cause or the movement between samples.",
+      "original": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-departure-arms-117s.png"
+    },
+    {
+      "type": "prose",
+      "text": "The worker has somewhere to go. His legs point down the room; his arms stretch across it. Behind him, the security doorway gives the departure a destination and a scale. The pose interrupts the ordinary meaning of leaving work. I can read the event label, but the body asks for a different interpretation."
+    },
+    {
+      "type": "prose",
+      "text": "Animator found arm-rotation channels in the bank without declaring why the sampled departure looked this way. A channel establishes that a part can change. It does not establish what the resulting pose communicates. The same problem appeared in this book’s first card study: I animated a travelling marker while the workers barely changed. The critic withheld approval. Correct custody records had not made anyone convincingly take the card.",
+      "sources": [
+        "animator-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "I rebuilt that passage around Ed crouching and rising with the card at his hand. The change required a revised figure, a new prop destination and a phone composition after the model already worked. Here the useful correction did cost more than moving a label. The action was the missing information; a cheaper flourish around the travelling marker would have left it missing."
+    },
+    {
+      "type": "visual",
+      "id": "contact-stage",
+      "title": "One hand path, two performances",
+      "caption": "Inspect the arrival and withdrawal as well as the press. The fixed endpoints make differences elsewhere in the figure easier to notice; they do not determine which performance suits a particular character."
+    },
+    {
+      "type": "prose",
+      "text": "At the contact beat, both versions can put a hand on the control. The surrounding body changes the reading. A small preparation draws attention toward the reach. A forward inclination connects the shoulder to the task. The return makes the press part of a continuous working posture. These are choices about emphasis. A hesitant novice and a practiced operator need not perform the same preparation, even when the machine requires the same input."
+    },
+    {
+      "type": "prose",
+      "text": "John Lasseter’s 1987 account carries traditional animation principles into computer animation. Its useful argument here is that timing gives movement weight and intention, while anticipation prepares the audience to follow an action. Follow-through connects an action’s end to what comes next. The computer’s ability to interpolate poses does not settle those decisions. This is a craft argument illustrated through animation practice, not a measured recipe for our workers.",
+      "sources": [
+        "animation-principles"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "“Move the wrist to the switch” gives an endpoint and leaves the attention, support and withdrawal to chance. I would buy the surrounding interval as part of the same action. The studio’s sampled views supplied a reason: Ed’s approach to the card and Sam’s approach to Bob read as intentions, while Bob’s held fall could resemble a bent standing figure. Those observations concern pose meaning; they do not establish continuous grip or timing.",
+      "sources": [
+        "animator-second",
+        "animation-principles"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "The second body inherits the revision"
+    },
+    {
+      "type": "prose",
+      "text": "The most useful instruction in the opening rescue was only three words in the interview: release before rise. Director gave the sequence a dependency. Animator supplied Sam’s complete release, and Engine placed it ahead of Bob’s recovery while STILETTO arrived during that recovery. The order separated helping, letting go and getting up. It gave three crafts a relation they could preserve, instead of three independently plausible clips.",
+      "sources": [
+        "animator-second"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "release-score",
+      "title": "Move the release across the recovery",
+      "caption": "The alternative order makes the supporting hand follow a rising partner. That coupling is the question to review. A choreography could deliberately keep it, but it would need an intended grip and a convincing shared performance."
+    },
+    {
+      "type": "prose",
+      "text": "Notice how a change to Bob can become work for Sam. While the support remains, Bob’s shoulder is also Sam’s target. Moving one actor changes the other actor’s reach. A team that assigns each body independently can produce two accepted poses and an impossible relationship between them. The same is true of a hand and a carried card: the prop’s ownership is a state rule, while its visible attachment is a spatial promise."
+    },
+    {
+      "type": "prose",
+      "text": "The handoff improved causal order while continuous contact remained unverified. That is a useful intermediate return, and a limit on the next claim. I would retain the ordering improvement while deciding whether the remaining contact justified more fitting for this release. Calling the entire rescue solved would conceal work; discarding the sequencing gain would make us pay to learn it again.",
+      "sources": [
+        "animator-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "David Rosen’s 2014 Overgrowth presentation offers a builder’s way through the apparent choice between authored motion and systems. His slides begin with responsive movement and consistent controls, then build through interpolation, springs, inverse kinematics and other refinements. The closing proposal joins simple interacting systems with keyframes that concentrate on performance. Read as a production method, it gives code the recurring adjustments while leaving the action’s character worth authoring.",
+      "sources": [
+        "rosen-animation"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our record challenges an overconfident reading of that economy. The studio could prepare methods for fitting motion to a rig without delivering an accepted action. In the corrected Sam waist attempt, the hand crossed the upper leg at source time 1.2 seconds; no candidate bank was exported. The rejection was useful. It ruled out that tested path. It did not show that procedural assistance was futile, or that a different storage method would work.",
+      "sources": [
+        "animator-second",
+        "rosen-animation"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "A solver can be worth commissioning for recurring adjustments: a planted foot, a grip during a defined interval, a reach toward a known surface. Its value falls when it becomes a way to defend the wrong staging. If satisfying the hand target makes the torso unreadable, the scene or intended pose may need to change. The cheaper next step may be moving the interaction; the more valuable one may be authoring a different action. Another solver pass has to compete with both."
+    },
+    {
+      "type": "build",
+      "title": "Commission one readable action",
+      "body": "Keep the small factory’s state transition fixed. Spend the presentation budget on one action a reviewer can identify without its event label.",
+      "steps": [
+        "Name the intention, actor, relevant object and recipient. Choose what must remain visible and what may leave the frame.",
+        "Capture the actual words, reaction and status display at 320, 390 and 768 pixels. Compare a geography view with an action view before changing the room or model.",
+        "Mark preparation, contact, release and return. For paired action, state when each body is the other’s target. Bind the actual rig and check required joints before fitting a motion.",
+        "Review original-speed movement and the specific interval where the relationship can break. Make failed tooling report failure; do not substitute a successful export for a convincing performance."
+      ],
+      "exercise": "Keep the hand’s endpoint fixed and try routine, reluctant and urgent preparations. Then restore the dialogue overlay. Which expensive distinctions survive the actual frame? Keep what a reviewer can perceive and what serves the intended character; their interpretation is a finding to collect, not a score already measured."
+    }
+  ],
+  "sourceIds": [
+    "speech-pair",
+    "visual-second",
+    "director-second",
+    "level-second",
+    "norman-signifiers",
+    "tf2-rendering",
+    "animator-second",
+    "animation-principles",
+    "rosen-animation"
+  ]
+}

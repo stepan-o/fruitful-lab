@@ -1,0 +1,3 @@
+Security inspection and records desk — contact design targets, NOT measured or accepted
+
+Floor origin below center; +Z is visitor side, -Z is operator side. Operator target [0,0,-1.15], clear standing/apron area width 1.2 m and depth 0.8 m beyond the back edge. Worktop target Y=1.05 m; keep a flat 1.2 by 0.5 m work area. ID tray target [0.45,1.05,0.35]; left/right hand targets [-0.35,1.05,-0.4] and [0.35,1.05,-0.4]. Terminal seat [-0.75,1.05,-0.25]. Use coarse collision for cabinets and worktop only. These are design targets; exact hand fit and visitor/retreat clearances require the actual cast in-scene.

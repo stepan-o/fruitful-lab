@@ -1,0 +1,1357 @@
+{
+  "version": "graphics-comparison-1",
+  "status": "COMPLETE",
+  "reason": null,
+  "acceptance": "Diagnostic comparisons only; no acceptance PASS is issued.",
+  "protocol": {
+    "version": "graphics-comparison-1",
+    "width": 1280,
+    "height": 720,
+    "warmupMs": 15000,
+    "durationMs": 60000,
+    "segmentMs": 10000
+  },
+  "createdAt": "2026-10-18T16:55:47.938Z",
+  "rows": [
+    {
+      "frames": {
+        "samples": 1414,
+        "elapsedMs": 59957.200000047684,
+        "fps": 23.58348955586444,
+        "p50Ms": 41.799999952316284,
+        "p95Ms": 52.59999990463257,
+        "p99Ms": 65.90000009536743,
+        "maxMs": 144.19999980926514,
+        "stallsOver100": 6
+      },
+      "cpuMs": {
+        "samples": 1415,
+        "mean": 19.32756183475993,
+        "p95": 27.699999809265137,
+        "max": 132.19999980926514
+      },
+      "gpuMs": {
+        "samples": 285,
+        "mean": 38.321444231578965,
+        "p95": 42.387499,
+        "max": 58.513332
+      },
+      "workerPoseMs": {
+        "samples": 1415,
+        "mean": 6.688409897632397,
+        "p95": 10.400000095367432,
+        "max": 67.70000004768372
+      },
+      "drawCalls": {
+        "samples": 1415,
+        "mean": 161.98021201413428,
+        "p95": 209,
+        "max": 211
+      },
+      "triangles": {
+        "samples": 1415,
+        "mean": 1559899.525088339,
+        "p95": 1675454,
+        "max": 1676138
+      },
+      "angles": [
+        {
+          "room": "security",
+          "angle": 1,
+          "samples": 248,
+          "elapsedMs": 9986.100000143051,
+          "fps": 24.834519982420304,
+          "p50Ms": 39.10000014305115,
+          "p95Ms": 51.10000014305115,
+          "p99Ms": 89.89999985694885,
+          "maxMs": 137.39999985694885,
+          "stallsOver100": 2
+        },
+        {
+          "room": "security",
+          "angle": 2,
+          "samples": 240,
+          "elapsedMs": 9989.899999856949,
+          "fps": 24.02426450749624,
+          "p50Ms": 41.5,
+          "p95Ms": 52.60000014305115,
+          "p99Ms": 66,
+          "maxMs": 116.5,
+          "stallsOver100": 1
+        },
+        {
+          "room": "security",
+          "angle": 3,
+          "samples": 255,
+          "elapsedMs": 10023.700000047684,
+          "fps": 25.43970789217424,
+          "p50Ms": 39.200000047683716,
+          "p95Ms": 47.5,
+          "p99Ms": 53,
+          "maxMs": 68.20000004768372,
+          "stallsOver100": 0
+        },
+        {
+          "room": "conveyor",
+          "angle": 1,
+          "samples": 227,
+          "elapsedMs": 9988.799999952316,
+          "fps": 22.72545250691611,
+          "p50Ms": 43.700000047683716,
+          "p95Ms": 52,
+          "p99Ms": 66.09999990463257,
+          "maxMs": 121.90000009536743,
+          "stallsOver100": 1
+        },
+        {
+          "room": "conveyor",
+          "angle": 2,
+          "samples": 219,
+          "elapsedMs": 10084,
+          "fps": 21.71757239190797,
+          "p50Ms": 46.10000014305115,
+          "p95Ms": 55.5,
+          "p99Ms": 62.60000014305115,
+          "maxMs": 144.19999980926514,
+          "stallsOver100": 1
+        },
+        {
+          "room": "conveyor",
+          "angle": 3,
+          "samples": 225,
+          "elapsedMs": 9884.700000047684,
+          "fps": 22.762451060620414,
+          "p50Ms": 43.89999985694885,
+          "p95Ms": 54.30000019073486,
+          "p99Ms": 64.5,
+          "maxMs": 105.89999985694885,
+          "stallsOver100": 1
+        }
+      ],
+      "configuration": {
+        "id": "reference",
+        "label": "Reference",
+        "settings": {
+          "version": 1,
+          "preset": "high",
+          "targetFps": 60,
+          "resolution": 1,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "workers": 24,
+        "workerPoses": "animated"
+      },
+      "graphics": {
+        "settings": {
+          "version": 1,
+          "preset": "high",
+          "targetFps": 60,
+          "resolution": 1,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "context": "room",
+        "effective": {
+          "targetFps": 60,
+          "adaptive": false,
+          "scale": 1,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "scale": 1,
+        "resolution": [
+          1280,
+          720
+        ],
+        "uncapped": true
+      },
+      "heapBytes": 227767073
+    },
+    {
+      "frames": {
+        "samples": 1351,
+        "elapsedMs": 60005,
+        "fps": 22.51479043413049,
+        "p50Ms": 42.299999952316284,
+        "p95Ms": 68.89999985694885,
+        "p99Ms": 92.39999985694885,
+        "maxMs": 193.89999985694885,
+        "stallsOver100": 8
+      },
+      "cpuMs": {
+        "samples": 1352,
+        "mean": 26.79031065071123,
+        "p95": 42.700000047683716,
+        "max": 86.40000009536743
+      },
+      "gpuMs": {
+        "samples": 309,
+        "mean": 34.816116553398054,
+        "p95": 37.745833,
+        "max": 62.342833
+      },
+      "workerPoseMs": {
+        "samples": 1352,
+        "mean": 7.806434910501954,
+        "p95": 14.5,
+        "max": 58
+      },
+      "drawCalls": {
+        "samples": 1352,
+        "mean": 163.57248520710058,
+        "p95": 210,
+        "max": 211
+      },
+      "triangles": {
+        "samples": 1352,
+        "mean": 1564132.576923077,
+        "p95": 1676126,
+        "max": 1676138
+      },
+      "angles": [
+        {
+          "room": "security",
+          "angle": 1,
+          "samples": 222,
+          "elapsedMs": 9976.699999809265,
+          "fps": 22.25184680347652,
+          "p50Ms": 42.299999952316284,
+          "p95Ms": 70.70000004768372,
+          "p99Ms": 92.39999985694885,
+          "maxMs": 190.79999995231628,
+          "stallsOver100": 1
+        },
+        {
+          "room": "security",
+          "angle": 2,
+          "samples": 221,
+          "elapsedMs": 10028,
+          "fps": 22.038292780215397,
+          "p50Ms": 41.5,
+          "p95Ms": 74.40000009536743,
+          "p99Ms": 99.90000009536743,
+          "maxMs": 174.79999995231628,
+          "stallsOver100": 2
+        },
+        {
+          "room": "security",
+          "angle": 3,
+          "samples": 239,
+          "elapsedMs": 10008,
+          "fps": 23.880895283772983,
+          "p50Ms": 40.39999985694885,
+          "p95Ms": 62.799999952316284,
+          "p99Ms": 75.30000019073486,
+          "maxMs": 99.70000004768372,
+          "stallsOver100": 0
+        },
+        {
+          "room": "conveyor",
+          "angle": 1,
+          "samples": 227,
+          "elapsedMs": 9984.200000047684,
+          "fps": 22.73592275784899,
+          "p50Ms": 43.299999952316284,
+          "p95Ms": 57.5,
+          "p99Ms": 72.40000009536743,
+          "maxMs": 185.29999995231628,
+          "stallsOver100": 1
+        },
+        {
+          "room": "conveyor",
+          "angle": 2,
+          "samples": 221,
+          "elapsedMs": 10000.200000047684,
+          "fps": 22.099558008734448,
+          "p50Ms": 43.40000009536743,
+          "p95Ms": 66.40000009536743,
+          "p99Ms": 83.29999995231628,
+          "maxMs": 193.89999985694885,
+          "stallsOver100": 1
+        },
+        {
+          "room": "conveyor",
+          "angle": 3,
+          "samples": 221,
+          "elapsedMs": 10007.900000095367,
+          "fps": 22.08255478151201,
+          "p50Ms": 42.60000014305115,
+          "p95Ms": 66.10000014305115,
+          "p99Ms": 108.29999995231628,
+          "maxMs": 178.40000009536743,
+          "stallsOver100": 3
+        }
+      ],
+      "configuration": {
+        "id": "resolution",
+        "label": "75% resolution only",
+        "settings": {
+          "version": 1,
+          "preset": "custom",
+          "targetFps": 60,
+          "resolution": 0.75,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "workers": 24,
+        "workerPoses": "animated"
+      },
+      "graphics": {
+        "settings": {
+          "version": 1,
+          "preset": "custom",
+          "targetFps": 60,
+          "resolution": 0.75,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "context": "room",
+        "effective": {
+          "targetFps": 60,
+          "adaptive": false,
+          "scale": 0.75,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "scale": 0.75,
+        "resolution": [
+          960,
+          540
+        ],
+        "uncapped": true
+      },
+      "heapBytes": 228737648
+    },
+    {
+      "frames": {
+        "samples": 1503,
+        "elapsedMs": 59976.300000190735,
+        "fps": 25.059898659890994,
+        "p50Ms": 35.5,
+        "p95Ms": 67.09999990463257,
+        "p99Ms": 134.79999995231628,
+        "maxMs": 338.09999990463257,
+        "stallsOver100": 27
+      },
+      "cpuMs": {
+        "samples": 1504,
+        "mean": 23.022805848812805,
+        "p95": 38.700000047683716,
+        "max": 229.29999995231628
+      },
+      "gpuMs": {
+        "samples": 383,
+        "mean": 28.241728146214083,
+        "p95": 32.554082,
+        "max": 215.624582
+      },
+      "workerPoseMs": {
+        "samples": 1504,
+        "mean": 7.855651596759228,
+        "p95": 15.399999856948853,
+        "max": 102.40000009536743
+      },
+      "drawCalls": {
+        "samples": 1504,
+        "mean": 115.74135638297872,
+        "p95": 153,
+        "max": 154
+      },
+      "triangles": {
+        "samples": 1504,
+        "mean": 805874.4946808511,
+        "p95": 889038,
+        "max": 889262
+      },
+      "angles": [
+        {
+          "room": "security",
+          "angle": 1,
+          "samples": 293,
+          "elapsedMs": 9992.200000047684,
+          "fps": 29.322871839895296,
+          "p50Ms": 33.59999990463257,
+          "p95Ms": 46.700000047683716,
+          "p99Ms": 62.5,
+          "maxMs": 66.5,
+          "stallsOver100": 0
+        },
+        {
+          "room": "security",
+          "angle": 2,
+          "samples": 282,
+          "elapsedMs": 10052.799999952316,
+          "fps": 28.051886041832883,
+          "p50Ms": 35,
+          "p95Ms": 51.700000047683716,
+          "p99Ms": 60.69999980926514,
+          "maxMs": 86.79999995231628,
+          "stallsOver100": 0
+        },
+        {
+          "room": "security",
+          "angle": 3,
+          "samples": 280,
+          "elapsedMs": 9930.600000143051,
+          "fps": 28.195678004951017,
+          "p50Ms": 34.69999980926514,
+          "p95Ms": 55.40000009536743,
+          "p99Ms": 64.09999990463257,
+          "maxMs": 67.79999995231628,
+          "stallsOver100": 0
+        },
+        {
+          "room": "conveyor",
+          "angle": 1,
+          "samples": 177,
+          "elapsedMs": 10047.399999856949,
+          "fps": 17.616497800676797,
+          "p50Ms": 41.799999952316284,
+          "p95Ms": 175.10000014305115,
+          "p99Ms": 336.2000000476837,
+          "maxMs": 338.09999990463257,
+          "stallsOver100": 17
+        },
+        {
+          "room": "conveyor",
+          "angle": 2,
+          "samples": 205,
+          "elapsedMs": 9949.900000095367,
+          "fps": 20.603222142738634,
+          "p50Ms": 39.40000009536743,
+          "p95Ms": 98.79999995231628,
+          "p99Ms": 181.20000004768372,
+          "maxMs": 258.90000009536743,
+          "stallsOver100": 10
+        },
+        {
+          "room": "conveyor",
+          "angle": 3,
+          "samples": 266,
+          "elapsedMs": 10003.400000095367,
+          "fps": 26.590959073661363,
+          "p50Ms": 36,
+          "p95Ms": 52.40000009536743,
+          "p99Ms": 78.5,
+          "maxMs": 97.69999980926514,
+          "stallsOver100": 0
+        }
+      ],
+      "configuration": {
+        "id": "shadows",
+        "label": "Shadows off only",
+        "settings": {
+          "version": 1,
+          "preset": "custom",
+          "targetFps": 60,
+          "resolution": 1,
+          "shadows": "off",
+          "bloom": true,
+          "antialias": true
+        },
+        "workers": 24,
+        "workerPoses": "animated"
+      },
+      "graphics": {
+        "settings": {
+          "version": 1,
+          "preset": "custom",
+          "targetFps": 60,
+          "resolution": 1,
+          "shadows": "off",
+          "bloom": true,
+          "antialias": true
+        },
+        "context": "room",
+        "effective": {
+          "targetFps": 60,
+          "adaptive": false,
+          "scale": 1,
+          "shadows": "off",
+          "bloom": true,
+          "antialias": true
+        },
+        "scale": 1,
+        "resolution": [
+          1280,
+          720
+        ],
+        "uncapped": true
+      },
+      "heapBytes": 234740904
+    },
+    {
+      "frames": {
+        "samples": 1242,
+        "elapsedMs": 59984,
+        "fps": 20.70552147239264,
+        "p50Ms": 46.700000047683716,
+        "p95Ms": 72.89999985694885,
+        "p99Ms": 93,
+        "maxMs": 245.5,
+        "stallsOver100": 8
+      },
+      "cpuMs": {
+        "samples": 1243,
+        "mean": 24.666291228629653,
+        "p95": 40.700000047683716,
+        "max": 111.20000004768372
+      },
+      "gpuMs": {
+        "samples": 278,
+        "mean": 39.87670135971223,
+        "p95": 44.389749,
+        "max": 80.839499
+      },
+      "workerPoseMs": {
+        "samples": 1243,
+        "mean": 7.55921158633305,
+        "p95": 13.5,
+        "max": 42.700000047683716
+      },
+      "drawCalls": {
+        "samples": 1243,
+        "mean": 158.19308125502815,
+        "p95": 204,
+        "max": 207
+      },
+      "triangles": {
+        "samples": 1243,
+        "mean": 1560560.109412711,
+        "p95": 1675332,
+        "max": 1676138
+      },
+      "angles": [
+        {
+          "room": "security",
+          "angle": 1,
+          "samples": 219,
+          "elapsedMs": 9963,
+          "fps": 21.981330924420355,
+          "p50Ms": 44.700000047683716,
+          "p95Ms": 66.59999990463257,
+          "p99Ms": 79.20000004768372,
+          "maxMs": 87.69999980926514,
+          "stallsOver100": 0
+        },
+        {
+          "room": "security",
+          "angle": 2,
+          "samples": 215,
+          "elapsedMs": 9996.399999856949,
+          "fps": 21.507742787711248,
+          "p50Ms": 46.09999990463257,
+          "p95Ms": 68.70000004768372,
+          "p99Ms": 81.90000009536743,
+          "maxMs": 85.40000009536743,
+          "stallsOver100": 0
+        },
+        {
+          "room": "security",
+          "angle": 3,
+          "samples": 213,
+          "elapsedMs": 10009.100000143051,
+          "fps": 21.280634622189385,
+          "p50Ms": 42.39999985694885,
+          "p95Ms": 79.20000004768372,
+          "p99Ms": 97.89999985694885,
+          "maxMs": 245.5,
+          "stallsOver100": 2
+        },
+        {
+          "room": "conveyor",
+          "angle": 1,
+          "samples": 206,
+          "elapsedMs": 10037.099999904633,
+          "fps": 20.523856492608154,
+          "p50Ms": 48,
+          "p95Ms": 68.5,
+          "p99Ms": 77.89999985694885,
+          "maxMs": 94.29999995231628,
+          "stallsOver100": 0
+        },
+        {
+          "room": "conveyor",
+          "angle": 2,
+          "samples": 193,
+          "elapsedMs": 10009.099999904633,
+          "fps": 19.282452967983026,
+          "p50Ms": 49.59999990463257,
+          "p95Ms": 80.5,
+          "p99Ms": 103.70000004768372,
+          "maxMs": 116.40000009536743,
+          "stallsOver100": 2
+        },
+        {
+          "room": "conveyor",
+          "angle": 3,
+          "samples": 196,
+          "elapsedMs": 9969.300000190735,
+          "fps": 19.66035729652534,
+          "p50Ms": 49,
+          "p95Ms": 87.5,
+          "p99Ms": 120.5,
+          "maxMs": 153.5,
+          "stallsOver100": 4
+        }
+      ],
+      "configuration": {
+        "id": "bloom",
+        "label": "Glow halo off only",
+        "settings": {
+          "version": 1,
+          "preset": "custom",
+          "targetFps": 60,
+          "resolution": 1,
+          "shadows": "full",
+          "bloom": false,
+          "antialias": true
+        },
+        "workers": 24,
+        "workerPoses": "animated"
+      },
+      "graphics": {
+        "settings": {
+          "version": 1,
+          "preset": "custom",
+          "targetFps": 60,
+          "resolution": 1,
+          "shadows": "full",
+          "bloom": false,
+          "antialias": true
+        },
+        "context": "room",
+        "effective": {
+          "targetFps": 60,
+          "adaptive": false,
+          "scale": 1,
+          "shadows": "full",
+          "bloom": false,
+          "antialias": true
+        },
+        "scale": 1,
+        "resolution": [
+          1280,
+          720
+        ],
+        "uncapped": true
+      },
+      "heapBytes": 234663649
+    },
+    {
+      "frames": {
+        "samples": 1253,
+        "elapsedMs": 59958.59999990463,
+        "fps": 20.89775278278667,
+        "p50Ms": 46.799999952316284,
+        "p95Ms": 70.29999995231628,
+        "p99Ms": 89.40000009536743,
+        "maxMs": 178.10000014305115,
+        "stallsOver100": 9
+      },
+      "cpuMs": {
+        "samples": 1254,
+        "mean": 17.002073364204577,
+        "p95": 28.199999809265137,
+        "max": 68.60000014305115
+      },
+      "gpuMs": {
+        "samples": 271,
+        "mean": 39.691275442804425,
+        "p95": 44.1485,
+        "max": 45.969749
+      },
+      "workerPoseMs": {
+        "samples": 1254,
+        "mean": 0.0019138758642631665,
+        "p95": 0,
+        "max": 0.10000014305114746
+      },
+      "drawCalls": {
+        "samples": 1254,
+        "mean": 162.29665071770336,
+        "p95": 209,
+        "max": 211
+      },
+      "triangles": {
+        "samples": 1254,
+        "mean": 1560641.4370015948,
+        "p95": 1675454,
+        "max": 1676138
+      },
+      "angles": [
+        {
+          "room": "security",
+          "angle": 1,
+          "samples": 218,
+          "elapsedMs": 9999.5,
+          "fps": 21.801090054502726,
+          "p50Ms": 44.299999952316284,
+          "p95Ms": 72.60000014305115,
+          "p99Ms": 84.29999995231628,
+          "maxMs": 173.20000004768372,
+          "stallsOver100": 1
+        },
+        {
+          "room": "security",
+          "angle": 2,
+          "samples": 212,
+          "elapsedMs": 9994.399999856949,
+          "fps": 21.211878652348755,
+          "p50Ms": 46.60000014305115,
+          "p95Ms": 72.39999985694885,
+          "p99Ms": 87,
+          "maxMs": 165.10000014305115,
+          "stallsOver100": 1
+        },
+        {
+          "room": "security",
+          "angle": 3,
+          "samples": 224,
+          "elapsedMs": 9991.300000190735,
+          "fps": 22.41950496889532,
+          "p50Ms": 43.5,
+          "p95Ms": 68.39999985694885,
+          "p99Ms": 81.39999985694885,
+          "maxMs": 100.40000009536743,
+          "stallsOver100": 1
+        },
+        {
+          "room": "conveyor",
+          "angle": 1,
+          "samples": 204,
+          "elapsedMs": 10012.399999856949,
+          "fps": 20.374735328484142,
+          "p50Ms": 48.200000047683716,
+          "p95Ms": 65.29999995231628,
+          "p99Ms": 77.39999985694885,
+          "maxMs": 178.10000014305115,
+          "stallsOver100": 1
+        },
+        {
+          "room": "conveyor",
+          "angle": 2,
+          "samples": 197,
+          "elapsedMs": 9977.400000095367,
+          "fps": 19.74462284744693,
+          "p50Ms": 49.799999952316284,
+          "p95Ms": 73.89999985694885,
+          "p99Ms": 95.59999990463257,
+          "maxMs": 166.09999990463257,
+          "stallsOver100": 1
+        },
+        {
+          "room": "conveyor",
+          "angle": 3,
+          "samples": 198,
+          "elapsedMs": 9983.599999904633,
+          "fps": 19.83252534174961,
+          "p50Ms": 49.09999990463257,
+          "p95Ms": 72.60000014305115,
+          "p99Ms": 104.70000004768372,
+          "maxMs": 134,
+          "stallsOver100": 4
+        }
+      ],
+      "configuration": {
+        "id": "poses",
+        "label": "Worker poses held only",
+        "settings": {
+          "version": 1,
+          "preset": "high",
+          "targetFps": 60,
+          "resolution": 1,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "workers": 24,
+        "workerPoses": "held"
+      },
+      "graphics": {
+        "settings": {
+          "version": 1,
+          "preset": "high",
+          "targetFps": 60,
+          "resolution": 1,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "context": "room",
+        "effective": {
+          "targetFps": 60,
+          "adaptive": false,
+          "scale": 1,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "scale": 1,
+        "resolution": [
+          1280,
+          720
+        ],
+        "uncapped": true
+      },
+      "heapBytes": 241523511
+    },
+    {
+      "frames": {
+        "samples": 1756,
+        "elapsedMs": 59986.90000009537,
+        "fps": 29.273057950939428,
+        "p50Ms": 33.299999952316284,
+        "p95Ms": 51.10000014305115,
+        "p99Ms": 64.29999995231628,
+        "maxMs": 164.90000009536743,
+        "stallsOver100": 5
+      },
+      "cpuMs": {
+        "samples": 1757,
+        "mean": 15.933636880151644,
+        "p95": 24.700000047683716,
+        "max": 66
+      },
+      "gpuMs": {
+        "samples": 468,
+        "mean": 24.276169151709386,
+        "p95": 28.647416,
+        "max": 39.716332
+      },
+      "workerPoseMs": {
+        "samples": 1757,
+        "mean": 2.317928288426668,
+        "p95": 5.099999904632568,
+        "max": 24.100000143051147
+      },
+      "drawCalls": {
+        "samples": 1757,
+        "mean": 129.75298804780877,
+        "p95": 178,
+        "max": 179
+      },
+      "triangles": {
+        "samples": 1757,
+        "mean": 730691.4410927718,
+        "p95": 847550,
+        "max": 847562
+      },
+      "angles": [
+        {
+          "room": "security",
+          "angle": 1,
+          "samples": 310,
+          "elapsedMs": 9971.099999904633,
+          "fps": 31.089849665830748,
+          "p50Ms": 32.39999985694885,
+          "p95Ms": 44.799999952316284,
+          "p99Ms": 56.799999952316284,
+          "maxMs": 59.69999980926514,
+          "stallsOver100": 0
+        },
+        {
+          "room": "security",
+          "angle": 2,
+          "samples": 305,
+          "elapsedMs": 10036.200000047684,
+          "fps": 30.389988242417537,
+          "p50Ms": 32.89999985694885,
+          "p95Ms": 46.5,
+          "p99Ms": 60.09999990463257,
+          "maxMs": 64.60000014305115,
+          "stallsOver100": 0
+        },
+        {
+          "room": "security",
+          "angle": 3,
+          "samples": 313,
+          "elapsedMs": 9986.100000143051,
+          "fps": 31.343567558457885,
+          "p50Ms": 32.39999985694885,
+          "p95Ms": 45.700000047683716,
+          "p99Ms": 54.59999990463257,
+          "maxMs": 119.20000004768372,
+          "stallsOver100": 1
+        },
+        {
+          "room": "conveyor",
+          "angle": 1,
+          "samples": 270,
+          "elapsedMs": 9974.899999856949,
+          "fps": 27.06794053112032,
+          "p50Ms": 33.799999952316284,
+          "p95Ms": 62.40000009536743,
+          "p99Ms": 73.10000014305115,
+          "maxMs": 164.90000009536743,
+          "stallsOver100": 2
+        },
+        {
+          "room": "conveyor",
+          "angle": 2,
+          "samples": 275,
+          "elapsedMs": 10024.900000095367,
+          "fps": 27.4316950789917,
+          "p50Ms": 35.80000019073486,
+          "p95Ms": 54.700000047683716,
+          "p99Ms": 63.59999990463257,
+          "maxMs": 137.90000009536743,
+          "stallsOver100": 1
+        },
+        {
+          "room": "conveyor",
+          "angle": 3,
+          "samples": 283,
+          "elapsedMs": 9993.700000047684,
+          "fps": 28.317840239215677,
+          "p50Ms": 34.10000014305115,
+          "p95Ms": 51.30000019073486,
+          "p99Ms": 62.200000047683716,
+          "maxMs": 143.19999980926514,
+          "stallsOver100": 1
+        }
+      ],
+      "configuration": {
+        "id": "crowd",
+        "label": "8 visible workers only",
+        "settings": {
+          "version": 1,
+          "preset": "high",
+          "targetFps": 60,
+          "resolution": 1,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "workers": 8,
+        "workerPoses": "animated"
+      },
+      "graphics": {
+        "settings": {
+          "version": 1,
+          "preset": "high",
+          "targetFps": 60,
+          "resolution": 1,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "context": "room",
+        "effective": {
+          "targetFps": 60,
+          "adaptive": false,
+          "scale": 1,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "scale": 1,
+        "resolution": [
+          1280,
+          720
+        ],
+        "uncapped": true
+      },
+      "heapBytes": 245666202
+    },
+    {
+      "frames": {
+        "samples": 1782,
+        "elapsedMs": 59990.90000009537,
+        "fps": 29.70450518323891,
+        "p50Ms": 30.700000047683716,
+        "p95Ms": 56.10000014305115,
+        "p99Ms": 92.09999990463257,
+        "maxMs": 324.19999980926514,
+        "stallsOver100": 16
+      },
+      "cpuMs": {
+        "samples": 1783,
+        "mean": 22.389287720218643,
+        "p95": 36.5,
+        "max": 161
+      },
+      "gpuMs": {
+        "samples": 533,
+        "mean": 20.10512757973733,
+        "p95": 26.514998,
+        "max": 138.078749
+      },
+      "workerPoseMs": {
+        "samples": 1783,
+        "mean": 8.015703873091445,
+        "p95": 14.599999904632568,
+        "max": 95.5
+      },
+      "drawCalls": {
+        "samples": 1783,
+        "mean": 112.96298373527762,
+        "p95": 149,
+        "max": 151
+      },
+      "triangles": {
+        "samples": 1783,
+        "mean": 808412.2478968032,
+        "p95": 889038,
+        "max": 889262
+      },
+      "angles": [
+        {
+          "room": "security",
+          "angle": 1,
+          "samples": 313,
+          "elapsedMs": 9999.900000095367,
+          "fps": 31.300313002831526,
+          "p50Ms": 30.200000047683716,
+          "p95Ms": 53.09999990463257,
+          "p99Ms": 70.70000004768372,
+          "maxMs": 80.20000004768372,
+          "stallsOver100": 0
+        },
+        {
+          "room": "security",
+          "angle": 2,
+          "samples": 330,
+          "elapsedMs": 9981.299999952316,
+          "fps": 33.061825614055934,
+          "p50Ms": 29.299999952316284,
+          "p95Ms": 46.200000047683716,
+          "p99Ms": 57.299999952316284,
+          "maxMs": 65.39999985694885,
+          "stallsOver100": 0
+        },
+        {
+          "room": "security",
+          "angle": 3,
+          "samples": 341,
+          "elapsedMs": 10024.5,
+          "fps": 34.016659184996755,
+          "p50Ms": 28.700000047683716,
+          "p95Ms": 43.5,
+          "p99Ms": 51.09999990463257,
+          "maxMs": 67.09999990463257,
+          "stallsOver100": 0
+        },
+        {
+          "room": "conveyor",
+          "angle": 1,
+          "samples": 314,
+          "elapsedMs": 9979.5,
+          "fps": 31.46450222957062,
+          "p50Ms": 31.200000047683716,
+          "p95Ms": 46.40000009536743,
+          "p99Ms": 59,
+          "maxMs": 119,
+          "stallsOver100": 1
+        },
+        {
+          "room": "conveyor",
+          "angle": 2,
+          "samples": 183,
+          "elapsedMs": 10013.200000047684,
+          "fps": 18.27587584379904,
+          "p50Ms": 41.90000009536743,
+          "p95Ms": 135.5,
+          "p99Ms": 307.89999985694885,
+          "maxMs": 324.19999980926514,
+          "stallsOver100": 13
+        },
+        {
+          "room": "conveyor",
+          "angle": 3,
+          "samples": 301,
+          "elapsedMs": 9992.5,
+          "fps": 30.122591943957968,
+          "p50Ms": 31.40000009536743,
+          "p95Ms": 49.59999990463257,
+          "p99Ms": 74.40000009536743,
+          "maxMs": 136.70000004768372,
+          "stallsOver100": 2
+        }
+      ],
+      "configuration": {
+        "id": "performance",
+        "label": "Performance preset (combined)",
+        "settings": {
+          "version": 1,
+          "preset": "performance",
+          "targetFps": 30,
+          "resolution": 0.65,
+          "shadows": "off",
+          "bloom": false,
+          "antialias": true
+        },
+        "workers": 24,
+        "workerPoses": "animated"
+      },
+      "graphics": {
+        "settings": {
+          "version": 1,
+          "preset": "performance",
+          "targetFps": 30,
+          "resolution": 0.65,
+          "shadows": "off",
+          "bloom": false,
+          "antialias": true
+        },
+        "context": "room",
+        "effective": {
+          "targetFps": 30,
+          "adaptive": false,
+          "scale": 0.65,
+          "shadows": "off",
+          "bloom": false,
+          "antialias": true
+        },
+        "scale": 0.65,
+        "resolution": [
+          832,
+          468
+        ],
+        "uncapped": true
+      },
+      "heapBytes": 241285156
+    },
+    {
+      "frames": {
+        "samples": 1231,
+        "elapsedMs": 59943.5,
+        "fps": 20.536004737794755,
+        "p50Ms": 47.90000009536743,
+        "p95Ms": 70,
+        "p99Ms": 96.79999995231628,
+        "maxMs": 219.19999980926514,
+        "stallsOver100": 11
+      },
+      "cpuMs": {
+        "samples": 1232,
+        "mean": 24.147889613331138,
+        "p95": 36.5,
+        "max": 196.29999995231628
+      },
+      "gpuMs": {
+        "samples": 265,
+        "mean": 40.360344588679254,
+        "p95": 44.383416,
+        "max": 103.522499
+      },
+      "workerPoseMs": {
+        "samples": 1232,
+        "mean": 7.3271103896103895,
+        "p95": 12.600000143051147,
+        "max": 38.299999952316284
+      },
+      "drawCalls": {
+        "samples": 1232,
+        "mean": 163.08441558441558,
+        "p95": 210,
+        "max": 211
+      },
+      "triangles": {
+        "samples": 1232,
+        "mean": 1563031.7516233767,
+        "p95": 1676126,
+        "max": 1676138
+      },
+      "angles": [
+        {
+          "room": "security",
+          "angle": 1,
+          "samples": 213,
+          "elapsedMs": 9945.400000095367,
+          "fps": 21.416936472937994,
+          "p50Ms": 46,
+          "p95Ms": 72.90000009536743,
+          "p99Ms": 79.20000004768372,
+          "maxMs": 106.90000009536743,
+          "stallsOver100": 1
+        },
+        {
+          "room": "security",
+          "angle": 2,
+          "samples": 207,
+          "elapsedMs": 9997.199999809265,
+          "fps": 20.705797623729577,
+          "p50Ms": 46.59999990463257,
+          "p95Ms": 73.59999990463257,
+          "p99Ms": 96.79999995231628,
+          "maxMs": 219.19999980926514,
+          "stallsOver100": 2
+        },
+        {
+          "room": "security",
+          "angle": 3,
+          "samples": 207,
+          "elapsedMs": 10018.600000143051,
+          "fps": 20.661569480470757,
+          "p50Ms": 44.90000009536743,
+          "p95Ms": 79.30000019073486,
+          "p99Ms": 128.29999995231628,
+          "maxMs": 211.79999995231628,
+          "stallsOver100": 6
+        },
+        {
+          "room": "conveyor",
+          "angle": 1,
+          "samples": 203,
+          "elapsedMs": 9986.200000047684,
+          "fps": 20.32805271264652,
+          "p50Ms": 49.5,
+          "p95Ms": 59.700000047683716,
+          "p99Ms": 75.19999980926514,
+          "maxMs": 89.29999995231628,
+          "stallsOver100": 0
+        },
+        {
+          "room": "conveyor",
+          "angle": 2,
+          "samples": 198,
+          "elapsedMs": 10025.799999952316,
+          "fps": 19.749047457653425,
+          "p50Ms": 50.299999952316284,
+          "p95Ms": 67,
+          "p99Ms": 87.90000009536743,
+          "maxMs": 116.60000014305115,
+          "stallsOver100": 1
+        },
+        {
+          "room": "conveyor",
+          "angle": 3,
+          "samples": 203,
+          "elapsedMs": 9970.299999952316,
+          "fps": 20.36047059777247,
+          "p50Ms": 48.200000047683716,
+          "p95Ms": 59.59999990463257,
+          "p99Ms": 74.20000004768372,
+          "maxMs": 167.89999985694885,
+          "stallsOver100": 1
+        }
+      ],
+      "configuration": {
+        "id": "reference-repeat",
+        "label": "Reference repeat / drift check",
+        "settings": {
+          "version": 1,
+          "preset": "high",
+          "targetFps": 60,
+          "resolution": 1,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "workers": 24,
+        "workerPoses": "animated"
+      },
+      "graphics": {
+        "settings": {
+          "version": 1,
+          "preset": "high",
+          "targetFps": 60,
+          "resolution": 1,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "context": "room",
+        "effective": {
+          "targetFps": 60,
+          "adaptive": false,
+          "scale": 1,
+          "shadows": "full",
+          "bloom": true,
+          "antialias": true
+        },
+        "scale": 1,
+        "resolution": [
+          1280,
+          720
+        ],
+        "uncapped": true
+      },
+      "heapBytes": 245926180
+    }
+  ],
+  "environment": {
+    "renderer": "ANGLE (Intel, Mesa Intel(R) HD Graphics 620 (KBL GT2), OpenGL 4.6)",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "cores": 4,
+    "devicePixelRatio": 1,
+    "viewport": [
+      2215,
+      1260
+    ],
+    "gpuTimerSupported": true,
+    "reducedMotion": false
+  },
+  "resources": {
+    "baseline": {
+      "meshes": 263,
+      "materials": 40,
+      "textures": 82,
+      "skeletons": 26,
+      "geometries": 212,
+      "animationGroups": 50
+    },
+    "end": {
+      "meshes": 263,
+      "materials": 40,
+      "textures": 82,
+      "skeletons": 26,
+      "geometries": 212,
+      "animationGroups": 50
+    }
+  },
+  "loadMs": 9494.299999952316,
+  "assets": {
+    "worker": {
+      "src": "/media/files/f353652a8d3c12020cf3ad2ae10fada37b543f673ae66238e9374bdfa6f52da9.glb",
+      "sha256": "f353652a8d3c12020cf3ad2ae10fada37b543f673ae66238e9374bdfa6f52da9",
+      "bytes": 11830360,
+      "count": 24,
+      "trianglesPerWorker": 25893,
+      "jointsPerWorker": 34,
+      "motions": [
+        "walking_2_inplace",
+        "Confused_Scratch",
+        "Listening_Gesture",
+        "Carry_Heavy_Object_Walk_inplace",
+        "idle",
+        "Discuss_While_Moving"
+      ],
+      "independentSkeletons": 24,
+      "sharedGeometries": 1
+    },
+    "limen": {
+      "src": "/media/files/fcb4b356b7905de1bbd52a3f18e72d3de2cecbdef6b4c8cc009c578d2fbda0ee.glb",
+      "mime": "model/gltf-binary",
+      "bytes": 4318356,
+      "sha256": "fcb4b356b7905de1bbd52a3f18e72d3de2cecbdef6b4c8cc009c578d2fbda0ee"
+    },
+    "blade": {
+      "src": "/media/files/f520691b5fe2bb72c3d7864c556e87b35373a9ab4a1e8c7f176d4414ab7c2f3e.glb",
+      "mime": "model/gltf-binary",
+      "bytes": 1175636,
+      "sha256": "f520691b5fe2bb72c3d7864c556e87b35373a9ab4a1e8c7f176d4414ab7c2f3e"
+    },
+    "stiletto": {
+      "src": "/media/files/ad84c17431f6eea244b9a15f46296f0da63d7ae9726e2f7d2622f9d522b6f97b.glb",
+      "mime": "model/gltf-binary",
+      "bytes": 11661248,
+      "sha256": "ad84c17431f6eea244b9a15f46296f0da63d7ae9726e2f7d2622f9d522b6f97b"
+    }
+  },
+  "limitations": [
+    "Fixed 24-worker asset pool: hidden workers reduce drawing and pose updates, not resident asset memory.",
+    "CPU submission and GPU execution overlap. They must not be added together. GPU samples are asynchronous; absent samples are unavailable, never zero.",
+    "Held-worker case leaves supervisors, machinery and effects running; worker pose time excludes Babylon skeleton preparation.",
+    "Short comparisons diagnose cost; full sustained acceptance, gameplay systems and device coverage remain separate.",
+    "Reference repeat checks time/order drift. Repeat important comparisons in reverse order before a causal conclusion."
+  ]
+}

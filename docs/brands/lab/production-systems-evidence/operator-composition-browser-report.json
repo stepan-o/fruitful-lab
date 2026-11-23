@@ -1,0 +1,225 @@
+{
+  "scope": "Production build; CUA Chromium browser; 5 October 2026",
+  "responsive": [
+    {
+      "animations": [
+        {
+          "duration": "24s",
+          "name": "turk-operator-module__vqq7NW__turn",
+          "state": "running",
+          "transform": "matrix(0.382061, -0.924137, 0.924137, 0.382061, 0, 0)"
+        },
+        {
+          "duration": "15s",
+          "name": "turk-operator-module__vqq7NW__turn",
+          "state": "running",
+          "transform": "matrix(0.80965, -0.586913, 0.586913, 0.80965, 0, 0)"
+        },
+        {
+          "duration": "4.8s",
+          "name": "turk-operator-module__vqq7NW__breathe",
+          "state": "running",
+          "transform": "none"
+        },
+        {
+          "duration": "4.8s",
+          "name": "turk-operator-module__vqq7NW__flame",
+          "state": "running",
+          "transform": "matrix(0.994151, -0.0311549, 0.0309877, 0.999515, 0, 0)"
+        },
+        {
+          "duration": "4.8s",
+          "name": "turk-operator-module__vqq7NW__breathe",
+          "state": "running",
+          "transform": "none"
+        }
+      ],
+      "clientWidth": 1430,
+      "figure": {
+        "height": 332.796875,
+        "width": 423.296875,
+        "x": 128,
+        "y": 291.09375
+      },
+      "nodes": 528,
+      "playing": "true",
+      "scrollWidth": 1420,
+      "width": 1440
+    },
+    {
+      "clientWidth": 758,
+      "figure": {
+        "height": 244.90625,
+        "width": 265.59375,
+        "x": 38,
+        "y": 221.984375
+      },
+      "nodes": 528,
+      "playing": "false",
+      "scrollWidth": 748,
+      "width": 768
+    },
+    {
+      "clientWidth": 758,
+      "figure": {
+        "height": 244.90625,
+        "width": 265.59375,
+        "x": 38,
+        "y": 221.984375
+      },
+      "nodes": 528,
+      "playing": "true",
+      "scrollWidth": 748,
+      "width": 768
+    },
+    {
+      "clientWidth": 380,
+      "figure": {
+        "height": 284.1875,
+        "width": 326,
+        "x": 32,
+        "y": 175.078125
+      },
+      "nodes": 528,
+      "playing": "false",
+      "scrollWidth": 370,
+      "width": 390
+    },
+    {
+      "clientWidth": 310,
+      "figure": {
+        "height": 235.1875,
+        "width": 256,
+        "x": 32,
+        "y": 212.671875
+      },
+      "nodes": 528,
+      "playing": "false",
+      "scrollWidth": 300,
+      "width": 320
+    }
+  ],
+  "paused": {
+    "animated": [
+      {
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(-0.817088, -0.576513, 0.576513, -0.817088, 0, 0)"
+      },
+      {
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "paused",
+        "transform": "matrix(0.554423, -0.832235, 0.832235, 0.554423, 0, 0)"
+      },
+      {
+        "name": "turk-operator-module__vqq7NW__breathe",
+        "state": "paused",
+        "transform": "none"
+      },
+      {
+        "name": "turk-operator-module__vqq7NW__flame",
+        "state": "paused",
+        "transform": "matrix(0.999522, -0.0348542, 0.0348587, 0.999392, 0, 0)"
+      },
+      {
+        "name": "turk-operator-module__vqq7NW__breathe",
+        "state": "paused",
+        "transform": "none"
+      }
+    ],
+    "playing": "false"
+  },
+  "offscreen": "false",
+  "pausedLater": [
+    {
+      "name": "turk-operator-module__vqq7NW__turn",
+      "state": "paused",
+      "transform": "matrix(-0.817088, -0.576513, 0.576513, -0.817088, 0, 0)"
+    },
+    {
+      "name": "turk-operator-module__vqq7NW__turn",
+      "state": "paused",
+      "transform": "matrix(0.554423, -0.832235, 0.832235, 0.554423, 0, 0)"
+    },
+    {
+      "name": "turk-operator-module__vqq7NW__breathe",
+      "state": "paused",
+      "transform": "none"
+    },
+    {
+      "name": "turk-operator-module__vqq7NW__flame",
+      "state": "paused",
+      "transform": "matrix(0.999522, -0.0348542, 0.0348587, 0.999392, 0, 0)"
+    },
+    {
+      "name": "turk-operator-module__vqq7NW__breathe",
+      "state": "paused",
+      "transform": "none"
+    }
+  ],
+  "persistentPause": "true",
+  "resumedOffscreen": {
+    "playing": "false",
+    "running": 0
+  },
+  "resumedVisible": {
+    "animated": [
+      {
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(-0.269856, -0.962901, 0.962901, -0.269856, 0, 0)"
+      },
+      {
+        "name": "turk-operator-module__vqq7NW__turn",
+        "state": "running",
+        "transform": "matrix(0.682625, -0.730769, 0.730769, 0.682625, 0, 0)"
+      },
+      {
+        "name": "turk-operator-module__vqq7NW__breathe",
+        "state": "running",
+        "transform": "none"
+      },
+      {
+        "name": "turk-operator-module__vqq7NW__flame",
+        "state": "running",
+        "transform": "matrix(0.968939, 0.0108225, -0.0104869, 0.999941, 0, 0)"
+      },
+      {
+        "name": "turk-operator-module__vqq7NW__breathe",
+        "state": "running",
+        "transform": "none"
+      }
+    ],
+    "playing": "true",
+    "width": 390
+  },
+  "errors": [],
+  "svgChecks": {
+    "ariaLabelledBy": "profile-operator-title profile-operator-desc",
+    "duplicateIds": [],
+    "filters": 0,
+    "images": 0,
+    "missingUses": [],
+    "newCanvas": 0
+  },
+  "pausedStable": true,
+  "validation": {
+    "jestSuites": 48,
+    "jestTests": 217,
+    "assetTests": "pass",
+    "scopedESLint": "pass",
+    "typescript": "pass",
+    "productionBuild": "pass"
+  },
+  "payload": {
+    "staticHtmlBytes": 1433568,
+    "gzipLevel6Bytes": 306171,
+    "newClientBoundaries": 0,
+    "newDependencies": 0
+  },
+  "limits": [
+    "Immediate navigation samples can precede IntersectionObserver settling; resumedVisible confirms all five animations running.",
+    "Reduced-motion and visibility policy covered by existing passing lifecycle tests and CSS review; OS media emulation and print not rerun in this CUA session.",
+    "Local Chromium review, not field performance or low-end hardware certification."
+  ]
+}

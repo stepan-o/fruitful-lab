@@ -1,0 +1,152 @@
+{
+  "version": "opening-scene-1",
+  "status": "FAIL",
+  "reason": null,
+  "checks": {
+    "complete": true,
+    "episodes": true,
+    "allShots": true,
+    "frameRate": true,
+    "frameP95": true,
+    "frameP99": true,
+    "everyShot": true,
+    "stalls": false,
+    "input": true,
+    "resources": true
+  },
+  "frames": {
+    "samples": 32455,
+    "elapsedMs": 600005.599999994,
+    "fps": 54.09116181582359,
+    "p50Ms": 17.19999998807907,
+    "p95Ms": 29.5,
+    "p99Ms": 39.69999998807907,
+    "maxMs": 176.09999999403954,
+    "stallsOver100": 31
+  },
+  "shots": {
+    "approach": {
+      "samples": 1826,
+      "elapsedMs": 33250.89999997616,
+      "fps": 54.91580679023152,
+      "p50Ms": 17,
+      "p95Ms": 29.69999998807907,
+      "p99Ms": 35.099999994039536,
+      "maxMs": 102,
+      "stallsOver100": 1
+    },
+    "assembly": {
+      "samples": 13797,
+      "elapsedMs": 255536.40000003576,
+      "fps": 53.9923079451619,
+      "p50Ms": 17.200000017881393,
+      "p95Ms": 29.400000005960464,
+      "p99Ms": 39.60000002384186,
+      "maxMs": 176.09999999403954,
+      "stallsOver100": 15
+    },
+    "impact": {
+      "samples": 3354,
+      "elapsedMs": 66476.90000000596,
+      "fps": 50.45361621856163,
+      "p50Ms": 17.5,
+      "p95Ms": 33.20000001788139,
+      "p99Ms": 65.19999998807907,
+      "maxMs": 153.59999999403954,
+      "stallsOver100": 13
+    },
+    "passage": {
+      "samples": 13478,
+      "elapsedMs": 244741.39999997616,
+      "fps": 55.07037223780412,
+      "p50Ms": 17.099999994039536,
+      "p95Ms": 28.900000005960464,
+      "p99Ms": 35.70000001788139,
+      "maxMs": 129.89999997615814,
+      "stallsOver100": 2
+    }
+  },
+  "inputResponseMs": [
+    8.400000005960464
+  ],
+  "completedEpisodes": 2,
+  "resources": {
+    "baseline": {
+      "meshes": 61,
+      "materials": 42,
+      "textures": 66,
+      "skeletons": 12,
+      "geometries": 47,
+      "animationGroups": 264
+    },
+    "end": {
+      "meshes": 61,
+      "materials": 42,
+      "textures": 66,
+      "skeletons": 12,
+      "geometries": 47,
+      "animationGroups": 264
+    },
+    "growth": {
+      "meshes": 0,
+      "materials": 0,
+      "textures": 0,
+      "skeletons": 0,
+      "geometries": 0,
+      "animationGroups": 0
+    }
+  },
+  "protocol": {
+    "version": "opening-scene-1",
+    "warmupMs": 30000,
+    "durationMs": 600000,
+    "width": 1280,
+    "height": 720,
+    "workers": 10,
+    "supervisors": 2
+  },
+  "scene": "before-the-shift/5",
+  "createdAt": "2026-10-21T15:35:45.571Z",
+  "graphics": {
+    "version": 1,
+    "preset": "high",
+    "targetFps": 60,
+    "resolution": 1,
+    "shadows": "full",
+    "bloom": true,
+    "antialias": true
+  },
+  "assets": {
+    "workers": {
+      "ben-floor": "b1750af4bee5f585e196194eb9a45988c6bb9bc68087df9a6a928e4464637d88",
+      "bob-floor": "bd30ac087ead85dc62f2c44b0b60cef52866858f8b5decd1fdc7cb624d931dbd",
+      "ed-floor": "958aca6e8660d09128cd03d267792f4302c0dd2d80185971117b8b195e63f597",
+      "gus-floor": "13b2d6a207302566e312a95747622f562623b030acb71845c652e297a21b521b",
+      "jo-floor": "4f3c18257c01fc1785e4278291de656a0c9982c43702ff038fcf530eba150937",
+      "kit-floor": "7a7fefa779d0949813b00c405136e0a397e3376f985616fdd6500c91402f053f",
+      "lou-floor": "5c79e432577a67d4805cc1fe955b94eca6b6564585a47037dab3610700952048",
+      "mae-floor": "ba89b55ac16f557ca7d489310b12c57f5a5a99d8afee90593da5161b9e0da99c",
+      "max-floor": "253edd83025b249116ece1eb69d55b80a602c80b665d1ee44a925eaac6ef7199",
+      "sam-floor": "3e93dc0e8c3428060b0e8c7fa05742d62d1c3238aef9b8eef0357c1468905d9a"
+    },
+    "limen": "70878f2f4a5c234c12548503a1b816ce951288aae7e7d245731814dcade7fb0e"
+  },
+  "environment": {
+    "renderer": "ANGLE (Intel, Mesa Intel(R) HD Graphics 620 (KBL GT2), OpenGL 4.6)",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "cores": 4,
+    "viewport": [
+      1280,
+      720
+    ],
+    "canvas": [
+      1280,
+      720
+    ]
+  },
+  "limitations": [
+    "Draw completion cadence is not a GPU timestamp.",
+    "Warm repeated authored opening; general BDI planning and cold internet loading are separate gates.",
+    "Contacts and artistic quality require visual approval; a performance pass does not establish either."
+  ]
+}

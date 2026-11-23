@@ -1,0 +1,33 @@
+.tracks { margin: 25px 0; padding: 0 0 8px; }
+.actions { min-width: 0; }
+.axis { display: grid; grid-template-columns: 39% 61%; padding: 0 18px 12px; font: 11px/1.5 Arial, sans-serif; text-transform: uppercase; letter-spacing: .14em; color: #a6b4a8; }
+.track { --track: #89bfb0; display: grid; grid-template-columns: minmax(0, 1fr) 46px minmax(0, 1.7fr); position: relative; align-items: stretch; margin: 12px 0; border: 1px solid #63786b55; background: linear-gradient(110deg, #20302e, #101b20 60%); }
+.track[data-track="work"] { --track: #bfa36c; }
+.track[data-track="sale"] { --track: #e89969; }
+.origin { padding: 20px 14px 20px 20px; }
+.seal { display: inline-grid; width: 30px; height: 30px; place-items: center; border: 1px solid var(--track); color: var(--track); font: 23px/1 Georgia, serif; transform: rotate(-7deg); margin-bottom: 8px; box-shadow: inset 0 0 0 3px #101b20, 0 0 15px #89bfb011; }
+.origin h3 { color: var(--track); font: normal 19px/1.35 Georgia, serif; margin: 0 0 6px; }
+.origin p { font: 13px/1.6 Arial, sans-serif; color: #a6b4a8; margin: 0; }
+.rail { align-self: center; height: 6px; border-block: 1px solid #5b6558; position: relative; background: #0a1418; }
+.rail::before { content: ""; position: absolute; left: -3px; top: -3px; width: 10px; height: 10px; border: 1px solid var(--track); border-radius: 50%; background: #142322; }
+.rail::after { content: ""; position: absolute; right: 1px; top: -3px; width: 9px; height: 9px; border-top: 1px solid var(--track); border-right: 1px solid var(--track); transform: rotate(45deg); }
+.rail span { position: absolute; inset: 1px 0; background: var(--track); opacity: .55; }
+.destination { padding: 24px 20px; align-self: center; }
+.destination h4 { margin: 0 0 10px; color: #e4d5b8; font: normal 21px/1.3 Georgia, serif; }
+.destination p { margin: 0; font: 15px/1.65 Georgia, serif; color: #bac3b6; }
+@media (max-width: 560px) {
+  .axis { display: none; }
+  .track { grid-template-columns: 30px minmax(0, 1fr); padding: 16px; }
+  .origin { padding: 0 0 14px; grid-column: 1 / -1; }
+  .origin h3 { display: inline; margin-left: 12px; }
+  .origin p { margin-left: 44px; }
+  .seal { margin-bottom: 0; }
+  .rail { align-self: start; width: 6px; height: 36px; margin: 4px 0 0 12px; border-block: 0; border-inline: 1px solid #5b6558; }
+  .rail::before { top: -3px; left: -3px; }
+  .rail::after { right: -3px; top: auto; bottom: 0; transform: rotate(135deg); }
+  .rail span { inset: 0 1px; }
+  .destination { padding: 2px 0 4px 14px; }
+}
+@media (max-width: 400px) {
+  .actions button { flex-basis: 100%; }
+}

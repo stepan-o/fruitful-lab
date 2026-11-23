@@ -1,0 +1,13 @@
+# Loopforge Studio
+
+**Sole active objective: publish one full-project milestone PR containing current canonical code/assets/references, the paired Loopforge dev blog, and a public studio setup/delivery archive.** Producer’s own first post, nine interviews, full history and independent systems assessment stay frozen. The owner expanded preservation/publication scope; intermediate exports and raw generation responses stay local with hashes. The owner explicitly dropped the opening-scene objective; it is unfinished, preserved and inactive. Do not continue its implementation, geometry, compilation, captures, performance or Meshy work.
+
+Read the [current blog status](evidence/dev-blog/STATUS.json) and [interview plan](evidence/dev-blog/INTERVIEW-PLAN.md). Producer owns the questions, reflection and conclusions. Writer answers as a craft and may review when asked; Writer must not ghostwrite post1. All nine specialists must give actual new answers, or a missing interview is explicitly reported. No synthesized testimony.
+
+Engine owns a separate blog-only implementation with index, dated/bylined posts, future contribution convention and full history at top-level Loopforge navigation. Critic can check page facts/editorial/readability; the independent systems assessor is a separate external agent commissioned by the owner-facing root after Producer’s frozen reflection is delivered. Both reports publish together with separate authorship.
+
+Maximum two active specialist assignments and one heavy process. No new hires/helpers/onboarding. Interviews are lightweight and sequenced. Preserve canonical and private pending game changes and the old C1 archive. The LST-46 resume was revoked unstarted; no old server is known live. Check [next operation](evidence/studio-specialists/desktop-bridge/NEXT-OPERATION.md) before any launch.
+
+The [previous opening state](evidence/dev-blog/goal-replacement/START_HERE.md) is historical, not authorization. [History I1/W1](evidence/studio-history/HANDOFF.md) remains supporting evidence through its fixed cutoff; its manuscript is not Producer’s personal post. Raw mail, memory, prompts, paths, credentials and terminal records stay private. Cumulative usage snapshots are never summed; costs and missing evidence are stated honestly. Owner retains taste.
+
+Repository canon/owner decisions remain authoritative. Engine is technical implementation owner; Producer schedules/integrates/releases; root is desktop/publishing bridge. Existing role briefs/foundations and native protocol remain; no broad reread or native settings change is required for interviews. Meshy cumulative cap stays1000 and no new paid work is authorized.

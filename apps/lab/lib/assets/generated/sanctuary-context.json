@@ -1,0 +1,546 @@
+{
+  "schemaVersion": 1,
+  "pack": "sanctuary-context",
+  "assets": {
+    "activision-logo": {
+      "kind": "image",
+      "width": 500,
+      "height": 122,
+      "variants": [
+        {
+          "src": "/media/files/6f8c833d15e8dc913b310abe65e9934b47123449fb6630c7885c7d12f864f721.webp",
+          "mime": "image/webp",
+          "bytes": 1884,
+          "sha256": "6f8c833d15e8dc913b310abe65e9934b47123449fb6630c7885c7d12f864f721",
+          "width": 120,
+          "height": 29
+        },
+        {
+          "src": "/media/files/29062bac1a1d35c1c407d7f73d1e07dd3c27c0a80f1d1bccb68a5228f9d6c8d4.webp",
+          "mime": "image/webp",
+          "bytes": 3922,
+          "sha256": "29062bac1a1d35c1c407d7f73d1e07dd3c27c0a80f1d1bccb68a5228f9d6c8d4",
+          "width": 240,
+          "height": 59
+        }
+      ]
+    },
+    "blizzard-logo": {
+      "kind": "image",
+      "width": 329,
+      "height": 171,
+      "variants": [
+        {
+          "src": "/media/files/35820435d946cc73ab8221912b5f0aff12a765d65c27c91af8bf4e3f634cf93c.webp",
+          "mime": "image/webp",
+          "bytes": 5112,
+          "sha256": "35820435d946cc73ab8221912b5f0aff12a765d65c27c91af8bf4e3f634cf93c",
+          "width": 120,
+          "height": 62
+        },
+        {
+          "src": "/media/files/0f95fcee692c50ce29d3af48eca986c1e7a532579b5704d234fe098714b30dd9.webp",
+          "mime": "image/webp",
+          "bytes": 11874,
+          "sha256": "0f95fcee692c50ce29d3af48eca986c1e7a532579b5704d234fe098714b30dd9",
+          "width": 240,
+          "height": 125
+        }
+      ]
+    },
+    "candy-phone": {
+      "kind": "image",
+      "width": 443,
+      "height": 960,
+      "variants": [
+        {
+          "src": "/media/files/c58b5bf8f141c6752b61f92477f76d6c7eeac3945d8fd636cc1d9cd995e77a79.webp",
+          "mime": "image/webp",
+          "bytes": 28996,
+          "sha256": "c58b5bf8f141c6752b61f92477f76d6c7eeac3945d8fd636cc1d9cd995e77a79",
+          "width": 240,
+          "height": 520
+        },
+        {
+          "src": "/media/files/8c9d3d3bd69771a00042fbdaf2913cebb2a7b592a921d9596ac6e8389cfe5a2a.webp",
+          "mime": "image/webp",
+          "bytes": 64458,
+          "sha256": "8c9d3d3bd69771a00042fbdaf2913cebb2a7b592a921d9596ac6e8389cfe5a2a",
+          "width": 443,
+          "height": 960
+        }
+      ]
+    },
+    "candy-poster": {
+      "kind": "image",
+      "width": 1200,
+      "height": 630,
+      "variants": [
+        {
+          "src": "/media/files/f8c40cb52747bf53d3bf0c993df73129d64d2432f809ac2fe9c7288296465104.webp",
+          "mime": "image/webp",
+          "bytes": 15276,
+          "sha256": "f8c40cb52747bf53d3bf0c993df73129d64d2432f809ac2fe9c7288296465104",
+          "width": 320,
+          "height": 168
+        },
+        {
+          "src": "/media/files/f489534693e5ea617742b664382677d1c9f30d05dcdcf5ded3516efa04588ae9.webp",
+          "mime": "image/webp",
+          "bytes": 36804,
+          "sha256": "f489534693e5ea617742b664382677d1c9f30d05dcdcf5ded3516efa04588ae9",
+          "width": 640,
+          "height": 336
+        },
+        {
+          "src": "/media/files/4e002f91be1d83924383be6a985ea07afc11ee2fd7ca3ee296077096c7885df1.webp",
+          "mime": "image/webp",
+          "bytes": 82572,
+          "sha256": "4e002f91be1d83924383be6a985ea07afc11ee2fd7ca3ee296077096c7885df1",
+          "width": 1200,
+          "height": 630
+        }
+      ]
+    },
+    "cod-cover": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/840b7e7faffcedfe4d8770507ed9372e1f6569ea1cd66ebafaccb14a8d93d489.webp",
+          "mime": "image/webp",
+          "bytes": 10506,
+          "sha256": "840b7e7faffcedfe4d8770507ed9372e1f6569ea1cd66ebafaccb14a8d93d489",
+          "width": 320,
+          "height": 180
+        },
+        {
+          "src": "/media/files/8eccdd3f3508f516092c6e1822759a1b1fff3075cf03e06f64405f08ceeb723f.webp",
+          "mime": "image/webp",
+          "bytes": 29416,
+          "sha256": "8eccdd3f3508f516092c6e1822759a1b1fff3075cf03e06f64405f08ceeb723f",
+          "width": 640,
+          "height": 360
+        },
+        {
+          "src": "/media/files/fb3f280e85f42a374fab12c32e6df594ce60c1b4a66c84d5bb06286d5c1054b8.webp",
+          "mime": "image/webp",
+          "bytes": 86254,
+          "sha256": "fb3f280e85f42a374fab12c32e6df594ce60c1b4a66c84d5bb06286d5c1054b8",
+          "width": 1200,
+          "height": 675
+        }
+      ]
+    },
+    "cod-hud": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/2ca8a36d2614f40744762192d4c675b15d0da854462c0b0c9a4a8e5ba5446d8e.webp",
+          "mime": "image/webp",
+          "bytes": 7468,
+          "sha256": "2ca8a36d2614f40744762192d4c675b15d0da854462c0b0c9a4a8e5ba5446d8e",
+          "width": 320,
+          "height": 180
+        },
+        {
+          "src": "/media/files/87efd0d0e86b8926e211b303e898227e16491ed2814eec9f8e3e75ef466dc0ab.webp",
+          "mime": "image/webp",
+          "bytes": 20086,
+          "sha256": "87efd0d0e86b8926e211b303e898227e16491ed2814eec9f8e3e75ef466dc0ab",
+          "width": 640,
+          "height": 360
+        },
+        {
+          "src": "/media/files/984f7057c6ad9fe101687080096e3fb15339451b62a445e857075f03d4bc3a40.webp",
+          "mime": "image/webp",
+          "bytes": 48386,
+          "sha256": "984f7057c6ad9fe101687080096e3fb15339451b62a445e857075f03d4bc3a40",
+          "width": 1200,
+          "height": 675
+        }
+      ]
+    },
+    "counter-strike-menu": {
+      "kind": "image",
+      "width": 800,
+      "height": 600,
+      "variants": [
+        {
+          "src": "/media/files/784a9302cec4f554e48393c2dd0cf84c1c13686aca71e63a288c8a8cdc8cf2d1.webp",
+          "mime": "image/webp",
+          "bytes": 16946,
+          "sha256": "784a9302cec4f554e48393c2dd0cf84c1c13686aca71e63a288c8a8cdc8cf2d1",
+          "width": 320,
+          "height": 240
+        },
+        {
+          "src": "/media/files/12b5a5fd42f17d38ff813b768ee4730b33d8f0a68a103e8b6d2cc038937440ec.webp",
+          "mime": "image/webp",
+          "bytes": 48556,
+          "sha256": "12b5a5fd42f17d38ff813b768ee4730b33d8f0a68a103e8b6d2cc038937440ec",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "src": "/media/files/abef35422df95a33005c82ce9e359ec7f72cf8cbf49c4128c1c8f14cbb91aecf.webp",
+          "mime": "image/webp",
+          "bytes": 70030,
+          "sha256": "abef35422df95a33005c82ce9e359ec7f72cf8cbf49c4128c1c8f14cbb91aecf",
+          "width": 800,
+          "height": 600
+        }
+      ]
+    },
+    "cyberpunk-catalog-promo": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/c632f67123a14406b6928c042131be337069dd77374a0fc238433cced96d01b0.webp",
+          "mime": "image/webp",
+          "bytes": 21216,
+          "sha256": "c632f67123a14406b6928c042131be337069dd77374a0fc238433cced96d01b0",
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/files/49470c5e06344aaf4efbeecfaf4187bf7c2427d5494ad4475a5005c2a50615dc.webp",
+          "mime": "image/webp",
+          "bytes": 62344,
+          "sha256": "49470c5e06344aaf4efbeecfaf4187bf7c2427d5494ad4475a5005c2a50615dc",
+          "width": 960,
+          "height": 540
+        },
+        {
+          "src": "/media/files/3f1f99595d61beea91a062280a1131aef4ceed6779fc474a608261eb9b5ab0e6.webp",
+          "mime": "image/webp",
+          "bytes": 113352,
+          "sha256": "3f1f99595d61beea91a062280a1131aef4ceed6779fc474a608261eb9b5ab0e6",
+          "width": 1440,
+          "height": 810
+        }
+      ]
+    },
+    "cyberpunk-night-city": {
+      "kind": "image",
+      "width": 1138,
+      "height": 640,
+      "variants": [
+        {
+          "src": "/media/files/62b2174f605047086d8d584f19e35245338793e6b9694ebea9591dcba6523566.webp",
+          "mime": "image/webp",
+          "bytes": 14046,
+          "sha256": "62b2174f605047086d8d584f19e35245338793e6b9694ebea9591dcba6523566",
+          "width": 320,
+          "height": 180
+        },
+        {
+          "src": "/media/files/5794e87d0e92d4a723ccf38d83ce15e41d41f215574300679dca07473be29dd2.webp",
+          "mime": "image/webp",
+          "bytes": 42888,
+          "sha256": "5794e87d0e92d4a723ccf38d83ce15e41d41f215574300679dca07473be29dd2",
+          "width": 640,
+          "height": 360
+        },
+        {
+          "src": "/media/files/64dedab42030a45ad1dbc46f0ffc6973cb4b688d32749259499b58654f843227.webp",
+          "mime": "image/webp",
+          "bytes": 109820,
+          "sha256": "64dedab42030a45ad1dbc46f0ffc6973cb4b688d32749259499b58654f843227",
+          "width": 1138,
+          "height": 640
+        }
+      ]
+    },
+    "epic-web-shop": {
+      "kind": "image",
+      "width": 3200,
+      "height": 1800,
+      "variants": [
+        {
+          "src": "/media/files/790d22c3941affe93a72f73e1ef86cf7d9c5d73077cb55bec8dd8287ee5f6d13.webp",
+          "mime": "image/webp",
+          "bytes": 4566,
+          "sha256": "790d22c3941affe93a72f73e1ef86cf7d9c5d73077cb55bec8dd8287ee5f6d13",
+          "width": 320,
+          "height": 180
+        },
+        {
+          "src": "/media/files/56fc34a875b2d29b3692bcd05e44fb2f9c24012d3b61ae07fdbc81de4015e8d1.webp",
+          "mime": "image/webp",
+          "bytes": 12410,
+          "sha256": "56fc34a875b2d29b3692bcd05e44fb2f9c24012d3b61ae07fdbc81de4015e8d1",
+          "width": 640,
+          "height": 360
+        },
+        {
+          "src": "/media/files/73822302bb082deda8ea1a5bbde60ffa1cd06b62bb33298c0af84970a0682458.webp",
+          "mime": "image/webp",
+          "bytes": 35632,
+          "sha256": "73822302bb082deda8ea1a5bbde60ffa1cd06b62bb33298c0af84970a0682458",
+          "width": 1280,
+          "height": 720
+        }
+      ]
+    },
+    "half-life-promo": {
+      "kind": "image",
+      "width": 616,
+      "height": 353,
+      "variants": [
+        {
+          "src": "/media/files/32a8b44f6e5d2b1b1239b52820f7bbb4abefd0da0cba27b43af7a43b02fd2cd3.webp",
+          "mime": "image/webp",
+          "bytes": 21646,
+          "sha256": "32a8b44f6e5d2b1b1239b52820f7bbb4abefd0da0cba27b43af7a43b02fd2cd3",
+          "width": 320,
+          "height": 183
+        },
+        {
+          "src": "/media/files/1859752d2a789d107436a415b28ab752f6813113bec623ede050c692665ee478.webp",
+          "mime": "image/webp",
+          "bytes": 54838,
+          "sha256": "1859752d2a789d107436a415b28ab752f6813113bec623ede050c692665ee478",
+          "width": 616,
+          "height": 353
+        }
+      ]
+    },
+    "infinity-ward-logo": {
+      "kind": "image",
+      "width": 500,
+      "height": 131,
+      "variants": [
+        {
+          "src": "/media/files/98fe851f585353bac737fe8c9c8e28ecbb25db54d52143f10cf7359d6170f211.webp",
+          "mime": "image/webp",
+          "bytes": 3210,
+          "sha256": "98fe851f585353bac737fe8c9c8e28ecbb25db54d52143f10cf7359d6170f211",
+          "width": 120,
+          "height": 31
+        },
+        {
+          "src": "/media/files/8d9f5762b867e885a10c5a75dca91516a32857acdeff0d4447ce27c39092d841.webp",
+          "mime": "image/webp",
+          "bytes": 7010,
+          "sha256": "8d9f5762b867e885a10c5a75dca91516a32857acdeff0d4447ce27c39092d841",
+          "width": 240,
+          "height": 63
+        }
+      ]
+    },
+    "king-logo": {
+      "kind": "image",
+      "width": 685,
+      "height": 464,
+      "variants": [
+        {
+          "src": "/media/files/2776cdfa6e892f4c0d0ee6f8bed162b70d0b60c2ae0b8fa856afb43b4e74780b.webp",
+          "mime": "image/webp",
+          "bytes": 4454,
+          "sha256": "2776cdfa6e892f4c0d0ee6f8bed162b70d0b60c2ae0b8fa856afb43b4e74780b",
+          "width": 120,
+          "height": 81
+        },
+        {
+          "src": "/media/files/3424e5e3780b7bd32cfd79533653d55cda8a9ebe935a046436189d0b4eef1d68.webp",
+          "mime": "image/webp",
+          "bytes": 9402,
+          "sha256": "3424e5e3780b7bd32cfd79533653d55cda8a9ebe935a046436189d0b4eef1d68",
+          "width": 240,
+          "height": 162
+        }
+      ]
+    },
+    "netflix-wordmark": {
+      "kind": "image",
+      "width": 309,
+      "height": 83,
+      "variants": [
+        {
+          "src": "/media/files/23650a16a179547f827bc494a4ff4486564d91baa1fd7ccf10dbf9f7e0d35ea6.webp",
+          "mime": "image/webp",
+          "bytes": 1926,
+          "sha256": "23650a16a179547f827bc494a4ff4486564d91baa1fd7ccf10dbf9f7e0d35ea6",
+          "width": 154,
+          "height": 41
+        },
+        {
+          "src": "/media/files/aea36e4264e1ec9e207d1bddb7dc70b33dc2d6532449aec081dc086993d820fb.webp",
+          "mime": "image/webp",
+          "bytes": 3908,
+          "sha256": "aea36e4264e1ec9e207d1bddb7dc70b33dc2d6532449aec081dc086993d820fb",
+          "width": 309,
+          "height": 83
+        }
+      ]
+    },
+    "raven-logo": {
+      "kind": "image",
+      "width": 802,
+      "height": 180,
+      "variants": [
+        {
+          "src": "/media/files/9cd967e0d04ddc2a43cc6b087354a7525342e1bb86b57896ee3ed784092b35f5.webp",
+          "mime": "image/webp",
+          "bytes": 1636,
+          "sha256": "9cd967e0d04ddc2a43cc6b087354a7525342e1bb86b57896ee3ed784092b35f5",
+          "width": 120,
+          "height": 27
+        },
+        {
+          "src": "/media/files/1e11c1adb62e218fbccf0a30bd544fc6126b28890d1c477a60a5e26fe6397fde.webp",
+          "mime": "image/webp",
+          "bytes": 3624,
+          "sha256": "1e11c1adb62e218fbccf0a30bd544fc6126b28890d1c477a60a5e26fe6397fde",
+          "width": 240,
+          "height": 54
+        }
+      ]
+    },
+    "rockstar-los-santos": {
+      "kind": "image",
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/media/files/e1bfe02d44bdd10a71a9cba6a7dd8231a7b2751f84b005d0c840fdd0554f6c54.webp",
+          "mime": "image/webp",
+          "bytes": 6996,
+          "sha256": "e1bfe02d44bdd10a71a9cba6a7dd8231a7b2751f84b005d0c840fdd0554f6c54",
+          "width": 320,
+          "height": 180
+        },
+        {
+          "src": "/media/files/ed30c408f561b6f7456df7e4a0282dfa05a0b28086140bbe6bf5fdaeea48bc55.webp",
+          "mime": "image/webp",
+          "bytes": 16830,
+          "sha256": "ed30c408f561b6f7456df7e4a0282dfa05a0b28086140bbe6bf5fdaeea48bc55",
+          "width": 640,
+          "height": 360
+        },
+        {
+          "src": "/media/files/a712d9732846b77071ea0305bfd172ccdfc88a58cadbce5187df224759e0cb05.webp",
+          "mime": "image/webp",
+          "bytes": 39118,
+          "sha256": "a712d9732846b77071ea0305bfd172ccdfc88a58cadbce5187df224759e0cb05",
+          "width": 1280,
+          "height": 720
+        }
+      ]
+    },
+    "steam-symbol": {
+      "kind": "image",
+      "width": 233,
+      "height": 233,
+      "variants": [
+        {
+          "src": "/media/files/12856080b2bdbcc5a2c9d96342125654ac44561b45adf03a7b4bf68b74cc956f.webp",
+          "mime": "image/webp",
+          "bytes": 5030,
+          "sha256": "12856080b2bdbcc5a2c9d96342125654ac44561b45adf03a7b4bf68b74cc956f",
+          "width": 80,
+          "height": 80
+        },
+        {
+          "src": "/media/files/1ee4f68180bfd1d61c16065fb58c9fdd4dc725a4c510a99b725604c4c133e54b.webp",
+          "mime": "image/webp",
+          "bytes": 11658,
+          "sha256": "1ee4f68180bfd1d61c16065fb58c9fdd4dc725a4c510a99b725604c4c133e54b",
+          "width": 160,
+          "height": 160
+        },
+        {
+          "src": "/media/files/66fd5fede190ae06b325c7db9dbdd8e43fde155b788ab86be459afa2b4fc96ed.webp",
+          "mime": "image/webp",
+          "bytes": 12614,
+          "sha256": "66fd5fede190ae06b325c7db9dbdd8e43fde155b788ab86be459afa2b4fc96ed",
+          "width": 233,
+          "height": 233
+        }
+      ]
+    },
+    "treyarch-logo": {
+      "kind": "image",
+      "width": 500,
+      "height": 156,
+      "variants": [
+        {
+          "src": "/media/files/01d0d6a24dbeeaf22b67731a993c5363fedd4630b421edd62c2b1fb761073bbf.webp",
+          "mime": "image/webp",
+          "bytes": 2000,
+          "sha256": "01d0d6a24dbeeaf22b67731a993c5363fedd4630b421edd62c2b1fb761073bbf",
+          "width": 120,
+          "height": 37
+        },
+        {
+          "src": "/media/files/acdc65941d9e0d07bec92f48a8bfe41a578cb3a72846c658530e295961e7f819.webp",
+          "mime": "image/webp",
+          "bytes": 4968,
+          "sha256": "acdc65941d9e0d07bec92f48a8bfe41a578cb3a72846c658530e295961e7f819",
+          "width": 240,
+          "height": 75
+        }
+      ]
+    },
+    "valve-half-life": {
+      "kind": "image",
+      "width": 1024,
+      "height": 768,
+      "variants": [
+        {
+          "src": "/media/files/0e83e2b6590f0e4643582d595c42449091b2523083e16f288fc5e4830eb101f5.webp",
+          "mime": "image/webp",
+          "bytes": 9488,
+          "sha256": "0e83e2b6590f0e4643582d595c42449091b2523083e16f288fc5e4830eb101f5",
+          "width": 320,
+          "height": 240
+        },
+        {
+          "src": "/media/files/f4be97d0f95a6f1f68a3cab9a2c26786398c0c240867f526ec5caee2f7d3a448.webp",
+          "mime": "image/webp",
+          "bytes": 25324,
+          "sha256": "f4be97d0f95a6f1f68a3cab9a2c26786398c0c240867f526ec5caee2f7d3a448",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "src": "/media/files/9441c03ae86020b93998a7a9f0196254c3f35c3bc8c2e6621b3a0d48dd4eaef2.webp",
+          "mime": "image/webp",
+          "bytes": 48714,
+          "sha256": "9441c03ae86020b93998a7a9f0196254c3f35c3bc8c2e6621b3a0d48dd4eaef2",
+          "width": 1024,
+          "height": 768
+        }
+      ]
+    },
+    "valve-wordmark": {
+      "kind": "image",
+      "width": 436,
+      "height": 121,
+      "variants": [
+        {
+          "src": "/media/files/fa83a413f6463fcb444433fe07064f420de8d5906d5b29eb77138c7ffd7495f7.webp",
+          "mime": "image/webp",
+          "bytes": 2162,
+          "sha256": "fa83a413f6463fcb444433fe07064f420de8d5906d5b29eb77138c7ffd7495f7",
+          "width": 180,
+          "height": 50
+        },
+        {
+          "src": "/media/files/2daed2fcaed2a0b6efc98b2aa178748991c310ca110a5cec218bb58e0e053310.webp",
+          "mime": "image/webp",
+          "bytes": 4244,
+          "sha256": "2daed2fcaed2a0b6efc98b2aa178748991c310ca110a5cec218bb58e0e053310",
+          "width": 360,
+          "height": 100
+        }
+      ]
+    }
+  }
+}

@@ -5,11 +5,14 @@
     "buildCommand": "uv sync --frozen"
   },
   "deploy": {
-    "startCommand": "uv run uvicorn main:app --host 0.0.0.0 --port=$PORT",
+    "startCommand": "uv run python start_service.py",
     "healthcheckPath": "/health",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10,
     "numReplicas": 1,
-    "sleepApplication": false
+    "sleepApplication": false,
+    "preDeployCommand": [
+      "uv run --group dev alembic upgrade head"
+    ]
   }
 }

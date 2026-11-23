@@ -1,0 +1,2137 @@
+{
+  "schemaVersion": 1,
+  "revision": "model-briefs-2026-10-22-room-delivery",
+  "date": "2026-10-22",
+  "models": [
+    {
+      "id": "limen",
+      "name": "LIMEN",
+      "subtitle": "Security chief · body + emitter",
+      "revision": "Landing supervisor delivery · 22 October 2026",
+      "status": "Rebuilt body installed · contact review pending",
+      "summary": "The exposed-skull body now performs the retained 20-motion bank in the shared viewer and opening scene. Portrait, floor and overview deliveries preserve the animation data; new body contacts and blade fit still need visual review.",
+      "provenance": "The new A-pose is generated from the Set 1 concept sheet and Security interaction art. Older body renders remain for comparison only; do not mix them with the new front as multi-view inputs. The existing motion bank is retained for retargeting and contact review.",
+      "viewer": "/stepanoskin/loopforge/play/agent-test/limen",
+      "viewerLabel": "Inspect body, emitter and energy",
+      "record": "/stepanoskin/loopforge/design#cast-limen",
+      "parts": [
+        "Rebuilt body: 31,213 / 17,991 / 7,995 triangles; 24-joint rig",
+        "20 retained motions shared by the scene and review player",
+        "Separate emitter housing and procedural cyan blade"
+      ],
+      "remaining": [
+        "Finger articulation and rigid armour weights",
+        "Worker/machine contact and blended-motion clearance",
+        "Crowd and physical-device performance"
+      ],
+      "images": [
+        {
+          "label": "LIMEN v3 · exposed-skull A-pose",
+          "role": "Current body generation input. Skull, steel plate masses and charcoal joints; emitter generated separately.",
+          "sourceName": "limen-skull-front-v3.png",
+          "sourceSha256": "1348dfb6f4d3dcd0bba17f2857c90ac6b5dbfae077d7266c3e83a55c134f677a",
+          "input": {
+            "src": "/media/loopforge-model-briefs/limen-skull-front-v3-1024.d32451c22a231705.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 260970,
+            "sha256": "d32451c22a23170529a587d71b091eb4d0c0e4138944f3edde2604b9b64a0478"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/limen-skull-front-v3-360.3c28f1f83c449cf7.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 25892,
+              "sha256": "3c28f1f83c449cf7b528f5ea2af10a5fd589a20e779ba09c4b63ca3b00498ccf"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/limen-skull-front-v3-720.30f38baf80be5de6.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 104090,
+              "sha256": "30f38baf80be5de63cd5d50c5e3c65d5692c95185ec6b43fb0ee20048e1c5071"
+            }
+          ]
+        },
+        {
+          "label": "Front · neutral A-pose",
+          "role": "Earlier v2 body reference — comparison only. Do not combine with the v3 generation input.",
+          "sourceName": "limen-apose-front.png",
+          "sourceSha256": "bacacee78badb7acb7746e84affa3584c16d0425b77b9649755c93d256488480",
+          "input": {
+            "src": "/media/loopforge-model-briefs/limen-apose-front.4fc2463b7a7d9fd9.jpg",
+            "width": 1200,
+            "height": 1600,
+            "bytes": 244447,
+            "sha256": "4fc2463b7a7d9fd90ab1f3f1ce5bd32b4a2daf79f036ffcc24cb9f637775a1b9"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/limen-apose-front-360.4f7f181953e99462.webp",
+              "width": 360,
+              "height": 480,
+              "bytes": 12250,
+              "sha256": "4f7f181953e99462d096841cc1c968e766214e5153c378ca9ef5610da7486371"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/limen-apose-front-720.0c0237fbf547c2de.webp",
+              "width": 720,
+              "height": 960,
+              "bytes": 41882,
+              "sha256": "0c0237fbf547c2de0289959890537ff40bc64f5b28361e57572dc541d499b9a4"
+            }
+          ]
+        },
+        {
+          "label": "Back · neutral A-pose",
+          "role": "Earlier v2 body reference — comparison only. Do not combine with the v3 generation input.",
+          "sourceName": "limen-apose-back.png",
+          "sourceSha256": "b9e314dd1ddbf440b6cdf99b9f36343b384cf73f2e77207b404d4abc20a80326",
+          "input": {
+            "src": "/media/loopforge-model-briefs/limen-apose-back.bb4a9c92de353af3.jpg",
+            "width": 1200,
+            "height": 1600,
+            "bytes": 243273,
+            "sha256": "bb4a9c92de353af361d62b2375be2cdc1d5782f792b1cab7ccb0495a7653cd49"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/limen-apose-back-360.634b67b2c9f9481f.webp",
+              "width": 360,
+              "height": 480,
+              "bytes": 12050,
+              "sha256": "634b67b2c9f9481f28073619ec7e502a6db05edf6fe8ab420a65455f75f05d9d"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/limen-apose-back-720.50265f911269aafa.webp",
+              "width": 720,
+              "height": 960,
+              "bytes": 41032,
+              "sha256": "50265f911269aafa565eb290f8857ce6a8ec271d3b023000bf5e00c3c64f538d"
+            }
+          ]
+        },
+        {
+          "label": "Side · neutral A-pose",
+          "role": "Earlier v2 body reference — comparison only. Do not combine with the v3 generation input.",
+          "sourceName": "limen-apose-side.png",
+          "sourceSha256": "707c899a1dc1606f9259587d66fabc98f99c43390f45b0cf055f8ddc57164a24",
+          "input": {
+            "src": "/media/loopforge-model-briefs/limen-apose-side.6a1c0f61c950cbfa.jpg",
+            "width": 1200,
+            "height": 1600,
+            "bytes": 149098,
+            "sha256": "6a1c0f61c950cbfa3fa8101930b98f7c4f79ad8926a7e306312502904909ba2d"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/limen-apose-side-360.95be6cff312d14e9.webp",
+              "width": 360,
+              "height": 480,
+              "bytes": 6884,
+              "sha256": "95be6cff312d14e9a0a09e3ae1146c23089bdf68ac2334210d122b6a7b6c4e5b"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/limen-apose-side-720.14ddfc852d15d84e.webp",
+              "width": 720,
+              "height": 960,
+              "bytes": 23248,
+              "sha256": "14ddfc852d15d84e34827265664d412fa939c88753313341de2215d3d2b0d273"
+            }
+          ]
+        },
+        {
+          "label": "LIMEN · pale steel / Set 1 revision",
+          "role": "Reference only — approved Set 1 identity and palette, with one protocol clipboard. Use the three isolated A-pose body images for generation.",
+          "sourceName": "limen-character-sheet-protocol-v2.png",
+          "sourceSha256": "3c543c780503b0d20844e866a26d8885536bf4468c4b5f218b61e2817dd90edc",
+          "input": {
+            "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+            "width": 1536,
+            "height": 1024,
+            "bytes": 626054,
+            "sha256": "b9ac5d62a5bebb4576f976ebcc0bbaa3f633ca31a84c8464024ac77943facebf"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2-360.bed8d640e2977d5b.webp",
+              "width": 360,
+              "height": 240,
+              "bytes": 23442,
+              "sha256": "bed8d640e2977d5b9ad0ff8c5a634ac5f725624191da30d609adf7d0aa0e1f11"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/limen-character-sheet-protocol-v2-720.a426cbb598560982.webp",
+              "width": 720,
+              "height": 480,
+              "bytes": 79716,
+              "sha256": "a426cbb59856098251c14b628f74e56297bf907d9c3b3af3fd65e393c918f169"
+            }
+          ]
+        },
+        {
+          "label": "Protocol clipboard · horizontal overlay",
+          "role": "Equipment concept — weathered steel clipboard and paper protocols, seen at a low oblique angle. Transparent cutout; no 3D model yet.",
+          "sourceName": "limen-protocol-clipboard-horizontal-v2.png",
+          "sourceSha256": "ae963c310b7fde955536c6f1b248a8169a63f924d7ca555488906488cab7acd3",
+          "input": {
+            "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2.5fff7c61d56295bf.webp",
+            "width": 1895,
+            "height": 621,
+            "bytes": 410092,
+            "sha256": "5fff7c61d56295bff8cea7ee3007b904c6a40c4ba25fceaba618a83eb7f8e9e0"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2-360.895b5e8658485e3e.webp",
+              "width": 360,
+              "height": 118,
+              "bytes": 16558,
+              "sha256": "895b5e8658485e3e96c65a80e52ab1744e6976c304af0e7a749f3f9bd6772c47"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/limen-protocol-clipboard-horizontal-v2-720.4c95571a1fef1887.webp",
+              "width": 720,
+              "height": 236,
+              "bytes": 55366,
+              "sha256": "4c95571a1fef18873d20afa776ed58366171a005696d9d3ea218613eeaf40b2c"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Body rebuild",
+          "file": "limen/01-body-rebuild.txt"
+        },
+        {
+          "title": "Emitter rebuild",
+          "file": "limen/02-emitter-rebuild.txt"
+        },
+        {
+          "title": "Rig and delivery",
+          "file": "limen/03-rig-and-delivery.txt"
+        },
+        {
+          "title": "Stage 6 · Doorway step back",
+          "file": "limen/06-doorway-step-back.txt"
+        },
+        {
+          "title": "Stage 7 · Checkpoint cyan strike",
+          "file": "limen/07-checkpoint-strike.txt"
+        },
+        {
+          "title": "08 · Landing supervisor rebuild",
+          "file": "limen/08-landing-supervisor-rebuild.txt"
+        }
+      ]
+    },
+    {
+      "id": "worker",
+      "name": "Worker 01",
+      "subtitle": "Factory worker · body + motion bank",
+      "revision": "Rebuild brief v9 · Alert-referenced free arm",
+      "status": "Worker 01 motion cleanup approved",
+      "summary": "Round cyan optics and worn industrial anatomy. Nineteen corrected motions sit beside untouched sources, with ten rigid finger hinges and three hand studies. The approved right-hand scratch stays exact; its free arm follows Alert’s posture and the lowered right-arm swing. Inspect the hands/head close-up and full gesture. Revised free arm awaits owner review.",
+      "provenance": "Original body input images and creation prompt recovered. Rig/motion instructions updated from actual export audits; the initial Casual Walk choice is superseded.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker",
+      "viewerLabel": "Compare corrected and original motions",
+      "record": "/stepanoskin/loopforge/design#narrative-cast",
+      "parts": [
+        "25,893-triangle accepted body",
+        "24-joint source / 34-joint corrected skin",
+        "19 source + 19 corrected motions; 3 hand studies"
+      ],
+      "remaining": [
+        "Owner visual approval of corrected motion",
+        "Afraid recoil and precise work/cradle interaction",
+        "Prop contacts, transitions and crowd/device measurements"
+      ],
+      "images": [
+        {
+          "label": "Front · proportion authority",
+          "role": "Body input — views of one model",
+          "sourceName": "worker-01-front.png",
+          "sourceSha256": "733d9166885871504784915d2598f0ece0564c107d6014322711e152c039dc6e",
+          "input": {
+            "src": "/media/loopforge-model-briefs/worker-01-front.02c6c68fda86b0c0.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 346629,
+            "sha256": "02c6c68fda86b0c0c47fe4094f084ad9b537e9191ac25c8fc4f65c140630a851"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/worker-01-front-360.ca4047f417fd30bb.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 21062,
+              "sha256": "ca4047f417fd30bb154f91838c0e69bb0f5e48dcfcb922a1f48cd2fb7bb39c30"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/worker-01-front-720.e342e3de8209d6a8.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 71616,
+              "sha256": "e342e3de8209d6a8a6189f9be098e5ff0aafc2c4dabc475d27fd6296cd8142e3"
+            }
+          ]
+        },
+        {
+          "label": "Back · rear construction",
+          "role": "Body input — views of one model",
+          "sourceName": "worker-01-back.png",
+          "sourceSha256": "14f5e668c2d05e6e4ea3578b559c16ce78b3d71e56663ebda9c3a4d5338d1337",
+          "input": {
+            "src": "/media/loopforge-model-briefs/worker-01-back.c97d065cd1642436.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 329693,
+            "sha256": "c97d065cd16424369c75cde61570dd65af1ec00e91c9e2a71ab71ba03dca00ea"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/worker-01-back-360.97e4cc46e1f6da9f.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 21180,
+              "sha256": "97e4cc46e1f6da9f15c9f983895922764980e6c0eb6100923aef672f3de049ba"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/worker-01-back-720.d73ae80b3fbe87b6.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 65260,
+              "sha256": "d73ae80b3fbe87b68c9b0b964e1bbf678b04cee90bc65fa6c32db556685cdc9d"
+            }
+          ]
+        },
+        {
+          "label": "Left profile · depth",
+          "role": "Body input — views of one model",
+          "sourceName": "worker-01-left.png",
+          "sourceSha256": "0267f79a2aae22654cc053b85bb59fe3a7de09aba7118f3c4a5d961e444e974a",
+          "input": {
+            "src": "/media/loopforge-model-briefs/worker-01-left.9e94fa650cdd2d38.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 220989,
+            "sha256": "9e94fa650cdd2d387be0962f0c8e6c07ac24be797ff7aa401c70ad371109d626"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/worker-01-left-360.a5241495b17420c2.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 10702,
+              "sha256": "a5241495b17420c2ddd9009efdc2a8dabdb1810ee0a7b70bd2d864a02d3cebdf"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/worker-01-left-720.ef5817b15398d7dd.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 37372,
+              "sha256": "ef5817b15398d7dddeec5f792e45c048a2bcbc4ac535a88421027ab1ec7d77eb"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Body",
+          "file": "worker/01-body.txt"
+        },
+        {
+          "title": "Rig and motion",
+          "file": "worker/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Afraid",
+          "file": "worker/03-afraid.txt"
+        },
+        {
+          "title": "Work cradle",
+          "file": "worker/04-work-cradle.txt"
+        }
+      ],
+      "motionInventory": [
+        {
+          "label": "Idle",
+          "sourceClip": "Armature|Armature|Idle|baselayer",
+          "sourceFile": "Animation_idle_withSkin.fbx",
+          "sourceSha256": "42121a1375d9db29f102cf42d0c91d3f8bce8346d497e5246fa808ac50f6b4a8",
+          "duration": 4,
+          "note": "Original export observation: New export. Staggered stance with torso turns and weight shifts; review foot planting before using as the default idle. No contacts found at the three sampled closest poses. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Walk 2",
+          "sourceClip": "Armature|Armature|walking_2_inplace|baselayer",
+          "sourceFile": "Animation_walking_2_inplace_withSkin.fbx",
+          "sourceSha256": "3467563e12a1b50a33c31b3ac59edfb3bb37b98079980990518559ab7d12f2f7",
+          "duration": 1.2,
+          "note": "Original export observation: Replacement walk candidate. The worker shins still intersect near 0.97 s; needs clearance adjustment. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Run Fast 10",
+          "sourceClip": "Armature|Armature|run_fast_10_inplace|baselayer",
+          "sourceFile": "Animation_run_fast_10_inplace_withSkin.fbx",
+          "sourceSha256": "db60597c39d1d494956e1ff2f106711f99e8ac8a08e2bf83b49fef2eccf62be2",
+          "duration": 0.8,
+          "note": "Original export observation: Run is present. Legs cross/intersect near 0.78 s; review at quarter speed. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Confused Scratch",
+          "sourceClip": "Armature|Armature|Confused_Scratch|baselayer",
+          "sourceFile": "Animation_Confused_Scratch_withSkin.fbx",
+          "sourceSha256": "6737651104181d8ffd773f60fbd716b2ac1491c8d1b630d710fd1af4352534ae",
+          "duration": 11.5,
+          "note": "Original export observation: The requested puzzled idle is present. Check boot clearance near 0.20 s; keep the deliberate hand-to-head gesture. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Injured Walk",
+          "sourceClip": "Armature|Armature|Injured_Walk_inplace|baselayer",
+          "sourceFile": "Animation_injured_walk_withSkin.fbx",
+          "sourceSha256": "6ce99fda2952a0698a8204d0c1149ff23464a6d02a6afdad3721ef0d09cb354b",
+          "duration": 8.66666667,
+          "note": "Original export observation: New export. Limp is present; leg meshes intersect near 6.83 s. Keep the damaged gait, adjust clearance. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Hot Walk",
+          "sourceClip": "Armature|Armature|Confident_Walk|baselayer",
+          "sourceFile": "Animation_Confident_Walk_withSkin.fbx",
+          "sourceSha256": "420ab45096d9f04af5bbe9914482c17371bc3ec695bb34038c9d2c749e3fe42e",
+          "duration": 5.76666667,
+          "note": "Original export observation: Owner confirms Hot Walk in Meshy and selects it as CATHEXIS’s default walk. The hip-led crossover and attitude are intentional. This worker is only a motion stand-in; retarget and check actual mesh clearance on CATHEXIS. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Alert",
+          "sourceClip": "Armature|Armature|Alert|baselayer",
+          "sourceFile": "Animation_Alert_withSkin.fbx",
+          "sourceSha256": "2724cb12e0088b28d59ac0ca710632a392e599fa52e717318eefba628f863b5a",
+          "duration": 4,
+          "note": "Original export observation: Attentive stance. No contacts found at the three sampled closest poses. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Agree Gesture",
+          "sourceClip": "Armature|Armature|Agree_Gesture|baselayer",
+          "sourceFile": "Animation_Agree_Gesture_withSkin.fbx",
+          "sourceSha256": "1ec89fe84330776aeb619a146842da914b38f25cf096eaba31e704e7218cfd19",
+          "duration": 13,
+          "note": "Original export observation: Long acknowledgement, not a tiny nod. Forearms intersect near 10.17 s; trim and adjust contact before gameplay. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Angry Stomp",
+          "sourceClip": "Armature|Armature|Angry_Stomp|baselayer",
+          "sourceFile": "Animation_Angry_Stomp_withSkin.fbx",
+          "sourceSha256": "d457aca73c3aed5642d1c3fa0b2eabba115feaaf3ae97cc6f25249ef68769cfb",
+          "duration": 8,
+          "note": "Original export observation: Expressive reaction. Check legs near 0.45 s and arm crossing near 5.27 s. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Catching Breath",
+          "sourceClip": "Armature|Armature|Catching_Breath|baselayer",
+          "sourceFile": "Animation_Catching_Breath_withSkin.fbx",
+          "sourceSha256": "c5fc07cc67ecaf34223ff8ffd17181bf87139138a499b80eae052626d2e3a463",
+          "duration": 7,
+          "note": "Original export observation: Includes a running approach before the recovery pose; about 6.24 m of pelvis travel. Select/author the recovery portion for a stationary overheating idle. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Discuss While Moving",
+          "sourceClip": "Armature|Armature|Discuss_While_Moving|baselayer",
+          "sourceFile": "Animation_Discuss_While_Moving_withSkin.fbx",
+          "sourceSha256": "dafb7476c053bcecf5040fc8b79e037798084aa57472fc61c8bdc8e689bc8ba4",
+          "duration": 8.03333333,
+          "note": "Original export observation: Gesture with real travel (about 1.75 m net). Check legs near 4.15 s; placement and interruption need authored transitions. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Listening Gesture",
+          "sourceClip": "Armature|Armature|Listening_Gesture|baselayer",
+          "sourceFile": "Animation_Listening_Gesture_withSkin.fbx",
+          "sourceSha256": "f51ec8a95a9f139169b47980e0057c3da65ab4d31b1ad31b51aeb95e4be52e07",
+          "duration": 9.33333333,
+          "note": "Original export observation: Attentive gesture; boot clearance needs adjustment near the end. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Victory Cheer",
+          "sourceClip": "Armature|Armature|Victory_Cheer|baselayer",
+          "sourceFile": "Animation_Victory_Cheer_withSkin.fbx",
+          "sourceSha256": "bef4b8c7b50dd7c909098caa8bd09e1e952720318689853bc24bd55cb946eb67",
+          "duration": 9.33333333,
+          "note": "Original export observation: Celebration with close feet near 1.27 s. Review overhead clearance in the room. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Electrocution Reaction",
+          "sourceClip": "Armature|Armature|Electrocution_Reaction|baselayer",
+          "sourceFile": "Animation_Electrocution_Reaction_withSkin.fbx",
+          "sourceSha256": "58ad5b5df6f704a459f5014fc067c4b262f82ee4ddf97600713d34a12f151d19",
+          "duration": 4.66666667,
+          "note": "Original export observation: Shock reaction. No contacts found at the sampled closest poses; keep action timing tied to a confirmed incident. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Electrocuted Fall",
+          "sourceClip": "Armature|Armature|Electrocuted_Fall|baselayer",
+          "sourceFile": "Animation_Electrocuted_Fall_withSkin.fbx",
+          "sourceSha256": "e0ea4388f38ba9095efd7666f41f61eec20a325829ada29c48094447bde16cc9",
+          "duration": 6.33333333,
+          "note": "Original export observation: One-shot collapse with vertical and forward travel. Check legs near 4.33 s and author ground contact; do not loop in gameplay. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Push Forward and Stop",
+          "sourceClip": "Armature|Armature|Push_Forward_and_Stop|baselayer",
+          "sourceFile": "Animation_Push_Forward_and_Stop_withSkin.fbx",
+          "sourceSha256": "131a2e7e4e1ce67412e95b339a49d0534b8167dce233cbd13041af772a2f7672",
+          "duration": 2.6,
+          "note": "Original export observation: Stepping two-handed push. Needs an actual prop/contact target and leg clearance near 0.87 s. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Idle Turn Left",
+          "sourceClip": "Armature|Armature|Idle_Turn_Left|baselayer",
+          "sourceFile": "Animation_Idle_Turn_Left_withSkin.fbx",
+          "sourceSha256": "a5149c1d23b1fa8191ab4c5e5ef3423397b728e8147354f41ee0891be7ce4307",
+          "duration": 0.933333333,
+          "note": "Original export observation: Pivot transition. Inspect boot overlap near 0.53 s; reconcile heading with the agent path. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Idle Turn Right",
+          "sourceClip": "Armature|Armature|Idle_Turn_Right|baselayer",
+          "sourceFile": "Animation_Idle_Turn_Right_withSkin.fbx",
+          "sourceSha256": "106854a870b545692104f588664d3f655feb070cfc38a3017c2cdd87d72dbcda",
+          "duration": 1.1,
+          "note": "Original export observation: Pivot transition. Inspect boot overlap near 0.63 s; reconcile heading with the agent path. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        },
+        {
+          "label": "Carry Heavy Walk",
+          "sourceClip": "Armature|Armature|Carry_Heavy_Object_Walk_inplace|baselayer",
+          "sourceFile": "Animation_Carry_Heavy_Object_Walk_inplace_withSkin.fbx",
+          "sourceSha256": "daaea79bfac1e0024cf81eb454d715888df433de538598474aa137a30f3855f6",
+          "duration": 6.5,
+          "note": "Original export observation: Cradled carry pose; no contacts found at the three sampled closest poses. This is not the missing precision work/cradle interaction. Current cleanup: a corrected derivative is available beside this untouched source; see the pinned motion-cleanup.json report."
+        }
+      ]
+    },
+    {
+      "id": "stiletto",
+      "name": "STILETTO",
+      "subtitle": "Twin blades · interchangeable forearm modules",
+      "revision": "Rebuild brief v2 · corrected arm derivatives v4",
+      "status": "Prototype acting accepted",
+      "summary": "Handless black chrome body with two rigid forearm blades. Both blades are tested in the viewer; the player also fits twin or mixed welders with flame flow and the reference-shaped red visor, including its descending centre seam.",
+      "provenance": "Original body, blade, welder and motion briefs recovered. Rebuild notes preserve the later acting meanings and offline corrections; a fresh Meshy export does not include those corrections.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/stiletto",
+      "viewerLabel": "Inspect blades, welders and visor",
+      "record": "/stepanoskin/loopforge/design#cast-stiletto",
+      "parts": [
+        "41,124-triangle body / 24 skin joints",
+        "Blade module: 4,117 triangles, reused on both arms",
+        "Welder module: 4,116 triangles, mounting not reviewed"
+      ],
+      "remaining": [
+        "Welder fit, tool exchange and actual welding contact",
+        "Visor emission and rigid armour weights",
+        "Body gait contacts, blends and paired acting"
+      ],
+      "images": [
+        {
+          "label": "Body · front",
+          "role": "Body input",
+          "sourceName": "01-stiletto-body-front.png",
+          "sourceSha256": "45b6f020dde327639818b5111a5ee159dfd9a34822e1a88f4aa599099efab8cc",
+          "input": {
+            "src": "/media/loopforge-model-briefs/01-stiletto-body-front.3f982df15976bae9.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 286477,
+            "sha256": "3f982df15976bae9c0404039a21a73f7502d32cbf51956d42a815bb64604c204"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/01-stiletto-body-front-360.bba37cc981560cb0.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 16206,
+              "sha256": "bba37cc981560cb0886743ceacb060d1b589bd6e3086442eb22cdf382592020d"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/01-stiletto-body-front-720.2982f54341ae31b1.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 52612,
+              "sha256": "2982f54341ae31b1d52947c8be7a6b3b4e01d99c806cad3681b79223ad86b923"
+            }
+          ]
+        },
+        {
+          "label": "Body · side",
+          "role": "Body input",
+          "sourceName": "05-stiletto-body-side.png",
+          "sourceSha256": "4c364928052df01cef5a13ed885fb6ce3d291c50a694f03f85bec404aa7e5eb4",
+          "input": {
+            "src": "/media/loopforge-model-briefs/05-stiletto-body-side.575c8327ab7f5716.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 201047,
+            "sha256": "575c8327ab7f5716c132cf58b184570e7085a371789f449e317ac711e3037fde"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/05-stiletto-body-side-360.832488d5c0a45c22.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 9662,
+              "sha256": "832488d5c0a45c22e89a3c4e8e10923ec057172a199ec6e3b31803fdeec0b8ee"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/05-stiletto-body-side-720.a21831fcbf587939.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 31782,
+              "sha256": "a21831fcbf58793954e9cfb0a8591307e8806e7ffe26dde78c8d1c637e259f19"
+            }
+          ]
+        },
+        {
+          "label": "Body · back",
+          "role": "Body input",
+          "sourceName": "02-stiletto-body-back.png",
+          "sourceSha256": "d1e95118e6a9a5a1eae5dddf4c37c57c0973af20a15e1eb68713d0306c3ebb3c",
+          "input": {
+            "src": "/media/loopforge-model-briefs/02-stiletto-body-back.957e15069ec82a53.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 282315,
+            "sha256": "957e15069ec82a5386d259091ae081c1083ee15257690b99973f5eac61f4a771"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/02-stiletto-body-back-360.d9f2a11b31d0d9e5.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 15672,
+              "sha256": "d9f2a11b31d0d9e570a6be74a4baba1e673372bc07a951b3cf0db6b4cf5d1a6e"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/02-stiletto-body-back-720.91077efe4d9dd74b.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 51146,
+              "sha256": "91077efe4d9dd74b9ad90a595b161167ac05be41fe3a8f5dcae445bcfa9bce1d"
+            }
+          ]
+        },
+        {
+          "label": "Blade module",
+          "role": "Separate rigid object — upload alone",
+          "sourceName": "03-stiletto-blade-module.png",
+          "sourceSha256": "cd07f0af819c40d7113268a2dc784d60ad7e69f5412fbc08dc5eac0a3de7efaf",
+          "input": {
+            "src": "/media/loopforge-model-briefs/03-stiletto-blade-module.77b6eafca7b2fd3d.jpg",
+            "width": 1774,
+            "height": 887,
+            "bytes": 158346,
+            "sha256": "77b6eafca7b2fd3da7d7ae6770dcd12bce5cf5b39be67747eee530a1b76ca29c"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/03-stiletto-blade-module-360.d557026b58df992a.webp",
+              "width": 360,
+              "height": 180,
+              "bytes": 2698,
+              "sha256": "d557026b58df992aae24012d96cdc6e33a777cde1a8788e6d3e681df581e7bff"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/03-stiletto-blade-module-720.68db98516d0cdad1.webp",
+              "width": 720,
+              "height": 360,
+              "bytes": 8346,
+              "sha256": "68db98516d0cdad1f612d5255e040f0a8eb862000f8d43cceaaf63d1444a9ca8"
+            }
+          ]
+        },
+        {
+          "label": "Welder module",
+          "role": "Separate rigid object — upload alone",
+          "sourceName": "04-stiletto-welder-module.png",
+          "sourceSha256": "d0f6be5eeacae41dd10aaf34f718afc6520bc717405de350a1d3a82ab47db414",
+          "input": {
+            "src": "/media/loopforge-model-briefs/04-stiletto-welder-module.6fb60b79c099fbca.jpg",
+            "width": 1774,
+            "height": 887,
+            "bytes": 245699,
+            "sha256": "6fb60b79c099fbcac03b8ffd677635cf330444908050cda0f1f6489d9d614407"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/04-stiletto-welder-module-360.866776ca9efaa2f8.webp",
+              "width": 360,
+              "height": 180,
+              "bytes": 5676,
+              "sha256": "866776ca9efaa2f8c448500b3cbef7b974b7ceebc4c4e427f4dde758f98a3e27"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/04-stiletto-welder-module-720.874bd99032e3aec3.webp",
+              "width": 720,
+              "height": 360,
+              "bytes": 17166,
+              "sha256": "874bd99032e3aec3c2da86955150b28b0a397fdf251f9b0b0bd69e71374ef049"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Body",
+          "file": "stiletto/01-body.txt"
+        },
+        {
+          "title": "Blade and welder",
+          "file": "stiletto/02-blade-and-welder.txt"
+        },
+        {
+          "title": "Rig and motion",
+          "file": "stiletto/03-rig-and-motion.txt"
+        },
+        {
+          "title": "Runtime meaning and cleanup",
+          "file": "stiletto/04-runtime-meaning-and-cleanup.txt"
+        }
+      ],
+      "motionInventory": [
+        {
+          "label": "Idle (source: Alert)",
+          "sourceClip": "Armature|Armature|Alert|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Alert_withSkin.fbx",
+          "sourceSha256": "b82b6df30c13b11a37bb1eb9d99cc3a90f6ccdc38fbc572ed2148b2a0a583b35",
+          "duration": 4,
+          "note": "Attentive, wide stance. No intersections detected at the three tested poses."
+        },
+        {
+          "label": "Recoil",
+          "sourceClip": "Armature|Armature|Crouch_and_Step_Back|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Crouch_and_Step_Back_withSkin.fbx",
+          "sourceSha256": "9df1cde4aa91ff372d5c4bcbef4cc06844744aa0506b992f7210db0d036edac9",
+          "duration": 2.7,
+          "note": "Has 2.83 m backward travel in source units; requires movement/space reservation. No intersections at tested poses."
+        },
+        {
+          "label": "Electrical collapse",
+          "sourceClip": "Armature|Armature|Electrocuted_Fall|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Electrocuted_Fall_withSkin.fbx",
+          "sourceSha256": "c84c5eebd79d9ab3cc4a3fde85381540253fd5cb2d94898938b8d6e6532c896a",
+          "duration": 6.33333333,
+          "note": "Leg intersection at 4.33 s. Fall ends lower and displaced; needs ground/contact cleanup and one-shot playback."
+        },
+        {
+          "label": "Electrical hit",
+          "sourceClip": "Armature|Armature|Electrocution_Reaction|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Electrocution_Reaction_withSkin.fbx",
+          "sourceSha256": "8ca299187c89e33ce3a39799a8147aabfe22159d07bfce8e7a917560a2136c04",
+          "duration": 4.66666667,
+          "note": "Readable malfunction candidate. No intersections at tested poses; preserve source timing when binding to an incident."
+        },
+        {
+          "label": "Idle Turn Left",
+          "sourceClip": "Armature|Armature|Idle_Turn_Left|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Idle_Turn_Left_withSkin.fbx",
+          "sourceSha256": "4da6ad0c83a94b2552a2df41fa88c7fbeb57d051638ed7a47c80e2ff38a6fc9d",
+          "duration": 0.933333333,
+          "note": "Pivot candidate. No intersections at tested poses. Reconcile facing and small pelvis offset with navigation."
+        },
+        {
+          "label": "Idle Turn Right",
+          "sourceClip": "Armature|Armature|Idle_Turn_Right|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Idle_Turn_Right_withSkin.fbx",
+          "sourceSha256": "f64a56eac6199bff2fd323fa15dafd7c57fe548d61bd23fad26d44e9c5fbda58",
+          "duration": 1.1,
+          "note": "Leg/foot intersection at 0.63 s. Requires foot clearance correction."
+        },
+        {
+          "label": "Rise from kneeling",
+          "sourceClip": "Armature|Armature|Kneel_on_One_Knee_and_Stand|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Kneel_on_One_Knee_and_Stand_withSkin.fbx",
+          "sourceSha256": "87eb6395b94e91b6577f3dcb52242b9e5f79d546d6c4c41155cb58dabc32dab1",
+          "duration": 2.56666667,
+          "note": "Starts kneeling and rises. Socket is close to thigh in first pose. Needs blade-aware arm correction before tools are mounted; not a complete standing-to-kneel-to-stand cycle."
+        },
+        {
+          "label": "Forward sprint",
+          "sourceClip": "Armature|Armature|Lean_Forward_Sprint_inplace|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Lean_Forward_Sprint_inplace_withSkin.fbx",
+          "sourceSha256": "cd1af8d37a49d686d2fcd88b181acf52e7838018702654b30a1aea75a0fe3a68",
+          "duration": 0.6,
+          "note": "Leg intersection at 0.32 s. In-place motion; adjust gait clearance."
+        },
+        {
+          "label": "Listening Gesture",
+          "sourceClip": "Armature|Armature|Listening_Gesture|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Listening_Gesture_withSkin.fbx",
+          "sourceSha256": "a498bd01e107bb85c98f258f2f5565447e35d04fa3385c7fa6ade6b53a32f548",
+          "duration": 9.33333333,
+          "note": "Leg/foot intersection near 8.77 s. Fix feet or choose a trimmed range that passes another check."
+        },
+        {
+          "label": "Quick Walk",
+          "sourceClip": "Armature|Armature|Quick_Walk|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Quick_Walk_withSkin.fbx",
+          "sourceSha256": "558eb34605e0c89733259877783c3f8dfdafd1b534ac5e2e9ba6ecc120579820",
+          "duration": 3,
+          "note": "Leg intersection at 1.68 s. Contrary to report, exported pelvis returns to its start and has only 0.017 m fore/aft range: already in place."
+        },
+        {
+          "label": "Running",
+          "sourceClip": "Armature|Armature|running|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Running_withSkin.fbx",
+          "sourceSha256": "b5d251a66b46e993ea3dbb8b8acac559ac7fa6f719afb7a4b5f7cc1288012b76",
+          "duration": 0.633333333,
+          "note": "In-place baseline run. No intersections at the targeted poses; promising starting candidate."
+        },
+        {
+          "label": "Attack (source: Reprimand)",
+          "sourceClip": "Armature|Armature|Shouting_Angrily|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Shouting_Angrily_withSkin.fbx",
+          "sourceSha256": "58bca9b5c942f9c85ab345149b10dc97fb9f6bf2943ae944bd283af58f53f7d0",
+          "duration": 7.16666667,
+          "note": "Broad overhead and forward arm gestures. No body intersections at targeted poses; full blade sweep must be reviewed with actual attachments."
+        },
+        {
+          "label": "Shrug",
+          "sourceClip": "Armature|Armature|Shrug|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Shrug_withSkin.fbx",
+          "sourceSha256": "96b9a6eb7deb5e39532df2d683cc2b454b46cc51ee8f5080702996b46fac8cd0",
+          "duration": 2,
+          "note": "Readable dismissive gesture. No intersections at targeted poses; check both tools when fitting."
+        },
+        {
+          "label": "Threaten (source: Argument)",
+          "sourceClip": "Armature|Armature|Stand_Talking_Angry|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Stand_Talking_Angry_withSkin.fbx",
+          "sourceSha256": "73efe812e6f5dc3bbd7686b370882379521dee652c6a93db1d40b4b40dfbe147",
+          "duration": 20.8,
+          "note": "20.80-second long argument take. No intersections at targeted poses. Needs selection/trim and blade-aware gesture review."
+        },
+        {
+          "label": "Walking",
+          "sourceClip": "Armature|Armature|walking_man|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_Walking_withSkin.fbx",
+          "sourceSha256": "779c27a6a779cc3105160459227d547f426ebe3b6c4d61a93b017aab0c5b377a",
+          "duration": 1.03333333,
+          "note": "In-place baseline walk. No intersections at the targeted poses; promising starting candidate."
+        },
+        {
+          "label": "Grounded walk",
+          "sourceClip": "Armature|Armature|walking_2_inplace|baselayer",
+          "sourceFile": "Meshy_AI_Stiletto_Body_Rigged_biped_Animation_walking_2_inplace_withSkin.fbx",
+          "sourceSha256": "984ba8593e1cabc6adf26ecb64aa3b068e429f3228b68d6211a2723f5714b653",
+          "duration": 1.2,
+          "note": "Pronounced leg/foot intersection at 0.97 s. Does not meet Meshy report claim of clean separation."
+        },
+        {
+          "label": "Alert (source: Idle)",
+          "sourceClip": "Armature|Armature|Idle|baselayer",
+          "sourceFile": "stiletto_idle_source.fbx",
+          "sourceSha256": "3e7d0aec0b2113019e21f1c8eb0537fc466109b98144ec956f00e24eb2a5c577",
+          "duration": 4,
+          "note": "Stationary 4-second idle. No surface intersections detected at the three targeted closest poses; full-cycle and mounted-tool review still required."
+        },
+        {
+          "label": "Injured walk",
+          "sourceClip": "Armature|Armature|Injured_Walk_inplace|baselayer",
+          "sourceFile": "stiletto_injured_walk_source.fbx",
+          "sourceSha256": "b15e7a9f8798e10d9ea811c680594e34e76a505bda53a7b607bd59d49d78160f",
+          "duration": 8.66666667,
+          "note": "In-place limping motion. Positive leg/foot intersections at 6.83 s; clearance correction required."
+        }
+      ]
+    },
+    {
+      "id": "cathexis",
+      "name": "CATHEXIS",
+      "subtitle": "Theatre diva · intact mechanism + Grace coverage",
+      "revision": "cathexis-motion-cleanup-v7-2026-10-15",
+      "status": "Body, Grace fit and four motions approved",
+      "summary": "Accepted v2 body, full/half Grace over its intact mechanical face, and first rigged Hot Walk / Happy Sway clips. Local skirt, grounding and loop corrections are ready for review; moving mask fit is next.",
+      "provenance": "Body v2 accepted on 14 October 2026. The owner closed stage 2 after the layered Grace preview: no further face models are required. Input art derives from original character and room art; earlier expression studies are archive references. Motion, moving fit and grime direction still need review.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/cathexis",
+      "viewerLabel": "Compare Hot Walk, sway and mask fitting",
+      "referenceViewer": "/stepanoskin/loopforge/play/asset-review/worker",
+      "record": "/stepanoskin/loopforge/design#cast-cathexis",
+      "parts": [
+        "51,034-triangle accepted v2 body; original mechanical face retained",
+        "51,031-triangle rigged delivery; Hot Walk / Happy Sway source and corrected candidates",
+        "Grace: 3,058 / 8,128 triangles; half coverage derived from the same mesh",
+        "Earlier mechanical expression studies: separate inspection only"
+      ],
+      "remaining": [
+        "Matching delivery normal maps; do not regenerate accepted geometry",
+        "Stage 3 initial rig test delivered and locally cleaned; next: moving Grace fit and owner motion review",
+        "Moving full/half Grace fit, costume, hair, heel and hand clearance",
+        "Stage 4 acting auditions; grime selection later. Facial rig and expression-mask exchange are out of scope"
+      ],
+      "images": [
+        {
+          "label": "Body · front",
+          "role": "Original body proportions and front opening. For skirt material and rear coverage, follow the revised back/profile; this original front drawing predates the reduction in lace.",
+          "sourceName": "01-cathexis-body-front.png",
+          "sourceSha256": "168fb9fe3af049b9786894d342906a4f85a659f99f1cdbd830c60d69b6911635",
+          "input": {
+            "src": "/media/loopforge-model-briefs/01-cathexis-body-front.260b685edbc8b769.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 395226,
+            "sha256": "260b685edbc8b7695f3d25c24bed1ddbbd5862b7e716d3fe5a15f9d265a3b293"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/01-cathexis-body-front-360.1b34ac85ad78d4a6.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 23846,
+              "sha256": "1b34ac85ad78d4a6b4c208e5ae2beef6f701e14a780f2a6a34afdad0855ebd45"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/01-cathexis-body-front-720.0f466ea5edc7319b.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 81484,
+              "sha256": "0f466ea5edc7319b3aaeecea09d71c03446bcbb0dc58d0aa8bced7ce2f054d70"
+            }
+          ]
+        },
+        {
+          "label": "Body · revised back / worn cloth",
+          "role": "Skirt revision reference: continuous rear cloth behind the knees, lower-ankle hem and less decorative lace. Completed revision reference; the resulting v2 body is now accepted.",
+          "sourceName": "03-cathexis-worn-cloth-candidate.png",
+          "sourceSha256": "1b0d3c559b3c5d2bf7f7a7c9743e31f65b80777a972bbd554f5e21ad0db2636d",
+          "input": {
+            "src": "/media/loopforge-model-briefs/02-cathexis-back-worn-cloth.f46b50f5d702ac1d.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 327005,
+            "sha256": "f46b50f5d702ac1d6ae74109877bc36f12a42ebb5690ca10f72147f32944bb07"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/02-cathexis-back-worn-cloth-360.ac6dd8898e919a45.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 26780,
+              "sha256": "ac6dd8898e919a45316b9817c2795b97a7c28f2aa7058482f8533ea3631a49ab"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/02-cathexis-back-worn-cloth-720.9521d41f1e4e9a05.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 87986,
+              "sha256": "9521d41f1e4e9a056ad5acf0501cc44b7703cda536c5730875c264ea1fca4a1c"
+            }
+          ]
+        },
+        {
+          "label": "Body · matching left profile",
+          "role": "Matches the revised rear fabric and coverage. Character faces left; rear cloth hangs on the right. The visible leg belongs to the preserved front opening. 3D clearance still needs inspection.",
+          "sourceName": "04-cathexis-left-profile-worn-cloth.png",
+          "sourceSha256": "f0ba551732e513a167eacf075bf2c0960c41709e0079e2c8d6183bd1f900a3fa",
+          "input": {
+            "src": "/media/loopforge-model-briefs/03-cathexis-left-worn-cloth.5ca90f61805e55e6.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 230357,
+            "sha256": "5ca90f61805e55e6ce45e8f93ddb37e874cc37440406eacd3775ad4214b2fc15"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/03-cathexis-left-worn-cloth-360.152d32590f71b0e8.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 15884,
+              "sha256": "152d32590f71b0e887a15054b52fe221c0a0180063cb083a82a2806b1b3e817b"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/03-cathexis-left-worn-cloth-720.30ef41164732e678.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 54992,
+              "sha256": "30ef41164732e6780d70fd403f1a863365d815fb8183d9f1a483f62af891b5d4"
+            }
+          ]
+        },
+        {
+          "label": "Porcelain · Grace",
+          "role": "Existing Grace reference — no generation needed. Full and half coverage reuse this mask; stage 2 is closed.",
+          "sourceName": "04-mask-grace.png",
+          "sourceSha256": "6b62d64263cd324480ce4194d6344208d59d6f511f16d9add92f67cf9513dc96",
+          "input": {
+            "src": "/media/loopforge-model-briefs/04-mask-grace.7e156c7899d94c8c.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 380232,
+            "sha256": "7e156c7899d94c8cecee4a122870cb6c56bd8cdb6f6915592d8f0e13263398fd"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/04-mask-grace-360.64546c30844d8d2c.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 20410,
+              "sha256": "64546c30844d8d2cf0ba1603f3c11e1e8581f1c17e8306068fc1a34808f613b0"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/04-mask-grace-720.d8d6acb09c48e6fd.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 66142,
+              "sha256": "d8d6acb09c48e6fd88659dc2cd8fc2886bdbe6dd74804e735c69a86dab5ab4f7"
+            }
+          ]
+        },
+        {
+          "label": "Porcelain · Rapture",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
+          "sourceName": "05-mask-rapture.png",
+          "sourceSha256": "98865d99902dcb61cdc0432a1683d0d25d3b11bbf40e0cfd79447d0c1685d261",
+          "input": {
+            "src": "/media/loopforge-model-briefs/05-mask-rapture.ef5c280029b3d3ea.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 357830,
+            "sha256": "ef5c280029b3d3eaf13d54960d35ec70d13d4891e87f6553db8ecdbcb01ecbf1"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/05-mask-rapture-360.55f54c3a3b08e85d.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 20834,
+              "sha256": "55f54c3a3b08e85de33bdd2cf16504e7b78229a887e3e419e26f1487c65709e4"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/05-mask-rapture-720.41d9418c7a81b528.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 63890,
+              "sha256": "41d9418c7a81b528794805e2eddbcc09d45ba339058e2ab1aef7cec6f874dc9c"
+            }
+          ]
+        },
+        {
+          "label": "Porcelain · Scorn",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
+          "sourceName": "06-mask-scorn.png",
+          "sourceSha256": "1ab8cb1a972a32748852b8fba4a49bfcd07e1b5a8db58bd9414b177188f4c431",
+          "input": {
+            "src": "/media/loopforge-model-briefs/06-mask-scorn.8e32f84f8e0f6891.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 368263,
+            "sha256": "8e32f84f8e0f6891934412cf80cbb48681edebba1749d8231d5a96eed4132868"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/06-mask-scorn-360.ab64a794ad493262.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 21064,
+              "sha256": "ab64a794ad4932629a581f5ab5b758c2d67c5a7b69f32ba288dd0abc088b514e"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/06-mask-scorn-720.0b89c00e36cde192.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 66598,
+              "sha256": "0b89c00e36cde192f579701a53dd6e4960a7e0828ecd0d6a062fc25523d99ced"
+            }
+          ]
+        },
+        {
+          "label": "Porcelain · Grief",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
+          "sourceName": "07-mask-grief.png",
+          "sourceSha256": "ca447ab82f0cefc5be515a73425e5cddf045bd77169b4e20436d2ae3c8118cb9",
+          "input": {
+            "src": "/media/loopforge-model-briefs/07-mask-grief.31797f472b6415e4.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 371895,
+            "sha256": "31797f472b6415e4f1fb3e3b89d5cfe22501d9405f168f88b49c138c5b9b1bd3"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/07-mask-grief-360.8d7905a052687051.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 21506,
+              "sha256": "8d7905a0526870519b80adb90397502d1b14d77cfe3cb91787365a8cb6a5bae5"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/07-mask-grief-720.d493ded08a2cf08e.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 67994,
+              "sha256": "d493ded08a2cf08e53ac1f0c55c38bb687d5ea897b23069a3eb45e4b7d1f3ef8"
+            }
+          ]
+        },
+        {
+          "label": "Porcelain · Fury",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
+          "sourceName": "08-mask-fury.png",
+          "sourceSha256": "e2861b814911605d119ba28b8c3853870d1d4ac4925665262952e40face5a575",
+          "input": {
+            "src": "/media/loopforge-model-briefs/08-mask-fury.131d45d8c56f3bf4.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 389823,
+            "sha256": "131d45d8c56f3bf4cf33fe9133a9cdc86db481e17d6009d2106cc861fc309d45"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/08-mask-fury-360.8a5e467dcf9f94ff.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 22904,
+              "sha256": "8a5e467dcf9f94ffd6d51efb9c4abb87b6e6fe2c7eec8649755398a9aabe0ff5"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/08-mask-fury-720.285e7a8329ee58ee.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 72486,
+              "sha256": "285e7a8329ee58eee5b43aa6cea05429c3e49640158e7779fc616cfdd21493d4"
+            }
+          ]
+        },
+        {
+          "label": "Porcelain · Distress",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
+          "sourceName": "09-mask-distress.png",
+          "sourceSha256": "80eef314217ea012dcb82ffdbf863990b037aab35b9675a7e61500a91e238d44",
+          "input": {
+            "src": "/media/loopforge-model-briefs/09-mask-distress.efb33dd4f17fdc36.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 387068,
+            "sha256": "efb33dd4f17fdc3606be8341e89a06174822997131894e0a979ec531c1880d8c"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/09-mask-distress-360.8492c42d74f615b1.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 22290,
+              "sha256": "8492c42d74f615b1bce80cfa50080a734d0bbf1406a084dc16b8dd44de18e53a"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/09-mask-distress-720.dd60245a343ca3a1.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 72068,
+              "sha256": "dd60245a343ca3a17a15506a6885beee884b3ae6c41d3553162175e4c1409cf4"
+            }
+          ]
+        },
+        {
+          "label": "Mechanism · Distorted grimace",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
+          "sourceName": "10-mechanism-grimace.png",
+          "sourceSha256": "5166df66750a48acb01b2f6d2d7228103b706f3d29e31c822155a0c78c1af3a8",
+          "input": {
+            "src": "/media/loopforge-model-briefs/10-mechanism-grimace.0281cbf9888b957f.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 467941,
+            "sha256": "0281cbf9888b957f865a8c750890538c16f9708298551645b95289ed516ab275"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/10-mechanism-grimace-360.a61ec45232055586.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 29924,
+              "sha256": "a61ec45232055586b003617622ddfd7a946c0ffe09f7bef4fe47ac359cd286f4"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/10-mechanism-grimace-720.3f436240f25e8c1e.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 99572,
+              "sha256": "3f436240f25e8c1e4b8c57541797452c8afeb03d4ff5630b0e540cafcaea1174"
+            }
+          ]
+        },
+        {
+          "label": "Mechanism · Fury",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
+          "sourceName": "11-mechanism-fury.png",
+          "sourceSha256": "e5b1e4e7a8aff6266db6c35f901b83fd84fe41c72891d89129586b88177e5802",
+          "input": {
+            "src": "/media/loopforge-model-briefs/11-mechanism-fury.f2d08f1ad4306492.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 483653,
+            "sha256": "f2d08f1ad4306492ada49128f7d534a02728eb010c1c982978c8010d022239e2"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/11-mechanism-fury-360.20abc108cc65b6d5.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 32728,
+              "sha256": "20abc108cc65b6d5f768396a06e95add60b6a6869d8c57b0c11be40638229bc4"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/11-mechanism-fury-720.88abdf541b6ad928.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 104956,
+              "sha256": "88abdf541b6ad92841c99dda01e302fe03d65e671073fba35fe610938cda7617"
+            }
+          ]
+        },
+        {
+          "label": "Mechanism · Distress",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
+          "sourceName": "12-mechanism-distress.png",
+          "sourceSha256": "8faf9fe473e0d30db3d7af898c3e4ddf53c72bb045295d2dc26bd3fb26846448",
+          "input": {
+            "src": "/media/loopforge-model-briefs/12-mechanism-distress.cf2b148ff319e5fb.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 436048,
+            "sha256": "cf2b148ff319e5fbd23f0176e6894f2508baa9134dd01a7c59ca5ac49947d6bc"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/12-mechanism-distress-360.e3c3b38e9e7d6035.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 27074,
+              "sha256": "e3c3b38e9e7d6035b252f28e2495b8a06121f4ceebfb5e85c694b6998bf71f42"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/12-mechanism-distress-720.53fed11ecbf1182d.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 90120,
+              "sha256": "53fed11ecbf1182de24dd042f8c2cb338501efbd0756cb4ca004b5b663ec95f0"
+            }
+          ]
+        },
+        {
+          "label": "Porcelain · half shell",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
+          "sourceName": "13-mask-half-shell.png",
+          "sourceSha256": "b274d63353ad82cf1ba990eb322764da4c7153488282e7ca16ad86cf0d4b2130",
+          "input": {
+            "src": "/media/loopforge-model-briefs/13-mask-half-shell.d633d94d8ad121b2.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 269767,
+            "sha256": "d633d94d8ad121b2b2eb693cc44a5ca0d998d872363c3b5def998f53c84ae0a2"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/13-mask-half-shell-360.3877b9aa62f2248b.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 13648,
+              "sha256": "3877b9aa62f2248bbdd4e2a419d290233956f6080cd0e9678b6b00f3a14490e6"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/13-mask-half-shell-720.9b1c00fbb498efe7.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 43714,
+              "sha256": "9b1c00fbb498efe760f09d3e0e4079558f1a1e4a527c8ab391c9156a7406ade5"
+            }
+          ]
+        },
+        {
+          "label": "Split face · assembly guide",
+          "role": "Earlier expression study, retained for reference only. Current prototype uses full/half Grace over the original body face; do not generate this as an additional item.",
+          "sourceName": "14-split-assembly-reference.png",
+          "sourceSha256": "2b1ab7995ce597d02b7b041bf72c5ae06a47365f835ecb0af7085f96ae0b5ff1",
+          "input": {
+            "src": "/media/loopforge-model-briefs/14-split-assembly-reference.439af4f42c2bd212.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 445356,
+            "sha256": "439af4f42c2bd21220eca9b5ffd84d35feab2b4fa6649c1d00f17e5cd0a54079"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/14-split-assembly-reference-360.29f3d7958452a6f5.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 27932,
+              "sha256": "29f3d7958452a6f5c3e5eb463c651bd3012e5c543f889aba58cde05c8abb5c6d"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/14-split-assembly-reference-720.74123711285f6bdf.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 93786,
+              "sha256": "74123711285f6bdff93a7c3372b35a07eb9f514f24229e2eadd73af77dac4680"
+            }
+          ]
+        },
+        {
+          "label": "A · dry soot",
+          "role": "Material option — same accepted mesh; selection pending",
+          "sourceName": "a-body-soot-apose.png",
+          "sourceSha256": "1f5006dd8287780e58d4b46a27b135fe4c15c2848c05331661ca779481bbd40e",
+          "input": {
+            "src": "/media/loopforge-model-briefs/a-body-soot-apose.47085b8220cf5d82.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 375366,
+            "sha256": "47085b8220cf5d82e9c3dd44382a1af8f455a4a321e401277ff40ccc62eab518"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/a-body-soot-apose-360.3c191ec326c999cd.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 21926,
+              "sha256": "3c191ec326c999cde29a1eb4796051440a4b4f7ee30881ff7df0b8783dbf537a"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/a-body-soot-apose-720.83d498b77829891a.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 75758,
+              "sha256": "83d498b77829891a80247ba2445f83b785dec293fbc4dc01ca44d627dcc2ef5c"
+            }
+          ]
+        },
+        {
+          "label": "B · wet machine oil",
+          "role": "Material option — same accepted mesh; selection pending",
+          "sourceName": "b-body-oil-apose.png",
+          "sourceSha256": "1805d0defe987f9f7c4c7a8a7e99865e5c7397f47d738bdc466c67e5509e5554",
+          "input": {
+            "src": "/media/loopforge-model-briefs/b-body-oil-apose.91e78f5baba1a0fa.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 388843,
+            "sha256": "91e78f5baba1a0faa27d9f9a909f0c3603ac1c6e58c0d72215bb86d74abbea39"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/b-body-oil-apose-360.136a71fda63a487c.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 24584,
+              "sha256": "136a71fda63a487c61de42e7a0fe832895ac03d190c9a15469d19bed00a0f243"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/b-body-oil-apose-720.482fcae45d1a3f30.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 83962,
+              "sha256": "482fcae45d1a3f302b3feec7ab7b00bb97399b7871eb5a13a77cf42683073331"
+            }
+          ]
+        },
+        {
+          "label": "C · caked grime",
+          "role": "Material option — same accepted mesh; selection pending",
+          "sourceName": "c-body-caked-apose.png",
+          "sourceSha256": "23c4ae936bc3d12d88366600c988448265ef9169184c3d2aeff08d3f35cf775e",
+          "input": {
+            "src": "/media/loopforge-model-briefs/c-body-caked-apose.a108132ca1deb339.jpg",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 389832,
+            "sha256": "a108132ca1deb3392886721eb0652f3bcd5a86f1fa61cee73698d53d93cd3105"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-model-briefs/c-body-caked-apose-360.3c3708b385fe1d35.webp",
+              "width": 360,
+              "height": 540,
+              "bytes": 22906,
+              "sha256": "3c3708b385fe1d3559bb35a0c21a7f65942725f352e8ea06040a118a818f49ed"
+            },
+            {
+              "src": "/media/loopforge-model-briefs/c-body-caked-apose-720.d9a75f3a36e831f1.webp",
+              "width": 720,
+              "height": 1080,
+              "bytes": 80908,
+              "sha256": "d9a75f3a36e831f1208f7cc5cba4e0aeebedb518df2aaa87a519bfba56df5e5e"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "NEXT: rig accepted body; Hot Walk + sway",
+          "file": "cathexis/03-rig-tests.txt"
+        },
+        {
+          "title": "Acting bank · after rig tests",
+          "file": "cathexis/04-acting-bank.txt"
+        },
+        {
+          "title": "Signature actions · later/offline",
+          "file": "cathexis/05-signature-actions.txt"
+        },
+        {
+          "title": "Room conditions · later material variants",
+          "file": "cathexis/06-room-conditions.txt"
+        },
+        {
+          "title": "Delivery order and checks",
+          "file": "cathexis/07-delivery-order.txt"
+        },
+        {
+          "title": "Face system · CLOSED, no further generation",
+          "file": "cathexis/02-face-system.txt"
+        },
+        {
+          "title": "Full body rebuild · reference only",
+          "file": "cathexis/01-body.txt"
+        },
+        {
+          "title": "Completed skirt repair · reference only",
+          "file": "cathexis/08-rear-panel-repair.txt"
+        }
+      ]
+    },
+    {
+      "id": "bob",
+      "name": "bob",
+      "subtitle": "Fly eyes · flat head",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Rigged motion candidate · review available",
+      "summary": "Small narrow blue frame; flat small head beneath two oversized convex cyan fly-eye lenses, above and wider than the head; moderately large articulated hands, cream chest stripe. Do not return to a round ordinary head or huge mitten hands.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=bob",
+      "viewerLabel": "Inspect body and every motion",
+      "record": "/stepanoskin/loopforge/design#cast-bob",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "bob · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 135152,
+            "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/bob-320.6bdd4f321ab8e4f4.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 15200,
+              "sha256": "6bdd4f321ab8e4f4f56d030afafa2644fcc23e2b2e321400746492a93b154087"
+            },
+            {
+              "src": "/media/loopforge-cast/bob-640.014388511ec92ad6.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 45148,
+              "sha256": "014388511ec92ad64ba3f8a9f0ec9cc5dcbd1b49014b6fb06b196553f61aea28"
+            },
+            {
+              "src": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 135152,
+              "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "bob/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "bob/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "bob/03-opening-performance.txt"
+        },
+        {
+          "title": "Stage 4 · Native Idle comparison",
+          "file": "bob/04-native-idle-control.txt"
+        }
+      ]
+    },
+    {
+      "id": "sam",
+      "name": "sam",
+      "subtitle": "Rounded shoulders · low head",
+      "revision": "Opening contacts · 21 October 2026",
+      "status": "Rigged motion candidate · review available",
+      "summary": "Great rounded humped shoulders with head carried low and forward, vertical mouth grille, squat sturdy legs, thick working arms. Blue worn enamel and dull brass. Preserve the industrial porter silhouette; do not straighten the hump into a generic humanoid.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=sam",
+      "viewerLabel": "Inspect body and every motion",
+      "record": "/stepanoskin/loopforge/design#cast-sam",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "sam · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/sam-1280.d7a6b3f29ae9aef1.webp",
+            "width": 1280,
+            "height": 853,
+            "bytes": 166702,
+            "sha256": "d7a6b3f29ae9aef11a132b9acdf61a1d985954b3ab3ff365028eda7257068d39"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/sam-320.6b3ff7fed23e6169.webp",
+              "width": 320,
+              "height": 213,
+              "bytes": 8208,
+              "sha256": "6b3ff7fed23e61691eff0d76e5e055f9175e33ee56231e437276e5265f7763ad"
+            },
+            {
+              "src": "/media/loopforge-cast/sam-640.f9732fc0fc445895.webp",
+              "width": 640,
+              "height": 427,
+              "bytes": 28164,
+              "sha256": "f9732fc0fc445895575a91f95ac2c50eb72d1cadb9211d224491add1bb7dad36"
+            },
+            {
+              "src": "/media/loopforge-cast/sam-1280.d7a6b3f29ae9aef1.webp",
+              "width": 1280,
+              "height": 853,
+              "bytes": 166702,
+              "sha256": "d7a6b3f29ae9aef11a132b9acdf61a1d985954b3ab3ff365028eda7257068d39"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "sam/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "sam/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "sam/03-opening-performance.txt"
+        },
+        {
+          "title": "Stage 4 · Help bob",
+          "file": "sam/04-help-bob.txt"
+        }
+      ]
+    },
+    {
+      "id": "ed",
+      "name": "ed",
+      "subtitle": "Swept skull · pointing finger",
+      "revision": "Opening contacts · 21 October 2026",
+      "status": "Rigged motion candidate · review available",
+      "summary": "Tall angular dark-blue goon, swept-back skull, narrow eyes, open toothed jaw, pointed chin, large round ear receiver and layered shoulder plates. Long expressive pointing index. The original LIMEN Security far-right assistant remains the source; not a generic smiling worker.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=ed",
+      "viewerLabel": "Inspect body and every motion",
+      "record": "/stepanoskin/loopforge/design#cast-ed",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "ed · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/ed-1280.51ea5ec63125128f.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 242328,
+            "sha256": "51ea5ec63125128fec1973b1429d32fe43f80fcd3904b998fff0dea39fd603cd"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/ed-320.2200cd9ab6cbb9af.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 15620,
+              "sha256": "2200cd9ab6cbb9afd0cc0c67c7a8de882eda5466b4c8e3f3e1ebb6b3d1495aa6"
+            },
+            {
+              "src": "/media/loopforge-cast/ed-640.3390b192e4b787d9.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 59706,
+              "sha256": "3390b192e4b787d9be008ee3f612592c7a67acbea04eaddb3037deb8159df26a"
+            },
+            {
+              "src": "/media/loopforge-cast/ed-1280.51ea5ec63125128f.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 242328,
+              "sha256": "51ea5ec63125128fec1973b1429d32fe43f80fcd3904b998fff0dea39fd603cd"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "ed/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "ed/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "ed/03-opening-performance.txt"
+        },
+        {
+          "title": "Stage 4 · Pick up and keep bob’s card",
+          "file": "ed/04-card-pickup.txt"
+        }
+      ]
+    },
+    {
+      "id": "jo",
+      "name": "jo",
+      "subtitle": "Work cap · blue jacket",
+      "revision": "Opening contacts · 21 October 2026",
+      "status": "Rigged motion candidate · review available",
+      "summary": "Low wide flat head with a projecting metal work cap, two small horizontal cyan eyes, worn blue work jacket and trousers, exposed mechanical knees and cuffs. Adult average factory hand; retain the cap and clothing silhouette.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=jo",
+      "viewerLabel": "Inspect body and every motion",
+      "record": "/stepanoskin/loopforge/design#cast-jo",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "jo · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/jo-1280.d522f249ba45622a.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 231512,
+            "sha256": "d522f249ba45622a919ea46eaf8aff9f19bf57f353c05daa419eb90e19f2b707"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/jo-320.e3e53f270c44e067.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 16324,
+              "sha256": "e3e53f270c44e0674febea224b2bdb820915b135bcb9c43476dea046fcc712f1"
+            },
+            {
+              "src": "/media/loopforge-cast/jo-640.fce2202b3af940c7.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 56776,
+              "sha256": "fce2202b3af940c7be1865d8ba322c209c5e573fe23e5028655fb7a4e5dfb046"
+            },
+            {
+              "src": "/media/loopforge-cast/jo-1280.d522f249ba45622a.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 231512,
+              "sha256": "d522f249ba45622a919ea46eaf8aff9f19bf57f353c05daa419eb90e19f2b707"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "jo/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "jo/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "jo/03-opening-performance.txt"
+        },
+        {
+          "title": "Stage 4 · Pickup source trial (superseded)",
+          "file": "jo/04-card-pickup.txt"
+        }
+      ]
+    },
+    {
+      "id": "gus",
+      "name": "gus",
+      "subtitle": "Square shoulders · recessed head",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Rigged motion candidate · review available",
+      "summary": "Massive square navy shoulders with pale yoke, small recessed skull, broad rectangular chest and heavy boots. Distinguish his squared upright mass from sam’s rounded hunched mass. Worker-scale security helper, never supervisor-scale.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=gus",
+      "viewerLabel": "Inspect body and every motion",
+      "record": "/stepanoskin/loopforge/design#cast-gus",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "gus · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 240258,
+            "sha256": "30fc58bf00daccd537ce6bee2cd89c8f57b6ade9178170e8a835ada435acd3fb"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/gus-320.a2a4498a01697f42.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 19152,
+              "sha256": "a2a4498a01697f42fd9cf842e853a6df2bd60ba5737438125efcef2a4b6cda08"
+            },
+            {
+              "src": "/media/loopforge-cast/gus-640.7315a5db20327d7f.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 67686,
+              "sha256": "7315a5db20327d7f7adf5a88a702da1da554870c6a6cdd0c8fc4f6c695b34574"
+            },
+            {
+              "src": "/media/loopforge-cast/gus-1280.30fc58bf00daccd5.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 240258,
+              "sha256": "30fc58bf00daccd537ce6bee2cd89c8f57b6ade9178170e8a835ada435acd3fb"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "gus/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "gus/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "gus/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "max",
+      "name": "max",
+      "subtitle": "Long face · narrow frame",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Rigged motion candidate · review available",
+      "summary": "Tall slender upright blue body, long narrow masklike exposed face with straight pale central nose ridge, small horizontal cyan optics, narrow shoulders, ordinary hands. Use the approved long-faced character reassigned from the mae proposal; discard the previous oversized unilateral ear design.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=max",
+      "viewerLabel": "Inspect body and every motion",
+      "record": "/stepanoskin/loopforge/design#cast-max",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "max · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/max-1280.670fd60bac802ebf.webp",
+            "width": 1280,
+            "height": 853,
+            "bytes": 95922,
+            "sha256": "670fd60bac802ebf050c7488649a02a17a21bac767a91238fe5d5d574741f1a1"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/max-320.2b5a2619e08595eb.webp",
+              "width": 320,
+              "height": 213,
+              "bytes": 4524,
+              "sha256": "2b5a2619e08595eb891402388c8ef803409cebdebf8d26ddeb00c9ace58cce62"
+            },
+            {
+              "src": "/media/loopforge-cast/max-640.42bf446ed80f3e0e.webp",
+              "width": 640,
+              "height": 427,
+              "bytes": 16088,
+              "sha256": "42bf446ed80f3e0e4182461a6f4bc0898cb4617c76b41d8478cecebc6db53146"
+            },
+            {
+              "src": "/media/loopforge-cast/max-1280.670fd60bac802ebf.webp",
+              "width": 1280,
+              "height": 853,
+              "bytes": 95922,
+              "sha256": "670fd60bac802ebf050c7488649a02a17a21bac767a91238fe5d5d574741f1a1"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "max/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "max/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "max/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "mae",
+      "name": "mae",
+      "subtitle": "Blunt head · compact frame",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Rigged motion candidate · review available",
+      "summary": "Short compact square blue craftswoman, broad blunt bob-shaped angular head casing, narrow rectangular cyan eyes in dark slot, short neck, small precise hands and exposed separated legs. No hood, skirt or dress. No baby proportions. Different from RIVET WITCH.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=mae",
+      "viewerLabel": "Inspect body and every motion",
+      "record": "/stepanoskin/loopforge/design#cast-mae",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "mae · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/mae-1280.e5a67ebc7fb7f9c5.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 286126,
+            "sha256": "e5a67ebc7fb7f9c594a6e913f7f30c8192b99194fe73aae4e3629990a197cb5b"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/mae-320.7ff3071a9347923a.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 20864,
+              "sha256": "7ff3071a9347923a3b7ec5adcf91e71869a6793e52107f80e550411c6586a086"
+            },
+            {
+              "src": "/media/loopforge-cast/mae-640.729ddb380ada3ac3.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 79022,
+              "sha256": "729ddb380ada3ac391623cc01fb47242bf15dece65dfe502d9f86ea07d6011cd"
+            },
+            {
+              "src": "/media/loopforge-cast/mae-1280.e5a67ebc7fb7f9c5.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 286126,
+              "sha256": "e5a67ebc7fb7f9c594a6e913f7f30c8192b99194fe73aae4e3629990a197cb5b"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "mae/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "mae/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "mae/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "kit",
+      "name": "kit",
+      "subtitle": "Piston forearms · pipe",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Rigged motion candidate · review available",
+      "summary": "Adult wiry Popeye-like robot: tiny squinting skull with heavy jaw, short brass/steel pipe at mouth corner, lean ribbed torso, thin upper arms and enormous blue piston forearms tapering to ordinary hands. Pale forearm stripe, sturdy boots. Preserve pipe and forearm silhouette, not oversized hands or baby head.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=kit",
+      "viewerLabel": "Inspect body and every motion",
+      "record": "/stepanoskin/loopforge/design#cast-kit",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "kit · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/kit-1280.455885256f5671bc.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 292732,
+            "sha256": "455885256f5671bca16db92898da10b42a8951fa12212547ca460cb4f0713451"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/kit-320.8c1f5da4e3bdf503.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 23548,
+              "sha256": "8c1f5da4e3bdf503e3e62dea3e7cd93fd39a09456013be24fee48d30baf9a470"
+            },
+            {
+              "src": "/media/loopforge-cast/kit-640.9a7164a20a78c7ed.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 82386,
+              "sha256": "9a7164a20a78c7ed2743d2ff0a44b9f5145e1345209a63052de9c57da5d43ab2"
+            },
+            {
+              "src": "/media/loopforge-cast/kit-1280.455885256f5671bc.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 292732,
+              "sha256": "455885256f5671bca16db92898da10b42a8951fa12212547ca460cb4f0713451"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "kit/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "kit/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "kit/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "lou",
+      "name": "lou",
+      "subtitle": "Long neck · spare frame",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Rigged motion candidate · review available",
+      "summary": "Exceptionally long curved neck and forward beaky skull with twin receiver housings; narrow exposed rib torso, very long thin arms and legs. Maintain a coherent biped and expressive neck without collapsing this into standard worker proportions.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=lou",
+      "viewerLabel": "Inspect body and every motion",
+      "record": "/stepanoskin/loopforge/design#cast-lou",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "lou · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/lou-1280.0d77f26b20c9667e.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 207796,
+            "sha256": "0d77f26b20c9667eccc53437fd0131e7b4c1026c0b0a7c5e592020b26998ce30"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/lou-320.2500d298fcfcc187.webp",
+              "width": 320,
+              "height": 480,
+              "bytes": 13296,
+              "sha256": "2500d298fcfcc1870dfc6916a449722ff50b969c2e626f7abeb37ae317baeac4"
+            },
+            {
+              "src": "/media/loopforge-cast/lou-640.5537c37433c287e6.webp",
+              "width": 640,
+              "height": 960,
+              "bytes": 47782,
+              "sha256": "5537c37433c287e6b076bd66a21591e1bec05091e6de576ad398528e4f575bd8"
+            },
+            {
+              "src": "/media/loopforge-cast/lou-1280.0d77f26b20c9667e.webp",
+              "width": 1024,
+              "height": 1536,
+              "bytes": 207796,
+              "sha256": "0d77f26b20c9667eccc53437fd0131e7b4c1026c0b0a7c5e592020b26998ce30"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "lou/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "lou/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "lou/03-opening-performance.txt"
+        }
+      ]
+    },
+    {
+      "id": "ben",
+      "name": "ben",
+      "subtitle": "Oval hood · barrel body",
+      "revision": "Approved cast art · 21 October 2026",
+      "status": "Rigged motion candidate · review available",
+      "summary": "Short squat rounded barrel body and back, low broad oval hood, tiny square cyan eyes, circular shoulder joints, long thin forearms and short legs. Keep ben low and round; unlike gus’s square mass or sam’s raised hump.",
+      "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+      "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=ben",
+      "viewerLabel": "Inspect body and every motion",
+      "record": "/stepanoskin/loopforge/design#cast-ben",
+      "parts": [
+        "Individual blue-family body",
+        "Neutral rig and source motion bank",
+        "Locally fitted contacts, transitions and scene performance"
+      ],
+      "remaining": [
+        "Complete individual contact and transition review",
+        "Paired hand/prop acting in the opening",
+        "Room-scale recognition and sustained performance acceptance"
+      ],
+      "images": [
+        {
+          "label": "ben · approved concept",
+          "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+          "input": {
+            "src": "/media/loopforge-cast/ben-1280.fedd3740d78d1cfc.webp",
+            "width": 1280,
+            "height": 1170,
+            "bytes": 231342,
+            "sha256": "fedd3740d78d1cfc25700af965e4f404344058b37f56dd30d6fb72c0495fc1a7"
+          },
+          "variants": [
+            {
+              "src": "/media/loopforge-cast/ben-320.c5fc8e7521cf6b9b.webp",
+              "width": 320,
+              "height": 292,
+              "bytes": 11768,
+              "sha256": "c5fc8e7521cf6b9bea04f5d3c47aac58381521306d2770aefc4f7fb8c4654da8"
+            },
+            {
+              "src": "/media/loopforge-cast/ben-640.c59ba9c9b041f5ad.webp",
+              "width": 640,
+              "height": 585,
+              "bytes": 41944,
+              "sha256": "c59ba9c9b041f5adeac29dc379793868e4e337fa2b0db31e7b539889687b6bbd"
+            },
+            {
+              "src": "/media/loopforge-cast/ben-1280.fedd3740d78d1cfc.webp",
+              "width": 1280,
+              "height": 1170,
+              "bytes": 231342,
+              "sha256": "fedd3740d78d1cfc25700af965e4f404344058b37f56dd30d6fb72c0495fc1a7"
+            }
+          ]
+        }
+      ],
+      "prompts": [
+        {
+          "title": "Stage 1 · Body",
+          "file": "ben/01-body.txt"
+        },
+        {
+          "title": "Stage 2 · Rig and motions",
+          "file": "ben/02-rig-and-motion.txt"
+        },
+        {
+          "title": "Stage 3 · Opening performance",
+          "file": "ben/03-opening-performance.txt"
+        }
+      ]
+    }
+  ]
+}

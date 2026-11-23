@@ -1,0 +1,29 @@
+.cast-reader img { display: block; width: 100%; height: auto; }
+.cast-hero, .cast-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+.cast-hero figure, .cast-card figure { margin: 0; }
+.cast-hero figcaption { margin-top: .6rem; }
+.cast-hero figcaption b { display: block; color: var(--text); font-size: 1.1rem; }
+.cast-intro, .cast-notes { max-width: 74ch; margin: 2rem 0; }
+.cast-meta, .cast-card details { color: var(--muted); font-size: .875rem; }
+.cast-index { position: sticky; top: 0; z-index: 2; display: flex; flex-wrap: wrap; gap: .25rem; padding: .5rem 0; background: var(--bg); border-block: 1px solid var(--line); }
+.cast-index a, .cast-links a { display: inline-flex; align-items: center; min-height: 44px; padding: .35rem .65rem; }
+.cast-card { min-width: 0; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); scroll-margin-top: 8rem; }
+.cast-card figure { margin-bottom: 1.25rem; background: var(--deep); }
+.cast-card figure img { height: 350px; object-fit: contain; }
+.cast-card h3 { margin: 0 0 .75rem; }
+.cast-card p { max-width: 62ch; }
+.cast-links { display: flex; flex-wrap: wrap; gap: .5rem; }
+.cast-featured { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 2rem; align-items: center; margin: 2.5rem 0; }
+.cast-featured figure img { height: 460px; }
+.cast-card.supervisor figure img { height: auto; aspect-ratio: 16/9; }
+.cast-section-title { margin: 3rem 0 1.5rem; }
+@media (max-width: 700px) {
+  .cast-hero, .cast-grid, .cast-featured { grid-template-columns: 1fr; gap: 1.5rem; }
+  .cast-index { position: static; }
+  .cast-card { scroll-margin-top: 1.5rem; }
+  .cast-card figure img { height: auto; max-height: 350px; }
+}
+@media print {
+  .cast-index { display: none; }
+  .cast-card { break-inside: avoid; }
+}

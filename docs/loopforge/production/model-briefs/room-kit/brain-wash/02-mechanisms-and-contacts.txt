@@ -1,0 +1,5 @@
+LOOPFORGE · BRAIN WASH / MECHANISMS AND CONTACTS · v1
+
+Literal washing station, based on neural_lattice_a_intake_2. Basin, exposed manifold, brass piping and heavy iron frame. Do not fuse the brain, carrier, water or workers into the housing. Belt travel must pass through both ends. Nozzles must aim at the carrier path; keep valves and the operator deck reachable from the clear apron.
+
+The engine owns basin placement, travel axis, operator position, station reservation, item input/output, wash progress and dirt removal. The generated shell supplies shape and surface detail. Check orientation and all openings before accepting its fit. If the generated mesh blocks travel, separate or rebuild the obstructing surface offline; never hide that defect with a camera angle.

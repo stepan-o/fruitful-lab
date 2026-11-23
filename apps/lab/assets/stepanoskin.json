@@ -1,0 +1,10 @@
+{
+  "pack": "stepanoskin",
+  "assets": {
+    "logo": { "kind": "image", "source": "public/stepanoskin/loopforge_factory_logo_main.webp", "widths": [384, 768, 1152], "quality": 82, "alphaQuality": 80, "maxBytes": 400000 },
+    "noise": { "kind": "image", "source": "public/stepanoskin/noise_tile.webp", "quality": 88 },
+    "gunmetal": { "kind": "image", "source": "public/stepanoskin/gunmetal_tile.webp", "quality": 88 },
+    "glare": { "kind": "image", "source": "public/stepanoskin/glass_glare.webp", "quality": 88 },
+    "click": { "kind": "audio", "source": "public/stepanoskin/dobcommunications-metal-clang-284809.mp3", "maxBytes": 100000 }
+  }
+}

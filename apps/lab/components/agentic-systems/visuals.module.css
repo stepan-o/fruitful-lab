@@ -1,0 +1,70 @@
+.instrument{border:1px solid #5d716b;background:#10232c;box-shadow:0 24px 60px #0005;color:#d6d8c7}
+.scene,.deskScene{position:relative;overflow:hidden}.scene svg,.deskScene svg{width:100%;height:auto;display:block}.sceneTag{position:absolute;top:18px;left:22px;font:10px/1.5 Arial,sans-serif;letter-spacing:.15em;color:#a8b6a5}
+.instruction{font:15px/1.65 Arial,sans-serif;max-width:unset!important;margin:20px 26px 14px!important;color:#bdc9bd}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;padding:0 26px 20px}
+.tabs button,.actions button,.score button{font:14px/1.3 Arial,sans-serif;min-height:44px;padding:12px 18px;border:1px solid #71817a;background:#172f38;color:#dedfcd;cursor:pointer}
+.tabs button[aria-pressed=true]{background:#d1c39c;color:#142b32;border-color:#d1c39c}
+.instrument button:focus-visible,.instrument summary:focus-visible{outline:3px solid #e5c990;outline-offset:4px}
+.readout{display:grid;grid-template-columns:1fr 210px;gap:24px;padding:25px 28px 30px;border-top:1px solid #47615f;min-height:190px}
+.readout h3{font:28px/1.2 Georgia,serif;margin:0 0 10px;color:#e3d9bb}.readout p{font:17px/1.65 Georgia,serif;margin:0!important}
+.readout a{align-self:end;font:12px/1.7 Arial,sans-serif;color:#b4c9b7;text-decoration:underline;text-underline-offset:4px}
+.gear{animation:gearTurn 7s linear infinite;transform-box:fill-box;transform-origin:center}
+.cargo{animation:carry 5s linear infinite}.jammed{animation:strain 2s ease-in-out infinite}
+.press{animation:pressCycle 7s ease-in-out infinite}.pressArm{animation:reach 7s ease-in-out infinite;transform-origin:14px 5px}.signal{stroke-dasharray:210;animation:signal 7s linear infinite}
+.instrument .gear,.instrument .cargo,.instrument .jammed,.instrument .press,.instrument .pressArm,.instrument .signal,.instrument .deskCargo{animation-play-state:paused}
+.instrument[data-playing=true] .gear,.instrument[data-playing=true] .cargo,.instrument[data-playing=true] .jammed,.instrument[data-playing=true] .press,.instrument[data-playing=true] .pressArm,.instrument[data-playing=true] .signal,.instrument[data-playing=true] .deskCargo{animation-play-state:running}
+@keyframes gearTurn{to{transform:rotate(360deg)}}@keyframes carry{to{transform:translateX(100px)}}@keyframes strain{50%{transform:translateX(3px)}}@keyframes pressCycle{0%,25%,85%,100%{transform:translateY(0)}45%,66%{transform:translateY(53px)}}@keyframes reach{0%,15%,85%,100%{transform:rotate(8deg)}28%,65%{transform:rotate(-10deg)}}@keyframes signal{to{stroke-dashoffset:-420}}
+.deskControls{padding:0 0 24px}.deskControls .tabs{padding-top:8px}.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 26px}.actions button{text-align:left;border-bottom:4px solid #0b1c23}.actions button small{display:block;color:#a7b7a8;margin-top:6px}.actions button:disabled{opacity:.45;cursor:default}.actions button:hover:enabled{background:#26434b}
+.score{display:flex;gap:25px;align-items:center;padding:24px 26px 8px;font:13px/1.6 Arial,sans-serif}.score strong{display:block;font:28px/1 Georgia,serif;color:#d9c99c}.score button{margin-left:auto}
+.feedback{padding:0 26px;min-height:95px}.feedback p{font:18px/1.7 Georgia,serif;margin:14px 0!important}
+.deskControls details{margin:10px 26px 0;font:14px/1.7 Arial,sans-serif;color:#becbbd}.deskControls summary{cursor:pointer;padding:12px 0;min-height:44px}.deskControls li{margin:10px 0}.cover{transform-origin:500px 110px;transition:transform .7s ease}.deskCargo{animation:deskMove 1s ease-out both}@keyframes deskMove{to{transform:translateX(105px)}}
+@media(max-width:600px){.sceneTag{font-size:8px;left:12px;top:8px}.instruction{margin:16px!important}.tabs{padding:0 16px 16px;gap:6px}.tabs button{flex:1;padding:10px 9px}.readout{grid-template-columns:1fr;padding:22px 18px;gap:15px;min-height:250px}.readout h3{font-size:25px}.actions{grid-template-columns:1fr 1fr;padding:0 16px}.score{padding:22px 16px 6px;gap:15px;flex-wrap:wrap}.score button{margin-left:0}.feedback{padding:0 16px;min-height:140px}.deskControls details{margin:10px 16px 0}}
+@media(prefers-reduced-motion:reduce){.instrument *{animation:none!important;transition:none!important}}
+
+/* Chapter-specific instruments: all motion uses the shared visibility/preference gate. */
+.windowTabs,.videoSelect{display:flex;gap:8px;flex-wrap:wrap;padding:20px 24px;border-bottom:1px solid #506a63}
+.windowTabs button,.replay{min-height:44px;padding:11px 16px;border:1px solid #829183;background:#1c3740;color:#e2dfc5;font:14px/1.4 Arial,sans-serif;cursor:pointer}
+.windowTabs button[aria-pressed=true]{background:#d1c39c;color:#142b32}
+.instrument svg{display:block;width:100%;height:auto}
+.instrumentSource{display:block;padding:16px 26px 22px;font:12px/1.6 Arial,sans-serif;color:#b8cbb6}
+.custody{padding-left:20px;border-left:1px solid #6d8170;align-self:center}.custody strong{font:17px/1.5 Georgia,serif;color:#d8c798}.custody p{font:12px/1.6 Arial,sans-serif!important;margin:10px 0 0!important;color:#acbda9}
+.departing,.custodyCard{transition:transform 1s ease}.stopped *{animation-play-state:paused!important}
+.bodyReading{margin:0!important;padding:4px 28px 22px;font:18px/1.6 Georgia,serif;color:#d0d6bd}
+.measureReading{padding:5px 28px 16px}.measureReading h3{font:26px/1.3 Georgia,serif;margin:0 0 12px}.measureReading p{font:17px/1.6 Georgia,serif;margin:8px 0!important}.measureReading .measureKey{font:12px/1.65 Arial,sans-serif;color:#a5b9a8;margin-top:16px!important}
+.attentionRing{animation:attention 3.5s ease-in-out infinite;animation-play-state:paused}.instrument[data-playing=true] .attentionRing{animation-play-state:running}@keyframes attention{50%{opacity:.5}}
+.loopFocus{transition:opacity .5s ease}.loopReading{border-top:1px solid #516c64;padding:24px 28px}.loopReading h3{font:27px/1.4 Georgia,serif;color:#e0d4b0;margin:10px 0 15px}.loopReading p{font:17px/1.7 Georgia,serif;margin:0!important}.loopReading .loopVerb{font:12px/1.5 Arial,sans-serif;letter-spacing:.06em;color:#b7c9ac}
+.deskTop{padding:18px 20px 15px;border-bottom:1px solid #49655e}.deskTop .tabs{padding:0;gap:6px}.deskTop p{font:13px/1.65 Arial,sans-serif!important;margin:14px 0 0!important;color:#c5cebb}
+.deskLayout{display:grid;grid-template-columns:minmax(0,1fr) 230px;align-items:start}.deskScene{min-width:0}.deskScene svg{aspect-ratio:650/410}
+.deskControls{padding:18px 18px 18px 0}.deskControls .actions{grid-template-columns:1fr 1fr;padding:0;gap:8px}.actions button{font-size:12px;padding:10px 8px;min-height:72px}.actions small{font-size:11px!important}.score{padding:20px 0 16px;gap:18px}.score strong{font-size:30px}.replay{width:100%;font-size:12px}.shiftEnd{font:13px/1.5 Arial,sans-serif;margin:15px 0!important;color:#d9c69c}
+.feedback{padding:0 20px 18px;min-height:96px}.feedback p{font:16px/1.6 Georgia,serif;margin:0!important;color:#d2d9c3}
+.attempt{border-top:1px solid #49655e;padding:0 20px 12px;font:13px/1.75 Arial,sans-serif;color:#bdcbb7}.attempt summary{cursor:pointer;min-height:44px;padding:13px 0}.attempt p{font:13px/1.75 Arial,sans-serif!important;margin:10px 0!important}.attempt ol{padding-left:19px}
+.deskCover{transition:transform .6s ease}.guide{transition:d .6s ease}
+.deskDelivery{animation:delivery 1.6s ease-in both}.trayArrival{animation:arrival 1.6s ease-in both}.lateArm{animation:miss 2.4s ease-in-out infinite;transform-origin:353px 164px}.onTimeArm{animation:ontime 2.4s ease-in-out infinite;transform-origin:353px 164px}.controlWindow{animation:window 2.4s linear infinite}.clearedCrate{animation:clearGuide .8s ease-out both}
+.instrument .deskDelivery,.instrument .trayArrival,.instrument .lateArm,.instrument .onTimeArm,.instrument .controlWindow,.instrument .clearedCrate{animation-play-state:paused}
+.instrument[data-playing=true] .deskDelivery,.instrument[data-playing=true] .trayArrival,.instrument[data-playing=true] .lateArm,.instrument[data-playing=true] .onTimeArm,.instrument[data-playing=true] .controlWindow,.instrument[data-playing=true] .clearedCrate{animation-play-state:running}
+.instrument[data-paced=true] .onTimeArm,.instrument[data-paced=true] .controlWindow{animation-duration:4s!important}
+@keyframes delivery{0%{transform:translateX(0);opacity:1}85%{opacity:1}100%{transform:translateX(420px);opacity:0}}
+@keyframes arrival{0%,70%{opacity:0;transform:translateY(-25px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes miss{0%,30%,100%{transform:rotate(0deg)}65%,78%{transform:rotate(-35deg)}}
+@keyframes ontime{0%,25%,100%{transform:rotate(30deg)}30%,35%{transform:rotate(0deg)}47%{transform:rotate(30deg)}}
+@keyframes window{0%,23%,50%,100%{opacity:.18}24%,49%{opacity:1}}
+@keyframes clearGuide{from{transform:translateY(0);opacity:1}to{transform:translateY(-110px);opacity:0}}
+.instrument[data-playing=false] .deskDelivery,.instrument[data-playing=false] .trayArrival,.instrument[data-playing=false] .clearedCrate{animation:none}
+.instrument[data-playing=false] .clearedCrate{display:none}
+@media(max-width:1100px) and (min-width:851px){.deskLayout{grid-template-columns:minmax(0,1fr) 185px}.deskControls{padding-right:12px}.actions button{font-size:11px;padding:8px 6px}}
+@media(max-width:600px){.windowTabs{padding:12px;gap:6px}.windowTabs button{flex:1;font-size:12px;padding:9px 6px}.readout{min-height:0}.custody{border-left:0;padding:12px 0 0;border-top:1px solid #526e64}.bodyReading,.measureReading{padding-left:18px;padding-right:18px}.deskTop{padding:14px}.deskTop p{font-size:12px!important}.deskLayout{grid-template-columns:1fr}.deskControls{padding:0 14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.deskControls .actions{grid-column:1/-1;grid-template-columns:repeat(2,1fr)}.actions button{min-height:58px;font-size:13px}.score{padding:0;gap:16px}.score strong{font-size:25px}.replay{align-self:center}.shiftEnd{grid-column:1/-1;margin:0!important}.feedback{min-height:0;padding:0 14px 15px}.feedback p{font-size:15px}.loopReading{padding:20px 18px}.loopReading h3{font-size:24px}}
+@media(prefers-reduced-motion:reduce){.instrument *{animation:none!important;transition:none!important}.clearedCrate{display:none}}
+
+.lateArm{animation:none}.lateArm path{animation:latePath 2.4s ease-in-out infinite;animation-play-state:paused}.lateArm circle{animation:lateHand 2.4s ease-in-out infinite;animation-play-state:paused}.instrument[data-playing=true] .lateArm path,.instrument[data-playing=true] .lateArm circle{animation-play-state:running}
+@keyframes latePath{0%,30%,100%{d:path("M353 164L371 196L384 193")}65%,78%{d:path("M353 164L381 181L410 166")}}
+@keyframes lateHand{0%,30%,100%{transform:translate(0,0)}65%,78%{transform:translate(25px,-27px)}}
+@media(prefers-reduced-motion:reduce){.instrument *{animation:none!important;transition:none!important}}
+
+.compactOnly{display:none}.poseTabs{display:flex;gap:8px;padding:16px 14px 0}.poseTabs button{flex:1;min-height:48px;border:1px solid #8b9c88;background:#17333d;color:#d9ddc5;font:14px/1.4 Arial,sans-serif;padding:10px}.poseTabs button[aria-pressed=true]{background:#d0c19a;color:#172e37}.plateQualifier{font:12px/1.65 Arial,sans-serif!important;color:#b7c7b2;margin:0!important;padding:12px 18px 22px}.loopOverview{font:14px/1.6 Arial,sans-serif!important;text-align:center;padding:18px 12px 0;margin:0!important;color:#b4c8b7}
+@media(max-width:600px){.compactOnly{display:block}.wideOnly{display:none}}
+
+.instrument[data-playing=false] *{transition:none!important}
+
+.exchanges{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #516c64;padding:13px 26px;gap:24px;background:#16333a}.exchange{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;font:12px/1.5 Arial,sans-serif;color:#c5c8a8}.exchangePayload{display:flex;flex-direction:column;align-items:center;color:#a8c6ad}.exchangePayload svg{width:100%;height:20px}.exchangePayload button{text-align:center!important}.exchangePackets{transition:opacity .5s ease}@media(max-width:600px){.exchanges{grid-template-columns:1fr;gap:12px;padding:14px 18px}.exchange{font-size:13px}}
+
+.retainedRail{display:none}@media(max-width:600px){.retainedRail{display:flex;align-items:center;gap:14px;padding:14px 18px;border-block:1px solid #61796c;background:#102c34}.retainedRail svg{width:40px;height:28px;flex:none}.retainedRail span{font:10px/1.4 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#a4bba5}.retainedRail strong{display:block;font:18px/1.5 Georgia,serif;letter-spacing:0;text-transform:none;color:#e3d5ae}.sceneTag{position:static;padding:10px 18px;font-size:10px;background:#142c36}}

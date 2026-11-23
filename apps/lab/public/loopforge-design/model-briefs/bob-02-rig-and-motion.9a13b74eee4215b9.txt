@@ -1,0 +1,7 @@
+Rig the SAME textured bob delivery body as a biped. Preserve its proportions, materials and neutral pose; no mesh regeneration during motion work. Record the actual joint hierarchy, bind transforms, finger support and axis conventions. Export a neutral rigged GLB and FBX plus the included walk/run as separate sources.
+
+Acting direction: Head begins a turn before shoulders. Interest in an unfamiliar roller; speech addresses a group through sam. Preserve large-hand contacts and injured-leg continuity.
+
+First retarget the approved Worker 01 motion library locally, adapting contacts to bob's proportions. Reuse a motion only after checking its hand, foot and elbow behavior on THIS body. New catalog animations require a verified catalog ID and an entry in the credit ledger; archive each action independently even if a bundle is also produced. Never assume All Animations includes later jobs.
+
+Read 03-opening-performance.txt for choreography, transitions, retreat and contacts. Keep source and corrected files distinct. Animation names must preserve their catalog identity, with scene meaning recorded separately. Record file hashes, mesh/skin/texture presence, clip names/durations and root translation/yaw in export-audit.json. Record local fitting, motion retiming, constraints and visual checks in motion-cleanup.json. A still pose does not certify its entry, exit or blend.

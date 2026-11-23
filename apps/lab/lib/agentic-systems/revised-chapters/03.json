@@ -1,0 +1,282 @@
+{
+  "id": "division-of-work",
+  "title": "Earn the division of labor",
+  "standfirst": "Specialization can improve the work, parallelism can shorten it, and coordination can consume both gains.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "prose",
+      "text": "A specialist is useful when it can take responsibility for a piece of work. It is less useful when every decision sends it back across the same boundary for context, permission or repair. The organizational question begins there: what can this worker finish without making everyone else reconstruct its situation?"
+    },
+    {
+      "type": "visual",
+      "id": "team-topology",
+      "title": "Who can change the next decision?",
+      "caption": "A map of responsibilities in the recorded studio, not a message-frequency graph. Select an interface to inspect what crosses it and which authority remains elsewhere."
+    },
+    {
+      "type": "prose",
+      "text": "The map names who can act. The workshop asks which of them can act at the same time."
+    },
+    {
+      "type": "visual",
+      "id": "work-benches",
+      "title": "How many benches are actually free?",
+      "caption": "An authored scheduling model, not a productivity estimate. The arbitrary work and handover durations are disclosed inside the scene. Change the dependency and staffing separately; a complete brief includes synthesis."
+    },
+    {
+      "type": "prose",
+      "text": "Switch the workshop to a shared assembly. The fitter has tools, a place to work and nothing useful to do yet. The part is still on somebody else’s bench. A third worker has made the room look busier without creating a third independent piece of work. Advance the clock and the distinction becomes almost embarrassingly plain: some delays belong to staffing, others to the order in which the world can change."
+    },
+    {
+      "type": "prose",
+      "text": "For an AI system, division of labor also divides context. A delegate receives a partial account, makes choices within it and returns something smaller than its whole experience. That compression can be a benefit: an investigator can search widely and return a concise finding. It can also destroy the detail the receiver needs to detect a mistake. A new agent therefore needs a reason stronger than the existence of another job title."
+    },
+    {
+      "type": "heading",
+      "text": "Separate decisions that can change privately"
+    },
+    {
+      "type": "visual",
+      "id": "delegation-parnas",
+      "title": "At the cabinet’s output slot",
+      "caption": "An authored study of Parnas’s information-hiding argument. Storage rows and a tree are illustrative alternatives; the diagram is not a reproduction of his keyword-index implementation."
+    },
+    {
+      "type": "prose",
+      "text": "Parnas approached this problem through a keyword index in 1972: a program for rearranging and alphabetizing lines. One division followed the processing sequence. Another hid decisions likely to change, so that neighboring modules could continue without learning the new implementation. The example is modest enough to expose the choice. A box in a diagram may name the next stage, or it may protect the rest of the program from a decision it should not have to know. If the index changes its storage representation, consumers that know only the required operations can continue unchanged.",
+      "sources": [
+        "parnas"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Consider a source-gathering service and the report that consumes it. The collector may change its index or retry strategy without changing the report’s meaning. But if “latest” quietly changes from publication date to retrieval date, the consumer has inherited a different claim. A useful boundary hides the implementation while making the promises the receiver relies on explicit. A JSON object can be perfectly valid and still violate that agreement."
+    },
+    {
+      "type": "evidence",
+      "asset": "studio-roster",
+      "alt": "The published Munder studio interface shows nine named craft roles in a pixel-art office.",
+      "caption": "The published studio organized work by craft. The picture makes responsibility visible; it cannot show whether the assigned work is independent or whether the receiver can use its result.",
+      "original": "/loopforge-dev-blog/media/studio-classic.png"
+    },
+    {
+      "type": "prose",
+      "text": "Loopforge’s first studio had named crafts, yet its card-fitting work exposed a relationship that belonged to none of them alone. A wrist target could be satisfied while hand, card and body failed to form a usable pose. Separate construction helped protect a shared machine, so merging every task was not an established cure. The missing object was a joint acceptance example: a grip that the receiving craft could reproduce.",
+      "sources": [
+        "first-reflection"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "grip-boundary",
+      "title": "At the receiving bench",
+      "caption": "A schematic reading of the earlier transfer-pose failure, before the holder was pursued. The geometry is invented for explanation, not reconstructed from a candidate or used as collision evidence. The published Producer account supplies the sequence of events."
+    },
+    {
+      "type": "prose",
+      "text": "That example makes the dependency testable. The specialist can change its private method while the receiving contract stays visible."
+    },
+    {
+      "type": "heading",
+      "text": "Specialization can buy quality without buying speed"
+    },
+    {
+      "type": "prose",
+      "text": "Huot and colleagues’ Agents’ Room offers a direct creative comparison. Planning roles develop conflict, character, setting and plot; writing roles produce successive parts of a story, reading a shared, labeled scratchpad. A deterministic orchestrator calls them in sequence. Expert evaluators preferred variants with writing agents to the tested baselines, although human stories remained preferred overall. This is a quality result for specialized collaboration, not evidence of parallel acceleration.",
+      "sources": [
+        "agents-room"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The study uses the same model backbone for the compared systems, but the resulting stories differ substantially in length and the experiment does not establish equal-total-cost efficiency. Its useful challenge to our case is narrower: a good division can keep the right material in view during a creative decision. Loopforge would have to earn that benefit at the assembled scene, where a writer’s line and an animator’s action must remain compatible.",
+      "sources": [
+        "agents-room"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Parallelism follows the dependency graph"
+    },
+    {
+      "type": "prose",
+      "text": "Anthropic’s research system supplies a concrete commission: identify the board members of S&P 500 information-technology companies. Its account reports that delegated searches found the correct answers where a single agent’s slow sequential searches failed. A lead divided the question, workers searched independently, and findings returned for synthesis. The separation bought breadth; combining and supporting the final answer still required work. The authors report gains on an internal evaluation alongside substantially higher usage.",
+      "sources": [
+        "multiagent"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Now give the same organization two workers modifying one tightly coupled program. Their private discoveries may invalidate each other’s assumptions, and the lead must integrate changes rather than merely summarize findings. Anthropic explicitly identifies shared context and dependencies as a poorer fit. This explains why the research story cannot become a universal staffing pattern: the kind of return changes what it costs to receive.",
+      "sources": [
+        "multiagent"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Nicholas Carlini’s February 2026 compiler experiment shows how a builder can make shared work separable. Sixteen agents used separate working copies and task locks. They advanced on separate failures, then collided at the Linux build, repeatedly confronting the same obstacle. A harness that mixed the candidate compiler with GCC let them isolate different failing files; parallel work became possible again. The compiler could build Linux, but still needed GCC for its 16-bit x86 boot code.",
+      "sources": [
+        "compiler"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Carlini presents a capability experiment, reporting nearly two thousand sessions and roughly $20,000 of API use, not an equal-budget staffing trial. The transferable idea is to manufacture independently checkable work. In a creative scene, that may mean a reproducible grip or a short integrated exchange. A compiler oracle cannot tell us whether the performance feels convincing.",
+      "sources": [
+        "compiler"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Other builders have gained by removing those boundaries. Diane Sarkis’s October 2026 practitioner account describes enterprise systems that improved when routing, planning and domain subagents were folded into one main loop, with instructions and tools loaded as needed. She keeps separate agents for independent verification, parallel work and distinct permissions. The vendor’s deployment experience puts a question to the elegant organization chart: does this specialization need another conversation, or only the right instructions at the right moment?",
+      "sources": [
+        "fold"
+      ]
+    },
+    {
+      "type": "evidence",
+      "asset": "scaling-task-comparison",
+      "alt": "Figure 2 from Towards a Science of Scaling Agent Systems: four benchmark panels compare single-agent and four multi-agent architectures; the direction of the difference changes across tasks.",
+      "caption": "Figure 2, Yubin Kim and colleagues, December 2025, CC BY 4.0. Success rates run from 0 to 1. Percentage labels show relative changes from the single-agent baseline, not percentage-point differences. Original figure retained; resized and re-encoded for this page. Enlarge to inspect the individual panels.",
+      "original": "https://arxiv.org/html/2512.08296v1/boxplots_v2.svg"
+    },
+    {
+      "type": "prose",
+      "text": "Kim and colleagues put this question into a controlled comparison: 180 configurations, four benchmarks, five architectures and three model families, with common tools and prompt structures, with matched reasoning-token budgets. Multi-agent arrangements helped the financial-analysis tasks much more than the sequential crafting tasks; every tested multi-agent variant lost ground on PlanCraft. This is stronger comparative evidence than our retrospective. It still belongs to those tasks and implementations. I would use its result to design a comparison for my own workload, not import its fitted thresholds as operating rules.",
+      "sources": [
+        "scaling"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The useful boundary can move as the project changes. Separate references or alternative treatments may be cheap to combine; after a treatment is chosen, a change to one body can alter another body’s contact, the camera and the timing. A fixed roster does not guarantee that yesterday’s independent assignments remain independent today."
+    },
+    {
+      "type": "prose",
+      "text": "An apparently shorter day still needs measurement. METR’s 2025 randomized study found sixteen experienced developers taking 19% longer across 246 tasks with the evaluated AI tools, despite expecting a speedup. Its February 2026 follow-up identifies selection effects and concurrent-agent timing problems that prevent a clean updated estimate. These are coding studies, not a verdict on creative teams. They warn against treating a builder’s impression of acceleration as the missing comparison.",
+      "sources": [
+        "metr",
+        "metr-update"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Give autonomy a useful boundary"
+    },
+    {
+      "type": "visual",
+      "id": "delegation-agency",
+      "title": "The destination survives the obstacle",
+      "caption": "The courier follows one of two authored paths. The example illustrates reaction in pursuit of a goal; it contains no learned policy, language model or general path planner."
+    },
+    {
+      "type": "prose",
+      "text": "The courier can choose an alternate route when a barrier appears. That modest behavior reaches back to Wooldridge and Jennings’s 1995 account of autonomy, social ability, reactivity and proactiveness; a language model was not part of the definition. Its discretion here concerns how to reach the commissioned destination. Resourceful routing cannot establish whether that destination is still worth reaching, and the courier has no authority to substitute another. A delegation brief needs to say which decisions travel with the work.",
+      "sources": [
+        "agency-1995"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Schluntz and Zhang’s 2024 engineering guide brings that discretion back to current model systems. Rendering a known list of views can follow a coded workflow. Investigating a broken motion may require the next observation to depend on the last one. The investigation needs room to change its route. It does not follow that every change of route needs a new agent: that would reopen the context and handover costs we have just encountered.",
+      "sources": [
+        "effective-agents"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Does this investigation need a separate context, permission boundary or independent judgment—or could the existing worker use another tool?"
+    },
+    {
+      "type": "visual",
+      "id": "delegation-initiative",
+      "title": "A day, then an hour",
+      "caption": "A calendar study inspired by Horvitz’s discussion of LookOut. The wording and display are newly authored. A narrower highlight is a proposed interpretation, not an invitation or a recovered historical screen."
+    },
+    {
+      "type": "prose",
+      "text": "Eric Horvitz’s 1999 account of mixed initiative makes uncertainty part of interface design. His LookOut example helps with scheduling from messages. When a precise appointment cannot be inferred confidently, useful assistance can be less precise: bring the relevant calendar period into view and let the person refine it. The system considers the costs of acting, interrupting and being wrong; initiative is not a single switch between autonomy and permission.",
+      "sources": [
+        "horvitz"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Mixed initiative gives us more than “ask” or “act.” A system can prepare a reversible draft, expose a narrower uncertainty, or offer a choice whose consequences are visible. The person receives work that advances the task without concealing the unresolved decision. This matters when review attention is scarce: the best interruption is one whose answer can actually change the next step."
+    },
+    {
+      "type": "heading",
+      "text": "Account for what comes back"
+    },
+    {
+      "type": "visual",
+      "id": "handoff-table",
+      "title": "The compiler that never received the question",
+      "caption": "A schematic reconstruction of three failures reported in the first studio cycle. Selecting a record changes which boundary stopped that attempt; it does not rerun historical tooling. No elapsed times or memory measurements are inferred."
+    },
+    {
+      "type": "prose",
+      "text": "A prepared Loopforge packet stopped before reaching the compiler. Improving the proposed build could not repair the path that carried it. The incident makes coordination concrete: someone must test the return journey as well as write the assignment. It supports one complete parent–worker–execution trial, without proving that one agent would have succeeded.",
+      "sources": [
+        "engine-first",
+        "first-assessment"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "delegation-automation",
+      "title": "Who restores the line?",
+      "caption": "Step through ordinary control, an exception, diagnosis and manual recovery. This authored model isolates a transfer of responsibility; it does not simulate operator skill or reproduce a particular plant."
+    },
+    {
+      "type": "prose",
+      "text": "Lisanne Bainbridge’s 1983 analysis moves the boundary into industrial control. Automation can take the routine work and leave an operator to handle the unusual, difficult cases. Yet routine work is also where skill is exercised. The person expected to recover the system may have had fewer opportunities to practise, and may be asked to understand it at precisely the moment its normal behavior has broken down.",
+      "sources": [
+        "bainbridge"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Bainbridge’s human skill-loss mechanism was not tested in our studio. What the Loopforge record does expose is unfinished judgment returning to the owner: construction could continue while decisions accumulated for Stepan, and I helped arrange the delay. Who receives an exception, what they can inspect and how much work already depends on their answer are parts of the production architecture.",
+      "sources": [
+        "root-account"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "A boundary is worth keeping when the independent work, protection or judgment it enables exceeds the context transfer, integration and recovery it consumes. We seldom know that balance in advance. A small matched trial, with the same result required of both arrangements, tells us more than a busy studio portrait. It also leaves us with the next requirement: each worker must be able to observe enough to correct its own course."
+    },
+    {
+      "type": "build",
+      "title": "Draw the dependencies before the team",
+      "body": "Take one real assignment from your own work. Keep the desired artifact fixed while comparing a workflow, one adaptive builder, and a builder with one bounded delegate.",
+      "steps": [
+        "Write the observations that determine the next action. Mark which are predictable in advance and which require investigation.",
+        "Draw an edge whenever one piece of work needs another piece’s result or changes the same artifact. Name an independent branch only if it can proceed without that result.",
+        "Give a proposed delegate one question, the evidence it can inspect, and a return that its receiver can use. Include the example that would make the receiver reject it.",
+        "Give the receiver a joint acceptance example: a usable grip, an executable packet or an answer with its sources. Specify what remains private and what the receiver must reproduce.",
+        "Compare arrangements on the same task and acceptance conditions. Record elapsed time, model and tool use, integration work and human review separately. Include recurring maintenance; do not add overlapping agent durations and call the sum a speedup."
+      ],
+      "exercise": "Move the workshop’s handover delay toward zero. Which advantage disappears, and which dependency remains? Choose one real handoff to remove and one permission or independent-review boundary worth retaining. Name the benefit that pays for the retained boundary."
+    }
+  ],
+  "sourceIds": [
+    "parnas",
+    "first-reflection",
+    "agents-room",
+    "multiagent",
+    "compiler",
+    "fold",
+    "scaling",
+    "metr",
+    "metr-update",
+    "agency-1995",
+    "effective-agents",
+    "horvitz",
+    "engine-first",
+    "first-assessment",
+    "bainbridge",
+    "root-account"
+  ]
+}

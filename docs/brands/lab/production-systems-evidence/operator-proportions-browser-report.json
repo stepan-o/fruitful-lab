@@ -1,0 +1,297 @@
+{
+  "desktop": {
+    "animated": 31,
+    "nodes": 1005,
+    "playing": "true",
+    "poses": [
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 332.635, 52.3684)"
+      },
+      {
+        "name": "profile-operator-upper",
+        "state": "running",
+        "transform": "matrix(-0.0755162, 0.997168, -0.997168, -0.0755162, 416, -48)"
+      },
+      {
+        "name": "profile-operator-fore",
+        "state": "running",
+        "transform": "matrix(-0.97802, 0.208447, -0.208447, -0.97802, 410.866, 19.8057)"
+      },
+      {
+        "name": "profile-operator-hand",
+        "state": "running",
+        "transform": "matrix(0.8, 0, 0, 0.8, 332.635, 38.3284)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 293.434)"
+      }
+    ],
+    "rect": {
+      "height": 454.140625,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "running": 31,
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "paused": {
+    "animated": 31,
+    "nodes": 1005,
+    "playing": "false",
+    "poses": [
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 332.635, 55.5)"
+      },
+      {
+        "name": "profile-operator-upper",
+        "state": "paused",
+        "transform": "matrix(-0.0867, 0.9962, -0.9962, -0.0867, 416, -48)"
+      },
+      {
+        "name": "profile-operator-fore",
+        "state": "paused",
+        "transform": "matrix(-0.9656, 0.2599, -0.2599, -0.9656, 410.103, 19.7439)"
+      },
+      {
+        "name": "profile-operator-hand",
+        "state": "paused",
+        "transform": "matrix(0.8, 0, 0, 0.8, 332.635, 41.46)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 295)"
+      }
+    ],
+    "rect": {
+      "height": 454.140625,
+      "width": 423.296875,
+      "x": 128,
+      "y": 252.09375
+    },
+    "running": 0,
+    "scrollWidth": 1420,
+    "width": 1440
+  },
+  "pauseStable": true,
+  "phone390": {
+    "animated": 31,
+    "nodes": 1005,
+    "playing": "true",
+    "poses": [
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 326.861, 65.5)"
+      },
+      {
+        "name": "profile-operator-upper",
+        "state": "running",
+        "transform": "matrix(-0.2371, 0.9715, -0.9715, -0.2371, 416, -48)"
+      },
+      {
+        "name": "profile-operator-fore",
+        "state": "running",
+        "transform": "matrix(-0.8939, 0.4484, -0.4484, -0.8939, 399.88, 18.0617)"
+      },
+      {
+        "name": "profile-operator-hand",
+        "state": "running",
+        "transform": "matrix(0.8, 0, 0, 0.8, 326.861, 51.46)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      }
+    ],
+    "rect": {
+      "height": 377.640625,
+      "width": 326,
+      "x": 32,
+      "y": 175.078125
+    },
+    "running": 31,
+    "scrollWidth": 370,
+    "width": 390
+  },
+  "phone320": {
+    "animated": 31,
+    "nodes": 1005,
+    "playing": "true",
+    "poses": [
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 332.635, 39.8878)"
+      },
+      {
+        "name": "profile-operator-upper",
+        "state": "running",
+        "transform": "matrix(-0.0555249, 0.998469, -0.998469, -0.0555249, 416, -48)"
+      },
+      {
+        "name": "profile-operator-fore",
+        "state": "running",
+        "transform": "matrix(-1, 0.00569431, -0.00569431, -1, 412.224, 19.8951)"
+      },
+      {
+        "name": "profile-operator-hand",
+        "state": "running",
+        "transform": "matrix(0.8, 0, 0, 0.8, 332.635, 25.8478)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 301.17, 287.194)"
+      }
+    ],
+    "rect": {
+      "height": 308.578125,
+      "width": 256,
+      "x": 32,
+      "y": 212.671875
+    },
+    "running": 31,
+    "scrollWidth": 300,
+    "width": 320
+  },
+  "tablet768": {
+    "animated": 31,
+    "nodes": 1005,
+    "playing": "true",
+    "poses": [
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 326.861, 65.5)"
+      },
+      {
+        "name": "profile-operator-upper",
+        "state": "running",
+        "transform": "matrix(-0.2371, 0.9715, -0.9715, -0.2371, 416, -48)"
+      },
+      {
+        "name": "profile-operator-fore",
+        "state": "running",
+        "transform": "matrix(-0.8939, 0.4484, -0.4484, -0.8939, 399.88, 18.0617)"
+      },
+      {
+        "name": "profile-operator-hand",
+        "state": "running",
+        "transform": "matrix(0.8, 0, 0, 0.8, 326.861, 51.46)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      }
+    ],
+    "rect": {
+      "height": 321.046875,
+      "width": 265.59375,
+      "x": 38,
+      "y": 221.984375
+    },
+    "running": 31,
+    "scrollWidth": 748,
+    "width": 768
+  },
+  "integrity": {
+    "brokenUse": [],
+    "duplicateIds": [],
+    "filters": 0,
+    "images": 0
+  },
+  "errors": [],
+  "offscreen": {
+    "animated": 31,
+    "nodes": 1005,
+    "playing": "false",
+    "poses": [
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 326.861, 65.5)"
+      },
+      {
+        "name": "profile-operator-upper",
+        "state": "paused",
+        "transform": "matrix(-0.2371, 0.9715, -0.9715, -0.2371, 416, -48)"
+      },
+      {
+        "name": "profile-operator-fore",
+        "state": "paused",
+        "transform": "matrix(-0.8939, 0.4484, -0.4484, -0.8939, 399.88, 18.0617)"
+      },
+      {
+        "name": "profile-operator-hand",
+        "state": "paused",
+        "transform": "matrix(0.8, 0, 0, 0.8, 326.861, 51.46)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "paused",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      }
+    ],
+    "rect": {
+      "height": 321.046875,
+      "width": 265.59375,
+      "x": 38,
+      "y": -4191.015625
+    },
+    "running": 0,
+    "scrollWidth": 748,
+    "width": 768
+  },
+  "resumed": {
+    "animated": 31,
+    "nodes": 1005,
+    "playing": "true",
+    "poses": [
+      {
+        "name": "profile-operator-mainPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 326.861, 65.5)"
+      },
+      {
+        "name": "profile-operator-upper",
+        "state": "running",
+        "transform": "matrix(-0.235765, 0.971834, -0.971834, -0.235765, 416, -48)"
+      },
+      {
+        "name": "profile-operator-fore",
+        "state": "running",
+        "transform": "matrix(-0.895294, 0.445509, -0.445509, -0.895294, 399.968, 18.0831)"
+      },
+      {
+        "name": "profile-operator-hand",
+        "state": "running",
+        "transform": "matrix(0.8, 0, 0, 0.8, 326.861, 51.3043)"
+      },
+      {
+        "name": "profile-operator-innerPawn",
+        "state": "running",
+        "transform": "matrix(1, 0, 0, 1, 296.551, 303)"
+      }
+    ],
+    "rect": {
+      "height": 321.046875,
+      "width": 265.59375,
+      "x": 38,
+      "y": 221.984375
+    },
+    "running": 31,
+    "scrollWidth": 748,
+    "width": 768
+  }
+}

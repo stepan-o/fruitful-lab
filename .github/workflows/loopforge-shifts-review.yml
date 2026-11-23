@@ -1,0 +1,59 @@
+name: Loopforge opening shifts at 1x
+on:
+  push:
+    branches: [codex/days-2-4-engine, codex/shifts-live-art]
+    paths:
+      - 'apps/lab/lib/loopforge/**'
+      - 'apps/lab/public/loopforge-intro/**'
+      - 'apps/lab/public/loopforge-shifts/**'
+      - 'apps/lab/scripts/shifts/*review.cjs'
+      - '.github/workflows/loopforge-shifts-review.yml'
+permissions:
+  contents: read
+jobs:
+  play:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        scene: [security, conveyor, morning, clash, comparison, progression]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install the recording browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/shift-review" playwright@1.56.1
+          "$RUNNER_TEMP/shift-review/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Play and record the comparison
+        env:
+          SCENE: ${{ matrix.scene }}
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory apps/lab/public > "$RUNNER_TEMP/server.log" 2>&1 &
+          export NODE_PATH="$RUNNER_TEMP/shift-review/node_modules"
+          if [[ "$SCENE" == comparison || "$SCENE" == progression ]]; then
+            export BASE_SHA=901df378b86aac9958fcf943b34cc427846bff97
+            mkdir -p "$RUNNER_TEMP/base"
+            git archive "$BASE_SHA" apps/lab/public/loopforge-{intro,shifts} | tar -x -C "$RUNNER_TEMP/base"
+            python3 -m http.server 4174 --bind 127.0.0.1 --directory "$RUNNER_TEMP/base/apps/lab/public" > "$RUNNER_TEMP/base.log" 2>&1 &
+            export SHIFT_BEFORE=http://127.0.0.1:4174/loopforge-shifts/index.html
+            export SHIFT_AFTER=http://127.0.0.1:4173/loopforge-shifts/index.html
+            node apps/lab/scripts/shifts/art-review.cjs "$SCENE"
+          else
+            node apps/lab/scripts/shifts/browser-review.cjs "$SCENE"
+          fi
+      - name: Verify the self-contained player with networking disabled
+        if: matrix.scene == 'progression'
+        run: |
+          python3 apps/lab/scripts/shifts/portable.py "$RUNNER_TEMP/shift-offline"
+          NODE_PATH="$RUNNER_TEMP/shift-review/node_modules" node apps/lab/scripts/shifts/portable-check.cjs "$RUNNER_TEMP/shift-offline/Loopforge-Days-2-4.html"
+      - uses: actions/upload-artifact@v4
+        if: always() && matrix.scene != 'progression'
+        with:
+          name: loopforge-1x-${{ matrix.scene }}
+          path: shift-evidence
+          retention-days: 30

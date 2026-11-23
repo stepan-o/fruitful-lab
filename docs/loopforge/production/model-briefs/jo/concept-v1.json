@@ -1,0 +1,15 @@
+{
+  "id": "jo",
+  "refs": [
+    "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/rooms/09_loopforge_rooms_lounge_1.png"
+  ],
+  "prompt": "Use case: stylized-concept. Develop an isolated full-body Loopforge worker concept for jo from the blue-collar workers sitting in the supplied original LOUNGE artwork. Focus on the RIGHT FOREGROUND WORKER with the low projecting cap brim and plain work jacket, not the room or furniture. Make jo recognizably robotic: a low WIDE horizontal head under a broad flat cap-like metal brow, two widely separated small cyan rectangular lenses, simple horizontal speaker slot, short thick neck. This low wide head and straight modest shoulders contrast with the tall skull-headed and bulky armored cast. Medium height, unhurried grounded posture, straight torso under a faded denim-blue short work jacket with broad simple panels and rolled back cuffs exposing dark mechanical forearms, relaxed ordinary five-finger hands, sturdy straight legs in dark-blue work trousers with mechanical knees and worn flat service boots. Clothes cover an entirely mechanical body, no skin or human face, no hair. Restrained brass fittings and oily black joints, one pale cuff stripe; quiet useful clothing, not a soldier's armored suit or modern fashion outfit. Full body front three-quarter standing relaxed A-pose, both hands free and separated from body, all feet visible. Neutral expression, no fixed exaggerated grin. Dark smoky charcoal background, richly textured original Loopforge painterly industrial concept style, broad blue blocks readable at room-camera size. Only one worker; no text, props, seat, weapon, badge writing, jewelry or cigarette.",
+  "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-837e8fec-5752-4d40-834f-b75b2dfeaecf.png",
+  "status": "owner-approved-concept",
+  "version": 1,
+  "approval": "The one with the hat - great. The one in the hat is your average jo.",
+  "workspace_image": "output/opening-cast/jo/jo-concept-v1.png",
+  "sha256": "ec88ad2a0e9fbdf8105e78a666d064b6e257e7a2e35b620ad2a79a46889d7279",
+  "date": "2026-10-21",
+  "tool": "image_gen"
+}

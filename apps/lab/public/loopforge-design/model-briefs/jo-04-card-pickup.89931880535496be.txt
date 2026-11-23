@@ -1,0 +1,11 @@
+jo — retrieve bob’s admission card
+21 October 2026 · catalog source request
+
+Use the existing approved jo rig, 01a15d66-2e4f-727f-97d4-306077826139. Do not regenerate the body, cap, clothes, materials or skeleton.
+Apply Action 276, Male Bend Over Pick Up (DailyActions / PickingUpItem), verified through the live Meshy catalog. Export the textured GLB with its rig and source animation intact. Cost reservation: 3 credits; cumulative project authorization is 500.
+
+Scene purpose: after STILETTO has crossed Security, jo stoops for the card bob dropped. He brings it back without presenting it to the audience. Preserve the economical, ordinary movement of jo. Fit the pickup hand to the card on the fixed floor, keep his feet planted and avoid knee, hip and cap collisions. The hand closes at contact; the card follows only after the engine commits the transfer. Record the source separately from the fitted derivative, with its task ID, file hash, timing and contact markers.
+
+Keep this clip available in jo’s shared animation player as well as the opening scene. Source generation does not establish visual acceptance.
+
+Outcome and supersession: the native source downloaded, but the owner subsequently chose ed-procedure as the first card-arc seed. The original jo request above is retained as provenance. jo does not collect or return bob’s card in the current opening. This source trial is not included in jo’s published motion bank; a future jo-avoidance seed needs its own fitted custody sequence.

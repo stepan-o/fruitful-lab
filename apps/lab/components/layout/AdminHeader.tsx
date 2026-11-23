@@ -1,0 +1,60 @@
+// frontend/components/layout/AdminHeader.tsx
+import Link from "next/link";
+import LogoutButton from "@/components/layout/LogoutButton";
+
+export default function AdminHeader() {
+    return (
+        <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--background)]/80 backdrop-blur">
+            <div className="mx-auto flex min-h-16 flex-wrap gap-y-2 py-2 max-w-[1200px] items-center justify-between px-4 sm:px-6">
+                {/* Left: Brand + Admin label */}
+                <div className="flex items-center gap-3">
+                    <Link
+                        href="/admin/dashboard"
+                        className="font-heading text-lg tracking-wide text-[var(--foreground)] hover:text-[var(--brand-heading)] transition-colors"
+                    >
+                        Fruitful Lab
+                    </Link>
+                    <span className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--card)] px-2.5 py-1 text-[11px] font-semibold text-[var(--foreground-muted)]">
+            Admin
+          </span>
+                </div>
+
+                {/* Center: Admin nav */}
+                <nav className="hidden items-center gap-6 text-sm sm:flex">
+                    <Link
+                        href="/admin/dashboard"
+                        className="text-[var(--foreground)]/90 hover:text-[var(--brand-heading)] transition-colors"
+                    >
+                        Dashboard
+                    </Link>
+                    <Link
+                        href="/tools"
+                        className="text-[var(--foreground)]/90 hover:text-[var(--brand-heading)] transition-colors"
+                    >
+                        Tools
+                    </Link>
+                    <Link
+                        href="/"
+                        className="text-[var(--foreground)]/90 hover:text-[var(--brand-heading)] transition-colors"
+                    >
+                        Hub
+                    </Link>
+                </nav>
+
+                <Link href="/admin/users" className="inline-flex min-h-11 items-center rounded-lg px-3 text-sm font-semibold">Accounts</Link>
+                {/* Right: actions */}
+                <div className="flex items-center gap-2">
+                    <Link
+                        href="/tools"
+                        className="rounded-lg border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-xs font-semibold text-[var(--foreground)] hover:bg-[var(--card-hover)] transition-colors"
+                    >
+                        Back to Tools
+                    </Link>
+
+                    {/* Uses POST /api/auth/logout, then push("/") */}
+                    <LogoutButton />
+                </div>
+            </div>
+        </header>
+    );
+}

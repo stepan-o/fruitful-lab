@@ -1,0 +1,11 @@
+{
+  "revision": "room-kit/1",
+  "asset": "lattice-forge",
+  "src": "/media/files/9d291caa922450b9ec19617c495ef5a1bb9a44368335ae6b286d38620c31f0c4.glb",
+  "sha256": "9d291caa922450b9ec19617c495ef5a1bb9a44368335ae6b286d38620c31f0c4",
+  "bytes": 1437364,
+  "sourceSha256": "fdb9d0f9282864b71dea482cf3b45cf4304ba94c331b2d0ab4d57acebd753aea",
+  "triangles": 16092,
+  "textureSize": 1024,
+  "status": "candidate; fit and visual review pending"
+}

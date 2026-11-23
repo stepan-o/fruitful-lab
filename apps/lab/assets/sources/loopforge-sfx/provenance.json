@@ -1,0 +1,182 @@
+{
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "verified": "2026-10-08",
+  "sources": {
+    "metal": {
+      "filename": "345080__metrostock99__fx-metal-clanking-on-concrete-501.wav",
+      "author": "metrostock99",
+      "title": "FX METAL CLANKING ON CONCRETE 501.wav",
+      "url": "https://freesound.org/people/metrostock99/sounds/345080/",
+      "sha256": "847d423b63a6fc3aa12d8576c17e969a9f48b5d91742346aeafb12ffef134ac0"
+    },
+    "gate": {
+      "filename": "399449__celadon_noise__cemeterygate16.aiff",
+      "author": "celadon_noise",
+      "title": "cemeterygate16.aif",
+      "url": "https://freesound.org/people/celadon_noise/sounds/399449/",
+      "sha256": "76d1097dc600de7c6027c4f1e76eca93556331113de1add77f1b530737426602"
+    },
+    "starter": {
+      "filename": "524908__engineer_815__starter_75hp.wav",
+      "author": "Engineer_815",
+      "title": "Starter_75hp.wav",
+      "url": "https://freesound.org/people/Engineer_815/sounds/524908/",
+      "sha256": "3caa2066dd9f0867237dd4d7ce7e53fb79910f43965d5ce0649f2d9787f20e32"
+    },
+    "brake": {
+      "filename": "818295__microman502__handbrake-engage-disengage.wav",
+      "author": "microman502",
+      "title": "Handbrake Engage, Disengage",
+      "url": "https://freesound.org/people/microman502/sounds/818295/",
+      "sha256": "4c22f1c9633d2ca3ce1c269b14caa71defa348205b7734661cd407d82f0a6129"
+    },
+    "drone": {
+      "filename": "748215__christmaskrumble666__punishment-sound.wav",
+      "author": "ChristmasKrumble666",
+      "title": "Punishment Sound",
+      "url": "https://freesound.org/people/ChristmasKrumble666/sounds/748215/",
+      "sha256": "52c9bfc7f05b297e316dab77beefa0145cd35d9fcc47c4404b89eaba504e76c8"
+    }
+  },
+  "edits": [
+    {
+      "id": "menu-clang",
+      "source": "metal",
+      "intervalSeconds": [
+        0.604,
+        2.75
+      ],
+      "channels": 1,
+      "highpassHz": 30,
+      "fadeInMs": 2.0,
+      "fadeOutMs": 80.0,
+      "crossfadeMs": 0,
+      "gainDb": -2.78,
+      "use": "landing menu",
+      "output": "menu-clang.mp3",
+      "sha256": "47772e3089ad286fb6a25b516df409dad53f2a359f9ba2e50663b900f0286a3d",
+      "bytes": 35570,
+      "decodedSeconds": 2.146009,
+      "decodedPeakDbfs": -3.46,
+      "decodedRmsDbfs": -18.44,
+      "first10msPeakDbfs": -13.36,
+      "last10msPeakDbfs": -61.43
+    },
+    {
+      "id": "contactor",
+      "source": "starter",
+      "intervalSeconds": [
+        1.023,
+        1.34
+      ],
+      "channels": 1,
+      "highpassHz": 30,
+      "fadeInMs": 2.0,
+      "fadeOutMs": 45.0,
+      "crossfadeMs": 0,
+      "gainDb": -2.85,
+      "use": "conveyor RESET / shift start",
+      "output": "contactor.mp3",
+      "sha256": "77fecd3176781ede66ba5f72f37098ec8c0d65854f6f72dcce9b9441c4404fd2",
+      "bytes": 6313,
+      "decodedSeconds": 0.317007,
+      "decodedPeakDbfs": -3.14,
+      "decodedRmsDbfs": -22.85,
+      "first10msPeakDbfs": -24.94,
+      "last10msPeakDbfs": -47.35
+    },
+    {
+      "id": "ratchet-engage",
+      "source": "brake",
+      "intervalSeconds": [
+        0.94,
+        1.16
+      ],
+      "channels": 1,
+      "highpassHz": 30,
+      "fadeInMs": 1.0,
+      "fadeOutMs": 25.0,
+      "crossfadeMs": 0,
+      "gainDb": -2.85,
+      "use": "first-shift commitment",
+      "output": "ratchet-engage.mp3",
+      "sha256": "a8c0dfe653eba5899e44109661cdec1fe0e894d97673674b387e0678a7c49f85",
+      "bytes": 4641,
+      "decodedSeconds": 0.22,
+      "decodedPeakDbfs": -3.72,
+      "decodedRmsDbfs": -21.67,
+      "first10msPeakDbfs": -25.14,
+      "last10msPeakDbfs": -60.1
+    },
+    {
+      "id": "ratchet-release",
+      "source": "brake",
+      "intervalSeconds": [
+        3.211,
+        3.94
+      ],
+      "channels": 1,
+      "highpassHz": 30,
+      "fadeInMs": 1.0,
+      "fadeOutMs": 45.0,
+      "crossfadeMs": 0,
+      "gainDb": -3.0,
+      "use": "first-shift shutdown",
+      "output": "ratchet-release.mp3",
+      "sha256": "f69f25f1b841c67ddb29efc6d5337d13fc816e7d622063a25e6ca5a13615d3d7",
+      "bytes": 12582,
+      "decodedSeconds": 0.729002,
+      "decodedPeakDbfs": -3.26,
+      "decodedRmsDbfs": -25.87,
+      "first10msPeakDbfs": -35.8,
+      "last10msPeakDbfs": -66.24
+    },
+    {
+      "id": "gate-close-review",
+      "source": "gate",
+      "intervalSeconds": [
+        0,
+        3.186508
+      ],
+      "channels": 1,
+      "highpassHz": 30,
+      "fadeInMs": 4.0,
+      "fadeOutMs": 100.0,
+      "crossfadeMs": 0,
+      "gainDb": -3.0,
+      "use": "unassigned audition only",
+      "output": "gate-close-review.mp3",
+      "sha256": "187a6afcd23dcea713cfa5e07f0ab586741d82a77ed66b193243d1985cd67c8b",
+      "bytes": 51871,
+      "decodedSeconds": 3.186508,
+      "decodedPeakDbfs": -3.37,
+      "decodedRmsDbfs": -20.77,
+      "first10msPeakDbfs": -21.7,
+      "last10msPeakDbfs": -52.69
+    },
+    {
+      "id": "dark-room-review",
+      "source": "drone",
+      "intervalSeconds": [
+        60,
+        86
+      ],
+      "channels": 2,
+      "highpassHz": 30,
+      "fadeInMs": 0,
+      "fadeOutMs": 0,
+      "crossfadeMs": 2000,
+      "gainDb": 1.17,
+      "use": "unassigned audition loop only",
+      "output": "dark-room-review.mp3",
+      "sha256": "1cac6cd0577e798b90d26831e7603331304f258513bcd47b801e28fbfdfc237e",
+      "bytes": 481220,
+      "decodedSeconds": 24.0,
+      "decodedPeakDbfs": -12.48,
+      "decodedRmsDbfs": -28.73,
+      "first10msPeakDbfs": -17.26,
+      "last10msPeakDbfs": -19.59
+    }
+  ]
+}

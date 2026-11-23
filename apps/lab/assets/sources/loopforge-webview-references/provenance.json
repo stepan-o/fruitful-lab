@@ -1,0 +1,11 @@
+{
+  "date":"2026-10-10",
+  "method":"Browser screenshots of publicly accessible running Babylon demos at the normal 1280 × 720 viewport. No model or texture extraction. Resized/compressed by the media pipeline; no visual restyling.",
+  "use":"Three limited editorial figures in the Webview engineering discussion, each with creator credit, source link and specific analysis. This is not a claim of third-party asset licensing for the Loopforge game; screenshots stay in the reference pack and are not game materials.",
+  "boundary":"Screenshots illustrate visual techniques, not performance benchmarks. Any visible FPS is incidental to capture conditions. Newer demo versions do not establish compatibility with the project's pinned Babylon 9.30.0.",
+  "items":[
+    {"id":"espilit","title":"Glowing Espilit","creator":"Michel Rousseau","url":"https://www.babylonjs.com/Demos/GlowingEspilit/","lesson":"Baked interior illumination and contact shadows; apply its room-lighting principle to the lobby, not its architectural style."},
+    {"id":"helmet","title":"Flight Helmet","creator":"Patrick Ryan","url":"https://www.babylonjs.com/Demos/FlightHelmet/","lesson":"Distinct leather, metal, glass and hose materials; borrow surface separation for furniture and worker hardware."},
+    {"id":"v8","title":"V8 Engine","creator":"Michel Rousseau","url":"https://www.babylonjs.com/Demos/V8/","lesson":"Articulated machinery with legible connected parts; useful for paper feed/stamp mechanics, not the target lobby finish."}
+  ]
+}

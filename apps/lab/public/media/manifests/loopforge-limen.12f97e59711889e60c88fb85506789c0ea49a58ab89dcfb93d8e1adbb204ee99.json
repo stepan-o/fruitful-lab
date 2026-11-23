@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-limen",
+  "assets": {
+    "limen": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/a1baecfa670b8bc1d63656d23bb7d51bf44aad287223a753377004b02787eef7.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 4865140,
+          "sha256": "a1baecfa670b8bc1d63656d23bb7d51bf44aad287223a753377004b02787eef7"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.scene {position:absolute;inset:0;background:#040806;overflow:hidden;isolation:isolate;animation:sceneIn .65s ease-out both;}
+.artwork {position:absolute;inset:0;z-index:-3;animation:artSettle 1.1s cubic-bezier(.2,.65,.3,1) both;}
+.artwork img {height:100%;width:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.72);}
+.shade {position:absolute;inset:0;z-index:-2;background:linear-gradient(0deg,#030907 0%,#030907ed 13%,#07100bea 22%,#07100baf 36%,transparent 60%),linear-gradient(180deg,#020805b3,transparent 17%);}
+.soot {position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:-1;pointer-events:none;opacity:.88;}
+.heading {position:absolute;top:28px;left:clamp(22px,5vw,96px);right:clamp(22px,5vw,96px);display:flex;align-items:center;gap:24px;font:10px var(--font-instrument),monospace;color:#b0ad94;}
+.heading button {margin-left:auto;min-height:44px;background:none;border:0;color:#ccc7ab;font:13px var(--font-console),sans-serif;}
+.heading > span:first-child {color:#ddc993;}
+.transmission {position:absolute;bottom:clamp(20px,4vh,64px);left:clamp(22px,5vw,96px);right:clamp(22px,5vw,96px);max-height:60%;overflow:auto;scrollbar-color:#8b7954 #050b07;padding:4px;}
+.topics {display:flex;gap:25px;margin-bottom:22px;border-bottom:1px solid #b9a07233;}
+.topics button {background:none;border:0;border-bottom:2px solid transparent;color:#a5ad9f;padding:12px 0;min-height:44px;font:16px var(--font-console),sans-serif;}
+.topics button[aria-pressed=true] {color:#f0d6a0;border-color:#d7b973;}
+.topics span {font:9px var(--font-instrument),monospace;color:#b9a072;margin-right:8px;}
+.beat {display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(30px,7vw,130px);align-items:start;animation:textIn .32s ease-out both;}
+.voice h1 {font:600 clamp(28px,3.2vw,52px)/1.05 var(--font-console),sans-serif;max-width:19ch;margin:8px 0 16px;}
+.voice blockquote {font:400 clamp(19px,1.8vw,28px)/1.3 var(--font-console),sans-serif;color:#cbd0bd;max-width:38ch;padding-left:16px;border-left:2px solid #a78d56;}
+.statement dl {display:flex;gap:clamp(18px,3vw,48px);margin:14px 0;}
+.statement dt {font:9px var(--font-instrument),monospace;color:#a8ad9d;text-transform:uppercase;}
+.statement dd {font:500 36px/1.1 var(--font-console),sans-serif;margin:5px 0 0;color:#e3d5ae;}
+.statement > p {font-size:17px;color:#aab3a5;line-height:1.35;max-width:43ch;margin:12px 0 18px;}
+.quota {display:flex;align-items:center;gap:18px;margin:8px 0 12px;}
+.quota strong {font:500 76px/.9 var(--font-console),sans-serif;color:#f3dba5;}
+.quota span {font:10px var(--font-instrument),monospace;color:#a8ad9d;}
+.quota b {font:19px var(--font-console),sans-serif;color:#d2d5c1;display:block;margin-top:8px;}
+.scene[data-leaving=true] {animation:sceneOut .24s ease-in both;pointer-events:none;}
+@keyframes sceneIn {from{opacity:0}to{opacity:1}}
+@keyframes artSettle {from{transform:scale(1.025);opacity:.3}to{transform:scale(1);opacity:1}}
+@keyframes textIn {from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@keyframes sceneOut {from{opacity:1}to{opacity:0}}
+@media(min-width:901px) and (max-height:780px) {.transmission{bottom:20px;max-height:58%;}.topics{margin-bottom:12px;}.voice h1{font-size:34px;}.voice blockquote{font-size:20px;}.statement > p{font-size:15px;}.heading{top:12px;}}
+@media(max-width:900px) {
+ .heading {top:10px;left:18px;right:18px;gap:8px;flex-wrap:wrap;}.heading > span {font-size:8px;}.heading > span:nth-child(2){display:none;}.heading button {font-size:12px;}
+ .artwork {bottom:32%;}.artwork img {object-position:50% 20%;}.shade {background:linear-gradient(0deg,#030907 0%,#030907 31%,#030907ec 43%,#03090785 58%,transparent 77%);}
+ .transmission {left:18px;right:18px;bottom:16px;max-height:62%;}.topics {margin-bottom:14px;gap:24px;}.topics button {font-size:14px;}.beat {grid-template-columns:1fr;gap:18px;}.voice > span,.statement > span{font-size:8px;}.voice h1 {font-size:28px;max-width:24ch;margin:6px 0 10px;}.voice blockquote {font-size:19px;max-width:38ch;padding-left:10px;}.statement dl {gap:26px;margin:8px 0;}.statement dd {font-size:30px;}.statement dt {font-size:8px;}.statement > p{font-size:15px;margin:9px 0 12px;}.quota strong{font-size:58px;}.quota b{font-size:17px;}.quota {margin:6px 0;}.statement button {min-height:52px;}
+}
+@media(prefers-reduced-motion:reduce) {.scene,.artwork,.beat,.scene[data-leaving=true] {animation:none;}}

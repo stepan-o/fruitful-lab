@@ -1,0 +1,246 @@
+{
+  "id": "bob",
+  "name": "bob",
+  "subtitle": "Fly eyes · flat head",
+  "revision": "Approved cast art · 21 October 2026",
+  "status": "Rigged motion candidate · review available",
+  "summary": "Small narrow blue frame; flat small head beneath two oversized convex cyan fly-eye lenses, above and wider than the head; moderately large articulated hands, cream chest stripe. Do not return to a round ordinary head or huge mitten hands.",
+  "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+  "viewer": "/stepanoskin/loopforge/play/asset-review/worker?worker=bob",
+  "viewerLabel": "Inspect body and every motion",
+  "record": "/loopforge-design/narrative-cast.html#bob",
+  "parts": [
+    "Individual blue-family body",
+    "Neutral rig and source motion bank",
+    "Locally fitted contacts, transitions and scene performance"
+  ],
+  "remaining": [
+    "Complete individual contact and transition review",
+    "Paired hand/prop acting in the opening",
+    "Room-scale recognition and sustained performance acceptance"
+  ],
+  "images": [
+    {
+      "label": "bob · approved concept",
+      "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+      "input": {
+        "src": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 135152,
+        "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-cast/bob-320.6bdd4f321ab8e4f4.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 15200,
+          "sha256": "6bdd4f321ab8e4f4f56d030afafa2644fcc23e2b2e321400746492a93b154087"
+        },
+        {
+          "src": "/media/loopforge-cast/bob-640.014388511ec92ad6.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 45148,
+          "sha256": "014388511ec92ad64ba3f8a9f0ec9cc5dcbd1b49014b6fb06b196553f61aea28"
+        },
+        {
+          "src": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 135152,
+          "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e"
+        }
+      ],
+      "archivePath": "images/bob-1280.482a9955d4416c22.webp"
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Stage 1 · Body",
+      "file": "bob/01-body.txt",
+      "text": "Build bob, an individual factory worker for Loopforge.\n\nPRIMARY VISUAL AUTHORITY\nUse the approved badass ensemble, isolated to bob, as the lead reference. Supporting individual concept: The cast, #bob. Produce one body from one isolated A-pose input, never the group as one asset. Preserve the character rather than borrowing another worker’s proportions. Ensemble poses and foreshortening must be neutralized, not baked into anatomy.\n\nIDENTITY\nSmall narrow blue frame; flat small head beneath two oversized convex cyan fly-eye lenses, above and wider than the head; moderately large articulated hands, cream chest stripe. Do not return to a round ordinary head or huge mitten hands.\n\nFAMILY AND SCALE\nAdult mechanical factory worker. Worn blue enamel in broad readable areas, exposed dark steel mechanisms and restrained brass. Smaller and less ornate than supervisors. Head, torso and limb silhouette must remain individually legible from a full room; bob must also survive the small CCTV view. Do not add weapons, crowns, bright chest cores, text or generic uniform armour that erases identity.\n\nDELIVERY\nNeutral symmetric A-pose, empty separated hands, correct thumb orientation, clear elbows/armpits/thighs, parallel planted feet. Preserve coherent mechanical joints. Keep kit’s pipe fixed to the head when present. One textured biped, target 24,000 triangles for the close-up source, 2K base/normal/metallic/roughness maps, GLB plus FBX. Keep the pre-remesh source. Derive lower-detail room models locally and inspect their silhouettes; a smaller triangle count is not a performance pass. Never regenerate an accepted body just to acquire a motion. Check existing tasks and the cumulative 500-credit ledger before any Meshy charge.\n",
+      "url": "/loopforge-design/model-briefs/bob-01-body.4180a423afb11002.txt"
+    },
+    {
+      "title": "Stage 2 · Rig and motions",
+      "file": "bob/02-rig-and-motion.txt",
+      "text": "Rig the SAME textured bob delivery body as a biped. Preserve its proportions, materials and neutral pose; no mesh regeneration during motion work. Record the actual joint hierarchy, bind transforms, finger support and axis conventions. Export a neutral rigged GLB and FBX plus the included walk/run as separate sources.\n\nActing direction: Head begins a turn before shoulders. Interest in an unfamiliar roller; speech addresses a group through sam. Preserve large-hand contacts and injured-leg continuity.\n\nFirst retarget the approved Worker 01 motion library locally, adapting contacts to bob's proportions. Reuse a motion only after checking its hand, foot and elbow behavior on THIS body. New catalog animations require a verified catalog ID and an entry in the credit ledger; archive each action independently even if a bundle is also produced. Never assume All Animations includes later jobs.\n\nRead 03-opening-performance.txt for choreography, transitions, retreat and contacts. Keep source and corrected files distinct. Animation names must preserve their catalog identity, with scene meaning recorded separately. Record file hashes, mesh/skin/texture presence, clip names/durations and root translation/yaw in export-audit.json. Record local fitting, motion retiming, constraints and visual checks in motion-cleanup.json. A still pose does not certify its entry, exit or blend.\n\nAPPROVED PROPORTIONS — REVISION 2\nSmall narrow blue frame; flat small head beneath two oversized convex cyan fly-eye lenses, above and wider than the head; moderately large articulated hands, cream chest stripe. Do not return to a round ordinary head or huge mitten hands.\nFit joint/contact targets to this body, especially head reach, wrist orientation and leg clearance. The ensemble portrait is identity reference, not a clip. Preserve natural quiet posture and transitions; do not turn its poster pose into the default idle.\n",
+      "url": "/loopforge-design/model-briefs/bob-02-rig-and-motion.7e3d6734f7816a70.txt"
+    },
+    {
+      "title": "Stage 3 · Opening performance",
+      "file": "bob/03-opening-performance.txt",
+      "text": "OPENING WORKERS — PERFORMANCE AND CONTACT BRIEF\nRevision 5 · 22 October 2026 · Before the shift / 16\n\nFollow OPENING_EPISODE.md revision 9 and the current engine sequence. Ten distinct blue-family workers, LIMEN and STILETTO. Supervisors remain larger. Preserve each approved worker’s silhouette and the approved bob portrait. The first episode is about 138 seconds of action plus reading, with four physical Conveyor station operations.\n\nAPPROACH AND WAITING\nThe camera follows the workers from behind as they walk TOWARDS the open factory entrance. Bodies, feet and path agree. Stagger pairs and singles; gather unevenly around Security without queue pens. Most wait in Quiet_Wait: planted feet, small head and torso movement. Use strong gestures once when an event warrants them. A worker holding an ID uses the fitted ID_Ready pose, including reading stops after ID_Walk. Do not replace it with a general idle.\n\nBOB AND SAM\nbob misunderstands LIMEN’s greeting, steps forward with his card and receives one cyan-blade strike. He drops the card and falls. sam runs round his feet, kneels and supports him. Keep the held floor pose alive without replaying the impact. sam releases the supporting hand BEFORE bob rises. bob gets up as STILETTO approaches, then keeps his limp through the checkpoint and Conveyor tutorial. Match palms, elbows, wrists, supporting surfaces and planted feet on the actual two bodies. No actor translation may counterfeit a hand contact.\n\nED AND THE CARD\nThe camera must show ed collecting bob’s card while bob looks towards sam. Pickup and stow transfers commit at the authored contact frames; the card remains owned by bob but held, then stowed, by ed. Fit the card edge to ed’s actual skinned fingers at portrait, floor and overview detail. No floating card or jump from the floor. Do not grant bob knowledge of the transfer.\n\nSTILETTO’S PASSAGE\nSTILETTO enters while bob recovers, before the volunteers are appointed. Quick Walk continues through Security to Conveyor. Workers turn and step aside organically, leaving both blades clear; they do not teleport into ranks. LIMEN uses the fitted Step_Back and returns to his threshold. She never stops for an ID. This replaces the old two-checks-before-entrance order.\n\nTHE REPRIMAND AND VOLUNTEERS\nbob notices the exception, retreats into flattery and is admitted to Conveyor without a card check. Only then does LIMEN call for helpers. ed and gus volunteer and physically reach the register and trays. Their staff appointment is not a completed Conveyor-worker check. sam is next: draw his own ID, present it through the off-camera inspection, receive clearance, stow it, then walk to Conveyor. jo is the third applicant when the camera returns.\n\nCONVEYOR\nbob and STILETTO walk station to station: Intake, Brain Wash, Main Belt, Lattice Forge. bob must reach the control before each cycle can start and remain there through completion. Fit his hand operation to the panel and keep STILETTO beside him, clear of the camera and machinery. One workpiece changes from dirty to washed, travels in a carrier and is compressed to supervisor-head scale. The Forge opening, platen and output must remain visible.\n\nREADING AND TRANSITIONS\nEvery spoken step waits for the player. The factory clock, travel, custody and process state stay fixed while subtle animation continues. Contact poses cannot drift during a long reading hold. Blend source poses into stops, turns and quiet waits; inspect knees, soles and wrists through entry and exit. Speech generally uses 1.0–1.2× source rate; card handling 1.5–1.6× with matching transfer times. No global fast-forward.\n\nSOURCE AND DELIVERY\nReuse the accepted motion bank with bind-pose-aware retargeting where it fits. Keep neutral rigs and source clips. Record catalog ID/name before purchases; do not invent an action ID. Use the canonical budget-controlled Meshy launcher. Name exports with worker, action and revision. Maintain export-audit.json and motion-cleanup.json with source/delivery hashes, exact clip times, contact targets, corrections and evidence.\n\nPreview every delivered clip on its own body, with worker navigation first before supervisors. Distinguish a review candidate from a motion accepted for the opening. Inspect front, side, three-quarter, room and small-console views; body/body, blade/body, palm/prop, floor and transition checks are separate from file validity. Numeric clearance alone does not establish believable acting. Record unresolved contacts honestly.\n\nENGINE AND ACCEPTANCE\nUse shared motion, path, reservation, speech/hearing and prop-custody contracts. The authored scene supplies intentions; the engine admits actions and commits consequences. Preserve bob’s unchecked first admission and sam’s performed second check. Test the complete production build on the older HD620 machine for ten minutes, without competing builds or renders. A frame-rate pass does not approve art, and a good still does not approve motion.\n",
+      "url": "/loopforge-design/model-briefs/bob-03-opening-performance.af6859b5f9c0020c.txt"
+    },
+    {
+      "title": "Stage 4 · Native Idle comparison",
+      "file": "bob/04-native-idle-control.txt",
+      "text": "BOB — NATIVE IDLE CONTROL\nStage 4 · 21 October 2026\n\nPURPOSE\nTest whether bob's resting arm posture comes from a transfer/bind error or from the catalog motion on his own proportions. Apply Action 0 Idle to the existing approved body rig. Do not regenerate or remesh the character.\n\nREQUEST\nCatalog lookup confirmed Action 0: Idle.\nExisting rig: 01a15d65-b91e-7262-8e9d-15d3f7c902d6\nAnimation task: 01a15f16-8225-736a-ab22-58d0e49a59ab\nLabel: bob-native-idle-comparison-v1\nCost: 3 Meshy credits. Cumulative opening-build ledger: 391 / 500.\n\nDELIVERY\nSource GLB downloaded: 17,286,064 bytes. Keep source and API responses private; never publish signed download URLs. No replacement of the existing animation bank.\n\nCOMPARISON\nCompare target-rest matrices with mesh-world-adjusted inverse binds before measuring rotations. The corrected comparison found 0.0 degrees of basis rotation difference across the mapped joints. At the inspected one-second idle pose, native and transferred wrist-to-upper-arm offsets were close. A whole-clip contact and artistic review is still necessary; this trial does not approve arm posture or justify generating ten new idle clips. Fit posture against the actual body where needed.\n",
+      "url": "/loopforge-design/model-briefs/bob-04-native-idle-control.aadcbe7c9f425246.txt"
+    }
+  ],
+  "files": [
+    {
+      "name": "images/bob-1280.482a9955d4416c22.webp",
+      "src": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 135152,
+      "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e"
+    },
+    {
+      "name": "prompts/01-body.txt",
+      "src": "/loopforge-design/model-briefs/bob-01-body.4180a423afb11002.txt",
+      "bytes": 1742,
+      "sha256": "4180a423afb110025b76a6ab67ca970fa0fbb804527c4d0a94214bd3342d1acd"
+    },
+    {
+      "name": "prompts/02-rig-and-motion.txt",
+      "src": "/loopforge-design/model-briefs/bob-02-rig-and-motion.7e3d6734f7816a70.txt",
+      "bytes": 1916,
+      "sha256": "7e3d6734f7816a708aa512abee1e07a6bce7f092584273091e693d821e38b3db"
+    },
+    {
+      "name": "prompts/03-opening-performance.txt",
+      "src": "/loopforge-design/model-briefs/bob-03-opening-performance.af6859b5f9c0020c.txt",
+      "bytes": 4999,
+      "sha256": "af6859b5f9c0020c857a3b6d9bf770b682cb8a9c6b831fa3878849d2cde483b1"
+    },
+    {
+      "name": "prompts/04-native-idle-control.txt",
+      "src": "/loopforge-design/model-briefs/bob-04-native-idle-control.aadcbe7c9f425246.txt",
+      "bytes": 1216,
+      "sha256": "aadcbe7c9f4252469bb9dac4bdae8e87903628cdd47b03367e7f18bd057e12b4"
+    },
+    {
+      "name": "README.md",
+      "src": "/loopforge-design/model-briefs/bob-README.6eb5eab3292c3f87.md",
+      "bytes": 2026,
+      "sha256": "6eb5eab3292c3f8723bef0f95fb3c83b841031b68d93689133fdf6005bdcea8d"
+    },
+    {
+      "name": "export-audit.json",
+      "src": "/loopforge-design/model-briefs/bob-export-audit.9d5312659ce346e2.json",
+      "bytes": 609,
+      "sha256": "9d5312659ce346e25628e25c62d5483b32a04c04df11859ba5adae11755f9997"
+    },
+    {
+      "name": "image-generation.json",
+      "src": "/loopforge-design/model-briefs/bob-image-generation.16586e34d163c014.json",
+      "bytes": 12851,
+      "sha256": "16586e34d163c0141972c3559ec41430f54261d822714c16084b60d5a5dcf7d8"
+    },
+    {
+      "name": "motion-cleanup.json",
+      "src": "/loopforge-design/model-briefs/bob-motion-cleanup.d0d4ca45da3d200f.json",
+      "bytes": 124,
+      "sha256": "d0d4ca45da3d200f5e7f9f064a63f011caaf3be71e3e44f93b5ab84a9c1017f3"
+    }
+  ],
+  "downloadBytes": 160635,
+  "packageManifest": {
+    "schemaVersion": 1,
+    "id": "bob",
+    "revision": "Approved cast art · 21 October 2026",
+    "provenance": "Owner-approved worker design and ensemble reference. The badass group portrait leads model generation; the individual concept supplies supporting detail. Prose portraits other than bob remain revised drafts.",
+    "viewer": "https://www.fruitfulab.net/stepanoskin/loopforge/play/asset-review/worker?worker=bob",
+    "images": [
+      {
+        "label": "bob · approved concept",
+        "role": "Supporting individual identity reference; isolate the approved ensemble character for final model input.",
+        "input": {
+          "src": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp",
+          "width": 1024,
+          "height": 1536,
+          "bytes": 135152,
+          "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-cast/bob-320.6bdd4f321ab8e4f4.webp",
+            "width": 320,
+            "height": 480,
+            "bytes": 15200,
+            "sha256": "6bdd4f321ab8e4f4f56d030afafa2644fcc23e2b2e321400746492a93b154087"
+          },
+          {
+            "src": "/media/loopforge-cast/bob-640.014388511ec92ad6.webp",
+            "width": 640,
+            "height": 960,
+            "bytes": 45148,
+            "sha256": "014388511ec92ad64ba3f8a9f0ec9cc5dcbd1b49014b6fb06b196553f61aea28"
+          },
+          {
+            "src": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp",
+            "width": 1024,
+            "height": 1536,
+            "bytes": 135152,
+            "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e"
+          }
+        ],
+        "archivePath": "images/bob-1280.482a9955d4416c22.webp"
+      }
+    ],
+    "files": [
+      {
+        "name": "images/bob-1280.482a9955d4416c22.webp",
+        "src": "/media/loopforge-cast/bob-1280.482a9955d4416c22.webp",
+        "width": 1024,
+        "height": 1536,
+        "bytes": 135152,
+        "sha256": "482a9955d4416c22ae23bb1c5063eff89ca5247062ebcd2e48b5223c5258275e"
+      },
+      {
+        "name": "prompts/01-body.txt",
+        "src": "/loopforge-design/model-briefs/bob-01-body.4180a423afb11002.txt",
+        "bytes": 1742,
+        "sha256": "4180a423afb110025b76a6ab67ca970fa0fbb804527c4d0a94214bd3342d1acd"
+      },
+      {
+        "name": "prompts/02-rig-and-motion.txt",
+        "src": "/loopforge-design/model-briefs/bob-02-rig-and-motion.7e3d6734f7816a70.txt",
+        "bytes": 1916,
+        "sha256": "7e3d6734f7816a708aa512abee1e07a6bce7f092584273091e693d821e38b3db"
+      },
+      {
+        "name": "prompts/03-opening-performance.txt",
+        "src": "/loopforge-design/model-briefs/bob-03-opening-performance.af6859b5f9c0020c.txt",
+        "bytes": 4999,
+        "sha256": "af6859b5f9c0020c857a3b6d9bf770b682cb8a9c6b831fa3878849d2cde483b1"
+      },
+      {
+        "name": "prompts/04-native-idle-control.txt",
+        "src": "/loopforge-design/model-briefs/bob-04-native-idle-control.aadcbe7c9f425246.txt",
+        "bytes": 1216,
+        "sha256": "aadcbe7c9f4252469bb9dac4bdae8e87903628cdd47b03367e7f18bd057e12b4"
+      },
+      {
+        "name": "README.md",
+        "src": "/loopforge-design/model-briefs/bob-README.6eb5eab3292c3f87.md",
+        "bytes": 2026,
+        "sha256": "6eb5eab3292c3f8723bef0f95fb3c83b841031b68d93689133fdf6005bdcea8d"
+      },
+      {
+        "name": "export-audit.json",
+        "src": "/loopforge-design/model-briefs/bob-export-audit.9d5312659ce346e2.json",
+        "bytes": 609,
+        "sha256": "9d5312659ce346e25628e25c62d5483b32a04c04df11859ba5adae11755f9997"
+      },
+      {
+        "name": "image-generation.json",
+        "src": "/loopforge-design/model-briefs/bob-image-generation.16586e34d163c014.json",
+        "bytes": 12851,
+        "sha256": "16586e34d163c0141972c3559ec41430f54261d822714c16084b60d5a5dcf7d8"
+      },
+      {
+        "name": "motion-cleanup.json",
+        "src": "/loopforge-design/model-briefs/bob-motion-cleanup.d0d4ca45da3d200f.json",
+        "bytes": 124,
+        "sha256": "d0d4ca45da3d200f5e7f9f064a63f011caaf3be71e3e44f93b5ab84a9c1017f3"
+      }
+    ]
+  }
+}

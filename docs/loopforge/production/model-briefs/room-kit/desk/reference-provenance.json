@@ -1,0 +1,17 @@
+{
+  "tool": "built-in image_gen",
+  "input": {
+    "ai_model": "nano-banana-2",
+    "prompt": "Use the supplied approved Loopforge references as the design authority. Isolate ONLY the specified single prop, not the whole room. Industrial soot-dark cast iron and aged muted brass, directional wear at edges, calm matte surfaces; no generic futuristic box. One coherent three-quarter product view, entire object visible, slight elevated camera so functional openings and work surfaces can be inspected. Neutral diffuse white illumination with no colored scene lighting baked into materials. Transparent background, no floor shadow or stand. No robots, people, labels, letters, numbers, symbols, lights, effects, floor or wall slabs, extra props or exploded/multiple views. One squat industrial records and inspection desk. Broad worn iron worktop with brass edge, two narrow riveted storage cabinets and an open central operator knee recess. Preserve a flat central working area, shallow recessed ID inspection tray at the visitor edge, a small tilted blank terminal mounting seat at one corner, and two recessed circular control sockets with protective raised rims. Use the actual mechanical console proportions and panel detailing from the Security references. Keep long calm surfaces; avoid a pile of gadgets. Drawer fronts closed and flush. No terminal screen, papers, stamps, cards, lamps or surrounding railings.",
+    "reference_file_paths": [
+      "/home/stpn/LoopforgeStudio/evidence/LST-3/room-assets/references/03_loopforge_rooms_access_control_6.png",
+      "/home/stpn/LoopforgeStudio/evidence/LST-3/room-assets/references/03_loopforge_rooms_access_control_7.png",
+      "/home/stpn/LoopforgeStudio/evidence/LST-3/room-assets/references/01_loopforge_factory_rooms_lobby.png"
+    ],
+    "aspect_ratio": "1:1",
+    "remove_background": true,
+    "response_format": "json"
+  },
+  "source_sha256": "949fa6ca21e8c8f59ceecee059e1306b46a3abd10d54c793427c7f4edb780865",
+  "note": "Studio design brief adapted to built-in image generation; image reviewed before Meshy submission. Meshy image-generation stage omitted; costs recorded only in canonical Meshy ledger."
+}

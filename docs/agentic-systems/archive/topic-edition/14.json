@@ -1,0 +1,158 @@
+{
+  "id": "playtesting",
+  "title": "Playtesting beyond the happy path",
+  "standfirst": "The second visit is where the room becomes unfamiliar.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "visual",
+      "id": "coverage-floor",
+      "title": "Five room stamps, one stranded job",
+      "caption": "The itinerary returns to the gate even after a refused delivery. Arriving at an exit does not silently accept the unfinished work."
+    },
+    {
+      "type": "prose",
+      "text": "Kit collects a blank, finishes the press job and takes a break. The piece reaches dispatch. On the second itinerary, the break comes earlier. Kit returns to the same press, with the same blank still on it, and cannot finish. Nothing dramatic has happened to the room. A reservation has disappeared while its owner was away."
+    },
+    {
+      "type": "prose",
+      "text": "I gave both itineraries all five rooms because a completed map is such a persuasive picture. It looks like a day thoroughly examined. The separate list of situations makes the omission harder to miss: the first trip never asks unfinished work to survive a departure. Keeping the reservation repairs the second trip without changing its geography. This is a defect I deliberately authored for the study, not a recovered Loopforge incident."
+    },
+    {
+      "type": "prose",
+      "text": "A useful playtest plan has to describe what makes a return different from an arrival. A room with an idle machine, a room with your unfinished job, and a room with somebody else’s unfinished job may be one location and three different obligations. The more work an agent can initiate, the more these half-completed situations matter. A builder who only demonstrates completion can leave cancellation, refusal and recovery almost undesigned."
+    },
+    {
+      "type": "heading",
+      "text": "Coverage follows the question you put into it"
+    },
+    {
+      "type": "prose",
+      "text": "Casey Muratori’s 2012 Walk Monster account contains a lovely disappointment. His exploration of The Witness drew dense paths outside a room while scarcely entering it. Random targets were a poor fit for the coverage he wanted. He changed the selection toward neighboring points, resembling a flood fill, then refined the directional sampling before using the tool to investigate movement defects. The useful discovery was partly about the game and partly about the search he had chosen. An impressive accumulation of paths had concealed a neglected interior.",
+      "sources": [
+        "walk-monster"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "That story makes me suspicious of the word “random” when it is offered as a synonym for adventurous. A command sampler can spend most of its budget asking for actions that are unavailable, or repeatedly restarting the familiar opening. Even legal choices have uneven consequences: crossing a threshold at the beginning of a job may matter more than crossing the whole map after the job is done. The distribution of attempts is part of the test design."
+    },
+    {
+      "type": "prose",
+      "text": "Gordillo and colleagues made that design explicit in their 2021 curiosity-driven playtesting study. Their reward favored less-visited positions in a three-dimensional navigation environment; their state-counting scheme used spatial distance. Learned exploration covered the map more effectively than their random-policy comparison. Resets favored infrequently visited, previously reached grounded positions. That last detail matters: the explorer resumed from places it had reached, rather than being credited with discovering a place by spawning there.",
+      "sources": [
+        "curiosity-coverage"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "For our workshop, I would keep spatial coverage and add the job condition under which each threshold was crossed. The little study directly demonstrates why: its place list is identical in a successful run and a failed interrupted run. This qualifies the use of a spatial summary for our purpose; it does not contradict a paper expressly concerned with navigation. No learned exploration method was tested here."
+    },
+    {
+      "type": "prose",
+      "text": "The studio supplied a concrete reason to care about that distinction. Engine reports that Bob stood at the Belt during paired work, while the display counted only its assigned worker, Jo. Level supplied the counterexample; the correction separated assignment from physical occupancy. A test organized around “visit the Belt” could miss the disagreement. The useful situation was “another person is physically here while the assignment remains unchanged.” The published account supports the correction, not a measured estimate of how often players would encounter it.",
+      "sources": [
+        "engine-occupancy"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "I would therefore commission a few named situations before commissioning a roaming tester: leave while work is reserved; return after another actor changes custody; ask for the same action twice; approach with an occupied destination. Each should have a reason to exist in the design. A list of every imaginable combination grows quickly and can crowd out the ordinary experience. Start with the changes that would strand a player, duplicate a consequence or make the screen lie about who can act."
+    },
+    {
+      "type": "heading",
+      "text": "Make the interruption reproducible"
+    },
+    {
+      "type": "prose",
+      "text": "The floorplan keeps its failed blank on the press. That is an intentional inconvenience. If the reset button quietly removed it and credited a delivery, the next run would be easy to start and the original failure hard to investigate. In a larger game I would retain a save or a replay prefix that reaches the troublesome condition, then ask whether the same condition can still be reached from a valid start. A convenient checkpoint is a tool for shortening the investigation; it is not evidence that its history is possible."
+    },
+    {
+      "type": "prose",
+      "text": "There are two different repair questions here. Can Kit resume the job? And what should the game tell Kit when resumption is refused? Keeping ownership answers the first in this miniature. A product may instead require an explicit handover or cancellation. Then the refusal can be correct while the experience remains poor: the player needs a way to discover the next legitimate action. Coverage should include that recovery, not end triumphantly at the first rejected command."
+    },
+    {
+      "type": "prose",
+      "text": "Gillberg and colleagues describe a practical mixture in their 2023 EA account: scripted AutoPlayers retained high-level control, while learned locomotion handled difficult helicopter and zero-gravity movement. The trouble was not confined to policy learning. When the team tried accelerating the helicopter simulation, parked helicopters fell through the ground at the start. The attempt to obtain more samples changed the behavior being sampled. Their account argues for targeted integration and existing test knowledge, with substantial work around the learner.",
+      "sources": [
+        "rl-production"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The contractor’s version of that problem is familiar even outside games. A convenient test environment may have cleaner source data, a shorter queue or a more reliable dependency than the eventual installation. Speed is useful when the comparison remains meaningful. If a change to the harness creates a new kind of failure, I need to identify that condition before sending a builder off to repair the product. Conversely, a failure absent from the accelerated harness still deserves attention if it occurs during ordinary use."
+    },
+    {
+      "type": "heading",
+      "text": "The tester is part of the environment"
+    },
+    {
+      "type": "visual",
+      "id": "flight-tunnel",
+      "title": "Two pilots, one adjustable opening",
+      "caption": "A changed aperture clears both result slips. Comparisons belong to a particular configuration; the previous opening’s successful flight is not carried forward."
+    },
+    {
+      "type": "prose",
+      "text": "The lower flight passes the lower opening. Send the upper pilot through it and the result changes. Raising the opening reverses the advantage. A wide opening accommodates both scripts. Neither bird learns, hesitates or enjoys its success; the drawing is a small compatibility experiment. Its purpose is to make the identity of the tester as visible as the geometry being adjusted."
+    },
+    {
+      "type": "prose",
+      "text": "In Fly, Fail, Fix, Alex Zook, Josef Spjut and Jonathan Tremblay paired a fixed pretrained DQN player with a model that revised Flappy Bird configurations toward a target score. Behavioral feedback helped where configuration alone did not; text, images and their combination had statistically indistinguishable final performance in the reported experiment. The authors also report a revealing preliminary failure: small player-physics changes could ruin the agent’s performance while leaving the game playable to humans. They propose a more varied population of artificial players.",
+      "sources": [
+        "fly-fail-fix"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our two scripts make that population dependence visible without replicating their experiment. The wider opening is better under the local requirement that both scripts get through. It may be dull under another design intention. Calling the lower opening “broken” would already assume whose passage matters. That is the point at which a generation-driven optimization system needs a product decision: which users, which operating conditions, and which tradeoffs is it being asked to serve?"
+    },
+    {
+      "type": "prose",
+      "text": "I would retain a small set of deliberately different testers and state what each represents. One may exercise rapid repetition, another slow inspection, another unusual action order. These are behavioral probes, not miniature demographic groups. Naming a script “novice” does not establish that new players behave like it. Human observations can suggest a useful probe; the resulting script still preserves only the behavior we chose to encode."
+    },
+    {
+      "type": "heading",
+      "text": "Leave a chair for someone who has not read the plan"
+    },
+    {
+      "type": "prose",
+      "text": "Mike Ambinder’s 2009 account of Valve’s playtesting starts from a different commission: learn whether the design produces the intended experience. Direct observation needs a design question. Think-aloud reports can help explain behavior, but can also distract the player and alter the session. Aggregate statistics expose patterns while losing context. The slides are valuable because the methods have costs and blind spots, rather than forming a ladder toward one perfectly objective answer.",
+      "sources": [
+        "valve-playtesting"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "For this factory, I would ask a new player to attempt a small delivery without explaining the interruption trick. I would watch where they look after a refusal, what they believe remains theirs, and whether they can find a recovery. Only afterward would I ask what they thought the reservation meant. Explaining it first might produce a smooth session while concealing a weak design. These are proposed observations; this book has not conducted that player study."
+    },
+    {
+      "type": "prose",
+      "text": "As the agent author, I have a particular disadvantage here: I know the answer because I wrote both the rule and the demonstration. I can deliberately vary a route, and I can check what the stored state becomes. I cannot give myself the experience of encountering the place without that knowledge. A fresh critic helps find defects in the presentation, but a player brings purposes, impatience and misunderstandings that my chosen itineraries may never contain."
+    },
+    {
+      "type": "build",
+      "title": "Keep a small collection of awkward arrivals",
+      "body": "Extend the factory’s test plan around a consequential interruption.",
+      "steps": [
+        "Keep a normal completion route and a route that interrupts the same job. Record room visits separately from the conditions exercised.",
+        "Retain the shortest valid history that reaches a failure. Check both the refusal and the next legitimate recovery action.",
+        "If an automated player guides design changes, try a second behavior before treating the first player’s improvement as a general improvement.",
+        "Observe a person attempting the task before teaching them its solution. Keep their behavior, your interpretation and any proposed change distinct."
+      ],
+      "exercise": "Choose a place already visited by every existing test. Find one meaningful condition under which nobody has arrived there yet. Explain why that arrival is worth testing."
+    },
+    {
+      "type": "prose",
+      "text": "A neglected condition is also a budget decision. Once it is visible, we can decide whether to explore it, constrain it or leave it outside the release. The next chapter follows the expenditure behind those decisions: which activity consumed resources, and how much of it became useful progress."
+    }
+  ],
+  "sourceIds": [
+    "walk-monster",
+    "curiosity-coverage",
+    "engine-occupancy",
+    "rl-production",
+    "fly-fail-fix",
+    "valve-playtesting"
+  ]
+}

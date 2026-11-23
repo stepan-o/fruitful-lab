@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-worker-review",
+  "assets": {
+    "worker-01": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/299587fb5eefb1fa1dc725118d4edd17ae058ea4231610c19d079bde3c991933.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 7486164,
+          "sha256": "299587fb5eefb1fa1dc725118d4edd17ae058ea4231610c19d079bde3c991933"
+        }
+      ]
+    },
+    "worker-01-corrected": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/f353652a8d3c12020cf3ad2ae10fada37b543f673ae66238e9374bdfa6f52da9.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 11830360,
+          "sha256": "f353652a8d3c12020cf3ad2ae10fada37b543f673ae66238e9374bdfa6f52da9"
+        }
+      ]
+    }
+  }
+}

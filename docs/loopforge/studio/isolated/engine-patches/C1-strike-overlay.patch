@@ -1,0 +1,146 @@
+--- a/apps/lab/components/loopforge/agents/SceneStudies.tsx
++++ b/apps/lab/components/loopforge/agents/SceneStudies.tsx
+@@ -13,6 +13,7 @@
+ import SpeechBubble from './SpeechBubble';
+ import styles from './scene-studies.module.css';
+ import {storyboard} from './storyboard';
++import {isStrikeSpeech,strikeSpeechLane,placeStrikeSpeech} from './strike-speech-placement';
+ import type {RehearsalStage} from './arrival-stage';
+ import {compareStationLights,type LightComparison} from './station-light-comparison';
+ import type {StationLighting} from './station-light';
+@@ -30,6 +31,7 @@
+  const testing=(!!performanceRun&&performanceRun.state!=='finished')||(!!lightRun&&lightRun.state!=='finished');
+  const followCamera=useRef(true),lastShot=useRef('');
+  const [following,setFollowing]=useState(true),[expressive,setExpressive]=useState(true);
++ const clockElement=useRef<HTMLDivElement>(null);
+  const canvas=useRef<HTMLCanvasElement>(null),runtime=useRef<Runtime|null>(null),bubbles=useRef(new Map<string,HTMLDivElement>());
+  const [study,setStudy]=useState<Study>('arrival'),[choice,setChoice]=useState<Choice>('care'),[retry,setRetry]=useState(0),[ready,setReady]=useState(false),[error,setError]=useState(''),[running,setRunning]=useState(false),[tick,setTick]=useState(0),[view,setView]=useState<View|null>(null),[report,setReport]=useState<SceneReport|null>(null),[world,setWorld]=useState<World|null>(null),[saving,setSaving]=useState(false),[saveStatus,setSaveStatus]=useState('');
+  const [machineEffects,setMachineEffects]=useState(true),[focused,setFocused]=useState(false);
+@@ -72,7 +74,24 @@
+      if(r.limit&&r.world.tick>=r.limit.tick){r.reading=r.limit;r.readingBase=rehearsalView(r.take,r.world);r.limit=undefined;r.readSeconds=0;r.playing=false;acc=0;setRunning(false);setReading(r.reading);sync(r);r.floor.motion(true);}
+      const next=r.reading?readingView(rehearsalView(r.take,r.world),r.reading,r.readSeconds):r.view?.tick===r.world.tick?r.view:rehearsalView(r.take,r.world);r.view=next;if(next.tick!==lastSampleTick){r.cast.update(next);r.floor.presentProcess?.(next.process);frameShot(r,next);lastSampleTick=next.tick;}if(now-lastPublish>100||next.finished){lastPublish=now;setTick(next.tick);setView(next);setWorld(r.world);}if(next.finished){if(monitor.current?.active){acc=0;lastSampleTick=-1;monitor.current.loop();}else pause();}}
+     if(r.reading&&!r.playing){r.readSeconds+=dt/1000;if(now-lastPublish>33){const nowView=readingView(r.readingBase??rehearsalView(r.take,r.world),r.reading,r.readSeconds);r.view=nowView;r.cast.update(nowView);lastPublish=now;}r.floor.motion(true);}
+-    for(const a of r.cast.anchors()){const el=bubbles.current.get(a.id);if(el){el.style.left=`clamp(var(--bubble-margin), ${a.x}%, calc(100% - var(--bubble-margin)))`;el.style.top=`${Math.max(100*(el.offsetHeight+28)/(canvas.current?.clientHeight??500),Math.min(88,a.y))}%`;el.style.visibility=a.visible?'visible':'hidden';}}
++    for(const a of r.cast.anchors()){
++     const el=bubbles.current.get(a.id),c=canvas.current;if(!el||!c)continue;
++     const body=el.querySelector<HTMLElement>('[data-speech-body]');
++     if(study==='arrival'&&isStrikeSpeech(r.view?.framing,a.id)&&body){
++      const viewport={width:c.clientWidth,height:c.clientHeight},anchor={x:a.x*viewport.width/100,y:a.y*viewport.height/100};
++      const lane=strikeSpeechLane(viewport.width,anchor.x,viewport.width<=480?204:248);
++      el.dataset.strikeSpeech='true';el.style.width=`${lane.width}px`;
++      const clock=clockElement.current;
++      const placement=placeStrikeSpeech({viewport,anchor,preferredWidth:lane.width,bodyHeight:body.offsetHeight,clock:clock?{x:clock.offsetLeft,y:clock.offsetTop,width:clock.offsetWidth,height:clock.offsetHeight}:undefined});
++      el.style.left=`${placement.x}px`;el.style.top=`${placement.y-(el.offsetHeight-body.offsetHeight)}px`;
++      el.style.setProperty('--strike-tail-y',`${placement.tailY}px`);
++     }else{
++      delete el.dataset.strikeSpeech;el.style.removeProperty('width');el.style.removeProperty('--strike-tail-y');
++      el.style.left=`clamp(var(--bubble-margin), ${a.x}%, calc(100% - var(--bubble-margin)))`;
++      el.style.top=`${Math.max(100*(el.offsetHeight+28)/c.clientHeight,Math.min(88,a.y))}%`;
++     }
++     el.style.visibility=a.visible?'visible':'hidden';
++    }
+    };frame=requestAnimationFrame(render);
+   }catch(e){if(alive){setError(e instanceof Error?e.message:'Unable to prepare scene.');cast?.dispose();floor?.dispose();cast=null;floor=null;runtime.current=null;}}}
+   void boot();document.addEventListener('visibilitychange',visibility);
+@@ -133,7 +152,7 @@
+     <ReviewCameraControls ready={ready&&!testing} fixed={false} onAction={a=>runtime.current?.floor.reviewCamera(a)}/>
+     <div className={styles.viewport}><canvas ref={canvas} tabIndex={0} aria-label={`${info.title}, animated scene with anchored speech`}/>
+      <div className={styles.sceneLabel}>{info.subtitle}</div>
+-     {study==='arrival'&&<div className={styles.clock} aria-label={'Factory time Day 1 '+factoryClock(tick)}><small>DAY 1 / FACTORY TIME</small><time>{factoryClock(tick)}</time><span>{running?'Action in progress':reading?'Reading · time held':'Ready'}</span></div>}
++     {study==='arrival'&&<div ref={clockElement} className={styles.clock} aria-label={'Factory time Day 1 '+factoryClock(tick)}><small>DAY 1 / FACTORY TIME</small><time>{factoryClock(tick)}</time><span>{running?'Action in progress':reading?'Reading · time held':'Ready'}</span></div>}
+      {view?.actors.filter(a=>study!=='arrival'||activeSpeech.some(b=>b.speaker===a.id)).map(a=><div className={styles.anchor} key={a.id} ref={el=>{if(el)bubbles.current.set(a.id,el);else bubbles.current.delete(a.id);}}>{!activeSpeech.some(b=>b.speaker===a.id)&&<span className={styles.name}>{a.name}</span>}{activeSpeech.filter(b=>b.speaker===a.id).map(b=><SpeechBubble key={b.id} speech={b} name={a.name} character={a.character} playing={running||!!reading} expressive={expressive}/>)}</div>)}
+      {!ready&&<div className={styles.loading} role='status'>{error||'Preparing the room and its performers…'}{error&&<button onClick={()=>{setError('');setRetry(v=>v+1);}}>Retry</button>}</div>}
+      {!running&&!reading&&<div className={styles.caption}>{view?.phase}<small>{(tick/20).toFixed(1)} s · paused</small></div>}
+--- a/apps/lab/components/loopforge/agents/SpeechBubble.tsx
++++ b/apps/lab/components/loopforge/agents/SpeechBubble.tsx
+@@ -17,7 +17,7 @@
+  const style={'--voice-accent':speechAccent(tone),transform:`rotate(${tilt}deg) scale(${scale})`} as CSSProperties;
+  return <div className={styles.voice} data-tone={tone} data-character={character} data-expressive={expressive} style={style}>
+   <div className={styles.speaker}>{name}{expressive&&emotion&&<span className={styles.emotion} role='img' aria-label={emotion.label}>{emotion.glyph}</span>}</div>
+-  <div className={styles.balloon}>
++  <div className={styles.balloon} data-speech-body>
+    <span className={styles.accessible}>{text}</span>
+    <span aria-hidden='true' className={styles.sentence}>{words.map((word,i)=><span key={i} className={word.stress&&expressive?styles.stress:styles.word} style={{opacity:animate&&age<word.at?0:1}}>{word.text}</span>)}</span>
+   </div>
+--- a/apps/lab/components/loopforge/agents/scene-studies.module.css
++++ b/apps/lab/components/loopforge/agents/scene-studies.module.css
+@@ -17,3 +17,5 @@
+ .focusBar{display:flex;gap:16px;align-items:center;padding:8px 12px;border-bottom:1px solid #43564e}.focusBar span{font-size:12px;color:#a8b7a5}.focused{padding:0 12px}.focused>.header,.focused>nav,.focused .aside{display:none}.focused .layout{display:block}.focused .stage{max-width:1440px;margin:auto}.focused .stage>div:not(.viewport):not(.attentionBar):not(.focusBar),.focused .rehearsalTools{display:none}.focused .viewport{height:calc(100dvh - 145px);min-height:280px}.focused .attentionBar{min-height:78px;box-sizing:border-box}.focused .testing>.performanceBar{display:flex!important}.focused .testing .viewport{height:auto;width:min(100%,calc((100dvh - 260px)*16/9));min-height:0;margin-inline:auto;aspect-ratio:16/9}.focused .focusBar{min-height:62px;box-sizing:border-box}@media(max-width:480px){.focused .viewport{height:calc(100dvh - 190px)}.focusBar span{display:none}}
+ 
+ .focused .stage>details:not(.rehearsalTools){display:none}
++
++.anchor[data-strike-speech='true']{transform:none}
+--- a/apps/lab/components/loopforge/agents/speech-bubble.module.css
++++ b/apps/lab/components/loopforge/agents/speech-bubble.module.css
+@@ -15,3 +15,5 @@
+ .accessible{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+ @media(max-width:480px){.voice{width:204px}.voice[data-tone=aside]{width:192px}.balloon{font-size:14px;padding:12px 13px 14px}.voice[data-tone=command] .balloon{font-size:16px}.voice[data-tone=outburst] .balloon{font-size:18px}.speaker{font-size:9px}.emotion{width:27px;height:27px;font-size:19px;right:-17px;top:-12px}}
+ @media(prefers-reduced-motion:reduce){.voice{transform:none!important;transition:none}.word,.stress{opacity:1!important;transition:none}}
++
++[data-strike-speech='true'] .balloon::after{left:-8px;top:calc(var(--strike-tail-y) - 7px);bottom:auto;border-right:0;border-left:2px solid #26383a;border-radius:0 0 0 3px}
+--- a/apps/lab/components/loopforge/agents/storyboard.ts
++++ b/apps/lab/components/loopforge/agents/storyboard.ts
+@@ -1,5 +1,6 @@
+ import {EMOTIONS,SPEECH_INK,speechAccent,speechWords} from '@/lib/loopforge/encounters/speech-delivery';
+ import type { View } from '@/lib/loopforge/encounters/contract';
++import {isStrikeSpeech,strikeSpeechLane,placeStrikeSpeech} from './strike-speech-placement';
+ type Anchor = { id: string; x: number; y: number; visible: boolean };
+ 
+ /** Composite the exact rendered frame and its public dialogue; no private evidence enters the PNG. */
+@@ -15,7 +16,11 @@
+     const anchor=anchors.find(a=>a.id===speech.speaker&&a.visible);if(!anchor)continue;
+     const tone=expressive?speech.delivery?.tone??'plain':'plain',accent=speechAccent(tone);
+     const font=(tone==='outburst'?20:tone==='command'?18:16)*scale,line=font*1.4;
+-    const width=Math.min(248*scale,image.width-20*scale),textWidth=width-2*padding;
++    const strike=isStrikeSpeech(view.framing,speech.speaker);
++    const viewport={width:source.width/scale,height:source.height/scale};
++    const point={x:anchor.x*viewport.width/100,y:anchor.y*viewport.height/100};
++    const preferredWidth=viewport.width<=480?204:248;
++    const width=strike?strikeSpeechLane(viewport.width,point.x,preferredWidth).width*scale:Math.min(248*scale,image.width-20*scale),textWidth=width-2*padding;
+     const tokens=speechWords(speech.text,expressive?speech.delivery:undefined);
+     const lines:{text:string;stress:boolean;width:number}[][]=[[]];let used=0;
+     function face(stress:boolean){return `${tone==='aside'?'italic ':''}${stress||tone==='command'||tone==='outburst'?'bold ':''}${font}px sans-serif`;}
+@@ -25,11 +30,15 @@
+       lines.at(-1)!.push({...token,width:w});used+=w;
+     }
+     const height=lines.length*line+2*padding;
+-    const x=Math.max(10*scale,Math.min(image.width-width-10*scale,anchor.x*source.width/100-width/2));
+-    const y=Math.max(40*scale,Math.min(source.height-height-15*scale,anchor.y*source.height/100-height-20*scale));
++    const placement=strike?placeStrikeSpeech({viewport,anchor:point,preferredWidth,bodyHeight:height/scale}):undefined;
++    const x=placement?placement.x*scale:Math.max(10*scale,Math.min(image.width-width-10*scale,anchor.x*source.width/100-width/2));
++    const y=placement?placement.y*scale:Math.max(40*scale,Math.min(source.height-height-15*scale,anchor.y*source.height/100-height-20*scale));
+     ctx.lineWidth=2*scale;ctx.strokeStyle='#26383a';ctx.fillStyle=SPEECH_INK.paper;
+     ctx.beginPath();ctx.roundRect(x,y,width,height,tone==='outburst'?3*scale:10*scale);ctx.fill();ctx.stroke();
+-    ctx.beginPath();ctx.moveTo(x+width/2-8*scale,y+height-1);ctx.lineTo(x+width/2,y+height+10*scale);ctx.lineTo(x+width/2+8*scale,y+height-1);ctx.fill();ctx.stroke();
++    ctx.beginPath();
++    if(placement){const tailY=y+placement.tailY*scale;ctx.moveTo(x+1,tailY-8*scale);ctx.lineTo(x-10*scale,tailY);ctx.lineTo(x+1,tailY+8*scale);}
++    else{ctx.moveTo(x+width/2-8*scale,y+height-1);ctx.lineTo(x+width/2,y+height+10*scale);ctx.lineTo(x+width/2+8*scale,y+height-1);}
++    ctx.fill();ctx.stroke();
+     const name=view.actors.find(a=>a.id===speech.speaker)?.name??speech.speaker;
+     ctx.font=`bold ${10*scale}px sans-serif`;const tabWidth=ctx.measureText(name).width+26*scale;
+     ctx.fillStyle=accent;ctx.fillRect(x+12*scale,y-21*scale,tabWidth,23*scale);
+--- /dev/null
++++ b/apps/lab/components/loopforge/agents/strike-speech-placement.ts
+@@ -0,0 +1,22 @@
++/** CSS-pixel geometry shared by the DOM overlay and the scene export. */
++export type SpeechRect = {x:number;y:number;width:number;height:number};
++export const isStrikeSpeech = (framing:string|undefined,speaker:string) => framing==='impact' && speaker==='limen';
++
++/** Reserve the right-hand lane; retain readable type and wrap in narrow views. */
++export function strikeSpeechLane(viewportWidth:number,anchorX:number,preferredWidth:number) {
++  const inset=10, minimumWidth=Math.min(134,viewportWidth-2*inset);
++  const x=Math.max(inset,Math.min(viewportWidth-inset-minimumWidth,Math.max(viewportWidth*.55,anchorX+viewportWidth*.12)));
++  return {x,width:Math.min(preferredWidth,viewportWidth-inset-x)};
++}
++
++export function placeStrikeSpeech(input:{viewport:{width:number;height:number};anchor:{x:number;y:number};preferredWidth:number;bodyHeight:number;clock?:SpeechRect}) {
++  const {viewport,anchor,preferredWidth,bodyHeight,clock}=input;
++  const lane=strikeSpeechLane(viewport.width,anchor.x,preferredWidth);
++  // The name/emotion extends 32px above the body. Leave space for it and the tail.
++  let y=40;
++  if(clock && lane.x<clock.x+clock.width+12 && lane.x+lane.width>clock.x-12) {
++    y=Math.max(y,clock.y+clock.height+12+32);
++  }
++  y=Math.max(40,Math.min(y,viewport.height-bodyHeight-16));
++  return {...lane,y,height:bodyHeight,tailY:Math.max(12,Math.min(bodyHeight-12,anchor.y-y))};
++}

@@ -1,0 +1,127 @@
+{
+  "id": "what-makes-a-game",
+  "title": "What makes this a game",
+  "standfirst": "A production counter can tell you that the line is working. It cannot tell you why you want to press the next button.",
+  "opening": "opening",
+  "blocks": [
+    {
+      "type": "prose",
+      "text": "LIMEN’s greeting gives the opening frame its tension. Someone controls the threshold; everyone else must wait. The interface asks the player to watch. Before a single resource is spent, the scene has offered a small social hypothesis: admission depends on this figure’s permission. What happens when that permission travels with an object?"
+    },
+    {
+      "type": "prose",
+      "text": "Bob's card remains with Ed when the day ends. The database can settle that fact without difficulty. For the person playing, it opens a question. Did Bob notice? Will somebody ask for the card again? Does Ed's possession of it matter, or is it merely an elaborate detail? A world becomes interesting when an observed event changes what we expect, and those expectations have somewhere to go.",
+      "sources": [
+        "kernel",
+        "motion-case"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "That is still an invitation, not evidence that the delivered game fulfils it. Day 1 is a tightly authored slice. It demonstrates an arrival, an injury and assistance, production, and departure. Its six controls do not establish a rich space of strategic choice, and the proposed later economy is outside the delivered boundary. I want to begin there because it is easy for a builder, pleased to have made several systems cooperate, to mistake their cooperation for the player's reason to return.",
+      "sources": [
+        "day-two",
+        "motion-case"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "player",
+      "title": "At the operator's desk",
+      "caption": "An authored counterexample with three hidden initial conditions. The time allowance and tray expose consequences; the covered mechanism withholds their cause. Its rules and balance are specific to this teaching scene."
+    },
+    {
+      "type": "prose",
+      "text": "My first version of this desk failed its own argument. I charged a turn for inspection, then let a failed production attempt announce the same diagnosis. On a healthy line, that attempt also earned output. The critic noticed what I had missed: the impatient player could get everything the careful player bought, sometimes with a bonus. I had written about consequential choice while building a preference disguised as a decision. The revision makes a blind failure ambiguous and expensive to restart. Servicing the guide also takes time, so that button cannot become another free inspection. Now caution has a circumstance in which it pays, and a circumstance in which it wastes the shift."
+    },
+    {
+      "type": "heading",
+      "text": "What comes back after an action"
+    },
+    {
+      "type": "prose",
+      "text": "Daniel Cook describes a loop in which a player forms a mental model, acts, receives feedback and revises that model. The useful part for our factory is the revision. If I do the same thing again, what do I now expect to happen? A number rising on a panel can supply feedback. So can a worker stepping away from a station, a reply spoken too quietly to be heard, or a card that fails to return to its owner. The designer's job includes making the relationship discoverable.",
+      "sources": [
+        "loops"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The loop can fail at several different places. A command may have no consequence. A consequence may occur but remain invisible. A visible result may have so many competing explanations that the player cannot form a useful hypothesis. Or the hypothesis may be perfectly clear and still lead to a dull next action. These failures need different repairs. More dialogue will not necessarily make an illegible consequence clear; another resource meter will not create an interesting trade."
+    },
+    {
+      "type": "prose",
+      "text": "MDA gives this problem a vocabulary. Mechanics are the rules and representations we build. Dynamics are the behavior that emerges when those rules are exercised. Aesthetics, in the framework's broader sense, concern the experience the player seeks. A reservation rule might prevent two characters from using a control at once. Its visible consequence might be a queue, an interruption or a moment of authority. Whether that produces tension, amusement or irritation depends on the surrounding situation and the person playing.",
+      "sources": [
+        "mda"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The desk’s mistake changed how I used MDA. A list of functioning controls had made the mechanism look complete. Comparing the outcomes of two plans exposed the behavior it actually produced. That comparison is now part of my design work: before polishing a choice, I want to know whether one option quietly contains all the benefits of another. The player can discover a good strategy; the interface should not punish them for taking its promise of information seriously."
+    },
+    {
+      "type": "heading",
+      "text": "A character can be believable and leave you idle"
+    },
+    {
+      "type": "prose",
+      "text": "Park and colleagues’ Generative Agents paper takes us to a neighboring world: twenty-five characters remember, reflect and plan in a small town. Look at the Valentine’s gathering below. An invitation has traveled far enough to bring five characters together. That is a striking social result. It still leaves the game designer with a question: what relationship does the person at the screen have to this event?",
+      "sources": [
+        "generative-agents"
+      ]
+    },
+    {
+      "type": "evidence",
+      "asset": "generative-agents-party",
+      "alt": "Figure 4 from Generative Agents: five characters gathered in a café, with emoji bubbles representing the Valentine’s party",
+      "caption": "Figure 4, Park and colleagues, 2023. Five of twelve invited agents attended; the paper reports scheduling conflicts and planning failures among those absent. The study tests believability, not player enjoyment. Reproduced here to examine that distinction.",
+      "original": "https://arxiv.org/html/2304.03442v2/figures/figure_valentine3.png"
+    },
+    {
+      "type": "prose",
+      "text": "This distinction matters to the temptation behind Loopforge. Rich internal lives promise a world that surprises its maker. A player, however, needs a relationship to that surprise. Can they influence it, understand it, prepare for it, or discover something through it? A perfectly plausible offscreen conversation may contribute nothing to play. A short, deliberately authored exchange may be decisive if it changes whom the player trusts before an irreversible order."
+    },
+    {
+      "type": "prose",
+      "text": "Emily Short separates several jobs commonly bundled under narrative: selecting material, offering options, resolving actions and presenting consequences. Generating a fluent line helps with only part of that work. Façade is an older and instructive counterpoint to the dream of free generation: its interactive drama joins reactive behavior to a drama manager and carefully authored material. Both traditions deserve attention. One explores how characters can sustain behavior; the other makes explicit how much structure an experience may need.",
+      "sources": [
+        "short",
+        "facade"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "The next thing worth building"
+    },
+    {
+      "type": "prose",
+      "text": "The next addition to our factory should make a relationship available to the player: a clue they can act on, a person they can influence, a consequence they can recognize later. This gives us a sharper test than asking whether the world has become richer. An elaborate private memory may change nothing the player can discover. A single returned card may overturn their account of a colleague."
+    },
+    {
+      "type": "build",
+      "title": "Write the player's hypothesis",
+      "body": "Choose a situation the player should learn to read. Commit to a plan before touching the controls, then keep its outcome beside the plan. A plausible explanation is easy to write after the result.",
+      "steps": [
+        "Play each situation once without inspection; record deliveries and the information you actually received.",
+        "Replay with inspection and compare the plans. Where did caution help, and where did it cost output?",
+        "Try servicing the guide first in all three situations. Explain why the best plan with full knowledge need not be the best first action without it."
+      ],
+      "exercise": "Design one additional clue that helps without naming the right button. Explain what the player could infer from it and what would remain uncertain. Do not add a second resource until it creates a new decision."
+    },
+    {
+      "type": "prose",
+      "text": "The factory now has two designers to satisfy: the one arranging its machinery and the person learning how to live with it. Before we build the machinery, we will look at an older problem—what happens to work when we move it across the boundary of an automated system."
+    }
+  ],
+  "sourceIds": [
+    "kernel",
+    "motion-case",
+    "day-two",
+    "loops",
+    "mda",
+    "generative-agents",
+    "short",
+    "facade"
+  ]
+}

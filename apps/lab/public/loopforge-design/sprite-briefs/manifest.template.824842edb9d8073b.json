@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "status": "template-not-delivered",
+  "assetId": "char-bob",
+  "revision": null,
+  "files": [],
+  "dependencies": [
+    "prop-credential"
+  ],
+  "sprite": {
+    "sourceSize": [
+      256,
+      256
+    ],
+    "pivotPx": [
+      128,
+      208
+    ],
+    "trimRect": null,
+    "sortAnchorPx": [
+      128,
+      208
+    ],
+    "groundFootprintMetres": null,
+    "layer": "actor",
+    "sockets": {}
+  },
+  "clips": [
+    {
+      "id": "walk",
+      "facing": "NE",
+      "frames": [],
+      "loopRange": null,
+      "entryFrame": null,
+      "holdFrame": null,
+      "exitFrame": null,
+      "compatibleNext": [
+        "idle",
+        "hurry",
+        "start-stop"
+      ],
+      "interruptPolicy": "plant-foot-before-stop",
+      "markers": []
+    }
+  ],
+  "requiredFileFields": [
+    "path",
+    "sha256",
+    "bytes",
+    "width",
+    "height"
+  ],
+  "requiredFrameFields": [
+    "fileIndex",
+    "atlasRect",
+    "sourceSize",
+    "trimRect",
+    "pivotPx",
+    "durationMs",
+    "sockets"
+  ],
+  "requiredMarkerFields": [
+    "name",
+    "frame",
+    "cosmeticOnly"
+  ],
+  "note": "Replace all nulls and empty delivery arrays with validated export data. Frames are not authored by this brief. Gameplay events come from ENGINE, not markers."
+}

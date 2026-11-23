@@ -1,0 +1,39 @@
+{
+  "status": "Rebuilt body installed in shared review and opening scene; 20 retained motions and three detail levels structurally verified; visual/contact/performance acceptance pending",
+  "referenceMaster": "output/limen-rebuild-2026-10-21/limen-skull-front-v3.png",
+  "sha256": "1348dfb6f4d3dcd0bba17f2857c90ac6b5dbfae077d7266c3e83a55c134f677a",
+  "generatedBy": "OpenAI built-in image generation",
+  "references": [
+    "apps/lab/public/media/loopforge-model-briefs/limen-character-sheet-protocol-v2.b9ac5d62a5bebb45.jpg",
+    "loopforge/frontend/loopforge-webview/public/assets/concept_art/characters/security_operations/limen_security.png"
+  ],
+  "budgetCap": 1000,
+  "submissionCost": 30,
+  "modelArguments": {
+    "ai_model": "meshy-7.1",
+    "model_type": "standard",
+    "pose_mode": "a-pose",
+    "enable_pbr": true,
+    "topology": "triangle",
+    "target_polycount": 30000,
+    "should_remesh": true,
+    "should_texture": true,
+    "texture_resolution": "2k",
+    "image_enhancement": false,
+    "save_pre_remeshed_model": true,
+    "target_formats": [
+      "glb"
+    ],
+    "multi_view_thumbnails": true,
+    "texture_prompt": "Loopforge security chief LIMEN. Exposed mechanical skull, heavy brow, cyan eye sockets, teeth and cable neck. Pale weathered steel outer armor; broad coherent steel plate faces and very dark charcoal mechanical gaps. Strong plate-versus-joint contrast, restrained fine scratches. No camouflage, no white wash, no gun, no blade. Chest nameplate LIMEN. Keep the reference silhouette and large skull. Materials should read clearly across a factory room. No glowing armor outlines. Compact flush rail on the right forearm; energy blade will be attached separately.",
+    "response_format": "json"
+  },
+  "chargedCredits": 30,
+  "taskId": "01a16141-7fd9-7099-8b4d-b06219ed949c",
+  "reservedCredits": 0,
+  "triangles": 31213,
+  "rigTaskId": "01a16149-315c-76f3-ae2c-91979bfe4989",
+  "rigCredits": 5,
+  "rigJoints": 24,
+  "localMotionBank": "output/limen-rebuild-2026-10-21/motions.glb"
+}

@@ -1,0 +1,19 @@
+{
+  "result": "2026-10-21-hd620-opening-optimized.json",
+  "source": "Browser Save test result control, local production build on 127.0.0.1:3191",
+  "baseCommit": "1bedc7ce55e243d3f7b60b7ba7c792b685596fb0",
+  "sourceSha256": {
+    "apps/lab/components/loopforge/agents/SceneStudies.tsx": "366554edf8ab651b20c4b926f2c781f9e6ef219d787776b1d25ae25cec74e2ac",
+    "apps/lab/components/loopforge/agents/arrival-cast.ts": "06b3814a6e59275337b0d4eefe80d6c361d1df3d2bfc8f50842e5e48ab2a3863",
+    "apps/lab/components/loopforge/agents/arrival-stage.ts": "cf51d1fb8d49899d560c601b86e59b152108ef062ca0c2b5173e3b71ffa74668",
+    "apps/lab/components/loopforge/agents/opening-performance.ts": "15cb47c4ebf8948b01e24be7896cfcb2c17bfa4493f24baa6a41429a1a4ad85a",
+    "apps/lab/components/loopforge/agents/performance-sampler.ts": "dce923723bf25303c706c24143a436d967172a84f48702178adbc35adb2e3dd9",
+    "apps/lab/lib/loopforge/encounters/kernel.ts": "6adf753d68385d70c11484c08127d2ed69589c6b1c7658c1709d19c2669ca26d",
+    "apps/lab/lib/loopforge/encounters/arrival.ts": "8193681fb9dfa88377cad6ac2faaaf66c45491514b00f7b8a2d0f473c13b7a3a",
+    "apps/lab/lib/loopforge/encounters/arrival-layout.ts": "2dcec23434ed767e0f8367177ccc7b1291fe29b865851dd0ee49ec722a021f04",
+    "apps/lab/lib/loopforge/performance/opening-acceptance.ts": "95782bda84914938eddabb41d64a6ce8185a983a2d3018ead429eefe767d3733"
+  },
+  "changes": "Reusable pose buffers; structural immutable world snapshots; one backwards event scan per projection; reuse projection between simulation ticks; defer closed author-panel content. Same scene, assets and reference graphics.",
+  "verdict": "PASS: 55.6 FPS, 28.9 ms p95, 34.8 ms p99, four pauses over 100 ms, maximum 122.7 ms, input 10.4 ms, two episodes, no resource growth.",
+  "limits": "One matched before/after run on Intel HD620. Does not isolate the contribution of each optimization or certify phones, general BDI, cold loading or artistic quality."
+}

@@ -1,0 +1,182 @@
+{
+  "id": "limen",
+  "name": "LIMEN",
+  "subtitle": "Security chief · body + emitter",
+  "revision": "Rebuild brief v1 · body v2 / emitter v1",
+  "status": "Prototype available",
+  "summary": "Heavy armour, cyan optics and energy flowing from one forearm. Rebuild the accepted body and rigid housing separately; the living blade and maintenance idle are authored in our pipeline.",
+  "provenance": "Reconstructed rebuild brief from the accepted v2 source, owner instructions and import records. The original Meshy chat prompt and extracted front/back upload images were not recovered; this is not a verbatim historical export.",
+  "viewer": "/stepanoskin/loopforge/play/agent-test/limen",
+  "viewerLabel": "Inspect body, emitter and energy",
+  "record": "/loopforge-design/production/LIMEN_MESHY_REVIEW.md",
+  "parts": [
+    "Body v2: 42,354 triangles / 23-joint source rig",
+    "Separate emitter: 4,994-triangle runtime housing",
+    "Living cyan blade: procedural effect, not a Meshy model"
+  ],
+  "remaining": [
+    "Finger articulation and rigid armour weights",
+    "Worker/machine contact and blended-motion clearance",
+    "Crowd and physical-device performance"
+  ],
+  "images": [
+    {
+      "label": "Original character sheet · identity reference",
+      "role": "Reference only — contains multiple views; prepare isolated A-pose inputs before a fresh generation.",
+      "sourceName": "limen_character_sheet_2.png",
+      "sourceSha256": "12e79d26004c8c15e3b98689412f850afca4b27472332b61d91f5ae8390cee63",
+      "input": {
+        "src": "/media/loopforge-model-briefs/limen_character_sheet_2.3555f0a1bcef0f53.jpg",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 771280,
+        "sha256": "3555f0a1bcef0f537d2a85820a89103dd2866cbbb86afddc2c65389b46aeb646"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/limen_character_sheet_2-360.d6599a8c39ff7368.webp",
+          "width": 360,
+          "height": 240,
+          "bytes": 23030,
+          "sha256": "d6599a8c39ff7368eaf1ad85ed84676610d8940d5cbde08239d40d5e35b9758c"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/limen_character_sheet_2-720.163a385f98b126ef.webp",
+          "width": 720,
+          "height": 480,
+          "bytes": 93508,
+          "sha256": "163a385f98b126efda5310ce331afe15acfc6b795c06d76c3fc74d47cceb4096"
+        }
+      ],
+      "archivePath": "images/limen_character_sheet_2.3555f0a1bcef0f53.jpg"
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Body rebuild",
+      "file": "limen/01-body-rebuild.txt",
+      "text": "LIMEN — accepted v2 body rebuild specification, reconstructed 14 October 2026.\nThis is a reusable brief, not a transcript of the original Meshy task. The attached original character sheet is identity reference, not a single-object A-pose upload. First prepare matching isolated front/back A-pose references; preserve the accepted model's proportions using the linked viewer. Do not generate directly from a multi-character collage.\n\nCreate LIMEN, Loopforge's security chief: broad heavy worn industrial armour, recognizable helmet and cyan optics, dark mechanical joints, legible chest insignia and robust planted feet. Preserve original character art. Neutral symmetric A-pose, hands clear of torso, two separated legs. Full humanoid body with useful hands. No blade or energy fused to the body, hand, leg or torso.\n\nKeep high-detail master separately. Produce a roughly 41–43k-triangle delivery candidate without losing helmet, joints, hands or silhouette. The accepted v2 had 42,354 triangles; a new generation need not reproduce its topology. Preserve available PBR texture maps; target 2K working maps and no baked glow halo. Do not claim maps, rigid weights or finger bones that are absent.\n\nExport unrigged neutral GLB and editable FBX. Inspect front/back/profile before rigging. Retain the exact accepted source if shape changes are unnecessary: animation cleanup alone is not a reason to regenerate the body.\n",
+      "url": "/loopforge-design/model-briefs/limen-01-body-rebuild.ca58c8f0f7c763be.txt"
+    },
+    {
+      "title": "Emitter rebuild",
+      "file": "limen/02-emitter-rebuild.txt",
+      "text": "LIMEN — separate rigid forearm emitter\nUse the accepted body and original cyan blade reference. Generate the physical emitter housing and forearm mounting collar as ONE rigid separate accessory, with its longitudinal axis and mounting end clearly identified. Do not generate a hand, arm, body, floor or background. The complete source blade may include energy geometry, but our runtime retains the housing and creates the energy procedurally; prefer the physical housing alone for this rebuild.\n\nPreserve dark worn metal, cyan-adjacent accents, engineered vents and attachment details. Target about 5,000 triangles for the delivery housing, keeping the high-resolution master separate. Export textured GLB and editable FBX with actual dimensions, axes and material inventory. No skeleton is required for a rigid attachment.\n\nMounting offsets, scale and handedness will be fitted to LIMEN's right forearm offline. Do not claim clearance from a standalone prop. We will validate walk, run, maintenance idle, blends and worker contacts after assembly.\n\nThe current 672-triangle core and braids, rapid energy flow, independent cyan/jade/blue/violet shifts, flicker/power-down/restart, reduced-effects mode and future sparks are authored in the renderer. Do not bake those effects into a heavy Meshy mesh.\n",
+      "url": "/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt"
+    },
+    {
+      "title": "Rig and delivery",
+      "file": "limen/03-rig-and-delivery.txt",
+      "text": "Rig the approved blade-free LIMEN body as a humanoid with Mixamo-compatible export naming. Preserve a neutral rigged A-pose and the same mesh/materials for each clip. Include walking and running takes with original names, durations and root travel documented. Export GLB with Rigged Character enabled, embedded textures, and every selected animation; export individual clips if the combined file omits any. Supply FBX for offline cleanup.\n\nThe accepted v2 source has 23 joints and no articulated fingers; do not assume a new rig shares those transforms. Report actual bones, skin weights, maps and embedded clips. Preserve original downloads and source hashes.\n\nThe 11-second emitter-adjustment idle is our offline-authored animation: planted stance, raise emitter, inspect, power down, opposite hand adjusts housing, two restart attempts, reignite, lower arm. It is not a Meshy catalog clip. Refit/rebake it for any changed skeleton or socket. Keep a separate authored derivative and compare against source. Avoid a global arm offset that breaks other motions.\n\nBefore adoption: validate neutral pose, walks/runs, full-cycle blade/body/floor clearance, material appearance, factory CCTV recognition and actual performance. The existing source-specific import recipe and socket calibration are not automatically valid for a regenerated model.\n",
+      "url": "/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt"
+    }
+  ],
+  "files": [
+    {
+      "name": "images/limen_character_sheet_2.3555f0a1bcef0f53.jpg",
+      "src": "/media/loopforge-model-briefs/limen_character_sheet_2.3555f0a1bcef0f53.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 771280,
+      "sha256": "3555f0a1bcef0f537d2a85820a89103dd2866cbbb86afddc2c65389b46aeb646"
+    },
+    {
+      "name": "prompts/01-body-rebuild.txt",
+      "src": "/loopforge-design/model-briefs/limen-01-body-rebuild.ca58c8f0f7c763be.txt",
+      "bytes": 1422,
+      "sha256": "ca58c8f0f7c763beac97765ad107b00d498638aede20b2860bac0a087bd7ebe3"
+    },
+    {
+      "name": "prompts/02-emitter-rebuild.txt",
+      "src": "/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt",
+      "bytes": 1303,
+      "sha256": "a184fe1c2f5fab69558ec791dcbdae72c8385a3c8c89d58e5a3373f052c1489f"
+    },
+    {
+      "name": "prompts/03-rig-and-delivery.txt",
+      "src": "/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt",
+      "bytes": 1343,
+      "sha256": "782019332c10aa4c584406b903ec42c0f618e32b82122401d28971acad027016"
+    },
+    {
+      "name": "README.md",
+      "src": "/loopforge-design/model-briefs/limen-README.561e8637db9d46a2.md",
+      "bytes": 1449,
+      "sha256": "561e8637db9d46a2b302f847f2bc1a479023842c3598bb6603246462638782fd"
+    }
+  ],
+  "downloadBytes": 776797,
+  "packageManifest": {
+    "schemaVersion": 1,
+    "id": "limen",
+    "revision": "Rebuild brief v1 · body v2 / emitter v1",
+    "provenance": "Reconstructed rebuild brief from the accepted v2 source, owner instructions and import records. The original Meshy chat prompt and extracted front/back upload images were not recovered; this is not a verbatim historical export.",
+    "viewer": "https://www.fruitfulab.net/stepanoskin/loopforge/play/agent-test/limen",
+    "images": [
+      {
+        "label": "Original character sheet · identity reference",
+        "role": "Reference only — contains multiple views; prepare isolated A-pose inputs before a fresh generation.",
+        "sourceName": "limen_character_sheet_2.png",
+        "sourceSha256": "12e79d26004c8c15e3b98689412f850afca4b27472332b61d91f5ae8390cee63",
+        "input": {
+          "src": "/media/loopforge-model-briefs/limen_character_sheet_2.3555f0a1bcef0f53.jpg",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 771280,
+          "sha256": "3555f0a1bcef0f537d2a85820a89103dd2866cbbb86afddc2c65389b46aeb646"
+        },
+        "variants": [
+          {
+            "src": "/media/loopforge-model-briefs/limen_character_sheet_2-360.d6599a8c39ff7368.webp",
+            "width": 360,
+            "height": 240,
+            "bytes": 23030,
+            "sha256": "d6599a8c39ff7368eaf1ad85ed84676610d8940d5cbde08239d40d5e35b9758c"
+          },
+          {
+            "src": "/media/loopforge-model-briefs/limen_character_sheet_2-720.163a385f98b126ef.webp",
+            "width": 720,
+            "height": 480,
+            "bytes": 93508,
+            "sha256": "163a385f98b126efda5310ce331afe15acfc6b795c06d76c3fc74d47cceb4096"
+          }
+        ],
+        "archivePath": "images/limen_character_sheet_2.3555f0a1bcef0f53.jpg"
+      }
+    ],
+    "files": [
+      {
+        "name": "images/limen_character_sheet_2.3555f0a1bcef0f53.jpg",
+        "src": "/media/loopforge-model-briefs/limen_character_sheet_2.3555f0a1bcef0f53.jpg",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 771280,
+        "sha256": "3555f0a1bcef0f537d2a85820a89103dd2866cbbb86afddc2c65389b46aeb646"
+      },
+      {
+        "name": "prompts/01-body-rebuild.txt",
+        "src": "/loopforge-design/model-briefs/limen-01-body-rebuild.ca58c8f0f7c763be.txt",
+        "bytes": 1422,
+        "sha256": "ca58c8f0f7c763beac97765ad107b00d498638aede20b2860bac0a087bd7ebe3"
+      },
+      {
+        "name": "prompts/02-emitter-rebuild.txt",
+        "src": "/loopforge-design/model-briefs/limen-02-emitter-rebuild.a184fe1c2f5fab69.txt",
+        "bytes": 1303,
+        "sha256": "a184fe1c2f5fab69558ec791dcbdae72c8385a3c8c89d58e5a3373f052c1489f"
+      },
+      {
+        "name": "prompts/03-rig-and-delivery.txt",
+        "src": "/loopforge-design/model-briefs/limen-03-rig-and-delivery.782019332c10aa4c.txt",
+        "bytes": 1343,
+        "sha256": "782019332c10aa4c584406b903ec42c0f618e32b82122401d28971acad027016"
+      },
+      {
+        "name": "README.md",
+        "src": "/loopforge-design/model-briefs/limen-README.561e8637db9d46a2.md",
+        "bytes": 1449,
+        "sha256": "561e8637db9d46a2b302f847f2bc1a479023842c3598bb6603246462638782fd"
+      }
+    ]
+  }
+}

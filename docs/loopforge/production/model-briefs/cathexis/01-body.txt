@@ -1,0 +1,25 @@
+REBUILD REFERENCE ONLY. The accepted v2 body and skirt are already complete. Do not rerun this stage or the completed skirt repair. Stage 2 is closed; current work starts at 03-rig-tests.txt. The instructions below apply only if a complete body rebuild is explicitly requested.
+
+Create CATHEXIS for Loopforge from the THREE attached body reference images: 01-cathexis-body-front.260b685edbc8b769.jpg, 02-cathexis-back-worn-cloth.f46b50f5d702ac1d.jpg and 03-cathexis-left-worn-cloth.5ca90f61805e55e6.jpg.
+
+This task is the BODY ONLY. Do not install a porcelain face mask. Separate masks will follow as separate assets. Do not infer additional characters from any reference sheet.
+
+Identity: a theatrical robot diva who runs the Burn-in Theatre. Cracked ivory armor, black articulated mechanics, antique brass corset ribs, compact diadem/headset, amber eye emitters and hip canisters, a compact back reactor, grouped cable-hair and a distressed open-front layered skirt. Elegant, commanding and unmistakably mechanical. Preserve the approved body proportions and high-heeled mechanical feet. Do not turn her into a worker, a glossy generic android, a princess or a weapon-bearing fighter.
+
+Keep the accepted original mechanical face as permanent body geometry, including its grimace, skull, crown, hair and amber eyes. Grace is a separate porcelain shell that fits over this intact head. Do not cut away the original face, create a second mechanical expression insert or fuse the mask into the body. The same head supports full Grace, half Grace and exposed mechanism.
+
+She is physically delicate and made for performance and fine interaction, not coarse industrial labor. Keep fine hands, porcelain and elegant costume. Later oil/soot and brewery-residue appearances will reuse this EXACT model, UVs and rig. Do not create a heavier dirty-body replacement. Anger and distress will be expressed through the exposed body face and acting, independent of dirt or mask coverage.
+
+Generate the complete unrigged visual master first, in a clean symmetric A-pose. Hands clear of the torso, five separate mechanical fingers with a distinct thumb, legs and feet separated. The front view is the authority for proportions. Use the rear for reactor/hair construction and the profile for depth. Resolve minor view disagreements coherently rather than duplicating parts.
+
+Keep fabric clear of legs and hands. The skirt has the original layered side panels and an open front. Its central rear cloth must form a continuous section behind the legs, reaching the lower ankles without knee/shin intersections. The revised back and matching left profile govern rear coverage and skirt material: mostly solid weathered gray-ivory cloth, restrained repaired seams and frayed edges, with excessive decorative lace removed. Preserve the original front opening, layered silhouette and crown. The original front drawing predates the fabric revision: use it for body proportions and the front opening, not the older ornate lace. In the left-facing profile, the rear panel is on the right and the leg is visible through the front opening. No floor train or knee-shaped cutouts. Hair is grouped into a few controllable locks/cable bundles, not thousands of separate strands. Do not bake background shadows, ambient glow, fog, transparent veils or magical energy into geometry. Surface cracks, weave and fine wear should primarily be texture detail.
+
+Where your tools support it, keep body, skirt panels and hair sections separable. Do not claim separate objects unless the exported file actually contains them. If segmentation is unsupported, say so and preserve the neutral master for our offline cleanup. Do not discard the costume just to make auto-rigging easier.
+
+Deliver:
+- Cathexis_Body_v1_master: full-detail unrigged source.
+- Cathexis_Body_v1_50k: a derivative around 40,000–55,000 triangles, preserving silhouette, fingers, face seating rim and costume. Report the actual count rather than claiming the target was exact.
+- Textured GLB and FBX, neutral A-pose, PBR base color, normal, roughness and metallic maps. 2K working textures are sufficient for the first trial; preserve higher-resolution source maps if available.
+- A brief report of material slots, separate objects, pose and any likely rigging problems.
+
+Stop before generating the large animation bank. We will inspect the body, fit a mask and test the rig first. Do not overwrite the master when remeshing.

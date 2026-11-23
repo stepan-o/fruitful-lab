@@ -1,0 +1,11 @@
+{
+  "revision": "room-kit/1",
+  "asset": "carrier",
+  "src": "/media/files/0f8be465c0bfe6737d857e72833b794a5b17109a965228c60215e2931fe58460.glb",
+  "sha256": "0f8be465c0bfe6737d857e72833b794a5b17109a965228c60215e2931fe58460",
+  "bytes": 323392,
+  "sourceSha256": "f0dfea2130d0cdfaacda556c5e8563141a0a265f78863115fabdfffd43d86a89",
+  "triangles": 2030,
+  "textureSize": 512,
+  "status": "candidate; fit and visual review pending"
+}

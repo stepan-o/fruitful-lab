@@ -1,0 +1,1342 @@
+{
+  "date": "2026-10-04",
+  "base": "d780c1926b2d095b7125a98bbb58cacaac8a8fe2",
+  "environment": {
+    "browser": "Chromium 154 headless, Linux",
+    "url": "http://127.0.0.1:3218/stepanoskin/production-systems",
+    "load": "shared developer host; no network/CPU throttling",
+    "fullPageDPR": 1,
+    "lightingCaptureAndFramesDPR": 2
+  },
+  "fullPage": {
+    "viewports": [
+      {
+        "width": 1440,
+        "scroll": 1420,
+        "scenes": 8,
+        "duplicateIds": [],
+        "violations": []
+      },
+      {
+        "width": 768,
+        "scroll": 748,
+        "scenes": 8,
+        "duplicateIds": [],
+        "violations": []
+      },
+      {
+        "width": 390,
+        "scroll": 370,
+        "scenes": 8,
+        "duplicateIds": [],
+        "violations": []
+      },
+      {
+        "width": 320,
+        "scroll": 300,
+        "scenes": 8,
+        "duplicateIds": [],
+        "violations": []
+      }
+    ],
+    "motion": {
+      "initial": [
+        {
+          "scene": "conveyor",
+          "playing": "true"
+        },
+        {
+          "scene": "operator",
+          "playing": "false"
+        },
+        {
+          "scene": "cabinet",
+          "playing": "false"
+        },
+        {
+          "scene": "board",
+          "playing": "false"
+        },
+        {
+          "scene": "inspection",
+          "playing": "false"
+        },
+        {
+          "scene": "release",
+          "playing": "false"
+        },
+        {
+          "scene": "folio",
+          "playing": "false"
+        },
+        {
+          "scene": "rest",
+          "playing": "false"
+        }
+      ],
+      "advances": true,
+      "paused": true,
+      "persisted": "true",
+      "offscreen": "false",
+      "board": "true",
+      "reduced": {
+        "playing": false,
+        "animations": 0
+      }
+    },
+    "errors": [],
+    "timings": [
+      {
+        "kind": "cold",
+        "dom": 1204,
+        "lcp": 1048,
+        "cls": 0,
+        "htmlEncoded": 303927,
+        "resources": [
+          {
+            "name": "3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
+            "bytes": 43068,
+            "type": "link"
+          },
+          {
+            "name": "c825fd02acae0153-s.p.0js52-zd~6bs8.woff2",
+            "bytes": 43120,
+            "type": "link"
+          },
+          {
+            "name": "0vb44mhqbramc.css",
+            "bytes": 885,
+            "type": "link"
+          },
+          {
+            "name": "0ypl6f4z94y6q.css",
+            "bytes": 20343,
+            "type": "link"
+          },
+          {
+            "name": "06dt75e-3h79-.css",
+            "bytes": 6890,
+            "type": "link"
+          },
+          {
+            "name": "0t1et0tty8o9s.js",
+            "bytes": 2336,
+            "type": "link"
+          },
+          {
+            "name": "0l9eevv8an7~q.js",
+            "bytes": 8873,
+            "type": "script"
+          },
+          {
+            "name": "0wj8l4fwydekq.js",
+            "bytes": 70725,
+            "type": "script"
+          },
+          {
+            "name": "0o59ac8426icc.js",
+            "bytes": 37166,
+            "type": "script"
+          },
+          {
+            "name": "073081qv4uyn8.js",
+            "bytes": 9236,
+            "type": "script"
+          },
+          {
+            "name": "turbopack-0cz8ciz_9v4h8.js",
+            "bytes": 4161,
+            "type": "script"
+          },
+          {
+            "name": "04eklj-7j4aqp.js",
+            "bytes": 2876,
+            "type": "script"
+          },
+          {
+            "name": "0a0o4dde.oa2w.js",
+            "bytes": 12874,
+            "type": "script"
+          },
+          {
+            "name": "0p5h.c20ub0dd.js",
+            "bytes": 7739,
+            "type": "script"
+          },
+          {
+            "name": "favicon.ico?favicon.0x3dzn~oxb6tn.ico",
+            "bytes": 25931,
+            "type": "other"
+          },
+          {
+            "name": "stepanoskin?_rsc=15be1",
+            "bytes": 165,
+            "type": "fetch"
+          },
+          {
+            "name": "stepanoskin?_rsc=17xye",
+            "bytes": 840,
+            "type": "fetch"
+          }
+        ],
+        "svgPaths": 1488
+      },
+      {
+        "kind": "warm",
+        "dom": 404,
+        "lcp": 552,
+        "cls": 0,
+        "htmlEncoded": 303927,
+        "resources": [
+          {
+            "name": "3dd6e4b3b9442184-s.p.05efcw5o0fx~3.woff2",
+            "bytes": 43068,
+            "type": "link"
+          },
+          {
+            "name": "c825fd02acae0153-s.p.0js52-zd~6bs8.woff2",
+            "bytes": 43120,
+            "type": "link"
+          },
+          {
+            "name": "0vb44mhqbramc.css",
+            "bytes": 885,
+            "type": "link"
+          },
+          {
+            "name": "0ypl6f4z94y6q.css",
+            "bytes": 20343,
+            "type": "link"
+          },
+          {
+            "name": "06dt75e-3h79-.css",
+            "bytes": 6890,
+            "type": "link"
+          },
+          {
+            "name": "0t1et0tty8o9s.js",
+            "bytes": 2336,
+            "type": "link"
+          },
+          {
+            "name": "0l9eevv8an7~q.js",
+            "bytes": 8873,
+            "type": "script"
+          },
+          {
+            "name": "0wj8l4fwydekq.js",
+            "bytes": 70725,
+            "type": "script"
+          },
+          {
+            "name": "0o59ac8426icc.js",
+            "bytes": 37166,
+            "type": "script"
+          },
+          {
+            "name": "073081qv4uyn8.js",
+            "bytes": 9236,
+            "type": "script"
+          },
+          {
+            "name": "turbopack-0cz8ciz_9v4h8.js",
+            "bytes": 4161,
+            "type": "script"
+          },
+          {
+            "name": "04eklj-7j4aqp.js",
+            "bytes": 2876,
+            "type": "script"
+          },
+          {
+            "name": "0a0o4dde.oa2w.js",
+            "bytes": 12874,
+            "type": "script"
+          },
+          {
+            "name": "0p5h.c20ub0dd.js",
+            "bytes": 7739,
+            "type": "script"
+          },
+          {
+            "name": "favicon.ico?favicon.0x3dzn~oxb6tn.ico",
+            "bytes": 25931,
+            "type": "other"
+          },
+          {
+            "name": "stepanoskin?_rsc=15be1",
+            "bytes": 165,
+            "type": "fetch"
+          },
+          {
+            "name": "stepanoskin?_rsc=17xye",
+            "bytes": 842,
+            "type": "fetch"
+          }
+        ],
+        "svgPaths": 1488
+      }
+    ],
+    "scenario": "Games selected",
+    "keyboardRadio": true,
+    "artCredits": true,
+    "touch": true,
+    "noJS": {
+      "scenes": 8,
+      "motionButtonVisible": false,
+      "h1": "Stepan Oskin\nData science,\nacross the full stack."
+    }
+  },
+  "pace": {
+    "errors": [],
+    "initial": {
+      "medium": true,
+      "animations": [
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        },
+        {
+          "time": 330.0131999988305,
+          "rate": 1.1,
+          "state": "running"
+        }
+      ]
+    },
+    "rates": [
+      {
+        "name": "Slow",
+        "rate": 0.55,
+        "actualRates": [
+          0.55
+        ],
+        "elapsed": 265.7787000000001,
+        "phaseSpread": 0
+      },
+      {
+        "name": "Medium",
+        "rate": 1.1,
+        "actualRates": [
+          1.1
+        ],
+        "elapsed": 549.9912000000002,
+        "phaseSpread": 0
+      },
+      {
+        "name": "Fast",
+        "rate": 3,
+        "actualRates": [
+          3
+        ],
+        "elapsed": 1500.0060000000008,
+        "phaseSpread": 0
+      }
+    ],
+    "paused": [
+      {
+        "name": "Slow",
+        "allPaused": true,
+        "maxSeek": 0
+      },
+      {
+        "name": "Medium",
+        "allPaused": true,
+        "maxSeek": 0
+      },
+      {
+        "name": "Fast",
+        "allPaused": true,
+        "maxSeek": 0
+      }
+    ],
+    "lifts": [
+      {
+        "lift": "+0.2% lift",
+        "ink": "rgb(82, 105, 77)",
+        "outcome": "0"
+      },
+      {
+        "lift": "\u22120.5% lift",
+        "ink": "rgb(135, 86, 75)",
+        "outcome": "1"
+      },
+      {
+        "lift": "+1.4% lift",
+        "ink": "rgb(82, 105, 77)",
+        "outcome": "2"
+      },
+      {
+        "lift": "\u22123.6% lift",
+        "ink": "rgb(135, 86, 75)",
+        "outcome": "3"
+      },
+      {
+        "lift": "+0.1% lift",
+        "ink": "rgb(82, 105, 77)",
+        "outcome": "4"
+      },
+      {
+        "lift": "\u22120.4% lift",
+        "ink": "rgb(135, 86, 75)",
+        "outcome": "5"
+      },
+      {
+        "lift": "+6.1% lift",
+        "ink": "rgb(82, 105, 77)",
+        "outcome": "6"
+      },
+      {
+        "lift": "+2.6% lift",
+        "ink": "rgb(82, 105, 77)",
+        "outcome": "7"
+      },
+      {
+        "lift": "\u22122.9% lift",
+        "ink": "rgb(135, 86, 75)",
+        "outcome": "8"
+      },
+      {
+        "lift": "\u22120.2% lift",
+        "ink": "rgb(135, 86, 75)",
+        "outcome": "9"
+      }
+    ],
+    "reduced": {
+      "disabled": true,
+      "animations": 0
+    },
+    "recreated": [
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      },
+      {
+        "time": 0,
+        "rate": 3,
+        "state": "paused"
+      }
+    ],
+    "keyboard": true,
+    "sources": {
+      "visible": true,
+      "hint": "At fixed traffic, shorter tests gather less evidence per decision. More comparisons call for false discovery rate (FDR) control."
+    },
+    "parts": {
+      "slatEdges": 1,
+      "rearBearings": 1,
+      "gears": 11
+    },
+    "activeAxe": [],
+    "palette": {
+      "heading": "rgb(52, 74, 60)",
+      "navigation": "rgb(77, 99, 83)",
+      "page": "rgb(244, 242, 235)"
+    },
+    "touch": true,
+    "phone": {
+      "width": 390,
+      "scroll": 390,
+      "targets": [
+        {
+          "text": "Slow",
+          "width": 47,
+          "height": 44
+        },
+        {
+          "text": "Medium",
+          "width": 47,
+          "height": 44
+        },
+        {
+          "text": "Fast",
+          "width": 47,
+          "height": 44
+        },
+        {
+          "text": "i",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    }
+  },
+  "lighting": {
+    "errors": [],
+    "sizes": [
+      {
+        "width": 768,
+        "scroll": 748
+      },
+      {
+        "width": 390,
+        "scroll": 370
+      },
+      {
+        "width": 320,
+        "scroll": 300
+      }
+    ],
+    "samples": [
+      {
+        "t": 0,
+        "wheels": [
+          {
+            "name": "flywheel",
+            "wheel": "matrix(1, 0, 0, 1, 0, 0)",
+            "shadow": "matrix(1, 0, 0, 1, 0, 0)"
+          },
+          {
+            "name": "intermediate",
+            "wheel": "matrix(1, 0, 0, 1, 0, 0)",
+            "shadow": "matrix(1, 0, 0, 1, 0, 0)"
+          },
+          {
+            "name": "centre",
+            "wheel": "matrix(1, 0, 0, 1, 0, 0)",
+            "shadow": "matrix(1, 0, 0, 1, 0, 0)"
+          },
+          {
+            "name": "transfer",
+            "wheel": "matrix(1, 0, 0, 1, 0, 0)",
+            "shadow": "matrix(1, 0, 0, 1, 0, 0)"
+          },
+          {
+            "name": "takeoff",
+            "wheel": "matrix(1, 0, 0, 1, 0, 0)",
+            "shadow": "matrix(1, 0, 0, 1, 0, 0)"
+          },
+          {
+            "name": "upper-pinion",
+            "wheel": "matrix(1, 0, 0, 1, 0, 0)",
+            "shadow": "matrix(1, 0, 0, 1, 0, 0)"
+          },
+          {
+            "name": "winding-pinion",
+            "wheel": "matrix(1, 0, 0, 1, 0, 0)",
+            "shadow": "matrix(1, 0, 0, 1, 0, 0)"
+          },
+          {
+            "name": "relay-pinion",
+            "wheel": "matrix(1, 0, 0, 1, 0, 0)",
+            "shadow": "matrix(1, 0, 0, 1, 0, 0)"
+          },
+          {
+            "name": "upper-relay",
+            "wheel": "matrix(1, 0, 0, 1, 0, 0)",
+            "shadow": "matrix(1, 0, 0, 1, 0, 0)"
+          },
+          {
+            "name": "compound-pinion",
+            "wheel": "matrix(1, 0, 0, 1, 0, 0)",
+            "shadow": "matrix(1, 0, 0, 1, 0, 0)"
+          },
+          {
+            "name": "reduction",
+            "wheel": "matrix(1, 0, 0, 1, 0, 0)",
+            "shadow": "matrix(1, 0, 0, 1, 0, 0)"
+          }
+        ],
+        "hands": [
+          "matrix(1, 0, 0, 1, 0, 0)",
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ]
+      },
+      {
+        "t": 1200,
+        "wheels": [
+          {
+            "name": "flywheel",
+            "wheel": "matrix(0.341133, 0.940015, -0.940015, 0.341133, 0, 0)",
+            "shadow": "matrix(0.341133, 0.940015, -0.940015, 0.341133, 0, 0)"
+          },
+          {
+            "name": "intermediate",
+            "wheel": "matrix(-0.951057, -0.309017, 0.309017, -0.951057, 0, 0)",
+            "shadow": "matrix(-0.951057, -0.309017, 0.309017, -0.951057, 0, 0)"
+          },
+          {
+            "name": "centre",
+            "wheel": "matrix(-0.309017, 0.951057, -0.951057, -0.309017, 0, 0)",
+            "shadow": "matrix(-0.309017, 0.951057, -0.951057, -0.309017, 0, 0)"
+          },
+          {
+            "name": "transfer",
+            "wheel": "matrix(-0.886774, -0.462204, 0.462204, -0.886774, 0, 0)",
+            "shadow": "matrix(-0.886774, -0.462204, 0.462204, -0.886774, 0, 0)"
+          },
+          {
+            "name": "takeoff",
+            "wheel": "matrix(-0.809017, 0.587785, -0.587785, -0.809017, 0, 0)",
+            "shadow": "matrix(-0.809017, 0.587785, -0.587785, -0.809017, 0, 0)"
+          },
+          {
+            "name": "upper-pinion",
+            "wheel": "matrix(-0.187381, 0.982287, -0.982287, -0.187381, 0, 0)",
+            "shadow": "matrix(-0.187381, 0.982287, -0.982287, -0.187381, 0, 0)"
+          },
+          {
+            "name": "winding-pinion",
+            "wheel": "matrix(-0.187381, 0.982287, -0.982287, -0.187381, 0, 0)",
+            "shadow": "matrix(-0.187381, 0.982287, -0.982287, -0.187381, 0, 0)"
+          },
+          {
+            "name": "relay-pinion",
+            "wheel": "matrix(0.309017, 0.951057, -0.951057, 0.309017, 0, 0)",
+            "shadow": "matrix(0.309017, 0.951057, -0.951057, 0.309017, 0, 0)"
+          },
+          {
+            "name": "upper-relay",
+            "wheel": "matrix(-0.995974, -0.0896393, 0.0896393, -0.995974, 0, 0)",
+            "shadow": "matrix(-0.995974, -0.0896393, 0.0896393, -0.995974, 0, 0)"
+          },
+          {
+            "name": "compound-pinion",
+            "wheel": "matrix(-0.309017, 0.951057, -0.951057, -0.309017, 0, 0)",
+            "shadow": "matrix(-0.309017, 0.951057, -0.951057, -0.309017, 0, 0)"
+          },
+          {
+            "name": "reduction",
+            "wheel": "matrix(0.309017, -0.951057, 0.951057, 0.309017, 0, 0)",
+            "shadow": "matrix(0.309017, -0.951057, 0.951057, 0.309017, 0, 0)"
+          }
+        ],
+        "hands": [
+          "matrix(1, 0, 0, 1, 0, 0)",
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ]
+      },
+      {
+        "t": 1820,
+        "wheels": [
+          {
+            "name": "flywheel",
+            "wheel": "matrix(-0.279806, 0.960056, -0.960056, -0.279806, 0, 0)",
+            "shadow": "matrix(-0.279806, 0.960056, -0.960056, -0.279806, 0, 0)"
+          },
+          {
+            "name": "intermediate",
+            "wheel": "matrix(-0.411514, 0.911403, -0.911403, -0.411514, 0, 0)",
+            "shadow": "matrix(-0.411514, 0.911403, -0.911403, -0.411514, 0, 0)"
+          },
+          {
+            "name": "centre",
+            "wheel": "matrix(-0.960294, 0.278991, -0.278991, -0.960294, 0, 0)",
+            "shadow": "matrix(-0.960294, 0.278991, -0.278991, -0.960294, 0, 0)"
+          },
+          {
+            "name": "transfer",
+            "wheel": "matrix(-0.625964, 0.779852, -0.779852, -0.625964, 0, 0)",
+            "shadow": "matrix(-0.625964, 0.779852, -0.779852, -0.625964, 0, 0)"
+          },
+          {
+            "name": "takeoff",
+            "wheel": "matrix(-0.783693, -0.621148, 0.621148, -0.783693, 0, 0)",
+            "shadow": "matrix(-0.783693, -0.621148, 0.621148, -0.783693, 0, 0)"
+          },
+          {
+            "name": "upper-pinion",
+            "wheel": "matrix(0.837528, -0.546394, 0.546394, 0.837528, 0, 0)",
+            "shadow": "matrix(0.837528, -0.546394, 0.546394, 0.837528, 0, 0)"
+          },
+          {
+            "name": "winding-pinion",
+            "wheel": "matrix(0.837528, -0.546394, 0.546394, 0.837528, 0, 0)",
+            "shadow": "matrix(0.837528, -0.546394, 0.546394, 0.837528, 0, 0)"
+          },
+          {
+            "name": "relay-pinion",
+            "wheel": "matrix(0.228351, -0.973579, 0.973579, 0.228351, 0, 0)",
+            "shadow": "matrix(0.228351, -0.973579, 0.973579, 0.228351, 0, 0)"
+          },
+          {
+            "name": "upper-relay",
+            "wheel": "matrix(0.187381, -0.982287, 0.982287, 0.187381, 0, 0)",
+            "shadow": "matrix(0.187381, -0.982287, 0.982287, 0.187381, 0, 0)"
+          },
+          {
+            "name": "compound-pinion",
+            "wheel": "matrix(-0.960294, 0.278991, -0.278991, -0.960294, 0, 0)",
+            "shadow": "matrix(-0.960294, 0.278991, -0.278991, -0.960294, 0, 0)"
+          },
+          {
+            "name": "reduction",
+            "wheel": "matrix(-0.328867, -0.944376, 0.944376, -0.328867, 0, 0)",
+            "shadow": "matrix(-0.328867, -0.944376, 0.944376, -0.328867, 0, 0)"
+          }
+        ],
+        "hands": [
+          "matrix(0.991445, -0.130526, 0.130526, 0.991445, 0, 0)",
+          "matrix(0.991445, -0.130526, 0.130526, 0.991445, 0, 0)"
+        ]
+      },
+      {
+        "t": 2280,
+        "wheels": [
+          {
+            "name": "flywheel",
+            "wheel": "matrix(-0.683308, 0.73013, -0.73013, -0.683308, 0, 0)",
+            "shadow": "matrix(-0.683308, 0.73013, -0.73013, -0.683308, 0, 0)"
+          },
+          {
+            "name": "intermediate",
+            "wheel": "matrix(0.612907, 0.790155, -0.790155, 0.612907, 0, 0)",
+            "shadow": "matrix(0.612907, 0.790155, -0.790155, 0.612907, 0, 0)"
+          },
+          {
+            "name": "centre",
+            "wheel": "matrix(-0.904827, -0.425779, 0.425779, -0.904827, 0, 0)",
+            "shadow": "matrix(-0.904827, -0.425779, 0.425779, -0.904827, 0, 0)"
+          },
+          {
+            "name": "transfer",
+            "wheel": "matrix(0.336999, 0.941505, -0.941505, 0.336999, 0, 0)",
+            "shadow": "matrix(0.336999, 0.941505, -0.941505, 0.336999, 0, 0)"
+          },
+          {
+            "name": "takeoff",
+            "wheel": "matrix(0.0627905, -0.998027, 0.998027, 0.0627905, 0, 0)",
+            "shadow": "matrix(0.0627905, -0.998027, 0.998027, 0.0627905, 0, 0)"
+          },
+          {
+            "name": "upper-pinion",
+            "wheel": "matrix(-0.675333, -0.737513, 0.737513, -0.675333, 0, 0)",
+            "shadow": "matrix(-0.675333, -0.737513, 0.737513, -0.675333, 0, 0)"
+          },
+          {
+            "name": "winding-pinion",
+            "wheel": "matrix(-0.675333, -0.737513, 0.737513, -0.675333, 0, 0)",
+            "shadow": "matrix(-0.675333, -0.737513, 0.737513, -0.675333, 0, 0)"
+          },
+          {
+            "name": "relay-pinion",
+            "wheel": "matrix(-0.992115, 0.125333, -0.125333, -0.992115, 0, 0)",
+            "shadow": "matrix(-0.992115, 0.125333, -0.125333, -0.992115, 0, 0)"
+          },
+          {
+            "name": "upper-relay",
+            "wheel": "matrix(0.989705, -0.143122, 0.143122, 0.989705, 0, 0)",
+            "shadow": "matrix(0.989705, -0.143122, 0.143122, 0.989705, 0, 0)"
+          },
+          {
+            "name": "compound-pinion",
+            "wheel": "matrix(-0.904827, -0.425779, 0.425779, -0.904827, 0, 0)",
+            "shadow": "matrix(-0.904827, -0.425779, 0.425779, -0.904827, 0, 0)"
+          },
+          {
+            "name": "reduction",
+            "wheel": "matrix(-0.728969, -0.684547, 0.684547, -0.728969, 0, 0)",
+            "shadow": "matrix(-0.728969, -0.684547, 0.684547, -0.728969, 0, 0)"
+          }
+        ],
+        "hands": [
+          "matrix(1, 0, 0, 1, 0, 0)",
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ]
+      }
+    ],
+    "performance": [
+      {
+        "width": 1440,
+        "speed": "Medium",
+        "frames": 180,
+        "frameMedianMs": 16.699999999999818,
+        "frameP95Ms": 33.399999999999636,
+        "framesOver34ms": 3,
+        "taskMs": 2139.4959999999996,
+        "scriptMs": 12.192,
+        "layoutMs": 108.522,
+        "nodes": 1613
+      },
+      {
+        "width": 1440,
+        "speed": "Fast",
+        "frames": 180,
+        "frameMedianMs": 16.699999999999818,
+        "frameP95Ms": 33.400000000000546,
+        "framesOver34ms": 4,
+        "taskMs": 2533.414,
+        "scriptMs": 20.543999999999997,
+        "layoutMs": 95.65700000000002,
+        "nodes": 1613
+      },
+      {
+        "width": 390,
+        "speed": "Medium",
+        "frames": 180,
+        "frameMedianMs": 16.699999999999818,
+        "frameP95Ms": 33.400000000000546,
+        "framesOver34ms": 7,
+        "taskMs": 2981.954,
+        "scriptMs": 12.722000000000001,
+        "layoutMs": 138.974,
+        "nodes": 1613
+      },
+      {
+        "width": 390,
+        "speed": "Fast",
+        "frames": 180,
+        "frameMedianMs": 16.699999999999818,
+        "frameP95Ms": 33.399999999999636,
+        "framesOver34ms": 7,
+        "taskMs": 2978.5770000000007,
+        "scriptMs": 16.397999999999996,
+        "layoutMs": 165.746,
+        "nodes": 1613
+      }
+    ],
+    "structure": {
+      "wheels": 11,
+      "shadows": 11,
+      "animations": 47,
+      "filters": 0,
+      "uniqueOutline": 1,
+      "nodes": 1613,
+      "support": "centre-stile"
+    },
+    "printRates": [
+      3
+    ]
+  },
+  "pairedShadowCost": [
+    {
+      "width": 1440,
+      "lighting": false,
+      "frames": 120,
+      "median": 16.699999999999818,
+      "p95": 16.800000000000182,
+      "over34": 0,
+      "taskMs": 1546.367,
+      "scriptMs": 12.725,
+      "layoutMs": 79.136
+    },
+    {
+      "width": 1440,
+      "lighting": true,
+      "frames": 120,
+      "median": 16.699999999999818,
+      "p95": 16.700000000000728,
+      "over34": 0,
+      "taskMs": 1305.6110000000003,
+      "scriptMs": 7.986,
+      "layoutMs": 64.018
+    },
+    {
+      "width": 1440,
+      "lighting": false,
+      "frames": 120,
+      "median": 16.699999999999818,
+      "p95": 33.29999999999927,
+      "over34": 1,
+      "taskMs": 1545.487,
+      "scriptMs": 8.983999999999998,
+      "layoutMs": 62.355
+    },
+    {
+      "width": 1440,
+      "lighting": true,
+      "frames": 120,
+      "median": 16.69999999999891,
+      "p95": 33.29999999999927,
+      "over34": 0,
+      "taskMs": 1465.3339999999994,
+      "scriptMs": 11.395000000000003,
+      "layoutMs": 88.43499999999999
+    },
+    {
+      "width": 390,
+      "lighting": false,
+      "frames": 120,
+      "median": 16.69999999999891,
+      "p95": 16.80000000000109,
+      "over34": 0,
+      "taskMs": 1386.3830000000003,
+      "scriptMs": 7.487000000000001,
+      "layoutMs": 69.42999999999999
+    },
+    {
+      "width": 390,
+      "lighting": true,
+      "frames": 120,
+      "median": 16.69999999999891,
+      "p95": 16.799999999999272,
+      "over34": 0,
+      "taskMs": 1312.818,
+      "scriptMs": 7.030999999999995,
+      "layoutMs": 61.69900000000006
+    },
+    {
+      "width": 390,
+      "lighting": false,
+      "frames": 120,
+      "median": 16.69999999999709,
+      "p95": 16.799999999999272,
+      "over34": 0,
+      "taskMs": 1415.998,
+      "scriptMs": 8.42799999999999,
+      "layoutMs": 54.76400000000004
+    },
+    {
+      "width": 390,
+      "lighting": true,
+      "frames": 120,
+      "median": 16.700000000000728,
+      "p95": 33.39999999999782,
+      "over34": 2,
+      "taskMs": 1820.5449999999992,
+      "scriptMs": 8.507000000000001,
+      "layoutMs": 94.04199999999996
+    }
+  ]
+}

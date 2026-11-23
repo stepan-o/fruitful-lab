@@ -1,0 +1,4021 @@
+[
+  {
+    "id": "S01-T01",
+    "beatId": "S01",
+    "actorId": "bob",
+    "listenerIds": [
+      "sam",
+      "jo"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T01"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1790,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t01",
+      "The morning walk"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "sam",
+        "jo"
+      ],
+      "text": "Is this the right queue?",
+      "seconds": 2.05,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "warm"
+      }
+    }
+  },
+  {
+    "id": "S01-T02",
+    "beatId": "S01",
+    "actorId": "sam",
+    "listenerIds": [
+      "bob",
+      "jo"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T02"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1790,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t02",
+      "sam keeps walking"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "sam",
+      "to": [
+        "bob",
+        "jo"
+      ],
+      "text": "Stay with me. It moves.",
+      "seconds": 2.05,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "warm"
+      }
+    }
+  },
+  {
+    "id": "S01-T03",
+    "beatId": "S01",
+    "actorId": "jo",
+    "listenerIds": [
+      "bob",
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T03"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t03",
+      "jo gives it a shift"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "jo",
+      "to": [
+        "bob",
+        "sam"
+      ],
+      "text": "When it moves.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "dry"
+      }
+    }
+  },
+  {
+    "id": "S01-T04",
+    "beatId": "S01",
+    "actorId": "limen",
+    "listenerIds": [
+      "bob",
+      "sam",
+      "jo",
+      "ed",
+      "gus",
+      "max",
+      "mae",
+      "kit",
+      "lou",
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T04"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t04",
+      "Stop and wait"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "bob",
+        "sam",
+        "jo",
+        "ed",
+        "gus",
+        "max",
+        "mae",
+        "kit",
+        "lou",
+        "ben"
+      ],
+      "text": "STOP. WAIT HERE.",
+      "seconds": 1.4,
+      "channel": "shout",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "outburst"
+      }
+    }
+  },
+  {
+    "id": "S01-T05",
+    "beatId": "S01",
+    "actorId": "limen",
+    "listenerIds": [
+      "bob",
+      "sam",
+      "jo",
+      "ed",
+      "gus",
+      "max",
+      "mae",
+      "kit",
+      "lou",
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T05"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 3040,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t05",
+      "Welcome to Loopforge"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "bob",
+        "sam",
+        "jo",
+        "ed",
+        "gus",
+        "max",
+        "mae",
+        "kit",
+        "lou",
+        "ben"
+      ],
+      "text": "Welcome to Loopforge. Nobody crosses until I call them.",
+      "seconds": 3.3,
+      "channel": "shout",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S01-T06",
+    "beatId": "S01",
+    "actorId": "lou",
+    "listenerIds": [
+      "kit",
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T06"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t06",
+      "lou under his breath"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "lou",
+      "to": [
+        "kit",
+        "ben"
+      ],
+      "text": "He's looking at you.",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "aside"
+      }
+    }
+  },
+  {
+    "id": "S01-T07",
+    "beatId": "S01",
+    "actorId": "kit",
+    "listenerIds": [
+      "lou",
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T07"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t07",
+      "kit keeps his voice down"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "kit",
+      "to": [
+        "lou",
+        "ben"
+      ],
+      "text": "I'm watching his hands.",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S01-T08",
+    "beatId": "S01",
+    "actorId": "limen",
+    "listenerIds": [
+      "bob",
+      "sam",
+      "jo",
+      "ed",
+      "gus",
+      "max",
+      "mae",
+      "kit",
+      "lou",
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T08"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t08",
+      "A card held ready"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "bob",
+        "sam",
+        "jo",
+        "ed",
+        "gus",
+        "max",
+        "mae",
+        "kit",
+        "lou",
+        "ben"
+      ],
+      "text": "IDs ready. First shift?",
+      "seconds": 1.7,
+      "channel": "shout",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S01-T09",
+    "beatId": "S01",
+    "actorId": "bob",
+    "listenerIds": [
+      "limen",
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T09"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 900,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t09",
+      "A card held ready"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "delight",
+      "accessibleLabel": "bob brightens and lifts his face toward LIMEN."
+    }
+  },
+  {
+    "id": "S01-T10",
+    "beatId": "S01",
+    "actorId": "bob",
+    "listenerIds": [
+      "limen",
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T10"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1790,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t10",
+      "bob steps into the opening"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "limen",
+        "sam"
+      ],
+      "text": "Yes, sir. bob. I've got—",
+      "seconds": 2.05,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "warm"
+      }
+    }
+  },
+  {
+    "id": "S01-T11",
+    "beatId": "S01",
+    "actorId": "limen",
+    "listenerIds": [
+      "bob",
+      "sam",
+      "jo",
+      "ed",
+      "gus",
+      "max",
+      "mae",
+      "kit",
+      "lou",
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T11"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t11",
+      "The cyan warning"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "bob",
+        "sam",
+        "jo",
+        "ed",
+        "gus",
+        "max",
+        "mae",
+        "kit",
+        "lou",
+        "ben"
+      ],
+      "text": "I SAID STOP!",
+      "seconds": 1.4,
+      "channel": "shout",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "outburst"
+      }
+    }
+  },
+  {
+    "id": "S01-T12",
+    "beatId": "S01",
+    "actorId": "limen",
+    "listenerIds": [],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T12"
+    },
+    "timing": {
+      "enterMs": 0,
+      "holdMs": 950,
+      "resolveMs": 0
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t12",
+      "Blade contact"
+    ],
+    "kind": "action"
+  },
+  {
+    "id": "S01-T13",
+    "beatId": "S01",
+    "actorId": "sam",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T13"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t13",
+      "sam runs to bob"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "sam",
+      "to": [
+        "bob"
+      ],
+      "text": "bob. Stay down.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "warm"
+      }
+    }
+  },
+  {
+    "id": "S01-T14",
+    "beatId": "S01",
+    "actorId": "ed",
+    "listenerIds": [],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T14"
+    },
+    "timing": {
+      "enterMs": 0,
+      "holdMs": 5800,
+      "resolveMs": 0
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t14",
+      "ed collects bob’s card"
+    ],
+    "kind": "action"
+  },
+  {
+    "id": "S01-T15",
+    "beatId": "S01",
+    "actorId": "sam",
+    "listenerIds": [],
+    "trigger": {
+      "phaseId": "writer-R2/S01-T15"
+    },
+    "timing": {
+      "enterMs": 0,
+      "holdMs": 2000,
+      "resolveMs": 0
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s01-t15",
+      "sam releases the supporting hand"
+    ],
+    "kind": "action"
+  },
+  {
+    "id": "S02-T01",
+    "beatId": "S02",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "limen",
+      "bob",
+      "sam",
+      "jo",
+      "ed",
+      "gus",
+      "max",
+      "mae",
+      "kit",
+      "lou",
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S02-T01"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2090,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s02-t01",
+      "bob gets up as STILETTO arrives"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "limen",
+        "bob",
+        "sam",
+        "jo",
+        "ed",
+        "gus",
+        "max",
+        "mae",
+        "kit",
+        "lou",
+        "ben"
+      ],
+      "text": "MOVE. I've got an empty line.",
+      "seconds": 2.35,
+      "channel": "shout",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "outburst"
+      }
+    }
+  },
+  {
+    "id": "S02-T02",
+    "beatId": "S02",
+    "actorId": "limen",
+    "listenerIds": [
+      "stiletto"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S02-T02"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 900,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s02-t02",
+      "LIMEN yields the threshold"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "startle",
+      "accessibleLabel": "LIMEN draws his head back and yields the threshold."
+    }
+  },
+  {
+    "id": "S02-T03",
+    "beatId": "S02",
+    "actorId": "bob",
+    "listenerIds": [
+      "limen",
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S02-T03"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2090,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s02-t03",
+      "bob notices the exception"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "limen",
+        "sam"
+      ],
+      "text": "She didn't show you a card.",
+      "seconds": 2.35,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S02-T04",
+    "beatId": "S02",
+    "actorId": "limen",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S02-T04"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s02-t04",
+      "LIMEN hears enough"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "bob"
+      ],
+      "text": "Speak up.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S02-T05",
+    "beatId": "S02",
+    "actorId": "bob",
+    "listenerIds": [
+      "limen",
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S02-T05"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 1400,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s02-t05",
+      "LIMEN hears enough"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "held-breath",
+      "accessibleLabel": "bob closes his mouth and lowers his chin."
+    }
+  },
+  {
+    "id": "S02-T06",
+    "beatId": "S02",
+    "actorId": "bob",
+    "listenerIds": [
+      "limen",
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S02-T06"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2390,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s02-t06",
+      "bob finds a safer sentence"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "limen",
+        "sam"
+      ],
+      "text": "Just admiring the Protocol, sir. Very thorough.",
+      "seconds": 2.65,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "hesitant"
+      }
+    }
+  },
+  {
+    "id": "S02-T07",
+    "beatId": "S02",
+    "actorId": "limen",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S02-T07"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s02-t07",
+      "LIMEN accepts the compliment"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "bob"
+      ],
+      "text": "Assignment.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S02-T08",
+    "beatId": "S02",
+    "actorId": "bob",
+    "listenerIds": [
+      "limen"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S02-T08"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s02-t08",
+      "bob names his station"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "limen"
+      ],
+      "text": "Conveyor.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S02-T09",
+    "beatId": "S02",
+    "actorId": "limen",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S02-T09"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s02-t09",
+      "bob is cleared for Conveyor"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "bob"
+      ],
+      "text": "Then get there.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S03-T01",
+    "beatId": "S03",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T01"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 900,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t01",
+      "One worker for a whole line"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "doubt",
+      "accessibleLabel": "STILETTO looks past bob toward the empty entrance."
+    }
+  },
+  {
+    "id": "S03-T02",
+    "beatId": "S03",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T02"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t02",
+      "One worker for a whole line"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "bob"
+      ],
+      "text": "Where are the rest?",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S03-T03",
+    "beatId": "S03",
+    "actorId": "bob",
+    "listenerIds": [
+      "stiletto"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T03"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t03",
+      "bob offers to start"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "stiletto"
+      ],
+      "text": "Still with him.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S03-T04",
+    "beatId": "S03",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T04"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2390,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t04",
+      "The intake instruction"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "bob"
+      ],
+      "text": "Then you move between stations. Start here.",
+      "seconds": 2.65,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S03-T05",
+    "beatId": "S03",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T05"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2090,
+      "resolveMs": 120
+    },
+    "advance": "manual-station-action",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t05",
+      "The intake instruction"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "bob"
+      ],
+      "text": "Seat the brain in the cradle.",
+      "seconds": 2.35,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S03-T06",
+    "beatId": "S03",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T06"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1790,
+      "resolveMs": 120
+    },
+    "advance": "manual-station-action",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t06",
+      "The wash instruction"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "bob"
+      ],
+      "text": "Brain Wash. Run it through.",
+      "seconds": 2.05,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S03-T07",
+    "beatId": "S03",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T07"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2390,
+      "resolveMs": 120
+    },
+    "advance": "manual-station-action",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t07",
+      "The belt instruction"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "bob"
+      ],
+      "text": "Main Belt. Clamp it. Start the drive.",
+      "seconds": 2.65,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S03-T08",
+    "beatId": "S03",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T08"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1790,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t08",
+      "The Forge instruction"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "bob"
+      ],
+      "text": "Lattice Forge. Close the press.",
+      "seconds": 2.05,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S03-T09",
+    "beatId": "S03",
+    "actorId": "bob",
+    "listenerIds": [
+      "stiletto"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T09"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1790,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t09",
+      "The Forge instruction"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "stiletto"
+      ],
+      "text": "That's a brain going in.",
+      "seconds": 2.05,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "hesitant"
+      }
+    }
+  },
+  {
+    "id": "S03-T10",
+    "beatId": "S03",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T10"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2390,
+      "resolveMs": 120
+    },
+    "advance": "manual-station-action",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t10",
+      "The Forge instruction"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "bob"
+      ],
+      "text": "And a cortex coming out. Close it.",
+      "seconds": 2.65,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S03-T11",
+    "beatId": "S03",
+    "actorId": "bob",
+    "listenerIds": [
+      "stiletto"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T11"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 900,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t11",
+      "bob compresses the first brain"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "relief",
+      "accessibleLabel": "bob lowers his shoulders as the first cortex clears the Forge."
+    }
+  },
+  {
+    "id": "S03-T12",
+    "beatId": "S03",
+    "actorId": "bob",
+    "listenerIds": [
+      "stiletto"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T12"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t12",
+      "bob sees the empty stations"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "stiletto"
+      ],
+      "text": "One.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S03-T13",
+    "beatId": "S03",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T13"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1790,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t13",
+      "STILETTO points to the queue"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "bob"
+      ],
+      "text": "And one worker. Stay here.",
+      "seconds": 2.05,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "dry"
+      }
+    }
+  },
+  {
+    "id": "S03-T14",
+    "beatId": "S03",
+    "actorId": "bob",
+    "listenerIds": [
+      "stiletto"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T14"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t14",
+      "STILETTO points to the queue"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "stiletto"
+      ],
+      "text": "Is someone coming?",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S03-T15",
+    "beatId": "S03",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S03-T15"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s03-t15",
+      "STILETTO points to the queue"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "bob"
+      ],
+      "text": "They'd better be.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S04-T01",
+    "beatId": "S04",
+    "actorId": "limen",
+    "listenerIds": [
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T01"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t01",
+      "sam comes when called"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "sam"
+      ],
+      "text": "Name and assignment.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S04-T02",
+    "beatId": "S04",
+    "actorId": "sam",
+    "listenerIds": [
+      "limen",
+      "ed",
+      "gus"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T02"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t02",
+      "sam starts reporting"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "sam",
+      "to": [
+        "limen",
+        "ed",
+        "gus"
+      ],
+      "text": "sam. Conveyor.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S04-T03",
+    "beatId": "S04",
+    "actorId": "sam",
+    "listenerIds": [],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T03"
+    },
+    "timing": {
+      "enterMs": 0,
+      "holdMs": 1800,
+      "resolveMs": 0
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t03",
+      "sam presents the card",
+      "OWNER-SAM-TEMPORARY-WORKAROUND-2026-10-24.md"
+    ],
+    "kind": "action"
+  },
+  {
+    "id": "S04-T04",
+    "beatId": "S04",
+    "actorId": "limen",
+    "listenerIds": [
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T04"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t04",
+      "sam’s card is checked"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "sam"
+      ],
+      "text": "Clear.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S04-T05",
+    "beatId": "S04",
+    "actorId": "limen",
+    "listenerIds": [
+      "limen"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T05"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2090,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t05",
+      "LIMEN considers the queue"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "limen"
+      ],
+      "text": "this is gonna take all day...",
+      "seconds": 2.35,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "aside"
+      }
+    }
+  },
+  {
+    "id": "S04-T06",
+    "beatId": "S04",
+    "actorId": "limen",
+    "listenerIds": [
+      "sam",
+      "jo",
+      "ed",
+      "gus",
+      "max",
+      "mae",
+      "kit",
+      "lou",
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T06"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2390,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t06",
+      "Who cares about this factory?"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "sam",
+        "jo",
+        "ed",
+        "gus",
+        "max",
+        "mae",
+        "kit",
+        "lou",
+        "ben"
+      ],
+      "text": "WHO HERE REALLY CARES ABOUT THIS FACTORY??!",
+      "seconds": 2.65,
+      "channel": "shout",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "outburst"
+      }
+    }
+  },
+  {
+    "id": "S04-T07",
+    "beatId": "S04",
+    "actorId": "lou",
+    "listenerIds": [
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T07"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t07",
+      "Who cares about this factory?"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "lou",
+      "to": [
+        "ben"
+      ],
+      "text": "noone...",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "aside"
+      }
+    }
+  },
+  {
+    "id": "S04-T08",
+    "beatId": "S04",
+    "actorId": "max",
+    "listenerIds": [
+      "limen"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T08"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t08",
+      "Who cares about this factory?"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "max",
+      "to": [
+        "limen"
+      ],
+      "text": "you, sir!",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S04-T09",
+    "beatId": "S04",
+    "actorId": "gus",
+    "listenerIds": [
+      "limen",
+      "ed"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T09"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1790,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t09",
+      "gus volunteers"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "gus",
+      "to": [
+        "limen",
+        "ed"
+      ],
+      "text": "I CAN GET THEM THROUGH.",
+      "seconds": 2.05,
+      "channel": "shout",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "outburst"
+      }
+    }
+  },
+  {
+    "id": "S04-T10",
+    "beatId": "S04",
+    "actorId": "ed",
+    "listenerIds": [
+      "limen",
+      "gus"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T10"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2090,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t10",
+      "ed volunteers"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "ed",
+      "to": [
+        "limen",
+        "gus"
+      ],
+      "text": "I can take the register, sir.",
+      "seconds": 2.35,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S04-T11",
+    "beatId": "S04",
+    "actorId": "limen",
+    "listenerIds": [
+      "ed",
+      "gus"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T11"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2690,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t11",
+      "Two places at Security"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "ed",
+        "gus"
+      ],
+      "text": "ed, register. gus, other control. Stay at Security.",
+      "seconds": 2.95,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S04-T12",
+    "beatId": "S04",
+    "actorId": "gus",
+    "listenerIds": [
+      "ed",
+      "limen"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T12"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 900,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t12",
+      "gus reaches his control"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "delight",
+      "accessibleLabel": "gus squares his shoulders behind his control."
+    }
+  },
+  {
+    "id": "S04-T13",
+    "beatId": "S04",
+    "actorId": "limen",
+    "listenerIds": [
+      "jo",
+      "max",
+      "mae",
+      "kit",
+      "lou",
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T13"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t13",
+      "IDs and papers ready"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "jo",
+        "max",
+        "mae",
+        "kit",
+        "lou",
+        "ben"
+      ],
+      "text": "IDs AND PAPERS READY.",
+      "seconds": 1.7,
+      "channel": "shout",
+      "act": "instruction",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S04-T14",
+    "beatId": "S04",
+    "actorId": "ed",
+    "listenerIds": [
+      "jo",
+      "max",
+      "mae",
+      "kit",
+      "lou",
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T14"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1790,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t14",
+      "ed repeats the order"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "ed",
+      "to": [
+        "jo",
+        "max",
+        "mae",
+        "kit",
+        "lou",
+        "ben"
+      ],
+      "text": "IDs and papers ready, please.",
+      "seconds": 2.05,
+      "channel": "local",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S04-T15",
+    "beatId": "S04",
+    "actorId": "gus",
+    "listenerIds": [
+      "jo"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S04-T15"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s04-t15",
+      "gus likes the volume"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "gus",
+      "to": [
+        "jo"
+      ],
+      "text": "NEXT!",
+      "seconds": 1.4,
+      "channel": "shout",
+      "act": "response",
+      "cause": "checkpoint.arrivals",
+      "delivery": {
+        "tone": "outburst"
+      }
+    }
+  },
+  {
+    "id": "S05-T01",
+    "beatId": "S05",
+    "actorId": "bob",
+    "listenerIds": [
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T01"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t01",
+      "sam reaches Conveyor"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "sam"
+      ],
+      "text": "You took your time.",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "warm"
+      }
+    }
+  },
+  {
+    "id": "S05-T02",
+    "beatId": "S05",
+    "actorId": "sam",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T02"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t02",
+      "sam reaches Conveyor"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "sam",
+      "to": [
+        "bob"
+      ],
+      "text": "I'm here. Which end?",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "warm"
+      }
+    }
+  },
+  {
+    "id": "S05-T03",
+    "beatId": "S05",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "bob",
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T03"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2690,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t03",
+      "bob and sam start the second workpiece"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "bob",
+        "sam"
+      ],
+      "text": "bob: Intake and Belt. sam: Wash and Forge.",
+      "seconds": 2.95,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S05-T04",
+    "beatId": "S05",
+    "actorId": "sam",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T04"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1790,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t04",
+      "bob and sam start the second workpiece"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "sam",
+      "to": [
+        "bob"
+      ],
+      "text": "You start. I'll take Wash.",
+      "seconds": 2.05,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S05-T05",
+    "beatId": "S05",
+    "actorId": "bob",
+    "listenerIds": [
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T05"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t05",
+      "The paired intake operates"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "sam"
+      ],
+      "text": "Coming through.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S05-T06",
+    "beatId": "S05",
+    "actorId": "limen",
+    "listenerIds": [
+      "jo"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T06"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t06",
+      "Third check name and assignment"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "jo"
+      ],
+      "text": "Name. Assignment.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S05-T07",
+    "beatId": "S05",
+    "actorId": "jo",
+    "listenerIds": [
+      "limen",
+      "ed",
+      "gus"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T07"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t07",
+      "jo gives the same answer"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "jo",
+      "to": [
+        "limen",
+        "ed",
+        "gus"
+      ],
+      "text": "jo. Conveyor.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "dry"
+      }
+    }
+  },
+  {
+    "id": "S05-T08",
+    "beatId": "S05",
+    "actorId": "limen",
+    "listenerIds": [
+      "jo"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T08"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t08",
+      "LIMEN starts doing it right"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "jo"
+      ],
+      "text": "Your card.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S05-T09",
+    "beatId": "S05",
+    "actorId": "jo",
+    "listenerIds": [
+      "limen",
+      "ed"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T09"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 900,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t09",
+      "jo ID_Ready / 0"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "held-breath",
+      "accessibleLabel": "jo keeps his card presented and his mouth shut."
+    }
+  },
+  {
+    "id": "S05-T10",
+    "beatId": "S05",
+    "actorId": "jo",
+    "listenerIds": [
+      "bob",
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T10"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t10",
+      "jo joins bob and sam during cycle two"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "jo",
+      "to": [
+        "bob",
+        "sam"
+      ],
+      "text": "Only two of you?",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "dry"
+      }
+    }
+  },
+  {
+    "id": "S05-T11",
+    "beatId": "S05",
+    "actorId": "bob",
+    "listenerIds": [
+      "jo",
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T11"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t11",
+      "jo joins bob and sam during cycle two"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "jo",
+        "sam"
+      ],
+      "text": "Three, now.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "warm"
+      }
+    }
+  },
+  {
+    "id": "S05-T12",
+    "beatId": "S05",
+    "actorId": "jo",
+    "listenerIds": [
+      "bob",
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T12"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 900,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t12",
+      "jo joins bob and sam during cycle two"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "doubt",
+      "accessibleLabel": "jo looks from bob to the four stations."
+    }
+  },
+  {
+    "id": "S05-T13",
+    "beatId": "S05",
+    "actorId": "jo",
+    "listenerIds": [
+      "bob",
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T13"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1790,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t13",
+      "jo joins bob and sam during cycle two"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "jo",
+      "to": [
+        "bob",
+        "sam"
+      ],
+      "text": "You're still using four machines.",
+      "seconds": 2.05,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "dry"
+      }
+    }
+  },
+  {
+    "id": "S05-T14",
+    "beatId": "S05",
+    "actorId": "sam",
+    "listenerIds": [
+      "jo",
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T14"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2690,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t14",
+      "jo waits for the staffed handover / 1"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "sam",
+      "to": [
+        "jo",
+        "bob"
+      ],
+      "text": "Let this one finish. Take Belt after bob.",
+      "seconds": 2.95,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S05-T15",
+    "beatId": "S05",
+    "actorId": "bob",
+    "listenerIds": [
+      "sam",
+      "jo"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S05-T15"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s05-t15",
+      "The paired forge operates"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "sam",
+        "jo"
+      ],
+      "text": "Two.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S06-P01",
+    "beatId": "S06",
+    "actorId": "max",
+    "listenerIds": [
+      "limen"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S06-P01"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 1400,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s06-p01",
+      "max Draw_ID / 0"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "held-breath",
+      "accessibleLabel": "max holds his jaw still and keeps his eyes on LIMEN."
+    }
+  },
+  {
+    "id": "S06-P02",
+    "beatId": "S06",
+    "actorId": "max",
+    "listenerIds": [
+      "limen",
+      "ed",
+      "gus"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S06-P02"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s06-p02",
+      "max Draw_ID / 0"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "max",
+      "to": [
+        "limen",
+        "ed",
+        "gus"
+      ],
+      "text": "max. Conveyor, sir.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S06-T01",
+    "beatId": "S06",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "limen",
+      "ed",
+      "gus"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S06-T01"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 1400,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s06-t01",
+      "STILETTO demands the rest of the shift"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "resolve",
+      "accessibleLabel": "STILETTO sets her feet in the doorway and raises her blades."
+    }
+  },
+  {
+    "id": "S06-T02",
+    "beatId": "S06",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "limen",
+      "ed",
+      "gus",
+      "max"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S06-T02"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 11740,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s06-t02",
+      "STILETTO demands the rest of the shift"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "limen",
+        "ed",
+        "gus",
+        "max"
+      ],
+      "text": "IF YOU DON'T GET ME THOSE WORKERS IN THE NEXT 20 MINUTES I'LL USE YOUR MANURE-FILLED BRAINS TOWARDS THE QUOTA",
+      "seconds": 12.0,
+      "channel": "shout",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "outburst"
+      }
+    }
+  },
+  {
+    "id": "S06-T03",
+    "beatId": "S06",
+    "actorId": "limen",
+    "listenerIds": [],
+    "trigger": {
+      "phaseId": "writer-R2/S06-T03"
+    },
+    "timing": {
+      "enterMs": 0,
+      "holdMs": 1500,
+      "resolveMs": 0
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s06-t03",
+      "max ID_Ready / 0"
+    ],
+    "kind": "action"
+  },
+  {
+    "id": "S07-T03",
+    "beatId": "S07",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "max"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T03"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 3040,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t03",
+      "max takes a shift position"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "max"
+      ],
+      "text": "max. Forge. Close the press when it reaches you.",
+      "seconds": 3.3,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S07-T04",
+    "beatId": "S07",
+    "actorId": "max",
+    "listenerIds": [
+      "stiletto"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T04"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t04",
+      "max takes a shift position"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "max",
+      "to": [
+        "stiletto"
+      ],
+      "text": "When it reaches me.",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S07-T05",
+    "beatId": "S07",
+    "actorId": "mae",
+    "listenerIds": [
+      "limen",
+      "ed",
+      "gus"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T05"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t05",
+      "mae Draw_ID / 0"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "mae",
+      "to": [
+        "limen",
+        "ed",
+        "gus"
+      ],
+      "text": "mae. Conveyor.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S07-T06",
+    "beatId": "S07",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "mae"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T06"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2090,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t06",
+      "mae takes a shift position"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "mae"
+      ],
+      "text": "mae, feed. Keep the cradle supplied.",
+      "seconds": 2.35,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S07-T07",
+    "beatId": "S07",
+    "actorId": "mae",
+    "listenerIds": [
+      "stiletto"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T07"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t07",
+      "mae takes a shift position"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "mae",
+      "to": [
+        "stiletto"
+      ],
+      "text": "One at a time?",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S07-T08",
+    "beatId": "S07",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "mae"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T08"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t08",
+      "mae takes a shift position"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "mae"
+      ],
+      "text": "One at a time.",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S07-T09",
+    "beatId": "S07",
+    "actorId": "kit",
+    "listenerIds": [
+      "limen",
+      "ed",
+      "gus"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T09"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t09",
+      "kit Draw_ID / 0"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "kit",
+      "to": [
+        "limen",
+        "ed",
+        "gus"
+      ],
+      "text": "kit. Conveyor.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S07-T10",
+    "beatId": "S07",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "kit"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T10"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1790,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t10",
+      "kit takes a shift position"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "kit"
+      ],
+      "text": "kit, maintenance. Watch the drive.",
+      "seconds": 2.05,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S07-T11",
+    "beatId": "S07",
+    "actorId": "kit",
+    "listenerIds": [
+      "stiletto"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T11"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t11",
+      "kit takes a shift position"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "kit",
+      "to": [
+        "stiletto"
+      ],
+      "text": "I am.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S07-T12",
+    "beatId": "S07",
+    "actorId": "lou",
+    "listenerIds": [
+      "limen",
+      "ed",
+      "gus"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T12"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t12",
+      "lou Draw_ID / 0"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "lou",
+      "to": [
+        "limen",
+        "ed",
+        "gus"
+      ],
+      "text": "lou. Conveyor.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S07-T13",
+    "beatId": "S07",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "lou"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T13"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2090,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t13",
+      "lou takes a shift position"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "lou"
+      ],
+      "text": "lou, output. Count what comes off.",
+      "seconds": 2.35,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S07-T14",
+    "beatId": "S07",
+    "actorId": "ben",
+    "listenerIds": [
+      "limen",
+      "ed",
+      "gus"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T14"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t14",
+      "ben Draw_ID / 0"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "ben",
+      "to": [
+        "limen",
+        "ed",
+        "gus"
+      ],
+      "text": "ben. Conveyor.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S07-T15",
+    "beatId": "S07",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T15"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2690,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t15",
+      "ben takes a shift position"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "ben"
+      ],
+      "text": "ben, relief. Stay where they can reach you.",
+      "seconds": 2.95,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S07-T16",
+    "beatId": "S07",
+    "actorId": "lou",
+    "listenerIds": [
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T16"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t16",
+      "ben takes a shift position"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "lou",
+      "to": [
+        "ben"
+      ],
+      "text": "There's room this side.",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "aside"
+      }
+    }
+  },
+  {
+    "id": "S07-T17",
+    "beatId": "S07",
+    "actorId": "ben",
+    "listenerIds": [
+      "lou"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S07-T17"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s07-t17",
+      "ben takes a shift position"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "ben",
+      "to": [
+        "lou"
+      ],
+      "text": "Leave me that much.",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S08-T01",
+    "beatId": "S08",
+    "actorId": "bob",
+    "listenerIds": [
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S08-T01"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s08-t01",
+      "All four stations have their operators"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "sam"
+      ],
+      "text": "Ready here.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S08-T02",
+    "beatId": "S08",
+    "actorId": "sam",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S08-T02"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "manual-boundary",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s08-t02",
+      "All four stations have their operators"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "sam",
+      "to": [
+        "bob"
+      ],
+      "text": "Send it.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S08-T03",
+    "beatId": "S08",
+    "actorId": "bob",
+    "listenerIds": [
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S08-T03"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 900,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s08-t03",
+      "The staffed line starts its first batch"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "resolve",
+      "accessibleLabel": "bob settles his hand at Intake and looks down the line."
+    }
+  },
+  {
+    "id": "S08-T04",
+    "beatId": "S08",
+    "actorId": "jo",
+    "listenerIds": [
+      "sam",
+      "max"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S08-T04"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s08-t04",
+      "The staffed belt operates"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "jo",
+      "to": [
+        "sam",
+        "max"
+      ],
+      "text": "Easy. It's clamped.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "dry"
+      }
+    }
+  },
+  {
+    "id": "S08-T05",
+    "beatId": "S08",
+    "actorId": "max",
+    "listenerIds": [
+      "stiletto"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S08-T05"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 900,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s08-t05",
+      "The staffed forge operates"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "held-breath",
+      "accessibleLabel": "max checks the incoming workpiece and holds his hand ready."
+    }
+  },
+  {
+    "id": "S08-T06",
+    "beatId": "S08",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "max"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S08-T06"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s08-t06",
+      "The staffed forge operates"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "max"
+      ],
+      "text": "Now.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S08-T07",
+    "beatId": "S08",
+    "actorId": "lou",
+    "listenerIds": [
+      "bob",
+      "sam",
+      "jo",
+      "max",
+      "mae",
+      "kit",
+      "ben",
+      "stiletto"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S08-T07"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s08-t07",
+      "The first operational output is ready"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "lou",
+      "to": [
+        "bob",
+        "sam",
+        "jo",
+        "max",
+        "mae",
+        "kit",
+        "ben",
+        "stiletto"
+      ],
+      "text": "That's three.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S08-T08",
+    "beatId": "S08",
+    "actorId": "bob",
+    "listenerIds": [
+      "sam",
+      "jo"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S08-T08"
+    },
+    "timing": {
+      "enterMs": 200,
+      "holdMs": 900,
+      "resolveMs": 200
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s08-t08",
+      "The first operational output is ready"
+    ],
+    "kind": "reaction-only",
+    "reaction": {
+      "visualId": "delight",
+      "accessibleLabel": "bob looks along the occupied stations and smiles."
+    }
+  },
+  {
+    "id": "S08-T09",
+    "beatId": "S08",
+    "actorId": "bob",
+    "listenerIds": [
+      "sam",
+      "jo"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S08-T09"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2090,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s08-t09",
+      "The first operational output is ready"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "sam",
+        "jo"
+      ],
+      "text": "All of us on that one.",
+      "seconds": 2.35,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "warm"
+      }
+    }
+  },
+  {
+    "id": "S08-T10",
+    "beatId": "S08",
+    "actorId": "jo",
+    "listenerIds": [
+      "bob",
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S08-T10"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "manual-boundary",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s08-t10",
+      "The first operational output is ready"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "jo",
+      "to": [
+        "bob",
+        "sam"
+      ],
+      "text": "Less walking.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "dry"
+      }
+    }
+  },
+  {
+    "id": "S09-T01",
+    "beatId": "S09",
+    "actorId": "stiletto",
+    "listenerIds": [
+      "mae",
+      "bob",
+      "sam",
+      "jo",
+      "max",
+      "kit",
+      "lou",
+      "ben"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S09-T01"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 2390,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s09-t01",
+      "The shift ends after the first operational output"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "stiletto",
+      "to": [
+        "mae",
+        "bob",
+        "sam",
+        "jo",
+        "max",
+        "kit",
+        "lou",
+        "ben"
+      ],
+      "text": "mae, stop the feed. Clear the line.",
+      "seconds": 2.65,
+      "channel": "shout",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S09-T02",
+    "beatId": "S09",
+    "actorId": "mae",
+    "listenerIds": [
+      "stiletto",
+      "kit"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S09-T02"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s09-t02",
+      "The shift ends after the first operational output"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "mae",
+      "to": [
+        "stiletto",
+        "kit"
+      ],
+      "text": "Feed's stopped.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S09-T03",
+    "beatId": "S09",
+    "actorId": "kit",
+    "listenerIds": [
+      "stiletto",
+      "mae"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S09-T03"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s09-t03",
+      "The shift ends after the first operational output"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "kit",
+      "to": [
+        "stiletto",
+        "mae"
+      ],
+      "text": "Drive's stopped.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S09-T04",
+    "beatId": "S09",
+    "actorId": "ed",
+    "listenerIds": [
+      "limen",
+      "gus"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S09-T04"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s09-t04",
+      "The shift ends after the first operational output"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "ed",
+      "to": [
+        "limen",
+        "gus"
+      ],
+      "text": "Eight sent through.",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S09-T05",
+    "beatId": "S09",
+    "actorId": "gus",
+    "listenerIds": [
+      "limen",
+      "ed"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S09-T05"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1140,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s09-t05",
+      "The shift ends after the first operational output"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "gus",
+      "to": [
+        "limen",
+        "ed"
+      ],
+      "text": "And us two?",
+      "seconds": 1.4,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "plain"
+      }
+    }
+  },
+  {
+    "id": "S09-T06",
+    "beatId": "S09",
+    "actorId": "limen",
+    "listenerIds": [
+      "ed",
+      "gus"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S09-T06"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s09-t06",
+      "The shift ends after the first operational output"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "limen",
+      "to": [
+        "ed",
+        "gus"
+      ],
+      "text": "Leave the trays. Out.",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "instruction",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "command"
+      }
+    }
+  },
+  {
+    "id": "S09-T07",
+    "beatId": "S09",
+    "actorId": "bob",
+    "listenerIds": [
+      "sam"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S09-T07"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s09-t07",
+      "bob leaves the work area"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "bob",
+      "to": [
+        "sam"
+      ],
+      "text": "You can go ahead.",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "warm"
+      }
+    }
+  },
+  {
+    "id": "S09-T08",
+    "beatId": "S09",
+    "actorId": "sam",
+    "listenerIds": [
+      "bob"
+    ],
+    "trigger": {
+      "phaseId": "writer-R2/S09-T08"
+    },
+    "timing": {
+      "enterMs": 140,
+      "holdMs": 1440,
+      "resolveMs": 120
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s09-t08",
+      "sam leaves the work area"
+    ],
+    "kind": "speech",
+    "speech": {
+      "speaker": "sam",
+      "to": [
+        "bob"
+      ],
+      "text": "I'm all right here.",
+      "seconds": 1.7,
+      "channel": "local",
+      "act": "response",
+      "cause": "line.output",
+      "delivery": {
+        "tone": "warm"
+      }
+    }
+  },
+  {
+    "id": "S09-T09",
+    "beatId": "S09",
+    "actorId": "limen",
+    "listenerIds": [],
+    "trigger": {
+      "phaseId": "writer-R2/S09-T09"
+    },
+    "timing": {
+      "enterMs": 0,
+      "holdMs": 4000,
+      "resolveMs": 0
+    },
+    "advance": "auto",
+    "reviewState": "performed-unverified",
+    "sourceRefs": [
+      "PERFORMED-SCRIPT.md#s09-t09",
+      "The factory at night"
+    ],
+    "kind": "action"
+  }
+]

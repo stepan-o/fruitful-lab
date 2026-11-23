@@ -1,0 +1,7 @@
+.beacon { position:absolute;top:0;left:calc(50% - 35px);width:70px;height:70px;pointer-events:none;z-index:4; }
+.housing { position:relative;width:100%;height:100%;object-fit:contain;z-index:2; }
+.beam { position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;mix-blend-mode:screen;z-index:1; }
+.aperture { position:absolute;left:18%;top:18%;width:64%;height:64%;border-radius:50%;opacity:0;mix-blend-mode:screen;z-index:3;transform-origin:50% 50%;mask-image:radial-gradient(circle,#000 30%,#0008 50%,transparent 72%); }
+
+@media(max-width:900px){.beacon{left:calc(50% - 24px);width:48px;height:48px;top:0}}
+@media(max-width:350px){.beacon{width:36px;height:36px;left:calc(50% - 18px)}}

@@ -1,0 +1,51 @@
+/* The motor runs continuously. The stamping hand has a quick strike and return;
+   the visibility/preference controller still suspends every animated part. */
+.returnBelt { animation: returnFeed var(--tray-period) linear infinite; }
+.driveChain { stroke-dasharray: 2.6 1.79823; animation: chain var(--tray-period) linear infinite; }
+.belt { animation: feed var(--tray-period) linear infinite; }
+.registerTrack { animation: register var(--cycle-period) linear infinite; }
+.results { animation: results var(--cycle-period) linear infinite; }
+.hand { transform-origin: 432px 235px; animation: stamp var(--tray-period) linear infinite; }
+.feedHandle { transform-origin: 510px 309px; animation: handle var(--tray-period) linear infinite; }
+.gear { transform-origin: 0 0; animation: turn var(--wheel-period) linear infinite; }
+.roller { transform-origin: 0 0; animation: roller var(--tray-period) linear infinite; }
+.smoke {
+  transform: translate(var(--still-x), var(--still-y));
+  opacity: var(--still-opacity);
+  animation: exhale var(--cycle-period) linear var(--delay) infinite;
+}
+.smokeLift { font: 18px Georgia, serif; }
+.smokeValue { fill: #746c5f; font: italic 12.5px Georgia, serif; }
+.smokeVerdict { fill: #665f51; font: italic 13px Georgia, serif; }
+.belt, .returnBelt, .driveChain, .results, .hand, .feedHandle, .gear, .roller, .smoke, .registerTrack { animation-play-state: paused !important; }
+:global([data-playing="true"]) :is(.belt, .returnBelt, .driveChain, .results, .hand, .feedHandle, .gear, .roller, .smoke, .registerTrack) { animation-play-state: running !important; }
+@keyframes register { to { transform: translateY(85px); } }
+@keyframes returnFeed { to { transform: translateX(-88px); } }
+@keyframes chain { to { stroke-dashoffset: -35.18584; } }
+@keyframes feed { to { transform: translateX(88px); } }
+@keyframes results { to { transform: translateX(880px); } }
+@keyframes turn { to { transform: rotate(var(--sweep)); } }
+@keyframes roller { to { transform: rotate(288deg); } }
+/* A 216ms strike, a brief contact, then a 384ms return. */
+@keyframes stamp {
+  0%, 66%, 100% { transform: rotate(0); }
+  75%, 79% { transform: rotate(-7.5deg); }
+  95% { transform: rotate(0); }
+}
+@keyframes handle {
+  0%, 66%, 100% { transform: rotate(0); }
+  75%, 79% { transform: rotate(24deg); }
+  95% { transform: rotate(0); }
+}
+/* Only three short-lived emissions occupy the plume at once. No blur filter,
+   particle engine, per-frame JavaScript, or text beneath the illustration. */
+@keyframes exhale {
+  0% { transform: translate(-3px, -46px); opacity: 0; }
+  1% { transform: translate(-4px, -51px); opacity: .96; }
+  9% { transform: translate(-17px, -110px); opacity: .96; }
+  17% { transform: translate(-34px, -172px) rotate(-2deg); opacity: .72; }
+  28%, 100% { transform: translate(-55px, -249px) rotate(-5deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .belt, .returnBelt, .driveChain, .results, .hand, .feedHandle, .gear, .roller, .smoke, .registerTrack { animation: none; }
+}

@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "images": [
+    {
+      "id": "headcount",
+      "src": "/loopforge-design/reference/bttd-headcount.fa367be83cef.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 81730,
+      "sha256": "fa367be83ceff1da0ae629234dd96b21b030f41053f6ea74a3e47c3b37e6067c",
+      "sourceUrl": "https://www.youtube.com/watch?v=SW3Qpd8F7v4&t=2233s",
+      "timestampSeconds": 2233,
+      "sourceDimensions": [
+        2560,
+        1440
+      ],
+      "captured": "2026-10-20",
+      "transformation": "Proportional resize and WebP encoding; full composition retained.",
+      "game": "Back to the Dawn",
+      "gameDeveloper": "Metal Head Games",
+      "gamePublisher": "Spiral Up Games",
+      "recordingCreator": "Keith Ballard",
+      "use": "Attributed editorial criticism and design reference; not game art or a generation input."
+    },
+    {
+      "id": "sam",
+      "src": "/loopforge-design/reference/bttd-sam.728f650af505.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 28118,
+      "sha256": "728f650af5056648b7bf5c06339e2585d96dd12e70bd0e4b692e845332b44bae",
+      "sourceUrl": "https://www.youtube.com/watch?v=SW3Qpd8F7v4&t=1725s",
+      "timestampSeconds": 1725,
+      "sourceDimensions": [
+        2560,
+        1440
+      ],
+      "captured": "2026-10-20",
+      "transformation": "Proportional resize and WebP encoding; full composition retained.",
+      "game": "Back to the Dawn",
+      "gameDeveloper": "Metal Head Games",
+      "gamePublisher": "Spiral Up Games",
+      "recordingCreator": "Keith Ballard",
+      "use": "Attributed editorial criticism and design reference; not game art or a generation input."
+    }
+  ]
+}

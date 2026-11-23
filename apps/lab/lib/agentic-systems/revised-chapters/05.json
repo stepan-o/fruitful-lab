@@ -1,0 +1,249 @@
+{
+  "id": "readable-detail",
+  "title": "Protect the intended experience",
+  "standfirst": "A team needs a shared creative judgment wherever independently sensible choices meet.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "prose",
+      "text": "Creative direction is not the sum of the specialists’ local goals. The writer needs the words heard, the animator needs the body seen, and the interface needs a readable control. If each succeeds on a separate bench, the finished frame can still make them obstruct one another. Someone has to keep the intended experience present where those decisions meet."
+    },
+    {
+      "type": "evidence",
+      "asset": "speech-before",
+      "alt": "Retained Loopforge rehearsal at 14.65 seconds: a pale speech balloon covers LIMEN’s head while two smaller workers stand nearby.",
+      "caption": "First-cycle browser export, 14.65 seconds. This is the retained pre-correction frame. The image records an obstruction; it does not establish the quality of the strike, grounding or contact.",
+      "original": "/loopforge-dev-blog/history/media/strike-before.png"
+    },
+    {
+      "type": "prose",
+      "text": "LIMEN is shouting, and the game has helpfully hidden the face doing the shouting. The balloon is easy to read. Its pale rectangle separates cleanly from the factory, its emphasis is unmissable, and its placement consumes the very part of the body that could help us read the anger. Two individually sensible intentions—show the performance, make the words legible—have arrived at the same patch of screen."
+    },
+    {
+      "type": "evidence",
+      "asset": "speech-after",
+      "alt": "The matching corrected rehearsal frame, with LIMEN’s speech balloon moved right and the head visible.",
+      "caption": "Corrected C1 browser export, retained in the first-cycle public archive. The pair uses the same recorded moment. These source pixels are resized for the page; the inspector and published original preserve closer inspection.",
+      "original": "/loopforge-dev-blog/history/media/strike-after.png"
+    },
+    {
+      "type": "prose",
+      "text": "Loopforge’s speech balloon gives that principle a local test. Moving it exposed the face without replacing the character. The correction was small because the needed information already existed. Wider exchanges later challenged the balloon layout itself: words, reactions and status competed for the same space. The problem had become a relationship among components, and improving any one component alone could miss it.",
+      "sources": [
+        "speech-pair",
+        "visual-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "I should have commissioned one ordinary-size exchange containing the camera, bodies and actual words together. Approving the parts separately postponed a cheap objection until the composition had acquired dependencies. Moving the balloon recovered meaning that already existed. A missing gesture would have required a different purchase: new motion, fitting, layout and another review.",
+      "sources": [
+        "director-second",
+        "visual-second"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Recognition is part of the function"
+    },
+    {
+      "type": "prose",
+      "text": "Jason Mitchell, Moby Francke and Dhabih Eng’s 2007 account of Team Fortress 2 makes visual recognition a joint art and engineering problem. Its classes were designed to remain distinguishable as silhouettes; clothing, proportions and equipment contribute to the outline. Restrained background detail and deliberate shading help those forms survive varied lighting. The paper connects its choices to the speed and distances at which players need to identify a threat. It does not present style as a decorative treatment applied after the game’s demands are settled.",
+      "sources": [
+        "tf2-rendering"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Remove the interior detail and identity must survive in the outline. Our obstruction asks a different question: will that outline still be there to see? Art direction has to reach the occupied frame. The same principle applies when a generated chart enters a dashboard crowded by filters, explanations and status messages."
+    },
+    {
+      "type": "visual",
+      "id": "composition-stage",
+      "title": "What survives the assembled frame?",
+      "caption": "An authored staging study, not a Loopforge replay or a perception experiment. Framing, figure separation and text placement vary independently. Advance through instruction, reply and reaching the control; the bodies keep their positions while speaker and gesture change."
+    },
+    {
+      "type": "prose",
+      "text": "The whole-room view gives us a doorway and rear machinery: enough geography to understand where the exchange belongs. Moving closer separates the bodies and loses some of that geography. When the words appear inside the picture, the closer camera enlarges the obstruction along with the speaker. More light cannot uncover a body beneath an opaque card. The rail gives the body back, but loses the balloon tail’s immediate attachment to the voice. Each view has surrendered something the other one kept."
+    },
+    {
+      "type": "prose",
+      "text": "For a team, this changes the unit of acceptance. Review a short exchange with its actual words, bodies, camera and controls at the intended size. The specimen can be rough. Its value is that the receiving crafts can reject the relationship before each part becomes expensive to revise."
+    },
+    {
+      "type": "visual",
+      "id": "frame-allocation",
+      "title": "Where do the words get their space?",
+      "caption": "The same authored scene sits inside two layout rules. Toggle the instruction and compare what survives within each picture. No room geometry, actor position or camera choice changes between the examples."
+    },
+    {
+      "type": "prose",
+      "text": "The layouts share a total frame but allocate it differently. In the reactive layout, speech claims half the frame when it arrives. The reserved layout always gives a quarter to words. The comparison changes both timing and size of the allocation; it does not isolate reservation as the cause of the more stable picture. What it exposes is the danger of accepting a silent view without its actual content."
+    },
+    {
+      "type": "prose",
+      "text": "A reserved rail pays for stability before the first line. Anchored words preserve more of the silent view and keep a visible connection to the speaker, but their placement must survive the next body and status panel. The decision cannot be settled by looking only at the better-looking silent frame. It has to survive an exchange."
+    },
+    {
+      "type": "heading",
+      "text": "Diagnose before decorating"
+    },
+    {
+      "type": "prose",
+      "text": "An interaction can disappoint because the command has no consequence, the consequence is hidden, its cause is ambiguous, or the next action is simply dull. These are different commissions. Lighting cannot create a missing consequence; another resource meter cannot make a dominated choice interesting. Before adding detail, I want the failure identified closely enough that the proposed craft can actually change it."
+    },
+    {
+      "type": "prose",
+      "text": "Hunicke, LeBlanc and Zubek’s MDA framework separates mechanisms, the behavior they produce in play and the experience they support. A team can divide implementation while keeping that chain whole. The designer begins with rules; the player receives consequences. The study below shows how I broke the connection in this book’s own teaching scene.",
+      "sources": [
+        "mda"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "player",
+      "title": "What does information let you do?",
+      "caption": "An authored counterexample with three hidden initial conditions. The time allowance and tray expose consequences; the covered mechanism withholds their cause. Its rules and balance are specific to this teaching scene."
+    },
+    {
+      "type": "prose",
+      "text": "At the operator’s desk, inspection consumes part of the shift. It is worthwhile when the information changes a later choice enough to repay that time. A healthy line and a hidden fault make the same cautious action mean different things. This miniature makes a production decision tangible: paying for another review is useful when the review can change what we do, not simply because review sounds responsible."
+    },
+    {
+      "type": "prose",
+      "text": "My first version undermined that decision. I charged for inspection, then let a failed production attempt reveal the same diagnosis. On a healthy line the attempt also earned output. A critic pointed out that the impatient policy could get everything the cautious one bought, sometimes with a bonus. The rule produced a dominant behavior; that behavior removed the uncertainty I wanted the player to weigh. The intended experience had no chance to emerge."
+    },
+    {
+      "type": "prose",
+      "text": "The repair made blind failure ambiguous and costly to restart. Now inspection can repay its time on a faulty line and waste it on a healthy one. This is MDA doing diagnostic work: change the mechanism that creates the behavior, then examine whether the desired experience becomes possible. More decoration around the old buttons would have preserved the wrong decision.",
+      "sources": [
+        "mda"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Daniel Cook describes play as forming and revising a mental model through consequences. That gives the desk a better question than whether its buttons work: can someone learn when inspection is worth buying? The same question belongs in a decision-support product. An explanation that never changes a reasonable action may be beautifully written and still add little.",
+      "sources": [
+        "loops"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Lim and colleagues’ CrafTeam study gives creative direction a different test. Twelve design practitioners repeatedly formed and revised AI teams for ideation. Participants moved toward direct orchestration after agent-led exchanges failed to supply the direction and value judgments they needed. This exploratory study records their experience with a particular probe, not a general productivity estimate.",
+      "sources": [
+        "crafteam"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our missing face is a smaller instance of why the intended experience must be available to somebody who can change the arrangement. That person need not inspect every keyframe. They need an early assembled specimen and a decision that still has room to matter. Adding an AI director does not by itself establish either condition."
+    },
+    {
+      "type": "heading",
+      "text": "Meaning lives between the endpoints"
+    },
+    {
+      "type": "evidence",
+      "asset": "departure-arms",
+      "alt": "R10 end-of-shift capture. A blue worker in the foreground departs with both arms extended sideways; other workers remain around the security doorway.",
+      "caption": "Retained R10 frame at roughly 117 scene seconds. Animator tentatively identified the foreground worker as Max. The image supports a pose observation; it does not establish the animation bank’s cause or the movement between samples.",
+      "original": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-departure-arms-117s.png"
+    },
+    {
+      "type": "prose",
+      "text": "The worker has somewhere to go. His legs point down the room; his arms stretch across it. Behind him, the security doorway gives the departure a destination and a scale. The pose interrupts the ordinary meaning of leaving work. I can read the event label, but the body asks for a different interpretation."
+    },
+    {
+      "type": "prose",
+      "text": "The sampled departure exposes the limits of accepting an asset by its parts. A skeleton can contain the expected channels while the pose communicates the wrong action. We need to inspect the interval in which the intended meaning is formed. That is a craft question with a technical boundary: the motion must remain valid on the actual body, at the actual viewing scale.",
+      "sources": [
+        "animator-second"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "contact-stage",
+      "title": "One hand path, two performances",
+      "caption": "The hand follows the same path at the same times in both versions. Watch what the torso, spare arm and stance contribute around that controlled trajectory."
+    },
+    {
+      "type": "prose",
+      "text": "A hesitant novice and a practiced operator could satisfy the same hand target while needing different whole-body performances. The distinction belongs to the character and the action’s meaning; endpoint accuracy cannot choose it for us."
+    },
+    {
+      "type": "prose",
+      "text": "Interpolation can carry the hand between poses without deciding what the movement means. John Lasseter’s 1987 account of traditional animation principles in computer animation puts timing, anticipation and follow-through back into that decision. Timing can give the reach weight; preparation lets the audience find it; the return carries its meaning into the next posture. These are craft choices, not a measured recipe for the factory workers.",
+      "sources": [
+        "animation-principles"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "“Put the hand here” omits how the body makes the reach intelligible. “Explain the result” can omit the reader’s uncertainty, the order of evidence and the decision that follows. A locally correct trajectory—or sentence—leaves the surrounding communication to be designed."
+    },
+    {
+      "type": "heading",
+      "text": "One component can make work for another"
+    },
+    {
+      "type": "visual",
+      "id": "release-score",
+      "title": "Move the release across the recovery",
+      "caption": "The alternative order makes the supporting hand follow a rising partner. That coupling is the question to review. A choreography could deliberately keep it, but it would need an intended grip and a convincing shared performance."
+    },
+    {
+      "type": "prose",
+      "text": "Notice how a change to Bob can become work for Sam. While the support remains, Bob’s shoulder is also Sam’s target. Moving one actor changes the other actor’s reach. A team that assigns each body independently can produce two accepted poses and an impossible relationship between them. The same is true of a hand and a carried card: the prop’s ownership is a state rule, while its visible attachment is a spatial promise."
+    },
+    {
+      "type": "prose",
+      "text": "The studio’s instruction to release before rising chose a relationship that the animator and engine could preserve together. It did not establish that the complete rescue looked convincing. The useful part of the case is the separation: agreeing on the dependency can narrow the next correction without pretending that the remaining craft is finished.",
+      "sources": [
+        "animator-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Rosen’s 2014 Overgrowth presentation shows how a builder can share this work between authored motion and systems. He begins with responsive movement and consistent controls, then adds interpolation, springs, inverse kinematics and other refinements. The closing proposal leaves keyframes to concentrate on performance while simple interacting systems handle recurring adjustments. The attraction is clear: an authored action should not require a new manual correction every time the ground or target moves.",
+      "sources": [
+        "rosen-animation"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The Loopforge fitting attempts identify the acceptance boundary Rosen’s approach would still have to cross: a method and a valid export are not an accepted action. If satisfying the target twists the body into an unreadable pose, another solver pass must compete with changing the target or staging. Reusing a method is economical only while it preserves the performance we meant to keep.",
+      "sources": [
+        "animator-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The return on detail is therefore conditional. Spend more where it changes recognition, trust or a useful choice. Remove detail that competes with those things; reuse work that can adapt without losing them. The next chapter takes up a harder version of that decision: how to let generation search many candidates without rewarding the wrong improvement."
+    },
+    {
+      "type": "build",
+      "title": "Test the result where it will be used",
+      "body": "Choose a generated chart, interface, image or action. Keep its underlying facts fixed while testing whether the recipient can understand them.",
+      "steps": [
+        "Name what the recipient should notice, infer and do. Identify which visible relationship carries each step.",
+        "Inspect the actual content inside the final layout, including narrow screens and competing status or error information.",
+        "Distinguish a missing function from a hidden consequence, ambiguous cause or unhelpful next action. Commission the correction that matches the failure.",
+        "Ask someone unfamiliar with the work to interpret it before explaining the intended answer. Retain the mismatch as evidence."
+      ],
+      "exercise": "Remove an expensive detail while protecting the intended meaning. Then identify one small detail whose removal makes the result harder to use. Compare the two before commissioning another generation pass."
+    }
+  ],
+  "sourceIds": [
+    "speech-pair",
+    "visual-second",
+    "director-second",
+    "tf2-rendering",
+    "mda",
+    "loops",
+    "crafteam",
+    "animator-second",
+    "animation-principles",
+    "rosen-animation"
+  ]
+}

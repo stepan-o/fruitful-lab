@@ -1,0 +1,131 @@
+{
+  "title": "Outcomes after the frozen correction audit",
+  "date": "2026-10-26",
+  "changesFrozenUsage": false,
+  "footage": {
+    "source": "/loopforge-dev-blog/posts/2026-10-26-motion-in-the-running-game/index.html",
+    "before": {
+      "build": "43a70823ab1551fdc28a691d818b403970300b07",
+      "context": "Diagnostic entry followed by ordinary playback, 1280×900; not a full ordinary-day replay."
+    },
+    "after": {
+      "build": "72a55f7",
+      "context": "Ordinary-day Forge seconds 791–823, 1280×720, original speed and uncropped.",
+      "limit": "Entry context and viewport differ from before; this is visible evidence, not a matched causal estimate."
+    }
+  },
+  "selection": {
+    "installed": "Forge control correction and selected existing Day 1 runtime.",
+    "excluded": "Newer experimental rescue solver; retained delivered-bank behavior instead.",
+    "remaining": "Exact rescue contact/recovery quality and final performance acceptance remained unresolved."
+  },
+  "ordinaryReplay": "On the preserved predecessor runtime: six visible controls, three outputs, all 12 workers outside at night, stopped production and Ed holding Bob’s card. Final source preservation is separately recorded.",
+  "performance": {
+    "sourceCommit": "c184f1b2b2a6b3c75b3063da74230695f33759c9",
+    "sourceTree": "dd3ac7890d7d5b049430c968084791059664b4c0",
+    "at": "2026-10-26T16:50:53.445925+00:00",
+    "status": "FAIL",
+    "canvas": [
+      1280,
+      720
+    ],
+    "device": "Intel HD Graphics 620; Chrome 156",
+    "variants": [
+      {
+        "id": "baseline-minimal",
+        "status": "FAIL",
+        "frames": {
+          "samples": 60765,
+          "elapsedMs": 1656347.1999999285,
+          "fps": 36.686148894387976,
+          "p50Ms": 26.200000047683716,
+          "p95Ms": 44.5,
+          "p99Ms": 57.5,
+          "maxMs": 261.2000000476837,
+          "stallsOver100": 25
+        },
+        "episodes": 2,
+        "controlEvents": 12,
+        "checks": {
+          "complete": true,
+          "fullDayStages": true,
+          "stageCadence": false,
+          "staffed": true,
+          "episodes": true,
+          "allShots": true,
+          "frameRate": true,
+          "frameP95": false,
+          "frameP99": true,
+          "everyShot": false,
+          "stalls": false,
+          "input": true,
+          "resources": true
+        }
+      },
+      {
+        "id": "candidate-full",
+        "status": "FAIL",
+        "frames": {
+          "samples": 54950,
+          "elapsedMs": 1656609.5,
+          "fps": 33.17015868857447,
+          "p50Ms": 29.5,
+          "p95Ms": 47.60000002384186,
+          "p99Ms": 60.699999928474426,
+          "maxMs": 596.3999999761581,
+          "stallsOver100": 17
+        },
+        "episodes": 2,
+        "controlEvents": 12,
+        "checks": {
+          "complete": true,
+          "fullDayStages": true,
+          "stageCadence": false,
+          "staffed": true,
+          "episodes": true,
+          "allShots": true,
+          "frameRate": true,
+          "frameP95": false,
+          "frameP99": true,
+          "everyShot": false,
+          "stalls": false,
+          "input": true,
+          "resources": true
+        }
+      }
+    ],
+    "limit": "Two complete matched Day 1 cycles per variant. Averages pass while cadence/stalls fail; minimal dressing hides allocated meshes. No cold-loading, other-device or artistic-quality claim."
+  },
+  "closure": {
+    "verifiedAt": "2026-10-26T17:43:55.872618+00:00",
+    "ownerInstruction": "ship whatever they have and note whatever is missed",
+    "state": "VERIFIED_CLOSED_SHIPPED_AS_IS_WITH_KNOWN_LIMITATIONS",
+    "activeSpecialists": 0,
+    "furtherStudioWorkAuthorized": false,
+    "rootCaveat": "App-routed Producer turn acknowledged closure while the original native turn continued old correction activity. That acknowledgment was not native adoption. Completion is now established by the native closeout, cleanup and done ledger entries.",
+    "preservationCaveat": "Root recorded zero tracked diff before SIGINT; Munder subsequently removed the temporary worktree/private agent folder. Shared analysis and37 diagnostic files verified retained. Later unrelayed private work is unknown; all-files-preserved must not be claimed."
+  },
+  "merge": {
+    "at": "2026-10-26T18:01:41Z",
+    "commit": "35d114447749ed131c8016f8e0f9dff7d1c2e7d5",
+    "url": "https://github.com/stepan-o/fruitful-lab/pull/130",
+    "note": "Owner merge followed the frozen native closeout; it did not convert performance failures into passes."
+  },
+  "provenance": [
+    {
+      "file": "ROOT-FINAL-CLOSURE-2026-10-26.json",
+      "sha256": "5c8776ece9322a65fa496634c55b6b0942577e2f0c1e381416c2d9ab45d40c56",
+      "bytes": 2711
+    },
+    {
+      "file": "FINAL-HANDOFF.md",
+      "sha256": "a0bf1c80542a1d09ff4629fd315b4dfa754365a0e93b14461ce7dfccb1c365c2",
+      "bytes": 4184
+    },
+    {
+      "file": "RESULT.json",
+      "sha256": "523e151b23cee0326eb58c8beb66e42ab7994abf21b6a9263e77351cab6a83bc",
+      "bytes": 6538
+    }
+  ]
+}

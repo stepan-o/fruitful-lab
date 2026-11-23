@@ -1,0 +1,11 @@
+LOOPFORGE · CONVEYOR / MECHANISMS AND EFFECTS · v1
+
+Use the original neural-lattice Conveyor art: heavy chain guards, brass guides, ribbed drive housing, clamped carriers and a vertical compression press. Preserve blue worker / pale LIMEN / red STILETTO readability against a calm floor. Put layered detail on the machines and service wall rather than in the actors' walk lanes.
+
+One continuous belt surface with a repeatable slat texture and scrolling UVs; fixed trestles and guards merged by material. A small drive roller turns. Workpieces and carriers remain independent objects on an authored path. No per-slat simulation or dozens of individually animated rollers. Stop belt motion when the station is not running.
+
+Wash: at most twelve preallocated rinse streaks, switched on only during rinsing. No fluid simulation. Dirt removal is a material transition on the same brain. Forge: separate guided platen and ram; follow the actual workpiece top while compressing, then release. Brief warm seam accent belongs to the active press. Warm fixture glass and control lamps provide the baseline. Optional comparison: one bounded active-station spotlight, first spill only, then one 512px shadow map. Keep spray out of the caster list and disable the light when neither station is active. Preserve global Shadows off. Measure the same wash/press sequence with a repeated baseline before accepting the extra pass. Reduced motion disables decorative flow; effects-off retains all process states and outcomes.
+
+Keep the reading clock independent of presentation time. Quiet characters and bounded machine effects may continue while a dialogue is held; no item travel, pressure progress, output or custody changes without a world action. Screenshot and seek must reconstruct identical process state.
+
+Validate with real cast, moving machinery and speech at 1280x720 on Intel HD620. Record draw calls, per-shot p95/p99, long stalls and resource stability. Asset size savings are not a frame-rate result. Test effects on/off and phone layout separately.

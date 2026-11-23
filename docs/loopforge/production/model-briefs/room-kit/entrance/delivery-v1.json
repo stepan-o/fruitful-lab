@@ -1,0 +1,11 @@
+{
+  "revision": "room-kit/1",
+  "asset": "entrance",
+  "src": "/media/files/e0cd57b5418edfa2b47df40a99f96cd082ec11525fe2fed518c1b35e8169f9f1.glb",
+  "sha256": "e0cd57b5418edfa2b47df40a99f96cd082ec11525fe2fed518c1b35e8169f9f1",
+  "bytes": 1245276,
+  "sourceSha256": "a9e69be95f9b83c4660f5835f07105a3a44af2605cd8937c717c2127dc1ede05",
+  "triangles": 10128,
+  "textureSize": 1024,
+  "status": "candidate; fit and visual review pending"
+}

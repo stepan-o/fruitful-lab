@@ -1,0 +1,34 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+import type { PlayerView } from "@/lib/loopforge/first-shift/contract";
+import { Art, Control, Kicker, type Media } from "./ConsoleParts";
+import c from "./leadership-call.module.css";
+
+/** The opening mandate is presentation, not a quota-setting command or invented weekly history. */
+export default function LeadershipCall({media,view,onContinue,onClose,effects=true,rack=false,topic:controlledTopic,onTopic,paused=false,speed=1}: {media:Media;view:PlayerView;onContinue:()=>void;onClose:()=>void;effects?:boolean;rack?:boolean;topic?:number;onTopic?:(n:number)=>void;paused?:boolean;speed?:number}) {
+  const [localTopic,setLocalTopic]=useState(0), [leaving,setLeaving]=useState<"acknowledge"|"close"|null>(null);
+  const topic=controlledTopic??localTopic,setTopic=onTopic??setLocalTopic;
+  const callbacks=useRef({onContinue,onClose});
+  useEffect(()=>{callbacks.current={onContinue,onClose};},[onContinue,onClose]);
+  useEffect(()=>{
+    if(!leaving||paused) return;
+    const reduced=!effects || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timer=window.setTimeout(()=>{if(leaving==="acknowledge")callbacks.current.onContinue();else callbacks.current.onClose();},reduced ? 0 : 240/speed);
+    return ()=>window.clearTimeout(timer);
+  },[leaving,effects,paused,speed]);
+  return <section className={c.scene} data-leaving={Boolean(leaving)} aria-label="Weekly leadership call">
+    <div className={c.artwork} aria-hidden="true"><Art media={media} id="leadership-call" priority sizes="100vw" /></div>
+    <div className={c.shade} aria-hidden="true" />
+    <Art media={media} id="cinematic-soot" className={c.soot} sizes="100vw" />
+    <header className={c.heading}><Kicker>Loopforge / Factory leadership</Kicker><span>WEEK 01 · OPENING MANDATE</span><button onClick={()=>setLeaving("close")} disabled={Boolean(leaving)}>Return to factory ↗</button></header>
+    <div className={c.transmission}>
+      <nav className={c.topics} aria-label="Leadership call topics">{["The handover","The quota"].map((t,i)=><button key={t} aria-pressed={topic===i} disabled={Boolean(leaving)} onClick={()=>setTopic(i)}><span>0{i+1}</span>{t}</button>)}</nav>
+      <div key={topic} className={c.beat}>
+        <div className={c.voice}><Kicker>Leadership says</Kicker><h1>{topic===0 ? "The week belongs to the factory." : "Your weekly quota."}</h1><blockquote>{topic===0 ? "Two departments operational. The rest waiting for a director who can make this place produce." : `${view.quota} ${rack?"finished cortexes":"units"}. End of the week. How you get there is your responsibility.`}</blockquote></div>
+        <div className={c.statement}>
+          {topic===0 ? <><Kicker>Opening factory record</Kicker><dl><div><dt>Workforce</dt><dd>{view.workers}</dd></div>{rack?<div><dt>Already on the rack</dt><dd>{view.committed}</dd></div>:<div><dt>Funds</dt><dd>¤ {view.cash}</dd></div>}{!rack&&<div><dt>Line condition</dt><dd>{view.condition}%</dd></div>}</dl><p>{rack?"Day 1’s rack arrivals are already credited. The crew is outside.":"Lattice Forge and Security await their first assignments."}</p><Control tone="primary" disabled={Boolean(leaving)} onClick={()=>setTopic(1)}>Receive the quota</Control></> : <><Kicker>Week 01 / delivery requirement</Kicker><div className={c.quota}><strong>{view.quota}</strong><span>{rack?"CORTEXES":"ROBOTS"}<b>Due at the end of Day 07</b></span></div><p>{rack?`Day 1 put ${view.committed} on the rack. Each new arrival counts once toward the weekly quota.`:"Keep each day’s output for your workforce, or commit it to delivery. Each dispatched robot earns ¤ 12. Retained robots earn no contract payment. Once assigned, the split cannot be changed."}</p><Control tone="primary" disabled={Boolean(leaving)} onClick={()=>setLeaving("acknowledge")}>Acknowledge quota</Control></>}
+        </div>
+      </div>
+    </div>
+  </section>;
+}

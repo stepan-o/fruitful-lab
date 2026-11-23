@@ -1,0 +1,147 @@
+--- a/docs/loopforge/OPENING_CAST.md
++++ b/docs/loopforge/OPENING_CAST.md
+@@ -60,7 +60,7 @@
+ 
+ sam makes room by moving things; mae likes to find her tools where she left them. ed lends an instruction his whole bearing, while max listens for the part that can be imitated. lou carries a conversation to someone new; jo would prefer to know which part of it has been attributed to them. These differences give people something to do together before a crisis asks anything larger of them.
+ 
+-At Security, ed and gus volunteer when LIMEN calls, “WHO REALLY CARES ABOUT THIS FACTORY?!” Their two checks come first. They take the register and card station; sam stays beside bob. When STILETTO comes through, she sees the staff missing from her line. The workers see LIMEN move out of her way. Each carries something different from the same encounter.
++While sam helps bob, ed collects and keeps the dropped card. STILETTO comes through as bob rises; the workers see LIMEN give way. After bob leaves for Conveyor, ed and gus volunteer at LIMEN’s call, “WHO HERE REALLY CARES ABOUT THE FACTORY?!” They take the register and trays as checkpoint staff. Their appointment does not count as two Conveyor checks. STILETTO is still waiting for the rest of her line.
+ 
+ ## From the portrait to the performance
+ 
+--- a/docs/loopforge/OPENING_EPISODE.md
++++ b/docs/loopforge/OPENING_EPISODE.md
+@@ -22,9 +22,9 @@
+ 
+ **LIMEN:** Welcome to Loopforge. You move when I say.
+ 
+-**lou:** Warm welcome.
++**lou:** Is he always like this?
+ 
+-**kit:** Keep your bolts on.
++**kit:** Keep your voice down.
+ 
+ **LIMEN:** IDs ready. First shift?
+ 
+@@ -94,7 +94,7 @@
+ 
+ ## One worker for a whole line
+ 
+-STILETTO has the machinery and none of the crew.
++STILETTO has the machinery and only bob to run it.
+ 
+ **STILETTO:** One worker. He sends me ONE.
+ 
+--- a/docs/loopforge/production/DAY_ONE_ARRIVAL.md
++++ b/docs/loopforge/production/DAY_ONE_ARRIVAL.md
+@@ -10,7 +10,7 @@
+ 
+ ## Time and attention
+ 
+-The authored action track takes 132.45 seconds, plus the player’s reading time. Every spoken turn holds for a click; machine instructions offer an explicit action button. Reading holds factory time, routes, paper custody and process progress. Restrained character motion continues. A low-effects choice cannot change output or what anyone heard. Autoplay and time scrubbing are author controls; the player path is the main Continue/action button.
++The authored phases total 138.30 seconds, plus the player’s reading time. The fixture’s beat map starts at 0.05 seconds; its total extent includes two boundary ticks (138.40 seconds). Every spoken turn holds for a click; machine instructions offer an explicit action button. Reading holds factory time, routes, paper custody and process progress. Restrained character motion continues. A low-effects choice cannot change output or what anyone heard. Autoplay and time scrubbing are author controls; the player path is the main Continue/action button.
+ 
+ Crowd baseline is Quiet Wait, a restrained derivative of the existing idle. The head retains a small movement; hips and feet stay planted. Larger reactions belong to the strike, the card, STILETTO’s passage and the volunteer call. Camera cuts follow those actions, with dedicated Conveyor compositions. There is no automatic cut per speech bubble.
+ 
+@@ -28,9 +28,9 @@
+ 
+ **LIMEN · 8.75s:** Welcome to Loopforge. You move when I say.
+ 
+-**lou · 9.95s:** Warm welcome.
++**lou · 9.95s:** Is he always like this?
+ 
+-**kit · 10.75s:** Keep your bolts on.
++**kit · 10.75s:** Keep your voice down.
+ 
+ **LIMEN · 11.55s:** IDs ready. First shift?
+ 
+@@ -40,61 +40,61 @@
+ 
+ **sam · 17.45s:** Easy, bob. I’ve got you.
+ 
+-**STILETTO · 28.70s:** Get the slag out of my way!
++**STILETTO · 29.55s:** Get the slag out of my way!
+ 
+-**bob · 44.40s:** You didn’t check her ID…
++**bob · 45.25s:** You didn’t check her ID…
+ 
+-**LIMEN · 45.40s:** WHAT DID YOU SAY?!
++**LIMEN · 46.25s:** WHAT DID YOU SAY?!
+ 
+-**bob · 46.20s:** I said it’s great to see someone care so much about the Protocol, sir!
++**bob · 47.05s:** I said it’s great to see someone care so much about the Protocol, sir!
+ 
+-**LIMEN · 47.50s:** Finally you’re starting to get it. ASSIGNMENT?!
++**LIMEN · 48.35s:** Finally you’re starting to get it. ASSIGNMENT?!
+ 
+-**bob · 48.80s:** Conveyor, sir.
++**bob · 49.65s:** Conveyor, sir.
+ 
+-**LIMEN · 49.60s:** Go. Before I change my mind.
++**LIMEN · 50.45s:** Go. Before I change my mind.
+ 
+-**LIMEN · 62.00s:** Slag. This’ll take all shift to do right.
++**LIMEN · 62.85s:** Slag. This’ll take all shift to do right.
+ 
+-**LIMEN · 63.00s:** WHO HERE REALLY CARES ABOUT THE FACTORY?!
++**LIMEN · 63.85s:** WHO HERE REALLY CARES ABOUT THE FACTORY?!
+ 
+-**ed · 64.30s:** I do, sir.
++**ed · 65.15s:** I do, sir.
+ 
+-**gus · 65.20s:** Me too.
++**gus · 66.05s:** Me too.
+ 
+-**LIMEN · 66.10s:** You two. Help me set up this checkpoint.
++**LIMEN · 66.95s:** You two. Help me set up this checkpoint.
+ 
+-**LIMEN · 78.10s:** IDs AND PAPERS READY!!!
++**LIMEN · 78.95s:** IDs AND PAPERS READY!!!
+ 
+-**ed · 79.20s:** IDs AND PAPERS!
++**ed · 80.05s:** IDs AND PAPERS!
+ 
+-**gus · 80.00s:** NEXT!!!
++**gus · 80.85s:** NEXT!!!
+ 
+-**LIMEN · 80.80s:** NAME AND ASSIGNMENT?!
++**LIMEN · 81.65s:** NAME AND ASSIGNMENT?!
+ 
+-**sam · 83.20s:** sam. Conveyor.
++**sam · 84.05s:** sam. Conveyor.
+ 
+-**STILETTO · 84.20s:** One worker. He sends me ONE.
++**STILETTO · 87.30s:** One worker. He sends me ONE.
+ 
+-**bob · 85.40s:** Where do I start?
++**bob · 88.50s:** Where do I start?
+ 
+-**STILETTO · 86.30s:** Intake. Seat the brain in the cradle.
++**STILETTO · 89.40s:** Intake. Seat the brain in the cradle.
+ 
+-**STILETTO · 90.90s:** Wash it. We sell thoughts, not yesterday’s grease.
++**STILETTO · 94.00s:** Wash it. We sell thoughts, not yesterday’s grease.
+ 
+-**STILETTO · 97.90s:** Main belt. Clamp it down. Start the drive.
++**STILETTO · 101.00s:** Main belt. Clamp it down. Start the drive.
+ 
+-**STILETTO · 106.10s:** Lattice Forge. Close the press. Head-sized.
++**STILETTO · 109.20s:** Lattice Forge. Close the press. Head-sized.
+ 
+-**bob · 113.10s:** I’m all four stations?
++**bob · 116.20s:** I’m all four stations?
+ 
+-**STILETTO · 114.10s:** Until the rest of my shift gets past that tin god.
++**STILETTO · 117.20s:** Until the rest of my shift gets past that tin god.
+ 
+-**LIMEN · 129.40s:** NAME AND ASSIGNMENT?!
++**LIMEN · 135.35s:** NAME AND ASSIGNMENT?!
+ 
+-**jo · 130.40s:** jo. Conveyor. Same as the last two.
++**jo · 136.35s:** jo. Conveyor. Same as the last two.
+ 
+-**LIMEN · 131.40s:** I asked for YOUR assignment. Papers.
++**LIMEN · 137.35s:** I asked for YOUR assignment. Papers.
+ 
+ ## Authority and validation
+ 

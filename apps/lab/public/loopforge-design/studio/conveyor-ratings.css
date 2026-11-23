@@ -1,0 +1,26 @@
+/* Station needs and worker stats use the same scale and reading order. */
+.conveyor-rating {
+  display: inline-grid;
+  gap: .35rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.conveyor-rating.force { --rating-color: #e9ad55; }
+.conveyor-rating.precision { --rating-color: #75bfff; }
+.conveyor-rating.timing { --rating-color: #73d5b4; }
+.conveyor-rating .rating-symbol { color: var(--rating-color); }
+.conveyor-rating .rating-bar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+  width: 5.5rem;
+}
+.conveyor-rating .rating-bar i {
+  height: .55rem;
+  border: 1px solid var(--rating-color);
+}
+.conveyor-rating i.filled { background: var(--rating-color); }
+@media (forced-colors: active) {
+  .conveyor-rating .rating-bar i { border-color: CanvasText; }
+  .conveyor-rating i.filled { forced-color-adjust: none; background: CanvasText; }
+}

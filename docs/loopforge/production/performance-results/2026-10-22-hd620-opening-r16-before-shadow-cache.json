@@ -1,0 +1,405 @@
+{
+  "version": "opening-scene-3",
+  "status": "FAIL",
+  "reason": null,
+  "checks": {
+    "complete": true,
+    "episodes": true,
+    "allShots": true,
+    "frameRate": true,
+    "frameP95": false,
+    "frameP99": true,
+    "everyShot": false,
+    "stalls": false,
+    "input": true,
+    "resources": true
+  },
+  "stallEvents": [
+    {
+      "atMs": 76033,
+      "durationMs": 115.19999998807907,
+      "shot": "assembly",
+      "phase": "gus squares the trays"
+    },
+    {
+      "atMs": 383139.1999999881,
+      "durationMs": 144.59999999403954,
+      "shot": "belt",
+      "phase": "bob starts the main belt"
+    },
+    {
+      "atMs": 383302.5,
+      "durationMs": 163.30000001192093,
+      "shot": "belt",
+      "phase": "bob starts the main belt"
+    },
+    {
+      "atMs": 383498.5,
+      "durationMs": 110.69999998807907,
+      "shot": "belt",
+      "phase": "bob starts the main belt"
+    },
+    {
+      "atMs": 383865.8000000119,
+      "durationMs": 121.40000000596046,
+      "shot": "belt",
+      "phase": "bob starts the main belt"
+    },
+    {
+      "atMs": 383975,
+      "durationMs": 109.19999998807907,
+      "shot": "belt",
+      "phase": "bob starts the main belt"
+    },
+    {
+      "atMs": 385356.3000000119,
+      "durationMs": 128.7000000178814,
+      "shot": "forge",
+      "phase": "The Forge instruction"
+    }
+  ],
+  "frames": {
+    "samples": 29099,
+    "elapsedMs": 600004.3000000119,
+    "fps": 48.49798576443439,
+    "p50Ms": 18.299999982118607,
+    "p95Ms": 33.5,
+    "p99Ms": 42.69999998807907,
+    "maxMs": 163.30000001192093,
+    "stallsOver100": 7
+  },
+  "shots": {
+    "approach": {
+      "samples": 1763,
+      "elapsedMs": 38039.69999998808,
+      "fps": 46.346317137110766,
+      "p50Ms": 19.099999994039536,
+      "p95Ms": 33.20000001788139,
+      "p99Ms": 36.80000001192093,
+      "maxMs": 53.29999998211861,
+      "stallsOver100": 0
+    },
+    "assembly": {
+      "samples": 5807,
+      "elapsedMs": 122763.09999996424,
+      "fps": 47.30248747385568,
+      "p50Ms": 18.5,
+      "p95Ms": 34.30000001192093,
+      "p99Ms": 49.900000005960464,
+      "maxMs": 115.19999998807907,
+      "stallsOver100": 1
+    },
+    "impact": {
+      "samples": 1748,
+      "elapsedMs": 36533.5,
+      "fps": 47.84649705065214,
+      "p50Ms": 18.5,
+      "p95Ms": 33.5,
+      "p99Ms": 36.5,
+      "maxMs": 82.7999999821186,
+      "stallsOver100": 0
+    },
+    "card": {
+      "samples": 2281,
+      "elapsedMs": 46019.9999999702,
+      "fps": 49.56540634509946,
+      "p50Ms": 18.099999994039536,
+      "p95Ms": 33.20000001788139,
+      "p99Ms": 36,
+      "maxMs": 65.2999999821186,
+      "stallsOver100": 0
+    },
+    "passage": {
+      "samples": 1301,
+      "elapsedMs": 29704.100000023842,
+      "fps": 43.79866752397668,
+      "p50Ms": 20,
+      "p95Ms": 35.80000001192093,
+      "p99Ms": 48.099999994039536,
+      "maxMs": 76.80000001192093,
+      "stallsOver100": 0
+    },
+    "threshold": {
+      "samples": 5546,
+      "elapsedMs": 111380.79999998212,
+      "fps": 49.793142085537994,
+      "p50Ms": 18,
+      "p95Ms": 33.099999994039536,
+      "p99Ms": 41.19999998807907,
+      "maxMs": 66.09999999403954,
+      "stallsOver100": 0
+    },
+    "aftermath": {
+      "samples": 1690,
+      "elapsedMs": 35174.20000001788,
+      "fps": 48.04657959524711,
+      "p50Ms": 18.400000005960464,
+      "p95Ms": 33.89999997615814,
+      "p99Ms": 40.5,
+      "maxMs": 80.7999999821186,
+      "stallsOver100": 0
+    },
+    "conveyor-wide": {
+      "samples": 3989,
+      "elapsedMs": 72978.80000007153,
+      "fps": 54.659709395003624,
+      "p50Ms": 17.200000017881393,
+      "p95Ms": 29.399999976158142,
+      "p99Ms": 36.69999998807907,
+      "maxMs": 59.70000001788139,
+      "stallsOver100": 0
+    },
+    "intake": {
+      "samples": 856,
+      "elapsedMs": 18391.80000001192,
+      "fps": 46.542480888191754,
+      "p50Ms": 19.299999982118607,
+      "p95Ms": 32.5,
+      "p99Ms": 36.099999994039536,
+      "maxMs": 44.400000005960464,
+      "stallsOver100": 0
+    },
+    "wash": {
+      "samples": 1286,
+      "elapsedMs": 27998.79999998212,
+      "fps": 45.930539880309915,
+      "p50Ms": 19.30000001192093,
+      "p95Ms": 33.20000001788139,
+      "p99Ms": 36.60000002384186,
+      "maxMs": 45,
+      "stallsOver100": 0
+    },
+    "belt": {
+      "samples": 1468,
+      "elapsedMs": 33031.70000001788,
+      "fps": 44.442157079387535,
+      "p50Ms": 18.80000001192093,
+      "p95Ms": 39,
+      "p99Ms": 69.2999999821186,
+      "maxMs": 163.30000001192093,
+      "stallsOver100": 5
+    },
+    "forge": {
+      "samples": 1364,
+      "elapsedMs": 27987.79999998212,
+      "fps": 48.73552047681031,
+      "p50Ms": 18.099999994039536,
+      "p95Ms": 33.70000001788139,
+      "p99Ms": 49.900000005960464,
+      "maxMs": 128.7000000178814,
+      "stallsOver100": 1
+    }
+  },
+  "inputResponseMs": [
+    19.600000023841858
+  ],
+  "completedEpisodes": 4,
+  "resources": {
+    "baseline": {
+      "meshes": 206,
+      "materials": 66,
+      "textures": 101,
+      "skeletons": 12,
+      "geometries": 181,
+      "animationGroups": 296
+    },
+    "end": {
+      "meshes": 206,
+      "materials": 66,
+      "textures": 101,
+      "skeletons": 12,
+      "geometries": 181,
+      "animationGroups": 296
+    },
+    "growth": {
+      "meshes": 0,
+      "materials": 0,
+      "textures": 0,
+      "skeletons": 0,
+      "geometries": 0,
+      "animationGroups": 0
+    }
+  },
+  "protocol": {
+    "version": "opening-scene-3",
+    "warmupMs": 30000,
+    "durationMs": 600000,
+    "width": 1280,
+    "height": 720,
+    "workers": 10,
+    "supervisors": 2
+  },
+  "scene": "before-the-shift/16",
+  "createdAt": "2026-10-22T12:27:27.932Z",
+  "graphics": {
+    "version": 1,
+    "preset": "high",
+    "targetFps": 60,
+    "resolution": 1,
+    "shadows": "full",
+    "bloom": true,
+    "antialias": true
+  },
+  "stationLighting": {
+    "mode": "glow",
+    "active": false,
+    "shadowMap": 0,
+    "casters": 0
+  },
+  "assets": {
+    "roomKit": {
+      "revision": "room-kit/4",
+      "assets": {
+        "wash": {
+          "revision": "room-kit/1",
+          "asset": "brain-wash",
+          "src": "/media/files/8bed06015ef4a09622c19d6f121f42c82630a24c9059dda4f096313cc145e07d.glb",
+          "sha256": "8bed06015ef4a09622c19d6f121f42c82630a24c9059dda4f096313cc145e07d",
+          "bytes": 1163828,
+          "sourceSha256": "c8508b346d8a856ebd6cb9d3d1ef0f2d1cb99f5aa6bf33a457c5c67c6a127bd3",
+          "triangles": 10997,
+          "textureSize": 1024,
+          "status": "candidate; fit and visual review pending"
+        },
+        "brain": {
+          "revision": "room-kit/1",
+          "asset": "brain",
+          "src": "/media/files/8a34c53956db2b7e81d1145815e6ba5d1c9c7b9882b4383d12f959299f38b412.glb",
+          "sha256": "8a34c53956db2b7e81d1145815e6ba5d1c9c7b9882b4383d12f959299f38b412",
+          "bytes": 252892,
+          "sourceSha256": "1feb7f83e5aacf9d7094a3b6213ec2e2414febbc32377d2b2e21ba1977708d0d",
+          "triangles": 4185,
+          "textureSize": 512,
+          "status": "candidate; fit and visual review pending"
+        },
+        "forge": {
+          "revision": "room-kit/1",
+          "asset": "lattice-forge",
+          "src": "/media/files/9d291caa922450b9ec19617c495ef5a1bb9a44368335ae6b286d38620c31f0c4.glb",
+          "sha256": "9d291caa922450b9ec19617c495ef5a1bb9a44368335ae6b286d38620c31f0c4",
+          "bytes": 1437364,
+          "sourceSha256": "fdb9d0f9282864b71dea482cf3b45cf4304ba94c331b2d0ab4d57acebd753aea",
+          "triangles": 16092,
+          "textureSize": 1024,
+          "status": "candidate; fit and visual review pending"
+        },
+        "carrier": {
+          "revision": "room-kit/1",
+          "asset": "carrier",
+          "src": "/media/files/0f8be465c0bfe6737d857e72833b794a5b17109a965228c60215e2931fe58460.glb",
+          "sha256": "0f8be465c0bfe6737d857e72833b794a5b17109a965228c60215e2931fe58460",
+          "bytes": 323392,
+          "sourceSha256": "f0dfea2130d0cdfaacda556c5e8563141a0a265f78863115fabdfffd43d86a89",
+          "triangles": 2030,
+          "textureSize": 512,
+          "status": "candidate; fit and visual review pending"
+        },
+        "entrance": {
+          "revision": "room-kit/1",
+          "asset": "entrance",
+          "src": "/media/files/e0cd57b5418edfa2b47df40a99f96cd082ec11525fe2fed518c1b35e8169f9f1.glb",
+          "sha256": "e0cd57b5418edfa2b47df40a99f96cd082ec11525fe2fed518c1b35e8169f9f1",
+          "bytes": 1245276,
+          "sourceSha256": "a9e69be95f9b83c4660f5835f07105a3a44af2605cd8937c717c2127dc1ede05",
+          "triangles": 10128,
+          "textureSize": 1024,
+          "status": "candidate; fit and visual review pending"
+        },
+        "desk": {
+          "revision": "room-kit/1",
+          "asset": "desk",
+          "src": "/media/files/15415fb397a80b89b8b77436b9294f2bb37b16fd222ab8c626ebb45cc251a677.glb",
+          "sha256": "15415fb397a80b89b8b77436b9294f2bb37b16fd222ab8c626ebb45cc251a677",
+          "bytes": 971532,
+          "sourceSha256": "61ecacd082c83405e04fb000191eb4012929cb53527c982987758b3afee6ed11",
+          "triangles": 7485,
+          "textureSize": 1024,
+          "status": "candidate; fit and visual review pending"
+        },
+        "portal": {
+          "revision": "room-kit/1",
+          "asset": "portal",
+          "src": "/media/files/4bd555f8184b3efdd2f4ccea26260843e14eb98615601228b32532efe43ef43d.glb",
+          "sha256": "4bd555f8184b3efdd2f4ccea26260843e14eb98615601228b32532efe43ef43d",
+          "bytes": 1115344,
+          "sourceSha256": "0e4cb2c294b2d0daa8100c92eedaf493511d758cbd714813e1e0d852774a4471",
+          "triangles": 9694,
+          "textureSize": 1024,
+          "status": "candidate; fit and visual review pending"
+        },
+        "intake": {
+          "revision": "room-kit/1",
+          "asset": "intake",
+          "src": "/media/files/0f1e58b5a25d9b45dc9fe20cd76a903f8dc5c8beb6cabe35758f8f5562d090fa.glb",
+          "sha256": "0f1e58b5a25d9b45dc9fe20cd76a903f8dc5c8beb6cabe35758f8f5562d090fa",
+          "bytes": 1137916,
+          "sourceSha256": "9104f23a46159351b22481fe554942488cca8449c517be489c270f420963ecbb",
+          "triangles": 12041,
+          "textureSize": 1024,
+          "status": "candidate; fit and visual review pending"
+        },
+        "crate": {
+          "revision": "room-kit/1",
+          "asset": "crate",
+          "src": "/media/files/691529aa5ac3d3b39e6cff02084262a85ba632b5939a46c33a2be15aff5b73df.glb",
+          "sha256": "691529aa5ac3d3b39e6cff02084262a85ba632b5939a46c33a2be15aff5b73df",
+          "bytes": 174556,
+          "sourceSha256": "d9d286d0cdcd3eb4c09f45fc9116611186fa708ddd5acef91098bf67c3aeb731",
+          "triangles": 1979,
+          "textureSize": 512,
+          "status": "candidate; fit and visual review pending"
+        }
+      },
+      "brainStates": {
+        "dirty": {
+          "src": "/media/files/c4f72c07b45cf005ee64dfb3c9f9e11ea42d06d2a7580793e94aa473e99c3a4f.webp",
+          "sha256": "c4f72c07b45cf005ee64dfb3c9f9e11ea42d06d2a7580793e94aa473e99c3a4f",
+          "bytes": 45904,
+          "textureSize": 512,
+          "sourceSha256": "81122652e7c1a2d99a7a8f47fd295ad6067393c672eb33916877a67a15680fdf",
+          "uvVerified": true
+        },
+        "pressed": {
+          "src": "/media/files/5d02224568368013b9db2a1baa068e4295c55fda7503ef7ea331bddc080141ac.webp",
+          "sha256": "5d02224568368013b9db2a1baa068e4295c55fda7503ef7ea331bddc080141ac",
+          "bytes": 47732,
+          "textureSize": 512,
+          "sourceSha256": "8230a0fe50e3e52ed9c3cebb32901155df67f44c36407cb36506a3988efcf5e6",
+          "uvVerified": true
+        }
+      }
+    },
+    "stiletto": "ad84c17431f6eea244b9a15f46296f0da63d7ae9726e2f7d2622f9d522b6f97b",
+    "workers": {
+      "ben-floor": "fc494da9f5e6e63c0eda65d0ef809fbfe25980344848180639b3ab67f0a12d94",
+      "bob-floor": "3a506185764df6b3e24007420982744b753c371287c9bb45767abdf5a8fbc612",
+      "ed-floor": "c73120463ce69ff3a4a3a51303932d5b5cc491c63e290f04903edc46da35943c",
+      "gus-floor": "60e7a64b921fd7f96151b05c0b7fef39f11b1259c01b2a281a29ce8118f4af8d",
+      "jo-floor": "cf44c79b42ffad4252728f72acb12aa39c98308c3afaf970006178aa7996bcc1",
+      "kit-floor": "778853790162c53eb7e83e4c85ac5e97ad10a52055d1878c97201c45f26f0523",
+      "lou-floor": "ad4a2cfcdd238e80b8d9375ba3b9525beb9129dca3d7c3a04c954a892049df97",
+      "mae-floor": "27e571ebe572087615ec7986c656e6cfd45c0c8f15eb8823bbb24f9f75f16d32",
+      "max-floor": "8dab55d2c6480360509898b520f02d2813729a6bc45e46f3d1ba1bcf975325d4",
+      "sam-floor": "387a948e5a22045c1532ad09b78e6592768ce9ae3021b6dee7018b852032ed19"
+    },
+    "limen": "42c9787741e7e2d90151512c0a884d6e26a34dbdd8809544b61f252beb96cda6"
+  },
+  "environment": {
+    "renderer": "ANGLE (Intel, Mesa Intel(R) HD Graphics 620 (KBL GT2), OpenGL 4.6)",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "cores": 4,
+    "viewport": [
+      1280,
+      720
+    ],
+    "canvas": [
+      1280,
+      720
+    ]
+  },
+  "limitations": [
+    "Draw completion cadence is not a GPU timestamp.",
+    "Warm repeated authored opening; general BDI planning and cold internet loading are separate gates.",
+    "Contacts and artistic quality require visual approval; a performance pass does not establish either."
+  ]
+}

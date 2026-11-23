@@ -1,0 +1,175 @@
+{
+  "kind": "limen",
+  "rig": "loopforge-mechanical-v1",
+  "height": 2.0686569213867188,
+  "bones": [
+    "root",
+    "pelvis",
+    "chest",
+    "neck",
+    "head",
+    "upperL",
+    "lowerL",
+    "handL",
+    "thighL",
+    "shinL",
+    "footL",
+    "upperR",
+    "lowerR",
+    "handR",
+    "thighR",
+    "shinR",
+    "footR"
+  ],
+  "rest": {
+    "root": [
+      0,
+      0,
+      0
+    ],
+    "pelvis": [
+      0,
+      1.0010000000000001,
+      0
+    ],
+    "chest": [
+      0,
+      1.4080000000000001,
+      0
+    ],
+    "neck": [
+      0,
+      1.6610000000000003,
+      0
+    ],
+    "head": [
+      0,
+      1.87,
+      0
+    ],
+    "upperL": [
+      -0.46,
+      1.573,
+      0
+    ],
+    "lowerL": [
+      -0.46,
+      1.163,
+      0
+    ],
+    "handL": [
+      -0.46,
+      0.773,
+      0
+    ],
+    "thighL": [
+      -0.2584,
+      0.9460000000000001,
+      0
+    ],
+    "shinL": [
+      -0.2584,
+      0.5060000000000001,
+      0
+    ],
+    "footL": [
+      -0.2584,
+      0.105,
+      0
+    ],
+    "upperR": [
+      0.46,
+      1.573,
+      0
+    ],
+    "lowerR": [
+      0.46,
+      1.163,
+      0
+    ],
+    "handR": [
+      0.46,
+      0.773,
+      0
+    ],
+    "thighR": [
+      0.2584,
+      0.9460000000000001,
+      0
+    ],
+    "shinR": [
+      0.2584,
+      0.5060000000000001,
+      0
+    ],
+    "footR": [
+      0.2584,
+      0.105,
+      0
+    ]
+  },
+  "parents": {
+    "root": null,
+    "pelvis": "root",
+    "chest": "pelvis",
+    "neck": "chest",
+    "head": "neck",
+    "upperL": "chest",
+    "lowerL": "upperL",
+    "handL": "lowerL",
+    "thighL": "pelvis",
+    "shinL": "thighL",
+    "footL": "shinL",
+    "upperR": "chest",
+    "lowerR": "upperR",
+    "handR": "lowerR",
+    "thighR": "pelvis",
+    "shinR": "thighR",
+    "footR": "shinR"
+  },
+  "sizes": {
+    "hip": 0.2584,
+    "shoulder": 0.46,
+    "upper": 0.41,
+    "lower": 0.39
+  },
+  "clips": [
+    "wait",
+    "walk",
+    "present",
+    "inspect",
+    "carry",
+    "urge",
+    "refuse"
+  ],
+  "triangles": 31556,
+  "bytes": 1799792,
+  "materials": 2,
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 1,
+    "numInfos": 2,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+        "severity": 1,
+        "pointer": "/meshes/0/primitives/0/material"
+      },
+      {
+        "code": "ACCESSOR_INDEX_TRIANGLE_DEGENERATE",
+        "message": "Indices accessor contains 1100 degenerate triangles (out of 30404).",
+        "severity": 2,
+        "pointer": "/meshes/0/primitives/0/indices"
+      },
+      {
+        "code": "ACCESSOR_INDEX_TRIANGLE_DEGENERATE",
+        "message": "Indices accessor contains 48 degenerate triangles (out of 1152).",
+        "severity": 2,
+        "pointer": "/meshes/1/primitives/0/indices"
+      }
+    ],
+    "truncated": false
+  }
+}

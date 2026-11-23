@@ -1,0 +1,9 @@
+"use client";
+import {useState} from "react";
+import {useLivingPlate} from "@/components/sanctuary/plates/useLivingPlate";
+import {StagePicture} from "./CompositionStage";
+import s from "./frame-allocation.module.css";
+export default function FrameAllocation(){
+ const [words,setWords]=useState(false);const ref=useLivingPlate<HTMLDivElement>();
+ return <div ref={ref} className={s.study} data-playing="false"><div className={s.controls}><button type="button" aria-pressed={words} onClick={()=>setWords(v=>!v)}>{words?"Hide the instruction":"Show the instruction"}</button><p>Watch the operator’s feet and the brass control as the words arrive.</p></div><div className={s.pair}>{[false,true].map(reserved=><section className={s.panel} key={String(reserved)}><header><span>{reserved?"B":"A"}</span><h3>{reserved?"Reserve the reading area":"Take space when needed"}</h3></header><div className={s.screen} data-reserved={reserved} data-words={words}><div className={s.picture}><StagePicture close lit rail speech={false} outline={false} phase={2} label={words&&!reserved?"The shorter picture area clips the workers’ lower bodies.":"Two workers and the brass control remain inside the picture."}/></div><div className={s.words}>{words?<p>Ready at the control.<br/>Watch the workpiece.</p>:<span>{reserved?"Reserved space":""}</span>}</div></div><p className={s.allocation}>{reserved?"Picture 75% · rail 25%":words?"Picture 50% · words 50%":"Picture 100%"}</p><p className={s.explain}>{reserved?"The scene retains its picture area. The empty rail is a visible cost when nobody speaks.":words?"The image keeps its scale while its container gets shorter. Part of the body disappears.":"When words arrive, this layout will take their space from the picture."}</p></section>)}</div><p className={s.limit}>Authored crop demonstration. The percentages are chosen layout rules, not measurements of Loopforge’s interface or a replay of its camera.</p></div>;
+}

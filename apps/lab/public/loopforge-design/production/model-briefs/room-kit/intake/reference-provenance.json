@@ -1,0 +1,15 @@
+{
+  "tool": "built-in image_gen",
+  "input": {
+    "ai_model": "nano-banana-2",
+    "prompt": "Use the supplied approved Loopforge references as the design authority. Isolate ONLY the specified single prop, not the whole room. Industrial soot-dark cast iron and aged muted brass, directional wear at edges, calm matte surfaces; no generic futuristic box. One coherent three-quarter product view, entire object visible, slight elevated camera so functional openings and work surfaces can be inspected. Neutral diffuse white illumination with no colored scene lighting baked into materials. Transparent background, no floor shadow or stand. No robots, people, labels, letters, numbers, symbols, lights, effects, floor or wall slabs, extra props or exploded/multiple views. One heavy empty loading-station chassis from the intake concept. Four short structural feet, broad open loading mouth, low crate-support rails, a recessed tray/lift mounting bay, thick ribbed cast-iron bearing housings and aged-brass collars, with a real flat inspection ledge and a protected recessed control socket at the operator edge. Keep a continuous visible empty channel through the chassis. Strong broad industrial proportions and wear at contact edges. Omit moving tray, belt, rollers, levers, crate, brains, workers, forge, carrier, furnace and all flame, smoke or glow. Do not fill the loading mouth with a flat plate.",
+    "reference_file_paths": [
+      "/home/stpn/LoopforgeStudio/evidence/LST-3/room-assets/references/04_loopforge_rooms_neural_lattice_a_intake_1.png"
+    ],
+    "aspect_ratio": "1:1",
+    "remove_background": true,
+    "response_format": "json"
+  },
+  "source_sha256": "ef81d2d8e0c5125c1a23d44a9b564eae7100bf52600929dd3ffa8bd6f8d62736",
+  "note": "Studio design brief adapted to built-in image generation; image reviewed before Meshy submission. Meshy image-generation stage omitted; costs recorded only in canonical Meshy ledger."
+}

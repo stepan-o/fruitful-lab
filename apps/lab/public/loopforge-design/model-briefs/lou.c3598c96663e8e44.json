@@ -1,0 +1,128 @@
+{
+  "id": "lou",
+  "name": "lou",
+  "subtitle": "Long neck · twin receivers",
+  "revision": "Opening cast v1 · 21 October 2026",
+  "status": "Brief ready · body pending",
+  "summary": "Individual body and motion brief for the ten-worker opening. Image and model production are pending.",
+  "provenance": "Current owner-authorized production brief from the character portrait and opening script revision 3. Source exports and local motion corrections are recorded separately.",
+  "viewer": null,
+  "viewerLabel": "Individual viewer in production",
+  "record": "/loopforge-design/narrative-cast.html",
+  "parts": [
+    "Individual blue-family body",
+    "Neutral rig and source motion bank",
+    "Locally fitted contacts, transitions and scene performance"
+  ],
+  "remaining": [
+    "Model and rig inspection",
+    "All-motion viewer and contact fitting",
+    "Room-scale recognition and performance acceptance"
+  ],
+  "images": [],
+  "prompts": [
+    {
+      "title": "Stage 1 · Body",
+      "file": "lou/01-body.txt",
+      "text": "Build lou, an individual factory worker for Loopforge. Use only lou's approved body input, not a multi-character sheet. Character design: long neck between broad receiver housings. Keep an adult mechanical factory body in the established blue-enamel, dark-mechanism, restrained brass family. Broad paint areas and head/shoulder/torso shapes must identify the worker in a full-room view. Smaller and less ornate than supervisors. Do not add weapons, a crown, a bright chest core or text.\n\nNeutral symmetric A-pose, empty separated hands, clear elbows/armpits/thighs, parallel planted feet. Preserve coherent mechanical joints and hand anatomy. One textured humanoid, target 24,000 triangles for the close-up source, 2K base/normal/metallic/roughness, GLB plus FBX. Keep the pre-remesh source. Floor-detail reduction and texture variants will be made and inspected locally. No repeated Meshy generation without checking the existing task and the shared 500-credit ledger.\n",
+      "url": "/loopforge-design/model-briefs/lou-01-body.bb84070e915fa39d.txt"
+    },
+    {
+      "title": "Stage 2 · Rig and motions",
+      "file": "lou/02-rig-and-motion.txt",
+      "text": "Rig the SAME textured lou delivery body as a biped. Preserve its proportions, materials and neutral pose; no mesh regeneration during motion work. Record the actual joint hierarchy, bind transforms, finger support and axis conventions. Export a neutral rigged GLB and FBX plus the included walk/run as separate sources.\n\nActing direction: Match another worker’s pace and lean towards the listener. Notice STILETTO from the rear first and leave the passage without turning the reaction into a repeated gag.\n\nFirst retarget the approved Worker 01 motion library locally, adapting contacts to lou's proportions. Reuse a motion only after checking its hand, foot and elbow behavior on THIS body. New catalog animations require a verified catalog ID and an entry in the credit ledger; archive each action independently even if a bundle is also produced. Never assume All Animations includes later jobs.\n\nRead 03-opening-performance.txt for choreography, transitions, retreat and contacts. Keep source and corrected files distinct. Animation names must preserve their catalog identity, with scene meaning recorded separately. Record file hashes, mesh/skin/texture presence, clip names/durations and root translation/yaw in export-audit.json. Record local fitting, motion retiming, constraints and visual checks in motion-cleanup.json. A still pose does not certify its entry, exit or blend.\n",
+      "url": "/loopforge-design/model-briefs/lou-02-rig-and-motion.5492b7fdf48e8d9f.txt"
+    },
+    {
+      "title": "Stage 3 · Opening performance",
+      "file": "lou/03-opening-performance.txt",
+      "text": "OPENING WORKERS — PERFORMANCE AND CONTACT BRIEF\nRevision 1 · 21 October 2026\n\nFollow the current OPENING_EPISODE.md. Ten people arrive through the Lobby and gather unevenly around Security. Workers remain smaller blue-family figures; LIMEN and STILETTO keep their accepted identities.\n\nAPPROACH AND WAITING\nWalk in staggered pairs and singles. Stop through a planted foot and settle into a comfortable stance. Stand at conversational angles and unequal distances, looking towards a colleague, the desk or the machinery as the situation warrants. Avoid a gridded queue or fenced waiting pen. Some people briefly scratch their heads, listen or make a small conversational gesture; most simply wait. Never loop a scratch, clap, shrug or startled reaction. Carry quiet idle time continuously across dialogue beats rather than restarting it for every line.\n\nBOB\nHead leads shoulders when noticing the new roller. He speaks to the small group while looking towards sam. He takes a single mistaken step, receives one cyan-blade electrical contact, falls, recovers with sam close enough to help, and limps back. Large hands must touch the floor and supporting arm credibly. Subsequent waiting and retreat preserve the injured leg. The personality is the approved portrait; do not add a usefulness wound or a predestined refusal of help.\n\nSTILETTO'S PASSAGE\nOnly after ed and sam have completed their ID checks, STILETTO enters from the main door and marches to Conveyor at a continuous Quick Walk pace. Workers notice the approaching body in sequence and withdraw far enough to clear BOTH blade envelopes. Turn, step back or aside, transfer weight, plant, then watch her pass. They must not slide or teleport into two perfect ranks. bob yields on his sound leg. kit and mae negotiate the same patch of floor; gus's broad retreat sends max around his shoulder. Keep timing and destinations deterministic for review; reactions are driven by approach/perception, not a repeating crowd wave.\n\nLIMEN\nUse his existing expressive bank to articulate the instructions. Strike with the cyan forearm blade, preserving body/blade contact timing. Fit the downloaded Step_Back (0.833 s source) to the actual STILETTO clearance; inspect whether the source reads as a sufficient hop. Do not stretch the leg or translate a planted foot to force clearance. Keep his torso oriented towards her approach; he returns to the threshold after she passes.\n\nSPECIFIC CONTACTS TO AUTHOR OR FIT LOCALLY\n- bob: hand/head glance, card hold, strike/fall, floor support, assisted recovery, injured retreat.\n- sam: offered forearm, support beside bob, card and tray handling.\n- ed: brief sleeve contact, card handover, seated register work.\n- jo: retrieve and return the card.\n- mae/kit: a short guiding hand at shoulder/upper arm while separating.\n- everyone: locomotion stops, turns, retreat, stationary settling and gaze.\n\nSOURCE POLICY\nReuse the accepted Worker 01 bank by bind-pose-aware retargeting where suitable. Catalog source IDs already recorded in worker/02-rig-and-motion.txt include 0 Idle, 2 Alert, 36 Confused_Scratch, 37 Discuss_While_Moving, 47 Listening_Gesture, 172 Electrocution_Reaction, 181 Electrocuted_Fall, 576/586 turns, 637 Injured_Walk_inplace and 692 walking_2_inplace. Inspect root travel and actual action before use. Query the live catalog for retreat, card, seated desk or recovery candidates; record the returned ID and name before any purchase. Do not invent a preset ID or label a reversed walk a reviewed retreat.\n\nDELIVERY AND REVIEW\nKeep the neutral rig and each source clip. Name exports with worker, source action ID/name and revision. Maintain export-audit.json for hashes, task IDs, triangles, textures, joints, clips, seconds and root travel. Maintain motion-cleanup.json for source/derivative mapping, contact targets, blend windows, foot planting and review results. Preview every delivered clip and its entry/exit on its own character. Inspect front, side, three-quarter and the room camera. Test body/body and body/blade clearance, palms, wrists, elbows, knees, soles and floor. Review mixed-height contacts; numeric clearance alone cannot approve believable posture.\n\nENGINE\nUse the same motion intent, transition, path reservation, contact and speech-hearing contracts in scripted scenes and future agent-selected actions. Await physical arrival before committing a check or admission. No crowd lane is opened by moving an actor through someone else. Staggered withdrawal must finish before the blade reaches its occupied space. Preserve two real cleared-worker facts before STILETTO enters. Preserve authored consequences separately from presentation cues.\n",
+      "url": "/loopforge-design/model-briefs/lou-03-opening-performance.74a71f904e94d475.txt"
+    }
+  ],
+  "files": [
+    {
+      "name": "prompts/01-body.txt",
+      "src": "/loopforge-design/model-briefs/lou-01-body.bb84070e915fa39d.txt",
+      "bytes": 970,
+      "sha256": "bb84070e915fa39d1ac81b6da7445d4c96990c36ba4a007b63b1a00ac8582a15"
+    },
+    {
+      "name": "prompts/02-rig-and-motion.txt",
+      "src": "/loopforge-design/model-briefs/lou-02-rig-and-motion.5492b7fdf48e8d9f.txt",
+      "bytes": 1387,
+      "sha256": "5492b7fdf48e8d9fa72c9512fed189541eb2f5154d3dd5aa28f4c7aeefe602a5"
+    },
+    {
+      "name": "prompts/03-opening-performance.txt",
+      "src": "/loopforge-design/model-briefs/lou-03-opening-performance.74a71f904e94d475.txt",
+      "bytes": 4671,
+      "sha256": "74a71f904e94d475a31bc4a5a3ddd5bec0eb51a82c7b856cc890ddfb5f099a51"
+    },
+    {
+      "name": "README.md",
+      "src": "/loopforge-design/model-briefs/lou-README.f82c7c41c8f5eea0.md",
+      "bytes": 1307,
+      "sha256": "f82c7c41c8f5eea09eb09fc6b123064ed1051e17df1924d8ba2dc227162d0a5c"
+    },
+    {
+      "name": "export-audit.json",
+      "src": "/loopforge-design/model-briefs/lou-export-audit.55cc45243a9fe5a9.json",
+      "bytes": 116,
+      "sha256": "55cc45243a9fe5a97b45f39b431a9c661f8ac5abc236ec4a7cb1c93a84cd5185"
+    },
+    {
+      "name": "motion-cleanup.json",
+      "src": "/loopforge-design/model-briefs/lou-motion-cleanup.74118c6b573144f7.json",
+      "bytes": 124,
+      "sha256": "74118c6b573144f77183a4414c62e29595eb266e17386adebc2f612a18c148f6"
+    }
+  ],
+  "downloadBytes": 8575,
+  "packageManifest": {
+    "schemaVersion": 1,
+    "id": "lou",
+    "revision": "Opening cast v1 · 21 October 2026",
+    "provenance": "Current owner-authorized production brief from the character portrait and opening script revision 3. Source exports and local motion corrections are recorded separately.",
+    "viewer": null,
+    "images": [],
+    "files": [
+      {
+        "name": "prompts/01-body.txt",
+        "src": "/loopforge-design/model-briefs/lou-01-body.bb84070e915fa39d.txt",
+        "bytes": 970,
+        "sha256": "bb84070e915fa39d1ac81b6da7445d4c96990c36ba4a007b63b1a00ac8582a15"
+      },
+      {
+        "name": "prompts/02-rig-and-motion.txt",
+        "src": "/loopforge-design/model-briefs/lou-02-rig-and-motion.5492b7fdf48e8d9f.txt",
+        "bytes": 1387,
+        "sha256": "5492b7fdf48e8d9fa72c9512fed189541eb2f5154d3dd5aa28f4c7aeefe602a5"
+      },
+      {
+        "name": "prompts/03-opening-performance.txt",
+        "src": "/loopforge-design/model-briefs/lou-03-opening-performance.74a71f904e94d475.txt",
+        "bytes": 4671,
+        "sha256": "74a71f904e94d475a31bc4a5a3ddd5bec0eb51a82c7b856cc890ddfb5f099a51"
+      },
+      {
+        "name": "README.md",
+        "src": "/loopforge-design/model-briefs/lou-README.f82c7c41c8f5eea0.md",
+        "bytes": 1307,
+        "sha256": "f82c7c41c8f5eea09eb09fc6b123064ed1051e17df1924d8ba2dc227162d0a5c"
+      },
+      {
+        "name": "export-audit.json",
+        "src": "/loopforge-design/model-briefs/lou-export-audit.55cc45243a9fe5a9.json",
+        "bytes": 116,
+        "sha256": "55cc45243a9fe5a97b45f39b431a9c661f8ac5abc236ec4a7cb1c93a84cd5185"
+      },
+      {
+        "name": "motion-cleanup.json",
+        "src": "/loopforge-design/model-briefs/lou-motion-cleanup.74118c6b573144f7.json",
+        "bytes": 124,
+        "sha256": "74118c6b573144f77183a4414c62e29595eb266e17386adebc2f612a18c148f6"
+      }
+    ]
+  }
+}

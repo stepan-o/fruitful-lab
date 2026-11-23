@@ -1,0 +1,316 @@
+{
+  "scene": "before-the-shift/12",
+  "date": "2026-10-22T00:39:47.014Z",
+  "durationMs": 600002.5,
+  "frames": {
+    "samples": 27791,
+    "elapsedMs": 600002.5,
+    "fps": 46.318140341081914,
+    "p50Ms": 19.30000001192093,
+    "p95Ms": 33.900000005960464,
+    "p99Ms": 46.099999994039536,
+    "maxMs": 213.5,
+    "stallsOver100": 28
+  },
+  "shots": {
+    "approach": {
+      "samples": 1669,
+      "elapsedMs": 37954.30000004172,
+      "fps": 43.973937076910005,
+      "p50Ms": 21.200000017881393,
+      "p95Ms": 34.400000005960464,
+      "p99Ms": 49.5,
+      "maxMs": 92.30000001192093,
+      "stallsOver100": 0
+    },
+    "assembly": {
+      "samples": 5666,
+      "elapsedMs": 121361.90000003576,
+      "fps": 46.686810275698804,
+      "p50Ms": 19.099999994039536,
+      "p95Ms": 33.80000001192093,
+      "p99Ms": 56.80000001192093,
+      "maxMs": 167,
+      "stallsOver100": 10
+    },
+    "impact": {
+      "samples": 1723,
+      "elapsedMs": 36537.89999997616,
+      "fps": 47.1565141948805,
+      "p50Ms": 19.5,
+      "p95Ms": 32.60000002384186,
+      "p99Ms": 38.900000005960464,
+      "maxMs": 65.5,
+      "stallsOver100": 0
+    },
+    "card": {
+      "samples": 1983,
+      "elapsedMs": 44191.5000000298,
+      "fps": 44.87288279417224,
+      "p50Ms": 19.799999982118607,
+      "p95Ms": 35.60000002384186,
+      "p99Ms": 49,
+      "maxMs": 70.59999999403954,
+      "stallsOver100": 0
+    },
+    "passage": {
+      "samples": 1205,
+      "elapsedMs": 30508.099999934435,
+      "fps": 39.497707166378426,
+      "p50Ms": 21.200000017881393,
+      "p95Ms": 38.900000005960464,
+      "p99Ms": 111.80000001192093,
+      "maxMs": 213.5,
+      "stallsOver100": 15
+    },
+    "threshold": {
+      "samples": 5906,
+      "elapsedMs": 122572.79999995232,
+      "fps": 48.183610066852495,
+      "p50Ms": 18.600000023841858,
+      "p95Ms": 33.20000001788139,
+      "p99Ms": 43.900000005960464,
+      "maxMs": 112.7999999821186,
+      "stallsOver100": 1
+    },
+    "aftermath": {
+      "samples": 1784,
+      "elapsedMs": 38076.80000001192,
+      "fps": 46.85267669550596,
+      "p50Ms": 19.400000005960464,
+      "p95Ms": 33.900000005960464,
+      "p99Ms": 42.599999994039536,
+      "maxMs": 83.5,
+      "stallsOver100": 0
+    },
+    "conveyor-wide": {
+      "samples": 3038,
+      "elapsedMs": 61617.80000004172,
+      "fps": 49.3039349018943,
+      "p50Ms": 18.5,
+      "p95Ms": 32,
+      "p99Ms": 39,
+      "maxMs": 76.30000001192093,
+      "stallsOver100": 0
+    },
+    "intake": {
+      "samples": 810,
+      "elapsedMs": 18389.5,
+      "fps": 44.04687457516518,
+      "p50Ms": 20.5,
+      "p95Ms": 34.69999998807907,
+      "p99Ms": 43.099999994039536,
+      "maxMs": 58.70000001788139,
+      "stallsOver100": 0
+    },
+    "wash": {
+      "samples": 1203,
+      "elapsedMs": 28005.19999998808,
+      "fps": 42.95630811422565,
+      "p50Ms": 21.19999998807907,
+      "p95Ms": 35.80000001192093,
+      "p99Ms": 52.70000001788139,
+      "maxMs": 107.90000000596046,
+      "stallsOver100": 2
+    },
+    "belt": {
+      "samples": 1496,
+      "elapsedMs": 32766,
+      "fps": 45.65708356222914,
+      "p50Ms": 20.099999994039536,
+      "p95Ms": 34.099999994039536,
+      "p99Ms": 39.80000001192093,
+      "maxMs": 77.59999999403954,
+      "stallsOver100": 0
+    },
+    "forge": {
+      "samples": 1308,
+      "elapsedMs": 28020.69999998808,
+      "fps": 46.67977602274591,
+      "p50Ms": 19.30000001192093,
+      "p95Ms": 33.39999997615814,
+      "p99Ms": 40.5,
+      "maxMs": 82.90000000596046,
+      "stallsOver100": 0
+    }
+  },
+  "events": [
+    {
+      "atMs": 30106.59999999404,
+      "durationMs": 107.5,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 30218.40000000596,
+      "durationMs": 111.80000001192093,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 30750.29999998212,
+      "durationMs": 122.09999999403954,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 31400.29999998212,
+      "durationMs": 121.19999998807907,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 31574.29999998212,
+      "durationMs": 174,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 31719.40000000596,
+      "durationMs": 145.10000002384186,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 31884.29999998212,
+      "durationMs": 164.89999997615814,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 32087.69999998808,
+      "durationMs": 203.40000000596046,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 32205.69999998808,
+      "durationMs": 118,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 32438.69999998808,
+      "durationMs": 126,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 32652.19999998808,
+      "durationMs": 213.5,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 32795.90000000596,
+      "durationMs": 143.7000000178814,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 33011.5,
+      "durationMs": 115.2000000178814,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 33406.59999999404,
+      "durationMs": 198.90000000596046,
+      "shot": "passage",
+      "phase": "bob gets up as STILETTO arrives"
+    },
+    {
+      "atMs": 35337.29999998212,
+      "durationMs": 106.89999997615814,
+      "shot": "passage",
+      "phase": "The workers hold the opened passage"
+    },
+    {
+      "atMs": 224512.40000000596,
+      "durationMs": 107.90000000596046,
+      "shot": "wash",
+      "phase": "The wash instruction"
+    },
+    {
+      "atMs": 338489.59999999404,
+      "durationMs": 121.90000000596046,
+      "shot": "assembly",
+      "phase": "ed takes the register station"
+    },
+    {
+      "atMs": 340131.2999999821,
+      "durationMs": 167,
+      "shot": "assembly",
+      "phase": "ed takes the register station"
+    },
+    {
+      "atMs": 340426.1999999881,
+      "durationMs": 123.59999999403954,
+      "shot": "assembly",
+      "phase": "ed takes the register station"
+    },
+    {
+      "atMs": 340542.40000000596,
+      "durationMs": 116.2000000178814,
+      "shot": "assembly",
+      "phase": "ed takes the register station"
+    },
+    {
+      "atMs": 340754.1999999881,
+      "durationMs": 162.09999999403954,
+      "shot": "assembly",
+      "phase": "ed takes the register station"
+    },
+    {
+      "atMs": 341083.09999999404,
+      "durationMs": 119.69999998807907,
+      "shot": "assembly",
+      "phase": "ed takes the register station"
+    },
+    {
+      "atMs": 341200.1999999881,
+      "durationMs": 117.09999999403954,
+      "shot": "assembly",
+      "phase": "gus squares the trays"
+    },
+    {
+      "atMs": 341360.7999999821,
+      "durationMs": 160.59999999403954,
+      "shot": "assembly",
+      "phase": "gus squares the trays"
+    },
+    {
+      "atMs": 341577.6999999881,
+      "durationMs": 115.2999999821186,
+      "shot": "assembly",
+      "phase": "gus squares the trays"
+    },
+    {
+      "atMs": 341724.59999999404,
+      "durationMs": 146.90000000596046,
+      "shot": "assembly",
+      "phase": "gus squares the trays"
+    },
+    {
+      "atMs": 357298.40000000596,
+      "durationMs": 101.7000000178814,
+      "shot": "wash",
+      "phase": "The wash instruction"
+    },
+    {
+      "atMs": 398220.1999999881,
+      "durationMs": 112.7999999821186,
+      "shot": "threshold",
+      "phase": "LIMEN starts doing it right"
+    }
+  ],
+  "protocol": {
+    "version": "opening-scene-3",
+    "warmupMs": 30000,
+    "durationMs": 600000,
+    "width": 1280,
+    "height": 720,
+    "workers": 10,
+    "supervisors": 2
+  }
+}

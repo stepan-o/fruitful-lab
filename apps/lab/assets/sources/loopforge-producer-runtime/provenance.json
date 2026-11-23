@@ -1,0 +1,37 @@
+{
+  "records": [
+    {
+      "id": "foundry-desk",
+      "source": "foundry-desk.png",
+      "sha256": "9e9076c7674f08abf625f6b755663a52df5de03016c095b03995b992ada4cd3b",
+      "mode": "Built-in imagegen",
+      "date": "2026-10-08",
+      "use": "Runtime clean console plate. Empty feeds are filled with original room art and state."
+    },
+    {
+      "id": "broadcast-control",
+      "source": "broadcast-control.png",
+      "sha256": "ab676cbab3adbc07c636eb0f0bdc70871ae76520694b1bc269ce93243cbb16e1",
+      "mode": "Built-in imagegen",
+      "date": "2026-10-08",
+      "use": "Runtime clean console plate. Empty feeds are filled with original room art and state."
+    },
+    {
+      "id": "dispatch-office",
+      "source": "dispatch-office.png",
+      "sha256": "ff088558a8a0986a7653c33e7547a00c6bcae0ecd9b97ce78b753b306130758e",
+      "mode": "Built-in imagegen",
+      "date": "2026-10-08",
+      "use": "Runtime clean console plate. Empty feeds are filled with original room art and state."
+    },
+    {
+      "id": "obedience-organ",
+      "source": "obedience-organ.png",
+      "sha256": "f44d6c47e3c2b7a9fff2b1e8b0b086e7483a1abc7a5b20b91b8bac10520899a7",
+      "mode": "Built-in imagegen",
+      "date": "2026-10-08",
+      "use": "Runtime clean console plate. Empty feeds are filled with original room art and state."
+    }
+  ],
+  "animation": "Registered hardware fragments reuse the clean plate pixels; semantic control states and restrained motion are rendered independently. Generated alpha handsets need additional registration and are not loaded at runtime."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "mae",
+  "body": {
+    "source": "output/opening-cast/mae/mae-body-v1.glb",
+    "sha256": "bcfd2879f414116264dfd0d1d995b76c982326df1122c3e711cb72bcdcc7cd06",
+    "bytes": 15203448,
+    "triangles": 24887,
+    "skins": 0,
+    "animations": 0
+  },
+  "status": "downloaded unrigged body; visual review pending",
+  "approvedReference": "ensemble-badass"
+}

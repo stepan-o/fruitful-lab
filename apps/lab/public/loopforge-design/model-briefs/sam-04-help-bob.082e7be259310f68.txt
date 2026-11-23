@@ -1,0 +1,14 @@
+sam — kneel beside bob
+21 October 2026 · opening scene, after the cyan strike
+
+Use approved sam rig 01a15d65-e092-711f-9cba-93f872e5cba0. Apply catalog Action 365, Kneel on One Knee and Stand, confirmed in the local Meshy catalog. Reserve 3 credits within the cumulative 500-credit budget. Preserve the existing heavy porter body, round shoulders, head, blue finish and skeleton. Export textured GLB.
+
+sam crosses to bob, lowers himself beside the injured worker and reaches to steady his shoulder. He remains nearby while LIMEN orders the others to prepare their cards and ed collects the fallen ID. His attention stays on bob, including through STILETTO’s passage. Stand again only as bob begins to recover. Avoid a looping bow or a stationary frame held for the entire exchange.
+
+The catalog motion is a source for the lowering/rising transitions. Fit a separate support hold and reach against bob’s actual floor pose, with feet and knee planted, one hand braced on sam’s own thigh and the other reaching bob without passing through him. Test the heavy shoulder and forearm clearances. Retain the untouched source. Save fitted curves and contact metadata offline so the review and real scene use the same performance. Source generation is not approval.
+
+Source result: SUCCEEDED, task 01a16027-0b35-751f-bf47-fa5951663447, 3 credits. Cumulative spend 400/500; no jobs pending. Textured GLB: 19,073,944 bytes, SHA-256 5ff48d6cb0d87a09cded570f06a2884a22f5e1acd4ed11694f6f60286b6f5442. Downloaded to output/opening-cast/sam/sam-kneel-source-v1.glb. Fitted derivatives (local candidate): Kneel_To_Help (2.4 s), Attend_Bob (6 s), Rise_From_Help (2.4 s), with the native 2.567 s Kneel_Source retained. The source starts kneeling; the descent reverses its rise. A small smooth lateral knee correction removes source overlap. The left hand arcs outside the knee to brace; the right palm reaches bob’s shoulder. Local pelvis balance is preserved around the scene anchor, and the support cycle continues across dialogue phases. sam keeps his ID stowed until his hands are free.
+
+At 30 Hz, the three fitted clips have zero intersections across the ten sampled body-region pairs; minimum mesh height is 0.002 m. The held right-palm target error is below one micrometre before compression. Intermediate arm targets are reach-limited by up to 0.0664 m without bone stretching; those targets are approach guides, not promised contacts. Body-region checks do not certify every inter-character surface or planted-foot quality.
+
+Local visual review: lowering/support are now integrated with bob and ed. The support pose must be reviewed through recovery and from multiple angles before acceptance. Raising the held impact camera avoids foreshortening bob’s fallen silhouette. No source replaces an approved model. Not published yet.

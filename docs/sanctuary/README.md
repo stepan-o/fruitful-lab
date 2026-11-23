@@ -1,0 +1,183 @@
+# Current opening sequence · 8 October 2026
+
+`insert-coin` → `studio-to-screen` → `three-ecosystems` → `mobile-freemium` → `valve-platform`.
+
+Chapter 2 opens with an original illustrated 1972–2026 timeline. A sourced historical argument introduces the business arrangement diagram; the market map follows the catalog/cloud comparison. Sony/Microsoft/NVIDIA financial histories, acquisition artwork and the subscription transition form chapter 3. King follows in chapter 4. The reader now has 35 chapters. See the current chapter manuscripts and `NARRATIVE_SPINE_2026-10-08.md`; dated implementation notes below describe earlier checkpoints.
+
+Current opening: [Opening manuscript](OPENING_MANUSCRIPT.md). Chapter 1,
+“Insert coin. Join in.”, was finalized by the owner on 5 October 2026 and is the
+writing benchmark for the rest of the presentation. Read the
+[Editorial style guide](EDITORIAL_STYLE_GUIDE.md) before writing or revising any
+chapter. Earlier narrative maps remain background; the approved copy takes
+precedence. The local production preview remains on port 3106.
+
+# Sanctuary Economics: editorial edition
+
+Public route: `/stepanoskin/game-monetization`. Chapter links append
+`?chapter=<stable-id>`; an unknown ID returns 404. The route is rendered by the
+Lab app, without authentication or backend dependencies.
+
+Design reference: [Sanctuary design system](DESIGN_SYSTEM.md) and the
+[visual reference sheet](design-system/index.html). Version 1.3 captures the
+approved local opening illustration, materials, typography, component states,
+editorial rules and motion/performance contracts. Later chapters are still
+adopting the opening's latest level of detail; this is not a publication marker.
+
+## Content contract
+
+Audience direction, revised 3 October 2026: the essay keeps its industry depth
+while introducing key games, organizations and systems for readers unfamiliar
+with games. See [Audience and wider context](AUDIENCE_AND_CONTEXT.md) for the
+research brief, bounded comparisons and chapter-level introduction audit.
+[Narrative reconstruction](NARRATIVE_REBUILD.md) records the broader section-by-section
+rebuild. The current sequence opens with Pong and the venue, then the business
+overview, then a dedicated Gauntlet chapter. Chapter 1 is finalized; the remaining
+chapters remain working material. Review their prose locally before publication.
+
+`apps/lab/lib/sanctuary/content.ts` contains 24 self-contained chapters in seven
+parts, source notes, figures and ten closing rules. `types.ts` owns the chapter
+contract and URL helper. `ui.ts` has the six-language navigation dictionary.
+The manuscript is an English editorial edition, disclosed in every UI language.
+Review the prose before producing full localized editions. Do not present
+translated controls as a translated manuscript.
+
+The text reauthors the supplied Sanctuary Economics handoff. It adds primary
+research, short comparisons and explicitly hypothetical models. The source
+notes distinguish documentation, interpretation and claims that are still
+unverified. Important boundaries:
+
+- Seasonal-to-Eternal transfer is not described as deletion. The current Rebirth
+  confirmation and exact objective gating have not been captured.
+- The Reliquary holding cap of 99 Favor is not a lifetime earning cap. Launch-era
+  rules and prices are not silently labeled as current-season rules.
+- Owner-provided current screenshots were captured 1 October 2026. Exact build
+  and platform remain unknown. Historical handoff images keep unknown dates.
+- The store uses CAD, per the owner. The pack calculator uses historical visible
+  prices, a hypothetical item, a zero starting balance and one selected pack. It
+  is not a live price quote or optimal multi-pack purchasing recommendation.
+- Loot probability assumes independent trials at a fixed hypothetical rate.
+  It is not a Diablo drop-rate model or evidence of a spending effect.
+- Concord's documented launch, closure and refunds are used without speculative
+  budget, sales or minimum-player figures. Business-model claims do not infer
+  private motives or establish causation from screenshots.
+- Prototype and promotional images are labeled. Publisher imagery remains
+  publisher-owned; it is not a newly licensed reusable artwork library.
+
+## Public editorial edition and optional source archive
+
+The normal route combines the original mosaic devil, original scenes and
+interactive diagrams with the selected publisher images. The third chapter juxtaposes
+BG3 and D4 key art and separates play, production and payment in an original
+exhibit. The approved animated diptych appears in Where progress lives. No
+research flag, cookie or special URL is required to see screenshots.
+
+The public [rights and credits page](/stepanoskin/game-monetization/credits)
+links each image to its source, owner and editorial use. See the
+[media-rights review](EDITORIAL_MEDIA_RIGHTS.md) for the publication decision;
+source quotations are versioned locally, not fetched at runtime.
+
+`lib/sanctuary/editorial-media.json` controls selection. From `apps/lab`, run
+`npm run assets:publish-editorial` after an explicit record review. It copies
+selected optimized files from the optional source archive, adds 480px variants,
+writes an immutable `sanctuary-editorial` manifest, verifies it and moves the
+short-cached pointer last. Normal builds use committed public files and do not
+require the private archive. Only current-chapter asset metadata is serialized.
+The opening pair is prioritized; other figures load lazily and inspection masters
+mount only when requested. Each chapter has an original explanatory visual;
+the arcade opening uses an original cabinet cutaway and the third chapter uses
+the three-track exhibit. `Figure.afterParagraph` can place documentary evidence
+inside the argument; figures without a placement stay at the chapter end.
+
+The ignored `assets/research/` archive remains useful for source masters and
+future unselected candidates. Its loopback-only `research:dev` command and
+`/research-media/<hash>.webp` endpoint retain their environment guards, but the
+reader itself now uses the same public selection. This is no longer an alternative
+screenshot edition. An import into the archive does not publish it automatically.
+
+On another workstation, install the archive explicitly:
+
+```sh
+npm run research:import -- /path/to/sanctuary-assets /path/to/concord-reveal.jpg /path/to/bg3-key-art.jpg
+npm run research:dev
+```
+
+The gallery is the owner-provided optimized offline research library. The Concord
+source is the image identified in `asset-provenance.json`. This import is local,
+does not download anything and does not copy files into `public/`. A normal
+clone, CI run and production build work without the archive. Do not force-add it.
+
+The existing owner-supplied Loopforge branding and licensed Pixabay clang remain
+available on the public site. This mode controls which media the app delivers;
+it is not a legal determination about every possible use of third-party works.
+Removing files from the active deployment does not erase earlier Git history,
+old deployments or copies already cached by browsers. This explicit rights-driven
+withdrawal is an exception to the usual append-only public asset retention rule.
+
+## Visual provenance and internal design notes
+
+The chapter's collapsed **Visual sources & use** section is an index of cited
+works, including embedded logos and identifiable reference works used by the
+original catalog parodies. It links to primary source pages where known and to
+stable entries in `/stepanoskin/game-monetization/credits`. The register holds
+credits, source dates, licenses or editorial-use rationales, analytical purposes,
+review dates, modifications and provenance limits. Chapter backlinks are derived
+from the actual chapter references rather than historical inventory labels.
+
+Descriptions, art interpretation and animation decisions remain in
+`graphic-descriptions.json`, `visual-notes.ts` and [the internal atlas](VISUAL_ATLAS.md).
+They are not serialized to the reader or published as an atlas on the credits
+page. This supersedes the previous “About the visuals” design commentary.
+
+## Media and performance
+
+The public editorial pack contains 24 images and 76 optimized WebP
+variants totaling 6,964,936 bytes across the entire library, not a page load.
+`asset-provenance.json` records original hashes, dates and source URLs. The
+publication register adds each image's analytical purpose and rights assessment.
+`assets:check` verifies public hashes and reviewed selection, and the optional
+archive when installed. The smallest variant for every image is 480 pixels wide.
+
+The server sends only the current chapter, navigation titles, cited sources and
+that chapter's selected image metadata. Native `srcset` selects exact widths;
+below-fold figures load lazily and full-size inspection mounts on demand.
+Navigation disables
+bulk chapter prefetching. Original scenes and diagrams use SVG/HTML geometry;
+the mosaic shares its geometry across glitch bands with SVG `use` elements.
+There is no new chart or animation dependency. Plate inspection mounts enlarged
+geometry only on demand; deterministic integer noise avoids hydration drift.
+Twenty exhibits have purposeful controls; Concord retains a documented timeline.
+The loot and price models are integrated into their exhibits, not duplicated.
+
+The ember canvas caps pixel density at 1.5, particles at 64 and rendering near
+30 fps. The separate WebGL hearth uses a backbuffer no larger than 960×256 and
+a heat field no larger than 512×192; its restrained fire fringe appears only
+at the actual document end. The opening plate adds a separate atmospheric
+canvas capped at 960×566 and 30 fps over static vector geometry. Its cached
+sprites initialize only when visible, and its loop stops offscreen or behind
+the inspector. These renderers stop while the document is hidden. Shared signal
+tears stop offscreen and follow the landing's moderated timing. Reduced-motion
+preferences and the reader's persistent motion control disable animations.
+Sound and motion preferences are shared with the landing page. Chapter activation
+uses the same exact clang, loaded only after an enabled user gesture; hover and
+focus remain silent. The public CDN pipeline still serves owner-controlled and
+licensed landing assets with immutable files and short-cached pointers.
+
+## Review and validation
+
+The reader provides source disclosures, native contents/zoom dialogs, direct
+chapter links, a responsive contents rail, previous/next navigation and reduced
+motion support. Tests exercise all content references, navigation language,
+dialog controls, mathematical endpoints and currency shortfalls. Run the Lab
+CI gate plus targeted lint before publishing. Check desktop/mobile reading,
+image zoom, keyboard dismissal and the landing menu route in the browser.
+
+Further content iterations can add the current Rebirth confirmation, exact
+seasonal objective requirements and Reliquary purchase/claim screens. Those
+claims are intentionally absent or bounded until the evidence is available.
+
+
+### Business overview · 5 October 2026
+
+The opening sequence is now `insert-coin` → `studio-to-screen` → `how-many-lives` → `several-histories`. Chapter one ends with Al Alcorn’s documented collection-round anecdote. The overview separates production funding, IP, publishing, promotion, store settlement, hardware/rendering and ongoing operation before Gauntlet opens the cabinet.
+
+The eight-route comparison is chapter-local, with three keyboard-operated column tabs and comparison filters. Charts use Sony’s FY2025 Q4 supplement and NVIDIA requirements / historical member disclosures. See [business overview evidence](BUSINESS_OVERVIEW.md). No asset pack was added: the overview reuses the existing optimized BG3 visual citation and uses lightweight original SVG/CSS.

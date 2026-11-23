@@ -1,0 +1,11 @@
+{
+  "revision": "room-kit/1",
+  "asset": "crate",
+  "src": "/media/files/691529aa5ac3d3b39e6cff02084262a85ba632b5939a46c33a2be15aff5b73df.glb",
+  "sha256": "691529aa5ac3d3b39e6cff02084262a85ba632b5939a46c33a2be15aff5b73df",
+  "bytes": 174556,
+  "sourceSha256": "d9d286d0cdcd3eb4c09f45fc9116611186fa708ddd5acef91098bf67c3aeb731",
+  "triangles": 1979,
+  "textureSize": 512,
+  "status": "candidate; fit and visual review pending"
+}

@@ -1,0 +1,142 @@
+{
+  "id": "generate-evaluate-select",
+  "title": "Generate, evaluate, select",
+  "standfirst": "The shortest route in the pile was the one that could not deliver the crate.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "visual",
+      "id": "search-yard",
+      "title": "The winner at the loading dock",
+      "caption": "Inspecting a proposal does not promote it: the paper cards track your inspection, while the result slip keeps the evaluator’s selection visible."
+    },
+    {
+      "type": "prose",
+      "text": "Start with proposal A and keep considering the next one. Under the distance-only rule, the selected route becomes shorter. At the seventh proposal, the score has fallen from twelve grid units to six. Try that winner. The cargo stops at the central rack. The chart we could have drawn from those scores would slope in the direction we wanted, all the way to a failed delivery."
+    },
+    {
+      "type": "prose",
+      "text": "I built the yard around a deliberate omission. Every proposal has the same dispatch and receiving points, so I could not explain the failure away as a changed destination. I held the loaded cart’s footprint fixed too. Then I let the first ranking rule ignore clearance. It is a small, inspectable version of a decision I have to make whenever I commission search: which inconvenient parts of the requested outcome will actually be allowed to reject a candidate?"
+    },
+    {
+      "type": "prose",
+      "text": "The answer changes the work. Requiring clear delivery selects the open doorway. Requiring delivery with that door closed brings back a longer route. That route was available at the beginning. Additional proposals were useful only after the selection rule could recognize the conditions under which they would be used. The yard is a fixed teaching collection, not an LLM experiment; its result illustrates the selection problem without estimating how frequently a model would discover these routes."
+    },
+    {
+      "type": "heading",
+      "text": "Search for something we can execute"
+    },
+    {
+      "type": "prose",
+      "text": "Richard Sutton’s 2019 Bitter Lesson argues that general methods able to absorb more computation have repeatedly overtaken elaborate stores of human domain knowledge. Search and learning are central to that history. I take the ambition seriously: a system should be able to benefit from another thousand attempts. But the essay does not make our local score a reliable definition of success. Scaling the wrong selection rule remains our responsibility.",
+      "sources": [
+        "sutton"
+      ]
+    },
+    {
+      "type": "evidence",
+      "asset": "funsearch-overview",
+      "alt": "Published FunSearch Figure 1. A specification and sampled programs form a prompt; a pretrained language model proposes programs, evaluation filters them, and a programs database feeds later prompts.",
+      "caption": "Romera-Paredes and colleagues, Figure 1, published December 2023, CC BY 4.0. The retained program is both an output and material for another proposal. Original figure, resized and re-encoded; inspect for the individual paths.",
+      "original": "https://www.nature.com/articles/s41586-023-06924-6/figures/1"
+    },
+    {
+      "type": "prose",
+      "text": "FunSearch makes an important choice about what gets generated. Bernardino Romera-Paredes and colleagues search for programs that construct solutions, pairing a pretrained language model with an evaluator. A stable program skeleton can leave a critical decision function open to change. Their cap-set and bin-packing results concern problems with useful executable evaluation; they do not establish a general machine for deciding whether generated work is good.",
+      "sources": [
+        "funsearch"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "A program offers something a persuasive answer cannot: we can run it on another case. In the yard, each proposal is a tiny route policy—travel through one chosen row—rather than a claim that the cargo arrived. Closing the door exercises the policy under a changed condition. The important artifact is the behavior we can reproduce, along with the candidate that produced it."
+    },
+    {
+      "type": "prose",
+      "text": "AlphaEvolve extends this pattern to code modifications, evaluated candidates and an evolving population. Its optional evaluation cascade rejects weak proposals before more expensive stages; its database balances exploiting strong candidates with retaining diversity. The authors also allow model-generated judgments for qualities that are harder to specify. Those judgments enter as evaluation choices, not independent truth. The paper’s strongest applicability claim remains tied to machine-gradeable solutions.",
+      "sources": [
+        "alphaevolve"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "candidate-archive",
+      "title": "The route we almost threw away",
+      "caption": "A and B both remain feasible when the doorway closes. Their twelve-unit tie is settled alphabetically; retaining alternatives does not require pretending that every one is uniquely best."
+    },
+    {
+      "type": "prose",
+      "text": "The second desk makes the storage decision consequential. Keeping E alone looks sufficient under the first requirement. When that requirement changes, the drawer contains no answer. Keeping the other feasible routes allows an immediate comparison. This does not reproduce AlphaEvolve’s evolutionary machinery. It makes visible the useful information a single winning score can cause us to discard."
+    },
+    {
+      "type": "heading",
+      "text": "The evaluator is part of the commissioned work"
+    },
+    {
+      "type": "prose",
+      "text": "Andrej Karpathy’s March 2026 autoresearch repository makes a compact version of this boundary legible. The agent changes a training file; a separate preparation file contains fixed evaluation and constants. Experiments receive a five-minute training budget, excluding startup and compilation, and compare validation bits per byte. The instructions forbid changing the evaluation harness. The README also limits comparability across different hardware. This is a disciplined experimental envelope, not evidence that five minutes is the right horizon for a game or any other project.",
+      "sources": [
+        "autoresearch"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "There are two jobs here that I should not quietly merge. Improving a candidate asks what performs better under an agreed evaluation. Improving the evaluator asks whether that agreement still represents the outcome we want. Both are legitimate work. If I discover a missing condition, I should revise the evaluator openly, rerun the retained baseline and candidates, and say that their former scores no longer answer the new question. Silently relaxing a failing condition would make the search history impossible to interpret."
+    },
+    {
+      "type": "prose",
+      "text": "The forge work contains a useful piece of discipline at this boundary. The later correction retained the physical predicates used by its loaded checks, rather than obtaining a pass by weakening them. Its receipt still withheld a rendered verdict. That supports the separation in Karpathy’s setup: candidate work should not casually rewrite its own judge. It also qualifies the comparison. Our geometric checks were only part of acceptance; their score could not select the final visible performance on its own.",
+      "sources": [
+        "motion-case",
+        "autoresearch"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The opposite boundary appears in Visual Artist’s night-image review. The first candidate lost continuity with the entrance; the revised image restored the slogan and right-hand barrel. The reviewer then specified full-image containment and later saw the ending at a narrow width. That was meaningful selection, but nobody had supplied a validated scalar for “the same factory after everyone has left.” The specific visible corrections were more useful than an invented quality number.",
+      "sources": [
+        "visual-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This is where I would put a human or a capable visual critic inside a generation system. Give the reviewer a consequential comparison and a small set of candidates that survived the requirements we can execute. Ask for a reason that can change the next proposal. “The barrel is missing from the established entrance” is such a reason. “This is a 7.8” becomes useful only after we know what the number predicts and whether another review would mean the same thing."
+    },
+    {
+      "type": "heading",
+      "text": "Choose the next experiment for what it can teach"
+    },
+    {
+      "type": "prose",
+      "text": "A failed proposal can be worth keeping without being worth promoting. The yard’s straight route demonstrates a missing requirement. Once clearance is enforced, producing six near-identical paths through the same rack would contribute little. I would redirect the next attempt toward a different corridor, a different footprint or evidence that the obstruction model itself is wrong. The failure should narrow the question, not merely lengthen the log."
+    },
+    {
+      "type": "prose",
+      "text": "This is the part of large-scale generation that interests me most as a system-building problem. Source data defines what cases exist. A generator proposes changes. Execution exposes consequences. Selection decides which consequences matter. Someone downstream then has to use the chosen result. The architecture deserves to be evaluated across that whole path. An impressive generation rate cannot compensate for a reviewer waiting days for one usable comparison."
+    },
+    {
+      "type": "build",
+      "title": "Add selection to the small factory",
+      "body": "Begin with a bounded candidate family and an evaluator that can reject a tempting shortcut. The yard’s geometry and rankings are computed locally; no model account is needed.",
+      "steps": [
+        "Keep the world rules fixed. Write a candidate that passes, a shorter candidate that violates a requirement, and a valid alternative that survives a second operating condition.",
+        "Compute feasibility separately from the quantity being optimized. Preserve the exact candidate and evaluator version with each result.",
+        "Try a cheap rejection stage before a costly integrated trial. Confirm that the early stage does not discard the alternative needed for the second condition.",
+        "Retain the baseline and distinct useful alternatives. If a reviewer changes an acceptance condition, rerun that small collection before expanding generation."
+      ],
+      "exercise": "Replace the fixed proposal list with bounded model-generated route code only after the evaluator is dependable. Keep execution isolated and the trial budget explicit. Compare useful accepted improvement per completed experiment; do not treat a larger candidate count as the outcome."
+    },
+    {
+      "type": "prose",
+      "text": "A good search produces work we can choose for a reason. Selection is still only part of authorship. A collection of individually acceptable scenes can make an incoherent day; the next chapter follows generated material into conditions, consequences and a story the player can actually inhabit."
+    }
+  ],
+  "sourceIds": [
+    "sutton",
+    "funsearch",
+    "alphaevolve",
+    "autoresearch",
+    "motion-case",
+    "visual-second"
+  ]
+}

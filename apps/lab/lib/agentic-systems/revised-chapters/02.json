@@ -1,0 +1,228 @@
+{
+  "id": "small-world",
+  "title": "Share a dependable world",
+  "standfirst": "Separate contexts can collaborate only when their commitments refer to the same work.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "prose",
+      "text": "A shared folder can conceal a divided world. Animator sees the source pose, Engine sees the loaded model, Producer sees a pass, and the reviewer sees a body leaning into the press. All four records may be accurate about different specimens. Before buying another specialist, the team needs a way to say which candidate exists, what was done to it and who may turn it into the next release.",
+      "sources": [
+        "close-cycle-audit"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "That common world includes task ownership, source versions, accepted interfaces and evidence tied to the build that produced it. Sharing the entire conversation is neither necessary nor sufficient. A collaborator needs the facts that constrain its action, a way to change them legitimately, and an acknowledgment another collaborator can rely on."
+    },
+    {
+      "type": "prose",
+      "text": "The game gives us a small, visible model of these distinctions. Its builder, runtime and player have different powers. In the studio, proposing a repair, integrating a candidate and accepting a release are likewise different actions. The analogy concerns authority; it does not claim that the studio used the game’s deterministic kernel."
+    },
+    {
+      "type": "visual",
+      "id": "three-loops",
+      "title": "Three places where a decision is made",
+      "caption": "The case separates the builder, the running product and the person using it. Select each station to inspect its evidence and authority. For another commission, identify the corresponding roles; a static report need not contain the factory’s stateful middle loop."
+    },
+    {
+      "type": "visual",
+      "id": "small-world",
+      "title": "A small world with enforceable rules",
+      "caption": "A deliberately small reconstruction of selected Loopforge contracts. Each worker may make one piece. The card, single reservation and two-beat cycle are teaching rules; this is not a port of the full encounter. The downloadable version retains its original checkpoint identifier, 04."
+    },
+    {
+      "type": "prose",
+      "text": "Bob can get to the press first. Ed can follow. The interesting moment comes when Bob steps away: the empty tile makes the machine look available, but the reservation still belongs to him. Ed can arrive with the card and still be refused. Nothing mysterious has happened. We have given the world two separate facts—where a person stands and what they hold—and now a third, the promise that a resource remains theirs until they release it."
+    },
+    {
+      "type": "prose",
+      "text": "Position, custody and reservation are separate facts. A studio has corresponding distinctions between an artifact’s location, the person editing it and the version selected for delivery. The factory makes those differences visible; the production team must implement its own contracts around files, tasks and releases."
+    },
+    {
+      "type": "heading",
+      "text": "Let intelligence choose; let the contract decide"
+    },
+    {
+      "type": "prose",
+      "text": "In Orkin’s F.E.A.R. account, a planner assembles actions from their preconditions and effects while a small execution system carries them out. It can change the sequence when circumstances demand without requiring a separate script for every situation. The economical boundary is between choosing a plan and making its steps legitimate in the current world. Loopforge uses a smaller deterministic kernel with checks for participants, resources, conditions and routes; it does not implement that planner.",
+      "sources": [
+        "fear",
+        "kernel"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Give tools meaningful operations: claim this task, submit this candidate, publish this approved version. A refusal should identify the broken precondition. “The animation is ready” is not a substitute for the version, compatible rig and accepted observation that the receiving builder needs."
+    },
+    {
+      "type": "visual",
+      "id": "commit-window",
+      "title": "Acceptance can expire during execution",
+      "caption": "Three sequences run through the same transition function as the playable floor. The control station is shown close up. Advancing a sequence changes simulation state; animation only helps the eye follow it."
+    },
+    {
+      "type": "prose",
+      "text": "Try the middle sequence. Bob has the card and the reservation when the cycle begins. After its first beat, he leaves the control. At the next beat, the world finds him absent and discards the unfinished cycle. The earlier acceptance was correct, and so is the later refusal. A request can become invalid while it is being carried out. Checking once is not a promise that the future will cooperate."
+    },
+    {
+      "type": "prose",
+      "text": "A reservation protects an unfinished operation from competing work. It also creates an obligation to finish, cancel or hand over. In the study, passing the card does not transfer the reservation. In a production service, changing the worker that owns a task need not transfer every permission or in-flight commitment either. The handoff needs an explicit meaning, including what remains after interruption."
+    },
+    {
+      "type": "heading",
+      "text": "Retry the request, not the side effect"
+    },
+    {
+      "type": "prose",
+      "text": "Repeat the last request ID in the inspector. Within this miniature’s current in-memory run, the duplicate does not act twice; a new ID represents a new action. Resetting the study discards that history. This demonstrates the distinction an agent needs after an uncertain response, but it is not a durable service guarantee across restarts."
+    },
+    {
+      "type": "prose",
+      "text": "Stripe’s API v1 provides a concrete production example. An idempotency key lets a client repeat an uncertain request and receive the stored result once endpoint execution has begun. The contract includes limits: validation and concurrent-conflict failures are not stored the same way, and a key reused after the saved key has been pruned can become a new request. “Safe to retry” is a property of an identified operation under a particular contract, not a blanket property of a network call.",
+      "sources": [
+        "stripe-idempotency"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "A publication tool may commit the asset before its reply is lost. Retrying must preserve the operation identity so the studio can distinguish “not published” from “published, acknowledgment missing.” Across several services, a local transaction cannot make every effect atomic. Recovery may need a compensating action, and the next worker needs an honest account of what already escaped."
+    },
+    {
+      "type": "heading",
+      "text": "Keep evidence separate from belief"
+    },
+    {
+      "type": "evidence",
+      "asset": "help-and-card",
+      "alt": "Retained R10 factory frame at 08:00:26: Sam attends to Bob on the left, while Ed holds a small pale card on the right.",
+      "caption": "R10 browser capture retained with the 25 October 2026 materials, factory time 08:00:26. The complete source frame includes the review controls; the book resizes and re-encodes it without cropping.",
+      "original": "/loopforge-dev-blog/media/2026-10-25-day-one/r10-help-and-card.png"
+    },
+    {
+      "type": "prose",
+      "text": "Sam is occupied helping Bob; Ed has used the moment to take Bob’s card. The player can witness the theft while Bob remains unaware. That difference is useful to a story. In an AI service, its counterpart is the distinction between an authoritative record and a statement retrieved from a document. Neither should silently overwrite the other.",
+      "sources": [
+        "engine-second"
+      ]
+    },
+    {
+      "type": "visual",
+      "id": "custody-room",
+      "title": "One fact, several views",
+      "caption": "A record can agree with the world by accident. Compare its source and sequence marker as well as its current value: those fields tell us how the character arrived at this account."
+    },
+    {
+      "type": "prose",
+      "text": "In a later encounter, Bob could hold an account of where the card is, want to recover it, and commit to asking Ed. Those are different kinds of state. Rao and Georgeff’s BDI account distinguishes beliefs, desires and intentions in this way. Its air-traffic example takes local sensing and a changing world seriously; a belief need not have a guarantee of truth. We can use that separation to think about the card without adopting the whole architecture.",
+      "sources": [
+        "bdi"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Loopforge implements a much smaller contract. A belief records a value, source, mode and tick. Hearing a claim writes a reported belief; an explicitly observed transfer can write an observed one. Physical custody lives elsewhere. These are useful distinctions even in a deterministic script. They do not make this runtime a general BDI planner, and Engine explicitly declined that description.",
+      "sources": [
+        "loopforge-knowledge",
+        "engine-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "A production archive may contain an animator’s proposed fix, a numerical pass and a later visual rejection. Keeping source, time, specimen and observation mode lets the next agent use their different authority. Flattening them into one “memory” can turn a superseded proposal into the current instruction."
+    },
+    {
+      "type": "prose",
+      "text": "Every distinction creates maintenance. Keep a field because a receiving decision needs it. A build identifier can stop a review of the wrong candidate; a recorded acceptance can prevent a rejected experiment from silently reappearing. A larger archive earns nothing if the next worker still has to ask which version to use."
+    },
+    {
+      "type": "heading",
+      "text": "An intention still needs an action"
+    },
+    {
+      "type": "evidence",
+      "asset": "generative-agents-party",
+      "alt": "Figure 4 from Generative Agents: five characters gathered in a café, with emoji bubbles representing the Valentine’s party",
+      "caption": "Figure 4, Park and colleagues, 2023: a gathering at the café. The visible event is the outcome of memories, communication and planning examined in the paper. Original figure resized and re-encoded; see the source for the evaluation.",
+      "original": "https://arxiv.org/html/2304.03442v2/figures/figure_valentine3.png"
+    },
+    {
+      "type": "prose",
+      "text": "Park and colleagues’ Generative Agents use observations, retrieval, reflection and planning to support a simulated social world. Five of twelve invited agents attended the reported party; some had other commitments, while others expressed interest but failed to plan attendance. The distinction matters in a production team as well: a declared intention is not a completed commitment.",
+      "sources": [
+        "generative-agents"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Delivery is a fact of its own"
+    },
+    {
+      "type": "visual",
+      "id": "hearing-room",
+      "title": "Addressing someone does not mean they heard",
+      "caption": "Begin across the doorway with a local voice. Try moving Bob closer before changing the voice. Then send the false floor claim: a successful receipt and a true statement are separate results."
+    },
+    {
+      "type": "prose",
+      "text": "Ed addresses Bob in every trial. Distance and the doorway determine whether the selected voice reaches him. Once it does, Bob can retain what Ed said—even when the card is visibly still with Ed in our review view. This example deliberately performs no credibility reasoning. Its “reported” label preserves the question for a system that might later compare testimony with observation."
+    },
+    {
+      "type": "prose",
+      "text": "Writer initially treated sixteen missed recipients as sixteen failures and proposed changing the addressed audience. Director and Level distinguished four legitimate nonreceipts: the later action did not require those characters to know the missing line. Writer withdrew the unnecessary edits and kept twelve exchanges that needed staging repairs. That collaboration protected intentional ignorance while preserving real obligations. A shared account had changed what the team thought it ought to fix.",
+      "sources": [
+        "writer-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "In Nels Anderson’s account of Mark of the Ninja, visible noise travel and enemy awareness let a player judge whether an action will expose them. The cue makes another actor’s limited information usable for planning. A production dashboard can do comparable work by distinguishing a queued message from one delivered or acted upon. Labeling all of them “sent” leaves the next worker guessing.",
+      "sources": [
+        "ninja-feedback"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The team’s shared world should make an interrupted attempt recoverable and a disputed claim inspectable. That investment can save repeated orientation and repair. It does not yet tell us how many collaborators to hire. The next chapter asks which work can actually separate."
+    },
+    {
+      "type": "build",
+      "title": "Put one tool behind a dependable boundary",
+      "body": "The offline factory exposes the same questions as a state-changing tool. Inspect its transitions, then apply the pattern to a process you own.",
+      "links": [
+        {
+          "label": "Save the playable offline checkpoint",
+          "href": "/agentic-systems/checkpoints/04-smallest-world.html"
+        },
+        {
+          "label": "Read the complete transition source",
+          "href": "/agentic-systems/checkpoints/04-mini-world.ts"
+        },
+        {
+          "label": "Compare the delivered Loopforge kernel",
+          "href": "https://github.com/stepan-o/fruitful-lab/blob/35d114447749ed131c8016f8e0f9dff7d1c2e7d5/apps/lab/lib/loopforge/encounters/kernel.ts"
+        }
+      ],
+      "steps": [
+        "Choose one action with a side effect. Identify its preconditions, permitted caller and durable result.",
+        "Interrupt it before acceptance, during work and after completion but before acknowledgment. Specify what a retry should return in each case.",
+        "Keep one authoritative fact separate from an attributed report about it. Show what a later decision is allowed to infer.",
+        "Test a refusal and the next legitimate recovery, including release of unfinished claims."
+      ],
+      "exercise": "Remove a state field or permission check. Find the concrete ambiguity it introduces. If nothing changes in any relevant situation, reconsider whether the field earns its complexity."
+    }
+  ],
+  "sourceIds": [
+    "close-cycle-audit",
+    "fear",
+    "kernel",
+    "stripe-idempotency",
+    "engine-second",
+    "bdi",
+    "loopforge-knowledge",
+    "generative-agents",
+    "writer-second",
+    "hearing-regression",
+    "ninja-feedback"
+  ]
+}

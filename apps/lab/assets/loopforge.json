@@ -1,0 +1,159 @@
+{
+  "pack": "loopforge",
+  "assets": {
+    "entrance": {
+      "kind": "image",
+      "source": "assets/loopforge/entrance.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "factory": {
+      "kind": "image",
+      "source": "assets/loopforge/factory.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "lanes": {
+      "kind": "image",
+      "source": "assets/loopforge/lanes.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "brewery": {
+      "kind": "image",
+      "source": "assets/loopforge/brewery.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "forge": {
+      "kind": "image",
+      "source": "assets/loopforge/forge.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "theatre": {
+      "kind": "image",
+      "source": "assets/loopforge/theatre.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "weaving": {
+      "kind": "image",
+      "source": "assets/loopforge/weaving.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "security": {
+      "kind": "image",
+      "source": "assets/loopforge/security.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "conflict": {
+      "kind": "image",
+      "source": "assets/loopforge/conflict.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "cathexis": {
+      "kind": "image",
+      "source": "assets/loopforge/cathexis.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "limen": {
+      "kind": "image",
+      "source": "assets/loopforge/limen.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "stiletto": {
+      "kind": "image",
+      "source": "assets/loopforge/stiletto.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "witch": {
+      "kind": "image",
+      "source": "assets/loopforge/witch.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    },
+    "thrum": {
+      "kind": "image",
+      "source": "assets/loopforge/thrum.webp",
+      "widths": [
+        480,
+        960,
+        1536
+      ],
+      "quality": 83,
+      "maxBytes": 650000
+    }
+  }
+}

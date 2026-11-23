@@ -1,0 +1,276 @@
+{
+  "pack": "mexico-city",
+  "assets": {
+    "zocalo": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/zocalo.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "ehecatl": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/ehecatl.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "revolucion": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/revolucion.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "chapultepec": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/chapultepec.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "zocalo-past": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/zocalo-past.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "ehecatl-past": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/ehecatl-past.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "revolucion-past": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/revolucion-past.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "chapultepec-past": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/chapultepec-past.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "archive-tenochtitlan": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-tenochtitlan.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "maxBytes": 450000
+    },
+    "archive-legislativo": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-legislativo.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "maxBytes": 450000
+    },
+    "photo-revolucion": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/photo-revolucion.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "maxBytes": 450000
+    },
+    "tenochtitlan-island": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/tenochtitlan-island.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "atlas-cuicuilco": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/atlas-cuicuilco.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "atlas-viga": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/atlas-viga.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "atlas-milpa": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/atlas-milpa.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "atlas-penon": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/atlas-penon.webp",
+      "widths": [
+        256,
+        512,
+        960,
+        1280
+      ],
+      "quality": 76,
+      "alphaQuality": 85,
+      "maxBytes": 450000
+    },
+    "archive-valley-1847": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-valley-1847.webp",
+      "widths": [
+        480,
+        960,
+        1280
+      ],
+      "quality": 64,
+      "maxBytes": 900000
+    },
+    "archive-viga-briquet": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-viga-briquet.webp",
+      "widths": [
+        480,
+        768,
+        990
+      ],
+      "quality": 80,
+      "maxBytes": 900000
+    },
+    "archive-chinampas": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-chinampas.webp",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "quality": 72,
+      "maxBytes": 700000
+    },
+    "archive-mendoza": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-mendoza.webp",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "quality": 72,
+      "maxBytes": 700000
+    },
+    "archive-epidemic": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-epidemic.webp",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "quality": 72,
+      "maxBytes": 700000
+    },
+    "archive-teotihuacan": {
+      "kind": "image",
+      "source": "assets/sources/mexico-city/archive-teotihuacan.webp",
+      "widths": [
+        400,
+        800,
+        1200
+      ],
+      "quality": 72,
+      "maxBytes": 700000
+    }
+  }
+}

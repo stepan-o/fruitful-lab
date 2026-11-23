@@ -1,0 +1,152 @@
+{
+  "id": "responsive",
+  "title": "Fit the experience to the machine",
+  "standfirst": "The pauses nearly disappeared. The cast stayed in the room.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "visual",
+      "id": "performance-comparison",
+      "title": "Two receipts from the same machine",
+      "caption": "The selector also opens an earlier matched experiment. Keep its workload label with its verdict: the successful opening and the delivered full day are different specimens."
+    },
+    {
+      "type": "prose",
+      "text": "Hide most of the dressing and the delivered day still misses its timing limits. The average rises from 33.170 to 36.686 frames per second, while the count of frames over 100 milliseconds rises from seventeen to twenty-five. Both averages clear the minimum. Neither run passes. These two warm observations offer a poor excuse to strip the room indiscriminately: they show a remaining problem without isolating its cause.",
+      "sources": [
+        "delivery"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "That is an uncomfortable result for an illustrated production. The scenery took work to make; it also consumes resources whenever someone views it. Yet deleting visible detail can spend the first investment without recovering enough of the second. Before commissioning a lighter room, I would want to know which part of the running frame that room actually makes expensive."
+    },
+    {
+      "type": "prose",
+      "text": "The minimal setting hid meshes already allocated in memory. It was a draw-cost comparison, not a loading or memory experiment. All six tracked resource counts remained unchanged. The full run’s 34-millisecond measured input response also answered a different question from its slow frame tail. A responsive button does not erase a stutter, and stable counts do not establish the absence of leaks.",
+      "sources": [
+        "delivery"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "The improvement that left the scene intact"
+    },
+    {
+      "type": "evidence",
+      "asset": "opening-performance",
+      "alt": "Retained browser screenshot of the earlier Loopforge opening performance test, showing the cast and the successful measured result.",
+      "caption": "21 October 2026, before-the-shift/5. The screenshot was retained with the optimized opening result. It documents that earlier specimen; the later Day 1 failure was not replaced by this pass.",
+      "original": "https://github.com/stepan-o/fruitful-lab/blob/35d114447749ed131c8016f8e0f9dff7d1c2e7d5/docs/loopforge/production/performance-results/2026-10-21-hd620-opening-optimized.png"
+    },
+    {
+      "type": "prose",
+      "text": "The earlier opening comparison gives us a more useful success. Its baseline already averaged 54.1 frames per second, but thirty-one long pauses failed the protocol. After a group of local repairs, the same scene and assets recorded four. The average moved only to 55.6. Looking solely at that average would make the work seem modest; it had changed the release verdict.",
+      "sources": [
+        "opening-performance-record"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The retained changes reused pose buffers, shared unchanged world structure, scanned events once per projection, reused that projection between simulation ticks, and deferred content behind the closed author panel. They removed recurring work without asking the viewer to accept fewer characters. This was one matched before/after run, with several changes together. It supports the bundle’s observed result, not a separate saving for each repair or a promise about another device.",
+      "sources": [
+        "opening-performance-record"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Fabian Giesen’s 2013 occlusion-culling series reaches a related surprise. Two of its largest improvements were in surrounding rendering code, not the elaborate culling work the series seemed to be about. His three-line write-combining repair saved more than a longer sequence of rasterizer changes. He recommends looking for work that is unexpectedly expensive, rather than choosing only the largest bar in a profile. His final discussion also leaves invasive or low-return ideas on the table.",
+      "sources": [
+        "giesen-performance"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Our buffer and projection changes support that preference for avoidable work, within a very different browser renderer. I would not turn it into a ban on algorithmic redesign. The useful comparison is the gain available for the disruption required. A good agent brief can name an anomalous repeated operation, preserve the scene, and require a matched rerun before escalating to a new rendering architecture."
+    },
+    {
+      "type": "heading",
+      "text": "Follow the pause to a place, then ask why"
+    },
+    {
+      "type": "visual",
+      "id": "stall-map",
+      "title": "The passage that caught the pen",
+      "caption": "A blank interval means no frame exceeded 100 ms there. It does not mean the renderer was idle, nor that every shorter frame met the cadence target."
+    },
+    {
+      "type": "prose",
+      "text": "On the later opening revision shown here, fifteen of the twenty-eight recorded long frames clustered in the passage shot. Enlarge the first minute and inspect their phase: Bob gets up as STILETTO arrives. Two more long frames occurred during washing; ten were in assembly and one at the threshold. The record has supplied a place to investigate. It has not identified whether animation, allocation, drawing or other work caused those delays.",
+      "sources": [
+        "opening-r12-record"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This is where I would stop asking an agent to “optimize the game.” I would ask it to capture the work around that particular passage, propose one explanation, and change the smallest relevant operation. The comparison would keep the visible action and workload fixed. A lower pause count obtained by omitting the difficult moment would answer a cheaper question than the audience asked."
+    },
+    {
+      "type": "prose",
+      "text": "An earlier graphics suite illustrates why the control matters. Its repeated reference fell from 23.6 to 20.5 frames per second across the session. Lower resolution and disabled effects sometimes appeared slower amid that drift. The record explicitly refuses the conclusion that removing those effects inherently makes rendering worse. Repeating an important comparison in reverse order costs another run; here it could prevent an entire optimization task built on a misleading row.",
+      "sources": [
+        "graphics-comparison-record"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Pay for the view only when it is needed"
+    },
+    {
+      "type": "prose",
+      "text": "Glenn Fiedler’s Fix Your Timestep separates simulation updates from rendering cadence. His accumulator keeps fixed steps while presentation can interpolate between states; he also warns that trying to catch up can demand more work than the machine can perform. The headroom is part of the design. His examples concern numerical simulation, not an automatic performance cure for every game.",
+      "sources": [
+        "timestep"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Loopforge’s encounter kernel advances in fixed 50-millisecond steps. That does not require rebuilding every derived view on every displayed frame, and the earlier projection reuse exploits the distinction. Nor does hiding a room authorize us to stop its authoritative obligations: a reservation or delivery can still matter when the camera returns. The economical boundary depends on what may be reused, what may wait and what must continue to be true.",
+      "sources": [
+        "kernel",
+        "opening-performance-record"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Paul Lewis’s browser-rendering guide makes the presentation side similarly concrete: some changes require layout and paint, while others can reach composition without repeating that work. It also distinguishes animated frame delivery from a discrete response to input. The article concerns the browser’s pixel pipeline; it is not a diagnosis of our WebGL stall. Its useful pressure is to ask what work a particular visual change actually triggers.",
+      "sources": [
+        "lewis-rendering"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "For this book, I can make that question part of the commission. An offscreen illustration need not keep animating; an inspection-size image need not arrive before its reader opens it. Paused scenes still need a complete explanation. Those are constraints on how the presentation is built, not reasons to remove its most informative drawings. Their delivery cost still needs measurement on the finished route."
+    },
+    {
+      "type": "prose",
+      "text": "If the next commission required smooth playback on this machine, I would buy a targeted profile and matched repair before more dressing. If it required explaining the unfinished release, preserving the actual film and its limitations would be the more useful expenditure. Neither choice changes what the recorded run did."
+    },
+    {
+      "type": "build",
+      "title": "Keep the scene; change the work",
+      "body": "Use one visible action and a fixed target device to commission a bounded performance correction.",
+      "steps": [
+        "Record the build, assets, device, viewport, warm-up and exact action. Keep input response, frame distribution, long pauses and loading as distinct observations.",
+        "Locate a consequential slow interval. Inspect its work before choosing an optimization; do not add overlapping CPU and GPU times as if they were serial.",
+        "Try a local reuse or deferral that preserves the visible action. Compare with the original under matched conditions, repeat when drift could reverse the conclusion, and inspect the result visually.",
+        "Keep the saved comparison and the remaining failures. Change the workload or scene and require a new acceptance run."
+      ],
+      "exercise": "Choose a detail you would protect even on a weaker machine. Name the work you would first attempt to remove around it, and the visual regression that would make the saving unacceptable."
+    }
+  ],
+  "sourceIds": [
+    "delivery",
+    "opening-performance-record",
+    "giesen-performance",
+    "opening-r12-record",
+    "graphics-comparison-record",
+    "timestep",
+    "kernel",
+    "lewis-rendering"
+  ]
+}

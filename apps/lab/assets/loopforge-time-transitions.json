@@ -1,0 +1,35 @@
+{
+  "pack": "loopforge-time-transitions",
+  "assets": {
+    "night": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-time-transitions/night.png",
+      "widths": [
+        768,
+        1672
+      ],
+      "quality": 86,
+      "maxBytes": 800000
+    },
+    "morning": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-time-transitions/morning.png",
+      "widths": [
+        768,
+        1672
+      ],
+      "quality": 86,
+      "maxBytes": 800000
+    },
+    "shift": {
+      "kind": "image",
+      "source": "assets/sources/loopforge-time-transitions/shift.png",
+      "widths": [
+        768,
+        1672
+      ],
+      "quality": 86,
+      "maxBytes": 800000
+    }
+  }
+}

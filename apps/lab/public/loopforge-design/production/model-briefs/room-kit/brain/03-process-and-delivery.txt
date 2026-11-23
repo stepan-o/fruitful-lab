@@ -1,0 +1,7 @@
+LOOPFORGE · BRAIN / PROCESS AND DELIVERY · v1
+
+Keep the same intact lobes, central cleft and large continuous folds through the line. Dirty: grey-olive deposits and dark grease in folds; dry dusty ridges. Washed: grey-ivory, clean, slightly wet. Compressed/heat-set: smaller, matte grey-ochre, still recognizably the same brain. Avoid red minced-meat granules throughout.
+
+Use one geometry and verified original UVs. Blend dirty and washed base-color maps during rinsing. Blend to the processed map during compression; reduce the shape under the platen. No bone rig, model swap or duplicate live meshes. Room delivery: 4,185 triangles and 512px maps; retain source normals. Do not make output depend on animation callbacks.
+
+The carrier supports the brain from below. The platen must touch its top and follow it down; no hovering, penetration or disappearing workpiece. Test dirty intake, mid-rinse, washed belt, compression and finished output at room scale and close range. Source masters stay private; publish hash-addressed optimized runtime files.

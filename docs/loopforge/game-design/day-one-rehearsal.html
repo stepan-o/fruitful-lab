@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#112321"><title>Day one · Loopforge floor rehearsal</title>
+<style>/*REHEARSAL_STYLE*/</style></head>
+<body><main>
+<header><div><a class="back" href="/stepanoskin/loopforge/design#floor-layout">← Design board</a> <span aria-hidden="true">·</span> <a class="back" href="factory-layout-proposal.html">Approved factory layout ↗</a><h1>Day one<span> / </span>Factory floor</h1></div><div class="edition">Loopforge <b>2D staging rehearsal</b></div></header>
+<section class="monitor" aria-label="Live factory floor">
+<div class="bar"><h2 id="beat">The morning walk</h2><div class="views"><button id="hallView" aria-pressed="false">Forge hall</button><button id="buildView" aria-pressed="false" aria-controls="buildPanel">3D build markers</button><button id="view" aria-pressed="false">Whole factory ↗</button></div></div>
+<div id="voices" aria-label="Current speech"></div>
+<div id="stage"><canvas aria-label="Animated overhead plan with named workers, facing, routes and machinery"></canvas><div id="pins" hidden></div><div id="atlas" hidden><!--FLOOR_PLATE--></div><div class="stamp" id="cut" hidden></div></div>
+<p id="hallNote" hidden>Dispatch feeds the west receiving road. Trays travel east under the bridge crane to the press and outbound table. The southern transfer road serves the overhaul bays.</p>
+<section id="buildPanel" hidden aria-label="3D object handoff">
+<label for="objectSelect">Build in 3D</label> <select id="objectSelect"></select>
+<p id="objectSize"></p><p id="objectBrief"></p>
+<a id="objectArt" href="/media/files/42d2f07b9d72f8ce0bc776641a06047304a1eab567f5ca9c3efd3dd31619560a.webp" target="_blank" rel="noopener">At the gate · concept art ↗</a>
+</section>
+<div class="status"><span id="action"></span><span id="count"></span></div>
+</section>
+<section class="transport" aria-label="Playback controls">
+<div class="buttons"><button id="play">Pause</button><button id="restart">Restart</button><label for="beatSelect" class="sr">Seek to beat</label><select id="beatSelect"></select><output id="clock"></output><span class="rate">1×</span></div>
+<label class="sr" for="scrub">Rehearsal time in seconds</label><input id="scrub" type="range" min="0" step="0.01" value="0">
+</section>
+<details id="notes"><summary>Staging notes and floor coordinates</summary><div class="notes"><p>max starts his impression on the crew’s first step. jo answers on the way through the Lobby. The cut comes between lines, and max answers bob as they reach Security. STILETTO starts her approach from the yard after the exterior shot. At final lens approval, check both frame edges through the opening exchange, then check that she has room to call ahead and pass LIMEN in stride. <a href="/media/loopforge-opening-storyboard/morning-1672.3cd92c950e1fadcc.webp">The morning walk · storyboard ↗</a></p><p>North is up. The full plan and the local view share metres. A ring marks the speaker. A short trail shows recent movement. Speech is placed on the reading rail above the floor so the cast stays visible.</p><p>At the gate the player sees the card skid under ed’s boot. bob is looking at LIMEN, and sam is attending to bob. STILETTO calls ahead while walking. LIMEN raises the gate in time for her to pass. lou’s aside at the count is addressed to ben. At the fourth check, STILETTO walks back from the line and speaks across the inspection boom. LIMEN and max stay at the ID desk. The next four workers hurry straight from the stamp to their stations.</p><p>Eight workers head for Security together. ed counts them as they pass his register. LIMEN and STILETTO follow at a slow walk while ed and gus join the hurried workers. The second marked cut skips part of the walk through Dispatch to the south Lobby exit. Blackout keeps its existing time, with both supervisors still inside.</p><table><caption>3D scene metres → rehearsal floor metres</caption><thead><tr><th>Working position</th><th>Historical scene x, z</th><th>Approved floor x, y</th></tr></thead><tbody id="anchors"></tbody></table></div></details>
+</main><script id="score-data" type="application/json">REHEARSAL_DATA</script>
+<script type="module">/*REHEARSAL_SCORE*/
+/*BUILD_MARKERS*/
+/*REHEARSAL_PLAYER*/</script></body></html>

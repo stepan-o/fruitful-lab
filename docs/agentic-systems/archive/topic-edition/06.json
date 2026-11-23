@@ -1,0 +1,153 @@
+{
+  "id": "readable-scene",
+  "title": "Stage a readable scene",
+  "standfirst": "Every line of dialogue asks for a place in the picture.",
+  "opening": "",
+  "blocks": [
+    {
+      "type": "evidence",
+      "asset": "speech-before",
+      "alt": "Retained Loopforge rehearsal at 14.65 seconds: a pale speech balloon covers LIMEN’s head while two smaller workers stand nearby.",
+      "caption": "First-cycle browser export, 14.65 seconds. This is the retained pre-correction frame. The image records an obstruction; it does not establish the quality of the strike, grounding or contact.",
+      "original": "/loopforge-dev-blog/history/media/strike-before.png"
+    },
+    {
+      "type": "prose",
+      "text": "LIMEN is shouting, and the game has helpfully hidden the face doing the shouting. The balloon is easy to read. Its pale rectangle separates cleanly from the factory, its emphasis is unmissable, and its placement consumes the very part of the body that could help us read the anger. Two individually sensible intentions—show the performance, make the words legible—have arrived at the same patch of screen."
+    },
+    {
+      "type": "prose",
+      "text": "The first repair was local. Move the balloon to the right. In the retained comparison below, the head becomes visible without replacing the character or rebuilding the room. It is a useful correction with a small, inspectable claim. The temptation is to let that clear frame stand for the whole presentation problem. Later studio evidence would make that temptation expensive.",
+      "sources": [
+        "speech-pair"
+      ]
+    },
+    {
+      "type": "evidence",
+      "asset": "speech-after",
+      "alt": "The matching corrected rehearsal frame, with LIMEN’s speech balloon moved right and the head visible.",
+      "caption": "Corrected C1 browser export, retained in the first-cycle public archive. The pair uses the same recorded moment. These source pixels are resized for the page; the inspector and published original preserve closer inspection.",
+      "original": "/loopforge-dev-blog/history/media/strike-after.png"
+    },
+    {
+      "type": "heading",
+      "text": "The picture has more than one author"
+    },
+    {
+      "type": "prose",
+      "text": "In the second retrospective, Visual describes a recommendation it no longer trusts. After seeing a few obstructed frames, it had kept anchored balloons as the preferred treatment and a separate reading rail as the fallback. Wider samples showed a moving target: dialogue, reactions and credential status changed the available picture height. A rule that cleared one head still needed to cope with the next body, the next turn and the next interface state. Visual now preferred a stable picture with the words beside it.",
+      "sources": [
+        "visual-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Director’s account meets that admission from another side. A broad Conveyor shot made sense for explaining geography; it survived too long into exchanges that needed a recognizable recipient. Meanwhile, camera proposals circulated while the interface could change the scene’s height. Level had precise control positions and useful routes, yet the captured tutorial cropped Bob at the Wash and Forge. Each craft was describing a real part of the problem. The combined picture was where those descriptions finally had to agree.",
+      "sources": [
+        "director-second",
+        "level-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "As coordinator, I had a place to put a camera proposal and a place to put an interface correction. The more consequential commission would have been one ordinary-size exchange containing both. That is the change I would make to the assignment itself: ask for a shared frame with a person, an action, its relevant object and the words it produces. The deliverable is a relationship among things that other tasks can name separately."
+    },
+    {
+      "type": "visual",
+      "id": "composition-stage",
+      "title": "A room, an exchange, a place for words",
+      "caption": "An authored staging study, not a Loopforge replay or a perception experiment. Framing, figure separation and text placement vary independently. Advance through instruction, reply and reaching the control; the bodies keep their positions while speaker and gesture change."
+    },
+    {
+      "type": "prose",
+      "text": "Begin with the whole room. The doorway and rear machinery explain where we are. Move to the exchange and the two bodies become easier to distinguish, but part of that geography disappears. Neither view wins every question. Now show the words inside the picture. A closer camera has enlarged the obstruction along with the speaker. Lighting cannot recover the body underneath an opaque card. Moving the words to the rail changes the allocation of space, while giving up the immediate connection of a balloon tail."
+    },
+    {
+      "type": "heading",
+      "text": "A silhouette is a useful promise"
+    },
+    {
+      "type": "prose",
+      "text": "Jason Mitchell, Moby Francke and Dhabih Eng’s 2007 account of Team Fortress 2 makes visual recognition a joint art and engineering problem. Its classes were designed to remain distinguishable as silhouettes; clothing, proportions and equipment contribute to the outline. Restrained background detail and deliberate shading help those forms survive varied lighting. The paper connects its choices to the speed and distances at which players need to identify a threat. It does not present style as a decorative treatment applied after the game’s demands are settled.",
+      "sources": [
+        "tf2-rendering"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "The study above borrows the question rather than Valve’s rendering method. Remove the interior detail: can the two people still be told apart? Restore it and change their separation from the room. Then put the card back over the speaker. An identifiable asset can still become an unreadable event. This is the limit I would put around a silhouette approval: it tells us something valuable about the figure, but it does not reserve a place for that figure in every shot."
+    },
+    {
+      "type": "prose",
+      "text": "Our studio’s evidence supports the authors’ insistence that art and technology must meet in the played scene. It does not validate their particular lighting solution for Loopforge. The defect we can actually point to is simpler: opaque words hid a head, and moving them exposed it. Before adding another highlight or more expressive geometry, we needed to stop covering the evidence already available.",
+      "sources": [
+        "tf2-rendering",
+        "speech-pair"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "A clue has to survive its surroundings"
+    },
+    {
+      "type": "prose",
+      "text": "Don Norman’s 2008 essay on signifiers distinguishes the actions an environment makes possible from the clues through which someone understands it. A clue may be deliberately designed or left accidentally by other people. His concern is what can be perceived and interpreted. That distinction travels well into a game: a control can remain usable in the simulation while the screen fails to show why it matters or whose action changed it.",
+      "sources": [
+        "norman-signifiers"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "Level’s retrospective supplies a particularly useful counterexample. The Conveyor’s aligned controls and continuous aisle helped explain the sequence and supported movement. Those were decisions to keep. Yet correct control coordinates did not prevent a tutorial view from cropping the worker. Moving a wall to compensate for a dialogue panel would have attacked the wrong relationship. The room could function and still fail to communicate a local action. This is concrete support for Norman’s distinction, not a measured claim about how quickly players understood the repaired view.",
+      "sources": [
+        "level-second",
+        "norman-signifiers"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "There is also a cost to making everything equally explicit. A room with every worker outlined, every object labelled and every possible action flashing can leave the reader with no sense of priority. In the teaching scene, the brass control receives emphasis because this exchange concerns that control. A later shot might give the doorway that privilege. I want the picture to answer the question the moment is asking, while retaining enough of its surroundings for the answer to make sense."
+    },
+    {
+      "type": "visual",
+      "id": "frame-allocation",
+      "title": "Where do the words get their space?",
+      "caption": "The same authored scene sits inside two layout rules. Toggle the instruction and compare what survives within each picture. No room geometry, actor position or camera choice changes between the examples."
+    },
+    {
+      "type": "prose",
+      "text": "The two layouts above spend the same total area differently. In the first, the words take their share only when they appear; the fixed-scale picture is cropped to fit what remains. In the second, the empty rail costs space from the beginning. This demonstration uses a simple crop, not Loopforge’s camera implementation. It makes the dependency visible: if a camera is composed for one picture area and the interface later supplies another, approval in silence cannot settle what happens during speech.",
+      "sources": [
+        "visual-second"
+      ]
+    },
+    {
+      "type": "prose",
+      "text": "This changed how I would review an agent’s visual proposal. I would first state what must remain visible and what can leave the frame. Then I would ask for the same shot with the actual words, a reaction and the relevant status display. A failure has an address: the head, the hand, the control, the next action. That is more useful to a builder than another request to make the scene cinematic. It is also more respectful of the art that already works; a shared frame can often be repaired without reopening the entire visual identity."
+    },
+    {
+      "type": "build",
+      "title": "Commission one difficult frame",
+      "body": "Use the small factory from chapter 4, or a scene of your own. Preserve its positions and rules while changing only how an exchange is presented.",
+      "steps": [
+        "Choose one action and write what a reader must identify: the actor, relevant object, recipient if any, and visible consequence.",
+        "Capture a geography view and an action view at the actual display size. Name what each view deliberately leaves outside the picture.",
+        "Add the real dialogue, reaction and status information. Keep the picture bounds fixed and inspect the same event at 320, 390 and 768 pixels.",
+        "Test the figures without interior detail, then with their normal shading. Record an obstruction separately from weak contrast or an ambiguous pose; they require different repairs."
+      ],
+      "exercise": "In the staging study, uncover the speaker while preserving the wide view. Then keep the words inside the picture and try the camera and lighting controls. Why can neither remove this overlap? Specify the extra placement control you would need, and the next frame that could invalidate its position."
+    },
+    {
+      "type": "prose",
+      "text": "Once an event can be seen, a different problem begins: what should a builder or character retain from it? A clear picture is an observation. The next chapter follows what happens when that observation becomes memory—and when a later decision treats an old record as if it were still the room in front of us."
+    }
+  ],
+  "sourceIds": [
+    "speech-pair",
+    "visual-second",
+    "director-second",
+    "level-second",
+    "tf2-rendering",
+    "norman-signifiers"
+  ]
+}

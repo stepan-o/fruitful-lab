@@ -1,0 +1,7 @@
+Rig the approved blade-free LIMEN body as a humanoid with Mixamo-compatible export naming. Preserve a neutral rigged A-pose and the same mesh/materials for each clip. Include walking and running takes with original names, durations and root travel documented. Export GLB with Rigged Character enabled, embedded textures, and every selected animation; export individual clips if the combined file omits any. Supply FBX for offline cleanup.
+
+The accepted v2 source has 23 joints and no articulated fingers; do not assume a new rig shares those transforms. Report actual bones, skin weights, maps and embedded clips. Preserve original downloads and source hashes.
+
+The 11-second emitter-adjustment idle is our offline-authored animation: planted stance, raise emitter, inspect, power down, opposite hand adjusts housing, two restart attempts, reignite, lower arm. It is not a Meshy catalog clip. Refit/rebake it for any changed skeleton or socket. Keep a separate authored derivative and compare against source. Avoid a global arm offset that breaks other motions.
+
+Before adoption: validate neutral pose, walks/runs, full-cycle blade/body/floor clearance, material appearance, factory CCTV recognition and actual performance. The existing source-specific import recipe and socket calibration are not automatically valid for a regenerated model.

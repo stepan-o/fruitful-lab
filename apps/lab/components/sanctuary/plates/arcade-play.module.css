@@ -1,0 +1,13 @@
+/* One legible attract loop, no animation of layout or SVG path geometry. */
+.adventurer{transform:translate(var(--rest-x),var(--rest-y));animation:dungeon-route 10s linear infinite paused}
+.stride{animation:dungeon-step .36s steps(2,end) infinite paused}
+.guard{animation:dungeon-guard 3.6s ease-in-out infinite paused}
+.spell{animation:dungeon-spell 2.4s linear infinite paused;opacity:0}
+.treasure{animation:dungeon-treasure 4.4s ease-in-out infinite paused}
+:global([data-playing=true]) :is(.adventurer,.stride,.guard,.spell,.treasure){animation-play-state:running}
+@keyframes dungeon-route{0%,100%{transform:translate(154px,146px)}30.4%{transform:translate(295px,146px)}50%{transform:translate(295px,237px)}80.4%{transform:translate(154px,237px)}}
+@keyframes dungeon-step{0%,100%{transform:translateY(0)}50%{transform:translateY(-.8px)}}
+@keyframes dungeon-guard{0%,100%{transform:translateY(0)}50%{transform:translateY(20px)}}
+@keyframes dungeon-spell{0%,50%{transform:translateY(0);opacity:0}51%{opacity:1}78%{transform:translateY(-48px);opacity:1}79%,100%{transform:translateY(-48px);opacity:0}}
+@keyframes dungeon-treasure{0%,100%{opacity:.5}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.adventurer,.stride,.guard,.spell,.treasure{animation:none!important}}

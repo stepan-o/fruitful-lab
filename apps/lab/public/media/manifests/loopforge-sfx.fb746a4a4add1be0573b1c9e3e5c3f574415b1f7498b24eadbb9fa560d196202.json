@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-sfx",
+  "assets": {
+    "contactor": {
+      "kind": "audio",
+      "variants": [
+        {
+          "src": "/media/files/77fecd3176781ede66ba5f72f37098ec8c0d65854f6f72dcce9b9441c4404fd2.mp3",
+          "mime": "audio/mpeg",
+          "bytes": 6313,
+          "sha256": "77fecd3176781ede66ba5f72f37098ec8c0d65854f6f72dcce9b9441c4404fd2"
+        }
+      ]
+    },
+    "dark-room-review": {
+      "kind": "audio",
+      "variants": [
+        {
+          "src": "/media/files/1cac6cd0577e798b90d26831e7603331304f258513bcd47b801e28fbfdfc237e.mp3",
+          "mime": "audio/mpeg",
+          "bytes": 481220,
+          "sha256": "1cac6cd0577e798b90d26831e7603331304f258513bcd47b801e28fbfdfc237e"
+        }
+      ]
+    },
+    "gate-close-review": {
+      "kind": "audio",
+      "variants": [
+        {
+          "src": "/media/files/187a6afcd23dcea713cfa5e07f0ab586741d82a77ed66b193243d1985cd67c8b.mp3",
+          "mime": "audio/mpeg",
+          "bytes": 51871,
+          "sha256": "187a6afcd23dcea713cfa5e07f0ab586741d82a77ed66b193243d1985cd67c8b"
+        }
+      ]
+    },
+    "menu-clang": {
+      "kind": "audio",
+      "variants": [
+        {
+          "src": "/media/files/47772e3089ad286fb6a25b516df409dad53f2a359f9ba2e50663b900f0286a3d.mp3",
+          "mime": "audio/mpeg",
+          "bytes": 35570,
+          "sha256": "47772e3089ad286fb6a25b516df409dad53f2a359f9ba2e50663b900f0286a3d"
+        }
+      ]
+    },
+    "ratchet-engage": {
+      "kind": "audio",
+      "variants": [
+        {
+          "src": "/media/files/a8c0dfe653eba5899e44109661cdec1fe0e894d97673674b387e0678a7c49f85.mp3",
+          "mime": "audio/mpeg",
+          "bytes": 4641,
+          "sha256": "a8c0dfe653eba5899e44109661cdec1fe0e894d97673674b387e0678a7c49f85"
+        }
+      ]
+    },
+    "ratchet-release": {
+      "kind": "audio",
+      "variants": [
+        {
+          "src": "/media/files/f69f25f1b841c67ddb29efc6d5337d13fc816e7d622063a25e6ca5a13615d3d7.mp3",
+          "mime": "audio/mpeg",
+          "bytes": 12582,
+          "sha256": "f69f25f1b841c67ddb29efc6d5337d13fc816e7d622063a25e6ca5a13615d3d7"
+        }
+      ]
+    }
+  }
+}

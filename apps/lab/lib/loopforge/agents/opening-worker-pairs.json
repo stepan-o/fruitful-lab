@@ -1,0 +1,24 @@
+{
+  "sam-bob": {
+    "samAnchor": [
+      122.87,
+      111.18
+    ],
+    "samYaw": 288.66325367570676,
+    "bobAnchor": [
+      123.55,
+      111.7
+    ],
+    "bobYaw": 180,
+    "bobClip": "Electrocuted_Fall",
+    "bobTime": 6.333,
+    "contact": [
+      123.6294,
+      111.4365,
+      0.35
+    ],
+    "lowerDuration": 2.4,
+    "holdDuration": 6,
+    "riseDuration": 2.4
+  }
+}

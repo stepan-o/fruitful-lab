@@ -1,0 +1,42 @@
+{
+  "status": "proposed; unmeasured; scene fit unreviewed",
+  "units": "meters",
+  "axes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "origin": "floor center",
+  "outer_size_xyz": [
+    5.35,
+    4.25,
+    1.0
+  ],
+  "clear_opening_width_height": [
+    4.0,
+    3.6
+  ],
+  "anchors": {
+    "reader_touch": [
+      2.4,
+      1.1,
+      0.35
+    ],
+    "reader_operator": [
+      2.4,
+      0,
+      1.1
+    ],
+    "gate_left": [
+      -2.0,
+      1.8,
+      0
+    ],
+    "gate_right": [
+      2.0,
+      1.8,
+      0
+    ]
+  },
+  "measured_source_bounds": null,
+  "measured_delivery_bounds": null
+}

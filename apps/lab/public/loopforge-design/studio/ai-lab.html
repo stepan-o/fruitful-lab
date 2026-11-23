@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Explore Loopforge’s proposed AI studio, Bob’s Day 2 decision and the evidence the owner reviews.">
+  <title>AI lab architecture · Loopforge Studio</title>
+  <link rel="stylesheet" href="/loopforge-design/studio/ai-lab.css">
+  <script src="/loopforge-design/studio/ai-lab.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#views">Skip to architecture views</a>
+  <header class="mast"><div class="wrap mast-inner">
+    <a class="wordmark" href="/stepanoskin/loopforge/design#studio">Loopforge <span>/ Studio</span></a>
+    <a href="/stepanoskin/loopforge/design/studio/ai-architect">← AI ARCHITECT brief</a>
+  </div></header>
+  <main class="wrap">
+    <div class="intro">
+      <div class="intro-copy">
+        <p class="meta">Architecture proposal <span>·</span> 22 Nov 2026</p>
+        <h1>Loopforge <br>AI lab</h1>
+        <p class="lead">Who makes the work, who decides what enters the game, and what evidence survives each decision?</p>
+      </div>
+      <a class="case-cover" href="#game">
+        <picture>
+          <source media="(max-width: 540px)" srcset="/loopforge-design/missing-id-bob/v1/held-line/phone-390.eadab5e582da.webp">
+          <img width="1440" height="960" fetchpriority="high" src="/loopforge-design/missing-id-bob/v1/held-line/desktop-1440.16770b362a99.webp" alt="Bob faces LIMEN across the Security checkpoint.">
+        </picture>
+        <span class="case-caption"><span class="meta">Day 2 · worked example</span><strong>Who will Bob ask?</strong><span class="round-arrow" aria-hidden="true">↗</span></span>
+      </a>
+    </div>
+    <nav id="views" aria-label="Architecture views">
+      <a href="#studio">Studio production</a><a href="#game">Game decisions</a><a href="#monitoring">Monitoring</a>
+    </nav>
+
+    <section class="view" id="studio" aria-labelledby="studio-title">
+      <header class="view-head"><h2 id="studio-title" tabindex="-1">From brief to owner review</h2><p>Follow a commission through one specialist’s hands.</p></header>
+      <ol class="process" aria-label="Studio handoff">
+        <li><span class="node">Owner + PRODUCER</span><strong>Frame the assignment</strong><small>Source revision, deliverable and acceptance cases</small></li>
+        <li><span class="node">Specialist</span><strong>Build and verify</strong><small>Versioned artifact, checks and preview</small></li>
+        <li><span class="node">Owner</span><strong>Review the result</strong><small>Accept, request a revision or issue the next brief</small></li>
+      </ol>
+      <p class="bridge">Approved rules, lines and assets feed the playable. <a href="#game">Follow a game decision →</a></p>
+      <div class="workbench">
+        <div class="workbench-label"><h3>What reaches review?</h3><p>Choose an assignment to see its deliverable and the evidence that goes with it.</p></div>
+        <div class="craft-list">
+          <details name="craft" open><summary>Art &amp; 3D assets</summary><div class="pair">
+            <div><b>ART DIRECTOR + artists</b><p>An approved sketch becomes a Meshy candidate, an editable master and a versioned game export.</p></div>
+            <div><b>Owner reviews</b><p>A 2D contact sheet or 3D turntable, scale, materials and in-engine silhouette. Match the selected asset to its task ID, rights and credits.</p></div>
+          </div></details>
+          <details name="craft"><summary>Writing &amp; case studies</summary><div class="pair">
+            <div><b>WRITER + PRODUCER</b><p>Dialogue variants, a sourced case study or a script revision alongside the approved manuscript.</p></div>
+            <div><b>Owner reviews</b><p>The exact passage changed, the factual source or build it describes, and the correction that led to the final wording.</p></div>
+          </div></details>
+          <details name="craft"><summary>Systems &amp; interface design</summary><div class="pair">
+            <div><b>SYSTEMS + UI DESIGNER</b><p>A behavioral contract, wireframe or clickable prototype showing the proposed interaction.</p></div>
+            <div><b>Owner reviews</b><p>A rule and its counterexample, a phone and desktop layout, and the interaction at its intended size.</p></div>
+          </div></details>
+          <details name="craft"><summary>Code &amp; playable prototypes</summary><div class="pair">
+            <div><b>ENGINE + UI</b><p>A scoped commit, tests, PR and playable preview. Rust owns simulation changes. Both skins consume the same public state.</p></div>
+            <div><b>Owner reviews</b><p>Native and Wasm checks, footage tied to the build, and a playthrough from the ordinary game entry.</p></div>
+          </div></details>
+          <details name="craft"><summary>Browser QA</summary><div class="pair">
+            <div><b>QA + PRODUCER</b><p>A browser runner exercises both supervisor routes against one pinned preview, with assertions and recordings.</p></div>
+            <div><b>Owner reviews</b><p>The failed step or completed journey, replay ID, device and build. Timing, voice and feel still need a player’s judgment.</p></div>
+          </div></details>
+          <details name="craft"><summary>Music &amp; voice</summary><div class="pair">
+            <div><b>MUSIC DIRECTOR + voice production</b><p>An approved cue or processed line with the source take, rights record and playback preview.</p></div>
+            <div><b>Owner reviews</b><p>Matched listening clips in the scene, the chosen take and its processing history.</p></div>
+          </div></details>
+        </div>
+      </div>
+      <details class="notes"><summary>Which client and provider does the specialist use?</summary>
+        <dl><dt>Codex · primary</dt><dd>The owner opens the specialist session using the ChatGPT subscription. Track included usage separately from API charges.</dd>
+        <dt>Alibaba Model Studio · proposed alternative</dt><dd>Confirm the owner’s plan, region, model, client and billing route before an interactive Qwen Code assignment.</dd>
+        <dt>Pi · comparison client</dt><dd>Start with an approved local endpoint. Compare the same brief, tool access, source revision and time limit. Record route differences and the cost per accepted artifact.</dd></dl>
+      </details>
+    </section>
+
+    <section class="view" id="game" aria-labelledby="game-title">
+      <header class="view-head"><h2 id="game-title" tabindex="-1">Who will Bob ask at the exit?</h2><p>Same crew, timing, available listeners and seed. Change one fact Bob heard.</p></header>
+      <div class="experiment">
+        <fieldset class="choice">
+          <legend>What did Bob hear?</legend>
+          <input type="radio" id="heard-card" name="heard" checked><label for="heard-card">A card was found</label>
+          <input type="radio" id="heard-desk" name="heard"><label for="heard-desk">A card was found at Ed’s desk</label>
+          <div class="outcomes" aria-live="polite">
+            <div class="outcome" id="h2"><img src="/media/loopforge-cast/ben-320.c5fc8e7521cf6b9b.webp" width="320" height="480" loading="lazy" alt=""><div><span class="meta">H2 · authored baseline</span><h3>Ask Ben.</h3><p>Bob remembers Ben as a witness at the rear. Sam’s interrupted remark gives him no closer lead.</p></div></div>
+            <div class="outcome" id="h1"><img src="/media/loopforge-cast/ed-320.2200cd9ab6cbb9af.webp" width="320" height="480" loading="lazy" alt=""><div><span class="meta">H1 · authored baseline</span><h3>Ask Ed.</h3><p>Bob heard where the loose card turned up. Ed can answer a question about his desk. The card’s owner is still unknown.</p></div></div>
+          </div>
+        </fieldset>
+      </div>
+      <h3 class="subhead">How a proposal becomes a game event</h3>
+      <div class="admission">
+        <div class="gate-input"><b>Decision window</b><p>Rust supplies perceived facts, legal options and an expiry tick.</p></div>
+        <div class="branches"><div><b>Model proposal</b><p>Suggest a listener or a line grounded in Bob’s evidence.</p></div><div><b>Authored fallback</b><p>Used on a timeout, invalid response or budget stop.</p></div></div>
+        <div class="gate-output"><b>Rust admits one outcome</b><p>Validate current beliefs, availability and timing. Record the tick, provenance and exact displayed line.</p></div>
+      </div>
+      <p class="projection"><strong>Recorded replay</strong> Both 2D and 3D read the same public projection. Replaying the recorded choice makes zero inference calls.</p>
+      <details class="notes"><summary>What would earn a playable trial?</summary><dl>
+        <dt>Isolate the change</dt><dd>Compare authored rules and line, proposed line with recipient fixed, and proposed recipient with line fixed. Combine them only after each shows a benefit.</dd>
+        <dt>Challenge the evaluator</dt><dd>Reject an H2 claim that mentions Ed’s desk or any claim of ownership. Accept a faithful paraphrase. Try unavailable listeners, competing actors, duplicates and rewind.</dd>
+        <dt>Review the evidence</dt><dd>Blind-score voice, grounding, repetition and timing on held-out scenes. Ask fresh players why Bob chose his listener. Require native/Wasm agreement and zero clock stalls.</dd></dl>
+      </details>
+    </section>
+
+    <section class="view" id="monitoring" aria-labelledby="monitor-title">
+      <header class="view-head"><h2 id="monitor-title" tabindex="-1">What Langfuse would see</h2><p>Each record points back to a specific assignment, asset or run. The dashboard can be offline while work continues.</p></header>
+      <div class="trace-map">
+        <div class="sources">
+          <div><b>Studio assignment</b><span>Brief and artifact IDs, client, route, time, owner verdict</span></div>
+          <div><b>Art job or browser test</b><span>Meshy task → selected asset and credits; browser journey → build and verdict</span></div>
+          <div><b>Curated local experiment</b><span>Versioned fixture, proposal, score, latency and fallback</span></div>
+          <div><b>Live game service</b><span>Aggregate timing, cost, failures and fallback counts</span></div>
+        </div>
+        <div class="trace-sink"><span class="meta">Observation</span><h3>Langfuse</h3><p>Import buffered records by run and attempt. Inspect an outlier or compare two reviewed artifacts.</p></div>
+      </div>
+      <div class="workbench"><div class="workbench-label"><h3>What gets measured?</h3><p>The first comparison uses one repeatable assignment and fixed acceptance checks.</p></div><div class="metric-list">
+        <div><b>Studio quality</b><span>First-pass acceptance and owner correction time</span></div>
+        <div><b>Studio efficiency</b><span>Time to review and cost per accepted artifact</span></div>
+        <div><b>Game performance</b><span>Cold start, p50/p95 latency, missed windows and frame time</span></div>
+      </div></div>
+      <details class="notes"><summary>Local capacity and the public game budget</summary><dl>
+        <dt>Legion · local testing</dt><dd>Measure free VRAM, RAM, sustained thermals and frame timing with the editor, game and browser open. Repeat during a build and with Langfuse on and off.</dd>
+        <dt>Hosted game · C$25/month inclusive</dt><dd>A separately approved service reserves worst-case CAD cost before dispatch, including in-flight calls, retries, fees and fixed hosting. Use the authored fallback when the next call would exceed the cap.</dd>
+        <dt>Other budgets</dt><dd>Track Meshy credits per approved job. Alibaba entitlement is pending. The earlier one-time C$10 DeepSeek comparison is parked.</dd></dl>
+      </details>
+    </section>
+
+    <aside class="next"><div><span class="meta">Proposed first implementation</span><h2>Test the evaluator offline.</h2><p>Run both Bob fixtures, one valid paraphrase and one false claim against the authored baseline and a stub. Review what passes and why the false claim fails before choosing a model.</p></div>
+      <a href="/stepanoskin/loopforge/design/studio/ai-lab-notes">Technical notes &amp; sources <span aria-hidden="true">↗</span></a>
+    </aside>
+  </main>
+  <footer class="wrap"><a href="/stepanoskin/loopforge/design/studio/ai-architect">← AI ARCHITECT brief</a><a href="/stepanoskin/loopforge/design/studio">All studio briefs</a></footer>
+</body>
+</html>

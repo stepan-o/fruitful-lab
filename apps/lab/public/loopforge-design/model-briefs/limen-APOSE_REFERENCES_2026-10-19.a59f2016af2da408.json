@@ -1,0 +1,154 @@
+{
+  "date": "2026-10-19",
+  "revision": "accepted-v2-apose-render-1",
+  "method": "Three orthographic renders of the existing accepted body, not AI-generated reinterpretations and not recovered historical Meshy uploads.",
+  "sourceModel": {
+    "src": "/media/files/fcb4b356b7905de1bbd52a3f18e72d3de2cecbdef6b4c8cc009c578d2fbda0ee.glb",
+    "sha256": "fcb4b356b7905de1bbd52a3f18e72d3de2cecbdef6b4c8cc009c578d2fbda0ee",
+    "triangles": 42354,
+    "skinJoints": 23
+  },
+  "pose": {
+    "clip": "Rest",
+    "frame": 0,
+    "editedBoneTransforms": false
+  },
+  "appearance": {
+    "steel": "#AAB9BD",
+    "accent": "#08798B",
+    "strength": 100,
+    "implementation": "apps/lab/components/loopforge/agents/readability-material.ts",
+    "implementationSha256": "1eab827f95b66c0fb1ad991a596191a1b61aea6c4caec39555a5fd2f69254b23",
+    "background": "#82888B",
+    "equipment": "Body only. No emitter housing, energy, clipboard or gun."
+  },
+  "camera": {
+    "bounds": {
+      "min": [
+        -0.8896600142942361,
+        1.8844331895599397e-8,
+        -0.21901557432825314
+      ],
+      "max": [
+        0.8896600905881797,
+        1.8000002649426392,
+        0.21901578413659806
+      ]
+    },
+    "width": 1200,
+    "height": 1600,
+    "projection": "orthographic",
+    "clip": "Rest",
+    "frame": 0,
+    "triangles": 42354,
+    "sameFramingForAllViews": true,
+    "directionFromBody": {
+      "front": [
+        0,
+        0,
+        1
+      ],
+      "back": [
+        0,
+        0,
+        -1
+      ],
+      "side": [
+        -1,
+        0,
+        0
+      ]
+    }
+  },
+  "publication": [
+    {
+      "label": "Front · neutral A-pose",
+      "role": "Body input — primary view; same accepted v2 body, Rest pose and approved palette. No equipment attached.",
+      "sourceName": "limen-apose-front.png",
+      "sourceSha256": "bacacee78badb7acb7746e84affa3584c16d0425b77b9649755c93d256488480",
+      "input": {
+        "src": "/media/loopforge-model-briefs/limen-apose-front.4fc2463b7a7d9fd9.jpg",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 244447,
+        "sha256": "4fc2463b7a7d9fd90ab1f3f1ce5bd32b4a2daf79f036ffcc24cb9f637775a1b9"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/limen-apose-front-360.4f7f181953e99462.webp",
+          "width": 360,
+          "height": 480,
+          "bytes": 12250,
+          "sha256": "4f7f181953e99462d096841cc1c968e766214e5153c378ca9ef5610da7486371"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/limen-apose-front-720.0c0237fbf547c2de.webp",
+          "width": 720,
+          "height": 960,
+          "bytes": 41882,
+          "sha256": "0c0237fbf547c2de0289959890537ff40bc64f5b28361e57572dc541d499b9a4"
+        }
+      ]
+    },
+    {
+      "label": "Back · neutral A-pose",
+      "role": "Body input — supporting view; same accepted v2 body, Rest pose and approved palette. No equipment attached.",
+      "sourceName": "limen-apose-back.png",
+      "sourceSha256": "b9e314dd1ddbf440b6cdf99b9f36343b384cf73f2e77207b404d4abc20a80326",
+      "input": {
+        "src": "/media/loopforge-model-briefs/limen-apose-back.bb4a9c92de353af3.jpg",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 243273,
+        "sha256": "bb4a9c92de353af361d62b2375be2cdc1d5782f792b1cab7ccb0495a7653cd49"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/limen-apose-back-360.634b67b2c9f9481f.webp",
+          "width": 360,
+          "height": 480,
+          "bytes": 12050,
+          "sha256": "634b67b2c9f9481f28073619ec7e502a6db05edf6fe8ab420a65455f75f05d9d"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/limen-apose-back-720.50265f911269aafa.webp",
+          "width": 720,
+          "height": 960,
+          "bytes": 41032,
+          "sha256": "50265f911269aafa565eb290f8857ce6a8ec271d3b023000bf5e00c3c64f538d"
+        }
+      ]
+    },
+    {
+      "label": "Side · neutral A-pose",
+      "role": "Body input — supporting view; same accepted v2 body, Rest pose and approved palette. No equipment attached.",
+      "sourceName": "limen-apose-side.png",
+      "sourceSha256": "707c899a1dc1606f9259587d66fabc98f99c43390f45b0cf055f8ddc57164a24",
+      "input": {
+        "src": "/media/loopforge-model-briefs/limen-apose-side.6a1c0f61c950cbfa.jpg",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 149098,
+        "sha256": "6a1c0f61c950cbfa3fa8101930b98f7c4f79ad8926a7e306312502904909ba2d"
+      },
+      "variants": [
+        {
+          "src": "/media/loopforge-model-briefs/limen-apose-side-360.95be6cff312d14e9.webp",
+          "width": 360,
+          "height": 480,
+          "bytes": 6884,
+          "sha256": "95be6cff312d14e9a0a09e3ae1146c23089bdf68ac2334210d122b6a7b6c4e5b"
+        },
+        {
+          "src": "/media/loopforge-model-briefs/limen-apose-side-720.14ddfc852d15d84e.webp",
+          "width": 720,
+          "height": 960,
+          "bytes": 23248,
+          "sha256": "14ddfc852d15d84e34827265664d412fa939c88753313341de2215d3d2b0d273"
+        }
+      ]
+    }
+  ],
+  "review": "Front checked against skull face/chest insignia; rear checked against back plates and neck conduits; side checked against profile. Entire silhouette and hands/feet remain inside all frames.",
+  "limitations": "Reconstruction inputs preserve the current model shape. A fresh Meshy generation will not preserve its exact topology, skeleton, weights or authored animations. Prefer keeping the accepted model for animation-only work."
+}

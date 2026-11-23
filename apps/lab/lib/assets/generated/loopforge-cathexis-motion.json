@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "pack": "loopforge-cathexis-motion",
+  "assets": {
+    "cathexis-motion": {
+      "kind": "model",
+      "variants": [
+        {
+          "src": "/media/files/156f11fff75c4eba27c74d953b5b1c5b9246786aa15785e3e2b0fd9295245cc5.glb",
+          "mime": "model/gltf-binary",
+          "bytes": 11512604,
+          "sha256": "156f11fff75c4eba27c74d953b5b1c5b9246786aa15785e3e2b0fd9295245cc5"
+        }
+      ]
+    }
+  }
+}

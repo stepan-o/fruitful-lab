@@ -1,0 +1,193 @@
+{
+  "synchronization": [
+    {
+      "time": 1582.8181818181818,
+      "expected": 6,
+      "tray": 6,
+      "register": 6,
+      "smoke": 6,
+      "registerColor": "#4d6b4d",
+      "rowY": 378.0058038964844,
+      "plumeProgress": 0.00011742424242444649
+    },
+    {
+      "time": 3982.818181818182,
+      "expected": 5,
+      "tray": 5,
+      "register": 5,
+      "smoke": 5,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242422445
+    },
+    {
+      "time": 6382.818181818182,
+      "expected": 4,
+      "tray": 4,
+      "register": 4,
+      "smoke": 4,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242444649
+    },
+    {
+      "time": 8782.818181818182,
+      "expected": 3,
+      "tray": 3,
+      "register": 3,
+      "smoke": 3,
+      "registerColor": "#793c3c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242444649
+    },
+    {
+      "time": 11182.818181818182,
+      "expected": 2,
+      "tray": 2,
+      "register": 2,
+      "smoke": 2,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242422445
+    },
+    {
+      "time": 13582.818181818182,
+      "expected": 1,
+      "tray": 1,
+      "register": 1,
+      "smoke": 1,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242422445
+    },
+    {
+      "time": 15982.818181818182,
+      "expected": 0,
+      "tray": 0,
+      "register": 0,
+      "smoke": 0,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242422445
+    },
+    {
+      "time": 18382.818181818184,
+      "expected": 9,
+      "tray": 9,
+      "register": 9,
+      "smoke": 9,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242444649
+    },
+    {
+      "time": 20782.81818181818,
+      "expected": 8,
+      "tray": 8,
+      "register": 8,
+      "smoke": 8,
+      "registerColor": "#793c3c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.0001174242424240024
+    },
+    {
+      "time": 23182.81818181818,
+      "expected": 7,
+      "tray": 7,
+      "register": 7,
+      "smoke": 7,
+      "registerColor": "#766c5c",
+      "rowY": 378.00579389648436,
+      "plumeProgress": 0.00011742424242422445
+    }
+  ],
+  "mechanics": [
+    {
+      "time": 0,
+      "top": 0,
+      "return": 0,
+      "chainOffset": 0,
+      "drumTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "parts": {
+        "drums": 2,
+        "mounts": 1,
+        "takeoff": 1
+      }
+    },
+    {
+      "time": 600,
+      "top": 22,
+      "return": -22,
+      "chainOffset": -8.79645,
+      "drumTransform": "matrix(0.309017, 0.951057, -0.951057, 0.309017, 0, 0)",
+      "parts": {
+        "drums": 2,
+        "mounts": 1,
+        "takeoff": 1
+      }
+    },
+    {
+      "time": 1200,
+      "top": 44,
+      "return": -44,
+      "chainOffset": -17.5929,
+      "drumTransform": "matrix(-0.809017, 0.587785, -0.587785, -0.809017, 0, 0)",
+      "parts": {
+        "drums": 2,
+        "mounts": 1,
+        "takeoff": 1
+      }
+    },
+    {
+      "time": 1800,
+      "top": 66,
+      "return": -66,
+      "chainOffset": -26.3894,
+      "drumTransform": "matrix(-0.809017, -0.587785, 0.587785, -0.809017, 0, 0)",
+      "parts": {
+        "drums": 2,
+        "mounts": 1,
+        "takeoff": 1
+      }
+    },
+    {
+      "time": 2400,
+      "top": 0,
+      "return": 0,
+      "chainOffset": 0,
+      "drumTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "parts": {
+        "drums": 2,
+        "mounts": 1,
+        "takeoff": 1
+      }
+    }
+  ],
+  "legibility": [
+    {
+      "age": 240,
+      "opacity": 0.96,
+      "lettering": "rgb(88, 97, 90)"
+    },
+    {
+      "age": 1000,
+      "opacity": 0.96,
+      "lettering": "rgb(88, 97, 90)"
+    },
+    {
+      "age": 2100,
+      "opacity": 0.96,
+      "lettering": "rgb(88, 97, 90)"
+    },
+    {
+      "age": 4000,
+      "opacity": 0.73,
+      "lettering": "rgb(88, 97, 90)"
+    },
+    {
+      "age": 6500,
+      "opacity": 0.06,
+      "lettering": "rgb(88, 97, 90)"
+    }
+  ]
+}

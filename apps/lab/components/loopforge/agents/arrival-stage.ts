@@ -1,0 +1,175 @@
+import {authoredSetup,departureCamera,exteriorEntranceVisible,selectedAuthoredSetup} from '@/lib/loopforge/encounters/day-one-camera';
+import {operationalPose,type OperationalCamera} from '@/lib/loopforge/encounters/operational-camera';
+import {clearCameraInput} from '@/lib/loopforge/encounters/camera-policy';
+import {Engine} from '@babylonjs/core/Engines/engine';
+import {Scene} from '@babylonjs/core/scene';
+import {ArcRotateCamera} from '@babylonjs/core/Cameras/arcRotateCamera';
+import {Vector3} from '@babylonjs/core/Maths/math.vector';
+import {Color3,Color4} from '@babylonjs/core/Maths/math.color';
+import {MeshBuilder} from '@babylonjs/core/Meshes/meshBuilder';
+import {Mesh} from '@babylonjs/core/Meshes/mesh';
+import {PBRMaterial} from '@babylonjs/core/Materials/PBR/pbrMaterial';
+import {StandardMaterial} from '@babylonjs/core/Materials/standardMaterial';
+import {DynamicTexture} from '@babylonjs/core/Materials/Textures/dynamicTexture';
+import {RawCubeTexture} from '@babylonjs/core/Materials/Textures/rawCubeTexture';
+import {Constants} from '@babylonjs/core/Engines/constants';
+import {HemisphericLight} from '@babylonjs/core/Lights/hemisphericLight';
+import {DirectionalLight} from '@babylonjs/core/Lights/directionalLight';
+import {ShadowGenerator} from '@babylonjs/core/Lights/Shadows/shadowGenerator';
+import '@babylonjs/core/Lights/Shadows/shadowGeneratorSceneComponent';
+import {DefaultRenderingPipeline} from '@babylonjs/core/PostProcesses/RenderPipeline/Pipelines/defaultRenderingPipeline';
+import type {StationLighting} from './station-light';
+import {createConveyorLine} from './conveyor-line';
+import {createConveyorEnvironment} from './conveyor-environment';
+import {createLobbyEnvironment} from './lobby-environment';
+import {createSecurityEnvironment} from './security-environment';
+import {loadOpeningArchitecture} from './load-room-kit';
+import type {View,SceneFraming} from '@/lib/loopforge/encounters/contract';
+import {ARRIVAL_LAYOUT} from '@/lib/loopforge/encounters/arrival-layout';
+import {worldPoint} from '@/lib/loopforge/spatial/floor';
+import {ROOM_FLOORS} from '@/lib/loopforge/rooms/appearance';
+import {createFrameWindow} from '@/lib/loopforge/frame-window';
+import {resolveGraphics,REFERENCE_GRAPHICS} from '@/lib/loopforge/graphics/settings';
+import {graphicsSnapshot,subscribeGraphics} from '@/lib/loopforge/graphics/store';
+import {createReviewOrbit} from '../factory-study/review-orbit';
+import type {FactoryScene,SceneReport} from '../factory-study/scene';
+export type RehearsalStage=Pick<FactoryScene,'characterStage'|'motion'|'active'|'reviewCamera'|'dispose'>&{dressingBaseline?:(enabled:boolean)=>void;operationalCamera?:(view:OperationalCamera|null)=>void;cameraInput?:(locked:boolean)=>void;sceneShot?:(shot:SceneFraming)=>void;trackApproach?:(view:View)=>void;benchmark?:(enabled:boolean)=>void;ready?:Promise<void>;presentProcess?:(process:View['process'])=>void;machineEffects?:(enabled:boolean)=>void;stationLighting?:(mode:StationLighting)=>void;stationLightSnapshot?:()=>unknown;renderSnapshot?:()=>unknown};
+/** Reusable three-room scene shell. Bounds and doorway come from the same layout as admission.
+ * Equipment uses the shared factory vocabulary and the engine’s physical footprints. */
+export function createArrivalStage(canvas:HTMLCanvasElement,report:(r:SceneReport)=>void):RehearsalStage{
+ const engine=new Engine(canvas,false,{stencil:false,preserveDrawingBuffer:false,powerPreference:'high-performance'});
+ const scene=new Scene(engine);scene.clearColor=new Color4(.025,.035,.04,1);
+ const camera=new ArcRotateCamera('Lobby doorway camera',-1.3,.85,23,Vector3.Zero(),scene);camera.minZ=.1;camera.maxZ=100;camera.fov=.8;
+ let dirty=true,visible=true,playing=false,disposed=false,lastDraw=0,lastReport=0,readyForMotion=false,lastReadinessCheck=0;
+ const invalidate=()=>{dirty=true;};
+ const orbit=createReviewOrbit(camera,canvas,invalidate,36);
+ let inputLocked=true;let fixedView:OperationalCamera|null=null;
+ function applyFixed(){if(!fixedView)return;const pose=operationalPose(fixedView),[x,y,h]=fixedView.target;orbit.suspend();camera.lowerBetaLimit=null;camera.upperBetaLimit=null;camera.lowerRadiusLimit=null;camera.upperRadiusLimit=null;camera.setTarget(new Vector3(...worldPoint(x,y)).add(new Vector3(0,h,0)),false,true,true);camera.alpha=pose.alpha;camera.beta=pose.beta;camera.radius=pose.radius;camera.fov=pose.fov;clearCameraInput(camera);invalidate();}
+ function attachAuthored(target:Vector3){orbit.attach(target);if(inputLocked)clearCameraInput(camera);}
+ orbit.framing(16,5);orbit.orientation(-Math.PI/2,1.2);attachAuthored(new Vector3(...worldPoint(124,125.5)).add(new Vector3(0,1.4,0)));
+ const key=new DirectionalLight('Entrance overhead',new Vector3(.4,-1,-.2),scene);key.position=new Vector3(-14,14,-5);key.intensity=1.35;key.diffuse=Color3.FromHexString('#fff0d6');
+ const hemi=new HemisphericLight('Lobby bounce',Vector3.Up(),scene);hemi.intensity=.8;hemi.groundColor=new Color3(.19,.22,.26);
+ const shadow=new ShadowGenerator(1024,key);shadow.usePercentageCloserFiltering=true;shadow.filteringQuality=ShadowGenerator.QUALITY_LOW;shadow.bias=.001;shadow.normalBias=.03;
+ // Poses advance at 20 Hz. Reuse their unchanged shadow map between pose updates.
+ // Resolution and filtering stay identical; a new pose invalidates it immediately.
+ shadow.getShadowMap()!.refreshRate=0;
+ const refreshPose=()=>{shadow.getShadowMap()?.resetRefreshCounter();invalidate();};
+ const faces=Array.from({length:6},(_,face)=>{const data=new Uint8Array(16*16*4);for(let i=0;i<data.length;i+=4){const c=face===2?140:face===3?30:75;data[i]=data[i+1]=data[i+2]=c;data[i+3]=255;}return data;});
+ scene.environmentTexture=new RawCubeTexture(scene,faces,16,Constants.TEXTUREFORMAT_RGBA,Constants.TEXTURETYPE_UNSIGNED_BYTE,true,false);scene.environmentIntensity=.5;
+ const pipeline=new DefaultRenderingPipeline('Opening room presentation',false,scene,[camera]);pipeline.samples=1;pipeline.bloomThreshold=1.4;pipeline.bloomWeight=.12;
+ const materials:PBRMaterial[]=[];
+ function material(name:string,hex:string,metal=.25){const m=new PBRMaterial(name,scene);m.albedoColor=Color3.FromHexString(hex).toLinearSpace();m.metallic=metal;m.roughness=.75;m.maxSimultaneousLights=3;materials.push(m);return m;}
+ const iron=material('Worn door iron','#263138',.7),brass=material('Dull brass edging','#8d784d',.65),wall=material('Quiet wall enamel','#343d38'),dark=material('Recessed housings','#161f26');
+ function box(name:string,size:[number,number,number],x:number,y:number,height:number,m:PBRMaterial){const mesh=MeshBuilder.CreateBox(name,{width:size[0],height:size[1],depth:size[2]},scene);mesh.position.set(...worldPoint(x,y));mesh.position.y=height;mesh.material=m;mesh.receiveShadows=true;mesh.isPickable=false;return mesh;}
+ for(const room of ARRIVAL_LAYOUT.rooms){
+  const {x,y,w,h}=room.rect,m=material(`${room.id} floor`,ROOM_FLOORS[room.id],.08);
+  const tex=new DynamicTexture(`${room.id} worn panels`,512,scene,true),ctx=tex.getContext();ctx.fillStyle='#ffffff';ctx.fillRect(0,0,512,512);ctx.strokeStyle='#e1e2e1';ctx.lineWidth=1;ctx.strokeRect(2,2,508,508);
+  for(let i=0;i<130;i++){ctx.fillStyle=i%3?'#00000007':'#00000016';ctx.fillRect(i*197%512,i*71%512,3+i%20,1);}
+  tex.update();tex.wrapU=Constants.TEXTURE_WRAP_ADDRESSMODE;tex.wrapV=Constants.TEXTURE_WRAP_ADDRESSMODE;tex.uScale=w/2;tex.vScale=h/2;m.albedoTexture=tex;
+  box(`${room.id} floor`,[w,.2,h],x+w/2,y+h/2,-.11,m);
+
+ }
+ const door=ARRIVAL_LAYOUT.portal;
+ for(const x of [door.min,door.max]){box('Checkpoint pillar',[.4,3.8,.5],x,door.axis,1.9,iron);box('Checkpoint brass band',[.48,.13,.55],x,door.axis,2.65,brass);}
+ box('Checkpoint lintel',[4.5,.45,.6],124,door.axis,3.65,iron);
+ box('WAIT HERE line',[4,.025,.18],124,112.6,.015,brass);
+ const checkpointProxy=scene.meshes.filter(m=>/^Checkpoint /.test(m.name));
+ // The workers choose their own places around the doorway. No queue pens.
+ const outside=material('Morning approach concrete','#626c72',.04);
+ box('Factory approach',[16,.015,13],124,128.5,.006,outside);
+ for(const x of [117.5,130.5])box('Factory facade',[3,6.4,.45],x,122,3.2,wall);
+ for(const x of [119,129])box('Factory main door frame',[.45,5.3,.65],x,122,2.65,iron);
+ box('Factory main door lintel',[10.4,.55,.75],124,122,5.15,iron);
+ // Rolled-up door leaves the same open corridor used by the navigation layout.
+ box('Rolled shutter housing',[10.3,.65,.8],124,122,5.7,dark);
+
+ // Conveyor enclosure, services and operator lanes are owned by its room module.
+ function sign(text:string,x:number,y:number,h:number,w:number){const texture=new DynamicTexture(text,{width:1024,height:128},scene,true);const c=texture.getContext() as CanvasRenderingContext2D;c.fillStyle='#172226';c.fillRect(0,0,1024,128);c.fillStyle='#d1c7a5';c.font='bold 70px Georgia';c.textAlign='center';c.fillText(text,512,90);texture.update();const m=new StandardMaterial(text,scene);m.diffuseTexture=texture;m.emissiveColor=new Color3(.4,.4,.4);const plane=MeshBuilder.CreatePlane(text,{width:w,height:.48,sideOrientation:Mesh.DOUBLESIDE},scene);plane.position.set(...worldPoint(x,y));plane.position.y=h;plane.material=m;}
+ sign('LOOPFORGE',124,122.49,5.45,5.8);sign('SECURITY / ADMISSION',124,111.49,4.32,4.2);sign('IDENTIFICATION',124,103.55,2.8,3);
+ for(const [label,x] of [['01 / INTAKE',136.5],['02 / BRAIN WASH',140.5],['03 / MAIN BELT',144.5],['04 / LATTICE FORGE',148.5]] as const)sign(label,x,98.5,3,3.3);
+ const cutaway=scene.meshes.filter(m=>/Factory facade|Factory main door|Rolled shutter|LOOPFORGE/.test(m.name));
+ const entranceProxy=cutaway.filter(m=>/Factory main door|Rolled shutter/.test(m.name));
+ const replacementProxies=[...checkpointProxy,...entranceProxy];
+ const architectureAbort=new AbortController();let architecture:Awaited<ReturnType<typeof loadOpeningArchitecture>>|undefined,currentShot:SceneFraming='approach';
+ const architectureReady=loadOpeningArchitecture(scene,architectureAbort.signal).then(model=>{architecture=model;replacementProxies.forEach(m=>m.setEnabled(false));model.entrance.setEnabled(currentShot==='approach'||currentShot==='passage');invalidate();});
+ // Batch static fittings once; each character keeps its independent body and rig.
+ for(const m of materials){const meshes=scene.meshes.filter(mesh=>mesh.material===m&&!cutaway.includes(mesh)&&!replacementProxies.includes(mesh)) as Mesh[];if(meshes.length>1)Mesh.MergeMeshes(meshes,true,true);}
+ const priorEnvironmentMeshes=new Set(scene.meshes);
+ const lobbyEnvironment=createLobbyEnvironment(scene),securityEnvironment=createSecurityEnvironment(scene);
+ const conveyorEnvironment=createConveyorEnvironment(scene);
+ const dressingMeshes=scene.meshes.filter(m=>!priorEnvironmentMeshes.has(m));let minimalDressing=false;
+ const conveyor=createConveyorLine(scene,invalidate);conveyor.present(undefined);
+ let benchmarking=false;let preferences=graphicsSnapshot(),effective=resolveGraphics(preferences,'room');
+ function size(){if(benchmarking){engine.setHardwareScalingLevel(1);engine.setSize(1280,720);invalidate();return;}engine.setHardwareScalingLevel(1/(Math.min(window.devicePixelRatio||1,1.5)*effective.scale));engine.resize();if(fixedView)applyFixed();else{orbit.snapshot();attachAuthored(camera.target);}invalidate();}
+ function settings(){preferences=graphicsSnapshot();effective=resolveGraphics(benchmarking?REFERENCE_GRAPHICS:preferences,'room');scene.shadowsEnabled=effective.shadows!=='off';conveyor.stationLight.shadowsAllowed(effective.shadows!=='off');pipeline.fxaaEnabled=effective.antialias;pipeline.bloomEnabled=effective.bloom;shadow.getShadowMap()?.resize(effective.shadows==='full'?1024:512);size();}
+ const unsubscribe=subscribeGraphics(settings);settings();
+ const resize=new ResizeObserver(size);resize.observe(canvas);
+ const timings=createFrameWindow();let previousCamera='';
+ scene.onDataLoadedObservable.add(()=>{readyForMotion=false;invalidate();});engine.onContextRestoredObservable.add(()=>{readyForMotion=false;refreshPose();});
+ const pointer=()=>{dirty=true;};canvas.addEventListener('pointermove',pointer);canvas.addEventListener('wheel',pointer);canvas.addEventListener('keydown',pointer);
+ engine.runRenderLoop(()=>{
+  if(disposed||!visible||document.hidden){timings.reset();return;}
+  const now=performance.now(),cameraState=[camera.alpha,camera.beta,camera.radius,camera.inertialAlphaOffset,camera.inertialBetaOffset,camera.inertialRadiusOffset].join('/');
+  if(previousCamera!==cameraState){dirty=true;previousCamera=cameraState;}
+  // Rendering checks each visible material itself. A second whole-scene readiness
+  // traversal on every frame is unnecessary once the assets have loaded.
+  if(now-lastReadinessCheck>1000){readyForMotion=scene.isReady();lastReadinessCheck=now;}
+  if((!benchmarking&&now-lastDraw<1000/effective.targetFps-1)||(!playing&&!dirty&&readyForMotion))return;
+  const dt=lastDraw?Math.min(.1,(now-lastDraw)/1000):0;if(playing)conveyor.animate(dt);
+  lastDraw=now;dirty=false;camera.getViewMatrix();if(!minimalDressing){conveyorEnvironment.updateCamera(camera.position);lobbyEnvironment.updateCamera(camera.position,!!fixedView||exteriorEntranceVisible(currentShot));securityEnvironment.updateCamera(camera.position);}const before=performance.now(),drawStart=engine._drawCalls.current;scene.render();timings.frame(now,readyForMotion?(playing?'active':'idle'):'loading');
+  if(now-lastReport>1000){lastReport=now;report({...timings.snapshot(),meshes:scene.meshes.length,active:scene.getActiveMeshes().length,workers:10,resolution:`${engine.getRenderWidth()} × ${engine.getRenderHeight()}`,renderer:engine.getGlInfo().renderer,renderMs:Math.round(performance.now()-before),updateMs:0,drawCalls:engine._drawCalls.current-drawStart,triangles:Math.round(scene.getActiveIndices()/3)});}
+ });
+ return {
+  ready:Promise.all([conveyor.ready,architectureReady]).then(()=>undefined),presentProcess:conveyor.present,machineEffects:conveyor.effects,stationLighting:conveyor.stationLight.set,stationLightSnapshot:conveyor.stationLight.snapshot,
+  benchmark(enabled){benchmarking=enabled;settings();if(enabled)camera.detachControl();},
+  dressingBaseline(enabled){minimalDressing=enabled;dressingMeshes.forEach(mesh=>mesh.setEnabled(!enabled));refreshPose();},
+  renderSnapshot(){camera.getViewMatrix(true);return {roomDressing:minimalDressing?'minimal-draw-baseline':'full',dressingMeshes:dressingMeshes.length,referenceRendering:benchmarking,graphics:benchmarking?REFERENCE_GRAPHICS:preferences,effective,uncapped:benchmarking,canvas:[engine.getRenderWidth(),engine.getRenderHeight()],hardwareScaling:engine.getHardwareScalingLevel(),renderer:engine.getGlInfo().renderer,fov:camera.fov,camera:{mode:fixedView?'operational':'authored-or-review',id:fixedView?.id??currentShot,position:camera.position.asArray(),target:camera.target.asArray(),alpha:camera.alpha,beta:camera.beta,radius:camera.radius},resources:{meshes:scene.meshes.length,activeMeshes:scene.getActiveMeshes().length,activeTriangles:Math.round(scene.getActiveIndices()/3),materials:scene.materials.length,textures:engine.getLoadedTexturesCache().length,skeletons:scene.skeletons.length,geometries:scene.getGeometries().length,animationGroups:scene.animationGroups.length}};},
+  operationalCamera(view){fixedView=view;if(view){cutaway.forEach(m=>m.setEnabled(!(architecture&&entranceProxy.includes(m))));architecture?.entrance.setEnabled(true);applyFixed();}else camera.fov=.8;refreshPose();},
+  sceneShot(shot){
+   if(fixedView)return;camera.fov=.8;
+   const setups={
+    approach:[124,124.5,1.55,11,-Math.PI/2,1.32],
+    assembly:[124,111.9,1.6,6.0,-1.78,1.4],
+    impact:[123.85,111.8,.95,4.8,-2.15,1.12],
+    // D7 source selection: hold one low side view through acquisition, release and recovery.
+    card:[123.9,112.2,1.15,5.710516614107688,-0.17670885607003678,1.4831263117566529],
+    passage:[123.9,112.2,1.15,5.710516614107688,-0.17670885607003678,1.4831263117566529],
+    threshold:[124.9,110.9,1.05,7.1,-1.5,1.25],
+    // Keep the applicant, LIMEN and both rear desks in one working composition.
+    checkpoint:[124.1,108.7,1.45,10.2,-1.66,1.3],
+    'limen-emphasis':[123.9,110.2,1.35,3.9862262855989448,-1.3382393849899896,1.3687330395422375],
+    'workers-reverse':[123.8,115,1.2,6.367299270491378,1.4108832036366774,1.4051345531024102],
+    'doorway-pressure':[130.8, 104.6, 1.35, 6.895832074521549, -2.7501875254645824, 1.4179358349668358],
+    'security-check-reverse':[123.25, 111.1, 1.2, 4.103047647785729, 0.9933567106503808, 1.2867110957439378],
+    'sam-inspection':[123.75,111.7,1.15,4.1,1.18,1.23],
+    aftermath:[124.6,111.3,1.45,4.8,-1.45,1.35],
+    'conveyor-wide':[141.5,103.7,1.25,15,-1.9,1.18],
+    // Manual review only; no encounter beat selects this camera.
+    'conveyor-entrance':[142,103.7,1.4,9.8,-2.91,1.48],
+    intake:[136.6,104.5,1.25,6.8,-2.1,1.28],
+    wash:[140.5,104.4,1.35,7.4,-2.1,1.25],
+    belt:[144.6,104.3,1.3,8.5,-2.1,1.24],
+    forge:[148.5,103.8,1.65,8.5,-2.8,1.24],
+   } as const;
+   currentShot=shot;refreshPose();const showEntrance=exteriorEntranceVisible(shot);
+   cutaway.forEach(m=>m.setEnabled(showEntrance&&!(architecture&&entranceProxy.includes(m))));architecture?.entrance.setEnabled(showEntrance);
+   const key=shot==='wide'?'assembly':shot==='interaction'?'impact':shot;const s=selectedAuthoredSetup(shot)??setups[key as keyof typeof setups];if(!s)throw Error('Missing authored view '+shot);orbit.framing(s[3],3.5);orbit.orientation(s[4],s[5]);attachAuthored(new Vector3(...worldPoint(s[0],s[1])).add(new Vector3(0,s[2],0)));if(benchmarking)camera.detachControl();
+  },
+  trackApproach(view){
+   if(fixedView)return;
+   if(currentShot==='exit-flow'){
+    const viewCamera=departureCamera(view);if(!viewCamera)return;
+    const s=authoredSetup(viewCamera);camera.fov=viewCamera.verticalFov;orbit.framing(s[3],3.5);orbit.orientation(s[4],s[5]);
+    camera.target.set(...worldPoint(s[0],s[1]));camera.target.y=s[2];invalidate();return;
+   }
+   if(currentShot!=='approach'||view.dayOne?.stage==='departure'||view.dayOne?.stage==='night')return;
+   const workers=view.actors.filter(a=>a.character==='worker');if(!workers.length)return;
+   const y=workers.reduce((sum,a)=>sum+a.position[1]/1000,0)/workers.length-2.8;
+   const [x,,z]=worldPoint(124,y);camera.target.set(x,1.55,z);invalidate();
+  },
+  cameraInput(locked){if(fixedView){clearCameraInput(camera);return;}if(inputLocked===locked){if(locked)clearCameraInput(camera);return;}inputLocked=locked;if(locked)clearCameraInput(camera);else attachAuthored(camera.target);},
+  characterStage(){return {scene,shadow,gate(){},refresh:refreshPose};},
+  motion(value){if(playing===value)return;playing=value;timings.reset();invalidate();},active(value){visible=value;timings.reset();invalidate();},reviewCamera(action){if(action&&!inputLocked&&!fixedView)orbit.action(action);return orbit.snapshot();},
+  dispose(){if(disposed)return;disposed=true;unsubscribe();resize.disconnect();canvas.removeEventListener('pointermove',pointer);canvas.removeEventListener('wheel',pointer);canvas.removeEventListener('keydown',pointer);orbit.suspend();architectureAbort.abort();architecture?.dispose();conveyor.dispose();conveyorEnvironment.dispose();lobbyEnvironment.dispose();securityEnvironment.dispose();scene.dispose();engine.dispose();}
+ };
+}

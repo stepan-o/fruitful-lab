@@ -1,0 +1,47 @@
+[
+  {
+    "viewport": [
+      1440,
+      960
+    ],
+    "devicePixelRatio": 1,
+    "method": "Raster placement proof, fit contain, centered at 1 CSS px per output pixel",
+    "selectedFile": "landscape.6891d15b3938.webp",
+    "artRect": [
+      0,
+      0,
+      1440,
+      960
+    ]
+  },
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "devicePixelRatio": 1,
+    "method": "Raster placement proof, fit contain, centered at 1 CSS px per output pixel",
+    "selectedFile": "phone-small.c2a689821381.webp",
+    "artRect": [
+      0,
+      129,
+      390,
+      585
+    ]
+  },
+  {
+    "viewport": [
+      320,
+      693
+    ],
+    "devicePixelRatio": 1,
+    "method": "Raster placement proof, fit contain, centered at 1 CSS px per output pixel",
+    "selectedFile": "phone-small.c2a689821381.webp",
+    "artRect": [
+      0,
+      106,
+      320,
+      480
+    ]
+  }
+]

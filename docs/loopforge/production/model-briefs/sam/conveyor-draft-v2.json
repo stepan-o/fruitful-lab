@@ -1,0 +1,14 @@
+{
+  "id": "sam",
+  "ref": "/home/stpn/Documents/Codex/repos/loopforge/frontend/loopforge-webview/public/assets/concept_art/rooms/04_loopforge_rooms_neural_lattice_a_intake_1.png",
+  "prompt": "Use case: stylized-concept. Create an isolated full-body character production concept of sam, a worker from Loopforge, by faithfully extracting the CENTRAL HEAVY TRAY-CARRYING ROBOT from the supplied original brain-intake room art. Keep this specific old industrial design, not a generic modern robot. He has a massive rounded humped upper back and boiler-like shoulders, his heavy wide helmet sits low and projects forward from between them, a wide vertical-slatted lower face grille, two small recessed horizontal pale cyan eyes beneath a heavy brow. His silhouette is broad, low and top-heavy; stout human-biped legs, broad boots, broad square wrists and useful five-finger mechanical hands. More rounded and working-hunched than a soldier. Preserve the curved layered shoulder shells and the reference's gruff, solid character. Worn medium cobalt blue enamel on major outer plates, slate blue secondary panels, a few aged ivory edges, dark oily steel recesses and dull brass bearings. Broad blue painted areas must read at distance, not disappear under dense scratches. No weapons, no military uniform, no huge glowing goggles. An ordinary experienced factory worker, physically imposing but smaller than the supervisors. Standing alone in relaxed symmetrical open A-pose, hands empty and fully separated from torso, feet planted apart; slight natural hunch retained. Front three-quarter view with whole head and both feet visible. Dark smoky charcoal background in the original Loopforge painterly industrial concept-art style, directional soft light that clearly exposes the body and blue colour. Only one character, no room machinery, no tray, no text, no pedestal. Build out the hidden legs in the same style; retain the distinctive central robot rather than borrowing the thin right robot.",
+  "path": "/home/stpn/.codex/generated_images/01a101d9-b674-7d52-81a6-2d09fb64189e/exec-0d656e81-f7c9-4eaf-8e2a-93ac1a5c6804.png",
+  "status": "owner-approved-concept",
+  "version": 2,
+  "workspace_image": "output/opening-cast/sam/sam-conveyor-v2.png",
+  "sha256": "bcba4f8349ab068d907efd31c6d3b310221197de3f06e7254aa4547ab6bab52f",
+  "reference_role": "Original Conveyor room artwork; character silhouette and materials",
+  "date": "2026-10-21",
+  "tool": "image_gen",
+  "approval": "sam, ben and lou are approved."
+}

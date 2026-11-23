@@ -1,0 +1,409 @@
+{
+  "version": "loopforge.days-2-4.floor-art/1",
+  "palette": "Day One B / Raking light",
+  "sourceRights": "Original commissioned Loopforge floor art. Room materials reference owner-provided calibration; no external stock or fonts.",
+  "geometry": "approved-factory/day-one-3",
+  "worldPixelsPerMetre": 64,
+  "sourceInputs": [
+    "PR 155 / 08c8db11 / 01-style-B.zip / floor-palette-roles-r02.json",
+    "PR 155 / 08c8db11 / 03-fourth-id-check.zip / exports/fixtures/sec-boom-states.png",
+    "docs/loopforge/production/sprite-briefs/briefs.json#mach-output,prop-brain-cortex",
+    "apps/lab/lib/loopforge/spatial/approved-factory.json"
+  ],
+  "nativeAxes": "x east, world y south. Floor Y flattens during projection. Upright sprites scale uniformly after projecting their anchor.",
+  "worldAnchors": {
+    "gateHingeM": [
+      124.9,
+      134
+    ],
+    "operatorPostsM": {
+      "intake": [
+        119.7,
+        144.4
+      ],
+      "wash": [
+        123.7,
+        144.4
+      ],
+      "belt": [
+        127.7,
+        144.4
+      ],
+      "forge": [
+        131.7,
+        144.4
+      ]
+    },
+    "outputSlotsM": [
+      [
+        135.05,
+        147
+      ],
+      [
+        135.6,
+        147
+      ],
+      [
+        136.15,
+        147
+      ]
+    ],
+    "outputPlaneM": 0.72,
+    "placement": "Read slot positions from the running view. Project each occupied or empty socket; composite rear, item, lip at the same projected point."
+  },
+  "screenRules": "See README.md for nine-slice, concurrent speech, cutoff and observer visibility.",
+  "assets": [
+    {
+      "id": "fl-gate-check",
+      "file": "exports/fl-gate-check.png",
+      "size": [
+        36,
+        38
+      ],
+      "pivot": [
+        18,
+        36
+      ],
+      "space": "world",
+      "master": "masters/fl-gate-check.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "A hollow inspection lens indicates the desk is checking the called worker.",
+      "sha256": "d63eca1a8eb0fc333d20528d4647c74a7f2c2a167454c1491675b93f1f79aa44",
+      "anchor": "gate.hinge",
+      "role": "passive indicator on the existing boom housing"
+    },
+    {
+      "id": "fl-gate-held",
+      "file": "exports/fl-gate-held.png",
+      "size": [
+        36,
+        38
+      ],
+      "pivot": [
+        18,
+        36
+      ],
+      "space": "world",
+      "master": "masters/fl-gate-held.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "The shutter crosses the aperture while Security holds the workers behind bob.",
+      "sha256": "8263445a070a9800b5623d9c1b8bda1e9a3d1a35b6977f193f374b1ec1310ded",
+      "anchor": "gate.hinge",
+      "role": "passive indicator on the existing boom housing"
+    },
+    {
+      "id": "fl-gate-released",
+      "file": "exports/fl-gate-released.png",
+      "size": [
+        36,
+        38
+      ],
+      "pivot": [
+        18,
+        36
+      ],
+      "space": "world",
+      "master": "masters/fl-gate-released.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "The semaphore arm lifts following the confirmed release or next check.",
+      "sha256": "62c5ac69e04834254dad0ab36ae067a2b75f81e2e87b8a55458b50e95cae986b",
+      "anchor": "gate.hinge",
+      "role": "passive indicator on the existing boom housing"
+    },
+    {
+      "id": "fl-handoff-ready",
+      "file": "exports/fl-handoff-ready.png",
+      "size": [
+        34,
+        37
+      ],
+      "pivot": [
+        17,
+        35
+      ],
+      "space": "world",
+      "master": "masters/fl-handoff-ready.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Receiving cup and suspended piece indicate a staffed stage can accept a handoff.",
+      "sha256": "1269287de235eebd7301fea152214324788c8446386007f54add19e16b55abf9",
+      "anchor": "station control face",
+      "role": "state of an actual handoff at this station"
+    },
+    {
+      "id": "fl-handoff-clear",
+      "file": "exports/fl-handoff-clear.png",
+      "size": [
+        34,
+        37
+      ],
+      "pivot": [
+        17,
+        35
+      ],
+      "space": "world",
+      "master": "masters/fl-handoff-clear.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "A broad check vane marks the supervisor's delivered all-clear for this handoff.",
+      "sha256": "ba90be0add3348c00a1284215fdea5ff2bf80964b396c7667e2655b77f0df951",
+      "anchor": "station control face",
+      "role": "state of an actual handoff at this station"
+    },
+    {
+      "id": "fl-handoff-rushed",
+      "file": "exports/fl-handoff-rushed.png",
+      "size": [
+        34,
+        37
+      ],
+      "pivot": [
+        17,
+        35
+      ],
+      "space": "world",
+      "master": "masters/fl-handoff-rushed.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Twin feed arrows mark an active rushed handoff.",
+      "sha256": "bd0f1c792f3319bb541b2b4cbeb2648a14a69fc6c7aed60b3299bae3cefa5107",
+      "anchor": "station control face",
+      "role": "state of an actual handoff at this station"
+    },
+    {
+      "id": "fl-post-staffed",
+      "file": "exports/fl-post-staffed.png",
+      "size": [
+        24,
+        21
+      ],
+      "pivot": [
+        12,
+        20
+      ],
+      "space": "world",
+      "master": "masters/fl-post-staffed.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "A hung occupancy tag means an operator has physically reached this control.",
+      "sha256": "793a757ea5820a70cc9855864636534f239ecabd61d3ecae8aa87af287da4bab",
+      "anchor": "operator post side of station control face"
+    },
+    {
+      "id": "fl-post-vacant",
+      "file": "exports/fl-post-vacant.png",
+      "size": [
+        24,
+        21
+      ],
+      "pivot": [
+        12,
+        20
+      ],
+      "space": "world",
+      "master": "masters/fl-post-vacant.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Empty clips and a dash mark an uncovered operator post.",
+      "sha256": "1ee21c16b3051c8523e4bf0b4d20f4c6b98da1269662ec8dd2514c2a6533ea41",
+      "anchor": "operator post side of station control face"
+    },
+    {
+      "id": "fl-rack-cradle",
+      "file": "exports/fl-rack-cradle.png",
+      "size": [
+        34,
+        22
+      ],
+      "pivot": [
+        17,
+        13
+      ],
+      "space": "world",
+      "master": "masters/fl-rack-cradle.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Socket rollers and rear bed.",
+      "sha256": "b1d52a77f3e7a2c074e8b27237df3bbaad0f7a76e168af990fa6932f0783bead",
+      "anchor": "ENGINE-projected output slot at carrier height",
+      "depthGroup": "rack",
+      "nativeSlotPitchPx": 35.2,
+      "drawOrder": 0
+    },
+    {
+      "id": "fl-rack-lip",
+      "file": "exports/fl-rack-lip.png",
+      "size": [
+        34,
+        22
+      ],
+      "pivot": [
+        17,
+        13
+      ],
+      "space": "world",
+      "master": "masters/fl-rack-lip.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Separate foreground roller guard.",
+      "sha256": "d01979f92dce2216a13294718c23049884dc9f768a2ce483ab5fe7f9376186c2",
+      "anchor": "ENGINE-projected output slot at carrier height",
+      "depthGroup": "rack",
+      "nativeSlotPitchPx": 35.2,
+      "drawOrder": 2
+    },
+    {
+      "id": "fl-cortex-finished",
+      "file": "exports/fl-cortex-finished.png",
+      "size": [
+        27,
+        23
+      ],
+      "pivot": [
+        13,
+        22
+      ],
+      "space": "world",
+      "master": "masters/fl-cortex-finished.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Finished cortex and press collar at their contact socket.",
+      "sha256": "fcb6654658c6753429e5a41fcef9c2902c1301beb48acfcd01fd85a3e9a3e0e8",
+      "anchor": "ENGINE-projected output slot at carrier height",
+      "depthGroup": "rack",
+      "nativeSlotPitchPx": 35.2,
+      "drawOrder": 1
+    },
+    {
+      "id": "fl-bubble",
+      "file": "exports/fl-bubble.png",
+      "size": [
+        60,
+        40
+      ],
+      "insets": [
+        8,
+        7,
+        11,
+        7
+      ],
+      "safeText": [
+        8,
+        7,
+        41,
+        26
+      ],
+      "space": "screen",
+      "master": "masters/fl-bubble.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Live addressed speech, parchment face.",
+      "sha256": "c448c4770f0f71d9b3e67ce63305a70f5d268540fe71ccae6b4ac6564548112d",
+      "padding": [
+        8,
+        7,
+        11,
+        7
+      ],
+      "bodyInk": "#17282A",
+      "nameplate": "fl-bubble-nameplate",
+      "scaling": "nine-slice-nearest"
+    },
+    {
+      "id": "fl-bubble-interrupted",
+      "file": "exports/fl-bubble-interrupted.png",
+      "size": [
+        60,
+        40
+      ],
+      "insets": [
+        8,
+        7,
+        11,
+        7
+      ],
+      "safeText": [
+        8,
+        7,
+        41,
+        26
+      ],
+      "space": "screen",
+      "master": "masters/fl-bubble-interrupted.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Interrupted utterance with torn corner and cutoff hatching.",
+      "sha256": "7ad0290744290d08acacc660790fa973c12b9efa544f236aa284d35bb56993bc",
+      "padding": [
+        8,
+        7,
+        11,
+        7
+      ],
+      "bodyInk": "#17282A",
+      "nameplate": "fl-bubble-nameplate",
+      "scaling": "nine-slice-nearest"
+    },
+    {
+      "id": "fl-bubble-nameplate",
+      "file": "exports/fl-bubble-nameplate.png",
+      "size": [
+        34,
+        16
+      ],
+      "insets": [
+        5,
+        3,
+        5,
+        3
+      ],
+      "safeText": [
+        5,
+        3,
+        24,
+        10
+      ],
+      "space": "screen",
+      "master": "masters/fl-bubble-nameplate.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Highlighted field behind the live speaker name.",
+      "sha256": "934fbdde517e0598dc78257443e17fab384eef050bf89ecaa6229169533c7201",
+      "textInk": "#F4E8CD",
+      "scaling": "nine-slice-nearest"
+    },
+    {
+      "id": "fl-tail-left",
+      "file": "exports/fl-tail-left.png",
+      "size": [
+        12,
+        12
+      ],
+      "pivot": [
+        0,
+        11
+      ],
+      "space": "screen",
+      "master": "masters/fl-tail-left.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Pointed paper tail linking the bubble to its speaker.",
+      "sha256": "6c9e4996f229e93f46822611362117f037c747b6b4e2efda0eb50a66bfcb59b1",
+      "panelSeam": [
+        7,
+        0
+      ],
+      "scaling": "fixed pixel size"
+    },
+    {
+      "id": "fl-tail-right",
+      "file": "exports/fl-tail-right.png",
+      "size": [
+        12,
+        12
+      ],
+      "pivot": [
+        11,
+        11
+      ],
+      "space": "screen",
+      "master": "masters/fl-tail-right.ora",
+      "source": "Original pixel linework in draw.py; Day One B room material references.",
+      "purpose": "Pointed paper tail linking the bubble to its speaker.",
+      "sha256": "ddad42ccb0cd718f22c5c286513f86e484757f53f10938b7fbedc7e56cc8cbb8",
+      "panelSeam": [
+        4,
+        0
+      ],
+      "scaling": "fixed pixel size"
+    }
+  ]
+}

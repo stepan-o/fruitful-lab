@@ -101,6 +101,7 @@ const assert = require("node:assert/strict");
     await control("Play").click();
     await b("Assign crew").click();
     await b(/^lou(?: |$)/).click();
+    await page.getByLabel("Station", { exact: true }).selectOption("1");
     await b("Send lou to Wash").click();
     await forwardUntil(page.getByRole("heading", { name: "Shift closed" }), 50);
     assert.equal(errors.length, 0, errors.join("\n"));

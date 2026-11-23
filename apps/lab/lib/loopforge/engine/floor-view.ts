@@ -7,43 +7,44 @@ export type CampaignFloor = Floor & {
   ratings: Record<string, number[]>;
   needs: number[][];
 };
-export function floorView(state: State): CampaignFloor {
+export function campaignScene(state: State): Floor["scene"] {
   const w = state.world,
-    f = w.floor!;
-  const phase = f.closed
+    f = w.floor;
+  const phase = !f ? "briefing" : f.closed
     ? "close"
-    : f.stage === "briefing"
+    : f?.stage === "briefing"
       ? "briefing"
       : "shift";
   const dialogue = state.events.map((e) => ({ ...e, day: 2 }));
-  const stage = f.stage === "briefing" ? "walk" : f.stage;
+  const stage = f?.stage === "briefing" ? "walk" : f?.stage ?? "walk";
   const world = {
     day: 2,
     stage,
     phase,
-    start: f.start,
-    lead: f.lead,
-    pace: f.manual ? "all-clear" : "rushed",
-    spent: f.status === "pass" ? "issue-pass" : null,
+    start: f?.start ?? w.clock_tick,
+    lead: f?.lead,
+    pace: f?.manual ? "all-clear" : "rushed",
+    spent: f?.status === "pass" ? "issue-pass" : null,
     quick: false,
     called: "",
-    waiting: f.waiting,
-    status: f.status,
-    caseId: f.status === "none" ? "" : "D2-bob-id",
+    waiting: f?.waiting ?? [],
+    status: f?.status,
+    caseId: !f || f.status === "none" ? "" : "D2-bob-id",
     caseSubject: "bob",
-    deadline: f.deadline,
+    deadline: f?.deadline ?? 0,
     report: null,
     pressure: "quiet",
     backing: null,
-    coverage: f.coverage,
+    coverage: f?.coverage ?? [],
+    ...(!f && { passageGateMm: w.gate_mm }),
     completed: w.rack,
     pass:
-      f.status === "pass"
-        ? { holder: "bob", issuer: "LIMEN", day: 2, valid: !f.closed }
+      f?.status === "pass"
+        ? { holder: "bob", issuer: "LIMEN", day: 2, valid: !f?.closed }
         : null,
-    shiftOutput: f.dayCount,
+    shiftOutput: f?.dayCount,
     chat: "idle",
-    bids: f.bids,
+    bids: f?.bids,
   };
   const scene = {
     world,
@@ -61,11 +62,17 @@ export function floorView(state: State): CampaignFloor {
     })),
     events: dialogue,
   };
+  return scene as Floor["scene"];
+}
+
+export function floorView(state: State): CampaignFloor {
+  const w = state.world, f = w.floor!;
+  const scene = campaignScene(state);
   return {
     ratings: f.ratings,
     needs: f.needs,
     tick: w.clock_tick,
-    scene: scene as Floor["scene"],
+    scene,
     tutorial: f.manual
       ? null
       : ({
@@ -94,14 +101,14 @@ export function floorView(state: State): CampaignFloor {
       .map((a) => ({ id: a.agent_id, label: a.label, available: a.available })),
     stroke: f.stroke / 1000,
     deskCut: false,
-    dialogue,
+    dialogue: scene.events,
     bell: f.bell,
     manual: f.manual,
     opening: f.opening,
     handoff: f.opening ? 0 : 1,
     shot: f.shot,
     shotSeq: f.shotSeq,
-    inspecting: false,
+    inspecting: f.machines.some(m => m.hold === "LIMEN inspecting"),
     closed: f.closed,
     dayCount: f.dayCount,
   };

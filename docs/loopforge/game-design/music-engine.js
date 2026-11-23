@@ -14,7 +14,7 @@
     landing: 'Rapid descent into a held off-note.', menu: 'Rolling break and open voicings.',
     options: 'Drums alone. Move the falling accents around the kit.', reading: 'Open intervals with long rests.',
     intro: 'Two-note fragments between the walk-in and room reveals.', console: 'Dry pulse under the quota.',
-    security: 'Dry rim clicks around the desk.', play: 'Neutral room voicing.', results: 'Two-note return in an open voicing.'
+    security: 'Reassigned Conveyor 01: spaced sub phrases around the desk.', play: 'Neutral room voicing.', results: 'Two-note return in an open voicing.'
   };
   const surfaces = ['landing', 'menu', 'options', 'reading', 'intro', 'console', 'play', 'results'];
   const rooms = [null, 'security', 'conveyor'];

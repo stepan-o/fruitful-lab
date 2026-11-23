@@ -2,6 +2,14 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 23 November 2026 · The bass stays with the line
+
+The owner kept the opening of the first Day Two take and sent the melodic climb back for revision. The [listening desk](/loopforge-design/music-audition/day-two/index.html) now compares two workers, four workers and a fully staffed line on the same beat. The drummer gets a bar to turn the phrase around. The mechanical thresholds are ready for ENGINE review. The music still awaits the owner’s listening verdict.
+
+## 23 November 2026 · Conveyor trades the tune with the drummer
+
+The previous 96-bar piece moves to Security. The Day Two Conveyor takes its bass part from Menu 06 and its drum figures from Options 02. The [listening desk](/loopforge-design/music-audition/day-two/index.html) lets the owner hear the return, interrupt an entrance and compare a moving line with one waiting for clearance. Listening review and ENGINE integration remain open.
+
 ## 22 November 2026 · ENGINE · Make the first click count
 
 The failing ordinary-entry check clicked an enabled menu button before its client handler existed. No worker started, and the start menu stayed visible. Waiting for the existing mount effect made the same play, skip, seek, reload and assignment sequence pass. The correction disables menu and playback controls until hydration and restores menu focus afterward. A browser regression checks the server-only state before exercising the real game. CI also uses one explicit loopback hostname for its server and browser so Next.js accepts its development connection. Simulation, assets, approved layout and timing are unchanged; this is startup reliability, not a new gameplay feature. Final verification belongs to [PR #196](https://github.com/stepan-o/fruitful-lab/pull/196) and the owner's playtest.

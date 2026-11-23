@@ -68,7 +68,16 @@ class FedoraBaselineTests(unittest.TestCase):
     @unittest.skipUnless(shutil.which("firewall-offline-cmd"), "firewalld offline validator unavailable")
     def test_native_firewalld_accepts_config(self):
         self.write_files()
-        subprocess.run(["firewall-offline-cmd", "--system-config", str(baseline.FIREWALL), "--check-config"], check=True)
+        (baseline.FIREWALL / "firewalld.conf").write_text("FirewallBackend=nftables\n")
+        cmd = ["firewall-offline-cmd", "--system-config", str(baseline.FIREWALL), "--check-config"]
+        result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+        self.assertNotIn("ERROR", result.stderr)
+        # Prove the validator actually reads the generated zone.
+        zone = baseline.FIREWALL / f"zones/{baseline.ZONE}.xml"
+        zone.write_text('<zone><service name="missing-fixture-service"/></zone>')
+        invalid = subprocess.run(cmd, capture_output=True, text=True)
+        self.assertNotEqual(invalid.returncode, 0)
+        self.assertIn("missing-fixture-service", invalid.stdout + invalid.stderr)
 
     def test_rollback_restores_only_owned_assignment(self):
         self.write_files()

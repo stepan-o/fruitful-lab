@@ -56,7 +56,7 @@ def inspect(dev, uuid):
             dst = route.get("dst", "default")
             if dst != "default" and "gateway" not in route and "via" not in route and route.get("type", "unicast") == "unicast":
                 network = ipaddress.ip_network(dst, strict=False)
-                if network.prefixlen:
+                if network.prefixlen and not network.is_multicast:
                     subnets.add(str(network))
     if not any(ipaddress.ip_network(n).version == 4 for n in subnets):
         raise ValueError(f"{dev} needs working IPv4 for the tested baseline")

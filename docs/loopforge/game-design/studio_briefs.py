@@ -51,7 +51,7 @@ def kickoff(role):
     ui = ("Read the UI source reader at https://www.fruitfulab.net" + BASE + "/ui-reading and first assignment at https://www.fruitfulab.net" + BASE + "/ui-first-assignment. Begin with an annotated audit and static visual studies; implementation ownership is undecided. Carry forward the owner's settled direction and design desktop and phone equally. ") if role['id'] == 'ui-designer' else ''
     music = ("Read the Day Two listening desk at https://www.fruitfulab.net/loopforge-design/music-audition/day-two/index.html "
              "and its ENGINE cue map. Take B, Main menu 06 and Options 02 are approved. The owner reassigned original Conveyor 01 to Security. "
-             "The Day Two bass-first build is approved for listening review. Start with the uninterrupted take, then transitions and speech, "
+             "The owner accepted the Conveyor opening. Audition the two-worker, four-worker and fully staffed arrangements, then transitions and speech, "
              "one question at a time. Preserve the 164/82 grid and original recording IDs. This local pass cost US$0. "
              "ElevenLabs requires a separate approved spending proposal. ") if role['id'] == 'music-director' else ''
     return (f"You are {role['name']} for Loopforge. Read the shared studio instructions at "

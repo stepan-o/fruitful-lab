@@ -13,6 +13,8 @@ const welcome = new Audio('/loopforge-shifts/limen-welcome.mp3');
 welcome.preload = 'none';
 let manifest, ctx, master, timer, token = 0, routeToken = 0;
 let room = null, origin = 0, held = 0, paused = false, talking = false, waiting = false;
+const tiers = {two:'Two workers', four:'Four workers', full:'Fully staffed'};
+let tier = 'two', drive = 'one', stations = 1;
 let pendingSeek = null, demo = false;
 const voices = new Set();
 const positions = new Map();
@@ -24,6 +26,11 @@ function stopSpeech() {
   if (welcome.readyState) welcome.currentTime = 0;
 }
 function update() {
+  $('drive').value = drive;
+  $('crew').hidden = drive !== 'one';
+  $('load-label').hidden = drive === 'one';
+  $('station-load').value = String(stations);
+  for (const button of $('crew').children) button.setAttribute('aria-pressed',String(button.dataset.tier === tier));
   $('pause').disabled = !room;
   $('pause').textContent = paused ? 'Resume' : 'Pause';
   $('stop').disabled = !room && !voices.size && !demo && take.paused;
@@ -97,6 +104,11 @@ async function buffer(file) {
   return loading.get(file);
 }
 function entry(id) {
+  if (id === 'conveyor' || id.startsWith('tier-')) {
+    const key = id === 'conveyor' ? tier : id.slice(5);
+    const track = manifest.tracks.conveyor;
+    return {file:track.file,frames:track.layers[key].frames,loop:true,label:tiers[key]};
+  }
   const track = manifest.tracks[id];
   if (track) return {file:track.file, frames:track.loopFrames, loop:true, label:rooms[id]};
   const cue = manifest.cues[id];
@@ -168,6 +180,7 @@ async function arrange(next, {cut=null, keep=false, speech=talking, wait=waiting
     origin = now + length - offset;
     sound(bed,bedBytes,now+length,offset,talking ? .49 : 1,talking && bedId !== 'speech' ? 1150 : 0);
     const message = [rooms[next], talking ? 'speech arrangement' : waiting ? 'line waiting' : 'playing'];
+    if (next === 'conveyor') message.push(tiers[tier]);
     if (cutId) message.push(manifest.cues[cutId].label);
     say(message.join(' · '));
   } catch (error) { warn(error,version); }
@@ -190,12 +203,29 @@ function pause() {
   held = phase(); paused = true;
   clearSound(); update(); say(rooms[room] + ' · paused. The current tail releases.');
 }
+function mechanicalTier(count) { return count >= 3 ? 'full' : count === 2 ? 'four' : 'two'; }
+async function lineChange(key,mode,cut=null) {
+  const changed = key !== tier;
+  tier = key; drive = mode; update();
+  if (room !== 'conveyor') return openRoom('conveyor',cut);
+  if (paused || waiting || talking || !changed) return;
+  return arrange('conveyor',{keep:true});
+}
+function activity(count) {
+  stations = count;
+  return lineChange(mechanicalTier(count),'later');
+}
+$('drive').onchange = manual(() => $('drive').value === 'later' ? activity(stations) : lineChange(tier,'one'));
+$('station-load').onchange = manual(() => activity(Number($('station-load').value)));
+for (const button of $('crew').children) button.onclick = manual(() => lineChange(button.dataset.tier,'one'));
 const steps = [
   [8,()=>openRoom('menu','menu-in')], [6,()=>openRoom('options')], [4,()=>openRoom('menu')],
   [6,()=>openRoom('day-one','factory-open')], [4,()=>arrange('day-one',{cut:'gate',keep:true})],
-  [6,()=>arrange('day-one',{cut:'floor',keep:true})], [4,()=>openRoom('console','depart')],
+  [4,()=>arrange('day-one',{cut:'floor',keep:true})],
+  [8,()=>lineChange('two','one')], [8,()=>lineChange('four','one')], [8,()=>lineChange('full','one')],
+  [4,()=>openRoom('console','depart')],
   [8,()=>arrange('console',{keep:true,speech:true,voice:true})], [6,()=>openRoom('security','appointment')],
-  [12,()=>openRoom('conveyor')], [6,()=>switchWait()], [8,()=>switchWait()],
+  [8,()=>{stations=1;return lineChange('two','later','auto');}], [4,()=>activity(2)], [8,()=>activity(3)], [6,()=>switchWait()], [8,()=>switchWait()],
   [8,()=>switchSpeech()], [4,()=>switchSpeech()], [6,()=>bell()], [8,()=>openRoom('menu','menu-in')]
 ];
 async function route() {
@@ -206,7 +236,7 @@ async function route() {
     if (i === steps.length) { demo = false; say('Route complete · Menu continues.'); update(); return; }
     await steps[i][1]();
     if (version === routeToken) {
-      const upcoming = {0:'options', 6:'security', 8:'conveyor', 14:'menu'}[i];
+      const upcoming = {0:'options', 5:'conveyor', 9:'security', 11:'conveyor', 19:'menu'}[i];
       if (upcoming) buffer(entry(upcoming).file).catch(() => {});
       timer = setTimeout(() => next(i + 1), steps[i][0] * beat * 1000);
     }
@@ -236,11 +266,12 @@ async function downloadSelection() {
   }
   $('download').disabled = true;
   try {
-    const response = await fetch(manifest.reel.file);
+    const item = entry(id);
+    const response = await fetch(item.file);
     if (!response.ok) throw Error('The cue reel could not be downloaded.');
     const sr = manifest.sampleRate;
     const data = await new OfflineAudioContext(2, 1, sr).decodeAudioData(await response.arrayBuffer());
-    const [from, to] = manifest.cues[id].frames;
+    const [from, to] = item.frames;
     const frames = to - from;
     const bytes = new ArrayBuffer(44 + frames * 4), view = new DataView(bytes);
     const tag = (at, name) => [...name].forEach((ch,i)=>view.setUint8(at+i,ch.charCodeAt(0)));
@@ -276,7 +307,7 @@ for (const b of document.querySelectorAll('[data-bar]')) b.onclick = () => {
 take.onloadedmetadata = seekMarker;
 take.onplay = () => {
   cancelRoute(); clearSound(); room = null; paused = talking = waiting = false;
-  update(); say('Uninterrupted Conveyor · two 64-bar passes');
+  update(); say('Conveyor · original opening, two workers, four workers, full line');
 };
 take.onpause = update;
 $('mute').checked = localStorage.getItem('lf-day-two-music-muted') === 'on';
@@ -305,6 +336,7 @@ window.addEventListener('pagehide',()=>stop());
       const b=document.createElement('button'); b.textContent=name; b.dataset.room=id;
       b.onclick=manual(()=>openRoom(id)); $('rooms').append(b);
     }
+    group('Conveyor loops',Object.entries(tiers).map(([key,title])=>['tier-'+key,title]));
     group('Room recordings',Object.keys(manifest.tracks).map(id=>[id,rooms[id]]));
     for (const [kind,label] of Object.entries(labels)) {
       group(label,Object.entries(manifest.cues).filter(([,c])=>c.kind===kind).map(([id,c])=>[id,c.label]));

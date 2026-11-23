@@ -2,40 +2,36 @@
   "baseline": "e03278114a6c6f59cb8ec1662019c3d6328970e3",
   "form": [
     [
-      "bass descent",
+      "Opening from the first recording",
       1,
       16
     ],
     [
-      "stretch and lift",
+      "Two workers · exposed bass",
       17,
-      32
-    ],
-    [
-      "drum exchange",
-      33,
       48
     ],
     [
-      "return",
+      "Four workers · gated bass",
       49,
-      64
+      80
     ],
     [
-      "second pass",
-      65,
-      128
+      "Fully staffed · driven bass and low octave",
+      81,
+      112
     ]
   ],
   "inputContract": {
     "version": 1,
-    "source": "manual audition; ENGINE supplies verified public observations in production",
+    "source": "MusicInputs v1 public snapshot plus optional coarse lineIntensity. Standalone review supplies manual observations. ENGINE owns the projection.",
     "state": [
       "surface",
       "room",
       "speech",
       "production",
-      "paused"
+      "paused",
+      "lineIntensity (optional two | four | full)"
     ],
     "cue": [
       "shift.bell"
@@ -99,6 +95,13 @@
       "Departure, register and yard. Skip bypasses the release"
     ],
     [
+      "Day One crew on the line",
+      "conveyor",
+      null,
+      null,
+      "Once assigned: two workers, four workers, full crew. Track intensity follows the public scene state."
+    ],
+    [
       "Day Two console and call",
       "console",
       null,
@@ -124,7 +127,7 @@
       "conveyor",
       "conveyor-in",
       "conveyor-out",
-      "Focus change may use directional bridge; ordinary work follows native form"
+      "Observe active production on the focused floor. Select a phase-aligned intensity and cancel musical transitions on interruption."
     ],
     [
       "Wait and restart",
@@ -168,5 +171,12 @@
     "speechLowpassHz": 1150,
     "resume": "Use held musical position. Clear old one-shots.",
     "tail": "tailFrames is included in the addressed interval. Bed and room loops repeat their complete frame range. One-shots play once."
+  },
+  "lineIntensity": {
+    "default": "two",
+    "dayOne": "Public crew stages: two, four, fully staffed. Gate volunteers are off the line. A restored snapshot picks the current stage directly.",
+    "dayTwoPlus": "Proposed for ENGINE: count public stations whose hold is Working. 0–1 → two, 2 → four, 3–4 → full. While public production is waiting use the waiting bed. Missing activity keeps the last known tier within this visit, or two on first entry.",
+    "delivery": "One optional derived value on the existing ordered state. Do not send worker identities, station rows, queue events or new commands.",
+    "switch": "All tiers have identical 32-bar length. Keep elapsed work-loop time modulo that length across tier changes. Pause holds phase. Speech or wait replaces the arrangement while preserving its tier."
   }
 }

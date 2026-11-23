@@ -127,6 +127,15 @@ def render(masters):
                  loopFrames=levels['two']['frames'], openingFrames=[0,len(opening)],
                  openingParent='LF-MUS-D2-CONVEYOR-01', openingParentSha256=FIRST,
                  layers=levels,**export(PUBLIC/'conveyor-line-02.mp3',master))
+    sheet = PUBLIC/'cues.json'
+    manifest = json.loads(sheet.read_text())
+    prior = manifest['tracks']['conveyor']
+    if prior['id'] == 'LF-MUS-D2-CONVEYOR-01':
+        manifest['archivedTracks'] = {prior['id']: dict(prior, decision='Opening accepted. Later melodic development superseded by the three low arrangements.')}
+    manifest['tracks']['conveyor'] = track
+    manifest['version'] = 'conveyor-line-audition-2'
+    manifest['arrangement'] = json.loads(Path(__file__).with_name('day_two_map.json').read_text())
+    sheet.write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+'\n')
     (masters/'conveyor-track.json').write_text(json.dumps(track,indent=2)+'\n')
 
 

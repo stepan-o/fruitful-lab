@@ -8,7 +8,8 @@
 | --- | --- | --- |
 | LF-MUS-LONG-06-MENU / LF-MUS-LONG-02-OPTIONS | Approved composition and arrangement references. | Original recordings and historical approvals retained. |
 | LF-MUS-LONG-01-CONVEYOR → Security | Owner reassignment. Original SHA-256 begins 438cc8403969. | Same recording and original path. |
-| LF-MUS-D2-CONVEYOR-01 | Bass-first direction and build approved. Menu phrases and Options hands played through the original synthesis. | Performance awaits owner review. |
+| LF-MUS-D2-CONVEYOR-01 | Bass-first direction and build approved. Menu phrases and Options hands played through the original synthesis. | Owner accepted the 16-bar opening and requested replacement of the later melodic climb. The original file remains archived. |
+| LF-MUS-CONVEYOR-LINE-02 | Uses those first 16 decoded bars and three newly synthesized 32-bar bass arrangements. The render manifest gives the opening parent, hashes, levels and frame ranges. | Owner review open on the three intensities. Local synthesis, no new provider output or spend. |
 | Day Two cue reel | Five looping beds, eight track heads/tails, four directional bridges and seven scene/work cuts. Each segment has its source IDs and frame range. | Local review copies. Final in-game and commercial sign-off open. |
 | LIMEN welcome | Existing published voice on a separate speech path. | Retains its own voice provenance. |
 

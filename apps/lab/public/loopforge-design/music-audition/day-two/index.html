@@ -3,17 +3,21 @@
 <meta name="color-scheme" content="dark"><title>Conveyor · Day Two music audition</title><link href="audition.css" rel="stylesheet"></head>
 <body><main>
 <nav><a href="/stepanoskin/loopforge/design#music-engine">← Music engine</a><span>Loopforge / listening room</span></nav>
-<header><p class="eyebrow">DAY TWO &nbsp; / &nbsp; COMPOSITION REVIEW</p><h1>Conveyor</h1><p class="lead">The bass takes the Menu theme. The drummer answers.</p></header>
-<section aria-labelledby="record"><div class="ruler"><p class="eyebrow">Uninterrupted room take</p><span>164 / 82 BPM · 3:07</span></div>
-<h2 id="record">Two turns of the line</h2><p>Listen through the drum exchange and the return. The second pass changes the kick, bass attack and chord voicings.</p>
-<audio id="take" aria-label="Uninterrupted Day Two Conveyor, two 64-bar passes" controls preload="none" loop src="conveyor-day-two.mp3"></audio>
-<div class="phrases" aria-label="Jump to a phrase"><button data-bar="0"><small>0:00</small>Bass descent</button><button data-bar="16"><small>0:23</small>Keys answer</button><button data-bar="32"><small>0:47</small>Drum exchange</button><button data-bar="48"><small>1:10</small>Return</button><button data-bar="64"><small>1:34</small>Second pass</button></div>
-<a class="file" href="conveyor-day-two.mp3" download>Download the take ↗</a></section>
+<header><p class="eyebrow">CONVEYOR &nbsp; / &nbsp; COMPOSITION REVIEW 02</p><h1>Conveyor</h1><p class="lead">One bass line, from two workers to a full shift.</p></header>
+<section aria-labelledby="record"><div class="ruler"><p class="eyebrow">Uninterrupted listening take</p><span>164 / 82 BPM · 2:44</span></div>
+<h2 id="record">Hear the line fill up</h2><p>The first 23 seconds come from the opening you picked. Listen for the same five-note descent as the bass gains a rougher edge. At full staffing the drummer takes a bar before the line drops back in.</p>
+<audio id="take" aria-label="Conveyor opening and three staffing arrangements" controls preload="none" loop src="conveyor-line-02.mp3"></audio>
+<div class="phrases" aria-label="Jump to a passage"><button data-bar="0"><small>0:00</small>Original opening</button><button data-bar="16"><small>0:23</small>Two workers</button><button data-bar="48"><small>1:10</small>Four workers</button><button data-bar="80"><small>1:57</small>Fully staffed</button><button data-bar="110"><small>2:41</small>Drum turnover</button></div>
+<a class="file" href="conveyor-line-02.mp3" download>Download the listening take ↗</a></section>
 <section aria-labelledby="desk"><div class="ruler"><p class="eyebrow">Standalone demonstration</p><span>Manual inputs</span></div><h2 id="desk">Play the transitions</h2>
 <p>The route compresses two shifts for listening. Try a room switch during an entrance, hold the line mid-phrase or ring the bell during speech. The game runs separately.</p>
 <div class="transport"><button id="route" class="primary">▶ Play the route</button><button id="pause" disabled>Pause</button><button id="stop" disabled>Stop</button><label class="mute"><input type="checkbox" id="mute"> Mute music</label></div>
 <p id="readout" role="status" aria-live="polite">Ready.</p>
 <fieldset><legend>Change listening position</legend><div class="group" id="rooms"></div></fieldset>
+<fieldset id="line-controls"><legend>Conveyor intensity</legend><label for="drive">Listen by</label> <select id="drive"><option value="one">Day One · crew on the line</option><option value="later">Day Two+ · working stations</option></select>
+<div class="group" id="crew"><button data-tier="two">Two workers</button><button data-tier="four">Four workers</button><button data-tier="full">Fully staffed</button></div>
+<label id="load-label" hidden>Stations working <select id="station-load"><option>0</option><option selected>1</option><option>2</option><option>3</option><option>4</option></select></label>
+<p class="note">Switch during a phrase to compare the same beat. Each arrangement also loops on its own in the cue sheet.</p></fieldset>
 <fieldset><legend>Interrupt the passage</legend><div class="group"><button id="talk" aria-pressed="false">Speech</button><button id="wait" aria-pressed="false">Wait</button><button id="bell">Shift bell</button></div></fieldset>
 <p class="note">Speech plays LIMEN’s recorded welcome once. The speech arrangement holds until you release it. Wait and resumed work act on the focused Conveyor.</p></section>
 <section aria-labelledby="cuts"><div class="ruler"><p class="eyebrow">Cue sheet</p><span>Individual auditions</span></div><h2 id="cuts">Hear a single cut</h2>

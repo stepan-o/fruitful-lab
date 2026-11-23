@@ -1,5 +1,5 @@
 {
-  "version": "day-two-audition-1",
+  "version": "conveyor-line-audition-2",
   "sampleRate": 48000,
   "tempo": 164,
   "feltTempo": 82,
@@ -38,18 +38,52 @@
       "originalTheme": "conveyor"
     },
     "conveyor": {
-      "id": "LF-MUS-D2-CONVEYOR-01",
-      "file": "conveyor-day-two.mp3",
-      "bars": 128,
-      "arcBars": 64,
+      "id": "LF-MUS-CONVEYOR-LINE-02",
+      "file": "conveyor-line-02.mp3",
+      "bars": 112,
       "loopFrames": [
-        0,
-        8991219
+        1123902,
+        3371707
       ],
-      "sha256": "7bdbfabdbfd07a4b0b67dbacc4fac8ff8575d923b8ef2da56be46b53c33c3603",
-      "masterSha256": "7a65933199fc8f5357dc372a86318e27828f9cb5eeb4c6814231c1ed86940697",
-      "lufs": -16.96,
-      "dBTP": -4.27
+      "openingFrames": [
+        0,
+        1123902
+      ],
+      "openingParent": "LF-MUS-D2-CONVEYOR-01",
+      "openingParentSha256": "7bdbfabdbfd07a4b0b67dbacc4fac8ff8575d923b8ef2da56be46b53c33c3603",
+      "layers": {
+        "two": {
+          "frames": [
+            1123902,
+            3371707
+          ],
+          "bars": 32,
+          "lufs": -17,
+          "dBTP": -5.12
+        },
+        "four": {
+          "frames": [
+            3371707,
+            5619512
+          ],
+          "bars": 32,
+          "lufs": -17.01,
+          "dBTP": -5.79
+        },
+        "full": {
+          "frames": [
+            5619512,
+            7867317
+          ],
+          "bars": 32,
+          "lufs": -17,
+          "dBTP": -5.91
+        }
+      },
+      "sha256": "b3b464171b821adc3b933b2c55ed4b044c407167105e2b845f11fc376367293d",
+      "masterSha256": "01562e2052f669fe87d0f61c0f1c6eac65fb1f428cb14deb6d80d57d7e032fc4",
+      "lufs": -16.86,
+      "dBTP": -3.52
     }
   },
   "reel": {
@@ -62,7 +96,7 @@
   },
   "cues": {
     "day-one": {
-      "label": "Day One \u00b7 walk and floor",
+      "label": "Day One · walk and floor",
       "kind": "loop",
       "frames": [
         0,
@@ -74,7 +108,7 @@
       ]
     },
     "console": {
-      "label": "Console \u00b7 leadership",
+      "label": "Console · leadership",
       "kind": "loop",
       "frames": [
         1129902,
@@ -86,7 +120,7 @@
       ]
     },
     "speech": {
-      "label": "Speech \u00b7 low arrangement",
+      "label": "Speech · low arrangement",
       "kind": "loop",
       "frames": [
         1697853,
@@ -98,7 +132,7 @@
       ]
     },
     "waiting": {
-      "label": "Waiting \u00b7 stopped line",
+      "label": "Waiting · stopped line",
       "kind": "loop",
       "frames": [
         2827755,
@@ -110,7 +144,7 @@
       ]
     },
     "results": {
-      "label": "Results \u00b7 suspended cadence",
+      "label": "Results · suspended cadence",
       "kind": "loop",
       "frames": [
         3957657,
@@ -122,7 +156,7 @@
       ]
     },
     "menu-in": {
-      "label": "Menu \u00b7 track entry",
+      "label": "Menu · track entry",
       "kind": "entry",
       "frames": [
         4525608,
@@ -134,7 +168,7 @@
       ]
     },
     "menu-out": {
-      "label": "Menu \u00b7 track exit",
+      "label": "Menu · track exit",
       "kind": "exit",
       "frames": [
         4601852,
@@ -146,7 +180,7 @@
       ]
     },
     "options-in": {
-      "label": "Options \u00b7 track entry",
+      "label": "Options · track entry",
       "kind": "entry",
       "frames": [
         4678096,
@@ -158,7 +192,7 @@
       ]
     },
     "options-out": {
-      "label": "Options \u00b7 track exit",
+      "label": "Options · track exit",
       "kind": "exit",
       "frames": [
         4754340,
@@ -170,7 +204,7 @@
       ]
     },
     "security-in": {
-      "label": "Security \u00b7 track entry",
+      "label": "Security · track entry",
       "kind": "entry",
       "frames": [
         4830584,
@@ -182,7 +216,7 @@
       ]
     },
     "security-out": {
-      "label": "Security \u00b7 track exit",
+      "label": "Security · track exit",
       "kind": "exit",
       "frames": [
         4906828,
@@ -194,7 +228,7 @@
       ]
     },
     "conveyor-in": {
-      "label": "Conveyor \u00b7 track entry",
+      "label": "Conveyor · track entry",
       "kind": "entry",
       "frames": [
         4983071,
@@ -206,7 +240,7 @@
       ]
     },
     "conveyor-out": {
-      "label": "Conveyor \u00b7 track exit",
+      "label": "Conveyor · track exit",
       "kind": "exit",
       "frames": [
         5059315,
@@ -218,7 +252,7 @@
       ]
     },
     "menu-options": {
-      "label": "Menu \u2192 Options",
+      "label": "Menu → Options",
       "kind": "bridge",
       "frames": [
         5135559,
@@ -231,7 +265,7 @@
       ]
     },
     "options-menu": {
-      "label": "Options \u2192 Menu",
+      "label": "Options → Menu",
       "kind": "bridge",
       "frames": [
         5211803,
@@ -244,7 +278,7 @@
       ]
     },
     "security-conveyor": {
-      "label": "Security \u2192 Conveyor",
+      "label": "Security → Conveyor",
       "kind": "bridge",
       "frames": [
         5288047,
@@ -257,7 +291,7 @@
       ]
     },
     "conveyor-security": {
-      "label": "Conveyor \u2192 Security",
+      "label": "Conveyor → Security",
       "kind": "bridge",
       "frames": [
         5364291,
@@ -294,7 +328,7 @@
       ]
     },
     "floor": {
-      "label": "First brain \u00b7 line reveal",
+      "label": "First brain · line reveal",
       "kind": "scene",
       "frames": [
         5593023,
@@ -306,7 +340,7 @@
       ]
     },
     "depart": {
-      "label": "Day One \u00b7 leave the floor",
+      "label": "Day One · leave the floor",
       "kind": "scene",
       "frames": [
         5669267,
@@ -318,7 +352,7 @@
       ]
     },
     "appointment": {
-      "label": "Day Two \u00b7 appointment posted",
+      "label": "Day Two · appointment posted",
       "kind": "scene",
       "frames": [
         5745511,
@@ -330,7 +364,7 @@
       ]
     },
     "restart": {
-      "label": "Work resumes \u00b7 pickup",
+      "label": "Work resumes · pickup",
       "kind": "event",
       "frames": [
         5821755,
@@ -342,7 +376,7 @@
       ]
     },
     "bell-release": {
-      "label": "Shift bell \u00b7 musical release",
+      "label": "Shift bell · musical release",
       "kind": "scene",
       "frames": [
         5897999,
@@ -361,40 +395,36 @@
     "baseline": "e03278114a6c6f59cb8ec1662019c3d6328970e3",
     "form": [
       [
-        "bass descent",
+        "Opening from the first recording",
         1,
         16
       ],
       [
-        "stretch and lift",
+        "Two workers · exposed bass",
         17,
-        32
-      ],
-      [
-        "drum exchange",
-        33,
         48
       ],
       [
-        "return",
+        "Four workers · gated bass",
         49,
-        64
+        80
       ],
       [
-        "second pass",
-        65,
-        128
+        "Fully staffed · driven bass and low octave",
+        81,
+        112
       ]
     ],
     "inputContract": {
       "version": 1,
-      "source": "manual audition; ENGINE supplies verified public observations in production",
+      "source": "MusicInputs v1 public snapshot plus optional coarse lineIntensity. Standalone review supplies manual observations. ENGINE owns the projection.",
       "state": [
         "surface",
         "room",
         "speech",
         "production",
-        "paused"
+        "paused",
+        "lineIntensity (optional two | four | full)"
       ],
       "cue": [
         "shift.bell"
@@ -458,6 +488,13 @@
         "Departure, register and yard. Skip bypasses the release"
       ],
       [
+        "Day One crew on the line",
+        "conveyor",
+        null,
+        null,
+        "Once assigned: two workers, four workers, full crew. Track intensity follows the public scene state."
+      ],
+      [
         "Day Two console and call",
         "console",
         null,
@@ -483,7 +520,7 @@
         "conveyor",
         "conveyor-in",
         "conveyor-out",
-        "Focus change may use directional bridge; ordinary work follows native form"
+        "Observe active production on the focused floor. Select a phase-aligned intensity and cancel musical transitions on interruption."
       ],
       [
         "Wait and restart",
@@ -527,6 +564,30 @@
       "speechLowpassHz": 1150,
       "resume": "Use held musical position. Clear old one-shots.",
       "tail": "tailFrames is included in the addressed interval. Bed and room loops repeat their complete frame range. One-shots play once."
+    },
+    "lineIntensity": {
+      "default": "two",
+      "dayOne": "Public crew stages: two, four, fully staffed. Gate volunteers are off the line. A restored snapshot picks the current stage directly.",
+      "dayTwoPlus": "Proposed for ENGINE: count public stations whose hold is Working. 0–1 → two, 2 → four, 3–4 → full. While public production is waiting use the waiting bed. Missing activity keeps the last known tier within this visit, or two on first entry.",
+      "delivery": "One optional derived value on the existing ordered state. Do not send worker identities, station rows, queue events or new commands.",
+      "switch": "All tiers have identical 32-bar length. Keep elapsed work-loop time modulo that length across tier changes. Pause holds phase. Speech or wait replaces the arrangement while preserving its tier."
+    }
+  },
+  "archivedTracks": {
+    "LF-MUS-D2-CONVEYOR-01": {
+      "id": "LF-MUS-D2-CONVEYOR-01",
+      "file": "conveyor-day-two.mp3",
+      "bars": 128,
+      "arcBars": 64,
+      "loopFrames": [
+        0,
+        8991219
+      ],
+      "sha256": "7bdbfabdbfd07a4b0b67dbacc4fac8ff8575d923b8ef2da56be46b53c33c3603",
+      "masterSha256": "7a65933199fc8f5357dc372a86318e27828f9cb5eeb4c6814231c1ed86940697",
+      "lufs": -16.96,
+      "dBTP": -4.27,
+      "decision": "Opening accepted. Later melodic development superseded by the three low arrangements."
     }
   }
 }

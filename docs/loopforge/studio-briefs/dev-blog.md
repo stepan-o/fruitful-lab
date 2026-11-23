@@ -2,6 +2,10 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 23 November 2026 · The bass stays with the line
+
+The owner kept the opening of the first Day Two take and sent the melodic climb back for revision. The [listening desk](/loopforge-design/music-audition/day-two/index.html) now compares two workers, four workers and a fully staffed line on the same beat. The drummer gets a bar to turn the phrase around. The mechanical thresholds are ready for ENGINE review. The music still awaits the owner’s listening verdict.
+
 ## 23 November 2026 · Conveyor trades the tune with the drummer
 
 The previous 96-bar piece moves to Security. The Day Two Conveyor takes its bass part from Menu 06 and its drum figures from Options 02. The [listening desk](/loopforge-design/music-audition/day-two/index.html) lets the owner hear the return, interrupt an entrance and compare a moving line with one waiting for clearance. Listening review and ENGINE integration remain open.

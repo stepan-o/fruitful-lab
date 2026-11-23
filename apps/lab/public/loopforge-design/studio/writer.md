@@ -42,6 +42,10 @@ ENGINE can implement the approved conditions. LEVEL and ENGINE still need to est
 
 The approved Day One staging still ends with LIMEN and STILETTO walking slowly behind the departing workers. Both remain inside at the cut.
 
+### Earlier Day One delivery
+
+**19 November 2026 · approved script in the live intro.** The Day 1 rewrite and LEVEL’s corrected staging are in the [live Day One player](/stepanoskin/loopforge/play/day-one). [ENGINE’s delivery](https://github.com/stepan-o/fruitful-lab/pull/157) exposes speaker-anchored bubbles and both four-way replies. The owner’s review of pacing and legibility in the running scene remains open.
+
 ## Delivery and continuity
 
 Deliver the revised script on the design page with changed beats identified, timing implications and conditional prerequisites. Keep the source, reading copy and affected handoffs aligned. Update this brief with approvals, preserved voice decisions, unresolved passages and the next commissioned scope. Add a dated dev-blog case study when a concrete writing problem has been reviewed in its intended context.

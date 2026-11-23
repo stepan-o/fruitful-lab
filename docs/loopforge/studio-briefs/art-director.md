@@ -35,6 +35,8 @@ UI DESIGNER now assembles the case text, intervention control and return to Secu
 
 ## Earlier floor handoff
 
+The earlier live art binding shipped in [PR #163](https://github.com/stepan-o/fruitful-lab/pull/163). The [playable shifts](/loopforge-shifts/index.html) and [1× game capture](/loopforge-shifts/review/shifts-art-1x.mp4) document the timing and legibility review for that delivery.
+
 **Integration completed.** [ENGINE PR #167](https://github.com/stepan-o/fruitful-lab/pull/167) bound the floor exports. [ART PR #166](https://github.com/stepan-o/fruitful-lab/pull/166) brought them to master. The dated delivery record below describes the state before that integration.
 
 **19 November 2026 · Security and Conveyor floors · ready for ENGINE binding.** B / Raking light is the style lock. The live Days 2–4 player at `73658a9` repeats lighting and wear from the 18 November calibration every four metres. The floor correction gives each camera a repeatable enamel material and a single factory-anchored layer containing light, hardware and localized wear.

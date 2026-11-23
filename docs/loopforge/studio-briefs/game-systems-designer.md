@@ -59,6 +59,14 @@ ENGINE should apply the approved specification at `1eb05b0b` to that writing rev
 
 The specification records the original verdict on `09c63edf` and the nine existing kernel replays at `73658a93`. The new acceptance covers the corrected writing. ENGINE’s integrated replays and the owner’s normal-speed review of the playable result are next.
 
+### Earlier Days 2–4 study
+
+This entry records the 19 November review at `73658a93`. The later acceptance and Conveyor specification are recorded above.
+
+**19 November 2026 · study drafted locally.** The SYSTEMS checkout on `codex/days-2-4-systems` contains the interview record, proposed build plan and specialist prompts at `16a54fc`. The proposed design-board tab after Supervisor × room awaits owner approval of the plan. No published tab or associated PR was found. Its proposed accident dispute, Theatre expansion and weekly settlement remain design material.
+
+[ENGINE’s playable slice](/loopforge-shifts/index.html) implements two morning bids, one shift intervention, the shared Security hold, hearing and interrupted speech, staffed production, custody and individual responses to conflicting orders. The [matched outcomes](/loopforge-shifts/ENGINE-HANDOFF.md) and [dated evidence](/loopforge-shifts/review/2026-11-19.md) are the implementation baseline. SYSTEMS owns the study and the mapping from remaining proposals to the agreed rules. The owner decides whether to commission publication or any extension after play review.
+
 ## Delivery and continuity
 
 Publish the accepted visual systems study and implementable rule/state/event contracts. Any interactive demonstration must compute what it claims and disclose its limits; a design harness is not a shipped live-game feature. Give ENGINE representative scenarios and acceptance checks. Update this brief with decisions, the new tab link, implemented versus proposed status, dependencies and remaining questions. Publish a dated case study after review.

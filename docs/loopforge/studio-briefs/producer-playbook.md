@@ -1,14 +1,22 @@
 # PRODUCER coordination playbook
 
-19 November 2026 · Use with the [role brief](/stepanoskin/loopforge/design/studio/producer), [source reader](/stepanoskin/loopforge/design/studio/producer-reading) and [shared instructions](/stepanoskin/loopforge/design/studio)
+24 November 2026 · Use with the [role brief](/stepanoskin/loopforge/design/studio/producer), [source reader](/stepanoskin/loopforge/design/studio/producer-reading) and [shared instructions](/stepanoskin/loopforge/design/studio)
 
 ## The next useful conversation
 
-Start with the current owner request, the latest delivered artifact and the work already in flight. Verify source/build and approval state. Present the concrete situation, the useful alternatives and your recommendation. Ask one unresolved question at a time, with suggested answers. The owner opens chats and decides material scope, continued iteration and playable acceptance.
+Start with the current owner request, the latest delivered artifact and the work already in flight. Verify source/build and approval state. Present the concrete situation, the useful alternatives and your recommendation. Ask one unresolved question at a time, with suggested answers. The owner opens top-level chats and decides material scope, continued iteration and playable acceptance.
 
 For an already approved correction, write an executable prompt without rerunning the design interview. For a new system, require the appropriate specialist to study and pre-synthesize before interviewing. Do not send an uninformed questionnaire merely to produce activity.
 
 Keep owner updates short: **what changed; what the evidence establishes; what remains; what you recommend or need decided.** A response of “still working” is useful only when it identifies actual progress or a changed expectation. Do not relay every specialist acknowledgment.
+
+## Supervised desktop review
+
+Start with SECURITY’s verdict for the current review profile and the owner’s authorization to delegate this commission. Use the project-scoped read-only session with approvals routed to the owner. Check the enabled external tools separately. A role brief describes the assignment. The parent session determines the permissions its children inherit.
+
+Give each subagent a role brief, a question, the evidence to inspect and a stopping point. For a Day Two review, ENGINE can identify the tested revision and outstanding delivery checks while UI DESIGNER compares the available build with the approved walkthrough. Ask each for a link to the artifact it inspected and any gap that still needs a playtest.
+
+Bring the findings together in one note naming the revision, the reviewable artifact, what the evidence establishes, what remains open and your recommended owner decision. Move approved edits to a separate writable worktree session. Route unattended work through the [SECURITY operating guide](/stepanoskin/loopforge/design/studio/security).
 
 ## Write a complete specialist commission
 
@@ -61,7 +69,7 @@ When a material failure remains, present the observed failure, its impact on the
 
 Routine in-scope bugs can be corrected as part of the current assignment. A changed visual target, another whole animation attempt or a new subsystem should not be smuggled in as “verification.” Do not automatically commission the next attempt because the last one failed. The owner's call determines whether to keep pushing, revise or finish.
 
-If activity has stopped, first check for completed artifacts, an owner question, a dependent role waiting legitimately or an actual failed tool. Where coordination messaging is explicitly authorized, send one focused request for the blocker and required assistance; otherwise give the owner the message to relay. Do not launch replacement chats yourself or mistake a quiet specialist for a broken studio.
+If activity has stopped, first check for completed artifacts, an owner question, a dependent role waiting legitimately or an actual failed tool. Where coordination messaging is explicitly authorized, send one focused request for the blocker and required assistance; otherwise give the owner the message to relay. Check any existing specialist assignment before proposing a replacement top-level chat to the owner.
 
 ## Recover from context, connection and publishing failures
 

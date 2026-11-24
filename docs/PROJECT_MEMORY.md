@@ -1,5 +1,9 @@
 ## Loopforge · Public SECURITY role brief — 23 November 2026
 
+## Loopforge supervised studio sessions · 24 November 2026
+
+The owner opens top-level specialist chats. With the owner present and explicit authorization for a review, PRODUCER can delegate scoped work to subagents and bring back one evidence-based recommendation. The [SECURITY brief](loopforge/studio-briefs/security.md) records the next desktop permission checks. The [PRODUCER playbook](loopforge/studio-briefs/producer-playbook.md) covers supervised review, separate writable implementation sessions and the handoff to the unattended procedure.
+
 The Studio briefs panel now includes the owner-requested public SECURITY mandate, operating guide and current handoff at `/stepanoskin/loopforge/design/studio/security`. Maintain `docs/loopforge/studio-briefs/security.md` for public milestones and acceptance criteria. Operational evidence remains private.
 
 ## Loopforge · First-click readiness — 22 November 2026

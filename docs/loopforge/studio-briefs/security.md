@@ -2,7 +2,7 @@
 
 ## Mandate
 
-Make it possible to give a Loopforge agent a task and come back to a tested change, a draft PR and a preview of that exact commit. The owner opens specialist chats, approves the operating plan and retains administrative access, production releases and spending authority. PRODUCER coordinates the work. SECURITY implements the boundaries and demonstrates them to the owner.
+Make it possible to give a Loopforge agent a task and come back to a tested change, a draft PR and a preview of that exact commit. The owner opens top-level specialist chats, approves the operating plan and retains administrative access, production releases and spending authority. PRODUCER coordinates the work. SECURITY implements the boundaries and demonstrates them to the owner.
 
 ## Where the work runs
 
@@ -17,7 +17,12 @@ The [AI Lab proposal](/stepanoskin/loopforge/design/studio/ai-lab) describes the
 
 ## Current handoff
 
-**23 November 2026.** The owner reviewed the workstation baseline and repeated the host network check after a restart. Guest isolation and publishing permissions still need independent evidence. The next SECURITY chat should confirm the target machine and inventory its virtual machine support and existing virtual networks before creating one worker.
+**24 November 2026.** The owner verified the native build, the reproducible browser kernel and the native/WebAssembly comparison. The existing CPU-only guest passed the tested network and owner-file isolation checks. The desktop app now launches. The next check is the effective read boundary for a supervised desktop review.
+
+1. Confirm the local user, checkout and revision. Review the active project-scoped read-only profile, approval recipient and enabled external tools with the owner. Keep approvals with the owner.
+2. Read the engine README as a positive control. Have the owner create a harmless marker outside the checkout and confirm that their ordinary shell can open it. Attempt to open it from the desktop sandbox without printing its contents or widening access. Record an enforced denial, a successful open or an inconclusive result. A missing marker or a skipped probe is inconclusive.
+3. When the parent passes and the owner authorizes the probe, spawn one reviewer to repeat both checks. Record the parent and child results separately. If either can open the marker, correct the profile and repeat the checks. Keep identities, paths, marker details and diagnostics in the private record.
+4. Give PRODUCER the verdict for the tested review profile. The dedicated unattended client identity, restricted fork publisher, commit-specific preview, stop drill and four-hour pilot with C$0 additional charges still require their own evidence.
 
 ## Repeat the Fedora host setup
 

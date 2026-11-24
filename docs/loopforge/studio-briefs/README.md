@@ -6,7 +6,7 @@ Public entry: `/stepanoskin/loopforge/design#studio`. General instructions: `/st
 
 ## Maintain
 
-Edit `general.md` for shared workflow, the named role's Markdown for its mandate/references/current handoff, and `roles.json` for card metadata and the last-maintained date. PRODUCER maintains the brief set with specialist contributions and craft review; coordinate with active editors. The owner opens chats, makes iteration/ship decisions and validates gameplay. `dev-blog.md` is the current journal index and links the frozen prior publications. Applied book concepts require verified chapter/page references plus the concrete application; the local PDF is never copied into public output.
+Edit `general.md` for shared workflow, the named role's Markdown for its mandate/references/current handoff, and `roles.json` for card metadata and the last-maintained date. PRODUCER maintains the brief set with specialist contributions and craft review; coordinate with active editors. The owner opens top-level chats, authorizes supervised delegation, decides whether to iterate or ship, and validates gameplay. `dev-blog.md` is the current journal index and links the frozen prior publications. Applied book concepts require verified chapter/page references plus the concrete application; the local PDF is never copied into public output.
 
 PRODUCER's onboarding package is `producer.md`, `producer-reading.md` and `producer-playbook.md`, published at the corresponding studio routes. The latter two are documentation companions, registered in `COMPANIONS` in the generator and the exact rewrite allowlist. They are not extra roles and do not receive launch prompts. The three pages share package navigation and downloadable source copies.
 

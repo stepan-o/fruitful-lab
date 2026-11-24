@@ -39,7 +39,7 @@ def kickoff(role):
     if role['id'] == 'security':
         return ("You are SECURITY for Loopforge. Read the shared instructions at https://www.fruitfulab.net/stepanoskin/loopforge/design/studio and your public role brief at https://www.fruitfulab.net/stepanoskin/loopforge/design/studio/security. "
                 "Confirm which machine your tools control. Resume from the current handoff and the owner's private evidence. Ask one question at a time when a decision is needed and present changes for owner approval before implementation. "
-                "Verify one bounded job, its publishing permissions and its stop procedure. Publish standard security practices or facts trivially observable to an unauthenticated outsider. Keep access-granting material and private operational evidence in the private record. Maintain the public milestone and next check with PRODUCER. The owner controls production merges, releases and spending."
+                "Start with the next unverified check in the current handoff. For supervised desktop review, verify the project read and outside-marker denial in the parent and one owner-authorized reviewer. The unattended job, publisher and stop drill need separate evidence. Publish standard security practices or facts trivially observable to an unauthenticated outsider. Keep access-granting material and private operational evidence in the private record. Maintain the public milestone and next check with PRODUCER. The owner controls production merges, releases and spending."
                 "\n\nMy task for this chat: [replace this line with the specific outcome and acceptance criteria].")
     architect = ("Begin with an interview, one question at a time with suggested answers and a recommendation. "
                  "Ask what the owner most wants to improve over current Codex work. "
@@ -51,8 +51,8 @@ def kickoff(role):
                  "ENGINE owns runtime implementation. Use SECURITY's public role brief for acceptance criteria. Keep the operational handoff private. "
                  "Present the architecture for owner approval and private security review before installation or integration. ") if role['id'] == 'ai-architect' else ''
     producer = ("Read the source reader at https://www.fruitfulab.net" + BASE + "/producer-reading and coordination playbook at https://www.fruitfulab.net" + BASE + "/producer-playbook. "
-                "The owner opens specialist chats; you write their task prompts with role-brief links and maintain the briefs with craft contributions. "
-                "Check deliveries and advise on whether to continue, iterate or ship; the owner makes those decisions and validates the playable experience. Do not launch chats or restart the former autonomous studio. ") if role['id'] == 'producer' else ''
+                "The owner opens top-level specialist chats. With the owner present and explicit delegation for this commission, give each subagent its role brief, deliverable and stopping point. "
+                "Use the review profile verified by SECURITY, collect the evidence and return one recommendation. Use a separate writable worktree session for approved implementation. The owner decides whether to continue, iterate or ship. Unattended jobs follow SECURITY’s separate procedure. ") if role['id'] == 'producer' else ''
     ui = ("Read the UI source reader at https://www.fruitfulab.net" + BASE + "/ui-reading and first assignment at https://www.fruitfulab.net" + BASE + "/ui-first-assignment. Begin with an annotated audit and static visual studies; ENGINE implements the approved Day 2 design in the live campaign. Carry forward the owner's settled direction and design desktop and phone equally. ") if role['id'] == 'ui-designer' else ''
     music = ("Read the Day Two listening desk at https://www.fruitfulab.net/loopforge-design/music-audition/day-two/index.html "
              "and its ENGINE cue map. Take B, Main menu 06 and Options 02 are approved. The owner reassigned original Conveyor 01 to Security. "
@@ -95,7 +95,7 @@ def build_studio(docs: Path, out: Path):
             ('Plan', 'Approve a concrete scope.'), ('Build', 'Make it work and verify.'),
             ('Review', 'The owner tries the result.')]) + '</ol>'
     overview = f'''<div class="studio-surface"><header class="studio-intro"><span class="studio-label">Owner-directed studio · maintained briefs</span>
-<h2>A shared workshop.<br>A clear next task.</h2><p>We build Loopforge in dedicated Codex chats. The owner opens the chats and reviews the game. PRODUCER prepares their prompts, maintains the briefs and coordinates delivery with the specialists.</p>
+<h2>A shared workshop.<br>A clear next task.</h2><p>The owner commissions each studio session and reviews the game. During a supervised session, PRODUCER can delegate an approved review to studio subagents and bring their findings back to the owner.</p>
 <div class="studio-actions"><a class="studio-primary" href="{BASE}">Read the shared instructions</a><a href="{BASE}/dev-blog">Open the studio journal</a></div></header>
 {workflow}<div class="studio-section-title"><h3>Choose a specialist</h3><p>Read the brief, copy its starting prompt, then add the task.</p></div>{cards}
 <div class="studio-note"><strong>The page is the handoff.</strong><p>PRODUCER keeps the briefs coherent with specialist contributions, current design references and review evidence. New chats continue from those artifacts. The owner decides whether to iterate or ship.</p></div>

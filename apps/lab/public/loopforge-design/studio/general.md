@@ -1,8 +1,8 @@
 # How we build Loopforge
 
-Maintained instructions · 22 November 2026 · Owner-directed Codex studio
+Maintained instructions · 24 November 2026 · Owner-directed Codex studio
 
-The owner opens and commissions dedicated specialist chats in Codex, sets priorities, resolves creative decisions and validates the playable result. [PRODUCER](/stepanoskin/loopforge/design/studio/producer) writes task prompts with the standard and role-specific instructions, maintains the briefs with specialist contributions, coordinates production and checks deliveries. PRODUCER recommends whether to continue, iterate or ship; the owner makes that call. The design pages are our shared knowledge base and handoffs. A chat is a working session; its durable result belongs in the project.
+The owner opens and commissions top-level specialist chats in Codex, sets priorities, resolves creative decisions and validates the playable result. [PRODUCER](/stepanoskin/loopforge/design/studio/producer) writes task prompts with the standard and role-specific instructions, maintains the briefs with specialist contributions, coordinates production and checks deliveries. PRODUCER recommends whether to continue, iterate or ship; the owner makes that call. The design pages are our shared knowledge base and handoffs. A chat is a working session; its durable result belongs in the project.
 
 The previous autonomous studio is closed. Its publications and source history remain useful evidence, but its Producer scheduling, Munder processes, token tranches and automatic handoff loops do not govern this workflow. No agent should restart that studio.
 
@@ -66,7 +66,7 @@ Keep the [first and second studio publications](/loopforge-dev-blog/index.html) 
 
 ## Deliver without creating another coordination loop
 
-The owner opens chats and decides assignments and cross-role priorities, supported by PRODUCER's prompts and recommendations. Specialists complete their own approved scope, maintain its evidence and report concrete blockers. PRODUCER checks deliveries but does not substitute its judgment for player acceptance or independently commission another iteration. No role launches other chats in this workflow. Do not restart autonomous workers, paid generation or studio processes without applicable authorization. ENGINE owns shared simulation/runtime integration; page and asset specialists own their assigned source. Coordinate shared-file edits before overlapping work.
+The owner sets assignments and cross-role priorities. With explicit authorization in a supervised PRODUCER session, PRODUCER may spawn scoped subagents for the current commission. The owner opens any new top-level specialist chat. Specialists complete their own approved scope, maintain its evidence and report concrete blockers. PRODUCER checks deliveries but does not substitute its judgment for player acceptance or independently commission another iteration. Subagents inherit the parent session’s permissions. Use the reviewed read-only profile for delegated review and a separate writable worktree session for approved implementation. Unattended jobs follow the [SECURITY operating guide](/stepanoskin/loopforge/design/studio/security). ENGINE owns shared simulation/runtime integration; page and asset specialists own their assigned source. Coordinate shared-file edits before overlapping work.
 
 Use existing repository delivery rules: explicit file staging, a scoped PR, appropriate checks and a verified preview. Do not merge without authorization. No new provider, model service, account setting or spending commitment is implied by a role brief.
 

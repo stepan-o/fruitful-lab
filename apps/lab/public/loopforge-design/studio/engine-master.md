@@ -30,7 +30,7 @@ ENGINE MASTER owns the Loopforge kernel and guards [KVP-0001](https://github.com
 - [Approved script](/stepanoskin/loopforge/design#day-one-intro)
 - [Approved layout and rehearsal](/stepanoskin/loopforge/design#floor-layout)
 - [Art plan and calibration](/stepanoskin/loopforge/design#pixel-art-plan)
-- [Live Days 2–4 prototype](/loopforge-shifts/index.html)
+- [Historical TypeScript Days 2–4 prototype](/loopforge-shifts/index.html)
 - [Days 2–4 engine handoff](/loopforge-shifts/ENGINE-HANDOFF.md)
 - [Days 2–4 art gallery](/stepanoskin/loopforge/design#days-2-4-art)
 - [Days 2–4 art-to-engine handoff](https://github.com/stepan-o/fruitful-lab/blob/master/docs/loopforge/production/days-2-4-art/ENGINE.md)
@@ -50,6 +50,16 @@ ENGINE MASTER owns the Loopforge kernel and guards [KVP-0001](https://github.com
 Use *Designing Games* when an engineering choice affects agency, feedback, learning or pacing. Cite its actual application; technical performance claims also require measurements, not a book citation.
 
 ## Current handoff
+
+### 23 November 2026 · The Operator’s Day 2
+
+ENGINE owns the [live Day 2 campaign](/stepanoskin/loopforge/play). UI DESIGNER owns the [approved walkthrough](/loopforge-design/day-two-ui/index.html), [59 desktop and phone pairs](/loopforge-design/day-two-ui/board.html) and editable overlays. Use the [art map](/loopforge-design/day-two-ui/art.json) and [E1 landscape and portrait placement guides](https://github.com/stepan-o/fruitful-lab/blob/master/docs/loopforge/production/missing-id-bob/held-line-r1/UI-DESIGNER.md). The [capture notes](https://github.com/stepan-o/fruitful-lab/tree/master/docs/loopforge/game-design/day-two-ui) describe a historical TypeScript recording. Its example totals belong to those runs.
+
+Play Day 1 or use its shortcut. Both desk monitors paint the same verified departure frame. Expanded cameras use the floor transform for people, dialogue, the case marker and station controls. Opening the E1 painting or returning to Security sends no gameplay command. Rust owns the deadline, admission, custody, staffing, clearance and rack receipts. Public machine and crew labels distinguish a queued reassignment, travel to a post, a clearance call and an inspection.
+
+Review the pass and custody outcomes, then post STILETTO at Security and clear a loaded machine on LIMEN’s line. Restore the tab and rewind across a decision. The [integration PR and browser evidence](https://github.com/stepan-o/fruitful-lab/pull/199) track the shipped build. The owner reviews the integrated experience and authorizes merging.
+
+### Earlier ENGINE handoffs
 
 **22 November 2026 · Menu hydration correction.** The browser failure waiting for “Skip to Day 2” was caused by a lost first click on the server-rendered “Enter factory” button before React attached its handler. The menu and playback controls now remain disabled until the client mounts; keyboard focus is restored after readiness. The browser check verifies the no-JavaScript state and then uses the ordinary controls without sleeps, retries or injected game state. The Rust crate, Wasm, approved layout, scene timing and mechanics are unchanged. CI also binds its development server to the same `127.0.0.1` host used by the browser, keeping Next.js origin checks intact. See [PR #196](https://github.com/stepan-o/fruitful-lab/pull/196) for local and CI results; owner playable acceptance remains separate.
 

@@ -39,7 +39,7 @@ def kickoff(role):
     if role['id'] == 'security':
         return ("You are SECURITY for Loopforge. Read the shared instructions at https://www.fruitfulab.net/stepanoskin/loopforge/design/studio and your public role brief at https://www.fruitfulab.net/stepanoskin/loopforge/design/studio/security. "
                 "Confirm which machine your tools control. Resume from the current handoff and the owner's private evidence. Ask one question at a time when a decision is needed and present changes for owner approval before implementation. "
-                "Start with the next unverified check in the current handoff. For supervised desktop review, verify the project read and outside-marker denial in the parent and one owner-authorized reviewer. The unattended job, publisher and stop drill need separate evidence. Publish standard security practices or facts trivially observable to an unauthenticated outsider. Keep access-granting material and private operational evidence in the private record. Maintain the public milestone and next check with PRODUCER. The owner controls production merges, releases and spending."
+                "Start with the next unverified check in the current handoff. Carry forward the verified desktop and reviewer checks, guest-built local test and GitHub App authentication. Inspect the next outstanding boundary for the actual commission. Check scoped branch delivery, the remote head, the App-created draft and the commit-matched hosted preview before reporting publication as verified. Keep guest startup and unattended tests separately evidenced. Publish standard security practices or facts trivially observable to an unauthenticated outsider. Keep access-granting material and private operational evidence in the private record. Maintain the public milestone and next check with PRODUCER. The owner controls production merges, releases and spending."
                 "\n\nMy task for this chat: [replace this line with the specific outcome and acceptance criteria].")
     architect = ("Begin with an interview, one question at a time with suggested answers and a recommendation. "
                  "Ask what the owner most wants to improve over current Codex work. "
@@ -52,7 +52,7 @@ def kickoff(role):
                  "Present the architecture for owner approval and private security review before installation or integration. ") if role['id'] == 'ai-architect' else ''
     producer = ("Read the source reader at https://www.fruitfulab.net" + BASE + "/producer-reading and coordination playbook at https://www.fruitfulab.net" + BASE + "/producer-playbook. "
                 "The owner opens top-level specialist chats. With the owner present and explicit delegation for this commission, give each subagent its role brief, deliverable and stopping point. "
-                "Use the review profile verified by SECURITY, collect the evidence and return one recommendation. Use a separate writable worktree session for approved implementation. The owner decides whether to continue, iterate or ship. Unattended jobs follow SECURITY’s separate procedure. ") if role['id'] == 'producer' else ''
+                "Read the current private worker handoff, confirm current master and commission the builder in a dedicated worktree inside the isolated CPU-only VM. Review its diff, checks and running guest preview. Give the owner the stable local link and revision. Send revisions to the same worker. Once the owner approves the exact commit, use scoped branch delivery and the Loopforge PR Publisher to open a draft. Match the PR head to a ready Vercel deployment and try the changed content at its unique URL. Return both links, the SHA and deployment evidence. The owner decides whether to merge. Unattended jobs follow SECURITY’s separate procedure. ") if role['id'] == 'producer' else ''
     ui = ("Read the UI source reader at https://www.fruitfulab.net" + BASE + "/ui-reading and first assignment at https://www.fruitfulab.net" + BASE + "/ui-first-assignment. Begin with an annotated audit and static visual studies; ENGINE implements the approved Day 2 design in the live campaign. Carry forward the owner's settled direction and design desktop and phone equally. ") if role['id'] == 'ui-designer' else ''
     music = ("Read the Day Two listening desk at https://www.fruitfulab.net/loopforge-design/music-audition/day-two/index.html "
              "and its ENGINE cue map. Take B, Main menu 06 and Options 02 are approved. The owner reassigned original Conveyor 01 to Security. "
@@ -95,7 +95,7 @@ def build_studio(docs: Path, out: Path):
             ('Plan', 'Approve a concrete scope.'), ('Build', 'Make it work and verify.'),
             ('Review', 'The owner tries the result.')]) + '</ol>'
     overview = f'''<div class="studio-surface"><header class="studio-intro"><span class="studio-label">Owner-directed studio · maintained briefs</span>
-<h2>A shared workshop.<br>A clear next task.</h2><p>The owner commissions each studio session and reviews the game. During a supervised session, PRODUCER can delegate an approved review to studio subagents and bring their findings back to the owner.</p>
+<h2>A shared workshop.<br>A clear next task.</h2><p>The owner directs the work and playtests the result. PRODUCER commissions the guest build, reviews the local draft with the owner and verifies the approved commit when it reaches a draft PR and hosted preview.</p>
 <div class="studio-actions"><a class="studio-primary" href="{BASE}">Read the shared instructions</a><a href="{BASE}/dev-blog">Open the studio journal</a></div></header>
 {workflow}<div class="studio-section-title"><h3>Choose a specialist</h3><p>Read the brief, copy its starting prompt, then add the task.</p></div>{cards}
 <div class="studio-note"><strong>The page is the handoff.</strong><p>PRODUCER keeps the briefs coherent with specialist contributions, current design references and review evidence. New chats continue from those artifacts. The owner decides whether to iterate or ship.</p></div>
@@ -103,6 +103,18 @@ def build_studio(docs: Path, out: Path):
 
     def page(slug, title, content, toc, extra=''):
         page_style = stylesheet
+        diagram_headings = {'producer': 'from-commission-to-merge', 'security': 'publishing-permissions'}
+        if slug in diagram_headings:
+            heading = diagram_headings[slug]
+            pattern = rf'(<h2 id="{heading}">[^<]+</h2>)<p>(.*?)</p>(<(?:ol|ul)>.*?</(?:ol|ul)>)'
+            diagram = rf'\1<figure class="publishing-diagram" aria-labelledby="{heading}"><figcaption>\2</figcaption>\3</figure>'
+            content, count = re.subn(pattern, diagram, content, count=1, flags=re.S)
+            if count != 1:
+                raise ValueError(f'Expected a caption and list under {heading}')
+            css = (Path(__file__).parent / 'publishing-diagrams.css').read_bytes()
+            (target / 'publishing-diagrams.css').write_bytes(css)
+            digest = hashlib.sha256(css).hexdigest()[:12]
+            page_style += f'<link rel="stylesheet" href="{PUBLIC}/publishing-diagrams.css?v={digest}">'
         if slug == 'day-2-conveyor-rules':
             source_css = (Path(__file__).parent / 'conveyor-ratings.css').read_bytes()
             digest = hashlib.sha256(source_css).hexdigest()[:12]

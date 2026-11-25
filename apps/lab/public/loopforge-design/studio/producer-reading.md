@@ -1,12 +1,22 @@
 # PRODUCER source reader
 
-19 November 2026 · Companion to the [PRODUCER brief](/stepanoskin/loopforge/design/studio/producer) and [coordination playbook](/stepanoskin/loopforge/design/studio/producer-playbook)
+25 November 2026 · Companion to the [PRODUCER brief](/stepanoskin/loopforge/design/studio/producer) and [coordination playbook](/stepanoskin/loopforge/design/studio/producer-playbook)
 
 ## Read for a decision
 
 Onboarding should produce understanding of this game and the next production problem. Read the current sources below before the interview. Expand into the archives where they answer a concrete question; do not ingest every historical file into the chat. Produce an informed pre-synthesis, not a bibliography in place of judgment.
 
 Current owner instructions define intent. Current code and observed behavior establish implementation. Approved design records explain agreed decisions. Dated studies and archives offer hypotheses, experience and reusable material. If these disagree, name the contradiction and its consequence; do not quietly promote the oldest or most detailed document into authority.
+
+## Read the evidence for a delivery
+
+Begin with the owner’s commission, current master and the [local review procedure](/stepanoskin/loopforge/design/studio/producer-playbook#guest-build-and-owner-review). The [SECURITY handoff](/stepanoskin/loopforge/design/studio/security#current-handoff) records which parts of that procedure have run.
+
+- **A local draft** has a base and worker head, a diff, checks and a guest URL. Compare the actual running content with the worker's revision. Record any uncommitted edits.
+- **An approval** identifies the exact committed version the owner reviewed. A changed candidate needs a fresh owner decision.
+- **A published candidate** needs the remote branch SHA, draft PR head, ready deployment record and a working deployment-specific URL. Match all three SHAs to the approval and inspect the changed page there.
+
+The owner accepted a one-file local test after the guest response matched the Git contents. This establishes a local review path. The first real documentation PR and its hosted preview remain open evidence.
 
 ## Current vision and creative foundations
 
@@ -24,7 +34,7 @@ The [older Producer console direction](https://github.com/stepan-o/fruitful-lab/
 
 ## Designing Games: verified passages and applications
 
-Tynan Sylvester, *Designing Games: A Guide to Engineering Experiences*, O'Reilly, 2013. The owner's reference is `~/Documents/Codex/references/Designing Games - Tynan Sylvester 2013.pdf`. Locations below were checked in that 415-page PDF. **PDF pages are one-based page positions**, not zero-based indexes; printed pages are eight lower at these locations. The book remains local. This reader supplies short excerpts and original applications, not a copy of its chapters.
+Tynan Sylvester, *Designing Games: A Guide to Engineering Experiences*, O'Reilly, 2013. The owner keeps the reference PDF in the private studio library. Locations below were checked in that 415-page PDF. **PDF pages are one-based page positions**, not zero-based indexes; printed pages are eight lower at these locations. The book remains local. This reader supplies short excerpts and original applications, not a copy of its chapters.
 
 ### Mechanics produce the experience
 

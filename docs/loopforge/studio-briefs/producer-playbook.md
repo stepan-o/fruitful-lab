@@ -1,6 +1,6 @@
 # PRODUCER coordination playbook
 
-24 November 2026 · Use with the [role brief](/stepanoskin/loopforge/design/studio/producer), [source reader](/stepanoskin/loopforge/design/studio/producer-reading) and [shared instructions](/stepanoskin/loopforge/design/studio)
+25 November 2026 · Use with the [role brief](/stepanoskin/loopforge/design/studio/producer), [source reader](/stepanoskin/loopforge/design/studio/producer-reading) and [shared instructions](/stepanoskin/loopforge/design/studio)
 
 ## The next useful conversation
 
@@ -16,7 +16,17 @@ Start with SECURITY’s verdict for the current review profile and the owner’s
 
 Give each subagent a role brief, a question, the evidence to inspect and a stopping point. For a Day Two review, ENGINE can identify the tested revision and outstanding delivery checks while UI DESIGNER compares the available build with the approved walkthrough. Ask each for a link to the artifact it inspected and any gap that still needs a playtest.
 
-Bring the findings together in one note naming the revision, the reviewable artifact, what the evidence establishes, what remains open and your recommended owner decision. Move approved edits to a separate writable worktree session. Route unattended work through the [SECURITY operating guide](/stepanoskin/loopforge/design/studio/security).
+Bring the findings together in one note naming the revision, the reviewable artifact, what the evidence establishes, what remains open and your recommended owner decision. Commission implementation in the isolated worker VM using the guest procedure below. Route unattended work through the [SECURITY operating guide](/stepanoskin/loopforge/design/studio/security).
+
+## Guest build and owner review
+
+1. **Commission the worker.** Confirm the current remote master and name the allowed paths. Use the approved private dispatch route into the isolated CPU-only guest. Ask the worker to verify its identity, clean worktree, branch and base there, then build on a dedicated branch. Leave the owner's checkout and other producers' worktrees available to them.
+2. **Collect the local handoff.** Ask for base and head SHAs, changed paths, diff, checks, working-tree status and a stable local URL served by the guest. Check that the URL opens from the owner's browser. For a generated document, compare the authored copy with the download and open the rendered page at desktop and phone widths.
+3. **Run the review loop.** Read the changed lines and exercise the relevant behavior yourself. Give the owner the link and revision. Identify any uncommitted edits visible there. Translate owner feedback into a specific change for the worker, then verify the result on the same link. Match the committed candidate to the version the owner actually reviewed before seeking permission to open its PR.
+4. **Publish the approved SHA.** Check current master, the base-to-head diff and any existing PR before submitting. A concurrent master change calls for an overlap and compatibility check. If integration changes the candidate, review its new diff and preview and obtain approval for its new SHA. Send the approved artifact and SHA through scoped branch delivery, confirm the remote branch head, then request a draft through the Loopforge PR Publisher.
+5. **Return the hosted evidence.** Read the PR head and locate a ready Vercel preview for that exact Git SHA. Visit the deployment-specific URL and open the changed content. Return the draft PR, full head SHA, preview URL and deployment record to the owner. If the head moves, repeat the check. Keep the PR open until the owner decides.
+
+If the submit action is unavailable for the proposed paths, keep the local draft running. Record the missing service operation and the reviewed revision in the private handoff. The owner can keep reviewing while SECURITY and the service maintainer resolve publication.
 
 ## Write a complete specialist commission
 
@@ -28,7 +38,7 @@ Each prompt should contain the following, in enough detail to start without read
 4. **Scope and ownership.** Name allowed source areas, existing work to preserve, the responsible integrator and specific dependencies. Use an isolated branch/worktree where work is parallel. Do not assign the same shared file independently to two chats.
 5. **Research and workflow.** Specify relevant reference-book chapters and project documents. For new design: onboard and synthesize, interview one question at a time, then obtain approval of a concrete plan. For an approved correction: inspect, plan briefly, implement and verify.
 6. **Acceptance evidence.** Name meaningful cases, actual-game or art-proof requirements, viewport/context and the remaining owner review. Declare performance comparisons only where relevant and measurable.
-7. **Delivery and continuity.** Request the artifact, appropriate checks, scoped PR and working preview, source-owned updates, known gaps and a compact checkpoint. No merge without owner authorization. Do not regenerate saved art or create another parallel system unless the task requires it.
+7. **Delivery and continuity.** Request the artifact, changed paths, relevant checks, guest preview and revision, source-owned updates, known gaps and a compact checkpoint. PRODUCER handles submission after owner review. No merge without owner authorization. Do not regenerate saved art or create another parallel system unless the task requires it.
 
 Use the role page's copyable starting prompt as the common introduction, then replace its task placeholder with this commission. Links alone are insufficient when an important invariant or owner correction would otherwise be easy to miss. Avoid copying full generated HTML, entire books or historical conversations into the prompt.
 

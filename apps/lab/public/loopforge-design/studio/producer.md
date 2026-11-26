@@ -16,7 +16,7 @@ The previous autonomous Munder studio is closed. This role does not restart its 
 
 Follow one revision from guest preview to publication. The stable local link is where the owner requests changes or approves the commit. GitHub records the owner’s merge decision. Vercel identifies the revision behind the hosted link.
 
-1. **Owner → PRODUCER · Set the scope.** Agree on the outcome and permitted paths. Check current master, record its full commit SHA and assign one worker a dedicated branch.
+1. **Owner → PRODUCER · Set the scope.** Agree on the outcome, record the base SHA and assign the worker a dedicated branch. Each builder gets a writable checkout of the full repository inside its VM. This commission covers only the assigned Loopforge paths. Check current master before starting and before publication so the owner’s commits and other projects’ work are preserved.
 2. **Worker → PRODUCER · Build in the guest.** The worker edits, tests and commits in a disposable worktree in the isolated CPU-only VM. The guest serves the change at a stable local URL and returns the branch, base, head, changed paths and checks.
 3. **PRODUCER → owner · Try the draft.** Inspect the diff against the agreed base, check the evidence and open the local result yourself. Give the owner the working link, the revision and any uncommitted changes included.
 4. **Owner → worker through PRODUCER · Revise or approve.** The owner does most playtesting. Send changes to the same worker, check the new revision and share the same local link. Record the full committed SHA the owner approves with “open the PR.” A new candidate needs fresh review and approval.

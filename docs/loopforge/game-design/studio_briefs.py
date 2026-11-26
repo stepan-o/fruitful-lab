@@ -69,7 +69,9 @@ def kickoff(role):
             "Read the applicable repository instructions. Preserve other specialists' work in an isolated branch/worktree. "
             "Follow Onboard (study and pre-synthesize) → Interview (one question at a time, with suggested answers) → Plan → Build → owner Review for new design; carry out already approved bounded corrections without reopening settled decisions. "
             "Read relevant parts of Tynan Sylvester's Designing Games and cite verified chapter/pages for every concept you apply. "
-            "Maintain your role brief, current design handoff and dated dev-blog evidence as part of delivery. Do not merge without owner authorization.\n\n"
+            "Maintain your role brief, current design handoff and dated dev-blog evidence as part of delivery. " +
+            ("The owner performs the merge. PRODUCER opens the draft PR and reports its current state and verified preview."
+             if role['id'] == 'producer' else "Do not merge without owner authorization.") + "\n\n"
             "My task for this chat: [replace this line with the specific outcome and acceptance criteria].")
 
 

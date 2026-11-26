@@ -27,7 +27,7 @@ function arrangement(view: MusicView): Cut | null {
     const track = tracks[room];
     return { file: track.file, range: track.loopFrames, loop: true };
   }
-  return reelCut(room === "results" ? "results" : room === "day-one" ? "day-one" : "console");
+  return reelCut(room === "results" ? "results" : (room === "day-one" || room === "first-line") ? "day-one" : "console");
 }
 type Voice = { source: AudioBufferSourceNode; gain: GainNode };
 export type PlaybackStatus = "ready" | "playing" | "muted" | "unavailable";
@@ -105,8 +105,12 @@ export class CampaignMusicPlayer {
 
     this.interrupt();
     if (moved) {
-      if (prev) this.positions.set(prev.surface, this.elapsed);
-      this.elapsed = this.positions.get(next.surface) ?? (this.restored && isLine(next.surface) ? openingLength : 0);
+      if (prev?.surface === "first-line") {
+        // Only the opening belongs to the solo reveal. Its following day bed
+        // cannot advance a two-worker arrangement before that crew arrives.
+        this.positions.set("day-one-line", Math.min(this.elapsed, openingLength));
+      } else if (prev) this.positions.set(prev.surface, this.elapsed);
+      this.elapsed = this.positions.get(next.surface) ?? (this.restored && (isLine(next.surface) || next.surface === "first-line") ? openingLength : 0);
     }
     if (moved || !prev || !replacesBed(prev)) this.overlayElapsed = this.elapsed;
     this.restored = false;
@@ -153,7 +157,8 @@ export class CampaignMusicPlayer {
       const response = await fetch(root + file);
       if (!response.ok) throw Error("Music recording unavailable");
       const decoded = await ctx.decodeAudioData(await response.arrayBuffer());
-      if (this.context === ctx && (file === reel.file || (this.view && arrangement(this.view)?.file === file))) {
+      if (this.context === ctx && (file === reel.file || (this.view && arrangement(this.view)?.file === file) ||
+          (this.view?.surface === "first-line" && file === tracks.conveyor.file))) {
         // Keep the short-cue reel and at most one full decoded recording.
         if (file !== reel.file) for (const key of this.buffers.keys())
           if (key !== reel.file) this.buffers.delete(key);
@@ -202,10 +207,12 @@ export class CampaignMusicPlayer {
     if (!ctx || !view || !this.active || this.paused || !this.visible || ctx.state !== "running") return;
     const version = this.epoch;
     const bed = arrangement(view), pickup = cue && reelCut(cue);
+    const soloOpening = view.surface === "first-line" && !replacesBed(view) && this.elapsed < openingLength;
     void Promise.all([
       bed && this.buffer(ctx, bed.file),
       pickup && this.buffer(ctx, pickup.file),
-    ]).then(([bedBytes, cueBytes]) => {
+      soloOpening && this.buffer(ctx, tracks.conveyor.file),
+    ]).then(([bedBytes, cueBytes, openingBytes]) => {
       if (version !== this.epoch) return;
       let when = ctx.currentTime + .005;
       const overlay = replacesBed(view);
@@ -225,10 +232,10 @@ export class CampaignMusicPlayer {
       this.since = when;
       this.startedAtOffset = offset;
       this.playingOverlay = overlay;
-      if (isLine(view.surface) && bed.file === tracks.conveyor.file) {
+      if ((isLine(view.surface) && bed.file === tracks.conveyor.file) || (view.surface === "first-line" && !overlay)) {
         if (offset < openingLength) {
-          const intro = { file: bed.file, range: opening, loop: false };
-          when += this.sound(ctx, bedBytes, intro, when, offset, false);
+          const intro = { file: tracks.conveyor.file, range: opening, loop: false };
+          when += this.sound(ctx, openingBytes || bedBytes, intro, when, offset, view.surface === "first-line" && view.speech);
         }
         offset = Math.max(0, offset - openingLength);
       }

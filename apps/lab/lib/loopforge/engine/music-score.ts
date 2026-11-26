@@ -1,9 +1,10 @@
 import manifest from "../../../public/loopforge-design/music-audition/day-two/cues.json";
+import { storyRoom } from "../intro/story-camera";
 import { approachZone, type Room } from "../shifts/contract";
 import type { Frame, State } from "./wire";
 
 export type Tier = keyof typeof manifest.tracks.conveyor.layers;
-export type Surface = "menu" | "options" | "day-one" | "day-one-line" | "departure" |
+export type Surface = "menu" | "options" | "day-one" | "first-line" | "day-one-line" | "departure" |
   "console" | "briefing" | Room | "results";
 export type Cue = keyof typeof manifest.cues;
 export type MusicView = {
@@ -34,12 +35,14 @@ export function campaignMusic(frame: Frame, room: Room): MusicView {
     const at = (beat: keyof typeof beats) => ms >= beats[beat] * 1000;
     const crew = agents.filter(a => a.room === "conveyor" && a.agent_id === a.agent_id.toLowerCase()).length;
     const departed = at("End of shift");
-    const line = at("The second brain") && crew >= 2 && !departed;
+    const onLine = storyRoom(ms / 1000) === "Conveyor";
+    const reveal = onLine && at("The first brain") && !at("Two volunteers") && crew > 0;
+    const line = onLine && at("The second brain") && crew >= 2 && !departed;
     // The gate volunteers stay in Security. The final setup and staffed run
     // share operators, so use the public edited beat as well as their staging.
     const tier = crew >= 4 && at("The crew fills in") ? (at("Run it") ? "full" : "four") : "two";
     return {
-      ...neutral, surface: departed ? "departure" : line ? "day-one-line" : "day-one",
+      ...neutral, surface: departed ? "departure" : line ? "day-one-line" : reveal ? "first-line" : "day-one",
       editedMs: ms, tier,
       production: world.order || world.jammed ? "waiting" : line ? "running" : "unknown",
       speech: events.some(e => e.speaker !== "BELL" &&

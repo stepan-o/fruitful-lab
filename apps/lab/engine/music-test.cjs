@@ -15,8 +15,11 @@ const line = (n, other = {}) => frame({
 test("Day One reads staged workers, holds and forward scene crossings", () => {
   const intro = (ms, actors, extra) => campaignMusic(frame({ phase: "intro", edited_ms: ms, ...extra }, actors), "security");
   const actors = [...crew(2), { agent_id: "max", room: "security" }, { agent_id: "STILETTO", room: "conveyor" }];
+  assert.equal(intro(45000, crew(1)).surface, "first-line");
+  assert.equal(intro(80000, crew(1)).surface, "day-one");
   assert.equal(intro(95000, actors).surface, "day-one");
   assert.equal(intro(96000, actors).surface, "day-one-line");
+  assert.equal(intro(133000, actors).surface, "day-one");
   assert.equal(intro(140000, actors).tier, "two");
   assert.equal(intro(140000, crew(4)).tier, "four");
   assert.equal(intro(151100, crew(8)).tier, "full");
@@ -56,7 +59,7 @@ test("Web Audio transport uses exact ranges, room memory, aligned work loops and
     async close() { this.state = "closed"; }
     async decodeAudioData() { return { duration:300 }; }
     createBufferSource() {
-      return { connect(){}, disconnect(){}, start(when, offset, duration){ starts.push({ when, offset, duration, end:this.loopEnd }); },
+      return { connect(dest){return dest;}, disconnect(){}, start(when, offset, duration){ starts.push({ when, offset, duration, end:this.loopEnd }); },
         stop(time){ stops.push(time); } };
     }
     createGain() { return { gain:param(), connect(){}, disconnect(){} }; }
@@ -116,6 +119,16 @@ test("Web Audio transport uses exact ranges, room memory, aligned work loops and
     p.reset();
     p.update(work, true); p.update(work, false); await flush();
     checkOffset(starts.at(-1).offset, sec(tr.layers.two.frames[0]));
+    p.reset(true);
+    const solo = {...work,surface:"first-line",production:"unknown"};
+    p.update(solo,false); await flush();
+    assert.equal(starts.at(-1).end,sec(manifest.cues["day-one"].frames[1]),"Solo reveal returns to day bed");
+    ctx.currentTime = starts.at(-2).when + 15;
+    p.update({...solo,surface:"day-one"},false); await flush();
+    ctx.currentTime += 18;
+    p.update({...work,surface:"day-one-line"},false); await flush();
+    checkOffset(starts.at(-2).offset,15);
+    checkOffset(starts.at(-1).offset,sec(tr.layers.two.frames[0]));
     let release;
     slowOptions = new Promise(resolve => { release = resolve; });
     p.update(menuMusic(true), false); await flush();

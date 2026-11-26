@@ -2,11 +2,15 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 26 November 2026 · ENGINE · Restore the Security recording to the opening shot
+
+The owner heard the score slow down on entering the factory. Menu and Options sounded right. The camera was at Security, but the first playable revision had selected the sparse Day One walk bed. The owner’s local feedback changed this part of the original music handoff. Day One now opens on the full 96-bar Security recording. The gate strike plays over the bass, speech lowers it in place and the next Security shot resumes the phrase. A fresh campaign regression follows all three Security shots through eight station confirmations. Fedora Firefox matched 31 captured windows to the original recording. The music advanced 29.420 seconds in 29.422 wall seconds. Chromium independently matched the opening with the gate layered over the continuing bass.
+
 ## 26 November 2026 · ENGINE · Keep the opening through a held order
 
 At a station prompt the player can wait longer than the entire 16-bar Conveyor opening. An early player revision advanced the main track during the waiting bed, so a long hold could silently consume the opening. The corrected [campaign player](/stepanoskin/loopforge/play) tracks the audible work phrase separately. A 35-second wait before entry starts the opening at its first frame. Speech three seconds into the paired opening leaves it ready to resume at second three. The next work loop follows the latest observed staffing.
 
-The early solo reveal gives the opening room to finish before the short paired scene. The first Security return takes the score back to the day bed. Later cuts use the same room boundaries as the picture. The [ENGINE handoff](/stepanoskin/loopforge/design/studio/engine-master#current-handoff) records the 1× timing estimate and both supervisor traces. A Fedora Firefox review also caught a missing appointment tap when Security was still decoding. A focused check reproduced the dropped tap. The revised Firefox run scheduled exactly one appointment tap from the cue reel while the room recording loaded.
+The early solo reveal gives the opening room to finish before the short paired scene. The later camera cuts use the same room boundaries as the picture. The [ENGINE handoff](/stepanoskin/loopforge/design/studio/engine-master#current-handoff) records the 1× timing estimate and both supervisor traces. A Fedora Firefox review also caught a missing appointment tap when Security was still decoding. A focused check reproduced the dropped tap. The revised Firefox run scheduled exactly one appointment tap from the cue reel while the room recording loaded.
 
 Fedora Firefox sampled the opening and all three Day One work arrangements at 1×. A separate Chromium run caught a failure decoding the first screen’s art. All 24 images now begin downloading together and decode one by one after the shared atlas loads. The phone entry and desktop campaign suites both passed. The desktop run reached the shift close through the two staffing tutorials and the missing-card incident. The owner’s listening verdict is pending.
 

@@ -23,8 +23,8 @@ function arrangement(view: MusicView): Cut | null {
   if (isLine(room) && view.speech) return reelCut("speech");
   if (view.production === "waiting") return reelCut("waiting");
   if (isLine(room)) return { file: tracks.conveyor.file, range: tracks.conveyor.layers[view.tier].frames, loop: true };
-  if (room === "menu" || room === "options" || room === "security") {
-    const track = tracks[room];
+  if (room === "menu" || room === "options" || room === "security" || room === "day-one-security") {
+    const track = tracks[room === "day-one-security" ? "security" : room];
     return { file: track.file, range: track.loopFrames, loop: true };
   }
   return reelCut(room === "results" ? "results" : (room === "day-one" || room === "first-line") ? "day-one" : "console");
@@ -47,6 +47,7 @@ export class CampaignMusicPlayer {
   private startedAtOffset = 0;
   private overlayElapsed = 0;
   private playingOverlay = false;
+  private securityMix: { gain: AudioParam; cutoff: AudioParam; start: number } | null = null;
   private freshEntry = false;
   private restored = false;
   private positions = new Map<Surface, number>();
@@ -99,11 +100,36 @@ export class CampaignMusicPlayer {
     const moved = prev?.surface !== next.surface;
     let cue = transitionCue(prev, next);
     if (this.restored || (prev && wasPaused) || paused) cue = undefined;
-    if (this.freshEntry && !paused && next.surface === "day-one") cue = "factory-open";
+    if (this.freshEntry && !paused && next.surface === "day-one-security") cue = "factory-open";
     this.view = next;
     this.paused = paused;
     if (!moved && wasPaused === paused && !cue && prev?.speech === next.speech &&
         previousCut?.range === nextCut?.range) return;
+
+    if (!moved && prev && next.surface === "day-one-security" && !paused && !wasPaused &&
+        prev.production !== "waiting" && next.production !== "waiting" && (!cue || cue === "gate")) {
+      // The picture stays at the desk. Speech changes the mix and the gate
+      // adds a strike on top of the same uninterrupted bass performance.
+      const ctx = this.context;
+      if (ctx && this.visible && this.active && ctx.state === "running") {
+        if (prev.speech !== next.speech && this.securityMix) {
+          const { gain, cutoff, start } = this.securityMix;
+          const at = Math.max(ctx.currentTime, start + .020);
+          const { speechGain, speechLowpassHz } = manifest.arrangement.interrupt;
+          for (const [param, value] of [[gain, next.speech ? speechGain : 1],
+            [cutoff, next.speech ? speechLowpassHz : ctx.sampleRate / 2]] as const) {
+            if (typeof param.cancelAndHoldAtTime === "function") param.cancelAndHoldAtTime(at);
+            else { const current = param.value; param.cancelScheduledValues(at); param.setValueAtTime(current, at); }
+            param.linearRampToValueAtTime(value, at + .045);
+          }
+        }
+        if (cue) {
+          const version = this.cueEpoch;
+          void this.startCue(ctx, cue).catch(() => { if (version === this.cueEpoch) this.failed(); });
+        }
+      }
+      return;
+    }
 
     this.interrupt(moved || wasPaused !== paused || !!cue);
     if (moved) {
@@ -134,6 +160,7 @@ export class CampaignMusicPlayer {
   }
   private interrupt(cancelPickup = true) {
     this.epoch++;
+    this.securityMix = null;
     if (cancelPickup) {
       this.cueEpoch++;
       this.pickup = null;
@@ -180,7 +207,7 @@ export class CampaignMusicPlayer {
     this.pending.set(file, request);
     return request;
   }
-  private sound(ctx: AudioContext, buffer: AudioBuffer, cut: Cut, when: number, offset: number, duck: boolean, pickup = false) {
+  private sound(ctx: AudioContext, buffer: AudioBuffer, cut: Cut, when: number, offset: number, duck: boolean, role: "bed" | "cue" | "day-one-security" = "bed") {
     const begin = seconds(cut.range[0]), end = Math.min(seconds(cut.range[1]), buffer.duration);
     const span = end - begin;
     if (span <= 0) throw Error("Invalid music range");
@@ -192,16 +219,18 @@ export class CampaignMusicPlayer {
     source.loopStart = begin;
     source.loopEnd = end;
     let filter: BiquadFilterNode | undefined;
-    if (duck) {
+    if (duck || role === "day-one-security") {
       filter = ctx.createBiquadFilter();
       filter.type = "lowpass";
-      filter.frequency.value = manifest.arrangement.interrupt.speechLowpassHz;
+      filter.frequency.value = duck ? manifest.arrangement.interrupt.speechLowpassHz : ctx.sampleRate / 2;
       source.connect(filter).connect(gain);
     } else source.connect(gain);
     gain.connect(ctx.destination);
     gain.gain.setValueAtTime(0, when);
     gain.gain.linearRampToValueAtTime(duck ? manifest.arrangement.interrupt.speechGain : 1, when + .020);
-    const voice = { source, gain, pickup };
+    if (role === "day-one-security" && filter)
+      this.securityMix = { gain: gain.gain, cutoff: filter.frequency, start: when };
+    const voice = { source, gain, pickup: role === "cue" };
     this.voices.add(voice);
     source.onended = () => {
       this.voices.delete(voice);
@@ -213,6 +242,14 @@ export class CampaignMusicPlayer {
     else source.start(when, begin + skip, span - skip);
     return span - skip;
   }
+  private startCue(ctx: AudioContext, cue: Cue) {
+    const cut = reelCut(cue), version = this.cueEpoch;
+    return this.buffer(ctx, cut.file).then(bytes => {
+      if (version !== this.cueEpoch) return 0;
+      const start = ctx.currentTime + .005;
+      return start + this.sound(ctx, bytes, cut, start, 0, !!this.view?.speech, "cue");
+    });
+  }
   private play(cue?: Cue) {
     const ctx = this.context, view = this.view;
     if (!ctx || !view || !this.active || this.paused || !this.visible || ctx.state !== "running") return;
@@ -220,13 +257,7 @@ export class CampaignMusicPlayer {
     if (cue) {
       // A posted receipt can arrive well before the destination recording
       // decodes. Give its short cue its own lifecycle across bed mix changes.
-      const cut = reelCut(cue), cueVersion = this.cueEpoch;
-      const end = this.buffer(ctx, cut.file).then(bytes => {
-        if (cueVersion !== this.cueEpoch) return 0;
-        const start = ctx.currentTime + .005;
-        return start + this.sound(ctx, bytes, cut, start, 0, !!this.view?.speech, true);
-      });
-      this.pickup = { id: cue, end };
+      this.pickup = { id: cue, end: this.startCue(ctx, cue) };
     }
     const bed = arrangement(view), pickup = this.pickup;
     const soloOpening = view.surface === "first-line" && !replacesBed(view) && this.elapsed < openingLength;
@@ -257,7 +288,10 @@ export class CampaignMusicPlayer {
         }
         offset = Math.max(0, offset - openingLength);
       }
-      this.sound(ctx, bedBytes, bed, when, offset, view.speech && !(isLine(view.surface) && bed.file === reel.file));
+      const security = view.surface === "day-one-security" && !overlay;
+      const speech = security ? !!this.view?.speech : view.speech;
+      this.sound(ctx, bedBytes, bed, when, offset, speech && !(isLine(view.surface) && bed.file === reel.file),
+        security ? "day-one-security" : "bed");
     }).catch(() => { if (version === this.epoch) this.failed(); });
   }
 }

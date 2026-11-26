@@ -4,7 +4,7 @@ import { approachZone, type Room } from "../shifts/contract";
 import type { Frame, State } from "./wire";
 
 export type Tier = keyof typeof manifest.tracks.conveyor.layers;
-export type Surface = "menu" | "options" | "day-one" | "first-line" | "day-one-line" | "departure" |
+export type Surface = "menu" | "options" | "day-one" | "day-one-security" | "first-line" | "day-one-line" | "departure" |
   "console" | "briefing" | Room | "results";
 export type Cue = keyof typeof manifest.cues;
 export type MusicView = {
@@ -42,7 +42,8 @@ export function campaignMusic(frame: Frame, room: Room): MusicView {
     // share operators, so use the public edited beat as well as their staging.
     const tier = crew >= 4 && at("The crew fills in") ? (at("Run it") ? "full" : "four") : "two";
     return {
-      ...neutral, surface: departed ? "departure" : line ? "day-one-line" : reveal ? "first-line" : "day-one",
+      ...neutral, surface: departed ? "departure" : !onLine ? "day-one-security" :
+        line ? "day-one-line" : reveal ? "first-line" : "day-one",
       editedMs: ms, tier,
       production: world.order || world.jammed ? "waiting" : line ? "running" : "unknown",
       speech: events.some(e => e.speaker !== "BELL" &&

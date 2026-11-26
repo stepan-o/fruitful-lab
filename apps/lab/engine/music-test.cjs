@@ -16,10 +16,10 @@ test("Day One reads staged workers, holds and forward scene crossings", () => {
   const intro = (ms, actors, extra) => campaignMusic(frame({ phase: "intro", edited_ms: ms, ...extra }, actors), "security");
   const actors = [...crew(2), { agent_id: "max", room: "security" }, { agent_id: "STILETTO", room: "conveyor" }];
   assert.equal(intro(45000, crew(1)).surface, "first-line");
-  assert.equal(intro(80000, crew(1)).surface, "day-one");
-  assert.equal(intro(95000, actors).surface, "day-one");
+  assert.equal(intro(80000, crew(1)).surface, "day-one-security");
+  assert.equal(intro(95000, actors).surface, "day-one-security");
   assert.equal(intro(96000, actors).surface, "day-one-line");
-  assert.equal(intro(133000, actors).surface, "day-one");
+  assert.equal(intro(133000, actors).surface, "day-one-security");
   assert.equal(intro(140000, actors).tier, "two");
   assert.equal(intro(140000, crew(4)).tier, "four");
   assert.equal(intro(151100, crew(8)).tier, "full");
@@ -49,11 +49,12 @@ test("focused Day Two room controls tier, explicit waits, speech, confirmed bell
 });
 
 function installAudio(delay = async () => {}) {
-  const starts = [], requests = [], stops = [];
-  const param = () => ({ value:1, setValueAtTime(){}, linearRampToValueAtTime(){}, cancelScheduledValues(){} });
+  const starts = [], requests = [], stops = [], gains = [], cutoffs = [];
+  const param = () => ({ value:1, ramps:[], setValueAtTime(){},
+    linearRampToValueAtTime(value, time){ this.ramps.push({value, time}); }, cancelScheduledValues(){} });
   let ctx;
   class Audio {
-    constructor() { ctx = this; this.currentTime = 0; this.state = "suspended"; }
+    constructor() { ctx = this; this.sampleRate = 32000; this.currentTime = 0; this.state = "suspended"; }
     async resume() { this.state = "running"; }
     async close() { this.state = "closed"; }
     async decodeAudioData() { return { duration:300 }; }
@@ -63,8 +64,8 @@ function installAudio(delay = async () => {}) {
         start(when, offset, duration){ started = { when, offset, duration, end:this.loopEnd }; starts.push(started); },
         stop(time){ stops.push(time); if (started) started.stop = time; } };
     }
-    createGain() { return { gain:param(), connect(){}, disconnect(){} }; }
-    createBiquadFilter() { return { frequency:param(), connect(){return this;}, disconnect(){} }; }
+    createGain() { const gain=param(); gains.push(gain); return { gain, connect(){}, disconnect(){} }; }
+    createBiquadFilter() { const frequency=param(); cutoffs.push(frequency); return { frequency, connect(){return this;}, disconnect(){} }; }
   }
   const oldAudio = global.AudioContext, oldFetch = global.fetch;
   global.AudioContext = Audio;
@@ -73,7 +74,7 @@ function installAudio(delay = async () => {}) {
     await delay(url);
     return { ok:true, async arrayBuffer(){ return new ArrayBuffer(0); } };
   };
-  return { starts, requests, stops, get ctx() { return ctx; },
+  return { starts, requests, stops, gains, cutoffs, get ctx() { return ctx; },
     restore() { global.AudioContext = oldAudio; global.fetch = oldFetch; } };
 }
 const flush = () => new Promise(resolve => setImmediate(resolve));
@@ -191,6 +192,89 @@ test("confirmed scene cues sound before a cold bed and survive same-room speech 
     player.update(security, false); await flush();
     assert.equal(markers("appointment").length, 1, "a seek before the cue is scheduled cannot backfill the tap");
   } finally { releaseSecurity(); player.dispose(); audio.restore(); }
+});
+
+test("fresh Day One Security shots play and resume the 96-bar recording through the verified campaign", async () => {
+  const fs = require("node:fs");
+  const path = require("node:path");
+  const { read, schema, subscription } = require("../lib/loopforge/engine/wire.ts");
+  const { envelope } = require("../lib/loopforge/intro/protocol.ts");
+  const { instance } = await WebAssembly.instantiate(fs.readFileSync(path.join(__dirname, "../public/loopforge-engine/kernel.wasm")));
+  const wasm = instance.exports;
+  function host(operation, payload) {
+    const input = Buffer.from(JSON.stringify(payload));
+    const offset = wasm.input(input.length);
+    new Uint8Array(wasm.memory.buffer, offset, input.length).set(input);
+    const length = wasm.exchange(operation);
+    const result = JSON.parse(Buffer.from(wasm.memory.buffer, wasm.output(), length).toString());
+    assert.equal(result.error, undefined);
+    return result.value;
+  }
+
+  const audio = installAudio();
+  const player = new CampaignMusicPlayer(() => {});
+  const securityEnd = manifest.tracks.security.loopFrames[1] / manifest.sampleRate;
+  const entries = [];
+  let snapshot = null, previousSurface, seq = 0, holds = 0;
+  async function consume(records) {
+    for (const record of records) {
+      assert.notEqual(record.msg_type, "COMMAND_REJECTED");
+      if (record.msg_type !== "FULL_SNAPSHOT" && record.msg_type !== "FRAME_DIFF") continue;
+      snapshot = await read(snapshot, record);
+      if (record.msg_type === "FULL_SNAPSHOT") host(3, { tick:snapshot.tick, hash:snapshot.hash });
+      const view = campaignMusic(snapshot, "security");
+      audio.ctx.currentTime = Math.max(audio.ctx.currentTime, view.editedMs/1000);
+      const before = audio.starts.length;
+      player.update(view, false);
+      await flush();
+      if (view.surface === "day-one-security" && view.surface !== previousSurface) {
+        const bed = audio.starts.slice(before).find(source => source.end === securityEnd);
+        assert.ok(bed, "a Security camera cut selects the full room recording");
+        entries.push({ ms:view.editedMs, offset:bed.offset });
+      }
+      previousSurface = view.surface;
+    }
+  }
+  function wire(type, payload) { return consume(host(1, envelope(type, ++seq, payload))); }
+  function input(type, payload) {
+    return wire("INPUT_COMMAND", { client_cmd_id:"music-" + seq, tick_target:snapshot.tick + 1, cmd:{type,payload} });
+  }
+  try {
+    await player.enable();
+    player.reset(true);
+    host(0, {run:"8ca6443d-3f2f-419c-8d80-76f11e6528b8"});
+    await wire("VIEWER_HELLO", { viewer_name:"music-check", viewer_version:"1", supported_schema_versions:[schema],
+      supports:{ diff_stream:true, full_snapshot:true, replay_seek:true } });
+    await wire("SUBSCRIBE", subscription);
+    await input("VIEW_CONTROL", {hint:"PLAY"});
+    for (let step = 0; step < 1200 && snapshot.state.world.phase === "intro"; step++) {
+      const order = snapshot.state.world.order;
+      if (order) { holds++; await input("WORLD_NUDGE", {action:"confirm", target:order.station}); }
+      else await consume(host(2, 250));
+    }
+    assert.deepEqual(entries.map(entry => Math.floor(entry.ms/100)), [0, 766, 1303]);
+    assert.equal(entries[0].offset, 0);
+    const firstCut = 38.8;
+    const firstBeds = audio.starts.filter(source => source.end === securityEnd && source.when < firstCut);
+    assert.equal(firstBeds.length, 1, "speech transitions and the gate leave the bass on its original source");
+    assert.ok(firstBeds[0].stop >= firstCut, "the full recording keeps running until the camera cut");
+    const gate = audio.starts.find(source => source.offset === manifest.cues.gate.frames[0] / manifest.sampleRate);
+    assert.ok(gate.when > firstBeds[0].when && gate.when + gate.duration < firstBeds[0].stop);
+    const { speechGain, speechLowpassHz } = manifest.arrangement.interrupt;
+    assert.ok(audio.gains.some(gain => gain.ramps.some(r => r.value === speechGain && r.time < firstCut) &&
+      gain.ramps.some(r => r.value === 1 && r.time < firstCut)), "speech ducks and releases one room gain");
+    assert.ok(audio.cutoffs.some(filter => filter.ramps.some(r => r.value === speechLowpassHz && r.time < firstCut) &&
+      filter.ramps.some(r => r.value === audio.ctx.sampleRate/2 && r.time < firstCut)), "room filter opens again");
+    assert.ok(entries[1].offset > 33 && entries[1].offset < 39, "second shot resumes heard Security time");
+    assert.ok(entries[2].offset > entries[1].offset + 15, "third shot resumes the longer phrase");
+    for (const cue of ["factory-open","gate","floor","depart"]) {
+      const offset = manifest.cues[cue].frames[0] / manifest.sampleRate;
+      assert.equal(audio.starts.filter(source => source.offset === offset).length, 1, cue);
+    }
+    assert.ok(audio.requests.some(url => url.endsWith(manifest.tracks.security.file)));
+    assert.equal(holds, 8);
+    assert.equal(snapshot.state.world.phase, "console");
+  } finally { player.dispose(); audio.restore(); }
 });
 
 test("the welcome voice requires the exact on-camera delivery and never backfills", () => {

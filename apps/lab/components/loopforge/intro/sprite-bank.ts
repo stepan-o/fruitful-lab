@@ -14,16 +14,14 @@ export async function loadIntroArt(): Promise<Bank> {
     .map((key) => [key, "/loopforge-intro/" + key + ".webp"]);
   sources.push(["queueRail", "/loopforge-intro/sec-rails-depth.png"]);
   sources.push(...materialFiles.map((file) => [file, materialRoot + file]));
-  const [signals] = await Promise.all([
-    loadSkin("/loopforge-design/days-2-4-art/v1/"),
-    Promise.all(
-      sources.map(async ([key, url]) => {
-        const img = new Image();
-        img.src = url;
-        await img.decode();
-        images[key] = img;
-      }),
-    ),
-  ]);
+  for (const [key, url] of sources) {
+    const img = new Image();
+    img.src = url;
+    images[key] = img;
+  }
+  const signals = await loadSkin("/loopforge-design/days-2-4-art/v1/");
+  // The intro sheets can download together. Decode one at a time to limit
+  // simultaneous image work on the first Day One frame.
+  for (const img of Object.values(images)) await img.decode();
   return { art, images, world: signals.world };
 }

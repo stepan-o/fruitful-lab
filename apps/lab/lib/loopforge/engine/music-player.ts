@@ -1,4 +1,4 @@
-import { manifest, transitionCue, type Cue, type MusicView, type Surface } from "./music-score";
+import { isCampaignTransition, manifest, transitionCue, type Cue, type MusicView, type Surface } from "./music-score";
 
 const root = "/loopforge-design/music-audition/day-two/";
 const seconds = (frame: number) => frame / manifest.sampleRate;
@@ -9,7 +9,7 @@ const openingLength = seconds(opening[1] - opening[0]);
 const isLine = (surface: Surface) => surface === "conveyor" || surface === "day-one-line";
 
 function mixSurface(surface: Surface) {
-  if (surface === "console" || surface === "briefing") return "console";
+  if (isCampaignTransition(surface)) return "transition";
   if (surface === "day-one-security") return surface;
 }
 
@@ -32,17 +32,15 @@ function reelCut(id: Cue): Cut {
   const cue = cues[id];
   return { file: reel.file, range: cue.frames, loop: cue.kind === "loop" };
 }
-function arrangement(view: MusicView): Cut | null {
+function arrangement(view: MusicView): Cut {
   const room = view.surface;
-  if (room === "departure") return null;
   if (isLine(room) && view.speech) return reelCut("speech");
   if (view.production === "waiting") return reelCut("waiting");
   if (isLine(room)) return { file: tracks.conveyor.file, range: tracks.conveyor.layers[view.tier].frames, loop: true };
-  if (room === "menu" || room === "options" || room === "security" || room === "day-one-security") {
-    const track = tracks[room === "day-one-security" ? "security" : room];
-    return { file: track.file, range: track.loopFrames, loop: true };
-  }
-  return reelCut(room === "results" ? "results" : (room === "day-one" || room === "first-line") ? "day-one" : "console");
+  if (room === "day-one" || room === "first-line") return reelCut("day-one");
+  const track = room === "security" || room === "day-one-security" ? tracks.security :
+    room === "menu" ? tracks.menu : tracks.options;
+  return { file: track.file, range: track.loopFrames, loop: true };
 }
 type Voice = { source: AudioBufferSourceNode; gain: GainNode; pickup: boolean };
 export type PlaybackStatus = "ready" | "playing" | "muted" | "unavailable";
@@ -65,7 +63,7 @@ export class CampaignMusicPlayer {
   private bedMix: { gain: AudioParam; cutoff: AudioParam; start: number } | null = null;
   private freshEntry = false;
   private restored = false;
-  private positions = new Map<Surface, number>();
+  private positions = new Map<Surface | "transition", number>();
   private voices = new Set<Voice>();
   private buffers = new Map<string, AudioBuffer>();
   private pending = new Map<string, Promise<AudioBuffer>>();
@@ -122,9 +120,11 @@ export class CampaignMusicPlayer {
         previousCut?.range === nextCut?.range) return;
 
     const mix = mixSurface(next.surface);
-    if (prev && mix && mixSurface(prev.surface) === mix && !paused && !wasPaused &&
+    const leavingPickup = moved && this.pickup &&
+      (this.since === null || (this.context?.currentTime ?? 0) < this.since);
+    if (!leavingPickup && prev && mix && mixSurface(prev.surface) === mix && !paused && !wasPaused &&
         prev.production !== "waiting" && next.production !== "waiting" && (!cue || cue === "gate")) {
-      // The console, call and supervisor bids share one performance. Day One
+      // Contiguous campaign transitions share one Options performance. Day One
       // Security also keeps its bass running through speech and the gate.
       const ctx = this.context;
       if (ctx && this.visible && this.active && ctx.state === "running") {
@@ -281,7 +281,7 @@ export class CampaignMusicPlayer {
       let offset = overlay ? this.overlayElapsed : this.elapsed;
       if (pickup && (cues[pickup.id].kind === "bridge" || cues[pickup.id].kind === "entry") && !isLine(view.surface)) {
         const firstBar = pickup.id === "options-menu" ? 49 : pickup.id === "conveyor-security" ? 17 : 1;
-        offset = this.positions.has(view.surface) ? Math.ceil(offset / bar) * bar : firstBar * bar;
+        offset = this.positions.has(mixSurface(view.surface) ?? view.surface) ? Math.ceil(offset / bar) * bar : firstBar * bar;
       }
       if (!bed || !bedBytes) return;
       // The main performance advances only when its source actually sounds.

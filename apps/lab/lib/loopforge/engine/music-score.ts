@@ -17,6 +17,10 @@ export type MusicView = {
 };
 const beats = manifest.arrangement.dayOneEditedSeconds;
 const neutral = { tier: "two", speech: false, production: "unknown", editedMs: -1, bell: 0 } as const;
+export function isCampaignTransition(surface: Surface) {
+  return surface === "departure" || surface === "console" || surface === "briefing" || surface === "results";
+}
+
 export function menuMusic(settings: boolean): MusicView {
   return { ...neutral, surface: settings ? "options" : "menu" };
 }
@@ -68,8 +72,8 @@ export function transitionCue(before: MusicView | null, next: MusicView): Cue | 
   if (!before) return undefined;
   const from = before.surface, to = next.surface;
   if (from !== to) {
-    if (from === "menu" && to === "options") return "menu-options";
-    if (from === "options" && to === "menu") return "options-menu";
+    if (from === "menu" && (to === "options" || isCampaignTransition(to))) return "menu-options";
+    if ((from === "options" || isCampaignTransition(from)) && to === "menu") return "options-menu";
     if (from === "security" && to === "conveyor") return "security-conveyor";
     if (from === "conveyor" && to === "security") return "conveyor-security";
     if (to === "results" && next.bell && (from === "security" || from === "conveyor")) return "bell-release";

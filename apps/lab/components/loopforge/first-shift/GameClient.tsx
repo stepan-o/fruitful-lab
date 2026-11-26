@@ -102,7 +102,7 @@ function GameSession({media,legacyReview=false,initialIntro=false}:Props) {
     setMenu(false);
     send('seek', {seconds});
   }
-  function finish(){voice.current?.reset(true);setCamera(null);music.current?.reset();worker.current?.terminate();worker.current=null;sessionStorage.removeItem(key);sessionStorage.removeItem("loopforge.playthrough.1");setResumable(false);setFrame(null);setMenu(true);setPaused(true);}
+  function finish(){voice.current?.reset(true);setCamera(null);worker.current?.terminate();worker.current=null;sessionStorage.removeItem(key);sessionStorage.removeItem("loopforge.playthrough.1");setResumable(false);setFrame(null);setMenu(true);setPaused(true);}
   useEffect(()=>{
     // The server-rendered menu must not accept clicks before its handlers exist.
     setHydrated(true);

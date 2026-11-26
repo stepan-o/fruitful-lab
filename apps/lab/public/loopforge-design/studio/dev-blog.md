@@ -6,7 +6,7 @@ Concrete problems, decisions and reviewed results from the owner-directed Codex 
 
 At a station prompt the player can wait longer than the entire 16-bar Conveyor opening. An early player revision advanced the main track during the waiting bed, so a long hold could silently consume the opening. The corrected [campaign player](/stepanoskin/loopforge/play) tracks the audible work phrase separately. A 35-second wait before entry starts the opening at its first frame. Speech three seconds into the paired opening leaves it ready to resume at second three. The next work loop follows the latest observed staffing.
 
-The early solo reveal gives the opening room to finish before the short paired scene. The first Security return takes the score back to the day bed. Later cuts use the same room boundaries as the picture. The [ENGINE handoff](/stepanoskin/loopforge/design/studio/engine-master#current-handoff) records the 1× timing estimate and both supervisor traces. The owner’s listening verdict is pending.
+The early solo reveal gives the opening room to finish before the short paired scene. The first Security return takes the score back to the day bed. Later cuts use the same room boundaries as the picture. The [ENGINE handoff](/stepanoskin/loopforge/design/studio/engine-master#current-handoff) records the 1× timing estimate and both supervisor traces. A Fedora Firefox review also caught a missing appointment tap when Security was still decoding. A focused check reproduced the dropped tap. The cue reel can now play the confirmed posting while the room recording loads. The owner’s listening verdict is pending.
 
 ## 23 November 2026 · ENGINE · From the receiver to the rack
 

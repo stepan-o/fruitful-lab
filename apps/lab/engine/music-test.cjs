@@ -48,19 +48,20 @@ test("focused Day Two room controls tier, explicit waits, speech, confirmed bell
   assert.equal(transitionCue(waiting, campaignMusic(line(0,{ closed:true, bell:600 }), "security")), undefined);
 });
 
-test("Web Audio transport uses exact ranges, room memory, aligned work loops and cancellation", async () => {
+function installAudio(delay = async () => {}) {
   const starts = [], requests = [], stops = [];
-  const flush = () => new Promise(resolve => setImmediate(resolve));
   const param = () => ({ value:1, setValueAtTime(){}, linearRampToValueAtTime(){}, cancelScheduledValues(){} });
-  let ctx, slowOptions;
+  let ctx;
   class Audio {
     constructor() { ctx = this; this.currentTime = 0; this.state = "suspended"; }
     async resume() { this.state = "running"; }
     async close() { this.state = "closed"; }
     async decodeAudioData() { return { duration:300 }; }
     createBufferSource() {
-      return { connect(dest){return dest;}, disconnect(){}, start(when, offset, duration){ starts.push({ when, offset, duration, end:this.loopEnd }); },
-        stop(time){ stops.push(time); } };
+      let started;
+      return { connect(dest){return dest;}, disconnect(){},
+        start(when, offset, duration){ started = { when, offset, duration, end:this.loopEnd }; starts.push(started); },
+        stop(time){ stops.push(time); if (started) started.stop = time; } };
     }
     createGain() { return { gain:param(), connect(){}, disconnect(){} }; }
     createBiquadFilter() { return { frequency:param(), connect(){return this;}, disconnect(){} }; }
@@ -69,9 +70,18 @@ test("Web Audio transport uses exact ranges, room memory, aligned work loops and
   global.AudioContext = Audio;
   global.fetch = async url => {
     requests.push(url);
-    if (url.endsWith("/options.mp3") && slowOptions) await slowOptions;
+    await delay(url);
     return { ok:true, async arrayBuffer(){ return new ArrayBuffer(0); } };
   };
+  return { starts, requests, stops, get ctx() { return ctx; },
+    restore() { global.AudioContext = oldAudio; global.fetch = oldFetch; } };
+}
+const flush = () => new Promise(resolve => setImmediate(resolve));
+
+test("Web Audio transport uses exact ranges, room memory, aligned work loops and cancellation", async () => {
+  let slowOptions;
+  const audio = installAudio(url => url.endsWith("/options.mp3") && slowOptions);
+  const { starts, requests, stops } = audio;
   const sec = n => n / manifest.sampleRate;
   const tr = manifest.tracks.conveyor;
   const checkOffset = (actual, expected) => assert.ok(Math.abs(actual - expected) < .002, actual + " != " + expected);
@@ -80,6 +90,7 @@ test("Web Audio transport uses exact ranges, room memory, aligned work loops and
     p.update(menuMusic(false), false);
     assert.equal(requests.length, 0);
     await p.enable(); await flush();
+    const { ctx } = audio;
     checkOffset(starts.at(-1).offset, 0);
     ctx.currentTime = 10.005;
     p.update(menuMusic(true), false); await flush();
@@ -137,8 +148,49 @@ test("Web Audio transport uses exact ranges, room memory, aligned work loops and
     release(); await flush();
     assert.equal(starts.length, canceled, "A stale decode cannot restart music after mute");
   } finally {
-    p.dispose(); global.AudioContext = oldAudio; global.fetch = oldFetch;
+    p.dispose(); audio.restore();
   }
+});
+
+test("confirmed scene cues sound before a cold bed and survive same-room speech changes", async () => {
+  let releaseSecurity;
+  const coldSecurity = new Promise(resolve => { releaseSecurity = resolve; });
+  const audio = installAudio(url => url.endsWith("/" + manifest.tracks.security.file) && coldSecurity);
+  const player = new CampaignMusicPlayer(() => {});
+  const markers = name => audio.starts.filter(s => s.offset === manifest.cues[name].frames[0] / manifest.sampleRate);
+  const briefing = campaignMusic(line(0, {stage:"briefing"}), "security");
+  const security = campaignMusic(line(0), "security");
+  try {
+    player.update(briefing, false);
+    await player.enable(); await flush();
+    player.update(security, false); await flush();
+    assert.equal(markers("appointment").length, 1, "posted receipt sounds while Security is still decoding");
+    const tap = markers("appointment")[0];
+    audio.ctx.currentTime = tap.when + .10;
+    player.update({...security, speech:true}, false); await flush();
+    assert.equal(tap.stop, undefined, "visible speech cannot cancel a confirmed same-room tap");
+    releaseSecurity(); await flush();
+    assert.ok(audio.starts.at(-1).when >= tap.when + tap.duration, "room enters after appointment");
+    assert.equal(markers("appointment").length, 1);
+    player.update(campaignMusic(line(0,{closed:true,bell:500}), "security"), false); await flush();
+    assert.equal(markers("bell-release").length, 1);
+    player.reset();
+    assert.ok(markers("bell-release")[0].stop <= audio.ctx.currentTime + .05, "seek retires audible pickup");
+    const day = ms => campaignMusic(frame({phase:"intro",edited_ms:ms}), "security");
+    player.update(day(16290), false);
+    player.update(day(16350), false); await flush();
+    player.update({...day(16400), speech:true}, false); await flush();
+    assert.equal(markers("gate").length, 1);
+    assert.equal(markers("gate")[0].stop, undefined);
+    player.update(day(165400), false); await flush();
+    assert.equal(markers("depart").length, 1);
+    player.update(briefing, false); await flush();
+    assert.ok(markers("depart")[0].stop <= audio.ctx.currentTime + .05, "leaving the scene retires its marker");
+    player.update(security, false);
+    player.reset();
+    player.update(security, false); await flush();
+    assert.equal(markers("appointment").length, 1, "a seek before the cue is scheduled cannot backfill the tap");
+  } finally { releaseSecurity(); player.dispose(); audio.restore(); }
 });
 
 test("the welcome voice requires the exact on-camera delivery and never backfills", () => {

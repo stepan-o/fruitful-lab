@@ -29,7 +29,7 @@ function arrangement(view: MusicView): Cut | null {
   }
   return reelCut(room === "results" ? "results" : (room === "day-one" || room === "first-line") ? "day-one" : "console");
 }
-type Voice = { source: AudioBufferSourceNode; gain: GainNode };
+type Voice = { source: AudioBufferSourceNode; gain: GainNode; pickup: boolean };
 export type PlaybackStatus = "ready" | "playing" | "muted" | "unavailable";
 
 /** Owns only presentation time. No worker or command interface is available here. */
@@ -40,6 +40,8 @@ export class CampaignMusicPlayer {
   private visible = true;
   private view: MusicView | null = null;
   private epoch = 0;
+  private cueEpoch = 0;
+  private pickup: { id: Cue; end: Promise<number> } | null = null;
   private elapsed = 0;
   private since: number | null = null;
   private startedAtOffset = 0;
@@ -103,7 +105,7 @@ export class CampaignMusicPlayer {
     if (!moved && wasPaused === paused && !cue && prev?.speech === next.speech &&
         previousCut?.range === nextCut?.range) return;
 
-    this.interrupt();
+    this.interrupt(moved || wasPaused !== paused || !!cue);
     if (moved) {
       if (prev?.surface === "first-line") {
         // Only the opening belongs to the solo reveal. Its following day bed
@@ -130,23 +132,32 @@ export class CampaignMusicPlayer {
     this.interrupt();
     this.report("unavailable");
   }
-  private interrupt() {
+  private interrupt(cancelPickup = true) {
     this.epoch++;
+    if (cancelPickup) {
+      this.cueEpoch++;
+      this.pickup = null;
+    }
     const now = this.context?.currentTime ?? 0;
     if (this.since !== null && now >= this.since) {
+      // Its destination is already sounding. Future bed edits keep their
+      // current phrase without reapplying the original entry alignment.
+      this.pickup = null;
       const position = this.startedAtOffset + now - this.since;
       if (this.playingOverlay) this.overlayElapsed = position;
       else this.elapsed = position;
     }
     this.since = null;
-    for (const { source, gain } of this.voices) {
+    for (const voice of this.voices) {
+      if (voice.pickup && !cancelPickup) continue;
+      const { source, gain } = voice;
       const level = gain.gain;
       if (typeof level.cancelAndHoldAtTime === "function") level.cancelAndHoldAtTime(now);
       else { const value = level.value; level.cancelScheduledValues(now); level.setValueAtTime(value, now); }
       level.linearRampToValueAtTime(0, now + .045);
       source.stop(now + .050);
+      this.voices.delete(voice);
     }
-    this.voices.clear();
   }
   private buffer(ctx: AudioContext, file: string) {
     const cached = this.buffers.get(file);
@@ -169,7 +180,7 @@ export class CampaignMusicPlayer {
     this.pending.set(file, request);
     return request;
   }
-  private sound(ctx: AudioContext, buffer: AudioBuffer, cut: Cut, when: number, offset: number, duck: boolean) {
+  private sound(ctx: AudioContext, buffer: AudioBuffer, cut: Cut, when: number, offset: number, duck: boolean, pickup = false) {
     const begin = seconds(cut.range[0]), end = Math.min(seconds(cut.range[1]), buffer.duration);
     const span = end - begin;
     if (span <= 0) throw Error("Invalid music range");
@@ -190,7 +201,7 @@ export class CampaignMusicPlayer {
     gain.connect(ctx.destination);
     gain.gain.setValueAtTime(0, when);
     gain.gain.linearRampToValueAtTime(duck ? manifest.arrangement.interrupt.speechGain : 1, when + .020);
-    const voice = { source, gain };
+    const voice = { source, gain, pickup };
     this.voices.add(voice);
     source.onended = () => {
       this.voices.delete(voice);
@@ -206,24 +217,31 @@ export class CampaignMusicPlayer {
     const ctx = this.context, view = this.view;
     if (!ctx || !view || !this.active || this.paused || !this.visible || ctx.state !== "running") return;
     const version = this.epoch;
-    const bed = arrangement(view), pickup = cue && reelCut(cue);
+    if (cue) {
+      // A posted receipt can arrive well before the destination recording
+      // decodes. Give its short cue its own lifecycle across bed mix changes.
+      const cut = reelCut(cue), cueVersion = this.cueEpoch;
+      const end = this.buffer(ctx, cut.file).then(bytes => {
+        if (cueVersion !== this.cueEpoch) return 0;
+        const start = ctx.currentTime + .005;
+        return start + this.sound(ctx, bytes, cut, start, 0, !!this.view?.speech, true);
+      });
+      this.pickup = { id: cue, end };
+    }
+    const bed = arrangement(view), pickup = this.pickup;
     const soloOpening = view.surface === "first-line" && !replacesBed(view) && this.elapsed < openingLength;
     void Promise.all([
       bed && this.buffer(ctx, bed.file),
-      pickup && this.buffer(ctx, pickup.file),
+      pickup?.end,
       soloOpening && this.buffer(ctx, tracks.conveyor.file),
-    ]).then(([bedBytes, cueBytes, openingBytes]) => {
+    ]).then(([bedBytes, cueEnd, openingBytes]) => {
       if (version !== this.epoch) return;
-      let when = ctx.currentTime + .005;
+      let when = Math.max(ctx.currentTime + .005, cueEnd ?? 0);
       const overlay = replacesBed(view);
       let offset = overlay ? this.overlayElapsed : this.elapsed;
-      if (pickup && cueBytes) {
-        const duration = this.sound(ctx, cueBytes, pickup, when, 0, view.speech);
-        when += duration;
-        if (cue && (cues[cue].kind === "bridge" || cues[cue].kind === "entry") && !isLine(view.surface)) {
-          const firstBar = cue === "options-menu" ? 49 : cue === "conveyor-security" ? 17 : 1;
-          offset = this.positions.has(view.surface) ? Math.ceil(offset / bar) * bar : firstBar * bar;
-        }
+      if (pickup && (cues[pickup.id].kind === "bridge" || cues[pickup.id].kind === "entry") && !isLine(view.surface)) {
+        const firstBar = pickup.id === "options-menu" ? 49 : pickup.id === "conveyor-security" ? 17 : 1;
+        offset = this.positions.has(view.surface) ? Math.ceil(offset / bar) * bar : firstBar * bar;
       }
       if (!bed || !bedBytes) return;
       // The main performance advances only when its source actually sounds.

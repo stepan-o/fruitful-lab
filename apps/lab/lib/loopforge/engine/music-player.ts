@@ -8,6 +8,21 @@ const opening = tracks.conveyor.openingFrames;
 const openingLength = seconds(opening[1] - opening[0]);
 const isLine = (surface: Surface) => surface === "conveyor" || surface === "day-one-line";
 
+function mixSurface(surface: Surface) {
+  if (surface === "console" || surface === "briefing") return "console";
+  if (surface === "day-one-security") return surface;
+}
+
+function fadeTo(param: AudioParam, value: number, at: number) {
+  if (typeof param.cancelAndHoldAtTime === "function") param.cancelAndHoldAtTime(at);
+  else {
+    const current = param.value;
+    param.cancelScheduledValues(at);
+    param.setValueAtTime(current, at);
+  }
+  param.linearRampToValueAtTime(value, at + .045);
+}
+
 function replacesBed(view: MusicView) {
   return view.production === "waiting" || (isLine(view.surface) && view.speech);
 }
@@ -47,7 +62,7 @@ export class CampaignMusicPlayer {
   private startedAtOffset = 0;
   private overlayElapsed = 0;
   private playingOverlay = false;
-  private securityMix: { gain: AudioParam; cutoff: AudioParam; start: number } | null = null;
+  private bedMix: { gain: AudioParam; cutoff: AudioParam; start: number } | null = null;
   private freshEntry = false;
   private restored = false;
   private positions = new Map<Surface, number>();
@@ -106,22 +121,19 @@ export class CampaignMusicPlayer {
     if (!moved && wasPaused === paused && !cue && prev?.speech === next.speech &&
         previousCut?.range === nextCut?.range) return;
 
-    if (!moved && prev && next.surface === "day-one-security" && !paused && !wasPaused &&
+    const mix = mixSurface(next.surface);
+    if (prev && mix && mixSurface(prev.surface) === mix && !paused && !wasPaused &&
         prev.production !== "waiting" && next.production !== "waiting" && (!cue || cue === "gate")) {
-      // The picture stays at the desk. Speech changes the mix and the gate
-      // adds a strike on top of the same uninterrupted bass performance.
+      // The console, call and supervisor bids share one performance. Day One
+      // Security also keeps its bass running through speech and the gate.
       const ctx = this.context;
       if (ctx && this.visible && this.active && ctx.state === "running") {
-        if (prev.speech !== next.speech && this.securityMix) {
-          const { gain, cutoff, start } = this.securityMix;
+        if (prev.speech !== next.speech && this.bedMix) {
+          const { gain, cutoff, start } = this.bedMix;
           const at = Math.max(ctx.currentTime, start + .020);
           const { speechGain, speechLowpassHz } = manifest.arrangement.interrupt;
-          for (const [param, value] of [[gain, next.speech ? speechGain : 1],
-            [cutoff, next.speech ? speechLowpassHz : ctx.sampleRate / 2]] as const) {
-            if (typeof param.cancelAndHoldAtTime === "function") param.cancelAndHoldAtTime(at);
-            else { const current = param.value; param.cancelScheduledValues(at); param.setValueAtTime(current, at); }
-            param.linearRampToValueAtTime(value, at + .045);
-          }
+          fadeTo(gain, next.speech ? speechGain : 1, at);
+          fadeTo(cutoff, next.speech ? speechLowpassHz : ctx.sampleRate / 2, at);
         }
         if (cue) {
           const version = this.cueEpoch;
@@ -137,8 +149,8 @@ export class CampaignMusicPlayer {
         // Only the opening belongs to the solo reveal. Its following day bed
         // cannot advance a two-worker arrangement before that crew arrives.
         this.positions.set("day-one-line", Math.min(this.elapsed, openingLength));
-      } else if (prev) this.positions.set(prev.surface, this.elapsed);
-      this.elapsed = this.positions.get(next.surface) ?? (this.restored && (isLine(next.surface) || next.surface === "first-line") ? openingLength : 0);
+      } else if (prev) this.positions.set(mixSurface(prev.surface) ?? prev.surface, this.elapsed);
+      this.elapsed = this.positions.get(mix ?? next.surface) ?? (this.restored && (isLine(next.surface) || next.surface === "first-line") ? openingLength : 0);
     }
     if (moved || !prev || !replacesBed(prev)) this.overlayElapsed = this.elapsed;
     this.restored = false;
@@ -160,7 +172,7 @@ export class CampaignMusicPlayer {
   }
   private interrupt(cancelPickup = true) {
     this.epoch++;
-    this.securityMix = null;
+    this.bedMix = null;
     if (cancelPickup) {
       this.cueEpoch++;
       this.pickup = null;
@@ -178,10 +190,7 @@ export class CampaignMusicPlayer {
     for (const voice of this.voices) {
       if (voice.pickup && !cancelPickup) continue;
       const { source, gain } = voice;
-      const level = gain.gain;
-      if (typeof level.cancelAndHoldAtTime === "function") level.cancelAndHoldAtTime(now);
-      else { const value = level.value; level.cancelScheduledValues(now); level.setValueAtTime(value, now); }
-      level.linearRampToValueAtTime(0, now + .045);
+      fadeTo(gain.gain, 0, now);
       source.stop(now + .050);
       this.voices.delete(voice);
     }
@@ -207,7 +216,7 @@ export class CampaignMusicPlayer {
     this.pending.set(file, request);
     return request;
   }
-  private sound(ctx: AudioContext, buffer: AudioBuffer, cut: Cut, when: number, offset: number, duck: boolean, role: "bed" | "cue" | "day-one-security" = "bed") {
+  private sound(ctx: AudioContext, buffer: AudioBuffer, cut: Cut, when: number, offset: number, duck: boolean, role: "bed" | "cue" | "mixed-bed" = "bed") {
     const begin = seconds(cut.range[0]), end = Math.min(seconds(cut.range[1]), buffer.duration);
     const span = end - begin;
     if (span <= 0) throw Error("Invalid music range");
@@ -219,7 +228,7 @@ export class CampaignMusicPlayer {
     source.loopStart = begin;
     source.loopEnd = end;
     let filter: BiquadFilterNode | undefined;
-    if (duck || role === "day-one-security") {
+    if (duck || role === "mixed-bed") {
       filter = ctx.createBiquadFilter();
       filter.type = "lowpass";
       filter.frequency.value = duck ? manifest.arrangement.interrupt.speechLowpassHz : ctx.sampleRate / 2;
@@ -228,8 +237,8 @@ export class CampaignMusicPlayer {
     gain.connect(ctx.destination);
     gain.gain.setValueAtTime(0, when);
     gain.gain.linearRampToValueAtTime(duck ? manifest.arrangement.interrupt.speechGain : 1, when + .020);
-    if (role === "day-one-security" && filter)
-      this.securityMix = { gain: gain.gain, cutoff: filter.frequency, start: when };
+    if (role === "mixed-bed" && filter)
+      this.bedMix = { gain: gain.gain, cutoff: filter.frequency, start: when };
     const voice = { source, gain, pickup: role === "cue" };
     this.voices.add(voice);
     source.onended = () => {
@@ -288,10 +297,10 @@ export class CampaignMusicPlayer {
         }
         offset = Math.max(0, offset - openingLength);
       }
-      const security = view.surface === "day-one-security" && !overlay;
-      const speech = security ? !!this.view?.speech : view.speech;
+      const liveMix = mixSurface(view.surface) && !overlay;
+      const speech = liveMix ? !!this.view?.speech : view.speech;
       this.sound(ctx, bedBytes, bed, when, offset, speech && !(isLine(view.surface) && bed.file === reel.file),
-        security ? "day-one-security" : "bed");
+        liveMix ? "mixed-bed" : "bed");
     }).catch(() => { if (version === this.epoch) this.failed(); });
   }
 }

@@ -194,6 +194,41 @@ test("confirmed scene cues sound before a cold bed and survive same-room speech 
   } finally { releaseSecurity(); player.dispose(); audio.restore(); }
 });
 
+test("Day Two desk, call and posting share one phase through ducking and the confirmed appointment", async () => {
+  const audio = installAudio();
+  const player = new CampaignMusicPlayer(() => {});
+  const show = async (world, at) => {
+    audio.ctx.currentTime = at;
+    player.update(campaignMusic(frame(world), "security"), false);
+    await flush();
+  };
+  const desk = {phase:"console"}, call = {phase:"call"};
+  try {
+    await player.enable();
+    await show(desk, 0);
+    const bed = audio.starts[0];
+    const [start,end] = manifest.cues.console.frames.map(n => n / manifest.sampleRate);
+    assert.equal(bed.offset, start);
+    assert.equal(bed.end, end);
+    await show(call, 3);
+    await show(desk, 6);
+    await show(call, 8);
+    await show({...call, topic:1}, 9);
+    await show({phase:"floor", floor:{stage:"briefing"}}, 13);
+    assert.deepEqual(audio.starts, [bed], "dialogue and bidding leave the loop running past its first eight bars");
+    assert.equal(bed.stop, undefined);
+    const { speechGain, speechLowpassHz } = manifest.arrangement.interrupt;
+    assert.deepEqual(audio.gains[0].ramps.map(r => r.value), [1, speechGain, 1, speechGain]);
+    assert.deepEqual(audio.cutoffs[0].ramps.map(r => r.value), [speechLowpassHz, audio.ctx.sampleRate/2, speechLowpassHz]);
+    const walk = {phase:"floor", floor:{stage:"walk", machines:[]}};
+    await show(walk, 16);
+    await show(walk, 17);
+    assert.deepEqual(audio.starts.map(s => s.offset), [start, manifest.cues.appointment.frames[0]/manifest.sampleRate, 0]);
+    assert.equal(audio.starts[2].end, manifest.tracks.security.loopFrames[1]/manifest.sampleRate);
+    assert.ok(bed.stop >= 16 && bed.stop <= 16.05);
+  } finally { player.dispose(); audio.restore(); }
+});
+
 test("fresh Day One Security shots play and resume the 96-bar recording through the verified campaign", async () => {
   const fs = require("node:fs");
   const path = require("node:path");

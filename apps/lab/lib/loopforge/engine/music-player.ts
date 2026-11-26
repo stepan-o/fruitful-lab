@@ -8,6 +8,10 @@ const opening = tracks.conveyor.openingFrames;
 const openingLength = seconds(opening[1] - opening[0]);
 const isLine = (surface: Surface) => surface === "conveyor" || surface === "day-one-line";
 
+function replacesBed(view: MusicView) {
+  return view.production === "waiting" || (isLine(view.surface) && view.speech);
+}
+
 type Cut = { file: string; range: number[]; loop: boolean };
 function reelCut(id: Cue): Cut {
   const cue = cues[id];
@@ -38,6 +42,9 @@ export class CampaignMusicPlayer {
   private epoch = 0;
   private elapsed = 0;
   private since: number | null = null;
+  private startedAtOffset = 0;
+  private overlayElapsed = 0;
+  private playingOverlay = false;
   private freshEntry = false;
   private restored = false;
   private positions = new Map<Surface, number>();
@@ -101,6 +108,7 @@ export class CampaignMusicPlayer {
       if (prev) this.positions.set(prev.surface, this.elapsed);
       this.elapsed = this.positions.get(next.surface) ?? (this.restored && isLine(next.surface) ? openingLength : 0);
     }
+    if (moved || !prev || !replacesBed(prev)) this.overlayElapsed = this.elapsed;
     this.restored = false;
     if (!paused) this.freshEntry = false;
     this.play(cue);
@@ -121,7 +129,11 @@ export class CampaignMusicPlayer {
   private interrupt() {
     this.epoch++;
     const now = this.context?.currentTime ?? 0;
-    if (this.since !== null) this.elapsed += Math.max(0, now - this.since);
+    if (this.since !== null && now >= this.since) {
+      const position = this.startedAtOffset + now - this.since;
+      if (this.playingOverlay) this.overlayElapsed = position;
+      else this.elapsed = position;
+    }
     this.since = null;
     for (const { source, gain } of this.voices) {
       const level = gain.gain;
@@ -196,17 +208,23 @@ export class CampaignMusicPlayer {
     ]).then(([bedBytes, cueBytes]) => {
       if (version !== this.epoch) return;
       let when = ctx.currentTime + .005;
+      const overlay = replacesBed(view);
+      let offset = overlay ? this.overlayElapsed : this.elapsed;
       if (pickup && cueBytes) {
         const duration = this.sound(ctx, cueBytes, pickup, when, 0, view.speech);
         when += duration;
         if (cue && (cues[cue].kind === "bridge" || cues[cue].kind === "entry") && !isLine(view.surface)) {
           const firstBar = cue === "options-menu" ? 49 : cue === "conveyor-security" ? 17 : 1;
-          this.elapsed = this.positions.has(view.surface) ? Math.ceil(this.elapsed / bar) * bar : firstBar * bar;
+          offset = this.positions.has(view.surface) ? Math.ceil(offset / bar) * bar : firstBar * bar;
         }
       }
-      this.since = when;
       if (!bed || !bedBytes) return;
-      let offset = this.elapsed;
+      // The main performance advances only when its source actually sounds.
+      // Unheard bridge destinations, decode time and interruption beds own no
+      // part of its opening or work-loop phase.
+      this.since = when;
+      this.startedAtOffset = offset;
+      this.playingOverlay = overlay;
       if (isLine(view.surface) && bed.file === tracks.conveyor.file) {
         if (offset < openingLength) {
           const intro = { file: bed.file, range: opening, loop: false };

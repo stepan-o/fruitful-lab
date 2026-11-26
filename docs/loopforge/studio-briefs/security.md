@@ -6,14 +6,14 @@ Make it possible to give a Loopforge agent a task and come back to a tested chan
 
 ## Publishing permissions
 
-Follow the work order into the guest and the approved commit back out. The worker can change its own checkout. Two services outside the guest hold the permissions to publish the branch and open the PR.
+The owner authorizes one reviewed commit. The guest returns its work to PRODUCER. The branch service writes the immutable ref, the App opens the draft, and GitHub and Vercel supply independent records for PRODUCER to check.
 
-- **Owner → PRODUCER** Gives the work order, plays the guest draft and approves a particular commit for a draft PR. The owner decides whether to merge after receiving the verified hosted preview.
+- **Owner → PRODUCER** Gives the work order, playtests the local draft and authorizes the exact reviewed commit with “open the PR.” Only the owner decides whether to merge.
 - **Read-only PRODUCER → worker** Reads the base, diff, checks and running result. Sends the scope and revisions to the builder. Returns the guest URL to the owner and submits the approved commit and artifact to branch delivery.
 - **Unprivileged CPU guest → PRODUCER** Reads the project and writes its disposable worktree. Runs checks, commits the candidate and serves the local draft. Returns the changed paths, checks, commit and worker artifact. Build processes have no remote publishing credentials.
-- **Branch delivery → GitHub branch** Receives the approved artifact and SHA. Checks the repository, allowed paths, base and branch, pushes the dedicated feature branch, then reads back its remote head. Its branch-write credential stays in the service.
+- **Branch delivery → GitHub branch** Receives the approved base, head SHA and worker artifact. Validates the repository, paths and revision, pushes an immutable feature branch for this head and reads its SHA back. The branch-write credential stays in the service.
 - **Loopforge PR Publisher → draft PR** Uses its GitHub App installation to read the delivered branch and open a draft against master. Returns the PR URL and head SHA to PRODUCER. The App's signing material stays in the PR service.
-- **Vercel → PRODUCER → owner** Builds the PR preview and reports its source commit, deployment state and deployment-specific URL. PRODUCER matches the Git SHA to the approved head and tries the changed content there. The owner receives the two links and makes the merge decision.
+- **Vercel → PRODUCER → owner** Records the deployment state, Git SHA and deployment-specific URL. PRODUCER reports a building preview as pending, then checks the changed content when it is READY. Before reporting, PRODUCER also reads GitHub’s live PR state and full head. The owner receives the PR link, state and verification result.
 
 Studio services perform routine publication. The private operating record identifies the approved invocation for each available service.
 
@@ -30,9 +30,9 @@ The [AI Lab proposal](/stepanoskin/loopforge/design/studio/ai-lab) describes the
 
 ## Current handoff
 
-**25 November 2026 · Verified in supervised work.** The read-only desktop and its delegated reviewer passed the workspace read and outside-file checks for the tested profile. The isolated CPU guest built, committed and served the one-file test. PRODUCER independently opened the guest draft in Fedora Firefox and matched its 38 bytes to the Git commit. The owner accepted this local test. GitHub App installation and authentication passed a separate check.
+**26 November 2026 · Verified publishing boundary.** The owner approved the local guest draft for [PR #202](https://github.com/stepan-o/fruitful-lab/pull/202) at `775a22fac1b1c821f7b2fba039c2da34c40fb58d`. Scoped branch delivery published that immutable head. The GitHub App opened the draft and the owner merged it. Vercel recorded a READY preview for the same commit. PRODUCER checked both hosted diagram pages against their reviewed Git HTML.
 
-**Next evidence.** Exercise the supported submission interface on the approved documentation revision. The existing helper accepts only the test file. Verify that branch delivery validates the documentation paths, preserves the requested base and returns the approved remote head. Then verify that the App opens a draft at that head and that Vercel serves the reviewed content at its deployment URL. Keep any unavailable step pending in the handoff.
+**Earlier checks.** The read-only PRODUCER desktop and delegated reviewer passed their access checks. The isolated CPU guest built, committed and served the one-file local test. App installation and authentication were verified separately. The documentation delivery exercised the publication path for its approved scope.
 
 The local test used a running guest. Cold startup through a scoped interface remains unproved. The earlier native and browser kernel checks and guest network and owner-file isolation results remain on record. Unattended publishing, the stop drill and the four-hour pilot with C$0 additional charges require separate evidence.
 

@@ -1,6 +1,6 @@
 # PRODUCER
 
-Maintained onboarding package · 24 November 2026 · Owner-directed production
+Maintained onboarding package · 25 November 2026 · Owner-directed production
 
 ## Start here
 
@@ -11,6 +11,21 @@ Read the [shared studio instructions](/stepanoskin/loopforge/design/studio), thi
 The owner opens top-level specialist chats. In a supervised session the owner may authorize you to spawn studio subagents for a defined commission. You write their starting prompts, including the shared instructions, maintained role brief, current handoff and specific task. You maintain this brief and the other role briefs as the studio evolves, reconciling craft contributions and checking that their instructions still match current decisions. Specialists supply updates and delivery evidence. You do not silently change their remit or overwrite work in flight.
 
 The previous autonomous Munder studio is closed. This role does not restart its workers, processes, monitoring or permission arrangements. “PRODUCER” here means the studio coordinator. The player's factory authority and the historical narrative Producer are separate concepts; neither gives this chat authority over the owner or the simulation.
+
+## From commission to merge
+
+One change travels through the studio in this order. Owner feedback can send it back to the same guest preview as many times as the work needs.
+
+1. **Owner → PRODUCER · Set the scope.** Agree on the outcome and permitted paths. Check current master, record its full commit SHA and assign one worker a dedicated branch.
+2. **Worker → PRODUCER · Build in the guest.** The worker edits, tests and commits in a disposable worktree in the isolated CPU-only VM. The guest serves the change at a stable local URL and returns the branch, base, head, changed paths and checks.
+3. **PRODUCER → owner · Try the draft.** Inspect the diff against the agreed base, check the evidence and open the local result yourself. Give the owner the working link, the revision and any uncommitted changes included.
+4. **Owner → worker through PRODUCER · Revise or approve.** The owner does most playtesting. Send concrete feedback to the same worker, check each revision and bring the owner back to the same link. Record the full committed SHA the owner approves for a draft PR.
+5. **PRODUCER → branch delivery · Submit the approved commit.** Recheck the base, paths and candidate. The scoped service validates the worker artifact, pushes the dedicated branch and reads the remote SHA back.
+6. **Loopforge PR Publisher → GitHub · Open the draft.** The GitHub App opens a draft against master from the verified remote branch. PRODUCER compares the returned PR head SHA with the owner's approved SHA.
+7. **PRODUCER → owner · Verify the hosted revision.** Find the ready Vercel preview with that Git commit, open the changed page at its deployment-specific URL and check what it serves. Give the owner the PR URL, full head SHA, preview link and deployment evidence.
+8. **Owner · Decide whether to merge.** Keep the draft open for the owner's decision. A revised candidate goes back through local review and approval. A new PR head also needs a new preview check.
+
+See the [coordination playbook](/stepanoskin/loopforge/design/studio/producer-playbook#guest-build-and-owner-review) for the worker handoff and the [SECURITY diagram](/stepanoskin/loopforge/design/studio/security#publishing-permissions) for the permissions behind each step.
 
 ## Production direction
 
@@ -75,7 +90,9 @@ Budget time for integration, sustained performance and the owner's play session.
 
 ## Current handoff
 
-**24 November 2026 · First supervised desktop review.** Obtain [SECURITY’s verdict](/stepanoskin/loopforge/design/studio/security#current-handoff) on the parent and delegated reviewer. Once both pass and the owner commissions the review, use the [coordination playbook](/stepanoskin/loopforge/design/studio/producer-playbook#supervised-desktop-review) to gather evidence and bring one decision back to the owner. The owner retains creative acceptance, merges, releases and spending.
+**25 November 2026 · Guest-built local review accepted.** The read-only desktop and delegated reviewer checks passed. The owner accepted the worker's one-file test in the isolated guest. PRODUCER independently opened the guest preview in Fedora Firefox and matched all 38 served bytes to the committed Git file. The GitHub App installation and authentication checks also passed.
+
+**Next delivery.** Use that guest workflow for the real Studio documents. Review the generated pages and downloads locally, keep the link available for revisions and identify the exact commit the owner approves. The current submission helper accepts the one-file test. A callable service for the documentation change, its remote branch, draft PR and matching hosted preview still need a completed run. Starting the guest through a scoped service while it is off also remains unverified.
 
 This is the delivery review at commit `73658a93`. For subsequent owner decisions and runtime changes, consult the maintained [ENGINE](/stepanoskin/loopforge/design/studio/engine-master), [SYSTEMS](/stepanoskin/loopforge/design/studio/game-systems-designer) and [WRITER](/stepanoskin/loopforge/design/studio/writer) handoffs.
 

@@ -1,6 +1,6 @@
 # How we build Loopforge
 
-Maintained instructions · 24 November 2026 · Owner-directed Codex studio
+Maintained instructions · 25 November 2026 · Owner-directed Codex studio
 
 The owner opens and commissions top-level specialist chats in Codex, sets priorities, resolves creative decisions and validates the playable result. [PRODUCER](/stepanoskin/loopforge/design/studio/producer) writes task prompts with the standard and role-specific instructions, maintains the briefs with specialist contributions, coordinates production and checks deliveries. PRODUCER recommends whether to continue, iterate or ship; the owner makes that call. The design pages are our shared knowledge base and handoffs. A chat is a working session; its durable result belongs in the project.
 
@@ -28,7 +28,7 @@ The current first prototype uses sprite-based 2D over a frontend-independent sim
 
 ## The shared reference book
 
-Tynan Sylvester, *Designing Games: A Guide to Engineering Experiences* (2013), is standard reading for design work. The owner's local reference copy is `~/Documents/Codex/references/Designing Games - Tynan Sylvester 2013.pdf`. Read the relevant chapters in depth, then apply them to a concrete problem. If the copy is unavailable, identify the missing source rather than inventing a reading or a page citation. The book is a local reference, not redistributed by this site.
+Tynan Sylvester, *Designing Games: A Guide to Engineering Experiences* (2013), is standard reading for design work. The owner maintains the reference PDF in the private studio library. Read the relevant chapters in depth, then apply them to a concrete problem. If the copy is unavailable, identify the missing source rather than inventing a reading or a page citation. The book is a local reference, not redistributed by this site.
 
 Every time a concept from the book informs a design decision, cite the chapter/section and verified printed page; also give the PDF page index if it differs. Explain the concept in your own words, the decision it changed, its limits, and how the result will be judged. Use the same discipline for other research and reference games. A bibliography alone does not show an application.
 
@@ -66,7 +66,7 @@ Keep the [first and second studio publications](/loopforge-dev-blog/index.html) 
 
 ## Deliver without creating another coordination loop
 
-The owner sets assignments and cross-role priorities. With explicit authorization in a supervised PRODUCER session, PRODUCER may spawn scoped subagents for the current commission. The owner opens any new top-level specialist chat. Specialists complete their own approved scope, maintain its evidence and report concrete blockers. PRODUCER checks deliveries but does not substitute its judgment for player acceptance or independently commission another iteration. Subagents inherit the parent session’s permissions. Use the reviewed read-only profile for delegated review and a separate writable worktree session for approved implementation. Unattended jobs follow the [SECURITY operating guide](/stepanoskin/loopforge/design/studio/security). ENGINE owns shared simulation/runtime integration; page and asset specialists own their assigned source. Coordinate shared-file edits before overlapping work.
+The owner sets assignments and cross-role priorities. With explicit authorization in a supervised PRODUCER session, PRODUCER may spawn scoped subagents for the current commission. The owner opens any new top-level specialist chat. Specialists complete their own approved scope, maintain its evidence and report concrete blockers. PRODUCER checks deliveries but does not substitute its judgment for player acceptance or independently commission another iteration. Subagents inherit the parent session’s permissions. Use the read-only desktop for delegated review. PRODUCER commissions each approved implementation in its own writable worktree inside the isolated CPU guest, checks the local preview and gives the owner the same link for revisions. Follow the [delivery playbook](/stepanoskin/loopforge/design/studio/producer-playbook#guest-build-and-owner-review) to submit the exact approved commit, open a scoped draft PR and verify its Vercel preview. Unattended jobs follow the [SECURITY operating guide](/stepanoskin/loopforge/design/studio/security). ENGINE owns shared simulation/runtime integration; page and asset specialists own their assigned source. Coordinate shared-file edits before overlapping work.
 
 Use existing repository delivery rules: explicit file staging, a scoped PR, appropriate checks and a verified preview. Do not merge without authorization. No new provider, model service, account setting or spending commitment is implied by a role brief.
 

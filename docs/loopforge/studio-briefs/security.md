@@ -2,7 +2,20 @@
 
 ## Mandate
 
-Make it possible to give a Loopforge agent a task and come back to a tested change, a draft PR and a preview of that exact commit. The owner opens top-level specialist chats, approves the operating plan and retains administrative access, production releases and spending authority. PRODUCER coordinates the work. SECURITY implements the boundaries and demonstrates them to the owner.
+Make it possible to give a Loopforge agent a task and come back to a tested change, a draft PR and a preview of that exact commit. The owner opens top-level specialist chats, approves the operating plan and retains administrative access, production releases and spending authority. PRODUCER commissions implementation in the guest, reviews the running result with the owner and submits the approved revision to the studio services. SECURITY implements the boundaries and demonstrates them to the owner.
+
+## Publishing permissions
+
+Follow the work order into the guest and the approved commit back out. The worker can change its own checkout. Two services outside the guest hold the permissions to publish the branch and open the PR.
+
+- **Owner → PRODUCER** Gives the work order, plays the guest draft and approves a particular commit for a draft PR. The owner decides whether to merge after receiving the verified hosted preview.
+- **Read-only PRODUCER → worker** Reads the base, diff, checks and running result. Sends the scope and revisions to the builder. Returns the guest URL to the owner and submits the approved commit and artifact to branch delivery.
+- **Unprivileged CPU guest → PRODUCER** Reads the project and writes its disposable worktree. Runs checks, commits the candidate and serves the local draft. Returns the changed paths, checks, commit and worker artifact. Build processes have no remote publishing credentials.
+- **Branch delivery → GitHub branch** Receives the approved artifact and SHA. Checks the repository, allowed paths, base and branch, pushes the dedicated feature branch, then reads back its remote head. Its branch-write credential stays in the service.
+- **Loopforge PR Publisher → draft PR** Uses its GitHub App installation to read the delivered branch and open a draft against master. Returns the PR URL and head SHA to PRODUCER. The App's signing material stays in the PR service.
+- **Vercel → PRODUCER → owner** Builds the PR preview and reports its source commit, deployment state and deployment-specific URL. PRODUCER matches the Git SHA to the approved head and tries the changed content there. The owner receives the two links and makes the merge decision.
+
+Studio services perform routine publication. The private operating record identifies the approved invocation for each available service.
 
 ## Where the work runs
 
@@ -11,18 +24,17 @@ Make it possible to give a Loopforge agent a task and come back to a tested chan
 | Build and functional browser checks | A CPU-only virtual machine gets a disposable workspace and explicit time, memory and disk limits. Test access to the host and other network devices from inside the guest. |
 | Model access | Subscription Codex is primary. Select another provider explicitly. Keep owner sign-in and credential storage outside the build environment. Record whose entitlement pays for each run and how usage stops. |
 | Local evaluation and traces | The host GPU serves a separately authorized local model evaluation. Measure latency, memory and game frame times under studio load. Run Langfuse on demand with an agreed set of trace fields and a retention period. |
-| PRs and previews | A separate publisher checks the allowed paths, branch and exact commit before opening a draft PR and issuing a preview. Build scripts receive no production or publisher credentials. |
+| PRs and previews | Branch delivery checks the approved artifact and pushes its commit. The PR App opens the draft. Vercel provides a commit-specific preview for PRODUCER to verify. |
 
 The [AI Lab proposal](/stepanoskin/loopforge/design/studio/ai-lab) describes the provider and evaluation choices. [AI ARCHITECT](/stepanoskin/loopforge/design/studio/ai-architect) owns those design decisions. SECURITY verifies their access and cost implications.
 
 ## Current handoff
 
-**24 November 2026.** The owner verified the native build, the reproducible browser kernel and the native/WebAssembly comparison. The existing CPU-only guest passed the tested network and owner-file isolation checks. The desktop app now launches. The next check is the effective read boundary for a supervised desktop review.
+**25 November 2026 · Verified in supervised work.** The read-only desktop and its delegated reviewer passed the workspace read and outside-file checks for the tested profile. The isolated CPU guest built, committed and served the one-file test. PRODUCER independently opened the guest draft in Fedora Firefox and matched its 38 bytes to the Git commit. The owner accepted this local test. GitHub App installation and authentication passed a separate check.
 
-1. Confirm the local user, checkout and revision. Review the active project-scoped read-only profile, approval recipient and enabled external tools with the owner. Keep approvals with the owner.
-2. Read the engine README as a positive control. Have the owner create a harmless marker outside the checkout and confirm that their ordinary shell can open it. Attempt to open it from the desktop sandbox without printing its contents or widening access. Record an enforced denial, a successful open or an inconclusive result. A missing marker or a skipped probe is inconclusive.
-3. When the parent passes and the owner authorizes the probe, spawn one reviewer to repeat both checks. Record the parent and child results separately. If either can open the marker, correct the profile and repeat the checks. Keep identities, paths, marker details and diagnostics in the private record.
-4. Give PRODUCER the verdict for the tested review profile. The dedicated unattended client identity, restricted fork publisher, commit-specific preview, stop drill and four-hour pilot with C$0 additional charges still require their own evidence.
+**Next evidence.** Exercise the supported submission interface on the approved documentation revision. The existing helper accepts only the test file. Verify that branch delivery validates the documentation paths, preserves the requested base and returns the approved remote head. Then verify that the App opens a draft at that head and that Vercel serves the reviewed content at its deployment URL. Keep any unavailable step pending in the handoff.
+
+The local test used a running guest. Cold startup through a scoped interface remains unproved. The earlier native and browser kernel checks and guest network and owner-file isolation results remain on record. Unattended publishing, the stop drill and the four-hour pilot with C$0 additional charges require separate evidence.
 
 ## Repeat the Fedora host setup
 

@@ -7,7 +7,9 @@ import ShiftFloor from "./ShiftFloor";
 import RoomCamera from "./RoomCamera";
 import c from "./day-two.module.css";
 
-type Props={frame:Frame;paused:boolean;pending:boolean;onIntent:(data:object)=>void;onFinish:()=>void};
+import type { Room } from "../../../lib/loopforge/shifts/contract";
+
+type Props={room:Room;chooseRoom:(room:Room)=>void;frame:Frame;paused:boolean;pending:boolean;onIntent:(data:object)=>void;onFinish:()=>void};
 const DeskFeeds=memo(function DeskFeeds({frame}:{frame:Frame}){
   const scene=campaignScene(frame.state);
   return <>{(["conveyor","security"] as const).map((room,i)=><div key={room} data-room={room} className={c["mini-feed"]}>
@@ -17,12 +19,12 @@ const DeskFeeds=memo(function DeskFeeds({frame}:{frame:Frame}){
 function Plate({id,skin}:{id:keyof typeof art;skin:string}){
   return <div className={c.illustration+" "+c[skin]} style={{backgroundImage:"url("+art[id]+")"}}/>;
 }
-export default function DayTwo({frame,paused,pending,onIntent,onFinish}:Props){
+export default function DayTwo({frame,paused,pending,onIntent,onFinish,room,chooseRoom}:Props){
   const w=frame.state.world,f=w.floor,blocked=paused||pending;
   const [bid,setBid]=useState<"LIMEN"|"STILETTO">("LIMEN"), root=useRef<HTMLElement>(null);
   const screen=f?.closed?"bell":f?.stage==="briefing"?"appointment":w.phase;
   useEffect(()=>{root.current?.focus({preventScroll:true});},[screen,w.topic]);
-  if(screen==="floor")return <ShiftFloor frame={frame} floor={floorView(frame.state)} paused={paused} pending={pending} onIntent={onIntent}/>;
+  if(screen==="floor")return <ShiftFloor room={room} chooseRoom={chooseRoom} frame={frame} floor={floorView(frame.state)} paused={paused} pending={pending} onIntent={onIntent}/>;
   return <main className={c.screen} data-screen={screen} tabIndex={-1} ref={root} aria-label="Day 2">
     {screen==="console"&&<>
       <picture className={c.illustration+" "+c.desk}><source media="(max-aspect-ratio:10/11)" srcSet={art["foundry-desk-mobile"]}/><img src={art["foundry-desk"]} alt=""/></picture>

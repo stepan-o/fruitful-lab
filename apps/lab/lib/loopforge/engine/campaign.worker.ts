@@ -50,8 +50,10 @@ function save() {
   postMessage({ type: "save", journal: host(5, null) });
   saved = performance.now();
 }
-function show() {
-  if (frame) postMessage({ type: "view", frame, paused, rate });
+let recovered = false;
+function show(seeked = false) {
+  if (frame) postMessage({ type: "view", frame, paused, rate, seeked, recovered });
+  recovered = false;
 }
 async function wire(type: string, p: object) {
   await consume(host(1, envelope(type, ++seq, p)));
@@ -81,6 +83,7 @@ async function consume(records: Envelope[]) {
           frame = await read(frame, e);
         } catch (error) {
           if (e.msg_type === "FULL_SNAPSHOT") throw error;
+          recovered = true;
           await wire("DESYNC_REPORT", {
             tick: frame?.tick ?? 0,
             issue: "EXTERNAL_HASH_MISMATCH",
@@ -174,7 +177,7 @@ async function seek(seconds: number) {
   });
   await wire("REPLAY_SEEK", { tick: target, policy: "SNAPSHOT_THEN_DIFFS" });
   save();
-  show();
+  show(true);
 }
 self.onmessage = ({ data: m }) =>
   schedule(async () => {

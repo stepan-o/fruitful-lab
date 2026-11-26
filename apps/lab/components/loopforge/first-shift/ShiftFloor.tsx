@@ -2,7 +2,8 @@
 import {useEffect,useRef,useState} from "react";
 import type {Frame} from "../../../lib/loopforge/engine/wire";
 import type {CampaignFloor} from "../../../lib/loopforge/engine/floor-view";
-import {approachZone,type Room} from "../../../lib/loopforge/shifts/contract";
+import { visibleFloorSpeech } from "../../../lib/loopforge/engine/music-score";
+import {type Room} from "../../../lib/loopforge/shifts/contract";
 import art from "../../../public/loopforge-design/day-two-ui/art.json";
 import RoomCamera from "./RoomCamera";
 import c from "./day-two.module.css";
@@ -10,26 +11,23 @@ import c from "./day-two.module.css";
 function Ratings({title,values}:{title:string;values:number[]}) {
   return <div className={c.statset}><strong>{title}</strong>{["Force","Precision","Timing"].map((stat,i)=><span className={c.stat+" "+c["s"+i]} key={stat}><span>{stat}</span><meter min={0} max={5} value={values[i]} aria-label={title+" "+stat}/><em>{values[i]}/5</em></span>)}</div>;
 }
-type Props={frame:Frame;floor:CampaignFloor;paused:boolean;pending:boolean;onIntent:(i:object)=>void};
-export default function ShiftFloor({frame,floor,paused,pending,onIntent}:Props){
+type Props={room:Room;chooseRoom:(room:Room)=>void;frame:Frame;floor:CampaignFloor;paused:boolean;pending:boolean;onIntent:(i:object)=>void};
+export default function ShiftFloor({frame,floor,paused,pending,onIntent,room,chooseRoom}:Props){
   const w=frame.state.world,f=w.floor!, held=f.held,live=f.lesson==="live",blocked=paused||pending;
-  const [choice,setChoice]=useState<{room:Room;seq:number}|null>(null);
   const [incident,setIncident]=useState<number|null>(null),[exchange,setExchange]=useState(false);
   const [orders,setOrders]=useState(false),[worker,setWorker]=useState(""),[station,setStation]=useState(0);
   const previousTick=useRef(frame.tick),heading=useRef<HTMLHeadingElement>(null);
   const back=useRef<HTMLButtonElement>(null),marker=useRef<HTMLButtonElement>(null),returning=useRef(false);
-  const room=held?f.shot:choice?.seq===f.shotSeq?choice.room:f.shot;
   const open=f.status==="open"&&floor.tick<f.deadline, reading=incident!==null&&incident===f.deadline&&f.status!=="none";
   const seconds=Math.ceil(Math.max(0,f.deadline-floor.tick)/20);
   const crew=floor.workers.filter(a=>held?f.crew.includes(a.id):a.available);
   const selected=crew.find(a=>a.id===worker),machine=floor.machines[station];
-  const speech=frame.state.events.filter(e=>e.kind==="speech.delivered"&&e.tick<=floor.tick&&floor.tick<e.until&&
-    (e.room===room||room==="security"&&f.stage==="walk"&&approachZone(e.room)));
+  const speech=visibleFloorSpeech(frame.state,room);
   const desk=frame.state.events.filter(e=>e.kind==="speech.delivered"&&e.room==="security"&&(e.speaker==="bob"||e.speaker==="LIMEN"));
   const hold=desk.findLastIndex(e=>e.text==="No ID. Hold both desks.");
   const caseLines=hold<0?[]:desk.slice(Math.max(0,hold-2),hold+1);
   useEffect(()=>{
-    if(frame.tick<previousTick.current){setChoice(null);setIncident(null);setExchange(false);setWorker("");setStation(0);setOrders(false);}
+    if(frame.tick<previousTick.current){setIncident(null);setExchange(false);setWorker("");setStation(0);setOrders(false);}
     previousTick.current=frame.tick;
   },[frame.tick]);
   useEffect(()=>{setWorker("");setOrders(false);setStation(0);},[f.shotSeq,f.lesson]);
@@ -39,7 +37,7 @@ export default function ShiftFloor({frame,floor,paused,pending,onIntent}:Props){
     else heading.current?.focus({preventScroll:true});
   },[reading,room]);
   useEffect(()=>{if(reading&&f.status==="pass"){returning.current=true;setIncident(null);}},[reading,f.status]);
-  function inspect(){setChoice({room:"security",seq:f.shotSeq});setExchange(false);setIncident(f.deadline);}
+  function inspect(){chooseRoom("security");setExchange(false);setIncident(f.deadline);}
   function leave(){returning.current=true;setIncident(null);}
   function send(action:string,target:string,id:string,at:Room){if(!blocked)onIntent({action,target,incident:id,room:at});}
   function post(i:number){if(selected)send(held?"post":"assign",floor.machines[i].name,selected.id,"conveyor");}
@@ -87,7 +85,7 @@ export default function ShiftFloor({frame,floor,paused,pending,onIntent}:Props){
     <footer className={c["floor-foot"]}><span role="status">{pending?"Sending order…":selected&&live&&inspected?inspected.id+" · "+inspected.label:
       f.status==="pass"?"Daily pass granted · bob cleared":f.status==="detention"?"bob in custody until bell":held?"Clock held · Post the crew":floor.inspecting?"LIMEN inspecting":"1 intervention available"}</span>
       <nav aria-label="Camera and orders">{room!=="security"&&open&&<button className={c.switchcam} onClick={inspect}>Missing ID · {seconds}s</button>}
-        {!held&&<button className={c.switchcam} onClick={()=>{setChoice({room:room==="security"?"conveyor":"security",seq:f.shotSeq});setOrders(false);}}>↗ {room==="security"?"Conveyor":"Security"}</button>}
+        {!held&&<button className={c.switchcam} onClick={()=>{chooseRoom(room==="security"?"conveyor":"security");setOrders(false);}}>↗ {room==="security"?"Conveyor":"Security"}</button>}
         {room==="conveyor"&&live&&!f.manual&&<button className={c.switchcam} aria-expanded={orders} onClick={()=>setOrders(!orders)}>{orders?"Close assignments":"Assign crew"}</button>}</nav></footer>
   </main>;
 }

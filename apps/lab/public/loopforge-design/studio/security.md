@@ -2,15 +2,15 @@
 
 ## Mandate
 
-Make it possible to give a Loopforge agent a task and come back to a tested change, a draft PR and a preview of that exact commit. The owner opens top-level specialist chats, approves the operating plan and retains administrative access, production releases and spending authority. PRODUCER commissions implementation in the guest, reviews the running result with the owner and submits the approved revision to the studio services. SECURITY implements the boundaries and demonstrates them to the owner.
+Make it possible to give a Loopforge agent a task and come back to a tested change, a draft PR and a preview of that exact commit. The owner opens top-level specialist chats, approves the operating plan and retains administrative access, production releases and spending authority. The owning role plans the change, directs the guest builder and checks the technical result. PRODUCER reviews delivery with the owner and submits the approved revision to the studio services. SECURITY implements the boundaries and demonstrates them to the owner.
 
 ## Publishing permissions
 
-The owner authorizes one reviewed commit. The guest returns its work to PRODUCER. The branch service writes the immutable ref, the App opens the draft, and GitHub and Vercel supply independent records for PRODUCER to check.
+The owner authorizes one reviewed commit. The guest returns its work for specialist review. PRODUCER checks the overall delivery with the owner. The branch service writes the immutable ref, the App opens the draft, and GitHub and Vercel supply independent records for PRODUCER to check.
 
 - **Owner → PRODUCER** Gives the work order, playtests the local draft and authorizes the exact reviewed commit with “open the PR.” Only the owner decides whether to merge.
-- **Read-only PRODUCER → worker** Reads the base, diff, checks and running result. Sends the scope and revisions to the builder. Returns the guest URL to the owner and submits the approved commit and artifact to branch delivery.
-- **Unprivileged CPU guest → PRODUCER** Reads the project and writes its disposable worktree. Runs checks, commits the candidate and serves the local draft. Returns the changed paths, checks, commit and worker artifact. Build processes have no remote publishing credentials.
+- **Read-only PRODUCER ↔ owning role** Identifies the owning specialist and gives it the approved scope and handoff. Can relay its work order and the worker’s evidence. Checks delivery, shares the guest URL, routes owner feedback through the specialist and submits the approved revision. PRODUCER directs and reviews its own documentation work.
+- **Unprivileged CPU guest → owning role** Reads the project and writes its disposable worktree. Runs checks, commits the candidate and serves the local draft. Returns the changed paths, checks, commit and worker artifact to the owning role for revisions or technical acceptance. Build processes have no remote publishing credentials.
 - **Branch delivery → GitHub branch** Receives the approved base, head SHA and worker artifact. Validates the repository, paths and revision, pushes an immutable feature branch for this head and reads its SHA back. The branch-write credential stays in the service.
 - **Loopforge PR Publisher → draft PR** Uses its GitHub App installation to read the delivered branch and open a draft against master. Returns the PR URL and head SHA to PRODUCER. The App's signing material stays in the PR service.
 - **Vercel → PRODUCER → owner** Records the deployment state, Git SHA and deployment-specific URL. PRODUCER reports a building preview as pending, then checks the changed content when it is READY. Before reporting, PRODUCER also reads GitHub’s live PR state and full head. The owner receives the PR link, state and verification result.

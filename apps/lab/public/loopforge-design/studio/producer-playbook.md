@@ -1,6 +1,6 @@
 # PRODUCER coordination playbook
 
-25 November 2026 · Use with the [role brief](/stepanoskin/loopforge/design/studio/producer), [source reader](/stepanoskin/loopforge/design/studio/producer-reading) and [shared instructions](/stepanoskin/loopforge/design/studio)
+26 November 2026 · Use with the [role brief](/stepanoskin/loopforge/design/studio/producer), [source reader](/stepanoskin/loopforge/design/studio/producer-reading) and [shared instructions](/stepanoskin/loopforge/design/studio)
 
 ## The next useful conversation
 
@@ -22,11 +22,12 @@ Bring the findings together in one note naming the revision, the reviewable arti
 
 1. **Commission the worker.** Confirm the current remote master and name the allowed paths. Use the approved private dispatch route into the isolated CPU-only guest. Ask the worker to verify its identity, clean worktree, branch and base there, then build on a dedicated branch. Leave the owner's checkout and other producers' worktrees available to them.
 2. **Collect the local handoff.** Ask for base and head SHAs, changed paths, diff, checks, working-tree status and a stable local URL served by the guest. Check that the URL opens from the owner's browser. For a generated document, compare the authored copy with the download and open the rendered page at desktop and phone widths.
-3. **Run the review loop.** Read the changed lines and exercise the relevant behavior yourself. Give the owner the link and revision. Identify any uncommitted edits visible there. Translate owner feedback into a specific change for the worker, then verify the result on the same link. Match the committed candidate to the version the owner actually reviewed before seeking permission to open its PR.
-4. **Publish the approved SHA.** Check current master, the base-to-head diff and any existing PR before submitting. A concurrent master change calls for an overlap and compatibility check. If integration changes the candidate, review its new diff and preview and obtain approval for its new SHA. Send the approved artifact and SHA through scoped branch delivery, confirm the remote branch head, then request a draft through the Loopforge PR Publisher.
-5. **Return the hosted evidence.** Read the PR head and locate a ready Vercel preview for that exact Git SHA. Visit the deployment-specific URL and open the changed content. Return the draft PR, full head SHA, preview URL and deployment record to the owner. If the head moves, repeat the check. Keep the PR open until the owner decides.
+3. **Run the review loop.** Inspect the diff and try the changed behavior. Give the owner the link, revision and any uncommitted edits included. Return feedback to the same worker and check each revision at the same URL. Match the clean committed candidate to the draft the owner played. Wait for “open the PR” for that full SHA.
+4. **Publish the approved SHA.** Check current master, the base-to-head diff and any existing PR. If master advanced, check for overlap. If integration changes the candidate, verify its new preview and obtain approval for its new SHA. Submit the approved base and head to the scoped publisher. Branch delivery validates the artifact and reads back the immutable remote branch. The Loopforge PR Publisher App opens the draft against master.
+5. **Verify the deployment.** Look up the Vercel preview for the approved SHA. While it builds, report its status as pending. At READY, confirm its source SHA, open the deployment-specific URL and exercise the changed content. For generated documents, compare the hosted response with the reviewed Git file.
+6. **Read live PR state and head before reporting.** Query GitHub independently of the publisher receipt. Compare the full head to the approval. Send the PR link, current state, full SHA, deployment status and verified preview link when available. Report a closed or merged PR as such. If a head or deployment differs, name the mismatch and withhold verification for that candidate. The owner merges.
 
-If the submit action is unavailable for the proposed paths, keep the local draft running. Record the missing service operation and the reviewed revision in the private handoff. The owner can keep reviewing while SECURITY and the service maintainer resolve publication.
+If publication fails or is interrupted, read the remote branch and PR state before retrying. Reuse an existing draft at the approved head. Give the service maintainer the job or branch, full base and head SHAs, failed operation and error through the private handoff. Continue authorized local work and keep the review link available. A new commit needs its own review and approval.
 
 ## Write a complete specialist commission
 
@@ -38,7 +39,7 @@ Each prompt should contain the following, in enough detail to start without read
 4. **Scope and ownership.** Name allowed source areas, existing work to preserve, the responsible integrator and specific dependencies. Use an isolated branch/worktree where work is parallel. Do not assign the same shared file independently to two chats.
 5. **Research and workflow.** Specify relevant reference-book chapters and project documents. For new design: onboard and synthesize, interview one question at a time, then obtain approval of a concrete plan. For an approved correction: inspect, plan briefly, implement and verify.
 6. **Acceptance evidence.** Name meaningful cases, actual-game or art-proof requirements, viewport/context and the remaining owner review. Declare performance comparisons only where relevant and measurable.
-7. **Delivery and continuity.** Request the artifact, changed paths, relevant checks, guest preview and revision, source-owned updates, known gaps and a compact checkpoint. PRODUCER handles submission after owner review. No merge without owner authorization. Do not regenerate saved art or create another parallel system unless the task requires it.
+7. **Delivery and continuity.** Request the artifact, changed paths, relevant checks, guest preview and revision, source-owned updates, known gaps and a compact checkpoint. PRODUCER handles submission after owner review. The owner merges. Do not regenerate saved art or create another parallel system unless the task requires it.
 
 Use the role page's copyable starting prompt as the common introduction, then replace its task placeholder with this commission. Links alone are insufficient when an important invariant or owner correction would otherwise be easy to miss. Avoid copying full generated HTML, entire books or historical conversations into the prompt.
 
@@ -101,7 +102,7 @@ PRODUCER is accountable for keeping the brief set coherent and current. Speciali
 
 ## Close a bounded delivery
 
-Give the owner the playable preview and PR, the exact build/context, a short set of actions to try, the changes that matter and the gaps that remain. Separate technical checks, your delivery check and the owner's acceptance. Ask the next review question only if a decision is needed. Do not merge without authorization.
+Give the owner the PR’s current state and head, deployment status, verified preview link when available, exact build context and a short set of actions to try. Record the changes, gaps and owner verdict. The owner merges.
 
 If the owner chooses to ship with gaps, preserve those gaps plainly in the release handoff and dev blog. Follow the authorized publication path and verify its result. Do not continue generating work after the assignment is explicitly closed. Do not reactivate retired monitoring to follow an already completed outcome.
 

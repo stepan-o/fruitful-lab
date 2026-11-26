@@ -1,6 +1,6 @@
 # PRODUCER
 
-Maintained onboarding package · 25 November 2026 · Owner-directed production
+Maintained onboarding package · 26 November 2026 · Owner-directed production
 
 ## Start here
 
@@ -14,16 +14,16 @@ The previous autonomous Munder studio is closed. This role does not restart its 
 
 ## From commission to merge
 
-One change travels through the studio in this order. Owner feedback can send it back to the same guest preview as many times as the work needs.
+Follow one revision from guest preview to publication. The stable local link is where the owner requests changes or approves the commit. GitHub records the owner’s merge decision. Vercel identifies the revision behind the hosted link.
 
 1. **Owner → PRODUCER · Set the scope.** Agree on the outcome and permitted paths. Check current master, record its full commit SHA and assign one worker a dedicated branch.
 2. **Worker → PRODUCER · Build in the guest.** The worker edits, tests and commits in a disposable worktree in the isolated CPU-only VM. The guest serves the change at a stable local URL and returns the branch, base, head, changed paths and checks.
 3. **PRODUCER → owner · Try the draft.** Inspect the diff against the agreed base, check the evidence and open the local result yourself. Give the owner the working link, the revision and any uncommitted changes included.
-4. **Owner → worker through PRODUCER · Revise or approve.** The owner does most playtesting. Send concrete feedback to the same worker, check each revision and bring the owner back to the same link. Record the full committed SHA the owner approves for a draft PR.
-5. **PRODUCER → branch delivery · Submit the approved commit.** Recheck the base, paths and candidate. The scoped service validates the worker artifact, pushes the dedicated branch and reads the remote SHA back.
+4. **Owner → worker through PRODUCER · Revise or approve.** The owner does most playtesting. Send changes to the same worker, check the new revision and share the same local link. Record the full committed SHA the owner approves with “open the PR.” A new candidate needs fresh review and approval.
+5. **PRODUCER → branch delivery · Submit the approved commit.** Check current master, the base-to-head diff and the clean candidate. Submit the approved base and head to the scoped publisher. Branch delivery validates the worker artifact, pushes an immutable branch for that commit and reads back its remote SHA.
 6. **Loopforge PR Publisher → GitHub · Open the draft.** The GitHub App opens a draft against master from the verified remote branch. PRODUCER compares the returned PR head SHA with the owner's approved SHA.
-7. **PRODUCER → owner · Verify the hosted revision.** Find the ready Vercel preview with that Git commit, open the changed page at its deployment-specific URL and check what it serves. Give the owner the PR URL, full head SHA, preview link and deployment evidence.
-8. **Owner · Decide whether to merge.** Keep the draft open for the owner's decision. A revised candidate goes back through local review and approval. A new PR head also needs a new preview check.
+7. **Vercel → PRODUCER · Check the hosted result.** Look up the deployment for the approved SHA. If it is building, report the preview as pending and follow it to completion. At READY, open the deployment-specific URL and test the changed content against the reviewed revision.
+8. **PRODUCER → owner · Report what is live.** Re-read the PR’s current state and full head directly from GitHub before sending the links. Report the PR URL, state, head SHA, deployment status and verified preview when available. A merged PR is reported as merged. The owner makes the merge decision.
 
 See the [coordination playbook](/stepanoskin/loopforge/design/studio/producer-playbook#guest-build-and-owner-review) for the worker handoff and the [SECURITY diagram](/stepanoskin/loopforge/design/studio/security#publishing-permissions) for the permissions behind each step.
 
@@ -90,11 +90,11 @@ Budget time for integration, sustained performance and the owner's play session.
 
 ## Current handoff
 
-**25 November 2026 · Guest-built local review accepted.** The read-only desktop and delegated reviewer checks passed. The owner accepted the worker's one-file test in the isolated guest. PRODUCER independently opened the guest preview in Fedora Firefox and matched all 38 served bytes to the committed Git file. The GitHub App installation and authentication checks also passed.
+**26 November 2026 · Supervised documentation delivery verified.** For [PR #202](https://github.com/stepan-o/fruitful-lab/pull/202), the owner reviewed the local VM draft and approved commit `775a22fac1b1c821f7b2fba039c2da34c40fb58d`. The scoped publisher delivered that SHA on an immutable branch. The Loopforge PR Publisher App opened the draft and the owner merged it. The READY Vercel deployment recorded the approved SHA. Both hosted diagram pages matched the HTML in the reviewed Git commit.
 
-**Next delivery.** Use that guest workflow for the real Studio documents. Review the generated pages and downloads locally, keep the link available for revisions and identify the exact commit the owner approves. The current submission helper accepts the one-file test. A callable service for the documentation change, its remote branch, draft PR and matching hosted preview still need a completed run. Starting the guest through a scoped service while it is off also remains unverified.
+For the next commission, check current master, give the VM worker its scope and keep its local link available through review. Before each publication update, check live GitHub state and head independently of the submission receipt. Guest startup from a powered-off state through the scoped interface remains unverified.
 
-This is the delivery review at commit `73658a93`. For subsequent owner decisions and runtime changes, consult the maintained [ENGINE](/stepanoskin/loopforge/design/studio/engine-master), [SYSTEMS](/stepanoskin/loopforge/design/studio/game-systems-designer) and [WRITER](/stepanoskin/loopforge/design/studio/writer) handoffs.
+The gameplay record below covers the earlier delivery review at commit `73658a93`. For subsequent owner decisions and runtime changes, consult the maintained [ENGINE](/stepanoskin/loopforge/design/studio/engine-master), [SYSTEMS](/stepanoskin/loopforge/design/studio/game-systems-designer) and [WRITER](/stepanoskin/loopforge/design/studio/writer) handoffs.
 
 **19 November 2026 · Ready for owner play review.** Remote master `73658a93` includes the [PRODUCER package, PR #164](https://github.com/stepan-o/fruitful-lab/pull/164) and [ENGINE’s live art integration, PR #163](https://github.com/stepan-o/fruitful-lab/pull/163). The production deployment reached READY. PRODUCER reopened the [public shifts](/loopforge-shifts/index.html) and operated the updated controls. The owner selected B / Raking light and approved the Day One script and floor. The current playable experience awaits a verdict.
 

@@ -1,6 +1,6 @@
 # PRODUCER source reader
 
-25 November 2026 · Companion to the [PRODUCER brief](/stepanoskin/loopforge/design/studio/producer) and [coordination playbook](/stepanoskin/loopforge/design/studio/producer-playbook)
+26 November 2026 · Companion to the [PRODUCER brief](/stepanoskin/loopforge/design/studio/producer) and [coordination playbook](/stepanoskin/loopforge/design/studio/producer-playbook)
 
 ## Read for a decision
 
@@ -13,10 +13,11 @@ Current owner instructions define intent. Current code and observed behavior est
 Begin with the owner’s commission, current master and the [local review procedure](/stepanoskin/loopforge/design/studio/producer-playbook#guest-build-and-owner-review). The [SECURITY handoff](/stepanoskin/loopforge/design/studio/security#current-handoff) records which parts of that procedure have run.
 
 - **A local draft** has a base and worker head, a diff, checks and a guest URL. Compare the actual running content with the worker's revision. Record any uncommitted edits.
-- **An approval** identifies the exact committed version the owner reviewed. A changed candidate needs a fresh owner decision.
-- **A published candidate** needs the remote branch SHA, draft PR head, ready deployment record and a working deployment-specific URL. Match all three SHAs to the approval and inspect the changed page there.
+- **An approval** pairs the owner's “open the PR” with the full SHA of the clean revision they reviewed. A different head is a new candidate.
+- **GitHub** supplies the immutable feature branch, current PR state and full head SHA. Re-read the state and head before reporting, even if the original submission receipt says draft.
+- **Vercel** supplies the deployment state, source SHA and deployment-specific URL. Report a build in progress as pending. When it reaches READY, match its SHA to the reviewed head and verify the changed content at that URL.
 
-The owner accepted a one-file local test after the guest response matched the Git contents. This establishes a local review path. The first real documentation PR and its hosted preview remain open evidence.
+The owner accepted the local one-file test. [PR #202](https://github.com/stepan-o/fruitful-lab/pull/202) provides the full documentation example. Its approved head was `775a22fac1b1c821f7b2fba039c2da34c40fb58d`. The scoped service delivered that head, the App opened the draft, the owner merged it, and both hosted diagram pages matched the reviewed Git HTML on the READY deployment for that SHA.
 
 ## Current vision and creative foundations
 

@@ -102,12 +102,24 @@ test("a later gesture retries a pending resume and only the current visible menu
     assert.equal(audio.starts.length, 1);
 
     player.mute();
+    audio.ctx.state = "suspended";
+    const first = player.enable();
+    const second = player.enable();
+    audio.ctx.state = "running";
+    attempts[2].resolve();
+    await first; await flush();
+    assert.equal(audio.starts.length, 1, "obsolete success cannot schedule a source");
+    attempts[3].resolve();
+    await second; await flush();
+    assert.equal(audio.starts.length, 2, "two successful resumes add exactly one source");
+
+    player.mute();
     const abandoned = player.enable();
     player.dispose();
-    attempts[2].resolve();
+    attempts[4].resolve();
     await abandoned; await flush();
-    assert.deepEqual(reports, ["playing", "muted"]);
-    assert.equal(audio.starts.length, 1, "leaving the menu owns the pending attempt's lifetime");
+    assert.deepEqual(reports, ["playing", "muted", "playing", "muted"]);
+    assert.equal(audio.starts.length, 2, "leaving the menu owns the pending attempt's lifetime");
   } finally { player.dispose(); audio.restore(); }
 });
 

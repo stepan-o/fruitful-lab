@@ -4,6 +4,22 @@
 
 [Play the listening desk](/loopforge-design/music-audition/day-two/index.html) · [Frame manifest](/loopforge-design/music-audition/day-two/cues.json) · [Playable campaign](/stepanoskin/loopforge/play)
 
+## 26 November 2026 · Owner decisions for the playable campaign
+
+The owner accepted the corrected Day One intro. **Enter factory** opens on Security with the original 96-bar LF-MUS-LONG-01-CONVEYOR recording. Its bass continues through the gate strike and the spoken lines. A later camera return resumes the heard Security phrase. Conveyor still uses LF-MUS-CONVEYOR-LINE-02 and its accepted opening and two-, four- and fully staffed arrangements.
+
+During the Day Two playtest, the owner chose the full LF-MUS-LONG-02-OPTIONS recording as the transition loop throughout the game. It plays at native rate across all 32 bars, frames [0, 2247805) of the original Options MP3 at 48 kHz. The historical listening-desk cuts below remain available for comparison.
+
+| Playable moment | Recording and cue |
+| --- | --- |
+| Day One end of shift, register and yard | At edited second 165.4 the departure cadence closes the working line. Options 02 follows through the register and yard into the next morning’s desk. |
+| Operator’s console, Leadership receiver, quota and supervisor bids | Keep one Options phrase through the call, returning to the desk and submitting the bids. Presented dialogue ducks and filters the sound. Confirmed posting plays the appointment taps and starts the focused floor recording. |
+| Factory walk-in, welcome and work | The focused Security or Conveyor recording follows the visible room. The missing-card case file stays on Security. In-room production holds and speech keep their established treatments. |
+| Shift bell and rack register | The confirmed bell release leaves its first beat free. Options 02 accompanies the results. Returning to the actual menu plays the Options-to-Menu bridge into Menu 06. |
+| Settings, direct entry, skip and replay | Settings uses Options 02 with directional bridges to and from Menu 06. A fresh Day Two shortcut or Day One skip selects the current desk loop directly. A restored frame selects the recording for its public state. |
+
+The campaign follows these bindings on the ordinary play route and its direct Day One entry. Chromium matched the desk output to the original Options MP3 on both entries. Fedora Firefox matched 52 audio windows to an independent decode at a median of 1.000× and observed the loop wrap at 46.82927 seconds. Owner listening review of the full score remains open.
+
 ## Recordings and approval history
 
 | Target | Recording | Native development |
@@ -26,6 +42,8 @@ The owner accepted the opening of LF-MUS-D2-CONVEYOR-01 and asked for its later 
 Each loop lasts 46.829 seconds. No tempo command is required. The occasional double-time passage belongs to the drummer. The three controls repeat or switch at the current phrase position. The uninterrupted take plays each layer once.
 
 ## Cue map for the ordinary game
+
+This is the 23 November audition map. The 26 November campaign bindings above record the owner’s later decisions for Day One Security and the transition screens.
 
 Day One timings are edited seconds at 1×. Eight station confirmations can extend wall time indefinitely. Day Two timing comes from the merged Rust campaign at e0327811. The work windows run for 2,400 and 4,800 ticks at 20 Hz for LIMEN and STILETTO respectively, subject to tutorial holds, pause and replay. The desk compresses this sequence for listening.
 

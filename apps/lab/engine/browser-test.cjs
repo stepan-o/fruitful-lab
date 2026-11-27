@@ -25,6 +25,22 @@ const assert = require("node:assert/strict");
     if (diagnostics.length < 20) diagnostics.push(message.slice(0, 1000));
   };
   try {
+    // This fresh context enters the game through the real, hydrated factory
+    // link. Its click is the only browser gesture before the Menu 06 request.
+    const landing = await browser.newPage();
+    try {
+      await landing.goto(new URL("/stepanoskin/loopforge", url).href, { waitUntil:"domcontentloaded", timeout:120000 });
+      await landing.getByRole("button", { name:/factory motion/i }).waitFor({ state:"attached", timeout:60000 });
+      const [recording] = await Promise.all([
+        landing.waitForResponse(r => new URL(r.url()).pathname === "/loopforge-design/music-audition/long-form/menu.mp3", { timeout:60000 }),
+        landing.waitForURL(url, { timeout:60000 }),
+        landing.getByRole("link", { name:/Enter the factory/i }).click(),
+      ]);
+      assert.ok(recording.ok(), "Menu 06 was served after the factory card click");
+      await landing.getByRole("button", { name:"Mute music", exact:true }).waitFor();
+    } finally {
+      await landing.close();
+    }
     // Reproduce the pre-hydration state deterministically: controls rendered by
     // the server must not accept clicks until their client handlers are ready.
     const staticPage = await browser.newPage({ javaScriptEnabled: false });

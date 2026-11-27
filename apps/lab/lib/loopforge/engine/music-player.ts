@@ -48,7 +48,9 @@ export type PlaybackStatus = "ready" | "playing" | "muted" | "unavailable";
 /** Owns only presentation time. No worker or command interface is available here. */
 export class CampaignMusicPlayer {
   private context: AudioContext | null = null;
-  private active = false;
+  private enabled = false;
+  private resumed = false;
+  private resumeAttempt = 0;
   private paused = false;
   private visible = true;
   private view: MusicView | null = null;
@@ -71,21 +73,27 @@ export class CampaignMusicPlayer {
   constructor(report: (status: PlaybackStatus) => void) { this.report = report; }
 
   async enable() {
-    if (this.active && this.context?.state === "running") return;
-    this.active = true;
+    if (this.resumed && this.context?.state === "running") return;
+    // A policy-blocked resume can stay pending. A later gesture must be able
+    // to retry synchronously, and only its current attempt may start audio.
+    const attempt = ++this.resumeAttempt;
+    this.resumed = false;
+    this.enabled = true;
     try {
       const ctx = this.context ??= new AudioContext({ sampleRate: 32000 });
       await ctx.resume();
-      if (!this.active || this.context !== ctx) return;
+      if (!this.enabled || attempt !== this.resumeAttempt || this.context !== ctx || ctx.state !== "running") return;
+      this.resumed = true;
       this.report("playing");
       this.interrupt();
       this.play();
     } catch {
-      if (this.active) this.failed();
+      if (this.enabled && attempt === this.resumeAttempt) this.failed();
     }
   }
   mute() {
-    this.active = false;
+    this.enabled = false;
+    this.resumed = false;
     this.interrupt();
     this.report("muted");
   }
@@ -93,7 +101,7 @@ export class CampaignMusicPlayer {
     if (this.visible === visible) return;
     this.visible = visible;
     this.interrupt();
-    if (visible && this.active && this.context?.state === "suspended") void this.enable();
+    if (visible && this.enabled && this.context?.state === "suspended") void this.enable();
     else if (visible) this.play();
   }
   reset(fresh = false) {
@@ -127,7 +135,7 @@ export class CampaignMusicPlayer {
       // Contiguous campaign transitions share one Options performance. Day One
       // Security also keeps its bass running through speech and the gate.
       const ctx = this.context;
-      if (ctx && this.visible && this.active && ctx.state === "running") {
+      if (ctx && this.visible && this.resumed && ctx.state === "running") {
         if (prev.speech !== next.speech && this.bedMix) {
           const { gain, cutoff, start } = this.bedMix;
           const at = Math.max(ctx.currentTime, start + .020);
@@ -158,7 +166,8 @@ export class CampaignMusicPlayer {
     this.play(cue);
   }
   dispose() {
-    this.active = false;
+    this.enabled = false;
+    this.resumed = false;
     this.interrupt();
     const ctx = this.context;
     this.context = null;
@@ -166,7 +175,8 @@ export class CampaignMusicPlayer {
     if (ctx) void ctx.close().catch(() => {});
   }
   private failed() {
-    this.active = false;
+    this.enabled = false;
+    this.resumed = false;
     this.interrupt();
     this.report("unavailable");
   }
@@ -261,7 +271,7 @@ export class CampaignMusicPlayer {
   }
   private play(cue?: Cue) {
     const ctx = this.context, view = this.view;
-    if (!ctx || !view || !this.active || this.paused || !this.visible || ctx.state !== "running") return;
+    if (!ctx || !view || !this.resumed || this.paused || !this.visible || ctx.state !== "running") return;
     const version = this.epoch;
     if (cue) {
       // A posted receipt can arrive well before the destination recording

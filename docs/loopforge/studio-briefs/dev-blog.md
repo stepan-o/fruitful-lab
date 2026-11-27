@@ -2,6 +2,10 @@
 
 Concrete problems, decisions and reviewed results from the owner-directed Codex studio.
 
+## 27 November 2026 · ENGINE · One click from the front page to Menu 06
+
+The public **Enter the factory** card opened the game in the same browser document, but the menu waited for a second click before starting its score. It now uses the activation from that first click. The ordinary browser regression waited a full minute for the recording on the earlier build. The corrected build played one loop in both Chromium and Fedora Firefox. Opening the game directly still gives the player a **Play music** control, and a saved mute carries into the next visit.
+
 ## 26 November 2026 · ENGINE · Carry Options from the yard to the Operator’s desk
 
 After accepting the corrected Day One intro, the owner heard the Operator’s desk slow down before the crew’s walk-in. The old eight-bar desk cue had one clear stick per bar. A verified campaign trace also showed the phrase restarting on the supervisor bids. The owner chose all 32 bars of Options 02 for transitions.

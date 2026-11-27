@@ -48,14 +48,14 @@ test("focused Day Two room controls tier, explicit waits, speech, confirmed bell
   assert.equal(transitionCue(waiting, campaignMusic(line(0,{ closed:true, bell:600 }), "security")), undefined);
 });
 
-function installAudio(delay = async () => {}) {
+function installAudio(delay = async () => {}, resume = ctx => { ctx.state = "running"; }) {
   const starts = [], requests = [], stops = [], gains = [], cutoffs = [];
   const param = () => ({ value:1, ramps:[], setValueAtTime(){},
     linearRampToValueAtTime(value, time){ this.ramps.push({value, time}); }, cancelScheduledValues(){} });
   let ctx;
   class Audio {
     constructor() { ctx = this; this.sampleRate = 32000; this.currentTime = 0; this.state = "suspended"; }
-    async resume() { this.state = "running"; }
+    async resume() { await resume(this); }
     async close() { this.state = "closed"; }
     async decodeAudioData() { return { duration:300 }; }
     createBufferSource() {
@@ -78,6 +78,50 @@ function installAudio(delay = async () => {}) {
     restore() { global.AudioContext = oldAudio; global.fetch = oldFetch; } };
 }
 const flush = () => new Promise(resolve => setImmediate(resolve));
+
+test("a later gesture retries a pending resume and only the current visible menu can play", async () => {
+  const attempts = [], reports = [];
+  const audio = installAudio(undefined, ctx => new Promise((resolve, reject) => attempts.push({ctx, resolve, reject})));
+  const player = new CampaignMusicPlayer(status => reports.push(status));
+  try {
+    player.update(menuMusic(false), false);
+    const landing = player.enable();
+    const click = player.enable();
+    assert.equal(attempts.length, 2, "a trusted retry invokes resume during the click");
+    attempts[1].ctx.state = "running";
+    player.visibility(false);
+    attempts[1].resolve();
+    await click; await flush();
+    assert.equal(audio.starts.length, 0);
+    player.visibility(true); await flush();
+    assert.equal(audio.starts.length, 1);
+    assert.equal(audio.starts[0].end, manifest.tracks.menu.loopFrames[1] / manifest.sampleRate);
+    attempts[0].reject(Error("obsolete blocked resume"));
+    await landing; await flush();
+    assert.deepEqual(reports, ["playing"]);
+    assert.equal(audio.starts.length, 1);
+
+    player.mute();
+    audio.ctx.state = "suspended";
+    const first = player.enable();
+    const second = player.enable();
+    audio.ctx.state = "running";
+    attempts[2].resolve();
+    await first; await flush();
+    assert.equal(audio.starts.length, 1, "obsolete success cannot schedule a source");
+    attempts[3].resolve();
+    await second; await flush();
+    assert.equal(audio.starts.length, 2, "two successful resumes add exactly one source");
+
+    player.mute();
+    const abandoned = player.enable();
+    player.dispose();
+    attempts[4].resolve();
+    await abandoned; await flush();
+    assert.deepEqual(reports, ["playing", "muted", "playing", "muted"]);
+    assert.equal(audio.starts.length, 2, "leaving the menu owns the pending attempt's lifetime");
+  } finally { player.dispose(); audio.restore(); }
+});
 
 test("Web Audio transport uses exact ranges, room memory, aligned work loops and cancellation", async () => {
   let slowOptions;

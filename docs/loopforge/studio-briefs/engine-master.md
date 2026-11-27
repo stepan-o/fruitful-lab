@@ -51,9 +51,15 @@ Use *Designing Games* when an engineering choice affects agency, feedback, learn
 
 ## Current handoff
 
+### 27 November 2026 · Menu 06 on the first factory click
+
+Choose **Enter the factory** on the [Loopforge landing page](/stepanoskin/loopforge). Menu 06 starts when the game menu opens. The recording lasts 117.073 seconds and loops at its original rate. A saved music mute keeps the menu quiet. A fresh direct visit to the game shows **Play music** so the player can enable it. Entering Day One from the menu still brings in the Security score.
+
+On master `a5bcdc7`, the landing click reached the game without requesting the recording. The regression timed out after 60 seconds. With game code `5941477`, Chromium and Fedora Firefox both navigated within the same document and played one Menu 06 loop from that click. Measured RMS was 0.219 in Chromium and 0.197 in Firefox. Chromium also played one loop from a keyboard **Tab** then **Enter**. A fresh direct tab made zero recording requests before **Play music** and played one loop afterward. Returning with mute saved stayed quiet, and returning with music enabled produced one live context. The committed landing regression, ordinary entry and episode suites passed, along with eight focused music checks.
+
 ### 26 November 2026 · Recorded score in the playable campaign
 
-Game code `6219be6` on master base `2e08e7c`. Open the [ordinary game](/stepanoskin/loopforge/play). Choose **Play music** to hear Menu 06, open Settings for Options 02, then close it to hear the Menu phrase return. Enter the factory at 1× and confirm the eight station instructions. The [music handoff and recording map](/loopforge-design/music-audition/day-two/handoff.html) identifies the recordings and their frame ranges.
+Game code `6219be6` on master base `2e08e7c`. On a fresh direct visit to the [ordinary game](/stepanoskin/loopforge/play), choose **Play music** to hear Menu 06, open Settings for Options 02, then close it to hear the Menu phrase return. Enter the factory at 1× and confirm the eight station instructions. The [music handoff and recording map](/loopforge-design/music-audition/day-two/handoff.html) identifies the recordings and their frame ranges.
 
 The owner heard slow music immediately after **Enter factory**, with Menu and Options sounding right. The first camera is Security. The previous build selected the sparse 16-bar walk cue there. The owner’s local playtest supersedes the original day-bed allocation for the Day One Security shots. The owner accepted the corrected intro. The opening and both returns to Security now use the complete 96-bar LF-MUS-LONG-01-CONVEYOR recording, at the same rate as the source. The factory opener plays once. The gate strike layers over the running track. Speech lowers its gain and treble, and the room resumes its heard phrase after a camera cut.
 

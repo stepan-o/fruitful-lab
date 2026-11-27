@@ -106,13 +106,18 @@ function GameSession({media,legacyReview=false,initialIntro=false}:Props) {
   useEffect(()=>{
     // The server-rendered menu must not accept clicks before its handlers exist.
     setHydrated(true);
-    setDev(localStorage.getItem('loopforge.display')==='dev');setResumable(!!sessionStorage.getItem(key)||!!sessionStorage.getItem('loopforge.playthrough.1'));
+    try { setDev(localStorage.getItem('loopforge.display')==='dev'); } catch {}
+    try { setResumable(!!sessionStorage.getItem(key)||!!sessionStorage.getItem('loopforge.playthrough.1')); } catch {}
     if (!legacyReview) {
       if (welcomeElement.current) voice.current = new WelcomeVoice(welcomeElement.current);
       try { setWelcomeEnabled(localStorage.getItem("loopforge.welcome.muted") !== "yes"); } catch {}
       music.current = new CampaignMusicPlayer(setMusicStatus);
       music.current.visibility(!document.hidden);
-      try { if (localStorage.getItem("loopforge.music.muted") === "yes") music.current.mute(); } catch {}
+      let muted = false;
+      try { muted = localStorage.getItem("loopforge.music.muted") === "yes"; } catch {}
+      if (muted) music.current.mute();
+      // The factory link navigates within this document, which retains its user activation.
+      else if (!initialIntro && navigator.userActivation?.hasBeenActive) void music.current.enable();
     }
     const hidden=()=>{
       if (document.hidden) voice.current?.reset();

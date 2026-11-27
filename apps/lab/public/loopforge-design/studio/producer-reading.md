@@ -10,9 +10,10 @@ Current owner instructions define intent. Current code and observed behavior est
 
 ## Read the evidence for a delivery
 
-Begin with the owner’s commission, current master and the [local review procedure](/stepanoskin/loopforge/design/studio/producer-playbook#guest-build-and-owner-review). The [SECURITY handoff](/stepanoskin/loopforge/design/studio/security#current-handoff) records which parts of that procedure have run.
+Identify the role that owns the requested change. Begin with the owner’s commission, that role’s brief and current handoff, existing artifacts, current master and the [local review procedure](/stepanoskin/loopforge/design/studio/producer-playbook#guest-build-and-owner-review). The [SECURITY handoff](/stepanoskin/loopforge/design/studio/security#current-handoff) records which parts of that procedure have run.
 
-- **A local draft** has a base and worker head, a diff, checks and a guest URL. Compare the actual running content with the worker's revision. Record any uncommitted edits.
+- **A technical review** pairs the owning role’s work order and acceptance checks with the VM worker’s revision, diff, actual checks and running candidate. Record requested changes or acceptance with gaps. PRODUCER supplies this verdict for its own documents.
+- **A delivery review** records what PRODUCER tried in the overall build, the stable local link, base and head, and any uncommitted edits. Take the owner’s playtest findings back to the owning role.
 - **An approval** pairs the owner's “open the PR” with the full SHA of the clean revision they reviewed. A different head is a new candidate.
 - **GitHub** supplies the immutable feature branch, current PR state and full head SHA. Re-read the state and head before reporting, even if the original submission receipt says draft.
 - **Vercel** supplies the deployment state, source SHA and deployment-specific URL. Report a build in progress as pending. When it reaches READY, match its SHA to the reviewed head and verify the changed content at that URL.
